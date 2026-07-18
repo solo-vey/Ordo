@@ -101,6 +101,16 @@
 | `MODEL_RENDER.HANDOFF` | runtime evidence | Records an AI rendering handoff packet for a model-assisted template. |
 
 
+## Shared-tail and flow-reuse lowering
+
+| Construct | Type | Description |
+|---|---|---|
+| `SHARED.TAIL.DEF` | op | Defines a reusable shared process tail emitted by compiler lowering. |
+| `SHARED.TAIL.REFERENCE.RESOLVED` | op | Records a source shared-tail reference resolved to its canonical lowered target. |
+| `FLOW.JOIN.DEF` | op | Defines a synthetic join node that merges incoming branches before a shared tail. |
+| `FLOW.EDGE` | op | Defines an explicit lowered control-flow edge between canonical IR nodes. |
+
+
 ## Execution trace
 
 - `EXECUTION_TRACE.DEF` — declares the canonical trace artifact contract for a run.
