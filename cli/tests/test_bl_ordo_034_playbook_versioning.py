@@ -14,7 +14,7 @@ def test_all_packages_have_release_records():
   assert r['rollback']['supported'] is True
 def test_release_index_covers_all_packages():
  idx=json.loads((ROOT/'manifests/PLAYBOOK_RELEASE_INDEX.json').read_text())
- assert {x['playbook_id'] for x in idx['playbooks']}=={'history_event.guided_intake','ordo.applied_project_factory','ordo.hybrid_executor','ordo.project_builder'}
+ assert {x['playbook_id'] for x in idx['playbooks']}=={'history_event.guided_intake','ordo.applied_project_factory','ordo.benchmark_creation_playbook','ordo.hybrid_executor','ordo.project_builder'}
 def run(active,new,tmp_path):
  a=tmp_path/'a.json'; n=tmp_path/'n.json'; a.write_text(json.dumps(active)); n.write_text(json.dumps(new))
  return json.loads(subprocess.check_output([sys.executable,str(ROOT/'tools/resolve_playbook_upgrade.py'),str(a),str(n)],text=True))

@@ -204,9 +204,8 @@ def run_package_lints(skip_heavy: bool, timeout_seconds: int = 3600) -> dict:
     import shutil
     import tempfile
     results = {}
-    for pkg in sorted((ROOT / "packages").iterdir()):
-        if not pkg.is_dir():
-            continue
+    package_roots = sorted({p.parent for p in (ROOT / "packages").rglob("ordo.yml")})
+    for pkg in package_roots:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_pkg = Path(tmp) / pkg.name
             shutil.copytree(pkg, tmp_pkg, ignore=shutil.ignore_patterns("__pycache__"))
@@ -218,9 +217,9 @@ def run_package_lints(skip_heavy: bool, timeout_seconds: int = 3600) -> dict:
                     cwd=ROOT, capture_output=True, text=True, timeout=effective_timeout,
                     env={"PYTHONDONTWRITEBYTECODE": "1", "PATH": "/usr/bin:/bin:/usr/local/bin"},
                 )
-                results[pkg.name] = "passed" if proc.returncode == 0 else "failed"
+                results[pkg.relative_to(ROOT / "packages").as_posix()] = "passed" if proc.returncode == 0 else "failed"
             except subprocess.TimeoutExpired:
-                results[pkg.name] = f"timed_out_after_{timeout_seconds}s"
+                results[pkg.relative_to(ROOT / "packages").as_posix()] = f"timed_out_after_{timeout_seconds}s"
     return results
 
 

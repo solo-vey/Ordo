@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.empirical_evidence.layer_contract.v1",
+  "layers": [
+    {
+      "name": "raw_evidence",
+      "mutable": false,
+      "purpose": "Unmodified source evidence and run archives."
+    },
+    {
+      "name": "derived_measurements",
+      "mutable": true,
+      "purpose": "Reproducible scores and measurements derived from raw evidence."
+    },
+    {
+      "name": "findings",
+      "mutable": true,
+      "purpose": "Admitted factual interpretations of individual evidence."
+    },
+    {
+      "name": "claims",
+      "mutable": true,
+      "purpose": "Bounded comparative statements supported or contradicted by admitted evidence."
+    }
+  ],
+  "forbidden_flows": [
+    "claims_to_raw_evidence_mutation",
+    "score_to_automatic_production_gate",
+    "empirical_claim_to_CSG_status_mutation"
+  ]
+}

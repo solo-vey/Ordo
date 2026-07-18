@@ -1,7 +1,7 @@
 {
   "schema_version": "ordo.generated_report_relocation_manifest.v1",
   "reason": "BL-ORDO-012 source/generated artifact isolation",
-  "entry_count": 701,
+  "entry_count": 648,
   "entries": [
     {
       "previous_path": "reports/m60_6_4_transcript_replay_pilot/CALIBRATION_DECISION.json",
@@ -3891,63 +3891,5 @@
       "sha256": "71c348e94247c6f997f18cc1aae37dae165bf5ef74780c28b96c8b3b6f8f60a0",
       "classification": "reproducible_generated_or_execution_evidence"
     }
-  ],
-  "pruned_missing_paths": {
-    "pruned_at": "2026-07-12T12:00:00Z",
-    "reason": "Declared files absent from the shipped archive; manifest reconciled to disk (M87.7 delivery-gate closure). Original paths preserved for audit:",
-    "paths": [
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_003_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_003_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_003_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_004_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_004_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_004_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_005_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_005_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_005_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_006_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_006_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_006_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_007_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_007_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_007_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_008_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_008_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_008_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_009_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_009_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_009_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_010_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_010_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_010_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_011_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_011_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_011_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_012_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_012_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_012_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_013_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_013_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_013_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_014_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_014_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_014_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_015_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_015_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_015_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_016_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_016_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_016_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_017_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_017_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_017_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_018_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_018_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_018_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_019_json.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_019_json_ordo-code.log",
-      ".ordo-generated/workspace-reports/m60_6_calibration_prep_baseline/job_logs/scenario_019_ordo-code.log",
-      ".ordo-generated/workspace-reports/self_check_step3_pytest.log"
-    ]
-  }
+  ]
 }
