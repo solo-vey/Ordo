@@ -99,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
                 "--lint-timeout-seconds", "900",
             ], cwd=checkout, timeout=7200))
 
-        archive = out / "ordo-release-candidate.zip"
+        archive = out / "ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip"
         results.append(run([
             sys.executable, "tools/build_release_archive.py", "--out", str(archive),
             "--workers", "4", "--test-timeout-seconds", "3600",

@@ -112,18 +112,18 @@ jobs:
           mkdir -p dist reports/ci
           mkdir -p reports/ci/release-test-groups
           python tools/build_release_archive.py \
-            --out dist/ordo-release-candidate.zip \
+            --out dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip \
             --workers 4 \
             --test-log-dir reports/ci/release-test-groups \
             --test-timeout-seconds 3600 \
             --lint-timeout-seconds 900 \
             | tee reports/ci/release_build.stdout.log
-          sha256sum dist/ordo-release-candidate.zip > dist/ordo-release-candidate.zip.sha256
+          sha256sum dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip > dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip.sha256
           python - <<'PY'
           import hashlib, json, os
           from datetime import datetime, timezone
           from pathlib import Path
-          archive = Path('dist/ordo-release-candidate.zip')
+          archive = Path('dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip')
           payload = {
               'schema_version': 'ordo.independent_delivery_ci_evidence.v1',
               'status': 'passed',
@@ -150,7 +150,7 @@ jobs:
           name: ordo-full-delivery-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             reports/ci/
-            dist/ordo-release-candidate.zip
-            dist/ordo-release-candidate.zip.sha256
+            dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip
+            dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip.sha256
           if-no-files-found: error
           retention-days: 90

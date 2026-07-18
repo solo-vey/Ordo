@@ -40,8 +40,8 @@ class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
             self.assertIn(f"packages/{package}", self.text)
 
     def test_release_candidate_and_evidence_are_sha_bound(self) -> None:
-        self.assertIn("dist/ordo-release-candidate.zip", self.text)
-        self.assertIn("sha256sum dist/ordo-release-candidate.zip", self.text)
+        self.assertIn("dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip", self.text)
+        self.assertIn("sha256sum dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip", self.text)
         self.assertIn("ordo.independent_delivery_ci_evidence.v1", self.text)
         self.assertIn("archive_sha256", self.text)
         self.assertIn("GITHUB_SHA", self.text)
