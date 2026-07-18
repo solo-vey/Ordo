@@ -94,12 +94,22 @@ def run_partitioned_tests(
             # sharing one workspace makes later groups observe earlier side effects.
             with tempfile.TemporaryDirectory(prefix=f"ordo-test-group-{batch_index:02d}-") as tmp:
                 isolated_root = Path(tmp) / "repo"
+                def ignore_isolated_snapshot(directory: str, names: list[str]) -> set[str]:
+                    ignored = {
+                        name for name in names
+                        if name in {".git", "__pycache__", ".pytest_cache", "node_modules", "dist"}
+                    }
+                    # reports/ci is ephemeral workflow evidence created after the
+                    # first gate. It is not canonical source input and must not
+                    # contaminate the release-build validation snapshot.
+                    if Path(directory).resolve() == (ROOT / "reports").resolve() and "ci" in names:
+                        ignored.add("ci")
+                    return ignored
+
                 shutil.copytree(
                     ROOT,
                     isolated_root,
-                    ignore=shutil.ignore_patterns(
-                        ".git", "__pycache__", ".pytest_cache", "node_modules", "dist"
-                    ),
+                    ignore=ignore_isolated_snapshot,
                 )
                 isolated_rels = [
                     (isolated_root / rel).relative_to(isolated_root).as_posix()

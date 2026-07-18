@@ -110,9 +110,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist reports/ci
+          mkdir -p reports/ci/release-test-groups
           python tools/build_release_archive.py \
             --out dist/ordo-release-candidate.zip \
             --workers 4 \
+            --test-log-dir reports/ci/release-test-groups \
             --test-timeout-seconds 3600 \
             --lint-timeout-seconds 900 \
             | tee reports/ci/release_build.stdout.log
