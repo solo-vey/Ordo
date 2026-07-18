@@ -8,6 +8,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = ROOT / ".github/workflows/ordo-delivery-gate.yml"
 CHECK_WORKFLOW = ROOT / ".github/workflows/ordo-check.yml"
+BUILDER = ROOT / "tools/build_release_archive.py"
 
 
 class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
@@ -55,6 +56,14 @@ class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
             "cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json",
             self.text,
         )
+
+    def test_release_builder_materializes_fresh_self_check_for_ci_copy(self) -> None:
+        builder = BUILDER.read_text(encoding="utf-8")
+        self.assertIn(
+            '(ROOT / "FINAL_PACKAGE_SELF_CHECK_REPORT.json").write_text(',
+            builder,
+        )
+        self.assertIn("json.dumps(self_check, indent=2)", builder)
 
     def test_existing_check_workflow_includes_apf(self) -> None:
         check = CHECK_WORKFLOW.read_text(encoding="utf-8")

@@ -374,6 +374,10 @@ def main(argv: list[str] | None = None) -> int:
         "package_lints": lints,
         "note": "Generated automatically at delivery time from the current tree; never hand-written.",
     }
+    (ROOT / "FINAL_PACKAGE_SELF_CHECK_REPORT.json").write_text(
+        json.dumps(self_check, indent=2) + "\n",
+        encoding="utf-8",
+    )
     md_lines = [
         "# Final Package Self-Check",
         "",
