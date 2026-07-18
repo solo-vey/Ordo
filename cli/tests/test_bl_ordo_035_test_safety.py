@@ -25,7 +25,9 @@ def test_release_gate_loads_machine_readable_serial_classification():
     source = (ROOT / "tools" / "build_release_archive.py").read_text()
     assert "TEST_EXECUTION_CLASSIFICATION.json" in source
     assert "declared_serial" in source
-    assert "results.append(run_batch(len(batches), serial_files))" in source
+    assert "for batch_index, batch in enumerate(batches)" in source
+    assert 'run_batch(serial_index, serial_files, "workspace_serial")' in source
+    assert "ThreadPoolExecutor" not in source
 
 
 def test_negative_fixture_mutation_proves_change():

@@ -29,7 +29,6 @@ import subprocess
 import sys
 import zipfile
 import uuid
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 TOOLS_DIR = Path(__file__).resolve().parent
@@ -52,6 +51,7 @@ def run_partitioned_tests(
     skip_heavy: bool = False,
     workers: int = 4,
     timeout_seconds: int = 3600,
+    log_dir: Path | None = None,
 ) -> dict:
     test_dir = ROOT / "cli" / "tests"
     files = sorted(test_dir.glob("test_*.py"))
@@ -70,7 +70,10 @@ def run_partitioned_tests(
     for index, file in enumerate(parallel_files):
         batches[index % worker_count].append(file)
 
-    def run_batch(batch_index: int, batch: list[Path]) -> dict:
+    if log_dir is not None:
+        log_dir.mkdir(parents=True, exist_ok=True)
+
+    def run_batch(batch_index: int, batch: list[Path], label: str) -> dict:
         rels = [f.relative_to(ROOT).as_posix() for f in batch]
         deselect: list[str] = []
         skipped: list[str] = []
@@ -89,7 +92,11 @@ def run_partitioned_tests(
                 cwd=ROOT, capture_output=True, text=True, timeout=effective_timeout,
                 env={"PYTHONDONTWRITEBYTECODE": "1", "PATH": "/usr/bin:/bin:/usr/local/bin"},
             )
-            tail = (proc.stdout or "").strip().splitlines()[-1] if proc.stdout else ""
+            combined_output = (proc.stdout or "") + (proc.stderr or "")
+            tail = combined_output.strip().splitlines()[-1] if combined_output.strip() else ""
+            log_name = f"test_group_{batch_index:02d}_{label}.log"
+            if log_dir is not None:
+                (log_dir / log_name).write_text(combined_output, encoding="utf-8")
             m_pass = re.search(r"(\d+) passed", tail)
             m_fail = re.search(r"(\d+) failed", tail)
             m_err = re.search(r"(\d+) error", tail)
@@ -106,6 +113,7 @@ def run_partitioned_tests(
                 "errors": errors,
                 "returncode": proc.returncode,
                 "tail": tail[:500],
+                "log_file": log_name if log_dir is not None else None,
                 "skipped": skipped,
                 "timed_out": False,
                 "timeout_seconds": timeout_seconds,
@@ -113,7 +121,11 @@ def run_partitioned_tests(
         except subprocess.TimeoutExpired as exc:
             stdout = exc.stdout.decode(errors="replace") if isinstance(exc.stdout, bytes) else (exc.stdout or "")
             stderr = exc.stderr.decode(errors="replace") if isinstance(exc.stderr, bytes) else (exc.stderr or "")
-            tail_source = (stdout + "\n" + stderr).strip().splitlines()
+            combined_output = stdout + "\n" + stderr
+            tail_source = combined_output.strip().splitlines()
+            log_name = f"test_group_{batch_index:02d}_{label}.log"
+            if log_dir is not None:
+                (log_dir / log_name).write_text(combined_output, encoding="utf-8")
             return {
                 "batch": batch_index,
                 "files": [f.name for f in batch],
@@ -122,21 +134,46 @@ def run_partitioned_tests(
                 "errors": 1,
                 "returncode": 124,
                 "tail": (tail_source[-1] if tail_source else "test partition timed out")[:500],
+                "log_file": log_name if log_dir is not None else None,
                 "skipped": skipped,
                 "timed_out": True,
                 "timeout_seconds": timeout_seconds,
             }
 
     results: list[dict] = []
-    with ThreadPoolExecutor(max_workers=worker_count) as pool:
-        futures = {pool.submit(run_batch, i, batch): i for i, batch in enumerate(batches) if batch}
-        for future in as_completed(futures):
-            results.append(future.result())
+    # Run deterministic groups sequentially. This avoids cross-group workspace
+    # contamination and makes the failing group immediately visible in CI.
+    for batch_index, batch in enumerate(batches):
+        if not batch:
+            continue
+        print(f"test-group {batch_index + 1}/{len(batches)}: START files={len(batch)}", flush=True)
+        result = run_batch(batch_index, batch, "parallel_partition")
+        results.append(result)
+        state = "PASS" if result["returncode"] == 0 else "FAIL"
+        print(
+            f"test-group {batch_index + 1}/{len(batches)}: {state} "
+            f"passed={result['passed']} failed={result['failed']} errors={result['errors']} "
+            f"log={result.get('log_file') or 'not-written'}",
+            flush=True,
+        )
+        if result["returncode"] != 0:
+            print(result.get("tail", ""), flush=True)
 
-    # Workspace-mutating tests run strictly after all parallel batches finish,
-    # in a single serial batch, so shared repo state is never contended.
+    # Workspace-mutating tests run strictly after the normal groups finish.
     if serial_files:
-        results.append(run_batch(len(batches), serial_files))
+        serial_index = len(batches)
+        print(f"test-group serial: START files={len(serial_files)}", flush=True)
+        result = run_batch(serial_index, serial_files, "workspace_serial")
+        results.append(result)
+        state = "PASS" if result["returncode"] == 0 else "FAIL"
+        print(
+            f"test-group serial: {state} passed={result['passed']} "
+            f"failed={result['failed']} errors={result['errors']} "
+            f"log={result.get('log_file') or 'not-written'}",
+            flush=True,
+        )
+        if result["returncode"] != 0:
+            print(result.get("tail", ""), flush=True)
 
     failures = []
     skipped_heavy: list[str] = []
@@ -147,6 +184,7 @@ def run_partitioned_tests(
                 "batch": result["batch"],
                 "files": result["files"],
                 "tail": result["tail"],
+                "log_file": result.get("log_file"),
             })
     return {
         "test_files": len(files),
@@ -155,7 +193,8 @@ def run_partitioned_tests(
         "collection_or_run_errors": sum(r["errors"] for r in results),
         "failing_files": failures,
         "skipped_heavy_tests": sorted(set(skipped_heavy)),
-        "execution_mode": f"partitioned into {worker_count} bounded batches",
+        "execution_mode": f"sequential deterministic groups ({worker_count} normal + {1 if serial_files else 0} serial)",
+        "group_order": [r["batch"] for r in results],
         "partition_timeout_seconds": timeout_seconds,
         "timeout_disabled": timeout_seconds == 0,
     }
@@ -167,11 +206,6 @@ def run_package_lints(skip_heavy: bool, timeout_seconds: int = 3600) -> dict:
     results = {}
     for pkg in sorted((ROOT / "packages").iterdir()):
         if not pkg.is_dir():
-            continue
-        # Only direct Ordo package roots are lint targets. Some directories
-        # under packages/ are publication bundles or versioned source archives
-        # and intentionally do not contain an ordo.yml package manifest.
-        if not (pkg / "ordo.yml").is_file():
             continue
         with tempfile.TemporaryDirectory() as tmp:
             tmp_pkg = Path(tmp) / pkg.name
@@ -221,7 +255,11 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--check-only", action="store_true")
-    ap.add_argument("--workers", type=int, default=4, help="Parallel partition workers for tests.")
+    ap.add_argument("--workers", type=int, default=4, help="Number of deterministic test groups; groups run sequentially.")
+    ap.add_argument(
+        "--test-log-dir", type=Path, default=None,
+        help="Optional directory for complete per-group pytest logs.",
+    )
     ap.add_argument(
         "--test-timeout-seconds", type=int, default=3600,
         help="Timeout for each test partition. Use 0 to disable the internal timeout.",
@@ -240,6 +278,7 @@ def main(argv: list[str] | None = None) -> int:
         skip_heavy=args.skip_heavy,
         workers=args.workers,
         timeout_seconds=args.test_timeout_seconds,
+        log_dir=args.test_log_dir,
     )
     lints = run_package_lints(
         skip_heavy=args.skip_heavy,

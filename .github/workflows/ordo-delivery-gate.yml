@@ -79,14 +79,23 @@ jobs:
           set -uo pipefail
           mkdir -p reports/ci
           temp_log="${RUNNER_TEMP}/full_delivery_gate.stdout.log"
+          test_log_dir="${RUNNER_TEMP}/ordo-delivery-test-groups"
+          rm -rf "$test_log_dir"
+          mkdir -p "$test_log_dir"
+
+          set +e
           python tools/build_release_archive.py \
             --check-only \
             --workers 4 \
+            --test-log-dir "$test_log_dir" \
             --test-timeout-seconds 3600 \
             --lint-timeout-seconds 900 \
             2>&1 | tee "$temp_log"
           gate_status=${PIPESTATUS[0]}
+          set -e
+
           cp "$temp_log" reports/ci/full_delivery_gate.stdout.log
+          cp -a "$test_log_dir" reports/ci/test-groups
           if [ -f DELIVERY_GATE_REPORT.json ]; then
             cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json
           fi
