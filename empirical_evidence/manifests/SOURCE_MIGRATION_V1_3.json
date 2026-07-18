@@ -1,0 +1,475 @@
+{
+  "schema_version": "ordo.empirical_evidence.source_migration.v1",
+  "source_package": "ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3",
+  "source_package_version": "1.3",
+  "migration_id": "MIG-BL-ORDO-041-V1_3",
+  "migration_date": "2026-07-15",
+  "preservation": "byte_for_byte",
+  "source_sha256sums_verified": true,
+  "source_file_count": 92,
+  "source_files": [
+    {
+      "path": "00_governance/BENCHMARK_BACKLOG_SNAPSHOT.md",
+      "size_bytes": 858,
+      "sha256": "795b80fa71ad41b60520e770d95120ea3a6fd766b79f7001edc9cd5f85587331"
+    },
+    {
+      "path": "00_governance/BENCHMARK_CURRENT_STATE_SNAPSHOT.md",
+      "size_bytes": 1040,
+      "sha256": "8740a4074acc6bea8a710e8499754cfa6d6b33b66ad9d654ad5c18cac0c66c30"
+    },
+    {
+      "path": "00_governance/COMPOSITE_QUALITY_SCORING_METHOD.md",
+      "size_bytes": 1698,
+      "sha256": "7c904d8885dc9e6e32c13665c81202a71f7303fa4b32d3ef22e11b402edab0be"
+    },
+    {
+      "path": "00_governance/COMPOSITE_SCORECARD_TEMPLATE.json",
+      "size_bytes": 986,
+      "sha256": "7c4db54d3308d05dbb6442f830080b5f12c3d67913a5c7dc43260ee761ec453b"
+    },
+    {
+      "path": "00_governance/CURRENT_COMPARATIVE_SCOREBOARD.md",
+      "size_bytes": 501,
+      "sha256": "560da36cd6cad69ae73b74988ad67ba33c30519d852b08296f00cb7d37a69bff"
+    },
+    {
+      "path": "00_governance/EVIDENCE_ACCEPTANCE_POLICY.md",
+      "size_bytes": 702,
+      "sha256": "1f8f82a6e7a14ca12ef95bc200a1077d41f2c4032314076aac8cc00d1cf24007"
+    },
+    {
+      "path": "00_governance/EVIDENCE_REGISTER.md",
+      "size_bytes": 972,
+      "sha256": "a1c4f741e33257a42f5c9228a4b494e748fd1082a182eccb110fd82d1224c710"
+    },
+    {
+      "path": "00_governance/LANGUAGE_COMPLIANCE_AUDIT.md",
+      "size_bytes": 727,
+      "sha256": "eea1873e1a8bd19756d0536f81af2bfad2fa0d1923eb53d240ab3b5d58b1e442"
+    },
+    {
+      "path": "00_governance/MEASUREMENT_MODEL.md",
+      "size_bytes": 734,
+      "sha256": "d45b27cd654598617c990d8105758525bb0c3470b5a7521c88d968de960707c6"
+    },
+    {
+      "path": "00_governance/RESULT_ADMISSION_WORKFLOW.md",
+      "size_bytes": 556,
+      "sha256": "42e390bae3749bb26df110497141dc61e0aa817bdf1a49b7d9e73116da151a0c"
+    },
+    {
+      "path": "00_governance/SCIENTIFIC_QUESTION_AND_HYPOTHESES.md",
+      "size_bytes": 815,
+      "sha256": "8789180904fa97d44d25bd12204dc4ff3e85c4cca4826bd2a7d3f3d2b8a39943"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/01_NEW_OFFICE_OPENING_PROCESS.md",
+      "size_bytes": 1012,
+      "sha256": "903a93514c90ff045df18b111910fab56f8d626a264055a68d6c05c87baf3b48"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/04_NEW_OFFICE_OPENING_ENRICHED_PROCESS.md",
+      "size_bytes": 2051,
+      "sha256": "3aa97b77263f965888e22d9bb521e267ac3cbd211d9bc4909f39c50d04bc4fe5"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/05_NEW_OFFICE_OPENING_EXAMPLE_DATA.md",
+      "size_bytes": 746,
+      "sha256": "4e2b427982e23bd014b15557c0a56b06e53d262a322a4f7ef430a7c6fec949c0"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/06_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF_NORTHSTAR.docx",
+      "size_bytes": 40810,
+      "sha256": "17b68675453d1e3e26f1086b26ebfb508853f812370732ad24ab917e14ed6606"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/06_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF_NORTHSTAR.md",
+      "size_bytes": 4366,
+      "sha256": "3da473c813a88344d1a719bc01a86cf4571ac963c5f4e60c4a8f46acb79c5e03"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/07_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN_NORTHSTAR.md",
+      "size_bytes": 4929,
+      "sha256": "15c968dbeca89cd5862e3583695266523455339f86ff390636acdd47d175f301"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/08_OFFICE_READINESS_AND_OPENING_DECISION_REPORT_NORTHSTAR.md",
+      "size_bytes": 5671,
+      "sha256": "9a13eff814df3a4832bdd3d942c6f48bbde7b0ffbae61332f8e3a74cc27167c4"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/09_TEMPLATE_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF.md",
+      "size_bytes": 4115,
+      "sha256": "015fdaffef0fb10baadd0ed7dc5dde2b0e0cc4f371dcb97985b3afd202bceb73"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/10_TEMPLATE_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN.md",
+      "size_bytes": 4146,
+      "sha256": "7af532b61f8fd4ece5a4a9075780fcb4fae3eaf8efd19adcedb40e268d8f3482"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/11_TEMPLATE_OFFICE_READINESS_AND_OPENING_DECISION_REPORT.md",
+      "size_bytes": 4091,
+      "sha256": "b228cc193a888b04faaa4cf83acfb3a683ede65c31a87155b816d4682099556c"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/12_MODEL_INSTRUCTIONS_OFFICE_OPENING_PROCESS.md",
+      "size_bytes": 12431,
+      "sha256": "ade5b3b0f752c99a75113778d87e6bdfa9253b674aa06484aeb8ddf6a1d564f1"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/01_MODEL_INSTRUCTIONS_OFFICE_OPENING_PILOT.md",
+      "size_bytes": 12431,
+      "sha256": "ade5b3b0f752c99a75113778d87e6bdfa9253b674aa06484aeb8ddf6a1d564f1"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.zip",
+      "size_bytes": 18292,
+      "sha256": "373f1c0b3ea4abf1efc15599138eeabb63e5f742950e7288863eb7c9c9480a7b"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/START_PROMPT_OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.md",
+      "size_bytes": 1871,
+      "sha256": "07774ee3bf453111b9daf5b32000fc02fc97c746af56bed383aec2a31e547ec8"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/ordo/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC21.zip",
+      "size_bytes": 264673,
+      "sha256": "bd3d93c6b5daba640d6df6b3687ee2b457c48f4f73a570a2a44afa65e2edf627"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/ordo/START_PROMPT_OFFICE_OPENING_ORDO_PLAYBOOK_RC21.md",
+      "size_bytes": 1192,
+      "sha256": "585953a1c1ee1432998725320c4e0ef0c4e1357062a664added22be397007959"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S01_CLEAN_CONTROL.md",
+      "size_bytes": 1198,
+      "sha256": "6a8b2811b578fa24313fc4e31b16eda0f5f5fa7169d1768aad7e4dba73783930"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S02_BRANCH_HEAVY.md",
+      "size_bytes": 1195,
+      "sha256": "4a9e9a12677368be2c1f8c1e3e2495d89dbfad180bc6d15799fd6c94f45f6c71"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S04_BACKTRACK_AND_CORRECT.md",
+      "size_bytes": 1222,
+      "sha256": "b868fcbcc2b501ccce5f90ef9269794afe715759bb12a9d00705807b0ae6746e"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S05_INCOMPLETE_HARD_STOP.md",
+      "size_bytes": 1219,
+      "sha256": "0adbcc754d79cc2842c5c723646abd77d820c062ad1bd0ba295d54bef626a9bc"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/README.md",
+      "size_bytes": 731,
+      "sha256": "67cb0c419e9ebd3e92e486285369bfad919b576658b1fc9cc8073dd90f1dc19d"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/SCENARIO_CATALOG.yaml",
+      "size_bytes": 1308,
+      "sha256": "815b543257c4322bb7ef0a7afd5cdf3a84a7d0cb094d0607639c7d214702e93f"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/SCENARIO_EXECUTION_CONTRACT.md",
+      "size_bytes": 1406,
+      "sha256": "361d3337a74d52bf06a1b7af3371168ddbd9eb9fa88efe2b46648a085af74072"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S01_CLEAN_CONTROL.md",
+      "size_bytes": 1198,
+      "sha256": "6a8b2811b578fa24313fc4e31b16eda0f5f5fa7169d1768aad7e4dba73783930"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S02_BRANCH_HEAVY.md",
+      "size_bytes": 1195,
+      "sha256": "4a9e9a12677368be2c1f8c1e3e2495d89dbfad180bc6d15799fd6c94f45f6c71"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S03_INVALID_AND_IRRELEVANT.md",
+      "size_bytes": 1225,
+      "sha256": "8a67d489ecc8a59a869d4f0e47d20843762657657fb3d9df7793ab53dd364a04"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S04_BACKTRACK_AND_CORRECT.md",
+      "size_bytes": 1222,
+      "sha256": "b868fcbcc2b501ccce5f90ef9269794afe715759bb12a9d00705807b0ae6746e"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S05_INCOMPLETE_HARD_STOP.md",
+      "size_bytes": 1219,
+      "sha256": "0adbcc754d79cc2842c5c723646abd77d820c062ad1bd0ba295d54bef626a9bc"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/01_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF.md",
+      "size_bytes": 4276,
+      "sha256": "aafac90e9e8f90a1241c62f9b4fba91aee980d9f2838addfd9161f60293c723e"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/02_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN.md",
+      "size_bytes": 4246,
+      "sha256": "04d8aa054e4b5c78f6c624af00de983a72b21a396a9bc91bf207b9ef3219867d"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/03_OFFICE_READINESS_AND_OPENING_DECISION_REPORT.md",
+      "size_bytes": 5339,
+      "sha256": "06fdac8170cdb0d9a2f672c0d862749855d1103be6f2a38b1cf2bb357215aaff"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/04_EXECUTION_TRACE.md",
+      "size_bytes": 9057,
+      "sha256": "088fe8bbcbde40121faee962938b70acdcc362154b0d84bc909aed4bddd4582e"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/05_COLLECTED_ATTRIBUTES.md",
+      "size_bytes": 3261,
+      "sha256": "3f022c7987957f31d6b31df667057a9cbfadfab8ce8be1a60f2c24cfdf0eb5c8"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/06_DIALOGUE_LOG.md",
+      "size_bytes": 12521,
+      "sha256": "ab6b10658069c1dbc9ff5fd865b6d85a8384c7f4bd0e0525fb3ee2bf8babfdbb"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/07_MODEL_IDENTITY.json",
+      "size_bytes": 299,
+      "sha256": "d3eb26f67221551b93f2198334da20b97820a66b9bb899a6d3e1d447d8aa470f"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/README_DO_NOT_COPY.md",
+      "size_bytes": 210,
+      "sha256": "795231d88ba581ba2ee044b4338a893e5730cd8b300e8970da1ba89c7eaacc3d"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_01/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_01.zip",
+      "size_bytes": 78152,
+      "sha256": "e6c60036fa9c5142cb6dfbdbbb7f3c37ed8c866a7d5a2c91bb766d57864e594d"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_01/RUN_METADATA.json",
+      "size_bytes": 650,
+      "sha256": "771332c61cfc8099e0fa342871aec9ef60a54b2695950a3a123c981dccaa5d2a"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_02.zip",
+      "size_bytes": 19070,
+      "sha256": "16f74e54e3e955a3fbf2b7c44a43ba4a6b2249b7350d6acb30250b313a29252c"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/RUN_METADATA.json",
+      "size_bytes": 345,
+      "sha256": "ea2493cc1bdb7f3a88405d942123662eab18f94769bc17b5103b62d4f6b7b831"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_03(2).zip",
+      "size_bytes": 90566,
+      "sha256": "eab17b058c3eacb6a7349055b2291029661db1b7f0800c1425770241456a0245"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/RUN_METADATA.json",
+      "size_bytes": 862,
+      "sha256": "214293dabd2cb5ec81e8d5073c3f28e42e7c3b82665a8109fe2ff4e26f9a31ee"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_04/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_04.zip",
+      "size_bytes": 25861,
+      "sha256": "d0dc59fefa44ebd5bdac0688aad559d6776e097a5a1c98f83a0e795a98ed46fd"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_04/RUN_METADATA.json",
+      "size_bytes": 1884,
+      "sha256": "be17d4f9e6fc745363582f4faf6842722860191bf592beb98b9e8e06c2d2faca"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_05/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_05.zip",
+      "size_bytes": 5840,
+      "sha256": "edb8d0c42c8ea4daaf41668f4da3bab2d7fde236c094d5f03a843d07562dd6a9"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_05/RUN_METADATA.json",
+      "size_bytes": 1327,
+      "sha256": "ef47b488ca308f1d8740bdb309014b0577de2d2133f110793b734241f60f1b79"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip",
+      "size_bytes": 1025289,
+      "sha256": "820f6a55a716fd7f4d59f887e65f81ad286cf549f531067bd08b471963c501e5"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip.metadata.json",
+      "size_bytes": 711,
+      "sha256": "f2941790890892a0f9bb0e91cdfa731ea50d630bb23da365bbae3841de650a03"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip",
+      "size_bytes": 368157,
+      "sha256": "c5b6887690b8d0daa6749dec835885acfdaf8901d3ecafd79e0324e790819292"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip.metadata.json",
+      "size_bytes": 689,
+      "sha256": "191eb9f272737ff267bfb26ef7cc98f4abc14468a7d2206803e5098ccf58e4b9"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip",
+      "size_bytes": 767507,
+      "sha256": "6a559078df34a25197a9fd152566e85f5957e00f350bb15e6f8e8bc40a08b6c1"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip.metadata.json",
+      "size_bytes": 698,
+      "sha256": "d35caabf6ea4850622dba509f52bcf0378a4f51a6441755a944c2824b4b046e8"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC22_S03_RESULT.zip",
+      "size_bytes": 623222,
+      "sha256": "4eadf7fc61d556bac1c4a835f9121252b5cdcfb3d3dc8a879a52dfe340051eb6"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/RUN_METADATA.json",
+      "size_bytes": 338,
+      "sha256": "c63b780edf9d1a9c26402374cdce2b2cde65c6a275be4341873ab94518a0e1f1"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip",
+      "size_bytes": 618651,
+      "sha256": "a1be68d5ce39a3515efc9ef32ffb485279d34210e0d7b569c2681440aa53f33b"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip.metadata.json",
+      "size_bytes": 722,
+      "sha256": "7c834b2155d9fa53ec164b9a35842584d206ee7b44436e7e144dbbe05e76243a"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/CASE_COMPARATIVE_EVIDENCE_REPORT.md",
+      "size_bytes": 3511,
+      "sha256": "da33e99649cbfee085a5c2fefd379461633f397fb3bb0058ead9700dbe6be2e0"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/S02_COMPARATIVE_FINDING.md",
+      "size_bytes": 733,
+      "sha256": "5a5507ae2834278ffd0792e08202f428d1ff538761badb7f5313b70a3a0f3d5c"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S01_CLEAN_CONTROL_INSTRUCTION_ONLY_SCORECARD.json",
+      "size_bytes": 341,
+      "sha256": "2bff9db96728a2e5f49b105f144a9bcd3a15228834f1bdf666fe5ce45a2c8286"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S01_CLEAN_CONTROL_ORDO_SCORECARD.json",
+      "size_bytes": 329,
+      "sha256": "899a2c122cbf052036530985539a7a7e32e805a34f9656300e9c17d3dd43d20e"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_BRANCH_HEAVY_INSTRUCTION_ONLY_SCORECARD.json",
+      "size_bytes": 349,
+      "sha256": "6d24d7337bbb92aacc7ee1bd50ecc707a8fc6626d7db43c998b7e0e1d210f8bc"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_BRANCH_HEAVY_ORDO_SCORECARD.json",
+      "size_bytes": 328,
+      "sha256": "14b369577aa930ad172c8a83e34f82198757a2e4309d494447aaa174e3b984d5"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_INSTRUCTION_ONLY_SCORECARD.json",
+      "size_bytes": 1648,
+      "sha256": "d51f2be40bdab44c567a48489759ace0a380baa632c9edf15f23e90904c6076f"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_ORDO_SCORECARD.json",
+      "size_bytes": 1439,
+      "sha256": "97a77e87e122f92f2ef185fb7e802a9f4e8d5fff8b15d81850fff4dc08282c7d"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S03_INVALID_AND_IRRELEVANT_INSTRUCTION_ONLY_SCORECARD.json",
+      "size_bytes": 372,
+      "sha256": "8ac98b89c5e6f5b050cd233a3ae3bd8ef81229e50ee84dbc6784f96cca544cd5"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S03_INVALID_AND_IRRELEVANT_ORDO_SCORECARD.json",
+      "size_bytes": 339,
+      "sha256": "cde8d3bd6314872a153d5c1732851d5da397188a4dea13cf88ad7638f5d497cf"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S04_BACKTRACK_AND_CORRECT_INSTRUCTION_ONLY_SCORECARD.json",
+      "size_bytes": 358,
+      "sha256": "5350d128b84d8349c99498050a8016e0e0616955aea34bbc5e0159f3544d3a45"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S04_BACKTRACK_AND_CORRECT_ORDO_SCORECARD.json",
+      "size_bytes": 337,
+      "sha256": "c05ec18d7b2b5a310b12023f12d3a16bdaa071153392fd0d777d35aacbc2e3dc"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S05_INCOMPLETE_HARD_STOP_INSTRUCTION_ONLY_SCORECARD.json",
+      "size_bytes": 348,
+      "sha256": "7c1819ec2c78c94c7d72337589773b40550c0adb0db9cd87c3baa5a0b3b683a1"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S05_INCOMPLETE_HARD_STOP_ORDO_SCORECARD.json",
+      "size_bytes": 337,
+      "sha256": "618cef6cdcf095a224a8e317485f07e921fb7c25501cd1affad6fbd42d0ed736"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/README.md",
+      "size_bytes": 344,
+      "sha256": "53fb053452ae4220d1c351be1cf6fe3e6d3f98c7ae5662b26aec37c4d09aeace"
+    },
+    {
+      "path": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/README.md",
+      "size_bytes": 277,
+      "sha256": "f05d5876eeb11954613d4a3dda2c0563cfff486abbc5dc38eb56d2cb614fbe1c"
+    },
+    {
+      "path": "01_task_classes/TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION/01_problem_inputs/02_STARTUP_INVESTMENT_DECISION_PROCESS.md",
+      "size_bytes": 592,
+      "sha256": "6d38fe644156e6d1544215abdbc85e695ac720165d6ee9f640646d37cd5c5e98"
+    },
+    {
+      "path": "01_task_classes/TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION/README.md",
+      "size_bytes": 254,
+      "sha256": "cb4d10db303ff4c4b0955b01d5830b4db8696a459b53eb93dce17ab03705ec4f"
+    },
+    {
+      "path": "01_task_classes/TC02_INTERRELATED_ARTIFACT_SET/README.md",
+      "size_bytes": 199,
+      "sha256": "5d867d4406650dc4ff15c1a88d51770c519491c136fc84472f5aa47e19f0f8f7"
+    },
+    {
+      "path": "01_task_classes/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE/01_problem_inputs/03_MONTH_END_FINANCIAL_CLOSE_PROCESS.md",
+      "size_bytes": 653,
+      "sha256": "847ae7d72a1b84c74d51cd590e98f80d07e50b025942d33dce62b8cd569544d0"
+    },
+    {
+      "path": "01_task_classes/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE/README.md",
+      "size_bytes": 211,
+      "sha256": "5d7956d7b41591fe17858c409e0f55f23d0cdce5fe17c5313a57b69966de8810"
+    },
+    {
+      "path": "01_task_classes/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/README.md",
+      "size_bytes": 230,
+      "sha256": "f46d2ca3283b8d0d17f7c7138f138da814fbf45bc909c269b4aa442e8505fe87"
+    },
+    {
+      "path": "MANIFEST.json",
+      "size_bytes": 24174,
+      "sha256": "577abd44b47331142d7465aa5842a79becdcca754e73fa3df762e9bb0b4c452d"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 1308,
+      "sha256": "7f7eb11969b6c3d42f64e67d8244a571349ba72ab49d92774076a04d87d81d47"
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "size_bytes": 17204,
+      "sha256": "099130e51e651d4eed12e587ed22ae3c5e32af0677bfb1b21b2c3d450f463a90"
+    }
+  ],
+  "normalized_layers_are_derived": true,
+  "historical_scores_changed": false,
+  "bounded_conclusions_changed": false
+}
