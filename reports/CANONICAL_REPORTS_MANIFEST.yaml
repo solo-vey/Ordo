@@ -15,6 +15,9 @@ entries:
 - path: APF_RC18_INTEGRATION_VALIDATION_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: 58dbfbe81477aea6e298546c65b89ca35bbc8352c11bd4077117d9f3b93b8448
+- path: BACKLOG_RECONCILIATION_001_005_008_023.json
+  classification: canonical_current_or_historical_record
+  sha256: 488fc34dc0bd6ed18fba970a5d43ee8dc14a764bd863d863b7d653ee611ff481
 - path: BL_ORDO_001_ALIAS_PATCH_CROSS_MODEL_REBUILD.json
   classification: canonical_current_or_historical_record
   sha256: 4b736127e75b66d3f93f60d4bfe2c6906e6185d1590a544d75faf385c51ab14f
@@ -30,6 +33,9 @@ entries:
 - path: BL_ORDO_001_FINAL_CROSS_MODEL_REBUILD.json
   classification: canonical_current_or_historical_record
   sha256: 5b411811a725c4e4259eff7f50c310fda2e0426bf908d5bb11dd0d090312d2e3
+- path: BL_ORDO_001_FINAL_RECONCILIATION.json
+  classification: canonical_current_or_historical_record
+  sha256: a5ded4f704af7c05de8404984a44834d420e5dab8b30c12fc592434afc914c19
 - path: BL_ORDO_001_M75_3_2_PROTOCOL_PATCH.json
   classification: canonical_current_or_historical_record
   sha256: d84ef6f2580035cfd648dd1242ccc5a77aa8e06d2d199328e1588b3a4bc827e5
@@ -57,6 +63,12 @@ entries:
 - path: BL_ORDO_001_RUN_12_MISMATCH_REVIEW.json
   classification: canonical_current_or_historical_record
   sha256: b8d7e4a09f959e7c06582bf1020f038d3bfb077ef07517d31efccfa4110fe505
+- path: BL_ORDO_005_CLOSURE.json
+  classification: canonical_current_or_historical_record
+  sha256: 267524c31084f9ba2905d80ce6bdc50bbfe664275e78424832ccba53e2c4eb43
+- path: BL_ORDO_008_CLOSURE.json
+  classification: canonical_current_or_historical_record
+  sha256: e12895b04e554ea0aa6988571522197ece8e40cd3de18fc0c9e1e0839b359778
 - path: BL_ORDO_010_BOOK_CURRENT_ORDO_APF_RECONCILIATION.json
   classification: canonical_current_or_historical_record
   sha256: a8323a8242edc99d821ee0c820196da8914a50290182ed226d4f5d0615125aed
@@ -90,6 +102,18 @@ entries:
 - path: BL_ORDO_010_PDF_MAINTENANCE_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: da2d2a96f7957fb9eca29a9f45ca1ec2e8b5e312f83f5a7aec11762fe227a29e
+- path: BL_ORDO_014_CLOSURE_REPORT.json
+  classification: canonical_current_or_historical_record
+  sha256: cd20f8b8d38c15b0bc29506bfe45e688f7bf7379c4b4124908cb070e284aba2f
+- path: BL_ORDO_014_FINAL_VERIFICATION.json
+  classification: canonical_current_or_historical_record
+  sha256: a25518788dac2c04e60a720d63d479b9636c6ee9140a2e38508c05f3c60370b2
+- path: BL_ORDO_023_99_OF_100_RECALCULATION.json
+  classification: canonical_current_or_historical_record
+  sha256: 64e52439a10ea02b73fd4e48f6d0ff0c0c7f529dd578d83c528141b315373abb
+- path: BL_ORDO_023_CLOSURE.json
+  classification: canonical_current_or_historical_record
+  sha256: e7e6f34cb1a1dfb280df607da4b11aae7079a1e4bb61ec06ff3ca7d77d274d06
 - path: BL_ORDO_027_ARF_DETERMINISTIC_CONTROL_MODEL_PLAN.json
   classification: canonical_current_or_historical_record
   sha256: 6f190abed96f1cb257647508615a2e96129086fc7f2b83e2f276264b027a9ba2
@@ -144,6 +168,18 @@ entries:
 - path: BL_ORDO_055_CLOSURE.json
   classification: canonical_current_or_historical_record
   sha256: 8ecc51e058ff48bc675662910aa33b35aa791bbb09554ea80734c59538d8dbe7
+- path: BL_ORDO_058_CLOSURE.json
+  classification: canonical_current_or_historical_record
+  sha256: f078531b5cc3ca2a44a3f0bb28bd0bb398397e7fcd2c2672b21bdd39463f82aa
+- path: BL_ORDO_059_CLOSURE.json
+  classification: canonical_current_or_historical_record
+  sha256: 33d4cf0aec6305f4825028cb32f87330249feac7d496760efd2497b2900c4bbd
+- path: BL_ORDO_059_EVIDENCE_REV2_INTEGRATION.json
+  classification: canonical_current_or_historical_record
+  sha256: ff58f7ea7e435967f6b2a3014f621e51a4384229a55d08ffcc03cabc8dba96f0
+- path: BL_ORDO_059_EVIDENCE_STORAGE_VALIDATION.json
+  classification: canonical_current_or_historical_record
+  sha256: 244aab756846bd42333924a9397ce12af1238dcbfa7e74b634725beabbbb6e27
 - path: BOOK_LOCALIZATION_BOOTSTRAP_REPORT.md
   classification: canonical_current_or_historical_record
   sha256: 94972fd81cba12d2be2abc2adfa3fc8be1e2ea09bfcc7c62ed55f35eb212a5a5
@@ -219,6 +255,18 @@ entries:
 - path: M77_5_REAL_APF_FLOW_REUSE_EQUIVALENCE_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: ce97366d5a3c4387ff04133f8b08997f4fd283f216838abf99742d3c36ab3ddf
+- path: M83_1_VALIDATION_REPORT.json
+  classification: canonical_current_or_historical_record
+  sha256: 05364b6dae545255bd755b8679917f1648d80d8669ce9050187410792d434c72
+- path: M83_2_VALIDATION_REPORT.json
+  classification: canonical_current_or_historical_record
+  sha256: 3671579ad1bc29690ce046d2903ee9ffe650a7460e609ca7439f59952b63dd1f
+- path: M83_3_VALIDATION_REPORT.json
+  classification: canonical_current_or_historical_record
+  sha256: baa1997f4ebaf62e041ecb76a503350b9464f8854e7765600131ed86e7ab980b
+- path: M83_4_BL_ORDO_014_CLOSURE_GATE.json
+  classification: canonical_current_or_historical_record
+  sha256: a4893ae1dd18410ad717119a7b6cadc910831c9af76eb3d13bd3ed0efb1635bf
 - path: bl_ordo_002/BL_ORDO_002_CLOSURE_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: a8b5b4d0741e3e002f234e54adfb197fc3adb05927d3732d6a08b9492db14dfe
@@ -819,6 +867,12 @@ entries:
 - path: m88_m89/M89_5_BL_ORDO_021_END_TO_END_CLOSURE_REPORT.md
   classification: canonical_current_or_historical_record
   sha256: 86c1cef4aa50d8a88a0d0d4f2a3f990f455941c8127c47d5c4f3cdcf2e4462e8
+- path: publication_readiness/BL_ORDO_057_GITHUB_PUBLICATION_HYGIENE_REPORT.json
+  classification: canonical_current_or_historical_record
+  sha256: 66a0a61c9e345a3b7b8423a9079ff5c5954ae5f87273ee82df39e9dddf3400da
+- path: publication_readiness/BL_ORDO_057_GITHUB_PUBLICATION_HYGIENE_REPORT.md
+  classification: canonical_current_or_historical_record
+  sha256: 551a8c4526619459f32286e486e1f55bee3d9c2f362a9f51a381ae398c87595e
 - path: repo_check_report.json
   classification: canonical_current_or_historical_record
   sha256: 657f8bad62c3e3c1cb09584f3e44d9c372bed3ed869d0d2fd9d8aa3f21229421
