@@ -8,14 +8,19 @@
       "priority": "P0",
       "title": "CSG production recommendation closure",
       "status": "closed",
-      "remaining": [],
+      "remaining": [
+        "persist RUN-07 evidence and score with canonical scorer",
+        "rebuild cross-model/repeated-run report from persisted evidence",
+        "satisfy 3-target × 2-runs policy or explicitly approve narrower production scope",
+        "rerun production readiness against rebuilt report",
+        "issue G_CSG_PRODUCTION_READY only from consistent evidence"
+      ],
+      "reconciliation_evidence": "reports/BL_ORDO_001_M75_4_EVIDENCE_RECONCILIATION.json",
+      "target_release": "post-ordo-2026.07.14-rc.1",
       "affects": [
         "framework",
         "benchmark_evidence"
-      ],
-      "closure_evidence": "reports/BL_ORDO_001_FINAL_RECONCILIATION.json",
-      "closed_at": "2026-07-18",
-      "closure_reconciliation": "authoritative evidence reconciled in publication candidate"
+      ]
     },
     {
       "id": "BL-ORDO-002",
@@ -61,14 +66,11 @@
       "priority": "P1",
       "title": "Cross-model and repeated-run CSG benchmark",
       "status": "closed",
+      "target_release": "post-ordo-2026.07.14-rc.1",
       "affects": [
         "framework",
         "benchmark_evidence"
-      ],
-      "closure_evidence": "reports/BL_ORDO_005_CLOSURE.json",
-      "remaining": [],
-      "closed_at": "2026-07-18",
-      "closure_reconciliation": "authoritative evidence reconciled in publication candidate"
+      ]
     },
     {
       "id": "BL-ORDO-006",
@@ -104,14 +106,11 @@
       "priority": "P1",
       "title": "APF real-case replay and analyst-experience validation",
       "status": "closed",
+      "target_release": "post-ordo-2026.07.14-rc.1",
       "affects": [
         "framework",
         "applied_package_validation"
-      ],
-      "closure_evidence": "reports/BL_ORDO_008_CLOSURE.json",
-      "remaining": [],
-      "closed_at": "2026-07-18",
-      "closure_reconciliation": "authoritative evidence reconciled in publication candidate"
+      ]
     },
     {
       "id": "BL-ORDO-009",
@@ -207,15 +206,7 @@
       "affects": [
         "framework",
         "applied_package_validation"
-      ],
-      "closure_milestone": "M83.4",
-      "closure_evidence": "reports/BL_ORDO_014_CLOSURE_REPORT.json",
-      "remaining": [],
-      "closed_at": "2026-07-18",
-      "completed_in": {
-        "package_type": "publication_candidate",
-        "canonical_release_created": false
-      }
+      ]
     },
     {
       "id": "BL-ORDO-015",
@@ -278,14 +269,11 @@
       "title": "Strict-Zero A/B Benchmark Revalidation",
       "status": "closed",
       "priority": "P2",
+      "target_release": "post-ordo-2026.07.14-rc.1",
       "affects": [
         "framework",
         "benchmark_evidence"
-      ],
-      "closure_evidence": "reports/BL_ORDO_023_CLOSURE.json",
-      "remaining": [],
-      "closed_at": "2026-07-18",
-      "closure_reconciliation": "authoritative evidence reconciled in publication candidate"
+      ]
     },
     {
       "id": "BL-ORDO-024",
@@ -932,12 +920,9 @@
     },
     {
       "id": "BL-ORDO-057",
-      "priority": "P0",
       "title": "GitHub Publication Hygiene and Repository Front Door",
       "status": "closed",
-      "closure_evidence": "reports/publication_readiness/BL_ORDO_057_GITHUB_PUBLICATION_HYGIENE_REPORT.json",
-      "completed_as": "non-canonical GitHub publication candidate",
-      "canonical_integration_pending": true
+      "priority": "P2"
     }
   ]
 }

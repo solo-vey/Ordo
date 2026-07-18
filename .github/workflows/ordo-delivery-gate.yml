@@ -76,16 +76,24 @@ jobs:
       - name: Run full non-destructive delivery gate
         shell: bash
         run: |
-          set -euo pipefail
+          set -uo pipefail
           mkdir -p reports/ci
+          temp_log="${RUNNER_TEMP}/full_delivery_gate.stdout.log"
           python tools/build_release_archive.py \
             --check-only \
             --workers 4 \
             --test-timeout-seconds 3600 \
             --lint-timeout-seconds 900 \
-            | tee reports/ci/full_delivery_gate.stdout.log
-          cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json
-          cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json
+            2>&1 | tee "$temp_log"
+          gate_status=${PIPESTATUS[0]}
+          cp "$temp_log" reports/ci/full_delivery_gate.stdout.log
+          if [ -f DELIVERY_GATE_REPORT.json ]; then
+            cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json
+          fi
+          if [ -f FINAL_PACKAGE_SELF_CHECK_REPORT.json ]; then
+            cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json
+          fi
+          exit "$gate_status"
 
       - name: Build reproducible release candidate
         if: success()
