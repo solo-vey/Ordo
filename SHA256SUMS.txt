@@ -1,4 +1,4 @@
-7e1d2560a7738d9f2100333e6f17f174b8620e9b5ebc822be8a0364c8e6fbffe  .github/workflows/ordo-check.yml
+82e98c96af7ab0eea46dcf89e824cc6c00bcdb34956e332f3c06e1056aaa12fd  .github/workflows/ordo-check.yml
 55459db1bba26202adb85df667593ce39710252fb8c717e832c98667e52be127  .github/workflows/ordo-clean-gate.yml
 df624c8590f988fb3c1418e1389abbc8d9b82dcdb75936711146e61a41a0568e  .github/workflows/ordo-delivery-gate.yml
 567374f9acf8c880697d810d20874ef8b783dbfdc58878a4169b79ea66092d98  .github/workflows/ordo-release-clean-gate.yml

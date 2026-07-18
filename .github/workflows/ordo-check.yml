@@ -24,10 +24,9 @@ jobs:
       - name: Run CLI unit tests
         env:
           PYTHONPATH: ${{ github.workspace }}
-          GITHUB_SHA: ""
         run: |
           cd cli
-          python -m unittest discover -s tests
+          env -u GITHUB_SHA python -m unittest discover -s tests
       - name: Validate active reference Ordo packages
         run: |
           for package in \
