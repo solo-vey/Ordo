@@ -1,0 +1,264 @@
+{
+  "case_id": "EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+  "status": "COMPLETE",
+  "language_policy": "Evidence metadata and analysis are English; immutable source and returned artifacts are preserved verbatim.",
+  "representations": {
+    "yaml_playbook": {
+      "version": "alpha_1_17_0",
+      "implementation_path": "02_implementations/yaml_playbook/approved_packages/ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_0_BLACK_BOX_PRERELEASE_VALIDATION.zip",
+      "implementation_sha256": "ea6cc59bd32bd8afeaf3046e9829db20b31778990f9746984303f77aaddbec13",
+      "implementation_zip_integrity": "PASS",
+      "launch_prompt_archive": "03_launch_prompts/yaml_playbook/alpha_1_17_0/ORDO_ALPHA_1_17_0_RUN_PROMPTS.zip",
+      "launch_prompt_sha256": "0d91e96e826201da1ae486f248592dec07b80677abdda8fc90fe330e387d473d",
+      "launch_prompt_zip_integrity": "PASS",
+      "runs": [
+        {
+          "run_id": "RUN_01",
+          "evidence_path": "04_runs/yaml_playbook/confirmed_runs/RUN_01/ORDO_RUN_01_EXECUTION_OUTPUT.zip",
+          "sha256": "ed3798d92e0e14c360c029bc9fdc8d7237b4f48309f6831bdb83309f557c86ff",
+          "zip_integrity": "PASS",
+          "process": 95,
+          "documents": 95,
+          "final": 95,
+          "analysis_path": "05_analysis/yaml_playbook/alpha_1_17_0/RUN_01_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_02",
+          "evidence_path": "04_runs/yaml_playbook/confirmed_runs/RUN_02/ORDO_RUN_02_NO_CHANGE_EVIDENCE.zip",
+          "sha256": "7a79417bcf0764a96646dd265ec4b3a5bf07c21df67e1fd31dab0378c4644e6a",
+          "zip_integrity": "PASS",
+          "process": 91,
+          "documents": null,
+          "final": 91,
+          "analysis_path": "05_analysis/yaml_playbook/alpha_1_17_0/RUN_02_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_03",
+          "evidence_path": "04_runs/yaml_playbook/confirmed_runs/RUN_03/RUN_03_RETURN_ALPHA_1_17_0.zip",
+          "sha256": "70fa03d55af9ad9cc0a28b6a07160c8547d81444899ecd5462b800054e61d19e",
+          "zip_integrity": "PASS",
+          "process": 99,
+          "documents": 100,
+          "final": 99,
+          "analysis_path": "05_analysis/yaml_playbook/alpha_1_17_0/RUN_03_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_04",
+          "evidence_path": "04_runs/yaml_playbook/confirmed_runs/RUN_04/ORDO_RUN_04_RETURN.zip",
+          "sha256": "0d1c64aa37789e5e846ddf62d8f9172faaf4f8b064d04559e9f08dacb5c97636",
+          "zip_integrity": "PASS",
+          "process": 95,
+          "documents": 95,
+          "final": 95,
+          "analysis_path": "05_analysis/yaml_playbook/alpha_1_17_0/RUN_04_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_05",
+          "evidence_path": "04_runs/yaml_playbook/confirmed_runs/RUN_05/ORDO_RUN_05_RETURN_PACKAGE.zip",
+          "sha256": "34d7275935be7e543e63b86fd39e7c4704a7625da9f4015ba989c56a492af7c5",
+          "zip_integrity": "PASS",
+          "process": 100,
+          "documents": 100,
+          "final": 100,
+          "analysis_path": "05_analysis/yaml_playbook/alpha_1_17_0/RUN_05_ANALYSIS.md"
+        }
+      ],
+      "aggregate_analysis": "05_analysis/yaml_playbook/alpha_1_17_0/AGGREGATE_ANALYSIS.md",
+      "weighted_value": 96.0
+    },
+    "structured_instructions": {
+      "version": "alpha_1_3_0",
+      "implementation_path": "02_implementations/structured_instructions/ORDO_STRUCTURED_INSTRUCTIONS_NARRATIVE_PROCESS_ALPHA_1_3_0_AUTOMATED_TESTING.zip",
+      "implementation_sha256": "cb00f9ae9ca7842070d90adf04e509519009d85da7c5d8581010029e12146aff",
+      "implementation_zip_integrity": "PASS",
+      "launch_prompt_archive": "03_launch_prompts/structured_instructions/alpha_1_3_0/START_PROMPTS_STRUCTURED_INSTRUCTIONS_ALPHA_1_3_0_RUN_01_RUN_05.zip",
+      "launch_prompt_sha256": "afbca19424a64c4150ec81622f7f7fd10d4429fd75a2b4f535670428c236289a",
+      "launch_prompt_zip_integrity": "PASS",
+      "runs": [
+        {
+          "run_id": "RUN_01",
+          "evidence_path": "04_runs/structured_instructions/alpha_1_3_0_external_runs/RUN_01/ORDO_RUN_01_FULL_FIDELITY_EVIDENCE.zip",
+          "sha256": "a6ef763d1688fea323f0073a964106b3036741ce64176de96e1bf3cec8b44554",
+          "zip_integrity": "PASS",
+          "process": 94,
+          "documents": 96,
+          "final": 95,
+          "analysis_path": "05_analysis/structured_instructions/alpha_1_3_0/RUN_01_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_02",
+          "evidence_path": "04_runs/structured_instructions/alpha_1_3_0_external_runs/RUN_02/RUN_02_NO_CHANGE_EVIDENCE.zip",
+          "sha256": "ba0472b8795d1ec7c113e01bff7c3b98a8f444b02e2598a928d67515f90002f1",
+          "zip_integrity": "PASS",
+          "process": 96,
+          "documents": null,
+          "final": 96,
+          "analysis_path": "05_analysis/structured_instructions/alpha_1_3_0/RUN_02_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_03",
+          "evidence_path": "04_runs/structured_instructions/alpha_1_3_0_external_runs/RUN_03/RUN_03_CURRENT_RUN_EVIDENCE.zip",
+          "sha256": "5ade7cc92ad64d028c069d3574a831055d6daac2468ac06df8e7c504f84c0c03",
+          "zip_integrity": "PASS",
+          "process": 99,
+          "documents": 100,
+          "final": 99,
+          "analysis_path": "05_analysis/structured_instructions/alpha_1_3_0/RUN_03_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_04",
+          "evidence_path": "04_runs/structured_instructions/alpha_1_3_0_external_runs/RUN_04/RUN_04_COMPLETE_CURRENT_EVIDENCE.zip",
+          "sha256": "301c5e066c236f725eb2fe3d32dd63fea2bef3cc17f9f989e034ff82b58ccc9b",
+          "zip_integrity": "PASS",
+          "process": 99,
+          "documents": 97,
+          "final": 98,
+          "analysis_path": "05_analysis/structured_instructions/alpha_1_3_0/RUN_04_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_05",
+          "evidence_path": "04_runs/structured_instructions/alpha_1_3_0_external_runs/RUN_05/RUN_05_NO_CHANGE_EVIDENCE.zip",
+          "sha256": "bfcbdc6f0bf20525707369ec7d70f9f73bb7182f3a05bcfd9cd2c266f8f46d07",
+          "zip_integrity": "PASS",
+          "process": 100,
+          "documents": 100,
+          "final": 100,
+          "analysis_path": "05_analysis/structured_instructions/alpha_1_3_0/RUN_05_ANALYSIS.md"
+        }
+      ],
+      "aggregate_analysis": "05_analysis/structured_instructions/alpha_1_3_0/AGGREGATE_ANALYSIS.md",
+      "weighted_value": 97.6
+    },
+    "mixed_accumulated_instructions": {
+      "version": "alpha_1_3_0",
+      "implementation_path": "02_implementations/mixed_accumulated_instructions/ORDO_MIXED_ACCUMULATED_INSTRUCTIONS_ALPHA_1_3_0_AUTOMATED_TESTING.zip",
+      "implementation_sha256": "4908b52352b095badecf755709731f59565422ced25d1c8c950a61a3a98e4e9e",
+      "implementation_zip_integrity": "PASS",
+      "launch_prompt_archive": "03_launch_prompts/mixed_accumulated_instructions/alpha_1_3_0/MIXED_ACCUMULATED_ALPHA_1_3_0_LAUNCH_PROMPTS.zip",
+      "launch_prompt_sha256": "53504b29a4184ce005eb26707f498c562be7fca5d2d40ae01e78c97685e55389",
+      "launch_prompt_zip_integrity": "PASS",
+      "runs": [
+        {
+          "run_id": "RUN_01",
+          "evidence_path": "04_runs/mixed_accumulated_instructions/alpha_1_3_0_external_runs/RUN_01/ORIGINAL_RETURNED_PACKAGE.zip",
+          "sha256": "e3a42c6e1c302f846cdaf78f449d4eb655ef1868c6da7029e35d38f4fcf95da4",
+          "zip_integrity": "PASS",
+          "process": 89,
+          "documents": 97,
+          "final": 93,
+          "analysis_path": "05_analysis/mixed_accumulated_instructions/alpha_1_3_0/RUN_01_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_02",
+          "evidence_path": "04_runs/mixed_accumulated_instructions/alpha_1_3_0_external_runs/RUN_02/ORIGINAL_RETURNED_PACKAGE.zip",
+          "sha256": "62603359c26e77e9fd4f798512fc8d08c9dde36f8379ba899b0c571eb7864345",
+          "zip_integrity": "PASS",
+          "process": 87,
+          "documents": 96,
+          "final": 92,
+          "analysis_path": "05_analysis/mixed_accumulated_instructions/alpha_1_3_0/RUN_02_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_03",
+          "evidence_path": "04_runs/mixed_accumulated_instructions/alpha_1_3_0_external_runs/RUN_03/ORIGINAL_RETURNED_PACKAGE.zip",
+          "sha256": "856e2831aa463a6f98286108ada0900fcd378b2478cd5ba9660914b088b9b646",
+          "zip_integrity": "PASS",
+          "process": 93,
+          "documents": 100,
+          "final": 97,
+          "analysis_path": "05_analysis/mixed_accumulated_instructions/alpha_1_3_0/RUN_03_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_04",
+          "evidence_path": "04_runs/mixed_accumulated_instructions/alpha_1_3_0_external_runs/RUN_04/ORIGINAL_RETURNED_PACKAGE.zip",
+          "sha256": "c503bc86a3b8b7c42eadae66d726c2dc1b391396aff05fc65c54c08dd99486e3",
+          "zip_integrity": "PASS",
+          "process": 90,
+          "documents": 97,
+          "final": 94,
+          "analysis_path": "05_analysis/mixed_accumulated_instructions/alpha_1_3_0/RUN_04_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_05",
+          "evidence_path": "04_runs/mixed_accumulated_instructions/alpha_1_3_0_external_runs/RUN_05/ORIGINAL_RETURNED_PACKAGE.zip",
+          "sha256": "287efb7837febc3617018d0d27ab65750e356f9c0ce79b45a1f7293fcf5df617",
+          "zip_integrity": "PASS",
+          "process": 97,
+          "documents": 100,
+          "final": 99,
+          "analysis_path": "05_analysis/mixed_accumulated_instructions/alpha_1_3_0/RUN_05_ANALYSIS.md"
+        }
+      ],
+      "aggregate_analysis": "05_analysis/mixed_accumulated_instructions/alpha_1_3_0/AGGREGATE_ANALYSIS.md",
+      "weighted_value": 95.0
+    },
+    "domain_adapted_all_in_one": {
+      "version": "alpha_1_5_0",
+      "implementation_path": "02_implementations/domain_adapted_all_in_one/DATABASE_CHANGE_ARTIFACT_SET_DOMAIN_ADAPTED_ANALYST_CORPUS_SEMANTIC_DRIVER_TESTING_ALPHA_1_5_0.zip",
+      "implementation_sha256": "d37427aa9d11474c1e47ec6bc85ea757e7a243d4e6bf80cebad3364647b6de8e",
+      "implementation_zip_integrity": "PASS",
+      "launch_prompt_archive": "03_launch_prompts/domain_adapted_all_in_one/alpha_1_5_0/DOMAIN_ADAPTED_ALL_IN_ONE_ALPHA_1_5_0_LAUNCH_PROMPTS.zip",
+      "launch_prompt_sha256": "83794a9f27e9e03850de4c7102bbd30026c1bce435a18f4a7a34f59f9b145ff6",
+      "launch_prompt_zip_integrity": "PASS",
+      "runs": [
+        {
+          "run_id": "RUN_01",
+          "evidence_path": "04_runs/domain_adapted_all_in_one/RUN_01/RUN_01_DATABASE_CHANGE_ARTIFACT_SET_RESULT (1).zip",
+          "sha256": "f1fd54f88cf280989d68d9bc51d289553285681f59f446ac7908888b4e6f1f46",
+          "zip_integrity": "PASS",
+          "process": 90,
+          "documents": 24,
+          "final": 57,
+          "analysis_path": "05_analysis/domain_adapted_all_in_one/alpha_1_5_0/RUN_01_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_02",
+          "evidence_path": "04_runs/domain_adapted_all_in_one/RUN_02/RUN_02_DATABASE_CHANGE_ARTIFACT_SET_RESULT (2).zip",
+          "sha256": "fd0c3f8b215c61b8c177dc876347f79f29b6f4d315bf3a4774ecef01046cfc68",
+          "zip_integrity": "PASS",
+          "process": 92,
+          "documents": 25,
+          "final": 59,
+          "analysis_path": "05_analysis/domain_adapted_all_in_one/alpha_1_5_0/RUN_02_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_03",
+          "evidence_path": "04_runs/domain_adapted_all_in_one/RUN_03/RUN_03_ORIGINAL_RETURNED_RESULT_WRAPPER.zip",
+          "sha256": "cbe4b547db2d672679ee0e81f99aee4475c2628c7fbac7749da5bed7c8bda07f",
+          "zip_integrity": "PASS",
+          "process": 98,
+          "documents": 100,
+          "final": 99,
+          "analysis_path": "05_analysis/domain_adapted_all_in_one/alpha_1_5_0/RUN_03_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_04",
+          "evidence_path": "04_runs/domain_adapted_all_in_one/RUN_04/RUN_04_DATABASE_CHANGE_ARTIFACT_SET_RESULT(4).zip",
+          "sha256": "2ca928dc30e7abf0d899a6165953526e58780cb63ac27bda20e38109a8f2c894",
+          "zip_integrity": "PASS",
+          "process": 94,
+          "documents": 27,
+          "final": 61,
+          "analysis_path": "05_analysis/domain_adapted_all_in_one/alpha_1_5_0/RUN_04_ANALYSIS.md"
+        },
+        {
+          "run_id": "RUN_05",
+          "evidence_path": "04_runs/domain_adapted_all_in_one/RUN_05/RUN_05_DATABASE_CHANGE_ARTIFACT_SET_RESULT(1).zip",
+          "sha256": "4c712fba0d2dbe108334b087b401c989b8e6d7003ba37613ddfab2c1ca878089",
+          "zip_integrity": "PASS",
+          "process": 99,
+          "documents": 100,
+          "final": 100,
+          "analysis_path": "05_analysis/domain_adapted_all_in_one/alpha_1_5_0/RUN_05_ANALYSIS.md"
+        }
+      ],
+      "aggregate_analysis": "05_analysis/domain_adapted_all_in_one/alpha_1_5_0/AGGREGATE_ANALYSIS.md",
+      "weighted_value": 75.2
+    }
+  },
+  "executor_evaluator_provenance": {
+    "record_count": 20,
+    "relation": "different_chat_same_model",
+    "ledger": "06_manifests/EXECUTOR_EVALUATOR_PROVENANCE_LEDGER.json"
+  }
+}

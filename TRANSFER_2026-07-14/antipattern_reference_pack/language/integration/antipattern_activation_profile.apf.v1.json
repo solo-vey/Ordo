@@ -1,0 +1,57 @@
+{
+  "schema_version": "ordo.antipattern_activation_profile.v1",
+  "profile_id": "APF_ANTIPATTERN_CORE_V1",
+  "profile_version": "M88.5",
+  "status": "active",
+  "contexts": {
+    "conversation": {
+      "enabled_antipatterns": [
+        "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION",
+        "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE"
+      ],
+      "gate": "PRE_IMPLEMENTATION_AUTHORIZATION_GATE"
+    },
+    "process_trace": {
+      "enabled_antipatterns": [
+        "PROMPT_AS_IMPLEMENTATION",
+        "MANDATORY_BRANCH_SHORT_CIRCUIT",
+        "FINAL_LABEL_OVERCLAIM"
+      ],
+      "gate": "PROCESS_INTEGRITY_GATE"
+    },
+    "package_state": {
+      "enabled_antipatterns": [
+        "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION",
+        "FINAL_LABEL_OVERCLAIM"
+      ],
+      "gate": "PACKAGE_COMPLETENESS_GATE"
+    },
+    "evidence_state": {
+      "enabled_antipatterns": [
+        "PROMPT_AS_IMPLEMENTATION",
+        "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION",
+        "FINAL_LABEL_OVERCLAIM"
+      ],
+      "gate": "EVIDENCE_INTEGRITY_GATE"
+    },
+    "repository_state": {
+      "enabled_antipatterns": [
+        "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION"
+      ],
+      "gate": "REPOSITORY_MUTATION_AUTHORIZATION_GATE"
+    },
+    "runtime_state": {
+      "enabled_antipatterns": [
+        "MANDATORY_BRANCH_SHORT_CIRCUIT",
+        "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE"
+      ],
+      "gate": "RUNTIME_PROCESS_INTEGRITY_GATE"
+    }
+  },
+  "policy": {
+    "blocking_finding_blocks_gate": true,
+    "advisory_finding_allows_with_advisory": true,
+    "inconclusive_policy": "block_when_required_signals_missing_for_blocking_rule",
+    "report_type": "GATE.REPORT"
+  }
+}

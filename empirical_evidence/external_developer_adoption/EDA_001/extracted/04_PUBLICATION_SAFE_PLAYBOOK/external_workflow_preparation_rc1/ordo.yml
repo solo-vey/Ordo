@@ -1,0 +1,9 @@
+name: external.workflow_preparation
+version: 0.1.0-rc.1
+ordo_version: '0.13'
+source: source/program.ordo.yaml
+tests: tests/test_cases.yaml
+reports: reports
+language_version_constraint: '>=0.13.0-rc.1,<0.14.0'
+framework_version_constraint: '>=0.5.0-rc.2,<0.6.0'
+playbook_release: playbook_release.json

@@ -1,0 +1,18 @@
+{
+  "schema": "monitoring.business_prepare.post_unpack_verification.v1",
+  "release": "0.1.0-rc.1",
+  "classification": "release_candidate",
+  "generated_at": "2026-07-15T14:43:17.199194+00:00",
+  "archive_sha256": "885a0845da877dc28390d57e92e0db95d1bea0bd752cc3b4c9835d0dd1b12da3",
+  "zip_integrity": "passed",
+  "internal_checksums": "passed",
+  "validator": "passed",
+  "exact_link_placement": "passed",
+  "node_count": 25,
+  "gate_count": 12,
+  "tests_collected": 35,
+  "tests_passed": 35,
+  "tests_failed": 0,
+  "rollback_checkpoint_restore": "passed",
+  "canonical": false
+}

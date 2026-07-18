@@ -1,0 +1,49 @@
+{
+  "schema_version": "ordo.benchmark.alpha11.validation.v1",
+  "release": "1.0.0-alpha.11",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "yaml_parse",
+      "status": "PASS"
+    },
+    {
+      "id": "connectivity",
+      "status": "PASS",
+      "counts": {
+        "nodes": 72,
+        "gates": 16,
+        "terminals": 22,
+        "edges": 116,
+        "reachable_objects": 95
+      }
+    },
+    {
+      "id": "all_nodes_reachable",
+      "status": "PASS"
+    },
+    {
+      "id": "all_gates_reachable",
+      "status": "PASS"
+    },
+    {
+      "id": "no_dangling_targets",
+      "status": "PASS"
+    },
+    {
+      "id": "no_accidental_dead_ends",
+      "status": "PASS"
+    },
+    {
+      "id": "acceptance_tests",
+      "status": "PASS",
+      "passed": 5,
+      "total": 5
+    },
+    {
+      "id": "svg_xml",
+      "status": "PASS",
+      "path": "visualizations/EXECUTION_GRAPH_CANONICAL.svg"
+    }
+  ]
+}

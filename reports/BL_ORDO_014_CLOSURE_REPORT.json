@@ -1,0 +1,34 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "backlog_id": "BL-ORDO-014",
+  "title": "APF post-generation defect review for critical artifacts",
+  "status": "closed",
+  "closure_milestone": "M83.4",
+  "closure_reason": "Post-generation defect review was implemented as a blocking, claim-level, evidence-bound APF layer and validated against representative critical/high-impact contracts.",
+  "acceptance": {
+    "review_schema_implemented": true,
+    "claim_level_provenance_implemented": true,
+    "defect_taxonomy_implemented": true,
+    "adversarial_review_semantics_implemented": true,
+    "cross_artifact_review_implemented": true,
+    "targeted_invalidation_implemented": true,
+    "independent_post_correction_review_implemented": true,
+    "trace_resume_rollback_implemented": true,
+    "representative_critical_artifacts_reviewed": 5,
+    "negative_regression_cases": 2,
+    "unresolved_critical_defects": 0,
+    "unresolved_high_defects": 0
+  },
+  "evidence": [
+    "reports/M83_1_VALIDATION_REPORT.json",
+    "reports/M83_2_VALIDATION_REPORT.json",
+    "reports/M83_3_VALIDATION_REPORT.json",
+    "integrations/apf/v0.1.0-rc.18/reports/post_generation_reviews/"
+  ],
+  "limitations": [
+    "The review corpus is bounded to five representative APF contract families rather than every descriptive APF document.",
+    "Semantic truth still depends on authoritative sources; the validator does not infer external truth.",
+    "Existing immutable APF artifact ZIPs were not rewritten."
+  ],
+  "canonical_release_created": false
+}

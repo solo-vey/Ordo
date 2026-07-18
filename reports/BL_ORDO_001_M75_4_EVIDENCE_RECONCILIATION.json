@@ -1,0 +1,49 @@
+{
+  "backlog_id": "BL-ORDO-001",
+  "operation": "M75.4_vs_persisted_RUN06_RUN07_reconciliation",
+  "decision": "KEEP_OPEN",
+  "status": "blocked_by_evidence_inconsistency",
+  "findings": [
+    {
+      "severity": "critical",
+      "code": "M75_4_CROSS_MODEL_GATE_CONTRADICTS_PERSISTED_REPORT",
+      "m75_4_claim": "passed",
+      "persisted_cross_model_gate": "blocked",
+      "persisted_target_count": 1,
+      "required_target_count": 3,
+      "persisted_valid_run_count": 1
+    },
+    {
+      "severity": "critical",
+      "code": "RUN_06_EXPLICIT_PROTECTED_STATE_FAILURE",
+      "m75_3_1_status": "failed-explicit-protected-state-change",
+      "impact": "violates required_state_protection_compliance=1.0"
+    },
+    {
+      "severity": "high",
+      "code": "RUN_07_NOT_PERSISTED_IN_WORKSPACE",
+      "conversation_observation": "26-case RUN-07 payload supplied; protected_state_changed=false in all supplied predictions",
+      "artifact_status": "not_found_in_workspace",
+      "impact": "cannot count as persisted release evidence until saved and canonically scored"
+    },
+    {
+      "severity": "high",
+      "code": "CURRENT_MATURITY_STATE_OVERSTATED_CSG_STATUS",
+      "previous_model_benchmark": "passed_cross_model_repeated_runs",
+      "previous_production_recommendation": "ready"
+    }
+  ],
+  "confirmed_complete": [
+    "production thresholds defined",
+    "fail-closed fallback defined",
+    "append-only rollback defined",
+    "runtime enforcement implemented"
+  ],
+  "remaining": [
+    "persist RUN-07 evidence and score with canonical scorer",
+    "rebuild cross-model/repeated-run report from persisted evidence",
+    "satisfy 3-target × 2-runs policy or explicitly approve narrower production scope",
+    "rerun production readiness against rebuilt report",
+    "issue G_CSG_PRODUCTION_READY only from consistent evidence"
+  ]
+}

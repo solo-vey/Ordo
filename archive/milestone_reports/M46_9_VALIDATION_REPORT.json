@@ -1,0 +1,39 @@
+{
+  "milestone": "M46.9",
+  "name": "External audit checklist self-run",
+  "status": "passed",
+  "verdict": "go",
+  "source": "ordo_github_workspace_v0_12_m46_8_external_audit_package.zip",
+  "changed_files": [
+    "docs/external_audit/M46_9_EXTERNAL_AUDIT_RESULT.md",
+    "docs/reports/M46_9_PRE_RELEASE_SELF_AUDIT.md",
+    "cli/docs/GO_NO_GO_M46_5.md",
+    "docs/external_audit/PRE_RELEASE_AUDIT_CHECKLIST_M46_8.md",
+    "book/source/chapters/chapter_42_external_audit_pre_release.md",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "commands_run": {
+    "repo_check_clean_archive": "passed",
+    "cli_version": "ordo 0.27.0",
+    "unit_tests": "19/19 OK",
+    "active_package_lint_compile_test_coverage": "passed",
+    "history_event_validate_artifacts": "passed",
+    "history_event_consistency": "passed",
+    "history_event_go_no_go": "go"
+  },
+  "blocking_issues": [],
+  "warnings_fixed": [
+    "External audit checklist referenced GO_NO_GO_M46_5.md while canonical doc was GO_NO_GO.md.",
+    "README had stale M46.1 wording about later CLI implementation slices being planned."
+  ],
+  "known_limitations": [
+    "Deterministic helper layer does not execute an AI model.",
+    "No live REST, Mongo, or production business runtime execution is performed.",
+    "Domain-specific artifact assertions depend on package authors declaring coverage requirements."
+  ],
+  "book_update": {
+    "markdown_updated": true,
+    "pdf_regenerated": false
+  }
+}

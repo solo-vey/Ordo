@@ -1,0 +1,42 @@
+{
+  "milestone": "M61 Line Closure",
+  "status": "passed-line-closure",
+  "base": "M61.3 — Utility Documentation Consolidation",
+  "release_decision": "Use M61 Line Closure archives as the stable companion-utility handoff set.",
+  "stable_route": [
+    "source/program.ordo.yaml",
+    "Visual Graph Generator Mermaid/SVG/PNG structure views",
+    "PathWalk real-module-graph",
+    "PathWalk real-module-paths",
+    "PathWalk real-module-clean-cases",
+    "PathWalk real-module-noise-cases",
+    "PathWalk real-module-review-cards",
+    "optional Visual Graph annotation overlay"
+  ],
+  "stable_components": [
+    "PathWalk artifact-only real-module pipeline",
+    "Human review scenario cards",
+    "Visual Graph Generator read-only companion utility",
+    "Unified companion utility workflow documentation"
+  ],
+  "future_work": [
+    "M62.0 runtime execution of generated testcases",
+    "runtime execution scoring",
+    "calibration from generated testcase execution",
+    "model/API benchmark orchestration",
+    "watchdog/process-boundary hardening",
+    "backtrack noise variant",
+    "correction_backtrack noise variant",
+    "merging PathWalk and Visual Graph Generator into one program"
+  ],
+  "scope_boundary": "M61 companion utilities remain artifact-only. Visual/review artifacts are not runtime execution evidence.",
+  "validation_summary": {
+    "py_compile": "passed",
+    "selected_tests": "27 passed",
+    "visual_graph_mmd_smoke": "passed",
+    "visual_graph_svg_smoke": "passed",
+    "pathwalk_pipeline_smoke": "passed",
+    "book_manifest_sanity": "passed",
+    "zip_extraction_check": "passed"
+  }
+}

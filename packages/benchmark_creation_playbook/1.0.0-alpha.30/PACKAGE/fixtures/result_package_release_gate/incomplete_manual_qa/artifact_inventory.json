@@ -1,0 +1,6 @@
+{"artifacts":[
+{"id":"passport-v2","type":"passport","version_id":"passport-v2","status":"valid","path":"artifacts/passport.md","required_fact_keys":["document_id","record_key","field_path","operation","change_id","occurred_at","new_value","event_type"]},
+{"id":"jira-v2","type":"jira","version_id":"jira-v2","status":"valid","path":"artifacts/jira.md","required_fact_keys":["document_id","record_key","field_path","operation","change_id","new_value"],"references":[{"artifact_type":"passport","version_id":"passport-v2"}]},
+{"id":"mqa-v2","type":"manual_qa","version_id":"mqa-v2","status":"valid","path":"artifacts/manual_qa.md","required_fact_keys":["document_id","record_key","field_path","operation","change_id","occurred_at","new_value","event_type"]},
+{"id":"auto-v2","type":"automation","version_id":"auto-v2","status":"valid","path":"artifacts/automation.yaml","required_fact_keys":["document_id","record_key","field_path","operation","change_id","occurred_at","new_value","event_type"]}
+]}

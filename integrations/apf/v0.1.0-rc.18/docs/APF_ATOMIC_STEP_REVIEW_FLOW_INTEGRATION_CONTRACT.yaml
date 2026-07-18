@@ -1,0 +1,116 @@
+contract_id: apf.atomic_step_review.flow_integration
+version: '0.1'
+status: active
+purpose: Integrate Atomic Step Review into the canonical APF authoring flow for generated playbooks and define controlled decomposition proposal handling.
+applies_to:
+  - generated_playbook_process_design
+  - generated_playbook_steps
+  - generated_playbook_nodes
+  - artifact_generation_flows
+  - validation_and_approval_flows
+canonical_position:
+  after:
+    - step_contract_drafted
+    - inputs_outputs_and_completion_criteria_declared
+  before:
+    - step_confirmation
+    - prompt_sufficiency_review
+    - trace_event_mapping_finalization
+    - package_assembly
+flow:
+  - draft_step_contract
+  - collect_atomicity_evidence
+  - execute_atomicity_gates
+  - aggregate_review_result
+  - create_decomposition_proposal_when_required
+  - present_findings_and_proposal
+  - obtain_human_decision_when_required
+  - revise_or_confirm_step_contract
+  - re_run_atomicity_review
+  - permit_downstream_authoring
+entry_conditions:
+  required:
+    - step_id
+    - purpose
+    - inputs
+    - action
+    - outputs
+    - completion_criteria
+    - validation_behavior
+    - confirmation_behavior
+    - next_step
+    - failure_route
+exit_conditions:
+  passed:
+    - review_status_in_passed_or_recommendation
+    - no_unresolved_blocking_findings
+    - review_record_persisted
+  paused:
+    - review_status_needs_human_decision
+  blocked:
+    - review_status_blocking_issue
+transition_policy:
+  passed: continue
+  recommendation: continue_with_recorded_advice
+  needs_human_decision: pause_before_structural_change
+  blocking_issue: block_until_corrective_change_and_re_review
+decomposition_proposal:
+  required_when:
+    - any_gate_blocked_by_mixed_responsibilities
+    - independent_outputs_share_one_lifecycle
+    - hidden_reconstruction_detected
+    - generation_validation_or_approval_are_combined
+    - partial_success_can_trigger_transition
+    - failure_route_is_not_localizable
+  optional_when:
+    - review_status_recommendation
+    - readability_or_maintainability_would_improve
+  required_fields:
+    - proposal_id
+    - source_step_ref
+    - trigger_findings
+    - preserved_business_intent
+    - preserved_inputs
+    - proposed_steps
+    - proposed_transitions
+    - proposed_failure_routes
+    - confirmation_points
+    - semantic_change_assessment
+    - unresolved_questions
+    - human_decision_status
+  invariants:
+    - proposal_must_be_minimal_safe_split
+    - proposal_must_not_invent_business_rules
+    - proposal_must_preserve_confirmed_inputs_and_evidence
+    - proposal_must_mark_any_semantic_change
+    - proposal_must_not_self_approve
+human_decision:
+  required_when:
+    - ownership_changes
+    - approval_boundary_changes
+    - confirmed_state_transition_changes
+    - multiple_valid_decompositions_exist
+    - semantic_change_assessment_is_not_none
+  decisions:
+    - approved
+    - approved_with_changes
+    - rejected
+    - deferred
+  effects:
+    approved: apply_proposed_structure_then_re_review
+    approved_with_changes: revise_proposal_then_apply_and_re_review
+    rejected: preserve_original_structure_but_keep_block_if_safety_issue_remains
+    deferred: pause_authoring_for_affected_step
+integration_with_other_apf_layers:
+  prompt_sufficiency_review:
+    rule: run_after_atomic_step_review_for_each_confirmed_step
+  execution_trace_design:
+    rule: map_trace_events_against_post_asr_step_structure
+  artifact_validation:
+    rule: validate_each_independent_artifact_after_asr_split
+  package_assembly:
+    rule: prohibit_assembly_with_unresolved_blocking_or_human_decision_records
+non_goals:
+  - automatic_rewrite_of_confirmed_business_logic
+  - runtime_atomicity_enforcement
+  - ordo_core_change

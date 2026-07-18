@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.apf.antipattern_state_contract.v1",
+  "contract_id": "APF_ANTIPATTERN_STATE_EVIDENCE_V1",
+  "state_fields": {
+    "antipattern_gate_report": {"default": null, "schema": "../../../language/schemas/antipattern_gate_report.schema.json"},
+    "antipattern_findings": {"default": [], "item_schema": "../../../language/schemas/antipattern_finding.schema.json"},
+    "antipattern_gate_status": {"default": "not_run", "allowed": ["not_run","allow","allow_with_advisory","block","inconclusive"]},
+    "antipattern_evidence_refs": {"default": [], "item_schema": "../../../language/schemas/antipattern_evidence_ref.schema.json"},
+    "antipattern_repair_required": {"default": false},
+    "antipattern_blocked_transition_target": {"default": null},
+    "antipattern_repair_target": {"default": null},
+    "antipattern_last_hook_id": {"default": null},
+    "antipattern_last_context_type": {"default": null}
+  },
+  "invariants": [
+    "block_requires_repair_required_true",
+    "block_requires_repair_target",
+    "non_block_clears_blocked_transition_target",
+    "evidence_ref_report_digest_matches_persisted_report",
+    "finding_ids_are_unique",
+    "evidence_ids_are_unique"
+  ]
+}

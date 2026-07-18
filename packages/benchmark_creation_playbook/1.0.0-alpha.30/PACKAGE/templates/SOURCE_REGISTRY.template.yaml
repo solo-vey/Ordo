@@ -1,0 +1,10 @@
+schema_version: benchmark.source_registry.v1
+sources:
+  - source_id: "<SOURCE_ID>"
+    path: "<RELATIVE_PATH_OR_REFERENCE>"
+    version: "<VERSION>"
+    sha256: "<SHA256>"
+    authority_class: "canonical|supporting|example|runtime_contract|evaluation_contract"
+    visibility: "public_executor|compiler_only|scenario_author_only|evaluator_only|owner_only"
+    allowed_roles: []
+    notes: ""

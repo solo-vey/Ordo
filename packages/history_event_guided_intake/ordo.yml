@@ -1,0 +1,17 @@
+name: history_event.guided_intake
+version: 0.1.1
+ordo_version: '0.12'
+source: source/program.ordo.yaml
+tests: tests/test_cases.yaml
+compiled: compiled/program.ir.json
+reports: reports
+output_template_sets:
+- id: history_event.guided_intake_outputs
+  version: 0.1.1
+  source: package_local
+startup_profile: source/program.ordo.yaml#startup_package_profile
+startup_default_mode: analyst_quick_start
+language_version_constraint: '>=0.12.0,<0.14.0'
+framework_version_constraint: '>=0.2.0-rc.1,<0.3.0'
+version_state: ../../manifests/VERSION_STATE.json
+playbook_release: playbook_release.json

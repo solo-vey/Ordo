@@ -1,0 +1,51 @@
+{
+  "milestone": "M73.5",
+  "files": [
+    {
+      "file": "chapter_14_chomu_ordo_prohramy_potribno_debazhyty.md",
+      "heading_count_uk": 20,
+      "heading_count_en": 20,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_15_debug_mode_i_execution_trace.md",
+      "heading_count_uk": 30,
+      "heading_count_en": 30,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_16_testy_fixtures_i_expected_behavior.md",
+      "heading_count_uk": 26,
+      "heading_count_en": 26,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_17_regression_suite_i_coverage.md",
+      "heading_count_uk": 26,
+      "heading_count_en": 26,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_18_feedback_and_improvement_loop.md",
+      "heading_count_uk": 21,
+      "heading_count_en": 21,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

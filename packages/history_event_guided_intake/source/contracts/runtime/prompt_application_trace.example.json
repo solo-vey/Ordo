@@ -1,0 +1,17 @@
+{
+  "runtime_step_id": "N_VALUE_SEMANTICS",
+  "prompt_refs_applied": [
+    {
+      "prompt_id": "hp.normalization.value_comparison.v1",
+      "use": "before_question",
+      "sha256": "de24dd70cda64ffbc16219cf1fcde1a8cb60c6aaf5a93296bf7a8f7c1c3849ae",
+      "ordinal": 1
+    },
+    {
+      "prompt_id": "hp.normalization.value_comparison.v1",
+      "use": "during_clarification",
+      "sha256": "de24dd70cda64ffbc16219cf1fcde1a8cb60c6aaf5a93296bf7a8f7c1c3849ae",
+      "ordinal": 2
+    }
+  ]
+}

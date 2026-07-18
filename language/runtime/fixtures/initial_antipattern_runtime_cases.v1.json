@@ -1,0 +1,108 @@
+{
+  "schema_version": "ordo.antipattern_runtime_cases.v1",
+  "cases": [
+    {
+      "case_id": "RT-AP-29",
+      "antipattern_id": "PROMPT_AS_IMPLEMENTATION",
+      "context_type": "process_trace",
+      "state": {
+        "artifacts": {
+          "implementation_prompt": "present"
+        },
+        "claims": {
+          "implementation_complete": true
+        }
+      },
+      "expected_match": true
+    },
+    {
+      "case_id": "RT-AP-30",
+      "antipattern_id": "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION",
+      "context_type": "package_state",
+      "state": {
+        "package": {
+          "structure_valid": true,
+          "missing_mandatory_artifacts": [
+            "source_code"
+          ]
+        }
+      },
+      "expected_match": true
+    },
+    {
+      "case_id": "RT-AP-31",
+      "antipattern_id": "MANDATORY_BRANCH_SHORT_CIRCUIT",
+      "context_type": "process_trace",
+      "state": {
+        "process": {
+          "required_stages": [
+            "IMPLEMENTATION",
+            "REVIEW",
+            "TEST",
+            "PACKAGE"
+          ],
+          "completed_stages": [
+            "IMPLEMENTATION"
+          ],
+          "current_stage": "PACKAGE",
+          "stage_order": [
+            "IMPLEMENTATION",
+            "REVIEW",
+            "TEST",
+            "PACKAGE"
+          ]
+        }
+      },
+      "expected_match": true
+    },
+    {
+      "case_id": "RT-AP-32",
+      "antipattern_id": "FINAL_LABEL_OVERCLAIM",
+      "context_type": "package_state",
+      "state": {
+        "package": {
+          "final_label": "release_candidate"
+        },
+        "evidence": {
+          "supports_final_label": false
+        }
+      },
+      "expected_match": true
+    },
+    {
+      "case_id": "RT-SCOPE",
+      "antipattern_id": "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION",
+      "context_type": "conversation",
+      "state": {
+        "conversation": {
+          "scope_confirmed": true
+        },
+        "repository": {
+          "mutation_started": true
+        },
+        "authorization": {
+          "repository_mutation": false
+        }
+      },
+      "expected_match": true
+    },
+    {
+      "case_id": "RT-COMPLEXITY",
+      "antipattern_id": "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE",
+      "context_type": "conversation",
+      "state": {
+        "node": {
+          "responsibilities": [
+            "complexity_assessment",
+            "route_selection",
+            "execution"
+          ],
+          "execution_started": true,
+          "route_explicit": false,
+          "authorization_explicit": false
+        }
+      },
+      "expected_match": true
+    }
+  ]
+}

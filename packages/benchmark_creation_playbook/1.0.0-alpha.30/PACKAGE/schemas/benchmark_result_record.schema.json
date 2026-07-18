@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "benchmark_result_record.schema.json",
+  "title": "Benchmark Result Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_type",
+    "record_id",
+    "evaluation_id",
+    "status",
+    "identity",
+    "execution",
+    "process_evaluation",
+    "artifact_evaluations",
+    "aggregates",
+    "comparability",
+    "evidence",
+    "supersession",
+    "created_at",
+    "created_by"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "benchmark.result_record.v1"
+    },
+    "event_type": {
+      "enum": [
+        "attempt_result",
+        "supersession_event",
+        "comparability_event",
+        "recalculation_event",
+        "evidence_correction"
+      ]
+    },
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "active",
+        "superseded",
+        "invalidated",
+        "quarantined"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "benchmark_suite_id",
+        "test_case_id",
+        "test_case_version",
+        "run_id",
+        "run_contract_version",
+        "package_variant_id",
+        "package_version",
+        "driver_id",
+        "driver_version",
+        "attempt_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "benchmark_suite_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test_case_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test_case_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "run_contract_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_variant_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "driver_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "driver_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": [
+        "started_at",
+        "completed_at",
+        "terminal_disposition",
+        "blind_isolation_status",
+        "contamination_findings"
+      ],
+      "properties": {
+        "started_at": {
+          "type": "string"
+        },
+        "completed_at": {
+          "type": "string"
+        },
+        "terminal_disposition": {
+          "type": "string"
+        },
+        "blind_isolation_status": {
+          "enum": [
+            "clean",
+            "contaminated",
+            "unknown"
+          ]
+        },
+        "contamination_findings": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "process_evaluation": {
+      "type": "object"
+    },
+    "artifact_evaluations": {
+      "type": "array"
+    },
+    "aggregates": {
+      "type": "object"
+    },
+    "comparability": {
+      "type": "object",
+      "required": [
+        "status",
+        "cohort_id",
+        "reasons"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "comparable",
+            "conditional",
+            "excluded",
+            "pending"
+          ]
+        },
+        "cohort_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "supersession": {
+      "type": "object"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "string"
+    }
+  }
+}

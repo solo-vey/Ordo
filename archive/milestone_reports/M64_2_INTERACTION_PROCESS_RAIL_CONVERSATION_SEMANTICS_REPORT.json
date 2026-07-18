@@ -1,0 +1,34 @@
+{
+  "milestone": "M64.2",
+  "title": "Interaction model + process rail + conversation semantics docs",
+  "status": "passed-docs-schema-convention",
+  "decision": "accepted as source/schema documentation conventions only",
+  "changed_files": [
+    "language/INTERACTION_MODEL.md",
+    "language/PROCESS_RAIL_SCHEMA_CONVENTION.md",
+    "language/CONVERSATION_SEMANTICS.md",
+    "language/HYBRID_EXECUTION_POLICY_CONVENTION.md",
+    "language/spec/17_INTERACTION_PROCESS_RAIL_CONVERSATION_MODEL.md",
+    "language/schemas/interaction_model_schema.yaml",
+    "language/schemas/process_rail_schema.yaml",
+    "language/schemas/conversation_semantics_schema.yaml",
+    "language/registry/INTERACTION_PROCESS_RAIL_CONVERSATION_VALUES.md",
+    "language/examples/source/interaction_process_rail_conversation_example.ordo.yaml"
+  ],
+  "explicit_non_changes": {
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "cli_commands_changed": false,
+    "new_opcodes_added": false,
+    "deterministic_classifier_added": false,
+    "flow_join_implemented": false,
+    "shared_tail_reference_implemented": false
+  },
+  "checks": {
+    "yaml_examples_parse": "passed",
+    "yaml_schemas_parse": "passed",
+    "json_reports_parse": "passed",
+    "py_compile": "passed",
+    "runtime_opcode_promotion_guard": "passed"
+  }
+}

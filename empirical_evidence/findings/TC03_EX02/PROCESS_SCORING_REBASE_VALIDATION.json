@@ -1,0 +1,143 @@
+{
+  "schema_version": "ordo.ex02.process_scoring_rebase_validation.v1",
+  "profile": "TC03-EX02-EVAL-v1.1",
+  "expected": {
+    "YAML Playbook": {
+      "RUN_01": [
+        99,
+        95,
+        97
+      ],
+      "RUN_02": [
+        100,
+        98,
+        99
+      ],
+      "RUN_03": [
+        100,
+        100,
+        100
+      ],
+      "RUN_04": [
+        99,
+        95,
+        97
+      ],
+      "RUN_05": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Structured Instructions": {
+      "RUN_01": [
+        99,
+        96,
+        98
+      ],
+      "RUN_02": [
+        99,
+        null,
+        99
+      ],
+      "RUN_03": [
+        100,
+        100,
+        100
+      ],
+      "RUN_04": [
+        100,
+        97,
+        99
+      ],
+      "RUN_05": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Mixed Accumulated Instructions": {
+      "RUN_01": [
+        98,
+        97,
+        98
+      ],
+      "RUN_02": [
+        98,
+        96,
+        97
+      ],
+      "RUN_03": [
+        99,
+        100,
+        100
+      ],
+      "RUN_04": [
+        99,
+        97,
+        98
+      ],
+      "RUN_05": [
+        100,
+        100,
+        100
+      ]
+    },
+    "Domain Adapted All-in-One": {
+      "RUN_01": [
+        98,
+        24,
+        61
+      ],
+      "RUN_02": [
+        99,
+        25,
+        62
+      ],
+      "RUN_03": [
+        100,
+        100,
+        100
+      ],
+      "RUN_04": [
+        99,
+        27,
+        63
+      ],
+      "RUN_05": [
+        100,
+        100,
+        100
+      ]
+    }
+  },
+  "weighted": {
+    "YAML Playbook": 98.6,
+    "Structured Instructions": 99.2,
+    "Mixed Accumulated Instructions": 98.6,
+    "Domain Adapted All-in-One": 77.2
+  },
+  "checks": [
+    {
+      "path": "03_test_cases/PROCESS_SCORING_POLICY_V1_1.md",
+      "exists": true
+    },
+    {
+      "path": "03_test_cases/SCORING_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "path": "EVALUATION_METHODOLOGY_CASE.md",
+      "exists": true
+    },
+    {
+      "path": "05_comparative_analysis/CURRENT_COMPARATIVE_SCORECARD.md",
+      "exists": true
+    },
+    {
+      "path": "05_comparative_analysis/CURRENT_COMPARATIVE_SCORECARD.json",
+      "exists": true
+    }
+  ],
+  "result": "PASS"
+}

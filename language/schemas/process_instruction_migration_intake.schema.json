@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "intake_id",
+    "source",
+    "migration_goal",
+    "preservation_contract",
+    "decomposition_policy",
+    "validation_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.process_instruction_migration_intake.v1"
+    },
+    "intake_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "migration_goal": {
+      "type": "string"
+    },
+    "preservation_contract": {
+      "type": "object"
+    },
+    "decomposition_policy": {
+      "type": "object"
+    },
+    "validation_policy": {
+      "type": "object"
+    }
+  }
+}

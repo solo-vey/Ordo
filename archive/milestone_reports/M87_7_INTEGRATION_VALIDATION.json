@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.m87_7.integration_validation.v1",
+  "status": "closed_with_owner_approved_evidence_waiver",
+  "date": "2026-07-12",
+  "source_patch": "ORDO_LANGUAGE_PROJECT_M87_7_GATE_PASSED_2026-07-12.zip",
+  "baseline": "ORDO ARF reconciled through M89.5",
+  "targeted_validation": {
+    "tests": 21,
+    "passed": 21,
+    "failed": 0,
+    "scope": [
+      "packaging self-check",
+      "negative release gate",
+      "build identity",
+      "validation evidence binding",
+      "pre-zip reconciliation",
+      "packaging profile integration"
+    ]
+  },
+  "full_delivery_gate": {
+    "status": "not_completed_in_execution_window",
+    "attempted": true,
+    "reason": "partitioned full suite exceeded the available tool execution window",
+    "required_next": "BL-ORDO-026 independent unrestricted CI verification"
+  },
+  "release_claim": "integration_closed; unrestricted full CI verification remains open",
+  "closure": "M87_7_INTEGRATION_CLOSURE.json"
+}

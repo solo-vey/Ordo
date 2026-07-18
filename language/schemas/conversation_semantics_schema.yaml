@@ -1,0 +1,57 @@
+# Conversation Semantics Schema Convention v1
+# Status: M64.2 documented schema convention, not deterministic classifier.
+
+type: object
+name: conversation_semantics_schema_v1
+status: convention
+properties:
+  input_classes:
+    type: array
+    items:
+      type: string
+      enum_or_convention:
+        - answer_current_node
+        - clarification
+        - deviation
+        - backtrack_request
+        - new_requirement
+        - approval
+        - refusal
+        - out_of_scope
+  routing_rules:
+    type: object
+    additionalProperties:
+      type: string
+      enum_or_convention:
+        - evaluate_current_node_gate
+        - answer_without_state_change
+        - answer_then_resume
+        - apply_backtracking_policy
+        - capture_and_route_to_change_review
+        - ask_clarification
+        - reject_as_out_of_scope
+        - record_approval_and_continue
+        - record_refusal_and_revise
+  unmatched_input_policy:
+    type: string
+    enum:
+      - clarify_before_state_change
+      - reject
+      - log_and_continue
+      - route_to_human_review
+  clarification_policy:
+    type: string
+    enum_or_convention:
+      - do_not_advance_node
+      - may_update_explanation_only
+      - ask_if_user_intends_answer
+  resume_policy:
+    type: string
+    enum_or_convention:
+      - return_to_current_node_after_deviation
+      - return_to_last_unresolved_question
+      - ask_user_where_to_resume
+      - resume_at_declared_checkpoint
+validation_notes:
+  m64_2: Policy contract only; does not guarantee deterministic NL classification.
+  future_m64_3: May require routing rules for all declared input classes under strict profile.

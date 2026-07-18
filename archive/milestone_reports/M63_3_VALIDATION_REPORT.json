@@ -1,0 +1,35 @@
+{
+  "milestone": "M63.3",
+  "title": "APF RC Language Pattern Classification Update",
+  "status": "passed-design-classification-only",
+  "date": "2026-07-08",
+  "apf_module": "ordo.applied_project_factory",
+  "apf_version": "0.1.0-rc.1",
+  "checks": {
+    "source_yaml_modified": false,
+    "runtime_core_modified": false,
+    "ir_or_opcode_added": false,
+    "parent_cli_command_added": false,
+    "classification_matrix_created": true,
+    "future_ir_backlog_updated": true,
+    "known_limitations_retained": true,
+    "decision": "go_to_line_closure",
+    "workspace_py_compile": "passed",
+    "selected_non_runtime_tests": "30 passed",
+    "apf_parent_cli_lint_compile_test_coverage": "passed_in_validation_scratch_before_clean_source_packaging",
+    "apf_validate_state_next_step": "passed_with_rc1_full_validation_state_in_validation_scratch",
+    "apf_validate_output": "passed_in_validation_scratch",
+    "apf_validate_artifacts_consistency_go_no_go": "not_m63_3_gate_on_clean_source_package; covered by M63.2 validation profile and APF rc1 dev/runtime packages",
+    "clean_source_packaging_restored": "compiled generated files removed; reports keep only CLI_VALIDATION_SUMMARY.md"
+  },
+  "future_ir_candidates": [
+    "FLOW.JOIN",
+    "SHARED.TAIL.REFERENCE"
+  ],
+  "optional_apf_local": [
+    "validate-factory-output"
+  ],
+  "non_blocking_warnings": [
+    "contract/default-value consistency warnings remain visible"
+  ]
+}

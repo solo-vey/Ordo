@@ -1,0 +1,61 @@
+{
+  "milestone": "M60.7.5",
+  "status": "passed-with-scope-boundary",
+  "checks": [
+    {
+      "check": "bounded_patterns_added",
+      "status": "passed"
+    },
+    {
+      "check": "default_patterns_emit_4_patterns",
+      "status": "passed"
+    },
+    {
+      "check": "one_case_per_terminal_path_per_pattern",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_execution_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "scoring_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "noise_expansion_closed_for_now",
+      "status": "passed"
+    },
+    {
+      "check": "future_complex_patterns_not_blocking",
+      "status": "passed"
+    },
+    {
+      "check": "pathwalk_rc_cli_smoke",
+      "status": "passed"
+    },
+    {
+      "check": "book_source_manifest_sanity",
+      "status": "passed"
+    },
+    {
+      "check": "zip_extraction_check",
+      "status": "passed"
+    },
+    {
+      "check": "rc_pytest_not_required_for_this_slice",
+      "status": "passed-with-note"
+    }
+  ],
+  "blockers": [],
+  "known_non_blockers": [
+    "backtrack and correction_backtrack remain future improvements",
+    "runtime-harness/transcript matrix branch remains outside this milestone",
+    "PathWalk RC pytest was not used as final gate; CLI smoke and workspace selected pytest passed."
+  ],
+  "readiness": "ready-for-handoff"
+}

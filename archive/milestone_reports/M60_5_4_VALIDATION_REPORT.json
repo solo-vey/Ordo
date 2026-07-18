@@ -1,0 +1,25 @@
+{
+  "milestone": "M60.5.4",
+  "title": "Artifact-only dry-run executor",
+  "status": "passed",
+  "scope": "PathWalk orchestration only; no runtime-core semantic changes",
+  "checks": {
+    "pathwalk_pytest": "22/22 passed",
+    "py_compile": "passed",
+    "artifact_only_sample": "passed: 1 scenario x 3 runtime views"
+  },
+  "artifacts_added": [
+    "jobs/<job_id>.json descriptors",
+    "job_scripts/<job_id>.sh one-job wrappers",
+    "JOB_EXECUTION.md",
+    "ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/"
+  ],
+  "recommended_acceptance_path": "dry-run-plan -> independent job scripts -> dry-run-collect",
+  "not_in_scope": [
+    "score calibration",
+    "real API benchmark",
+    "runtime core changes",
+    "MCP",
+    "sandbox"
+  ]
+}

@@ -1,0 +1,85 @@
+policy_id: apf.atomicity_severity.rules
+version: '0.1'
+status: active
+severity_enum:
+  - passed
+  - recommendation
+  - blocking_issue
+  - needs_human_decision
+base_rules:
+  passed:
+    conditions:
+      - no_atomicity_violation_detected
+      - evidence_is_sufficient
+  recommendation:
+    conditions:
+      - issue_does_not_change_semantics_or_state_safety
+      - step_is_repeatable_as_one_operation
+      - failure_can_be localized
+    examples:
+      - readability_only_split
+      - broad_but_safe_failure_route
+      - mechanical_grouping_with_one_result
+  blocking_issue:
+    conditions_any:
+      - hidden_reconstruction_used_as_fact
+      - generation_and_approval_combined
+      - partial_success_transition
+      - implicit_confirmed_state_transition
+      - independent_artifacts_share_one_status
+      - final_artifact_not_semantically_reviewed
+      - generic_instruction_hides_required_semantic_content
+      - validation_silently_repairs_or_regenerates
+  needs_human_decision:
+    conditions_any:
+      - multiple_valid_decomposition_options_change_ownership
+      - approval_authority_is_unclear
+      - business_semantics_are_ambiguous
+      - minimal_safe_split_requires_confirmed_process_change
+escalation_rules:
+  - from: recommendation
+    to: blocking_issue
+    when:
+      - repeated_advisory_causes_unobservable_failure
+      - advisory_issue_affects_gate_state_or_approval
+  - from: needs_human_decision
+    to: blocking_issue
+    when:
+      - process_attempts_to_continue_without_recorded_decision
+  - from: blocking_issue
+    to: passed
+    when_all:
+      - corrective_change_applied
+      - affected_gates_re_evaluated
+      - evidence_updated
+      - no_remaining_blocking_finding
+  - from: blocking_issue
+    to: recommendation
+    prohibited: true
+human_override:
+  allowed_for:
+    - choosing_between_valid_decomposition_options
+    - confirming_changed_ownership_or_approval_boundary
+    - accepting_non_blocking_design_tradeoff
+  prohibited_for:
+    - treating_unconfirmed_reconstruction_as_fact
+    - bypassing_required_validation
+    - approving_partial_success_transition
+    - masking_failed_artifact_with_overall_success
+    - claiming_post_render_review_without_materialized_artifact
+finding_priority:
+  order:
+    - safety_and_integrity
+    - confirmed_state_and_approval
+    - recoverability
+    - artifact_quality
+    - maintainability
+    - readability
+diagnostic_record_requirements:
+  - diagnostic_code
+  - gate_id
+  - severity
+  - observed_condition
+  - evidence_refs
+  - transition_effect
+  - corrective_action

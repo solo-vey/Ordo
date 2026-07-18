@@ -1,0 +1,15 @@
+playbook_authored_mini_prompt_package:
+  enabled: false
+  enable_when_any_review_result:
+    - existing_prompt_reuse
+    - new_prompt_candidate
+    - needs_human_decision
+  prompt_sufficiency_review_matrix: null
+  candidate_proposals: []
+  human_review_records: []
+  registry: null
+  attachment_map: null
+  manifest: null
+  validation_report: null
+  test_scenario_catalog: null
+  readiness_status: not_applicable

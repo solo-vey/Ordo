@@ -1,0 +1,15 @@
+schema_version: ordo.benchmark.driver_binding.v1
+package:
+  id: <package-id>
+  version: <version>
+  sha256: <sha256>
+variant:
+  id: <variant-id>
+  version: <version>
+selection:
+  driver_family: <DRV-STEP-BOUND|DRV-SEMANTIC-ADAPTIVE|UNSUPPORTED_OR_HYBRID>
+  driver_contract_version: <version>
+  checks: []
+  selection_reason: <reason>
+  unsupported_gaps: []
+  binding_status: <passed|blocked>

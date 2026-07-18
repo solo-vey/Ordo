@@ -1,0 +1,32 @@
+{
+  "milestone": "M72.2",
+  "status": "passed-with-note",
+  "checks": [
+    {
+      "check": "execution_trace_compiler_tests",
+      "status": "passed",
+      "result": "6 passed"
+    },
+    {
+      "check": "python_compile",
+      "status": "passed"
+    },
+    {
+      "check": "yaml_json_schema_parse",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_smoke",
+      "status": "passed"
+    },
+    {
+      "check": "existing_cli_workflow_suite",
+      "status": "not_completed",
+      "reason": "environment timeout after progress; no failing assertion captured"
+    }
+  ],
+  "blockers": [],
+  "notes": [
+    "Full regression rerun belongs to M72.3 tooling/testing closure."
+  ]
+}

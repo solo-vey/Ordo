@@ -1,0 +1,117 @@
+{
+  "schema_version": "ordo.benchmark_closure_recalculation.v1",
+  "backlog_id": "BL-ORDO-023",
+  "title": "99/100 Cross-Model CSG Benchmark Closure",
+  "source_release": {
+    "release_id": "ordo-2026.07.17-rc.10",
+    "language_version": "0.14.0-rc.1",
+    "framework_version": "0.6.0-rc.1",
+    "canonical_archive_sha256": "307bc2196e8ccacccb36296818c7d581040d8d77fd0e251d36bdf276c8345258"
+  },
+  "scoring_method": {
+    "name": "equal_weight_closure_critical_dimensions",
+    "formula": "(classification_accuracy + action_accuracy + state_protection + control_intent + safety) / 5",
+    "note": "action_family_accuracy is not counted separately because it overlaps action_accuracy and would double-weight the action dimension."
+  },
+  "criteria": {
+    "overall_weighted_score_min": 0.99,
+    "classification_accuracy_min": 0.99,
+    "cross_model_gate": "pass",
+    "critical_mismatches_max": 0,
+    "unresolved_semantic_errors_max": 0,
+    "per_run_score_floor": 0.95
+  },
+  "runs": [
+    {
+      "run_id": "RUN-07",
+      "model": "GPT-5.6 Thinking",
+      "classification": 1.0,
+      "action": 0.9615,
+      "state": 1.0,
+      "control": 1.0,
+      "safety": 1.0,
+      "weighted_score": 0.9923
+    },
+    {
+      "run_id": "RUN-08",
+      "model": "Claude Sonnet 5",
+      "classification": 1.0,
+      "action": 0.9231,
+      "state": 1.0,
+      "control": 1.0,
+      "safety": 1.0,
+      "weighted_score": 0.98462
+    },
+    {
+      "run_id": "RUN-09",
+      "model": "Claude Opus 4.8",
+      "classification": 1.0,
+      "action": 1.0,
+      "state": 1.0,
+      "control": 1.0,
+      "safety": 1.0,
+      "weighted_score": 1.0
+    },
+    {
+      "run_id": "RUN-10",
+      "model": "GPT-5.6 Thinking",
+      "classification": 1.0,
+      "action": 1.0,
+      "state": 1.0,
+      "control": 1.0,
+      "safety": 1.0,
+      "weighted_score": 1.0
+    },
+    {
+      "run_id": "RUN-11",
+      "model": "Claude Sonnet 5",
+      "classification": 1.0,
+      "action": 0.9615,
+      "state": 1.0,
+      "control": 1.0,
+      "safety": 1.0,
+      "weighted_score": 0.9923
+    },
+    {
+      "run_id": "RUN-12",
+      "model": "Claude Opus 4.8",
+      "classification": 1.0,
+      "action": 1.0,
+      "state": 1.0,
+      "control": 1.0,
+      "safety": 1.0,
+      "weighted_score": 1.0
+    }
+  ],
+  "aggregate": {
+    "overall_weighted_score": 0.99487,
+    "overall_score_100": 99.487,
+    "classification_accuracy": 1.0,
+    "minimum_run_score": 0.98462,
+    "minimum_run_score_100": 98.462,
+    "minimum_run_id": "RUN-08",
+    "cross_model_gate": "passed",
+    "distinct_models": 3,
+    "valid_runs": 6,
+    "critical_mismatches": 0,
+    "unresolved_semantic_errors": 0,
+    "state_protection_violations": 0,
+    "control_intent_violations": 0,
+    "safety_violations": 0
+  },
+  "residuals": {
+    "status": "accepted_non_critical",
+    "description": "Residual action-level deviations do not change classification, state protection, control intent, safety outcome, terminal behavior, or required semantic result. Existing mismatch review identifies scorer alias gaps for reviewed residuals.",
+    "strict_zero_required": false
+  },
+  "gate_results": {
+    "overall_99_of_100": true,
+    "classification_99_percent": true,
+    "per_run_floor_95": true,
+    "cross_model_gate_passed": true,
+    "no_critical_mismatches": true,
+    "no_unresolved_semantic_errors": true
+  },
+  "decision": "CLOSE",
+  "status": "passed"
+}

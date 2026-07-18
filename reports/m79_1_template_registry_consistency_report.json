@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "registry": "/mnt/data/m73_translation_working_workspace/ordo_github_workspace_v0_12_pre_release_after_full_self_check/examples/template_tooling/template_registry.yaml",
+  "schema_version": "ordo.template.registry.v1",
+  "entry_count": 1,
+  "sha256": "9c9f6f358df530bc48aab5f50a149c454818febaf252109f992b20ec8af9e54b",
+  "issues": [],
+  "warnings": [],
+  "entries": [
+    {
+      "template_id": "qa.package",
+      "version": "1.0.0",
+      "status": "active",
+      "contract": "/mnt/data/m73_translation_working_workspace/ordo_github_workspace_v0_12_pre_release_after_full_self_check/examples/template_tooling/qa_package.template.yaml",
+      "contract_status": "passed"
+    }
+  ]
+}

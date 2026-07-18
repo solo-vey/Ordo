@@ -1,0 +1,42 @@
+{
+  "milestone": "M61 Line Closure",
+  "status": "passed",
+  "base": "M61.3",
+  "checks": [
+    {
+      "name": "py_compile",
+      "status": "passed"
+    },
+    {
+      "name": "selected_non_runtime_pathwalk_and_visual_graph_pytest",
+      "status": "passed",
+      "result": "27 passed"
+    },
+    {
+      "name": "visual_graph_mmd_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "visual_graph_svg_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "pathwalk_artifact_pipeline_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "book_manifest_sanity",
+      "status": "passed"
+    },
+    {
+      "name": "zip_extraction_check",
+      "status": "passed"
+    }
+  ],
+  "non_gates": [
+    "runtime execution of generated testcases",
+    "scoring/calibration",
+    "model/API benchmark orchestration",
+    "runtime-harness/transcript-replay matrix"
+  ]
+}

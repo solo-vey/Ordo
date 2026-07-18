@@ -1,0 +1,41 @@
+report:
+  report_id: trace-validation.<playbook_id>.<version>
+  playbook_id: <playbook_id>
+  playbook_version: <version>
+  ordo_alignment: v0.12-M72
+  execution_trace_supported: true
+  runtime_mode: <runtime_declared|runtime_enforced>
+  overall_status: <pass|fail|not_applicable>
+  checked_at: <ISO-8601>
+  checks:
+    schema_and_config:
+      status: <pass|fail|not_applicable>
+      findings: []
+    artifact_completeness:
+      status: <pass|fail|not_applicable>
+      findings: []
+    event_coverage:
+      status: <pass|fail|not_applicable>
+      findings: []
+    integrity:
+      status: <pass|fail|not_applicable>
+      findings: []
+    security_and_redaction:
+      status: <pass|fail|not_applicable>
+      findings: []
+    replay_readiness:
+      status: <pass|fail|not_applicable>
+      findings: []
+    runtime_consistency:
+      status: <pass|fail|not_applicable>
+      findings: []
+  replay_claim:
+    replayable: <true|false>
+    readiness_evidence_refs: []
+  adapter_conformance:
+    required: <true|false>
+    status: <pass|fail|not_applicable>
+    evidence_refs: []
+  blocking_findings: []
+  warnings: []
+  release_decision: <allow|block>

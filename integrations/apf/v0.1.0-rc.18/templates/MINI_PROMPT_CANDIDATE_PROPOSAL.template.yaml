@@ -1,0 +1,42 @@
+candidate:
+  candidate_id: <playbook-id>-prompt-candidate-<nnn>
+  playbook_id: <playbook-id>
+  source_review_id: <prompt-sufficiency-review-id>
+  target_object:
+    object_id: <object-id>
+    object_type: <object-type>
+    contract_reference: <path-or-id>
+  proposed_prompt_id: <namespace>.<semantic-role>.v1
+  prompt_family: <semantic-family>
+  prompt_version: 1
+  problem_statement: <specific execution/guidance problem>
+  why_contract_alone_is_insufficient: <residual guidance need after contract strengthening>
+  why_existing_prompt_reuse_is_not_suitable: <search result and mismatch>
+  intended_use: <controlled use phase>
+  required_context:
+  - <context item>
+  prompt_text: <candidate prompt text>
+  expected_effect: <observable improvement>
+  prohibited_authority:
+  - no_navigation_authority
+  - no_gate_bypass
+  - no_human_confirmation_authority
+  - no_confirmed_state_mutation
+  - no_hidden_business_logic
+  - no_package_scope_expansion
+  fallback_behavior: <safe behavior when prompt is unavailable or context insufficient>
+  validation_scenarios:
+  - scenario_id: <id>
+    type: intended_use_scenario
+    input: <input>
+    expected: <expected>
+    pass_fail: <criteria>
+  conflicts_checked:
+    registry_search_performed: true
+    matches_reviewed: []
+    duplication_risk: <none|low|medium|high>
+    ordering_risk: <none|low|medium|high>
+  author: <author>
+  created_at: <yyyy-mm-dd>
+  candidate_status: proposed
+  owner_review_status: pending

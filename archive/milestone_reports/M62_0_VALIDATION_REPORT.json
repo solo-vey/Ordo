@@ -1,0 +1,69 @@
+{
+  "milestone": "M62.0",
+  "title": "APF Integration Correlation Plan",
+  "status": "passed",
+  "scope": "docs/design-only APF integration correlation",
+  "base": "M61 Line Closure",
+  "checks": [
+    {
+      "check": "workspace_py_compile",
+      "status": "passed",
+      "evidence": "compileall cli/ordo_pathwalk/utilities"
+    },
+    {
+      "check": "selected_non_runtime_tests",
+      "status": "passed",
+      "evidence": "27 passed: ordo_pathwalk real module + Visual Graph tests"
+    },
+    {
+      "check": "apf_alpha14_yaml_parse",
+      "status": "passed",
+      "evidence": "PyYAML parsed APF source/program.ordo.yaml"
+    },
+    {
+      "check": "apf_alpha14_validation_report_inspected",
+      "status": "passed",
+      "evidence": "APF_V0_1_0_ALPHA_14_VALIDATION_REPORT.json status passed_minimal_validation"
+    },
+    {
+      "check": "visual_graph_mmd_smoke",
+      "status": "passed",
+      "evidence": "demo_support_triage.mmd generated"
+    },
+    {
+      "check": "visual_graph_svg_smoke",
+      "status": "passed",
+      "evidence": "demo_support_triage.svg generated"
+    },
+    {
+      "check": "pathwalk_artifact_pipeline_smoke",
+      "status": "passed",
+      "evidence": "graph→paths→clean-cases→noise-cases→review-cards, 15 cards"
+    },
+    {
+      "check": "pathwalk_rc_py_compile",
+      "status": "passed",
+      "evidence": "compileall ordo_pathwalk/utilities in RC"
+    },
+    {
+      "check": "pathwalk_rc_smoke",
+      "status": "passed",
+      "evidence": "Visual Graph mmd + PathWalk graph/paths smoke with developer bundle CLI"
+    },
+    {
+      "check": "book_manifest_sanity",
+      "status": "passed",
+      "evidence": "book manifest updated, chapter 66 present, 0 missing files"
+    }
+  ],
+  "known_non_goals": [
+    "APF package import",
+    "APF source rewrite",
+    "runtime-core changes",
+    "runtime execution",
+    "scoring",
+    "calibration",
+    "IR/opcode additions"
+  ],
+  "next": "M62.1 — APF Package Import into Current Language Package"
+}

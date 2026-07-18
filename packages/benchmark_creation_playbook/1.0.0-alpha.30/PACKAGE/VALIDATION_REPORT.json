@@ -1,0 +1,48 @@
+{
+  "version": "0.13.0",
+  "status": "PASS",
+  "checks_passed": 10,
+  "checks_total": 10,
+  "checks": [
+    {
+      "id": "backlog_41_done",
+      "status": "PASS"
+    },
+    {
+      "id": "verifier_exists",
+      "status": "PASS"
+    },
+    {
+      "id": "policy_exists",
+      "status": "PASS"
+    },
+    {
+      "id": "schema_exists",
+      "status": "PASS"
+    },
+    {
+      "id": "positive_test_passes",
+      "status": "PASS"
+    },
+    {
+      "id": "negative_test_rejects",
+      "status": "PASS"
+    },
+    {
+      "id": "source_yaml_parses",
+      "status": "PASS"
+    },
+    {
+      "id": "ordo_node_added",
+      "status": "PASS"
+    },
+    {
+      "id": "all_in_one_updated",
+      "status": "PASS"
+    },
+    {
+      "id": "summary_complete",
+      "status": "PASS"
+    }
+  ]
+}

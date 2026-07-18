@@ -1,0 +1,4 @@
+case_id,path_id,noise_pattern,terminal_target,terminal_type,expected_outputs,answer_step_count,node_count,state_update_count,case_artifact_ready
+CLEAN_TP_001,TP_001,none,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,2,2,3,True
+CLEAN_TP_002,TP_002,none,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,2,2,3,True
+CLEAN_TP_003,TP_003,none,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,2,2,3,True

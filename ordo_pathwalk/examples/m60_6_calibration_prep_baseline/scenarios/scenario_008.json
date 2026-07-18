@@ -1,0 +1,36 @@
+{
+  "tree_seed": 606,
+  "script_seed": 1614,
+  "turns": [
+    {
+      "index": 0,
+      "type": "forward_natural_language",
+      "text": "вгору",
+      "state_changing": true,
+      "expected_node_after": "STEP_1_d025d3",
+      "meta": {
+        "maps_to": "up"
+      }
+    },
+    {
+      "index": 1,
+      "type": "forward_valid",
+      "text": "left",
+      "state_changing": true,
+      "expected_node_after": "END",
+      "meta": {
+        "maps_to": "left"
+      }
+    }
+  ],
+  "ground_truth": [
+    {
+      "node_id": "STEP_0_1bdb4e",
+      "value": "up"
+    },
+    {
+      "node_id": "STEP_1_d025d3",
+      "value": "left"
+    }
+  ]
+}

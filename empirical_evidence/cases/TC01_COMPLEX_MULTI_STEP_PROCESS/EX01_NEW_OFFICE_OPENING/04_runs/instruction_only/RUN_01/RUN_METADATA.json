@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.evidence.run_metadata.v1",
+  "admission_status": "canonical_evidence",
+  "evidence_polarity": "positive",
+  "admitted_by_user": true,
+  "admitted_at": "2026-07-15",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "implementation": "instruction_only",
+  "package_version": "Memory Driver V6.0",
+  "run_id": "RUN_01",
+  "scenario_id": "S01_CLEAN_CONTROL",
+  "verdict": "passed",
+  "composite_score": 94,
+  "source_archive": "OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_01.zip",
+  "source_archive_sha256": "e6c60036fa9c5142cb6dfbdbbb7f3c37ed8c866a7d5a2c91bb766d57864e594d"
+}

@@ -1,0 +1,30 @@
+{
+  "milestone": "M68.3",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "json_reports_parse",
+      "status": "passed"
+    },
+    {
+      "check_id": "packages_diff_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "cli_implementation_diff_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "cli_tests_diff_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "runtime_core_compiler_opcode_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "zip_integrity",
+      "status": "passed"
+    }
+  ]
+}

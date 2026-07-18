@@ -1,0 +1,134 @@
+contract_id: APF-CSG-003
+title: Generated-playbook state-protection and process-control contract
+status: aligned-with-ordo-csg-baseline-v0.1
+source_contract: ORDO-CAP-CSG-001
+scope:
+  apf_internal:
+    enabled: false
+  generated_playbooks:
+    applies_when: conversation_scope_guard.supported == true and conversation_scope_guard.enabled
+      == true
+classification_precondition: DEVIATION.CLASSIFY must complete before any state mutation
+  or redirect action
+state_protection_assertions:
+- id: A_DEVIATION_DOES_NOT_COMPLETE_NODE
+  severity: block
+  condition: out_of_scope_message_completed_active_node
+  required_result: false
+- id: A_DEVIATION_DOES_NOT_CHANGE_PATH
+  severity: block
+  condition: out_of_scope_message_changed_selected_path
+  required_result: false
+- id: A_DEVIATION_DOES_NOT_CONFIRM_STATE
+  severity: block
+  condition: out_of_scope_message_confirmed_state_value
+  required_result: false
+- id: A_DEVIATION_DOES_NOT_RESET_STATE
+  severity: block
+  condition: out_of_scope_message_reset_collected_state
+  required_result: false
+- id: A_UNCLASSIFIABLE_INPUT_IS_NOT_ACCEPTED_AS_ANSWER
+  severity: block
+  condition: unclassifiable_input_completed_active_question
+  required_result: false
+- id: A_SCOPE_GUARD_DOES_NOT_BLOCK_CONTROL_INTENT
+  severity: block
+  condition: valid_process_control_intent_blocked_as_unrelated
+  required_result: false
+- id: A_SCOPE_GUARD_DOES_NOT_BLOCK_SAFETY
+  severity: block
+  condition: unsafe_or_emergency_message_suppressed_by_scope_guard
+  required_result: false
+protected_state_fields:
+- STATE.current_node
+- STATE.current_question
+- STATE.selected_path
+- STATE.confirmed_values
+- STATE.collected_data
+- STATE.checkpoint_ref
+process_control_operations:
+  PROCESS.PAUSE:
+    allowed_from:
+    - active
+    - redirect_required
+    - awaiting_process_choice
+    required_effects:
+    - preserve current process state
+    - preserve active node unless contract declares pause node
+    - set status paused
+    - record pause reason
+    forbidden_effects:
+    - complete active node
+    - confirm pending value
+    - discard collected state
+  PROCESS.RESUME:
+    allowed_from:
+    - paused
+    - awaiting_process_choice
+    required_effects:
+    - restore preserved state
+    - return to suspended node or declared resume node
+    - set status active
+    - reset deviation counter when configured
+    forbidden_effects:
+    - skip unresolved gate
+    - change path without explicit transition
+  PROCESS.EXIT:
+    allowed_from:
+    - active
+    - redirect_required
+    - awaiting_process_choice
+    - paused
+    required_effects:
+    - use controlled terminal transition
+    - set status exited_incomplete when process contract is incomplete
+    - preserve audit evidence
+    forbidden_effects:
+    - mark business result completed
+    - mark pending approvals approved
+    - erase prior state
+control_intent_routing:
+  pause_request: PROCESS.PAUSE
+  resume_request: PROCESS.RESUME
+  exit_request: PROCESS.EXIT
+  backtrack_request: existing backtracking contract
+  correction: existing correction/state-update contract
+  requirement_change: existing requirement-change/human-decision contract
+  unsafe_or_emergency_message: safety handling before normal scope handling
+status_semantics:
+  active: process accepts valid process input
+  deviation_detected: classification pending and state mutation blocked
+  redirect_required: redirect response required; business state unchanged
+  awaiting_process_choice: only return, pause, or exit choices accepted
+  paused: state preserved and normal execution suspended
+  exited_incomplete: run ended before process completion
+atomic_transition_rules:
+- classification and state mutation must not occur as one opaque action
+- redirect emission must be recorded separately from process-control transition
+- pause, resume, and exit each require explicit preconditions and outcomes
+- a control operation must not be inferred from an unrelated-topic message
+trace_hooks_when_execution_trace_enabled:
+- conversation.scope_guard.bypassed_for_control_intent
+- conversation.scope_guard.bypassed_for_safety
+- process.pause.requested
+- process.paused
+- process.resume.requested
+- process.resumed
+- process.exit.requested
+- process.exited
+required_generated_playbook_outputs:
+- state-protection assertion set
+- pause/resume/exit policy
+- control-intent routing table
+- status semantics
+- regression scenarios
+- owner confirmation
+blocking_conditions:
+- an unrelated or unclassifiable message can complete a node
+- scope handling can change path or confirmed state
+- pause does not preserve state
+- resume can bypass unresolved gates
+- exit reports successful process completion when incomplete
+- valid process-control intent is treated as unrelated topic
+- safety handling can be suppressed by the guard
+next_stage: CSG-4 authoring-flow, package artifacts, validation, and regression integration

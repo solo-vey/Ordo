@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "backlog_id": "BL-ORDO-036",
+  "title": "Canonical Archive Identity and Evidence Freshness",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.4",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.2.0-rc.3",
+  "implemented": [
+    "Single authoritative RELEASE_IDENTITY manifest",
+    "Immutable staged candidate build",
+    "SHA256SUMS generated last",
+    "Current-run evidence binding",
+    "Mandatory post-unpack identity, checksum, freshness and version verification"
+  ],
+  "evidence": [
+    "RELEASE_INTEGRITY_POLICY.md",
+    "tools/release_integrity.py",
+    "tools/build_release_archive.py",
+    "cli/tests/test_bl_ordo_036_release_integrity.py"
+  ],
+  "blocking_issues": 0
+}

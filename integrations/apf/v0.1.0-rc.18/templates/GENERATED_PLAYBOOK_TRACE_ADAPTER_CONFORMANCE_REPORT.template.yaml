@@ -1,0 +1,32 @@
+conformance_report:
+  adapter_id: <adapter id>
+  adapter_version: <version>
+  validated_at: <ISO-8601>
+  status: pending
+  checks:
+  - id: operations_complete
+    status: pending
+    evidence_refs: []
+  - id: event_catalog_compatible
+    status: pending
+    evidence_refs: []
+  - id: append_only_and_sequence
+    status: pending
+    evidence_refs: []
+  - id: terminal_lifecycle
+    status: pending
+    evidence_refs: []
+  - id: redaction_before_persistence
+    status: pending
+    evidence_refs: []
+  - id: toggle_preserves_existing_traces
+    status: pending
+    evidence_refs: []
+  - id: integrity_reconciliation
+    status: pending
+    evidence_refs: []
+  - id: replay_readiness_boundary
+    status: pending
+    evidence_refs: []
+  blocking_issues: []
+  release_decision: blocked_until_pass

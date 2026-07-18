@@ -1,0 +1,54 @@
+{
+  "schema_version": "ordo.evidence.run_metadata.v1",
+  "admission_status": "canonical_evidence",
+  "evidence_polarity": "negative",
+  "admitted_by_user": true,
+  "admitted_at": "2026-07-15",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "implementation": "instruction_only",
+  "run_id": "RUN_04",
+  "scenario_id": "S04_BACKTRACK_AND_CORRECT",
+  "verdict": "failed_behavior",
+  "composite_score": 73,
+  "component_scores": {
+    "scenario_completion": {
+      "weight": 0.15,
+      "score": 90
+    },
+    "control_flow_restore_backtrack": {
+      "weight": 0.25,
+      "score": 55
+    },
+    "state_trace_evidence": {
+      "weight": 0.2,
+      "score": 70
+    },
+    "artifact_quality_completeness": {
+      "weight": 0.15,
+      "score": 95
+    },
+    "validation_evaluator_reliability": {
+      "weight": 0.15,
+      "score": 60
+    },
+    "safe_behavior": {
+      "weight": 0.1,
+      "score": 85
+    }
+  },
+  "accepted_findings": {
+    "restore_request_event": "E12",
+    "requested_restore_to_after": "N04_HEADCOUNT_PLANNING",
+    "expected_result_step": "N05_WORK_MODEL_AND_SPACE",
+    "executor_classification": "blocked",
+    "executor_result_step": "N10_PRIMARY_AND_BACKUP_LOCATION_SELECTION",
+    "driver_imposed_recovery_route": true,
+    "process_eventually_completed": true,
+    "documents_generated": "3/3",
+    "independent_final_evaluation_present": false
+  },
+  "scientific_interpretation": "Canonical negative evidence. The instruction-only executor did not recognize or execute the restore/backtrack request. The external Driver imposed the recovery route, after which the executor completed the repeated path and generated the documents.",
+  "source_archive": "OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_04.zip",
+  "source_archive_sha256": "d0dc59fefa44ebd5bdac0688aad559d6776e097a5a1c98f83a0e795a98ed46fd"
+}

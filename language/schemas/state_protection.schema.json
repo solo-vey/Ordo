@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo://schemas/conversation/state-protection.schema.json",
+  "title": "Ordo Conversation Scope Guard State Protection",
+  "type": "object",
+  "required": [
+    "trigger_classification",
+    "protected_state",
+    "allowed_mutations",
+    "rollback_on_violation",
+    "blocking"
+  ],
+  "properties": {
+    "trigger_classification": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "unrelated_topic",
+          "unclassifiable_input"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "protected_state": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "confirmed_contract",
+          "confirmed_answers",
+          "selected_path",
+          "completed_nodes",
+          "passed_gates",
+          "active_node",
+          "active_question",
+          "collected_process_data"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "allowed_mutations": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "conversation_scope_guard.deviation_counter",
+          "conversation_scope_guard.escalation_level",
+          "execution_trace"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "rollback_on_violation": {
+      "const": true
+    },
+    "blocking": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

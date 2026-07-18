@@ -1,0 +1,10 @@
+schema_version: ordo.template.registry.v1
+templates:
+  - template_id: qa.package
+    version: 1.0.0
+    status: active
+    contract_ref: qa_package.template.yaml
+    sha256: cb3201d3d2fc3b89d8367abd87315ac2a2dbbaab2042281af4173cb0b82c776c
+    render_mode: model_rendered
+    used_by:
+      - history_event.guided_intake

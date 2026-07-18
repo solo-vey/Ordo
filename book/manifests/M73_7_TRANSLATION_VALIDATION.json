@@ -1,0 +1,60 @@
+{
+  "milestone": "M73.7",
+  "files": [
+    {
+      "file": "chapter_24_domain_packs.md",
+      "heading_count_uk": 32,
+      "heading_count_en": 32,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_25_biblioteky_ordo_include_import_i_povtorne_vykorystannia_hotovykh_rishen.md",
+      "heading_count_uk": 29,
+      "heading_count_en": 29,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_26_chomu_all_in_one_bilshe_ne_holovnyi_format.md",
+      "heading_count_uk": 13,
+      "heading_count_en": 13,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_27_documentation_runtime.md",
+      "heading_count_uk": 14,
+      "heading_count_en": 14,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_28_rendered_artifact_validation.md",
+      "heading_count_uk": 26,
+      "heading_count_en": 26,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_29_staryi_playbook_iak_markdown_baza_znan.md",
+      "heading_count_uk": 17,
+      "heading_count_en": 17,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "ordo.benchmark.representation_profile.v1",
+  "profile_version": "1.0.0",
+  "representation_id": "MIXED_ACCUMULATED_INSTRUCTIONS",
+  "profile": "profiles/MIXED_ACCUMULATED_INSTRUCTIONS.profile.json",
+  "allowed_source_types": [
+    "CANONICAL_ORDO_YAML",
+    "CONTROLLED_ACCUMULATION_CORPUS"
+  ],
+  "strategy": "controlled_historical_accumulation",
+  "external_disclosure": "no_yaml_no_compiler_no_provenance_no_benchmark_metadata_no_node_mapping",
+  "required_receipts": [
+    "SOURCE_TARGET_LINEAGE.json",
+    "TRANSFORMATION_RECEIPT.json",
+    "SEMANTIC_PARITY_REPORT.json",
+    "DISCLOSURE_ISOLATION_REPORT.json"
+  ],
+  "common_invariants": [
+    "intent",
+    "business_outcome",
+    "required_inputs",
+    "required_outputs",
+    "state_mutations",
+    "gates",
+    "terminal_semantics",
+    "correction_ownership",
+    "correction_loop_reachability",
+    "evidence_obligations",
+    "failure_and_hard_stop_behavior"
+  ],
+  "forbidden_external_content": [
+    "yaml_source",
+    "compiler_rules",
+    "synthetic_provenance",
+    "benchmark_metadata",
+    "node_mappings",
+    "hidden_expected_routes"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "object_id",
+    "evidence_class",
+    "version",
+    "lifecycle_state",
+    "path",
+    "sha256",
+    "bindings"
+  ],
+  "additionalProperties": true
+}

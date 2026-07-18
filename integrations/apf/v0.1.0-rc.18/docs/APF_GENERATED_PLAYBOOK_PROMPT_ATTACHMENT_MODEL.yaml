@@ -1,0 +1,40 @@
+model_id: apf.generated_playbook_prompt_attachment.v1
+status: accepted-working-model
+milestone: PMP-3
+source_of_truth: object_side_prompt_refs
+attachment_target_types:
+  - node
+  - gate
+  - recovery_handler
+  - artifact_generation_step
+  - human_review_step
+allowed_use_phases:
+  - before_question
+  - during_clarification
+  - after_answer
+  - on_gate_fail
+  - on_backtrack
+  - artifact_generation
+  - validation_review
+attachment_requirements:
+  - prompt_is_active_in_generated_playbook_registry
+  - prompt_manifest_checksum_matches
+  - approval_record_is_valid
+  - target_object_exists
+  - use_phase_is_allowed_by_registry_entry
+  - source_list_order_is_preserved
+prohibited:
+  - attach_proposed_or_deferred_candidate
+  - infer_prompt_from_node_name
+  - embed_prompt_text_as_navigation_logic
+  - allow_prompt_to_choose_next_node
+  - allow_prompt_to_close_gate_or_confirm_state
+  - attach_apf_internal_prompt_as_generated_playbook_prompt
+fallback_behavior: execute_authoritative_object_contract_without_prompt_and_record_missing_optional_guidance
+blocking_conditions:
+  - required_prompt_missing
+  - checksum_mismatch
+  - invalid_or_revoked_approval
+  - unknown_prompt_id
+  - unknown_target_object
+  - authority_violation

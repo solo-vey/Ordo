@@ -1,0 +1,63 @@
+{
+  "milestone": "M60.7 kickoff / M60.6 line closure",
+  "generated_at": "2026-07-08T08:30:00+02:00",
+  "status": "passed-design-only-with-known-runtime-harness-blocker",
+  "base": "M60.6.4 stable",
+  "checks": [
+    {
+      "check": "m60_6_line_closure_report_present",
+      "status": "passed"
+    },
+    {
+      "check": "blocked_experiments_marked_not_stable",
+      "status": "passed"
+    },
+    {
+      "check": "m60_7_kickoff_contract_present",
+      "status": "passed"
+    },
+    {
+      "check": "weights_locked",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "no_pdf_generated",
+      "status": "passed"
+    },
+    {
+      "check": "workspace_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "workspace_non_runtime_selected_pathwalk_tests",
+      "status": "passed",
+      "evidence": "20 selected tests passed before runtime-harness/matrix boundary"
+    },
+    {
+      "check": "pathwalk_rc_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "pathwalk_rc_selected_tests_with_dev_bundle_cli",
+      "status": "passed",
+      "evidence": "11 selected tests passed"
+    },
+    {
+      "check": "full_runtime_harness_matrix_tests",
+      "status": "not_run_as_gate",
+      "reason": "known M60.6.5/M60.6.4.1 child-process hang blocker; design-only transition must not revive blocked branch"
+    }
+  ],
+  "blockers": [],
+  "notes": [
+    "This is a transition/kickoff milestone, not the implementation of real-module testcase generation.",
+    "M60.6.5 and M60.6.4.1 remain blocked-no-release evidence only."
+  ],
+  "known_non_blocking_issues": [
+    "Full runtime-harness/matrix PathWalk tests may hang in this sandbox due to the already documented transcript replay child-process boundary blocker. This is not a blocker for this design-only transition package because no runtime code changed."
+  ]
+}

@@ -1,0 +1,35 @@
+prompt_attachment_map:
+  source_of_truth: object_side_prompt_refs
+  application_order_rule: same_phase_source_list_order_is_normative
+  allowed_uses:
+    - before_question
+    - during_clarification
+    - after_answer
+    - on_gate_fail
+    - on_backtrack
+    - artifact_generation
+    - validation_review
+  package:
+    prompt_refs:
+      - prompt_id: apf.package.quick_start.v1
+        use: before_question
+      - prompt_id: apf.runtime.start.v1
+        use: before_question
+  gates:
+    APF_PROCESS_RAIL_RESUME_GATE:
+      prompt_refs:
+        - prompt_id: apf.process.resume_after_deviation.v1
+          use: during_clarification
+    APF_BACKTRACK_IMPACT_REVIEW_GATE:
+      prompt_refs:
+        - prompt_id: apf.state.backtrack_invalidation.v1
+          use: on_backtrack
+    APF_VALIDATION_FAILURE_GATE:
+      prompt_refs:
+        - prompt_id: apf.validation.gate_failure.v1
+          use: on_gate_fail
+  artifacts:
+    VALIDATION_REPORT.json:
+      prompt_refs:
+        - prompt_id: apf.validation.report_interpretation.v1
+          use: validation_review

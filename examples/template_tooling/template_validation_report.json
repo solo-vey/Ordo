@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "contract": "/mnt/data/m73_translation_working_workspace/ordo_github_workspace_v0_12_pre_release_after_full_self_check/examples/template_tooling/deterministic_summary.template.yaml",
+  "template_id": "summary.deterministic",
+  "version": "1.0.0",
+  "render_mode": "deterministic",
+  "sha256": "43da7e3c4a2f1a57cc25b1698969a8d0a0995142634e5559c36e8f201a26a5df",
+  "issues": [],
+  "warnings": []
+}

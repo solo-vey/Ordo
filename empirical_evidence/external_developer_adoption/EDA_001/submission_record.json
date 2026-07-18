@@ -1,0 +1,79 @@
+{
+  "schema_version": "ordo.empirical_evidence.external_developer_submission.v1",
+  "submission_id": "liga-team-ua-monitoring-business-prepare-2026-07",
+  "team_declaration": {
+    "team_identifier": "liga-team-ua",
+    "external_to_ordo_authors": true,
+    "internal_repository_access": "yes",
+    "unpublished_material_access": "yes"
+  },
+  "consumed_release": {
+    "release_id": "ordo-2026.07.14-rc.8",
+    "archive_sha256": "42a34c6f808605cd541563b3146e421d88653c3216e8c16528700354d18b5412",
+    "distribution_channel": "Personal channel within an active collaboration",
+    "obtained_at": "2026-07-15",
+    "public_release_use_claim": false
+  },
+  "development_timeline": {
+    "start": "2026-07-15T13:55:14+02:00/2026-07-15T14:32:02+02:00",
+    "end": "2026-07-15T16:43:17+02:00",
+    "active_work_time": "approximately 3 hours of continuous work",
+    "milestones": [
+      "alpha_1",
+      "first_cross_model_draft",
+      "corrected_cross_model_draft",
+      "release_candidate_validation"
+    ]
+  },
+  "source_package_identity": {
+    "filename": "INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip",
+    "sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+    "hash_recorded_at": "2026-07-16",
+    "timestamp_proof": "supplied; exact .ots file present and checksum verified; independent Bitcoin verification pending"
+  },
+  "testing_summary": {
+    "tests_executed": 35,
+    "passed": 35,
+    "failed": 0,
+    "final_package_sha256": "885a0845da877dc28390d57e92e0db95d1bea0bd752cc3b4c9835d0dd1b12da3",
+    "post_unpack_verification": "passed"
+  },
+  "author_assistance": "none_recorded",
+  "declared_independence_level": "self_declared_independence_unverified",
+  "evidence_records": [
+    {
+      "evidence_type": "submission_archive",
+      "status": "present",
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/submissions/LIGA_TEAM_UA_2026_07/ORDO_ARF_EXTERNAL_ADOPTION_SUBMISSION_LIGA_TEAM_UA_LEVEL1_PENDING.zip",
+      "sha256": "28078aec214f3b7990ef9a95a35c03e779840af368f5aac2901e95d3ce7f0d0c"
+    },
+    {
+      "evidence_type": "original_evidence_package_sha256",
+      "status": "present",
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/submissions/LIGA_TEAM_UA_2026_07/extracted/SOURCE_PACKAGE_IDENTITY.json",
+      "sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c"
+    },
+    {
+      "evidence_type": "consumed_release_identity",
+      "status": "present",
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/submissions/LIGA_TEAM_UA_2026_07/extracted/CONSUMED_RELEASE.json"
+    },
+    {
+      "evidence_type": "author_assistance_declaration",
+      "status": "present",
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/submissions/LIGA_TEAM_UA_2026_07/extracted/INDEPENDENCE_DECLARATION.json"
+    },
+    {
+      "evidence_type": "trusted_timestamp_proof",
+      "status": "present_verification_pending",
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/submissions/LIGA_TEAM_UA_2026_07_LEVEL1_PROOF_SUPPLIED/extracted/INDEPENDENCE_EVIDENCE/INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip.ots",
+      "sha256": "cfbc09a2c93c7046b142455145b2a49b58404efb55e67ce16c079a44fc63e488"
+    },
+    {
+      "evidence_type": "submission_archive",
+      "status": "present",
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/submissions/LIGA_TEAM_UA_2026_07_LEVEL1_PROOF_SUPPLIED/ORDO_ARF_EXTERNAL_ADOPTION_SUBMISSION_LIGA_TEAM_UA_LEVEL1_PROOF_SUPPLIED.zip",
+      "sha256": "d079c4e2acfa2920c97c47fc72adedf2d93c434e01516c86382dc518d8563fa5"
+    }
+  ]
+}

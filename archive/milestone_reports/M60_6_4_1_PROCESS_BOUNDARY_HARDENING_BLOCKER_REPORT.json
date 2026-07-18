@@ -1,0 +1,41 @@
+{
+  "milestone": "M60.6.4.1",
+  "title": "Transcript Replay Process Boundary Hardening",
+  "status": "blocked-no-release",
+  "base": "M60.6.4 transcript replay pilot",
+  "implemented_wip": [
+    "model-benchmark-plan CLI",
+    "model-benchmark-job CLI",
+    "model-benchmark-collect from score artifacts",
+    "portable job_scripts/*.sh",
+    "plan-only legacy model-benchmark-pilot behavior"
+  ],
+  "validation_passed": {
+    "py_compile": "passed",
+    "targeted_pytest": "6 passed",
+    "single_runtime_direct_cli_smoke": {
+      "runtime_view": "json",
+      "completed_cases": 3,
+      "expected_cases": 3,
+      "status": "passed-pilot",
+      "failure_buckets": {
+        "none": 1,
+        "distraction_followed": 1,
+        "protocol_violation": 1
+      }
+    }
+  },
+  "blocker": {
+    "summary": "multi-runtime transcript replay acceptance did not complete reliably",
+    "target_matrix": "3 scenarios x 3 runtime views",
+    "completed_score_artifacts_before_stop": 3,
+    "expected_score_artifacts": 9,
+    "observed_location": "per-job embedded runtime verify-session path",
+    "impact": "process boundary patch is insufficient for release"
+  },
+  "release_decision": "do not release M60.6.4.1; stable base remains M60.6.4",
+  "weights_changed": false,
+  "runtime_core_semantics_changed": false,
+  "live_model_api_benchmark_run": false,
+  "recommended_next_step": "M60.6.4.2 Per-job Embedded Runtime Watchdog Hardening"
+}

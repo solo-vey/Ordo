@@ -1,0 +1,54 @@
+# Collected Attributes
+
+| ID | Attribute | Value | Status | Source |
+|---|---|---|---|---|
+| P01 | `company_legal_name` | null | confirmed | `Step 1` |
+| P02 | `company_brand_name` | null | confirmed | `Step 1` |
+| P03 | `company_industry` | null | confirmed | `Step 1` |
+| P04 | `company_headquarters_country` | null | confirmed | `Step 1` |
+| P05 | `company_size_employees` | null | confirmed | `Step 1` |
+| P06 | `office_business_goal` | null | confirmed | `Step 1` |
+| P07 | `target_country` | null | confirmed | `Step 2` |
+| P08 | `target_city` | null | confirmed | `Step 2` |
+| P09 | `target_opening_date` | null | confirmed | `Step 2` |
+| P10 | `initial_budget` | null | confirmed | `Step 3` |
+| P11 | `planned_headcount_year1` | null | confirmed | `Step 4` |
+| P12 | `planned_headcount_year3` | null | confirmed | `Step 4` |
+| P13 | `work_model` | null | confirmed | `Step 5` |
+| P14 | `required_workspace_count` | null | confirmed | `Step 5` |
+| P15 | `required_meeting_rooms` | null | confirmed | `Step 5` |
+| P16 | `special_space_requirements` | null | confirmed | `Step 5` |
+| P17 | `location_priority` | null | confirmed | `Step 6` |
+| P18 | `maximum_commute_target` | null | confirmed | `Step 6` |
+| P19 | `candidate_location_count` | null | confirmed | `Step 6` |
+| P20 | `preferred_lease_term_months` | null | confirmed | `Step 6` |
+| P21 | `maximum_monthly_rent` | null | confirmed | `Step 6` |
+| P22 | `legal_entity_required` | null | confirmed | `Step 7` |
+| P23 | `regulatory_constraints` | null | confirmed | `Step 7` |
+| P24 | `tax_model` | null | confirmed | `Step 7` |
+| P25 | `employment_model` | null | confirmed | `Step 7` |
+| P26 | `visa_support_required` | null | confirmed | `Step 7` |
+| P27 | `data_residency_requirement` | null | confirmed | `Step 7` |
+| P28 | `accessibility_standard` | null | confirmed | `Step 7` |
+| P29 | `selected_location_address` | null | confirmed | `Step 10` |
+| P30 | `backup_location_address` | null | confirmed | `Step 10` |
+| P31 | `usable_area_sqm` | null | confirmed | `Step 10` |
+| P32 | `technical_readiness_score` | null | confirmed | `Step 10` |
+| P33 | `renovation_scope` | null | confirmed | `Step 12` |
+| P34 | `renovation_budget` | null | confirmed | `Step 12` |
+| P35 | `fitout_deadline` | null | confirmed | `Step 12` |
+| P36 | `network_capacity_requirement` | null | confirmed | `Step 13` |
+| P37 | `server_room_required` | null | confirmed | `Step 13` |
+| P38 | `physical_security_level` | null | confirmed | `Step 13` |
+| P39 | `access_control_model` | null | confirmed | `Step 13` |
+| P40 | `furniture_standard` | null | confirmed | `Step 14` |
+| P41 | `primary_general_contractor` | null | confirmed | `Step 15` |
+| P42 | `critical_supplier_count` | null | confirmed | `Step 15` |
+| P43 | `local_hiring_target` | null | confirmed | `Step 16` |
+| P44 | `relocation_target` | null | confirmed | `Step 16` |
+| P45 | `local_hr_owner` | null | confirmed | `Step 16` |
+| P46 | `local_it_owner` | null | confirmed | `Step 17` |
+| P47 | `local_facilities_owner` | null | confirmed | `Step 17` |
+| P48 | `readiness_test_date` | null | confirmed | `Step 18` |
+| P49 | `pilot_day_participants` | null | confirmed | `Step 19` |
+| P50 | `final_opening_decision` | null | confirmed | `Step 20` |

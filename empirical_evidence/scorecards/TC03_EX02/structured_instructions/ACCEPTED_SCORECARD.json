@@ -1,0 +1,45 @@
+{
+  "schema_version": "ordo.accepted_scorecard.v2",
+  "representation": "Structured Instructions",
+  "version": "alpha_1_3_0",
+  "scoring_profile": "TC03-EX02-EVAL-v1.1",
+  "process_score_definition": "playbook-pure; packaging-neutral and analyst/Driver-neutral",
+  "runs": {
+    "RUN_01": [
+      99,
+      96,
+      98
+    ],
+    "RUN_02": [
+      99,
+      null,
+      99
+    ],
+    "RUN_03": [
+      100,
+      100,
+      100
+    ],
+    "RUN_04": [
+      100,
+      97,
+      99
+    ],
+    "RUN_05": [
+      100,
+      100,
+      100
+    ]
+  },
+  "weighted": 99.2,
+  "executor_evaluator_provenance": {
+    "executor_model": "GPT-5.6 Thinking",
+    "evaluator_model": "GPT-5.6 Thinking",
+    "relation": "different_chat_same_model",
+    "different_chat": true,
+    "different_model": false,
+    "cryptographically_verified": false,
+    "verification_level": "user_attested_not_cryptographically_verified",
+    "ledger_ref": "06_manifests/EXECUTOR_EVALUATOR_PROVENANCE_LEDGER.json"
+  }
+}

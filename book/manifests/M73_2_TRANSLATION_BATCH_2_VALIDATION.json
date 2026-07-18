@@ -1,0 +1,67 @@
+{
+  "milestone": "M73.2",
+  "batch": "translation-batch-2",
+  "files": [
+    {
+      "file": "chapter_01_chomu_zvychainykh_promptiv_nedostatno.md",
+      "uk_words": 727,
+      "en_words": 927,
+      "heading_count_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_02_shcho_take_ordo_prostymy_slovamy.md",
+      "uk_words": 1634,
+      "en_words": 1629,
+      "heading_count_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_03_ordo_iak_mova_keruvannia_modelliu.md",
+      "uk_words": 1579,
+      "en_words": 1342,
+      "heading_count_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_04_intent_contract_context.md",
+      "uk_words": 1950,
+      "en_words": 1303,
+      "heading_count_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_05_state_pamiat_protsesu.md",
+      "uk_words": 1644,
+      "en_words": 1294,
+      "heading_count_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_06_entry_i_node_iak_model_stavyt_pytannia.md",
+      "uk_words": 1219,
+      "en_words": 1427,
+      "heading_count_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

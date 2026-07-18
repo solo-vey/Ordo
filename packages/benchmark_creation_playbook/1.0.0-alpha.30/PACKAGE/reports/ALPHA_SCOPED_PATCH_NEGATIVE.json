@@ -1,0 +1,56 @@
+{
+  "status": "FAIL",
+  "errors": [
+    "changed_node_outside_allowlist"
+  ],
+  "baseline_sha256": "05af5011faf3905808515175e6997120cfaa953ee6d7212adeb82d9c3cf8ab7b",
+  "candidate_sha256": "ef8904c4c0c80fa6a18f0bf9c80ba696619aace4e72f01ec071268a907f26569",
+  "allowlist": [
+    "A"
+  ],
+  "added_ids": [],
+  "removed_ids": [],
+  "changed_ids": [
+    "A",
+    "B"
+  ],
+  "out_of_scope_ids": [
+    "B"
+  ],
+  "unchanged_node_count": 0,
+  "total_node_count": 2,
+  "unchanged_node_ratio": 0.0,
+  "structural_diff": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "A",
+      "B"
+    ]
+  },
+  "semantic_diff": [
+    {
+      "path": "$.nodes",
+      "before": [
+        {
+          "id": "A",
+          "value": 1
+        },
+        {
+          "id": "B",
+          "value": 2
+        }
+      ],
+      "after": [
+        {
+          "id": "A",
+          "value": 3
+        },
+        {
+          "id": "B",
+          "value": 9
+        }
+      ]
+    }
+  ]
+}

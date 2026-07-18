@@ -1,0 +1,24 @@
+schema_version: ordo.external_document_validation_contract.v1
+contract_id: DOC-PASSPORT-v1
+contract_version: 1.0.0
+rules:
+- rule_id: R_REQUIRED_TITLE
+  requirement:
+    kind: required
+    field: title
+  condition: always
+  severity: error
+  blocking: true
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass
+- rule_id: R_REQUIRED_OWNER
+  requirement:
+    kind: required
+    field: owner
+  condition: always
+  severity: error
+  blocking: true
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass

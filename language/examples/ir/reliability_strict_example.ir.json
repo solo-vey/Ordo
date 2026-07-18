@@ -1,0 +1,75 @@
+{
+  "ordo_version": "0.12",
+  "program_id": "examples.strict_handoff",
+  "control_level": "strict",
+  "execution_mode": "chat_internal",
+  "ops": [
+    {
+      "op": "PROGRAM.DEF",
+      "id": "program.examples.strict_handoff",
+      "ordo_version": "0.12",
+      "control_level": "strict",
+      "execution_mode": "chat_internal"
+    },
+    {
+      "op": "NODE.DEF",
+      "id": "program.examples.strict_handoff.N_CONFIRM_CONTRACT",
+      "source_local_id": "N_CONFIRM_CONTRACT",
+      "allowed_answers": [
+        "yes",
+        "no"
+      ],
+      "on_unmatched_input": {
+        "action": "CLARIFY.REQUEST",
+        "strategy": "rephrase_and_narrow",
+        "max_attempts": 2
+      }
+    },
+    {
+      "op": "ASSERTION.DEF",
+      "id": "program.examples.strict_handoff.A_NO_FINAL_OUTPUT_BEFORE_GATE",
+      "source_local_id": "A_NO_FINAL_OUTPUT_BEFORE_GATE",
+      "polarity": "not",
+      "condition": "final_output_created_before_required_gates",
+      "phase": [
+        "runtime",
+        "test"
+      ],
+      "severity": "block"
+    },
+    {
+      "op": "GATE.DEF",
+      "id": "program.examples.strict_handoff.G_CONTRACT_CONFIRMED",
+      "source_local_id": "G_CONTRACT_CONFIRMED",
+      "method": "human",
+      "trust_class": "human_decision",
+      "assert": "CONTRACT_CONFIRMED",
+      "source": "state.contract_confirmed"
+    },
+    {
+      "op": "GATE.DEF",
+      "id": "program.examples.strict_handoff.G_NO_FINAL_OUTPUT_BEFORE_GATE",
+      "source_local_id": "G_NO_FINAL_OUTPUT_BEFORE_GATE",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "assert": "ASSERTION_HOLDS",
+      "source": "program.examples.strict_handoff.A_NO_FINAL_OUTPUT_BEFORE_GATE"
+    },
+    {
+      "op": "TRACE.LOG",
+      "id": "program.examples.strict_handoff.TRACE",
+      "trace_source": "hybrid",
+      "execution_mode": "chat_internal"
+    },
+    {
+      "op": "ASSERTION.PROJECT",
+      "id": "program.examples.strict_handoff.PROJECT_A_NO_FINAL_OUTPUT_BEFORE_GATE",
+      "from": "program.examples.strict_handoff.A_NO_FINAL_OUTPUT_BEFORE_GATE",
+      "to": [
+        "runtime",
+        "test",
+        "debug"
+      ]
+    }
+  ]
+}

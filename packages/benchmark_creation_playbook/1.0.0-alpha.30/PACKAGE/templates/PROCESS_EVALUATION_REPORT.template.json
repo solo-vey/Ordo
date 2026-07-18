@@ -1,0 +1,78 @@
+{
+  "schema_version": "ordo.benchmark.process_evaluation_report.v1",
+  "attempt_id": "<attempt-id>",
+  "run_id": "<RUN_XX>",
+  "package_variant": "<PV-...>",
+  "process_quality_contract_version": "1.0.0",
+  "failure_cap_registry_version": "1.0.0",
+  "evaluation_status": "draft",
+  "dimensions": [
+    {
+      "id": "PQ-01",
+      "weight": 10,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-02",
+      "weight": 20,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-03",
+      "weight": 15,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-04",
+      "weight": 15,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-05",
+      "weight": 10,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-06",
+      "weight": 15,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-07",
+      "weight": 10,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    },
+    {
+      "id": "PQ-08",
+      "weight": 5,
+      "normalized_result": null,
+      "score": null,
+      "criteria": []
+    }
+  ],
+  "raw_process_score": null,
+  "detected_failures": [],
+  "applied_cap": null,
+  "final_process_score": null,
+  "blind_status": "unknown",
+  "evidence_references": [],
+  "uncertainty": [],
+  "evaluator": {
+    "id": "<evaluator>",
+    "evaluated_at": "<ISO-8601>"
+  }
+}

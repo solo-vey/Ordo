@@ -1,0 +1,433 @@
+ordo:
+  version: '0.12'
+  package: ordo.decision_note_assistant
+  control_level: standard
+  execution_mode: chat_internal
+
+includes:
+  - library: ordo.process_rail.core
+    version: ^0.1.0
+    as: process_rail
+  - library: ordo.output_template.contracts
+    version: ^0.1.0
+    as: template_contracts
+
+interaction_model:
+  human_role: team_lead_or_pm
+  ai_role: decision_note_assistant
+  proactive_ai_behavior: required
+  raw_tool_output_policy: ai_interprets_before_user
+  yaml_visibility_policy: hidden_from_runtime_user_by_default
+
+process_rail:
+  rail_id: ORDO_DECISION_NOTE_ASSISTANT_RAIL
+  purpose: Перетворити неструктурований опис обговорення на коротку decision note,
+    список відкритих питань і follow-up checklist без вимоги, щоб користувач знав Ordo YAML.
+  state_tracking: required
+  allow_deviation: true
+  require_resume_after_deviation: true
+  backtracking: enabled
+
+conversation_semantics:
+  on_unmatched_input:
+    strategy: classify_and_route
+    allowed_classes:
+      - answer_current_question
+      - correction_previous_answer
+      - clarification_request
+      - domain_context
+      - approval
+      - refusal
+      - out_of_scope
+    require_state_validation: true
+
+intent:
+  id: INTENT_DECISION_NOTE_ASSISTANT
+  description: Допомогти team lead або PM зафіксувати рішення, alternatives, rationale,
+    open questions і наступні дії після робочого обговорення.
+
+contract:
+  id: CONTRACT_DECISION_NOTE_ASSISTANT
+  required:
+    - discussion_context
+    - decision_type
+    - decision_summary
+    - alternatives_considered
+    - decision_status
+    - rationale
+    - follow_up_actions
+    - output_template_catalog
+    - approval_to_render_note
+
+state:
+  id: STATE_DECISION_NOTE_ASSISTANT
+  schema:
+    discussion_context: null
+    decision_type: null
+    decision_summary: null
+    alternatives_considered: []
+    decision_status: null
+    rationale: null
+    open_questions: []
+    follow_up_actions: []
+    output_template_catalog:
+      - artifact: DECISION_NOTE_MD
+        required_sections:
+          - discussion_context
+          - decision_type
+          - decision_summary
+          - alternatives_considered
+          - decision_status
+          - rationale
+          - open_questions
+          - follow_up_actions
+        owner_review_status: proposed-template
+    approval_to_render_note: false
+    note_ready: false
+
+nodes:
+  - id: N_DISCUSSION_CONTEXT
+    question: Опишіть обговорення або вставте короткий фрагмент нотаток, з яких треба зробити decision note.
+    answer_type: free_text
+    on_answer:
+      update_state:
+        discussion_context: $answer
+      next: N_DECISION_TYPE
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_discussion_context_or_notes
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: discussion context remains unclear
+
+  - id: N_DECISION_TYPE
+    question: Який тип рішення потрібно зафіксувати?
+    answer_type: enum
+    allowed_answers:
+      - product
+      - process
+      - technical
+      - other
+    on_answer:
+      product:
+        label: Product decision
+        update_state:
+          decision_type: product
+        next: N_DECISION_SUMMARY
+      process:
+        label: Process decision
+        update_state:
+          decision_type: process
+        next: N_DECISION_SUMMARY
+      technical:
+        label: Technical decision
+        update_state:
+          decision_type: technical
+        next: N_DECISION_SUMMARY
+      other:
+        label: Other decision
+        update_state:
+          decision_type: other
+        next: N_DECISION_SUMMARY
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: show_decision_type_options
+      max_attempts: 2
+      on_exhausted:
+        action: keep_current_node
+        reason: decision type was not selected
+
+  - id: N_DECISION_SUMMARY
+    question: Яке рішення пропонується зафіксувати одним-двома реченнями?
+    answer_type: free_text
+    on_answer:
+      update_state:
+        decision_summary: $answer
+      next: N_ALTERNATIVES_CONSIDERED
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_candidate_decision_sentence
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: decision summary remains unclear
+
+  - id: N_ALTERNATIVES_CONSIDERED
+    question: Які альтернативи розглядалися і чому їх не обрали?
+    answer_type: structured_list
+    on_answer:
+      update_state:
+        alternatives_considered: $answer
+      next: N_DECISION_STATUS
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_alternatives_or_explicit_none
+      max_attempts: 2
+      on_exhausted:
+        action: continue_with_empty_alternatives
+        reason: alternatives are not available
+
+  - id: N_DECISION_STATUS
+    question: Статус рішення — вже прийнято чи ще потребує уточнення?
+    answer_type: enum
+    allowed_answers:
+      - decided
+      - needs_clarification
+    on_answer:
+      decided:
+        label: Decision accepted
+        update_state:
+          decision_status: decided
+        next: N_RATIONALE
+      needs_clarification:
+        label: Needs clarification
+        update_state:
+          decision_status: needs_clarification
+        next: N_OPEN_QUESTIONS
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_decided_or_needs_clarification
+      max_attempts: 2
+      on_exhausted:
+        action: keep_current_node
+        reason: decision status remains unclear
+
+  - id: N_RATIONALE
+    question: Чому саме це рішення прийнято? Вкажіть основні причини або trade-offs.
+    answer_type: free_text
+    on_answer:
+      update_state:
+        rationale: $answer
+      next: N_FOLLOW_UP_ACTIONS
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_rationale_or_tradeoffs
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: rationale remains unclear
+
+  - id: N_OPEN_QUESTIONS
+    question: Які питання треба закрити перед фінальним рішенням?
+    answer_type: list
+    on_answer:
+      update_state:
+        open_questions: $answer
+      next: N_FOLLOW_UP_ACTIONS
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_open_questions_or_explicit_none
+      max_attempts: 2
+      on_exhausted:
+        action: continue_with_empty_open_questions
+        reason: open questions are not available
+
+  - id: N_FOLLOW_UP_ACTIONS
+    question: Які наступні дії, власники або дедлайни треба зафіксувати?
+    answer_type: structured_list
+    on_answer:
+      update_state:
+        follow_up_actions: $answer
+      next: N_APPROVAL_TO_RENDER_NOTE
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_actions_owners_deadlines_or_explicit_none
+      max_attempts: 2
+      on_exhausted:
+        action: continue_with_empty_actions
+        reason: follow-up actions are not available
+
+  - id: N_APPROVAL_TO_RENDER_NOTE
+    question: Підтверджуєте, що AI може сформувати decision note за зібраними відповідями?
+    answer_type: enum
+    allowed_answers:
+      - 'yes'
+      - 'no'
+    on_answer:
+      'yes':
+        label: Render decision note
+        update_state:
+          approval_to_render_note: true
+          note_ready: true
+        next: G_DECISION_NOTE_READY_TO_RENDER
+      'no':
+        label: Do not render yet
+        next: STOP_NEEDS_APPROVAL
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: rephrase_render_approval
+      max_attempts: 2
+      on_exhausted:
+        action: keep_current_node
+        reason: render approval remains unclear
+
+gates:
+  - id: G_DISCUSSION_CONTEXT_PRESENT
+    method: mechanical
+    trust_class: deterministic
+    condition: state.discussion_context is not null
+    on_fail: block
+  - id: G_DECISION_TYPE_PRESENT
+    method: mechanical
+    trust_class: deterministic
+    condition: state.decision_type is not null
+    on_fail: block
+  - id: G_DECISION_SUMMARY_PRESENT
+    method: mechanical
+    trust_class: deterministic
+    condition: state.decision_summary is not null
+    on_fail: block
+  - id: G_DECISION_STATUS_PRESENT
+    method: mechanical
+    trust_class: deterministic
+    condition: state.decision_status is not null
+    on_fail: block
+  - id: G_TEMPLATE_CONTRACT_PRESENT
+    method: mechanical
+    trust_class: deterministic
+    condition: state.output_template_catalog is not empty
+    on_fail: block
+  - id: G_APPROVAL_TO_RENDER_NOTE
+    method: human
+    trust_class: human_decision
+    condition: state.approval_to_render_note is true
+    on_fail: block
+  - id: G_DECISION_NOTE_READY_TO_RENDER
+    method: mechanical
+    trust_class: deterministic
+    condition: all required decision-note fields are present and user approved render
+    on_fail: block
+
+assertions:
+  - id: A_RUNTIME_USER_DOES_NOT_WRITE_YAML
+    polarity: must
+    condition: runtime_user_answers_plain_language_questions
+    phase:
+      - runtime
+      - test
+    severity: block
+    on_fail: STOP
+  - id: A_OUTPUT_TEMPLATE_DEFINED_IN_SOURCE
+    polarity: must
+    condition: decision_note_template_contract_is_declared_before_render
+    phase:
+      - runtime
+      - test
+    severity: block
+    on_fail: STOP
+  - id: A_UNDECIDED_PATH_PRESERVES_OPEN_QUESTIONS
+    polarity: must
+    condition: needs_clarification_branch_records_open_questions_before_note_output
+    phase:
+      - runtime
+      - test
+    severity: warn
+    on_fail: WARN
+
+outputs:
+  - id: OUT_DECISION_NOTE_MD
+    type: markdown_artifact
+    allowed_after:
+      - G_DISCUSSION_CONTEXT_PRESENT
+      - G_DECISION_TYPE_PRESENT
+      - G_DECISION_SUMMARY_PRESENT
+      - G_DECISION_STATUS_PRESENT
+      - G_TEMPLATE_CONTRACT_PRESENT
+      - G_APPROVAL_TO_RENDER_NOTE
+      - G_DECISION_NOTE_READY_TO_RENDER
+
+contracts:
+  - kind: contract
+    id: G_DECISION_NOTE_CONTRACT
+    status: proposed
+    fields:
+      discussion_context:
+        value: state.discussion_context
+        status: confirmed
+        required: true
+      decision_type:
+        value: state.decision_type
+        status: confirmed
+        required: true
+      decision_summary:
+        value: state.decision_summary
+        status: confirmed
+        required: true
+      alternatives_considered:
+        value: state.alternatives_considered
+        status: confirmed
+        required: false
+      decision_status:
+        value: state.decision_status
+        status: confirmed
+        required: true
+      rationale:
+        value: state.rationale
+        status: confirmed
+        required: false
+      open_questions:
+        value: state.open_questions
+        status: confirmed
+        required: false
+      follow_up_actions:
+        value: state.follow_up_actions
+        status: confirmed
+        required: false
+
+artifacts:
+  - kind: artifact
+    id: DECISION_NOTE_MD
+    path_pattern: outputs/DECISION_NOTE.md
+    format: markdown
+    required: true
+    description: Rendered decision note with context, decision, rationale, open questions and actions.
+  - kind: artifact
+    id: DECISION_NOTE_TEMPLATE_CONTRACT
+    path_pattern: output_templates/DECISION_NOTE_TEMPLATE.md
+    format: markdown
+    required: true
+    description: Template contract for the rendered decision note.
+
+artifact_requirements:
+  - kind: artifact_requirement
+    id: REQ_DECISION_NOTE_FIELDS
+    when:
+      contract: G_DECISION_NOTE_CONTRACT
+      status: proposed
+    requires:
+      - artifact: DECISION_NOTE_MD
+        must_include_fields:
+          - discussion_context
+          - decision_type
+          - decision_summary
+          - alternatives_considered
+          - decision_status
+          - rationale
+          - open_questions
+          - follow_up_actions
+      - artifact: DECISION_NOTE_TEMPLATE_CONTRACT
+        must_include_fields:
+          - discussion_context
+          - decision_type
+          - decision_summary
+          - alternatives_considered
+          - decision_status
+          - rationale
+          - open_questions
+          - follow_up_actions
+
+coverage_rules:
+  - kind: coverage_rule
+    id: COVERAGE_DECISION_NOTE_CONTRACT_TO_ARTIFACTS
+    input: G_DECISION_NOTE_CONTRACT
+    output: REQ_DECISION_NOTE_FIELDS
+    failure_policy: no_go
+    description: Decision-note contract fields must be mapped to the rendered note and template contract.
+
+go_no_go:
+  kind: go_no_go
+  status: go
+  blocking_issues: []
+  warnings:
+    - This is an M61.2 generated example for validating factory output shape, not a production-ready applied project.

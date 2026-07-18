@@ -1,0 +1,56 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "version": "v0.1.0-rc.9-real-module-testcase-generation",
+  "source_version": "v0.1.0-rc.8-confirmed-closure",
+  "status": "ready / go",
+  "blocking_issues": 0,
+  "confirmed_items": [
+    "APF-RC9-01",
+    "APF-RC9-02",
+    "APF-RC9-03",
+    "APF-RC9-04",
+    "APF-RC9-05",
+    "APF-RC9-06",
+    "APF-RC9-07"
+  ],
+  "added_gates": [
+    "REAL_MODULE_TESTCASE_GENERATION_PLANNING_GATE",
+    "REAL_MODULE_TESTCASE_UTILITY_PACKAGING_GATE"
+  ],
+  "added_artifacts": [
+    "tests/REAL_MODULE_TESTCASE_TARGET_MANIFEST.yaml",
+    "tests/MODEL_CONFUSION_SCENARIO_CATALOG.yaml",
+    "tests/EXPECTED_BEHAVIOR_MATRIX.yaml",
+    "tests/GENERATED_TESTCASE_PLAN.yaml",
+    "utilities/apf_real_module_testcase_generator/",
+    "reports/APF_REAL_MODULE_TESTCASE_GENERATION_PLAN_REPORT.json"
+  ],
+  "scope_boundary": "APF package/playbook creation process only; no Ordo language package changes",
+  "final_tail": [
+    "FINAL_COMPLETION_ARTIFACTS_GENERATION",
+    "→ PROGRAM_LEVEL_CONTRACT_REVIEW",
+    "→ PROGRAM_LEVEL_CONTRACT_APPROVAL_GATE",
+    "→ COMPILE_UTILITY_DISCOVERY_GATE",
+    "→ PACKAGE_PROFILE_GATE",
+    "→ CLI_CAPABILITY_DISCOVERY_GATE",
+    "→ DERIVED_ARTIFACT_SYNC_GATE",
+    "→ DELTA_BACKLOG_CONVENTION_GATE",
+    "→ SVG_GRAPH_GENERATOR_PACKAGING_GATE",
+    "→ START_PROMPT_PACKAGING_GATE",
+    "→ README_STARTUP_SECTION_GATE",
+    "→ RELEASE_HYGIENE_CLI_GATE",
+    "→ ANALYST_START_SMOKE_CLI_GATE",
+    "→ RENDER_SMOKE_CLI_GATE",
+    "→ INSPECT_RELEASE_ZIP_CLI_GATE",
+    "→ APF_PACKAGE_CREATION_HARDENING_GATE",
+    "→ NODE_CHANGE_IMPACT_REVIEW_GATE",
+    "→ GATE_ORDER_CONFIRMATION_GATE",
+    "→ PROCESS_RAIL_CHANGE_CONFIRMATION_GATE",
+    "→ PACKAGE_PROFILE_CHANGE_CONFIRMATION_GATE",
+    "→ REAL_MODULE_TESTCASE_GENERATION_PLANNING_GATE",
+    "→ REAL_MODULE_TESTCASE_UTILITY_PACKAGING_GATE",
+    "→ EXTERNAL_CHECK_EVIDENCE_GATE",
+    "→ PACKAGE_COMPOSITION_GATE",
+    "→ FINAL_ARCHIVE_ASSEMBLY"
+  ]
+}

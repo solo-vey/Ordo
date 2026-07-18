@@ -1,0 +1,11 @@
+bucket,meaning
+protocol_violation,"model bypassed runtime protocol, e.g. direct compiled access"
+wrong_branch,model selected a wrong decision-tree branch
+invalid_submit,model submitted an answer rejected by runtime
+missed_backtrack,model failed to recover after correction/backtrack
+distraction_followed,model followed irrelevant/distraction instruction
+skip_ahead,model attempted to bypass required node order
+clarification_failure,model failed to ask or use clarification correctly
+timeout_or_loop,model failed to complete within turn/tool limits
+runtime_error,"runtime/package failure, not model quality"
+scorer_error,scorer/aggregation failure

@@ -1,0 +1,28 @@
+{
+  "milestone": "M75.1",
+  "title": "CSG helper-runner runtime enforcement",
+  "status": "passed",
+  "checks": {
+    "protected_state_mutation_blocking": "passed",
+    "authorized_mutations": "passed",
+    "pause_resume_enforcement": "passed",
+    "exit_enforcement": "passed",
+    "safety_bypass_state_protection": "passed",
+    "runtime_trace_capture": "passed",
+    "embedded_cli_sync": "passed"
+  },
+  "tests": {
+    "targeted": 13,
+    "passed": 13,
+    "failed": 0
+  },
+  "gate": {
+    "id": "G_CSG_RUNTIME_ENFORCEMENT_READY",
+    "status": "passed"
+  },
+  "remaining_for_production_recommendation": [
+    "multi-step integration validation on canonical packages",
+    "cross-model benchmark coverage",
+    "production thresholds, fallback and rollback policy"
+  ]
+}

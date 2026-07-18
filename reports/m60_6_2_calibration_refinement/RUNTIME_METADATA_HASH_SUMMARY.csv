@@ -1,0 +1,4 @@
+runtime_view,canonical_ir_hash_count,targets_manifest_hash_count,session_trace_hash_count,runtime_protocol_versions,ordo_cli_versions
+json,1,1,20,['M60.4'],['0.12']
+ordo-code,1,1,20,['M60.4'],['0.12']
+"json,ordo-code",1,1,20,['M60.4'],['0.12']

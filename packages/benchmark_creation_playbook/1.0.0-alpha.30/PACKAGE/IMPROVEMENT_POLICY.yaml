@@ -1,0 +1,21 @@
+schema_version: ordo.benchmark.improvement_policy.v1
+patch_confidence_allowed:
+- confirmed
+- probable
+patch_dispositions:
+- PATCH_ACCEPTED
+- PATCH_REJECTED
+- PATCH_ROLLED_BACK
+- PATCH_BLOCKED_EVIDENCE
+five_cycle_limit: 5
+mandatory_regression_layers:
+- trigger
+- direct_neighbor
+- unaffected_sentinel
+compatibility_dispositions:
+- FULLY_COMPARABLE
+- COMPARABLE_WITH_FILTERS
+- NEW_COHORT_REQUIRED
+- HISTORICAL_ONLY
+- INVALID_RELEASE
+open_dependency: BL-BENCH-041

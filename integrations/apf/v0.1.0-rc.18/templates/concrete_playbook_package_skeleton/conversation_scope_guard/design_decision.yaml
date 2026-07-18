@@ -1,0 +1,7 @@
+conversation_scope_guard_design_decision:
+  supported: null
+  enabled: null
+  mode: null
+  rationale: null
+  human_confirmation:
+    status: pending

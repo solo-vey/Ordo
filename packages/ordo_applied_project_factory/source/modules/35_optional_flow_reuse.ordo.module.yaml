@@ -1,0 +1,137 @@
+flow_reuse:
+  maturity: stable_optional
+  joins:
+  - id: JOIN.OUTPUT.TEMPLATE.READY
+    namespace: apf.output_template
+    incoming:
+    - node: N_OUTPUT_TEMPLATE_REVIEW_LOOP
+      namespace: apf.graph
+      alias: reviewed
+    - node: N_OUTPUT_TEMPLATE_CREATION_LOOP
+      namespace: apf.graph
+      alias: created
+    target:
+      node: N_TERMINAL_PATH_READY_CHECK
+      namespace: apf.graph
+    state_contract:
+      required_fields:
+      - active_artifact_id
+      - template_status
+      protected_fields:
+      - active_artifact_id
+      optional_fields:
+      - template_review_notes
+      branch_local_fields:
+      - draft_preview
+    merge_policy:
+      default: require_equal
+      fields:
+        template_status: require_equal
+        template_review_notes: prefer_non_null
+    conflict_policy: require_equal
+    provenance_policy: preserve_all_inputs
+  - id: JOIN.VALIDATION.RESULT
+    namespace: apf.validation_handoff
+    incoming:
+    - node: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+      namespace: apf.graph
+      alias: full_validation_selected
+    - node: N_SHARED_TAIL_MINIMAL_VALIDATION
+      namespace: apf.graph
+      alias: minimal_only
+    target:
+      node: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+      namespace: apf.graph
+    state_contract:
+      required_fields:
+      - package_id
+      - minimal_validation_status
+      protected_fields:
+      - package_id
+      optional_fields:
+      - full_validation_status
+      - validation_notes
+      branch_local_fields:
+      - validator_debug
+    merge_policy:
+      default: require_equal
+      fields:
+        full_validation_status: prefer_non_null
+        validation_notes: prefer_non_null
+    conflict_policy: require_equal
+    provenance_policy: preserve_all_inputs
+  shared_tails:
+  - id: TAIL.OUTPUT.TEMPLATE.READINESS
+    namespace: apf.output_template
+    entry: N_TERMINAL_PATH_READY_CHECK
+    nodes:
+    - N_TERMINAL_PATH_READY_CHECK
+    - N_SUBTREE_REVIEW_COMPLETION_CHECK
+    - N_APPROVED_TREE_CONSOLIDATION
+    maturity: stable_optional
+  - id: TAIL.VALIDATION.HANDOFF
+    namespace: apf.validation_handoff
+    entry: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+    nodes:
+    - N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+    - N_SHARED_TAIL_CORRECTION_LOOP
+    - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    - N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+    - N_SHARED_TAIL_FINAL_HANDOFF
+    maturity: stable_optional
+  references:
+  - id: REF.OUTPUT.TEMPLATE.READINESS
+    namespace: apf.output_template
+    tail_id: TAIL.OUTPUT.TEMPLATE.READINESS
+    tail_namespace: apf.output_template
+    entry: N_TERMINAL_PATH_READY_CHECK
+    namespace_policy: inherit
+    namespace_map: {}
+    import_state:
+      allow:
+      - active_artifact_id
+      - template_status
+      - template_review_notes
+      rename: {}
+      required:
+      - active_artifact_id
+      - template_status
+    export_state:
+      allow:
+      - terminal_path_ready
+      - tree_consolidation_status
+      rename: {}
+    protected_fields:
+    - active_artifact_id
+    preserve_provenance: true
+    maturity: stable_optional
+    max_call_depth: 16
+    return_to: __CALLER_CONTINUATION__
+  - id: REF.VALIDATION.HANDOFF
+    namespace: apf.validation_handoff
+    tail_id: TAIL.VALIDATION.HANDOFF
+    tail_namespace: apf.validation_handoff
+    entry: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+    namespace_policy: inherit
+    namespace_map: {}
+    import_state:
+      allow:
+      - package_id
+      - minimal_validation_status
+      - full_validation_status
+      - validation_notes
+      rename: {}
+      required:
+      - package_id
+      - minimal_validation_status
+    export_state:
+      allow:
+      - handoff_package_id
+      - handoff_status
+      rename: {}
+    protected_fields:
+    - package_id
+    preserve_provenance: true
+    maturity: stable_optional
+    max_call_depth: 16
+    return_to: __CALLER_CONTINUATION__

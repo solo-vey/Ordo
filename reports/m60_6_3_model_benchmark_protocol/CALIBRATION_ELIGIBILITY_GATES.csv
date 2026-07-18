@@ -1,0 +1,12 @@
+gate,requirement,status
+same_scenario_matrix,the same scenario IDs are run for each compared runtime view/model,required
+sufficient_cases,at least 30 cases per runtime view per model for pilot analysis; larger sample before release calibration,required
+nonzero_variance,at least one primary component metric has nonzero variance,required_for_calibration
+non_saturated_scores,not all path_quality_score values are 1.0,required_for_calibration
+failure_buckets_present,non-perfect cases are bucketed and reviewed,required_for_calibration
+protocol_vs_quality_separated,protocol violations are separated from path-quality mistakes,required
+metadata_hashes_captured,"IR, target manifest, session trace, transcript, and weights hashes are present",required
+repeatability_checked,repeated seeds/runs show whether results are stable enough to compare,required_before_weight_change
+confidence_summary_present,"distributions or confidence intervals are reported, not only means",required_before_weight_change
+manual_failure_review_done,a sample of failed transcripts is manually inspected before changing weights,required_before_weight_change
+calibration_decision_recorded,proposed weight changes are documented in CALIBRATION_DECISION.*,required_before_weight_change

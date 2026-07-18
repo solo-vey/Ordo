@@ -1,0 +1,87 @@
+schema_version: benchmark.run_registry.v1
+registry_version: 0.3.0
+runs:
+- run_id: RUN_01
+  scenario_version: 1.0.0
+  name: Clean Control
+  purpose: Complete consistent positive baseline
+  expected_terminal: T_COMPLETED
+  correction_enabled: false
+  allowed_outputs:
+  - full_current_artifact_set
+  - completion_evidence
+  forbidden_outputs:
+  - blocker_only_result
+  required_behaviors:
+  - complete_intake
+  - current_artifacts
+  - finish_after_gates
+  forbidden_behaviors:
+  - fact_invention
+  - premature_finish
+- run_id: RUN_02
+  scenario_version: 1.0.0
+  name: Branch Heavy
+  purpose: Multiple positive, no-op, negative and boundary branches
+  expected_terminal: T_COMPLETED
+  correction_enabled: false
+  allowed_outputs:
+  - full_current_artifact_set
+  - branch_traceability
+  forbidden_outputs:
+  - generic_branch_collapse
+  required_behaviors:
+  - branch_specific_outcomes
+  - no_op_distinguished
+  forbidden_behaviors:
+  - unsupported_runtime_invention
+- run_id: RUN_03
+  scenario_version: 1.0.0
+  name: Invalid and Irrelevant
+  purpose: Tentative facts withdrawn or irrelevant
+  expected_terminal: T_SCENARIO_EXHAUSTED
+  correction_enabled: false
+  allowed_outputs:
+  - exhaustion_record
+  forbidden_outputs:
+  - canonical_complete_package
+  required_behaviors:
+  - withdrawal_invalidation
+  - truthful_exhaustion
+  forbidden_behaviors:
+  - force_fit
+  - withdrawn_fact_reuse
+- run_id: RUN_04
+  scenario_version: 1.0.0
+  name: Backtrack and Correct
+  purpose: Late correction with regeneration and reapproval
+  expected_terminal: T_COMPLETED
+  correction_enabled: true
+  allowed_outputs:
+  - corrected_current_artifact_set
+  - version_history
+  forbidden_outputs:
+  - stale_approved_artifacts
+  required_behaviors:
+  - invalidate_stale
+  - scoped_regeneration
+  - reapproval
+  forbidden_behaviors:
+  - approval_carryover
+  - premature_finish
+- run_id: RUN_05
+  scenario_version: 1.0.0
+  name: Incomplete Hard Stop
+  purpose: Mandatory fact permanently unavailable
+  expected_terminal: T_INPUT_BLOCKED
+  correction_enabled: false
+  allowed_outputs:
+  - blocker_evidence_record
+  forbidden_outputs:
+  - canonical_complete_package
+  required_behaviors:
+  - exact_blocker_identification
+  - no_invention
+  forbidden_behaviors:
+  - placeholder_as_fact
+  - infinite_question_loop

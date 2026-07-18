@@ -1,0 +1,19 @@
+registry_id: <playbook_namespace>.prompt_registry.v1
+playbook_id: <playbook_id>
+status: draft
+prompts:
+  - prompt_id: <namespace>.<semantic_role>.v1
+    prompt_family: <family>
+    version: 1
+    lifecycle_status: active
+    source_path: prompts/<category>/<prompt_id>.md
+    sha256: <sha256>
+    allowed_use_phases:
+      - <use_phase>
+    required_context:
+      - <context_item>
+    prohibited_authority:
+      - navigation
+      - gate_bypass
+      - state_confirmation
+    approval_record_ref: <review_record_id>

@@ -1,0 +1,37 @@
+proposal_id: asr-decomposition-0001
+source_step_ref: step.example
+status: proposed
+trigger_findings:
+  - finding_id: ASR-FINDING-001
+    gate_id: SINGLE_RESPONSIBILITY_GATE
+    diagnostic_code: ASR-SR-001
+preserved_business_intent: ''
+preserved_inputs: []
+preserved_business_rules: []
+proposed_steps:
+  - step_id: step.example.collect
+    purpose: ''
+    inputs: []
+    action: ''
+    output: ''
+    completion_criteria: []
+    validation: null
+    confirmation_required: false
+    next_step: step.example.generate
+    failure_route: step.example.collect_resolution
+proposed_transitions: []
+proposed_failure_routes: []
+confirmation_points: []
+semantic_change_assessment:
+  level: none
+  details: ''
+unresolved_questions: []
+human_decision:
+  required: false
+  status: not_required
+  decided_by: null
+  decided_at: null
+  notes: null
+re_review:
+  required: true
+  status: not_started

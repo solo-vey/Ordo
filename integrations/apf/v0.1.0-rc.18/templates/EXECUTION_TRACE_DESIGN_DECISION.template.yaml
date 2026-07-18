@@ -1,0 +1,35 @@
+execution_trace_design_decision:
+  decision_id: null
+  playbook_id: null
+  ordo_trace_schema_version: "1.0"
+  supported: true
+  enabled_by_default: true
+  capture_level: standard
+  runtime_mode: runtime_enforced
+  trace_source: runtime
+  runtime_toggle:
+    allowed: true
+    allowed_actors:
+      - administrator
+      - end_user
+    preserves_existing_traces_when_disabled: true
+  storage:
+    path: runtime/execution_trace.json
+    model: append_only_event_stream_with_references
+  retention:
+    strategy: project_defined
+    period: null
+  redaction:
+    policy_ref: runtime/trace_redaction_policy.yaml
+    secrets_forbidden: true
+    hidden_chain_of_thought_forbidden: true
+  replay:
+    mode: deterministic
+    replayable_claimed: false
+    readiness_evidence_ref: null
+  rationale: null
+  human_confirmation:
+    status: pending
+    confirmed_by: null
+    confirmed_at: null
+  unresolved_questions: []

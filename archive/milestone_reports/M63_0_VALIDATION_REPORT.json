@@ -1,0 +1,35 @@
+{
+  "milestone": "M63.0",
+  "status": "passed-planning-with-input-gate",
+  "base": "M62 line closure",
+  "target": "APF v0.1.0-rc.1",
+  "scope": "docs-only planning / delta review",
+  "rc_archive_present_in_sandbox": false,
+  "rc_archive_candidates": [],
+  "checks": {
+    "py_compile": "passed",
+    "selected_non_runtime_pytest": "35 passed",
+    "apf_historical_alpha14_lint": "passed",
+    "apf_historical_alpha14_compile": "passed",
+    "apf_historical_alpha14_test": "passed",
+    "apf_historical_alpha14_coverage": "failed_not_m63_gate_historical_import_only",
+    "book_manifest_sanity": "passed"
+  },
+  "non_goals_confirmed": [
+    "no APF rewrite",
+    "no runtime-core changes",
+    "no IR/opcode promotion",
+    "no runtime execution/scoring/calibration"
+  ],
+  "next_step": "M63.1 APF rc.1 Package Import / Metadata Sync",
+  "m63_1_input_gate": "actual APF v0.1.0-rc.1 archive required before import replacement",
+  "notes": [
+    "M63.0 is planning/delta review only; historical alpha14 APF coverage is not used as rc.1 acceptance evidence.",
+    "Maintainer-declared APF rc.1 coverage passed, but rc.1 archive was not available in sandbox for file-level verification."
+  ],
+  "book_manifest": {
+    "entries": 79,
+    "chapters": 69,
+    "missing_files": []
+  }
+}

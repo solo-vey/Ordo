@@ -1,0 +1,11 @@
+{
+  "schema_version": "ordo.evidence.run_metadata.v1",
+  "admission_status": "canonical_evidence",
+  "evidence_polarity": "negative",
+  "implementation": "instruction_only",
+  "package_version": "Memory Driver V6.0",
+  "run_id": "RUN_02",
+  "scenario_id": "S02_BRANCH_HEAVY",
+  "verdict": "failed_behavior",
+  "user_admission_confirmed": true
+}

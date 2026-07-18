@@ -1,0 +1,11 @@
+{
+  "schema_version": "ordo.benchmark.five_cycle_campaign.v1",
+  "campaign_id": "IMPCAMP-0001",
+  "diagnostic_case_id": "DIAG-0001",
+  "frozen_baseline": {},
+  "frozen_regression_selection_id": "REGSEL-0001",
+  "max_cycles": 5,
+  "cycles": [],
+  "stop_reason": null,
+  "final_decision": "CAMPAIGN_ESCALATED"
+}

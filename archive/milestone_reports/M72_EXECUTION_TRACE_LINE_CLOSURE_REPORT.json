@@ -1,0 +1,11 @@
+{
+  "milestone": "M72",
+  "status": "closed-first-wave",
+  "parts": {
+    "M72.1": "core language element",
+    "M72.2": "runtime and compiler integration",
+    "M72.3": "tooling, testing and documentation"
+  },
+  "result": "EXECUTION_TRACE is integrated across language schema, IR, compiler/runtime, replay, tests, examples and book.",
+  "open_followups": []
+}

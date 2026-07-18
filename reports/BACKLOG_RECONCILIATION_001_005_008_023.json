@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.backlog_batch_reconciliation.v1",
+  "reconciliation_id": "BL-ORDO-001-005-008-023-2026-07-18",
+  "status": "PASS",
+  "items": [
+    {
+      "id": "BL-ORDO-001",
+      "status": "closed",
+      "evidence": "reports/BL_ORDO_001_FINAL_RECONCILIATION.json"
+    },
+    {
+      "id": "BL-ORDO-005",
+      "status": "closed",
+      "evidence": "reports/BL_ORDO_005_CLOSURE.json"
+    },
+    {
+      "id": "BL-ORDO-008",
+      "status": "closed",
+      "evidence": "reports/BL_ORDO_008_CLOSURE.json"
+    },
+    {
+      "id": "BL-ORDO-023",
+      "status": "closed",
+      "evidence": "reports/BL_ORDO_023_CLOSURE.json",
+      "source_bundle_sha256": "ef4eb70c691c337d6cf87c177b118ce92474207322a6929b0fc7b548376610f4"
+    }
+  ],
+  "questions_required": false,
+  "canonical_release_created": false
+}

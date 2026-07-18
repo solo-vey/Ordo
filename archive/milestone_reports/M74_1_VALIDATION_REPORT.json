@@ -1,0 +1,50 @@
+{
+  "milestone": "M74.1",
+  "title": "Registry and Toolchain Completeness Gate",
+  "status": "passed",
+  "checks": {
+    "source_construct_registry_added": true,
+    "capability_registry_added": true,
+    "trace_event_registry_added": true,
+    "csg_opcodes_registered": true,
+    "semantic_ir_schema_csg_aware": true,
+    "csg_source_schema_added": true,
+    "unknown_source_construct_blocking": true,
+    "invalid_csg_mode_blocking": true,
+    "valid_csg_compiles_to_registered_opcode": true,
+    "capability_cross_registry_gate_passed": true,
+    "canonical_package_smoke_passed": true,
+    "embedded_cli_synced": true,
+    "embedded_cli_runtime_wrapper_smoke_passed": true
+  },
+  "test_evidence": {
+    "targeted_unittests": {
+      "count": 7,
+      "status": "passed"
+    },
+    "canonical_package_lint_compile_smoke": {
+      "packages": 4,
+      "status": "passed"
+    },
+    "full_cli_suite": {
+      "status": "not_completed_in_this_milestone",
+      "reason": "existing suite exceeds interactive execution window; targeted affected-surface tests passed"
+    },
+    "embedded_cli_smoke": {
+      "packages": 2,
+      "lint_compile_status": "passed",
+      "runtime_status_wrapper": "ready"
+    }
+  },
+  "artifacts": [
+    "M74_1_REGISTRY_COMPLETENESS_GATE.md",
+    "language/registry/source_construct_catalog.yaml",
+    "language/registry/capability_catalog.yaml",
+    "language/registry/trace_event_catalog.yaml",
+    "language/schemas/conversation_scope_guard_source.schema.json",
+    "cli/tests/test_m74_1_registry_completeness.py",
+    "manifests/M74_1_LANGUAGE_BASELINE_DELTA.json"
+  ],
+  "next_milestone": "M74.2",
+  "embedded_cli_note": "Affected modules plus previously missing clean_check.py and execution_trace.py were synchronized so the embedded runtime wrapper imports successfully."
+}

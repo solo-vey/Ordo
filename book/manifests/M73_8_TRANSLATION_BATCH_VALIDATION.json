@@ -1,0 +1,15 @@
+{
+  "milestone": "M73.8",
+  "chapters": "30-36",
+  "validation_reports_found": 7,
+  "all_passed": true,
+  "files": [
+    "chapter_30_mihratsiia_playbook_a_v_ordo.md",
+    "chapter_31_guided_intake_iak_ordo_prohrama.md",
+    "chapter_32_package_generation.md",
+    "chapter_33_shcho_lyshylos_u_freeform.md",
+    "chapter_34_minimalni_vymohy_do_avtora.md",
+    "chapter_35_iak_ne_zlamaty_playbook.md",
+    "chapter_36_iak_otsiniuvaty_pokryttia_ordo.md"
+  ]
+}

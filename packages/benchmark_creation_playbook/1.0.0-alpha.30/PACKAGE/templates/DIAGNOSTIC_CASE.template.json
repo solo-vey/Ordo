@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.benchmark.diagnostic_case.v1",
+  "diagnostic_case_id": "<DIAG-ID>",
+  "status": "open",
+  "request_ref": "<PATH>",
+  "executor_response_ref": "<PATH>",
+  "evidence_index": [],
+  "claims": [],
+  "root_cause_decision": {
+    "primary_root_cause": "RC-UNKNOWN",
+    "contributing_causes": [],
+    "confidence": "unknown",
+    "counterfactual": "unknown"
+  },
+  "recommended_patch_target": {
+    "component_type": "unknown",
+    "identifiers": []
+  },
+  "regression_implications": [],
+  "reviewer_decision": "pending"
+}

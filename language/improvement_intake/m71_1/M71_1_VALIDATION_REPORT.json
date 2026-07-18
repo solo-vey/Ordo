@@ -1,0 +1,18 @@
+{
+  "milestone": "M71.1",
+  "status": "passed",
+  "checks": {
+    "spec_added": true,
+    "schema_extended": true,
+    "design_decision_added": true,
+    "prompt_id_pattern_documented": true,
+    "family_version_lineage_documented": true,
+    "authority_boundary_preserved": true,
+    "package_diff_guard": true,
+    "runtime_compiler_opcode_guard": true,
+    "json_parse": true,
+    "yaml_parse": true
+  },
+  "archives_built": false,
+  "archives_deferred_until": "M71 closure"
+}

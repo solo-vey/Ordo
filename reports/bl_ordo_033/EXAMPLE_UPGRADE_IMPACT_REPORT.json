@@ -1,0 +1,91 @@
+{
+  "schema_version": "ordo.upgrade_impact_report.v1",
+  "playbook_id": "example-active-playbook",
+  "recorded_versions": {
+    "language": "0.12.0-preview-rc1",
+    "framework": "implicit_milestone_line"
+  },
+  "target_versions": {
+    "language": "0.13.0-rc.1",
+    "framework": "0.1.0-rc.1"
+  },
+  "overall_decision": "migration_required",
+  "actions": [
+    {
+      "change_id": "CHG-007",
+      "applies": true,
+      "action": "recommended_revalidation",
+      "instruction": "Recompile and rerun flow-reuse validation when the playbook uses shared-tail or join constructs.",
+      "backlog": [
+        "BL-ORDO-007"
+      ]
+    },
+    {
+      "change_id": "CHG-029",
+      "applies": true,
+      "action": "migration_required_when_enabled",
+      "instruction": "Declare inbound provenance for executable nodes before enabling strict transition provenance.",
+      "backlog": [
+        "BL-ORDO-028",
+        "BL-ORDO-029"
+      ]
+    },
+    {
+      "change_id": "CHG-024",
+      "applies": false,
+      "action": "no_action",
+      "instruction": "Use the pattern registry only for playbooks that opt into governed process-pattern recommendations.",
+      "backlog": [
+        "BL-ORDO-013",
+        "BL-ORDO-024"
+      ]
+    },
+    {
+      "change_id": "CHG-012",
+      "applies": true,
+      "action": "migration_required",
+      "instruction": "Add startup profile and strict artifact-sync fingerprints to packages missing them.",
+      "backlog": [
+        "BL-ORDO-012"
+      ]
+    },
+    {
+      "change_id": "CHG-011",
+      "applies": false,
+      "action": "no_action",
+      "instruction": "Audit prompt registries and keep unapproved mini-prompt candidates inactive.",
+      "backlog": [
+        "BL-ORDO-009",
+        "BL-ORDO-011"
+      ]
+    },
+    {
+      "change_id": "CHG-025",
+      "applies": false,
+      "action": "no_action",
+      "instruction": "No source migration; rerun lint under the standard resource budget.",
+      "backlog": [
+        "BL-ORDO-025"
+      ]
+    },
+    {
+      "change_id": "CHG-002",
+      "applies": false,
+      "action": "no_action",
+      "instruction": "Rerun graph and terminal-path validation for cyclic playbooks.",
+      "backlog": [
+        "BL-ORDO-002"
+      ]
+    },
+    {
+      "change_id": "CHG-032",
+      "applies": false,
+      "action": "no_action",
+      "instruction": "Use the non-destructive gate for release candidates.",
+      "backlog": [
+        "BL-ORDO-032"
+      ]
+    }
+  ],
+  "automatic_rewrite": false
+}

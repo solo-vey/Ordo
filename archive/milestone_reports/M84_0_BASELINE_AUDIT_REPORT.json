@@ -1,0 +1,269 @@
+{
+  "schema_version": "ordo.m84.baseline_audit.v1",
+  "milestone": "M84.0",
+  "status": "completed_no_mutation",
+  "baseline": {
+    "package": "ORDO_LANGUAGE_PACKAGE_M83_0_2026_07_12.zip",
+    "sha256": "23d68ec72b82d51b1c6de1e3ee9ca61d62d6c54c654c5d4d4ee59329b7d0fab7"
+  },
+  "test_reproduction": {
+    "target": "cli/tests/test_cli_workflow.py",
+    "total": 85,
+    "passed": 23,
+    "failed": 62,
+    "duration_seconds": 25.97
+  },
+  "root_cause_classification": [
+    {
+      "class": "reference_package_graph_migration_missing",
+      "severity": "blocker",
+      "evidence": "3 reference packages fail current graph validation",
+      "affected_failures": "majority/cascade"
+    },
+    {
+      "class": "init_template_not_migrated",
+      "severity": "blocker",
+      "evidence": "new init package fails lint",
+      "affected_failures": "direct"
+    },
+    {
+      "class": "compile_and_release_cascade",
+      "severity": "high",
+      "evidence": "compile stops because lint fails; downstream reports are absent",
+      "affected_failures": "secondary"
+    },
+    {
+      "class": "stale_release_self_check",
+      "severity": "high",
+      "evidence": "root self-check reports passed=148 failed=0 for an older workspace",
+      "affected_failures": "release evidence integrity"
+    }
+  ],
+  "reference_package_lint": {
+    "ordo_project_builder": {
+      "status": "failed",
+      "finding_count": 11,
+      "by_code": {
+        "GRAPH_TARGET_MISSING": 2,
+        "GRAPH_NO_TERMINAL_PATH": 9
+      },
+      "findings": [
+        {
+          "severity": "error",
+          "code": "GRAPH_TARGET_MISSING",
+          "message": "Transition target 'G_APPROVAL_BEFORE_COMPILE' does not exist and is not declared as an external terminal target.",
+          "location": "nodes[N_APPROVAL_BEFORE_COMPILE].transition"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_TARGET_MISSING",
+          "message": "Transition target 'STOP_NEEDS_APPROVAL' does not exist and is not declared as an external terminal target.",
+          "location": "nodes[N_APPROVAL_BEFORE_COMPILE].transition"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_APPROVAL_BEFORE_COMPILE cannot reach a terminal outcome.",
+          "location": "nodes[N_APPROVAL_BEFORE_COMPILE]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_DETERMINISTIC_HELPERS cannot reach a terminal outcome.",
+          "location": "nodes[N_DETERMINISTIC_HELPERS]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_MODE_SELECT cannot reach a terminal outcome.",
+          "location": "nodes[N_MODE_SELECT]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_PROCESS_RAIL_GOAL cannot reach a terminal outcome.",
+          "location": "nodes[N_PROCESS_RAIL_GOAL]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_PROJECT_DOMAIN cannot reach a terminal outcome.",
+          "location": "nodes[N_PROJECT_DOMAIN]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_PROJECT_GOAL cannot reach a terminal outcome.",
+          "location": "nodes[N_PROJECT_GOAL]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_REQUIRED_OUTPUTS cannot reach a terminal outcome.",
+          "location": "nodes[N_REQUIRED_OUTPUTS]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_ROLES cannot reach a terminal outcome.",
+          "location": "nodes[N_ROLES]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_STATE_MODEL cannot reach a terminal outcome.",
+          "location": "nodes[N_STATE_MODEL]"
+        }
+      ]
+    },
+    "ordo_hybrid_executor": {
+      "status": "failed",
+      "finding_count": 8,
+      "by_code": {
+        "GRAPH_NO_TERMINAL_PATH": 7,
+        "GRAPH_CYCLE_UNDECLARED": 1
+      },
+      "findings": [
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_CLASSIFY_INPUT cannot reach a terminal outcome.",
+          "location": "nodes[N_CLASSIFY_INPUT]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_HANDLE_DEVIATION cannot reach a terminal outcome.",
+          "location": "nodes[N_HANDLE_DEVIATION]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_INTERPRET_HELPER cannot reach a terminal outcome.",
+          "location": "nodes[N_INTERPRET_HELPER]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_LOAD_IR cannot reach a terminal outcome.",
+          "location": "nodes[N_LOAD_IR]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_NEXT_MOVE cannot reach a terminal outcome.",
+          "location": "nodes[N_NEXT_MOVE]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_OUTPUT_GATE cannot reach a terminal outcome.",
+          "location": "nodes[N_OUTPUT_GATE]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_VALIDATE_STATE cannot reach a terminal outcome.",
+          "location": "nodes[N_VALIDATE_STATE]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_CYCLE_UNDECLARED",
+          "message": "Cycle detected outside graph_contract.allowed_cycle_regions.",
+          "location": "graph_contract.allowed_cycle_regions"
+        }
+      ]
+    },
+    "history_event_guided_intake": {
+      "status": "failed",
+      "finding_count": 13,
+      "by_code": {
+        "GRAPH_TARGET_MISSING": 2,
+        "GRAPH_NO_TERMINAL_PATH": 10,
+        "SOURCE_CONSTRUCT_NOT_IN_REGISTRY": 1
+      },
+      "findings": [
+        {
+          "severity": "error",
+          "code": "GRAPH_TARGET_MISSING",
+          "message": "Transition target 'G_APPROVAL_CONFIRMED' does not exist and is not declared as an external terminal target.",
+          "location": "nodes[N_APPROVAL].transition"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_TARGET_MISSING",
+          "message": "Transition target 'STOP_NEEDS_APPROVAL' does not exist and is not declared as an external terminal target.",
+          "location": "nodes[N_APPROVAL].transition"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_APPROVAL cannot reach a terminal outcome.",
+          "location": "nodes[N_APPROVAL]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_DISPLAY_NAME_EN cannot reach a terminal outcome.",
+          "location": "nodes[N_DISPLAY_NAME_EN]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_DISPLAY_NAME_UK cannot reach a terminal outcome.",
+          "location": "nodes[N_DISPLAY_NAME_UK]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_EVENT_ALIAS cannot reach a terminal outcome.",
+          "location": "nodes[N_EVENT_ALIAS]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_EVENT_GOAL cannot reach a terminal outcome.",
+          "location": "nodes[N_EVENT_GOAL]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_PATH_SELECT cannot reach a terminal outcome.",
+          "location": "nodes[N_PATH_SELECT]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_QA_SCOPE cannot reach a terminal outcome.",
+          "location": "nodes[N_QA_SCOPE]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_SOURCE_FIELD cannot reach a terminal outcome.",
+          "location": "nodes[N_SOURCE_FIELD]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_TEST_STRATEGY_CONTRACT cannot reach a terminal outcome.",
+          "location": "nodes[N_TEST_STRATEGY_CONTRACT]"
+        },
+        {
+          "severity": "error",
+          "code": "GRAPH_NO_TERMINAL_PATH",
+          "message": "Reachable active node N_VALUE_SEMANTICS cannot reach a terminal outcome.",
+          "location": "nodes[N_VALUE_SEMANTICS]"
+        },
+        {
+          "severity": "error",
+          "code": "SOURCE_CONSTRUCT_NOT_IN_REGISTRY",
+          "message": "Top-level source construct is not registered: artifact_sync",
+          "location": "artifact_sync"
+        }
+      ]
+    }
+  },
+  "conclusion": "The validator is correctly detecting real graph defects. M84.1 must migrate reference packages and init templates; validator weakening is prohibited.",
+  "mutation": "none"
+}

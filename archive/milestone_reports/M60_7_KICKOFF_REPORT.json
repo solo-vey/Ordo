@@ -1,0 +1,32 @@
+{
+  "milestone": "M60.7 kickoff",
+  "generated_at": "2026-07-08T08:30:00+02:00",
+  "status": "passed-design-only-with-known-runtime-harness-blocker",
+  "stable_base": "M60.6.4 Transcript Replay / Model Benchmark Pilot",
+  "blocked_experiments_not_stable": ["M60.6.5", "M60.6.4.1"],
+  "added_artifacts": [
+    "M60_6_LINE_CLOSURE_REPORT.md",
+    "M60_6_LINE_CLOSURE_REPORT.json",
+    "M60_7_REAL_MODULE_TESTCASE_GENERATION_KICKOFF.md",
+    "M60_7_REAL_MODULE_TESTCASE_GENERATION_KICKOFF.json",
+    "M60_7_VALIDATION_REPORT.json",
+    "ordo_pathwalk/REAL_MODULE_TESTCASE_GENERATION.md",
+    "chapters/chapter_61_real_module_testcase_generation.md"
+  ],
+  "checks": {
+    "workspace_py_compile": "passed",
+    "workspace_selected_non_runtime_pathwalk_tests": "20 passed",
+    "pathwalk_rc_py_compile": "passed",
+    "pathwalk_rc_selected_tests_with_dev_bundle_cli": "11 passed",
+    "book_manifest_sanity": "passed",
+    "zip_extraction_check": "passed"
+  },
+  "not_release_gate": {
+    "full_runtime_harness_matrix_tests": "not run as gate due to known child-process hang blocker from blocked experimental M60.6 branches"
+  },
+  "weights_changed": false,
+  "runtime_core_semantics_changed": false,
+  "real_model_api_benchmark_run": false,
+  "pdf_generated": false,
+  "recommended_next_step": "M60.7.1 Source YAML Loader and Real Module Graph Summary"
+}

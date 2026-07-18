@@ -1,0 +1,39 @@
+# APF Interaction Model
+# Alignment target: Ordo v0.12 M64.2 accepted docs/schema convention.
+# Enforcement status: package policy; not claimed as deterministic runtime enforcement.
+
+interaction_model:
+  human_role: process_owner
+  ai_role: guided_process_driver
+  cli_role: deterministic_validator
+  raw_tool_output_policy: summarize_before_user
+  decision_authority:
+    content_decisions: human
+    routing_suggestions: ai
+    deterministic_checks: cli
+    final_release_decision: human
+  review_points:
+    - approve_program_contract
+    - approve_process_rail_contract
+    - approve_prompt_registry_migration
+    - approve_validation_profile
+    - approve_final_package
+
+apf_interaction_constraints:
+  ai_may:
+    - guide_the_authoring_process
+    - draft_apf_artifacts
+    - recommend_routing_under_declared_rules
+    - summarize_validation_evidence
+  ai_must_not:
+    - silently_approve_content_decisions
+    - silently_change_process_rail
+    - silently_start_deferred_backlog
+    - declare_final_release_without_human_confirmation
+  cli_may:
+    - perform_declared_mechanical_validation
+    - generate_validation_evidence
+  cli_must_not:
+    - decide_domain_meaning
+    - approve_process_changes
+    - replace_human_release_authority

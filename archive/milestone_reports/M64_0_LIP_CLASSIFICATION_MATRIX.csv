@@ -1,0 +1,16 @@
+lip_id,title,priority,initial_home,target_milestone,m64_0_decision,notes
+LIP-01,Program-level contract layer,P0,schema convention + package authoring standard,M64.1,Accept first wave,Do not promote to opcode; define top-level contract schema and review block first.
+LIP-02,Interaction model,P0,schema convention + validation/lint candidate,M64.2,Accept first wave,Document human/AI/CLI ownership and raw-tool-output policy.
+LIP-03,Process rail definition,P0,process model convention,M64.2,Accept first wave,Policy layer for deviation/resume/backtracking; no deterministic classifier yet.
+LIP-04,Conversation semantics,P0,schema convention + runtime/lint candidate later,M64.2,Accept as policy contract,Allowed input classes and routing policies; not a full NL classifier.
+LIP-05,Hybrid execution model,P0,package standard + runtime profile convention,M64.2,Accept first wave,Clarifies AI driver / CLI validator / human reviewer boundary.
+LIP-06,Program-level approval gate,P0,gate standard / lint candidate,M64.3,Accept as lint/profile design,Implement as documented gate and validation profile before compiler/IR semantics.
+LIP-07,Package profile and startup gates,P1,package standard,M64.4,Defer after first wave,Generalize compile/start-prompt/README startup gates.
+LIP-08,Derived artifact synchronization,P1,package validation standard,M64.5,Defer after first wave,Use warning/error modes; avoid making every stale doc a blocker.
+LIP-09,SVG graph artifact standard,P1,companion utility/package artifact standard,M64.6,Defer after first wave,"Promote provenance/manifest standard only, not renderer implementation."
+LIP-10,Delta backlog convention,P1,release discipline/package standard,M64.4 or M64.5,Accept as backlog discipline,Preserve cross-chat improvement prompts with structured metadata.
+LIP-11,FLOW.JOIN / SHARED.TAIL.REFERENCE,P2,future IR design candidate,M64.8 or M65,Design spike only,Do not implement quickly; affects graph/IR/compiler/path enumeration/rendering.
+LIP-12,Real-module testcase generation mode,P2,companion utility/testing standard,M64.7 or M65,Defer,Artifact generation is useful; runtime execution/scoring remains out of scope.
+LIP-13,Two-tier rendering model for output templates,P1,language/rendering docs + renderer capability standard,M64.4+,Docs hardening,"Already partially present; improve guide and validation expectations, not new core runtime."
+LIP-14,Attribute/value schema documentation standard,P1,language book + schema docs,M64.4+,Accept as documentation standard,Every YAML field needs meaning/type/enum values/compiler behavior/validation behavior.
+LIP-15,Visual graph annotation/highlight standard,P2,graph utility feature standard,M64.6+,Defer,Useful companion utility extension; not language core.

@@ -1,0 +1,19 @@
+{
+  "schema": "ordo.post_unpack_verification.v1",
+  "release": "0.1.0-alpha.3",
+  "status": "passed",
+  "archive": "EXTERNAL_WORKFLOW_PREPARATION_0.1.0-alpha.3.zip",
+  "archive_sha256": "bf5205223911f6c2b72770567f5d6bdb153126072568e89f4afd8b58f91d0751",
+  "zip_integrity": "passed",
+  "checksum_entries": 36,
+  "checksum_failures": [],
+  "validator": {
+    "status": "passed",
+    "errors": [],
+    "yaml_files": 4,
+    "json_files": 17,
+    "node_count": 25,
+    "gate_count": 12
+  },
+  "generated_at": "2026-07-15T13:05:42.536666+00:00"
+}

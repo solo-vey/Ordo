@@ -1,0 +1,44 @@
+{
+  "milestone": "M60.3_SELF_CHECK_DOCSYNC",
+  "date": "2026-07-07",
+  "status": "passed",
+  "scope": [
+    "self-check of M60.3 runtime/CLI/package behavior",
+    "language documentation sync",
+    "book source chapter sync only; no compiled book/PDF generation"
+  ],
+  "code_changes": "none",
+  "documentation_changes": [
+    "language/CURRENT_VERSION.md updated with M60.3",
+    "language/MULTI_TARGET_RUNTIME_COMPILATION.md rewritten for M60.3",
+    "language/RUNTIME_GUIDED_INTAKE_PROTOCOL.md updated for embedded CLI, runtime_view, evidence, trace",
+    "docs/runtime_guided_intake_entry_protocol.md updated",
+    "language/PACKAGE_PROFILES.md updated for target manifest/runtime_view modes",
+    "language/RUNTIME_PACKAGE_STANDARD.md updated for multi-target runtime packages",
+    "language/README.md and language/CHANGELOG.md updated"
+  ],
+  "book_source_changes": [
+    "chapter_53_cli_enforced_runtime_package.md updated from M59.1-only to full M59 trust layer",
+    "chapter_54_multi_target_runtime_compilation.md added",
+    "chapter_55_ordo_code_runtime_view.md added",
+    "chapter_56_session_trace_proof_program.md added",
+    "chapter_49_runtime_guided_intake_entry_protocol.md updated to current embedded CLI protocol",
+    "book_manifest.json updated; STRUCTURE_AUDIT.json updated",
+    "appendix_a_slovnyk_ordo.md updated with M60 terms"
+  ],
+  "book_generation": {
+    "compiled_all_in_one_regenerated": false,
+    "pdf_regenerated": false
+  },
+  "validation": {
+    "cli_regression_class_split": "76/76 tests passed across 18 classes",
+    "m60_target_trace_modes": "passed",
+    "repo_check": "passed",
+    "book_manifest_files": "passed",
+    "stale_runtime_protocol_grep": "passed"
+  },
+  "notes": [
+    "Full unittest as a single process produced too much output/long runtime in this environment, so validation was performed as class-split runs.",
+    "No runtime engine behavior was changed in this patch."
+  ]
+}

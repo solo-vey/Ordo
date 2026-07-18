@@ -1,0 +1,48 @@
+{
+  "milestone": "M46.2",
+  "title": "Compile/Coverage Contract → Artifact Checks",
+  "status": "passed",
+  "created_at": "2026-07-06T14:39:52.726207+00:00",
+  "scope": {
+    "implemented": [
+      "source-level contract/artifact reference checks in ordo compile",
+      "confirmed contract to artifact mapping checks in ordo coverage",
+      "contract/artifact coverage declarations in ordo_project_builder",
+      "History Event regression coverage declarations",
+      "CLI regression tests for unknown fields and missing mappings",
+      "book source Markdown update without PDF regeneration"
+    ],
+    "not_implemented_in_this_slice": [
+      "rendered artifact content validation",
+      "consistency command",
+      "go-no-go command",
+      "run-state confirmed/candidate semantic validation beyond existing validate-state"
+    ]
+  },
+  "checks": {
+    "cli_unit_tests": "passed (11 tests)",
+    "active_packages_lint_compile_test_coverage": "passed",
+    "project_builder_validate_state_next_step": "passed",
+    "hybrid_executor_validate_state_next_step": "passed",
+    "history_event_lock_validate_lock_intake_generate_output_validate_output": "passed",
+    "repo_check": "passed with PYTHONDONTWRITEBYTECODE=1 after cache cleanup"
+  },
+  "changed_files_high_level": [
+    "cli/ordo/contract_coverage.py",
+    "cli/ordo/compiler.py",
+    "cli/ordo/coverage.py",
+    "cli/ordo/cli.py",
+    "cli/tests/test_cli_workflow.py",
+    "packages/ordo_project_builder/source/program.ordo.yaml",
+    "packages/history_event_guided_intake/source/program.ordo.yaml",
+    "language/COMPILE_COVERAGE_CONTRACT_CHECKS.md",
+    "cli/docs/CONTRACT_ARTIFACT_COVERAGE_M46_2.md",
+    "book/source/chapters/chapter_41_contract_artifact_coverage_go_no_go.md",
+    "book/source/chapters/appendix_b_kataloh_op_kodiv.md"
+  ],
+  "known_limitations": [
+    "M46.2 validates declared mappings only; it does not inspect rendered artifact content.",
+    "M46.2 coverage checks source-level confirmed contracts, not full run-state status transitions.",
+    "Full validate-artifacts, consistency and go-no-go remain future M46 slices."
+  ]
+}

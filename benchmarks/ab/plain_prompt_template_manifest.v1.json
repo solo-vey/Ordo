@@ -1,0 +1,29 @@
+{
+  "schema_version": "ordo.plain_prompt_template_manifest.v1",
+  "template_version": "M87.3-plain-prompt-v1",
+  "arm": "A",
+  "benchmark_id": "ordo-vs-plain-prompt-v1",
+  "allowed_content": [
+    "task title",
+    "shared scenario",
+    "shared request",
+    "shared facts",
+    "shared acceptance criteria",
+    "shared required output fields",
+    "generic instruction not to invent missing facts"
+  ],
+  "forbidden_content": [
+    "Ordo terminology",
+    "Ordo gates",
+    "Ordo state model",
+    "Ordo execution modes",
+    "Ordo examples",
+    "facts not present in the shared task dataset"
+  ],
+  "sampling_defaults": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_output_tokens": 4096,
+    "max_attempts": 1
+  }
+}

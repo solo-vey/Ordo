@@ -1,0 +1,52 @@
+# APF Process Rail and Conversation Semantics
+# Alignment target: Ordo v0.12 M64.2 accepted docs/schema convention.
+# Enforcement status: AI-guided/package-level policy; runtime enforcement is not overclaimed.
+
+process_rail:
+  rail_id: apf_playbook_authoring_default_rail
+  state_tracking: required
+  allow_deviation: true
+  require_resume_after_deviation: true
+  resume_policy: return_to_last_unresolved_question
+  backtracking: restricted
+  backtracking_policy:
+    invalidates_dependent_state: true
+    requires_review_before_continue: true
+    preserve_artifacts_until_reconfirmed: true
+  skip_ahead_policy: capture_as_future_context
+  stale_answer_policy: require_reconfirmation
+
+conversation_semantics:
+  input_classes:
+    - answer_current_node
+    - clarification
+    - deviation
+    - backtrack_request
+    - new_requirement
+    - approval
+    - refusal
+    - out_of_scope
+  routing_rules:
+    answer_current_node: evaluate_current_node_gate
+    clarification: answer_without_state_change
+    deviation: answer_then_resume
+    backtrack_request: apply_backtracking_policy
+    new_requirement: capture_and_route_to_change_review
+    approval: evaluate_declared_approval_gate
+    refusal: keep_current_gate_open_and_record_rejection
+    out_of_scope: reject_as_out_of_scope
+  unmatched_input_policy: clarify_before_state_change
+  clarification_policy: do_not_advance_node
+  resume_policy: return_to_last_unresolved_question
+
+apf_state_semantics:
+  current_position_source: earliest_unresolved_required_checkpoint
+  side_question_effect: no_state_change
+  future_context_effect: store_without_advancing
+  changed_prior_answer_effect:
+    - mark_dependent_decisions_stale
+    - mark_dependent_artifacts_not_current
+    - require_impact_review
+    - require_reconfirmation_before_continue
+  approval_effect: close_only_the_explicitly_named_gate
+  refusal_effect: preserve_open_gate_and_return_to_revision

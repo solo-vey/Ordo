@@ -1,0 +1,30 @@
+suite_id: CSG-2-STRICTNESS-ESCALATION
+cases:
+- id: TC_CSG2_LEVEL1
+  deviation_count: 1
+  expected_action: gentle_redirect
+- id: TC_CSG2_LEVEL2
+  deviation_count: 2
+  expected_action: explicit_scope_reminder
+- id: TC_CSG2_LEVEL3
+  deviation_count: 3
+  expected_action: offer_pause_or_exit
+- id: TC_CSG2_LEVEL4
+  deviation_count: 4
+  expected_action: suspend_until_process_choice
+  completed: false
+  state_preserved: true
+- id: TC_CSG2_RESET_VALID_ANSWER
+  event: valid_process_answer
+  expected_level: 0
+- id: TC_CSG2_RESET_NODE_TRANSITION
+  event: node_transition
+  expected_level: 0
+- id: TC_CSG2_NON_DEVIATION_NO_INCREMENT
+  classification: clarification
+  increment: false
+- id: TC_CSG2_LOCKED_ESCAPE
+  mode: locked_process
+  allowed:
+  - pause_request
+  - exit_request

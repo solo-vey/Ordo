@@ -1,0 +1,221 @@
+{
+  "manifest_id": "history_event_factory_prompt_manifest",
+  "version": "0.2",
+  "milestone": "M71.3",
+  "package": "history_event.guided_intake",
+  "prompt_root": "prompts/",
+  "identity_model": "stable_semantic_prompt_ids_v1",
+  "prompts": [
+    {
+      "prompt_id": "hp.package.quick_start.v1",
+      "prompt_family": "hp.package.quick_start",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "quick_start_prompt",
+      "path": "prompts/hp.package.quick_start.v1.md",
+      "type": "package_bootstrap",
+      "required": true,
+      "sha256": "e2af276ba2556e0723e5454be6b3eb41a3e25508e6b0c6dfefa1718994e41928",
+      "bytes": 808
+    },
+    {
+      "prompt_id": "hp.runtime.start.v1",
+      "prompt_family": "hp.runtime.start",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "history_event_runtime_start_prompt",
+      "path": "prompts/hp.runtime.start.v1.md",
+      "type": "runtime_start",
+      "required": "recommended",
+      "sha256": "fedcc683d7bd44c81b0e47a1c7d2e23326a959053c370a6e6e913eb6a5b6da39",
+      "bytes": 1105
+    },
+    {
+      "prompt_id": "hp.source_type.clarification.v1",
+      "prompt_family": "hp.source_type.clarification",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "N_PATH_SELECT_source_type_clarification",
+      "path": "prompts/hp.source_type.clarification.v1.md",
+      "type": "node_helper",
+      "required": "recommended",
+      "sha256": "2bd79b08b817f5ce9d47ceff378a9334e7ba02542667f34b9bdd42f9d30fa4d0",
+      "bytes": 1136
+    },
+    {
+      "prompt_id": "hp.source_row.intake.v1",
+      "prompt_family": "hp.source_row.intake",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "N_SOURCE_FIELD_external_fact_intake_helper",
+      "path": "prompts/hp.source_row.intake.v1.md",
+      "type": "node_helper",
+      "required": "conditional",
+      "sha256": "bdcda1458aca313396f215348e20c4e77928b9285038bf2277ebc8a3e8081597",
+      "bytes": 1136
+    },
+    {
+      "prompt_id": "hp.normalization.value_comparison.v1",
+      "prompt_family": "hp.normalization.value_comparison",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "N_VALUE_SEMANTICS_comparison_rule_helper",
+      "path": "prompts/hp.normalization.value_comparison.v1.md",
+      "type": "node_helper",
+      "required": "recommended",
+      "sha256": "de24dd70cda64ffbc16219cf1fcde1a8cb60c6aaf5a93296bf7a8f7c1c3849ae",
+      "bytes": 1164
+    },
+    {
+      "prompt_id": "hp.localization.bilingual_texts.v1",
+      "prompt_family": "hp.localization.bilingual_texts",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "N_DISPLAY_TEXTS_human_ui_texts_helper",
+      "path": "prompts/hp.localization.bilingual_texts.v1.md",
+      "type": "node_helper",
+      "required": "recommended",
+      "sha256": "9d41fe7059d46feaa4e5800ca389349c1dffd4bafa4759f9c9ff424342b7fa62",
+      "bytes": 961
+    },
+    {
+      "prompt_id": "hp.artifact.history_event_passport.v1",
+      "prompt_family": "hp.artifact.history_event_passport",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "passport_generation_helper",
+      "path": "prompts/hp.artifact.history_event_passport.v1.md",
+      "type": "artifact_helper",
+      "required": "recommended",
+      "sha256": "8a6fb71d7053eae49c98db9b1cbde9dc721932f7d35f5a263e50c877a54095e9",
+      "bytes": 812
+    },
+    {
+      "prompt_id": "hp.artifact.jira_task.v1",
+      "prompt_family": "hp.artifact.jira_task",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "jira_task_generation_helper",
+      "path": "prompts/hp.artifact.jira_task.v1.md",
+      "type": "artifact_helper",
+      "required": "recommended",
+      "sha256": "7c784b7663aee8cbc23a8dfc0cc2a227c2402119aef8617f799e0610ae3caa3c",
+      "bytes": 770
+    },
+    {
+      "prompt_id": "hp.artifact.implementation_prompt.v1",
+      "prompt_family": "hp.artifact.implementation_prompt",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "implementation_prompt_generation_helper",
+      "path": "prompts/hp.artifact.implementation_prompt.v1.md",
+      "type": "artifact_helper",
+      "required": "recommended",
+      "sha256": "9c568f9a74b9f508d140ed007ffe4cfb381ee11f0e9637a3c02ad12859c7c126",
+      "bytes": 854
+    },
+    {
+      "prompt_id": "hp.qa.package_generation.v1",
+      "prompt_family": "hp.qa.package_generation",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "qa_package_generation_helper",
+      "path": "prompts/hp.qa.package_generation.v1.md",
+      "type": "artifact_helper",
+      "required": "recommended",
+      "sha256": "a9e6146238fee801d929d392338adce826df34c2a6c0494df8e36752f8032746",
+      "bytes": 823
+    },
+    {
+      "prompt_id": "hp.repair.gate_failure_explanation.v1",
+      "prompt_family": "hp.repair.gate_failure_explanation",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "gate_failure_explanation_helper",
+      "path": "prompts/hp.repair.gate_failure_explanation.v1.md",
+      "type": "repair_helper",
+      "required": "recommended",
+      "sha256": "1db47fed699c30c3574465aadecc5072e7328478e9bada4f128af18bb0ad945a",
+      "bytes": 688
+    },
+    {
+      "prompt_id": "hp.repair.backtracking_invalidation.v1",
+      "prompt_family": "hp.repair.backtracking_invalidation",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "backtracking_invalidation_helper",
+      "path": "prompts/hp.repair.backtracking_invalidation.v1.md",
+      "type": "repair_helper",
+      "required": "conditional",
+      "sha256": "3791034d1f4a9c9d48fb2ed9614be06a8e2bd0bd6e7948c9d3ead633bda2ced1",
+      "bytes": 774,
+      "required_when": "runtime emits an explicit backtrack event and downstream invalidation explanation is needed"
+    },
+    {
+      "prompt_id": "hp.repair.missing_artifact_resolution.v1",
+      "prompt_family": "hp.repair.missing_artifact_resolution",
+      "version": 1,
+      "supersedes": null,
+      "legacy_prompt_id": "missing_artifact_resolution_helper",
+      "path": "prompts/hp.repair.missing_artifact_resolution.v1.md",
+      "type": "repair_helper",
+      "required": "recommended",
+      "sha256": "3068b26009a6869a3d82baccb482a13807bfd207cd07eb82632b30035f4fc7f7",
+      "bytes": 832
+    }
+  ],
+  "legacy_id_mappings": [
+    {
+      "legacy_prompt_id": "quick_start_prompt",
+      "prompt_id": "hp.package.quick_start.v1"
+    },
+    {
+      "legacy_prompt_id": "history_event_runtime_start_prompt",
+      "prompt_id": "hp.runtime.start.v1"
+    },
+    {
+      "legacy_prompt_id": "N_PATH_SELECT_source_type_clarification",
+      "prompt_id": "hp.source_type.clarification.v1"
+    },
+    {
+      "legacy_prompt_id": "N_SOURCE_FIELD_external_fact_intake_helper",
+      "prompt_id": "hp.source_row.intake.v1"
+    },
+    {
+      "legacy_prompt_id": "N_VALUE_SEMANTICS_comparison_rule_helper",
+      "prompt_id": "hp.normalization.value_comparison.v1"
+    },
+    {
+      "legacy_prompt_id": "N_DISPLAY_TEXTS_human_ui_texts_helper",
+      "prompt_id": "hp.localization.bilingual_texts.v1"
+    },
+    {
+      "legacy_prompt_id": "passport_generation_helper",
+      "prompt_id": "hp.artifact.history_event_passport.v1"
+    },
+    {
+      "legacy_prompt_id": "jira_task_generation_helper",
+      "prompt_id": "hp.artifact.jira_task.v1"
+    },
+    {
+      "legacy_prompt_id": "implementation_prompt_generation_helper",
+      "prompt_id": "hp.artifact.implementation_prompt.v1"
+    },
+    {
+      "legacy_prompt_id": "qa_package_generation_helper",
+      "prompt_id": "hp.qa.package_generation.v1"
+    },
+    {
+      "legacy_prompt_id": "gate_failure_explanation_helper",
+      "prompt_id": "hp.repair.gate_failure_explanation.v1"
+    },
+    {
+      "legacy_prompt_id": "backtracking_invalidation_helper",
+      "prompt_id": "hp.repair.backtracking_invalidation.v1"
+    },
+    {
+      "legacy_prompt_id": "missing_artifact_resolution_helper",
+      "prompt_id": "hp.repair.missing_artifact_resolution.v1"
+    }
+  ]
+}

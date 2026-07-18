@@ -1,0 +1,68 @@
+output_templates:
+- id: HISTORY_EVENT_PASSPORT
+  type: document
+  format: markdown
+  path: 01_HISTORY_EVENT_PASSPORT_{{ state.event_alias | safe_name }}.md
+  template: templates/01_history_event_passport.md
+  source: state
+  allowed_after:
+  - OUT_HISTORY_EVENT_PACKAGE
+  render_mode: deterministic
+  renderer: ordo.simple
+  requires_model_rendering: false
+- id: JIRA_TASK
+  type: document
+  format: markdown
+  path: 02_JIRA_TASK_{{ state.event_alias | safe_name }}.md
+  template: templates/02_jira_task.md
+  source: state
+  allowed_after:
+  - OUT_HISTORY_EVENT_PACKAGE
+  render_mode: deterministic
+  renderer: ordo.simple
+  requires_model_rendering: false
+- id: IMPLEMENTATION_PROMPT
+  type: document
+  format: markdown
+  path: 04_IMPLEMENTATION_PROMPT_{{ state.event_alias | safe_name }}.md
+  template: templates/04_implementation_prompt.md
+  source: state
+  allowed_after:
+  - OUT_HISTORY_EVENT_PACKAGE
+  render_mode: deterministic
+  renderer: ordo.simple
+  requires_model_rendering: false
+- id: QA_PACKAGE
+  type: document
+  format: markdown
+  path: 05_QA_PACKAGE_{{ state.event_alias | safe_name }}.md
+  template: templates/05_qa_package.md
+  source: state
+  allowed_after:
+  - OUT_HISTORY_EVENT_PACKAGE
+  render_mode: deterministic
+  renderer: ordo.simple
+  requires_model_rendering: false
+model_assisted_output_templates:
+- id: QA_AUTOMATION_SPEC_MODEL_ASSISTED
+  type: document
+  format: yaml
+  path: 08_QA_AUTOMATION_SPEC_{{ state.event_alias | safe_name }}.yaml
+  template: templates/08_qa_automation_spec_model_assisted.yaml
+  source: state
+  allowed_after:
+  - OUT_HISTORY_EVENT_PACKAGE
+  render_mode: model_assisted
+  renderer: ai.yaml
+  requires_model_rendering: true
+  validation: strict_confirmed_state_only
+  tbd_policy: preserve_tbd_until_confirmed
+  m45_deterministic_renderer_compatible: false
+  explicit_tbd_defaults:
+  - ⚠️ TBD
+  forbidden_unconfirmed_terms:
+  - InventedProviderClass
+  forbidden_inference_rules:
+  - Do not infer Java/provider class names that are not confirmed in state.
+  - Do not remove ⚠️ TBD markers unless a confirmed state field supplies the value.
+  - Do not mark candidate or proposed values as confirmed.

@@ -1,0 +1,27 @@
+{
+  "report_id": "ORDO_DELIVERY_GATE_2026_07_12",
+  "generated_at": "2026-07-12T21:25:42.052688Z",
+  "generated_by": "tools/build_release_archive.py",
+  "status": "passed",
+  "tests": {
+    "test_files": 59,
+    "passed": 416,
+    "failed": 0,
+    "collection_or_run_errors": 0,
+    "failing_files": [],
+    "skipped_heavy_tests": [
+      "test_m76_1_apf_graph_validation.py::test_linter_integrates_graph_gate"
+    ],
+    "execution_mode": "partitioned per test file"
+  },
+  "package_lints": {
+    "history_event_guided_intake": "passed",
+    "ordo_applied_project_factory": "skipped_heavy_env",
+    "ordo_hybrid_executor": "passed",
+    "ordo_project_builder": "passed"
+  },
+  "manifest_sync": "passed",
+  "root_hygiene": "passed",
+  "blocking_issues": [],
+  "policy": "The project archive may only be produced by this script while status is passed."
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.current_state_exclusion_report.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "categories"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.current_state_exclusion_report.v1"
+    },
+    "categories": {
+      "type": "array"
+    }
+  }
+}

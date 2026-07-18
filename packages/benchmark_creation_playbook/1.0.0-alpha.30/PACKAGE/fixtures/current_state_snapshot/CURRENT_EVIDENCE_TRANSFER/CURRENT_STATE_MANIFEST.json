@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.current_state_manifest.v1",
+  "dataset_version": "fixture-v1",
+  "transfer_version": "1",
+  "source_archive": {
+    "filename": "fixture-source",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "selection_policy": "CURRENT_STATE_ONLY",
+  "retained": {
+    "total_files": 5,
+    "accepted_runs": [
+      "run.case1"
+    ],
+    "current_packages": [
+      "playbook.main"
+    ]
+  },
+  "excluded": {
+    "file_count": 2
+  },
+  "known_limitations": []
+}

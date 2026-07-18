@@ -1,0 +1,10 @@
+{
+  "run_id": "RUN_01",
+  "methodology_binding": {
+    "methodology_version": "1.0.0",
+    "methodology_sha256": "e1028f344b58d0c4b55a8b0b96b2a79bed066a453a3c50e03272ae38a78a02fc",
+    "profile_version": "1.0.0",
+    "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "effective_methodology_sha256": "d775710822aabd90eaf9a176e8e6016bb6ed05fee67f0151fc58d60fa33d9b25"
+  }
+}

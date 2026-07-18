@@ -1,0 +1,23 @@
+{
+  "backlog_item": "BL-ORDO-007",
+  "status": "closed",
+  "milestone": "M88.0",
+  "summary": "First-class stable optional flow reuse semantics validated in two real packages.",
+  "evidence": {
+    "real_packages": [
+      "ordo_applied_project_factory",
+      "ordo_hybrid_executor"
+    ],
+    "maturity": "stable_optional",
+    "deterministic_return_to": true,
+    "bounded_call_depth": true,
+    "recursive_entry_fail_closed": true,
+    "state_import_export_allowlists": true,
+    "provenance_preserved": true,
+    "automatic_rewrite": false
+  },
+  "tests": {
+    "focused": "43/43 passed"
+  },
+  "blocking_issues": 0
+}

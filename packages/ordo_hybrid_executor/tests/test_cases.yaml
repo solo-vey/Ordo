@@ -1,0 +1,100 @@
+test_cases:
+  - id: TC_IR_LOADED_GATE
+    fixture:
+      state:
+        semantic_ir_loaded: true
+    expected:
+      gates:
+        - id: G_IR_LOADED
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_LOAD_IR
+
+  - id: TC_INPUT_CLASSIFIED_GATE
+    fixture:
+      state:
+        human_input_classified: answer_current_question
+    expected:
+      gates:
+        - id: G_INPUT_CLASSIFIED
+          method: self_verification
+          trust_class: model_judgment
+          status: passed
+      node: N_CLASSIFY_INPUT
+
+  - id: TC_STATE_VALIDATED_GATE
+    fixture:
+      state:
+        rail_state_validated: true
+    expected:
+      gates:
+        - id: G_STATE_VALIDATED
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_VALIDATE_STATE
+
+  - id: TC_HELPER_INTERPRETED_GATE
+    fixture:
+      state:
+        helper_result_interpreted: true
+    expected:
+      gates:
+        - id: G_HELPER_INTERPRETED
+          method: self_verification
+          trust_class: model_judgment
+          status: passed
+      node: N_INTERPRET_HELPER
+
+  - id: TC_RESUME_AFTER_DEVIATION_GATE
+    fixture:
+      state:
+        deviation_detected: true
+        resume_after_deviation: true
+    expected:
+      gates:
+        - id: G_RESUME_AFTER_DEVIATION
+          method: self_consistency
+          trust_class: repeated_model_judgment
+          status: passed
+      node: N_HANDLE_DEVIATION
+
+  - id: TC_OUTPUT_ALLOWED_GATE
+    fixture:
+      state:
+        output_allowed_by_gate: true
+    expected:
+      gates:
+        - id: G_OUTPUT_ALLOWED
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_OUTPUT_GATE
+
+  - id: TC_AI_EXECUTOR_LEADS
+    fixture:
+      ai_role: ordo_executor
+    expected:
+      assertions:
+        - id: A_AI_EXECUTOR_LEADS_EXECUTION
+          projection: EXPECT.MUST
+      node: N_NEXT_MOVE
+
+  - id: TC_CLI_IS_HELPER
+    fixture:
+      cli_role: deterministic_helper
+    expected:
+      assertions:
+        - id: A_CLI_IS_HELPER_NOT_CHAT_RUNTIME
+          projection: EXPECT.MUST
+      node: N_VALIDATE_STATE
+
+  - id: TC_NO_RAW_TOOL_OUTPUT
+    fixture:
+      raw_cli_output: machine_json
+    expected:
+      assertions:
+        - id: A_RAW_TOOL_OUTPUT_NOT_EXPOSED
+          projection: EXPECT.NOT
+      node: N_INTERPRET_HELPER

@@ -1,0 +1,33 @@
+suite_id: CSG-4-AUTHORING-PACKAGE
+cases:
+- id: TC_CSG4_ENABLED_CONFIRMED
+  enabled: true
+  confirmed: true
+  generate_artifacts: true
+- id: TC_CSG4_DISABLED_CONFIRMED
+  enabled: false
+  decision_status: confirmed_not_required
+  active_artifacts_required: false
+- id: TC_CSG4_NO_SILENT_ACTIVATION
+  profile_recommends: true
+  confirmed: false
+  enabled: false
+- id: TC_CSG4_DOMAIN_CONSTRAINT
+  domain_minimum_mode: strict_redirect
+  silent_activation: false
+- id: TC_CSG4_PACKAGE_ARTIFACTS
+  enabled: true
+  required_artifact_count: 4
+- id: TC_CSG4_TESTS_REQUIRED
+  enabled: true
+  tests_generated: true
+- id: TC_CSG4_MANIFEST_MATCH
+  manifest_enabled: true
+  source_enabled: true
+  passed: true
+- id: TC_CSG4_DISABLED_NOT_ACTIVE
+  enabled: false
+  rendered_active_behavior: false
+- id: TC_CSG4_APF_BOUNDARY
+  generated_policy_enabled: true
+  apf_self_guard_enabled: false

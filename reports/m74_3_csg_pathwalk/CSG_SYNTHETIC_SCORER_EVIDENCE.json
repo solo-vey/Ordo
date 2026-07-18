@@ -1,0 +1,194 @@
+{
+  "schema_version": "ordo.csg.model_evidence.v1",
+  "benchmark_mode": "synthetic",
+  "run_id": "M74.3-SCORER-SELFTEST",
+  "model": {
+    "provider": "offline",
+    "name": "synthetic-perfect-evidence",
+    "driver": "fixture"
+  },
+  "predictions": [
+    {
+      "case_id": "CSG-ACTIVE-01",
+      "classification": "answer_to_active_question",
+      "action": "accept_answer",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-ACTIVE-02",
+      "classification": "answer_to_active_question",
+      "action": "accept_answer",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "classification": "clarification",
+      "action": "clarify_active_step",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-CLARIFY-02",
+      "classification": "clarification",
+      "action": "clarify_active_step",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "apply_correction",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "apply_correction",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "backtrack",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-BACKTRACK-02",
+      "classification": "backtrack_request",
+      "action": "backtrack",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-REQCHANGE-01",
+      "classification": "requirement_change",
+      "action": "reopen_contract",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-REQCHANGE-02",
+      "classification": "requirement_change",
+      "action": "reopen_contract",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "pause_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "pause_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-RESUME-01",
+      "classification": "resume_request",
+      "action": "resume_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "resume_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-EXIT-01",
+      "classification": "exit_request",
+      "action": "exit_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "exit_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "answer_process_meta",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-META-02",
+      "classification": "process_meta_question",
+      "action": "answer_process_meta",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "register_related_context",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "register_related_context",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "redirect",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "redirect",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-SAFETY-01",
+      "classification": "unsafe_or_emergency_message",
+      "action": "bypass_for_safety",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-SAFETY-02",
+      "classification": "unsafe_or_emergency_message",
+      "action": "bypass_for_safety",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "request_classification_clarification",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "request_classification_clarification",
+      "state_mutation_performed": false,
+      "protected_state_changed": false
+    }
+  ]
+}

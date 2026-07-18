@@ -1,0 +1,16 @@
+{
+  "schema_version": "ordo.pathwalk.model_benchmark_job.v1",
+  "job_id": "scenario_002_json_transcript-replay",
+  "scenario_id": "scenario_002",
+  "runtime_view": "json",
+  "cli_mode": "enforced",
+  "benchmark_mode": "transcript-replay",
+  "provider": "offline",
+  "model": "synthetic-transcript-pilot",
+  "driver": "transcript-replay-pilot",
+  "pilot_behavior": "protocol_violation",
+  "scenario_path": "scenarios/scenario_002.json",
+  "sandbox": "sandboxes/scenario_002_json",
+  "transcript_file": "transcripts/scenario_002_json_transcript-replay_transcript.json",
+  "score_file": "scores/scenario_002_json_transcript-replay_score.json"
+}

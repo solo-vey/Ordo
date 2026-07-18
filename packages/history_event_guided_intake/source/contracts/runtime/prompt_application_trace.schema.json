@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.prompt_application_trace.v1",
+  "title": "Prompt application trace evidence",
+  "type": "object",
+  "required": ["runtime_step_id", "prompt_refs_applied"],
+  "properties": {
+    "runtime_step_id": {"type": "string", "minLength": 1},
+    "prompt_refs_applied": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["prompt_id", "use", "sha256", "ordinal"],
+        "properties": {
+          "prompt_id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:\\.[a-z][a-z0-9_]*)+\\.v[1-9][0-9]*$"},
+          "use": {"enum": ["before_question", "during_clarification", "after_answer", "before_confirmation", "on_open_gap", "on_gate_fail", "before_artifact_generation"]},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "ordinal": {"type": "integer", "minimum": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

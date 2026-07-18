@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "sections": {
+    "intent": true,
+    "contract": true,
+    "state": true,
+    "nodes": true,
+    "gates": true,
+    "assertions": true,
+    "outputs": true,
+    "contracts": true,
+    "artifacts": true,
+    "artifact_requirements": true,
+    "coverage_rules": true,
+    "rendered_artifact_assertions": true,
+    "go_no_go": true
+  }
+}

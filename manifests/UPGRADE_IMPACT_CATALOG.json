@@ -1,0 +1,245 @@
+{
+  "schema_version": "ordo.upgrade_impact_catalog.v1",
+  "releases": [
+    {
+      "release_id": "ordo-2026.07.14-rc.1",
+      "from": {
+        "language": "0.12.0-preview-rc1",
+        "framework": "implicit_milestone_line"
+      },
+      "to": {
+        "language": "0.13.0-rc.1",
+        "framework": "0.1.0-rc.1"
+      },
+      "compatibility": "backward_compatible_with_declared_revalidation",
+      "changes": [
+        {
+          "id": "CHG-007",
+          "backlog": [
+            "BL-ORDO-007"
+          ],
+          "lines": [
+            "language",
+            "framework"
+          ],
+          "kind": "additive",
+          "constructs": [
+            "FLOW.JOIN",
+            "SHARED.TAIL.REFERENCE"
+          ],
+          "action": "recommended_revalidation",
+          "instruction": "Recompile and rerun flow-reuse validation when the playbook uses shared-tail or join constructs."
+        },
+        {
+          "id": "CHG-029",
+          "backlog": [
+            "BL-ORDO-028",
+            "BL-ORDO-029"
+          ],
+          "lines": [
+            "language",
+            "framework"
+          ],
+          "kind": "additive_strict_when_enabled",
+          "constructs": [
+            "graph_contract.transition_provenance",
+            "allowed_from",
+            "entry_modes"
+          ],
+          "action": "migration_required_when_enabled",
+          "instruction": "Declare inbound provenance for executable nodes before enabling strict transition provenance."
+        },
+        {
+          "id": "CHG-024",
+          "backlog": [
+            "BL-ORDO-013",
+            "BL-ORDO-024"
+          ],
+          "lines": [
+            "language",
+            "framework"
+          ],
+          "kind": "additive_optional",
+          "constructs": [
+            "PATTERN.DEF"
+          ],
+          "action": "recommended_revalidation",
+          "instruction": "Use the pattern registry only for playbooks that opt into governed process-pattern recommendations."
+        },
+        {
+          "id": "CHG-012",
+          "backlog": [
+            "BL-ORDO-012"
+          ],
+          "lines": [
+            "framework"
+          ],
+          "kind": "package_contract_hardening",
+          "constructs": [
+            "startup_package_profile",
+            "artifact_sync"
+          ],
+          "action": "migration_required",
+          "instruction": "Add startup profile and strict artifact-sync fingerprints to packages missing them."
+        },
+        {
+          "id": "CHG-011",
+          "backlog": [
+            "BL-ORDO-009",
+            "BL-ORDO-011"
+          ],
+          "lines": [
+            "framework"
+          ],
+          "kind": "governance_hardening",
+          "constructs": [
+            "prompt_registry",
+            "prompt_refs"
+          ],
+          "action": "recommended_revalidation",
+          "instruction": "Audit prompt registries and keep unapproved mini-prompt candidates inactive."
+        },
+        {
+          "id": "CHG-025",
+          "backlog": [
+            "BL-ORDO-025"
+          ],
+          "lines": [
+            "framework"
+          ],
+          "kind": "compatible_performance_fix",
+          "constructs": [
+            "flow_reuse_validation",
+            "graph_scc_validation"
+          ],
+          "action": "no_playbook_change",
+          "instruction": "No source migration; rerun lint under the standard resource budget."
+        },
+        {
+          "id": "CHG-002",
+          "backlog": [
+            "BL-ORDO-002"
+          ],
+          "lines": [
+            "framework"
+          ],
+          "kind": "validation_hardening",
+          "constructs": [
+            "graph_contract",
+            "pathwalk"
+          ],
+          "action": "recommended_revalidation",
+          "instruction": "Rerun graph and terminal-path validation for cyclic playbooks."
+        },
+        {
+          "id": "CHG-010",
+          "backlog": [
+            "BL-ORDO-010"
+          ],
+          "lines": [
+            "documentation"
+          ],
+          "kind": "documentation",
+          "constructs": [
+            "book_localization"
+          ],
+          "action": "no_action",
+          "instruction": "No playbook change."
+        },
+        {
+          "id": "CHG-032",
+          "backlog": [
+            "BL-ORDO-032"
+          ],
+          "lines": [
+            "framework"
+          ],
+          "kind": "delivery_hardening",
+          "constructs": [
+            "non_destructive_gate"
+          ],
+          "action": "no_playbook_change",
+          "instruction": "Use the non-destructive gate for release candidates."
+        }
+      ]
+    },
+    {
+      "release_id": "ordo-2026.07.14-rc.3",
+      "language_version": "0.13.0-rc.1",
+      "framework_version": "0.2.0-rc.2",
+      "compatibility": "backward_compatible_tooling_fix",
+      "default_decision": "recommended_revalidation",
+      "changes": [
+        {
+          "change_id": "BL-ORDO-035",
+          "scope": [
+            "release_gate",
+            "test_governance"
+          ],
+          "affected_constructs": [
+            "negative_fixture_mutation",
+            "parallel_test_partitioning",
+            "wall_clock_performance_budget"
+          ],
+          "decision": "recommended_revalidation",
+          "action": "Rerun release-gate scheduler and fixture-safety tests; no playbook migration is required."
+        }
+      ]
+    },
+    {
+      "release_id": "ordo-2026.07.14-rc.4",
+      "language_version": "0.13.0-rc.1",
+      "framework_version": "0.2.0-rc.3",
+      "compatibility": "backward_compatible_release_tooling_fix",
+      "default_decision": "no_playbook_change",
+      "changes": [
+        {
+          "change_id": "BL-ORDO-036",
+          "scope": [
+            "release_packaging",
+            "evidence_governance"
+          ],
+          "affected_constructs": [
+            "canonical_archive_identity",
+            "checksum_freeze",
+            "delivery_evidence_freshness"
+          ],
+          "decision": "no_playbook_change",
+          "action": "Rebuild release candidates with the canonical builder; no playbook source migration is required."
+        }
+      ]
+    },
+    {
+      "release_id": "ordo-2026.07.14-rc.9",
+      "from": {
+        "language": "0.13.0-rc.1",
+        "framework": "0.5.0-rc.2"
+      },
+      "to": {
+        "language": "0.13.0-rc.1",
+        "framework": "0.5.0-rc.3"
+      },
+      "compatibility": "backward_compatible_evidence_content_addition",
+      "changes": [
+        {
+          "id": "CHG-047",
+          "backlog": [
+            "BL-ORDO-046",
+            "BL-ORDO-047"
+          ],
+          "lines": [
+            "framework",
+            "empirical_evidence"
+          ],
+          "kind": "additive_evidence_content",
+          "constructs": [
+            "external_developer_adoption",
+            "external_adoption_case"
+          ],
+          "action": "no_playbook_change",
+          "instruction": "No playbook migration is required. Revalidate only consumers that enumerate empirical-evidence index fields strictly."
+        }
+      ]
+    }
+  ]
+}

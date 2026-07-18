@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.benchmark.document_evaluation_report.v1",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "artifact",
+    "contract",
+    "focused_scope",
+    "criteria",
+    "caps",
+    "scores",
+    "status"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string"
+    },
+    "evaluated_at": {
+      "type": "string"
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "artifact_type"
+      ]
+    },
+    "contract": {
+      "type": "object",
+      "required": [
+        "contract_id",
+        "version"
+      ]
+    },
+    "focused_scope": {
+      "type": "object",
+      "required": [
+        "final_rendered_artifact_checked",
+        "relevant_rules",
+        "excluded_rules"
+      ]
+    },
+    "criteria": {
+      "type": "array"
+    },
+    "findings": {
+      "type": "array"
+    },
+    "caps": {
+      "type": "array"
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "raw_score",
+        "final_score"
+      ]
+    },
+    "status": {
+      "enum": [
+        "evaluated",
+        "evaluated-with-notes",
+        "blocked-evidence",
+        "invalid-contract-binding",
+        "superseded"
+      ]
+    },
+    "uncertainty": {
+      "type": "array"
+    },
+    "supersedes": {}
+  }
+}

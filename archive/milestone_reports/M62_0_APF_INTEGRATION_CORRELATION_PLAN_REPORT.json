@@ -1,0 +1,33 @@
+{
+  "milestone": "M62.0",
+  "title": "APF Integration Correlation Plan",
+  "status": "passed-design-docs-only",
+  "base": "M61 Line Closure",
+  "apf_candidate": "ordo_applied_project_factory v0.1.0-alpha.14",
+  "facts": {
+    "module_id": "ordo.applied_project_factory",
+    "module_version": "0.1.0-alpha.14",
+    "language_compatibility": "ordo >= 0.12.0-preview-rc1",
+    "node_count": 54,
+    "gate_count": 38,
+    "assertion_count": 28,
+    "output_count": 1,
+    "validation_status": "passed_minimal_validation",
+    "full_validation": "Full CLI validation/test/coverage/repo-check are deferred by design to the terminal/pre-handoff gate; no duplicated downstream shared validation/handoff nodes were added.",
+    "apf_branch_package_present": true,
+    "source_yaml_sha256": "dbeb51f58b19a1048146f9714a523213b0b61c99cbbc1ba1aed75c85b366e14a"
+  },
+  "added_documents": [
+    "APF_INTEGRATION_CORRELATION_PLAN.md",
+    "STANDARD_APPLIED_MODULES.md",
+    "APF_LANGUAGE_PATTERN_CANDIDATES.md"
+  ],
+  "non_goals": [
+    "no APF import",
+    "no runtime-core change",
+    "no APF YAML rewrite",
+    "no IR/opcode addition",
+    "no runtime execution/scoring/calibration"
+  ],
+  "next": "M62.1 — APF Package Import into Current Language Package"
+}

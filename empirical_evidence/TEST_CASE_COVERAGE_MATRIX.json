@@ -1,0 +1,91 @@
+{
+  "schema_version": "ordo.test_case_coverage_matrix.v1",
+  "discovered_test_case_count": 5,
+  "retained_test_case_count": 4,
+  "authoritatively_excluded_test_case_count": 1,
+  "reconciliation": "PASS",
+  "records": [
+    {
+      "test_case_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING",
+      "lifecycle_state": "retained_current",
+      "inclusion_disposition": "included",
+      "authoritative_reason": "Current evidence-base case retained under current-state-only policy.",
+      "implementation_conditions_present": [
+        "instruction_only",
+        "ordo"
+      ],
+      "retained_accepted_runs": [
+        "accepted_runs/TC01_EX01/instruction_only/RUN_01",
+        "accepted_runs/TC01_EX01/instruction_only/RUN_02",
+        "accepted_runs/TC01_EX01/instruction_only/RUN_03",
+        "accepted_runs/TC01_EX01/instruction_only/RUN_04",
+        "accepted_runs/TC01_EX01/instruction_only/RUN_05",
+        "accepted_runs/TC01_EX01/ordo/S03_INVALID_AND_IRRELEVANT"
+      ],
+      "validation_status": "PASS"
+    },
+    {
+      "test_case_id": "TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION",
+      "lifecycle_state": "retained_current",
+      "inclusion_disposition": "included",
+      "authoritative_reason": "Current evidence-base case retained under current-state-only policy.",
+      "implementation_conditions_present": [],
+      "retained_accepted_runs": [],
+      "validation_status": "PASS"
+    },
+    {
+      "test_case_id": "TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET",
+      "lifecycle_state": "deprecated_migrated",
+      "inclusion_disposition": "authoritatively_excluded",
+      "authoritative_reason": "Obsolete and migrated to TC03/EX02.",
+      "replacement_test_case": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+      "implementation_conditions_present": [],
+      "retained_accepted_runs": [],
+      "validation_status": "PASS"
+    },
+    {
+      "test_case_id": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE",
+      "lifecycle_state": "retained_current",
+      "inclusion_disposition": "included",
+      "authoritative_reason": "Current evidence-base case retained under current-state-only policy.",
+      "implementation_conditions_present": [],
+      "retained_accepted_runs": [],
+      "validation_status": "PASS"
+    },
+    {
+      "test_case_id": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+      "lifecycle_state": "retained_current",
+      "inclusion_disposition": "included",
+      "authoritative_reason": "Current evidence-base case retained under current-state-only policy.",
+      "implementation_conditions_present": [
+        "domain_adapted_all_in_one",
+        "mixed_accumulated_instructions",
+        "structured_instructions",
+        "yaml_playbook"
+      ],
+      "retained_accepted_runs": [
+        "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_01",
+        "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_02",
+        "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_03",
+        "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_04",
+        "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_05",
+        "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_01",
+        "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_02",
+        "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_03",
+        "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_04",
+        "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_05",
+        "accepted_runs/TC03_EX02/structured_instructions/RUN_01",
+        "accepted_runs/TC03_EX02/structured_instructions/RUN_02",
+        "accepted_runs/TC03_EX02/structured_instructions/RUN_03",
+        "accepted_runs/TC03_EX02/structured_instructions/RUN_04",
+        "accepted_runs/TC03_EX02/structured_instructions/RUN_05",
+        "accepted_runs/TC03_EX02/yaml_playbook/RUN_01",
+        "accepted_runs/TC03_EX02/yaml_playbook/RUN_02",
+        "accepted_runs/TC03_EX02/yaml_playbook/RUN_03",
+        "accepted_runs/TC03_EX02/yaml_playbook/RUN_04",
+        "accepted_runs/TC03_EX02/yaml_playbook/RUN_05"
+      ],
+      "validation_status": "PASS"
+    }
+  ]
+}

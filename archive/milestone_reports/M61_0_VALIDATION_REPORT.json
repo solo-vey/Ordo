@@ -1,0 +1,65 @@
+{
+  "schema_version": "ordo.milestone_validation.v1",
+  "milestone": "M61.0",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "workspace_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "selected_non_runtime_pathwalk_pytest",
+      "status": "passed",
+      "details": "21 passed"
+    },
+    {
+      "check": "workspace_graph_paths_clean_noise_review_cards_smoke",
+      "status": "passed",
+      "details": "15 review cards, 15 ready"
+    },
+    {
+      "check": "runtime_execution_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "scoring_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "book_manifest_sanity",
+      "status": "passed",
+      "details": "72 entries, 62 chapters, 0 missing files"
+    },
+    {
+      "check": "pathwalk_rc_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "pathwalk_rc_plus_developer_bundle_review_cards_smoke",
+      "status": "passed",
+      "details": "15 review cards, 15 ready"
+    },
+    {
+      "check": "zip_extraction_check",
+      "status": "passed"
+    }
+  ],
+  "blocked_branches_not_used_as_gates": [
+    "runtime-harness matrix",
+    "transcript-replay acceptance matrix"
+  ],
+  "outputs": [
+    "M61_0_HUMAN_REVIEW_SCENARIO_CARDS_REPORT.md",
+    "M61_0_HUMAN_REVIEW_SCENARIO_CARDS_REPORT.json",
+    "M61_0_VALIDATION_REPORT.json"
+  ],
+  "book_source": {
+    "manifest_entries": 72,
+    "chapter_count": 62,
+    "missing_files": []
+  }
+}

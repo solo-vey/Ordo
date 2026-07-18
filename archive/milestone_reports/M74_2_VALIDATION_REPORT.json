@@ -1,0 +1,78 @@
+{
+  "milestone": "M74.2",
+  "title": "Development and Release Hygiene Scope Isolation",
+  "status": "passed",
+  "checks": {
+    "development_and_release_scopes_separated": true,
+    "development_untracked_transients_non_blocking": true,
+    "development_tracked_metadata_blocking": true,
+    "release_candidate_metadata_blocking": true,
+    "release_workflow_uses_isolated_git_archive": true,
+    "ci_workflow_uses_development_scope": true,
+    "report_preserves_hygiene_scope": true,
+    "editable_install_smoke_passed": true,
+    "embedded_cli_synced": true,
+    "workflow_yaml_parse_passed": true
+  },
+  "test_evidence": {
+    "targeted_pytest": {
+      "tests": 21,
+      "status": "passed",
+      "duration_seconds": 7.84
+    },
+    "full_cli_pytest": {
+      "tests": 169,
+      "subtests": 10,
+      "status": "passed",
+      "duration_seconds": 177.28
+    },
+    "editable_install_development_smoke": {
+      "status": "passed",
+      "observed_transient_paths": 131,
+      "forbidden_paths": 0,
+      "note": "workspace copy has no Git metadata, so transients were reported with git_metadata_unavailable evidence mode and remained non-blocking"
+    },
+    "same_worktree_release_scope": {
+      "status": "failed_as_expected",
+      "forbidden_paths": 37,
+      "reason": "strict release-tree filesystem scan"
+    },
+    "clean_synthetic_release_tree": {
+      "status": "passed"
+    }
+  },
+  "embedded_cli_parity": {
+    "history_event_guided_intake": {
+      "cli.py": {
+        "main_sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+        "embedded_sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+        "equal": true
+      },
+      "repo_checks.py": {
+        "main_sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+        "embedded_sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+        "equal": true
+      }
+    },
+    "ordo_applied_project_factory": {
+      "cli.py": {
+        "main_sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+        "embedded_sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+        "equal": true
+      },
+      "repo_checks.py": {
+        "main_sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+        "embedded_sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+        "equal": true
+      }
+    }
+  },
+  "artifacts": [
+    "M74_2_HYGIENE_SCOPE_ISOLATION.md",
+    "M74_2_VALIDATION_REPORT.json",
+    "manifests/M74_2_LANGUAGE_BASELINE_DELTA.json",
+    "cli/docs/DEVELOPMENT_AND_RELEASE_HYGIENE_SCOPES.md",
+    "cli/tests/test_m74_2_hygiene_scope_isolation.py"
+  ],
+  "next_milestone": "M74.3"
+}

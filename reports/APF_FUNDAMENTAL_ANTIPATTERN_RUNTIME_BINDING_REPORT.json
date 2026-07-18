@@ -1,0 +1,25 @@
+{
+  "schema_version": "ordo.apf.fundamental_antipattern_binding_report.v1",
+  "status": "passed",
+  "runtime_detection_level": "subpattern",
+  "governance_level": "fundamental",
+  "fundamental_rule_count": 12,
+  "runtime_subpattern_count": 6,
+  "owner_approval_required_for_new_fundamental": true,
+  "changed_files": [
+    "packages/ordo_applied_project_factory/integration/antipattern_runtime_binding.apf.v1.json",
+    "packages/ordo_applied_project_factory/ordo.runtime.json",
+    "packages/ordo_applied_project_factory/integration/antipattern_runtime_binding.py",
+    "language/integration/antipattern_gate_adapter.py",
+    "packages/ordo_applied_project_factory/integration/test_antipattern_fundamental_taxonomy_binding.py"
+  ],
+  "verification": {
+    "focused_runtime_tests": "21/21 passed",
+    "registry_schema_tests": "4/4 passed",
+    "modular_source_assembly": "passed",
+    "graph_structural_validation": "passed",
+    "runtime_rule_mapping": "6/6 active subpatterns mapped to active fundamentals",
+    "fundamental_registry": "12 active rules",
+    "owner_approval_governance": "enforced"
+  }
+}

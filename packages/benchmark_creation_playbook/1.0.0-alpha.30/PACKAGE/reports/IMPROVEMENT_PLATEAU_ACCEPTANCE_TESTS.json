@@ -1,0 +1,74 @@
+{
+  "schema_version": "ordo.benchmark.bl_bench_053.acceptance.v1",
+  "tests": [
+    {
+      "case": "material_improvement_pass",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "output": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "case": "formatting_only_plateau_pass",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "output": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "case": "protected_regression_pass",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "output": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "case": "accept_without_gain_fail",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "pass": true,
+      "output": {
+        "status": "FAIL",
+        "errors": [
+          "accepted_without_material_improvement"
+        ]
+      }
+    },
+    {
+      "case": "identical_retry_fail",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "pass": true,
+      "output": {
+        "status": "FAIL",
+        "errors": [
+          "unauthorized_identical_retry"
+        ]
+      }
+    },
+    {
+      "case": "baseline_mutation_fail",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "pass": true,
+      "output": {
+        "status": "FAIL",
+        "errors": [
+          "baseline_not_retained"
+        ]
+      }
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "status": "PASS"
+}

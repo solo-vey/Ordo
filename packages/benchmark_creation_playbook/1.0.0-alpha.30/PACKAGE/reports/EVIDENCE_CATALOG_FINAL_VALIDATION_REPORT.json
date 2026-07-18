@@ -1,0 +1,8 @@
+{
+  "schema_version": "ordo.evidence.catalog.validation.v1",
+  "status": "PASS",
+  "catalog_version": "1.0.0-alpha.24",
+  "object_count": 0,
+  "score_count": 0,
+  "errors": []
+}

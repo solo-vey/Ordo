@@ -1,0 +1,100 @@
+{
+  "schema_version": "ordo.arf.control_model.v1",
+  "contract_id": "ARF_DETERMINISTIC_CONTROL_MODEL_V1",
+  "default_control_profile": "PROCESS_EXECUTOR_ONLY",
+  "decision_model": "closed_world",
+  "default_role": "executor",
+  "undefined_action": "blocked_missing_instruction",
+  "modes": {
+    "EXECUTION_MODE": {
+      "role": "executor",
+      "entry_conditions": [
+        "active_node_is_resolved",
+        "runtime_state_is_valid"
+      ],
+      "allowed_capabilities": [
+        "execute_active_node_allowlisted_actions",
+        "emit_declared_outputs",
+        "request_exact_missing_instruction"
+      ],
+      "forbidden_capabilities": [
+        "change_process_design",
+        "mutate_playbook_or_factory",
+        "invent_actions_inputs_evidence_or_status",
+        "skip_or_reorder_mandatory_nodes"
+      ],
+      "exit_conditions": [
+        "explicit_mode_transition_selected",
+        "terminal_state_reached",
+        "blocking_state_entered"
+      ]
+    },
+    "DESIGN_MODE": {
+      "role": "designer",
+      "entry_conditions": [
+        "explicit_design_mode_selection"
+      ],
+      "allowed_capabilities": [
+        "analyze_process",
+        "propose_changes",
+        "produce_non_mutating_design_artifacts"
+      ],
+      "forbidden_capabilities": [
+        "mutate_repository_or_package",
+        "claim_proposed_change_is_implemented",
+        "execute_maintenance_without_authorization"
+      ],
+      "exit_conditions": [
+        "explicit_mode_transition_selected",
+        "design_review_completed"
+      ]
+    },
+    "AUTHORIZED_MAINTENANCE_MODE": {
+      "role": "authorized_maintainer",
+      "entry_conditions": [
+        "explicit_user_authorization_present",
+        "authorized_scope_is_resolved",
+        "target_baseline_is_resolved"
+      ],
+      "allowed_capabilities": [
+        "mutate_only_authorized_scope",
+        "run_required_validation",
+        "produce_change_evidence"
+      ],
+      "forbidden_capabilities": [
+        "mutate_outside_authorized_scope",
+        "inherit_authorization_from_other_decision",
+        "claim_completion_without_independent_validation"
+      ],
+      "exit_conditions": [
+        "authorized_change_scope_completed",
+        "authorization_revoked",
+        "blocking_validation_failure"
+      ]
+    }
+  },
+  "mode_switching": {
+    "implicit_switching": "forbidden",
+    "explicit_transition_required": true,
+    "authorization_required_for": [
+      "AUTHORIZED_MAINTENANCE_MODE"
+    ]
+  },
+  "ambiguity_policy": {
+    "missing_instruction_status": "blocked_missing_instruction",
+    "allowed_action": "request_exact_user_decision",
+    "best_judgement_fallback": "forbidden"
+  },
+  "transition_policy": {
+    "implicit_transitions": "forbidden",
+    "undefined_transition": "blocked_missing_instruction",
+    "allowed_transition_source": "active_node_explicit_transition_allowlist"
+  },
+  "node_contract_profiles": {
+    "registry": "language/registry/arf_node_contract_profiles.v1.json",
+    "schema": "language/schemas/arf_node_contract.schema.json",
+    "explicit_profile_required": true,
+    "unknown_profile": "blocked_missing_instruction",
+    "multi_profile_node_policy": "split_node"
+  }
+}

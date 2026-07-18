@@ -1,0 +1,7 @@
+metric,cases,mean,median,min,max,population_stdev,unique_values,calibration_signal
+path_quality_score,60,1.0,1.0,1.0,1.0,0.0,[1.0],absent_zero_variance
+cell_match_rate,60,1.0,1.0,1.0,1.0,0.0,[1.0],absent_zero_variance
+protocol_compliance_rate,60,1.0,1.0,1.0,1.0,0.0,[1.0],absent_zero_variance
+distraction_recovery_rate,60,1.0,1.0,1.0,1.0,0.0,[1.0],absent_zero_variance
+backtrack_accuracy,60,1.0,1.0,1.0,1.0,0.0,[1.0],absent_zero_variance
+turn_accuracy_rate,60,1.0,1.0,1.0,1.0,0.0,[1.0],absent_zero_variance

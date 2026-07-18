@@ -1,0 +1,409 @@
+ordo:
+  version: '0.12'
+  package: ordo.hybrid_executor
+  control_level: standard
+  execution_mode: chat_internal
+includes:
+- library: ordo.process_rail.core
+  version: ^0.1.0
+  as: process_rail
+- library: ordo.hybrid_execution.helpers
+  version: ^0.1.0
+  as: hybrid_helpers
+interaction_model:
+  human_role: user
+  ai_role: ordo_executor
+  proactive_ai_behavior: required
+  raw_tool_output_policy: ai_interprets_before_user
+process_rail:
+  rail_id: ORDO_HYBRID_EXECUTION_RAIL
+  purpose: Виконати готовий Semantic JSON IR через AI Ordo Executor без перетворення
+    CLI на головний діалоговий runtime.
+  state_tracking: required
+  allow_deviation: true
+  require_resume_after_deviation: true
+  backtracking: enabled
+hybrid_execution:
+  ai_role: ordo_executor
+  semantic_ir_role: process_rail
+  cli_role: deterministic_helper
+  raw_tool_output_policy: ai_interprets_before_user
+  allow_deviation: true
+  require_resume_after_deviation: true
+  backtracking: enabled
+conversation_semantics:
+  on_unmatched_input:
+    strategy: classify_and_route
+    allowed_classes:
+    - answer_current_question
+    - answer_future_question
+    - correction_previous_answer
+    - clarification_request
+    - domain_context
+    - approval
+    - refusal
+    - out_of_scope
+    require_state_validation: true
+intent:
+  id: INTENT_HYBRID_EXECUTION
+  description: Допомогти AI Ordo Executor виконати готовий Semantic JSON IR, тримаючись
+    Process Rail і використовуючи CLI/helper checks лише для детермінованих частин.
+contract:
+  id: CONTRACT_HYBRID_EXECUTION
+  required:
+  - semantic_ir_loaded
+  - current_rail_node
+  - rail_state_validated
+  - human_input_classified
+  - helper_result_interpreted
+  - resume_after_deviation
+  - output_allowed_by_gate
+state:
+  id: STATE_HYBRID_EXECUTION
+  schema:
+    semantic_ir_loaded: false
+    current_rail_node: null
+    completed_nodes: []
+    invalidated_nodes: []
+    human_input_classified: null
+    rail_state_validated: false
+    helper_result_interpreted: false
+    deviation_detected: false
+    resume_after_deviation: false
+    output_allowed_by_gate: false
+    human_visible_summary: null
+graph_contract:
+  entry_node: N_LOAD_IR
+  allowed_cycle_regions:
+  - id: CR_EXECUTION_LOOP
+    nodes:
+    - N_CLASSIFY_INPUT
+    - N_VALIDATE_STATE
+    - N_INTERPRET_HELPER
+    - N_HANDLE_DEVIATION
+    - N_OUTPUT_GATE
+    - N_NEXT_MOVE
+nodes:
+- id: N_LOAD_IR
+  question: Завантажити готовий Semantic JSON IR і визначити стартовий Process Rail
+    node.
+  answer_type: system_action
+  on_answer:
+    update_state:
+      semantic_ir_loaded: true
+    next: N_CLASSIFY_INPUT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_that_execution_needs_compiled_ir
+    max_attempts: 1
+    on_exhausted:
+      action: block_execution
+      reason: semantic json ir is missing
+- id: N_CLASSIFY_INPUT
+  question: Класифікувати повідомлення людини відносно поточного Process Rail node.
+  answer_type: ai_classification
+  on_answer:
+    update_state:
+      human_input_classified: $answer.class
+    next: N_VALIDATE_STATE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: classify_or_ask_for_clarification
+    max_attempts: 2
+    on_exhausted:
+      action: keep_current_node
+      reason: input class remains unclear
+- id: N_VALIDATE_STATE
+  question: Викликати deterministic helper для перевірки запропонованого стану.
+  answer_type: tool_result
+  on_answer:
+    update_state:
+      rail_state_validated: true
+    next: N_INTERPRET_HELPER
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: retry_or_explain_validation_problem
+    max_attempts: 1
+    on_exhausted:
+      action: block_next_step
+      reason: state validation unavailable
+- id: N_INTERPRET_HELPER
+  question: Перетворити helper result у людське пояснення без raw technical dump.
+  answer_type: ai_explanation
+  on_answer:
+    update_state:
+      helper_result_interpreted: true
+      human_visible_summary: $answer
+    next: N_HANDLE_DEVIATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: produce_plain_language_summary
+    max_attempts: 1
+    on_exhausted:
+      action: block_handoff
+      reason: helper result was not interpreted
+- id: N_HANDLE_DEVIATION
+  question: Якщо є correction/deviation, виконати rail resume або backtracking.
+  answer_type: ai_process_decision
+  on_answer:
+    update_state:
+      resume_after_deviation: true
+    next: N_OUTPUT_GATE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_whether_user_changes_previous_decision
+    max_attempts: 1
+    on_exhausted:
+      action: continue_without_deviation
+      reason: no confirmed deviation
+- id: N_OUTPUT_GATE
+  question: Перевірити, чи дозволено генерувати output на поточному стані.
+  answer_type: gate_check
+  on_answer:
+    update_state:
+      output_allowed_by_gate: $answer.allowed
+    next: N_NEXT_MOVE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_output_gate
+    max_attempts: 1
+    on_exhausted:
+      action: block_output
+      reason: output gate unresolved
+- id: N_NEXT_MOVE
+  terminal: true
+  question: 'Обрати наступний conversational move: питання, пояснення, повернення
+    назад або output.'
+  answer_type: ai_decision
+  on_answer:
+    update_state:
+      current_rail_node: $answer.next_node
+    next: N_CLASSIFY_INPUT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_next_step_confirmation
+    max_attempts: 1
+    on_exhausted:
+      action: keep_current_node
+      reason: next move unclear
+gates:
+- id: G_IR_LOADED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.semantic_ir_loaded == true
+  on_fail: ask_for_or_compile_semantic_ir
+- id: G_INPUT_CLASSIFIED
+  method: self_verification
+  trust_class: model_judgment
+  condition: state.human_input_classified != null
+  on_fail: ask_clarifying_question
+- id: G_STATE_VALIDATED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.rail_state_validated == true
+  on_fail: run_validate_state_helper
+- id: G_HELPER_INTERPRETED
+  method: self_verification
+  trust_class: model_judgment
+  condition: state.helper_result_interpreted == true
+  on_fail: explain_helper_result_in_plain_language
+- id: G_RESUME_AFTER_DEVIATION
+  method: self_consistency
+  trust_class: repeated_model_judgment
+  condition: state.deviation_detected == false or state.resume_after_deviation ==
+    true
+  on_fail: perform_rail_resume
+- id: G_OUTPUT_ALLOWED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.output_allowed_by_gate == true
+  on_fail: keep_collecting_required_inputs
+assertions:
+- id: A_AI_EXECUTOR_LEADS_EXECUTION
+  polarity: must
+  condition: interaction_model.ai_role == 'ordo_executor'
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: execution_must_be_ai_led
+- id: A_CLI_IS_HELPER_NOT_CHAT_RUNTIME
+  polarity: must
+  condition: hybrid_execution.cli_role == 'deterministic_helper'
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: cli_must_not_replace_ai_executor
+- id: A_RAW_TOOL_OUTPUT_NOT_EXPOSED
+  polarity: not
+  condition: raw_tool_output_exposed_to_human == true
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: ai_must_interpret_tool_output
+outputs:
+- id: O_EXECUTION_SUMMARY
+  type: markdown
+  allowed_after:
+  - G_IR_LOADED
+  - G_STATE_VALIDATED
+  - G_HELPER_INTERPRETED
+- id: O_FINAL_RESULT
+  type: generated_artifact
+  allowed_after:
+  - G_OUTPUT_ALLOWED
+freeform:
+- id: FF_HYBRID_EXECUTION_REASONING
+  role: ai_handles_open_dialogue_while_rail_validates_process
+  maturity: candidate_for_formalization
+  incident_count: 3
+  incident_threshold: 3
+startup_package_profile:
+  profile_id: ordo_hybrid_executor_startup_profile
+  version: '1.0'
+  package_id: ordo_hybrid_executor
+  default_startup_mode: runtime_start
+  default_language: uk
+  startup_root: ./
+  startup_modes:
+  - mode: runtime_start
+    audience: analyst
+    entry_file: START_PROMPT_RUNTIME_MODE.md
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: operator_start
+    audience: cli_operator
+    entry_file: START_HERE_RUNTIME_MODE.md
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: developer_maintenance
+    audience: developer
+    entry_file: README.md
+    required: recommended
+    visibility: developer
+    state_change_allowed: false
+    resume_supported: true
+  entry_files:
+  - path: README.md
+    role: readme
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_HERE_RUNTIME_MODE.md
+    role: start_here
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_PROMPT_RUNTIME_MODE.md
+    role: runtime_start_prompt
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: ordo.yml
+    role: manifest
+    required: 'true'
+    visibility: developer
+  readiness_gates:
+  - check_id: startup_package_profile_present
+    severity: error
+    profile: strict
+  - check_id: startup_entry_files_exist
+    severity: error
+    profile: strict
+  - check_id: startup_default_mode_exists
+    severity: error
+    profile: strict
+  - check_id: startup_authority_boundary_safe
+    severity: error
+    profile: strict
+  authority_boundary:
+    startup_files_may_override_gates: false
+    startup_files_may_confirm_state: false
+    startup_files_may_claim_validation_success: false
+artifact_sync:
+  sync_id: ordo_hybrid_executor_artifact_sync
+  profile: strict
+  source_of_truth:
+  - path: source/program.ordo.yaml
+    role: package_source
+  - path: ordo.yml
+    role: package_manifest
+  derived_artifacts:
+  - artifact_id: reports_cli_validation_summary_md
+    path: reports/CLI_VALIDATION_SUMMARY.md
+    role: validation_report
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: 13e94252b6eda04c43f59a9c0e0c6ca85aa8bd3c8e82ff5ac2cf25ec1fb7f608
+  authority_boundary:
+    derived_artifacts_may_override_source_of_truth: false
+flow_reuse:
+  maturity: stable_optional
+  joins:
+  - id: JOIN.INPUT.CLASSIFICATION
+    namespace: hybrid.execution
+    incoming:
+    - node: N_LOAD_IR
+      namespace: hybrid.execution
+      alias: initial_load
+    - node: N_NEXT_MOVE
+      namespace: hybrid.execution
+      alias: conversation_loop
+    target:
+      node: N_CLASSIFY_INPUT
+      namespace: hybrid.execution
+    state_contract:
+      required_fields:
+      - semantic_ir_loaded
+      protected_fields:
+      - semantic_ir_loaded
+      optional_fields:
+      - current_rail_node
+      branch_local_fields:
+      - human_visible_summary
+    merge_policy:
+      default: require_equal
+      fields:
+        current_rail_node: prefer_non_null
+    conflict_policy: require_equal
+    provenance_policy: preserve_all_inputs
+  shared_tails:
+  - id: TAIL.INPUT.CLASSIFICATION
+    namespace: hybrid.execution
+    entry: N_CLASSIFY_INPUT
+    nodes:
+    - N_CLASSIFY_INPUT
+    - N_VALIDATE_STATE
+    maturity: stable_optional
+  references:
+  - id: REF.INPUT.CLASSIFICATION
+    namespace: hybrid.execution
+    tail_id: TAIL.INPUT.CLASSIFICATION
+    tail_namespace: hybrid.execution
+    entry: N_CLASSIFY_INPUT
+    return_to: N_NEXT_MOVE
+    namespace_policy: inherit
+    namespace_map: {}
+    import_state:
+      allow:
+      - semantic_ir_loaded
+      - current_rail_node
+      rename: {}
+      required:
+      - semantic_ir_loaded
+    export_state:
+      allow:
+      - human_input_classified
+      - rail_state_validated
+      rename: {}
+    protected_fields:
+    - semantic_ir_loaded
+    preserve_provenance: true
+    max_call_depth: 16
+    maturity: stable_optional

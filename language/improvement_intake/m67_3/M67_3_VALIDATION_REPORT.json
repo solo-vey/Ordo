@@ -1,0 +1,24 @@
+{
+  "milestone": "M67.3",
+  "status": "passed-cli-validation",
+  "checks": {
+    "python_compile": "passed",
+    "targeted_clean_check_tests": "passed",
+    "clean_check_help_visible": "passed",
+    "packages_diff_guard": "passed",
+    "runtime_core_guard": "passed",
+    "compiler_opcode_guard": "passed",
+    "zip_integrity": "passed",
+    "diff_added_count": 7,
+    "diff_changed_count": 7,
+    "diff_removed_count": 0
+  },
+  "scope": {
+    "cli_code_changed": true,
+    "tests_changed": true,
+    "packages_changed": false,
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false
+  }
+}

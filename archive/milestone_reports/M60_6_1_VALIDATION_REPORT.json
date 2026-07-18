@@ -1,0 +1,73 @@
+{
+  "milestone": "M60.6.1",
+  "name": "Release Integrity / Handoff Hardening",
+  "status": "passed-with-notes",
+  "date": "2026-07-07",
+  "scope": [
+    "clean-room archive extraction and integrity verification",
+    "PathWalk generated job script portability fix",
+    "documentation/handoff hardening",
+    "no scoring weight changes",
+    "no runtime-core semantic changes"
+  ],
+  "checks": {
+    "clean_room_extract_m60_6_archives": "passed",
+    "original_workspace_py_compile": "passed",
+    "original_workspace_pathwalk_pytest": "22/22 passed",
+    "original_rc_v96_with_developer_bundle_cli_pytest": "22/22 passed",
+    "archived_m60_6_dry_run_artifact_recollect": "60/60 passed",
+    "book_source_no_pdf_docx_pptx_outputs": "passed",
+    "patched_py_compile": "passed",
+    "patched_workspace_pathwalk_pytest": "22/22 passed",
+    "patched_rc_v961_with_developer_bundle_cli_pytest": "22/22 passed",
+    "patched_standalone_rc_plus_dev_bundle_job_script_smoke": "3/3 passed",
+    "patched_missing_cli_fail_fast": "passed status=65"
+  },
+  "issues_found": [
+    {
+      "id": "M6061-I01",
+      "severity": "major",
+      "summary": "Generated dry-run job scripts embedded a temporary absolute workspace path from the generation machine, including an M60.5.4 path inside M60.6 artifacts.",
+      "impact": "Archived job_scripts were not portable across clean-room extraction unless ORDO_PATHWALK_ROOT was overridden."
+    },
+    {
+      "id": "M6061-I02",
+      "severity": "minor-major",
+      "summary": "PathWalk RC README still declared v9.5 / M60.5.4 while archive name was v9.6 / M60.6.",
+      "impact": "Handoff/version wording drift."
+    },
+    {
+      "id": "M6061-I03",
+      "severity": "note",
+      "summary": "Compact M60.6 baseline artifact archive contained score evidence and job descriptors but not runtime_templates, so it is suitable for recollect/evidence but not full re-execution by itself.",
+      "impact": "Clarified as evidence-only unless runtime_templates are present or a new plan is generated."
+    }
+  ],
+  "fixes_applied": [
+    {
+      "id": "M6061-F01",
+      "summary": "Updated PathWalk dry_run.py job script generator to avoid baked absolute roots."
+    },
+    {
+      "id": "M6061-F02",
+      "summary": "Generated job scripts now use ORDO_PATHWALK_ROOT and ORDO_CLI_ROOT, with fail-fast errors if ordo_pathwalk/ or cli/ordo/ is missing."
+    },
+    {
+      "id": "M6061-F03",
+      "summary": "Patched existing packaged job_scripts in workspace/developer bundle examples and reports to the portable contract."
+    },
+    {
+      "id": "M6061-F04",
+      "summary": "Updated README/CHANGELOG/JOB_EXECUTION/book source notes for M60.6.1."
+    }
+  ],
+  "validation_notes": [
+    "M60.6 RAW_METRICS and SUMMARY were not recalibrated or weight-adjusted.",
+    "A new 1-scenario × 3-runtime-view smoke was executed from patched standalone PathWalk RC plus developer bundle CLI and passed 3/3.",
+    "Full 20×3 model/API benchmark was not run; M60.6.1 is release-integrity hardening, not calibration."
+  ],
+  "default_weights_changed": false,
+  "runtime_core_semantics_changed": false,
+  "model_api_benchmark_run": false,
+  "next_recommended_step": "M60.6.2 calibration report refinement, then M60.7/M61 real-module testcase generation only after acceptance."
+}

@@ -1,0 +1,44 @@
+{
+  "milestone": "M60.6.4",
+  "name": "Transcript Replay / Model Benchmark Pilot",
+  "status": "passed-pilot-calibration-locked",
+  "benchmark_mode": "transcript-replay",
+  "provider": "offline",
+  "model": "synthetic-transcript-pilot",
+  "runtime_views": [
+    "json"
+  ],
+  "scenario_count": 3,
+  "expected_cases": 3,
+  "completed_cases": 3,
+  "failure_buckets": {
+    "none": 1,
+    "distraction_followed": 1,
+    "protocol_violation": 1
+  },
+  "calibration_eligible": false,
+  "weights_changed": false,
+  "runtime_core_semantics_changed": false,
+  "live_model_api_run": false,
+  "artifacts": [
+    "reports/m60_6_4_transcript_replay_pilot/MODEL_BENCHMARK_PLAN.json",
+    "reports/m60_6_4_transcript_replay_pilot/RAW_MODEL_METRICS.csv",
+    "reports/m60_6_4_transcript_replay_pilot/SUMMARY.json",
+    "reports/m60_6_4_transcript_replay_pilot/CALIBRATION_DECISION.md"
+  ],
+  "validation": {
+    "py_compile": "passed",
+    "pathwalk_split_pytest": "passed",
+    "new_model_benchmark_pilot_test": "passed",
+    "cli_pilot_json_subset": "passed",
+    "collect_repeatability": "passed",
+    "final_zip_extraction_check": "passed",
+    "pathwalk_rc_with_developer_bundle_model_benchmark_test": "passed",
+    "pathwalk_rc_with_developer_bundle_cli_pilot_smoke": "passed"
+  },
+  "notes": [
+    "Acceptance pilot uses json runtime_view subset due sandbox runtime constraints.",
+    "M60.6/M60.6.2 already cover three runtime-view dry-run comparison; M60.6.4 validates transcript-replay protocol artifacts.",
+    "Calibration gates intentionally remain blocking for real weight changes."
+  ]
+}

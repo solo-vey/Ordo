@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/antipattern_gate_report.schema.json",
+  "title": "Ordo anti-pattern gate report",
+  "type": "object",
+  "required": ["schema_version","report_type","decision","summary","blocking_finding_ids","advisory_finding_ids","findings","gate_id","context_type","source_id"],
+  "properties": {
+    "schema_version": {"const":"ordo.antipattern_gate_report.v1"},
+    "report_type": {"const":"GATE.REPORT"},
+    "decision": {"enum":["allow","allow_with_advisory","block","inconclusive"]},
+    "summary": {
+      "type":"object",
+      "required":["total_findings","matched_findings","blocking_findings","advisory_findings","inconclusive_findings","highest_severity"],
+      "properties": {
+        "total_findings":{"type":"integer","minimum":0},
+        "matched_findings":{"type":"integer","minimum":0},
+        "blocking_findings":{"type":"integer","minimum":0},
+        "advisory_findings":{"type":"integer","minimum":0},
+        "inconclusive_findings":{"type":"integer","minimum":0},
+        "highest_severity":{"type":["string","null"],"enum":["info","warning","error","critical",null]}
+      }
+    },
+    "blocking_finding_ids":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "advisory_finding_ids":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "findings":{"type":"array","items":{"type":"object"}},
+    "gate_id":{"type":"string","minLength":1},
+    "context_type":{"enum":["conversation","process_trace","repository_state","package_state","evidence_state","runtime_state"]},
+    "source_id":{"type":"string","minLength":1},
+    "enabled_antipatterns":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "runtime_error":{"type":"string"},
+    "inconclusive_escalated_to_block":{"type":"boolean"}
+  }
+}

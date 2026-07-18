@@ -1,0 +1,86 @@
+{
+  "schema": "ordo.uncertainty_register.v1",
+  "release": "0.1.0-alpha.3",
+  "items": [
+    {
+      "id": "U-001",
+      "question": "Should production mode create/update work-tracking system and external documentation system directly or remain copy-ready only?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": true,
+      "status": "resolved",
+      "resolution": "Copy-ready documents only; analyst publishes manually."
+    },
+    {
+      "id": "U-002",
+      "question": "What exact retention duration and deletion owner apply to minimum run evidence and personal sign-off data?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "Temporary run evidence and personal sign-off working data are deleted after process completion; the final generated package is retained as the durable output."
+    },
+    {
+      "id": "U-003",
+      "question": "Should the playbook define default approver sets per data mode, or must Product/PO always define the complete approver list per event?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "Combined model: the playbook proposes a minimum role set by data mode; Product/PO confirms or changes it. The model cannot approve."
+    },
+    {
+      "id": "U-004",
+      "question": "Should cancelled runs be resumable indefinitely or expire?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "Cancelled runs are terminal and non-resumable."
+    },
+    {
+      "id": "U-005",
+      "question": "Which exact sanctioned runtime adapter/profile will execute this playbook in production?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": true,
+      "status": "resolved",
+      "resolution": "Manual analyst execution."
+    },
+    {
+      "id": "U-006",
+      "question": "Does the required work-tracking system URL refer to the Workflow Preparation work-tracking system entity, the implementation work-tracking system task, or must both be captured?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "Only the Workflow Preparation work-tracking system URL is mandatory. Implementation work-tracking system URL is optional downstream metadata."
+    },
+    {
+      "id": "U-007",
+      "question": "Who provides the formal draft-content approval before manual publication: analyst only, Product/PO, or the full sign-off set?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "The analyst explicitly approves the downloaded draft before external publication."
+    },
+    {
+      "id": "U-008",
+      "question": "Should the final linked package store only external URLs, or also immutable external page/task revision identifiers and timestamps?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "Store only external process record URL and work-tracking record URL."
+    },
+    {
+      "id": "U-009",
+      "question": "What URL validation rules and allowed external documentation system/work-tracking system host domains apply in production?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "No host/domain or remote-access validation is enforced."
+    },
+    {
+      "id": "U-010",
+      "question": "After external links are synchronized, must the analyst approve the regenerated linked package once more before handoff?",
+      "blocking_for_alpha": false,
+      "blocking_for_canonical": false,
+      "status": "resolved",
+      "resolution": "No second explicit approval after link synchronization; deterministic checks are sufficient."
+    }
+  ]
+}

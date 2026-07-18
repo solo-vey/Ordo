@@ -1,0 +1,66 @@
+ordo:
+  version: '0.12'
+  package: sample.support_triage
+  control_level: standard
+  execution_mode: chat_internal
+intent:
+  id: INTENT_SUPPORT_TRIAGE
+  description: Collect a small support request triage path for real-module testcase generation smoke checks.
+state:
+  id: STATE_SUPPORT_TRIAGE
+  schema:
+    issue_summary: null
+    severity: null
+    owner_team: null
+nodes:
+  - id: N_ISSUE_SUMMARY
+    question: What issue should be triaged?
+    answer_type: free_text
+    on_answer:
+      update_state:
+        issue_summary: $answer
+      next: N_SEVERITY
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: ask_for_concrete_issue
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: issue summary remains unclear
+  - id: N_SEVERITY
+    question: What is the severity?
+    answer_type: enum
+    allowed_answers: [low, medium, high]
+    on_answer:
+      low:
+        update_state:
+          severity: low
+          owner_team: support
+        next: G_TRIAGE_COMPLETE
+      medium:
+        update_state:
+          severity: medium
+          owner_team: support
+        next: G_TRIAGE_COMPLETE
+      high:
+        update_state:
+          severity: high
+          owner_team: incident-response
+        next: G_TRIAGE_COMPLETE
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: show_allowed_answers
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: severity did not match allowed answers
+gates:
+  - id: G_TRIAGE_COMPLETE
+    method: mechanical
+    trust_class: deterministic
+    condition: state.issue_summary is not null and state.severity is not null
+    on_fail: block
+outputs:
+  - id: OUT_TRIAGE_NOTE
+    type: document
+    allowed_after: [G_TRIAGE_COMPLETE]

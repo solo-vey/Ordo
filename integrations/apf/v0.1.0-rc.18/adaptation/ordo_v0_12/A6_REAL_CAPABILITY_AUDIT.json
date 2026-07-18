@@ -1,0 +1,160 @@
+{
+  "milestone": "A6",
+  "title": "APF Real Capability Audit against Ordo v0.12 pre-release",
+  "status": "passed-with-capability-boundaries",
+  "audit_date": "2026-07-10",
+  "source_workspace": "ordo_github_workspace_v0_12_pre_release_after_full_self_check",
+  "target_apf_baseline": "v0.1.0-rc.12-confirmed-closure",
+  "capabilities": [
+    {
+      "capability": "checkpoint_state_and_forward_blocking",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": true,
+      "runtime_enforced": true,
+      "tested": true,
+      "apf_use_status": "adopt-now",
+      "evidence": [
+        "cli/ordo/checkpoints.py",
+        "cli/tests/test_cli_workflow.py::test_next_step_returns_earliest_incomplete_node_not_latest_requested",
+        "cli/tests/test_cli_workflow.py::test_intake_submit_blocks_skipping_earliest_incomplete_node"
+      ]
+    },
+    {
+      "capability": "state_snapshots_hash_chain",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": true,
+      "runtime_enforced": true,
+      "tested": true,
+      "apf_use_status": "adopt-now",
+      "evidence": [
+        "cli/ordo/session_chain.py",
+        "cli/README.md",
+        "cli/tests/test_cli_workflow.py"
+      ]
+    },
+    {
+      "capability": "state_diff",
+      "documented": true,
+      "schema_supported": false,
+      "cli_supported": true,
+      "runtime_enforced": false,
+      "tested": true,
+      "apf_use_status": "adopt-as-helper",
+      "evidence": [
+        "cli/ordo/cli.py::diff-state",
+        "cli/ordo/helpers.py::diff_state",
+        "cli/ordo/runner.py::state_diff"
+      ]
+    },
+    {
+      "capability": "append_only_restore_session",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": true,
+      "runtime_enforced": true,
+      "tested": true,
+      "apf_use_status": "adopt-with-boundary",
+      "evidence": [
+        "cli/ordo/runtime_restore.py",
+        "cli/docs/SCENARIO_TESTING_WITH_RUNTIME_CLI.md",
+        "cli/tests/test_cli_workflow.py::test_restore_session_appends_proof_without_truncating_history"
+      ]
+    },
+    {
+      "capability": "backtracking_stale_dependency_invalidation",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": false,
+      "runtime_enforced": false,
+      "tested": false,
+      "apf_use_status": "policy-only-pending-implementation",
+      "evidence": [
+        "M64_2_CONVERSATION_SEMANTICS.md",
+        "M64_2_PROCESS_RAIL_SCHEMA_CONVENTION.md"
+      ]
+    },
+    {
+      "capability": "prompt_registry_stable_ids",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": true,
+      "runtime_enforced": false,
+      "tested": true,
+      "apf_use_status": "adopt-now",
+      "evidence": [
+        "cli/tests/test_m71_2_prompt_registry_schema_profile.py",
+        "cli/tests/test_m71_3_history_event_prompt_registry_migration.py",
+        "cli/ordo/clean_check.py"
+      ]
+    },
+    {
+      "capability": "prompt_application_trace_writer",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": false,
+      "runtime_enforced": false,
+      "tested": true,
+      "apf_use_status": "package-local-evidence-only",
+      "evidence": [
+        "cli/docs/RUNTIME_PROMPT_APPLICATION_TRACE_VALIDATION.md",
+        "cli/tests/test_m71_4_runtime_prompt_trace_validation.py"
+      ]
+    },
+    {
+      "capability": "session_trace_and_verify_session",
+      "documented": true,
+      "schema_supported": true,
+      "cli_supported": true,
+      "runtime_enforced": true,
+      "tested": true,
+      "apf_use_status": "adopt-now",
+      "evidence": [
+        "cli/ordo/session_trace.py",
+        "cli/ordo/session_chain.py",
+        "cli/ordo/cli.py::verify-session"
+      ]
+    },
+    {
+      "capability": "transcript_replay_protocol",
+      "documented": true,
+      "schema_supported": false,
+      "cli_supported": false,
+      "runtime_enforced": false,
+      "tested": true,
+      "apf_use_status": "pilot-only-not-production",
+      "evidence": [
+        "M60_6_4_TRANSCRIPT_REPLAY_PILOT_REPORT.json",
+        "M60_6_5_TRANSCRIPT_REPLAY_ACCEPTANCE_MATRIX_BLOCKER_REPORT.json"
+      ]
+    },
+    {
+      "capability": "multi_runtime_transcript_replay_acceptance",
+      "documented": true,
+      "schema_supported": false,
+      "cli_supported": false,
+      "runtime_enforced": false,
+      "tested": false,
+      "apf_use_status": "blocked",
+      "evidence": [
+        "M60_6_5_TRANSCRIPT_REPLAY_ACCEPTANCE_MATRIX_BLOCKER_REPORT.json"
+      ]
+    }
+  ],
+  "executed_tests": {
+    "command": "python -m pytest -q cli/tests/test_cli_workflow.py -k 'restore_session or earliest_incomplete or intake_submit_blocks_skipping or snapshot or diff_state' cli/tests/test_m71_4_runtime_prompt_trace_validation.py cli/tests/test_m71_2_prompt_registry_schema_profile.py",
+    "result": "6 passed, 91 deselected",
+    "status": "passed"
+  },
+  "decisions": [
+    "APF may rely on checkpoint blocking, snapshots, session-chain verification, diff-state helper, and append-only restore-session when packaged with compatible runtime CLI.",
+    "APF must not claim automatic semantic stale-dependency invalidation; A2/A4 remain policy-level until implemented and tested.",
+    "Prompt application trace remains package-local identity evidence; no generalized runtime writer is present.",
+    "Transcript replay remains pilot-only; multi-runtime acceptance is blocked and cannot unlock BL-APF-001 implementation."
+  ],
+  "backlog": {
+    "BL-APF-001": "deferred-after-A6; real-case replay capability not production-ready",
+    "BL-APF-002": "deferred; prompt registry exists but node-bound applicability review not started"
+  }
+}

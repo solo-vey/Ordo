@@ -1,0 +1,32 @@
+{
+  "schema_version": "ordo.external_developer_adoption_case.v1",
+  "case_id": "EDA-001",
+  "status": "publication_safe_verified",
+  "developer_relationship": "independent_external_developer",
+  "framework_author_participation": false,
+  "publication_playbook_id": "external.workflow_preparation",
+  "playbook_version": "0.1.0-rc.1",
+  "built_with": {
+    "language_version": "0.13.0-rc.1",
+    "framework_version": "0.5.0-rc.2"
+  },
+  "development_evidence": {
+    "alpha_iterations": 3,
+    "release_candidate_iterations": 1,
+    "structural_semantic_tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "separate_model_pilot": true
+  },
+  "claims": [
+    {
+      "claim": "An independent developer produced and validated a release-candidate Ordo playbook without direct framework-author assistance.",
+      "scope": "This single submitted and publication-normalized case only."
+    }
+  ],
+  "limitations": [
+    "Original confidential source inputs and raw pilot run packages are not included.",
+    "The package does not establish general adoption success rates.",
+    "Historical timing statements are retained as supplied and are not independently reconstructed."
+  ]
+}

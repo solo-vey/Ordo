@@ -1,0 +1,48 @@
+{
+  "milestone": "M67.2",
+  "title": "CLI clean-check support design",
+  "status": "accepted-design / passed-scope-validation",
+  "date": "2026-07-09",
+  "scope": "language/CLI design only; no implementation patch",
+  "added_files": [
+    "M67_2_CLI_CLEAN_CHECK_SUPPORT_DESIGN_REPORT.json",
+    "M67_2_CLI_CLEAN_CHECK_SUPPORT_DESIGN_REPORT.md",
+    "M67_2_VALIDATION_REPORT.json",
+    "cli/docs/CLEAN_CHECK_COMMAND.md",
+    "docs/design_decisions/DD-ORDO-M67-003_CLI_CLEAN_CHECK_COMMAND.md",
+    "language/improvement_intake/m67_2/M67_2_CLI_CLEAN_CHECK_SUPPORT_DESIGN_REPORT.json",
+    "language/improvement_intake/m67_2/M67_2_CLI_CLEAN_CHECK_SUPPORT_DESIGN_REPORT.md",
+    "language/improvement_intake/m67_2/M67_2_VALIDATION_REPORT.json",
+    "language/spec/24_CLEAN_PACKAGE_CLI_MODEL.md"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "README.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/CHANGELOG.md",
+    "language/README.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "command_contract": [
+    "ordo clean-check <package>",
+    "ordo clean-check <package> --profile light|standard|strict",
+    "ordo clean-check <package> --json",
+    "ordo clean-check <package> --fail-on-warning"
+  ],
+  "status_values": [
+    "passed",
+    "passed_with_warnings",
+    "blocked",
+    "not_applicable"
+  ],
+  "non_changes": {
+    "packages_changed": false,
+    "cli_implementation_changed": false,
+    "tests_changed": false,
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false,
+    "compiled_ir_regenerated": false
+  },
+  "next": "M67.3 — CLI clean-check minimal implementation patch"
+}

@@ -1,0 +1,35 @@
+{
+  "milestone": "M59.1",
+  "title": "CLI-Enforced Runtime Package / Trust Level 1 foundation",
+  "status": "passed",
+  "implemented": [
+    "runtime profile embeds cli_embedded/ordo",
+    "embedded runtime CLI wrapper blocks non-runtime authoring/package/release commands",
+    "runtime packages declare embedded_cli_included, embedded_cli_path, trust_level",
+    "START_HERE_RUNTIME_MODE.md uses hard-stop fallback and DETERMINISM_NOT_ENFORCED marker",
+    "runtime-status/runtime-entry can load runtime packages via ordo.runtime.json without ordo.yml",
+    "package tests cover embedded CLI presence, trust metadata, and blocked authoring commands"
+  ],
+  "not_implemented_yet": [
+    "incremental intake --submit",
+    "per-node report path + digest protocol",
+    "snapshot hash-chain",
+    "verify-session",
+    "canary leak detection"
+  ],
+  "commands_executed": [
+    "python -m unittest discover -s tests -v -> 55/55 OK",
+    "ordo lint/compile/test/coverage for active packages -> passed",
+    "ordo go-no-go history_event_guided_intake --run-intake --generate-output -> go",
+    "ordo package history_event_guided_intake --profile runtime -> passed",
+    "embedded cli runtime-entry on extracted runtime profile -> ready",
+    "embedded cli package command -> blocked with exit 2"
+  ],
+  "cli_result": "executed_cli_passed",
+  "known_limitations": [
+    "M59.1 does not yet make each conversational node produce an incremental CLI evidence report",
+    "M59.1 does not yet provide tamper-evident session hash-chain or human verify-session",
+    "Embedded CLI wrapper blocks non-runtime commands, but shared implementation modules remain copied as code until later minimization"
+  ],
+  "created_at_utc": "2026-07-06T21:05:25Z"
+}

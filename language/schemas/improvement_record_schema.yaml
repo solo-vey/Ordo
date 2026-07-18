@@ -1,0 +1,29 @@
+ImprovementRecord:
+  type: object
+  required: [id, type, severity, affected_unit, approval]
+  properties:
+    id:
+      type: string
+    type:
+      type: string
+      examples: [missed_required_gate, node_coverage_gap, freeform_overuse]
+    severity:
+      enum: [low, medium, high, critical]
+    affected_unit:
+      type: object
+      required: [id, kind]
+      properties:
+        id:
+          type: string
+          description: Full namespaced ID.
+        kind:
+          enum: [gate, assertion, node, freeform, library, domain_pack, profile, compiler_rule]
+    root_cause_hypothesis:
+      type: array
+    proposed_patch:
+      type: array
+    suggested_tests:
+      type: array
+    approval:
+      type: object
+      required: [required, status]

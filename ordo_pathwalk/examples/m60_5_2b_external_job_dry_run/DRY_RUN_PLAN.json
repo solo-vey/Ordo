@@ -1,0 +1,75 @@
+{
+  "schema_version": "ordo.pathwalk.dry_run_plan.v1",
+  "mode": "external-job",
+  "scenario_count": 2,
+  "runtime_views": [
+    "json",
+    "ordo-code",
+    "json,ordo-code"
+  ],
+  "expected_cases": 6,
+  "tree_seed": 42,
+  "script_seed_start": 100,
+  "depth": 1,
+  "branching": [
+    2,
+    2
+  ],
+  "tree_source": "tree_source",
+  "jobs": [
+    {
+      "job_id": "scenario_000_json",
+      "scenario_id": "scenario_000",
+      "runtime_view": "json",
+      "scenario_path": "scenarios/scenario_000.json",
+      "runtime_template": "runtime_templates/json",
+      "expected_score_file": "scores/scenario_000_json_score.json",
+      "expected_transcript_file": "transcripts/scenario_000_json_transcript.json"
+    },
+    {
+      "job_id": "scenario_000_ordo-code",
+      "scenario_id": "scenario_000",
+      "runtime_view": "ordo-code",
+      "scenario_path": "scenarios/scenario_000.json",
+      "runtime_template": "runtime_templates/ordo-code",
+      "expected_score_file": "scores/scenario_000_ordo-code_score.json",
+      "expected_transcript_file": "transcripts/scenario_000_ordo-code_transcript.json"
+    },
+    {
+      "job_id": "scenario_000_json_ordo-code",
+      "scenario_id": "scenario_000",
+      "runtime_view": "json,ordo-code",
+      "scenario_path": "scenarios/scenario_000.json",
+      "runtime_template": "runtime_templates/json_ordo-code",
+      "expected_score_file": "scores/scenario_000_json_ordo-code_score.json",
+      "expected_transcript_file": "transcripts/scenario_000_json_ordo-code_transcript.json"
+    },
+    {
+      "job_id": "scenario_001_json",
+      "scenario_id": "scenario_001",
+      "runtime_view": "json",
+      "scenario_path": "scenarios/scenario_001.json",
+      "runtime_template": "runtime_templates/json",
+      "expected_score_file": "scores/scenario_001_json_score.json",
+      "expected_transcript_file": "transcripts/scenario_001_json_transcript.json"
+    },
+    {
+      "job_id": "scenario_001_ordo-code",
+      "scenario_id": "scenario_001",
+      "runtime_view": "ordo-code",
+      "scenario_path": "scenarios/scenario_001.json",
+      "runtime_template": "runtime_templates/ordo-code",
+      "expected_score_file": "scores/scenario_001_ordo-code_score.json",
+      "expected_transcript_file": "transcripts/scenario_001_ordo-code_transcript.json"
+    },
+    {
+      "job_id": "scenario_001_json_ordo-code",
+      "scenario_id": "scenario_001",
+      "runtime_view": "json,ordo-code",
+      "scenario_path": "scenarios/scenario_001.json",
+      "runtime_template": "runtime_templates/json_ordo-code",
+      "expected_score_file": "scores/scenario_001_json_ordo-code_score.json",
+      "expected_transcript_file": "transcripts/scenario_001_json_ordo-code_transcript.json"
+    }
+  ]
+}

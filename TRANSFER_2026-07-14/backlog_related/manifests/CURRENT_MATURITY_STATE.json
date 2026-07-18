@@ -1,0 +1,88 @@
+{
+  "schema_version": "ordo.current_maturity_state.v1",
+  "updated_at": "2026-07-12T23:30:00Z",
+  "source_of_truth": true,
+  "latest_closed_milestone": "M89.5",
+  "release": {
+    "product": "Ordo",
+    "version": "v0.12",
+    "release_status": "pre-release",
+    "quality_gate": "passed",
+    "full_cli_suite": "pending integrated delivery-gate rerun",
+    "latest_targeted_gates": [
+      "M87.7 delivery-gate patch integrated without downgrade",
+      "M88/M89 combined regression 53/53 passed before integration",
+      "M89.5 BL-ORDO-021 closure passed"
+    ]
+  },
+  "capabilities": {
+    "conversation_scope_guard": {
+      "contract_id": "ORDO-CAP-CSG-001",
+      "specification": "language_integrated",
+      "schema_support": "integrated",
+      "toolchain_support": "integrated",
+      "runtime_enforcement": "integrated_helper_runner",
+      "model_benchmark": "passed_cross_model_repeated_runs",
+      "production_recommendation": "ready",
+      "passed_gates": [
+        "G_CSG_SPEC_RELEASE_READY",
+        "G_CSG_TOOLCHAIN_READY",
+        "G_CSG_RUNTIME_ENFORCEMENT_READY",
+        "G_CSG_MODEL_BENCHMARK_READY"
+      ],
+      "model_benchmark_evidence": "reports/m75_3_csg_cross_model/CSG_CROSS_MODEL_FINAL_M75_3_2.json"
+    },
+    "apf_graph_validation": {
+      "status": "ready",
+      "milestone": "M76.1",
+      "active_nodes_reachable": "72/72",
+      "dead_end_active_nodes": 0,
+      "undeclared_cycles": 0
+    },
+    "generated_real_module_test_execution": {
+      "status": "safe_artifact_execution_ready",
+      "milestone": "M76.2"
+    },
+    "apf_session_package_cache": {
+      "status": "complete",
+      "closure": "M80.4",
+      "recommendation": "integrated"
+    },
+    "anti_pattern_layer": {
+      "status": "complete",
+      "closure": "M88.5",
+      "registry_items": 6,
+      "runtime_detection": "integrated"
+    },
+    "legacy_instruction_migration": {
+      "status": "complete",
+      "closure": "M89.5",
+      "zero_silent_loss": true,
+      "end_to_end_package": "validated"
+    }
+  },
+  "backlog": {
+    "canonical_md": "CONSOLIDATED_BACKLOG.md",
+    "canonical_json": "manifests/CONSOLIDATED_BACKLOG.json",
+    "closed_through": [
+      "BL-ORDO-002",
+      "BL-ORDO-003",
+      "BL-ORDO-004",
+      "BL-ORDO-005",
+      "BL-ORDO-020",
+      "BL-ORDO-021"
+    ]
+  },
+  "historical_status_policy": "Historical milestone reports are immutable evidence. CURRENT_MATURITY_STATE.json overrides them for present-tense status.",
+  "generic_template_tooling": {
+    "milestones": "M79.0-M79.6",
+    "status": "complete",
+    "release": "0.1.0",
+    "recommendation": "ready_for_controlled_adoption"
+  },
+  "reconciliation_note": "BL-ORDO-001 kept open: M75.4 claim contradicts persisted cross-model evidence and RUN-06 protected-state failure.",
+  "active_work": [
+    "BL-ORDO-027",
+    "BL-ORDO-028"
+  ]
+}

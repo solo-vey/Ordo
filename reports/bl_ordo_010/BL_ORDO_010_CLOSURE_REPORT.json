@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.bl_ordo_010.closure.v1",
+  "id": "BL-ORDO-010",
+  "status": "closed",
+  "completed": [
+    "English source inventory synchronized",
+    "Appendices A-C recreated from canonical registries and package sources",
+    "Appendix F generated from current schemas",
+    "Appendices D-E preserved",
+    "Assets synchronized",
+    "Manifest rebuilt with SHA-256",
+    "English all-in-one Markdown generated",
+    "English PDF generated and visually checked"
+  ],
+  "evidence": {
+    "sections": 96,
+    "assets": 22,
+    "pdf_pages": 581,
+    "localization_tests": "5/5 passed",
+    "visual_samples": [
+      "page 1",
+      "page 275",
+      "page 581"
+    ]
+  },
+  "blocking_issues": 0
+}

@@ -1,0 +1,21 @@
+{
+  "milestone": "M73.2",
+  "batch": "translation-batch-2",
+  "source_locale": "uk",
+  "target_locale": "en",
+  "files": [
+    "chapter_01_chomu_zvychainykh_promptiv_nedostatno.md",
+    "chapter_02_shcho_take_ordo_prostymy_slovamy.md",
+    "chapter_03_ordo_iak_mova_keruvannia_modelliu.md",
+    "chapter_04_intent_contract_context.md",
+    "chapter_05_state_pamiat_protsesu.md",
+    "chapter_06_entry_i_node_iak_model_stavyt_pytannia.md"
+  ],
+  "validation": [
+    "preserve fenced code blocks",
+    "preserve image targets",
+    "preserve Ordo identifiers and op-codes",
+    "reject Ukrainian-specific characters in English prose",
+    "update per-chapter SHA-256 and sync status"
+  ]
+}

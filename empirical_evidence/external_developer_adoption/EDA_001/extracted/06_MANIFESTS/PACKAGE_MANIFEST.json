@@ -1,0 +1,313 @@
+{
+  "schema_version": "ordo.external_adoption_package_manifest.v1",
+  "package_id": "ordo.external_developer_adoption.eda_001",
+  "case_id": "EDA-001",
+  "publication_status": "canonical_evidence_package",
+  "files": [
+    {
+      "path": "00_README/CONFIDENTIALITY_AND_IP_POLICY.md",
+      "size_bytes": 913,
+      "sha256": "e14623b736350e6bcb3c28c935a31e5f1ed9f298cfb1edce7708f18ab0f69ccd"
+    },
+    {
+      "path": "00_README/README.md",
+      "size_bytes": 1525,
+      "sha256": "4bf8dd64eea1f9ce0d8e5603c0c7779f38cba5331380aeb5f559b1d3fb44c630"
+    },
+    {
+      "path": "00_README/SUBMISSION_CONTEXT.md",
+      "size_bytes": 1349,
+      "sha256": "78588d3a71e29f6fbe08f813cda1986203fc75970ed2048c16d7fbdbaab6973e"
+    },
+    {
+      "path": "01_CASE_STUDY/CASE_STUDY.md",
+      "size_bytes": 2721,
+      "sha256": "2bfa0bee63c421449cd31ec4e217c7637557d662a166812986557001f211ffa7"
+    },
+    {
+      "path": "01_CASE_STUDY/INPUT_MATERIALS_ABSTRACT.md",
+      "size_bytes": 1410,
+      "sha256": "018cdd3efc122ba7e3a30c79bcd89a8d3273978521966a92c149e3964eeae9dc"
+    },
+    {
+      "path": "02_PROCESS_EVIDENCE/DECISIONS.md",
+      "size_bytes": 942,
+      "sha256": "c7c23363b66032d67a6ec913bf15408c3c5d90761687486b6d1935563355fc46"
+    },
+    {
+      "path": "02_PROCESS_EVIDENCE/DEVELOPMENT_SEQUENCE.md",
+      "size_bytes": 963,
+      "sha256": "f8a3c2fa6a3830d3cf0de5ee37eeb7cd99c1b41eaed5b9c7b43d36d732c38f50"
+    },
+    {
+      "path": "02_PROCESS_EVIDENCE/PROBLEMS_AND_FIXES.md",
+      "size_bytes": 2087,
+      "sha256": "d37c6eb844247fa00044b5469db0d061e13b491b88297bfa61900e544958b532"
+    },
+    {
+      "path": "02_PROCESS_EVIDENCE/TIMELINE.md",
+      "size_bytes": 983,
+      "sha256": "55ed834a53d62db5d9d1b68422b328a5d1f53e32118834e8ca6863b40d15613a"
+    },
+    {
+      "path": "02_PROCESS_EVIDENCE/VERSION_HISTORY.md",
+      "size_bytes": 771,
+      "sha256": "ff6d31d8ce0d92b992f20f1929dbc63e139a06dd14be21da9e090dcf1f429560"
+    },
+    {
+      "path": "03_RELEASE_EVIDENCE/EXTERNAL_WORKFLOW_PREPARATION_ALPHA2_POST_UNPACK_VERIFICATION.json",
+      "size_bytes": 548,
+      "sha256": "6768908650ec407892a73e1b4412d3b4331da224244a9d956a024cd5a1e28020"
+    },
+    {
+      "path": "03_RELEASE_EVIDENCE/EXTERNAL_WORKFLOW_PREPARATION_ALPHA3_POST_UNPACK_VERIFICATION.json",
+      "size_bytes": 541,
+      "sha256": "93f9efd43306042367d10a741bb002ca1ec2190ebd21717ea67c0d528971ac62"
+    },
+    {
+      "path": "03_RELEASE_EVIDENCE/EXTERNAL_WORKFLOW_PREPARATION_ALPHA_POST_UNPACK_VERIFICATION.json",
+      "size_bytes": 163,
+      "sha256": "7111e5f7d869c78cdcba87a8318807ce20cfe5368b6d5c86b7a5372009de9b1f"
+    },
+    {
+      "path": "03_RELEASE_EVIDENCE/EXTERNAL_WORKFLOW_PREPARATION_RC1_POST_UNPACK_VERIFICATION.json",
+      "size_bytes": 583,
+      "sha256": "c94e11c4fb52e36ea1fda4fa3188302d60521821153e17679680d4b3c4027698"
+    },
+    {
+      "path": "03_RELEASE_EVIDENCE/ROLLBACK_AND_RELEASE_DISCIPLINE.md",
+      "size_bytes": 633,
+      "sha256": "bfb91fd748b665a003bd0a901261408f6e1e2c7fae7d77a0bc82968fc36ad1b6"
+    },
+    {
+      "path": "03_RELEASE_EVIDENCE/VALIDATION_SUMMARY.md",
+      "size_bytes": 514,
+      "sha256": "32135aaef9020b7a60d778fa69fd514cf8eff0089f2ffba179ab98af07a01ecd"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/EXTERNAL_WORKFLOW_PREPARATION_0.1.0-rc.1_PUBLICATION_SAFE.zip",
+      "size_bytes": 32927,
+      "sha256": "7f49a302a221e7484fac17ca85b773d9e4a19fcdcaa6a234d8af64560ed2cc15"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/CHANGELOG.md",
+      "size_bytes": 1453,
+      "sha256": "549c82deac2accdd1b8257c6dbfecc14e13ff42437ead9238f45b0181744e20e"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/README.md",
+      "size_bytes": 1622,
+      "sha256": "a396afe3e8ca7e3407b3513adb05c77a0ce10309a7b03473ba06f0ee709089d9"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/SHA256SUMS.txt",
+      "size_bytes": 3525,
+      "sha256": "c307bf7085dfd848c043b6956cb71d42dccd159f5a2efe1b90443609ab705ec3"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/backlog/OPEN_ITEMS.md",
+      "size_bytes": 310,
+      "sha256": "9399a43db57c138ab08f746bfe1817be7bbc36f5b5a166e0078bd3d19b6542ef"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/contracts/artifact_model.json",
+      "size_bytes": 1314,
+      "sha256": "f85edd24a3fc52a86fdccf0b14f855377cce00fbfbb536f9cc7e14e5fdb3f825"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/contracts/error_taxonomy.json",
+      "size_bytes": 385,
+      "sha256": "1ccf9dbb5fa757e806d1657e058d8c3eb570ca72b1195838bac280fc0d0bb4d3"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/contracts/input_contract.json",
+      "size_bytes": 608,
+      "sha256": "09619dee7816a8cb40cee0da8524329527616d2afee37c022062727253e5b857"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/contracts/output_contract.json",
+      "size_bytes": 771,
+      "sha256": "faeb1ddbfc7734eb4bf3852018bd8d865800c0759459dfdc5347e6fa3714dd87"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/docs/ARCHITECTURE.md",
+      "size_bytes": 661,
+      "sha256": "0f8d9454f4f4692f59a04ae5dd2f7767bda1699b3c878cf1f1348218c6ce98d0"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/docs/EXISTING_INSTRUCTIONS_PROVENANCE.md",
+      "size_bytes": 412,
+      "sha256": "3696122cf7af4555a3c383c283ce143a0bd780db803f593e2a248741b35a0f2f"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/docs/KNOWN_LIMITATIONS.md",
+      "size_bytes": 520,
+      "sha256": "83a9239e25efb6d89c7c8af890d177ce3c3638c4ddce5ef544a901063df6d0a7"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/docs/MAINTAINER_GUIDE.md",
+      "size_bytes": 1347,
+      "sha256": "3c448fc9b27b69f3352e93e4fc5b70b6f6adc99a46fb81ae4812372f08d42781"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/docs/QUICK_START.md",
+      "size_bytes": 927,
+      "sha256": "89f78f9732346bd2e6b86f60cf43c447ce5372f89f70a14b6e30fcc6c10addae"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/examples/success_state.yaml",
+      "size_bytes": 1743,
+      "sha256": "ad67f4cb2a4abd4f1414b12a2a214af849a7bc017cc4a6faae7417ba3590b8de"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/fixtures/intake_minimal.yaml",
+      "size_bytes": 223,
+      "sha256": "0184d964c8a6f740e18a8206a6a37553ef2e319653f51e291c64a38b90249b56"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/ordo.yml",
+      "size_bytes": 301,
+      "sha256": "e98690fa517ab6ddb762b9581fedb401319cb19e1a79f299d9c66936155ef18c"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/playbook_release.json",
+      "size_bytes": 2277,
+      "sha256": "7696736a1da93172f51a77927a38571e659ea283f2b4d69011046a05cce00f7b"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/question_registry.json",
+      "size_bytes": 4829,
+      "sha256": "a995a8fd370d3dcf2eaceb198bde0c08d407871462e9e94f7d8a69c22cf27375"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/reports/PUBLICATION_VALIDATION_REPORT.json",
+      "size_bytes": 120,
+      "sha256": "882099e11565e05eea8fa381cb35368bf4a3958d0bf1c5c10e057e27da2f7c19"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/reports/SELF_CHECK_REPORT.json",
+      "size_bytes": 534,
+      "sha256": "5f38c3dac77d4831c6f1d93cbc5ea53eec80f753c7bbb6dd9e4db700b5602cdd"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/reports/STRICT_BUSINESS_GATE_REPORT.json",
+      "size_bytes": 338,
+      "sha256": "1c549b7715267a2102be60a5f6c262944991807cc648b874d29ef5e2adb0afef"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/reports/TASK_CLOSURE_REPORT.md",
+      "size_bytes": 906,
+      "sha256": "11a5d1006754ed2c799f6873cba80c5179c0a133d66930b0080927d68b514e94"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/reports/TEST_REPORT.json",
+      "size_bytes": 322,
+      "sha256": "3915ffc23a87a0c9427aba65accd3356e5fa2db9d0c4337f397ec43bd2ed206f"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/reports/VALIDATION_REPORT.json",
+      "size_bytes": 928,
+      "sha256": "41d7ca714893dd15daea85a59210d3810781b993aa5c76ada0c1ae69114b5830"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/rollback/ALPHA_1_CHECKPOINT_REFERENCE.json",
+      "size_bytes": 376,
+      "sha256": "73176d6833a1d714b4da6354911081464d2e63357c08f907649714a2e03beb3b"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/rollback/ALPHA_2_CHECKPOINT_REFERENCE.json",
+      "size_bytes": 308,
+      "sha256": "9dafb2d223f2ea491a30d4bd9e6030b8104d5d3e7bf3d3c1b45e17d08878cf33"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/rollback/INITIAL_ALPHA_CHECKPOINT.json",
+      "size_bytes": 295,
+      "sha256": "72ec490a00f15db11577944e3296e918b6080d3b12cac629a9c995b62c1fd94d"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/runtime/DECISION_LOG.json",
+      "size_bytes": 3173,
+      "sha256": "02b34261407ba5c4c4c3d6c65f6de2ae8c3eb59552b2010a8eafe27e893e8ff4"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/runtime/DRAFT_REVIEW_RECORD.json",
+      "size_bytes": 436,
+      "sha256": "80f548eaa018a676619e6c780c8203711692ac71d30afea9bcf226c23e5abbcb"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/runtime/EXTERNAL_LINK_REGISTRY.json",
+      "size_bytes": 978,
+      "sha256": "48343e45cabebb251ba82fb9e0e2e84383b5e0fd18a97816ff474f8011699990"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/runtime/UNCERTAINTY_REGISTER.json",
+      "size_bytes": 3941,
+      "sha256": "ed972496deb1e5e19b477f8f9d18c979fd73cb3a0eab6e09b32c09efc62c03cb"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/source/program.ordo.yaml",
+      "size_bytes": 29562,
+      "sha256": "f4c2dad71be49f579049732304fe5743fe41767f9f33ff9dd1c27fb4bfa0e9a5"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/templates/PROCESS_HANDOFF_TEMPLATE.md",
+      "size_bytes": 232,
+      "sha256": "430d0e317dc9dc222eb03ad5adbd1cf70b86860f58060c5e22a1007f5cf7edc2"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/templates/PROCESS_RECORD_TEMPLATE.md",
+      "size_bytes": 505,
+      "sha256": "ae4623802c83f35a26eee3fe8e26df54f926d6d78c3349787a151a2556981579"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/templates/REFERENCE_ROW_TEMPLATE.md",
+      "size_bytes": 90,
+      "sha256": "6ece9c13ccf7cd9f3e7b3151292632bfda195f9f05adf56c2c39b7a46eb93cdf"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/templates/WORK_TRACKING_ITEM_TEMPLATE.md",
+      "size_bytes": 239,
+      "sha256": "b37c82c4589caea9894e17fabdb129fa7eba3207f62d60b6bcad786d65023a01"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/tests/test_cases.yaml",
+      "size_bytes": 6966,
+      "sha256": "c91fce188cb8e9f9043c2f2904829dfa73e0728c0c444867aae1e9cd0143bdd7"
+    },
+    {
+      "path": "04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/tools_validate.py",
+      "size_bytes": 3827,
+      "sha256": "97f4fb2195bd5980d1784f4b4ba4937026f511c20aa9afb0de72e595eee745d8"
+    },
+    {
+      "path": "05_FRAMEWORK_FEEDBACK/LOCAL_BACKLOG_AFTER_SPLIT.md",
+      "size_bytes": 340,
+      "sha256": "42073da148a4a2e31f9902620576302adc3f1fad803c2b6dfa4eec6f6b1aa1e2"
+    },
+    {
+      "path": "05_FRAMEWORK_FEEDBACK/ORDO_ARF_RUN_EVIDENCE_REPLAY_IMPROVEMENT_PROPOSAL.md",
+      "size_bytes": 9550,
+      "sha256": "b0db4117faf07ed4f929a25cdf03cc97b3f8144423bbabeab89f5728e09efd93"
+    },
+    {
+      "path": "06_MANIFESTS/EXTERNAL_ADOPTION_CASE.json",
+      "size_bytes": 1174,
+      "sha256": "1ef1f2cfe00f9fb692e49c1762d0ac2cad12024dc3d369a5fb7e434e4a0abf1d"
+    },
+    {
+      "path": "06_MANIFESTS/PUBLICATION_SANITIZATION_REPORT.md",
+      "size_bytes": 555,
+      "sha256": "c874658ea8100c50f60c3a3dfd4bc22226796d75fefeee5db63fe6b2ad7e8e81"
+    },
+    {
+      "path": "06_MANIFESTS/PUBLICATION_SANITIZATION_SCAN.json",
+      "size_bytes": 132,
+      "sha256": "23092a5436dbba6f5da968722d32253816178ae79fd2edc52bfbd874fb853261"
+    },
+    {
+      "path": "06_MANIFESTS/TRANSFORMATION_PROVENANCE.json",
+      "size_bytes": 881,
+      "sha256": "0627e38d55270f5b9cc049354ed4d9bb59bc04e160512b6e34b3a7ae84741a41"
+    }
+  ]
+}

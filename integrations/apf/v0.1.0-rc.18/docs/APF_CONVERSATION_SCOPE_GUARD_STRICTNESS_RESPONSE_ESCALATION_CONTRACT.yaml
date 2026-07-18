@@ -1,0 +1,146 @@
+contract_id: APF-CSG-002
+title: Generated-playbook strictness, response, and escalation contract
+status: aligned-with-ordo-csg-baseline-v0.1
+source_contract: ORDO-CAP-CSG-001
+scope:
+  apf_internal:
+    enabled: false
+  generated_playbooks:
+    applies_when: conversation_scope_guard.supported == true
+strictness_modes:
+  advisory:
+    answer_external_question: true
+    max_external_answer_scope: brief
+    redirect_after_answer: true
+    acknowledge_message: true
+    repeat_active_question: true
+  guided_redirect:
+    answer_external_question: false
+    acknowledge_message: true
+    explain_scope_boundary: true
+    repeat_active_question: true
+  strict_redirect:
+    answer_external_question: false
+    acknowledge_message: false
+    scope_notice: true
+    repeat_active_question: true
+  locked_process:
+    answer_external_question: false
+    allowed_intents:
+    - answer_to_active_question
+    - clarification
+    - correction
+    - backtrack_request
+    - requirement_change
+    - pause_request
+    - resume_request
+    - exit_request
+    - process_meta_question
+    - unsafe_or_emergency_message
+mode_selection_required: true
+mode_change_requires:
+- explicit owner or authorized runtime decision
+- preserved process state
+- trace event when trace is enabled
+response_actions:
+  gentle_redirect:
+    required_parts:
+    - brief_acknowledgement
+    - active_step_reminder
+    - active_question
+  explicit_scope_reminder:
+    required_parts:
+    - scope_boundary
+    - state_preserved_notice
+    - active_question
+  offer_pause_or_exit:
+    required_parts:
+    - repeated_deviation_notice
+    - return_option
+    - pause_option
+    - exit_option
+  suspend_until_process_choice:
+    required_parts:
+    - suspension_notice
+    - allowed_process_choices
+response_invariants:
+- redirect must not complete the active node
+- redirect must not invent an answer for the user
+- redirect must not change selected path
+- redirect must not confirm business state
+- redirect must not discard collected state
+- redirect must not terminate the run without an exit request or terminal rule
+- safety or emergency handling has priority over scope response
+- process-control intents must bypass unrelated-topic handling
+escalation:
+  default_counter_scope: active_node
+  allowed_counter_scopes:
+  - active_node
+  - process
+  reset_on:
+  - valid_process_answer
+  - node_transition
+  - process_resume
+  levels:
+    1:
+      action: gentle_redirect
+      status: redirect_required
+    2:
+      action: explicit_scope_reminder
+      status: redirect_required
+    3:
+      action: offer_pause_or_exit
+      status: awaiting_process_choice
+    4:
+      action: suspend_until_process_choice
+      status: awaiting_process_choice
+escalation_rules:
+- the default counter must not be global across the process
+- a node transition resets the default counter
+- escalation must not mutate business state
+- level 4 must preserve state and allow return, pause, or controlled exit
+- undefined escalation actions are invalid
+- locked_process must include at least pause or exit as an escape action
+status_semantics:
+  active: process is running and accepts valid process input
+  deviation_detected: message requires classification before state mutation
+  redirect_required: unrelated topic requires redirect behavior
+  awaiting_process_choice: process is suspended until an allowed process choice is
+    selected
+  paused: process state is preserved and normal execution is suspended
+  exited_incomplete: run ended before completion of the process contract
+trace_events_when_enabled:
+- conversation.deviation.detected
+- conversation.deviation.classified
+- conversation.redirect.emitted
+- conversation.escalation.changed
+- conversation.scope_guard.bypassed_for_control_intent
+- conversation.scope_guard.bypassed_for_safety
+- process.pause.requested
+- process.paused
+- process.resume.requested
+- process.resumed
+- process.exit.requested
+- process.exited
+required_design_outputs:
+- selected_mode
+- response_action_templates
+- escalation_counter_scope
+- escalation_levels
+- reset_rules
+- pause_resume_exit_behavior
+- state_protection_confirmation
+- trace_hook_decision
+blocking_conditions:
+- mode is undefined or unsupported
+- unrelated-topic response can mutate business state
+- repeated deviation has no controlled suspension or terminal behavior
+- locked_process has no escape action
+- safety or process-control intents are blocked
+- escalation counter has no reset rule
+next_stage: CSG-3 state-protection and process-control contract
+escalation_policy:
+  allowed_counter_scopes:
+  - active_node
+  - deviation_session
+  - process_run

@@ -1,0 +1,36 @@
+{
+  "schema_version": "ordo.backlog.implementation_plan.v1",
+  "id": "BL-ORDO-027",
+  "status": "in_progress",
+  "priority": "high",
+  "scope": "general_arf_process_control",
+  "excluded": [
+    "manual_qa_specialization",
+    "fixture_specific_rules",
+    "endpoint_specific_rules",
+    "history_event_specific_rules"
+  ],
+  "steps": [
+    "control_model_contract",
+    "node_contract_profiles",
+    "instruction_precedence",
+    "runtime_enforcement",
+    "independent_validation",
+    "state_and_invalidation",
+    "antipattern_integration",
+    "tests",
+    "graph_docs_closure"
+  ],
+  "fundamental_antipattern_governance": "new_fundamental_rule_requires_explicit_owner_approval",
+  "step_statuses": {
+    "control_model_contract": "completed",
+    "node_contract_profiles": "pending",
+    "instruction_precedence": "pending",
+    "runtime_enforcement": "pending",
+    "independent_validation": "pending",
+    "state_and_invalidation": "pending",
+    "antipattern_integration": "pending",
+    "tests": "pending",
+    "graph_docs_closure": "pending"
+  }
+}

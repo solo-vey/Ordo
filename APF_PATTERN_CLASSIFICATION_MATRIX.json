@@ -1,0 +1,306 @@
+{
+  "status": "classification-only",
+  "base": "M62.2",
+  "candidates": [
+    {
+      "candidate": "PROCESS.AUTHORING.RUNTIME",
+      "source_theme": "APF as self-hosted playbook/process authoring system",
+      "classification": "documentation_pattern",
+      "priority": "P0",
+      "current_home": "APF standard module docs + book",
+      "future_home": "language/process-model guide",
+      "m62_3_decision": "Document as the parent pattern; do not promote to runtime core.",
+      "rationale": "It describes the authoring experience, not a low-level runtime instruction."
+    },
+    {
+      "candidate": "INPUT.POLICY",
+      "source_theme": "Inputs may be required, optional, absent, deferred, or produced later",
+      "classification": "schema_convention",
+      "priority": "P0",
+      "current_home": "APF state/schema convention",
+      "future_home": "language package authoring standard; possible lint candidate",
+      "m62_3_decision": "Formalize first as state/schema convention, not opcode.",
+      "rationale": "Many packages need the concept, but compiler behavior is not required yet."
+    },
+    {
+      "candidate": "OUTPUT.CANDIDATE.CATALOG",
+      "source_theme": "Outputs can be known, partial, AI-proposed, optional, deferred, or absent",
+      "classification": "schema_convention",
+      "priority": "P0",
+      "current_home": "APF output planning convention",
+      "future_home": "standard module authoring schema",
+      "m62_3_decision": "Keep as candidate catalog model until several modules use it.",
+      "rationale": "Good reusable structure, but not enough evidence for IR object yet."
+    },
+    {
+      "candidate": "TERMINAL.OUTPUT.SELECT",
+      "source_theme": "User chooses outputs at each terminal point",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF terminal output binding loop",
+      "future_home": "reusable applied-module subflow; possible authoring DSL pattern",
+      "m62_3_decision": "Treat as APF subflow before formal language construct.",
+      "rationale": "It is a guided review interaction, not a runtime validation primitive by itself."
+    },
+    {
+      "candidate": "TERMINAL.OUTPUT.BIND",
+      "source_theme": "Terminal paths bind selected outputs/templates",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF terminal path review",
+      "future_home": "standard terminal-output binding pattern",
+      "m62_3_decision": "Document as reusable subflow; defer opcode/IR promotion.",
+      "rationale": "Binding semantics need APF implementation evidence first."
+    },
+    {
+      "candidate": "OUTPUT.TEMPLATE.CHECK",
+      "source_theme": "Check template exists, is verified, and can be filled on the path",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF template review loop",
+      "future_home": "possible lint/check rule after APF patch",
+      "m62_3_decision": "Plan as APF subflow; only later evaluate lint rule.",
+      "rationale": "Needs concrete template metadata conventions first."
+    },
+    {
+      "candidate": "OUTPUT.TEMPLATE.DRAFT",
+      "source_theme": "Draft missing template when new output is selected",
+      "classification": "apf_reusable_subflow",
+      "priority": "P1",
+      "current_home": "APF output artifact creation loop",
+      "future_home": "template authoring guide",
+      "m62_3_decision": "Keep APF-local until template lifecycle stabilizes.",
+      "rationale": "Useful workflow, but too application-facing for core IR now."
+    },
+    {
+      "candidate": "OUTPUT.MOCK.EXAMPLE",
+      "source_theme": "Mock-filled examples are required for human template review",
+      "classification": "artifact_standard",
+      "priority": "P0",
+      "current_home": "template review artifact standard",
+      "future_home": "output template documentation standard; possible validation checklist",
+      "m62_3_decision": "Adopt as documentation/artifact standard before automation.",
+      "rationale": "Human review value is immediate; enforcement can wait."
+    },
+    {
+      "candidate": "OUTPUT.TEMPLATE.REVIEW",
+      "source_theme": "User approves/corrects/defers/removes template",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF review model",
+      "future_home": "standard review decision pattern",
+      "m62_3_decision": "Keep as guided APF subflow.",
+      "rationale": "Review decisions should be proven in APF before language promotion."
+    },
+    {
+      "candidate": "TERMINAL.READY.CHECK",
+      "source_theme": "Terminal path is not ready without terminal/output/template/readiness decisions",
+      "classification": "lint_candidate",
+      "priority": "P0",
+      "current_home": "APF readiness checklist",
+      "future_home": "lint/check candidate after APF patch",
+      "m62_3_decision": "Mark as first serious future lint candidate, not active rule.",
+      "rationale": "Readiness is important, but current packages do not all have required metadata yet."
+    },
+    {
+      "candidate": "TREE.AUTHOR.PROGRESSIVE",
+      "source_theme": "User can provide root-only, shallow subtree, deep subtree, full draft, or free-form logic",
+      "classification": "documentation_pattern",
+      "priority": "P0",
+      "current_home": "APF authoring model",
+      "future_home": "language process-authoring guide",
+      "m62_3_decision": "Promote as documented authoring pattern, not runtime construct.",
+      "rationale": "It shapes interaction flow but does not require core runtime behavior."
+    },
+    {
+      "candidate": "TREE.VISION.CAPTURE",
+      "source_theme": "Capture how much of the tree the user currently sees",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF branch 1/2 authoring flow",
+      "future_home": "process authoring module pattern",
+      "m62_3_decision": "Keep APF-local until branch 1/2 review closes.",
+      "rationale": "Depends on the APF dialogue sequence currently under review."
+    },
+    {
+      "candidate": "SUBTREE.DRAFT",
+      "source_theme": "AI generates draft subtree from user vision",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF draft generation flow",
+      "future_home": "authoring package standard",
+      "m62_3_decision": "Keep as APF subflow with explicit draft != approved rule.",
+      "rationale": "Needs human review status model before formalization."
+    },
+    {
+      "candidate": "SUBTREE.REVIEW.START",
+      "source_theme": "Start standard node/branch review after draft generation",
+      "classification": "apf_reusable_subflow",
+      "priority": "P1",
+      "current_home": "APF review loop",
+      "future_home": "review workflow convention",
+      "m62_3_decision": "Document as transition point in APF.",
+      "rationale": "Primarily orchestration within authoring module."
+    },
+    {
+      "candidate": "NODE.REVIEW",
+      "source_theme": "Show node alias, description, state, gates, branches, risks and decision",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF review model",
+      "future_home": "standard process-review pattern",
+      "m62_3_decision": "Use as APF-level reusable subflow; do not create opcode.",
+      "rationale": "Human review surface, not core runtime operation."
+    },
+    {
+      "candidate": "BRANCH.REVIEW",
+      "source_theme": "Review branch-by-branch and track siblings/deferred returns",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF review model",
+      "future_home": "standard process-review pattern",
+      "m62_3_decision": "Use as APF-level reusable subflow.",
+      "rationale": "Requires APF review bookkeeping before broader reuse."
+    },
+    {
+      "candidate": "NODE.NEXT_STEP.DECISION",
+      "source_theme": "After node review, decide terminal / continue / intermediate / rebuild / defer",
+      "classification": "apf_reusable_subflow",
+      "priority": "P0",
+      "current_home": "APF node review sequence",
+      "future_home": "process authoring pattern",
+      "m62_3_decision": "Treat as required APF patch item, not language core.",
+      "rationale": "This fixes authoring dialogue ambiguity."
+    },
+    {
+      "candidate": "CURRENT.NODE.DISPLAY.BLOCK",
+      "source_theme": "Current mode/node/state/gates/outputs/siblings/expected decision must be visible",
+      "classification": "rendering_standard",
+      "priority": "P0",
+      "current_home": "APF user-facing runtime review policy",
+      "future_home": "language review-rendering standard",
+      "m62_3_decision": "Promote as review rendering standard, not IR object.",
+      "rationale": "It is a user-facing presentation contract."
+    },
+    {
+      "candidate": "CONTROL.ACTION.BOOKKEEPING",
+      "source_theme": "Separate selected actions, not-selected actions, blocked actions, siblings, deferred returns",
+      "classification": "schema_convention",
+      "priority": "P0",
+      "current_home": "APF review state convention",
+      "future_home": "review-state schema convention; possible lint checklist",
+      "m62_3_decision": "Formalize in APF review state first.",
+      "rationale": "Prevents semantic confusion, but requires consistent state fields before enforcement."
+    },
+    {
+      "candidate": "FLOW.JOIN",
+      "source_theme": "Branch-specific flow joins shared full-validation/handoff tail",
+      "classification": "future_ir_candidate",
+      "priority": "P0",
+      "current_home": "APF branch 4 pattern",
+      "future_home": "language flow modeling candidate; possible compiler/lint support",
+      "m62_3_decision": "Treat as highest-value future IR candidate, but not in M62.3.",
+      "rationale": "Likely needs formal semantics because duplicated shared tails are a structural problem."
+    },
+    {
+      "candidate": "SHARED.TAIL.REFERENCE",
+      "source_theme": "Explicit reference to shared validation/handoff tail",
+      "classification": "future_ir_candidate",
+      "priority": "P0",
+      "current_home": "APF branch 4 pattern",
+      "future_home": "flow model / compiler representation candidate",
+      "m62_3_decision": "Pair with FLOW.JOIN for future design.",
+      "rationale": "Needs careful compatibility with existing YAML/IR edge model."
+    },
+    {
+      "candidate": "YAML.PATCH.SCOPED",
+      "source_theme": "Apply scoped patches after closure and minimal validation",
+      "classification": "package_authoring_policy",
+      "priority": "P0",
+      "current_home": "APF process-correction policy",
+      "future_home": "developer workflow standard",
+      "m62_3_decision": "Adopt as policy/checklist, not runtime operation.",
+      "rationale": "It describes developer discipline and review gates."
+    },
+    {
+      "candidate": "VALIDATION.MINIMAL",
+      "source_theme": "Run YAML/lint/compile/test after scoped patches",
+      "classification": "package_authoring_policy",
+      "priority": "P0",
+      "current_home": "APF correction flow",
+      "future_home": "standard package lifecycle",
+      "m62_3_decision": "Keep aligned with existing Ordo validation discipline.",
+      "rationale": "Already consistent with M60/M61 milestone practice."
+    },
+    {
+      "candidate": "VALIDATION.FULL.DEFERRED",
+      "source_theme": "Full validation deferred to terminal/pre-handoff gate",
+      "classification": "package_authoring_policy",
+      "priority": "P0",
+      "current_home": "APF validation strategy",
+      "future_home": "package lifecycle docs; possible validation profile",
+      "m62_3_decision": "Document as lifecycle rule; do not enforce globally yet.",
+      "rationale": "Full validation requirements vary by package profile."
+    },
+    {
+      "candidate": "PROCESS.FEEDBACK.CAPTURE",
+      "source_theme": "User can say the process itself needs to change during execution/review",
+      "classification": "apf_reusable_subflow",
+      "priority": "P1",
+      "current_home": "APF correction/improvement branch idea",
+      "future_home": "process improvement workflow",
+      "m62_3_decision": "Keep as future APF subflow until branch 4 evidence is broader.",
+      "rationale": "Good pattern but currently tied to APF correction branch."
+    },
+    {
+      "candidate": "PROCESS.CHANGE.PROPOSE",
+      "source_theme": "Show proposed process change with before/after",
+      "classification": "apf_reusable_subflow",
+      "priority": "P1",
+      "current_home": "APF existing process improvement flow",
+      "future_home": "standard improvement workflow",
+      "m62_3_decision": "Keep paired with PROCESS.FEEDBACK.CAPTURE.",
+      "rationale": "Needs before/after representation standard."
+    },
+    {
+      "candidate": "PROCESS.CHANGE.APPLY",
+      "source_theme": "Apply approved scoped change and resume",
+      "classification": "apf_reusable_subflow",
+      "priority": "P1",
+      "current_home": "APF correction flow",
+      "future_home": "standard improvement workflow / patch lifecycle",
+      "m62_3_decision": "Keep APF-local until scoped patch representation is stable.",
+      "rationale": "Potentially risky if generalized prematurely."
+    },
+    {
+      "candidate": "GRAPH.SVG.POLICY",
+      "source_theme": "Graph rendering is on demand, context-focused by default, not validation source of truth",
+      "classification": "documentation_pattern",
+      "priority": "P1",
+      "current_home": "APF docs + Visual Graph docs",
+      "future_home": "companion utility workflow standard",
+      "m62_3_decision": "Document only; already supported by Visual Graph utility.",
+      "rationale": "Rendering policy is a workflow rule, not runtime semantics."
+    },
+    {
+      "candidate": "TECHNICAL/HUMAN/HANDOFF STATUS SPLIT",
+      "source_theme": "YAML parse/lint/compile/human review/full validation/handoff are distinct statuses",
+      "classification": "schema_convention",
+      "priority": "P0",
+      "current_home": "APF status model",
+      "future_home": "package lifecycle status convention; possible docs/lint support",
+      "m62_3_decision": "Formalize as status vocabulary in docs first.",
+      "rationale": "Prevents false readiness claims; enforcement can come later."
+    }
+  ],
+  "counts_by_classification": {
+    "documentation_pattern": 3,
+    "schema_convention": 4,
+    "apf_reusable_subflow": 14,
+    "artifact_standard": 1,
+    "lint_candidate": 1,
+    "rendering_standard": 1,
+    "future_ir_candidate": 2,
+    "package_authoring_policy": 3
+  }
+}

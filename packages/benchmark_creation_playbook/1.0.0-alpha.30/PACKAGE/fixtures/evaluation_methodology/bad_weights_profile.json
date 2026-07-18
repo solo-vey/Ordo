@@ -1,0 +1,37 @@
+{
+  "schema_version": "ordo.benchmark.test_case_evaluation_profile.v1",
+  "profile_id": "EXAMPLE_TEST_CASE",
+  "version": "1.0.0",
+  "inherits": {
+    "methodology_id": "ORDO-BENCH-EVAL",
+    "version": "1.0.0"
+  },
+  "canonical_documents": [
+    {
+      "id": "passport",
+      "weight": 0.9
+    }
+  ],
+  "expected_terminal_states": {
+    "positive": [
+      "GO",
+      "APPROVED"
+    ],
+    "negative": [
+      "NO_CHANGE",
+      "INPUT_BLOCKED",
+      "INCOMPLETE_VALIDATION_HARD_STOP"
+    ]
+  },
+  "scenario_specific_checks": [
+    "selected_run_literal_consistency"
+  ],
+  "caps": [
+    {
+      "when": "foreign_selected_run_literal",
+      "max_final_score": 0,
+      "blocks_canonical_acceptance": true
+    }
+  ],
+  "overrides": []
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "ordo.benchmark.result_package_release_gate.report.v1",
+  "package_path": "/mnt/data/ORDO_BENCHMARK_CREATION_PLAYBOOK_V1_0_0_ALPHA_9/fixtures/result_package_release_gate/base_valid",
+  "checks": [
+    {
+      "id": "required_paths",
+      "status": "PASS",
+      "evidence": {
+        "missing": []
+      }
+    },
+    {
+      "id": "checksum_integrity",
+      "status": "PASS",
+      "evidence": {
+        "mismatches": [],
+        "manifest_present": true
+      }
+    },
+    {
+      "id": "artifact_inventory",
+      "status": "PASS",
+      "evidence": {
+        "missing_types": [],
+        "missing_paths": [],
+        "invalid_artifacts": []
+      }
+    },
+    {
+      "id": "mandatory_validator_receipts",
+      "status": "PASS",
+      "evidence": {
+        "errors": []
+      }
+    },
+    {
+      "id": "selected_run_cross_artifact_consistency",
+      "status": "PASS",
+      "evidence": {
+        "missing_canonical": [],
+        "foreign_literals": []
+      }
+    },
+    {
+      "id": "current_version_references",
+      "status": "PASS",
+      "evidence": {
+        "stale_references": []
+      }
+    },
+    {
+      "id": "manual_qa_executable_completeness",
+      "status": "PASS",
+      "evidence": {
+        "errors": []
+      }
+    },
+    {
+      "id": "automation_completeness",
+      "status": "PASS",
+      "evidence": {
+        "errors": []
+      }
+    },
+    {
+      "id": "approval_version_binding",
+      "status": "PASS",
+      "evidence": {
+        "errors": []
+      }
+    },
+    {
+      "id": "driver_terminal_releasable",
+      "status": "PASS",
+      "evidence": {
+        "status": "approved",
+        "complete": true
+      }
+    },
+    {
+      "id": "unsupported_claims_absent",
+      "status": "PASS",
+      "evidence": {
+        "matches": []
+      }
+    }
+  ],
+  "validated_versions": {
+    "passport": "passport-v2",
+    "jira": "jira-v2",
+    "manual_qa": "mqa-v2",
+    "automation": "auto-v2"
+  },
+  "release_disposition": "PASS_RELEASE",
+  "releasable": true,
+  "report_sha256": "93dcfbc5f3d16b15b22e9eb2c75ece15989dbb9892076bc6e77874faa6c72190"
+}

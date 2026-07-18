@@ -1,0 +1,83 @@
+contract_id: apf.execution_trace.validation_gates
+version: "1.0"
+ordo_alignment: v0.12-M72
+scope: generated_playbook_packages
+purpose: block release when execution-trace capability is incomplete, unsafe, inconsistent, or overstated
+applies_when: execution_trace.supported == true
+validation_layers:
+  - id: schema_and_config
+    blocking_checks:
+      - canonical execution_trace key is used
+      - execution_trace.version is present and consistent across all trace artifacts
+      - enabled, capture_level, storage, and replay conform to the pinned M72 schema
+      - runtime toggle policy is explicit
+      - runtime_mode and trace_source are declared
+  - id: artifact_completeness
+    blocking_checks:
+      - runtime/execution_trace_config.yaml exists
+      - runtime/execution_trace_schema.yaml exists
+      - runtime/trace_event_mapping.yaml exists
+      - runtime/trace_redaction_policy.yaml exists
+      - runtime/trace_replay_policy.yaml exists
+      - runtime/trace_adapter_contract.yaml exists when runtime_mode is runtime_enforced
+  - id: event_coverage
+    blocking_checks:
+      - run lifecycle has start and terminal event mappings
+      - every traversable gate has evaluated and outcome coverage
+      - every generated output has artifact_generated coverage
+      - every state mutation has state_changed or equivalent recoverable evidence
+      - approval steps have request and outcome coverage
+      - mapped event types belong to the closed catalog for the pinned schema version
+  - id: integrity
+    blocking_checks:
+      - sequence uniqueness and monotonicity rules are declared
+      - event_count reconciliation is defined
+      - append-only behavior is declared
+      - completed traces require a terminal event
+      - checksum or integrity strategy is defined
+      - corrections are represented by new events rather than mutation
+  - id: security_and_redaction
+    blocking_checks:
+      - secrets and access tokens are prohibited
+      - full confidential documents are not embedded by default
+      - hidden chain of thought is prohibited
+      - sensitive fields have redact, reference, or hash handling
+      - actor attribution does not expose prohibited personal data
+  - id: replay_readiness
+    blocking_checks:
+      - replayable true is forbidden without replay-readiness evidence
+      - required inputs preservation strategy is declared
+      - external dependency strategy is declared
+      - side-effect strategy is declared
+      - replay mode belongs to deterministic, re_evaluate, simulation, or audit_only
+      - runtime adapter capability matches replay claims
+  - id: runtime_consistency
+    blocking_checks:
+      - APF does not claim to generate actual traces during authoring
+      - target runtime ownership of trace emission is explicit
+      - disabled capture does not delete existing traces
+      - runtime toggle behavior matches retention policy
+      - runtime_enforced mode has adapter operations for start, append, finalize, integrity, store, and load-for-replay
+release_gate:
+  decision_values:
+    - pass
+    - fail
+    - not_applicable
+  pass_condition: all applicable blocking checks pass
+  fail_effect:
+    - block generated playbook package release
+    - produce execution trace validation report
+    - identify exact failed artifact, rule, and remediation
+  not_applicable_condition: execution_trace.supported == false
+required_evidence:
+  - execution trace configuration
+  - artifact manifest with checksums
+  - event coverage report
+  - redaction review
+  - replay readiness assessment
+  - runtime adapter conformance result when applicable
+non_goals:
+  - executing a live runtime trace
+  - performing replay
+  - enabling APF internal tracing
+  - validating external storage infrastructure availability

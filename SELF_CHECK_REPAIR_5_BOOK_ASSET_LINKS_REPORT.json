@@ -1,0 +1,28 @@
+{
+  "check_id": "SELF_CHECK-005",
+  "title": "Markdown asset links in compiled book and mascot placement documentation",
+  "status": "repaired_passed",
+  "changes": [
+    {
+      "file": "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "change": "Rebased mascot asset references from ../assets/mascots/ to ../source/assets/mascots/ for compiled-directory resolution."
+    },
+    {
+      "file": "book/source/assets/mascots/PLACEMENT_RULES.md",
+      "change": "Separated chapter-relative path guidance from a working local preview link."
+    }
+  ],
+  "validation": {
+    "compiled_book_asset_references": 90,
+    "compiled_book_missing": 0,
+    "placement_doc_asset_references": 1,
+    "placement_doc_missing": 0,
+    "strict_repo_gate": "passed"
+  },
+  "unchanged": [
+    "book PDF",
+    "book prose/content",
+    "mascot assets",
+    "chapter source files"
+  ]
+}

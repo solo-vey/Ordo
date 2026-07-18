@@ -1,0 +1,62 @@
+{
+  "dataset_version": "fixture-v1",
+  "transfer_version": "1",
+  "source_root": "/mnt/data/ORDO_BENCHMARK_CREATION_PLAYBOOK_V1_0_0_ALPHA_29/fixtures/current_state_snapshot/source",
+  "source_archive": {
+    "filename": "fixture-source",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "artifact_families": [
+    {
+      "id": "playbook.main",
+      "candidates": [
+        {
+          "path": "playbook_v1.txt",
+          "target": "current_packages/playbook.txt",
+          "status": "superseded",
+          "version": "1.0.0",
+          "provenance": "fixture"
+        },
+        {
+          "path": "playbook_v2.txt",
+          "target": "current_packages/playbook.txt",
+          "status": "current",
+          "version": "2.0.0",
+          "authoritative": true,
+          "provenance": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "run.case1",
+      "candidates": [
+        {
+          "path": "run_old.json",
+          "target": "accepted_runs/run.json",
+          "status": "superseded",
+          "version": "1",
+          "provenance": "fixture"
+        },
+        {
+          "path": "run_current.json",
+          "target": "accepted_runs/run.json",
+          "status": "accepted",
+          "version": "2",
+          "authoritative": true,
+          "provenance": "fixture",
+          "run_binding": {
+            "package": "playbook.main",
+            "evaluator": "GPT-5.6 Thinking"
+          }
+        }
+      ]
+    }
+  ],
+  "accepted_runs": [
+    "run.case1"
+  ],
+  "current_packages": [
+    "playbook.main"
+  ],
+  "known_limitations": []
+}

@@ -1,0 +1,13 @@
+{
+  "event_goal": "створити історичну подію зміни статусу компанії",
+  "selected_path": "A1",
+  "event_alias": "LU_CHANGE_STATUS",
+  "display_name_uk": null,
+  "display_name_en": null,
+  "source_field": null,
+  "value_semantics": [],
+  "qa_scope": [],
+  "approval_received": false,
+  "output_allowed": false,
+  "final_package_created": false
+}

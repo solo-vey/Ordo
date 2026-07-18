@@ -1,0 +1,54 @@
+{
+  "schema_version": "ordo.empirical_evidence.independence_levels.v1",
+  "ordered_levels": [
+    {
+      "id": "self_declared_independence_unverified",
+      "rank": 0,
+      "minimum_evidence": [
+        "completed_declaration",
+        "original_package_sha256",
+        "author_assistance_declaration"
+      ]
+    },
+    {
+      "id": "timestamp_verified",
+      "rank": 1,
+      "minimum_evidence": [
+        "all_lower_level_evidence",
+        "trusted_timestamp_proof_for_original_package_hash"
+      ]
+    },
+    {
+      "id": "public_release_bound_verified",
+      "rank": 2,
+      "minimum_evidence": [
+        "all_lower_level_evidence",
+        "public_release_archive_sha256",
+        "public_distribution_channel",
+        "development_started_after_public_release",
+        "no_internal_package_use_declaration"
+      ]
+    },
+    {
+      "id": "organizationally_separated",
+      "rank": 3,
+      "minimum_evidence": [
+        "all_lower_level_evidence",
+        "independently_verifiable_team_signature_or_attestation",
+        "no_internal_repository_access_declaration",
+        "no_direct_author_participation_during_task_window"
+      ]
+    },
+    {
+      "id": "third_party_verified",
+      "rank": 4,
+      "minimum_evidence": [
+        "all_lower_level_evidence",
+        "independent_third_party_verification_record"
+      ]
+    }
+  ],
+  "rule": "A case must not claim a stronger independence level than its attached evidence supports.",
+  "external_services": "Optional for base submission; required only when the selected level depends on trusted timestamping, independent signing, or third-party verification.",
+  "legacy_migration_rule": "Existing cases may remain self-declared with explicit release-binding gaps. New submissions must satisfy the external_developer_submission schema, including consumed public release identity."
+}

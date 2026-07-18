@@ -1,0 +1,30 @@
+{
+  "milestone": "M65.3",
+  "status": "passed-docs-schema-validation",
+  "checks": [
+    {
+      "id": "yaml_examples_parse",
+      "status": "passed"
+    },
+    {
+      "id": "yaml_schemas_parse",
+      "status": "passed"
+    },
+    {
+      "id": "json_reports_parse",
+      "status": "passed"
+    },
+    {
+      "id": "runtime_core_change_guard",
+      "status": "passed"
+    },
+    {
+      "id": "cli_change_guard",
+      "status": "passed"
+    },
+    {
+      "id": "opcode_promotion_guard",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "milestone": "M62.3",
+  "title": "APF Language Pattern Extraction Plan",
+  "status": "passed-design-classification-only",
+  "date": "2026-07-08",
+  "base": "M62.2 APF Documentation and Book Section",
+  "classification_counts": {
+    "documentation_pattern": 3,
+    "schema_convention": 4,
+    "apf_reusable_subflow": 14,
+    "artifact_standard": 1,
+    "lint_candidate": 1,
+    "rendering_standard": 1,
+    "future_ir_candidate": 2,
+    "package_authoring_policy": 3
+  },
+  "candidate_count": 29,
+  "non_goals": [
+    "no_apf_yaml_rewrite",
+    "no_runtime_core_change",
+    "no_ir_opcode_promotion",
+    "no_execution_scoring_calibration",
+    "no_watchdog_boundary_work"
+  ],
+  "recommended_next": "M62 Line Closure"
+}

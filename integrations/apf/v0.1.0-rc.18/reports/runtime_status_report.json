@@ -1,0 +1,23 @@
+{
+  "status": "ready",
+  "mode": "runtime_source_of_truth_check",
+  "package": "ordo.applied_project_factory",
+  "package_version": "0.1.0-rc.4-post-svg",
+  "source_of_truth": {
+    "manifest": "ordo.yml",
+    "manifest_kind": "ordo.yml",
+    "editable_source": "source/program.ordo.yaml",
+    "runtime_ir": "compiled/program.ir.json",
+    "run_state": "run_state.json or reports/intake_report.json",
+    "generated_artifacts": "generated_outputs/"
+  },
+  "freshness": {
+    "source_exists": true,
+    "compiled_ir_exists": true,
+    "source_mtime": 1783628565.887292,
+    "compiled_ir_mtime": 1783628662.8724475,
+    "checked_at_epoch": 1783628672.5255816
+  },
+  "issues": [],
+  "warnings": []
+}

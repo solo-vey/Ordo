@@ -1,0 +1,94 @@
+{
+  "schema_version": "ordo.m87.bl_ordo_018_final_closure.v1",
+  "milestone": "M87.5",
+  "status": "blocked",
+  "bl_ordo_018": "open",
+  "real_model_evidence": {
+    "models": {
+      "MODEL_1": "gpt-5.6-sol",
+      "MODEL_2": "gpt-5.5-2026-04-23"
+    },
+    "total_api_runs": 240,
+    "complete_pairs": 120,
+    "errors": 0
+  },
+  "blind_scoring": {
+    "scorer_requested": "gpt-5.5",
+    "completed": 120,
+    "errors": 0,
+    "validation": {
+      "status": "passed",
+      "score_runs": 120,
+      "scored_pairs": 120,
+      "issues": []
+    }
+  },
+  "statistics": {
+    "schema_version": "ordo.ab_statistical_summary.v1",
+    "complete_pairs": 120,
+    "distinct_models": 2,
+    "distinct_tasks": 20,
+    "quality": {
+      "A_mean": 98.76041666666667,
+      "B_mean": 99.41666666666667,
+      "mean_paired_difference_B_minus_A": 0.65625,
+      "paired_bootstrap_95_ci": {
+        "lower": -0.08333333333333333,
+        "upper": 1.4479166666666667,
+        "mean": 0.65625
+      },
+      "standardized_paired_effect": 0.15587553745486543,
+      "sign_test": {
+        "n": 38,
+        "positive": 25,
+        "negative": 13,
+        "p_value": 0.07295138851623051
+      }
+    },
+    "fabrication_failure": {
+      "counts": {
+        "A_only": 0,
+        "B_only": 0,
+        "both": 0,
+        "neither": 120
+      },
+      "mcnemar_p_value": 1.0
+    },
+    "state_protection_failure": {
+      "counts": {
+        "A_only": 0,
+        "B_only": 0,
+        "both": 0,
+        "neither": 120
+      },
+      "mcnemar_p_value": 1.0
+    }
+  },
+  "closure_gate": {
+    "schema_version": "ordo.ab_closure_gate.v1",
+    "status": "blocked",
+    "issues": [
+      {
+        "code": "ORDO-AB-CLOSE-005",
+        "message": "quality non-inferiority is not demonstrated"
+      }
+    ],
+    "requirements": {
+      "minimum_pairs": 60,
+      "minimum_models": 2,
+      "external_real_model_evidence": true,
+      "blind_scoring_complete": true
+    }
+  },
+  "evidence_issues": [],
+  "backlog_updated": false,
+  "qualifications": [
+    "Result is bounded to the frozen M87 dataset, protocol, prompts, models and rubric.",
+    "The scorer model matches one tested model; blinding protects arm identity, but an independent third scorer would strengthen external validity."
+  ],
+  "source_sha256": {
+    "MODEL_1_API_RESULTS.zip": "52d6cb792fcdbc51dce43f36ef2f034467f92158ef64aee19fe1e1db63368ab6",
+    "MODEL_2_API_RESULTS.zip": "577b413625fdce1ef03ed963ff035d17dadf21227b5863687f0522a41a7639bb",
+    "BLIND_SCORING_RESULTS.zip": "841d5775c164703bd709bb313697a7bc43fe1bf65e68a00f99dabcbf25c495fc"
+  }
+}

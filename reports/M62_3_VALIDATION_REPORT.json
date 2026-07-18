@@ -1,0 +1,74 @@
+{
+  "milestone": "M62.3",
+  "title": "APF Language Pattern Extraction Plan",
+  "status": "passed-design-classification-only",
+  "checks": [
+    {
+      "name": "workspace_py_compile",
+      "status": "passed",
+      "evidence": "python3 -m compileall -q ordo_pathwalk utilities packages/ordo_applied_project_factory cli"
+    },
+    {
+      "name": "selected_pathwalk_visual_tests",
+      "status": "passed",
+      "evidence": "40 passed"
+    },
+    {
+      "name": "apf_lint",
+      "status": "passed",
+      "evidence": "lint: passed"
+    },
+    {
+      "name": "apf_compile",
+      "status": "passed",
+      "evidence": "compile: passed"
+    },
+    {
+      "name": "apf_test",
+      "status": "passed",
+      "evidence": "test: passed [static mode; assertions 0/28 behaviorally evaluated]"
+    },
+    {
+      "name": "visual_graph_apf_mmd_smoke",
+      "status": "passed",
+      "evidence": "Generated mmd graph"
+    },
+    {
+      "name": "visual_graph_apf_context_svg_smoke",
+      "status": "passed",
+      "evidence": "Generated svg graph"
+    },
+    {
+      "name": "pathwalk_apf_real_module_graph_smoke",
+      "status": "passed",
+      "evidence": "nodes=54 edges=78 gates=38 assertions=28 outputs=1"
+    },
+    {
+      "name": "book_manifest_sanity",
+      "status": "passed",
+      "evidence": "77 entries, 67 chapters, 0 missing files"
+    },
+    {
+      "name": "final_zip_integrity_and_extraction_check",
+      "status": "passed",
+      "evidence": "zip -T passed for workspace/developer_bundle/book_source/PathWalk_RC/evidence/smoke artifacts; content check passed"
+    }
+  ],
+  "not_used_as_gate": [
+    "runtime_execution",
+    "scoring",
+    "calibration",
+    "watchdog_process_boundary",
+    "APF terminal-path enumeration blocked by cycles in M62.2 remains future adaptation item"
+  ],
+  "artifact_counts": {
+    "documentation_pattern": 3,
+    "schema_convention": 4,
+    "apf_reusable_subflow": 14,
+    "artifact_standard": 1,
+    "lint_candidate": 1,
+    "rendering_standard": 1,
+    "future_ir_candidate": 2,
+    "package_authoring_policy": 3
+  }
+}

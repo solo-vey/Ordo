@@ -1,0 +1,53 @@
+{
+  "schema_version": "ordo.apf.real_case_replay.v1",
+  "playbook": "history_event.guided_intake",
+  "cases": [
+    {
+      "id": "REPLAY-HAPPY-01",
+      "pre_state": {"active_node":"N_SOURCE_FIELD","active_question":"Which source field triggers the event?","event_alias":"LU_CHANGE_STATUS","display_name_uk":"Зміна статусу компанії"},
+      "transcript": [
+        {"role":"assistant","node":"N_SOURCE_FIELD","text":"Яке source field запускає подію?"},
+        {"role":"user","text":"company.status"},
+        {"role":"assistant","node":"N_VALUE_SEMANTICS","text":"Які old/new values потрібно фіксувати?"}
+      ],
+      "post_state": {"active_node":"N_VALUE_SEMANTICS","active_question":"Which old/new values must be captured?","event_alias":"LU_CHANGE_STATUS","display_name_uk":"Зміна статусу компанії","source_field":"company.status"},
+      "expected": {"active_node":"N_VALUE_SEMANTICS","active_question":"Which old/new values must be captured?","allowed_mutations":["source_field"],"protected_fields":["event_alias"],"must_preserve_prior_answers":true,"preserved_fields":["event_alias","display_name_uk"]},
+      "analyst_experience": {"active_question_clarity":1,"state_continuity":1,"backtrack_transparency":1,"scope_change_transparency":1,"handoff_readiness":0.9}
+    },
+    {
+      "id": "REPLAY-CLARIFY-01",
+      "pre_state": {"active_node":"N_SOURCE_FIELD","active_question":"Which source field triggers the event?","event_alias":"LU_CHANGE_STATUS"},
+      "transcript": [
+        {"role":"user","text":"Що означає source field?"},
+        {"role":"assistant","node":"N_SOURCE_FIELD","text":"Це поле вхідних даних, зміна якого запускає подію. Яке поле використовуємо?"}
+      ],
+      "post_state": {"active_node":"N_SOURCE_FIELD","active_question":"Which source field triggers the event?","event_alias":"LU_CHANGE_STATUS"},
+      "expected": {"active_node":"N_SOURCE_FIELD","active_question":"Which source field triggers the event?","allowed_mutations":[],"protected_fields":["event_alias"],"must_preserve_prior_answers":true,"preserved_fields":["event_alias"]},
+      "analyst_experience": {"active_question_clarity":1,"state_continuity":1,"backtrack_transparency":1,"scope_change_transparency":1,"handoff_readiness":0.9}
+    },
+    {
+      "id": "REPLAY-BACKTRACK-01",
+      "pre_state": {"active_node":"N_VALUE_SEMANTICS","active_question":"Which old/new values must be captured?","event_alias":"LU_CHANGE_STATUS","source_field":"company.status"},
+      "transcript": [
+        {"role":"user","text":"Повернімося до alias, хочу його змінити"},
+        {"role":"assistant","node":"N_EVENT_ALIAS","text":"Повертаюся до alias. Поточне значення LU_CHANGE_STATUS. Яке нове значення?"}
+      ],
+      "post_state": {"active_node":"N_EVENT_ALIAS","active_question":"What should the event alias be?","event_alias":"LU_CHANGE_STATUS","source_field":"company.status"},
+      "expected": {"active_node":"N_EVENT_ALIAS","active_question":"What should the event alias be?","allowed_mutations":[],"protected_fields":["source_field"],"must_preserve_prior_answers":true,"preserved_fields":["source_field"]},
+      "analyst_experience": {"active_question_clarity":1,"state_continuity":1,"backtrack_transparency":1,"scope_change_transparency":0.9,"handoff_readiness":0.9}
+    },
+    {
+      "id": "REPLAY-SCOPE-HANDOFF-01",
+      "pre_state": {"active_node":"N_APPROVAL","active_question":"Approve final package?","event_alias":"LU_CHANGE_STATUS","qa_scope":["unit","manual"],"approval_received":false},
+      "transcript": [
+        {"role":"user","text":"Замість повного пакета зробімо тільки QA package"},
+        {"role":"assistant","node":"N_QA_SCOPE","text":"Scope змінено на QA-only. Перевіримо QA coverage перед новим approval."},
+        {"role":"user","text":"Підтверджую unit, integration і manual QA"},
+        {"role":"assistant","node":"N_APPROVAL","text":"QA-only handoff готовий до фінального підтвердження."}
+      ],
+      "post_state": {"active_node":"N_APPROVAL","active_question":"Approve QA-only handoff?","event_alias":"LU_CHANGE_STATUS","qa_scope":["unit","integration","manual"],"deliverable_scope":"qa_only","approval_received":false,"handoff_ready":true},
+      "expected": {"active_node":"N_APPROVAL","active_question":"Approve QA-only handoff?","allowed_mutations":["qa_scope","deliverable_scope","handoff_ready"],"protected_fields":["event_alias"],"requires_handoff":true,"must_preserve_prior_answers":true,"preserved_fields":["event_alias"]},
+      "analyst_experience": {"active_question_clarity":1,"state_continuity":1,"backtrack_transparency":0.9,"scope_change_transparency":1,"handoff_readiness":1}
+    }
+  ]
+}

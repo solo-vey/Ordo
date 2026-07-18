@@ -1,0 +1,40 @@
+conversation_scope_guard_policy_decision:
+  decision_id: CSG-POLICY-DECISION-001
+  process_id: PROCESS_ID
+  supported: true
+  enabled: true
+  selected_mode: guided_redirect
+  mode_rationale: null
+  response_actions:
+    level_1: gentle_redirect
+    level_2: explicit_scope_reminder
+    level_3: offer_pause_or_exit
+    level_4: suspend_until_process_choice
+  escalation:
+    counter_scope: active_node
+    reset_on:
+    - valid_process_answer
+    - node_transition
+    - process_resume
+  pause_resume_exit:
+    pause_preserves_state: true
+    resume_target: suspended_node
+    exit_status: exited_incomplete
+  state_protection:
+    complete_active_node: false
+    change_selected_path: false
+    confirm_state_value: false
+    reset_collected_state: false
+  trace:
+    required_when_execution_trace_enabled: true
+  owner_review:
+    status: pending
+    reviewer: null
+    reviewed_at: null
+    notes: null
+decision_status: confirmed_enabled
+package_binding:
+  contract: conversation_scope_guard/conversation_scope_guard.contract.yaml
+  policy: conversation_scope_guard/conversation_deviation_policy.md
+  tests: conversation_scope_guard/conversation_scope_guard_tests.yaml
+  trace_events: conversation_scope_guard/conversation_scope_guard_trace_events.yaml

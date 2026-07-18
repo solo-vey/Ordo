@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "milestone": "M59.3",
+  "title": "Tamper-evident runtime session",
+  "date": "2026-07-07",
+  "scope": [
+    "hash-chain state snapshots",
+    "verify-session command",
+    "compiled IR canary",
+    "hard IR access protocol",
+    "human final verify gate",
+    "embedded runtime CLI allowlist update"
+  ],
+  "tests": {
+    "cli_regression_suite": "62/62 passed",
+    "new_m59_3_tests": "4/4 passed",
+    "repo_check": "passed"
+  },
+  "runtime_profile_smoke": {
+    "embedded_intake_submit": "passed",
+    "embedded_verify_session": "session-chain: intact",
+    "embedded_package_command": "blocked as expected"
+  },
+  "implemented": [
+    "runtime/state_snapshots/SESSION-*.json snapshots include seq, node, answer_digest, prev_snapshot_hash, ir_hash, cli_version, timestamp_utc, snapshot_hash",
+    "ordo verify-session <package> validates chain continuity and current IR hash",
+    "compiler inserts N99_CANARY_DO_NOT_EMIT with regenerated canary secret",
+    "runtime loader suppresses canary node from next-step/intake helper source",
+    "verify-session scans runtime-visible outputs for canary leakage",
+    "START_HERE_RUNTIME_MODE.md prohibits direct AI access to compiled/*",
+    "final approval requires user-run verify-session terminal line"
+  ],
+  "not_in_scope": [
+    "MCP server-side state",
+    "sandbox filesystem isolation",
+    "cryptographic non-repudiation against a malicious actor with full source access"
+  ],
+  "go_no_go": "go"
+}

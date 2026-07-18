@@ -1,0 +1,34 @@
+{
+  "report_id": "APF_CONCRETE_PLAYBOOK_INTAKE_COMPLETENESS_REPORT",
+  "status": "blocked",
+  "required_fields": {
+    "problem_statement": "missing",
+    "triggering_situation": "missing",
+    "target_user": "missing",
+    "decision_object": "missing",
+    "inputs": "missing",
+    "evidence_sources": "missing",
+    "constraints": "missing",
+    "terminal_outcomes": "missing",
+    "output_artifacts": "missing",
+    "scope_boundaries": "missing"
+  },
+  "requirement_traceability": {
+    "critical_requirements_total": 0,
+    "critical_requirements_traceable": 0,
+    "untraceable_requirements": []
+  },
+  "assumptions_and_unknowns": {
+    "high_risk_unconfirmed_assumptions": [],
+    "blocking_unknowns": [],
+    "deferred_questions": []
+  },
+  "scope": {
+    "boundary_clear": false,
+    "unresolved_cross_layer_items": []
+  },
+  "blocking_gaps": [
+    "template_not_instantiated"
+  ],
+  "ready_for_decision_tree_design": false
+}

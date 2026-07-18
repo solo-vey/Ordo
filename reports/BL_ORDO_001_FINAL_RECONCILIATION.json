@@ -1,0 +1,22 @@
+{
+  "schema_version": "ordo.backlog_reconciliation.v1",
+  "backlog_id": "BL-ORDO-001",
+  "status": "closed",
+  "decision": "Later authoritative persisted cross-model rebuild and production-readiness closure supersede earlier blocked reconciliation reports.",
+  "superseded_reports": [
+    "reports/BL_ORDO_001_M75_4_EVIDENCE_RECONCILIATION.json",
+    "reports/BL_ORDO_001_CROSS_MODEL_CLOSURE_REVIEW.json"
+  ],
+  "authoritative_evidence": [
+    "reports/BL_ORDO_001_FINAL_CROSS_MODEL_REBUILD.json",
+    "reports/BL_ORDO_001_PRODUCTION_READINESS_GATE.json",
+    "reports/BL_ORDO_001_CLOSURE.json"
+  ],
+  "evidence_summary": {
+    "model_targets": 3,
+    "valid_runs": 6,
+    "runs_per_target": 2,
+    "all_runs_passed": true
+  },
+  "remaining": []
+}

@@ -1,0 +1,38 @@
+{
+  "milestone": "M60.8",
+  "name": "Stable Developer Handoff Consolidation",
+  "status": "passed-docs-consolidation",
+  "base": "M60.7 Line Closure / M60.7.5 bounded noise testcase artifacts",
+  "scope": "docs/package consolidation only",
+  "checks": {
+    "workspace_py_compile": "passed",
+    "workspace_selected_non_runtime_pytest": "20 passed",
+    "workspace_graph_paths_clean_noise_cli_smoke": "passed",
+    "pathwalk_rc_py_compile_with_developer_bundle_cli": "passed",
+    "pathwalk_rc_graph_paths_noise_cli_smoke": "passed",
+    "book_manifest_sanity": "passed: 72 entries, 62 chapters, 0 missing files",
+    "zip_extraction_check": "passed"
+  },
+  "known_excluded_gates": [
+    "runtime-harness matrix",
+    "transcript-replay multi-runtime acceptance matrix",
+    "live model/API benchmark",
+    "runtime execution of generated real-module testcases"
+  ],
+  "change_level": {
+    "ordo_runtime_core": "L0 no semantic change",
+    "scoring_weights": "L0 no change",
+    "pathwalk_code": "L0 no behavior change",
+    "documentation": "L1 consolidation"
+  },
+  "future_backlog_recorded": [
+    "M61.0 Human Review Scenario Cards",
+    "M62.0 Runtime Execution of Generated Testcases"
+  ],
+  "pdf_generated": false,
+  "notes": [
+    "M60.8 consolidates handoff materials and package-selection guidance.",
+    "M60.6.5 and M60.6.4.1 remain blocked-no-release evidence only.",
+    "Runtime-harness/transcript-replay matrix is intentionally not an acceptance gate for this docs-only milestone."
+  ]
+}

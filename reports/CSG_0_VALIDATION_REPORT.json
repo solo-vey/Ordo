@@ -1,0 +1,20 @@
+{
+  "milestone": "CSG-0",
+  "status": "passed",
+  "artifacts": [
+    "language/CONVERSATION_SCOPE_GUARD_CONTRACT.md",
+    "language/conversation_scope_guard.contract.yaml",
+    "language/CSG_INTEGRATION_LINE.md"
+  ],
+  "checks": {
+    "contract_id_present": true,
+    "optional_capability_explicit": true,
+    "core_default_disabled": true,
+    "modes_defined": true,
+    "deviation_taxonomy_defined": true,
+    "state_protection_defined": true,
+    "trace_events_defined": true,
+    "apf_boundary_defined": true
+  },
+  "passed": true
+}

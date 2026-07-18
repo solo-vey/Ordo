@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.benchmark.representation_candidate.v1",
+  "type": "object",
+  "required": [
+    "representation_id",
+    "source_type",
+    "strategy",
+    "source_sha256",
+    "compiler_version",
+    "invariants",
+    "external_files",
+    "lineage_complete"
+  ],
+  "properties": {
+    "representation_id": {
+      "enum": [
+        "YAML_PLAYBOOK",
+        "STRUCTURED_INSTRUCTIONS",
+        "MIXED_ACCUMULATED_INSTRUCTIONS",
+        "DOMAIN_ADAPTED_ALL_IN_ONE"
+      ]
+    },
+    "source_type": {
+      "type": "string"
+    },
+    "strategy": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "compiler_version": {
+      "type": "string"
+    },
+    "invariants": {
+      "type": "object"
+    },
+    "external_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lineage_complete": {
+      "type": "boolean"
+    },
+    "domain_source_present": {
+      "type": "boolean"
+    },
+    "semantic_parity_pass": {
+      "type": "boolean"
+    },
+    "disclosure_isolation_pass": {
+      "type": "boolean"
+    }
+  }
+}

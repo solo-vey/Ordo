@@ -1,0 +1,37 @@
+{
+  "schema_version": "ordo.repo_check.report.v2",
+  "status": "passed",
+  "hygiene_scope": "development",
+  "profile": null,
+  "clean_enabled": false,
+  "failed_checks": [],
+  "reports": {
+    "workflow_paths": {
+      "status": "passed",
+      "checked_paths": [
+        "packages/history_event_guided_intake",
+        "packages/history_event_guided_intake/run_inputs/intake_success.yaml",
+        "packages/ordo_applied_project_factory",
+        "packages/ordo_hybrid_executor",
+        "packages/ordo_hybrid_executor/run_inputs/execution_success.yaml",
+        "packages/ordo_project_builder",
+        "packages/ordo_project_builder/run_inputs/authoring_success.yaml"
+      ],
+      "issues": []
+    },
+    "generated_metadata_absent": {
+      "status": "passed",
+      "scope": "development",
+      "evidence_mode": "git_metadata_unavailable",
+      "forbidden_paths": [],
+      "observed_transient_paths": [],
+      "note": "Development validation blocks generated metadata only when it is tracked by Git. Untracked __pycache__, .pyc, and .egg-info created by normal local installation or tests are reported but are non-blocking."
+    },
+    "package_generated_artifacts_absent": {
+      "status": "passed",
+      "forbidden_paths": [],
+      "note": "Source archive should keep generated package artifacts out of compiled/, reports/, runtime/, and generated_outputs/ except .gitkeep placeholders and reports/CLI_VALIDATION_SUMMARY.md and reports/PACKAGE_PROFILE_SUMMARY.md templates."
+    }
+  },
+  "exit_code": 0
+}

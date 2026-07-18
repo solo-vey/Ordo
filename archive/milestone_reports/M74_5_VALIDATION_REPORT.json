@@ -1,0 +1,44 @@
+{
+  "milestone": "M74.5",
+  "status": "passed",
+  "scope": "APF modularization requirements and equivalence tooling",
+  "checks": [
+    {
+      "check": "modularization_contract_created",
+      "status": "passed"
+    },
+    {
+      "check": "semantic_ir_normalizer_created",
+      "status": "passed"
+    },
+    {
+      "check": "volatile_compiler_metadata_excluded",
+      "status": "passed"
+    },
+    {
+      "check": "operation_set_diff_supported",
+      "status": "passed"
+    },
+    {
+      "check": "targeted_tests",
+      "status": "passed",
+      "result": "3 passed"
+    }
+  ],
+  "apf_decomposition_performed": false,
+  "next": "M74.6 APF modularization in APF project",
+  "files": [
+    {
+      "path": "tools/apf_semantic_equivalence.py",
+      "sha256": "6a1a9c818b9097610c2cb52380bcc6d9b5bb1826ed2ebf832d4c14db7c8f879b"
+    },
+    {
+      "path": "tests/m74_5/test_apf_semantic_equivalence.py",
+      "sha256": "ac3580aa518b5fbe262a067bb50b70c5edba4fc38960c6080175e781c6d75433"
+    },
+    {
+      "path": "M74_5_APF_MODULARIZATION_AND_EQUIVALENCE_CONTRACT.md",
+      "sha256": "9f0b077e0e2562d576c07ea019cebaf7cbfff97c4603171753154fa93cb13e10"
+    }
+  ]
+}

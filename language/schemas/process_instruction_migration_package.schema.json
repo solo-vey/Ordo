@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/process_instruction_migration_package.schema.json",
+  "title": "Ordo Process Instruction Migration Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "package_id",
+    "source",
+    "intake",
+    "clause_inventory",
+    "ambiguities",
+    "dependency_graph",
+    "ordo_mapping",
+    "traceability_matrix",
+    "gate_report",
+    "playbook"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.process_instruction_migration_package.v1"
+    },
+    "package_id": {
+      "type": "string",
+      "pattern": "^MIG-PKG-[A-Z0-9_-]{3,127}$"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "source_ref",
+        "source_sha256",
+        "content"
+      ],
+      "properties": {
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "intake": {
+      "type": "object"
+    },
+    "clause_inventory": {
+      "type": "object"
+    },
+    "ambiguities": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "dependency_graph": {
+      "type": "object"
+    },
+    "ordo_mapping": {
+      "type": "object"
+    },
+    "traceability_matrix": {
+      "type": "object"
+    },
+    "gate_report": {
+      "type": "object"
+    },
+    "playbook": {
+      "type": "object"
+    }
+  }
+}

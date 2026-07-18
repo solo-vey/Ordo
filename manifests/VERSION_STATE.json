@@ -1,0 +1,24 @@
+{
+  "schema_version": "ordo.version_state.v1",
+  "release_id": "ordo-2026.07.17-rc.10",
+  "released_at": "2026-07-17T00:00:00Z",
+  "language": {
+    "name": "Ordo Language",
+    "version": "0.14.0-rc.1",
+    "previous_version": "0.13.0-rc.1",
+    "status": "release_candidate",
+    "compatibility": "backward_compatible_additive_prompt_compilation_and_blind_automation",
+    "source": "language/CURRENT_VERSION.md"
+  },
+  "framework": {
+    "name": "Ordo ARF/IRF",
+    "version": "0.6.0-rc.1",
+    "previous_version": "0.5.0-rc.3",
+    "status": "release_candidate",
+    "compatibility": "backward_compatible_additive_delivery_evidence_and_testing_governance"
+  },
+  "package_versioning": "independent_with_declared_compatibility_ranges",
+  "release_ledger": "manifests/RELEASE_LEDGER.json",
+  "upgrade_impact_catalog": "manifests/UPGRADE_IMPACT_CATALOG.json",
+  "release_identity": "manifests/RELEASE_IDENTITY.json"
+}

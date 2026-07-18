@@ -1,0 +1,37 @@
+{
+  "report_id": "ORDO_DELIVERY_GATE_2026_07_17",
+  "run_id": "ordo-2026.07.17-rc.10:f7fbffd64350444291d72df7de011765",
+  "release_id": "ordo-2026.07.17-rc.10",
+  "language_version": "0.14.0-rc.1",
+  "framework_version": "0.6.0-rc.1",
+  "source_tree_hash": "f1690038e3dce10afa1bb31006004e3342a6759c676cfe1aac41ce952339fa2a",
+  "generated_at": "2026-07-17T21:26:45.285789Z",
+  "generated_by": "tools/build_release_archive.py",
+  "status": "passed",
+  "tests": {
+    "test_files": 92,
+    "passed": 596,
+    "failed": 0,
+    "collection_or_run_errors": 0,
+    "failing_files": [],
+    "skipped_heavy_tests": [],
+    "execution_mode": "partitioned into 4 bounded batches",
+    "partition_timeout_seconds": 3600,
+    "timeout_disabled": false
+  },
+  "package_lints": {
+    "history_event_guided_intake": "passed",
+    "ordo_applied_project_factory": "passed",
+    "ordo_hybrid_executor": "passed",
+    "ordo_project_builder": "passed"
+  },
+  "manifest_sync": "passed",
+  "root_hygiene": "passed",
+  "blocking_issues": [],
+  "timeouts": {
+    "test_partition_seconds": 3600,
+    "package_lint_seconds": 900,
+    "zero_means_disabled": true
+  },
+  "policy": "The project archive may only be produced by this script while status is passed."
+}

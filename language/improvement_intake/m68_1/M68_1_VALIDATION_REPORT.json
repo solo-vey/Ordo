@@ -1,0 +1,22 @@
+{
+  "milestone": "M68.1",
+  "status": "passed-cli-fixture-validation",
+  "checks": {
+    "targeted_fixture_tests": "passed",
+    "json_reports_parse": "passed",
+    "packages_diff_guard": "passed",
+    "cli_ordo_implementation_diff_guard": "passed",
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "new_opcodes_added": false,
+    "compiled_ir_regenerated": false,
+    "lockfiles_regenerated": false,
+    "embedded_cli_rebuilt": false
+  },
+  "diff_summary": {
+    "added_files": 100,
+    "changed_files": 8,
+    "removed_files": 0
+  },
+  "errors": []
+}

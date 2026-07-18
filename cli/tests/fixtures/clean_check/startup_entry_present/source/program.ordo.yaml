@@ -1,0 +1,48 @@
+program_id: clean_check_fixture
+version: '0.1'
+nodes:
+  - id: N_START
+    type: question
+    question: Fixture start node.
+
+prompt_registry:
+  registry_id: fixture_prompt_registry
+  version: '0.1'
+  default_language: en
+  prompt_root: prompts/
+  prompts:
+    - prompt_id: helper_prompt
+      type: node_helper
+      audience: ai_runtime
+      path: prompts/helper.md
+      required: true
+      lifecycle: stable
+nodes:
+  - id: N_START
+    type: question
+    question: Fixture start node.
+    prompt_refs:
+      - prompt_id: helper_prompt
+        use: before_question
+
+startup_package_profile:
+  profile_id: fixture_startup_profile
+  version: '0.1'
+  package_id: clean_check.fixture.startup_entry_present
+  default_startup_mode: analyst_quick_start
+  startup_modes:
+    - mode: analyst_quick_start
+      audience: analyst
+      entry_file: START_HERE.md
+      prompt_id: helper_prompt
+      required: true
+      visibility: visible_to_analyst
+  entry_files:
+    - path: START_HERE.md
+      role: start_here
+      required: true
+      visibility: visible_to_analyst
+  authority_boundary:
+    startup_files_may_override_gates: false
+    startup_files_may_confirm_state: false
+    startup_files_may_claim_validation_success: false

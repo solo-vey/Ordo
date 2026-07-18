@@ -1,0 +1,32 @@
+{
+  "report_id": "APF_HANDOFF_READINESS_REPORT",
+  "package_id": "ordo.applied_project_factory",
+  "handoff_status": "ready",
+  "current_version": "v0.1.0-rc.10-handoff-readiness",
+  "source_version": "v0.1.0-rc.9-confirmed-closure",
+  "baseline_archive": "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC9_CONFIRMED_CLOSURE.zip",
+  "required_start_files": {
+    "START_NEXT_MODEL.md": "present",
+    "CURRENT_STATE.md": "present",
+    "README.md": "present",
+    "VALIDATION_REPORT.json": "present"
+  },
+  "handoff_docs": {
+    "docs/HANDOFF_READINESS_CHECKLIST.md": "present",
+    "docs/APF_BASELINE_SELECTION_RULES.md": "present",
+    "docs/APF_CONSUMER_ROLE_MODEL.md": "present"
+  },
+  "confirmed_decisions": [
+    "APF-RC10-01",
+    "APF-RC10-02",
+    "APF-RC10-03",
+    "APF-RC10-04",
+    "APF-RC10-05",
+    "APF-RC10-06",
+    "APF-RC10-07"
+  ],
+  "deferred_items": [],
+  "blocking_issues": [],
+  "ambiguous_continuation_state": false,
+  "next_recommended_patch": "APF rc.10 confirmed closure"
+}

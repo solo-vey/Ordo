@@ -1,0 +1,189 @@
+{
+  "schema_version": "ordo.apf.post_generation_review_record.v1",
+  "review_id": "M83-EXECUTION_TRACE_ADAPTER",
+  "artifact": {
+    "path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+    "sha256": "5ad7ddc1173ee9a397b2f95c63c4f35e61e493ad1c1d169be35dfc1014bd229c",
+    "artifact_type": "execution_trace_adapter",
+    "version": "v0.1.0-rc.18"
+  },
+  "criticality": "critical",
+  "review_profile": "full",
+  "authoritative_sources": [
+    {
+      "source_id": "SELF",
+      "source_class": "package_confirmed",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "sha256": "5ad7ddc1173ee9a397b2f95c63c4f35e61e493ad1c1d169be35dfc1014bd229c",
+      "status": "verified"
+    },
+    {
+      "source_id": "REL1",
+      "source_class": "repository_derived",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_VALIDATION_GATE_CONTRACT.yaml",
+      "sha256": "9c693652d973e570115bb0e841d0ccac7074bbd3f4669d01b86d67e1944cd7fc",
+      "status": "verified"
+    },
+    {
+      "source_id": "REL2",
+      "source_class": "repository_derived",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_EXECUTION_TRACE_ARTIFACT_CONTRACT.yaml",
+      "sha256": "2dc33f70cf670da52b7517c760b0d3878306054d17c5d519ac370a07463aa13d",
+      "status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C001",
+      "section": "normative",
+      "text": "- verify required inputs, dependencies and side-effect strategy",
+      "sensitivity": "contract-sensitive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    },
+    {
+      "claim_id": "C002",
+      "section": "normative",
+      "text": "- all mapped gates and generated outputs emit required events when capture is enabled",
+      "sensitivity": "contract-sensitive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    },
+    {
+      "claim_id": "C003",
+      "section": "normative",
+      "text": "- do not silently drop required events in runtime_enforced mode",
+      "sensitivity": "contract-sensitive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    },
+    {
+      "claim_id": "C004",
+      "section": "normative",
+      "text": "concurrency_rule: adapter must serialize sequence assignment per trace",
+      "sensitivity": "contract-sensitive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "SYS-POSTGEN-001",
+      "taxonomy": "unverified_confirmation",
+      "severity": "critical",
+      "status": "corrected",
+      "section": "confirmation pipeline",
+      "description": "Prior package lacked a unified claim-level post-generation review gate capable of blocking confirmation after structural validation.",
+      "evidence": [
+        "archive/milestone_reports/M83_0_VALIDATION_REPORT.json"
+      ],
+      "required_action": "Add schema-bound blocking review gate and independent validator."
+    }
+  ],
+  "invalidated_sections": [
+    "confirmation pipeline dependency"
+  ],
+  "preserved_sections": [
+    "existing artifact normative content"
+  ],
+  "corrections": [
+    {
+      "correction_id": "M83-CORR-001",
+      "defect_ids": [
+        "SYS-POSTGEN-001"
+      ],
+      "scope": "Additive post-generation review schema, gate contract, validator, templates and regression fixtures.",
+      "status": "completed",
+      "validator_independent": true
+    }
+  ],
+  "cross_artifact_checks": [
+    {
+      "related_artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_VALIDATION_GATE_CONTRACT.yaml",
+      "result": "passed",
+      "details": "No contradictory current normative requirement detected during bounded cross-artifact review."
+    },
+    {
+      "related_artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_EXECUTION_TRACE_ARTIFACT_CONTRACT.yaml",
+      "result": "passed",
+      "details": "No contradictory current normative requirement detected during bounded cross-artifact review."
+    }
+  ],
+  "regression_checks": [
+    {
+      "check_id": "schema_validation",
+      "result": "passed"
+    },
+    {
+      "check_id": "claim_materialization",
+      "result": "passed"
+    },
+    {
+      "check_id": "blocking_defect_enforcement",
+      "result": "passed"
+    },
+    {
+      "check_id": "post_correction_independence",
+      "result": "passed"
+    }
+  ],
+  "gates": {
+    "EVIDENCE-COVERAGE-01": "passed",
+    "NO-UNSUPPORTED-INFERENCE-01": "passed",
+    "CANONICAL-CONTRACT-01": "passed",
+    "CURRENT-VERSION-RECONCILIATION-01": "passed",
+    "PATH-DOMAIN-01": "passed",
+    "ROLLBACK-CONTRACT-01": "passed",
+    "CROSS-ARTIFACT-01": "passed",
+    "ADVERSARIAL-REVIEW-01": "passed",
+    "POST-CORRECTION-REVIEW-01": "passed"
+  },
+  "confirmation_eligibility": {
+    "eligible": true,
+    "blocking_reasons": []
+  },
+  "trace_events": [
+    {
+      "event": "POST_GENERATION_REVIEW_STARTED",
+      "timestamp": "2026-07-18T00:00:00Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "status": "started"
+    },
+    {
+      "event": "ARTIFACT_SECTION_INVALIDATED",
+      "timestamp": "2026-07-18T00:00:01Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "status": "systemic_confirmation_dependency"
+    },
+    {
+      "event": "TARGETED_REGENERATION_COMPLETED",
+      "timestamp": "2026-07-18T00:00:02Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "status": "additive_layer_completed"
+    },
+    {
+      "event": "POST_CORRECTION_REVIEW_PASSED",
+      "timestamp": "2026-07-18T00:00:03Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "status": "passed"
+    },
+    {
+      "event": "ARTIFACT_CONFIRMATION_ELIGIBLE",
+      "timestamp": "2026-07-18T00:00:04Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "status": "eligible"
+    }
+  ]
+}

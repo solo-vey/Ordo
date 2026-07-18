@@ -1,0 +1,37 @@
+{
+  "milestone": "M61.1",
+  "name": "Companion Utilities Packaging Plan",
+  "status": "passed-design-docs-only",
+  "base": "M61.0 Human Review Scenario Cards",
+  "scope_completed": [
+    "COMPANION_UTILITIES.md added",
+    "utilities/README.md added",
+    "utilities/VISUAL_GRAPH_GENERATOR_INTEGRATION_PLAN.md added",
+    "stable package index and future backlog updated",
+    "book chapter added for companion utilities"
+  ],
+  "visual_graph_generator": {
+    "status": "evaluated-external-candidate-not-imported",
+    "planned_import_milestone": "M61.2",
+    "recommended_location": "utilities/ordo_visual_graph_generator/",
+    "capabilities": [
+      "mmd",
+      "svg",
+      "png",
+      "subtree",
+      "context",
+      "path-only",
+      "annotation-overlay",
+      "trace-overlay-schema"
+    ]
+  },
+  "non_scope": [
+    "runtime-core changes",
+    "scoring weights",
+    "runtime execution",
+    "model/API benchmark",
+    "watchdog/process-boundary hardening",
+    "Visual Graph Generator code import"
+  ],
+  "expected_change_level": "L0 runtime core / L0 scoring / docs-packaging only"
+}

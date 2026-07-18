@@ -1,0 +1,21 @@
+schema_version: ordo.generated_artifacts_policy.v1
+generated_artifacts:
+  output_root: .ordo-generated
+  source_tree_policy: forbid_generated_payloads
+  package_generated_roots:
+  - compiled
+  - reports
+  - runtime
+  - generated_outputs
+  allowed_source_placeholders:
+  - .gitkeep
+  - reports/CLI_VALIDATION_SUMMARY.md
+  - reports/PACKAGE_PROFILE_SUMMARY.md
+  release_inclusion:
+    mode: explicit_manifest_only
+  reproducibility:
+    required: true
+  workspace_reports:
+    canonical_manifest: reports/CANONICAL_REPORTS_MANIFEST.yaml
+    generated_output_root: .ordo-generated/workspace-reports
+    unmanifested_report_policy: forbid

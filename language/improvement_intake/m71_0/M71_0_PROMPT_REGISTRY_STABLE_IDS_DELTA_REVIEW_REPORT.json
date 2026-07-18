@@ -1,0 +1,178 @@
+{
+  "milestone": "M71.0",
+  "status": "accepted-delta-review",
+  "title": "Current Prompt Registry vs stable semantic prompt IDs",
+  "source_improvement": "language/improvement_intake/m71_0/APF_PROMPT_REGISTRY_STABLE_PROMPT_IDS_IMPROVEMENT.md",
+  "current_state": {
+    "prompt_registry_exists": true,
+    "prompt_refs_exist": true,
+    "manifest_checksum_exists": true,
+    "current_prompt_id_count": 13,
+    "current_prompt_ids": [
+      "N_DISPLAY_TEXTS_human_ui_texts_helper",
+      "N_PATH_SELECT_source_type_clarification",
+      "N_SOURCE_FIELD_external_fact_intake_helper",
+      "N_VALUE_SEMANTICS_comparison_rule_helper",
+      "backtracking_invalidation_helper",
+      "gate_failure_explanation_helper",
+      "history_event_runtime_start_prompt",
+      "implementation_prompt_generation_helper",
+      "jira_task_generation_helper",
+      "missing_artifact_resolution_helper",
+      "passport_generation_helper",
+      "qa_package_generation_helper",
+      "quick_start_prompt"
+    ],
+    "node_coupled_prompt_ids": [
+      "N_DISPLAY_TEXTS_human_ui_texts_helper",
+      "N_PATH_SELECT_source_type_clarification",
+      "N_SOURCE_FIELD_external_fact_intake_helper",
+      "N_VALUE_SEMANTICS_comparison_rule_helper"
+    ],
+    "prompt_ref_count": 22,
+    "application_phases": [
+      "artifact_generation",
+      "before_question",
+      "during_clarification",
+      "on_gate_fail",
+      "validation_review"
+    ]
+  },
+  "reuse_decisions": [
+    {
+      "component": "prompt_registry_schema",
+      "decision": "reuse_and_extend"
+    },
+    {
+      "component": "node.prompt_refs",
+      "decision": "reuse_as_authoritative_attachment"
+    },
+    {
+      "component": "PROMPT_MANIFEST.json checksums",
+      "decision": "reuse"
+    },
+    {
+      "component": "lifecycle_visibility_authority_fields",
+      "decision": "reuse"
+    },
+    {
+      "component": "validation_profile",
+      "decision": "extend_not_replace"
+    }
+  ],
+  "delta_decisions": [
+    {
+      "delta": "prompt_id_node_independence",
+      "required": true
+    },
+    {
+      "delta": "semantic_file_names",
+      "required": true
+    },
+    {
+      "delta": "prompt_family_and_version_chain",
+      "required": true
+    },
+    {
+      "delta": "rename_split_merge_stability_checks",
+      "required": true
+    },
+    {
+      "delta": "application_order_contract",
+      "required": true
+    },
+    {
+      "delta": "trace_evidence_prompt_id_and_checksum",
+      "required": true
+    },
+    {
+      "delta": "guidance_refs_parallel_field",
+      "required": false,
+      "decision": "do_not_add; retain prompt_refs"
+    },
+    {
+      "delta": "registry.current_nodes_authority",
+      "required": false,
+      "decision": "derived_or_checked_mirror_only"
+    },
+    {
+      "delta": "applies_when_execution",
+      "required": false,
+      "decision": "descriptive_metadata_only"
+    }
+  ],
+  "migration_candidates": [
+    {
+      "current_prompt_id": "N_PATH_SELECT_source_type_clarification",
+      "candidate_semantic_prompt_id": "hp.source_type.clarification.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "N_SOURCE_FIELD_external_fact_intake_helper",
+      "candidate_semantic_prompt_id": "hp.source_row.intake.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "N_VALUE_SEMANTICS_comparison_rule_helper",
+      "candidate_semantic_prompt_id": "hp.normalization.value_comparison.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "N_DISPLAY_TEXTS_human_ui_texts_helper",
+      "candidate_semantic_prompt_id": "hp.localization.bilingual_texts.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "quick_start_prompt",
+      "candidate_semantic_prompt_id": "hp.runtime.quick_start.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "history_event_runtime_start_prompt",
+      "candidate_semantic_prompt_id": "hp.runtime.start.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "passport_generation_helper",
+      "candidate_semantic_prompt_id": "hp.artifact.passport_generation.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "jira_task_generation_helper",
+      "candidate_semantic_prompt_id": "hp.artifact.jira_task_generation.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "implementation_prompt_generation_helper",
+      "candidate_semantic_prompt_id": "hp.artifact.implementation_prompt_generation.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "qa_package_generation_helper",
+      "candidate_semantic_prompt_id": "hp.qa.package_generation.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "gate_failure_explanation_helper",
+      "candidate_semantic_prompt_id": "hp.repair.gate_failure_explanation.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "backtracking_invalidation_helper",
+      "candidate_semantic_prompt_id": "hp.repair.backtracking_invalidation.v1",
+      "classification": "rename_candidate"
+    },
+    {
+      "current_prompt_id": "missing_artifact_resolution_helper",
+      "candidate_semantic_prompt_id": "hp.repair.missing_artifact_resolution.v1",
+      "classification": "rename_candidate"
+    }
+  ],
+  "scope": {
+    "implementation_changes": false,
+    "package_changes": false,
+    "runtime_changes": false,
+    "compiler_changes": false,
+    "opcode_changes": false
+  }
+}

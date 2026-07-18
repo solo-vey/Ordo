@@ -1,0 +1,8 @@
+{
+  "status": "PASSED",
+  "mutation_allowed": true,
+  "release_allowed": true,
+  "language_package_sha256": "d9bcee6d5a70bae885eb6ecbba9173ff856118533e209a1d0917642d8504263f",
+  "arf_version": "0.1.0-rc.18",
+  "evidence_complete": true
+}

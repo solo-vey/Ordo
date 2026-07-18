@@ -1,0 +1,19 @@
+{
+  "schema_version": "benchmark.alpha7_validation.v1",
+  "passed": 11,
+  "total": 11,
+  "checks": {
+    "all_json_parse": true,
+    "all_yaml_parse": true,
+    "all_python_compile": true,
+    "bl_044_done": true,
+    "acceptance_5_of_5": true,
+    "source_attachment_preserved": true,
+    "policy_exists": true,
+    "runtime_exists": true,
+    "schema_exists": true,
+    "templates_exist": true,
+    "all_backlog_done": true
+  },
+  "status": "PASS"
+}

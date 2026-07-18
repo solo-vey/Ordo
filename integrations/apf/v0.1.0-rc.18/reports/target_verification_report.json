@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "mode": "m60_1_target_verification",
+  "manifest": "compiled/targets.manifest.json",
+  "canonical_ir_hash": "sha256:de7780df606ba77b3372a3169039d452179896609825c2e7d528dc77c54e2923",
+  "target_results": {
+    "json-ir": {
+      "path": "compiled/program.ir.json",
+      "status": "ok",
+      "actual_sha256": "sha256:de7780df606ba77b3372a3169039d452179896609825c2e7d528dc77c54e2923"
+    },
+    "ordo-code-view": {
+      "path": "compiled/program.ordo.view",
+      "status": "ok",
+      "actual_sha256": "sha256:4c7b49f26ffb3fb3dcbcf08ffec1ae7d4ba817a8bd895a2b2012fbdfea01aa53"
+    },
+    "session-trace": {
+      "path": "runtime/session.ordo.trace",
+      "status": "ok_mutable",
+      "actual_sha256": "sha256:e22bb84c8749e75ce30768c086fed69aef2f7a4cd3622cf447ef3fa236b80090",
+      "initial_sha256": "sha256:e22bb84c8749e75ce30768c086fed69aef2f7a4cd3622cf447ef3fa236b80090"
+    }
+  },
+  "terminal_line": "target-set: consistent",
+  "issues": [],
+  "report_digest": {
+    "algorithm": "sha256",
+    "scope": "canonical_json_without_report_digest",
+    "value": "35a8c7a39d05351985ff8bb13f4ce62169c28e4aa0076886d20df897383d2909"
+  }
+}

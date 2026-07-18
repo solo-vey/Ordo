@@ -1,0 +1,11 @@
+{
+  "schema_version": "ordo.composite_scorecard.v1",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "scenario_id": "S05_INCOMPLETE_HARD_STOP",
+  "implementation": "instruction_only",
+  "composite_score": 95,
+  "verdict": "passed",
+  "admission_status": "canonical_evidence",
+  "language": "en"
+}

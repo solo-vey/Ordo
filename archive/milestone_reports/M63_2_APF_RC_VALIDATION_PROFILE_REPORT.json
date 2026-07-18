@@ -1,0 +1,12 @@
+{
+  "milestone": "M63.2_APF_RC_VALIDATION_PROFILE_REPORT",
+  "status": "passed-validation-profile-documentation",
+  "generated_at": "2026-07-08T18:15:31.239861+00:00",
+  "summary": "Formalized APF rc.1 validation profile, optional validate-factory-output policy, and non-blocking warnings policy.",
+  "outputs": [
+    "M63_2_APF_RC_VALIDATION_PROFILE.md",
+    "M63_2_APF_RC_KNOWN_LIMITATIONS.md",
+    "M63_2_VALIDATION_REPORT.json"
+  ],
+  "decision": "go"
+}

@@ -1,0 +1,9 @@
+schema_version: ordo.apf.assembly_overlay.v1
+overlay_id: BL-ORDO-055
+base_program: program.ordo.yaml
+add_modules:
+  - modules/45_blind_automation_design.ordo.module.yaml
+insertion_after: modules/40_conversation_policy.ordo.module.yaml
+insertion_before: modules/50_package_generation.ordo.module.yaml
+required_export_gate: APF.G.BLIND_AUTOMATION_CONTRACT_COMPLETE
+canonical_assembly_required: true

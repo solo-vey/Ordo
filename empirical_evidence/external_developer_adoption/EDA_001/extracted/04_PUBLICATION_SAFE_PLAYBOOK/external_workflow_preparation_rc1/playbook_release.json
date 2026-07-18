@@ -1,0 +1,65 @@
+{
+  "schema_version": "ordo.playbook_release.v1",
+  "playbook_id": "external.workflow_preparation",
+  "playbook_version": "0.1.0-rc.1",
+  "previous_version": "0.1.0-alpha.3",
+  "release_stage": "release_candidate",
+  "built_with": {
+    "language_version": "0.13.0-rc.1",
+    "framework_version": "0.5.0-rc.2"
+  },
+  "compatibility": {
+    "language": ">=0.13.0-rc.1,<0.14.0",
+    "framework": ">=0.5.0-rc.2,<0.6.0",
+    "previous_playbook": "0.1.0-alpha.3"
+  },
+  "changes": {
+    "backlog_items": [
+      "BL-EWP-002",
+      "BL-EWP-003"
+    ],
+    "summary": [
+      "Promoted the playbook from alpha to release candidate after full internal validation.",
+      "Kept the two-step manual lifecycle: approved draft, external documentation system publication, then Workflow Preparation work-tracking system publication.",
+      "Restricted external-link placement: the external process record URL is written into the work-tracking system document, and the Workflow Preparation work-tracking system URL is written into README.md.",
+      "Removed domain-specific over-engineering backlog items; deferred migration to a future Ordo/ARF release."
+    ],
+    "changed_nodes": [
+      "N_CAPTURE_knowledge_workspace_LINK",
+      "N_MANUAL_WORK TRACKER_PUBLICATION",
+      "N_CAPTURE_WORK TRACKER_LINK",
+      "N_LINK_SYNCHRONIZATION",
+      "N_FINAL_VALIDATION"
+    ],
+    "changed_contracts": [
+      "external lifecycle link placement contract"
+    ],
+    "changed_outputs": [
+      "README.md",
+      "artifacts/02_WORK_TRACKING_RECORD.md",
+      "runtime/EXTERNAL_LINK_REGISTRY.json",
+      "reports/*"
+    ],
+    "changed_gates": [
+      "G_EXTERNAL_LINKS",
+      "G_HANDOFF"
+    ]
+  },
+  "migration": {
+    "required": false,
+    "instructions": [
+      "No prior executable release exists."
+    ]
+  },
+  "rollback": {
+    "supported": true,
+    "checkpoint_required_before_version_bump": true,
+    "verification_required": true,
+    "manifest_schema": "ordo.playbook.rollback_checkpoint.v1",
+    "restore_round_trip_required": true,
+    "runtime_state_checkpoint_when_active": true,
+    "initial_checkpoint": "rollback/INITIAL_ALPHA_CHECKPOINT.json",
+    "previous_checkpoint": "../checkpoints/external_workflow_preparation_0.1.0-alpha.3_checkpoint.zip"
+  },
+  "automatic_runtime_mutation": false
+}

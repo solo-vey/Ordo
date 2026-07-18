@@ -1,0 +1,16 @@
+{
+  "schema_version": "ordo.m83.4.closure_gate.v1",
+  "milestone": "M83.4",
+  "status": "passed",
+  "backlog_id": "BL-ORDO-014",
+  "checks": {
+    "m83_1_passed": true,
+    "m83_2_passed": true,
+    "m83_3_passed": true,
+    "review_records_passed": true,
+    "negative_regression_passed": true,
+    "critical_high_open_defects_zero": true,
+    "backlog_synchronized": true
+  },
+  "decision": "close"
+}

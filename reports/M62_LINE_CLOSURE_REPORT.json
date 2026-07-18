@@ -1,0 +1,45 @@
+{
+  "milestone": "M62 Line Closure",
+  "date": "2026-07-08",
+  "status": "passed-line-closure",
+  "stable_base": "M62.3 — APF Language Pattern Extraction Plan",
+  "closed_milestones": [
+    "M62.0",
+    "M62.1",
+    "M62.2",
+    "M62.3"
+  ],
+  "scope_boundary": {
+    "apf_branch_rewrite": false,
+    "runtime_core_changes": false,
+    "ir_opcode_additions": false,
+    "runtime_execution": false,
+    "scoring_calibration": false,
+    "watchdog_hardening": false
+  },
+  "future_work": [
+    "M63.0 APF Branch Review Continuation Plan",
+    "terminal output binding patch",
+    "progressive tree authoring patch",
+    "FLOW.JOIN/SHARED.TAIL.REFERENCE formal design",
+    "runtime execution/scoring/calibration"
+  ],
+  "validation_status": "passed",
+  "validation_summary": {
+    "selected_pytest": "27 passed",
+    "book_entries": 78,
+    "book_chapters": 68,
+    "book_missing_files": [],
+    "apf_graph_counts": {
+      "nodes": 54,
+      "edges": 78,
+      "gates": 38,
+      "assertions": 28,
+      "outputs": 1,
+      "unmatched_handlers": 54,
+      "branching_nodes": 19,
+      "linear_nodes": 35,
+      "dead_end_nodes": 0
+    }
+  }
+}

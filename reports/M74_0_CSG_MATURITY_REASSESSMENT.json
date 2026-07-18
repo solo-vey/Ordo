@@ -1,0 +1,25 @@
+{
+  "milestone": "M74.0",
+  "capability": "conversation_scope_guard",
+  "contract_id": "ORDO-CAP-CSG-001",
+  "decision": "retain_as_language_integrated_optional_specification",
+  "previous_reporting_risk": "generic passed status could be interpreted as real-model or runtime validation",
+  "corrected_validation_scope": "specification_and_cross_artifact_consistency",
+  "maturity": {
+    "specification": "language_integrated",
+    "schema_support": "partial",
+    "toolchain_support": "not_started",
+    "runtime_enforcement": "not_started",
+    "model_benchmark": "not_run",
+    "production_recommendation": "not_ready"
+  },
+  "passed_gates": [
+    "G_CSG_SPEC_RELEASE_READY"
+  ],
+  "open_gates": [
+    "G_CSG_TOOLCHAIN_READY",
+    "G_CSG_MODEL_BENCHMARK_READY",
+    "G_CSG_PRODUCTION_READY"
+  ],
+  "blocking_issues": []
+}

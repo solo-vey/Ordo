@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.evidence_storage_strategy.v1",
+  "task_id": "BL-ORDO-059",
+  "status": "approved",
+  "strategy": "git_inline_with_threshold_gates",
+  "git_lfs_status": "not_required",
+  "release_assets_status": "required_for_future_files_over_25_mib_unless_exception_approved",
+  "history_rewrite_status": "not_authorized",
+  "clean_clone_contract": {
+    "ordinary_clone": "must contain all current required evidence binaries",
+    "external_assets": "none required by current snapshot",
+    "fail_closed_when_required_bytes_missing": true
+  },
+  "growth_review_triggers": {
+    "git_inline_max": 5,
+    "review_required_max": 25,
+    "external_default_min_exclusive": 25,
+    "prohibited_inline_review_min": 50,
+    "cumulative_evidence_mib": 100,
+    "repository_uncompressed_mib": 250
+  },
+  "rollback": "Restore the last checksum-bound publication package and manifests; rerun clean-room validation.",
+  "known_limitations": [
+    "Exact duplicate accepted-run ZIPs remain in case-local and accepted-run indexes.",
+    "No real remote asset retrieval was executed because no current artifact is assigned external storage.",
+    "Historical Git-object size cannot be measured from a ZIP publication package without the repository .git directory."
+  ]
+}

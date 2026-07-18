@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo://schemas/conversation/deviation-classification.schema.json",
+  "title": "Ordo Deviation Classification Record",
+  "type": "object",
+  "required": [
+    "op",
+    "message_ref",
+    "active_node_ref",
+    "classification",
+    "state_mutation_allowed",
+    "action"
+  ],
+  "properties": {
+    "op": {
+      "const": "DEVIATION.CLASSIFY"
+    },
+    "message_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "active_node_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "active_question_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "classification": {
+      "enum": [
+        "answer_to_active_question",
+        "clarification",
+        "correction",
+        "backtrack_request",
+        "requirement_change",
+        "pause_request",
+        "resume_request",
+        "exit_request",
+        "process_meta_question",
+        "related_context",
+        "unrelated_topic",
+        "unsafe_or_emergency_message",
+        "unclassifiable_input"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "confirmed",
+        "high",
+        "medium",
+        "low",
+        "unknown"
+      ]
+    },
+    "matched_scope_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "classification_reason": {
+      "type": "string"
+    },
+    "state_mutation_allowed": {
+      "type": "boolean"
+    },
+    "action": {
+      "enum": [
+        "accept_answer",
+        "clarify_active_step",
+        "apply_correction",
+        "backtrack",
+        "reopen_contract",
+        "pause_process",
+        "resume_process",
+        "exit_process",
+        "answer_process_meta",
+        "register_related_context",
+        "redirect",
+        "bypass_for_safety",
+        "request_classification_clarification"
+      ]
+    },
+    "trace_required": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "enum": [
+              "unrelated_topic",
+              "unclassifiable_input"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "state_mutation_allowed": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "const": "unsafe_or_emergency_message"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "action": {
+            "const": "bypass_for_safety"
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

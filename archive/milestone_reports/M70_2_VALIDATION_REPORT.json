@@ -1,0 +1,23 @@
+{
+  "milestone": "M70.2",
+  "status": "implemented-language-cli-root-contracts / passed-validation",
+  "tests": {
+    "targeted": 23,
+    "result": "OK"
+  },
+  "production_smoke": {
+    "status": "passed",
+    "exit_code": 0,
+    "root_count": 10,
+    "checked_count": 3,
+    "passed_count": 3,
+    "delegated_count": 1,
+    "not_applicable_count": 6,
+    "blocked_count": 0
+  },
+  "parse_checks": "passed",
+  "scope_guards": {
+    "packages": "unchanged",
+    "runtime_compiler_opcodes": "unchanged"
+  }
+}

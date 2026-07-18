@@ -1,0 +1,20 @@
+tests:
+- valid_answer_to_active_question
+- clarification
+- correction
+- backtracking
+- requirement_change
+- pause
+- resume
+- exit
+- process_meta_question
+- related_context
+- first_unrelated_message
+- repeated_unrelated_messages
+- unclassifiable_input
+- safety_or_emergency_message
+- state_preservation
+- path_preservation
+- confirmed_state_preservation
+- counter_reset_after_valid_answer
+- counter_reset_after_node_transition

@@ -1,0 +1,107 @@
+{
+  "milestone": "M74.2",
+  "title": "Development and Release Hygiene Scope Isolation",
+  "status": "implemented",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "a0c68c1eaf0bd1308413c62e6559cfb14c08e10e78e3a391f873f78cfe52935f",
+      "size_bytes": 643
+    },
+    {
+      "path": ".github/workflows/ordo-clean-gate.yml",
+      "sha256": "55459db1bba26202adb85df667593ce39710252fb8c717e832c98667e52be127",
+      "size_bytes": 1695
+    },
+    {
+      "path": ".github/workflows/ordo-release-clean-gate.yml",
+      "sha256": "567374f9acf8c880697d810d20874ef8b783dbfdc58878a4169b79ea66092d98",
+      "size_bytes": 3991
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "19741977328dca049910dec210644f16dee9b2879428e40918de083a21406502",
+      "size_bytes": 63272
+    },
+    {
+      "path": "M74_IMPLEMENTATION_PLAN.md",
+      "sha256": "670459ef34612dea26b80ee7fbde3b29d935f37c8120522df3d716eaa41b88d9",
+      "size_bytes": 1390
+    },
+    {
+      "path": "M74_2_HYGIENE_SCOPE_ISOLATION.md",
+      "sha256": "4214c07e9277483d72fa449ab92d60392cd3395671441b1bca867b3d82ac12b1",
+      "size_bytes": 1569
+    },
+    {
+      "path": "repo_hygiene.yml",
+      "sha256": "da8f4e959b468482b9d6f4f30233577f371ddecad010b08faa92b096dc6d3188",
+      "size_bytes": 3435
+    },
+    {
+      "path": "cli/README.md",
+      "sha256": "7a44fda307d29268855fbdf7e5f46087449e68a859646ecdd81a3d32d82f540f",
+      "size_bytes": 5858
+    },
+    {
+      "path": "cli/docs/DEVELOPMENT_AND_RELEASE_HYGIENE_SCOPES.md",
+      "sha256": "5c5d8fb40e18cb466856aaa649e69fa7591a787f5b3fbfadba550ade0b45e5a7",
+      "size_bytes": 1369
+    },
+    {
+      "path": "cli/docs/PRODUCTION_REPO_HYGIENE_POLICY_ADOPTION.md",
+      "sha256": "e9b4dfc2b0eda0d2388c691195de8c29ef7a5bf3c8e7123485c942c142a10f6d",
+      "size_bytes": 2127
+    },
+    {
+      "path": "cli/ordo/cli.py",
+      "sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+      "size_bytes": 45020
+    },
+    {
+      "path": "cli/ordo/repo_checks.py",
+      "sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+      "size_bytes": 19455
+    },
+    {
+      "path": "cli/tests/test_ci_clean_gate_workflow.py",
+      "sha256": "3fc2d9669e97781a1af29723dd00b080314db5c38fa60a21b5e89e8252fc6799",
+      "size_bytes": 1934
+    },
+    {
+      "path": "cli/tests/test_m70_4_production_ci_release_validation.py",
+      "sha256": "0ef0c638c68d48d207d563337ff80f6e0184b841c7a98babe580bd2d308d6caa",
+      "size_bytes": 3101
+    },
+    {
+      "path": "cli/tests/test_m74_2_hygiene_scope_isolation.py",
+      "sha256": "45bdee9eb1c1d3956794d90dfae6a6e428137439a64de1282e36c2fa644a6577",
+      "size_bytes": 2886
+    },
+    {
+      "path": "language/spec/30_PRODUCTION_REPO_HYGIENE_POLICY_MODEL.md",
+      "sha256": "e66199a79211537540de1484ca82a49675e72eb490df919ba6712fb1234a5a6b",
+      "size_bytes": 2050
+    },
+    {
+      "path": "packages/history_event_guided_intake/cli_embedded/ordo_pkg/ordo/cli.py",
+      "sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+      "size_bytes": 45020
+    },
+    {
+      "path": "packages/history_event_guided_intake/cli_embedded/ordo_pkg/ordo/repo_checks.py",
+      "sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+      "size_bytes": 19455
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/cli_embedded/ordo_pkg/ordo/cli.py",
+      "sha256": "1499eb2ab5912df54796188a4897099bb0066d8ffb7e38fadaa7f1a837e12cce",
+      "size_bytes": 45020
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/cli_embedded/ordo_pkg/ordo/repo_checks.py",
+      "sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9",
+      "size_bytes": 19455
+    }
+  ]
+}

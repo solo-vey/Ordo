@@ -1,0 +1,11 @@
+schema_version: ordo.benchmark.blind_isolation_manifest.v1
+attempt_id: <attempt-id>
+executor_visible: []
+driver_private: []
+evaluator_only: []
+historical_registry_excluded: true
+workspace_clean: <true|false>
+context_inventory: []
+exceptions: []
+leak_checks: []
+blind_integrity_status: <passed|blocked|contaminated>

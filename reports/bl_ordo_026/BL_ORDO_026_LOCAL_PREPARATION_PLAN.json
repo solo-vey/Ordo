@@ -1,0 +1,19 @@
+{
+  "schema_version": "ordo.bl_ordo_026.plan.v1",
+  "task": "BL-ORDO-026",
+  "merged_tasks": [
+    "BL-ORDO-015",
+    "BL-ORDO-022"
+  ],
+  "goal": "Prepare complete GitHub CI and release delivery closure locally, leaving only independent external GitHub Actions evidence.",
+  "steps": [
+    "workflow coverage",
+    "local clean-git simulation",
+    "four package lints",
+    "strict release clean gate",
+    "release/packaging regression",
+    "candidate/evidence bundle",
+    "external GitHub run"
+  ],
+  "closure_rule": "Do not mark closed until an independent GitHub Actions run is green and its artifacts are verified."
+}

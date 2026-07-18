@@ -1,0 +1,131 @@
+{
+  "schema_version": "ordo.status_supersession_registry.v1",
+  "updated_at": "2026-07-14T18:00:00Z",
+  "current_status_ref": "manifests/CURRENT_MATURITY_STATE.json",
+  "records": [
+    {
+      "path": "reports/M74_0_CSG_MATURITY_REASSESSMENT.json",
+      "historical_as_of": "M74.0",
+      "superseded_by": "M75.4",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "M74_3_VALIDATION_REPORT.json",
+      "historical_as_of": "M74.3 pre-real-model closure",
+      "superseded_by": "M75.3.1",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "M74_3_REAL_MODEL_BENCHMARK_CLOSURE_REPORT.json",
+      "historical_as_of": "single-model benchmark closure",
+      "superseded_by": "M75.3.1 and M75.4",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "docs/future_backlog_m74_sync_snapshot.md",
+      "historical_as_of": "M74 snapshot",
+      "superseded_by": "CONSOLIDATED_BACKLOG.md",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "manifests/LANGUAGE_BASELINE_RELEASE_CSG_0_1.json",
+      "historical_as_of": "CSG 0.1 release baseline",
+      "superseded_by": "language/conversation_scope_guard.contract.yaml and CURRENT_MATURITY_STATE.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "manifests/M74_1_LANGUAGE_BASELINE_DELTA.json",
+      "historical_as_of": "M74.1",
+      "superseded_by": "M75.4",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "DELIVERY_GATE_REPORT.json",
+      "historical_as_of": "reconstructed M87.7 delivery-gate state",
+      "superseded_by": "reports/bl_ordo_032/BL_ORDO_032_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "archive/milestone_reports/M76_1_APF_GRAPH_CYCLES_AND_DEAD_ENDS.md",
+      "historical_as_of": "M76.1 initial graph-contract validation (72 active nodes / 6 cycles)",
+      "superseded_by": "reports/bl_ordo_002/BL_ORDO_002_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "archive/milestone_reports/M76_4_PATHWALK_PURPOSE_AND_CALIBRATION_REPORT.md",
+      "historical_as_of": "M76.4 initial calibration-governance closure",
+      "superseded_by": "reports/bl_ordo_006/BL_ORDO_006_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "archive/milestone_reports/M81_0_STARTUP_DERIVED_ARTIFACT_RECONCILIATION_REPORT.json",
+      "historical_as_of": "M81.0 partial reconciliation",
+      "superseded_by": "reports/bl_ordo_012/BL_ORDO_012_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "archive/milestone_reports/M81_0_STARTUP_DERIVED_ARTIFACT_RECONCILIATION_REPORT.md",
+      "historical_as_of": "M81.0 partial reconciliation",
+      "superseded_by": "reports/bl_ordo_012/BL_ORDO_012_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "archive/milestone_reports/M87_7_DELIVERY_GATE_CLOSURE_CHANGES.md",
+      "historical_as_of": "M87.7 heavy-skip limitation",
+      "superseded_by": "reports/bl_ordo_025/BL_ORDO_025_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "BL-ORDO-013",
+      "historical_as_of": "generic template/review tooling candidate",
+      "superseded_by": "BL-ORDO-024 Process Pattern, Template and Review Engineering",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "reports/BL_ORDO_010_EN_BOOK_RECONCILIATION_REPORT.json",
+      "historical_as_of": "pre-closure localization state",
+      "superseded_by": "reports/bl_ordo_010/BL_ORDO_010_CLOSURE_REPORT.json",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "BL-ORDO-015",
+      "historical_as_of": "pre-merge release/CI backlog item",
+      "superseded_by": "BL-ORDO-026 Release and Independent CI Closure",
+      "preserve_unchanged": true
+    },
+    {
+      "path": "BL-ORDO-022",
+      "historical_as_of": "pre-merge release/CI backlog item",
+      "superseded_by": "BL-ORDO-026 Release and Independent CI Closure",
+      "preserve_unchanged": true
+    }
+  ],
+  "entries": [
+    {
+      "superseded_id": "BL-ORDO-028",
+      "canonical_id": "BL-ORDO-029",
+      "reason": "Owner-approved backlog consolidation; node-local execution and inbound provenance implemented as one invariant.",
+      "effective_milestone": "M88.0"
+    },
+    {
+      "subject": "BL-ORDO-007",
+      "superseded_status": "future-design",
+      "current_status": "closed",
+      "milestone": "M88.0",
+      "evidence": "reports/bl_ordo_007/BL_ORDO_007_CLOSURE_REPORT.json"
+    },
+    {
+      "superseded_id": "BL-ORDO-009",
+      "canonical_id": "BL-ORDO-011",
+      "reason": "Owner-approved consolidation of mini-prompt applicability with Prompt Registry governance reconciliation.",
+      "effective_milestone": "M88.1"
+    },
+    {
+      "subject": "BL-ORDO-011",
+      "superseded_status": "needs-revalidation",
+      "current_status": "closed",
+      "milestone": "M88.1",
+      "evidence": "reports/bl_ordo_011/BL_ORDO_011_CLOSURE_REPORT.json"
+    }
+  ]
+}

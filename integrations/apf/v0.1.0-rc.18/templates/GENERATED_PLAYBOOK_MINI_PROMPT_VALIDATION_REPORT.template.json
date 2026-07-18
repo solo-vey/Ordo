@@ -1,0 +1,20 @@
+{
+  "playbook_id": "<playbook_id>",
+  "prompt_id": "<semantic_prompt_id>",
+  "target_object_id": "<object_id>",
+  "status": "passed|passed_with_notes|blocked",
+  "checks": {
+    "structural_integrity": "pending",
+    "registry_manifest_integrity": "pending",
+    "attachment_integrity": "pending",
+    "authority_boundary": "pending",
+    "context_sufficiency": "pending",
+    "fallback_behavior": "pending",
+    "duplication_and_conflict": "pending",
+    "human_approval_integrity": "pending",
+    "test_coverage": "pending"
+  },
+  "blocking_findings": [],
+  "notes": [],
+  "evidence_refs": []
+}

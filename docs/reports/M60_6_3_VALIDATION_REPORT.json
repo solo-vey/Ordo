@@ -1,0 +1,86 @@
+{
+  "milestone": "M60.6.3",
+  "name": "Model Benchmark Protocol Design",
+  "status": "passed-design-only",
+  "date": "2026-07-08",
+  "scope": "protocol/reporting/docs only",
+  "checks": [
+    {
+      "check": "protocol_document_present",
+      "status": "passed",
+      "evidence": "ordo_pathwalk/MODEL_BENCHMARK_PROTOCOL.md"
+    },
+    {
+      "check": "required_artifact_contract_defined",
+      "status": "passed"
+    },
+    {
+      "check": "transcript_schema_minimum_defined",
+      "status": "passed"
+    },
+    {
+      "check": "raw_model_metrics_minimum_columns_defined",
+      "status": "passed",
+      "evidence": "reports/m60_6_3_model_benchmark_protocol/REQUIRED_RAW_MODEL_METRICS_COLUMNS.csv"
+    },
+    {
+      "check": "calibration_eligibility_gates_defined",
+      "status": "passed",
+      "evidence": "reports/m60_6_3_model_benchmark_protocol/CALIBRATION_ELIGIBILITY_GATES.csv"
+    },
+    {
+      "check": "failure_bucket_taxonomy_defined",
+      "status": "passed",
+      "evidence": "reports/m60_6_3_model_benchmark_protocol/FAILURE_BUCKET_TAXONOMY.csv"
+    },
+    {
+      "check": "weights_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_semantics_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "real_model_api_benchmark_not_run",
+      "status": "passed"
+    },
+    {
+      "check": "pdf_book_not_generated",
+      "status": "passed"
+    },
+    {
+      "check": "workspace_py_compile",
+      "status": "passed",
+      "evidence": "evidence/logs/workspace_py_compile.exit=0"
+    },
+    {
+      "check": "workspace_pathwalk_pytest",
+      "status": "passed",
+      "evidence": "22 passed in 11.81s"
+    },
+    {
+      "check": "pathwalk_rc_with_developer_bundle_pytest",
+      "status": "passed",
+      "evidence": "22 passed in 11.88s"
+    },
+    {
+      "check": "book_manifest_structure_sanity",
+      "status": "passed",
+      "missing_files": []
+    },
+    {
+      "check": "final_zip_extraction_check",
+      "status": "passed",
+      "evidence": "m6063_zipcheck key files and JSON parse passed"
+    }
+  ],
+  "blockers": [],
+  "known_limits": [
+    "No real model/API benchmark was run.",
+    "No transcript-replay pilot was run.",
+    "M60.6.3 defines protocol and gates only."
+  ],
+  "changed_weights": false,
+  "changed_runtime_core_semantics": false
+}

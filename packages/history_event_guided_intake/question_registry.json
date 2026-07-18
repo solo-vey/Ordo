@@ -1,0 +1,76 @@
+{
+  "schema_version": "ordo.question_registry.v1",
+  "playbook_id": "history_event_guided_intake",
+  "questions": [
+    {
+      "question_id": "Q_N_EVENT_GOAL",
+      "node_id": "N_EVENT_GOAL",
+      "question_text": "Яку бізнесову зміну має відображати нова історична подія?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_PATH_SELECT",
+      "node_id": "N_PATH_SELECT",
+      "question_text": "Питання: оберіть Ordo path для цієї History Event.\n\nВаріанти:\nA — зміна у source row / ChangeRecord flow, далі без додаткових legacy A-subpath уточнень\nB — derived або агрегований стан\nC — зовнішній ExternalHistoryEvent\nD — інший або нестандартний шлях\n\nВідповідайте: A, B, C або D. Якщо вибрано A, runtime переходить одразу в A-flow: source row contract → event identity contract → business fields contract → ChangeRecord contract → trigger/no-op → normalization → HistoryEvent output → payload/display/time/entity/delta/test/artifact coverage.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_EVENT_ALIAS",
+      "node_id": "N_EVENT_ALIAS",
+      "question_text": "Який технічний alias події?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DISPLAY_NAME_UK",
+      "node_id": "N_DISPLAY_NAME_UK",
+      "question_text": "Яка українська назва події для користувача?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DISPLAY_NAME_EN",
+      "node_id": "N_DISPLAY_NAME_EN",
+      "question_text": "Яка англійська назва події для технічної документації?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SOURCE_FIELD",
+      "node_id": "N_SOURCE_FIELD",
+      "question_text": "Питання: підтвердіть source field або набір полів для бізнесової зміни.\n\nВаріанти формату відповіді:\n1. одне поле, наприклад item.status\n2. група вкладених полів, наприклад item.capital.value + item.capital.currency\n3. delta.field без item-prefix, наприклад capital.value / capital.currency\n4. source adapter contract: collection/source/type/sub_type + field\n5. custom / інше\n\nРекомендація для A-flow RowDataChange: вказати collection/source/type/sub_type, stable matcher і field path.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_VALUE_SEMANTICS",
+      "node_id": "N_VALUE_SEMANTICS",
+      "question_text": "Питання: оберіть old/new value semantics і normalization rules.\n\nВаріанти:\n1. raw old/new compare\n2. trim only\n3. trim + case normalization\n4. custom normalization із мапінгом значень\n5. strict no normalization\n\nРекомендація: для текстових enum/currency без мапінгу — 3; для числових значень — явно описати parse/compare.",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_QA_SCOPE",
+      "node_id": "N_QA_SCOPE",
+      "question_text": "Питання: оберіть QA coverage для History Event.\n\nВаріанти:\n1. тільки manual positive/negative trigger cases\n2. manual + functional tests\n3. manual + functional + basic unit tests\n4. manual + functional + extended unit corner cases\n5. custom\n\nРекомендація для нової HistoryEvent: 4.",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TEST_STRATEGY_CONTRACT",
+      "node_id": "N_TEST_STRATEGY_CONTRACT",
+      "question_text": "Питання: підтвердіть Test Strategy Contract.\n\nВаріанти:\n1. Manual QA only\n2. Manual QA + Functional tests\n3. Manual QA + Functional tests + Basic unit tests\n4. Manual QA + Functional tests + Extended unit corner cases + paired markdown test documentation\n5. Custom / інше\n\nРекомендація для нової HistoryEvent: 4.\n\nВідповідайте номером 1-5.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPROVAL",
+      "node_id": "N_APPROVAL",
+      "question_text": "Підтверджуєте, що можна переходити до створення фінального History Event package тільки після цього approval?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    }
+  ]
+}

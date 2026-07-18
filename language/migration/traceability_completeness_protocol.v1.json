@@ -1,0 +1,22 @@
+{
+  "schema_version": "ordo.migration_traceability_completeness_protocol.v1",
+  "protocol_version": "M89.4",
+  "requirements": {
+    "one_traceability_row_per_source_clause": true,
+    "mandatory_clause_exclusion_forbidden": true,
+    "full_coverage_requires_units_and_constructs": true,
+    "silent_loss_forbidden": true
+  },
+  "semantic_preservation_dimensions": [
+    "normativity",
+    "mandatory_strength",
+    "authorization_boundary",
+    "decision_semantics",
+    "evidence_requirement"
+  ],
+  "gate_policy": {
+    "warning_allows": true,
+    "error_blocks": true,
+    "critical_blocks": true
+  }
+}

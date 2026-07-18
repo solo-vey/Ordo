@@ -1,0 +1,30 @@
+{
+  "milestone": "M47",
+  "name": "Release Candidate Freeze",
+  "status": "passed",
+  "release_candidate": "v0.12.0-preview-rc1",
+  "publication_mode": "source-available preview candidate",
+  "published": false,
+  "scope": "freeze only; no new language semantics, CLI runtime behavior, or reference package business logic",
+  "checks": {
+    "repo_check_before_install": "passed",
+    "cli_unit_tests": "19/19 OK",
+    "active_reference_packages": "lint/compile/test/coverage passed",
+    "process_rail_helpers": "validate-state and next-step passed for project_builder and hybrid_executor",
+    "history_event_pipeline": "lock, validate-lock, intake, generate-output, validate-output, validate-artifacts, consistency, go-no-go passed",
+    "source_archive_hygiene": "passed after cleanup; generated package artifacts removed except .gitkeep",
+    "ci_paths": "validated by repo-check"
+  },
+  "artifacts_added": [
+    "docs/release_candidate/M47_RELEASE_CANDIDATE_FREEZE.md",
+    "docs/reports/M47_RELEASE_CANDIDATE_FREEZE_REPORT.md",
+    "docs/design_decisions/DD-ORDO-M47-001_RELEASE_CANDIDATE_FREEZE.md",
+    "M47_VALIDATION_REPORT.json"
+  ],
+  "known_limitations": [
+    "ordo test is static behavior validation, not live AI execution",
+    "some assertions are structural_only unless the current evaluator supports their condition",
+    "book PDF was not regenerated after recent markdown updates",
+    "package remains source-available preview candidate, not open-source release"
+  ]
+}

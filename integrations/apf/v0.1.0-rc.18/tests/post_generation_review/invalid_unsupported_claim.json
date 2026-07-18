@@ -1,0 +1,165 @@
+{
+  "schema_version": "ordo.apf.post_generation_review_record.v1",
+  "review_id": "NEGATIVE-UNSUPPORTED",
+  "artifact": {
+    "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+    "sha256": "856abfa63a582d2078f1079e926616749480e5fe610f5bf42824efd23b82d5aa",
+    "artifact_type": "runtime_checkpoint_contract",
+    "version": "v0.1.0-rc.18"
+  },
+  "criticality": "critical",
+  "review_profile": "full",
+  "authoritative_sources": [
+    {
+      "source_id": "SELF",
+      "source_class": "package_confirmed",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "sha256": "856abfa63a582d2078f1079e926616749480e5fe610f5bf42824efd23b82d5aa",
+      "status": "verified"
+    },
+    {
+      "source_id": "REL1",
+      "source_class": "repository_derived",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_RUN_STATE_CONTRACT.yaml",
+      "sha256": "373a812be29f3d06a510af58dd2eee08dec4fe69569bff9720a6fa040b32f48c",
+      "status": "verified"
+    },
+    {
+      "source_id": "REL2",
+      "source_class": "repository_derived",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_SOURCE_OF_TRUTH_CHAIN.yaml",
+      "sha256": "4985f6aad3824f0119d24193fdecb7bedb76aecfea5f37af6f7f5915c706bd0f",
+      "status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C001",
+      "section": "document",
+      "text": "Artifact content is package-confirmed.",
+      "sensitivity": "descriptive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    },
+    {
+      "claim_id": "BAD001",
+      "section": "command",
+      "text": "Execute invented --force-schema-v9 flag.",
+      "sensitivity": "executable",
+      "materialization_class": "model_proposed",
+      "source_ids": [],
+      "status": "supported"
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "SYS-POSTGEN-001",
+      "taxonomy": "unverified_confirmation",
+      "severity": "critical",
+      "status": "corrected",
+      "section": "confirmation pipeline",
+      "description": "Prior package lacked a unified claim-level post-generation review gate capable of blocking confirmation after structural validation.",
+      "evidence": [
+        "archive/milestone_reports/M83_0_VALIDATION_REPORT.json"
+      ],
+      "required_action": "Add schema-bound blocking review gate and independent validator."
+    }
+  ],
+  "invalidated_sections": [
+    "confirmation pipeline dependency"
+  ],
+  "preserved_sections": [
+    "existing artifact normative content"
+  ],
+  "corrections": [
+    {
+      "correction_id": "M83-CORR-001",
+      "defect_ids": [
+        "SYS-POSTGEN-001"
+      ],
+      "scope": "Additive post-generation review schema, gate contract, validator, templates and regression fixtures.",
+      "status": "completed",
+      "validator_independent": true
+    }
+  ],
+  "cross_artifact_checks": [
+    {
+      "related_artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_RUN_STATE_CONTRACT.yaml",
+      "result": "passed",
+      "details": "No contradictory current normative requirement detected during bounded cross-artifact review."
+    },
+    {
+      "related_artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_SOURCE_OF_TRUTH_CHAIN.yaml",
+      "result": "passed",
+      "details": "No contradictory current normative requirement detected during bounded cross-artifact review."
+    }
+  ],
+  "regression_checks": [
+    {
+      "check_id": "schema_validation",
+      "result": "passed"
+    },
+    {
+      "check_id": "claim_materialization",
+      "result": "passed"
+    },
+    {
+      "check_id": "blocking_defect_enforcement",
+      "result": "passed"
+    },
+    {
+      "check_id": "post_correction_independence",
+      "result": "passed"
+    }
+  ],
+  "gates": {
+    "EVIDENCE-COVERAGE-01": "passed",
+    "NO-UNSUPPORTED-INFERENCE-01": "passed",
+    "CANONICAL-CONTRACT-01": "passed",
+    "CURRENT-VERSION-RECONCILIATION-01": "passed",
+    "PATH-DOMAIN-01": "passed",
+    "ROLLBACK-CONTRACT-01": "passed",
+    "CROSS-ARTIFACT-01": "passed",
+    "ADVERSARIAL-REVIEW-01": "passed",
+    "POST-CORRECTION-REVIEW-01": "passed"
+  },
+  "confirmation_eligibility": {
+    "eligible": true,
+    "blocking_reasons": []
+  },
+  "trace_events": [
+    {
+      "event": "POST_GENERATION_REVIEW_STARTED",
+      "timestamp": "2026-07-18T00:00:00Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "status": "started"
+    },
+    {
+      "event": "ARTIFACT_SECTION_INVALIDATED",
+      "timestamp": "2026-07-18T00:00:01Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "status": "systemic_confirmation_dependency"
+    },
+    {
+      "event": "TARGETED_REGENERATION_COMPLETED",
+      "timestamp": "2026-07-18T00:00:02Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "status": "additive_layer_completed"
+    },
+    {
+      "event": "POST_CORRECTION_REVIEW_PASSED",
+      "timestamp": "2026-07-18T00:00:03Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "status": "passed"
+    },
+    {
+      "event": "ARTIFACT_CONFIRMATION_ELIGIBLE",
+      "timestamp": "2026-07-18T00:00:04Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "status": "eligible"
+    }
+  ]
+}

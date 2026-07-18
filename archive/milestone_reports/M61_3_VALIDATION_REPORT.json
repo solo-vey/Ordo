@@ -1,0 +1,87 @@
+{
+  "milestone": "M61.3",
+  "title": "Utility Documentation Consolidation",
+  "status": "passed-docs-consolidation",
+  "checks": [
+    {
+      "check": "docs_only_scope_preserved",
+      "status": "passed",
+      "evidence": "No runtime-core, scoring, calibration, benchmark, or watchdog code changes introduced."
+    },
+    {
+      "check": "workflow_guide_added",
+      "status": "passed",
+      "evidence": "COMPANION_UTILITY_WORKFLOW.md plus utilities/docs mirrors exist."
+    },
+    {
+      "check": "book_chapter_added",
+      "status": "passed",
+      "evidence": "chapter_64_companion_utility_workflow.md added and manifest/audit updated."
+    },
+    {
+      "check": "py_compile",
+      "status": "passed",
+      "evidence": "ordo_pathwalk + utilities/ordo_visual_graph_generator + cli py_compile passed."
+    },
+    {
+      "check": "selected_pytest",
+      "status": "passed",
+      "evidence": "27 passed: ordo_pathwalk/tests/test_real_module_graph.py + utilities/ordo_visual_graph_generator/tests/test_ordo_graph.py."
+    },
+    {
+      "check": "visual_graph_smoke",
+      "status": "passed",
+      "evidence": "Generated full_graph.mmd and full_graph.svg from PathWalk sample source."
+    },
+    {
+      "check": "pathwalk_artifact_pipeline_smoke",
+      "status": "passed",
+      "evidence": "graph → paths → clean cases → noise cases → review cards passed."
+    },
+    {
+      "check": "review_card_counts",
+      "status": "passed",
+      "evidence": "15 cards = 3 clean + 12 bounded noise; no runtime executions or scores."
+    },
+    {
+      "check": "book_manifest_sanity",
+      "status": "passed",
+      "evidence": "74 entries, 64 chapters, 0 missing files."
+    },
+    {
+      "check": "pathwalk_rc_py_compile",
+      "status": "passed",
+      "evidence": "Clean-extracted PathWalk RC v9.8.3 py_compile passed for ordo_pathwalk + Visual Graph utility."
+    },
+    {
+      "check": "pathwalk_rc_visual_graph_smoke",
+      "status": "passed",
+      "evidence": "Clean-extracted RC generated Mermaid graph from support_triage sample."
+    },
+    {
+      "check": "pathwalk_rc_real_module_graph_smoke",
+      "status": "passed",
+      "evidence": "Clean-extracted RC real-module-graph smoke passed."
+    },
+    {
+      "check": "final_zip_extraction_check",
+      "status": "passed",
+      "evidence": "Workspace, developer bundle, book source, and PathWalk RC archives extracted and key files were present."
+    }
+  ],
+  "sample_counts": {
+    "terminal_paths": 3,
+    "clean_cases": 3,
+    "bounded_noise_cases": 12,
+    "review_cards": 15
+  },
+  "non_scope": [
+    "runtime execution",
+    "scoring",
+    "calibration",
+    "model/API benchmark orchestration",
+    "watchdog/process-boundary hardening",
+    "PathWalk/VisualGraph merge"
+  ],
+  "blockers": []
+}

@@ -1,0 +1,81 @@
+test_cases:
+  - id: TC_PROJECT_GOAL_GATE
+    fixture:
+      state:
+        project_goal: створити пакет для опитування клієнта
+    expected:
+      gates:
+        - id: G_PROJECT_GOAL_PRESENT
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_PROJECT_GOAL
+
+  - id: TC_PROJECT_DOMAIN_GATE
+    fixture:
+      state:
+        project_domain: клієнтський intake
+    expected:
+      gates:
+        - id: G_PROJECT_DOMAIN_PRESENT
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_PROJECT_DOMAIN
+
+  - id: TC_ROLES_GATE
+    fixture:
+      state:
+        human_roles:
+          - pm
+        ai_roles:
+          - ordo_developer
+    expected:
+      gates:
+        - id: G_ROLES_PRESENT
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_ROLES
+
+  - id: TC_MODE_SELECTED_GATE
+    fixture:
+      state:
+        intake_or_execution_mode: authoring
+    expected:
+      gates:
+        - id: G_MODE_SELECTED
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+      node: N_MODE_SELECT
+
+  - id: TC_APPROVAL_BEFORE_COMPILE_GATE
+    fixture:
+      state:
+        approval_before_compile: true
+    expected:
+      gates:
+        - id: G_APPROVAL_BEFORE_COMPILE
+          method: human
+          trust_class: human_decision
+          status: passed
+      node: N_APPROVAL_BEFORE_COMPILE
+
+  - id: TC_NO_RAW_TOOL_OUTPUT_TO_PM
+    fixture:
+      raw_cli_output: lint stack trace
+    expected:
+      assertions:
+        - id: A_RAW_TOOL_OUTPUT_NOT_EXPOSED_BY_DEFAULT
+          projection: EXPECT.NOT
+      human_response_policy: ai_interprets_before_user
+
+  - id: TC_PM_DOES_NOT_WRITE_YAML_DIRECTLY
+    fixture:
+      user_role: pm
+    expected:
+      assertions:
+        - id: A_PM_DOES_NOT_WRITE_ORDO_DIRECTLY
+          projection: EXPECT.MUST
+      ai_role: ordo_developer

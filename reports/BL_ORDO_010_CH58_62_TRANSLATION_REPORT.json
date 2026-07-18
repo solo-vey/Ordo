@@ -1,0 +1,40 @@
+{
+  "milestone": "BL-ORDO-010 translation continuation",
+  "chapters": [
+    58,
+    59,
+    60,
+    61,
+    62
+  ],
+  "source_locale": "uk",
+  "target_locale": "en",
+  "status": "passed",
+  "files": [
+    {
+      "path": "book/en/chapters/chapter_58_restore_session_safe_backtracking.md",
+      "sha256": "87e30b9ef717120c15d4a84ef13103c631b81997a150f4d1d0e068d4bbb4724c",
+      "bytes": 2553
+    },
+    {
+      "path": "book/en/chapters/chapter_59_pathwalk_benchmark_readiness.md",
+      "sha256": "1a9eda7f2572cdbce6dce23ae78b6100a8663bd26d5df818c27e73c85f5cf3cf",
+      "bytes": 2594
+    },
+    {
+      "path": "book/en/chapters/chapter_60_model_benchmark_protocol.md",
+      "sha256": "8d21557dc0f41649602d2206d5dbd44f5da2c2ebcf9f7fda8488199fa74c8942",
+      "bytes": 3068
+    },
+    {
+      "path": "book/en/chapters/chapter_61_real_module_testcase_generation.md",
+      "sha256": "b7c832dafa51858c41e77b92a87f5cbe6441d7f0a640ee128c83b426c7329d15",
+      "bytes": 3314
+    },
+    {
+      "path": "book/en/chapters/chapter_62_human_review_scenario_cards.md",
+      "sha256": "8aaee80aa4f85c3f38428f44a525bbf7f687b91ba8a67fda70b8cf38a047ddbd",
+      "bytes": 2917
+    }
+  ]
+}

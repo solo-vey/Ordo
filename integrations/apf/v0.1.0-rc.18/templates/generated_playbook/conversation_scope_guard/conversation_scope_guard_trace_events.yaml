@@ -1,0 +1,13 @@
+trace_events:
+- conversation.deviation.detected
+- conversation.deviation.classified
+- conversation.redirect.emitted
+- conversation.escalation.changed
+- conversation.scope_guard.bypassed_for_control_intent
+- conversation.scope_guard.bypassed_for_safety
+- process.pause.requested
+- process.paused
+- process.resume.requested
+- process.resumed
+- process.exit.requested
+- process.exited

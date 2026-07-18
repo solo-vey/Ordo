@@ -1,0 +1,14 @@
+{
+  "schema_version": "ordo.executor_evaluator_provenance.v1",
+  "executor_model": "GPT-5.6 Thinking",
+  "evaluator_model": "GPT-5.6 Thinking",
+  "executor_evaluator_relation": "different_chat_same_model",
+  "different_chat": true,
+  "different_model": false,
+  "verification_status": "user_attested_not_cryptographically_verified",
+  "provenance_basis": [
+    "user_attestation",
+    "returned_run_archive"
+  ],
+  "run_artifact_sha256": "d0dc59fefa44ebd5bdac0688aad559d6776e097a5a1c98f83a0e795a98ed46fd"
+}

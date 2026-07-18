@@ -1,0 +1,13 @@
+{
+  "milestone": "M69.1",
+  "status": "passed",
+  "checks": {
+    "workflow_yaml_parse": "passed",
+    "focused_workflow_contract_tests": "passed (4 tests)",
+    "targeted_regression_tests": "passed (19 tests)",
+    "repo_check_clean_smoke": "passed (exit 0, JSON report written)",
+    "packages_diff_guard": "passed",
+    "cli_implementation_diff_guard": "passed",
+    "runtime_compiler_opcode_guard": "passed"
+  }
+}

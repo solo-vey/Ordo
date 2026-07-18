@@ -1,0 +1,25 @@
+{
+  "report_id": "APF_USER_DIRECTED_BACKLOG_UPDATE_REPORT",
+  "baseline_version": "v0.1.0-rc.12-confirmed-closure",
+  "update_type": "backlog-registration-only",
+  "implementation_started": false,
+  "items": [
+    {
+      "id": "BL-APF-001",
+      "title": "Real-case replay and analyst-experience validation for playbook improvements",
+      "status": "deferred-pending-new-language-package-adaptation",
+      "priority": "to-be-decided-after-language-package-adaptation"
+    },
+    {
+      "id": "BL-APF-002",
+      "title": "Node-bound mini-prompt applicability review and APF enhancement plan",
+      "status": "deferred-pending-new-language-package-adaptation",
+      "priority": "to-be-decided-after-language-package-adaptation"
+    }
+  ],
+  "ordering_confirmed": false,
+  "next_action": "adapt APF to the user-provided new language package, then review both backlog items and ask the user to confirm implementation order",
+  "scope_boundary_preserved": true,
+  "ordo_language_package_modified": false,
+  "blocking_issues": []
+}

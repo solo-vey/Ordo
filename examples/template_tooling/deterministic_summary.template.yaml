@@ -1,0 +1,18 @@
+template_id: summary.deterministic
+version: 1.0.0
+render_mode: deterministic
+template_ref: deterministic_summary.md.tmpl
+input_schema:
+  required: [title, owner, summary]
+  properties:
+    title: {type: string}
+    owner: {type: string}
+    summary: {type: string}
+output_contract:
+  format: markdown
+  filename: summary.md
+  required_sections: [title, owner, summary]
+review_profile:
+  mode: standard
+compatibility:
+  ordo: ">=0.12.0"

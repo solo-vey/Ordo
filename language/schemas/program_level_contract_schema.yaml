@@ -1,0 +1,75 @@
+# Program-level Contract Schema Convention v1
+# Status: M64.1 documented schema convention, not enforced runtime schema.
+# This file is intended for package authors, linters, and future schema hardening.
+
+type: object
+name: program_level_contract_schema_v1
+status: convention
+required:
+  - program_id
+  - module_id
+properties:
+  program_id:
+    type: string
+    description: Local stable program identifier.
+  module_id:
+    type: string
+    description: Canonical module/package identifier, for example ordo.applied_project_factory.
+  version:
+    type: string
+    description: Module/package version.
+  ordo_version:
+    type: string
+    description: Compatible Ordo language version or line.
+  lifecycle:
+    type: string
+    enum:
+      - draft
+      - alpha
+      - beta
+      - release-candidate
+      - stable
+      - deprecated
+  control_level:
+    type: string
+    enum:
+      - light
+      - standard
+      - strict
+  execution_mode:
+    type: string
+    enum:
+      - full_runtime
+      - chat_internal
+      - freeform_only
+      - dry_run
+      - test
+  contract_profile:
+    type: string
+    enum_or_convention:
+      - basic_process
+      - standard_applied_module
+      - runtime_package
+      - companion_utility_workflow
+  compatibility:
+    type: object
+    properties:
+      language_line: {type: string}
+      parent_package: {type: string}
+      cli_profile: {type: string}
+      schema_profile: {type: string}
+  runtime_profile:
+    type: object
+    properties:
+      ai_layer: {type: string}
+      cli_layer: {type: string}
+      human_layer: {type: string}
+  required_review_points:
+    type: array
+    items: {type: string}
+  required_validation_commands:
+    type: array
+    items: {type: string}
+validation_notes:
+  m64_1: Documentation/schema convention only. Do not treat missing legacy contracts as blockers.
+  future_m64_3: May define lint/profile rules for standard_applied_module and strict profiles.

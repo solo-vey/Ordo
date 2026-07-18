@@ -1,0 +1,65 @@
+{
+  "milestone": "M64.3",
+  "package": "ordo-v0.12-m64.3-program-level-approval-gate-lint-profile-design",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "program_level_approval_gate_doc_present",
+      "status": "passed"
+    },
+    {
+      "check": "program_level_approval_profile_doc_present",
+      "status": "passed"
+    },
+    {
+      "check": "approval_gate_values_registry_present",
+      "status": "passed"
+    },
+    {
+      "check": "approval_gate_schema_convention_present",
+      "status": "passed"
+    },
+    {
+      "check": "approval_gate_example_present",
+      "status": "passed"
+    },
+    {
+      "check": "spec_chapter_18_present",
+      "status": "passed"
+    },
+    {
+      "check": "readme_changelog_stable_index_updated",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_unchanged_by_design",
+      "status": "passed"
+    },
+    {
+      "check": "cli_commands_unchanged_by_design",
+      "status": "passed"
+    },
+    {
+      "check": "opcode_catalog_unchanged_by_design",
+      "status": "passed"
+    },
+    {
+      "check": "apf_node_level_prompt_registry_backlog_recorded",
+      "status": "passed"
+    },
+    {
+      "check": "language_current_version_updated",
+      "status": "passed"
+    },
+    {
+      "check": "language_validation_report_updated",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "warnings": [
+    "M64.3 defines future lint/profile behavior but does not implement CLI enforcement.",
+    "Program-level approval gate is not a substitute for human final package approval."
+  ],
+  "next_recommended_step": "M64 first-wave closure unless the user wants a small M64.4 docs patch."
+}

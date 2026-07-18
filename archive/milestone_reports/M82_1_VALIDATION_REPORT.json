@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.milestone_validation.v1",
+  "milestone": "M82.1",
+  "backlog_item": "BL-ORDO-003",
+  "status": "passed",
+  "scope": "hardened isolated child runner and watchdog",
+  "checks": {
+    "approved_root_path_validation": "passed",
+    "plan_fingerprint_validation": "passed",
+    "isolated_child_process_group": "passed",
+    "stdin_closed": "passed",
+    "environment_allowlist": "passed",
+    "bounded_stdout_stderr": "passed",
+    "watchdog_process_group_termination_posix": "passed",
+    "atomic_result_persistence": "passed",
+    "existing_result_no_overwrite": "passed",
+    "cleanup_retention_policy": "passed",
+    "m76_2_compatibility": "passed"
+  },
+  "tests": {
+    "m82_1_dedicated": {"passed": 9, "failed": 0},
+    "m76_2_compatibility": {"passed": 4, "failed": 0}
+  },
+  "notes": [
+    "Full monolithic PathWalk suite exceeded the environment execution window and was split into smaller test groups.",
+    "An unrelated model-driver retry test group did not complete within the available execution window and is not part of the M82.1 claim."
+  ],
+  "next_milestone": "M82.2",
+  "backlog_closed": false
+}

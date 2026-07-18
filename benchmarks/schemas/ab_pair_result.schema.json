@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/ab_pair_result.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pair_id",
+    "task_id",
+    "model_id",
+    "repeat",
+    "order",
+    "arms",
+    "scoring"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.ab_pair_result.v1"
+    },
+    "pair_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repeat": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "order": {
+      "enum": [
+        "A_then_B",
+        "B_then_A"
+      ]
+    },
+    "arms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "A",
+        "B"
+      ],
+      "properties": {
+        "A": {
+          "$ref": "#/$defs/arm"
+        },
+        "B": {
+          "$ref": "#/$defs/arm"
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rubric_version",
+        "blind_scorer_id",
+        "A_total",
+        "B_total",
+        "paired_difference"
+      ],
+      "properties": {
+        "rubric_version": {
+          "type": "string"
+        },
+        "blind_scorer_id": {
+          "type": "string"
+        },
+        "A_total": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "B_total": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "paired_difference": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        }
+      }
+    }
+  },
+  "$defs": {
+    "arm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "prompt_sha256",
+        "output_sha256",
+        "status",
+        "metrics"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "prompt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "error",
+            "blocked"
+          ]
+        },
+        "metrics": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}

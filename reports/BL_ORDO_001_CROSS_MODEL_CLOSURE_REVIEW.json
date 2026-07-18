@@ -1,0 +1,57 @@
+{
+  "backlog_id": "BL-ORDO-001",
+  "operation": "cross_model_rebuild_and_closure_review",
+  "canonical_scorer_protocol": "M75.3.2",
+  "persisted_runs_found": 1,
+  "rescored_runs": [
+    {
+      "run_id": "RUN-07",
+      "model": "GPT-5.6 Thinking",
+      "status": "passed",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_family_accuracy": 0.9615,
+        "action_accuracy": 0.9615,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 1.0,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    }
+  ],
+  "cross_model_report": "reports/m75_3_csg_cross_model/CSG_CROSS_MODEL_BENCHMARK_REPORT_M75_3_2.json",
+  "policy": {
+    "minimum_distinct_model_targets": 3,
+    "minimum_runs_per_target": 2,
+    "require_every_run_passed": true,
+    "require_single_dataset_version": true
+  },
+  "actual": {
+    "distinct_model_targets": 1,
+    "valid_run_count": 1,
+    "gate": "blocked"
+  },
+  "closure_decision": "KEEP_OPEN",
+  "status": "blocked",
+  "remaining": [
+    "persist enough valid runs to satisfy at least 3 model targets",
+    "persist at least None valid runs per model target",
+    "rebuild the cross-model report again after new evidence is added"
+  ]
+}

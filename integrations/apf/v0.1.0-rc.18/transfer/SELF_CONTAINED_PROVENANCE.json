@@ -1,0 +1,18 @@
+{
+  "package_id": "APF_CHAT_TRANSFER_PACKAGE_CURRENT_STATE_RC12_SELF_CONTAINED",
+  "purpose": "Self-contained APF chat transfer using all available confirmed baseline artifacts",
+  "merged_sources": [
+    "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC9_CONFIRMED_CLOSURE.zip",
+    "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC12_CONFIRMED_CLOSURE_WITH_USER_BACKLOG.zip",
+    "APF_CHAT_TRANSFER_PACKAGE_CURRENT_STATE_RC12.zip"
+  ],
+  "restored_inherited_layers": [
+    "rc.7 policies/reports",
+    "rc.8 policies/registers/reports",
+    "rc.9 tests/utility/policies/reports"
+  ],
+  "known_unavailable": [
+    "reports/cli_evidence/ original rc.7 evidence records"
+  ],
+  "fabricated_artifacts": false
+}

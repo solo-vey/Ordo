@@ -1,0 +1,38 @@
+playbook_package_startup:
+  package_id: null
+  authoring_mode: concrete_playbook_package
+  source_apf_baseline: null
+  source_apf_version: null
+  scope:
+    problem_domain: null
+    target_user_role: null
+    decision_object: null
+  package_profile: source_authoring
+  boundaries:
+    apf_baseline_mutation_allowed: false
+    ordo_language_package_changes_allowed: false
+    real_runtime_execution_in_startup_phase: false
+  expected_outputs:
+  - playbook_yaml
+  - output_templates
+  - validation_report
+  - testcase_plan
+  - handoff_archive
+  - execution_trace_design_decision
+  execution_trace:
+    design_decision_required: true
+    supported: null
+    enabled_by_default: null
+    runtime_mode: null
+    runtime_toggle_allowed: null
+    human_confirmation_status: pending
+  readiness:
+    startup_contract_complete: false
+    unresolved_fields: []
+    blocking_issues: []
+  atomic_step_review:
+    required: true
+    package_artifacts_required: true
+    package_manifest_path: reviews/atomic_step/atomic_step_review_manifest.yaml
+    validation_report_path: reviews/atomic_step/atomic_step_validation_report.yaml
+    block_on_unresolved_findings: true

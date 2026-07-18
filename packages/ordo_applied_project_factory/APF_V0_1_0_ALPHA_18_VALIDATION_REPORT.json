@@ -1,0 +1,55 @@
+{
+  "module": "ordo.applied_project_factory",
+  "version": "0.1.0-alpha.18",
+  "generated_at": "2026-07-08T14:48:00+02:00",
+  "scope": "shared_output_template_subflow_closure",
+  "status": "passed_minimal_validation",
+  "human_review": {
+    "shared_block": "Terminal output binding + template verification",
+    "decision": "confirmed_after_step_by_step_ux_review",
+    "key_user_simplifications": [
+      "file-first document review",
+      "free-form artifact intent",
+      "review actions: confirm/revise/defer/remove",
+      "unfinished templates block use until completed or removed"
+    ]
+  },
+  "changes": [
+    "Closed shared output/template subflow as reusable block for all four startup branches.",
+    "Added free-form new artifact intent capture after showing available terminal state fields.",
+    "Added artifact intent confirmation before recipe/template authoring.",
+    "Output recipes now capture direct inserts, generated sections, generation instructions, and state-field mapping.",
+    "Added file-first review package generation for document-like artifacts: template, mock-filled example, mapping report, assumptions/risks summary.",
+    "Simplified user review result handling to confirm/revise/defer/remove artifact.",
+    "Deferred template decisions now become unfinished templates; final gate blocks artifact use until completion or removal.",
+    "Added terminal output binding confirmation and tightened terminal path ready check."
+  ],
+  "checks": {
+    "yaml_parse": {
+      "status": "passed"
+    },
+    "ordo_lint": {
+      "status": "passed",
+      "report": "packages/ordo_applied_project_factory/reports/lint_report.json"
+    },
+    "ordo_compile_force": {
+      "status": "passed",
+      "report": "packages/ordo_applied_project_factory/reports/compile_report.json"
+    },
+    "structural_next_reference_check": {
+      "status": "passed",
+      "refs_checked": 133,
+      "missing": [],
+      "allowed_non_node_targets": "gate ids and STOP_* sentinels"
+    },
+    "full_validation": {
+      "status": "deferred_by_design",
+      "reason": "shared terminal/pre-handoff gate only"
+    }
+  },
+  "source_sha256": "f85f3cd97f15878b27d8543ad609a05c5e14214c27fd9bfbe7d41720d7ab9e6f",
+  "artifacts": {
+    "dev_package": "ordo_applied_project_factory_v0_1_0_alpha_18_dev.zip",
+    "workspace": "ordo_github_workspace_v0_12_apf_v0_1_0_alpha_18_shared_output_template_subflow.zip"
+  }
+}

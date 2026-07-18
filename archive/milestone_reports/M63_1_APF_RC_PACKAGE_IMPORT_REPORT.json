@@ -1,0 +1,43 @@
+{
+  "milestone": "M63.1_APF_RC_PACKAGE_IMPORT_METADATA_SYNC",
+  "status": "passed-package-import",
+  "generated_at": "2026-07-08T17:17:07.291469+00:00",
+  "apf": {
+    "module_id": "ordo.applied_project_factory",
+    "version": "0.1.0-rc.1",
+    "lifecycle": "release-candidate",
+    "is_standard_applied_module": true,
+    "source_base": "0.1.0-alpha.21"
+  },
+  "historical_import_replaced": {
+    "version": "0.1.0-alpha.14",
+    "status": "historical_obsolete_import_point"
+  },
+  "scope": [
+    "replace APF package import with rc.1",
+    "sync metadata/docs",
+    "preserve module-local runtime logic",
+    "no core IR/runtime changes"
+  ],
+  "validation_summary": {
+    "lint": "passed",
+    "compile": "passed",
+    "test": "passed",
+    "coverage": "passed",
+    "validate_state": "passed",
+    "next_step": "ready_for_ai_next_move",
+    "validate_output": "passed",
+    "validate_artifacts": "passed",
+    "consistency": "passed_with_warnings",
+    "go_no_go": "go",
+    "repo_check_clean_source": "passed"
+  },
+  "known_limitations": [
+    "FLOW.JOIN future IR candidate",
+    "SHARED.TAIL.REFERENCE future IR candidate",
+    "validate-factory-output APF-local or optional",
+    "consistency warnings non-blocking and visible"
+  ],
+  "decision": "APF v0.1.0-rc.1 imported as release-candidate standard applied module.",
+  "repo_check_clean_source": "passed"
+}

@@ -1,0 +1,70 @@
+flow_reuse:
+  maturity: stable_optional
+  joins:
+  - id: JOIN.REVIEW.COMPLETE
+    namespace: package.review
+    incoming:
+    - node: NODE.REVIEW.APPROVE
+      namespace: package.review
+      alias: approved
+    - node: NODE.REVIEW.WAIVE
+      namespace: package.review
+      alias: waived
+    target:
+      node: NODE.PACKAGE.FINALIZE
+      namespace: package.close
+    state_contract:
+      required_fields:
+      - package_id
+      - review_status
+      protected_fields:
+      - package_id
+      optional_fields:
+      - waiver_reason
+      branch_local_fields:
+      - reviewer_comment
+    merge_policy:
+      default: require_equal
+      fields:
+        review_status: explicit_resolver
+        waiver_reason: prefer_non_null
+    conflict_policy: explicit_resolver
+    resolver_ref: RESOLVER.REVIEW.OUTCOME
+    provenance_policy: preserve_all_inputs
+  shared_tails:
+  - id: TAIL.PACKAGE.CLOSE
+    namespace: package.close
+    entry: NODE.PACKAGE.FINALIZE
+    nodes:
+    - NODE.PACKAGE.FINALIZE
+    - NODE.PACKAGE.REPORT
+    maturity: stable_optional
+  references:
+  - id: REF.PACKAGE.CLOSE
+    namespace: package.review
+    tail_id: TAIL.PACKAGE.CLOSE
+    tail_namespace: package.close
+    entry: NODE.PACKAGE.FINALIZE
+    namespace_policy: explicit_map
+    namespace_map:
+      package.review: package.close
+    import_state:
+      allow:
+      - package_id
+      - review_status
+      - waiver_reason
+      rename: {}
+      required:
+      - package_id
+      - review_status
+    export_state:
+      allow:
+      - package_status
+      - report_id
+      rename: {}
+    protected_fields:
+    - package_id
+    preserve_provenance: true
+    maturity: stable_optional
+    max_call_depth: 16
+    return_to: __CALLER_CONTINUATION__

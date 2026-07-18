@@ -1,0 +1,38 @@
+{
+  "package": "ordo.applied_project_factory",
+  "module_version": "0.1.0-alpha.15",
+  "language_package_version": "0.12.0-preview-rc1",
+  "scope": "branch_1_progressive_tree_authoring_and_output_template_review",
+  "created_from": "v0.1.0-alpha.14",
+  "changes": [
+    "closed human review for branch 1: Domain model + decision tree",
+    "moved runtime_entry_point after domain model, input/output policy and open questions",
+    "split input/output intake into input policy and output artifact catalog",
+    "made input artifacts policy-based and optional",
+    "added terminal output binding and template/mock-filled-example verification loop",
+    "replaced static decision_tree_blueprint with progressive tree authoring",
+    "added branch review and terminal-or-continue decision",
+    "added subtree completion check and approved tree consolidation",
+    "kept full validation/handoff as shared tail rather than duplicating it"
+  ],
+  "validation": {
+    "yaml_parse": "passed",
+    "ordo_lint": "passed",
+    "ordo_compile_force": "passed",
+    "structural_next_reference_check": "passed",
+    "full_validation": "deferred_by_design"
+  },
+  "structural_stats": {
+    "nodes": 70,
+    "gates": 38,
+    "next_references": 117,
+    "missing_next_targets": []
+  },
+  "commands": [
+    "python -m cli.ordo.cli lint packages/ordo_applied_project_factory/source/program.ordo.yaml",
+    "python -m cli.ordo.cli compile packages/ordo_applied_project_factory --force"
+  ],
+  "notes": [
+    "Full validation remains terminal/pre-handoff gate and was not run for this scoped patch."
+  ]
+}

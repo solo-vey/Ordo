@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.internal_dry_evaluation_acceptance_tests.v1",
+  "tests": [
+    {
+      "name": "five_runs_evaluated",
+      "status": "PASS"
+    },
+    {
+      "name": "promotion_blocked_without_user",
+      "status": "PASS"
+    },
+    {
+      "name": "risk_requires_rationale",
+      "status": "PASS"
+    },
+    {
+      "name": "acceptance_recorded",
+      "status": "PASS"
+    },
+    {
+      "name": "neutral_bundle_no_score_leakage",
+      "status": "PASS"
+    }
+  ],
+  "passed": 5,
+  "total": 5,
+  "status": "PASS"
+}

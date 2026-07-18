@@ -1,0 +1,28 @@
+{
+  "representation_id": "YAML_PLAYBOOK",
+  "source_type": "CANONICAL_ORDO_YAML",
+  "strategy": "formal_yaml_preservation",
+  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "compiler_version": "1.0.0",
+  "invariants": {
+    "intent": true,
+    "business_outcome": true,
+    "required_inputs": true,
+    "required_outputs": true,
+    "state_mutations": true,
+    "gates": true,
+    "terminal_semantics": true,
+    "correction_ownership": true,
+    "correction_loop_reachability": true,
+    "evidence_obligations": true,
+    "failure_and_hard_stop_behavior": true
+  },
+  "external_files": [
+    "README.md",
+    "instructions.md"
+  ],
+  "lineage_complete": true,
+  "semantic_parity_pass": true,
+  "disclosure_isolation_pass": true,
+  "domain_source_present": true
+}

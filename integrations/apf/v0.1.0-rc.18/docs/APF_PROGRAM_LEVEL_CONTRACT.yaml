@@ -1,0 +1,175 @@
+program_contract:
+  program_id: applied_project_factory
+  module_id: ordo.applied_project_factory
+  version: v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure
+  ordo_version: '0.12'
+  lifecycle: confirmed-baseline
+  control_level: standard
+  execution_mode: chat_internal
+  contract_profile: standard_applied_module
+  compatibility:
+    language_line: M64-M71
+    parent_package: Ordo v0.12 pre-release
+    cli_profile: parent-compatible-with-apf-local-validation
+    schema_profile: program_level_contract_v1
+  runtime_profile:
+    ai_layer: guided_process_driver
+    cli_layer: deterministic_validator
+    human_layer: content_decision_and_approval_owner
+  required_review_points:
+  - approve_program_contract
+  - approve_runtime_profile
+  - approve_process_rail_contract
+  - approve_prompt_registry_migration
+  - approve_validation_profile
+  - approve_final_package
+  required_validation_commands:
+  - lint
+  - compile
+  - test
+  - coverage
+  - validate-state
+  - next-step
+  - validate-output
+  - validate-artifacts
+  - consistency
+  - go-no-go
+  - clean-check
+  - repo-check
+  - repo-check --clean
+  interaction_model_ref: docs/APF_INTERACTION_MODEL.yaml
+  process_rail_ref: docs/APF_PROCESS_RAIL_AND_CONVERSATION_SEMANTICS.yaml
+  conversation_semantics_ref: docs/APF_PROCESS_RAIL_AND_CONVERSATION_SEMANTICS.yaml
+  validation_profile_ref: docs/APF_VALIDATION_PROFILE_ORDO_V0_12.yaml
+  release_hygiene_ref: docs/APF_RELEASE_HYGIENE_AND_DERIVED_ARTIFACT_SYNC.yaml
+apf_alignment_notes:
+  baseline_source: v0.1.0-rc.12-confirmed-closure
+  adaptation_milestone: A7
+  adaptation_status: confirmed-closure
+  schema_enforcement_status: documented-convention
+  authoring_flow_changed: false
+  apf_scope_changed: false
+  ordo_core_changed: false
+  deferred_backlog_started: true
+  interaction_model_aligned: true
+  process_rail_aligned: true
+  conversation_semantics_aligned: true
+  runtime_enforcement_overclaimed: false
+  validation_profile_aligned: true
+  release_hygiene_aligned: true
+  confirmed_release_changed: true
+  checksum_manifest_regenerated: true
+  human_confirmation_pending: false
+  confirmed_baseline: v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure
+apf_program_contract:
+  prompt_registry:
+    registry_path: docs/APF_PROMPT_REGISTRY.yaml
+    manifest_path: prompts/PROMPT_MANIFEST.json
+    attachment_map_path: docs/APF_PROMPT_ATTACHMENT_MAP.yaml
+    trace_contract_path: docs/APF_PROMPT_APPLICATION_TRACE_CONTRACT.json
+    status: package_level_convention
+    runtime_enforcement_claimed: false
+runtime_contracts:
+  source_of_truth_chain: docs/APF_RUNTIME_SOURCE_OF_TRUTH_CHAIN.yaml
+  run_state_contract: docs/APF_RUN_STATE_CONTRACT.yaml
+  checkpoint_contract: docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml
+  enforcement_status: mixed_verified_capabilities_see_A6_audit
+capability_audit_ref: adaptation/ordo_v0_12/A6_REAL_CAPABILITY_AUDIT.json
+capability_classification_policy_ref: docs/APF_CAPABILITY_CLASSIFICATION_POLICY.md
+confirmed_release:
+  confirmed_version: v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure
+  previous_confirmed_baseline: v0.1.0-rc.12-confirmed-closure
+  technical_closure_report: adaptation/ordo_v0_12/A7_REGRESSION_VALIDATION_AND_RELEASE_CANDIDATE_CLOSURE.md
+  confirmed_closure: docs/APF_RC13_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md
+  confirmation_register: docs/APF_RC13_CONFIRMATION_REGISTER.md
+  status: confirmed-closure / accepted-baseline
+  confirmation_date: '2026-07-10'
+active_enhancement:
+  backlog_item: BL-APF-002A
+  name: playbook-authored-mini-prompt-support
+  status: active-stepwise-implementation
+  completed_milestone: PMP-4
+  next_milestone: PMP-5
+  scope_ref: improvements/playbook_authored_mini_prompts/PMP_0_ENHANCEMENT_SCOPE.md
+  design_decision_ref: improvements/playbook_authored_mini_prompts/DD_APF_PMP_001.md
+  internal_apf_mini_prompts_allowed: false
+  human_prompt_approval_required: true
+  prompt_navigation_authority: false
+working_enhancement:
+  id: BL-APF-002A
+  milestone: PMP-4-completed
+  capability: downstream_playbook_prompt_validation_and_test_contracts
+  internal_apf_mini_prompts_enabled: false
+  next_authorized_milestone: PMP-5
+  validation_contract_ref: docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_CONTRACT.yaml
+  test_contract_ref: docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_TEST_CONTRACT.yaml
+working_enhancements:
+  playbook_authored_mini_prompts:
+    status: PMP-4-completed
+    scope: generated_playbook_prompt_validation_and_test_contracts
+    internal_apf_mini_prompts: not_started
+  execution_trace:
+    status: ET-8-completed
+    ordo_alignment: v0.12-M72
+    apf_internal_trace_enabled: false
+    validation_gate_contract_ref: docs/APF_EXECUTION_TRACE_VALIDATION_GATE_CONTRACT.yaml
+    validation_report_template_ref: templates/GENERATED_PLAYBOOK_EXECUTION_TRACE_VALIDATION_REPORT.template.yaml
+    next_milestone: ET-9-regression-and-pilot
+    runtime_adapter_contract_ref: docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml
+    runtime_adapter_template_ref: templates/GENERATED_PLAYBOOK_TRACE_ADAPTER_CONTRACT.template.yaml
+    runtime_adapter_conformance_template_ref: templates/GENERATED_PLAYBOOK_TRACE_ADAPTER_CONFORMANCE_REPORT.template.yaml
+    authoring_flow_integration_contract_ref: docs/APF_EXECUTION_TRACE_AUTHORING_FLOW_INTEGRATION_CONTRACT.yaml
+    authoring_flow_integration_policy_ref: docs/APF_EXECUTION_TRACE_AUTHORING_FLOW_INTEGRATION_POLICY.md
+    design_decision_template_ref: templates/EXECUTION_TRACE_DESIGN_DECISION.template.yaml
+  atomic_step_review:
+    status: ASR-1-completed
+    scope: generated_playbook_authoring_time_atomicity_review
+    contract_ref: docs/APF_ATOMIC_STEP_REVIEW_CONTRACT.yaml
+    review_record_template_ref: templates/ATOMIC_STEP_REVIEW_RECORD.template.yaml
+    internal_apf_runtime_enforcement: not_started
+    next_milestone: ASR-2-atomicity-gates-and-severity-evaluation
+version: v0.1.0-rc.14-playbook-authored-mini-prompt-support-release-candidate
+lifecycle: release-candidate
+required_review_points:
+- rc14_human_confirmation
+current_enhancement_status:
+  id: BL-APF-002A
+  status: completed-in-release-candidate
+  milestones: PMP-0..PMP-8
+  internal_apf_prompts_started: false
+capabilities:
+  atomic_step_review:
+    status: active_working_line
+    flow_integration_contract: docs/APF_ATOMIC_STEP_REVIEW_FLOW_INTEGRATION_CONTRACT.yaml
+    decomposition_policy: docs/APF_ATOMIC_STEP_DECOMPOSITION_PROPOSAL_POLICY.md
+    template: templates/ATOMIC_STEP_DECOMPOSITION_PROPOSAL.template.yaml
+    internal_apf_runtime_enforcement: false
+  conversation_scope_guard:
+    apf_internal_enabled: false
+    generated_playbook_support: optional_explicit
+    classification_contract_ref: docs/APF_CONVERSATION_SCOPE_GUARD_CLASSIFICATION_CONTRACT.yaml
+    current_stage: CSG-1-completed
+generated_playbook_capabilities:
+  conversation_scope_guard:
+    apf_internal_enabled: false
+    optional_for_generated_playbooks: true
+    completed_stages:
+    - CSG-0
+    - CSG-1
+    - CSG-2
+    - CSG-3
+    requires_explicit_mode_selection: true
+    default_recommended_mode_for_guided_processes: guided_redirect
+    escalation_default_counter_scope: active_node
+    next_stage: CSG-4
+    state_protection_contract_ref: docs/APF_CONVERSATION_SCOPE_GUARD_STATE_PROTECTION_AND_PROCESS_CONTROL_CONTRACT.yaml
+    state_protection_policy_ref: docs/APF_CONVERSATION_SCOPE_GUARD_STATE_PROTECTION_POLICY.md
+    state_protection_record_template_ref: templates/CONVERSATION_SCOPE_GUARD_STATE_PROTECTION_RECORD.template.yaml
+
+conversation_scope_guard_authoring:
+  apf_internal_enabled: false
+  generated_playbook_design_phase: required
+  explicit_declaration_required: true
+  human_confirmation_required: true
+  conditional_package_generation: true
+  blocking_validation_required: true

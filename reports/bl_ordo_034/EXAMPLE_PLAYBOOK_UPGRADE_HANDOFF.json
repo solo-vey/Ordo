@@ -1,0 +1,31 @@
+{
+  "schema_version": "ordo.playbook_upgrade_handoff.v1",
+  "playbook_id": "ordo.applied_project_factory",
+  "from_version": "0.1.0-rc.1",
+  "to_version": "0.1.1-rc.1",
+  "decision": "migration_required",
+  "changed_nodes": [
+    "N42_REVIEW_GATE"
+  ],
+  "changed_contracts": [
+    "graph_contract.transition_provenance"
+  ],
+  "changed_outputs": [],
+  "changed_gates": [
+    "inbound provenance gate"
+  ],
+  "migration": {
+    "required": true,
+    "instructions": [
+      "Checkpoint active runtime state.",
+      "Add allowed_from declarations to affected nodes.",
+      "Recompile and rerun graph/provenance validation.",
+      "Resume only after explicit approval."
+    ]
+  },
+  "rollback": {
+    "supported": true,
+    "instruction": "Restore the prior verified playbook package and checkpoint."
+  },
+  "automatic_runtime_mutation": false
+}

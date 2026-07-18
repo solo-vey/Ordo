@@ -1,0 +1,59 @@
+{
+  "schema_version": "ordo.m87.ordo_runner_paired_harness.v1",
+  "milestone": "M87.4",
+  "status": "passed",
+  "implemented": {
+    "frozen_ordo_prompt_template": true,
+    "arm_b_runner": true,
+    "paired_execution_harness": true,
+    "deterministic_order_respected": true,
+    "shared_content_equivalence_check": true,
+    "shared_payload_hash_match": true,
+    "pair_manifest": true,
+    "immutable_pair_directory": true,
+    "canonical_evidence_for_both_arms": true,
+    "shared_content_aware_contamination_control": true
+  },
+  "tests": {
+    "passed": 36,
+    "failed": 0
+  },
+  "simulation": {
+    "pair_id": "PAIR-AB-TASK-001-fixture-model-1",
+    "order": "A_then_B",
+    "arm_a_run_id": "PAIR-AB-TASK-001-fixture-model-1-A",
+    "arm_b_run_id": "PAIR-AB-TASK-001-fixture-model-1-B",
+    "pair_manifest": "/mnt/data/m87_4_paired_simulation/pairs/PAIR-AB-TASK-001-fixture-model-1/pair_manifest.json",
+    "external_provider_invoked": false
+  },
+  "changed_files": [
+    {
+      "path": "benchmarks/ab/ordo_runner.py",
+      "sha256": "c26057e37bc6e21141633a9435353306ff00c6aab9eb6c7fae42b6440c1b5be7"
+    },
+    {
+      "path": "benchmarks/ab/paired_execution_harness.py",
+      "sha256": "2d7d37c56c9fb613c4296793c4517a5566ae0f3da8e33950b86cec2593c81874"
+    },
+    {
+      "path": "benchmarks/ab/ordo_prompt_template_manifest.v1.json",
+      "sha256": "4c56389b8b79dc76f407d9ff2abab92777fb42044ff98a79b79e2504c4d0a2b2"
+    },
+    {
+      "path": "benchmarks/ab/contamination_controls.py",
+      "sha256": "aee40935674938bf81f19ee121c16c506786523af986630629848eb3f2aadd4f"
+    },
+    {
+      "path": "benchmarks/ab/plain_prompt_runner.py",
+      "sha256": "f0f31e65f7f166d78a24c57f357b55a9d9c6eee8b7854b0cb379d016c6121f56"
+    },
+    {
+      "path": "cli/tests/test_m87_2_shared_dataset_contamination.py",
+      "sha256": "7a32fd5a1a2b16356ec326b68b79efe2f2a71fe82ba4e2d84714849c5500718b"
+    },
+    {
+      "path": "cli/tests/test_m87_4_ordo_runner_paired_harness.py",
+      "sha256": "a8345b18bd01adba923b4ac8dd8122d43f85ef3e9732264f1511f50e109e9d51"
+    }
+  ]
+}

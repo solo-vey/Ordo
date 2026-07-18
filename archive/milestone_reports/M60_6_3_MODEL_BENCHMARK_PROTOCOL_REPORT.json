@@ -1,0 +1,27 @@
+{
+  "milestone": "M60.6.3",
+  "name": "Model Benchmark Protocol Design",
+  "status": "passed-design-only",
+  "date": "2026-07-08",
+  "base": "M60.6.2 calibration refinement",
+  "scope": "protocol/reporting/docs only",
+  "changed_weights": false,
+  "changed_runtime_core_semantics": false,
+  "ran_real_model_api_benchmark": false,
+  "generated_pdf_or_compiled_book": false,
+  "primary_artifacts_added": [
+    "ordo_pathwalk/MODEL_BENCHMARK_PROTOCOL.md",
+    "M60_6_3_MODEL_BENCHMARK_PROTOCOL_REPORT.md",
+    "M60_6_3_MODEL_BENCHMARK_PROTOCOL_REPORT.json",
+    "M60_6_3_VALIDATION_REPORT.json",
+    "reports/m60_6_3_model_benchmark_protocol/REQUIRED_RAW_MODEL_METRICS_COLUMNS.csv",
+    "reports/m60_6_3_model_benchmark_protocol/CALIBRATION_ELIGIBILITY_GATES.csv",
+    "reports/m60_6_3_model_benchmark_protocol/FAILURE_BUCKET_TAXONOMY.csv"
+  ],
+  "benchmark_modes_defined": [
+    "api-driven",
+    "transcript-replay"
+  ],
+  "calibration_decision": "weights remain locked until future model/transcript benchmark passes eligibility gates",
+  "next_recommended_milestone": "M60.6.4 — Transcript Replay / Model Benchmark Pilot"
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_graph_validation.v1",
+  "milestone": "M60.7.1",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "source_yaml_loaded",
+      "status": "passed"
+    },
+    {
+      "check": "nodes_present",
+      "status": "passed"
+    },
+    {
+      "check": "duplicate_node_ids_absent",
+      "status": "passed"
+    },
+    {
+      "check": "unresolved_targets_absent",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_artifacts_not_read",
+      "status": "passed"
+    },
+    {
+      "check": "testcase_generation_not_claimed",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "outputs": [
+    "REAL_MODULE_GRAPH_SUMMARY.json",
+    "REAL_MODULE_GRAPH_SUMMARY.md",
+    "VALIDATION_REPORT.json"
+  ]
+}

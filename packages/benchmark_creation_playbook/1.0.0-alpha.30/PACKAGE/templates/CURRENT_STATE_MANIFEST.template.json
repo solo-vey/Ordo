@@ -1,0 +1,13 @@
+{
+  "schema_version": "ordo.current_state_manifest.v1",
+  "dataset_version": "<dataset>",
+  "transfer_version": "<transfer>",
+  "source_archive": {
+    "filename": "<source.zip>",
+    "sha256": "<64hex>"
+  },
+  "selection_policy": "CURRENT_STATE_ONLY",
+  "retained": {},
+  "excluded": {},
+  "known_limitations": []
+}

@@ -1,0 +1,55 @@
+{
+  "milestone": "M66.0",
+  "title": "Package Startup Standard / Startup Package Profile",
+  "status": "passed-docs-schema-convention",
+  "date": "2026-07-09",
+  "runtime_core_changed": false,
+  "compiler_changed": false,
+  "cli_changed": false,
+  "new_opcodes_added": false,
+  "compiled_ir_regenerated": false,
+  "checks": {
+    "startup_standard_docs_present": "passed",
+    "startup_schema_yaml_parse": "passed",
+    "startup_example_yaml_parse": "passed",
+    "json_reports_parse": "passed",
+    "runtime_opcode_promotion_guard": "passed"
+  },
+  "outputs": [
+    "language/PACKAGE_STARTUP_STANDARD.md",
+    "language/STARTUP_PACKAGE_PROFILE.md",
+    "language/registry/STARTUP_PACKAGE_PROFILE_VALUES.md",
+    "language/schemas/startup_package_profile_schema.yaml",
+    "language/examples/source/startup_package_profile_example.ordo.yaml",
+    "language/spec/21_PACKAGE_STARTUP_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M66-001_PACKAGE_STARTUP_STANDARD.md"
+  ],
+  "diff_summary": {
+    "added_files": 11,
+    "changed_files": 7,
+    "removed_files": 0
+  },
+  "added_files": [
+    "M66_0_PACKAGE_STARTUP_STANDARD_REPORT.md",
+    "M66_0_VALIDATION_REPORT.json",
+    "docs/design_decisions/DD-ORDO-M66-001_PACKAGE_STARTUP_STANDARD.md",
+    "language/PACKAGE_STARTUP_STANDARD.md",
+    "language/STARTUP_PACKAGE_PROFILE.md",
+    "language/examples/source/startup_package_profile_example.ordo.yaml",
+    "language/improvement_intake/m66_0/M66_0_PACKAGE_STARTUP_STANDARD_REPORT.md",
+    "language/improvement_intake/m66_0/M66_0_VALIDATION_REPORT.json",
+    "language/registry/STARTUP_PACKAGE_PROFILE_VALUES.md",
+    "language/schemas/startup_package_profile_schema.yaml",
+    "language/spec/21_PACKAGE_STARTUP_MODEL.md"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "FUTURE_BACKLOG.md",
+    "README.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/CHANGELOG.md",
+    "language/README.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "removed_files": []
+}

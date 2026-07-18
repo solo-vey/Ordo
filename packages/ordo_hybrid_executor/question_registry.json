@@ -1,0 +1,55 @@
+{
+  "schema_version": "ordo.question_registry.v1",
+  "playbook_id": "ordo_hybrid_executor",
+  "questions": [
+    {
+      "question_id": "Q_N_LOAD_IR",
+      "node_id": "N_LOAD_IR",
+      "question_text": "Завантажити готовий Semantic JSON IR і визначити стартовий Process Rail node.",
+      "answer_type": "system_action",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_CLASSIFY_INPUT",
+      "node_id": "N_CLASSIFY_INPUT",
+      "question_text": "Класифікувати повідомлення людини відносно поточного Process Rail node.",
+      "answer_type": "ai_classification",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_VALIDATE_STATE",
+      "node_id": "N_VALIDATE_STATE",
+      "question_text": "Викликати deterministic helper для перевірки запропонованого стану.",
+      "answer_type": "tool_result",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_INTERPRET_HELPER",
+      "node_id": "N_INTERPRET_HELPER",
+      "question_text": "Перетворити helper result у людське пояснення без raw technical dump.",
+      "answer_type": "ai_explanation",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_HANDLE_DEVIATION",
+      "node_id": "N_HANDLE_DEVIATION",
+      "question_text": "Якщо є correction/deviation, виконати rail resume або backtracking.",
+      "answer_type": "ai_process_decision",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_GATE",
+      "node_id": "N_OUTPUT_GATE",
+      "question_text": "Перевірити, чи дозволено генерувати output на поточному стані.",
+      "answer_type": "gate_check",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_NEXT_MOVE",
+      "node_id": "N_NEXT_MOVE",
+      "question_text": "Обрати наступний conversational move: питання, пояснення, повернення назад або output.",
+      "answer_type": "ai_decision",
+      "capture_for_journey": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.package_identity_validation.v1",
+  "release": "1.0.0-alpha.30",
+  "authoritative_package_identity": "ordo.benchmark_creation_playbook@1.0.0-alpha.30",
+  "checked_files": [
+    "README.md",
+    "000_PLAYBOOK_CONTRACT.md",
+    "SUMMARY.json",
+    "BACKLOG.md",
+    "ALPHA_RELEASE_NOTES.md",
+    "PLAYBOOK_CHANGELOG.md"
+  ],
+  "expected_backlog": {
+    "done": 55,
+    "open": 0,
+    "total": 55
+  },
+  "lifecycle_state": "Near Production",
+  "terminal_state": "T_PLAYBOOK_RELEASED",
+  "status": "PASS"
+}

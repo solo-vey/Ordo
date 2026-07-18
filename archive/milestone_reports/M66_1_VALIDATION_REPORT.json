@@ -1,0 +1,29 @@
+{
+  "milestone": "M66.1",
+  "title": "Apply startup_package_profile to History Event Factory package",
+  "status": "passed-package-local-startup-profile-validation",
+  "package": "packages/history_event_guided_intake",
+  "checks": {
+    "source_yaml_parse": "passed",
+    "ordo_yml_parse": "passed",
+    "startup_package_profile_present": "passed",
+    "startup_default_mode_exists": "passed",
+    "startup_entry_files_exist": "passed",
+    "startup_prompt_ids_resolve_to_prompt_registry": "passed",
+    "startup_prompt_files_covered_by_prompt_manifest": "passed",
+    "startup_authority_boundary_safe": "passed",
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "cli_changed": false,
+    "new_opcodes_added": false,
+    "compiled_ir_regenerated": false
+  },
+  "outputs": [
+    "M66_1_HISTORY_EVENT_FACTORY_STARTUP_PROFILE_APPLICATION_REPORT.md",
+    "M66_1_VALIDATION_REPORT.json",
+    "packages/history_event_guided_intake/STARTUP_PACKAGE_PROFILE.md",
+    "packages/history_event_guided_intake/STARTUP_PROFILE_VALIDATION_SUMMARY.md",
+    "docs/design_decisions/DD-ORDO-M66-002_HISTORY_EVENT_FACTORY_STARTUP_PROFILE_APPLICATION.md"
+  ],
+  "errors": []
+}

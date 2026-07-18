@@ -1,0 +1,20 @@
+{
+  "schema_version": "ordo.m88_m89.full_repair_closure.v1",
+  "status": "passed",
+  "restored": {
+    "m88_0_report": true,
+    "m88_1_to_m88_5_tests": true,
+    "m89_1_to_m89_3_tests": true,
+    "m88_4_runtime_fixture": true
+  },
+  "combined_regression": {
+    "test_modules": 10,
+    "returncode": 0,
+    "summary": "\u001b[32m\u001b[32m\u001b[1m53 passed\u001b[0m\u001b[32m in 2.05s\u001b[0m\u001b[0m"
+  },
+  "missing_reports": [],
+  "missing_test_groups": [],
+  "cache_artifacts_remaining": 0,
+  "checksum_entries": 3514,
+  "checksum_issues": []
+}

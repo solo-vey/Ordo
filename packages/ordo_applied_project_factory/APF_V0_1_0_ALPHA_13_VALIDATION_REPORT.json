@@ -1,0 +1,60 @@
+{
+  "package": "ordo.applied_project_factory",
+  "version": "0.1.0-alpha.13",
+  "release_type": "scoped_process_design_review_rendering_policy_patch",
+  "generated_at": "2026-07-08T00:00:00+02:00",
+  "status": "passed_minimal_validation",
+  "scope": {
+    "included": "YAML-level user-facing rendering contract for process-design review: mode/context-shift labels, current-node display sections, and decision prompt discipline.",
+    "excluded": "Fourth start mode / existing-process-improvement branch remains draft-review only and was not committed in this scoped patch."
+  },
+  "checks": [
+    {
+      "check": "yaml_parse",
+      "status": "passed",
+      "evidence": "source/program.ordo.yaml parsed with PyYAML"
+    },
+    {
+      "check": "cli_lint",
+      "status": "passed",
+      "evidence": "packages/ordo_applied_project_factory/reports/lint_report.json"
+    },
+    {
+      "check": "cli_compile_refresh_ir",
+      "status": "passed",
+      "evidence": "packages/ordo_applied_project_factory/reports/compile_report.json and compiled/program.ir.json refreshed"
+    },
+    {
+      "check": "full_validation",
+      "status": "deferred_by_design",
+      "reason": "Full validation remains terminal/pre-handoff per alpha.10+ policy."
+    }
+  ],
+  "changed_files": [
+    "source/program.ordo.yaml",
+    "README.md",
+    "VERSION.md",
+    "MODULE_CHANGELOG.md",
+    "docs/USER_FACING_RUNTIME_REVIEW_POLICY.md",
+    "START_HERE_RUNTIME_MODE.md",
+    "START_PROMPT_RUNTIME_MODE.md",
+    "PACKAGING_PROFILES.md",
+    "ordo.yml",
+    "run_inputs/factory_success.yaml",
+    "reports/lint_report.json",
+    "reports/compile_report.json",
+    "compiled/program.ir.json",
+    "compiled/program.ordo.view",
+    "compiled/targets.manifest.json"
+  ],
+  "new_runtime_policy_fields": [
+    "process_design_review_rendering_policy",
+    "current_process_layer_label",
+    "runtime_context_shift_notice",
+    "current_node_display_block"
+  ],
+  "blockers": [],
+  "notes": [
+    "This patch makes the helpful display style part of the APF YAML contract instead of relying on assistant memory."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.validation_alignment_report.v1",
+  "type": "object",
+  "required": [
+    "status",
+    "node_id",
+    "template_id",
+    "external_contract",
+    "checksums",
+    "differences",
+    "verdict_equivalence"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL_CLOSED"
+      ]
+    },
+    "node_id": {
+      "type": "string"
+    },
+    "template_id": {
+      "type": "string"
+    },
+    "external_contract": {
+      "type": "object",
+      "required": [
+        "contract_id",
+        "contract_version",
+        "contract_sha256"
+      ]
+    },
+    "checksums": {
+      "type": "object"
+    },
+    "differences": {
+      "type": "array"
+    },
+    "verdict_equivalence": {
+      "type": "object",
+      "required": [
+        "positive",
+        "negative",
+        "boundary"
+      ]
+    },
+    "regenerated": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true
+}

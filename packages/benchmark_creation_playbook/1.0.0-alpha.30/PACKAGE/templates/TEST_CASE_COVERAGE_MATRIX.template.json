@@ -1,0 +1,7 @@
+{
+  "schema_version": "ordo.test_case_coverage_matrix.v1",
+  "discovered_test_case_count": 0,
+  "retained_test_case_count": 0,
+  "authoritatively_excluded_test_case_count": 0,
+  "test_cases": []
+}

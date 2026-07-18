@@ -1,0 +1,58 @@
+{
+  "milestone": "M60.7.1",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "selected_non_runtime_pathwalk_pytest",
+      "status": "passed",
+      "detail": "14 passed"
+    },
+    {
+      "check": "real_module_graph_cli_smoke",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_artifacts_not_read",
+      "status": "passed"
+    },
+    {
+      "check": "testcase_generation_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "book_source_updated_only",
+      "status": "passed"
+    },
+    {
+      "check": "pathwalk_rc_py_compile_with_developer_bundle_cli",
+      "status": "passed"
+    },
+    {
+      "check": "pathwalk_rc_selected_pytest_with_developer_bundle_cli",
+      "status": "passed",
+      "detail": "9 passed"
+    },
+    {
+      "check": "pathwalk_rc_real_module_graph_cli_smoke",
+      "status": "passed"
+    },
+    {
+      "check": "final_zip_extraction_check",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "known_non_blockers": [
+    "Runtime-harness/matrix blocker branch remains archived from M60.6.5/M60.6.4.1 and is not part of this milestone."
+  ],
+  "artifacts": [
+    "M60_7_1_SOURCE_YAML_GRAPH_SUMMARY_REPORT.md",
+    "M60_7_1_SOURCE_YAML_GRAPH_SUMMARY_REPORT.json",
+    "M60_7_1_VALIDATION_REPORT.json",
+    "ordo_pathwalk/examples/m60_7_1_real_module_graph_summary/REAL_MODULE_GRAPH_SUMMARY.json"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "milestone": "M69 first-wave closure",
+  "scope": [
+    "M69.0",
+    "M69.1",
+    "M69.2",
+    "M69.3",
+    "M69.4"
+  ],
+  "status": "closed-first-wave",
+  "result": "passed",
+  "closed_capabilities": [
+    "CI/release clean-gate design and policy matrix",
+    "PR/main CI clean-gate workflow",
+    "strict release clean-gate workflow",
+    "release evidence and provenance linkage",
+    "CI/release fixture and smoke-test matrix"
+  ],
+  "invariants": [
+    "repo_clean_check.json remains source of truth",
+    "workflow logic delegates to Ordo CLI exit codes",
+    "release provenance links exact report bytes by SHA-256",
+    "applied packages remain delegated unless explicitly governed"
+  ],
+  "untouched": [
+    "packages/*",
+    "cli/ordo/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles",
+    "embedded CLI bundles"
+  ],
+  "validation": {
+    "targeted_tests": 34,
+    "test_result": "OK",
+    "json_parse": "passed",
+    "workflow_yaml_parse": "passed",
+    "scope_guards": "passed",
+    "zip_integrity": "pending"
+  }
+}

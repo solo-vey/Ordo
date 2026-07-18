@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import sys
+from pathlib import Path
+
+ALLOWED = ['check-gate', 'consistency', 'generate-output', 'go-no-go', 'intake', 'next-step', 'render-runtime-view', 'restore-session', 'runtime-entry', 'runtime-status', 'validate-artifacts', 'validate-cli-status', 'validate-output', 'validate-state', 'verify-session', 'verify-targets']
+
+def main() -> int:
+    if len(sys.argv) < 2 or sys.argv[1] in {"-h", "--help"}:
+        print("Ordo embedded runtime CLI")
+        print("Allowed runtime commands: check-gate, consistency, generate-output, go-no-go, intake, next-step, render-runtime-view, restore-session, runtime-entry, runtime-status, validate-artifacts, validate-cli-status, validate-output, validate-state, verify-session, verify-targets")
+        print("Usage: cli_embedded/ordo <runtime-command> <package> [args]")
+        return 0
+    command = sys.argv[1]
+    if command not in ALLOWED:
+        print(f"embedded runtime CLI blocks non-runtime command: {command}", file=sys.stderr)
+        print("Allowed runtime commands: check-gate, consistency, generate-output, go-no-go, intake, next-step, render-runtime-view, restore-session, runtime-entry, runtime-status, validate-artifacts, validate-cli-status, validate-output, validate-state, verify-session, verify-targets", file=sys.stderr)
+        return 2
+    here = Path(__file__).resolve().parent
+    sys.path.insert(0, str(here / "ordo_pkg"))
+    from ordo.cli import main as ordo_main
+    return int(ordo_main(sys.argv[1:]))
+
+if __name__ == "__main__":
+    raise SystemExit(main())

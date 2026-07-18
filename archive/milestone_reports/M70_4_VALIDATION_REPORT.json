@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.milestone.validation.v1",
+  "milestone": "M70.4",
+  "status": "passed-validation",
+  "tests": {
+    "count": 46,
+    "result": "OK"
+  },
+  "production_smokes": {
+    "standard": {
+      "status": "passed",
+      "exit_code": 0
+    },
+    "strict": {
+      "status": "passed",
+      "exit_code": 0
+    }
+  },
+  "checks": [
+    "production policy parse",
+    "CI workflow parse",
+    "release workflow parse",
+    "language root contract passed",
+    "CLI root contract passed",
+    "standard fail-on-warning smoke passed",
+    "strict fail-on-warning smoke passed",
+    "release provenance contract regression passed",
+    "packages remain delegated"
+  ]
+}

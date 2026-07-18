@@ -1,0 +1,33 @@
+{
+  "schema_version": "ordo.playbook_release_index.v1",
+  "framework_version": "0.6.0-rc.1",
+  "playbooks": [
+    {
+      "playbook_id": "history_event.guided_intake",
+      "playbook_version": "0.1.1",
+      "release_record": "packages/history_event_guided_intake/playbook_release.json"
+    },
+    {
+      "playbook_id": "ordo.applied_project_factory",
+      "playbook_version": "0.1.0-rc.1",
+      "release_record": "packages/ordo_applied_project_factory/playbook_release.json"
+    },
+    {
+      "playbook_id": "ordo.benchmark_creation_playbook",
+      "playbook_version": "1.0.0-alpha.30",
+      "release_record": "packages/benchmark_creation_playbook/1.0.0-alpha.30/playbook_release.json",
+      "component_class": "system_playbook",
+      "current": true
+    },
+    {
+      "playbook_id": "ordo.hybrid_executor",
+      "playbook_version": "0.1.0",
+      "release_record": "packages/ordo_hybrid_executor/playbook_release.json"
+    },
+    {
+      "playbook_id": "ordo.project_builder",
+      "playbook_version": "0.1.0",
+      "release_record": "packages/ordo_project_builder/playbook_release.json"
+    }
+  ]
+}

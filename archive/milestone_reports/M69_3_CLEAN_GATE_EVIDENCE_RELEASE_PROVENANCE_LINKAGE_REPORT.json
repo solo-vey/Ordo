@@ -1,0 +1,33 @@
+{
+  "milestone": "M69.3",
+  "title": "Clean-gate evidence and release provenance linkage",
+  "status": "implemented-provenance-linkage / passed-validation",
+  "base": "M69.2 release clean gate integration",
+  "added": [
+    "cli/docs/CLEAN_GATE_EVIDENCE_PROVENANCE_LINKAGE.md",
+    "cli/tests/test_release_clean_gate_provenance_linkage.py",
+    "language/schemas/release_clean_gate_provenance_schema.yaml",
+    "language/spec/29_CLEAN_GATE_EVIDENCE_PROVENANCE_LINKAGE_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M69-002_CLEAN_GATE_EVIDENCE_PROVENANCE_LINKAGE.md"
+  ],
+  "changed": [
+    ".github/workflows/ordo-release-clean-gate.yml"
+  ],
+  "scope_guards": {
+    "packages": "unchanged",
+    "cli_ordo": "unchanged",
+    "runtime": "unchanged",
+    "compiler": "unchanged",
+    "opcodes": "unchanged"
+  },
+  "validation": {
+    "targeted_tests": "28 passed",
+    "workflow_yaml_parse": "passed",
+    "schema_yaml_parse": "passed",
+    "python_compile": "passed",
+    "linkage_invariant": "passed",
+    "packages_diff_guard": "passed",
+    "cli_ordo_diff_guard": "passed",
+    "runtime_compiler_diff_guard": "passed"
+  }
+}

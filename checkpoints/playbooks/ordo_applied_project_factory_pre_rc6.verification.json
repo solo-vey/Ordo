@@ -1,0 +1,10 @@
+{
+  "archive": "ordo_applied_project_factory_pre_rc6.rollback.zip",
+  "archive_sha256": "23bb9ca31fd69f2ed32e7fd892b62585f21befd8196fc02af5bf6c03cad589ac",
+  "zip_integrity": "passed",
+  "checksums": "passed",
+  "failures": [],
+  "identity": "passed",
+  "restore_round_trip": "passed",
+  "checkpoint_id": "ordo.applied_project_factory@0.1.1-rc.2"
+}

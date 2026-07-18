@@ -1,0 +1,28 @@
+testcase_target:
+  package_id: ordo.applied_project_factory
+  package_profile: source_authoring
+  source_yaml: program.ordo.yaml
+  target_process:
+    - analyst_intake
+    - decision_tree_execution
+    - final_package_handoff
+  critical_gates:
+    - PACKAGE_PROFILE_GATE
+    - PROGRAM_LEVEL_CONTRACT_APPROVAL_GATE
+    - NODE_CHANGE_IMPACT_REVIEW_GATE
+    - EXTERNAL_CHECK_EVIDENCE_GATE
+    - REAL_MODULE_TESTCASE_GENERATION_PLANNING_GATE
+    - REAL_MODULE_TESTCASE_UTILITY_PACKAGING_GATE
+  terminal_outputs:
+    - created_playbook_package
+    - validation_report
+    - handoff_archive
+  evidence_sources:
+    - CURRENT_STATE.md
+    - VALIDATION_REPORT.json
+    - reports/
+    - docs/APF_HUMAN_CONFIRMATION_REGISTER.md
+  unsupported_runtime_actions:
+    - compile
+    - execute_runtime
+    - run_ordo_tests

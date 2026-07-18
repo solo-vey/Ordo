@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "source": "source/program.ordo.yaml",
+  "output": "compiled/program.ir.json",
+  "ops_count": 39,
+  "lint_status": "passed"
+}

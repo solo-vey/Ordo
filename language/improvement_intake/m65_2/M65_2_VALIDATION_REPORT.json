@@ -1,0 +1,102 @@
+{
+  "milestone": "M65.2",
+  "package": "history-event-factory-prompt-registry-skeleton",
+  "status": "passed-prompt-registry-validation",
+  "checks": [
+    {
+      "check": "prompt_registry_present",
+      "status": "passed"
+    },
+    {
+      "check": "prompt_count",
+      "status": "passed",
+      "count": 13
+    },
+    {
+      "check": "prompt_ids_unique",
+      "status": "passed"
+    },
+    {
+      "check": "required_prompt_paths_exist",
+      "status": "passed",
+      "missing": []
+    },
+    {
+      "check": "prompt_manifest_coverage",
+      "status": "passed"
+    },
+    {
+      "check": "prompt_manifest_sha256_matches",
+      "status": "passed",
+      "mismatches": []
+    },
+    {
+      "check": "prompt_refs_resolve",
+      "status": "passed",
+      "unresolved": [],
+      "ref_count": 22
+    },
+    {
+      "check": "attached_node_ids_exist",
+      "status": "passed",
+      "missing": []
+    },
+    {
+      "check": "attached_artifact_ids_exist",
+      "status": "passed",
+      "missing": []
+    },
+    {
+      "check": "quick_start_discoverable",
+      "status": "passed"
+    },
+    {
+      "check": "prompt_authority_safe_text_review",
+      "status": "passed",
+      "issues": []
+    },
+    {
+      "check": "state_change_policy_consistent",
+      "status": "passed",
+      "issues": []
+    },
+    {
+      "check": "runtime_start_protocol_not_weakened",
+      "status": "passed"
+    },
+    {
+      "check": "source_yaml_parse",
+      "status": "passed"
+    },
+    {
+      "check": "source_yaml_changed_hash",
+      "status": "passed",
+      "old_sha256": "13a571a8837f6957deb56b27cde546bc94a20e4912728fe994494a5518e28417",
+      "new_sha256": "2d1ad885f0abe0bf1719d4d0c8071eaed778e6296996cfa9be136a4121ff4695"
+    },
+    {
+      "check": "compiled_ir_regenerated",
+      "status": "passed",
+      "result": "none"
+    },
+    {
+      "check": "runtime_core_changed",
+      "status": "passed",
+      "result": "none"
+    },
+    {
+      "check": "compiler_cli_opcode_changed",
+      "status": "passed",
+      "result": "none"
+    }
+  ],
+  "blockers": [],
+  "non_changes": [
+    "no runtime core changes",
+    "no compiler behavior changes",
+    "no CLI command changes",
+    "no opcode promotion",
+    "no compiled IR regeneration claimed",
+    "no APF branch logic rewrite"
+  ]
+}

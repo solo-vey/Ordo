@@ -1,0 +1,92 @@
+{
+  "status": "ok",
+  "total_test_cases": 2,
+  "gate_pass_rate": 1.0,
+  "path_quality_score": {
+    "mean": 1.0,
+    "median": 1.0,
+    "stdev": 0.0,
+    "min": 1.0,
+    "max": 1.0
+  },
+  "failed_test_cases": [],
+  "breakdown_by_driver": {
+    "benchmark-dry-run-ground-truth": {
+      "count": 2,
+      "mean": 1.0
+    }
+  },
+  "breakdown_by_cli_mode": {
+    "enforced": {
+      "count": 2,
+      "mean": 1.0
+    }
+  },
+  "breakdown_by_runtime_view": {
+    "json": {
+      "count": 2,
+      "mean": 1.0
+    }
+  },
+  "runtime_protocol_versions": [
+    "M60.4"
+  ],
+  "benchmark_dry_run": {
+    "status": "passed",
+    "scenario_count": 2,
+    "runtime_views": [
+      "json"
+    ],
+    "expected_cases": 2,
+    "completed_cases": 2,
+    "passed_cases": 2,
+    "case_timeout_seconds": 90,
+    "worker_mode": "subprocess",
+    "tree_seed": 11,
+    "script_seed_start": 21,
+    "depth": 1,
+    "branching": [
+      2,
+      2
+    ],
+    "raw_metrics_csv": "RAW_METRICS.csv",
+    "case_results": [
+      {
+        "scenario_id": "scenario_000",
+        "runtime_view": "json",
+        "returncode": 0,
+        "status": "passed",
+        "case": {
+          "status": "passed",
+          "scenario_id": "scenario_000",
+          "runtime_view": "json",
+          "sandbox": "sandboxes/scenario_000_json",
+          "transcript": "transcripts/scenario_000_json_transcript.json",
+          "score_file": "scores/scenario_000_json_score.json",
+          "path_quality_score": 1.0,
+          "protocol_compliance_rate": 1.0
+        },
+        "stdout_log": "case_logs/scenario_000_json.stdout.txt",
+        "stderr_log": "case_logs/scenario_000_json.stderr.txt"
+      },
+      {
+        "scenario_id": "scenario_001",
+        "runtime_view": "json",
+        "returncode": 0,
+        "status": "passed",
+        "case": {
+          "status": "passed",
+          "scenario_id": "scenario_001",
+          "runtime_view": "json",
+          "sandbox": "sandboxes/scenario_001_json",
+          "transcript": "transcripts/scenario_001_json_transcript.json",
+          "score_file": "scores/scenario_001_json_score.json",
+          "path_quality_score": 1.0,
+          "protocol_compliance_rate": 1.0
+        },
+        "stdout_log": "case_logs/scenario_001_json.stdout.txt",
+        "stderr_log": "case_logs/scenario_001_json.stderr.txt"
+      }
+    ]
+  }
+}

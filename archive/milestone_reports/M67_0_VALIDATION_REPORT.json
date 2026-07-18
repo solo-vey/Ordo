@@ -1,0 +1,31 @@
+{
+  "milestone": "M67.0",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "required_files_created",
+      "status": "passed"
+    },
+    {
+      "id": "yaml_parse",
+      "status": "passed"
+    },
+    {
+      "id": "json_parse",
+      "status": "passed"
+    },
+    {
+      "id": "runtime_core_cli_opcode_changes",
+      "status": "none"
+    },
+    {
+      "id": "compiled_ir_regeneration",
+      "status": "not_done_not_claimed"
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "CLI/linter implementation remains future work."
+  ],
+  "next": "M67.1 — apply artifact_sync/delta_backlog/packaging checks to History Event Factory package"
+}

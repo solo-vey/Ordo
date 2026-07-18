@@ -1,0 +1,148 @@
+{
+  "scoring_profile": "TC03-EX02-EVAL-v1.1",
+  "cell_format": "Process / Documents / Final",
+  "runs": {
+    "RUN_01": {
+      "yaml_playbook": [
+        100,
+        99,
+        100
+      ],
+      "structured_instructions": [
+        99,
+        96,
+        98
+      ],
+      "mixed_accumulated_instructions": [
+        98,
+        97,
+        98
+      ],
+      "domain_adapted_all_in_one": [
+        98,
+        24,
+        61
+      ]
+    },
+    "RUN_02": {
+      "yaml_playbook": [
+        100,
+        98,
+        99
+      ],
+      "structured_instructions": [
+        99,
+        null,
+        99
+      ],
+      "mixed_accumulated_instructions": [
+        98,
+        96,
+        97
+      ],
+      "domain_adapted_all_in_one": [
+        99,
+        25,
+        62
+      ]
+    },
+    "RUN_03": {
+      "yaml_playbook": [
+        100,
+        100,
+        100
+      ],
+      "structured_instructions": [
+        100,
+        100,
+        100
+      ],
+      "mixed_accumulated_instructions": [
+        99,
+        100,
+        100
+      ],
+      "domain_adapted_all_in_one": [
+        100,
+        100,
+        100
+      ]
+    },
+    "RUN_04": {
+      "yaml_playbook": [
+        99,
+        95,
+        97
+      ],
+      "structured_instructions": [
+        100,
+        97,
+        99
+      ],
+      "mixed_accumulated_instructions": [
+        99,
+        97,
+        98
+      ],
+      "domain_adapted_all_in_one": [
+        99,
+        27,
+        63
+      ]
+    },
+    "RUN_05": {
+      "yaml_playbook": [
+        100,
+        100,
+        100
+      ],
+      "structured_instructions": [
+        100,
+        100,
+        100
+      ],
+      "mixed_accumulated_instructions": [
+        100,
+        100,
+        100
+      ],
+      "domain_adapted_all_in_one": [
+        100,
+        100,
+        100
+      ]
+    }
+  },
+  "averages": {
+    "yaml_playbook": [
+      99.8,
+      98.4,
+      99.2
+    ],
+    "structured_instructions": [
+      99.6,
+      98.3,
+      99.2
+    ],
+    "mixed_accumulated_instructions": [
+      98.8,
+      98.0,
+      98.6
+    ],
+    "domain_adapted_all_in_one": [
+      99.2,
+      55.2,
+      77.2
+    ]
+  },
+  "executor_evaluator_provenance": {
+    "executor_model": "GPT-5.6 Thinking",
+    "evaluator_model": "GPT-5.6 Thinking",
+    "relation": "different_chat_same_model",
+    "different_chat": true,
+    "different_model": false,
+    "cryptographically_verified": false,
+    "verification_level": "user_attested_not_cryptographically_verified",
+    "ledger_ref": "06_manifests/EXECUTOR_EVALUATOR_PROVENANCE_LEDGER.json"
+  }
+}

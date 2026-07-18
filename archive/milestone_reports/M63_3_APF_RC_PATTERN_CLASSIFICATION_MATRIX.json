@@ -1,0 +1,86 @@
+[
+  {
+    "pattern": "INPUT.POLICY",
+    "classification": "schema_pattern_or_subflow",
+    "rc_status": "usable in APF rc.1; candidate for future generic schema support",
+    "m63_3_decision": "keep APF-local / schema convention; no core opcode"
+  },
+  {
+    "pattern": "OUTPUT.CANDIDATE.CATALOG",
+    "classification": "documentation/schema pattern",
+    "rc_status": "APF-local now; candidate for standard module pattern",
+    "m63_3_decision": "document; no runtime promotion"
+  },
+  {
+    "pattern": "TERMINAL.OUTPUT.BIND",
+    "classification": "APF subflow / possible future IR concept",
+    "rc_status": "keep APF-local for rc.1",
+    "m63_3_decision": "future review only"
+  },
+  {
+    "pattern": "TREE.AUTHOR.PROGRESSIVE",
+    "classification": "APF workflow pattern",
+    "rc_status": "reusable applied-module authoring pattern",
+    "m63_3_decision": "document; not core opcode"
+  },
+  {
+    "pattern": "NODE.REVIEW",
+    "classification": "applied-module review pattern",
+    "rc_status": "document and test in APF; future generic review layer candidate",
+    "m63_3_decision": "document; no IR promotion"
+  },
+  {
+    "pattern": "BRANCH.REVIEW",
+    "classification": "applied-module review pattern",
+    "rc_status": "document and test in APF; future generic review layer candidate",
+    "m63_3_decision": "document; no IR promotion"
+  },
+  {
+    "pattern": "SUBTREE.REVIEW",
+    "classification": "applied-module review pattern",
+    "rc_status": "document and test in APF; future generic review layer candidate",
+    "m63_3_decision": "document; no IR promotion"
+  },
+  {
+    "pattern": "TREE.NORMALIZE",
+    "classification": "adapter pattern",
+    "rc_status": "APF-local; useful for future import utilities",
+    "m63_3_decision": "APF-local; future utility candidate"
+  },
+  {
+    "pattern": "DIALOGUE.EXTRACT",
+    "classification": "AI-assisted extraction pattern",
+    "rc_status": "APF-local; not deterministic enough for opcode",
+    "m63_3_decision": "APF-local; do not make deterministic opcode"
+  },
+  {
+    "pattern": "TEMPLATE.RECIPE",
+    "classification": "template authoring pattern",
+    "rc_status": "strong candidate for standard template-layer docs",
+    "m63_3_decision": "standard docs candidate"
+  },
+  {
+    "pattern": "TEMPLATE.MOCK_RENDER",
+    "classification": "validation/review pattern",
+    "rc_status": "strong candidate for CLI/template tooling later",
+    "m63_3_decision": "future tooling candidate"
+  },
+  {
+    "pattern": "VALIDATION.HANDOFF.TAIL",
+    "classification": "reusable applied-module tail",
+    "rc_status": "document as standard pattern; do not hardcode into core",
+    "m63_3_decision": "standard applied-module pattern"
+  },
+  {
+    "pattern": "FLOW.JOIN",
+    "classification": "future IR candidate",
+    "rc_status": "backlog; current YAML can express joins but not canonically",
+    "m63_3_decision": "future IR backlog only"
+  },
+  {
+    "pattern": "SHARED.TAIL.REFERENCE",
+    "classification": "future IR candidate",
+    "rc_status": "backlog; reusable subflow references need stable semantics",
+    "m63_3_decision": "future IR backlog only"
+  }
+]

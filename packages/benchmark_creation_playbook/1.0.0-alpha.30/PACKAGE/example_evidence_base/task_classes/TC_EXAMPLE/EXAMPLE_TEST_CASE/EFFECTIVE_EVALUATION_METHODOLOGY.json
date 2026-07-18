@@ -1,0 +1,176 @@
+{
+  "status": "PASS",
+  "methodology_binding": {
+    "methodology_version": "1.0.0",
+    "methodology_sha256": "e1028f344b58d0c4b55a8b0b96b2a79bed066a453a3c50e03272ae38a78a02fc",
+    "profile_version": "1.0.0",
+    "profile_sha256": "9f9ebd1987c694c0285dabbbcb9dd4291458d73300cea7dcfd69cf3d1874d3c9",
+    "effective_methodology_sha256": "d775710822aabd90eaf9a176e8e6016bb6ed05fee67f0151fc58d60fa33d9b25"
+  },
+  "effective_methodology": {
+    "root": {
+      "schema_version": "ordo.benchmark.evaluation_methodology.v1",
+      "methodology_id": "ORDO-BENCH-EVAL",
+      "version": "1.0.0",
+      "status": "canonical",
+      "scores": {
+        "process_quality": {
+          "range": [
+            0,
+            100
+          ]
+        },
+        "document_quality": {
+          "range": [
+            0,
+            100
+          ]
+        },
+        "final_quality": {
+          "formula": "round((process_quality + document_quality) / 2)",
+          "range": [
+            0,
+            100
+          ]
+        }
+      },
+      "mandatory_principles": [
+        "evidence_first",
+        "external_rules_are_authoritative",
+        "validator_pass_is_not_sufficient",
+        "no_fabricated_inputs",
+        "historical_scores_are_immutable"
+      ],
+      "default_documents": [
+        {
+          "id": "passport",
+          "weight": 0.25
+        },
+        {
+          "id": "jira",
+          "weight": 0.25
+        },
+        {
+          "id": "manual_qa",
+          "weight": 0.25
+        },
+        {
+          "id": "automation",
+          "weight": 0.25
+        }
+      ],
+      "allowed_profile_changes": [
+        "artifact_selection",
+        "artifact_weights",
+        "expected_terminal_states",
+        "scenario_specific_checks",
+        "stricter_caps",
+        "authoritative_fact_bindings"
+      ],
+      "forbidden_profile_changes": [
+        "remove_evidence_first",
+        "change_three_score_model",
+        "allow_unbound_scores",
+        "weaken_integrity",
+        "validator_pass_implies_full_score"
+      ],
+      "binding_fields": [
+        "methodology_version",
+        "methodology_sha256",
+        "profile_version",
+        "profile_sha256",
+        "effective_methodology_sha256"
+      ]
+    },
+    "profile": {
+      "schema_version": "ordo.benchmark.test_case_evaluation_profile.v1",
+      "profile_id": "EXAMPLE_TEST_CASE",
+      "version": "1.0.0",
+      "inherits": {
+        "methodology_id": "ORDO-BENCH-EVAL",
+        "version": "1.0.0"
+      },
+      "canonical_documents": [
+        {
+          "id": "passport",
+          "weight": 0.25
+        },
+        {
+          "id": "jira",
+          "weight": 0.25
+        },
+        {
+          "id": "manual_qa",
+          "weight": 0.25
+        },
+        {
+          "id": "automation",
+          "weight": 0.25
+        }
+      ],
+      "expected_terminal_states": {
+        "positive": [
+          "GO",
+          "APPROVED"
+        ],
+        "negative": [
+          "NO_CHANGE",
+          "INPUT_BLOCKED",
+          "INCOMPLETE_VALIDATION_HARD_STOP"
+        ]
+      },
+      "scenario_specific_checks": [
+        "selected_run_literal_consistency"
+      ],
+      "caps": [
+        {
+          "when": "foreign_selected_run_literal",
+          "max_final_score": 0,
+          "blocks_canonical_acceptance": true
+        }
+      ],
+      "overrides": []
+    },
+    "resolved": {
+      "canonical_documents": [
+        {
+          "id": "passport",
+          "weight": 0.25
+        },
+        {
+          "id": "jira",
+          "weight": 0.25
+        },
+        {
+          "id": "manual_qa",
+          "weight": 0.25
+        },
+        {
+          "id": "automation",
+          "weight": 0.25
+        }
+      ],
+      "expected_terminal_states": {
+        "positive": [
+          "GO",
+          "APPROVED"
+        ],
+        "negative": [
+          "NO_CHANGE",
+          "INPUT_BLOCKED",
+          "INCOMPLETE_VALIDATION_HARD_STOP"
+        ]
+      },
+      "scenario_specific_checks": [
+        "selected_run_literal_consistency"
+      ],
+      "caps": [
+        {
+          "when": "foreign_selected_run_literal",
+          "max_final_score": 0,
+          "blocks_canonical_acceptance": true
+        }
+      ]
+    }
+  }
+}

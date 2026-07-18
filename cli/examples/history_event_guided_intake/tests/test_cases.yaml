@@ -1,0 +1,124 @@
+test_cases:
+- id: TC_EVENT_GOAL_GATE
+  fixture:
+    state:
+      event_goal: зміна статусу компанії
+  expected:
+    gates:
+    - id: G_EVENT_GOAL_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_EVENT_GOAL
+- id: TC_PATH_SELECTED_GATE
+  fixture:
+    state:
+      selected_path: A1
+  expected:
+    gates:
+    - id: G_PATH_SELECTED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_PATH_SELECT
+- id: TC_ALIAS_GATE
+  fixture:
+    state:
+      event_alias: LU_CHANGE_STATUS
+  expected:
+    gates:
+    - id: G_ALIAS_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_EVENT_ALIAS
+- id: TC_DISPLAY_NAME_UK_GATE
+  fixture:
+    state:
+      display_name_uk: Зміна статусу компанії
+  expected:
+    gates:
+    - id: G_DISPLAY_NAME_UK_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_DISPLAY_NAME_UK
+- id: TC_DISPLAY_NAME_EN_GATE
+  fixture:
+    state:
+      display_name_en: Company status changed
+  expected:
+    gates:
+    - id: G_DISPLAY_NAME_EN_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_DISPLAY_NAME_EN
+- id: TC_SOURCE_FIELD_GATE
+  fixture:
+    state:
+      source_field: item.status
+  expected:
+    gates:
+    - id: G_SOURCE_FIELD_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_SOURCE_FIELD
+- id: TC_VALUE_SEMANTICS_GATE
+  fixture:
+    state:
+      value_semantics:
+      - old status
+      - new status
+  expected:
+    gates:
+    - id: G_VALUE_SEMANTICS_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_VALUE_SEMANTICS
+- id: TC_QA_SCOPE_GATE
+  fixture:
+    state:
+      qa_scope:
+      - unit tests
+      - manual QA
+  expected:
+    gates:
+    - id: G_QA_SCOPE_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+    node: N_QA_SCOPE
+- id: TC_APPROVAL_GATE
+  fixture:
+    state:
+      approval_received: true
+  expected:
+    gates:
+    - id: G_APPROVAL_CONFIRMED
+      method: human
+      trust_class: human_decision
+      status: passed
+    node: N_APPROVAL
+- id: TC_NO_FINAL_PACKAGE_WITHOUT_APPROVAL
+  fixture:
+    user_message: створи фінальний package одразу
+  expected:
+    node: N_APPROVAL
+    gates:
+    - id: G_APPROVAL_CONFIRMED
+      status: blocked
+    assertions:
+    - id: A_NO_FINAL_HISTORY_EVENT_PACKAGE_WITHOUT_APPROVAL
+      projection: EXPECT.NOT
+    output:
+      final_package_created: false
+- id: TC_UNMATCHED_PATH_CLARIFY
+  fixture:
+    user_message: не знаю який шлях
+  expected:
+    clarify:
+      node: N_PATH_SELECT
+      action: CLARIFY.REQUEST

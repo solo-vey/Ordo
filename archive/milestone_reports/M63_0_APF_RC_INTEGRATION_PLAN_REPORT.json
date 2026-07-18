@@ -1,0 +1,12 @@
+{
+  "milestone": "M63.0",
+  "status": "passed-planning-with-input-gate",
+  "created_docs": [
+    "M63_0_APF_RC_INTEGRATION_PLAN.md",
+    "M63_0_APF_RC_DELTA_REVIEW.md",
+    "M63_0_APF_RC_VALIDATION_PROFILE_PLAN.md",
+    "M63_0_APF_RC_PATTERN_DECISION_TABLE.md"
+  ],
+  "input_gate": "APF rc.1 archive not found in sandbox; required for M63.1",
+  "validation_nuance": "historical alpha14 coverage failed when run directly; not M63.0 gate; rc1 archive required for M63.1 verification"
+}

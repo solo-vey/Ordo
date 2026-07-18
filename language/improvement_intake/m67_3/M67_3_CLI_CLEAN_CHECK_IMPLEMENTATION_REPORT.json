@@ -1,0 +1,44 @@
+{
+  "milestone": "M67.3",
+  "title": "CLI clean-check minimal implementation patch",
+  "status": "implemented-minimal / passed-cli-validation",
+  "implemented_command": "ordo clean-check",
+  "added_files": [
+    "cli/ordo/clean_check.py",
+    "M67_3_CLI_CLEAN_CHECK_IMPLEMENTATION_REPORT.md",
+    "M67_3_CLI_CLEAN_CHECK_IMPLEMENTATION_REPORT.json",
+    "M67_3_VALIDATION_REPORT.json"
+  ],
+  "changed_files": [
+    "cli/ordo/cli.py",
+    "cli/tests/test_cli_workflow.py",
+    "cli/docs/CLEAN_CHECK_COMMAND.md",
+    "README.md",
+    "CHANGELOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "non_changes": [
+    "packages/*",
+    "runtime core",
+    "compiler behavior",
+    "opcodes",
+    "compiled IR regeneration",
+    "lockfile regeneration",
+    "embedded CLI rebuild"
+  ],
+  "checks": [
+    "package_root_exists",
+    "package_manifest_present",
+    "package_manifest_parse",
+    "source_yaml_declared",
+    "source_yaml_exists",
+    "source_yaml_parse",
+    "declared_manifest_paths_exist",
+    "declared_manifest_checksums_match",
+    "prompt_registry_refs_resolve_when_present",
+    "startup_profile_entries_exist_when_present",
+    "derived_artifacts_current_or_backlogged_when_declared",
+    "delta_backlog_blockers_not_expired_when_declared"
+  ]
+}

@@ -1,0 +1,24 @@
+schema_version: ordo.benchmark.evidence-package-policy.v1
+policy_version: 1.0.0
+required_layers:
+  - identity
+  - source
+  - execution
+  - evaluation
+  - results
+  - diagnostics_and_improvement
+  - release_integrity
+evidence_states:
+  - PRESENT_VERIFIED
+  - PRESENT_UNVERIFIED
+  - NOT_APPLICABLE
+  - EXPECTED_MISSING
+  - QUARANTINED
+  - SUPERSEDED
+complete_claim_blockers:
+  - EXPECTED_MISSING
+  - checksum_mismatch
+  - inventory_manifest_mismatch
+  - unresolved_authority
+mutation_policy: append_only_or_new_version
+hash_algorithm: SHA-256

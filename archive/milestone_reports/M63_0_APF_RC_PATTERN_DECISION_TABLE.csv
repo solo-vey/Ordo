@@ -1,0 +1,15 @@
+pattern,classification,rc1_status,destination
+INPUT.POLICY,schema_pattern_or_subflow,usable in APF; candidate for future generic schema support,standard applied module docs / future schema
+OUTPUT.CANDIDATE.CATALOG,documentation/schema pattern,APF-local now; candidate for standard module pattern,standard applied module docs
+TERMINAL.OUTPUT.BIND,APF subflow / possible future IR concept,keep APF-local for rc.1,APF-local now / future IR discussion
+TREE.AUTHOR.PROGRESSIVE,APF workflow pattern,"document as reusable applied-module pattern, not core opcode yet",standard applied module docs
+NODE.REVIEW,applied-module review pattern,document and test in APF; future generic review layer candidate,APF docs / future review layer
+BRANCH.REVIEW,applied-module review pattern,document and test in APF; future generic review layer candidate,APF docs / future review layer
+SUBTREE.REVIEW,applied-module review pattern,document and test in APF; future generic review layer candidate,APF docs / future review layer
+TREE.NORMALIZE,adapter pattern,"APF-local, useful for future import utilities",APF-local / companion utility backlog
+DIALOGUE.EXTRACT,AI-assisted extraction pattern,APF-local; do not make deterministic opcode yet,APF-local
+TEMPLATE.RECIPE,template authoring pattern,strong candidate for standard template-layer docs,standard docs
+TEMPLATE.MOCK_RENDER,validation/review pattern,strong candidate for CLI/template tooling later,future CLI/template tooling
+VALIDATION.HANDOFF.TAIL,reusable applied-module tail,document as standard pattern; do not hardcode into core,standard applied module docs
+FLOW.JOIN,future IR candidate,backlog; current YAML can express joins but not canonically,future IR backlog
+SHARED.TAIL.REFERENCE,future IR candidate,backlog; reusable subflow references need stable semantics,future IR backlog

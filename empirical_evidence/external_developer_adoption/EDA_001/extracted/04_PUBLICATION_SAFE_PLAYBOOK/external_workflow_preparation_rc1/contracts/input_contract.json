@@ -1,0 +1,27 @@
+{
+  "schema": "external.workflow_preparation.input.v1",
+  "required_for_concept": [
+    "business_need",
+    "subject_type",
+    "jurisdictions",
+    "known_data_basis",
+    "trigger_draft"
+  ],
+  "required_for_business_ready": [
+    "identity_bundle",
+    "names_uk_en",
+    "three_user_planes",
+    "trigger_templates",
+    "placeholder_contract",
+    "source_mapping",
+    "scenario_model",
+    "data_mode",
+    "acceptance_criteria",
+    "signoff_evidence",
+    "external_links"
+  ],
+  "rules": [
+    "One run controls one monitoring event.",
+    "Missing mandatory data must never be fabricated."
+  ]
+}

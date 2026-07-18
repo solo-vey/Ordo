@@ -1,0 +1,18 @@
+{
+  "milestone": "M70.2",
+  "status": "implemented-language-cli-root-contracts / passed-validation",
+  "changed": [
+    "repo_hygiene.yml",
+    "cli/ordo/repo_checks.py",
+    "cli/tests/test_language_cli_root_contracts.py",
+    "cli/tests/test_production_repo_hygiene_policy.py"
+  ],
+  "untouched": [
+    "packages/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles"
+  ]
+}

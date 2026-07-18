@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.arf.final_consistency_audit.v1",
+  "status": "passed",
+  "archive": "ORDO_ARF_FULLY_REPAIRED_M88_M89.zip",
+  "external_sha256": "311f008df124cce6bc44e61be01193c0b2f825fec247265bd04ba51f8b684856",
+  "external_sha256_match": true,
+  "files": 3515,
+  "internal_checksum_entries": 3514,
+  "internal_checksum_issues": 0,
+  "checksum_coverage_gaps": 0,
+  "json_files": 1234,
+  "invalid_json_files": 0,
+  "cache_artifacts": 0,
+  "backlog_items": 23,
+  "backlog_duplicates": 0,
+  "bl_ordo_020_closed": true,
+  "bl_ordo_021_closed": true,
+  "missing_m88_m89_reports": 0,
+  "m88_m89_test_modules": 10,
+  "combined_regression": "53 passed",
+  "suspicious_failed_or_blocked_m88_m89_reports": 0,
+  "decision": "No remaining consistency tails were found in the final repaired archive."
+}

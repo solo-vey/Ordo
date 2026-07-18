@@ -1,0 +1,21 @@
+{
+  "milestone": "M65.0",
+  "name": "Prompt Registry Standard",
+  "status": "accepted-docs-schema-convention",
+  "scope": "docs/schema/lint-profile design",
+  "adds": [
+    "prompt_registry",
+    "prompt_refs",
+    "prompt registry consistency gate",
+    "prompt manifest convention",
+    "prompt trace awareness convention"
+  ],
+  "non_changes": [
+    "no runtime core changes",
+    "no compiler behavior changes",
+    "no CLI command changes",
+    "no opcode promotion",
+    "no APF source YAML rewrite"
+  ],
+  "source_improvement": "APF_NODE_LEVEL_PROMPT_REGISTRY_IMPROVEMENT_SOURCE.md"
+}

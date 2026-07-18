@@ -1,0 +1,13 @@
+conversation_scope_guard_package:
+  supported: true
+  enabled: true
+  mode: guided_redirect
+  artifacts:
+    design_decision: conversation_scope_guard/design_decision.yaml
+    config: conversation_scope_guard/config.yaml
+    response_templates: conversation_scope_guard/response_templates.yaml
+    state_protection_assertions: conversation_scope_guard/state_protection_assertions.yaml
+    regression_test_catalog: conversation_scope_guard/regression_test_catalog.yaml
+    validation_report: conversation_scope_guard/validation_report.yaml
+  validation_status: pending
+  blockers: []

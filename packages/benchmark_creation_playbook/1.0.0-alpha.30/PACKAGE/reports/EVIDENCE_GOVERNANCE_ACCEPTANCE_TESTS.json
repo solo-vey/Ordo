@@ -1,0 +1,12 @@
+{
+  "schema_version": "benchmark.evidence_governance_acceptance.v1",
+  "passed": 5,
+  "total": 5,
+  "checks": {
+    "unconfirmed_promotion_blocked": true,
+    "confirmed_only_in_ledger": true,
+    "three_score_formula": true,
+    "immutable_revision_created": true,
+    "scoreboard_confirmed_only": true
+  }
+}

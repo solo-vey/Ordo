@@ -1,0 +1,32 @@
+execution_trace_artifacts:
+  schema_version: "1.0"
+  supported: true
+  generated: false
+  artifacts:
+    execution_trace_config:
+      path: runtime/execution_trace_config.yaml
+      required: true
+      checksum: null
+    execution_trace_schema:
+      path: runtime/execution_trace_schema.yaml
+      required: true
+      checksum: null
+    trace_event_mapping:
+      path: runtime/trace_event_mapping.yaml
+      required: true
+      checksum: null
+    trace_redaction_policy:
+      path: runtime/trace_redaction_policy.yaml
+      required: true
+      checksum: null
+    trace_replay_policy:
+      path: runtime/trace_replay_policy.yaml
+      required: true
+      checksum: null
+    trace_adapter_contract:
+      path: runtime/trace_adapter_contract.yaml
+      required_when: runtime_mode == runtime_enforced
+      checksum: null
+  validation:
+    status: pending
+    report: reports/execution_trace_validation_report.json

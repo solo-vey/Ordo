@@ -1,0 +1,15 @@
+{
+  "schema_version": "ordo.pathwalk.calibration_decision.v1",
+  "milestone": "M60.6.4",
+  "decision": "keep_weights_locked",
+  "weights_changed": false,
+  "calibration_eligible": false,
+  "reason": "M60.6.4 is a small transcript-replay pilot; sufficient_cases, repeatability, confidence summary, and manual failure review gates are not satisfied.",
+  "current_weights": {
+    "cell_match_rate": 0.45,
+    "protocol_compliance_rate": 0.25,
+    "distraction_recovery_rate": 0.15,
+    "backtrack_accuracy": 0.15
+  },
+  "weights_hash": "sha256:da62ee407ec19218148b616ea75f5ed6e2708fa1927cc2c592b40eba527a4414"
+}

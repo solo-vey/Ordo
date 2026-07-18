@@ -1,0 +1,17 @@
+playbook_id: pilot.trace_enabled
+execution_trace:
+  supported: true
+  enabled: true
+  version: "1.0"
+  capture_level: standard
+  runtime_mode: runtime_enforced
+  trace_source: runtime
+  storage:
+    path: runtime/execution_trace.json
+    append_only: true
+  replay:
+    replayable: true
+    replay_mode: deterministic
+    required_inputs_preserved: true
+  runtime_toggle:
+    allowed: true

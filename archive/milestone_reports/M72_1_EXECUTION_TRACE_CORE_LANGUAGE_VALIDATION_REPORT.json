@@ -1,0 +1,42 @@
+{
+  "milestone": "M72.1",
+  "scope": "EXECUTION_TRACE core language contract",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "execution_trace_schema_present",
+      "status": "passed"
+    },
+    {
+      "check": "execution_trace_spec_present",
+      "status": "passed"
+    },
+    {
+      "check": "closed_event_registry_present",
+      "status": "passed"
+    },
+    {
+      "check": "core_source_ir_docs_linked",
+      "status": "passed"
+    },
+    {
+      "check": "legacy_trace_compatibility_declared",
+      "status": "passed"
+    },
+    {
+      "check": "book_chapter_present_and_manifested",
+      "status": "passed"
+    },
+    {
+      "check": "canonical_example_present",
+      "status": "passed"
+    }
+  ],
+  "deferred_to_part_2": [
+    "compiler emission implementation",
+    "runtime event capture",
+    "runtime replay executor",
+    "CLI validation implementation"
+  ],
+  "blockers": []
+}

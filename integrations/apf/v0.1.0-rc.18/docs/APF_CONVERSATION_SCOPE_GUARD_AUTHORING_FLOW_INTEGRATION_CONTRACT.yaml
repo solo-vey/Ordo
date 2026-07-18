@@ -1,0 +1,49 @@
+contract_id: APF-CSG-AUTHORING-FLOW-001
+version: '0.1'
+status: aligned-with-ordo-csg-baseline-v0.1
+scope: generated_playbooks_only
+apf_internal:
+  enabled: false
+integration_point:
+  after:
+  - process_rail_confirmation
+  - atomic_step_review_resolution
+  before:
+  - prompt_sufficiency_review
+  - execution_trace_final_mapping
+  - package_assembly
+required_design_decisions:
+- capability_needed
+- supported
+- enabled
+- strictness_mode
+- accepted_context
+- deviation_taxonomy
+- response_templates
+- escalation_policy
+- pause_resume_exit_semantics
+- state_protection_assertions
+- trace_hooks
+- regression_tests
+human_confirmation:
+  required: true
+  blocks_generation_until_confirmed: true
+conditional_generation:
+  supported_false:
+    generate_runtime_artifacts: false
+    retain_design_decision: true
+  supported_true:
+    required_artifacts:
+    - conversation_scope_guard/config.yaml
+    - conversation_scope_guard/response_templates.yaml
+    - conversation_scope_guard/state_protection_assertions.yaml
+    - conversation_scope_guard/regression_test_catalog.yaml
+validation_order:
+- declaration_validation
+- classification_validation
+- state_protection_validation
+- escalation_validation
+- process_control_validation
+- trace_hook_validation
+- regression_validation
+- package_readiness

@@ -1,0 +1,8 @@
+{
+  "schema_version": "ordo.empirical_evidence.task_class.v1",
+  "task_class_id": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION",
+  "title": "Recurring Regulated Process with High-Cost Omission",
+  "scope": "Recurring regulated processes where missed steps or unsupported completion claims are costly.",
+  "status": "candidate",
+  "scoring_profile": null
+}

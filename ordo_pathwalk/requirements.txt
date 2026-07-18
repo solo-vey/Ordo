@@ -1,0 +1,5 @@
+# Core generator + self-driven mode need only PyYAML (already required by the main ordo CLI).
+# Install these ONLY if you plan to use `run --driver anthropic:...` / `run --driver openai:...`.
+anthropic>=0.40
+openai>=1.50
+pytest

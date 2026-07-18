@@ -1,0 +1,80 @@
+# Program-level Approval Gate Schema Convention v1
+# Status: M64.3 documented lint/profile design, not enforced runtime schema.
+# This file is intended for package authors, future linters, and human review reports.
+
+type: object
+name: program_level_approval_gate_schema_v1
+status: convention
+properties:
+  gate_id:
+    type: string
+    description: Stable local identifier for the program-level approval gate.
+  applies_to:
+    type: array
+    items:
+      type: string
+      enum_or_convention:
+        - program_contract
+        - interaction_model
+        - process_rail
+        - conversation_semantics
+  profile:
+    type: string
+    enum:
+      - light
+      - standard
+      - strict
+  severity_policy:
+    type: object
+    additionalProperties:
+      type: string
+      enum:
+        - error
+        - warning
+        - info
+  required_checks:
+    type: array
+    items:
+      type: string
+      enum_or_convention:
+        - program_contract_identity_present
+        - module_id_present_for_reusable_package
+        - runtime_profile_declared
+        - required_review_points_declared
+        - required_validation_commands_declared
+        - interaction_roles_consistent
+        - human_final_approval_declared
+        - raw_tool_output_policy_safe
+        - process_rail_resume_policy_consistent
+        - backtracking_invalidation_policy_present
+        - conversation_input_classes_routed
+        - unmatched_input_policy_safe
+        - profile_local_values_documented
+  approval_decision:
+    type: object
+    properties:
+      allowed_values:
+        type: array
+        items:
+          type: string
+          enum:
+            - approved
+            - approved_with_warnings
+            - blocked
+            - not_applicable
+      default_on_error:
+        type: string
+        enum:
+          - blocked
+      default_on_warning:
+        type: string
+        enum:
+          - approved_with_warnings
+          - blocked
+validation_notes:
+  m64_3: Documentation/lint-profile design only. Do not treat this as runtime-enforced schema.
+  non_changes:
+    - no runtime core changes
+    - no compiler behavior changes
+    - no CLI command changes
+    - no opcode promotion

@@ -1,0 +1,47 @@
+{
+  "milestone": "CSG-5",
+  "title": "Validation, Regression, and Specification Release",
+  "status": "passed_specification_consistency",
+  "gate": "G_CSG_SPEC_RELEASE_READY",
+  "gate_status": "passed",
+  "checks": {
+    "prerequisites_passed": true,
+    "release_artifacts_present": true,
+    "cross_artifact_invariants_passed": true,
+    "regression_groups_complete": true,
+    "full_regression_passed": true,
+    "release_manifest_integrity": true
+  },
+  "prerequisites": [
+    {
+      "report": "CSG_0_VALIDATION_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "report": "CSG_1_VALIDATION_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "report": "CSG_2_VALIDATION_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "report": "CSG_3_VALIDATION_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "report": "CSG_4_VALIDATION_REPORT.json",
+      "status": "passed"
+    }
+  ],
+  "artifacts": [
+    "language/CSG_5_VALIDATION_REGRESSION_AND_RELEASE.md",
+    "reports/CSG_FULL_REGRESSION_REPORT.json",
+    "manifests/CSG_RELEASE_MANIFEST.json"
+  ],
+  "validation_scope": "specification_and_cross_artifact_consistency",
+  "model_benchmark_status": "not_run",
+  "toolchain_status": "not_started",
+  "production_recommendation": "not_ready",
+  "legacy_gate_alias": "G_CSG_RELEASE_READY"
+}

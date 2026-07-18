@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APF expected behavior matrix",
+  "type": "object",
+  "required": [
+    "expected_behavior"
+  ],
+  "properties": {
+    "expected_behavior": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "scenario_id",
+          "trigger",
+          "expected_response_type",
+          "expected_status"
+        ],
+        "properties": {
+          "scenario_id": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "expected_response_type": {
+            "type": "string"
+          },
+          "blocking_gate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_status": {
+            "type": "string"
+          },
+          "forbidden_status": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

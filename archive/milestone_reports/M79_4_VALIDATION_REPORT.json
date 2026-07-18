@@ -1,0 +1,18 @@
+{
+  "milestone": "M79.4",
+  "status": "passed",
+  "capability": "template version diff and breaking-change gate",
+  "cli_command": "ordo template diff OLD NEW",
+  "evidence_schema": "ordo.template.version_diff.v1",
+  "tests": {
+    "passed": 22,
+    "failed": 0
+  },
+  "gates": [
+    "major version bump for breaking changes",
+    "migration.required=true",
+    "migration.guide_ref required"
+  ],
+  "documentation_synced": true,
+  "book_synced": true
+}

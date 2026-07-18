@@ -1,0 +1,25 @@
+schema_version: ordo.benchmark.launch_manifest.v1
+attempt_id: ATTEMPT-<unique>
+benchmark_suite_id: <id>
+test_case_id: <id>
+test_case_version: <version>
+run_id: RUN_01
+run_contract_version: <version>
+package_variant_id: PV-YAML
+package_version: <version>
+package_digest: sha256:<digest>
+driver_binding_ref: <path>
+blind_isolation_manifest_ref: <path>
+launch_mode: blind
+executor_identity:
+  provider: <provider-or-unknown>
+  model: <model-or-unknown>
+output_directory: <new-empty-directory>
+self_scoring_forbidden: true
+expected_return_files:
+  - LAUNCH_MANIFEST.yaml
+  - PREFLIGHT_REPORT.json
+  - EXECUTION_LOG.jsonl
+  - TERMINAL_DISPOSITION.json
+  - OUTPUT_MANIFEST.json
+  - executor_outputs/

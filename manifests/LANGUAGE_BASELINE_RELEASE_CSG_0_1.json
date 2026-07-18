@@ -1,0 +1,27 @@
+{
+  "release_id": "ORDO-LANGUAGE-BASELINE-CSG-0.1",
+  "status": "confirmed_baseline_candidate",
+  "generated_at": "2026-07-11",
+  "capabilities_added": [
+    {
+      "id": "ORDO-CAP-CSG-001",
+      "name": "Conversation Scope Guard",
+      "status": "language_integrated_optional_specification",
+      "mandatory": false,
+      "core_default_enabled": false,
+      "maturity": {
+        "specification": "language_integrated",
+        "schema_support": "partial",
+        "toolchain_support": "not_started",
+        "runtime_enforcement": "not_started",
+        "model_benchmark": "not_run",
+        "production_recommendation": "not_ready"
+      }
+    }
+  ],
+  "validation_gate": "G_CSG_SPEC_RELEASE_READY",
+  "validation_gate_status": "passed",
+  "source_workspace": "ordo_github_workspace_v0_12_pre_release_after_full_self_check",
+  "legacy_validation_gate_alias": "G_CSG_RELEASE_READY",
+  "validation_scope": "specification_and_cross_artifact_consistency"
+}

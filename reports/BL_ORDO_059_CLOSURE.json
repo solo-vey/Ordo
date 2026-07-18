@@ -1,0 +1,36 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "id": "BL-ORDO-059",
+  "title": "Evidence Repository Storage and Git History Strategy",
+  "status": "closed",
+  "decision": "Keep current-state evidence inline in Git; enforce thresholds; no LFS and no history rewrite now.",
+  "acceptance": {
+    "binary_inventory_created": true,
+    "thresholds_approved": true,
+    "storage_class_assigned_to_every_binary": true,
+    "sha256_provenance_location_independent": true,
+    "online_offline_behavior_documented": true,
+    "fail_closed_validator_added": true,
+    "clean_clone_contract_documented": true,
+    "growth_triggers_defined": true,
+    "current_evidence_decision_recorded": true,
+    "rollback_plan_present": true
+  },
+  "metrics": {
+    "binary_file_count": 62,
+    "binary_size_bytes": 11961317,
+    "binary_size_mib": 11.407,
+    "largest_file_mib": 0.978,
+    "files_over_5_mib": 0,
+    "files_over_25_mib": 0,
+    "duplicate_group_count": 13,
+    "duplicate_bytes": 4015179,
+    "duplicate_mib": 3.829
+  },
+  "limitations": [
+    "Exact duplicate accepted-run ZIPs remain in case-local and accepted-run indexes.",
+    "No real remote asset retrieval was executed because no current artifact is assigned external storage.",
+    "Historical Git-object size cannot be measured from a ZIP publication package without the repository .git directory."
+  ],
+  "canonical_release_created": false
+}

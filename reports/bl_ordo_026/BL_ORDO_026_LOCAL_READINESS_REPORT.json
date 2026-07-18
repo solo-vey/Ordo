@@ -1,0 +1,19 @@
+{
+  "schema_version": "ordo.bl_ordo_026.local_readiness.v1",
+  "status": "ready_for_external_ci",
+  "blocking_local_issues": 0,
+  "workflow_contract_tests": "28 passed + 6 subtests",
+  "packaging_negative_tests": "17/17 passed",
+  "package_lints": "4/4 passed",
+  "strict_release_clean_gate": "passed",
+  "full_delivery_workflow": ".github/workflows/ordo-delivery-gate.yml",
+  "local_simulator": "tools/run_github_ci_locally.py",
+  "external_requirements": [
+    "GitHub repository",
+    "GitHub Actions enabled",
+    "push/PR permission or collaborator to run workflow",
+    "green full-delivery-gate run",
+    "download and verify uploaded artifact SHA-256"
+  ],
+  "not_closed_reason": "Independent external CI evidence is intentionally unavailable in a local archive-only environment."
+}

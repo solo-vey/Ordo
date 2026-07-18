@@ -1,0 +1,38 @@
+{
+  "milestone": "M62.2",
+  "title": "APF Documentation and Book Section",
+  "status": "passed-docs-consolidation-with-apf-pathwalk-cycle-note",
+  "date": "2026-07-08",
+  "added_docs": [
+    "APF_STANDARD_MODULE_GUIDE.md",
+    "APF_COMPANION_WORKFLOW.md",
+    "APF_DOCUMENTATION_AND_BOOK_SECTION.md",
+    "docs/apf_standard_module_guide.md",
+    "docs/apf_companion_workflow.md",
+    "packages/ordo_applied_project_factory/docs/APF_STANDARD_MODULE_GUIDE.md",
+    "packages/ordo_applied_project_factory/docs/APF_COMPANION_WORKFLOW.md"
+  ],
+  "book_chapter": "chapter_66_apf_standard_applied_module.md",
+  "checks": {
+    "workspace_py_compile": "passed",
+    "workspace_selected_tests": "38 passed",
+    "workspace_apf_lint": "passed",
+    "workspace_apf_compile": "passed",
+    "workspace_apf_test": "passed",
+    "workspace_visual_graph_mmd": "passed",
+    "workspace_visual_graph_context_svg": "passed",
+    "workspace_pathwalk_apf_graph": "passed",
+    "workspace_pathwalk_apf_paths": "blocked_by_cycle_edges_expected_not_gate",
+    "developer_bundle_py_compile": "passed",
+    "developer_bundle_apf_lint_compile_test": "passed",
+    "pathwalk_rc_py_compile": "passed",
+    "book_manifest_sanity": "76 entries, 66 chapters, 0 missing files"
+  },
+  "non_scope": [
+    "APF branch rewrite",
+    "runtime execution/scoring/calibration",
+    "IR/opcode additions"
+  ],
+  "apf_pathwalk_cycle_note": "PathWalk graph summary passes for APF; terminal path/case pipeline is not a gate because imported APF alpha.14 contains review-loop cycle edges.",
+  "next": "M62.3 — APF Language Pattern Extraction Plan"
+}

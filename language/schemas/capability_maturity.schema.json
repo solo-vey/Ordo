@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/capability_maturity.schema.json",
+  "title": "Ordo Capability Maturity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "specification",
+    "schema_support",
+    "toolchain_support",
+    "runtime_enforcement",
+    "model_benchmark",
+    "production_recommendation"
+  ],
+  "$defs": {
+    "evidenceStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acceptance_gate": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "specification": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": [
+                "not_started",
+                "draft",
+                "language_integrated",
+                "superseded"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "schema_support": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": [
+                "not_started",
+                "partial",
+                "integrated"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "toolchain_support": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": [
+                "not_started",
+                "design_only",
+                "partial",
+                "integrated"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "runtime_enforcement": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": [
+                "not_started",
+                "simulated",
+                "partial",
+                "enforced"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "model_benchmark": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": [
+                "not_run",
+                "planned",
+                "running",
+                "passed_with_limits",
+                "failed"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "production_recommendation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        {
+          "properties": {
+            "status": {
+              "enum": [
+                "not_ready",
+                "experimental",
+                "conditional",
+                "recommended"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

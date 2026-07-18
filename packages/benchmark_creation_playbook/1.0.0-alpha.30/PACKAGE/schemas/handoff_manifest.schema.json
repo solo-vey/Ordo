@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Handoff Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "handoff_id",
+    "baseline_version",
+    "status",
+    "reading_order",
+    "authoritative_files",
+    "open_work",
+    "checksums_verified"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.handoff-manifest.v1"
+    },
+    "handoff_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseline_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "READY_FOR_TRANSFER",
+        "READY_WITH_OPEN_WORK",
+        "BLOCKED_INTEGRITY",
+        "BLOCKED_MISSING_AUTHORITY",
+        "HISTORICAL_ONLY"
+      ]
+    },
+    "reading_order": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authoritative_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_work": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checksums_verified": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

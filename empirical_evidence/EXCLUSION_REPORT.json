@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.exclusion_report.v2",
+  "excluded": [
+    {
+      "category": "deprecated_migrated_test_case",
+      "test_case": "TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET",
+      "replacement_test_case": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+      "file_count": 26,
+      "total_size_bytes": 146269,
+      "representative_paths": [
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/README.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/01_problem_inputs/DATABASE_CHANGE_ARTIFACT_SET_AUTHORING_BASELINE_ALPHA_0_2_0.zip",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/03_test_cases/SCENARIO_CATALOG.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/PLAYBOOK_FIVE_SCENARIO_RESULT.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/TC03_DOCUMENT_CRITICAL_EXTENSION_REFERENCE.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_01_EVIDENCE_CAPTURE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_01_MODEL_PERFORMANCE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_02_EVIDENCE_CAPTURE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_02_MODEL_PERFORMANCE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_03_EVIDENCE_CAPTURE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_03_MODEL_PERFORMANCE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_04_EVIDENCE_CAPTURE.json"
+      ],
+      "exclusion_rationale": "TC02/EX02 is obsolete and was migrated to authoritative TC03/EX02."
+    }
+  ],
+  "note": "Historical TC03/EX02 candidates were already excluded by its authoritative current-state overlay."
+}

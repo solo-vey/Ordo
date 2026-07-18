@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "comparative_matrix_build.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "matrix_build_id",
+    "registry_high_water_mark",
+    "policy_versions",
+    "view",
+    "filters",
+    "generated_at",
+    "included_record_count",
+    "excluded_record_count",
+    "excluded_reasons",
+    "source_registry_ref",
+    "output_ref",
+    "output_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "benchmark.comparative_matrix_build.v1"
+    },
+    "matrix_build_id": {
+      "type": "string"
+    },
+    "registry_high_water_mark": {
+      "type": "string"
+    },
+    "policy_versions": {
+      "type": "object"
+    },
+    "view": {
+      "enum": [
+        "attempt_detail",
+        "variant_summary",
+        "run_summary",
+        "artifact_summary",
+        "stability_summary",
+        "coverage_summary"
+      ]
+    },
+    "filters": {
+      "type": "object"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "included_record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "excluded_record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "excluded_reasons": {
+      "type": "object"
+    },
+    "source_registry_ref": {
+      "type": "string"
+    },
+    "output_ref": {
+      "type": "string"
+    },
+    "output_sha256": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

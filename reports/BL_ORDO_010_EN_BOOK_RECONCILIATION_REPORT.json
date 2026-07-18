@@ -1,0 +1,81 @@
+{
+  "backlog_id": "BL-ORDO-010",
+  "check": "english_book_chapter_gap_and_terminology_reconciliation",
+  "uk_chapter_count": 75,
+  "en_chapter_count": 56,
+  "uk_range": [
+    1,
+    75
+  ],
+  "en_range": [
+    1,
+    75
+  ],
+  "missing_english_chapters": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72
+  ],
+  "extra_english_chapters": [],
+  "duplicate_english_chapter_numbers": {
+    "6": [
+      "chapter_06_entry_i_node_iak_model_stavyt_pytannia.md",
+      "chapter_06_1_atomic_steps_in_llm_processes.md",
+      "chapter_06_2_micro_prompts_modular_process_architecture.md"
+    ]
+  },
+  "terminology_variants_observed": {
+    "source of truth": {
+      "source of truth": 16,
+      "source-of-truth": 1
+    },
+    "runtime package": {
+      "Runtime Package": 1,
+      "runtime package": 15
+    },
+    "guided intake": {
+      "guided intake": 35,
+      "Guided Intake": 12,
+      "Guided intake": 11,
+      "guided-intake": 2
+    },
+    "Ordo-code": {
+      "ordo-code": 32,
+      "Ordo-code": 20
+    },
+    "session-trace": {
+      "session-trace": 8,
+      "Session-trace": 6
+    },
+    "PathWalk": {
+      "PathWalk": 141
+    },
+    "EXECUTION_TRACE": {
+      "execution trace": 18,
+      "EXECUTION_TRACE": 14,
+      "Execution Trace": 5,
+      "execution_trace": 4
+    },
+    "source YAML": {
+      "source YAML": 6
+    }
+  },
+  "files_normalized": [],
+  "status": "blocked_missing_chapters"
+}

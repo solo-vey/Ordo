@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Causal Diagnostic Request",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "diagnostic_case_id",
+    "result_record_id",
+    "attempt_id",
+    "scope",
+    "frozen_evidence_snapshot",
+    "questions",
+    "response_requirements",
+    "original_execution_mutable"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.causal_diagnostic_request.v1"
+    },
+    "diagnostic_case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result_record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attempt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "object"
+    },
+    "frozen_evidence_snapshot": {
+      "type": "object"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "response_requirements": {
+      "type": "object"
+    },
+    "original_execution_mutable": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,49 @@
+{
+  "package": "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC7_CONFIRMED_CLI_INTEGRATION_CONTRACTS",
+  "status": "passed",
+  "blocking_issues": [],
+  "scope_boundary": "APF package/playbook creation process only; no Ordo language package changes",
+  "confirmed_decisions": [
+    "APF-RC7-01 gate placement after PACKAGE_PROFILE_GATE",
+    "APF-RC7-02 package profile to required CLI checks matrix",
+    "APF-RC7-03 runtime-capable no ready/go without required CLI evidence",
+    "APF-RC7-04 source/design packages may use explicit deferred CLI evidence status",
+    "APF-RC7-05 standard CLI evidence path reports/cli_evidence/",
+    "APF-RC7-06 node/gate naming convention",
+    "APF-RC7-07 APF_PACKAGE_CREATION_HARDENING_GATE as aggregator"
+  ],
+  "checks": [
+    {
+      "check": "apf_scope_boundary_preserved",
+      "status": "passed"
+    },
+    {
+      "check": "confirmation_register_added",
+      "status": "passed"
+    },
+    {
+      "check": "aggregator_policy_added",
+      "status": "passed"
+    },
+    {
+      "check": "final_tail_updated_with_specialized_gates",
+      "status": "passed"
+    },
+    {
+      "check": "pending_language_tooling_not_marked_passed",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_release_blocking_semantics_confirmed",
+      "status": "passed"
+    },
+    {
+      "check": "source_design_deferred_evidence_semantics_confirmed",
+      "status": "passed"
+    },
+    {
+      "check": "zip_integrity",
+      "status": "passed"
+    }
+  ]
+}

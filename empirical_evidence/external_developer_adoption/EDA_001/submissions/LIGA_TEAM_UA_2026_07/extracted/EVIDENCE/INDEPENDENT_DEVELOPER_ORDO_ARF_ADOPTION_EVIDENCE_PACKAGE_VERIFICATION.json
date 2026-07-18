@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "archive": "INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip",
+  "archive_sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+  "zip_integrity": "passed",
+  "internal_checksums": "passed",
+  "framing": "independent external developer submission to Ordo/ARF maintainers",
+  "forbidden_pattern_hits": [],
+  "file_count": 60
+}

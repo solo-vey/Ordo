@@ -1,0 +1,31 @@
+schema_version: ordo.execution_progress_status_registry.v1
+registry_version: 1.0.0
+statuses:
+- id: PASS
+  terminal: false
+- id: FAIL
+  terminal: false
+- id: COMPLETED
+  terminal: false
+- id: BLOCKED
+  terminal: false
+- id: NO_CHANGE
+  terminal: false
+- id: CORRECTION_REQUIRED
+  terminal: false
+- id: INVALIDATED
+  terminal: false
+- id: REGENERATED
+  terminal: false
+- id: IMPROVED
+  terminal: false
+- id: IMPROVEMENT_PLATEAU_REACHED
+  terminal: true
+- id: SKIPPED_NOT_APPLICABLE
+  terminal: false
+- id: T_COMPLETED / GO
+  terminal: true
+- id: T_INPUT_BLOCKED / NO_GO
+  terminal: true
+- id: T_SCENARIO_EXHAUSTED / NO_GO
+  terminal: true

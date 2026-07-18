@@ -1,0 +1,28 @@
+{
+  "package": "ORDO Language Package",
+  "release_label": "M83.0",
+  "generated_date": "2026-07-12",
+  "baseline": "M82.4",
+  "included_changes": [
+    "M82.0 runtime execution threat model and process-boundary contract",
+    "M82.1 hardened isolated child runner and watchdog",
+    "M82.2 versioned execution evidence and failure taxonomy",
+    "M82.3 generated real-module testcase runtime integration",
+    "M82.4 regression closure of BL-ORDO-003",
+    "M83.0 post-generation defect review intake and contract",
+    "updated canonical backlog including BL-ORDO-010 and BL-ORDO-014",
+    "current English book translation state including Appendix D and Appendix E"
+  ],
+  "open_backlog": [
+    "BL-ORDO-008",
+    "BL-ORDO-010",
+    "BL-ORDO-014"
+  ],
+  "excluded": [
+    "__pycache__",
+    ".pytest_cache",
+    "compiled bytecode",
+    "temporary files",
+    "local logs"
+  ]
+}

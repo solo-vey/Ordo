@@ -1,0 +1,22 @@
+{
+  "milestone": "M79.2",
+  "status": "passed",
+  "capability": "generic_renderer_interface",
+  "render_modes": [
+    "deterministic",
+    "model_rendered",
+    "hybrid"
+  ],
+  "cli_command": "ordo template render",
+  "hidden_model_invocation": false,
+  "evidence_schema": "ordo.template.render_evidence.v1",
+  "job_schema": "ordo.template.render_job.v1",
+  "tests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "documentation": [
+    "docs/GENERIC_TEMPLATE_RENDERER.md",
+    "book/uk/chapters/appendix_f_praktychnyi_dovidnyk_opkodiv_i_yaml_atrybutiv.md"
+  ]
+}

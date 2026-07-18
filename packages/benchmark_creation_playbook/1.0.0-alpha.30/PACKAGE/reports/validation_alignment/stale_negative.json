@@ -1,0 +1,26 @@
+{
+  "status": "FAIL_CLOSED",
+  "node_id": "N_TEST_DOCUMENT",
+  "template_id": "T_TEST_DOCUMENT",
+  "external_contract": {
+    "contract_id": "DOC-PASSPORT-v1",
+    "contract_version": "1.0.0",
+    "contract_sha256": "a0b4c574528620d01156f6b3dd7428f031743f6d38146f03a05c65d53e855969"
+  },
+  "checksums": {
+    "external": "a0b4c574528620d01156f6b3dd7428f031743f6d38146f03a05c65d53e855969",
+    "internal": "ad9fd1e786bf834fa037d647d0ea54d078ee71128ca940783f603d1ac3a0667e"
+  },
+  "differences": [
+    {
+      "type": "stale_contract_binding"
+    }
+  ],
+  "unresolved_difference_count": 1,
+  "verdict_equivalence": {
+    "positive": true,
+    "negative": true,
+    "boundary": true
+  },
+  "regenerated": false
+}

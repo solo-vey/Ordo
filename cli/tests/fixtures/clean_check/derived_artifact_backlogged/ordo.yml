@@ -1,0 +1,4 @@
+package: clean_check.fixture.derived_artifact_backlogged
+source: source/program.ordo.yaml
+tests: tests/test_cases.yaml
+compiled: compiled/program.ir.json

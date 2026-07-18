@@ -1,0 +1,32 @@
+{
+  "milestone": "M45",
+  "title": "Release Quality / CI / Trust Semantics Fix",
+  "status": "passed",
+  "source_base": "M44",
+  "fixed_audit_findings": [
+    "CI workflow no longer references removed legacy packages",
+    "repository self-check validates workflow package paths",
+    "generated packaging metadata/cache is absent from source archive",
+    "self_consistency trust class mismatch is linted",
+    "ordo_hybrid_executor uses repeated_model_judgment for self_consistency",
+    "compiler validates generated IR op-codes against OPCODE_CATALOG.md",
+    "Process Rail and hybrid execution op-codes are registered",
+    "ordo test output explicitly reports static mode",
+    "assertion reports distinguish behavioral vs structural-only evaluation"
+  ],
+  "checks": {
+    "repo_check": "passed",
+    "cli_unit_tests": "passed: 8 tests",
+    "reference_packages": {
+      "packages/ordo_project_builder": ["lint", "compile", "test", "coverage"],
+      "packages/ordo_hybrid_executor": ["lint", "compile", "test", "coverage"],
+      "packages/history_event_guided_intake": ["lint", "compile", "test", "coverage", "lock", "validate-lock", "intake", "generate-output", "validate-output"]
+    },
+    "process_rail_helpers": ["validate-state", "next-step"],
+    "opcode_registry_check": "passed during compile",
+    "generated_metadata_absent": "passed"
+  },
+  "cli_version": "0.23.0",
+  "publication_mode": "source-available preview candidate",
+  "open_source_release": false
+}

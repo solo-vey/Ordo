@@ -1,0 +1,10 @@
+{
+  "book_id": "ordo_for_beginners",
+  "locale": "uk",
+  "baseline": "M72-pre-publication",
+  "chapter_count": 81,
+  "word_count": 97054,
+  "frozen_pdf": "../releases/frozen/uk/ordo_for_beginners_v0_12_M72_uk_frozen.pdf",
+  "pdf_regeneration_allowed": false,
+  "pdf_regeneration_condition": "Only after an explicit user instruction."
+}

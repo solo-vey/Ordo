@@ -1,0 +1,41 @@
+{
+  "schema": "ordo.graph.annotations.v1",
+  "run_id": "apf_v0_1_0_alpha_7_module_versioning_review",
+  "annotations": [
+    {
+      "target": "node:N_MODULE_VERSIONING_POLICY",
+      "highlight": "new",
+      "severity": "notice",
+      "source": "manual_review",
+      "comment": "New module-local versioning policy: APF version is independent from parent Ordo language package version."
+    },
+    {
+      "target": "node:N_GRAPH_ANNOTATION_OVERLAY_POLICY",
+      "highlight": "new",
+      "severity": "notice",
+      "source": "tool_review",
+      "comment": "Adopts graph generator v1.1 annotation overlay as optional review aid; focused context SVG remains default."
+    },
+    {
+      "target": "gate:G_MODULE_VERSIONING_POLICY_CONFIRMED",
+      "highlight": "important",
+      "severity": "blocker",
+      "source": "validator",
+      "comment": "Source YAML readiness should include explicit module versioning confirmation."
+    },
+    {
+      "target": "state:module_versioning_policy",
+      "highlight": "review",
+      "severity": "warning",
+      "source": "state_review",
+      "comment": "State captures module id, module version, language compatibility, and inclusion model."
+    },
+    {
+      "target": "state:graph_annotation_overlay_policy",
+      "highlight": "review",
+      "severity": "notice",
+      "source": "graph_review",
+      "comment": "Preview annotation layer is not a source of truth; it only improves SVG review."
+    }
+  ]
+}

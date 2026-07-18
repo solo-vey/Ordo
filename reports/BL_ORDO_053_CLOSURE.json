@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.task_closure.v1",
+  "task": "BL-ORDO-053",
+  "status": "closed",
+  "canonical_release_created": false,
+  "source_archive": "ORDO_ARF_EXTERNAL_ADOPTION_SUBMISSION_LIGA_TEAM_UA_LEVEL1_PENDING.zip",
+  "source_archive_sha256": "28078aec214f3b7990ef9a95a35c03e779840af368f5aac2901e95d3ce7f0d0c",
+  "source_checksum_verification": "14/14 passed",
+  "nested_zip_integrity": "passed",
+  "json_validation": "passed",
+  "privacy_scan": {
+    "emails": 0,
+    "urls": 0,
+    "ukrainian_text": 0
+  },
+  "independence_classification": {
+    "validated_level": "self_declared_independence_unverified",
+    "requested_level": "timestamp_verified",
+    "level_1_status": "pending_proof_attachment_and_independent_verification"
+  },
+  "important_declarations": {
+    "internal_repository_access": "yes",
+    "unpublished_material_access": "yes",
+    "direct_author_participation": "none_recorded",
+    "public_distribution_only_claim": false
+  }
+}

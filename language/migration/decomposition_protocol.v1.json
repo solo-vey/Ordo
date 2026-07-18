@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.migration_decomposition_protocol.v1",
+  "protocol_version": "M89.1",
+  "steps": [
+    "SOURCE_FREEZE",
+    "CLAUSE_INVENTORY",
+    "SEMANTIC_CLASSIFICATION",
+    "RESPONSIBILITY_SPLIT",
+    "DEPENDENCY_ORDERING",
+    "ORDO_MAPPING",
+    "TRACEABILITY_RECONCILIATION",
+    "MIGRATION_GATE"
+  ],
+  "canonical_units": [
+    "stage",
+    "action",
+    "decision",
+    "gate",
+    "state",
+    "artifact",
+    "evidence",
+    "authorization",
+    "recovery",
+    "exception"
+  ],
+  "forbidden_shortcuts": [
+    "summarize_then_generate",
+    "silently_resolve_ambiguity"
+  ]
+}

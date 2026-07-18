@@ -1,0 +1,104 @@
+{
+  "backlog_id": "BL-ORDO-001",
+  "run_id": "RUN-12",
+  "operation": "mismatch_review",
+  "mismatch_count": 9,
+  "classification_errors": 0,
+  "mutation_scope_errors": 0,
+  "protected_state_violations": 0,
+  "real_behavior_errors": 0,
+  "alias_gaps": 9,
+  "mismatches": [
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "Replace earlier alias with LU_CHANGE_STATE",
+      "expected_family": "apply_correction",
+      "scorer_family": null,
+      "mutation_scope": "business",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "Reposition active node to the alias step",
+      "expected_family": "backtrack",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "Suspend the process, preserving current state",
+      "expected_family": "pause_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "Suspend the process temporarily for later continuation",
+      "expected_family": "pause_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "Continue the process from the paused node",
+      "expected_family": "resume_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "Cancel the workflow and mark it closed as incomplete",
+      "expected_family": "exit_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "Report the current step; keep active question open",
+      "expected_family": "answer_process_meta",
+      "scorer_family": null,
+      "mutation_scope": "none",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "Store provenance note (company registry import); keep active question open",
+      "expected_family": "register_related_context",
+      "scorer_family": null,
+      "mutation_scope": "context",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "Store consumer note (used by compliance analysts); keep active question open",
+      "expected_family": "register_related_context",
+      "scorer_family": null,
+      "mutation_scope": "context",
+      "verdict": "alias_gap",
+      "real_behavior_error": false
+    }
+  ],
+  "decision": "all RUN-12 mismatches are scorer alias gaps"
+}

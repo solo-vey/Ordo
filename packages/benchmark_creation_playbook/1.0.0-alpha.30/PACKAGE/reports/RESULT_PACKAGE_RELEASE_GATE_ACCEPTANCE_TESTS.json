@@ -1,0 +1,50 @@
+{
+  "schema_version": "ordo.benchmark.result_package_release_gate.acceptance.v1",
+  "passed": true,
+  "passed_count": 6,
+  "total": 6,
+  "cases": [
+    {
+      "case": "base_valid",
+      "passed": true,
+      "returncode": 0,
+      "disposition": "PASS_RELEASE",
+      "expected": "PASS_RELEASE"
+    },
+    {
+      "case": "validator_fail",
+      "passed": true,
+      "returncode": 1,
+      "disposition": "BLOCKED_REGENERATE",
+      "expected": "BLOCKED_REGENERATE"
+    },
+    {
+      "case": "foreign_literal",
+      "passed": true,
+      "returncode": 1,
+      "disposition": "BLOCKED_REGENERATE",
+      "expected": "BLOCKED_REGENERATE"
+    },
+    {
+      "case": "stale_approval",
+      "passed": true,
+      "returncode": 1,
+      "disposition": "BLOCKED_REGENERATE",
+      "expected": "BLOCKED_REGENERATE"
+    },
+    {
+      "case": "not_ready",
+      "passed": true,
+      "returncode": 1,
+      "disposition": "NO_GO",
+      "expected": "NO_GO"
+    },
+    {
+      "case": "incomplete_manual_qa",
+      "passed": true,
+      "returncode": 1,
+      "disposition": "BLOCKED_REGENERATE",
+      "expected": "BLOCKED_REGENERATE"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "backlog_id": "BL-ORDO-010",
+  "operation": "add_canonical_chapters_M76_M80_and_sync_english",
+  "added_chapters": [
+    76,
+    77,
+    78,
+    79,
+    80
+  ],
+  "uk_chapter_count": 80,
+  "en_chapter_count": 80,
+  "missing_english_chapters": [],
+  "extra_english_chapters": [],
+  "uk_duplicate_numbers": {},
+  "en_duplicate_numbers": {},
+  "terminology_violations": [],
+  "current_implementation_coverage": [
+    "M76",
+    "M77",
+    "M78",
+    "M79",
+    "M80"
+  ],
+  "status": "passed"
+}

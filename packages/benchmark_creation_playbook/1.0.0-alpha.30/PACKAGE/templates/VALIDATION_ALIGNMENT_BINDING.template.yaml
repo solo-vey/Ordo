@@ -1,0 +1,11 @@
+schema_version: ordo.benchmark.validation_alignment_binding.v1
+node_id: N_DOCUMENT_GENERATION
+template_id: TEMPLATE_ID
+external_contract:
+  path: external_contract.yaml
+  contract_id: DOC-CONTRACT-ID
+  contract_version: 1.0.0
+  contract_sha256: SHA256
+internal_rules_path: internal_rules.yaml
+approved_extra_rule_ids: []
+report_path: reports/validation_alignment/N_DOCUMENT_GENERATION.json

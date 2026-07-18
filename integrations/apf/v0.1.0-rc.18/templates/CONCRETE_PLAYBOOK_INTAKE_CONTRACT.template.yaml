@@ -1,0 +1,31 @@
+concrete_playbook_intake:
+  package_id: null
+  problem_statement: null
+  triggering_situation: null
+  target_user:
+    role: null
+    experience_level: null
+    operating_context: null
+  decision_object:
+    description: null
+    decision_owner: null
+    decision_deadline: null
+  inputs:
+    required: []
+    optional: []
+    evidence_sources: []
+  constraints:
+    legal: []
+    operational: []
+    time: []
+    budget: []
+    technical: []
+  expected_terminal_outcomes: []
+  expected_output_artifacts: []
+  assumptions: []
+  unresolved_questions: []
+  out_of_scope: []
+  readiness:
+    completeness_status: incomplete
+    blocking_gaps: []
+    ready_for_decision_tree_design: false

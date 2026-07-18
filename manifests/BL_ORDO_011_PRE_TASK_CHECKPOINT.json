@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.task_checkpoint.v1",
+  "task": "BL-ORDO-011",
+  "merged_task": "BL-ORDO-009",
+  "baseline_archive": "ORDO_ARF_CANONICAL_BL_ORDO_007_CLOSED_2026-07-14.zip",
+  "baseline_archive_sha256": "53e37baa69370ce0dd9c67377c8e711c32f7977f20d757329c48011ad3f3e8c1",
+  "workspace_root": "ORDO_ARF_CANONICAL_BL_ORDO_007_CLOSED_2026-07-14",
+  "rollback": "Restore the baseline archive and verify its adjacent SHA-256 plus internal SHA256SUMS.txt before resuming.",
+  "status": "pre_task_checkpoint"
+}

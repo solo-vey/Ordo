@@ -1,0 +1,71 @@
+{
+  "milestone": "M65.1",
+  "package": "apf-history-event-factory-prompt-adoption-plan",
+  "status": "passed-adoption-plan-validation",
+  "checks": [
+    {
+      "check": "adoption_plan_present",
+      "status": "passed"
+    },
+    {
+      "check": "target_structure_present",
+      "status": "passed"
+    },
+    {
+      "check": "adoption_matrix_present",
+      "status": "passed"
+    },
+    {
+      "check": "validation_profile_present",
+      "status": "passed"
+    },
+    {
+      "check": "smoke_test_plan_present",
+      "status": "passed"
+    },
+    {
+      "check": "design_decision_present",
+      "status": "passed"
+    },
+    {
+      "check": "current_node_mapping_declared",
+      "status": "passed",
+      "mapped_nodes": [
+        "N_PATH_SELECT",
+        "N_SOURCE_FIELD",
+        "N_VALUE_SEMANTICS",
+        "N_DISPLAY_NAME_UK",
+        "N_DISPLAY_NAME_EN"
+      ]
+    },
+    {
+      "check": "source_yaml_rewritten",
+      "status": "passed",
+      "result": "none"
+    },
+    {
+      "check": "prompt_files_created_as_final_artifacts",
+      "status": "passed",
+      "result": "none"
+    },
+    {
+      "check": "runtime_core_changed",
+      "status": "passed",
+      "result": "none"
+    },
+    {
+      "check": "compiler_cli_opcode_changed",
+      "status": "passed",
+      "result": "none"
+    }
+  ],
+  "blockers": [],
+  "future_work": [
+    "Create prompt files as drafts",
+    "Add prompt_registry to History Event source YAML",
+    "Add prompt_refs to selected nodes",
+    "Add prompt manifest/checksum entries",
+    "Update README/START_HERE with final prompt links",
+    "Run prompt registry smoke tests"
+  ]
+}

@@ -1,0 +1,133 @@
+contract_id: apf.atomic_step_review.contract
+version: '0.1'
+status: active
+purpose: Define how APF reviews a generated-playbook step for atomicity and records
+  evidence, findings, proposed decomposition, and human decisions.
+applies_to:
+- generated_playbook_steps
+- generated_playbook_nodes
+- artifact_generation_steps
+- validation_steps
+- approval_steps
+- state_transition_steps
+review_timing:
+  after:
+  - step_contract_drafted
+  before:
+  - step_confirmation
+  - final_process_validation
+  - package_assembly
+required_inputs:
+- step_id
+- step_type
+- purpose
+- declared_inputs
+- declared_action
+- declared_outputs
+- completion_criteria
+- validation_behavior
+- confirmation_behavior
+- next_step
+- failure_route
+outcomes:
+- passed
+- recommendation
+- blocking_issue
+- needs_human_decision
+review_dimensions:
+  responsibility:
+    checks:
+    - single_primary_responsibility
+    - no_mixed_fact_reconstruction_decision_generation_validation_approval
+  output:
+    checks:
+    - single_observable_primary_output
+    - independent_artifacts_have_independent_status
+  boundaries:
+    checks:
+    - generation_separate_from_validation
+    - validation_separate_from_approval
+    - confirmed_state_transition_explicit
+  completion:
+    checks:
+    - full_completion_criteria_defined
+    - no_partial_success_transition
+  reconstruction:
+    checks:
+    - reconstruction_explicit_branch
+    - reconstruction_evidence_preserved
+    - confirmation_not_assumed
+  failure_localization:
+    checks:
+    - nearest_corrective_step_defined
+    - unrelated_confirmed_work_not_repeated
+  post_render_validation:
+    checks:
+    - materialized_artifact_inspected
+    - presence_only_validation_rejected
+severity_rules:
+  blocking_issue:
+  - generate_and_approve_combined
+  - hidden_reconstruction_used_as_fact
+  - partial_success_transition
+  - implicit_confirmed_state_transition
+  - independent_artifacts_share_single_status
+  - validation_does_not_inspect_materialized_artifact
+  recommendation:
+  - readability_only_decomposition
+  - safely_repeatable_mechanical_group
+  - broad_but_safe_failure_route
+  needs_human_decision:
+  - business_semantics_ambiguous
+  - ownership_or_approval_boundary_change
+  - multiple_valid_decomposition_options
+review_record_requirements:
+- review_id
+- step_ref
+- review_status
+- reviewed_at
+- reviewer
+- evidence
+- findings
+- proposed_decomposition
+- transition_decision
+- human_decision
+finding_requirements:
+- finding_id
+- rule_id
+- severity
+- observed_condition
+- evidence_refs
+- risk
+- recommended_action
+- blocking
+proposed_decomposition_requirements:
+- required
+- replacement_steps
+- preserved_inputs
+- preserved_business_rules
+- confirmation_points
+- failure_routes
+- semantic_change
+human_authority:
+  apf_may:
+  - detect
+  - record
+  - recommend_minimal_safe_split
+  - block_known_unsafe_pattern
+  apf_must_not:
+  - silently_rewrite_confirmed_business_logic
+  - change_owner_or_approval_authority
+  - assume_human_confirmation
+gate_behavior:
+  passed:
+  - passed
+  - recommendation
+  blocked:
+  - blocking_issue
+  human_resolution_required:
+  - needs_human_decision
+non_goals:
+- ordo_core_change
+- internal_apf_runtime_atomicity_enforcement
+- automatic_rewrite_of_confirmed_nodes

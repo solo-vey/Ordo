@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/blind_automation_profile.schema.json",
+  "title": "Ordo Blind Automation Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "execution_profile",
+    "self_scoring",
+    "driver_protocol",
+    "disclosure_policy",
+    "terminal_state_contract",
+    "fact_statuses",
+    "artifact_versioning",
+    "correction_invalidation",
+    "evaluation_contract",
+    "diagnostic_causal_review"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.blind_automation_profile.v1"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "execution_profile": {
+      "enum": [
+        "step_bound",
+        "semantic_adaptive"
+      ]
+    },
+    "self_scoring": {
+      "const": false
+    },
+    "driver_protocol": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 6,
+      "items": {
+        "enum": [
+          "start",
+          "ask",
+          "answer",
+          "present",
+          "correction",
+          "finish"
+        ]
+      }
+    },
+    "disclosure_policy": {
+      "type": "object",
+      "required": [
+        "mode",
+        "over_disclosure_guard"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "step_bound",
+            "minimal_relevant"
+          ]
+        },
+        "over_disclosure_guard": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "terminal_state_contract": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "T_COMPLETED",
+          "T_INPUT_BLOCKED",
+          "T_SCENARIO_EXHAUSTED",
+          "NO_GO",
+          "not_ready"
+        ]
+      },
+      "minItems": 5
+    },
+    "fact_statuses": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "confirmed",
+          "tentative",
+          "withdrawn",
+          "superseded",
+          "unavailable",
+          "irrelevant"
+        ]
+      },
+      "minItems": 6
+    },
+    "artifact_versioning": {
+      "type": "object",
+      "required": [
+        "immutable_versions",
+        "approval_scope"
+      ],
+      "properties": {
+        "immutable_versions": {
+          "const": true
+        },
+        "approval_scope": {
+          "const": "artifact_version"
+        }
+      },
+      "additionalProperties": true
+    },
+    "correction_invalidation": {
+      "type": "object",
+      "required": [
+        "invalidate_dependents",
+        "invalidate_approvals",
+        "consistency_review"
+      ],
+      "properties": {
+        "invalidate_dependents": {
+          "const": true
+        },
+        "invalidate_approvals": {
+          "const": true
+        },
+        "consistency_review": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "evaluation_contract": {
+      "type": "object",
+      "required": [
+        "independent",
+        "separate_process_and_document_scores"
+      ],
+      "properties": {
+        "independent": {
+          "const": true
+        },
+        "separate_process_and_document_scores": {
+          "const": true
+        },
+        "default_weighting": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "diagnostic_causal_review": {
+      "type": "object",
+      "required": [
+        "self_scoring_prohibited",
+        "corroboration_required",
+        "allowed_claim_statuses"
+      ],
+      "properties": {
+        "self_scoring_prohibited": {
+          "const": true
+        },
+        "corroboration_required": {
+          "const": true
+        },
+        "allowed_claim_statuses": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "model_reported",
+              "trace_corroborated",
+              "file_corroborated",
+              "reproduced",
+              "rejected"
+            ]
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "step_catalog": {
+      "type": "array"
+    },
+    "step_disclosure_bindings": {
+      "type": "object"
+    },
+    "intent_catalog": {
+      "type": "array"
+    },
+    "compound_intent_policy": {
+      "type": "string"
+    },
+    "ambiguity_policy": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "execution_profile": {
+            "const": "step_bound"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "step_catalog",
+          "step_disclosure_bindings"
+        ],
+        "properties": {
+          "disclosure_policy": {
+            "properties": {
+              "mode": {
+                "const": "step_bound"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution_profile": {
+            "const": "semantic_adaptive"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "intent_catalog",
+          "compound_intent_policy",
+          "ambiguity_policy"
+        ],
+        "properties": {
+          "disclosure_policy": {
+            "properties": {
+              "mode": {
+                "const": "minimal_relevant"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

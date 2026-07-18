@@ -1,0 +1,12 @@
+{
+  "schema_version": "ordo.playbook_release.v1",
+  "playbook_id": "ordo.benchmark_creation_playbook",
+  "playbook_version": "1.0.0-alpha.30",
+  "authoritative_package_identity": "ordo.benchmark_creation_playbook@1.0.0-alpha.30",
+  "lifecycle_state": "validated_alpha_release",
+  "component_role": "benchmark and empirical-evidence lifecycle governance",
+  "package_path": "packages/benchmark_creation_playbook/1.0.0-alpha.30/PACKAGE",
+  "source_package_sha256": "cfb80dfa00974dfd44036b2e261860d7a451ef2a9ccbdc87c385814dd8440a7e",
+  "compatibility_assessment": "packages/benchmark_creation_playbook/1.0.0-alpha.30/COMPATIBILITY_ASSESSMENT.json",
+  "current": true
+}

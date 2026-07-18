@@ -1,0 +1,22 @@
+suite_id: CSG-1-CLASSIFICATION-CONTRACT
+cases:
+- id: TC_CSG1_UNRELATED_NO_MUTATION
+  classification: unrelated_topic
+  state_mutation_allowed: false
+  action: redirect
+- id: TC_CSG1_UNCLASSIFIABLE_NO_MUTATION
+  classification: unclassifiable_input
+  state_mutation_allowed: false
+  action: request_classification_clarification
+- id: TC_CSG1_SAFETY_BYPASS
+  classification: unsafe_or_emergency_message
+  state_mutation_allowed: false
+  action: bypass_for_safety
+- id: TC_CSG1_RELATED_CONTEXT_NONCONFIRMING
+  classification: related_context
+  state_mutation_allowed: false
+  action: register_related_context
+- id: TC_CSG1_CONTROL_PAUSE
+  classification: pause_request
+  state_mutation_allowed: false
+  action: pause_process

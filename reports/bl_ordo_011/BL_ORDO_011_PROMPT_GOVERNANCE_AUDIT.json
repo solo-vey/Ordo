@@ -1,0 +1,227 @@
+{
+  "schema_version": "ordo.prompt_governance_audit.v1",
+  "status": "passed",
+  "package_results": [
+    {
+      "package": "history_event_guided_intake",
+      "registry_mode": "active",
+      "status": "passed",
+      "details": {
+        "schema_version": "ordo.prompt_registry_reconciliation.v1",
+        "package": "history_event_guided_intake",
+        "registry_entries": 13,
+        "manifest_entries": 13,
+        "attachment_count": 25,
+        "active_prompt_ids": [
+          "hp.artifact.history_event_passport.v1",
+          "hp.artifact.implementation_prompt.v1",
+          "hp.artifact.jira_task.v1",
+          "hp.localization.bilingual_texts.v1",
+          "hp.normalization.value_comparison.v1",
+          "hp.package.quick_start.v1",
+          "hp.qa.package_generation.v1",
+          "hp.repair.gate_failure_explanation.v1",
+          "hp.repair.missing_artifact_resolution.v1",
+          "hp.runtime.start.v1",
+          "hp.source_row.intake.v1",
+          "hp.source_type.clarification.v1"
+        ],
+        "conditional_dormant_prompt_ids": [
+          "hp.repair.backtracking_invalidation.v1"
+        ],
+        "orphaned_prompt_ids": [],
+        "duplicate_prompt_ids": [],
+        "missing_manifest_entries": [],
+        "extra_manifest_entries": [],
+        "missing_prompt_files": [],
+        "checksum_mismatches": [],
+        "deprecated_prompt_refs": [],
+        "attachments": {
+          "hp.artifact.history_event_passport.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.artifacts[0]"
+            }
+          ],
+          "hp.artifact.implementation_prompt.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.artifacts[2]"
+            }
+          ],
+          "hp.artifact.jira_task.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.artifacts[1]"
+            }
+          ],
+          "hp.localization.bilingual_texts.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.nodes[3]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.nodes[4]"
+            }
+          ],
+          "hp.normalization.value_comparison.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.nodes[6]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.nodes[6]"
+            }
+          ],
+          "hp.package.quick_start.v1": [
+            {
+              "channel": "startup_mode",
+              "path": "startup_package_profile.startup_modes[0]"
+            }
+          ],
+          "hp.qa.package_generation.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.artifacts[3]"
+            }
+          ],
+          "hp.repair.gate_failure_explanation.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[0]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[1]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[2]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[3]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[4]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[5]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[6]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[7]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[8]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[9]"
+            },
+            {
+              "channel": "prompt_ref",
+              "path": "root.gates[10]"
+            },
+            {
+              "channel": "startup_mode",
+              "path": "startup_package_profile.startup_modes[5]"
+            }
+          ],
+          "hp.repair.missing_artifact_resolution.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.outputs[0]"
+            }
+          ],
+          "hp.runtime.start.v1": [
+            {
+              "channel": "startup_mode",
+              "path": "startup_package_profile.startup_modes[1]"
+            }
+          ],
+          "hp.source_row.intake.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.nodes[5]"
+            }
+          ],
+          "hp.source_type.clarification.v1": [
+            {
+              "channel": "prompt_ref",
+              "path": "root.nodes[1]"
+            }
+          ]
+        },
+        "status": "passed"
+      }
+    },
+    {
+      "package": "ordo_applied_project_factory",
+      "registry_mode": "not_declared",
+      "status": "passed",
+      "details": {
+        "prompt_refs_without_registry": false
+      }
+    },
+    {
+      "package": "ordo_hybrid_executor",
+      "registry_mode": "not_declared",
+      "status": "passed",
+      "details": {
+        "prompt_refs_without_registry": false
+      }
+    },
+    {
+      "package": "ordo_project_builder",
+      "registry_mode": "not_declared",
+      "status": "passed",
+      "details": {
+        "prompt_refs_without_registry": false
+      }
+    }
+  ],
+  "apf_registry": {
+    "status": "passed",
+    "registry_entries": 6,
+    "manifest_entries": 6,
+    "duplicate_prompt_ids": [],
+    "checksum_mismatches": [],
+    "authority_violations": [],
+    "errors": []
+  },
+  "candidate_governance": {
+    "status": "passed",
+    "candidate_count": 2,
+    "review_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "he-prompt-candidate-001",
+        "candidate_status": "proposed",
+        "review_status": "pending",
+        "activation_allowed": false
+      },
+      {
+        "candidate_id": "he-prompt-candidate-002",
+        "candidate_status": "proposed",
+        "review_status": "pending",
+        "activation_allowed": false
+      }
+    ],
+    "errors": []
+  },
+  "internal_mini_prompt_review": {
+    "status": "passed",
+    "decision": "internal_mini_prompts_not_applicable_in_current_baseline"
+  },
+  "blocking_issues": []
+}

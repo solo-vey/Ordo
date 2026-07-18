@@ -1,0 +1,32 @@
+{
+  "schema": "ordo.arf.development_timeline.v1",
+  "timezone": "Europe/Vienna",
+  "start_interval": {
+    "after": "2026-07-15T13:55:14+02:00",
+    "before": "2026-07-15T14:32:02+02:00",
+    "precision": "evidence_bounded"
+  },
+  "end_time": "2026-07-15T16:43:17+02:00",
+  "end_time_basis": "RC post-unpack verification generated_at 2026-07-15T14:43:17.199194Z",
+  "approximate_active_working_time": "approximately 3 hours of continuous work",
+  "milestones": [
+    {
+      "id": "alpha_1",
+      "time": "2026-07-15T14:32:04+02:00"
+    },
+    {
+      "id": "first_cross_model_draft",
+      "time": "2026-07-15T15:48:48+02:00"
+    },
+    {
+      "id": "corrected_cross_model_draft",
+      "time": "2026-07-15T16:01:00+02:00",
+      "precision": "workspace_ingestion"
+    },
+    {
+      "id": "release_candidate_validation",
+      "time": "2026-07-15T16:43:17+02:00"
+    }
+  ],
+  "unknown_time_policy": "Unknown timestamps are marked not_recorded and are not inferred."
+}

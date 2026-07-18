@@ -1,0 +1,48 @@
+{
+  "milestone": "M60.1",
+  "title": "Multi-target Runtime Compilation Layer — target manifest and Ordo-code AI-facing view",
+  "status": "passed",
+  "scope": {
+    "included": [
+      "explicit json-ir target",
+      "compiled/program.ordo.view",
+      "compiled/targets.manifest.json",
+      "ordo render-runtime-view",
+      "ordo next-step --format ordo-code",
+      "ordo verify-targets",
+      "runtime package target inclusion",
+      "embedded runtime CLI allowlist for render-runtime-view and verify-targets",
+      "verify-session target-set integration"
+    ],
+    "excluded": [
+      "session.ordo.trace append-only proof program (planned for M60.2)",
+      "python-state-machine target",
+      "java-state-machine target",
+      "MCP server-side state",
+      "sandbox filesystem isolation"
+    ]
+  },
+  "core_rule": "JSON IR decides. Ordo-code explains. Session-trace proves.",
+  "validation": {
+    "full_cli_regression": "69/69 OK",
+    "focused_m60_1_tests": "4/4 OK",
+    "repo_check": "passed",
+    "runtime_package_build": "passed",
+    "embedded_verify_targets": "target-set: consistent",
+    "embedded_render_runtime_view": "passed",
+    "embedded_intake_submit": "passed",
+    "embedded_verify_session": "session-chain: intact"
+  },
+  "artifacts": {
+    "workspace": "ordo_github_workspace_v0_12_m60_1_multi_target_runtime_compilation.zip",
+    "developer_bundle": "ordo_developer_bundle_from_m60_1.zip",
+    "history_event_runtime_profile": "history_event_runtime_profile_m60_1.zip",
+    "history_event_dev_profile": "history_event_dev_profile_m60_1.zip"
+  },
+  "risk_notes": [
+    "ordo-code-view is not a second source of truth; it is derived from json-ir and verified through targets.manifest.json.",
+    "AI-facing target files remain under compiled/* and must not be read directly in Runtime Mode; CLI output remains the legal access path.",
+    "session-trace was intentionally deferred to M60.2 to avoid mixing target projection and execution proof changes."
+  ],
+  "generated_at_utc": "2026-07-07T09:26:18.935740+00:00"
+}

@@ -1,0 +1,173 @@
+{
+  "package": "APF v0.1.0-rc.13 working baseline",
+  "milestone": "PMP-6",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "present:docs/APF_PROMPT_SUFFICIENCY_REVIEW_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "present:docs/APF_MINI_PROMPT_CANDIDATE_PROPOSAL_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "present:docs/APF_GENERATED_PLAYBOOK_PROMPT_REGISTRY_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "present:docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "present:templates/PLAYBOOK_AUTHORED_MINI_PROMPT_PACKAGE.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "present:improvements/playbook_authored_mini_prompts/PMP_5_TEMPLATES_AND_APF_FLOW_INTEGRATION_REPORT.md",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_PROMPT_REGISTRY.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_PROMPT_ATTACHMENT_MAP.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_PROMPT_REGISTRY_MIGRATION_MAP.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_PROMPT_SUFFICIENCY_REVIEW_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_MINI_PROMPT_CANDIDATE_PROPOSAL_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_MINI_PROMPT_HUMAN_APPROVAL_GATE.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_GENERATED_PLAYBOOK_PROMPT_REGISTRY_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_GENERATED_PLAYBOOK_PROMPT_ATTACHMENT_MODEL.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_TEST_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:docs/APF_PLAYBOOK_AUTHORED_MINI_PROMPT_FLOW_INTEGRATION_CONTRACT.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/PROMPT_SUFFICIENCY_REVIEW_MATRIX.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/MINI_PROMPT_CANDIDATE_PROPOSAL.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/MINI_PROMPT_HUMAN_REVIEW_RECORD.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/GENERATED_PLAYBOOK_PROMPT_REGISTRY.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/GENERATED_PLAYBOOK_PROMPT_ATTACHMENT_MAP.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/GENERATED_PLAYBOOK_MINI_PROMPT_TEST_SCENARIO_CATALOG.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "yaml:templates/PLAYBOOK_AUTHORED_MINI_PROMPT_PACKAGE.template.yaml",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "json:templates/GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_REPORT.template.json",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "simple playbooks do not require empty registry",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "unapproved prompts inactive",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "prompt navigation authority prohibited",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "internal APF mini-prompts remain out of scope",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "BL-APF-001 remains deferred",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "Ordo core unchanged boundary present",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "check": "no unconditional prompt registry in concrete skeleton",
+      "status": "passed",
+      "detail": "[]"
+    },
+    {
+      "check": "no actual prompt candidates created",
+      "status": "passed",
+      "detail": "[]"
+    }
+  ],
+  "blocking_issues": []
+}

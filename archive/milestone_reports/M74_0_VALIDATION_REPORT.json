@@ -1,0 +1,26 @@
+{
+  "milestone": "M74.0",
+  "title": "Language Trust and Capability Maturity Baseline",
+  "status": "passed",
+  "checks": {
+    "audit_findings_recorded": true,
+    "capability_maturity_model_added": true,
+    "maturity_registry_added": true,
+    "maturity_schema_added": true,
+    "csg_status_reclassified": true,
+    "csg_spec_gate_separated": true,
+    "model_benchmark_not_falsely_claimed": true,
+    "production_readiness_not_falsely_claimed": true,
+    "release_manifest_hashes_refreshed": true
+  },
+  "artifacts": [
+    "M74_IMPLEMENTATION_PLAN.md",
+    "M74_0_LANGUAGE_TRUST_AND_MATURITY_BASELINE.md",
+    "M74_0_AUDIT_DECISION_MATRIX.md",
+    "language/CAPABILITY_MATURITY_MODEL.md",
+    "language/registry/CAPABILITY_MATURITY_VALUES.md",
+    "language/schemas/capability_maturity.schema.json",
+    "reports/M74_0_CSG_MATURITY_REASSESSMENT.json"
+  ],
+  "next_milestone": "M74.1"
+}

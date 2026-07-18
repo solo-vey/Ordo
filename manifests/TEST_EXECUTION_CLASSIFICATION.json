@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.test_execution_classification.v1",
+  "policy_version": "0.1.0",
+  "default_class": "parallel_safe",
+  "classes": {
+    "parallel_safe": "May run concurrently and must not mutate shared repository state.",
+    "workspace_reading": "Reads repository-wide state but writes only to isolated temporary locations.",
+    "workspace_mutating": "Writes into the shared repository tree or shared reports and must run serially.",
+    "performance_sensitive": "Asserts wall-clock or resource budgets and must run without CPU contention."
+  },
+  "serial_files": {
+    "test_ci_clean_gate_workflow.py": "workspace_mutating",
+    "test_ci_release_smoke_matrix.py": "workspace_mutating",
+    "test_cli_workflow.py": "workspace_mutating",
+    "test_m70_4_production_ci_release_validation.py": "workspace_mutating",
+    "test_m74_1_registry_completeness.py": "workspace_reading",
+    "test_m74_2_hygiene_scope_isolation.py": "workspace_mutating",
+    "test_m81_generated_report_isolation.py": "workspace_mutating",
+    "test_production_repo_hygiene_policy.py": "workspace_mutating",
+    "test_release_clean_gate_workflow.py": "workspace_mutating",
+    "test_repo_check_clean_integration.py": "workspace_mutating",
+    "test_bl_ordo_025_linter_performance.py": "performance_sensitive"
+  },
+  "rules": [
+    "workspace_mutating and performance_sensitive files must never enter parallel batches",
+    "negative fixture mutation must assert that the mutation changed the fixture",
+    "wall-clock budgets must execute after parallel workers have completed",
+    "classification changes require test evidence"
+  ]
+}

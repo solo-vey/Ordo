@@ -1,0 +1,512 @@
+ordo:
+  version: '0.12'
+  package: ordo.project_builder
+  control_level: standard
+  execution_mode: chat_internal
+includes:
+- library: ordo.process_rail.core
+  version: ^0.1.0
+  as: process_rail
+- library: ordo.project_authoring.validation
+  version: ^0.1.0
+  as: project_validation
+interaction_model:
+  human_role: pm
+  ai_role: ordo_developer
+  proactive_ai_behavior: required
+  raw_tool_output_policy: ai_interprets_before_user
+process_rail:
+  rail_id: ORDO_PROJECT_AUTHORING_RAIL
+  purpose: Створити або модернізувати Ordo-проєкт через PM dialogue без вимоги, щоб PM писав Ordo YAML напряму.
+  state_tracking: required
+  allow_deviation: true
+  require_resume_after_deviation: true
+  backtracking: enabled
+conversation_semantics:
+  on_unmatched_input:
+    strategy: classify_and_route
+    allowed_classes:
+    - answer_current_question
+    - answer_future_question
+    - correction_previous_answer
+    - clarification_request
+    - domain_context
+    - design_suggestion_request
+    - approval
+    - refusal
+    - out_of_scope
+    require_state_validation: true
+intent:
+  id: INTENT_ORDO_PROJECT_BUILDER
+  description: Допомогти PM створити новий Ordo-проєкт через діалог із AI Ordo Developer і отримати валідований Semantic JSON
+    IR.
+contract:
+  id: CONTRACT_ORDO_PROJECT_BUILDER
+  required:
+  - project_goal
+  - project_domain
+  - human_roles
+  - ai_roles
+  - process_rail_goal
+  - state_model_summary
+  - intake_or_execution_mode
+  - required_outputs
+  - deterministic_helper_scope
+  - approval_before_compile
+state:
+  id: STATE_ORDO_PROJECT_BUILDER
+  schema:
+    project_goal: null
+    project_domain: null
+    human_roles: []
+    ai_roles: []
+    process_rail_goal: null
+    state_model_summary: null
+    intake_or_execution_mode: null
+    required_outputs: []
+    deterministic_helper_scope: []
+    yaml_project_created: false
+    syntax_checked: false
+    semantic_ir_compiled: false
+    approval_before_compile: false
+    pm_visible_summary: null
+graph_contract:
+  entry_node: N_PROJECT_GOAL
+  external_terminal_targets:
+  - G_APPROVAL_BEFORE_COMPILE
+  - STOP_NEEDS_APPROVAL
+nodes:
+- id: N_PROJECT_GOAL
+  question: Який Ordo-проєкт ви хочете створити і яку проблему він має вирішувати?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      project_goal: $answer
+    next: N_PROJECT_DOMAIN
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_project_goal_in_plain_language
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: project goal remains unclear
+- id: N_PROJECT_DOMAIN
+  question: Яку доменну область або тип процесу має описувати цей Ordo-проєкт?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      project_domain: $answer
+    next: N_ROLES
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_domain_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: project domain remains unclear
+- id: N_ROLES
+  question: Хто буде людиною в цьому процесі і яку роль має виконувати ШІ?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      human_roles: $answer.human_roles
+      ai_roles: $answer.ai_roles
+    next: N_PROCESS_RAIL_GOAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_pm_user_ai_roles
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: roles remain unclear
+- id: N_PROCESS_RAIL_GOAL
+  question: 'Що саме Process Rail має утримувати: питання, рішення, gates, повернення назад, outputs або інше?'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      process_rail_goal: $answer
+    next: N_STATE_MODEL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_process_rail_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: process rail goal remains unclear
+- id: N_STATE_MODEL
+  question: Який мінімальний state треба вести, щоб процес не губився?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      state_model_summary: $answer
+    next: N_MODE_SELECT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_decisions_and_fields_to_track
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: state model remains unclear
+- id: N_MODE_SELECT
+  question: Це Ordo-проєкт для створення інших проєктів, для виконання готового процесу чи змішаний режим?
+  answer_type: enum
+  allowed_answers:
+  - authoring
+  - execution
+  - mixed
+  on_answer:
+    authoring:
+      update_state:
+        intake_or_execution_mode: authoring
+      next: N_REQUIRED_OUTPUTS
+    execution:
+      update_state:
+        intake_or_execution_mode: execution
+      next: N_REQUIRED_OUTPUTS
+    mixed:
+      update_state:
+        intake_or_execution_mode: mixed
+      next: N_REQUIRED_OUTPUTS
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_allowed_answers
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: mode selection did not match allowed modes
+- id: N_REQUIRED_OUTPUTS
+  question: Які output artifacts має створювати цей Ordo-проєкт?
+  answer_type: list
+  on_answer:
+    update_state:
+      required_outputs: $answer
+    next: N_DETERMINISTIC_HELPERS
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_output_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: required outputs remain unclear
+- id: N_DETERMINISTIC_HELPERS
+  question: Які частини процесу мають перевірятися детермінованими helper tools?
+  answer_type: list
+  on_answer:
+    update_state:
+      deterministic_helper_scope: $answer
+    next: N_APPROVAL_BEFORE_COMPILE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_helper_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: deterministic helper scope remains unclear
+- id: N_APPROVAL_BEFORE_COMPILE
+  question: Підтверджуєте, що AI Ordo Developer може створити YAML draft і запускати lint/compile checks?
+  answer_type: enum
+  allowed_answers:
+  - 'yes'
+  - 'no'
+  on_answer:
+    'yes':
+      update_state:
+        approval_before_compile: true
+      next: G_APPROVAL_BEFORE_COMPILE
+    'no':
+      next: STOP_NEEDS_APPROVAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: compile approval remains unclear
+gates:
+- id: G_PROJECT_GOAL_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.project_goal is not null
+  on_fail: block
+- id: G_PROJECT_DOMAIN_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.project_domain is not null
+  on_fail: block
+- id: G_ROLES_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.human_roles is not empty and state.ai_roles is not empty
+  on_fail: block
+- id: G_PROCESS_RAIL_GOAL_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.process_rail_goal is not null
+  on_fail: block
+- id: G_STATE_MODEL_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.state_model_summary is not null
+  on_fail: block
+- id: G_MODE_SELECTED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.intake_or_execution_mode is one of authoring, execution, mixed
+  on_fail: block
+- id: G_OUTPUTS_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.required_outputs is not empty
+  on_fail: block
+- id: G_HELPERS_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.deterministic_helper_scope is not empty
+  on_fail: block
+- id: G_APPROVAL_BEFORE_COMPILE
+  method: human
+  trust_class: human_decision
+  condition: approval_before_compile is confirmed by PM
+  on_fail: block
+assertions:
+- id: A_PM_DOES_NOT_WRITE_ORDO_DIRECTLY
+  polarity: must
+  condition: ai_ordo_developer_translates_pm_language_to_ordo_yaml
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_RAW_TOOL_OUTPUT_NOT_EXPOSED_BY_DEFAULT
+  polarity: not
+  condition: raw_cli_output_shown_to_pm_without_ai_interpretation
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_COMPILE_WITHOUT_PM_APPROVAL
+  polarity: not
+  condition: semantic_ir_compiled_without_approval
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+outputs:
+- id: OUT_ORDO_PROJECT_DRAFT
+  type: project
+  allowed_after:
+  - G_PROJECT_GOAL_PRESENT
+  - G_PROJECT_DOMAIN_PRESENT
+  - G_ROLES_PRESENT
+  - G_PROCESS_RAIL_GOAL_PRESENT
+  - G_STATE_MODEL_PRESENT
+  - G_MODE_SELECTED
+  - G_OUTPUTS_PRESENT
+  - G_HELPERS_PRESENT
+  - G_APPROVAL_BEFORE_COMPILE
+- id: OUT_SEMANTIC_JSON_IR
+  type: semantic_json_ir
+  allowed_after:
+  - G_APPROVAL_BEFORE_COMPILE
+freeform:
+- id: FF_AI_DEVELOPER_BEHAVIOR
+  role: ai_behavior_guidance
+  maturity: candidate_for_formalization
+  incident_count: 3
+  incident_threshold: 3
+  content: 'AI Ordo Developer має бути активним співрозмовником: ставити питання, радити, виявляти прогалини і пояснювати
+    технічні checks людською мовою.'
+contracts:
+- kind: contract
+  id: G_PROJECT_AUTHORING_CONTRACT
+  status: confirmed
+  fields:
+    project_goal:
+      value: state.project_goal
+      status: confirmed
+      required: true
+    project_domain:
+      value: state.project_domain
+      status: confirmed
+      required: true
+    required_outputs:
+      value: state.required_outputs
+      status: confirmed
+      required: true
+    approval_before_compile:
+      value: state.approval_before_compile
+      status: confirmed
+      required: true
+- kind: contract
+  id: G_PROCESS_RAIL_AUTHORING_CONTRACT
+  status: confirmed
+  fields:
+    human_roles:
+      value: state.human_roles
+      status: confirmed
+      required: true
+    ai_roles:
+      value: state.ai_roles
+      status: confirmed
+      required: true
+    process_rail_goal:
+      value: state.process_rail_goal
+      status: confirmed
+      required: true
+    deterministic_helper_scope:
+      value: state.deterministic_helper_scope
+      status: confirmed
+      required: true
+artifacts:
+- kind: artifact
+  id: PROJECT_BUILDER_README
+  path_pattern: README.md
+  format: markdown
+  required: true
+  description: Developer package README.
+- kind: artifact
+  id: PROJECT_BUILDER_IR
+  path_pattern: compiled/program.ir.json
+  format: json
+  required: true
+  description: Compiled Semantic JSON IR.
+- kind: artifact
+  id: PROJECT_BUILDER_COVERAGE_REPORT
+  path_pattern: reports/coverage_report.json
+  format: json
+  required: true
+  description: Coverage report with contract/artifact mapping.
+artifact_requirements:
+- kind: artifact_requirement
+  id: REQ_PROJECT_AUTHORING_CONTRACT_IN_README_AND_IR
+  when:
+    contract: G_PROJECT_AUTHORING_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: PROJECT_BUILDER_README
+    must_include_fields:
+    - project_goal
+    - project_domain
+    - required_outputs
+    - approval_before_compile
+  - artifact: PROJECT_BUILDER_IR
+    must_include_fields:
+    - project_goal
+    - project_domain
+    - required_outputs
+    - approval_before_compile
+- kind: artifact_requirement
+  id: REQ_PROCESS_RAIL_AUTHORING_CONTRACT_IN_README_AND_COVERAGE
+  when:
+    contract: G_PROCESS_RAIL_AUTHORING_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: PROJECT_BUILDER_README
+    must_include_fields:
+    - human_roles
+    - ai_roles
+    - process_rail_goal
+    - deterministic_helper_scope
+  - artifact: PROJECT_BUILDER_COVERAGE_REPORT
+    must_include_fields:
+    - human_roles
+    - ai_roles
+    - process_rail_goal
+    - deterministic_helper_scope
+coverage_rules:
+- kind: coverage_rule
+  id: COVERAGE_CONFIRMED_CONTRACTS_TO_ARTIFACTS
+  input: confirmed_contracts
+  output: artifact_requirements
+  failure_policy: no_go
+  description: Every confirmed authoring contract must have artifact coverage.
+go_no_go:
+  kind: go_no_go
+  status: go
+  blocking_issues: []
+  warnings: []
+startup_package_profile:
+  profile_id: ordo_project_builder_startup_profile
+  version: '1.0'
+  package_id: ordo_project_builder
+  default_startup_mode: runtime_start
+  default_language: uk
+  startup_root: ./
+  startup_modes:
+  - mode: runtime_start
+    audience: analyst
+    entry_file: START_PROMPT_RUNTIME_MODE.md
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: operator_start
+    audience: cli_operator
+    entry_file: START_HERE_RUNTIME_MODE.md
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: developer_maintenance
+    audience: developer
+    entry_file: README.md
+    required: recommended
+    visibility: developer
+    state_change_allowed: false
+    resume_supported: true
+  entry_files:
+  - path: README.md
+    role: readme
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_HERE_RUNTIME_MODE.md
+    role: start_here
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_PROMPT_RUNTIME_MODE.md
+    role: runtime_start_prompt
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: ordo.yml
+    role: manifest
+    required: 'true'
+    visibility: developer
+  readiness_gates:
+  - check_id: startup_package_profile_present
+    severity: error
+    profile: strict
+  - check_id: startup_entry_files_exist
+    severity: error
+    profile: strict
+  - check_id: startup_default_mode_exists
+    severity: error
+    profile: strict
+  - check_id: startup_authority_boundary_safe
+    severity: error
+    profile: strict
+  authority_boundary:
+    startup_files_may_override_gates: false
+    startup_files_may_confirm_state: false
+    startup_files_may_claim_validation_success: false
+artifact_sync:
+  sync_id: ordo_project_builder_artifact_sync
+  profile: strict
+  source_of_truth:
+  - path: source/program.ordo.yaml
+    role: package_source
+  - path: ordo.yml
+    role: package_manifest
+  derived_artifacts:
+  - artifact_id: reports_cli_validation_summary_md
+    path: reports/CLI_VALIDATION_SUMMARY.md
+    role: validation_report
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: 13e94252b6eda04c43f59a9c0e0c6ca85aa8bd3c8e82ff5ac2cf25ec1fb7f608
+  authority_boundary:
+    derived_artifacts_may_override_source_of_truth: false

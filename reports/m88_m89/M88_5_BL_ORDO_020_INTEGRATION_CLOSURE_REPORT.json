@@ -1,0 +1,61 @@
+{
+  "schema_version": "ordo.m88.bl_ordo_020_closure.v1",
+  "milestone": "M88.5",
+  "status": "passed",
+  "bl_ordo_020": "closed",
+  "closure_gate": {
+    "schema_version": "ordo.bl_ordo_020_closure_gate.v1",
+    "status": "passed",
+    "issues": [],
+    "requirements": {
+      "initial_antipattern_count": 6,
+      "full_rule_coverage": true,
+      "full_activation_coverage": true,
+      "blocking_enforcement": true,
+      "regression_passed": true,
+      "integration_passed": true
+    }
+  },
+  "targeted_regression": {
+    "passed": 58,
+    "failed": 0
+  },
+  "implemented": {
+    "apf_activation_profile": true,
+    "gate_adapter": true,
+    "blocking_enforcement": true,
+    "advisory_enforcement": true,
+    "context_specific_activation": true,
+    "end_to_end_fixtures": true,
+    "closure_gate": true,
+    "backlog_closure": true
+  },
+  "backlog_updated": true,
+  "followup": "BL-ORDO-024 Process Pattern Engineering remains open",
+  "changed_files": [
+    {
+      "path": "language/integration/antipattern_activation_profile.apf.v1.json",
+      "sha256": "6981809596d2ccf8d77625da53e98ccf39dae353e8859f3b503af4199c64bdae"
+    },
+    {
+      "path": "language/integration/antipattern_gate_adapter.py",
+      "sha256": "38c5ebd6b8ea45af895b77fbbe5296e813f171deca84677ac44532b9ef9be30f"
+    },
+    {
+      "path": "language/integration/bl_ordo_020_closure_gate.py",
+      "sha256": "72fe6be1846e8ce43ba152e38aa7ca82139993fd85ef6c87d8a0ee01a4ae6dd4"
+    },
+    {
+      "path": "language/runtime/fixtures/antipattern_integration_cases.v1.json",
+      "sha256": "29aafb97fed03122c2c59b977bb004a1a761878b74056dd63de21b49e3c514bb"
+    },
+    {
+      "path": "cli/tests/test_m88_5_integration_closure.py",
+      "sha256": "62af01b066fb806c6d1758d51b8851813e3a86a9e74fea2a6b07a5b03466b0e2"
+    },
+    {
+      "path": "CONSOLIDATED_BACKLOG.md",
+      "sha256": "c8ec321030fa5c8763571f1a39dc772a86063811f915f51e6d90b524eced0d9a"
+    }
+  ]
+}

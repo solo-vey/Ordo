@@ -1,0 +1,21 @@
+rules:
+- rule_id: R_REQUIRED_TITLE
+  requirement:
+    kind: required
+    field: title
+  condition: always
+  severity: error
+  blocking: true
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass
+- rule_id: R_REQUIRED_OWNER
+  requirement:
+    kind: required
+    field: owner
+  condition: always
+  severity: error
+  blocking: true
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass

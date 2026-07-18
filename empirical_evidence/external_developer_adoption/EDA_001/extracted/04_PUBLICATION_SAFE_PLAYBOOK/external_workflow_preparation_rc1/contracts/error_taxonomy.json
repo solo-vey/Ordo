@@ -1,0 +1,17 @@
+{
+  "schema": "external.workflow_preparation.errors.v1",
+  "errors": [
+    "INPUT_MISSING",
+    "INPUT_INVALID",
+    "IDENTITY_AMBIGUOUS",
+    "SOURCE_UNAVAILABLE",
+    "EXTERNAL_DEPENDENCY_UNCONFIRMED",
+    "EXTERNAL_LINK_MISSING",
+    "SIGNOFF_INCOMPLETE",
+    "TRACEABILITY_BROKEN",
+    "STALE_ARTIFACT",
+    "STATE_CONFLICT",
+    "RESUME_CONFLICT",
+    "OUT_OF_SCOPE_REQUEST"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/migration_loss_finding.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "finding_id",
+    "clause_id",
+    "loss_type",
+    "severity",
+    "message",
+    "blocking"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.migration_loss_finding.v1"
+    },
+    "finding_id": {
+      "type": "string",
+      "pattern": "^LOSS-[A-Z0-9_-]{3,127}$"
+    },
+    "clause_id": {
+      "type": "string",
+      "pattern": "^C-[0-9]{4,}$"
+    },
+    "loss_type": {
+      "enum": [
+        "unmapped_clause",
+        "partial_coverage",
+        "mandatory_strength_downgrade",
+        "authorization_boundary_loss",
+        "decision_semantic_loss",
+        "evidence_requirement_loss",
+        "unsupported_exclusion",
+        "unit_merge_without_equivalence",
+        "construct_mapping_missing"
+      ]
+    },
+    "severity": {
+      "enum": [
+        "warning",
+        "error",
+        "critical"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 5
+    },
+    "blocking": {
+      "type": "boolean"
+    },
+    "mapped_unit_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^U-[0-9]{4,}$"
+      }
+    }
+  }
+}

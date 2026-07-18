@@ -1,0 +1,16 @@
+{
+  "event_id": "EVT-0001",
+  "run_id": "RUN_01",
+  "step_id": "T001",
+  "step_sequence": 1,
+  "attempt": 1,
+  "short_summary": "перевірено вхідний пакет",
+  "status": "PASS",
+  "authoritative_evidence_refs": [
+    "reports/preflight.json"
+  ],
+  "emitted_at": "2026-07-17T12:00:00Z",
+  "language": "uk",
+  "informational_only": true,
+  "is_terminal": false
+}

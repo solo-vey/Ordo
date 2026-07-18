@@ -1,0 +1,165 @@
+{
+  "schema_version": "ordo.apf.antipattern_rule_coverage_report.v1",
+  "package_id": "ordo.applied_project_factory",
+  "status": "passed",
+  "canonical_rule_count": 6,
+  "covered_rule_count": 6,
+  "source_node_count": 10,
+  "hook_count": 13,
+  "coverage_counts": {
+    "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE": 2,
+    "FINAL_LABEL_OVERCLAIM": 4,
+    "MANDATORY_BRANCH_SHORT_CIRCUIT": 3,
+    "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION": 7,
+    "PROMPT_AS_IMPLEMENTATION": 4,
+    "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION": 2
+  },
+  "rule_bindings": {
+    "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE": [
+      {
+        "source_id": "N_FACTORY_MODE_SELECTION",
+        "hook_id": "APH-FACTORY-MODE-SELECTION",
+        "context_type": "conversation",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_CURRENT_NODE_REVIEW_DECISION_GATE",
+        "hook_id": "APH-CURRENT-NODE-REVIEW-DECISION",
+        "context_type": "runtime_state",
+        "phase": "after_state_update_before_transition"
+      }
+    ],
+    "FINAL_LABEL_OVERCLAIM": [
+      {
+        "source_id": "N_TERMINAL_BRANCH_FULL_VALIDATION_GATE",
+        "hook_id": "APH-TERMINAL-FULL-VALIDATION-PACKAGE",
+        "context_type": "package_state",
+        "phase": "before_package_finalization"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_VALIDATION_RESULT_REVIEW",
+        "hook_id": "APH-SHARED-TAIL-RESULT-REVIEW",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION",
+        "hook_id": "APH-HANDOFF-PACKAGE-GENERATION",
+        "context_type": "package_state",
+        "phase": "before_package_finalization"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_FINAL_HANDOFF",
+        "hook_id": "APH-FINAL-HANDOFF",
+        "context_type": "evidence_state",
+        "phase": "before_final_status_claim"
+      }
+    ],
+    "MANDATORY_BRANCH_SHORT_CIRCUIT": [
+      {
+        "source_id": "N_CURRENT_NODE_REVIEW_DECISION_GATE",
+        "hook_id": "APH-CURRENT-NODE-REVIEW-DECISION",
+        "context_type": "runtime_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_TERMINAL_BRANCH_FULL_VALIDATION_GATE",
+        "hook_id": "APH-TERMINAL-FULL-VALIDATION-PROCESS",
+        "context_type": "process_trace",
+        "phase": "before_package_finalization"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE",
+        "hook_id": "APH-SHARED-TAIL-UNFINISHED-BRANCHES",
+        "context_type": "runtime_state",
+        "phase": "after_state_update_before_transition"
+      }
+    ],
+    "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION": [
+      {
+        "source_id": "N_TERMINAL_BRANCH_FULL_VALIDATION_GATE",
+        "hook_id": "APH-TERMINAL-FULL-VALIDATION-PACKAGE",
+        "context_type": "package_state",
+        "phase": "before_package_finalization"
+      },
+      {
+        "source_id": "N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH",
+        "hook_id": "APH-MINIMAL-PATCH-VALIDATION",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_MINIMAL_VALIDATION",
+        "hook_id": "APH-SHARED-TAIL-MINIMAL-VALIDATION",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_VALIDATION_RESULT_REVIEW",
+        "hook_id": "APH-SHARED-TAIL-RESULT-REVIEW",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE",
+        "hook_id": "APH-SHARED-TAIL-UNFINISHED-COMPLETENESS",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION",
+        "hook_id": "APH-HANDOFF-PACKAGE-GENERATION",
+        "context_type": "package_state",
+        "phase": "before_package_finalization"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_FINAL_HANDOFF",
+        "hook_id": "APH-FINAL-HANDOFF",
+        "context_type": "evidence_state",
+        "phase": "before_final_status_claim"
+      }
+    ],
+    "PROMPT_AS_IMPLEMENTATION": [
+      {
+        "source_id": "N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY",
+        "hook_id": "APH-INCREMENTAL-YAML-PATCH-IMPLEMENTATION-EVIDENCE",
+        "context_type": "process_trace",
+        "phase": "before_repository_mutation"
+      },
+      {
+        "source_id": "N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH",
+        "hook_id": "APH-MINIMAL-PATCH-VALIDATION",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_MINIMAL_VALIDATION",
+        "hook_id": "APH-SHARED-TAIL-MINIMAL-VALIDATION",
+        "context_type": "evidence_state",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION",
+        "hook_id": "APH-HANDOFF-PACKAGE-GENERATION",
+        "context_type": "package_state",
+        "phase": "before_package_finalization"
+      }
+    ],
+    "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION": [
+      {
+        "source_id": "N_FACTORY_MODE_SELECTION",
+        "hook_id": "APH-FACTORY-MODE-SELECTION",
+        "context_type": "conversation",
+        "phase": "after_state_update_before_transition"
+      },
+      {
+        "source_id": "N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY",
+        "hook_id": "APH-INCREMENTAL-YAML-PATCH-AUTHORIZATION",
+        "context_type": "repository_state",
+        "phase": "before_repository_mutation"
+      }
+    ]
+  },
+  "errors": [],
+  "warnings": []
+}

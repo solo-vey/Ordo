@@ -1,0 +1,41 @@
+{
+  "module": "ordo_applied_project_factory",
+  "version": "0.1.0-alpha.19",
+  "patch_name": "shared_validation_handoff_tail",
+  "human_review_status": "closed",
+  "patch_status": "applied",
+  "scope": [
+    "close shared validation/handoff tail as reusable final path",
+    "add explicit source YAML generation step after approval",
+    "add minimal validation with simplified failure branch",
+    "add full validation decision and skipped-for-alpha limitation handling",
+    "add validation result review and scoped correction loop",
+    "add final unfinished-items gate",
+    "add file-first handoff package generation and final handoff acceptance/revision",
+    "remove direct references to legacy terminal full validation gate from active join paths"
+  ],
+  "minimal_validation": {
+    "yaml_parse": "passed",
+    "ordo_lint": "passed",
+    "ordo_compile_force": "passed",
+    "structural_next_reference_check": "passed",
+    "full_validation": "deferred_by_design"
+  },
+  "cli_outputs": {
+    "lint": "/mnt/data/alpha19_lint.out",
+    "compile": "/mnt/data/alpha19_compile.out",
+    "package": "/mnt/data/alpha19_package.out",
+    "structural_check": "/mnt/data/apf_alpha19_structural_next_reference_check.json"
+  },
+  "artifacts": {
+    "dev_package": "/mnt/data/ordo_applied_project_factory_v0_1_0_alpha_19_dev.zip",
+    "workspace_package": "/mnt/data/ordo_github_workspace_v0_12_apf_v0_1_0_alpha_19_shared_validation_handoff_tail.zip",
+    "dev_package_sha256": "43ec86fc789145cbb1eb81e92ffe6690c8f8f247c44c30bb7aa15c463a85a98a",
+    "workspace_package_sha256": "75a937254e8497222fcee08b9a112257f9adb48e08832d4b904aac021b55cca2"
+  },
+  "notes": [
+    "Skipped full validation is recorded as an alpha limitation and never as passed.",
+    "Failed minimal validation blocks handoff and routes to correction or blocked/deferred state.",
+    "Handoff package generation is file-first and gated by final readiness."
+  ]
+}

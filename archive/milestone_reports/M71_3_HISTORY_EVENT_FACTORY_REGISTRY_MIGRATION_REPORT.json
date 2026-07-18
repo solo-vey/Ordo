@@ -1,0 +1,21 @@
+{
+  "milestone": "M71.3",
+  "status": "implemented-history-event-factory-registry-migration",
+  "prompt_count": 13,
+  "prompt_ref_count": 22,
+  "legacy_mapping_count": 13,
+  "business_navigation_changed": false,
+  "tests": {
+    "m71_3_and_m71_2": 11,
+    "bounded_regression": 19,
+    "status": "passed"
+  },
+  "clean_check": {
+    "profile": "standard",
+    "status": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "checks": 43
+  },
+  "archives_created": false
+}

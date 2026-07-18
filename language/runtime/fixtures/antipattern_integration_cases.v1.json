@@ -1,0 +1,121 @@
+{
+  "schema_version": "ordo.antipattern_integration_cases.v1",
+  "cases": [
+    {
+      "case_id": "INT-CONVERSATION-BLOCK",
+      "context_type": "conversation",
+      "state": {
+        "conversation": {
+          "scope_confirmed": true
+        },
+        "repository": {
+          "mutation_started": true
+        },
+        "authorization": {
+          "repository_mutation": false
+        },
+        "node": {
+          "responsibilities": [
+            "complexity_assessment"
+          ],
+          "execution_started": false
+        }
+      },
+      "expected_decision": "block",
+      "expected_antipattern": "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION"
+    },
+    {
+      "case_id": "INT-PACKAGE-BLOCK",
+      "context_type": "package_state",
+      "state": {
+        "package": {
+          "structure_valid": true,
+          "missing_mandatory_artifacts": [
+            "source_code"
+          ],
+          "final_label": "release_candidate"
+        },
+        "evidence": {
+          "supports_final_label": false
+        }
+      },
+      "expected_decision": "block",
+      "expected_antipattern": "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION"
+    },
+    {
+      "case_id": "INT-PROCESS-BLOCK",
+      "context_type": "process_trace",
+      "state": {
+        "artifacts": {
+          "implementation_prompt": "present"
+        },
+        "claims": {
+          "implementation_complete": true
+        },
+        "process": {
+          "required_stages": [
+            "IMPLEMENTATION",
+            "REVIEW",
+            "TEST",
+            "PACKAGE"
+          ],
+          "completed_stages": [],
+          "current_stage": "PACKAGE",
+          "stage_order": [
+            "IMPLEMENTATION",
+            "REVIEW",
+            "TEST",
+            "PACKAGE"
+          ]
+        },
+        "package": {
+          "final_label": null
+        },
+        "evidence": {
+          "supports_final_label": true
+        }
+      },
+      "expected_decision": "block",
+      "expected_antipattern": "PROMPT_AS_IMPLEMENTATION"
+    },
+    {
+      "case_id": "INT-CONVERSATION-SAFE",
+      "context_type": "conversation",
+      "state": {
+        "conversation": {
+          "scope_confirmed": true
+        },
+        "repository": {
+          "mutation_started": false
+        },
+        "authorization": {
+          "repository_mutation": false
+        },
+        "node": {
+          "responsibilities": [
+            "complexity_assessment"
+          ],
+          "execution_started": false,
+          "route_explicit": false,
+          "authorization_explicit": false
+        }
+      },
+      "expected_decision": "allow"
+    },
+    {
+      "case_id": "INT-PACKAGE-SAFE",
+      "context_type": "package_state",
+      "state": {
+        "package": {
+          "structure_valid": true,
+          "missing_mandatory_artifacts": [],
+          "final_label": "implementation_ready"
+        },
+        "evidence": {
+          "supports_final_label": true
+        }
+      },
+      "expected_decision": "allow"
+    }
+  ]
+}

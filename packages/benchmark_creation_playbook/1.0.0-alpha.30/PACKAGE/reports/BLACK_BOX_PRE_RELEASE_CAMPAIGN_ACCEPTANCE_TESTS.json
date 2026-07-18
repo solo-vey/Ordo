@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}

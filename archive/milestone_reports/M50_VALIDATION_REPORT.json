@@ -1,0 +1,34 @@
+{
+  "milestone": "M50",
+  "title": "Feedback Decision / Post-Review Change Planning",
+  "status": "passed",
+  "scope": "documentation_and_decision_process_only",
+  "new_language_semantics": false,
+  "new_cli_runtime_behavior": false,
+  "new_package_business_logic": false,
+  "pdf_regenerated": false,
+  "checks": {
+    "repo_check_clean_source": "passed",
+    "cli_unit_tests": "passed_19_of_19",
+    "active_reference_packages_lint_compile_test_coverage": "passed",
+    "project_builder_helper_flow": "passed",
+    "hybrid_executor_helper_flow": "passed",
+    "history_event_output_flow": "passed",
+    "history_event_validate_artifacts_consistency_go_no_go": "passed"
+  },
+  "changed_files": [
+    "docs/external_feedback/M50_FEEDBACK_DECISION_PLAN.md",
+    "docs/external_feedback/POST_REVIEW_CHANGE_PLAN_M50.md",
+    "docs/external_feedback/FEEDBACK_DECISION_RECORD_TEMPLATE_M50.md",
+    "docs/reports/M50_FEEDBACK_DECISION_PLANNING_REPORT.md",
+    "docs/design_decisions/DD-ORDO-M50-001_FEEDBACK_DECISION_PLANNING.md",
+    "book/source/chapters/chapter_45_feedback_decision_planning.md",
+    "book/source/book_manifest.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "known_limitations": [
+    "No external feedback items were applied in M50; the package defines the decision route for future items.",
+    "No PDF book regeneration was performed by request."
+  ]
+}

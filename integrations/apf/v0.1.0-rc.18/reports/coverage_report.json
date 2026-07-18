@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "summary": {
+    "test_cases": 249,
+    "gates_total": 107,
+    "gates_covered": 94,
+    "assertions_total": 79,
+    "assertions_covered": 77,
+    "nodes_total": 99,
+    "nodes_covered": 99,
+    "freeform_total": 2
+  },
+  "coverage": {
+    "gates_percent": 87.85,
+    "assertions_percent": 97.47,
+    "nodes_percent": 100.0
+  },
+  "uncovered": {
+    "gates": [
+      "G_COMPILE_UTILITY_COMMAND_DOCUMENTED",
+      "G_COMPILE_UTILITY_LOCATION_DOCUMENTED",
+      "G_COMPILE_UTILITY_OUTPUT_TARGETS_DOCUMENTED",
+      "G_DERIVED_ARTIFACT_SYNC_BLOCKS_FINAL_ARCHIVE_WHEN_STALE",
+      "G_HUMAN_REVIEW_POINTS_LISTED",
+      "G_MODEL_CHANGES_REQUIRE_DERIVED_ARTIFACT_SYNC",
+      "G_ORDO_VERSION_SET",
+      "G_PROCESS_RAIL_POLICIES_DEFINED",
+      "G_PROGRAM_COMPATIBILITY_POLICY_PRESENT",
+      "G_REQUIRED_DERIVED_ARTIFACTS_CURRENT_OR_RESOLVED",
+      "G_RUNTIME_CAPABLE_PROFILE_REQUIRES_RUNTIME_COMPILATION_EVIDENCE",
+      "G_STARTUP_POLICIES_DEFINED",
+      "G_START_PROMPT_REFERENCES_RUNTIME_OR_SOURCE_PROFILE"
+    ],
+    "assertions": [
+      "A_AI_CLAIMS_DO_NOT_REPLACE_CLI_EVIDENCE",
+      "A_AUTHORITATIVE_MODEL_CHANGE_REQUIRES_DERIVED_ARTIFACT_SYNC"
+    ],
+    "nodes": []
+  },
+  "contract_artifact_coverage": {
+    "status": "passed",
+    "mode": "contract_artifact_mapping",
+    "summary": {
+      "contracts_total": 6,
+      "confirmed_contracts": 6,
+      "artifact_requirements_total": 8,
+      "errors": 0,
+      "warnings": 0
+    },
+    "issues": [],
+    "checked_contracts": [
+      "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "G_FACTORY_SCOPE_CONTRACT",
+      "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT"
+    ],
+    "known_limitation": "M46.2 validates declared mappings only; rendered artifact content validation is planned for a later M46 step."
+  },
+  "freeform_maturity": [
+    {
+      "id": "FF_APPLIED_PROJECT_FACTORY_BEHAVIOR",
+      "maturity": "candidate_for_formalization",
+      "incident_count": 3,
+      "incident_threshold": 3
+    },
+    {
+      "id": "FF_MODULE_VERSIONING_DECISION",
+      "maturity": "stable",
+      "incident_count": 1,
+      "incident_threshold": 2
+    }
+  ]
+}

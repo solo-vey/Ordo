@@ -1,0 +1,14 @@
+{
+  "schema_version": "ordo.backlog_closure_report.v1",
+  "task_id": "BL-ORDO-041",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.8",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.5.0-rc.2",
+  "source_package_files": 92,
+  "normalized_artifacts": 45,
+  "historical_scores_changed": false,
+  "bounded_conclusions_changed": false,
+  "validation": "passed",
+  "blocking_issues": 0
+}

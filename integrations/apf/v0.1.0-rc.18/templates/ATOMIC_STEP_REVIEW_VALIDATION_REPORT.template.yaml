@@ -1,0 +1,51 @@
+atomic_step_review_validation_report:
+  package_id: null
+  validation_contract_version: '0.1'
+  status: blocked
+  executed_at: null
+  summary:
+    active_steps: 0
+    reviewed_steps: 0
+    blocking_failures: 0
+    advisories: 0
+    pending_human_decisions: 0
+  gates:
+    ASR_RECORD_COVERAGE_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_GATE_EVIDENCE_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_BLOCKING_FINDINGS_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_HUMAN_DECISION_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_REVIEW_AFTER_DECOMPOSITION_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_ARTIFACT_LEVEL_STATUS_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_POST_RENDER_REVIEW_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_LOCAL_FAILURE_ROUTE_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+    ASR_MANIFEST_INTEGRITY_GATE:
+      status: not_run
+      evidence_refs: []
+      diagnostics: []
+  release_decision:
+    allowed: false
+    reason_codes: []

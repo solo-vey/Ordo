@@ -1,0 +1,36 @@
+RenderingTemplate:
+  type: object
+  required: [id, render_mode, renderer, template]
+  properties:
+    id:
+      type: string
+    type:
+      type: string
+    format:
+      enum: [markdown, json, yaml, text]
+    path:
+      type: string
+    template:
+      type: string
+    render_mode:
+      enum: [deterministic, model_assisted]
+    renderer:
+      enum: [ordo.simple, ai.markdown, ai.yaml, ai.json]
+    requires_model_rendering:
+      type: boolean
+    validation:
+      enum: [strict_confirmed_state_only]
+    tbd_policy:
+      enum: [preserve_tbd_until_confirmed]
+    explicit_tbd_defaults:
+      type: array
+      items:
+        type: string
+    forbidden_inference_rules:
+      type: array
+      items:
+        type: string
+    forbidden_unconfirmed_terms:
+      type: array
+      items:
+        type: string

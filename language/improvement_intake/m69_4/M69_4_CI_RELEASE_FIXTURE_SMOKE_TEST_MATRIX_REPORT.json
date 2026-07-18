@@ -1,0 +1,18 @@
+{
+  "milestone": "M69.4",
+  "status": "implemented-validation-matrix / passed",
+  "scope": "CI/release fixture and smoke-test matrix",
+  "added": [
+    "cli/tests/test_ci_release_smoke_matrix.py",
+    "cli/docs/CI_RELEASE_FIXTURE_SMOKE_TEST_MATRIX.md"
+  ],
+  "unchanged": [
+    "packages/*",
+    "cli/ordo/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles"
+  ]
+}

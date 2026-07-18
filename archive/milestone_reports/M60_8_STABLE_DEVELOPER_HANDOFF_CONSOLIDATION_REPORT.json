@@ -1,0 +1,44 @@
+{
+  "milestone": "M60.8",
+  "name": "Stable Developer Handoff Consolidation",
+  "status": "passed-docs-consolidation",
+  "base": "M60.7 Line Closure / M60.7.5 bounded noise testcase artifacts",
+  "change_level": {
+    "ordo_runtime_core": "L0 no semantic change",
+    "scoring_weights": "L0 no change",
+    "pathwalk_code": "L0 docs/package consolidation only",
+    "documentation": "L1 consolidation"
+  },
+  "stable_base": {
+    "benchmark_prep_reference": "M60.6.4",
+    "real_module_testcase_generation": "M60.7.5",
+    "handoff": "M60.8"
+  },
+  "backlog": [
+    {
+      "milestone": "M61.0",
+      "name": "Human Review Scenario Cards"
+    },
+    {
+      "milestone": "M62.0",
+      "name": "Runtime Execution of Generated Testcases"
+    }
+  ],
+  "deferred_improvements": [
+    "backtrack noise pattern",
+    "correction_backtrack noise pattern",
+    "runtime execution of generated cases",
+    "scoring generated real-module cases",
+    "model/API benchmark orchestration",
+    "watchdog/process-boundary hardening"
+  ],
+  "blocked_not_stable_bases": [
+    "M60.6.5",
+    "M60.6.4.1"
+  ],
+  "pdf_generated": false,
+  "notes": [
+    "M60.8 is a handoff consolidation milestone, not a new feature implementation.",
+    "Runtime-harness/transcript-replay matrix is intentionally not used as an acceptance gate."
+  ]
+}

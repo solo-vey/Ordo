@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.component_compatibility_assessment.v1",
+  "component_id": "ordo.benchmark_creation_playbook",
+  "component_version": "1.0.0-alpha.30",
+  "declared_dependencies": {
+    "ordo_language": "0.13.0-rc.1",
+    "arf": "0.1.0-rc.1"
+  },
+  "integrated_baseline": {
+    "release_id": "ordo-2026.07.17-rc.10",
+    "ordo_language": "0.14.0-rc.1",
+    "framework": "0.6.0-rc.1"
+  },
+  "assessment": "COMPATIBLE_WITH_LIMITATIONS",
+  "compatibility_evidence": [
+    "The component is process-governance content and is integrated as an independently versioned playbook.",
+    "The current Ordo language and framework baselines are later backward-compatible additive release candidates.",
+    "The source package declares no requirement to downgrade the integrated baseline.",
+    "The component package checksum, identities, JSON, YAML, and internal manifest were verified."
+  ],
+  "limitations": [
+    "Declared dependency versions remain historical and were not rewritten.",
+    "No full real-model benchmark campaign was rerun solely for this packaging integration.",
+    "Integration status applies to package structure and declared contract compatibility, not production promotion of the alpha playbook."
+  ],
+  "blocked": false
+}

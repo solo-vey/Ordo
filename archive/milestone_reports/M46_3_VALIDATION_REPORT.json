@@ -1,0 +1,25 @@
+{
+  "milestone": "M46.3",
+  "title": "Rendered Artifact Validation",
+  "status": "passed",
+  "generated_at": "2026-07-06T14:56:08Z",
+  "scope": [
+    "add validate-artifacts command",
+    "validate rendered Markdown/JSON/YAML artifacts against confirmed contract field values",
+    "update History Event regression templates",
+    "update CLI docs and book markdown source without regenerating PDF"
+  ],
+  "checks": {
+    "cli_unit_tests": "13/13 passed",
+    "active_packages_lint_compile_test_coverage": "passed for ordo_project_builder, ordo_hybrid_executor, history_event_guided_intake",
+    "helper_checks": "validate-state/next-step passed for project_builder and hybrid_executor",
+    "history_event_output_flow": "lock, validate-lock, intake, generate-output, validate-output, validate-artifacts passed",
+    "repo_check": "passed with PYTHONDONTWRITEBYTECODE=1 after generated metadata cleanup"
+  },
+  "new_command": "ordo validate-artifacts",
+  "report_file": "reports/artifact_validation_report.json",
+  "known_limitations": [
+    "M46.3 validates rendered value presence and missing artifact files; full cross-artifact semantic contradiction detection is planned for consistency layer.",
+    "repo-check is intended for clean source archive / CI before editable install metadata is created, or with PYTHONDONTWRITEBYTECODE=1."
+  ]
+}

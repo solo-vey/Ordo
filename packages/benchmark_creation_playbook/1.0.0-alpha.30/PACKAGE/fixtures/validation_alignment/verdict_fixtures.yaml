@@ -1,0 +1,8 @@
+positive:
+- title: A
+  owner: B
+negative:
+- title: A
+boundary:
+- title: A
+  owner: ''

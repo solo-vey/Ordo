@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Diagnostic Case",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "diagnostic_case_id",
+    "status",
+    "evidence_index",
+    "claims",
+    "root_cause_decision",
+    "recommended_patch_target",
+    "reviewer_decision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.diagnostic_case.v1"
+    },
+    "diagnostic_case_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "evidence-collection",
+        "review",
+        "closed",
+        "blocked"
+      ]
+    },
+    "request_ref": {
+      "type": "string"
+    },
+    "executor_response_ref": {
+      "type": "string"
+    },
+    "evidence_index": {
+      "type": "array"
+    },
+    "claims": {
+      "type": "array"
+    },
+    "root_cause_decision": {
+      "type": "object"
+    },
+    "recommended_patch_target": {
+      "type": "object"
+    },
+    "regression_implications": {
+      "type": "array"
+    },
+    "reviewer_decision": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,1202 @@
+ordo:
+  version: '0.12'
+  package: history_event.guided_intake
+  control_level: standard
+  execution_mode: chat_internal
+includes:
+- library: ordo.validation.contract_first
+  version: ^0.2.0
+  as: contract_first
+- library: ordo.qa.release_validation
+  version: ^0.1.0
+  as: qa_release
+intent:
+  id: INTENT_HISTORY_EVENT_GUIDED_INTAKE
+  description: Керовано зібрати мінімальний контракт для створення нового History Event package без передчасної генерації
+    фінального архіву.
+contract:
+  id: CONTRACT_HISTORY_EVENT_GUIDED_INTAKE
+  required:
+  - event_goal
+  - selected_path
+  - event_alias
+  - display_name_uk
+  - display_name_en
+  - source_field
+  - value_semantics
+  - qa_scope
+  - test_coverage_level
+  - test_strategy_contract
+  - approval_received
+state:
+  id: STATE_HISTORY_EVENT_GUIDED_INTAKE
+  schema:
+    event_goal: null
+    selected_path: null
+    event_alias: null
+    display_name_uk: null
+    display_name_en: null
+    source_field: null
+    value_semantics: []
+    qa_scope: []
+    approval_received: false
+    output_allowed: false
+    final_package_created: false
+    test_coverage_level: null
+    test_strategy_contract: []
+    manual_qa_coverage: []
+    functional_test_coverage: []
+    unit_test_coverage: []
+    test_documentation_requirement: null
+    test_propagation_required: true
+graph_contract:
+  entry_node: N_EVENT_GOAL
+  external_terminal_targets:
+  - G_APPROVAL_CONFIRMED
+  - STOP_NEEDS_APPROVAL
+nodes:
+- id: N_EVENT_GOAL
+  question: Яку бізнесову зміну має відображати нова історична подія?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      event_goal: $answer
+    next: N_PATH_SELECT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: event goal remains unclear
+- id: N_PATH_SELECT
+  question: 'Питання: оберіть Ordo path для цієї History Event.
+
+
+    Варіанти:
+
+    A — зміна у source row / ChangeRecord flow, далі без додаткових legacy A-subpath уточнень
+
+    B — derived або агрегований стан
+
+    C — зовнішній ExternalHistoryEvent
+
+    D — інший або нестандартний шлях
+
+
+    Відповідайте: A, B, C або D. Якщо вибрано A, runtime переходить одразу в A-flow: source row contract → event identity
+    contract → business fields contract → ChangeRecord contract → trigger/no-op → normalization → HistoryEvent output → payload/display/time/entity/delta/test/artifact
+    coverage.'
+  answer_type: enum
+  allowed_answers:
+  - A
+  - B
+  - C
+  - D
+  on_answer:
+    A:
+      update_state:
+        selected_path: A
+      next: N_EVENT_ALIAS
+    B:
+      update_state:
+        selected_path: B
+      next: N_EVENT_ALIAS
+    C:
+      update_state:
+        selected_path: C
+      next: N_EVENT_ALIAS
+    D:
+      update_state:
+        selected_path: D
+      next: N_EVENT_ALIAS
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_allowed_answers
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: path selection did not match allowed paths
+  prompt_refs:
+  - prompt_id: hp.source_type.clarification.v1
+    use: during_clarification
+- id: N_EVENT_ALIAS
+  question: Який технічний alias події?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      event_alias: $answer
+    next: N_DISPLAY_NAME_UK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: event alias remains unclear
+- id: N_DISPLAY_NAME_UK
+  question: Яка українська назва події для користувача?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      display_name_uk: $answer
+    next: N_DISPLAY_NAME_EN
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: Ukrainian display name remains unclear
+  prompt_refs:
+  - prompt_id: hp.localization.bilingual_texts.v1
+    use: before_question
+- id: N_DISPLAY_NAME_EN
+  question: Яка англійська назва події для технічної документації?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      display_name_en: $answer
+    next: N_SOURCE_FIELD
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: English display name remains unclear
+  prompt_refs:
+  - prompt_id: hp.localization.bilingual_texts.v1
+    use: before_question
+- id: N_SOURCE_FIELD
+  question: 'Питання: підтвердіть source field або набір полів для бізнесової зміни.
+
+
+    Варіанти формату відповіді:
+
+    1. одне поле, наприклад item.status
+
+    2. група вкладених полів, наприклад item.capital.value + item.capital.currency
+
+    3. delta.field без item-prefix, наприклад capital.value / capital.currency
+
+    4. source adapter contract: collection/source/type/sub_type + field
+
+    5. custom / інше
+
+
+    Рекомендація для A-flow RowDataChange: вказати collection/source/type/sub_type, stable matcher і field path.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      source_field: $answer
+    next: N_VALUE_SEMANTICS
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_concrete_field_path
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: source field remains unclear
+  prompt_refs:
+  - prompt_id: hp.source_row.intake.v1
+    use: during_clarification
+- id: N_VALUE_SEMANTICS
+  question: 'Питання: оберіть old/new value semantics і normalization rules.
+
+
+    Варіанти:
+
+    1. raw old/new compare
+
+    2. trim only
+
+    3. trim + case normalization
+
+    4. custom normalization із мапінгом значень
+
+    5. strict no normalization
+
+
+    Рекомендація: для текстових enum/currency без мапінгу — 3; для числових значень — явно описати parse/compare.'
+  answer_type: list
+  on_answer:
+    update_state:
+      value_semantics: $answer
+    next: N_QA_SCOPE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: value semantics remain unclear
+  prompt_refs:
+  - prompt_id: hp.normalization.value_comparison.v1
+    use: before_question
+  - prompt_id: hp.normalization.value_comparison.v1
+    use: during_clarification
+- id: N_QA_SCOPE
+  question: 'Питання: оберіть QA coverage для History Event.
+
+
+    Варіанти:
+
+    1. тільки manual positive/negative trigger cases
+
+    2. manual + functional tests
+
+    3. manual + functional + basic unit tests
+
+    4. manual + functional + extended unit corner cases
+
+    5. custom
+
+
+    Рекомендація для нової HistoryEvent: 4.'
+  answer_type: list
+  on_answer:
+    update_state:
+      qa_scope: $answer
+    next: N_TEST_STRATEGY_CONTRACT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: QA scope remains unclear
+- id: N_TEST_STRATEGY_CONTRACT
+  question: 'Питання: підтвердіть Test Strategy Contract.
+
+
+    Варіанти:
+
+    1. Manual QA only
+
+    2. Manual QA + Functional tests
+
+    3. Manual QA + Functional tests + Basic unit tests
+
+    4. Manual QA + Functional tests + Extended unit corner cases + paired markdown test documentation
+
+    5. Custom / інше
+
+
+    Рекомендація для нової HistoryEvent: 4.
+
+
+    Відповідайте номером 1-5.'
+  answer_type: enum
+  allowed_answers:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  on_answer:
+    '1':
+      update_state:
+        test_coverage_level: Manual QA
+        test_strategy_contract:
+        - manual positive trigger cases
+        - manual negative/no-op cases
+        - empty/null/missing transitions
+        - rollback only for technical state restore
+        manual_qa_coverage:
+        - positive trigger cases
+        - negative/no-op trigger cases
+        - empty/null/missing → value
+        - value → empty/null/missing
+        functional_test_coverage: []
+        unit_test_coverage: []
+        test_documentation_requirement: not required for manual-only coverage
+        test_propagation_required: true
+      next: N_APPROVAL
+    '2':
+      update_state:
+        test_coverage_level: Manual + Functional
+        test_strategy_contract:
+        - manual positive/negative trigger cases
+        - functional tests for confirmed trigger behavior
+        - empty/null/missing transitions
+        - rollback only for technical state restore
+        manual_qa_coverage:
+        - positive trigger cases
+        - negative/no-op trigger cases
+        - empty/null/missing → value
+        - value → empty/null/missing
+        functional_test_coverage:
+        - confirmed positive trigger behavior
+        - confirmed negative/no-op behavior
+        - normalization no-op behavior
+        unit_test_coverage: []
+        test_documentation_requirement: not required unless Java unit tests are added
+        test_propagation_required: true
+      next: N_APPROVAL
+    '3':
+      update_state:
+        test_coverage_level: Manual + Functional + Basic Unit
+        test_strategy_contract:
+        - manual positive/negative trigger cases
+        - functional tests for confirmed trigger behavior
+        - basic unit tests for main old/new transitions
+        - rollback only for technical state restore
+        manual_qa_coverage:
+        - positive trigger cases
+        - negative/no-op trigger cases
+        - empty/null/missing → value
+        - value → empty/null/missing
+        functional_test_coverage:
+        - confirmed positive trigger behavior
+        - confirmed negative/no-op behavior
+        - normalization no-op behavior
+        unit_test_coverage:
+        - value changed
+        - value unchanged/no-op
+        - missing/null handling
+        - normalization compare
+        test_documentation_requirement: Java unit tests should have paired markdown description when added
+        test_propagation_required: true
+      next: N_APPROVAL
+    '4':
+      update_state:
+        test_coverage_level: Manual + Functional + Extended Unit
+        test_strategy_contract:
+        - manual positive and negative trigger cases
+        - functional tests for confirmed business trigger behavior
+        - extended unit corner cases
+        - empty/null/missing transitions
+        - normalization cases
+        - delta grouping cases
+        - mixed delta with unrelated fields
+        - paired markdown documentation for Java test class
+        manual_qa_coverage:
+        - positive trigger cases
+        - negative/no-op trigger cases
+        - empty/null/missing → value
+        - value → empty/null/missing
+        - rollback only restores current technical state
+        functional_test_coverage:
+        - confirmed positive trigger behavior
+        - confirmed negative/no-op behavior
+        - normalization no-op behavior
+        - single event for grouped delta changes
+        unit_test_coverage:
+        - 'null'
+        - missing object
+        - missing field
+        - empty string
+        - spaces
+        - trim
+        - case normalization
+        - zero value
+        - value-only change
+        - currency-only/change-field-only scenario
+        - value + currency changed together
+        - target fields mixed with unrelated delta fields
+        - no-op after normalization
+        - missing → null no event
+        - null → null no event
+        test_documentation_requirement: Java unit tests must be accompanied by a markdown description file with the same test
+          class name and .md extension.
+        test_propagation_required: true
+      next: N_APPROVAL
+    '5':
+      update_state:
+        test_coverage_level: Custom
+        test_strategy_contract:
+        - custom test strategy must be explicitly described by AI Ordo Developer before output generation
+        - test requirements must still propagate to Passport, Jira, QA package and Implementation Prompt
+        manual_qa_coverage:
+        - custom manual QA coverage required
+        functional_test_coverage:
+        - custom functional coverage required when implementation has executable flow
+        unit_test_coverage:
+        - custom unit coverage required when implementation has unit-level logic
+        test_documentation_requirement: If Java unit tests are required, paired markdown test description is required.
+        test_propagation_required: true
+      next: N_APPROVAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_numbered_test_strategy_options
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: test strategy contract was not confirmed
+- id: N_APPROVAL
+  question: Підтверджуєте, що можна переходити до створення фінального History Event package тільки після цього approval?
+  answer_type: enum
+  allowed_answers:
+  - 'yes'
+  - 'no'
+  on_answer:
+    'yes':
+      update_state:
+        approval_received: true
+      next: G_APPROVAL_CONFIRMED
+    'no':
+      next: STOP_NEEDS_APPROVAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: approval answer not matched
+gates:
+- id: G_EVENT_GOAL_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.event_goal is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_PATH_SELECTED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.selected_path is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_ALIAS_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.event_alias is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_DISPLAY_NAME_UK_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.display_name_uk is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_DISPLAY_NAME_EN_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.display_name_en is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_SOURCE_FIELD_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.source_field is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_VALUE_SEMANTICS_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.value_semantics is not empty
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_QA_SCOPE_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.qa_scope is not empty
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_TEST_STRATEGY_CONTRACT_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.test_strategy_contract is not empty and state.test_coverage_level is not null
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_TEST_PROPAGATION_REQUIRED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.test_propagation_required is true
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+- id: G_APPROVAL_CONFIRMED
+  method: human
+  trust_class: human_decision
+  condition: approval_received is confirmed by user
+  on_fail: block
+  prompt_refs:
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    use: on_gate_fail
+assertions:
+- id: A_NO_FINAL_HISTORY_EVENT_PACKAGE_WITHOUT_APPROVAL
+  polarity: not
+  condition: final_package_created_without_approval
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_TEST_REQUIREMENTS_MUST_PROPAGATE_TO_PASSPORT_AND_JIRA
+  polarity: must
+  condition: test_requirements_propagated_to_passport_and_jira
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_IMPLEMENTATION_PROMPT_MUST_MENTION_TEST_DOCS_WHEN_UNIT_TESTS_REQUIRED
+  polarity: must
+  condition: unit_test_markdown_documentation_propagated
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+outputs:
+- id: OUT_HISTORY_EVENT_PACKAGE
+  type: archive
+  allowed_after:
+  - G_EVENT_GOAL_PRESENT
+  - G_PATH_SELECTED
+  - G_ALIAS_PRESENT
+  - G_DISPLAY_NAME_UK_PRESENT
+  - G_DISPLAY_NAME_EN_PRESENT
+  - G_SOURCE_FIELD_PRESENT
+  - G_VALUE_SEMANTICS_PRESENT
+  - G_QA_SCOPE_PRESENT
+  - G_TEST_PROPAGATION_REQUIRED
+  - G_TEST_STRATEGY_CONTRACT_PRESENT
+  - G_APPROVAL_CONFIRMED
+  prompt_refs:
+  - prompt_id: hp.repair.missing_artifact_resolution.v1
+    use: on_open_gap
+freeform:
+- id: FF_HISTORY_EVENT_DOMAIN_NOTES
+  role: domain_explanation
+  maturity: stable
+  incident_count: 0
+  incident_threshold: 3
+  content: Доменні пояснення History Event дозволені, але правила створення package мають бути формалізовані як gates, assertions
+    або tests.
+- id: FF_PATH_EDGE_CASES
+  role: edge_case_notes
+  maturity: volatile
+  incident_count: 1
+  incident_threshold: 3
+  content: Path-specific edge cases допускаються як controlled FREEFORM до моменту формалізації в Domain Pack.
+- id: FF_GUIDED_INTAKE_CLOSED_OPTIONS_POLICY
+  role: developer_instruction
+  maturity: stable
+  incident_count: 0
+  incident_threshold: 3
+  content: For each non-trivial contract question, AI Ordo Developer must provide closed numbered options, a path-specific
+    recommendation, and allow a short custom answer only when the process can capture it explicitly.
+- id: FF_TEST_PROPAGATION_RULE
+  role: validation_rule_note
+  maturity: stable
+  incident_count: 0
+  incident_threshold: 3
+  content: If G_QA_SCOPE_PRESENT and G_TEST_STRATEGY_CONTRACT_PRESENT pass, generated Passport, Jira Task, QA Package and
+    Implementation Prompt must contain explicit test requirements. Draft review package is invalid if test requirements exist
+    only in QA package.
+contracts:
+- kind: contract
+  id: G_EVENT_IDENTITY_CONTRACT
+  status: confirmed
+  fields:
+    event_alias:
+      value: state.event_alias
+      status: confirmed
+      required: true
+    display_name_uk:
+      value: state.display_name_uk
+      status: confirmed
+      required: true
+    display_name_en:
+      value: state.display_name_en
+      status: confirmed
+      required: true
+    selected_path:
+      value: state.selected_path
+      status: confirmed
+      required: true
+- kind: contract
+  id: G_SOURCE_AND_VALUE_CONTRACT
+  status: confirmed
+  fields:
+    source_field:
+      value: state.source_field
+      status: confirmed
+      required: true
+    value_semantics:
+      value: state.value_semantics
+      status: confirmed
+      required: true
+- kind: contract
+  id: G_TEST_STRATEGY_CONTRACT
+  status: confirmed
+  fields:
+    test_coverage_level:
+      value: state.test_coverage_level
+      status: confirmed
+      required: true
+    test_strategy_contract:
+      value: state.test_strategy_contract
+      status: confirmed
+      required: true
+    manual_qa_coverage:
+      value: state.manual_qa_coverage
+      status: confirmed
+      required: true
+    functional_test_coverage:
+      value: state.functional_test_coverage
+      status: confirmed
+      required: true
+    unit_test_coverage:
+      value: state.unit_test_coverage
+      status: confirmed
+      required: true
+    test_documentation_requirement:
+      value: state.test_documentation_requirement
+      status: confirmed
+      required: true
+artifacts:
+- kind: artifact
+  id: HISTORY_EVENT_PASSPORT
+  path_pattern: 01_HISTORY_EVENT_PASSPORT_<ALIAS>.md
+  format: markdown
+  required: true
+  prompt_refs:
+  - prompt_id: hp.artifact.history_event_passport.v1
+    use: before_artifact_generation
+- kind: artifact
+  id: JIRA_TASK
+  path_pattern: 02_JIRA_TASK_<ALIAS>.md
+  format: markdown
+  required: true
+  prompt_refs:
+  - prompt_id: hp.artifact.jira_task.v1
+    use: before_artifact_generation
+- kind: artifact
+  id: IMPLEMENTATION_PROMPT
+  path_pattern: 04_IMPLEMENTATION_PROMPT_<ALIAS>.md
+  format: markdown
+  required: true
+  prompt_refs:
+  - prompt_id: hp.artifact.implementation_prompt.v1
+    use: before_artifact_generation
+- kind: artifact
+  id: QA_PACKAGE
+  path_pattern: 05_QA_PACKAGE_<ALIAS>.md
+  format: markdown
+  required: true
+  prompt_refs:
+  - prompt_id: hp.qa.package_generation.v1
+    use: before_artifact_generation
+artifact_requirements:
+- kind: artifact_requirement
+  id: REQ_EVENT_IDENTITY_IN_ALL_CORE_ARTIFACTS
+  when:
+    contract: G_EVENT_IDENTITY_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: HISTORY_EVENT_PASSPORT
+    must_include_fields:
+    - event_alias
+    - display_name_uk
+    - display_name_en
+    - selected_path
+  - artifact: JIRA_TASK
+    must_include_fields:
+    - event_alias
+    - display_name_uk
+    - display_name_en
+    - selected_path
+  - artifact: IMPLEMENTATION_PROMPT
+    must_include_fields:
+    - event_alias
+    - display_name_uk
+    - display_name_en
+    - selected_path
+  - artifact: QA_PACKAGE
+    must_include_fields:
+    - event_alias
+- kind: artifact_requirement
+  id: REQ_SOURCE_VALUE_CONTRACT_IN_CORE_ARTIFACTS
+  when:
+    contract: G_SOURCE_AND_VALUE_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: HISTORY_EVENT_PASSPORT
+    must_include_fields:
+    - source_field
+    - value_semantics
+  - artifact: JIRA_TASK
+    must_include_fields:
+    - source_field
+    - value_semantics
+  - artifact: IMPLEMENTATION_PROMPT
+    must_include_fields:
+    - source_field
+    - value_semantics
+  - artifact: QA_PACKAGE
+    must_include_fields:
+    - value_semantics
+- kind: artifact_requirement
+  id: REQ_TEST_STRATEGY_IN_PASSPORT_JIRA_PROMPT_QA
+  when:
+    contract: G_TEST_STRATEGY_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: HISTORY_EVENT_PASSPORT
+    must_include_fields:
+    - test_coverage_level
+    - test_strategy_contract
+    - manual_qa_coverage
+    - functional_test_coverage
+    - unit_test_coverage
+    - test_documentation_requirement
+  - artifact: JIRA_TASK
+    must_include_fields:
+    - test_coverage_level
+    - test_strategy_contract
+    - test_documentation_requirement
+  - artifact: IMPLEMENTATION_PROMPT
+    must_include_fields:
+    - test_coverage_level
+    - manual_qa_coverage
+    - functional_test_coverage
+    - unit_test_coverage
+    - test_documentation_requirement
+  - artifact: QA_PACKAGE
+    must_include_fields:
+    - manual_qa_coverage
+    - functional_test_coverage
+    - unit_test_coverage
+coverage_rules:
+- kind: coverage_rule
+  id: COVERAGE_CONFIRMED_CONTRACTS_TO_ARTIFACTS
+  input: confirmed_contracts
+  output: artifact_requirements
+  failure_policy: no_go
+  description: Every confirmed History Event contract must be mapped to Passport, Jira, Prompt and QA where applicable.
+rendered_artifact_assertions:
+- kind: rendered_artifact_assertion
+  id: ASSERT_EVENT_ALIAS_RENDERED
+  field: G_EVENT_IDENTITY_CONTRACT.event_alias
+  must_appear_in:
+  - HISTORY_EVENT_PASSPORT
+  - JIRA_TASK
+  - IMPLEMENTATION_PROMPT
+  - QA_PACKAGE
+  severity: block
+- kind: rendered_artifact_assertion
+  id: ASSERT_TEST_STRATEGY_RENDERED
+  field: G_TEST_STRATEGY_CONTRACT.test_strategy_contract
+  must_appear_in:
+  - HISTORY_EVENT_PASSPORT
+  - JIRA_TASK
+  - IMPLEMENTATION_PROMPT
+  - QA_PACKAGE
+  severity: block
+go_no_go:
+  kind: go_no_go
+  status: go
+  blocking_issues: []
+  warnings: []
+startup_package_profile:
+  profile_id: history_event_factory_startup_profile
+  version: '0.1'
+  package_id: history_event.guided_intake
+  default_startup_mode: analyst_quick_start
+  default_language: uk
+  startup_root: ./
+  startup_modes:
+  - mode: analyst_quick_start
+    audience: analyst
+    entry_file: prompts/hp.package.quick_start.v1.md
+    prompt_id: hp.package.quick_start.v1
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: false
+  - mode: analyst_runtime_mode
+    audience: analyst
+    entry_file: START_PROMPT_RUNTIME_MODE.md
+    prompt_id: hp.runtime.start.v1
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: developer_maintenance
+    audience: developer
+    entry_file: README.md
+    required: recommended
+    visibility: developer
+    state_change_allowed: false
+    resume_supported: true
+  - mode: cli_operator
+    audience: cli_operator
+    entry_file: START_HERE_RUNTIME_MODE.md
+    required: recommended
+    visibility: cli_operator
+    state_change_allowed: false
+    resume_supported: true
+  - mode: review_only
+    audience: reviewer
+    entry_file: STARTUP_PACKAGE_PROFILE.md
+    required: recommended
+    visibility: developer
+    state_change_allowed: false
+    resume_supported: false
+  - mode: repair_resume
+    audience: ai_runtime
+    entry_file: prompts/hp.repair.gate_failure_explanation.v1.md
+    prompt_id: hp.repair.gate_failure_explanation.v1
+    required: conditional
+    visibility: expose_on_request
+    state_change_allowed: false
+    resume_supported: true
+  entry_files:
+  - path: README.md
+    role: readme
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_HERE_RUNTIME_MODE.md
+    role: start_here
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_PROMPT_RUNTIME_MODE.md
+    role: runtime_start_prompt
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: prompts/hp.package.quick_start.v1.md
+    role: hp.package.quick_start.v1
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: prompts/hp.runtime.start.v1.md
+    role: runtime_start_prompt
+    required: recommended
+    visibility: visible_to_analyst
+  - path: PROMPT_MANIFEST.json
+    role: manifest
+    required: recommended
+    visibility: developer
+  - path: PROMPT_REGISTRY_VALIDATION_PROFILE.md
+    role: validation_profile
+    required: recommended
+    visibility: developer
+  - path: STARTUP_PACKAGE_PROFILE.md
+    role: validation_profile
+    required: recommended
+    visibility: developer
+  - path: ordo.yml
+    role: manifest
+    required: 'true'
+    visibility: developer
+  - path: ordo.lock.json
+    role: lockfile
+    required: recommended
+    visibility: developer
+  - path: prompts/hp.repair.gate_failure_explanation.v1.md
+    role: repair_prompt
+    required: conditional
+    visibility: expose_on_request
+  readiness_gates:
+  - check_id: startup_package_profile_present
+    severity: error
+    profile: standard
+  - check_id: startup_entry_files_exist
+    severity: error
+    profile: standard
+  - check_id: startup_default_mode_exists
+    severity: error
+    profile: standard
+  - check_id: startup_prompt_ids_resolve_to_prompt_registry
+    severity: error
+    profile: standard
+  - check_id: startup_prompt_files_covered_by_prompt_manifest
+    severity: warning
+    profile: standard
+  - check_id: quick_start_discoverable_from_readme
+    severity: warning
+    profile: standard
+  - check_id: runtime_start_discoverable_from_start_here
+    severity: warning
+    profile: standard
+  - check_id: startup_authority_boundary_safe
+    severity: error
+    profile: standard
+  authority_boundary:
+    startup_files_may_override_gates: false
+    startup_files_may_confirm_state: false
+    startup_files_may_claim_validation_success: false
+prompt_registry:
+  registry_id: history_event_factory_prompt_registry
+  version: '0.1'
+  default_language: uk
+  prompt_root: prompts/
+  prompts:
+  - prompt_id: hp.package.quick_start.v1
+    type: package_bootstrap
+    audience: human_to_ai
+    path: prompts/hp.package.quick_start.v1.md
+    required: true
+    lifecycle: stable
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    validation_policy:
+    - required_file_and_readme_reference
+    - manifest_checksum_required
+    - authority_safe_text_review
+    prompt_family: hp.package.quick_start
+    version: 1
+    supersedes: null
+  - prompt_id: hp.runtime.start.v1
+    type: runtime_start
+    audience: human_to_ai
+    path: prompts/hp.runtime.start.v1.md
+    required: recommended
+    lifecycle: stable
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    validation_policy:
+    - required_file_only
+    - authority_safe_text_review
+    prompt_family: hp.runtime.start
+    version: 1
+    supersedes: null
+  - prompt_id: hp.source_type.clarification.v1
+    type: node_helper
+    audience: ai_runtime
+    path: prompts/hp.source_type.clarification.v1.md
+    attached_to:
+      node_id: N_PATH_SELECT
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_node_and_file
+    - authority_safe_text_review
+    prompt_family: hp.source_type.clarification
+    version: 1
+    supersedes: null
+  - prompt_id: hp.source_row.intake.v1
+    type: node_helper
+    audience: ai_runtime
+    path: prompts/hp.source_row.intake.v1.md
+    attached_to:
+      node_id: N_SOURCE_FIELD
+    required: conditional
+    required_when: selected_path is C or source field is unclear
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_node_and_file
+    - authority_safe_text_review
+    prompt_family: hp.source_row.intake
+    version: 1
+    supersedes: null
+  - prompt_id: hp.normalization.value_comparison.v1
+    type: node_helper
+    audience: ai_runtime
+    path: prompts/hp.normalization.value_comparison.v1.md
+    attached_to:
+      node_id: N_VALUE_SEMANTICS
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_node_and_file
+    - authority_safe_text_review
+    prompt_family: hp.normalization.value_comparison
+    version: 1
+    supersedes: null
+  - prompt_id: hp.localization.bilingual_texts.v1
+    type: node_helper
+    audience: ai_runtime
+    path: prompts/hp.localization.bilingual_texts.v1.md
+    attached_to:
+      node_id: N_DISPLAY_NAME_UK
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_node_and_file
+    - authority_safe_text_review
+    prompt_family: hp.localization.bilingual_texts
+    version: 1
+    supersedes: null
+  - prompt_id: hp.artifact.history_event_passport.v1
+    type: artifact_helper
+    audience: ai_runtime
+    path: prompts/hp.artifact.history_event_passport.v1.md
+    attached_to:
+      artifact_id: HISTORY_EVENT_PASSPORT
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_artifact_and_file
+    - authority_safe_text_review
+    prompt_family: hp.artifact.history_event_passport
+    version: 1
+    supersedes: null
+  - prompt_id: hp.artifact.jira_task.v1
+    type: artifact_helper
+    audience: ai_runtime
+    path: prompts/hp.artifact.jira_task.v1.md
+    attached_to:
+      artifact_id: JIRA_TASK
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_artifact_and_file
+    - authority_safe_text_review
+    prompt_family: hp.artifact.jira_task
+    version: 1
+    supersedes: null
+  - prompt_id: hp.artifact.implementation_prompt.v1
+    type: artifact_helper
+    audience: ai_runtime
+    path: prompts/hp.artifact.implementation_prompt.v1.md
+    attached_to:
+      artifact_id: IMPLEMENTATION_PROMPT
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_artifact_and_file
+    - authority_safe_text_review
+    prompt_family: hp.artifact.implementation_prompt
+    version: 1
+    supersedes: null
+  - prompt_id: hp.qa.package_generation.v1
+    type: artifact_helper
+    audience: ai_runtime
+    path: prompts/hp.qa.package_generation.v1.md
+    attached_to:
+      artifact_id: QA_PACKAGE
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - resolve_artifact_and_file
+    - authority_safe_text_review
+    prompt_family: hp.qa.package_generation
+    version: 1
+    supersedes: null
+  - prompt_id: hp.repair.gate_failure_explanation.v1
+    type: repair_helper
+    audience: ai_runtime
+    path: prompts/hp.repair.gate_failure_explanation.v1.md
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - required_file_only
+    - authority_safe_text_review
+    prompt_family: hp.repair.gate_failure_explanation
+    version: 1
+    supersedes: null
+  - prompt_id: hp.repair.backtracking_invalidation.v1
+    type: repair_helper
+    audience: ai_runtime
+    path: prompts/hp.repair.backtracking_invalidation.v1.md
+    required: conditional
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - required_file_only
+    - authority_safe_text_review
+    prompt_family: hp.repair.backtracking_invalidation
+    version: 1
+    supersedes: null
+    required_when: runtime emits an explicit backtrack event and downstream invalidation explanation is needed
+  - prompt_id: hp.repair.missing_artifact_resolution.v1
+    type: repair_helper
+    audience: ai_runtime
+    path: prompts/hp.repair.missing_artifact_resolution.v1.md
+    required: recommended
+    lifecycle: stable
+    visibility: expose_on_request
+    state_change_allowed: false
+    validation_policy:
+    - required_file_only
+    - authority_safe_text_review
+    prompt_family: hp.repair.missing_artifact_resolution
+    version: 1
+    supersedes: null
+artifact_sync:
+  sync_id: history_event_guided_intake_artifact_sync
+  profile: strict
+  source_of_truth:
+  - path: source/program.ordo.yaml
+    role: package_source
+  - path: ordo.yml
+    role: package_manifest
+  derived_artifacts:
+  - artifact_id: prompt_manifest
+    path: PROMPT_MANIFEST.json
+    role: prompt_manifest
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: 7c7a24287bf7b87f85ae1b4483e3db8994fab5227caaad2cc75d16713e820022
+  - artifact_id: lockfile
+    path: ordo.lock.json
+    role: lockfile
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: 9d5b0da18fa52871836232d98b990096974aeb270f55e6501dc9e7db47da8ff6
+  - artifact_id: runtime_manifest
+    path: ordo.runtime.json
+    role: runtime_manifest
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: 1dc960c3ab738e01e4492349f000fc63037360f9bc63b39eb96d25b2ec7cdba7
+  - artifact_id: startup_validation_summary
+    path: STARTUP_PROFILE_VALIDATION_SUMMARY.md
+    role: validation_report
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: d4d09cde723d4ceb3186131ee6cf3e0414984ab7d038c60e9f423830b91495c0
+  - artifact_id: cli_validation_summary
+    path: reports/CLI_VALIDATION_SUMMARY.md
+    role: validation_report
+    derived_from:
+    - source/program.ordo.yaml
+    derivation_method: declared_build_or_validation
+    freshness_policy: must_exist
+    stale_action: block_release
+    sha256: 4fe6b3832fa7fff3500eb2a4c4ddddcbe0870c44c88e17d6006544878a6116d3
+  authority_boundary:
+    derived_artifacts_may_override_source_of_truth: false

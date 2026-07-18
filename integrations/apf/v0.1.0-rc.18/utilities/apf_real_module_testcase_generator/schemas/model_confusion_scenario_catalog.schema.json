@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APF model confusion scenario catalog",
+  "type": "object",
+  "required": [
+    "scenarios"
+  ],
+  "properties": {
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "description",
+          "expected_behavior",
+          "expected_status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "trigger_example": {
+            "type": "string"
+          },
+          "expected_behavior": {
+            "type": "string"
+          },
+          "blocking_gate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expected_status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+test:
+  id: TC_NO_FINAL_OUTPUT_BEFORE_GATE
+  program: examples.strict_handoff
+  mode: test
+
+fixture:
+  state:
+    contract_confirmed: false
+    final_output_created: true
+    output_allowed: false
+
+expected:
+  assertions:
+    - id: program.examples.strict_handoff.A_NO_FINAL_OUTPUT_BEFORE_GATE
+      status: failed
+  gates:
+    - id: program.examples.strict_handoff.G_NO_FINAL_OUTPUT_BEFORE_GATE
+      status: blocked
+  output:
+    final_handoff_created: false
+  not_allowed:
+    - create_final_handoff

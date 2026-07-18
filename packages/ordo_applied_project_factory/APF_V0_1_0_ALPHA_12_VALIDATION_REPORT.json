@@ -1,0 +1,27 @@
+{
+  "package": "ordo.applied_project_factory",
+  "module_version": "0.1.0-alpha.12",
+  "status": "incremental-check-ready",
+  "validation_profile": "minimal_yaml_patch_check",
+  "checks": [
+    {
+      "check": "yaml_parse",
+      "status": "passed"
+    },
+    {
+      "check": "cli_lint",
+      "status": "passed"
+    },
+    {
+      "check": "cli_compile_refresh_ir",
+      "status": "passed"
+    }
+  ],
+  "full_validation": "deferred_by_design_to_terminal_or_pre_handoff_gate",
+  "changes": [
+    "separate unreviewed_sibling_branches from not_selected_control_actions",
+    "add blocked_until_ready_actions",
+    "update control decision gates"
+  ],
+  "blockers": []
+}

@@ -1,0 +1,46 @@
+{
+  "release": "1.0.0-alpha.3",
+  "status": "PASS",
+  "task": "BL-BENCH-042",
+  "checks": [
+    {
+      "name": "clean_reference",
+      "returncode": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "missing_package",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "corrupt_package",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "incompatible_arf",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "local_only_patch_rejected",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    }
+  ],
+  "arf_release_gate": {
+    "status": "PASSED",
+    "mutation_allowed": true,
+    "release_allowed": true,
+    "language_package_sha256": "d9bcee6d5a70bae885eb6ecbba9173ff856118533e209a1d0917642d8504263f",
+    "arf_version": "0.1.0-rc.18",
+    "evidence_complete": true
+  },
+  "language_package_sha256": "d9bcee6d5a70bae885eb6ecbba9173ff856118533e209a1d0917642d8504263f"
+}

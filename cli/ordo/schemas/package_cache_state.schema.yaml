@@ -1,0 +1,29 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: ordo.apf.package_cache_state.v1
+title: APF Session Package Cache State
+type: object
+additionalProperties: false
+required:
+  - schema_version
+  - package_loaded
+  - package_version
+  - package_fingerprint
+  - unpacked_location
+  - manifest_validated
+  - source_of_truth_loaded
+  - cache_valid
+properties:
+  schema_version:
+    const: ordo.apf.package_cache_state.v1
+  package_loaded: {type: boolean}
+  package_version: {type: string, minLength: 1}
+  package_fingerprint:
+    type: string
+    pattern: '^[0-9a-f]{64}$'
+  unpacked_location: {type: string, minLength: 1}
+  manifest_validated: {type: boolean}
+  source_of_truth_loaded: {type: boolean}
+  cache_valid: {type: boolean}
+  loaded_at: {type: string}
+  invalidated_at: {type: [string, 'null']}
+  invalidation_reason: {type: [string, 'null']}

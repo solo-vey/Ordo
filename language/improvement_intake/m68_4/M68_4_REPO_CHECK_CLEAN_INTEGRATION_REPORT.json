@@ -1,0 +1,25 @@
+{
+  "milestone": "M68.4",
+  "title": "Repo-check clean integration",
+  "status": "implemented-optional-integration",
+  "changed_files_intended": [
+    "cli/ordo/repo_checks.py",
+    "cli/ordo/cli.py",
+    "cli/tests/test_repo_check_clean_integration.py",
+    "cli/docs/REPO_CHECK_CLEAN_INTEGRATION.md",
+    "cli/docs/REPO_LEVEL_PACKAGE_HYGIENE_DESIGN.md",
+    "cli/docs/REPO_LEVEL_PACKAGE_HYGIENE_PLAN.md",
+    "cli/docs/CLEAN_CHECK_HARDENING_PLAN.md"
+  ],
+  "command_added": "ordo repo-check <repo> --clean",
+  "default_repo_check_behavior_changed": false,
+  "applied_packages_enforced_by_default": false,
+  "validation": {
+    "python_syntax_compile": "passed",
+    "targeted_tests": "passed",
+    "json_reports_parse": "passed",
+    "packages_diff_guard": "passed",
+    "runtime_core_compiler_opcode_guard": "passed",
+    "zip_integrity": "passed"
+  }
+}

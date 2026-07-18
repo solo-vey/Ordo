@@ -1,0 +1,13 @@
+{
+  "case_id": "EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+  "status": "PASS",
+  "implementation_archives": 4,
+  "launch_prompt_archives": 4,
+  "accepted_run_evidence_objects": 20,
+  "individual_run_analysis_files": 20,
+  "aggregate_analysis_files": 4,
+  "comparative_scorecard": true,
+  "inventory_manifest": true,
+  "english_metadata_audit": "PASS",
+  "failures": []
+}

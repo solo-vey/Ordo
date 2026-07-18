@@ -1,0 +1,1 @@
+Use the attached approved package and the supplied RUN input. Execute the package according to its own contracts. Return the factual result package or the applicable terminal report. Do not infer missing authoritative inputs.

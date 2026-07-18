@@ -1,0 +1,20 @@
+{
+  "milestone": "M71.2",
+  "status": "passed",
+  "checks": {
+    "registry_schema_yaml_parse": true,
+    "validation_profile_schema_yaml_parse": true,
+    "example_yaml_parse": true,
+    "identity_fields_required": true,
+    "semantic_id_pattern_validated": true,
+    "lineage_policy_present": true,
+    "controlled_application_phases_present": true,
+    "attachment_authority_boundary_preserved": true,
+    "m71_2_tests_passed": 6,
+    "bounded_regression_tests_passed": 14,
+    "packages_unchanged": true,
+    "runtime_compiler_opcode_unchanged": true,
+    "archives_built": false
+  },
+  "archives_deferred_until": "M71 closure"
+}

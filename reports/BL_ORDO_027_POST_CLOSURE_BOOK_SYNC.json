@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.book_sync_report.v1",
+  "source_task": "BL-ORDO-027",
+  "task_reopened": false,
+  "canonical_locale": "en",
+  "pdf_generated": false,
+  "modified_chapters": [
+    "chapter_05_state_pamiat_protsesu.md",
+    "chapter_06_entry_i_node_iak_model_stavyt_pytannia.md",
+    "chapter_28_rendered_artifact_validation.md",
+    "chapter_30_mihratsiia_playbook_a_v_ordo.md",
+    "appendix_e_anti_patterns.md",
+    "chapter_81_deterministic_arf_runtime_control_model.md"
+  ],
+  "uk_translation_status": "outdated",
+  "status": "passed"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "ordo.current_state_exclusion_report.v1",
+  "categories": [
+    {
+      "category": "historical_or_superseded",
+      "file_count": 2,
+      "representative_paths": [
+        "playbook_v1.txt",
+        "run_old.json"
+      ],
+      "exclusion_rationale": "not current authoritative state"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.apf.antipattern_extended_test_report.v1",
+  "package_id": "ordo.applied_project_factory",
+  "status": "passed",
+  "canonical_rule_count": 6,
+  "fixture_case_count": 12,
+  "positive_case_count": 6,
+  "negative_case_count": 6,
+  "critical_hook_count": 13,
+  "critical_node_count": 10,
+  "test_count": 18,
+  "tests_passed": 18,
+  "tests_failed": 0,
+  "coverage": "6/6",
+  "verified": [
+    "positive and negative detector behavior for all six rules",
+    "deterministic repeated evaluation",
+    "blocking routes to repair and stops normal transition",
+    "safe cases continue and persist evidence",
+    "actual critical hooks block representative positive cases",
+    "hook ids unique and repair targets exist",
+    "state and evidence persistence remains valid"
+  ],
+  "artifacts": [
+    "integration/fixtures_antipattern_e2e.apf.v1.json",
+    "integration/test_antipattern_all_rules_e2e.py"
+  ]
+}

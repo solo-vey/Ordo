@@ -1,0 +1,38 @@
+{
+  "release": "1.0.0-alpha.5",
+  "status": "PASS",
+  "passed": 6,
+  "total": 6,
+  "checks": [
+    {
+      "name": "ordo_yaml_parse",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "alignment_tool_compile",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "acceptance_tests",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "backlog_43_done",
+      "status": "PASS",
+      "detail": "Backlog version alpha.5; BL-BENCH-043 DONE; README 43 DONE / 0 OPEN."
+    },
+    {
+      "name": "ordo_nodes_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "arf_release_gate",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

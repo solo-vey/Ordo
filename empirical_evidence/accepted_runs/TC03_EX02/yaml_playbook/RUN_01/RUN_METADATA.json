@@ -1,0 +1,18 @@
+{
+  "run_id": "RUN_01",
+  "representation": "yaml_playbook",
+  "accepted_playbook_version": "Alpha 1.17.4.1",
+  "evidence_file": "RUN_01_ORDO_DELIVERY.zip",
+  "terminal": "T_COMPLETED / GO",
+  "process_score": 100,
+  "document_scores": {
+    "passport": 97,
+    "jira": 98,
+    "manual_qa": 100,
+    "automation": 100,
+    "documents": 99
+  },
+  "final_score": 100,
+  "scoring_profile": "TC03-EX02-EVAL-v1.1",
+  "supersedes": "Alpha 1.17.0 RUN_01"
+}

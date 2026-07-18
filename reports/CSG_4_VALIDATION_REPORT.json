@@ -1,0 +1,25 @@
+{
+  "milestone": "CSG-4",
+  "title": "Authoring-Flow and Package Integration",
+  "status": "passed",
+  "artifacts": [
+    "language/CSG_4_AUTHORING_FLOW_AND_PACKAGE_INTEGRATION.md",
+    "language/schemas/csg_package_binding.schema.json",
+    "language/CSG_4_AUTHORING_PHASE_TEMPLATE.yaml",
+    "language/CSG_4_PACKAGE_INTEGRATION_REGRESSION_FIXTURES.yaml"
+  ],
+  "checks": {
+    "authoring_phase_defined": true,
+    "pre_assembly_position": true,
+    "confirmation_gate_defined": true,
+    "enabled_artifacts_defined": true,
+    "profile_no_silent_activation": true,
+    "domain_no_silent_activation": true,
+    "manifest_binding_defined": true,
+    "package_gate_defined": true,
+    "render_validation_defined": true,
+    "apf_boundary_defined": true,
+    "diagnostics_defined": true,
+    "fixtures_present": true
+  }
+}

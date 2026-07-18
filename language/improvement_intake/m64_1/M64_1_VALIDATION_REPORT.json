@@ -1,0 +1,21 @@
+{
+  "milestone": "M64.1",
+  "title": "Program-level contract schema convention",
+  "status": "passed-schema-convention",
+  "runtime_core_changed": false,
+  "compiler_behavior_changed": false,
+  "cli_commands_changed": false,
+  "new_opcodes_added": false,
+  "flow_join_implemented": false,
+  "shared_tail_reference_implemented": false,
+  "added_files": [
+    "language/PROGRAM_LEVEL_CONTRACT.md",
+    "language/spec/16_PROGRAM_LEVEL_CONTRACT_MODEL.md",
+    "language/schemas/program_level_contract_schema.yaml",
+    "language/registry/PROGRAM_LEVEL_CONTRACT_VALUES.md",
+    "language/examples/source/program_level_contract_example.ordo.yaml",
+    "docs/program_level_contract.md",
+    "M64_1_PROGRAM_LEVEL_CONTRACT_SCHEMA_CONVENTION_REPORT.md"
+  ],
+  "next": "M64.2 — Interaction model + process rail + conversation semantics docs"
+}

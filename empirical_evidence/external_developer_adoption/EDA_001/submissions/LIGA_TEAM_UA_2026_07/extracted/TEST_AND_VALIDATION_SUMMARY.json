@@ -1,0 +1,37 @@
+{
+  "schema": "ordo.arf.test_validation_summary.v1",
+  "playbook_id": "monitoring.business_prepare",
+  "playbook_version": "0.1.0-rc.1",
+  "classification": "release_candidate",
+  "development_model": {
+    "provider": "OpenAI",
+    "model": "GPT-5.6 Thinking"
+  },
+  "test_model": {
+    "provider": "OpenAI",
+    "model": "GPT-5.6 Thinking",
+    "note": "Same model family was used for creation and the separate execution/test chat."
+  },
+  "tests": {
+    "collected": 35,
+    "passed": 35,
+    "failed": 0
+  },
+  "nodes": 25,
+  "gates": 12,
+  "zip_integrity": "passed",
+  "internal_checksums": "passed",
+  "rollback_restore_round_trip": "passed",
+  "post_unpack_verification": "passed",
+  "final_playbook_archive": "MONITORING_BUSINESS_PREPARE_0.1.0-rc.1.zip",
+  "final_playbook_sha256": "885a0845da877dc28390d57e92e0db95d1bea0bd752cc3b4c9835d0dd1b12da3",
+  "primary_evidence_archive_sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+  "problems_and_fixes_summary": [
+    "Initial source instructions were first misclassified as a possible package source and then correctly restricted to design input only.",
+    "External external knowledge-base/work-tracker lifecycle was converted from a generic late gate into ordered human-operated nodes.",
+    "Identity mismatch in a cross-model draft was detected and corrected.",
+    "A model-invented retention question was removed.",
+    "Exact link placement was narrowed to knowledge-base URL in the work-tracker document and work-tracker URL in README.",
+    "A sanitation scan caught a residual filename reference and the package was regenerated."
+  ]
+}

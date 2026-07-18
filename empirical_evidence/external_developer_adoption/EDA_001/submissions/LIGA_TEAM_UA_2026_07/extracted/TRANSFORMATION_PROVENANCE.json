@@ -1,0 +1,17 @@
+{
+  "schema": "ordo.arf.transformation_provenance.v1",
+  "source_private_package": "INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip",
+  "source_sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+  "publication_safe_transformation": true,
+  "transformations": [
+    "Excluded original user-supplied business-process instruction files.",
+    "Excluded original domain example and generated domain run packages.",
+    "Excluded real URLs, personal names, organization-specific identifiers, and confidential source text.",
+    "Included an anonymized playbook snapshot and generalized process evidence.",
+    "Recalculated all checksums after sanitation.",
+    "Recorded that the publication-safe package is derived evidence and not byte-identical to confidential sources."
+  ],
+  "confidential_originals_included": false,
+  "byte_identity_claim": false,
+  "sanitization_validation": "passed in the nested evidence package verification report"
+}

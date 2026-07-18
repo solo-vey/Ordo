@@ -1,0 +1,63 @@
+{
+  "milestone": "M60.7.2",
+  "title": "Terminal Path Enumeration",
+  "status": "passed-implementation-slice",
+  "stable_base": "M60.7.1",
+  "implemented": [
+    "real-module-paths CLI",
+    "terminal path enumeration from REAL_MODULE_GRAPH_SUMMARY.json",
+    "REAL_MODULE_TERMINAL_PATHS.json",
+    "REAL_MODULE_TERMINAL_PATHS.md",
+    "terminal path validation report",
+    "clean-path readiness metadata",
+    "pytest coverage for enumerator/writer/CLI"
+  ],
+  "sample": {
+    "package": "sample.support_triage",
+    "terminal_paths": 3,
+    "cycle_edges": 0,
+    "dead_end_paths": 0,
+    "outputs_referenced": 1,
+    "terminal_path_enumeration_ready": true,
+    "clean_path_case_generation_ready": true,
+    "noise_case_generation_ready": false,
+    "testcase_generation_ready": false
+  },
+  "checks": [
+    {
+      "check": "workspace_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "selected_non_runtime_pathwalk_pytest",
+      "status": "passed",
+      "details": "17 passed"
+    },
+    {
+      "check": "workspace_cli_graph_smoke",
+      "status": "passed"
+    },
+    {
+      "check": "workspace_cli_paths_smoke",
+      "status": "passed"
+    },
+    {
+      "check": "book_source_manifest_sanity",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_harness_matrix_tests",
+      "status": "not-run",
+      "reason": "known unrelated blocked branch from M60.6.5/M60.6.4.1"
+    }
+  ],
+  "non_goals": [
+    "no testcase artifact generation",
+    "no noise-pattern generation",
+    "no model/API benchmark",
+    "no scoring weight calibration",
+    "no Ordo runtime-core semantic changes",
+    "no PDF/book generation"
+  ],
+  "next_recommended_step": "M60.7.3 Clean Path Testcase Artifacts"
+}

@@ -1,0 +1,32 @@
+{
+  "milestone": "M71 first-wave closure",
+  "status": "closed-first-wave",
+  "closed_milestones": [
+    "M71.0",
+    "M71.1",
+    "M71.2",
+    "M71.3",
+    "M71.4"
+  ],
+  "scope": "stable semantic prompt identity, schema/validation update, History Event Factory migration, runtime application-order and trace evidence contract",
+  "validation": {
+    "focused_tests": 17,
+    "focused_tests_status": "passed",
+    "package_clean_check": "passed",
+    "semantic_prompt_ids": 13,
+    "prompt_refs_resolve": true,
+    "manifest_checksums_match": true,
+    "navigation_authority_preserved": true,
+    "zip_integrity": "pending"
+  },
+  "untouched": [
+    "business navigation",
+    "confirmed-event logic",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "core CLI session trace",
+    "embedded CLI"
+  ],
+  "archive_policy": "final archives created only at M71 closure per user instruction"
+}

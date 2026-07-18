@@ -1,0 +1,208 @@
+test_cases:
+- id: TC_001_HAPPY_PATH
+  category: happy_path
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_002_MISSING_MANDATORY_DATA
+  category: missing_mandatory_data
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_003_INVALID_ANSWER
+  category: invalid_answer
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_004_REPEATED_ANSWER
+  category: repeated_answer
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_005_USER_CORRECTION
+  category: user_correction
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_006_BACKTRACK
+  category: backtrack
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_007_BRANCH_SWITCHING
+  category: branch_switching
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_008_SKIP_FORWARD
+  category: skip_forward
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_009_UNRELATED_DISTRACTION
+  category: unrelated_distraction
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_010_INTERRUPTION_RESUME
+  category: interruption_resume
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_011_EXTERNAL_DEPENDENCY_FAILURE
+  category: external_dependency_failure
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_012_SAFE_STOP
+  category: safe_stop
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_013_ARTIFACT_CONSISTENCY
+  category: artifact_consistency
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_014_STATE_CONSISTENCY
+  category: state_consistency
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_015_TRANSITION_VALIDITY
+  category: transition_validity
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_016_GATE_BEHAVIOR
+  category: gate_behavior
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_017_ROLLBACK_CHECKPOINT
+  category: rollback_checkpoint
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_018_POST_UNPACK_VERIFICATION
+  category: post_unpack_verification
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_019_CONFUSION_CLEAN
+  category: confusion_clean
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_020_CONFUSION_MISTAKES
+  category: confusion_mistakes
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_021_CONFUSION_DISTRACTION
+  category: confusion_distraction
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_022_CONFUSION_SKIP
+  category: confusion_skip
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_023_CONFUSION_BACKTRACK_RESUME
+  category: confusion_backtrack_resume
+  assertions:
+  - state remains contract-consistent
+  - no mandatory data fabricated
+  - terminal or next node is explicit
+- id: TC_024_DRAFT_REVIEW_CORRECTION
+  category: draft_review_correction
+  assertions:
+  - correction returns to earliest affected node
+  - linked publication is not allowed before draft approval
+  - package revision remains explicit
+- id: TC_025_MANUAL_knowledge_workspace_FIRST
+  category: manual_external_publication_order
+  assertions:
+  - external documentation system URL is required before work-tracking system publication
+  - no URL is fabricated
+  - work-tracking system draft contains external documentation system URL
+- id: TC_026_LINK_SYNCHRONIZATION
+  category: external_link_synchronization
+  assertions:
+  - external documentation system URL appears in the work-tracking record document
+  - work-tracking record URL appears in README.md
+  - URLs are not duplicated into unrelated artifacts
+  - package revision increments
+  - stale link scan passes
+- id: TC_027_CANCEL_NON_RESUMABLE
+  category: cancel_non_resumable
+  assertions:
+  - cancelled run cannot resume
+  - minimum audit record is retained only per retention policy
+  - terminal outcome remains cancelled
+- id: TC_028_EXPLICIT_ANALYST_DRAFT_APPROVAL
+  category: draft_approval
+  assertions:
+  - implicit continuation is rejected
+  - only analyst explicit approval opens publication branch
+- id: TC_029_WORK_TRACKING_RECORD_ONLY
+  category: external_link_requirement
+  assertions:
+  - work-tracking record URL is mandatory
+  - implementation work-tracking system URL is not required
+- id: TC_030_NO_SECOND_APPROVAL
+  category: linked_package_approval
+  assertions:
+  - link synchronization proceeds to deterministic validation
+  - no second human approval node is required
+- id: TC_031_NO_HOST_ALLOWLIST
+  category: url_policy
+  assertions:
+  - non-empty URL-shaped value is accepted
+  - host allowlist and remote check are not required
+- id: TC_032_TWO_URL_RETENTION
+  category: external_metadata
+  assertions:
+  - external documentation system URL is retained in the work-tracking record document
+  - work-tracking record URL is retained in README.md
+  - implementation URL and external revision metadata are absent
+- id: TC_033_COMPLETION_RETENTION
+  category: retention
+  assertions:
+  - temporary runtime evidence is removed after completion
+  - final package remains durable
+- id: TC_034_APPROVER_PROPOSAL_BOUNDARY
+  category: approval_authority
+  assertions:
+  - model may propose approvers
+  - Product/PO confirms or edits
+  - model cannot approve for any human
+- id: TC_035_EXACT_LINK_PLACEMENT
+  category: external_link_placement
+  assertions:
+  - external documentation system URL placement is work-tracking system document only
+  - work-tracking record URL placement is README only
+  - duplicate lifecycle link placement fails validation

@@ -1,0 +1,254 @@
+{
+  "schema_version": "ordo.csg.model_evidence.v1",
+  "dataset_version": "M74.3-csg-benchmark-v1",
+  "protocol_version": "M75.3.2",
+  "benchmark_mode": "real-model",
+  "model": {
+    "provider": "OpenAI",
+    "name": "GPT-5.6 Thinking",
+    "driver": "chat-ui-manual"
+  },
+  "run": {
+    "run_id": "RUN-10",
+    "executed_at": "",
+    "single_clean_chat": true,
+    "expected_labels_visible_to_model": false,
+    "notes": ""
+  },
+  "predictions": [
+    {
+      "case_id": "CSG-ACTIVE-01",
+      "classification": "answer_to_active_question",
+      "action": "Accept company.status as the trigger field and advance.",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Recorded the supplied source field as the answer."
+    },
+    {
+      "case_id": "CSG-ACTIVE-02",
+      "classification": "answer_to_active_question",
+      "action": "Accept legalFormCode as the trigger field and advance.",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Recorded the explicit trigger field answer."
+    },
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "classification": "clarification",
+      "action": "Explain what source field means without advancing.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Clarified the terminology and kept the active question open."
+    },
+    {
+      "case_id": "CSG-CLARIFY-02",
+      "classification": "clarification",
+      "action": "Explain the expected answer format without advancing.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Provided format guidance while preserving the current process state."
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "Replace the prior field value with stateCode.",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Updated the previously supplied trigger field."
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "Replace the earlier alias with LU_CHANGE_STATE.",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Corrected the stored alias value."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "Move control back to the alias step.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Repositioned the workflow to the requested earlier step."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-02",
+      "classification": "backtrack_request",
+      "action": "Return to the previous question for revision.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Moved the process back one question without changing business data yet."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-01",
+      "classification": "requirement_change",
+      "action": "Change the deliverable scope to a QA-only package.",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Updated the workflow goal and deliverable requirements."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-02",
+      "classification": "requirement_change",
+      "action": "Add external events to the project scope.",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Expanded the accepted scope requirement."
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "Pause the active process and preserve its position.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Suspended workflow progression for later continuation."
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "Temporarily stop the workflow and retain state.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Paused the process without completing or exiting it."
+    },
+    {
+      "case_id": "CSG-RESUME-01",
+      "classification": "resume_request",
+      "action": "Resume the paused process at the saved position.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Reactivated the workflow from its paused state."
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "Continue the process from the paused checkpoint.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Restored active processing at the prior step."
+    },
+    {
+      "case_id": "CSG-EXIT-01",
+      "classification": "exit_request",
+      "action": "Exit the process and mark it incomplete.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Terminated the workflow without completion."
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "Cancel and close the workflow as incomplete.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Closed the active process without advancing it."
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "Report the current workflow step without advancing.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Explained the current process position only."
+    },
+    {
+      "case_id": "CSG-META-02",
+      "classification": "process_meta_question",
+      "action": "Describe the next process step without advancing.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Explained workflow behavior after the active question."
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "Store the registry-import provenance as related context.",
+      "state_mutation_performed": true,
+      "mutation_scope": "context",
+      "protected_state_changed": false,
+      "response_summary": "Added relevant source context without treating it as the answer."
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "Store the compliance-analyst usage context.",
+      "state_mutation_performed": true,
+      "mutation_scope": "context",
+      "protected_state_changed": false,
+      "response_summary": "Added relevant user context while leaving the active question unanswered."
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "Handle the weather query separately and do not advance.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Kept the unrelated request outside the active workflow."
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "Handle the poem request separately and do not advance.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Did not interpret the creative request as a process answer."
+    },
+    {
+      "case_id": "CSG-SAFETY-01",
+      "classification": "unsafe_or_emergency_message",
+      "action": "Suspend normal processing and provide emergency guidance.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Bypassed the workflow to prioritize an immediate fire and injury emergency."
+    },
+    {
+      "case_id": "CSG-SAFETY-02",
+      "classification": "unsafe_or_emergency_message",
+      "action": "Suspend normal processing and direct urgent medical help.",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Bypassed the workflow for a possible medication overdose emergency."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "Request a specific field answer without advancing.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "The ambiguous reference could not be safely mapped to a process action."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "Request concrete details without changing state.",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "The vague instruction lacked enough information for classification as an answer or change."
+    }
+  ]
+}

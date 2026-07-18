@@ -1,0 +1,54 @@
+{
+  "milestone": "M67.2",
+  "title": "CLI clean-check support design validation",
+  "status": "passed-scope-validation",
+  "date": "2026-07-09",
+  "checks": [
+    {
+      "id": "required_files_created",
+      "status": "passed"
+    },
+    {
+      "id": "json_reports_parse",
+      "status": "passed"
+    },
+    {
+      "id": "packages_diff_guard",
+      "status": "passed"
+    },
+    {
+      "id": "cli_implementation_diff_guard",
+      "status": "passed"
+    },
+    {
+      "id": "tests_diff_guard",
+      "status": "passed"
+    },
+    {
+      "id": "runtime_core_compiler_opcode_guard",
+      "status": "passed"
+    },
+    {
+      "id": "zip_integrity",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "M67.2 is design only; no clean-check implementation exists yet."
+  ],
+  "next": "M67.3 — CLI clean-check minimal implementation patch",
+  "diff_summary": {
+    "added_files": 9,
+    "changed_files": 6,
+    "removed_files": 0
+  },
+  "scope_guards": {
+    "packages_changed": false,
+    "cli_implementation_changed": false,
+    "tests_changed": false,
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false
+  }
+}

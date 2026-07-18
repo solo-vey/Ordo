@@ -1,0 +1,55 @@
+{
+  "schema_version": "ordo.pre_release_run_evidence.v1",
+  "evidence_class": "PRE_RELEASE_SELF_VALIDATION",
+  "run_id": "RUN_02",
+  "expected_outcome": "PASS_RELEASE_AFTER_CORRECTION",
+  "actual_terminal": "PASS_RELEASE",
+  "status": "PASS",
+  "sealed_candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6",
+  "manual_mutation": false,
+  "driver_receipts_complete": true,
+  "approvals_complete": true,
+  "cross_artifact_fidelity": "PASS",
+  "correction_loop_used": true,
+  "events": [
+    {
+      "seq": 1,
+      "event": "candidate_opened",
+      "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+    },
+    {
+      "seq": 2,
+      "event": "neutral_prompt_loaded"
+    },
+    {
+      "seq": 3,
+      "event": "authoritative_input_bound"
+    },
+    {
+      "seq": 4,
+      "event": "validators_submitted_to_driver"
+    },
+    {
+      "seq": 5,
+      "event": "revision_01_invalidated",
+      "reason": "foreign_literal_regression_fixture"
+    },
+    {
+      "seq": 6,
+      "event": "canonical_regeneration_requested"
+    },
+    {
+      "seq": 7,
+      "event": "revision_02_validated"
+    },
+    {
+      "seq": 8,
+      "event": "terminal_recomputed",
+      "terminal": "PASS_RELEASE"
+    },
+    {
+      "seq": 9,
+      "event": "final_zip_reopened_and_verified"
+    }
+  ]
+}

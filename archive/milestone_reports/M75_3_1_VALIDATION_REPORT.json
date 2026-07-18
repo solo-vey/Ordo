@@ -1,0 +1,23 @@
+{
+  "milestone": "M75.3.1",
+  "status": "passed",
+  "changes": [
+    "canonical action-family normalization",
+    "control-state versus protected-state separation",
+    "related-context metadata mutation policy",
+    "explicit protected-state failures preserved"
+  ],
+  "tests": {
+    "targeted": 11,
+    "passed": 11,
+    "failed": 0
+  },
+  "rescored_evidence": {
+    "RUN-02": "passed",
+    "RUN-03": "semantic-pass-awaiting-persisted-evidence",
+    "RUN-04": "semantic-pass-awaiting-persisted-evidence",
+    "RUN-05": "semantic-pass-awaiting-persisted-evidence",
+    "RUN-06": "failed-explicit-protected-state-change"
+  },
+  "next_required_action": "execute one replacement GPT-5.4 Thinking blind run and persist RUN-03 through RUN-06 evidence files"
+}

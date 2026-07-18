@@ -1,0 +1,27 @@
+prompt_registry_migration:
+  milestone: A3
+  legacy_surfaces:
+    - legacy_path: handoff/START_PROMPT_FOR_NEW_CHAT.md
+      disposition: retained_as_historical_rc7_handoff
+      canonical_prompt_id: apf.package.quick_start.v1
+      canonical_path: prompts/QUICK_START_PROMPT.md
+    - legacy_path: START_NEXT_MODEL.md
+      disposition: remains_operating_boundary_document
+      canonical_prompt_id: apf.runtime.start.v1
+      canonical_path: prompts/runtime/apf.runtime_start.v1.md
+    - legacy_surface: A2_resume_after_deviation_policy
+      disposition: extracted_supportive_guidance
+      canonical_prompt_id: apf.process.resume_after_deviation.v1
+    - legacy_surface: A2_backtracking_invalidation_policy
+      disposition: extracted_supportive_guidance
+      canonical_prompt_id: apf.state.backtrack_invalidation.v1
+    - legacy_surface: validation_failure_explanation_rules
+      disposition: extracted_supportive_guidance
+      canonical_prompt_id: apf.validation.gate_failure.v1
+    - legacy_surface: validation_status_interpretation_rules
+      disposition: extracted_supportive_guidance
+      canonical_prompt_id: apf.validation.report_interpretation.v1
+  explicitly_not_migrated:
+    - source_reference/APF_NODE_LEVEL_PROMPT_REGISTRY_IMPROVEMENT.md
+    - backlog/BL-APF-002_node_bound_mini_prompt_candidates
+  reason_not_migrated: deferred_backlog_not_authorized_and_node_applicability_review_not_started

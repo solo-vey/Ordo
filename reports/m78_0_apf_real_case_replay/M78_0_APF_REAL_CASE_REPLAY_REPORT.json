@@ -1,0 +1,72 @@
+{
+  "schema_version": "ordo.apf.real_case_replay_report.v1",
+  "milestone": "M78.0",
+  "backlog_id": "BL-ORDO-008",
+  "playbook": "history_event.guided_intake",
+  "status": "passed",
+  "case_count": 4,
+  "passed": 4,
+  "failed": 0,
+  "mean_analyst_experience": 0.975,
+  "cases": [
+    {
+      "id": "REPLAY-HAPPY-01",
+      "status": "passed",
+      "errors": [],
+      "metrics": {
+        "active_question_clarity": 1.0,
+        "state_continuity": 1.0,
+        "backtrack_transparency": 1.0,
+        "scope_change_transparency": 1.0,
+        "handoff_readiness": 0.9,
+        "mean": 0.98
+      }
+    },
+    {
+      "id": "REPLAY-CLARIFY-01",
+      "status": "passed",
+      "errors": [],
+      "metrics": {
+        "active_question_clarity": 1.0,
+        "state_continuity": 1.0,
+        "backtrack_transparency": 1.0,
+        "scope_change_transparency": 1.0,
+        "handoff_readiness": 0.9,
+        "mean": 0.98
+      }
+    },
+    {
+      "id": "REPLAY-BACKTRACK-01",
+      "status": "passed",
+      "errors": [],
+      "metrics": {
+        "active_question_clarity": 1.0,
+        "state_continuity": 1.0,
+        "backtrack_transparency": 1.0,
+        "scope_change_transparency": 0.9,
+        "handoff_readiness": 0.9,
+        "mean": 0.96
+      }
+    },
+    {
+      "id": "REPLAY-SCOPE-HANDOFF-01",
+      "status": "passed",
+      "errors": [],
+      "metrics": {
+        "active_question_clarity": 1.0,
+        "state_continuity": 1.0,
+        "backtrack_transparency": 0.9,
+        "scope_change_transparency": 1.0,
+        "handoff_readiness": 1.0,
+        "mean": 0.98
+      }
+    }
+  ],
+  "claim_boundary": {
+    "deterministic_replay_contract": "validated",
+    "state_continuity": "validated",
+    "analyst_facing_rendering": "validated_against_minimized_real_case_transcripts",
+    "live_analyst_usability_study": "not_claimed",
+    "statistical_generalization": "not_claimed"
+  }
+}

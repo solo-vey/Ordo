@@ -1,0 +1,16 @@
+{
+  "schema_version": "ordo.m83.2.validation.v1",
+  "milestone": "M83.2",
+  "status": "passed",
+  "implemented": [
+    "review profiles",
+    "defect taxonomy",
+    "selective invalidation",
+    "cross-artifact reconciliation",
+    "criticality downgrade prohibition"
+  ],
+  "artifacts": [
+    "integrations/apf/v0.1.0-rc.18/docs/APF_POST_GENERATION_DEFECT_TAXONOMY.yaml",
+    "integrations/apf/v0.1.0-rc.18/docs/APF_POST_GENERATION_REVIEW_PROFILES.yaml"
+  ]
+}

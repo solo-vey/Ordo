@@ -1,0 +1,28 @@
+phase_id: CONVERSATION_DEVIATION_POLICY_DESIGN
+inputs:
+- process_rail
+- state_model
+- path_model
+- gate_model
+- interaction_model
+decisions:
+- csg_required
+- scope
+- mode
+- related_context_policy
+- escalation
+- state_protection
+- pause_resume_exit
+- trace
+- regression
+confirmation_gate: G_CSG_POLICY_CONFIRMED
+on_enabled:
+  generate:
+  - conversation_scope_guard.contract.yaml
+  - conversation_deviation_policy.md
+  - conversation_scope_guard_tests.yaml
+  - conversation_scope_guard_trace_events.yaml
+  package_gate: G_CSG_PACKAGE_READY
+on_disabled:
+  record: confirmed_not_required
+  active_artifacts_required: false

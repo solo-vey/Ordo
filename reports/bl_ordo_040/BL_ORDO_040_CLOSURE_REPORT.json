@@ -1,0 +1,29 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "backlog_id": "BL-ORDO-040",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.7",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.5.0-rc.1",
+  "delivered": [
+    "canonical empirical_evidence subsystem",
+    "8 machine-readable schemas",
+    "validator",
+    "provenance and admission governance",
+    "independent-parallel relationship to CSG"
+  ],
+  "deferred": [
+    "BL-ORDO-041 evidence-base migration",
+    "BL-ORDO-042 interoperability bridge",
+    "BL-ORDO-043 multi-task-class calibration"
+  ],
+  "validation": {
+    "baseline_full_gate": "rc.6 verified 556/556 passed",
+    "affected_scope": "16/16 passed",
+    "empirical_evidence_focused": "4/4 passed",
+    "sampled_unchanged_module_files": "11 files passed",
+    "package_lints": "4/4 passed",
+    "validation_mode": "inherited_verified_full_baseline_plus_complete_affected_scope"
+  },
+  "blocking_issues": 0
+}

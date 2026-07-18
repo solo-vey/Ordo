@@ -1,0 +1,20 @@
+adapter_id: pilot.trace_adapter
+contract_version: "1.0"
+status: passed
+operations:
+  initialize: passed
+  append_event: passed
+  record_state_refs: passed
+  pause_resume: passed
+  finalize: passed
+  fail: passed
+  cancel: passed
+  compute_integrity: passed
+  store_load: passed
+  prepare_replay: passed
+  toggle_capture: passed
+invariants:
+  append_only: passed
+  monotonic_sequence: passed
+  redaction_before_persistence: passed
+  existing_trace_preserved_when_disabled: passed

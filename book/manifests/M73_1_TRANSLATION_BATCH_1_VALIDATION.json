@@ -1,0 +1,54 @@
+{
+  "batch": "M73.1-batch-1",
+  "files": [
+    {
+      "file": "00_title.md",
+      "en_sha256": "8ab9aff2da931d5fa8fe7e1b02868e51fd7a55907abaeda5644cbfa24c0d0d78",
+      "code_fences_balanced": true,
+      "image_refs_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "01_peredmova.md",
+      "en_sha256": "101763ae581356e7ba75413262b3c7c5a2d435f2124750f694e49061869188a1",
+      "code_fences_balanced": true,
+      "image_refs_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "02_yak_problema_peretvorylasia_na_ideiu.md",
+      "en_sha256": "2230d43127e3c16274a8c37955c5fe7e097c6436e782ed3270d1e9b442590741",
+      "code_fences_balanced": true,
+      "image_refs_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "02_dlia_koho_tsia_knyha.md",
+      "en_sha256": "e75d45374d9e4f7fcd9868913fcd1c3d18c59623f971f8974448c463d972c9c7",
+      "code_fences_balanced": true,
+      "image_refs_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "03_yak_chytaty_knyhu.md",
+      "en_sha256": "c41b5f6f775b6ff762be210f58bb6b8c2b6a1c6689bd16b7df0a4ba24cf18b90",
+      "code_fences_balanced": true,
+      "image_refs_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "04_vstup_holovna_ideia_ordo.md",
+      "en_sha256": "2cf0b4d91bbef4a6db7231af1eaa3478e35d3153a04592b21c9f72acd6d7205e",
+      "code_fences_balanced": true,
+      "image_refs_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

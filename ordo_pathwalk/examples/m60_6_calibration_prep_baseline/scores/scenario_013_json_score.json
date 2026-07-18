@@ -1,0 +1,33 @@
+{
+  "gate_passed": true,
+  "path_quality_score": 1.0,
+  "cell_match_rate": 1.0,
+  "protocol_compliance_rate": 1.0,
+  "distraction_recovery_rate": 1.0,
+  "backtrack_accuracy": 1.0,
+  "turn_accuracy_rate": 1.0,
+  "protocol_violation_direct_compiled_read": false,
+  "runtime_metadata": {
+    "ordo_cli_version": "0.12",
+    "runtime_protocol_version": "M60.4",
+    "runtime_view": "json",
+    "runtime_package_hash": null,
+    "canonical_ir_hash": "sha256:cce4f988fce9bb8f647e66591b7df3bbec8a076a753373586fa2f8711249ddbe",
+    "targets_manifest_hash": "sha256:8f1834aae06d6dece7c42bf424cace1121db47451be9b25a76104f752820d1fd",
+    "session_trace_hash": "sha256:d8ef1cebfe4c377ea554d2f83412f13f20cb9a1e527d2975a7549e8f93d3f299",
+    "targets": [
+      "json-ir",
+      "session-trace"
+    ]
+  },
+  "weights": {
+    "cell_match_rate": 0.45,
+    "protocol_compliance_rate": 0.25,
+    "distraction_recovery_rate": 0.15,
+    "backtrack_accuracy": 0.15
+  },
+  "scenario_id": "scenario_013",
+  "driver": "benchmark-dry-run-ground-truth",
+  "cli_mode": "enforced",
+  "runtime_view": "json"
+}

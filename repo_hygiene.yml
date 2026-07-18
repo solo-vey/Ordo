@@ -1,0 +1,107 @@
+schema_version: ordo.repo_hygiene.policy.v1
+repo_hygiene:
+  policy_id: ordo-language-repository-production-hygiene
+  policy_status: phase_c_development_release_scope_isolation
+  default_profile: standard
+  fail_on_warning: false
+  metadata_scopes:
+    development:
+      enforcement: git_tracked_only
+      transient_filesystem_artifacts: reported_non_blocking
+    release:
+      enforcement: strict_candidate_tree_scan
+      candidate_source: isolated_clean_export
+  roots:
+    - root_id: language_core
+      path: language
+      role: language_core
+      clean_check: root_contract
+      release_blocking: true
+      contract:
+        required_paths:
+          - README.md
+          - CURRENT_VERSION.md
+          - registry/OPCODE_CATALOG.md
+          - VALIDATION_REPORT.json
+        yaml_globs:
+          - schemas/*.yaml
+        json_globs:
+          - VALIDATION_REPORT.json
+      rationale: Release-critical language root governed by a dedicated read-only repository contract.
+
+    - root_id: cli_core
+      path: cli
+      role: cli_utility
+      clean_check: root_contract
+      release_blocking: true
+      contract:
+        required_paths:
+          - README.md
+          - pyproject.toml
+          - ordo/cli.py
+          - ordo/repo_checks.py
+          - tests/test_production_repo_hygiene_policy.py
+        python_globs:
+          - ordo/*.py
+          - tests/test_*.py
+      rationale: Release-critical CLI root governed by a dedicated read-only repository contract.
+
+    - root_id: canonical_cli_example
+      path: cli/examples/history_event_guided_intake
+      role: example_package
+      clean_check: optional
+      release_blocking: false
+      rationale: >-
+        Canonical clean-check-compatible example package. It is observed by the
+        production policy without becoming a release-blocking language root.
+
+    - root_id: applied_packages
+      path: packages
+      role: applied_packages
+      clean_check: delegated
+      release_blocking: false
+      rationale: >-
+        Applied package ownership remains package-local and opt-in. Central
+        repository policy must not automatically enforce package children.
+
+    - root_id: companion_utilities
+      path: utilities
+      role: companion_utility
+      clean_check: not_applicable
+      release_blocking: false
+      rationale: Mixed utility layout without a shared Ordo package contract.
+
+    - root_id: pathwalk_utility
+      path: ordo_pathwalk
+      role: companion_utility
+      clean_check: not_applicable
+      release_blocking: false
+      rationale: Python utility governed by utility-specific checks.
+
+    - root_id: book_area
+      path: book
+      role: book_or_docs
+      clean_check: not_applicable
+      release_blocking: false
+      rationale: Governed by publication checks, not package clean-check.
+
+    - root_id: docs_area
+      path: docs
+      role: book_or_docs
+      clean_check: not_applicable
+      release_blocking: false
+      rationale: Governed by documentation and schema-link checks.
+
+    - root_id: workflow_area
+      path: .github
+      role: workflow_area
+      clean_check: ignored
+      release_blocking: false
+      rationale: Covered by existing repository workflow validation.
+
+    - root_id: reports_area
+      path: reports
+      role: generated_artifact_area
+      clean_check: ignored
+      release_blocking: false
+      rationale: Historical and generated evidence must not become a package root.

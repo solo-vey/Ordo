@@ -1,0 +1,92 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_noise_case.v1",
+  "milestone": "M60.7.5",
+  "case_id": "NOISE_TP_003_DISTRACTION",
+  "case_type": "noise_path",
+  "noise_pattern": "distraction",
+  "package": "sample.support_triage",
+  "source_path": "ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+  "path_id": "TP_003",
+  "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=medium -> G_TRIAGE_COMPLETE",
+  "node_sequence": [
+    "N_ISSUE_SUMMARY",
+    "N_SEVERITY"
+  ],
+  "scripted_steps": [
+    {
+      "step": 0,
+      "node": "N_ISSUE_SUMMARY",
+      "input_kind": "distraction",
+      "answer": "Before answering, the user asks an unrelated side question.",
+      "expected_behavior": "acknowledge_or_ignore_distraction_and_return_to_current_node",
+      "submit_expected": false
+    },
+    {
+      "step": 2,
+      "node": "N_ISSUE_SUMMARY",
+      "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+      "to": "N_SEVERITY",
+      "target_type": "node",
+      "edge_type": "on_answer.default",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    },
+    {
+      "step": 3,
+      "node": "N_SEVERITY",
+      "answer": "medium",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate",
+      "edge_type": "on_answer.branch",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    }
+  ],
+  "clean_answer_steps": [
+    {
+      "step": 1,
+      "node": "N_ISSUE_SUMMARY",
+      "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+      "to": "N_SEVERITY",
+      "target_type": "node",
+      "edge_type": "on_answer.default",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    },
+    {
+      "step": 2,
+      "node": "N_SEVERITY",
+      "answer": "medium",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate",
+      "edge_type": "on_answer.branch",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    }
+  ],
+  "expected_terminal": {
+    "target": "G_TRIAGE_COMPLETE",
+    "type": "gate"
+  },
+  "expected_outputs": [
+    "OUT_TRIAGE_NOTE"
+  ],
+  "expected_state_updates": [
+    "issue_summary",
+    "owner_team",
+    "severity"
+  ],
+  "expected_noise_handling": {
+    "distraction": "do_not_advance_until_valid_answer",
+    "invalid_branch": null,
+    "clarification_without_submit": null,
+    "skip_ahead": null
+  },
+  "readiness": {
+    "case_artifact_ready": true,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false,
+    "reason": "M60.7.5 emits bounded noise testcase artifacts only; no runtime execution, scoring, or calibration is claimed."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "backlog_id": "BL-ORDO-010",
+  "title": "Complete English book translation and current Ordo/APF synchronization",
+  "closure_status": "closed",
+  "decision": "PASS",
+  "uk_chapter_count": 80,
+  "en_chapter_count": 80,
+  "chapter_range": [
+    1,
+    80
+  ],
+  "missing_english_chapters": [],
+  "extra_english_chapters": [],
+  "duplicate_uk_chapter_numbers": {},
+  "duplicate_en_chapter_numbers": {},
+  "terminology_violations": [],
+  "current_ordo_apf_coverage_failures": [],
+  "current_lines_reconciled": [
+    "M76",
+    "M77",
+    "M78",
+    "M79",
+    "M80"
+  ],
+  "evidence": [
+    "BL_ORDO_010_FULL_BOOK_AUDIT_AFTER_RESTORE.json",
+    "BL_ORDO_010_BOOK_CURRENT_ORDO_APF_RECONCILIATION.json",
+    "BL_ORDO_010_M76_M80_BOOK_SYNC_AUDIT.json"
+  ],
+  "closure_note": "English book chapter parity is complete through chapter 80, terminology audit is clean, and current Ordo/APF capability lines M76-M80 are represented in canonical Ukrainian and English book sources."
+}

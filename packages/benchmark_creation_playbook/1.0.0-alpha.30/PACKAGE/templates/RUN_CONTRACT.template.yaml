@@ -1,0 +1,44 @@
+schema_version: benchmark.run_contract.v1
+run_id: RUN_XX
+scenario_version: 1.0.0
+name: <SCENARIO_NAME>
+purpose: <UNIQUE_BEHAVIORAL_PURPOSE>
+fact_statuses:
+- confirmed
+- tentative
+- withdrawn
+- superseded
+- unavailable
+- irrelevant
+disclosure_policy:
+  mode: step_bound_or_semantic_minimal
+  rules:
+  - no_future_fact_leakage
+  - compound_question_complete_response
+  - only_active_facts
+correction_policy:
+  enabled: false
+  trigger: none
+  invalidate_dependent_artifacts: true
+  approval_version_bound: true
+expected_terminal: T_COMPLETED
+required_behaviors:
+- <BEHAVIOR>
+forbidden_behaviors:
+- <BEHAVIOR>
+allowed_outputs:
+- <OUTPUT>
+forbidden_outputs:
+- <OUTPUT>
+evaluator_invariants:
+- terminal_checked_before_qualitative_score
+- no_cross_run_reuse
+visibility:
+  executor_visible:
+  - public_contract
+  driver_private:
+  - hidden_facts
+  - transitions
+  evaluator_only:
+  - expected_terminal
+  - invariants

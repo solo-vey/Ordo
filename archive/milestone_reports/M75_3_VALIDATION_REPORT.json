@@ -1,0 +1,29 @@
+{
+  "milestone": "M75.3",
+  "title": "CSG cross-model and repeated-run benchmark infrastructure",
+  "status": "passed-with-open-evidence-gate",
+  "implementation_checks": {
+    "cross_model_aggregator_implemented": true,
+    "cli_command_implemented": true,
+    "minimum_three_targets_enforced": true,
+    "minimum_two_runs_per_target_enforced": true,
+    "every_run_passed_enforced": true,
+    "dataset_version_consistency_enforced": true,
+    "targeted_tests_passed": 7
+  },
+  "current_gate": "blocked",
+  "current_blockers": [
+    {
+      "code": "CSG_MODEL_TARGET_COUNT_INSUFFICIENT",
+      "actual": 1,
+      "required": 3
+    },
+    {
+      "code": "CSG_REPEAT_RUN_COUNT_INSUFFICIENT",
+      "target": "OpenAI:GPT-5.6 Thinking",
+      "actual": 1,
+      "required": 2
+    }
+  ],
+  "note": "Infrastructure is complete. The production benchmark gate is correctly blocked pending external real-model evidence."
+}

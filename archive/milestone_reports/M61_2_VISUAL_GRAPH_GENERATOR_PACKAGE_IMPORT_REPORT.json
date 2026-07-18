@@ -1,0 +1,16 @@
+{
+  "milestone": "M61.2",
+  "title": "Visual Graph Generator Package Import",
+  "status": "passed-package-import",
+  "base": "M61.1 Companion Utilities Packaging Plan",
+  "imported_utility": "utilities/ordo_visual_graph_generator",
+  "runtime_core_changed": false,
+  "pathwalk_behavior_changed": false,
+  "runtime_execution_added": false,
+  "scoring_or_calibration_changed": false,
+  "graph_generator_role": "read-only visual renderer",
+  "future_work": [
+    "M61.3 Utility Documentation Consolidation",
+    "M62.0 Runtime Execution of Generated Testcases"
+  ]
+}

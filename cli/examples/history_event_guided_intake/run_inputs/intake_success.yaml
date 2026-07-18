@@ -1,0 +1,15 @@
+N_EVENT_GOAL: створити історичну подію зміни статусу компанії
+N_PATH_SELECT: A1
+N_EVENT_ALIAS: LU_CHANGE_STATUS
+N_DISPLAY_NAME_UK: Зміна статусу компанії
+N_DISPLAY_NAME_EN: Company status changed
+N_SOURCE_FIELD: item.status
+N_VALUE_SEMANTICS:
+- old status
+- new status
+- status normalization
+N_QA_SCOPE:
+- unit tests
+- manual QA
+- regression suite
+N_APPROVAL: 'yes'

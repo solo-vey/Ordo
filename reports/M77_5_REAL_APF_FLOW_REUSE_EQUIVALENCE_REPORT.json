@@ -1,0 +1,30 @@
+{
+  "milestone": "M77.5",
+  "status": "PASS",
+  "backlog_item": "BL-ORDO-007",
+  "real_apf_regions": [
+    {
+      "name": "output-template readiness tail",
+      "join": "JOIN.OUTPUT.TEMPLATE.READY",
+      "tail": "TAIL.OUTPUT.TEMPLATE.READINESS",
+      "reference": "REF.OUTPUT.TEMPLATE.READINESS"
+    },
+    {
+      "name": "validation/handoff tail",
+      "join": "JOIN.VALIDATION.RESULT",
+      "tail": "TAIL.VALIDATION.HANDOFF",
+      "reference": "REF.VALIDATION.HANDOFF"
+    }
+  ],
+  "semantic_equivalence": {
+    "explicit_nodes_preserved": true,
+    "join_targets_preserved": true,
+    "tail_entries_preserved": true,
+    "provenance_preserved": true,
+    "automatic_rewrite": false
+  },
+  "tests": {
+    "targeted": "9/9 PASS",
+    "assembly": "PASS"
+  }
+}

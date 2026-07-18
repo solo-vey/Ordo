@@ -1,0 +1,74 @@
+atomic_step_review:
+  review_id: asr.review.<playbook>.<step>.001
+  contract_version: '0.1'
+  review_status: needs_human_decision
+  reviewed_at: null
+  reviewer:
+    type: apf_model|human_reviewer
+    id: null
+  step_ref:
+    playbook_id: ''
+    process_id: ''
+    step_id: ''
+    step_version: ''
+  step_contract:
+    purpose: ''
+    inputs: []
+    action: ''
+    outputs: []
+    completion_criteria: []
+    validation: ''
+    confirmation_required: false
+    next_step: ''
+    failure_route: ''
+  evidence:
+    source_refs: []
+    materialized_artifact_refs: []
+    observed_status_fields: []
+  dimension_results:
+    single_responsibility: passed|failed|unclear
+    single_output: passed|failed|unclear
+    explicit_input_output: passed|failed|unclear
+    no_hidden_reconstruction: passed|failed|unclear
+    separate_generation_validation: passed|failed|unclear
+    explicit_confirmation: passed|failed|unclear
+    no_partial_success_transition: passed|failed|unclear
+    failure_localization: passed|failed|unclear
+    artifact_level_status: passed|failed|unclear
+    post_render_review: passed|failed|not_applicable|unclear
+  findings:
+  - finding_id: ASR-F-001
+    rule_id: ''
+    severity: recommendation|blocking_issue|needs_human_decision
+    observed_condition: ''
+    evidence_refs: []
+    risk: ''
+    recommended_action: ''
+    blocking: false
+  proposed_decomposition:
+    required: false
+    replacement_steps:
+    - step_id: ''
+      purpose: ''
+      input_refs: []
+      action: ''
+      output: ''
+      completion_criteria: []
+      validation: ''
+      confirmation_required: false
+      next_step: ''
+      failure_route: ''
+    preserved_inputs: []
+    preserved_business_rules: []
+    confirmation_points: []
+    failure_routes: []
+    semantic_change: false
+  transition_decision:
+    allowed: false
+    reason: ''
+    blocking_finding_ids: []
+  human_decision:
+    required: false
+    status: not_requested|pending|approved|rejected|revision_requested
+    decision_ref: null
+    notes: null

@@ -1,0 +1,114 @@
+{
+  "status": "passed",
+  "mode": "factory_generated_source_yaml_validation",
+  "source": "source/program.ordo.yaml",
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "infos": 0,
+    "nodes": 9,
+    "gates": 7,
+    "outputs": 1,
+    "artifacts": 2
+  },
+  "checks": {
+    "lint": {
+      "status": "passed",
+      "summary": {
+        "errors": 0,
+        "warnings": 0,
+        "infos": 0
+      },
+      "issues": []
+    },
+    "compile": {
+      "status": "passed",
+      "ops_count": 51,
+      "package": "ordo.decision_note_assistant"
+    },
+    "contract_artifact_references": {
+      "status": "passed",
+      "summary": {
+        "contracts": 1,
+        "artifacts": 2,
+        "artifact_requirements": 1,
+        "coverage_rules": 1,
+        "rendered_artifact_assertions": 0,
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    "contract_state_coverage": {
+      "required_fields": [
+        "alternatives_considered",
+        "approval_to_render_note",
+        "decision_status",
+        "decision_summary",
+        "decision_type",
+        "discussion_context",
+        "follow_up_actions",
+        "output_template_catalog",
+        "rationale"
+      ],
+      "state_fields": [
+        "alternatives_considered",
+        "approval_to_render_note",
+        "decision_status",
+        "decision_summary",
+        "decision_type",
+        "discussion_context",
+        "follow_up_actions",
+        "note_ready",
+        "open_questions",
+        "output_template_catalog",
+        "rationale"
+      ],
+      "written_fields": [
+        "alternatives_considered",
+        "approval_to_render_note",
+        "decision_status",
+        "decision_summary",
+        "decision_type",
+        "discussion_context",
+        "follow_up_actions",
+        "note_ready",
+        "open_questions",
+        "rationale"
+      ],
+      "missing_in_state": [],
+      "not_written_or_defaulted": []
+    },
+    "target_and_output_references": {
+      "nodes": [
+        "N_ALTERNATIVES_CONSIDERED",
+        "N_APPROVAL_TO_RENDER_NOTE",
+        "N_DECISION_STATUS",
+        "N_DECISION_SUMMARY",
+        "N_DECISION_TYPE",
+        "N_DISCUSSION_CONTEXT",
+        "N_FOLLOW_UP_ACTIONS",
+        "N_OPEN_QUESTIONS",
+        "N_RATIONALE"
+      ],
+      "gates": [
+        "G_APPROVAL_TO_RENDER_NOTE",
+        "G_DECISION_NOTE_READY_TO_RENDER",
+        "G_DECISION_STATUS_PRESENT",
+        "G_DECISION_SUMMARY_PRESENT",
+        "G_DECISION_TYPE_PRESENT",
+        "G_DISCUSSION_CONTEXT_PRESENT",
+        "G_TEMPLATE_CONTRACT_PRESENT"
+      ],
+      "unknown_transition_targets": [],
+      "unknown_output_gates": []
+    },
+    "template_contract_presence": {
+      "has_output_template_catalog": true,
+      "template_artifacts": [
+        "DECISION_NOTE_TEMPLATE_CONTRACT"
+      ]
+    }
+  },
+  "issues": []
+}

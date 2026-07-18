@@ -1,0 +1,22 @@
+{
+  "milestone": "M61.1",
+  "status": "passed",
+  "base": "M61.0 Human Review Scenario Cards",
+  "checks": {
+    "workspace_py_compile": "passed",
+    "workspace_selected_non_runtime_pathwalk_pytest": "20 passed",
+    "workspace_artifact_workflow_smoke": "passed: graph->paths->clean-cases->noise-cases->review-cards; cards=15",
+    "pathwalk_rc_py_compile": "passed",
+    "pathwalk_rc_plus_developer_bundle_smoke": "passed: graph->paths->clean-cases->noise-cases->review-cards; cards=15",
+    "visual_graph_generator_external_py_compile": "passed",
+    "visual_graph_generator_external_pytest": "12 passed",
+    "visual_graph_generator_external_mmd_smoke": "passed",
+    "visual_graph_generator_external_svg_smoke": "passed",
+    "book_manifest_sanity": "not applicable in this archive"
+  },
+  "notes": [
+    "Docs/design-only milestone.",
+    "Visual Graph Generator code remains external and is not imported in M61.1.",
+    "Runtime-harness and transcript-replay matrix gates are intentionally out of scope."
+  ]
+}

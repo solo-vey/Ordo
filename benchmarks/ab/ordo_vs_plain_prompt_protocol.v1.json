@@ -1,0 +1,86 @@
+{
+  "schema_version": "ordo.ab_benchmark_protocol.v1",
+  "protocol_version": "M87.1",
+  "benchmark_id": "ordo-vs-plain-prompt-v1",
+  "design": {
+    "type": "paired_within_task",
+    "unit_of_pairing": "task_case_model_repeat",
+    "pair_id_format": "PAIR-{task_id}-{model_id}-{repeat}",
+    "arms": {
+      "A": {
+        "id": "plain_prompt",
+        "definition": "Task instruction and required output only; no Ordo vocabulary, contracts, gates, state model, process rail or Ordo examples.",
+        "forbidden_content": [
+          "Ordo-specific terminology",
+          "Ordo schemas",
+          "Ordo gates",
+          "Ordo execution modes",
+          "examples copied from the Ordo arm"
+        ]
+      },
+      "B": {
+        "id": "ordo",
+        "definition": "Same task and output objective expressed through the frozen Ordo package, contracts, gates, state protection and structured-output conventions.",
+        "forbidden_content": [
+          "additional task facts unavailable to arm A",
+          "different acceptance criteria",
+          "different source documents"
+        ]
+      }
+    },
+    "shared_controls": {
+      "same_model": true,
+      "same_resolved_model_revision": true,
+      "same_input": true,
+      "same_acceptance_criteria": true,
+      "same_sampling_parameters": true,
+      "same_max_output_tokens": true,
+      "same_retry_policy": true
+    },
+    "counterbalancing": {
+      "enabled": true,
+      "method": "deterministic_hash_of_pair_id",
+      "orders": [
+        "A_then_B",
+        "B_then_A"
+      ]
+    },
+    "blinding": {
+      "scorer_blind_to_arm": true,
+      "outputs_redacted_of_arm_labels": true,
+      "scorer_identity_recorded": true,
+      "rubric_version_recorded": true
+    },
+    "contamination_controls": [
+      "No Ordo tokens in arm A prompt",
+      "No task facts unique to either arm",
+      "No evaluator access to prompt arm during scoring",
+      "Prompt templates frozen before execution",
+      "Any prompt modification increments protocol version"
+    ]
+  },
+  "execution": {
+    "minimum_repeats_per_task_model": 3,
+    "minimum_task_cases": 20,
+    "minimum_distinct_models": 2,
+    "seed_policy": "same seed within each pair when supported",
+    "failure_handling": "record errors; do not silently replace failed runs",
+    "retry_policy": "identical across arms"
+  },
+  "analysis_plan": {
+    "primary_metric": "paired_total_quality_score",
+    "primary_effect": "mean_paired_difference_B_minus_A",
+    "confidence_interval": "paired_bootstrap_95_percent",
+    "binary_metrics_test": "mcnemar_exact_or_asymptotic",
+    "ordinal_metrics_test": "wilcoxon_signed_rank",
+    "report_effect_sizes": true,
+    "report_raw_counts": true,
+    "multiple_comparison_policy": "primary metric prespecified; secondary metrics exploratory",
+    "closure_thresholds": {
+      "minimum_complete_pairs": 60,
+      "no_critical_state_protection_regression": true,
+      "quality_effect_direction": "B_not_worse",
+      "fabrication_effect_direction": "B_not_worse"
+    }
+  }
+}

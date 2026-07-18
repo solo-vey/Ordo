@@ -1,0 +1,12 @@
+schema_version: ordo.benchmark.regression_selection.v1
+selection_id: REGSEL-0001
+patch_id: PATCH-0001
+selected_scenarios:
+- scenario_id: RUN_XX
+  layer: trigger
+  reason: ''
+  expected_invariant: ''
+excluded_scenarios: []
+required_variants: []
+repetitions: 1
+pass_threshold: {}

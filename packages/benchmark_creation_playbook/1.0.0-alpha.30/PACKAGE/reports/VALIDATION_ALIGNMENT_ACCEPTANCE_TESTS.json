@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "passed": 5,
+  "total": 5,
+  "tests": [
+    {
+      "name": "positive",
+      "expected": "PASS",
+      "actual": "PASS",
+      "status": "PASS",
+      "regenerated": false
+    },
+    {
+      "name": "missing_negative",
+      "expected": "FAIL_CLOSED",
+      "actual": "FAIL_CLOSED",
+      "status": "PASS",
+      "regenerated": false
+    },
+    {
+      "name": "weakened_negative",
+      "expected": "FAIL_CLOSED",
+      "actual": "FAIL_CLOSED",
+      "status": "PASS",
+      "regenerated": false
+    },
+    {
+      "name": "regeneration",
+      "expected": "PASS",
+      "actual": "PASS",
+      "status": "PASS",
+      "regenerated": true
+    },
+    {
+      "name": "stale_negative",
+      "expected": "FAIL_CLOSED",
+      "actual": "FAIL_CLOSED",
+      "status": "PASS"
+    }
+  ]
+}

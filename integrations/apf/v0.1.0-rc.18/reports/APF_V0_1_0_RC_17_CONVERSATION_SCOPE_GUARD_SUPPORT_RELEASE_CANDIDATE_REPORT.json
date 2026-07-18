@@ -1,0 +1,17 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "release": "v0.1.0-rc.17-conversation-scope-guard-support-release-candidate",
+  "previous_confirmed_baseline": "v0.1.0-rc.15-execution-trace-support-confirmed-closure",
+  "source_working_candidate": "v0.1.0-rc.16-atomic-step-review-support-release-candidate",
+  "status": "release-candidate-ready-for-human-confirmation",
+  "enhancement_line": "CSG",
+  "completed_milestones": ["CSG-0", "CSG-1", "CSG-2", "CSG-3", "CSG-4", "CSG-5"],
+  "blocking_issues": 0,
+  "boundaries": {
+    "apf_internal_csg_enabled": false,
+    "generated_playbook_capability_optional": true,
+    "implicit_enablement_allowed": false,
+    "ordo_core_changed": false
+  },
+  "confirmation_required": true
+}

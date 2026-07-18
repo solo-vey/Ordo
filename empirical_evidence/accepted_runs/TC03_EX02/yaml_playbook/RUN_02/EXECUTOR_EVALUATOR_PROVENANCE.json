@@ -1,0 +1,33 @@
+{
+  "schema_version": "ordo.executor_evaluator_provenance.v1",
+  "executor": {
+    "model": "GPT-5.6 Thinking",
+    "chat_relation": "external_execution_chat",
+    "chat_id": null,
+    "evidence": "returned_run_archive"
+  },
+  "evaluator": {
+    "model": "GPT-5.6 Thinking",
+    "chat_relation": "current_evaluation_chat",
+    "chat_id": null,
+    "evaluation_basis": "returned_run_archive_and_case_scoring_rules"
+  },
+  "separation": {
+    "relation": "different_chat_same_model",
+    "different_chat": true,
+    "different_model": false,
+    "cryptographically_verified": false,
+    "verification_level": "user_attested_not_cryptographically_verified",
+    "attestation_source": "user_statement_in_evaluation_chat"
+  },
+  "recorded_on": "2026-07-18",
+  "limitations": [
+    "Execution and evaluation chat identifiers were not available.",
+    "Different-chat separation is recorded from user attestation and archive transfer context, not cryptographic session attestation.",
+    "This record does not establish different-model independence."
+  ],
+  "test_case_id": "TC03-EX02",
+  "representation_id": "yaml_playbook",
+  "representation": "YAML Playbook",
+  "run_id": "RUN_02"
+}

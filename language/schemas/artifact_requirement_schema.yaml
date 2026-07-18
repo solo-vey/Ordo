@@ -1,0 +1,33 @@
+ArtifactRequirement:
+  type: object
+  required: [kind, id, when, requires]
+  properties:
+    kind:
+      const: artifact_requirement
+    id:
+      type: string
+    when:
+      type: object
+      required: [contract, status]
+      properties:
+        contract:
+          type: string
+        status:
+          enum: [missing, candidate, proposed, confirmed, blocked, not_applicable]
+    requires:
+      type: array
+      items:
+        type: object
+        required: [artifact]
+        properties:
+          artifact:
+            type: string
+          must_include_fields:
+            type: array
+            items: { type: string }
+          must_include_sections:
+            type: array
+            items: { type: string }
+          forbidden_sections:
+            type: array
+            items: { type: string }

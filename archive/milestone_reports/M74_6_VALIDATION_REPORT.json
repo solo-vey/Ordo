@@ -1,0 +1,38 @@
+{
+  "milestone": "M74.6",
+  "title": "APF modularization",
+  "status": "passed_with_preexisting_pathwalk_limit",
+  "checks": {
+    "module_count": 8,
+    "module_assembly_matches_canonical": true,
+    "legacy_lint": "passed",
+    "modular_lint": "passed",
+    "legacy_compile": "passed",
+    "modular_compile": "passed",
+    "semantic_ir_equivalent": true,
+    "ir_ops_legacy": 407,
+    "ir_ops_modular": 407,
+    "static_test_legacy": "passed",
+    "static_test_modular": "passed",
+    "pathwalk_graph_equivalent": true,
+    "pathwalk_terminal_paths_equivalent": true,
+    "targeted_pytest": "5 passed"
+  },
+  "preexisting_limit": {
+    "pathwalk_terminal_enumeration_status": "blocked_in_both_legacy_and_modular",
+    "reason": "existing APF graph reports 4141 cycle edges and 2 dead-end paths; modularization introduced no change",
+    "blocks_modularization_equivalence": false,
+    "requires_follow_up": true
+  },
+  "modules": [
+    "00_program_metadata.ordo.module.yaml",
+    "10_entry_and_project_contract.ordo.module.yaml",
+    "20_process_design_rail.ordo.module.yaml",
+    "30_playbook_architecture.ordo.module.yaml",
+    "40_conversation_policy.ordo.module.yaml",
+    "50_package_generation.ordo.module.yaml",
+    "60_validation_and_release.ordo.module.yaml",
+    "70_assertions_and_status_semantics.ordo.module.yaml"
+  ],
+  "blocking_issues": []
+}

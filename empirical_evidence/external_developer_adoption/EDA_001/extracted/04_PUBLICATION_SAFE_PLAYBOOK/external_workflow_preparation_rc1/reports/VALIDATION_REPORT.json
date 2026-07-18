@@ -1,0 +1,27 @@
+{
+  "schema": "ordo.validation_report.v1",
+  "release": "0.1.0-rc.1",
+  "status": "passed",
+  "generated_at": "2026-07-15T14:42:04.661422+00:00",
+  "checks": {
+    "yaml_json_parse": "passed",
+    "unique_node_ids": "passed",
+    "transition_resolution": "passed",
+    "contract_state_alignment": "passed",
+    "source_instruction_exclusion": "passed",
+    "manual_external_mutation_boundary": "passed",
+    "explicit_analyst_draft_approval": "passed",
+    "business_work_tracker_only": "passed",
+    "no_second_link_approval": "passed",
+    "url_host_validation_disabled": "passed",
+    "two_url_metadata": "passed",
+    "completion_retention": "passed",
+    "model_approval_prohibited": "passed",
+    "knowledge_workspace_url_in_work_tracker_document": "passed",
+    "work_tracking_url_in_readme": "passed",
+    "duplicate_link_placement_prohibited": "passed",
+    "rollback_checkpoint_restore": "passed"
+  },
+  "node_count": 25,
+  "gate_count": 12
+}

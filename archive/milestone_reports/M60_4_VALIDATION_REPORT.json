@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "milestone": "M60.4 Native Restore Session / Append-only Rollback",
+  "changed_runtime_commands": [
+    "restore-session"
+  ],
+  "new_files": [
+    "cli/ordo/runtime_restore.py",
+    "docs/reports/M60_4_RESTORE_SESSION_REPORT.md"
+  ],
+  "updated_files": [
+    "cli/ordo/cli.py",
+    "cli/ordo/package_profiles.py",
+    "cli/ordo/__init__.py",
+    "cli/tests/test_cli_workflow.py",
+    "language/RUNTIME_GUIDED_INTAKE_PROTOCOL.md",
+    "cli/docs/SCENARIO_TESTING_WITH_RUNTIME_CLI.md",
+    "docs/testing/ORDO_PATHWALK_SCENARIO_TESTING.md",
+    "language/SCENARIO_TESTING_COMPATIBILITY.md",
+    "language/CURRENT_VERSION.md",
+    "language/CHANGELOG.md",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "restore_contract": {
+    "append_only": true,
+    "history_truncated": false,
+    "writes_restore_report": true,
+    "writes_evidence": true,
+    "writes_snapshot": true,
+    "writes_trace_step": true,
+    "updates_live_session_state": true,
+    "embedded_cli_allowlisted": true,
+    "verify_session_integrated": true
+  },
+  "scope_exclusions": [
+    "PathWalk code changes",
+    "retry/backoff",
+    "score calibration",
+    "Python/Java targets",
+    "MCP",
+    "sandbox"
+  ],
+  "validation": {
+    "focused_m60_4_tests": "3/3 passed",
+    "class_split_regression": "81/81 passed across 20 unittest classes",
+    "py_compile": "passed",
+    "repo_check": "passed",
+    "embedded_runtime_smoke": "passed: runtime-status, next-step auto, two submits, restore-session --to-seq 1, verify-session; package blocked exit=2",
+    "full_unittest_count": "81 tests discovered; class-split regression passed 81/81; whole-suite single invocation exceeded tool timeout, so class-split results are the recorded regression evidence"
+  }
+}

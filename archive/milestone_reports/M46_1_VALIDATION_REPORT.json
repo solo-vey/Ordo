@@ -1,0 +1,36 @@
+{
+  "milestone": "M46.1",
+  "name": "Contract / Artifact Coverage IR Model",
+  "status": "passed_spec_slice",
+  "scope": "language_and_book_markdown_only",
+  "implemented": [
+    "language/spec/15_CONTRACT_ARTIFACT_COVERAGE_MODEL.md",
+    "language/CONTRACTS.md",
+    "language/ARTIFACT_COVERAGE.md",
+    "language/GENERATED_ARTIFACT_VALIDATION.md",
+    "language/GO_NO_GO.md",
+    "coverage-related schema files",
+    "Semantic JSON IR schema coverage fields",
+    "OPCODE_CATALOG coverage constructs",
+    "book/source/chapters/chapter_41_contract_artifact_coverage_go_no_go.md",
+    "book/source/book_manifest.json update",
+    "book appendix markdown updates"
+  ],
+  "not_implemented_in_this_slice": [
+    "ordo validate-artifacts command",
+    "ordo consistency command",
+    "ordo go-no-go command",
+    "runtime rendered artifact validation",
+    "book PDF regeneration"
+  ],
+  "self_check": {
+    "book_pdf_regenerated": false,
+    "schema_files_added": true,
+    "opcode_catalog_updated": true,
+    "manifest_updated": true,
+    "cli_unit_tests": "8/8 OK",
+    "active_reference_packages": "lint/compile/test/coverage passed",
+    "repo_check": "passed with PYTHONDONTWRITEBYTECODE=1 after cleanup",
+    "generated_metadata_absent_after_cleanup": true
+  }
+}

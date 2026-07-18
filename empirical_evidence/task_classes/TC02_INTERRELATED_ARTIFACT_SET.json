@@ -1,0 +1,8 @@
+{
+  "schema_version": "ordo.empirical_evidence.task_class.v1",
+  "task_class_id": "TC02_INTERRELATED_ARTIFACT_SET",
+  "title": "Interrelated Artifact Set",
+  "scope": "Tasks producing multiple mutually dependent artifacts whose consistency must be preserved.",
+  "status": "candidate",
+  "scoring_profile": null
+}

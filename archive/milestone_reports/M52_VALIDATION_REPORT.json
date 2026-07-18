@@ -1,0 +1,33 @@
+{
+  "milestone": "M52",
+  "title": "Two-Tier Rendering Model",
+  "status": "passed",
+  "scope": [
+    "deterministic rendering metadata",
+    "model-assisted rendering metadata",
+    "renderer policy linting",
+    "model-assisted handoff generation",
+    "post-render deterministic validation",
+    "history event regression package update",
+    "book markdown update without PDF regeneration"
+  ],
+  "checks": {
+    "cli_unit_regression_tests": "26/26 OK",
+    "active_packages_lint_compile_test_coverage": "passed",
+    "history_event_go_no_go": "go",
+    "book_pdf_regenerated": false
+  },
+  "new_errors": [
+    "ORDO-RENDER-001",
+    "ORDO-RENDER-002",
+    "ORDO-RENDER-003",
+    "ORDO-RENDER-004",
+    "ORDO-RENDER-005",
+    "ORDO-RENDER-006"
+  ],
+  "known_limitations": [
+    "CLI does not execute an AI renderer.",
+    "Model-assisted rendered files must be supplied before post-render validation can evaluate them.",
+    "Inference detection is deterministic and based on confirmed-state consistency plus declared forbidden terms."
+  ]
+}

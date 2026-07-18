@@ -1,0 +1,59 @@
+schema_version: ordo.benchmark.document_quality_contract_registry.v1
+registry_version: 0.8.0
+contracts:
+- artifact_type: passport
+  contract_id: DQC-PASSPORT-1
+  version: 1.0.0
+  weights:
+    contract_completeness: 25
+    behavioral_precision: 20
+    testability: 20
+    traceability: 15
+    observability: 10
+    scope_and_decisions: 10
+- artifact_type: jira
+  contract_id: DQC-JIRA-1
+  version: 1.0.0
+  weights:
+    delivery_context: 15
+    scope_and_requirements: 25
+    acceptance_criteria: 25
+    dependencies_and_blockers: 10
+    traceability: 15
+    delivery_readiness: 10
+  explicit_non_requirements:
+  - unit_test_details
+  - passport_duplication
+  - fixed_section_order
+- artifact_type: implementation_prompt
+  contract_id: DQC-IMPL-PROMPT-1
+  version: 1.0.0
+  weights:
+    contract_binding: 15
+    scope_control: 20
+    code_discovery: 15
+    implementation_instructions: 20
+    verification: 15
+    architecture_preservation: 10
+    self_check_and_impact: 5
+- artifact_type: manual_qa
+  contract_id: DQC-MANUAL-QA-1
+  version: 1.0.0
+  weights:
+    input_completeness: 20
+    action_executability: 20
+    expected_results: 20
+    pass_fail_assertions: 20
+    observability: 10
+    traceability: 10
+- artifact_type: automation
+  contract_id: DQC-AUTOMATION-1
+  version: 1.0.0
+  weights:
+    scenario_traceability: 15
+    fixture_contract: 15
+    invocation_contract: 15
+    assertions: 25
+    terminal_and_negative_behavior: 15
+    evidence_outputs: 10
+    delivery_status_honesty: 5

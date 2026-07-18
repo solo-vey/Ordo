@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "passed": 6,
+  "total": 6,
+  "tests": [
+    {
+      "name": "valid_compile",
+      "status": "PASS",
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "valid_audit_binding",
+      "status": "PASS",
+      "returncode": 0,
+      "expected": 0
+    },
+    {
+      "name": "forbidden_override",
+      "status": "PASS",
+      "returncode": 2,
+      "expected": 2
+    },
+    {
+      "name": "stale_inheritance",
+      "status": "PASS",
+      "returncode": 2,
+      "expected": 2
+    },
+    {
+      "name": "bad_weights",
+      "status": "PASS",
+      "returncode": 2,
+      "expected": 2
+    },
+    {
+      "name": "bad_audit_binding",
+      "status": "PASS",
+      "returncode": 2,
+      "expected": 2
+    }
+  ]
+}

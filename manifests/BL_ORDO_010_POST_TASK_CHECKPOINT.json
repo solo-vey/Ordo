@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.task_checkpoint.v1",
+  "task": "BL-ORDO-010",
+  "status": "post_task_verified_checkpoint",
+  "pre_task_archive": "ORDO_ARF_CANONICAL_BL_ORDO_024_CLOSED_2026-07-14.zip",
+  "pre_task_sha256": "f9f1b5723df53424c9c16d150948a4ec460b8721f9b0d9cf432f5f9704c7a128",
+  "restore_before": "Restore BL-ORDO-024 archive and verify checksums.",
+  "restore_after": "Restore BL-ORDO-010 archive and verify checksums.",
+  "canonical_tree_hash": "7b3236beeacdd8183ffc15ee365eaf66d70098c63f2626640f212b7b002ce348"
+}

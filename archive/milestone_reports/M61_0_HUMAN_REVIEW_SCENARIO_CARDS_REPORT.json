@@ -1,0 +1,107 @@
+{
+  "milestone": "M61.0",
+  "title": "Human Review Scenario Cards",
+  "status": "passed-implementation-slice",
+  "base": "M60.8 stable developer handoff consolidation",
+  "change_level": {
+    "PathWalk": "L1 companion utility/artifact generation",
+    "Ordo runtime core": "L0 unchanged",
+    "scoring weights": "L0 unchanged"
+  },
+  "implemented": [
+    "real-module-review-cards CLI command",
+    "human review card generator from clean/noise testcase SUMMARY.json artifacts",
+    "per-card JSON/Markdown artifacts",
+    "REVIEW_CARDS.json/.md index artifacts",
+    "RAW_REVIEW_CARD_MATRIX.csv",
+    "validation report for review-card generation",
+    "PathWalk documentation and book source chapter 62 updates"
+  ],
+  "explicit_non_goals": [
+    "runtime execution of generated cases",
+    "model/API benchmark",
+    "scoring generated cases",
+    "calibration",
+    "watchdog/process-boundary hardening",
+    "new noise pattern expansion"
+  ],
+  "sample_counts": {
+    "review_cards": 15,
+    "ready_cards": 15,
+    "source_summaries": 2,
+    "runtime_executions": 0,
+    "scores": 0
+  },
+  "sample_noise_pattern_counts": {
+    "none": 3,
+    "distraction": 3,
+    "invalid_branch": 3,
+    "clarification_without_submit": 3,
+    "skip_ahead": 3
+  },
+  "readiness": {
+    "review_cards_ready": true,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false,
+    "reason": "Human review cards are ready for QA/developer reading. They are not executable benchmark results."
+  },
+  "checks": [
+    {
+      "check": "workspace_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "selected_non_runtime_pathwalk_pytest",
+      "status": "passed",
+      "details": "21 passed"
+    },
+    {
+      "check": "workspace_graph_paths_clean_noise_review_cards_smoke",
+      "status": "passed",
+      "details": "15 review cards, 15 ready"
+    },
+    {
+      "check": "runtime_execution_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "scoring_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "book_manifest_sanity",
+      "status": "passed",
+      "details": "72 entries, 62 chapters, 0 missing files"
+    },
+    {
+      "check": "pathwalk_rc_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "pathwalk_rc_plus_developer_bundle_review_cards_smoke",
+      "status": "passed",
+      "details": "15 review cards, 15 ready"
+    },
+    {
+      "check": "zip_extraction_check",
+      "status": "passed"
+    }
+  ],
+  "known_exclusions": [
+    "runtime-harness / transcript-replay matrix tests are not used as gates due known M60.6.5/M60.6.4.1 blocker branch",
+    "PathWalk runtime execution of generated cases is deferred to M62.0 or later"
+  ],
+  "artifacts": [
+    "cards/*.json",
+    "cards/*.md",
+    "REVIEW_CARDS.json",
+    "REVIEW_CARDS.md",
+    "RAW_REVIEW_CARD_MATRIX.csv",
+    "VALIDATION_REPORT.json"
+  ]
+}

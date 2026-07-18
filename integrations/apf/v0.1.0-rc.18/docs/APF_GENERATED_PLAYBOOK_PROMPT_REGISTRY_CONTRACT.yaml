@@ -1,0 +1,42 @@
+contract_id: apf.generated_playbook_prompt_registry.v1
+status: accepted-working-contract
+milestone: PMP-3
+applies_to: playbooks_created_by_apf
+purpose: Define a separate prompt registry for each generated playbook after human approval of prompt candidates.
+separation_rules:
+  apf_registry: used_only_by_apf_itself
+  generated_playbook_registry: owned_by_the_generated_playbook
+  registry_sharing: prohibited_without_explicit_shared_prompt_design
+activation_prerequisites:
+  - candidate_status_is_approved
+  - human_review_record_present
+  - exact_prompt_text_or_hash_matches_approval
+  - prompt_id_is_semantic_and_versioned
+  - authority_boundary_validation_passed
+required_registry_entry_fields:
+  - prompt_id
+  - prompt_family
+  - version
+  - lifecycle_status
+  - source_path
+  - sha256
+  - allowed_use_phases
+  - required_context
+  - prohibited_authority
+  - approval_record_ref
+lifecycle_statuses:
+  - active
+  - deprecated
+  - superseded
+  - disabled
+manifest_rules:
+  - active_prompt_requires_manifest_entry
+  - manifest_sha256_must_match_prompt_file
+  - unapproved_candidate_must_not_enter_manifest
+  - generated_playbook_registry_must_not_reference_apf_internal_prompt_paths
+empty_registry_policy: do_not_generate_when_no_prompt_is_approved
+non_goals:
+  - internal_apf_prompt_registry_changes
+  - runtime_navigation_control
+  - automatic_human_approval
+  - shared_cross_playbook_prompt_library

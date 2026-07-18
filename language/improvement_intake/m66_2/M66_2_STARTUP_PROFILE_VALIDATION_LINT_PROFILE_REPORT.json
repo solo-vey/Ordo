@@ -1,0 +1,19 @@
+{
+  "milestone": "M66.2",
+  "status": "accepted-design",
+  "scope": "startup_profile_validation lint/profile convention",
+  "added_artifacts": [
+    "language/STARTUP_PROFILE_VALIDATION_PROFILE.md",
+    "language/schemas/startup_profile_validation_profile_schema.yaml",
+    "language/examples/source/startup_profile_validation_profile_example.ordo.yaml",
+    "language/spec/22_STARTUP_PROFILE_VALIDATION_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M66-003_STARTUP_PROFILE_VALIDATION_LINT_PROFILE.md"
+  ],
+  "non_changes": [
+    "runtime core",
+    "compiler",
+    "CLI",
+    "opcodes",
+    "compiled IR regeneration"
+  ]
+}

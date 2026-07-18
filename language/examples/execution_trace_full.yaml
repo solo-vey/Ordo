@@ -1,0 +1,60 @@
+program:
+  id: trace_example
+  ordo_version: "0.12"
+
+execution_trace:
+  id: trace.trace_example.001
+  version: "1.0"
+  run:
+    run_id: run.trace_example.001
+    process_id: trace_example
+    process_version: "1.0"
+    execution_mode: normal
+    runtime_mode: chat_internal
+    trace_source: hybrid
+  status: completed
+  started_at: "2026-07-10T14:00:00+03:00"
+  finished_at: "2026-07-10T14:00:05+03:00"
+  actor:
+    actor_type: analyst
+    actor_id: analyst-001
+  source:
+    entry_point: start
+    input_refs: [input-001]
+  capture_level: standard
+  events:
+    - sequence: 1
+      event_id: event-0001
+      event_type: run_started
+      occurred_at: "2026-07-10T14:00:00+03:00"
+      actor: {actor_type: runtime}
+      payload: {}
+      outcome: {status: completed}
+    - sequence: 2
+      event_id: event-0002
+      event_type: field_assigned
+      occurred_at: "2026-07-10T14:00:02+03:00"
+      location: {node_id: collect_alias, path_id: main, phase_id: intake}
+      actor: {actor_type: analyst, actor_id: analyst-001}
+      payload: {field: event_alias, value: LU_CHANGE_STATUS}
+      state_effect: {changed: true, before_ref: state-001, after_ref: state-002, diff_ref: diff-002}
+      outcome: {status: accepted}
+    - sequence: 3
+      event_id: event-0003
+      event_type: run_completed
+      occurred_at: "2026-07-10T14:00:05+03:00"
+      actor: {actor_type: runtime}
+      payload: {}
+      outcome: {status: completed}
+  final_state: {snapshot_ref: state-002, result: completed}
+  outputs: []
+  replay:
+    replayable: true
+    replay_mode: deterministic
+    required_inputs_preserved: true
+    external_dependencies: {strategy: recorded}
+    sensitive_values: {strategy: reference}
+  integrity:
+    event_count: 3
+    sequence_complete: true
+    checksum: null

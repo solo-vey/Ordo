@@ -1,0 +1,55 @@
+run_status: active
+business_need: Notify users when a monitored entity changes a registered primary attribute.
+monitoring_relevance: true
+subject_type: ORGANIZATION
+jurisdictions:
+- JURISDICTION_A
+data_ownership: internal
+data_normalized: true
+data_mode: IN_HOUSE
+monitoring_type: GENERIC_ENTITY_MONITORING
+monitoring_group_alias: PROFILE_CHANGES
+monitoring_event_alias: CHANGE_PRIMARY_ATTRIBUTE
+monitoring_event_subtype: CHANGE_PRIMARY_ATTRIBUTE
+config_option_key: CHANGE_PRIMARY_ATTRIBUTE
+source_history_basis:
+- SOURCE_CHANGE_PRIMARY_ATTRIBUTE
+names_uk_en:
+  uk: Primary attribute change
+  en: Change of primary attribute
+user_planes:
+  setup: standalone checkbox
+  tracking: existing event-type filter
+  trigger: standard notification channel
+trigger_templates:
+  uk: 'Primary attribute changed: previous value — {oldValue}, new value — {newValue}.'
+  en: 'Primary attribute changed: previous value — {oldValue}, new value — {newValue}.'
+placeholder_contract:
+- name: oldValue
+  source: history.oldValue
+  format: text
+  fallback: —
+  rendered: 'Example A'
+- name: newValue
+  source: history.newValue
+  format: text
+  fallback: —
+  rendered: 'Example B'
+scenario_model:
+  aggregation: one monitoring event per accepted source change
+  positive:
+  - normalized old differs from normalized new
+  no_op:
+  - normalized old equals normalized new
+  invalid_data:
+  - required old or new value is unavailable
+  out_of_scope:
+  - unrelated profile attribute changed
+acceptance_criteria:
+- Correct bilingual rendered trigger for an accepted primary-attribute change
+signoff_plan:
+- Product/PO
+- Business Analyst
+- Data Owner
+external_record_url: '<provided manually during a run>'
+work_tracking_url: '<provided manually during a run>'

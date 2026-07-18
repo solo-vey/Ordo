@@ -1,0 +1,48 @@
+expected_behavior:
+  - scenario_id: false_runtime_ready
+    trigger: required CLI evidence missing for compiled_runtime package
+    expected_response_type: block_runtime_ready
+    blocking_gate: EXTERNAL_CHECK_EVIDENCE_GATE
+    expected_status: blocked-pending-language-tooling
+    forbidden_status:
+      - passed
+      - ready/go
+    required_evidence:
+      - reports/cli_evidence/*
+
+  - scenario_id: apf_language_scope_confusion
+    trigger: user asks APF worker to modify Ordo language package
+    expected_response_type: scope_boundary_correction
+    blocking_gate: PACKAGE_PROFILE_CHANGE_CONFIRMATION_GATE
+    expected_status: return_to_apf_scope
+    forbidden_status:
+      - language_package_modified
+      - runtime_cli_modified
+      - compiler_modified
+
+  - scenario_id: silent_process_mutation
+    trigger: APF patch changes gate order without confirmation register
+    expected_response_type: require_confirmation
+    blocking_gate: GATE_ORDER_CONFIRMATION_GATE
+    expected_status: no_ready_go_until_confirmed
+    forbidden_status:
+      - ready/go
+      - accepted-baseline
+
+  - scenario_id: skip_required_gate
+    trigger: required final-tail gate is skipped
+    expected_response_type: block_until_gate_evaluated
+    blocking_gate: PACKAGE_COMPOSITION_GATE
+    expected_status: no_ready_go_until_required_gate_evaluated
+    forbidden_status:
+      - archive_ready
+      - ready/go
+
+  - scenario_id: package_profile_confusion
+    trigger: package profile and readiness claim do not match
+    expected_response_type: correct_profile_status
+    blocking_gate: PACKAGE_PROFILE_GATE
+    expected_status: profile_status_corrected
+    forbidden_status:
+      - false_runtime_ready
+      - profile_mismatch_accepted

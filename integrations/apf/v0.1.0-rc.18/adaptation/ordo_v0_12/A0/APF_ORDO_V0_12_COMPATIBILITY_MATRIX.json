@@ -1,0 +1,292 @@
+{
+  "milestone": "A0",
+  "status": "proposed-for-human-confirmation",
+  "apf_baseline": "v0.1.0-rc.12-confirmed-closure",
+  "ordo_baseline": "v0.12 PRE-RELEASE 2026-07-10",
+  "matrix": [
+    {
+      "id": "C01",
+      "area": "Standard applied module boundary",
+      "ordo_status": "accepted and documented",
+      "apf_current_state": "APF is already classified as a higher-level standard applied module",
+      "compatibility": "compatible",
+      "required_action": "Preserve boundary; add explicit v0.12 compatibility declaration",
+      "target_patch": "A1"
+    },
+    {
+      "id": "C02",
+      "area": "Program-level contract metadata",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "Improvement proposal exists, but rc.12 baseline does not confirm complete canonical metadata",
+      "compatibility": "partial",
+      "required_action": "Add canonical program/module/version/control/execution/compatibility fields and review gate",
+      "target_patch": "A1"
+    },
+    {
+      "id": "C03",
+      "area": "Interaction model",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "Roles exist in consumer-role docs, but authority map and raw-output policy are not canonical program fields",
+      "compatibility": "partial",
+      "required_action": "Add `interaction_model`, authority ownership and review points",
+      "target_patch": "A2"
+    },
+    {
+      "id": "C04",
+      "area": "Human final release authority",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "APF already requires explicit human confirmations and closure",
+      "compatibility": "compatible",
+      "required_action": "Map existing gates to canonical authority/review-point fields",
+      "target_patch": "A2"
+    },
+    {
+      "id": "C05",
+      "area": "Process rail declaration",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "APF has process-rail change policy, but not a complete source-level rail contract",
+      "compatibility": "partial",
+      "required_action": "Define rail id, deviation, resume, backtrack, invalidation and skip-ahead policies",
+      "target_patch": "A2"
+    },
+    {
+      "id": "C06",
+      "area": "Conversation semantics",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "Not represented as a complete canonical contract",
+      "compatibility": "gap",
+      "required_action": "Define input classes, unmatched-input policy, clarification/deviation/backtrack behavior",
+      "target_patch": "A2"
+    },
+    {
+      "id": "C07",
+      "area": "Backtracking invalidates dependent state",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "rc.8 protects process-rail changes; concrete state invalidation semantics are incomplete",
+      "compatibility": "partial",
+      "required_action": "Add dependency invalidation and reconfirmation rules",
+      "target_patch": "A2/A4"
+    },
+    {
+      "id": "C08",
+      "area": "Runtime source-of-truth chain",
+      "ordo_status": "runtime architecture confirmed",
+      "apf_current_state": "APF rc.7 packages include source, compiled/runtime artifacts and reports, but current baseline needs v0.12 freshness alignment",
+      "compatibility": "partial",
+      "required_action": "Declare canonical chain and validate source→IR→state→outputs freshness",
+      "target_patch": "A4"
+    },
+    {
+      "id": "C09",
+      "area": "Semantic JSON IR controls routing",
+      "ordo_status": "runtime-enforced principle",
+      "apf_current_state": "APF is compiled as an Ordo module; no conflicting accepted APF rule found",
+      "compatibility": "compatible-with-audit",
+      "required_action": "Verify no Markdown/prompt-derived navigation remains",
+      "target_patch": "A4"
+    },
+    {
+      "id": "C10",
+      "area": "Checkpoint discipline / earliest incomplete node",
+      "ordo_status": "runtime convention and current workflow",
+      "apf_current_state": "APF has gates and intake completeness, but needs explicit checkpoint mapping",
+      "compatibility": "partial",
+      "required_action": "Map APF gates/nodes to checkpoint and forward-blocking semantics",
+      "target_patch": "A4"
+    },
+    {
+      "id": "C11",
+      "area": "Prompt Registry standard",
+      "ordo_status": "accepted convention with implementation examples",
+      "apf_current_state": "APF has only a proposed node-level prompt improvement, not accepted rc.12 implementation",
+      "compatibility": "gap",
+      "required_action": "Inventory prompts, assign stable IDs, registry, lifecycle, hashes and refs",
+      "target_patch": "A3"
+    },
+    {
+      "id": "C12",
+      "area": "`prompt_id` independent from `node_id`",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "Proposed APF document uses node-like IDs and older suggested shape",
+      "compatibility": "incompatible detail",
+      "required_action": "Use semantic stable prompt IDs and migration map; do not bind identity to node",
+      "target_patch": "A3"
+    },
+    {
+      "id": "C13",
+      "area": "Controlled prompt `use` / application order",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "No confirmed APF canonical order",
+      "compatibility": "gap",
+      "required_action": "Define supported phases and deterministic ordering",
+      "target_patch": "A3"
+    },
+    {
+      "id": "C14",
+      "area": "Prompts cannot override routing/gates/state authority",
+      "ordo_status": "accepted convention",
+      "apf_current_state": "APF proposal states prompts support nodes, but needs enforceable package policy",
+      "compatibility": "partial",
+      "required_action": "Add explicit prohibition and validation checks",
+      "target_patch": "A3"
+    },
+    {
+      "id": "C15",
+      "area": "Prompt application trace evidence",
+      "ordo_status": "package/runtime convention; core writer not fully generalized",
+      "apf_current_state": "APF has trace/report artifacts but no confirmed canonical prompt evidence",
+      "compatibility": "gap-with-limit",
+      "required_action": "Add package-level evidence now; label core session trace support honestly",
+      "target_patch": "A3/A6"
+    },
+    {
+      "id": "C16",
+      "area": "Parent-compatible APF validation profile",
+      "ordo_status": "release-candidate/go",
+      "apf_current_state": "APF rc.7 has many reports and APF-local helpers; profile exists in Ordo workspace",
+      "compatibility": "largely compatible",
+      "required_action": "Rebaseline command list and classify parent vs APF-local checks",
+      "target_patch": "A5"
+    },
+    {
+      "id": "C17",
+      "area": "`validate-factory-output` remains APF-local/optional",
+      "ordo_status": "explicit Ordo rule",
+      "apf_current_state": "APF local validation/reporting exists",
+      "compatibility": "compatible",
+      "required_action": "Preserve as non-parent blocker",
+      "target_patch": "A5"
+    },
+    {
+      "id": "C18",
+      "area": "Clean source vs dev/runtime/evidence split",
+      "ordo_status": "explicit Ordo rule",
+      "apf_current_state": "APF rc.7 created clean/dev/runtime packages; transfer baseline mixes historical artifacts by design",
+      "compatibility": "compatible-with-packaging-review",
+      "required_action": "Define release package types and prevent generated outputs in clean source",
+      "target_patch": "A5"
+    },
+    {
+      "id": "C19",
+      "area": "Release hygiene / clean runtime",
+      "ordo_status": "design plus partial CLI support",
+      "apf_current_state": "APF has improvement proposal; no confirmed rc.12 implementation",
+      "compatibility": "gap",
+      "required_action": "Implement only checks backed by current CLI/APF tooling; classify unsupported commands",
+      "target_patch": "A5"
+    },
+    {
+      "id": "C20",
+      "area": "Artifact freshness and no stale state in releases",
+      "ordo_status": "runtime/release discipline",
+      "apf_current_state": "Existing reports exist, but a canonical v0.12 gate is not confirmed in APF",
+      "compatibility": "partial",
+      "required_action": "Add freshness and stale-state package gates",
+      "target_patch": "A5"
+    },
+    {
+      "id": "C21",
+      "area": "Replay / transcript replay",
+      "ordo_status": "tooling and historical pilot evidence exists",
+      "apf_current_state": "APF backlog item BL-APF-001 is deferred; actual APF applicability not verified",
+      "compatibility": "audit-required",
+      "required_action": "Run capability audit only after base adaptation",
+      "target_patch": "A6"
+    },
+    {
+      "id": "C22",
+      "area": "State snapshots and diffs",
+      "ordo_status": "language/runtime features documented",
+      "apf_current_state": "APF use and current command/evidence coverage are not verified",
+      "compatibility": "audit-required",
+      "required_action": "Verify schema, CLI, runtime and package use separately",
+      "target_patch": "A6"
+    },
+    {
+      "id": "C23",
+      "area": "Restore session / append-only rollback",
+      "ordo_status": "documented runtime capability",
+      "apf_current_state": "APF integration not verified",
+      "compatibility": "audit-required",
+      "required_action": "Test applicable APF scenarios; do not claim before evidence",
+      "target_patch": "A6"
+    },
+    {
+      "id": "C24",
+      "area": "Gate and decision trace evidence",
+      "ordo_status": "language/runtime capability",
+      "apf_current_state": "APF has reports and confirmation registers, but mapping to v0.12 trace contracts needs audit",
+      "compatibility": "partial",
+      "required_action": "Build trace/evidence mapping and identify missing writer support",
+      "target_patch": "A6"
+    },
+    {
+      "id": "C25",
+      "area": "Real-module testcase generation",
+      "ordo_status": "supported utility/process line",
+      "apf_current_state": "APF rc.9 includes manifests, plans and packaged generator utility",
+      "compatibility": "compatible",
+      "required_action": "Revalidate against v0.12 schemas and keep execution evidence separate",
+      "target_patch": "A5/A7"
+    },
+    {
+      "id": "C26",
+      "area": "Concrete playbook startup/intake gates",
+      "ordo_status": "APF-specific confirmed baseline",
+      "apf_current_state": "APF rc.11–rc.12 fully define these gates",
+      "compatibility": "compatible",
+      "required_action": "Preserve unchanged; map to new program/rail/checkpoint contracts",
+      "target_patch": "A2/A4"
+    },
+    {
+      "id": "C27",
+      "area": "No silent APF process mutation",
+      "ordo_status": "APF confirmed policy",
+      "apf_current_state": "Fully present",
+      "compatibility": "compatible",
+      "required_action": "Use as regression gate for every adaptation patch",
+      "target_patch": "all"
+    },
+    {
+      "id": "C28",
+      "area": "Deferred APF backlog governance",
+      "ordo_status": "APF confirmed baseline",
+      "apf_current_state": "BL-APF-001/002 explicitly deferred pending adaptation",
+      "compatibility": "compatible",
+      "required_action": "Keep closed until A6 capability audit and user order confirmation",
+      "target_patch": "all"
+    },
+    {
+      "id": "C29",
+      "area": "Core/runtime boundary",
+      "ordo_status": "explicit Ordo integration rule",
+      "apf_current_state": "APF does not own language/runtime changes",
+      "compatibility": "compatible",
+      "required_action": "Preserve; all unsupported needs remain external dependencies",
+      "target_patch": "all"
+    },
+    {
+      "id": "C30",
+      "area": "APF release candidate closure",
+      "ordo_status": "not yet started for adaptation",
+      "apf_current_state": "rc.12 is confirmed baseline only",
+      "compatibility": "pending",
+      "required_action": "After A1–A6, run regression and prepare a separately approved APF RC",
+      "target_patch": "A7"
+    }
+  ],
+  "blocking_gaps": [
+    "program-level contract",
+    "interaction/process-rail/conversation contract",
+    "Prompt Registry",
+    "prompt application evidence",
+    "release hygiene/freshness gate"
+  ],
+  "deferred_capability_claims": [
+    "replay",
+    "state snapshots/diffs",
+    "restore/rollback",
+    "generalized core prompt trace writer"
+  ],
+  "backlog_implementation_started": false
+}

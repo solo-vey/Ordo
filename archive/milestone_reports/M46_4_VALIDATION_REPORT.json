@@ -1,0 +1,49 @@
+{
+  "milestone": "M46.4",
+  "title": "Cross-artifact consistency report",
+  "status": "passed",
+  "scope": [
+    "add ordo consistency command",
+    "generate CONSISTENCY_CHECK_REPORT.json",
+    "detect cross-artifact disagreement for confirmed contract fields",
+    "update CI history event output flow",
+    "update CLI/language/book markdown docs without regenerating PDF"
+  ],
+  "checks": {
+    "cli_unit_tests": {
+      "status": "passed",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli python -m unittest discover -s cli/tests",
+      "result": "15 tests OK"
+    },
+    "active_package_checks": {
+      "status": "passed",
+      "packages": [
+        "packages/ordo_project_builder",
+        "packages/ordo_hybrid_executor",
+        "packages/history_event_guided_intake"
+      ],
+      "commands": ["lint", "compile", "test", "coverage"]
+    },
+    "history_event_output_flow": {
+      "status": "passed",
+      "commands": [
+        "lock",
+        "validate-lock",
+        "intake --non-interactive",
+        "generate-output",
+        "validate-output",
+        "validate-artifacts",
+        "consistency"
+      ],
+      "consistency_result": "passed go_no_go=go"
+    },
+    "repo_check": {
+      "status": "passed",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli python -m ordo.cli repo-check ."
+    }
+  },
+  "known_limitations": [
+    "M46.4 compares rendered artifacts against declared confirmed contract values; it does not infer arbitrary contradictory business values that are not mapped as contract fields.",
+    "PDF book was intentionally not regenerated; only markdown book source was updated."
+  ]
+}

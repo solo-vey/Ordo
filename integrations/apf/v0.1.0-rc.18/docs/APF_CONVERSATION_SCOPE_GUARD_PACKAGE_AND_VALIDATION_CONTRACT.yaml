@@ -1,0 +1,50 @@
+contract_id: APF-CSG-PACKAGE-VALIDATION-001
+version: '0.1'
+status: aligned-with-ordo-csg-baseline-v0.1
+package_artifacts:
+  design_decision: conversation_scope_guard/design_decision.yaml
+  contract: conversation_scope_guard/conversation_scope_guard.contract.yaml
+  policy: conversation_scope_guard/conversation_deviation_policy.md
+  tests: conversation_scope_guard/conversation_scope_guard_tests.yaml
+  trace_events: conversation_scope_guard/conversation_scope_guard_trace_events.yaml
+  validation_report: conversation_scope_guard/validation_report.yaml
+conditional_rules:
+- when: supported == false
+  required:
+  - design_decision
+  forbidden:
+  - active_runtime_guard_claim
+- when: supported == true and enabled == true
+  required:
+  - config
+  - response_templates
+  - state_protection_assertions
+  - regression_test_catalog
+  - validation_report
+blocking_checks:
+- capability_not_explicitly_declared
+- invalid_mode
+- missing_control_or_safety_exception
+- unrelated_input_can_complete_node
+- unrelated_input_can_change_path
+- unrelated_input_can_confirm_or_reset_state
+- unclassifiable_input_accepted_as_answer
+- escalation_counter_scope_missing
+- escalation_reset_rules_missing
+- locked_process_without_pause_or_exit
+- exit_marks_incomplete_run_completed
+- required_trace_hooks_missing_when_trace_required
+- mandatory_regression_scenario_missing
+release_condition: all_blocking_checks_passed
+canonical_package_binding:
+  required_fields:
+  - supported
+  - enabled
+  - decision_status
+  - contract
+  - policy
+  - tests
+  - trace_events
+  decision_status_values:
+  - confirmed_enabled
+  - confirmed_not_required

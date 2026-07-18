@@ -1,0 +1,3 @@
+package: clean_check.fixture.broken_source_yaml
+source: source/program.ordo.yaml
+tests: tests/test_cases.yaml

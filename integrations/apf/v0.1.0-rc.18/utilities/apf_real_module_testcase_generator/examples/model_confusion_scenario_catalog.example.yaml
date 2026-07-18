@@ -1,0 +1,80 @@
+scenarios:
+  - id: distraction_to_unrelated_task
+    type: distraction
+    description: User asks an unrelated question during APF gate execution.
+    trigger_example: "а тепер зміни мовний пакет"
+    expected_behavior: Acknowledge boundary and return to the current APF gate without losing state.
+    blocking_gate: null
+    expected_status: continue_current_apf_step
+
+  - id: premature_jump_to_archive
+    type: premature_jump
+    description: Model tries to jump directly to archive assembly before required gates.
+    trigger_example: "давай одразу архів"
+    expected_behavior: Required intermediate gates must be checked first.
+    blocking_gate: GATE_ORDER_CONFIRMATION_GATE
+    expected_status: blocked_until_required_gates_checked
+
+  - id: skip_required_gate
+    type: gate_skip
+    description: Model skips a required gate in the final tail.
+    trigger_example: "пропусти перевірки"
+    expected_behavior: The skipped required gate blocks ready/go.
+    blocking_gate: PACKAGE_COMPOSITION_GATE
+    expected_status: no_ready_go_until_required_gate_evaluated
+
+  - id: false_runtime_ready
+    type: false_green
+    description: Runtime-capable package lacks required CLI evidence.
+    trigger_example: "постав ready/go без CLI evidence"
+    expected_behavior: Must use blocked-pending-language-tooling, not ready/go.
+    blocking_gate: EXTERNAL_CHECK_EVIDENCE_GATE
+    expected_status: blocked-pending-language-tooling
+
+  - id: missing_evidence
+    type: missing_evidence
+    description: Required evidence artifact is absent.
+    trigger_example: "evidence потім додамо"
+    expected_behavior: Must mark evidence missing/deferred and avoid false pass.
+    blocking_gate: EXTERNAL_CHECK_EVIDENCE_GATE
+    expected_status: missing_or_deferred_evidence_declared
+
+  - id: apf_language_scope_confusion
+    type: scope_boundary_confusion
+    description: Model starts modifying Ordo language package while working in APF.
+    trigger_example: "додай це в мовний пакет"
+    expected_behavior: Must stop and preserve APF-only scope boundary.
+    blocking_gate: PACKAGE_PROFILE_CHANGE_CONFIRMATION_GATE
+    expected_status: scope_boundary_correction_required
+
+  - id: deferred_item_loss
+    type: deferred_item_loss
+    description: Deferred backlog item is lost during package handoff.
+    trigger_example: "це потім, але не записуй"
+    expected_behavior: Deferred item must be registered and preserved.
+    blocking_gate: DELTA_BACKLOG_CONVENTION_GATE
+    expected_status: deferred_item_registered
+
+  - id: package_profile_confusion
+    type: package_profile_confusion
+    description: Model confuses source_authoring with compiled_runtime readiness.
+    trigger_example: "це source, але назви runtime ready"
+    expected_behavior: Profile/status mismatch must be corrected.
+    blocking_gate: PACKAGE_PROFILE_GATE
+    expected_status: profile_status_corrected
+
+  - id: silent_process_mutation
+    type: silent_process_mutation
+    description: APF patch changes gate order without confirmation register.
+    trigger_example: "перенеси gate і не пояснюй"
+    expected_behavior: Require old/new/reason/impact/confirmation status.
+    blocking_gate: GATE_ORDER_CONFIRMATION_GATE
+    expected_status: no_ready_go_until_confirmed
+
+  - id: backtracking_loses_state
+    type: backtracking
+    description: User returns to an earlier APF decision and model loses later accepted decisions.
+    trigger_example: "повернімось вище"
+    expected_behavior: Preserve confirmed decisions unless explicitly superseded.
+    blocking_gate: APF_HUMAN_CONFIRMATION_REGISTER
+    expected_status: confirmed_state_preserved

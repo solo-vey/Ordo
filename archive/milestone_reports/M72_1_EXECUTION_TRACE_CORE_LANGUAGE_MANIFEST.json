@@ -1,0 +1,11 @@
+{
+  "milestone": "M72.1",
+  "files": {
+    "language/schemas/execution_trace_schema.yaml": "ad2d8b6e16e4658077c8b06a39fd868f072fd7942d606ce01468060ed0a4d3f3",
+    "language/spec/33_EXECUTION_TRACE_MODEL.md": "d78ac33e97e4f4c70945cfc8cf3f472268aeccec7d8cb4275364243bf838a494",
+    "language/registry/EXECUTION_TRACE_VALUES.md": "14ac62329bfa379c56f6c4d2dab2d5a095c137791a4d13fb2b81dc992e35db74",
+    "language/examples/execution_trace_full.yaml": "793ea28f0db47a5cc08c4ff1323545e14966f1b6c7703da7f7a5fe7f848ef2b4",
+    "book/source/chapters/chapter_74_execution_trace_core_language_element.md": "ad1d194de0716f4a60acd5e42d8c173d7b0f33c9c11bc9dea0eea117853a8b17",
+    "M72_1_EXECUTION_TRACE_CORE_LANGUAGE_VALIDATION_REPORT.json": "c1cca4eaba52442e0411fb933eee07a4807622602efa88446fa08cf330e96ccb"
+  }
+}

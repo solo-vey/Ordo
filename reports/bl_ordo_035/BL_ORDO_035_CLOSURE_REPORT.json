@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "backlog_id": "BL-ORDO-035",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.3",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.2.0-rc.2",
+  "implemented": [
+    "SILENT_FIXTURE_NOOP blocking anti-pattern",
+    "negative fixture mutation proof",
+    "machine-readable test execution classification",
+    "serial workspace-mutating and performance-sensitive phase",
+    "test fixture safety audit and regression suite"
+  ],
+  "external_ci_note": "Independent end-to-end delivery verification remains deferred under BL-ORDO-026 until the next externally supplied release.",
+  "tests": {
+    "focused_and_governance_regression": "34/34 passed",
+    "scheduler_plan_repetition": "3/3 identical",
+    "package_lints": "4/4 passed"
+  },
+  "non_destructive_gate": {
+    "pre_hash": "a1ac5838507071773aab3547cbbf0a4c0e8f3afa304eb2bbeea8e2fe4362fe0d",
+    "post_hash": "a1ac5838507071773aab3547cbbf0a4c0e8f3afa304eb2bbeea8e2fe4362fe0d",
+    "unchanged": true
+  },
+  "blocking_issues": 0
+}

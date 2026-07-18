@@ -1,0 +1,64 @@
+{
+  "milestone": "M68 first-wave closure",
+  "line": [
+    "M68.0",
+    "M68.1",
+    "M68.2",
+    "M68.3",
+    "M68.4"
+  ],
+  "status": "passed",
+  "decision": "closed-first-wave",
+  "checks": [
+    {
+      "check_id": "m68_0_validation_report_present",
+      "status": "passed"
+    },
+    {
+      "check_id": "m68_1_validation_report_present",
+      "status": "passed"
+    },
+    {
+      "check_id": "m68_2_validation_report_present",
+      "status": "passed"
+    },
+    {
+      "check_id": "m68_3_validation_report_present",
+      "status": "passed"
+    },
+    {
+      "check_id": "m68_4_validation_report_present",
+      "status": "passed"
+    },
+    {
+      "check_id": "targeted_cli_tests",
+      "status": "passed",
+      "evidence": "Ran 15 tests / OK"
+    },
+    {
+      "check_id": "json_reports_parse",
+      "status": "passed"
+    },
+    {
+      "check_id": "applied_package_source_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "runtime_core_compiler_opcode_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "zip_integrity",
+      "status": "passed"
+    }
+  ],
+  "non_changes": [
+    "packages/* program source",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles",
+    "embedded CLI bundles"
+  ]
+}

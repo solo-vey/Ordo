@@ -1,0 +1,2328 @@
+{
+  "status": "passed",
+  "mode": "rendered_artifact_validation",
+  "package": {
+    "name": "ordo.applied_project_factory",
+    "version": "0.1.0-rc.4-post-svg"
+  },
+  "artifacts_dir": "/mnt/data/apf_rc6_work/dev/ordo_applied_project_factory/generated_outputs",
+  "state_source": null,
+  "summary": {
+    "checked_contracts": 6,
+    "checked_artifacts": 17,
+    "errors": 0,
+    "warnings": 228,
+    "model_assisted_outputs_checked": 0
+  },
+  "checked_contracts": [
+    "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+    "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+    "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+    "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+    "G_FACTORY_SCOPE_CONTRACT",
+    "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT"
+  ],
+  "checked_artifacts": [
+    "APF_DELTA_BACKLOG_REGISTER",
+    "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+    "APPLIED_PROJECT_FACTORY_MODULE_CHANGELOG",
+    "APPLIED_PROJECT_FACTORY_README",
+    "APPLIED_PROJECT_FACTORY_SOURCE",
+    "APPLIED_PROJECT_FACTORY_VERSION",
+    "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+    "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+    "DELTA_BACKLOG_CONVENTION_POLICY",
+    "FOCUSED_GRAPH_RENDERING_POLICY",
+    "GRAPH_ANNOTATION_OVERLAY_POLICY",
+    "HANDOFF_PACKAGE",
+    "LANGUAGE_IMPROVEMENT_PROPOSALS",
+    "MODULE_VERSIONING_POLICY",
+    "PACKAGED_SVG_GRAPH_GENERATOR_UTILITY",
+    "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+    "TERMINAL_OUTPUT_REVIEW_PACKAGE"
+  ],
+  "checked_model_assisted_outputs": [],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "applied_project_goal",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "applied_process_type",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "runtime_human_role",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "runtime_ai_role",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "runtime_entry_point",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "decision_tree_blueprint",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "state_schema_blueprint",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "output_artifact_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "output_template_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "validation_gate_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "first_release_output_scope",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "approval_to_generate_source_yaml",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "factory_authoring_mode",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "open_questions",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "draft_tree_review_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "basic_test_case_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "domain_model_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "domain_input_sources",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "domain_output_template_sources",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "approved_decision_tree",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "tree_review_depth_first_complete",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "free_dialogue_raw_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "free_dialogue_structured_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "candidate_decision_nodes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "candidate_gates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "candidate_outputs",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "candidate_templates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "free_dialogue_draft_tree_ready",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "stabilized_tree_branch",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "self_hosted_authoring_loop_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "focused_svg_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "graph_rendering_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "language_improvement_proposals",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "language_improvement_proposals_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "auto_svg_generation_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "user_facing_node_description_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "user_facing_extraction_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "process_feedback_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "process_feedback_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "node_review_display_contract",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "node_review_display_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "confirmed_review_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "current_review_branch",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "unreviewed_sibling_branches",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "deferred_return_points",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "current_node_review_record",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "node_review_ordo_layer_visibility",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "current_node_review_decision",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "node_decision_gate_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "node_review_control_gate_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "process_design_review_rendering_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "current_process_layer_label",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "runtime_context_shift_notice",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "current_node_display_block",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "applied_project_goal",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "applied_process_type",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "runtime_human_role",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "runtime_ai_role",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "runtime_entry_point",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "decision_tree_blueprint",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "state_schema_blueprint",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "output_artifact_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "output_template_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "validation_gate_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "first_release_output_scope",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "approval_to_generate_source_yaml",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "factory_authoring_mode",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "open_questions",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "draft_tree_review_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "basic_test_case_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "domain_model_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "domain_input_sources",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "domain_output_template_sources",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "approved_decision_tree",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "tree_review_depth_first_complete",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "free_dialogue_raw_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "free_dialogue_structured_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "candidate_decision_nodes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "candidate_gates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "candidate_outputs",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "candidate_templates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "free_dialogue_draft_tree_ready",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "stabilized_tree_branch",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "self_hosted_authoring_loop_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "focused_svg_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "graph_rendering_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "language_improvement_proposals",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "language_improvement_proposals_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "auto_svg_generation_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "user_facing_node_description_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "user_facing_extraction_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "process_feedback_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "process_feedback_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "node_review_display_contract",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "node_review_display_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "confirmed_review_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "current_review_branch",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "unreviewed_sibling_branches",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "deferred_return_points",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "current_node_review_record",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "node_review_ordo_layer_visibility",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "current_node_review_decision",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "node_decision_gate_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "node_review_control_gate_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "process_design_review_rendering_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "current_process_layer_label",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "runtime_context_shift_notice",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_SOURCE_YAML_TEMPLATE",
+      "field": "current_node_display_block",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "output_artifact_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "output_template_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "validation_gate_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "factory_authoring_mode",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "open_questions",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "draft_tree_review_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "basic_test_case_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "domain_model_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "domain_input_sources",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "domain_output_template_sources",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "approved_decision_tree",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "tree_review_depth_first_complete",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "free_dialogue_raw_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "free_dialogue_structured_notes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "candidate_decision_nodes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "candidate_gates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "candidate_outputs",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "candidate_templates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "free_dialogue_draft_tree_ready",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "stabilized_tree_branch",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "self_hosted_authoring_loop_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "focused_svg_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "graph_rendering_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "language_improvement_proposals",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "language_improvement_proposals_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "auto_svg_generation_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "user_facing_node_description_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "user_facing_extraction_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "process_feedback_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "process_feedback_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "node_review_display_contract",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "node_review_display_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "confirmed_review_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "current_review_branch",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "unreviewed_sibling_branches",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "deferred_return_points",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "current_node_review_record",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "node_review_ordo_layer_visibility",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "current_node_review_decision",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "node_decision_gate_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "node_review_control_gate_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "process_design_review_rendering_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "current_process_layer_label",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "runtime_context_shift_notice",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE",
+      "field": "current_node_display_block",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/FOCUSED_GRAPH_RENDERING_POLICY.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "FOCUSED_GRAPH_RENDERING_POLICY",
+      "field": "node_review_display_contract",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/FOCUSED_GRAPH_RENDERING_POLICY.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "FOCUSED_GRAPH_RENDERING_POLICY",
+      "field": "unreviewed_sibling_branches",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/FOCUSED_GRAPH_RENDERING_POLICY.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "FOCUSED_GRAPH_RENDERING_POLICY",
+      "field": "deferred_return_points",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/FOCUSED_GRAPH_RENDERING_POLICY.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "FOCUSED_GRAPH_RENDERING_POLICY",
+      "field": "current_node_review_record",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "LANGUAGE_IMPROVEMENT_PROPOSALS",
+      "field": "node_review_display_contract",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "LANGUAGE_IMPROVEMENT_PROPOSALS",
+      "field": "unreviewed_sibling_branches",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "LANGUAGE_IMPROVEMENT_PROPOSALS",
+      "field": "deferred_return_points",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "LANGUAGE_IMPROVEMENT_PROPOSALS",
+      "field": "current_node_review_record",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "node_review_display_contract",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "unreviewed_sibling_branches",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "deferred_return_points",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "current_node_review_record",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "VERSION.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_VERSION",
+      "field": "module_id",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "VERSION.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_VERSION",
+      "field": "module_version",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "VERSION.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_VERSION",
+      "field": "parent_language_package_version",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "MODULE_CHANGELOG.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_MODULE_CHANGELOG",
+      "field": "module_version",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/MODULE_VERSIONING_POLICY.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "MODULE_VERSIONING_POLICY",
+      "field": "module_versioning_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/MODULE_VERSIONING_POLICY.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "MODULE_VERSIONING_POLICY",
+      "field": "language_package_inclusion_model",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/MODULE_VERSIONING_POLICY.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "MODULE_VERSIONING_POLICY",
+      "field": "parent_language_package_version",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "GRAPH_ANNOTATION_OVERLAY_POLICY",
+      "field": "graph_annotation_overlay_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "GRAPH_ANNOTATION_OVERLAY_POLICY",
+      "field": "annotation_schema",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "GRAPH_ANNOTATION_OVERLAY_POLICY",
+      "field": "focused_context_svg",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "module_versioning_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_FACTORY_MODULE_VERSIONING_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "graph_annotation_overlay_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/terminal_output_review_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "TERMINAL_OUTPUT_REVIEW_PACKAGE",
+      "field": "template_file",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/terminal_output_review_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "TERMINAL_OUTPUT_REVIEW_PACKAGE",
+      "field": "mock_filled_example_file",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/terminal_output_review_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "TERMINAL_OUTPUT_REVIEW_PACKAGE",
+      "field": "mapping_report",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/terminal_output_review_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "TERMINAL_OUTPUT_REVIEW_PACKAGE",
+      "field": "assumptions_risks_summary",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/terminal_output_review_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "TERMINAL_OUTPUT_REVIEW_PACKAGE",
+      "field": "user_decisions_confirm_revise_defer_remove",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "artifact_review_mode_policy",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "review_packages",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "mapping_reports",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "unfinished_output_templates",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "terminal_path_ready_records",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/handoff_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "HANDOFF_PACKAGE",
+      "field": "output_template_catalog",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/handoff_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "HANDOFF_PACKAGE",
+      "field": "terminal_binding_summary",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/handoff_package/manifest.md",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "HANDOFF_PACKAGE",
+      "field": "alpha_limitations_log",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "shared_validation_handoff_tail_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "source_yaml_generation_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "minimal_validation_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "full_validation_decision",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "final_readiness_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "handoff_package_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "source/program.ordo.yaml",
+      "contract": "G_APPLIED_PROJECT_FACTORY_CONTRACT",
+      "artifact": "APPLIED_PROJECT_FACTORY_SOURCE",
+      "field": "handoff_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/DELTA_BACKLOG_CONVENTION_POLICY.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "DELTA_BACKLOG_CONVENTION_POLICY",
+      "field": "delta_backlog_convention_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/DELTA_BACKLOG_CONVENTION_POLICY.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "DELTA_BACKLOG_CONVENTION_POLICY",
+      "field": "delta_item_decision_status_model",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/DELTA_BACKLOG_CONVENTION_POLICY.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "DELTA_BACKLOG_CONVENTION_POLICY",
+      "field": "delta_item_required_metadata",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/DELTA_BACKLOG_CONVENTION_POLICY.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "DELTA_BACKLOG_CONVENTION_POLICY",
+      "field": "delta_transfer_preservation_rule",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/DELTA_BACKLOG_CONVENTION_POLICY.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "DELTA_BACKLOG_CONVENTION_POLICY",
+      "field": "delta_backlog_ordering_rule",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "backlog/APF_DELTA_BACKLOG_REGISTER.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "APF_DELTA_BACKLOG_REGISTER",
+      "field": "delta_backlog_register_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "backlog/APF_DELTA_BACKLOG_REGISTER.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "APF_DELTA_BACKLOG_REGISTER",
+      "field": "delta_item_decision_status_model",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "backlog/APF_DELTA_BACKLOG_REGISTER.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "APF_DELTA_BACKLOG_REGISTER",
+      "field": "delta_item_required_metadata",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "backlog/APF_DELTA_BACKLOG_REGISTER.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "APF_DELTA_BACKLOG_REGISTER",
+      "field": "delta_transfer_preservation_rule",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "backlog/APF_DELTA_BACKLOG_REGISTER.md",
+      "contract": "G_DELTA_BACKLOG_CONVENTION_CONTRACT",
+      "artifact": "APF_DELTA_BACKLOG_REGISTER",
+      "field": "delta_backlog_ordering_rule",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_packaging_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_packaged_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_manifest_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_supported_formats",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_rendering_modes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_artifact_modes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_smoke_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "docs/SVG_GRAPH_GENERATOR_PACKAGING_POLICY.md",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "SVG_GRAPH_GENERATOR_PACKAGING_POLICY",
+      "field": "svg_graph_generator_transfer_inclusion_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "utilities/ordo_visual_graph_generator/APF_RC4_SVG_PACKAGED_UTILITY_MANIFEST.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "PACKAGED_SVG_GRAPH_GENERATOR_UTILITY",
+      "field": "svg_graph_generator_packaged_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "utilities/ordo_visual_graph_generator/APF_RC4_SVG_PACKAGED_UTILITY_MANIFEST.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "PACKAGED_SVG_GRAPH_GENERATOR_UTILITY",
+      "field": "svg_graph_generator_supported_formats",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "utilities/ordo_visual_graph_generator/APF_RC4_SVG_PACKAGED_UTILITY_MANIFEST.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "PACKAGED_SVG_GRAPH_GENERATOR_UTILITY",
+      "field": "svg_graph_generator_rendering_modes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "utilities/ordo_visual_graph_generator/APF_RC4_SVG_PACKAGED_UTILITY_MANIFEST.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "PACKAGED_SVG_GRAPH_GENERATOR_UTILITY",
+      "field": "svg_graph_generator_artifact_modes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "utilities/ordo_visual_graph_generator/APF_RC4_SVG_PACKAGED_UTILITY_MANIFEST.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "PACKAGED_SVG_GRAPH_GENERATOR_UTILITY",
+      "field": "svg_graph_generator_smoke_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_packaging_policy_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_packaged_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_manifest_path",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_supported_formats",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_rendering_modes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_artifact_modes",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_smoke_status",
+      "expected_value": null
+    },
+    {
+      "severity": "warning",
+      "code": "ORDO-COV-W01",
+      "message": "Confirmed contract field has no concrete runtime value to check in rendered artifact.",
+      "location": "reports/APF_V0_1_0_RC_4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT.json",
+      "contract": "G_SVG_GRAPH_GENERATOR_PACKAGING_CONTRACT",
+      "artifact": "APF_RC4_SVG_GRAPH_GENERATOR_PACKAGING_REPORT",
+      "field": "svg_graph_generator_transfer_inclusion_status",
+      "expected_value": null
+    }
+  ]
+}

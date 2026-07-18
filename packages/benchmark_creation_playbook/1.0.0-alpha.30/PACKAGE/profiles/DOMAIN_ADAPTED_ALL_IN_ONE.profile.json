@@ -1,0 +1,35 @@
+{
+  "schema_version": "ordo.benchmark.representation_profile.v1",
+  "profile_version": "1.0.0",
+  "representation_id": "DOMAIN_ADAPTED_ALL_IN_ONE",
+  "profile": "profiles/DOMAIN_ADAPTED_ALL_IN_ONE.profile.json",
+  "allowed_source_types": [
+    "DOMAIN_ALL_IN_ONE_CORPUS"
+  ],
+  "strategy": "direct_domain_adaptation",
+  "external_disclosure": "domain_corpus_and_adapted_process_only",
+  "required_receipts": [
+    "SOURCE_TARGET_LINEAGE.json",
+    "TRANSFORMATION_RECEIPT.json",
+    "SEMANTIC_PARITY_REPORT.json",
+    "DISCLOSURE_ISOLATION_REPORT.json"
+  ],
+  "common_invariants": [
+    "intent",
+    "business_outcome",
+    "required_inputs",
+    "required_outputs",
+    "state_mutations",
+    "gates",
+    "terminal_semantics",
+    "correction_ownership",
+    "correction_loop_reachability",
+    "evidence_obligations",
+    "failure_and_hard_stop_behavior"
+  ],
+  "specific_rules": [
+    "actual_domain_corpus_required",
+    "yaml_reconstruction_forbidden",
+    "domain_adaptation_contract_required"
+  ]
+}

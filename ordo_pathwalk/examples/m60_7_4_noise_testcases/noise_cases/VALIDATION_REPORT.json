@@ -1,0 +1,52 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_noise_cases_validation.v1",
+  "milestone": "M60.7.4",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "terminal_paths_loaded",
+      "status": "passed"
+    },
+    {
+      "check": "supported_noise_patterns_only",
+      "status": "passed"
+    },
+    {
+      "check": "noise_cases_present",
+      "status": "passed"
+    },
+    {
+      "check": "one_case_per_terminal_path_per_pattern",
+      "status": "passed"
+    },
+    {
+      "check": "raw_noise_testcase_matrix_written",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_artifacts_not_read",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_execution_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "scoring_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_not_claimed",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "outputs": [
+    "cases/*.json",
+    "cases/*.md",
+    "RAW_NOISE_TESTCASE_MATRIX.csv",
+    "SUMMARY.json",
+    "SUMMARY.md",
+    "VALIDATION_REPORT.json"
+  ]
+}

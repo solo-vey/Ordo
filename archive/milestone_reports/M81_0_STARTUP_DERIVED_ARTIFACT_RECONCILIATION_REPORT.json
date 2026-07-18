@@ -1,0 +1,160 @@
+{
+  "schema_version": "ordo.startup_artifact_reconciliation.v1",
+  "package": "/mnt/data/m73_translation_working_workspace/ordo_github_workspace_v0_12_pre_release_after_full_self_check/packages/history_event_guided_intake",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "startup_profile_present",
+      "status": "passed",
+      "message": "startup_package_profile present"
+    },
+    {
+      "check_id": "artifact_sync_present",
+      "status": "passed",
+      "message": "artifact_sync present"
+    },
+    {
+      "check_id": "startup_default_mode_resolves",
+      "status": "passed",
+      "message": "default mode resolves: analyst_quick_start"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: README.md",
+      "target": "README.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: START_HERE_RUNTIME_MODE.md",
+      "target": "START_HERE_RUNTIME_MODE.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: START_PROMPT_RUNTIME_MODE.md",
+      "target": "START_PROMPT_RUNTIME_MODE.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: prompts/hp.package.quick_start.v1.md",
+      "target": "prompts/hp.package.quick_start.v1.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: prompts/hp.runtime.start.v1.md",
+      "target": "prompts/hp.runtime.start.v1.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: PROMPT_MANIFEST.json",
+      "target": "PROMPT_MANIFEST.json"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: PROMPT_REGISTRY_VALIDATION_PROFILE.md",
+      "target": "PROMPT_REGISTRY_VALIDATION_PROFILE.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: STARTUP_PACKAGE_PROFILE.md",
+      "target": "STARTUP_PACKAGE_PROFILE.md"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: ordo.yml",
+      "target": "ordo.yml"
+    },
+    {
+      "check_id": "startup_entry_exists",
+      "status": "passed",
+      "message": "startup entry exists: ordo.lock.json",
+      "target": "ordo.lock.json"
+    },
+    {
+      "check_id": "sync_source_exists",
+      "status": "passed",
+      "message": "source exists: source/program.ordo.yaml",
+      "target": "source/program.ordo.yaml"
+    },
+    {
+      "check_id": "sync_source_exists",
+      "status": "passed",
+      "message": "source exists: ordo.yml",
+      "target": "ordo.yml"
+    },
+    {
+      "check_id": "derived_artifact_exists",
+      "status": "passed",
+      "message": "derived artifact exists: PROMPT_MANIFEST.json",
+      "target": "PROMPT_MANIFEST.json"
+    },
+    {
+      "check_id": "derived_artifact_checksum",
+      "status": "passed",
+      "message": "checksum matches: PROMPT_MANIFEST.json",
+      "target": "PROMPT_MANIFEST.json"
+    },
+    {
+      "check_id": "derived_artifact_exists",
+      "status": "passed",
+      "message": "derived artifact exists: ordo.lock.json",
+      "target": "ordo.lock.json"
+    },
+    {
+      "check_id": "derived_artifact_checksum",
+      "status": "passed",
+      "message": "checksum matches: ordo.lock.json",
+      "target": "ordo.lock.json"
+    },
+    {
+      "check_id": "derived_artifact_exists",
+      "status": "passed",
+      "message": "derived artifact exists: ordo.runtime.json",
+      "target": "ordo.runtime.json"
+    },
+    {
+      "check_id": "derived_artifact_checksum",
+      "status": "passed",
+      "message": "checksum matches: ordo.runtime.json",
+      "target": "ordo.runtime.json"
+    },
+    {
+      "check_id": "derived_artifact_exists",
+      "status": "passed",
+      "message": "derived artifact exists: STARTUP_PROFILE_VALIDATION_SUMMARY.md",
+      "target": "STARTUP_PROFILE_VALIDATION_SUMMARY.md"
+    },
+    {
+      "check_id": "derived_artifact_checksum",
+      "status": "passed",
+      "message": "checksum matches: STARTUP_PROFILE_VALIDATION_SUMMARY.md",
+      "target": "STARTUP_PROFILE_VALIDATION_SUMMARY.md"
+    },
+    {
+      "check_id": "derived_artifact_exists",
+      "status": "passed",
+      "message": "derived artifact exists: reports/CLI_VALIDATION_SUMMARY.md",
+      "target": "reports/CLI_VALIDATION_SUMMARY.md"
+    },
+    {
+      "check_id": "derived_artifact_checksum",
+      "status": "passed",
+      "message": "checksum matches: reports/CLI_VALIDATION_SUMMARY.md",
+      "target": "reports/CLI_VALIDATION_SUMMARY.md"
+    }
+  ],
+  "findings": [],
+  "summary": {
+    "checks": 25,
+    "errors": 0,
+    "warnings": 0
+  }
+}

@@ -1,0 +1,4 @@
+N_PACKAGE_GOAL: "Створити пакет для керованого збору вимог"
+N_EXPECTED_OUTPUTS:
+  - README.md
+N_APPROVAL: "no"

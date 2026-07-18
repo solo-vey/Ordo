@@ -1,0 +1,55 @@
+template_id: apf.prompt_sufficiency_review_matrix.v1
+status: accepted-template
+applies_to: downstream_playbook
+playbook_id: <required>
+playbook_version: <required>
+review_owner: <required>
+reviewed_at: <required-iso-8601>
+
+summary:
+  relevant_objects_total: 0
+  reviewed_objects_total: 0
+  excluded_objects_total: 0
+  unresolved_human_decisions: 0
+  classifications:
+    simple_instruction_sufficient: 0
+    existing_prompt_reuse: 0
+    new_prompt_candidate: 0
+    prompt_prohibited: 0
+    needs_human_decision: 0
+
+reviews:
+  - review_id: <unique-id>
+    object_id: <playbook-object-id>
+    object_type: <decision_node|complex_question_node|confirmation_node|recovery_or_backtracking_handler|blocking_gate|artifact_generation_step|complex_human_review_step|validation_report_interpretation_step>
+    contract_reference: <path-or-object-reference>
+    review_status: pending
+    classification: <unset-until-reviewed>
+    rationale: <required-when-completed>
+    ambiguity_risk: <none|low|medium|high>
+    execution_variance_risk: <none|low|medium|high>
+    recovery_guidance_need: <none|low|medium|high>
+    artifact_generation_complexity: <none|low|medium|high>
+    existing_prompt_search_performed: false
+    existing_prompt_matches: []
+    contract_strengthening_attempted: false
+    contract_strengthening_actions: []
+    contract_strengthening_result: <not_started|resolved_without_prompt|guidance_still_needed|blocked_contract_incomplete>
+    reviewer: <required-when-completed>
+    reviewed_at: <required-when-completed>
+    blocking_findings: []
+    next_action: <continue_without_prompt|reuse_review_at_PMP_3|candidate_design_at_PMP_2|fix_contract|await_human_decision>
+
+exclusions:
+  - object_id: <playbook-object-id>
+    object_type: <type>
+    exclusion_reason: <required>
+    reviewer: <required>
+
+validation:
+  all_required_objects_accounted_for: false
+  all_completed_reviews_have_valid_classification: false
+  all_new_candidates_pass_contract_strengthening_gate: false
+  prohibited_objects_have_no_prompt_artifacts: false
+  unresolved_human_decisions: []
+  readiness: blocked

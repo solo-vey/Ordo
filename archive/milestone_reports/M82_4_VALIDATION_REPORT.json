@@ -1,0 +1,58 @@
+{
+  "schema_version": "ordo.validation_report.v1",
+  "milestone": "M82.4",
+  "status": "passed",
+  "backlog_closure": {
+    "id": "BL-ORDO-003",
+    "status": "closed"
+  },
+  "checks": [
+    {
+      "check": "normal_completion",
+      "status": "passed"
+    },
+    {
+      "check": "timeout_watchdog",
+      "status": "passed"
+    },
+    {
+      "check": "crash_process_failure_taxonomy",
+      "status": "passed"
+    },
+    {
+      "check": "malformed_missing_output",
+      "status": "passed"
+    },
+    {
+      "check": "cleanup_retention_matrix",
+      "status": "passed"
+    },
+    {
+      "check": "path_and_symlink_safety",
+      "status": "passed"
+    },
+    {
+      "check": "generate_only_and_generate_and_run",
+      "status": "passed"
+    },
+    {
+      "check": "versioned_raw_evidence",
+      "status": "passed"
+    },
+    {
+      "check": "partitioned_pathwalk_regression",
+      "status": "passed",
+      "evidence": "83 unique relevant tests passed"
+    }
+  ],
+  "defects_fixed": [
+    "source symlink was resolved before symlink validation"
+  ],
+  "blockers": [],
+  "claims": {
+    "safe_runtime_execution_ready": true,
+    "raw_execution_evidence_ready": true,
+    "scoring_enabled": false,
+    "calibration_enabled": false
+  }
+}

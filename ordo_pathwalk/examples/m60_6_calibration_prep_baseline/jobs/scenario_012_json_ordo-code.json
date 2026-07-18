@@ -1,0 +1,12 @@
+{
+  "job_id": "scenario_012_json_ordo-code",
+  "scenario_id": "scenario_012",
+  "runtime_view": "json,ordo-code",
+  "scenario_path": "scenarios/scenario_012.json",
+  "runtime_template": "runtime_templates/json_ordo-code",
+  "expected_score_file": "scores/scenario_012_json_ordo-code_score.json",
+  "expected_transcript_file": "transcripts/scenario_012_json_ordo-code_transcript.json",
+  "schema_version": "ordo.pathwalk.dry_run_job.v1",
+  "plan_path": "DRY_RUN_PLAN.json",
+  "execution_contract": "artifact-only-one-job"
+}

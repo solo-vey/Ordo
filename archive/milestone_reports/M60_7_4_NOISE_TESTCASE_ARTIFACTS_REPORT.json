@@ -1,0 +1,58 @@
+{
+  "milestone": "M60.7.4",
+  "title": "Noise Testcase Artifacts",
+  "status": "passed-implementation-slice",
+  "base": "M60.7.3",
+  "implemented": [
+    "real-module-noise-cases CLI",
+    "distraction noise artifacts",
+    "invalid_branch noise artifacts",
+    "RAW_NOISE_TESTCASE_MATRIX.csv",
+    "per-case JSON/Markdown artifacts"
+  ],
+  "out_of_scope": [
+    "runtime execution",
+    "scoring",
+    "calibration",
+    "benchmark/watchdog orchestration",
+    "backtrack",
+    "skip_ahead",
+    "clarification_without_submit",
+    "correction_backtrack"
+  ],
+  "sample_counts": {
+    "noise_cases": 6,
+    "ready_cases": 6,
+    "terminal_paths_input": 3,
+    "patterns": 2,
+    "clean_path_cases_included": 0
+  },
+  "pattern_counts": {
+    "distraction": 3,
+    "invalid_branch": 3
+  },
+  "readiness": {
+    "noise_cases_ready": true,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false,
+    "reason": "Noise testcase artifacts were generated from terminal paths. Runtime execution remains explicitly out of scope."
+  },
+  "tests": {
+    "py_compile": "passed",
+    "selected_non_runtime_pytest": "18 passed",
+    "workspace_cli_smoke": "passed",
+    "clean_zip_extraction": "passed",
+    "rc_py_compile": "passed",
+    "rc_cli_smoke": "passed",
+    "rc_pytest": "not_used_as_gate"
+  },
+  "weights_changed": false,
+  "runtime_core_changed": false,
+  "pdf_generated": false,
+  "impact": {
+    "pathwalk": "L1",
+    "ordo_runtime_core": "L0",
+    "scoring_weights": "L0"
+  }
+}

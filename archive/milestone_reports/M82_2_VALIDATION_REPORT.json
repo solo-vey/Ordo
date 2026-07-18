@@ -1,0 +1,34 @@
+{
+  "schema_version": "ordo.milestone_validation.v1",
+  "milestone": "M82.2",
+  "backlog_item": "BL-ORDO-003",
+  "status": "passed",
+  "scope": "versioned execution evidence schema and complete result/failure taxonomy",
+  "checks": {
+    "versioned_evidence_schema": "passed",
+    "json_schema_syntax": "passed",
+    "closed_status_taxonomy": "passed",
+    "closed_failure_taxonomy": "passed",
+    "testcase_vs_process_separation": "passed",
+    "evidence_linkage_and_hashes": "passed",
+    "raw_evidence_claims": "passed",
+    "runtime_evidence_validation": "passed",
+    "collector_tamper_rejection": "passed",
+    "v1_v2_read_compatibility": "passed",
+    "m82_1_compatibility": "passed",
+    "m76_2_compatibility": "passed"
+  },
+  "schemas": {
+    "result": "ordo.pathwalk.real_module_execution_result.v3",
+    "evidence": "ordo.pathwalk.execution_evidence.v1",
+    "summary": "ordo.pathwalk.real_module_execution_summary.v3"
+  },
+  "tests": {
+    "m82_2_dedicated": {"passed": 6, "failed": 0},
+    "m82_1_compatibility": {"passed": 9, "failed": 0},
+    "m76_2_compatibility": {"passed": 4, "failed": 0},
+    "total": {"passed": 19, "failed": 0}
+  },
+  "next_milestone": "M82.3",
+  "backlog_closed": false
+}

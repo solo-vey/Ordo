@@ -1,0 +1,60 @@
+schema_version: apf-checkpoint-contract-v1
+module_id: ordo.applied_project_factory
+status: accepted-package-contract
+
+principle: one_node_one_contract_one_decision_one_checkpoint
+
+checkpoint_record:
+  required_fields:
+    - node_id
+    - contract_id
+    - decision_id
+    - status
+    - required_fields
+    - open_required_fields
+    - gate_ids
+    - confirmation_required
+    - evidence_refs
+    - dependent_node_ids
+
+completion_rule:
+  checkpoint_complete_when:
+    - all_required_fields_valid
+    - all_blocking_gates_passed
+    - human_confirmation_recorded_when_required
+    - no_stale_required_answer_used
+
+selection_rule:
+  next_action_source: earliest_incomplete_node
+  future_node_answer_policy: capture_as_future_context_without_advancement
+  forward_allowed_when: no_incomplete_required_checkpoint_before_target
+
+output_blocking:
+  block_generated_outputs_when:
+    - earliest_incomplete_node_is_not_null
+    - open_required_fields_not_empty
+    - blocking_gate_failed
+    - required_confirmation_missing
+    - state_ir_digest_mismatch
+
+invalidation:
+  trigger: confirmed_upstream_answer_changed
+  actions:
+    - mark_downstream_checkpoint_stale
+    - mark_dependent_answers_stale
+    - mark_dependent_artifacts_stale
+    - preserve_previous_evidence_as_historical
+    - rerun_impacted_gates
+    - require_reconfirmation
+
+reporting_contract:
+  validate_state_must_expose:
+    - checkpoint_table
+    - earliest_incomplete_node
+    - open_required_fields
+    - forward_allowed
+    - stale_items
+  next_step_must_use:
+    - current_compiled_ir
+    - validated_state
+    - earliest_incomplete_node

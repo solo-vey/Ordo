@@ -1,0 +1,48 @@
+{
+  "schema_version": "ordo.m83.0.validation.v1",
+  "milestone": "M83.0",
+  "status": "passed",
+  "scope": "contract-definition-only",
+  "backlog_id": "BL-ORDO-014",
+  "checks": [
+    {
+      "file": "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md",
+      "exists": true,
+      "sha256": "ded3e4bcd4978de9a7bd8fb229bdac036985297cee0b51e64896776f9cfbac66"
+    },
+    {
+      "file": "CONSOLIDATED_BACKLOG.md",
+      "exists": true,
+      "sha256": "115266e64eeed4c869a9085ffb4e80a960812a19e44601fe46b7de782e5c2de6"
+    },
+    {
+      "file": "manifests/CONSOLIDATED_BACKLOG.json",
+      "exists": true,
+      "sha256": "65575c23d49c1ce818e4b09c1c4bd3e1427e054bd2813f9f4d990310615df783"
+    },
+    {
+      "file": "M83_0_POST_GENERATION_DEFECT_REVIEW_INTAKE_AND_CONTRACT.md",
+      "exists": true,
+      "sha256": "d530416ff8d4856bb98830938c56013318acb48464f8f5806eab3867b22de41f"
+    }
+  ],
+  "contract_checks": {
+    "criticality_model_defined": true,
+    "evidence_classes_defined": true,
+    "process_rail_defined": true,
+    "adversarial_review_defined": true,
+    "cross_artifact_review_defined": true,
+    "selective_reconciliation_defined": true,
+    "targeted_invalidation_defined": true,
+    "post_correction_review_defined": true,
+    "confirmation_eligibility_defined": true,
+    "translation_pause_state_recorded": true
+  },
+  "claims": {
+    "runtime_implemented": false,
+    "schema_implemented": false,
+    "apf_integration_complete": false,
+    "bl_ordo_014_closed": false
+  },
+  "next_milestone": "M83.1"
+}

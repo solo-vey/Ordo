@@ -1,0 +1,18 @@
+{
+  "schema": "ordo.arf.timestamp_evidence_status.v1",
+  "method": "OpenTimestamps",
+  "timestamped_filename": "INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip",
+  "timestamped_sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+  "proof_file_expected": "INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip.ots",
+  "proof_file_included": false,
+  "observed_cli_status": [
+    "Timestamp proof created and submitted to multiple remote calendars.",
+    "Bitcoin transaction detected: f411dddfee5622d5bb4fb5c6f2cb1934a68266ddd9af518649e955a12e2bf8ed.",
+    "Subsequent verification retrieved Bitcoin attestations from three calendars.",
+    "Local cryptographic verification stopped because no Bitcoin Core RPC cookie/configuration was available."
+  ],
+  "current_status": "bitcoin_attestations_received_local_full_verification_pending",
+  "validated_level": 0,
+  "target_level_after_proof_attachment_and_verification": 1,
+  "required_next_action": "Attach the exact .ots proof file and independently verify it against Bitcoin, either with a synchronized Bitcoin Core node or another accepted independent verifier."
+}

@@ -1,0 +1,55 @@
+{
+  "status": "BOUND",
+  "language_package": "ORDO_ARF_CANONICAL_ORDO_2026_07_15_RC9(1).zip",
+  "language_package_sha256": "d9bcee6d5a70bae885eb6ecbba9173ff856118533e209a1d0917642d8504263f",
+  "ordo_baseline": "0.13.0-rc.1",
+  "arf_baseline": "0.1.0-rc.18",
+  "aef_baseline": "2.0",
+  "selected_manifest": "manifests/APF_RC18_INTEGRATION_MANIFEST.json",
+  "required_contracts": [
+    {
+      "path": "language/ARF_DETERMINISTIC_CONTROL_MODEL_CONTRACT.md",
+      "sha256": "53bbce17b9e0f17a40aa0284fcfe7a2fe70ab684483817ca37a768a0382fdf22"
+    },
+    {
+      "path": "language/ARF_NODE_CONTRACT_PROFILES.md",
+      "sha256": "8de834ceba466253dab1e5877eacd9875b6499ce4fb80f3801ccfe735b59769a"
+    },
+    {
+      "path": "language/PACKAGE_STARTUP_STANDARD.md",
+      "sha256": "8f4e2f50723be578928e4d9ad2197e76e47dba029687484fcc60e8f443fa3ea8"
+    },
+    {
+      "path": "language/PROCESS_RAIL_SCHEMA_CONVENTION.md",
+      "sha256": "bcb50d91ea28f167998b5bdd93576e9c575d48379dd2241e0bbcf24eb9a3c254"
+    },
+    {
+      "path": "language/DERIVED_ARTIFACT_SYNC_STANDARD.md",
+      "sha256": "389ff7aae3dffc95d1759e248ce88b56182f2c9b72a37de8f09b093ceda2f6bc"
+    },
+    {
+      "path": "language/GENERATED_ARTIFACT_VALIDATION.md",
+      "sha256": "8bab934a937856d690bfe35f8d0f5c607d1a0598825e2079d7ae7bdcedfab96c"
+    },
+    {
+      "path": "language/CLEAN_PACKAGE_GATE.md",
+      "sha256": "cf13f799796c5e123e89d7e24c9a73fab2787c9a0e014a6531fa5ad15a383706"
+    },
+    {
+      "path": "language/GO_NO_GO.md",
+      "sha256": "01a29a255242a4846e87ebda4b13ff596ea2d8c81c738f6c7c02699dd328ba0e"
+    },
+    {
+      "path": "language/CSG_5_VALIDATION_REGRESSION_AND_RELEASE.md",
+      "sha256": "2dfaab0dcf75b5724ff7d8e40f9532213cc7d7d50227e26277645f918fd9cccc"
+    },
+    {
+      "path": "tools/release_integrity.py",
+      "sha256": "792a345d2d4a8c14d98806c83020b468c784ec7bac106eb62e95cfc1592207a7"
+    },
+    {
+      "path": "tools/check_generated_artifact_isolation.py",
+      "sha256": "7aa04b14863b705926bc184085bfd7ec5ff0d8a2322a06fdf62fd4c75767818d"
+    }
+  ]
+}

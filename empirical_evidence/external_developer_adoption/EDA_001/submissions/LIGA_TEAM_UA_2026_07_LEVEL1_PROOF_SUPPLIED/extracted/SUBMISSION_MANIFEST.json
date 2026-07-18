@@ -1,0 +1,27 @@
+{
+  "schema": "ordo.arf.external_adoption_submission.v1",
+  "submission_id": "liga-team-ua-monitoring-business-prepare-2026-07",
+  "submitter_id": "liga-team-ua",
+  "created_at": "2026-07-16T07:31:41Z",
+  "requested_evidence_level": 1,
+  "validated_evidence_level": 0,
+  "level_1_status": "proof_supplied_independent_verification_required",
+  "primary_evidence_archive": "EVIDENCE/INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip",
+  "mandatory_files": [
+    "SUBMISSION_MANIFEST.json",
+    "INDEPENDENCE_DECLARATION.json",
+    "CONSUMED_RELEASE.json",
+    "SOURCE_PACKAGE_IDENTITY.json",
+    "DEVELOPMENT_TIMELINE.json",
+    "TEST_AND_VALIDATION_SUMMARY.json",
+    "TRANSFORMATION_PROVENANCE.json",
+    "SHA256SUMS.txt",
+    "SUBMISSION_VALIDATION_REPORT.json"
+  ],
+  "bounded_claim": "This case documents one externally submitted playbook-development process. Independence is declared only at the recorded verification level and is not generalized beyond the attached evidence.",
+  "independence_evidence_files": [
+    "INDEPENDENCE_EVIDENCE/INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip.ots",
+    "INDEPENDENCE_EVIDENCE/OPENTIMESTAMPS_STATUS.txt",
+    "INDEPENDENCE_EVIDENCE/OPENTIMESTAMPS_VERIFICATION_INSTRUCTIONS.md"
+  ]
+}

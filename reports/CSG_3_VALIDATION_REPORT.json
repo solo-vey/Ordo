@@ -1,0 +1,24 @@
+{
+  "milestone": "CSG-3",
+  "title": "Response and State-Protection Rules",
+  "status": "passed",
+  "artifacts": [
+    "language/CSG_3_RESPONSE_AND_STATE_PROTECTION_RULES.md",
+    "language/schemas/state_protection.schema.json",
+    "language/CSG_3_STATE_PROTECTION_REGRESSION_FIXTURES.yaml"
+  ],
+  "checks": {
+    "protected_state_explicit": true,
+    "state_protect_defined": true,
+    "response_actions_defined": true,
+    "redirect_invariants_defined": true,
+    "pause_semantics_defined": true,
+    "resume_semantics_defined": true,
+    "exit_semantics_defined": true,
+    "controlled_change_flows_defined": true,
+    "safety_bypass_defined": true,
+    "rollback_defined": true,
+    "diagnostics_defined": true,
+    "fixtures_present": true
+  }
+}

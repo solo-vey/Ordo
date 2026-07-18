@@ -1,0 +1,26 @@
+{
+  "milestone": "M69.3",
+  "status": "passed",
+  "tests": {
+    "count": 28,
+    "result": "passed"
+  },
+  "checks": [
+    "workflow YAML parse",
+    "provenance schema parse",
+    "Python compile",
+    "SHA-256 linkage invariant",
+    "packages diff guard",
+    "cli/ordo diff guard",
+    "runtime/compiler diff guard",
+    "JSON parse",
+    "zip integrity"
+  ],
+  "scope": {
+    "packages": "unchanged",
+    "cli/ordo": "unchanged",
+    "runtime": "unchanged",
+    "compiler": "unchanged",
+    "opcodes": "unchanged"
+  }
+}

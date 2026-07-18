@@ -1,0 +1,46 @@
+contract_id: apf.atomic_step_review.scope
+version: "0.1"
+status: active
+applies_to:
+  - generated_playbook_process_design
+review_timing:
+  after:
+    - draft_process_structure
+  before:
+    - final_playbook_validation
+    - package_assembly
+outcomes:
+  - passed
+  - recommendation
+  - blocking_issue
+  - needs_human_decision
+review_dimensions:
+  - responsibilities
+  - observable_outputs
+  - completion_criteria
+  - validation_boundaries
+  - confirmation_boundaries
+  - reconstruction
+  - state_transitions
+  - failure_routes
+  - artifact_level_statuses
+blocking_conditions:
+  - generate_and_approve_combined
+  - hidden_reconstruction_used_as_fact
+  - partial_success_transition
+  - implicit_confirmed_state_transition
+  - independent_artifacts_share_single_status
+  - validation_does_not_inspect_materialized_artifact
+advisory_conditions:
+  - readability_only_decomposition
+  - safely_repeatable_mechanical_group
+  - broad_but_safe_failure_route
+human_confirmation_required_for:
+  - business_semantics_change
+  - approval_boundary_change
+  - ownership_change
+  - confirmed_state_transition_change
+non_goals:
+  - internal_apf_atomicity_enforcement
+  - silent_rewrite_of_confirmed_nodes
+  - ordo_core_change

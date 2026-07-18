@@ -1,0 +1,83 @@
+title: Startup Profile Validation Profile Schema Convention
+milestone: M66.2
+type: object
+required:
+- startup_profile_validation
+properties:
+  startup_profile_validation:
+    type: object
+    required:
+    - profile
+    - applies_to
+    - severity_policy
+    - required_checks
+    - readiness_decision
+    properties:
+      profile:
+        type: string
+        enum:
+        - light
+        - standard
+        - strict
+      applies_to:
+        type: array
+        items:
+          type: string
+          enum:
+          - startup_package_profile
+          - prompt_registry
+          - package_manifest
+          - entry_files
+          - startup_prompts
+      severity_policy:
+        type: object
+        additionalProperties:
+          type: string
+          enum:
+          - error
+          - warning
+          - info
+      required_checks:
+        type: array
+        items:
+          type: string
+      optional_checks:
+        type: array
+        items:
+          type: string
+      readiness_decision:
+        type: object
+        required:
+        - allowed_values
+        - default_on_error
+        - default_on_warning
+        properties:
+          allowed_values:
+            type: array
+            items:
+              type: string
+              enum:
+              - start_ready
+              - start_ready_with_warnings
+              - blocked
+              - not_applicable
+          default_on_error:
+            type: string
+            enum:
+            - blocked
+          default_on_warning:
+            type: string
+            enum:
+            - start_ready_with_warnings
+          default_when_clean:
+            type: string
+            enum:
+            - start_ready
+      notes:
+        type: array
+        items:
+          type: string
+x_ordo_notes:
+- Convention schema only; no compiler/runtime/CLI behavior is implied.
+- Natural-language authority safety checks remain review/lint conventions, not deterministic
+  classifiers.

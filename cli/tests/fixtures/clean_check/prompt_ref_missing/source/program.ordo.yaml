@@ -1,0 +1,26 @@
+program_id: clean_check_fixture
+version: '0.1'
+nodes:
+  - id: N_START
+    type: question
+    question: Fixture start node.
+
+prompt_registry:
+  registry_id: fixture_prompt_registry
+  version: '0.1'
+  default_language: en
+  prompt_root: prompts/
+  prompts:
+    - prompt_id: helper_prompt
+      type: node_helper
+      audience: ai_runtime
+      path: prompts/helper.md
+      required: true
+      lifecycle: stable
+nodes:
+  - id: N_START
+    type: question
+    question: Fixture start node.
+    prompt_refs:
+      - prompt_id: missing_prompt
+        use: before_question

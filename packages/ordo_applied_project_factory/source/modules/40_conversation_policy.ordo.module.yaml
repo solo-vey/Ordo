@@ -1,0 +1,31 @@
+conversation_semantics:
+  on_unmatched_input:
+    strategy: classify_and_route
+    allowed_classes:
+    - answer_current_question
+    - answer_future_question
+    - correction_previous_answer
+    - clarification_request
+    - domain_context
+    - design_suggestion_request
+    - approval
+    - refusal
+    - out_of_scope
+    - what_next_signal
+    - draft_tree_review_correction
+    - node_confirmation
+    - terminal_output_confirmation
+    - raw_free_dialogue_note
+    - structured_note_extraction
+    - draft_tree_request
+    - self_hosted_branch_reuse
+    - process_feedback
+    - process_change_confirmation
+    - user_facing_summary_correction
+    - svg_requested_explicitly
+    - node_correction
+    - node_deferment
+    - node_review_decision
+    - process_design_review_rendering_feedback
+    - runtime_context_shift_correction
+    require_state_validation: true

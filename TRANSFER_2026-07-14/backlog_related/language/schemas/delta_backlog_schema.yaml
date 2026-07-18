@@ -1,0 +1,30 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: Ordo Delta Backlog Schema
+status: M67.0 convention schema
+type: object
+additionalProperties: false
+required: [delta_backlog]
+properties:
+  delta_backlog:
+    type: object
+    additionalProperties: true
+    required: [backlog_id, policy, entries]
+    properties:
+      backlog_id: {type: string, minLength: 1}
+      policy: {type: string, minLength: 1}
+      entries:
+        type: array
+        items:
+          type: object
+          required: [delta_id, title, area, severity, reason_deferred, required_resolution, release_blocking]
+          additionalProperties: true
+          properties:
+            delta_id: {type: string, minLength: 1}
+            title: {type: string, minLength: 1}
+            area: {type: string, minLength: 1}
+            severity: {type: string, enum: [error, warning, info]}
+            source_change: {type: array, items: {type: string}}
+            affected_artifacts: {type: array, items: {type: string}}
+            reason_deferred: {type: string, minLength: 1}
+            required_resolution: {type: string, minLength: 1}
+            release_blocking: {type: boolean}

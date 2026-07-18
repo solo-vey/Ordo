@@ -1,0 +1,61 @@
+{
+  "milestone": "M67.4",
+  "status": "passed-validation",
+  "date": "2026-07-09",
+  "checks": {
+    "clean_package_gate_doc_present": "passed",
+    "derived_artifact_sync_validation_doc_present": "passed",
+    "schemas_yaml_parse": "passed",
+    "example_yaml_parse": "passed",
+    "json_reports_parse": "passed",
+    "packages_diff_guard": "passed",
+    "cli_code_diff_guard": "passed",
+    "tests_diff_guard": "passed",
+    "runtime_core_guard": "passed",
+    "compiler_opcode_guard": "passed",
+    "zip_integrity": "passed",
+    "diff_added_count": 13,
+    "diff_changed_count": 8,
+    "diff_removed_count": 0
+  },
+  "scope": {
+    "language_docs_changed": true,
+    "schema_conventions_changed": true,
+    "cli_docs_changed": true,
+    "cli_code_changed": false,
+    "tests_changed": false,
+    "packages_changed": false,
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false,
+    "compiled_ir_regenerated": false,
+    "lockfiles_regenerated": false,
+    "embedded_cli_rebuilt": false
+  },
+  "added_files": [
+    "M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.json",
+    "M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.md",
+    "M67_4_VALIDATION_REPORT.json",
+    "docs/design_decisions/DD-ORDO-M67-004_CLEAN_PACKAGE_GATE_ALIGNMENT_TO_CLI.md",
+    "language/CLEAN_PACKAGE_GATE.md",
+    "language/DERIVED_ARTIFACT_SYNC_VALIDATION_PROFILE.md",
+    "language/examples/source/clean_package_gate_example.ordo.yaml",
+    "language/improvement_intake/m67_4/M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.json",
+    "language/improvement_intake/m67_4/M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.md",
+    "language/improvement_intake/m67_4/M67_4_VALIDATION_REPORT.json",
+    "language/schemas/clean_package_gate_schema.yaml",
+    "language/schemas/derived_artifact_sync_validation_profile_schema.yaml",
+    "language/spec/25_CLEAN_PACKAGE_GATE_MODEL.md"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "README.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "cli/docs/CLEAN_CHECK_COMMAND.md",
+    "language/CHANGELOG.md",
+    "language/README.md",
+    "language/VALIDATION_REPORT.json",
+    "language/spec/24_CLEAN_PACKAGE_CLI_MODEL.md"
+  ],
+  "removed_files": []
+}

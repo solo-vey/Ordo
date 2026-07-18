@@ -1,0 +1,39 @@
+conversation_scope_guard_state_protection_record:
+  record_id: CSG-STATE-001
+  process_id: PROCESS_ID
+  guard_id: CSG_MAIN
+  review_status: pending
+  protected_state:
+    active_node_ref: STATE.current_node
+    active_question_ref: STATE.current_question
+    selected_path_ref: STATE.selected_path
+    confirmed_state_refs: []
+    collected_state_refs: []
+    checkpoint_ref: null
+  assertions:
+  - assertion_id: A_DEVIATION_DOES_NOT_COMPLETE_NODE
+    implemented: false
+    evidence_ref: null
+  process_control:
+    pause:
+      preserve_state: true
+      resume_target: suspended_node
+      status: paused
+    resume:
+      restore_state: true
+      skip_unresolved_gates: false
+      status: active
+    exit:
+      incomplete_status: exited_incomplete
+      mark_result_completed: false
+  intent_routing:
+    pause_request: PROCESS.PAUSE
+    resume_request: PROCESS.RESUME
+    exit_request: PROCESS.EXIT
+    unsafe_or_emergency_message: safety_handler
+  trace_hooks_required_when_trace_enabled: true
+  owner_confirmation:
+    status: pending
+    reviewer: null
+    reviewed_at: null
+    notes: null

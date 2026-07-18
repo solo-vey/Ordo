@@ -1,0 +1,13 @@
+{
+  "schema_version": "ordo.backlog_closure_report.v1",
+  "backlog_id": "BL-ORDO-047",
+  "title": "Canonical Integration of EDA-001 External Developer Adoption Evidence",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.9",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.5.0-rc.3",
+  "evidence": [
+    "empirical_evidence/external_developer_adoption/EDA_001/case.json",
+    "empirical_evidence/external_developer_adoption/EDA_001/package/ORDO_EXTERNAL_DEVELOPER_ADOPTION_EVIDENCE_EDA_001_V1_1.zip"
+  ]
+}

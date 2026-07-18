@@ -1,0 +1,51 @@
+{
+  "milestone": "M64-first-wave-closure",
+  "package": "ordo-v0.12-m64-first-wave-closure",
+  "status": "passed",
+  "generated": "2026-07-09T18:05:00+02:00",
+  "checks": [
+    {
+      "check": "required_m64_first_wave_files_present",
+      "status": "passed",
+      "missing": []
+    },
+    {
+      "check": "all_m64_first_wave_reports_have_passed_status",
+      "status": "passed"
+    },
+    {
+      "check": "m64_json_reports_parse",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "check": "m64_yaml_schemas_and_examples_parse",
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "check": "runtime_core_unchanged_by_closure",
+      "status": "passed",
+      "note": "closure adds docs/reports only and relies on M64.0-M64.3 no-runtime-change reports"
+    },
+    {
+      "check": "future_backlog_separated_from_closed_scope",
+      "status": "passed",
+      "items": [
+        "CLI/linter enforcement for program_level_approval_gate",
+        "package profile / startup package standard",
+        "derived artifact sync/hash manifest hardening",
+        "deterministic natural-language classifier design only if separately approved",
+        "FLOW.JOIN future IR candidate",
+        "SHARED.TAIL.REFERENCE future IR candidate",
+        "APF / Ordo Node-Level Prompt Registry and Prompt References"
+      ]
+    }
+  ],
+  "blockers": [],
+  "warnings": [
+    "Closure confirms documentation/schema/lint-profile readiness only; CLI/linter enforcement remains future work.",
+    "M64 first wave does not implement FLOW.JOIN or SHARED.TAIL.REFERENCE."
+  ],
+  "next_recommended_step": "Select the next line explicitly: APF prompt registry, package startup standard, CLI/linter implementation design, or future IR design spike."
+}

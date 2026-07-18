@@ -1,0 +1,26 @@
+{
+  "milestone": "M69.4",
+  "status": "passed",
+  "tests": {
+    "count": 34,
+    "result": "OK"
+  },
+  "checks": {
+    "workflow_contracts": "passed",
+    "fixture_smoke_matrix": "passed",
+    "stdout_out_equivalence": "passed",
+    "provenance_sha256_linkage": "passed",
+    "json_parse": "passed",
+    "scope_guards": "passed",
+    "zip_integrity": "pending"
+  },
+  "scope_unchanged": [
+    "packages/*",
+    "cli/ordo/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles"
+  ]
+}

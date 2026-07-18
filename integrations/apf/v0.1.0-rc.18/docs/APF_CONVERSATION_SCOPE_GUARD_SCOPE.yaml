@@ -1,0 +1,58 @@
+contract_id: APF-CSG-000
+title: Conversation Scope Guard integration scope
+status: aligned-with-ordo-csg-baseline-v0.1
+source_contract: ORDO-CAP-CSG-001
+applicability:
+  apf_internal:
+    supported: true
+    enabled: false
+    rule: must_not_be_enabled_by_default
+  generated_playbooks:
+    supported: design-time decision required
+    enabled: explicit human-confirmed choice
+    recommended_for:
+    - guided_intake
+    - decision_tree
+    - regulated_workflow
+    - long_running_process
+canonical_position:
+- process_rail_confirmed
+- conversation_deviation_policy_design
+- human_confirmation
+- guard_source_generation
+- guard_tests
+- package_assembly
+normative_constraints:
+- capability must not be enabled implicitly
+- out-of-scope input must not complete an active node
+- out-of-scope input must not change path or confirmed state
+- control intents and safety messages must bypass normal redirect handling
+- escalation counter must be scoped and reset predictably
+- actual runtime behavior is produced by the generated playbook runtime, not APF
+canonical_modes:
+- advisory
+- guided_redirect
+- strict_redirect
+- locked_process
+canonical_classifications:
+- answer_to_active_question
+- clarification
+- correction
+- backtrack_request
+- requirement_change
+- pause_request
+- resume_request
+- exit_request
+- process_meta_question
+- related_context
+- unrelated_topic
+- unsafe_or_emergency_message
+- unclassifiable_input
+implementation_roadmap:
+- CSG-0 scope and source-contract alignment
+- CSG-1 deviation classification contract
+- CSG-2 strictness, response, and escalation policy
+- CSG-3 state protection and process-control contract
+- CSG-4 trace and validation contracts
+- CSG-5 authoring-flow, templates, and package integration
+- CSG-6 regression validation and release assembly

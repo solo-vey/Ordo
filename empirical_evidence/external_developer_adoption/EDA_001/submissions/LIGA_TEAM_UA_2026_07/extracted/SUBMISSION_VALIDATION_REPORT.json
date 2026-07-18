@@ -1,0 +1,18 @@
+{
+  "schema": "ordo.arf.submission_validation_report.v1",
+  "generated_at": "2026-07-16T07:09:51Z",
+  "status": "passed_with_level_1_pending",
+  "structural_acceptance": "passed",
+  "required_files_present": true,
+  "missing_files": [],
+  "consumed_release_identity_present": true,
+  "source_package_hash_present": true,
+  "author_assistance_declared": true,
+  "confidential_original_materials_excluded": true,
+  "timestamp_proof_attached": false,
+  "timestamp_status": "bitcoin_attestations_observed_local_verification_pending",
+  "validated_independence_level": 0,
+  "requested_independence_level": 1,
+  "claim_level_match": "passed because the package does not claim completed Level 1 verification",
+  "final_note": "Attach the exact .ots proof file and complete independent verification before changing validated_independence_level to 1."
+}

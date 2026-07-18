@@ -1,0 +1,29 @@
+{
+  "milestone": "M74.1",
+  "title": "Registry and Toolchain Completeness Gate",
+  "status": "passed",
+  "capability": "conversation_scope_guard",
+  "maturity_after": {
+    "specification": "language_integrated",
+    "schema_support": "integrated",
+    "toolchain_support": "partial",
+    "runtime_enforcement": "not_started",
+    "model_benchmark": "not_run",
+    "production_recommendation": "not_ready"
+  },
+  "registries": {
+    "source_constructs": "language/registry/source_construct_catalog.yaml",
+    "capabilities": "language/registry/capability_catalog.yaml",
+    "opcodes": "language/registry/OPCODE_CATALOG.md",
+    "trace_events": "language/registry/trace_event_catalog.yaml"
+  },
+  "toolchain_support": {
+    "lint_unknown_top_level_constructs": true,
+    "lint_csg_mode_and_invariants": true,
+    "compile_csg_to_ir": true,
+    "validate_capability_cross_registry_references": true,
+    "validate_ir_opcodes": true
+  },
+  "runtime_enforcement": false,
+  "model_benchmark_run": false
+}

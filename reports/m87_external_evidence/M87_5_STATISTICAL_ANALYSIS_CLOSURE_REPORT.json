@@ -1,0 +1,108 @@
+{
+  "schema_version": "ordo.m87.statistical_analysis_closure.v1",
+  "milestone": "M87.5",
+  "status": "framework-passed-operational-closure-blocked",
+  "bl_ordo_018": "open",
+  "targeted_regression": {
+    "passed": 48,
+    "failed": 0
+  },
+  "implemented": {
+    "paired_difference_analysis": true,
+    "paired_bootstrap_95_ci": true,
+    "standardized_paired_effect": true,
+    "exact_sign_test": true,
+    "mcnemar_binary_failure_comparison": true,
+    "minimum_pair_gate": true,
+    "minimum_model_diversity_gate": true,
+    "real_provider_evidence_gate": true,
+    "blind_scoring_gate": true,
+    "quality_noninferiority_gate": true,
+    "state_and_fabrication_regression_gates": true
+  },
+  "synthetic_validation_summary": {
+    "schema_version": "ordo.ab_statistical_summary.v1",
+    "complete_pairs": 60,
+    "distinct_models": 2,
+    "distinct_tasks": 20,
+    "quality": {
+      "A_mean": 64.0,
+      "B_mean": 74.0,
+      "mean_paired_difference_B_minus_A": 10.0,
+      "paired_bootstrap_95_ci": {
+        "lower": 10.0,
+        "upper": 10.0,
+        "mean": 10.0
+      },
+      "standardized_paired_effect": Infinity,
+      "sign_test": {
+        "n": 60,
+        "positive": 60,
+        "negative": 0,
+        "p_value": 1.734723475976807e-18
+      }
+    },
+    "fabrication_failure": {
+      "counts": {
+        "A_only": 6,
+        "B_only": 0,
+        "both": 0,
+        "neither": 54
+      },
+      "mcnemar_p_value": 0.03125
+    },
+    "state_protection_failure": {
+      "counts": {
+        "A_only": 5,
+        "B_only": 0,
+        "both": 0,
+        "neither": 55
+      },
+      "mcnemar_p_value": 0.0625
+    }
+  },
+  "actual_closure_gate": {
+    "schema_version": "ordo.ab_closure_gate.v1",
+    "status": "blocked",
+    "issues": [
+      {
+        "code": "ORDO-AB-CLOSE-003",
+        "message": "real external model evidence is required"
+      },
+      {
+        "code": "ORDO-AB-CLOSE-004",
+        "message": "blind scoring must be complete"
+      }
+    ],
+    "requirements": {
+      "minimum_pairs": 60,
+      "minimum_models": 2,
+      "external_real_model_evidence": true,
+      "blind_scoring_complete": true
+    }
+  },
+  "closure_blockers": [
+    "No external real-model paired runs were executed.",
+    "No completed blind scoring for 60 real pairs.",
+    "Therefore no defensible Ordo-vs-Plain-Prompt performance claim can yet be closed."
+  ],
+  "backlog_updated": true,
+  "changed_files": [
+    {
+      "path": "benchmarks/ab/statistical_analysis.py",
+      "sha256": "95eebfd04b1270b88647da6042b663a6c0fffef704f2bd2f29ff443e0b8780ce"
+    },
+    {
+      "path": "benchmarks/ab/ab_closure_gate.py",
+      "sha256": "2470348e01f042892a6bd1d8276d6a186f9fa68fa3bd39e6cf8a9bf6dec69273"
+    },
+    {
+      "path": "cli/tests/test_m87_5_statistical_analysis_closure.py",
+      "sha256": "7ca3103846861239d501c8ed9070b91f1311693f1cd72e7d91e569bca1e3032a"
+    },
+    {
+      "path": "CONSOLIDATED_BACKLOG.md",
+      "sha256": "be51873d92d4dac784ae87f227d243eafb7c6580ddf35a7e72619283a62b2953"
+    }
+  ]
+}

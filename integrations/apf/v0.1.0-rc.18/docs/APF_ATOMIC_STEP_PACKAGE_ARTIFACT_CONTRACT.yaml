@@ -1,0 +1,69 @@
+contract_id: apf.atomic_step_review.package_artifacts
+version: '0.1'
+status: active
+purpose: Define the package artifacts that preserve Atomic Step Review evidence for generated playbooks.
+applies_to:
+  - generated_playbook_packages
+  - process_design_packages
+  - artifact_generation_and_validation_flows
+artifact_set:
+  required_when_atomic_steps_exist:
+    - path: reviews/atomic_step/atomic_step_review_manifest.yaml
+      role: package_index
+    - path: reviews/atomic_step/review_records/
+      role: per_step_review_records
+    - path: reviews/atomic_step/gate_evaluations/
+      role: per_step_gate_evidence
+    - path: reviews/atomic_step/decomposition_proposals/
+      role: proposals_when_required
+    - path: reviews/atomic_step/atomic_step_validation_report.yaml
+      role: package_level_validation_evidence
+  conditional:
+    - path: reviews/atomic_step/human_decisions/
+      required_when:
+        - any_review_needs_human_decision
+        - any_decomposition_changes_ownership
+        - any_decomposition_changes_approval_boundary
+        - any_decomposition_changes_confirmed_state_transition
+    - path: reviews/atomic_step/post_render_reviews/
+      required_when:
+        - generated_artifacts_are_subject_to_independent_post_render_review
+manifest_required_fields:
+  - package_id
+  - review_contract_version
+  - reviewed_step_count
+  - records
+  - unresolved_findings
+  - human_decisions
+  - validation_report_ref
+  - integrity
+record_requirements:
+  - one_review_record_per_reviewed_step
+  - one_gate_evaluation_per_executed_gate
+  - decomposition_proposal_ref_when_split_is_required
+  - human_decision_ref_when_human_authority_is_required
+  - post_split_steps_must_have_new_review_records
+  - superseded_records_remain_preserved
+storage_rules:
+  - evidence_is_append_only_except_explicit_status_fields
+  - corrected_findings_create_new_record_versions
+  - references_use_stable_relative_paths
+  - no_hidden_chain_of_thought
+  - evidence_contains_short_verifiable_rationale_only
+assembly_rules:
+  allow_package_assembly_when:
+    - all_blocking_findings_resolved
+    - no_pending_required_human_decisions
+    - every_active_step_has_current_review_record
+    - validation_report_status_is_passed_or_passed_with_advisories
+  block_package_assembly_when:
+    - unresolved_blocking_issue_exists
+    - required_review_record_missing
+    - required_gate_evidence_missing
+    - required_human_decision_missing
+    - decomposition_applied_without_re_review
+    - artifact_level_status_is_collapsed_into_package_only_status
+non_goals:
+  - runtime_atomicity_enforcement
+  - automatic_business_logic_rewrite
+  - ordo_core_change

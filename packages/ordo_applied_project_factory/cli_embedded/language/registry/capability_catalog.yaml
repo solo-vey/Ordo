@@ -1,0 +1,32 @@
+catalog: ordo_capabilities
+version: 0.12-m74.1
+capabilities:
+  conversation_scope_guard:
+    contract_id: ORDO-CAP-CSG-001
+    status: language_integrated_optional_specification
+    source_constructs:
+    - conversation_scope_guard
+    opcodes:
+    - CONVERSATION.SCOPE.DEF
+    - DEVIATION.CLASSIFY
+    - DEVIATION.HANDLE
+    - DEVIATION.ESCALATE
+    - STATE.PROTECT
+    - PROCESS.PAUSE
+    - PROCESS.RESUME
+    - PROCESS.EXIT
+    trace_events:
+    - conversation.deviation.detected
+    - conversation.deviation.classified
+    - conversation.redirect.emitted
+    - conversation.escalation.changed
+    - conversation.scope_guard.bypassed_for_control_intent
+    - conversation.scope_guard.bypassed_for_safety
+    - process.pause.requested
+    - process.paused
+    - process.resume.requested
+    - process.resumed
+    - process.exit.requested
+    - process.exited
+    core_default_enabled: false
+    maturity_ref: language/conversation_scope_guard.contract.yaml#maturity

@@ -1,0 +1,6 @@
+{"receipts":[
+{"artifact_type":"passport","version_id":"passport-v2","status":"PASS"},
+{"artifact_type":"jira","version_id":"jira-v2","status":"PASS"},
+{"artifact_type":"manual_qa","version_id":"mqa-v2","status":"PASS"},
+{"artifact_type":"automation","version_id":"auto-v2","status":"PASS"}
+]}

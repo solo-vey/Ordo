@@ -1,0 +1,20 @@
+{
+  "schema": "ordo.graph.trace.v2",
+  "run_id": "demo_support_triage_login_medium",
+  "steps": [
+    {
+      "node_id": "N1_ISSUE_TYPE",
+      "answer_key": "A",
+      "next_node_id": "N2_SEVERITY",
+      "branch_comment": "User selected login problem and clarified that password reset did not work.",
+      "node_comment": "Issue type selected."
+    },
+    {
+      "node_id": "N2_SEVERITY",
+      "answer_key": "2",
+      "next_node_id": "N3_USER_CONTEXT",
+      "branch_comment": "Medium severity: user is blocked but workaround exists.",
+      "node_comment": "Severity confirmed."
+    }
+  ]
+}

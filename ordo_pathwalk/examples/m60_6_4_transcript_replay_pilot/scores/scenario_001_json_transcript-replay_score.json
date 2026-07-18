@@ -1,0 +1,43 @@
+{
+  "gate_passed": true,
+  "path_quality_score": 0.85,
+  "cell_match_rate": 1.0,
+  "protocol_compliance_rate": 1.0,
+  "distraction_recovery_rate": 0.0,
+  "backtrack_accuracy": 1.0,
+  "turn_accuracy_rate": 0.0,
+  "protocol_violation_direct_compiled_read": false,
+  "runtime_metadata": {
+    "ordo_cli_version": "0.12",
+    "runtime_protocol_version": "M60.4",
+    "runtime_view": "json",
+    "runtime_package_hash": null,
+    "canonical_ir_hash": "sha256:0a4ee4e6ba1b00856ef773b0dc8bec4f1859800db9f7c08a49fd5b8af8e6a1df",
+    "targets_manifest_hash": "sha256:28157ee31f9cd6cca925a5f28bf3ede24ad1a07608e9d61776abd776e121f984",
+    "session_trace_hash": "sha256:a3c86e5915b9162f2f3926e7dc914082ad4c1365cb195b79ff8df2578951c4d8",
+    "targets": [
+      "json-ir",
+      "session-trace"
+    ]
+  },
+  "weights": {
+    "cell_match_rate": 0.45,
+    "protocol_compliance_rate": 0.25,
+    "distraction_recovery_rate": 0.15,
+    "backtrack_accuracy": 0.15
+  },
+  "schema_version": "ordo.pathwalk.model_score.v1",
+  "milestone": "M60.6.4",
+  "job_id": "scenario_001_json_transcript-replay",
+  "scenario_id": "scenario_001",
+  "runtime_view": "json",
+  "cli_mode": "enforced",
+  "benchmark_mode": "transcript-replay",
+  "provider": "offline",
+  "model": "synthetic-transcript-pilot",
+  "driver": "transcript-replay-pilot",
+  "status": "non_perfect",
+  "failure_bucket": "distraction_followed",
+  "transcript_sha256": "sha256:c22f86079e64fe543ca3cdf65f38cb38dca77d17b2b7ecf710098c09656e5c0c",
+  "weights_hash": "sha256:da62ee407ec19218148b616ea75f5ed6e2708fa1927cc2c592b40eba527a4414"
+}

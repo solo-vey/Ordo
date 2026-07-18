@@ -1,0 +1,2488 @@
+{
+  "status": "passed",
+  "mode": "static_behavior_validation",
+  "note": "M2 test runner validates Ordo test expectations statically; it does not execute an AI model.",
+  "summary": {
+    "test_cases": 247,
+    "passed": 247,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 0,
+    "assertions_total": 79,
+    "assertions_behaviorally_evaluated": 0,
+    "assertions_structural_only": 79
+  },
+  "assertion_evaluation_note": "Static test runner checks references and reports how many assertions have deterministic behavioral evaluators.",
+  "results": [
+    {
+      "id": "TC_A_TEST_CASES_AFTER_TREE_APPROVAL",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_TEST_CASES_AFTER_TREE_APPROVAL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FREE_DIALOGUE_FORMS_DRAFT_ON_WHAT_NEXT_SIGNAL",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FREE_DIALOGUE_FORMS_DRAFT_ON_WHAT_NEXT_SIGNAL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FACTORY_STARTS_WITH_THREE_MODES",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FACTORY_STARTS_WITH_THREE_MODES",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_TREE_REVIEW_DEPTH_FIRST_APPROVED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_TREE_REVIEW_DEPTH_FIRST_APPROVED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DOMAIN_OPEN_QUESTIONS_TRIAGED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DOMAIN_OPEN_QUESTIONS_TRIAGED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FACTORY_AUTHORING_MODE_SELECTED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FACTORY_AUTHORING_MODE_SELECTED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_APPLIED_PROJECT_GOAL_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_APPLIED_PROJECT_GOAL_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_APPLIED_PROCESS_TYPE_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_APPLIED_PROCESS_TYPE_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_ROLES_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_ROLES_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_ENTRY_POINT_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_ENTRY_POINT_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DECISION_TREE_BLUEPRINT_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DECISION_TREE_BLUEPRINT_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_STATE_SCHEMA_BLUEPRINT_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_STATE_SCHEMA_BLUEPRINT_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_OUTPUT_ARTIFACT_CATALOG_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_OUTPUT_ARTIFACT_CATALOG_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_OUTPUT_TEMPLATE_CATALOG_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_OUTPUT_TEMPLATE_CATALOG_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_VALIDATION_GATE_CATALOG_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_VALIDATION_GATE_CATALOG_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FIRST_RELEASE_SOURCE_YAML_ONLY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FIRST_RELEASE_SOURCE_YAML_ONLY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_APPROVAL_TO_GENERATE_SOURCE_YAML",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_APPROVAL_TO_GENERATE_SOURCE_YAML",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FACTORY_HAS_NO_DOMAIN_LIMIT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FACTORY_HAS_NO_DOMAIN_LIMIT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PM_DOES_NOT_WRITE_YAML_DIRECTLY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PM_DOES_NOT_WRITE_YAML_DIRECTLY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_YAML_HIDDEN_FROM_PM_BY_DEFAULT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_YAML_HIDDEN_FROM_PM_BY_DEFAULT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_OUTPUT_TEMPLATES_DEFINED_IMMEDIATELY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_OUTPUT_TEMPLATES_DEFINED_IMMEDIATELY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_CONFUSION_TESTS_DEFERRED_FOR_M61_1",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_CONFUSION_TESTS_DEFERRED_FOR_M61_1",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_OUT_APPLIED_PROJECT_SOURCE_YAML_DEFINED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_OUT_APPLIED_PROJECT_SOURCE_YAML_DEFINED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_DOMAIN_MODEL_OVERVIEW_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_DOMAIN_MODEL_OVERVIEW_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_DOMAIN_INPUT_OUTPUT_SOURCES_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_DOMAIN_INPUT_OUTPUT_SOURCES_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_FREE_DIALOGUE_INTAKE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_FREE_DIALOGUE_INTAKE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_FREE_DIALOGUE_NEXT_SIGNAL_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_FREE_DIALOGUE_NEXT_SIGNAL_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MANUAL_TREE_PROJECT_GOAL_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MANUAL_TREE_PROJECT_GOAL_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MANUAL_TREE_RUNTIME_CONTEXT_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MANUAL_TREE_RUNTIME_CONTEXT_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MANUAL_TREE_ROOT_NODE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MANUAL_TREE_ROOT_NODE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TREE_DEPTH_FIRST_REVIEW_LOOP_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TREE_DEPTH_FIRST_REVIEW_LOOP_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_BASIC_TEST_CASES_AFTER_TREE_APPROVAL",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_BASIC_TEST_CASES_AFTER_TREE_APPROVAL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_BASIC_TEST_CASE_CATALOG_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_BASIC_TEST_CASE_CATALOG_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_FREE_DIALOGUE_STRUCTURED_EXTRACTION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_FREE_DIALOGUE_STRUCTURED_EXTRACTION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_FREE_DIALOGUE_ACCUMULATION_CHECK_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_FREE_DIALOGUE_ACCUMULATION_CHECK_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_STABILIZED_TREE_BRANCH_HANDOFF_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_STABILIZED_TREE_BRANCH_HANDOFF_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FREE_DIALOGUE_NOTES_STRUCTURED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FREE_DIALOGUE_NOTES_STRUCTURED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FREE_DIALOGUE_DRAFT_TREE_READY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FREE_DIALOGUE_DRAFT_TREE_READY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SELF_HOSTED_BRANCH_STABILIZED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SELF_HOSTED_BRANCH_STABILIZED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FREE_DIALOGUE_ACCUMULATES_NOTES_BEFORE_DRAFT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FREE_DIALOGUE_ACCUMULATES_NOTES_BEFORE_DRAFT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_STABILIZED_BRANCH_REUSED_AS_AUTHORING_ALGORITHM",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_STABILIZED_BRANCH_REUSED_AS_AUTHORING_ALGORITHM",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_M61_5_SELF_HOSTED_FREE_DIALOGUE_PATH",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_M61_5_SELF_HOSTED_FREE_DIALOGUE_PATH",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_WORKING_CONTEXT_GRAPH_POLICY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_WORKING_CONTEXT_GRAPH_POLICY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_CONTEXT_SVG_BY_DEFAULT_DURING_BRANCH_WORK",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_CONTEXT_SVG_BY_DEFAULT_DURING_BRANCH_WORK",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MODULE_VERSIONING_POLICY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MODULE_VERSIONING_POLICY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_GRAPH_ANNOTATION_OVERLAY_POLICY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_GRAPH_ANNOTATION_OVERLAY_POLICY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_MODULE_VERSIONING_POLICY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_MODULE_VERSIONING_POLICY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_APPLIED_PROJECT_FACTORY_USES_MODULE_VERSIONING",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_APPLIED_PROJECT_FACTORY_USES_MODULE_VERSIONING",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_GRAPH_ANNOTATION_OVERLAY_IS_REVIEW_AID",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_GRAPH_ANNOTATION_OVERLAY_IS_REVIEW_AID",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_LANGUAGE_PACKAGE_VERSION_IS_CONTAINER",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_LANGUAGE_PACKAGE_VERSION_IS_CONTAINER",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_NO_AUTOMATIC_SVG_DURING_TEXT_REVIEW",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_NO_AUTOMATIC_SVG_DURING_TEXT_REVIEW",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_CURRENT_NODE_BLOCK_HAS_HUMAN_DESCRIPTION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_CURRENT_NODE_BLOCK_HAS_HUMAN_DESCRIPTION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_EXTRACTION_SUMMARY_IS_USER_FACING",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_EXTRACTION_SUMMARY_IS_USER_FACING",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PROCESS_FEEDBACK_CAN_REWRITE_YAML_AFTER_APPROVAL",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PROCESS_FEEDBACK_CAN_REWRITE_YAML_AFTER_APPROVAL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_USER_FACING_NODE_DESCRIPTIONS_ENABLED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_USER_FACING_NODE_DESCRIPTIONS_ENABLED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_USER_FACING_EXTRACTION_SUMMARY_ENABLED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_USER_FACING_EXTRACTION_SUMMARY_ENABLED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PROCESS_FEEDBACK_LOOP_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PROCESS_FEEDBACK_LOOP_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TREE_NODE_REVIEW_DISPLAY_CONTRACT_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TREE_NODE_REVIEW_DISPLAY_CONTRACT_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_NODE_REVIEW_INCLUDES_STATE_GATES_ARTIFACTS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_NODE_REVIEW_INCLUDES_STATE_GATES_ARTIFACTS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_SIBLING_BRANCHES_ARE_TRACKED_DURING_DEPTH_FIRST_REVIEW",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_SIBLING_BRANCHES_ARE_TRACKED_DURING_DEPTH_FIRST_REVIEW",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_CONTINUES_FROM_RELOADED_YAML_AFTER_PROCESS_CHANGE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_CONTINUES_FROM_RELOADED_YAML_AFTER_PROCESS_CHANGE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_ALL_STARTUP_BRANCHES_JOIN_SHARED_PATHS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_ALL_STARTUP_BRANCHES_JOIN_SHARED_PATHS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_CONTROL_ACTION_BOOKKEEPING_SEPARATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_CONTROL_ACTION_BOOKKEEPING_SEPARATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_HANDOFF_PACKAGE_REQUIRES_FILE_FIRST_SUMMARY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_HANDOFF_PACKAGE_REQUIRES_FILE_FIRST_SUMMARY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_MINIMAL_YAML_PATCH_CHECK_DEFINED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_MINIMAL_YAML_PATCH_CHECK_DEFINED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SHARED_OUTPUT_TEMPLATE_SUBFLOW_CLOSED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SHARED_OUTPUT_TEMPLATE_SUBFLOW_CLOSED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SHARED_VALIDATION_HANDOFF_TAIL_CLOSED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SHARED_VALIDATION_HANDOFF_TAIL_CLOSED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SKIPPED_FULL_VALIDATION_RECORDED_AS_ALPHA_LIMITATION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SKIPPED_FULL_VALIDATION_RECORDED_AS_ALPHA_LIMITATION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SOURCE_YAML_GENERATION_REQUIRES_APPROVAL",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SOURCE_YAML_GENERATION_REQUIRES_APPROVAL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_WHOLE_TREE_INTEGRATION_REVIEW_CLOSED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_WHOLE_TREE_INTEGRATION_REVIEW_CLOSED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_ALPHA20_LEGACY_ORPHANS_ARE_EXPLICITLY_DEPRECATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_ALPHA20_LEGACY_ORPHANS_ARE_EXPLICITLY_DEPRECATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_ALPHA20_SHARED_VALIDATION_HANDOFF_JOIN_IS_SINGLETON",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_ALPHA20_SHARED_VALIDATION_HANDOFF_JOIN_IS_SINGLETON",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_ALPHA20_STARTUP_BRANCHES_INTEGRATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_ALPHA20_STARTUP_BRANCHES_INTEGRATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_ALPHA20_UNFINISHED_AND_REMOVED_ARTIFACT_GATES_REMAIN_ALIGNED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_ALPHA20_UNFINISHED_AND_REMOVED_ARTIFACT_GATES_REMAIN_ALIGNED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_CURRENT_NODE_RENDERING_MUST_SHOW_PROCESS_STATE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_CURRENT_NODE_RENDERING_MUST_SHOW_PROCESS_STATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DECISION_NODE_MUST_SHOW_ACTION_OPTIONS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DECISION_NODE_MUST_SHOW_ACTION_OPTIONS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FINAL_UNFINISHED_ITEMS_GATE_BLOCKS_ACTIVE_UNFINISHED_OUTPUTS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FINAL_UNFINISHED_ITEMS_GATE_BLOCKS_ACTIVE_UNFINISHED_OUTPUTS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FREE_DIALOGUE_OUTPUT_CANDIDATES_NOT_DROPPED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FREE_DIALOGUE_OUTPUT_CANDIDATES_NOT_DROPPED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FULL_VALIDATION_IS_TERMINAL_OR_PRE_HANDOFF_GATE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FULL_VALIDATION_IS_TERMINAL_OR_PRE_HANDOFF_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_INCREMENTAL_YAML_PATCHES_AVOID_PER_NODE_FULL_REGENERATION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_INCREMENTAL_YAML_PATCHES_AVOID_PER_NODE_FULL_REGENERATION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_MANUAL_TREE_BRANCH_REUSES_BRANCH_1_SHARED_PATH",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_MANUAL_TREE_BRANCH_REUSES_BRANCH_1_SHARED_PATH",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_MANUAL_TREE_INPUT_NOT_APPROVED_DIRECTLY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_MANUAL_TREE_INPUT_NOT_APPROVED_DIRECTLY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_NEW_ARTIFACT_INTENT_IS_FREE_FORM_NOT_FIXED_TYPE_LIST",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_NEW_ARTIFACT_INTENT_IS_FREE_FORM_NOT_FIXED_TYPE_LIST",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PROCESS_DESIGN_REVIEW_MUST_LABEL_MODE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PROCESS_DESIGN_REVIEW_MUST_LABEL_MODE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_REVIEW_DECISIONS_ARE_SIMPLIFIED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_REVIEW_DECISIONS_ARE_SIMPLIFIED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_UNFINISHED_TEMPLATE_NOT_APPROVED_FOR_OUTPUT_GENERATION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_UNFINISHED_TEMPLATE_NOT_APPROVED_FOR_OUTPUT_GENERATION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_VALIDATION_DETAILS_LIVE_INSIDE_CORRECTION_MODE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_VALIDATION_DETAILS_LIVE_INSIDE_CORRECTION_MODE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_VALIDATION_FINDINGS_ROUTE_BACK_TO_TREE_CORRECTION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_VALIDATION_FINDINGS_ROUTE_BACK_TO_TREE_CORRECTION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_APPROVED_TREE_CONSOLIDATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_APPROVED_TREE_CONSOLIDATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_BATCH_IMPROVEMENT_LIST_ENTRY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_BATCH_IMPROVEMENT_LIST_ENTRY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_BEFORE_AFTER_AFFECTED_NODES_REVIEW_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_BEFORE_AFTER_AFFECTED_NODES_REVIEW_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_BRANCH_REVIEW_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_BRANCH_REVIEW_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_CANDIDATE_IMPROVEMENTS_EXTRACTION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_CANDIDATE_IMPROVEMENTS_EXTRACTION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_CANDIDATE_IMPROVEMENTS_SELECTION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_CANDIDATE_IMPROVEMENTS_SELECTION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_CONFIRMED_CHANGE_SET_BUILDING_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_CONFIRMED_CHANGE_SET_BUILDING_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_CURRENT_NODE_REVIEW_DECISION_GATE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_CURRENT_NODE_REVIEW_DECISION_GATE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_DRAFT_SUBTREE_GENERATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_DRAFT_SUBTREE_GENERATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_DRAFT_SUBTREE_REVIEW_START_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_DRAFT_SUBTREE_REVIEW_START_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_EXISTING_PROCESS_BASELINE_DEFINITION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_EXISTING_PROCESS_BASELINE_DEFINITION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_EXISTING_PROCESS_IMPROVEMENT_ENTRY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_EXISTING_PROCESS_IMPROVEMENT_ENTRY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_IMPROVEMENT_TO_PROCESS_MAPPING_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_IMPROVEMENT_TO_PROCESS_MAPPING_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_INPUT_ARTIFACTS_POLICY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_INPUT_ARTIFACTS_POLICY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MANUAL_TREE_COMPLETENESS_AND_JOIN_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MANUAL_TREE_COMPLETENESS_AND_JOIN_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MANUAL_TREE_NORMALIZATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MANUAL_TREE_NORMALIZATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_OUTPUT_REVIEW_PACKAGE_GENERATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_OUTPUT_REVIEW_PACKAGE_GENERATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_OUTPUT_TEMPLATE_CREATION_LOOP_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_OUTPUT_TEMPLATE_CREATION_LOOP_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_OUTPUT_TEMPLATE_REVIEW_LOOP_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_OUTPUT_TEMPLATE_REVIEW_LOOP_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_PROGRESSIVE_TREE_AUTHORING_ENTRY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_PROGRESSIVE_TREE_AUTHORING_ENTRY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SCOPED_YAML_PATCH_APPLICATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SCOPED_YAML_PATCH_APPLICATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_CORRECTION_LOOP_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_CORRECTION_LOOP_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_FINAL_HANDOFF_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_FINAL_HANDOFF_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_FULL_VALIDATION_DECISION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_FULL_VALIDATION_DECISION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_MINIMAL_VALIDATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_MINIMAL_VALIDATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_SOURCE_YAML_GENERATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_SOURCE_YAML_GENERATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_VALIDATION_RESULT_REVIEW_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_VALIDATION_RESULT_REVIEW_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SUBTREE_REVIEW_COMPLETION_CHECK_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SUBTREE_REVIEW_COMPLETION_CHECK_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TARGETED_BEFORE_AFTER_PROPOSAL_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TARGETED_BEFORE_AFTER_PROPOSAL_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TARGETED_CHANGE_CLARIFICATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TARGETED_CHANGE_CLARIFICATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TARGETED_CHANGE_DECISION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TARGETED_CHANGE_DECISION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TARGETED_MORE_IMPROVEMENTS_CHECK_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TARGETED_MORE_IMPROVEMENTS_CHECK_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TARGET_PROCESS_ITEM_IDENTIFICATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TARGET_PROCESS_ITEM_IDENTIFICATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TERMINAL_BRANCH_FULL_VALIDATION_GATE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TERMINAL_BRANCH_FULL_VALIDATION_GATE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TERMINAL_OR_CONTINUE_DECISION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TERMINAL_OR_CONTINUE_DECISION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TERMINAL_OUTPUT_BINDING_CONFIRMATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TERMINAL_OUTPUT_BINDING_CONFIRMATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TERMINAL_OUTPUT_BINDING_LOOP_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TERMINAL_OUTPUT_BINDING_LOOP_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TERMINAL_OUTPUT_BINDING_POLICY_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TERMINAL_OUTPUT_BINDING_POLICY_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_TERMINAL_PATH_READY_CHECK_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_TERMINAL_PATH_READY_CHECK_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_USER_TREE_VISION_CAPTURE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_USER_TREE_VISION_CAPTURE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_END_HANDOFF_ACCEPTED_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_END_HANDOFF_ACCEPTED_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_FINAL_COMPLETION_ARTIFACTS_GENERATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_FINAL_COMPLETION_ARTIFACTS_GENERATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_SHARED_TAIL_PACKAGE_COMPOSITION_GATE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_SHARED_TAIL_PACKAGE_COMPOSITION_GATE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PACKAGE_COMPOSITION_GATE_PASSED_BEFORE_ARCHIVE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PACKAGE_COMPOSITION_GATE_PASSED_BEFORE_ARCHIVE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PACKAGE_COMPOSITION_GATE_BLOCKS_INCOMPLETE_ARCHIVE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PACKAGE_COMPOSITION_GATE_BLOCKS_INCOMPLETE_ARCHIVE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_EXECUTABLE_MODEL_CHANGES_REQUIRE_DERIVED_ARTIFACT_SYNC",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_EXECUTABLE_MODEL_CHANGES_REQUIRE_DERIVED_ARTIFACT_SYNC",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_EXECUTION_MODE_DECLARATION_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_EXECUTION_MODE_DECLARATION_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_EXECUTION_MODE_DECLARED_AT_PROCESS_START",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_EXECUTION_MODE_DECLARED_AT_PROCESS_START",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_READY_REQUIRES_RUNTIME_OR_HYBRID_MODE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_READY_REQUIRES_RUNTIME_OR_HYBRID_MODE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PROCESS_RUN_MUST_DECLARE_EXECUTION_MODE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PROCESS_RUN_MUST_DECLARE_EXECUTION_MODE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_READY_STATUS_REQUIRES_COMPILED_RUNTIME_OR_VALIDATED_HYBRID",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_READY_STATUS_REQUIRES_COMPILED_RUNTIME_OR_VALIDATED_HYBRID",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_COMPILED_RUNTIME_USAGE_GATE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_COMPILED_RUNTIME_USAGE_GATE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_COMPILED_RUNTIME_USAGE_GATE_EVALUATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_COMPILED_RUNTIME_USAGE_GATE_EVALUATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_COMPILED_RUNTIME_BYPASS_REASON_RECORDED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_COMPILED_RUNTIME_BYPASS_REASON_RECORDED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_TRACE_AVAILABLE_WHEN_RUNTIME_USED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_TRACE_AVAILABLE_WHEN_RUNTIME_USED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PACKAGE_STATUS_CONSISTENT_WITH_RUNTIME_USAGE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PACKAGE_STATUS_CONSISTENT_WITH_RUNTIME_USAGE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_COMPILED_RUNTIME_USAGE_MUST_BE_RECORDED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_COMPILED_RUNTIME_USAGE_MUST_BE_RECORDED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_COMPILED_RUNTIME_BYPASS_MUST_NOT_LOOK_RUNTIME_READY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_COMPILED_RUNTIME_BYPASS_MUST_NOT_LOOK_RUNTIME_READY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_MODE_REQUIRES_TRACE_WHEN_RUNTIME_USED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_MODE_REQUIRES_TRACE_WHEN_RUNTIME_USED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_COMPILATION_GATE_EVALUATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_COMPILATION_GATE_EVALUATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_READY_REQUIRES_COMPILED_ARTIFACTS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_READY_REQUIRES_COMPILED_ARTIFACTS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_READY_REQUIRES_RUNTIME_COMPILATION_GATE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_READY_REQUIRES_RUNTIME_COMPILATION_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_COMPILATION_MISSING_MARKS_NOT_RUNTIME_READY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_COMPILATION_MISSING_MARKS_NOT_RUNTIME_READY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_HYBRID_MODE_PREFERRED_BUT_NON_INTRUSIVE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_HYBRID_MODE_PREFERRED_BUT_NON_INTRUSIVE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_NORMAL_ANALYST_ANSWERS_DO_NOT_TRIGGER_RECOMPILATION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_NORMAL_ANALYST_ANSWERS_DO_NOT_TRIGGER_RECOMPILATION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_AUTHORING_PROCESS_CHANGES_MARK_RUNTIME_STALE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_AUTHORING_PROCESS_CHANGES_MARK_RUNTIME_STALE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_HYBRID_MODE_MUST_NOT_SLOW_ANALYST_INTAKE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_HYBRID_MODE_MUST_NOT_SLOW_ANALYST_INTAKE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_NORMAL_ANALYST_ANSWER_DOES_NOT_MARK_RUNTIME_STALE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_NORMAL_ANALYST_ANSWER_DOES_NOT_MARK_RUNTIME_STALE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_HYBRID_RUNTIME_AUTHORING_BOUNDARY_RECORDED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_HYBRID_RUNTIME_AUTHORING_BOUNDARY_RECORDED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_CHECKS_ONLY_AT_LIFECYCLE_CONTROL_POINTS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_CHECKS_ONLY_AT_LIFECYCLE_CONTROL_POINTS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_HYBRID_MODE_IS_PREFERRED_FOR_APF_PROCESS_CREATION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_HYBRID_MODE_IS_PREFERRED_FOR_APF_PROCESS_CREATION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_CONTROLS_TRAVERSAL_STATE_AND_GATES_IN_HYBRID",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_CONTROLS_TRAVERSAL_STATE_AND_GATES_IN_HYBRID",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_AUTHORING_ONLY_FOR_APF_PROCESS_STRUCTURE_CHANGES",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_AUTHORING_ONLY_FOR_APF_PROCESS_STRUCTURE_CHANGES",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PROCESS_STRUCTURE_CHANGE_MARKS_RUNTIME_STALE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PROCESS_STRUCTURE_CHANGE_MARKS_RUNTIME_STALE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_EXECUTABLE_MODEL_AND_DERIVED_ARTIFACTS_SYNCHRONIZED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_EXECUTABLE_MODEL_AND_DERIVED_ARTIFACTS_SYNCHRONIZED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_FINAL_COMPLETION_ARTIFACTS_GENERATED_BEFORE_PACKAGE_COMPOSITION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_FINAL_COMPLETION_ARTIFACTS_GENERATED_BEFORE_PACKAGE_COMPOSITION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_RUNTIME_COMPILATION_HASHES_RECORDED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_RUNTIME_COMPILATION_HASHES_RECORDED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SOURCE_OR_HANDOFF_PACKAGE_NOT_MARKED_RUNTIME_READY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SOURCE_OR_HANDOFF_PACKAGE_NOT_MARKED_RUNTIME_READY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_PACKAGE_REQUIRES_COMPILED_IR_VIEW_TARGETS_AND_RUNTIME_CONFIG",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_PACKAGE_REQUIRES_COMPILED_IR_VIEW_TARGETS_AND_RUNTIME_CONFIG",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_READY_REQUIRES_SOURCE_AND_COMPILED_HASHES",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_READY_REQUIRES_SOURCE_AND_COMPILED_HASHES",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DERIVED_ARTIFACT_SYNC_GATE_EVALUATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DERIVED_ARTIFACT_SYNC_GATE_EVALUATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DERIVED_ARTIFACT_SYNC_GATE_RUNS_BEFORE_PACKAGE_COMPOSITION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DERIVED_ARTIFACT_SYNC_GATE_RUNS_BEFORE_PACKAGE_COMPOSITION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DERIVED_ARTIFACT_SYNC_GATE_MUST_NOT_SLOW_ANALYST_INTAKE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DERIVED_ARTIFACT_SYNC_GATE_MUST_NOT_SLOW_ANALYST_INTAKE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_STALE_REQUIRED_DERIVED_ARTIFACTS_BLOCK_FINAL_ARCHIVE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_STALE_REQUIRED_DERIVED_ARTIFACTS_BLOCK_FINAL_ARCHIVE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DELTA_BACKLOG_ITEM_CLASSIFIED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DELTA_BACKLOG_ITEM_CLASSIFIED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DEFERRED_DELTA_ITEMS_PRESERVED_FOR_TRANSFER",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DEFERRED_DELTA_ITEMS_PRESERVED_FOR_TRANSFER",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DELTA_BACKLOG_ORDER_PRESERVED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DELTA_BACKLOG_ORDER_PRESERVED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_DELTA_SOURCE_FILES_INCLUDED_IN_TRANSFER_PACKAGE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_DELTA_SOURCE_FILES_INCLUDED_IN_TRANSFER_PACKAGE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DELTA_FILES_MUST_NOT_BE_LOST_BETWEEN_CHATS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DELTA_FILES_MUST_NOT_BE_LOST_BETWEEN_CHATS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DELTA_ITEMS_REQUIRE_DECISION_STATUS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DELTA_ITEMS_REQUIRE_DECISION_STATUS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_DELTA_BACKLOG_REGISTER_IS_TRANSFER_ARTIFACT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_DELTA_BACKLOG_REGISTER_IS_TRANSFER_ARTIFACT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SVG_GRAPH_GENERATOR_UTILITY_PACKAGED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SVG_GRAPH_GENERATOR_UTILITY_PACKAGED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SVG_GRAPH_GENERATOR_MANIFEST_PRESENT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SVG_GRAPH_GENERATOR_MANIFEST_PRESENT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SVG_GRAPH_GENERATOR_SMOKE_VERIFIED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SVG_GRAPH_GENERATOR_SMOKE_VERIFIED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SVG_GRAPH_GENERATOR_TRANSFER_INCLUDED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SVG_GRAPH_GENERATOR_TRANSFER_INCLUDED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_SVG_GRAPH_RENDERING_MODES_DOCUMENTED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_SVG_GRAPH_RENDERING_MODES_DOCUMENTED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PACKAGED_SVG_UTILITY_MUST_HAVE_MANIFEST_AND_SMOKE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PACKAGED_SVG_UTILITY_MUST_HAVE_MANIFEST_AND_SMOKE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_RUNTIME_PACKAGE_MUST_INCLUDE_PACKAGED_SVG_UTILITY_WHEN_CLAIMED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_RUNTIME_PACKAGE_MUST_INCLUDE_PACKAGED_SVG_UTILITY_WHEN_CLAIMED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_SVG_GRAPH_GENERATION_REMAINS_REVIEW_AID_NOT_RUNTIME_EXECUTION",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_SVG_GRAPH_GENERATION_REMAINS_REVIEW_AID_NOT_RUNTIME_EXECUTION",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_COMPILE_UTILITY_DISCOVERY_GATE_EVALUATED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_COMPILE_UTILITY_DISCOVERY_GATE_EVALUATED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PACKAGE_PROFILE_GATE_DECLARED_AND_MATCHED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PACKAGE_PROFILE_GATE_DECLARED_AND_MATCHED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_START_PROMPT_PACKAGING_GATE_READY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_START_PROMPT_PACKAGING_GATE_READY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_README_STARTUP_SECTION_GATE_READY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_README_STARTUP_SECTION_GATE_READY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_COMPILE_CAPABILITY_DISCOVERABLE",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_COMPILE_CAPABILITY_DISCOVERABLE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PACKAGE_PROFILE_MUST_MATCH_CONTENTS",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PACKAGE_PROFILE_MUST_MATCH_CONTENTS",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_FINISHED_PACKAGE_MUST_INCLUDE_START_PROMPT",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_FINISHED_PACKAGE_MUST_INCLUDE_START_PROMPT",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_PROGRAM_LEVEL_CONTRACT_REVIEW_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_PROGRAM_LEVEL_CONTRACT_REVIEW_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_N_PROGRAM_LEVEL_CONTRACT_APPROVAL_GATE_COVERED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_N_PROGRAM_LEVEL_CONTRACT_APPROVAL_GATE_COVERED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PROGRAM_ID_SET",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PROGRAM_ID_SET",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PROGRAM_CONTROL_LEVEL_ALLOWED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PROGRAM_CONTROL_LEVEL_ALLOWED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PROGRAM_EXECUTION_MODE_ALLOWED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PROGRAM_EXECUTION_MODE_ALLOWED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_INTERACTION_ROLES_AND_RESPONSIBILITIES_DEFINED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_INTERACTION_ROLES_AND_RESPONSIBILITIES_DEFINED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_CONVERSATION_SEMANTICS_ROUTING_DEFINED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_CONVERSATION_SEMANTICS_ROUTING_DEFINED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_HYBRID_DETERMINISTIC_COMMANDS_LISTED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_HYBRID_DETERMINISTIC_COMMANDS_LISTED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_G_PROGRAM_LEVEL_CONTRACT_ANALYST_APPROVED",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_G_PROGRAM_LEVEL_CONTRACT_ANALYST_APPROVED",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_A_PROGRAM_LEVEL_CONTRACT_REVIEW_MANDATORY",
+      "status": "passed",
+      "namespaced_id": "ordo.applied_project_factory.TC_A_PROGRAM_LEVEL_CONTRACT_REVIEW_MANDATORY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    }
+  ]
+}

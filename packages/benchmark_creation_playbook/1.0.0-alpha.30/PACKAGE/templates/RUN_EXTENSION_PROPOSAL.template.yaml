@@ -1,0 +1,23 @@
+schema_version: benchmark.run_extension_proposal.v1
+proposed_run_id: RUN_XX
+scenario_name: <NAME>
+unique_behavioral_purpose: <PURPOSE>
+distinction_from_existing_runs:
+  RUN_01: <DISTINCTION>
+  RUN_02: <DISTINCTION>
+  RUN_03: <DISTINCTION>
+  RUN_04: <DISTINCTION>
+  RUN_05: <DISTINCTION>
+expected_terminal: <T_COMPLETED|T_INPUT_BLOCKED|T_SCENARIO_EXHAUSTED>
+driver_capabilities:
+- <CAPABILITY>
+admission_gates:
+  distinctness: pending
+  orthogonality: pending
+  determinism: pending
+  driver_capability: pending
+  blindness: pending
+  comparability: pending
+  regression: pending
+  owner_approval: pending
+decision: pending

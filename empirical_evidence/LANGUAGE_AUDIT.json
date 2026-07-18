@@ -1,0 +1,5 @@
+{
+  "status": "PASS_WITH_IMMUTABLE_EXCEPTIONS",
+  "new_documents_language": "English",
+  "exceptions": "Immutable/source-language evidence retained unchanged inside source artifacts."
+}

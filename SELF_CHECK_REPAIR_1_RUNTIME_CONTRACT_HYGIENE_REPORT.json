@@ -1,0 +1,34 @@
+{
+  "status": "repaired_passed",
+  "finding_id": "SELF_CHECK-001",
+  "title": "Runtime trace contract source-hygiene conflict repair",
+  "change": {
+    "from": "packages/history_event_guided_intake/runtime/contracts/",
+    "to": "packages/history_event_guided_intake/source/contracts/runtime/",
+    "files": [
+      "prompt_application_trace.schema.json",
+      "prompt_application_trace.example.json"
+    ],
+    "policy_changed": false,
+    "business_logic_changed": false
+  },
+  "validation": {
+    "m71_4_tests": {
+      "passed": 6,
+      "failed": 0
+    },
+    "package_strict": "passed",
+    "repo_strict": "passed",
+    "repo_exit_code": 0
+  },
+  "untouched": [
+    "business navigation",
+    "confirmed-event logic",
+    "state model",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "core CLI session trace writer",
+    "repo hygiene policy"
+  ]
+}

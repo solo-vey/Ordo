@@ -1,0 +1,197 @@
+{
+  "schema_version": "ordo.benchmark.alpha.validation.v1",
+  "release": "1.0.0-alpha.9",
+  "passed": true,
+  "passed_count": 15,
+  "total": 15,
+  "checks": [
+    {
+      "id": "backlog_45_done",
+      "status": "PASS",
+      "detail": "BL-BENCH-045 DONE"
+    },
+    {
+      "id": "task_closure",
+      "status": "PASS",
+      "detail": "task marked DONE"
+    },
+    {
+      "id": "yaml_json_parse",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "id": "python_compile",
+      "status": "PASS",
+      "detail": [
+        {
+          "file": "tools/validate_result_package_release.py",
+          "rc": 0,
+          "stderr": ""
+        },
+        {
+          "file": "tools/test_result_package_release_gate.py",
+          "rc": 0,
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "id": "acceptance_6_of_6",
+      "status": "PASS",
+      "detail": {
+        "schema_version": "ordo.benchmark.result_package_release_gate.acceptance.v1",
+        "passed": true,
+        "passed_count": 6,
+        "total": 6,
+        "cases": [
+          {
+            "case": "base_valid",
+            "passed": true,
+            "returncode": 0,
+            "disposition": "PASS_RELEASE",
+            "expected": "PASS_RELEASE"
+          },
+          {
+            "case": "validator_fail",
+            "passed": true,
+            "returncode": 1,
+            "disposition": "BLOCKED_REGENERATE",
+            "expected": "BLOCKED_REGENERATE"
+          },
+          {
+            "case": "foreign_literal",
+            "passed": true,
+            "returncode": 1,
+            "disposition": "BLOCKED_REGENERATE",
+            "expected": "BLOCKED_REGENERATE"
+          },
+          {
+            "case": "stale_approval",
+            "passed": true,
+            "returncode": 1,
+            "disposition": "BLOCKED_REGENERATE",
+            "expected": "BLOCKED_REGENERATE"
+          },
+          {
+            "case": "not_ready",
+            "passed": true,
+            "returncode": 1,
+            "disposition": "NO_GO",
+            "expected": "NO_GO"
+          },
+          {
+            "case": "incomplete_manual_qa",
+            "passed": true,
+            "returncode": 1,
+            "disposition": "BLOCKED_REGENERATE",
+            "expected": "BLOCKED_REGENERATE"
+          }
+        ]
+      }
+    },
+    {
+      "id": "positive_pass_release",
+      "status": "PASS",
+      "detail": "PASS_RELEASE"
+    },
+    {
+      "id": "report_schema",
+      "status": "PASS",
+      "detail": "validated"
+    },
+    {
+      "id": "ordo_topology",
+      "status": "PASS",
+      "detail": {
+        "nodes": 72,
+        "gates": 15,
+        "terminals": 19,
+        "outputs": 2
+      }
+    },
+    {
+      "id": "required_assets",
+      "status": "PASS",
+      "detail": [
+        "RESULT_PACKAGE_RELEASE_GATE_POLICY.yaml",
+        "tools/validate_result_package_release.py",
+        "schemas/result_package_release_gate_report.schema.json",
+        "templates/RESULT_PACKAGE_RELEASE_GATE_REPORT.template.json"
+      ]
+    },
+    {
+      "id": "validator_and_foreign_fail_closed",
+      "status": "PASS",
+      "detail": [
+        {
+          "case": "validator_fail",
+          "passed": true,
+          "returncode": 1,
+          "disposition": "BLOCKED_REGENERATE",
+          "expected": "BLOCKED_REGENERATE"
+        },
+        {
+          "case": "foreign_literal",
+          "passed": true,
+          "returncode": 1,
+          "disposition": "BLOCKED_REGENERATE",
+          "expected": "BLOCKED_REGENERATE"
+        }
+      ]
+    },
+    {
+      "id": "approval_terminal_fail_closed",
+      "status": "PASS",
+      "detail": [
+        {
+          "case": "stale_approval",
+          "passed": true,
+          "returncode": 1,
+          "disposition": "BLOCKED_REGENERATE",
+          "expected": "BLOCKED_REGENERATE"
+        },
+        {
+          "case": "not_ready",
+          "passed": true,
+          "returncode": 1,
+          "disposition": "NO_GO",
+          "expected": "NO_GO"
+        }
+      ]
+    },
+    {
+      "id": "manual_qa_fail_closed",
+      "status": "PASS",
+      "detail": {
+        "case": "incomplete_manual_qa",
+        "passed": true,
+        "returncode": 1,
+        "disposition": "BLOCKED_REGENERATE",
+        "expected": "BLOCKED_REGENERATE"
+      }
+    },
+    {
+      "id": "arf_release_gate",
+      "status": "PASS",
+      "detail": {
+        "status": "PASSED",
+        "mutation_allowed": true,
+        "release_allowed": true,
+        "language_package_sha256": "d9bcee6d5a70bae885eb6ecbba9173ff856118533e209a1d0917642d8504263f",
+        "arf_version": "0.1.0-rc.18",
+        "evidence_complete": true
+      }
+    },
+    {
+      "id": "release_metadata",
+      "status": "PASS",
+      "detail": "alpha.9 metadata"
+    },
+    {
+      "id": "incident_evidence",
+      "status": "PASS",
+      "detail": "incident attachment present"
+    }
+  ]
+}

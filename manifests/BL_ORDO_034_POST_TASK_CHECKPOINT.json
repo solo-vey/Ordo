@@ -1,0 +1,15 @@
+{
+  "schema_version": "ordo.task_checkpoint.v1",
+  "task": "BL-ORDO-034",
+  "status": "post_task_verified_checkpoint",
+  "pre_task_archive": "ORDO_ARF_CANONICAL_VERSIONED_WITH_BL_ORDO_034_2026-07-14.zip",
+  "pre_task_archive_sha256": "12e11dca75fa352c77d13cb18e8121b7f752b15e48e692c8c851701579dd1744",
+  "release_id": "ordo-2026.07.14-rc.2",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.2.0-rc.1",
+  "canonical_tree_hash": "3eb228c644afe3656409ce4bcab86edb9efefe95a30a14c020ec80504d81ff43",
+  "rollback": {
+    "before_task": "Restore and verify the pre-task versioned archive.",
+    "after_task": "Restore this canonical archive and verify internal SHA256SUMS.txt."
+  }
+}

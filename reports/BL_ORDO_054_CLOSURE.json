@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "id": "BL-ORDO-054",
+  "status": "closed",
+  "submission_sha256": "d079c4e2acfa2920c97c47fc72adedf2d93c434e01516c86382dc518d8563fa5",
+  "proof_sha256": "cfbc09a2c93c7046b142455145b2a49b58404efb55e67ce16c079a44fc63e488",
+  "independence_level_after_integration": "self_declared_independence_unverified",
+  "level_1_status": "proof_supplied_independent_verification_pending",
+  "canonical_release_created": false
+}

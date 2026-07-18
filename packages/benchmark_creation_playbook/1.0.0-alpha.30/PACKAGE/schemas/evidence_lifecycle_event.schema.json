@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "event_id",
+    "object_id",
+    "from_state",
+    "to_state",
+    "reason",
+    "timestamp"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,24 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "candidate_version": "v0.1.0-rc.13-ordo-v0.12-adaptation-release-candidate",
+  "previous_confirmed_baseline": "v0.1.0-rc.12-confirmed-closure",
+  "status": "release-candidate-ready-for-human-confirmation",
+  "adaptation_milestones": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7"
+  ],
+  "blocking_issues": [],
+  "human_confirmation": "accepted on 2026-07-10",
+  "confirmed_baseline_replaced": true,
+  "deferred_backlog_started": false,
+  "ordo_core_changed": false,
+  "apf_scope_changed": false,
+  "historical_candidate_status": "accepted-and-superseded-by-confirmed-closure",
+  "confirmed_version": "v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure"
+}

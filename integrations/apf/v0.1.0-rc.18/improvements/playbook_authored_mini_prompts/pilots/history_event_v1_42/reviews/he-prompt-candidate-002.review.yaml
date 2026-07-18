@@ -1,0 +1,15 @@
+review_record:
+  candidate_id: he-prompt-candidate-002
+  reviewer_role: playbook_owner_or_verifier
+  status: pending
+  reviewed_at: null
+  decisions:
+    need_confirmed: false
+    text_approved: false
+    target_scope_approved: false
+    use_phase_approved: false
+    authority_restrictions_approved: false
+    fallback_approved: false
+    validation_scenarios_approved: false
+  comments: []
+  activation_allowed: false

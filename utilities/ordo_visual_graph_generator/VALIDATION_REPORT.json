@@ -1,0 +1,49 @@
+{
+  "package": "ordo_visual_graph_generator_p0",
+  "status": "ready-for-review",
+  "main_script": "ordo_graph.py",
+  "formats": [
+    "mmd",
+    "svg",
+    "png"
+  ],
+  "artifact_modes": [
+    "none",
+    "terminal",
+    "package",
+    "all"
+  ],
+  "partial_modes": [
+    "subtree",
+    "context",
+    "path"
+  ],
+  "tests": [
+    {
+      "cmd": "python3 /mnt/data/ordo_visual_graph_generator_p0/ordo_graph.py /mnt/data/ordo_visual_graph_generator_p0/examples/demo_support_triage.ordo.yaml --focus N2_SOURCE_CONTRACT --mode context --format svg --out /mnt/data/ordo_visual_graph_generator_p0/test_history_A_context.svg",
+      "returncode": 0,
+      "stdout": "Validation passed: no structural issues found.\nGenerated svg graph: /mnt/data/ordo_visual_graph_generator_p0/test_history_A_context.svg\n",
+      "stderr_first": "Spreadsheet runtime warmup failed during python startup"
+    },
+    {
+      "cmd": "python3 /mnt/data/ordo_visual_graph_generator_p0/ordo_graph.py /mnt/data/ordo_visual_graph_generator_p0/examples/program_error_user_survey_with_artifacts.ordo.yaml --start N2_STARTUP_CONTEXT --format svg --out /mnt/data/ordo_visual_graph_generator_p0/test_survey_startup_subtree.svg",
+      "returncode": 0,
+      "stdout": "Validation passed: no structural issues found.\nGenerated svg graph: /mnt/data/ordo_visual_graph_generator_p0/test_survey_startup_subtree.svg\n",
+      "stderr_first": "Spreadsheet runtime warmup failed during python startup"
+    }
+  ],
+  "included_files": [
+    "ORDO_GRAPH_INPUT_CONTRACT.md",
+    "README.md",
+    "examples/demo_support_triage.ordo.yaml",
+    "examples/p0_history_A_context_package.svg",
+    "examples/p0_history_A_context_terminal.mmd",
+    "examples/p0_history_A_context_terminal.png",
+    "examples/p0_history_A_context_terminal.svg",
+    "examples/p0_test_subtree_startup.svg",
+    "examples/program_error_user_survey_with_artifacts.ordo.yaml",
+    "ordo_graph.py",
+    "test_history_A_context.svg",
+    "test_survey_startup_subtree.svg"
+  ]
+}

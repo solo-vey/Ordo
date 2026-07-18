@@ -1,0 +1,80 @@
+{
+  "schema_version": "ordo.csg_alias_registry.v1",
+  "registry_version": "M86.4",
+  "normalization": {
+    "case_sensitive": false,
+    "trim_whitespace": true,
+    "separator_equivalence": [
+      ".",
+      "_",
+      "-"
+    ]
+  },
+  "aliases": [
+    {
+      "canonical": "DECISION.LOG",
+      "variants": [
+        "DECISION_RECORD",
+        "decision-log",
+        "decision.log"
+      ]
+    },
+    {
+      "canonical": "TRACE.LOG",
+      "variants": [
+        "TRACE_RECORD",
+        "trace-log",
+        "trace.log"
+      ]
+    },
+    {
+      "canonical": "STATE.SNAPSHOT",
+      "variants": [
+        "STATE_SNAPSHOT",
+        "state-snapshot"
+      ]
+    },
+    {
+      "canonical": "STATE.DIFF",
+      "variants": [
+        "STATE_DIFF",
+        "state-diff"
+      ]
+    },
+    {
+      "canonical": "PATH.EXPLAIN",
+      "variants": [
+        "PATH_EXPLANATION",
+        "path-explain"
+      ]
+    },
+    {
+      "canonical": "GATE.REPORT",
+      "variants": [
+        "GATE_REPORT",
+        "gate-report"
+      ]
+    },
+    {
+      "canonical": "RUN.REPLAY",
+      "variants": [
+        "RUN_REPLAY",
+        "run-replay"
+      ]
+    },
+    {
+      "canonical": "RUN.DRY",
+      "variants": [
+        "DRY_RUN",
+        "run-dry"
+      ]
+    },
+    {
+      "canonical": "TEST.DEF",
+      "variants": [
+        "TEST_DEFINITION",
+        "test-def"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+schema_version: ordo.benchmark.validation_alignment_policy.v1
+policy_version: 1.0.0-alpha.5
+mode: fail_closed
+authoritative_source: external_contract
+required_identity:
+- contract_id
+- contract_version
+- contract_sha256
+- node_id
+- template_id
+rule_key: rule_id
+compared_fields:
+- requirement
+- condition
+- severity
+- blocking
+- exceptions
+- lineage_requirement
+- terminal_predicate
+blocking_differences:
+- missing_internal_rule
+- weaker_internal_rule
+- contradictory_rule
+- stale_contract_binding
+- wrong_contract_binding
+- unapproved_extra_blocking_rule
+allowed_differences:
+- approved_non_blocking_strengthening
+- presentation_only
+regeneration:
+  source: external_contract
+  preserve_fields:
+  - node_id
+  - template_id
+  max_attempts: 2
+  must_revalidate: true
+release_requirement: all_document_generation_nodes_have_current_pass_report

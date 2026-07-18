@@ -1,0 +1,73 @@
+ordo:
+  version: '0.12'
+  package: ordo.applied_project_factory
+  control_level: standard
+  execution_mode: chat_internal
+  package_version: 0.1.0-rc.1
+  language_package_version: 0.12.0-preview-rc1
+module:
+  id: ordo.applied_project_factory
+  version: 0.1.0-rc.1
+  versioning_scope: module_local
+  language_compatibility: ordo >= 0.12.0-preview-rc1, M62 line closure compatible
+  parent_language_package_version: 0.12.0-preview-rc1
+  inclusion_model: language_package_includes_module_at_explicit_module_version
+  release_channel: release_candidate
+  previous_internal_labels:
+  - M61.1
+  - M61.2
+  - M61.3
+  - M61.4
+  - M61.5
+  - M61.6
+  whole_tree_integration_review:
+    version: 0.1.0-alpha.20
+    status: closed_human_review
+    source_version: 0.1.0-alpha.19
+    scope:
+    - startup_branches_integration
+    - shared_output_template_joins
+    - shared_validation_handoff_joins
+    - terminal_deferred_unfinished_gates
+    - orphans_dead_ends_duplication_scan
+    human_review_blocks:
+      startup_branches_integration: approved
+      shared_output_template_joins: approved
+      shared_validation_handoff_joins: approved
+      terminal_deferred_unfinished_gates: approved
+      orphans_dead_ends_duplication: approved_human_review
+    real_structural_scan_required: true
+    real_structural_scan_status: passed
+  full_validation_fix:
+    version: 0.1.0-alpha.21
+    source_version: 0.1.0-alpha.20
+    scope:
+    - manifest_version_alignment
+    - test_coverage_backfill
+    - contract_artifact_marker_backfill
+    - full_validation_state_fixture
+    - artifact_consistency_report
+    process_logic_changed: false
+    status: applied_scoped_technical_fix
+  m62_release_candidate_adaptation:
+    version: 0.1.0-rc.1
+    source_version: 0.1.0-alpha.21
+    parent_language_line: M62 line closure
+    status: applied
+    scope:
+    - adopt current M62 language package as parent base
+    - preserve APF alpha.21 process logic
+    - sync module packaging/docs to standard applied module layer
+    - validate with M62 parent CLI available commands
+    - keep future IR candidates FLOW.JOIN and SHARED.TAIL.REFERENCE as documented candidates, not runtime core changes
+    process_logic_changed: false
+includes:
+- library: ordo.process_rail.core
+  version: ^0.1.0
+  as: process_rail
+- library: ordo.project_authoring.validation
+  version: ^0.1.0
+  as: project_validation
+- library: ordo.output_template.contracts
+  version: ^0.1.0
+  as: template_contracts

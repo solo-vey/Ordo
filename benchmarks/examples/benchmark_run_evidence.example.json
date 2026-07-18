@@ -1,0 +1,59 @@
+{
+  "schema_version": "ordo.benchmark_run_evidence.v1",
+  "benchmark_id": "csg-cross-model-v1",
+  "run_id": "RUN-EXAMPLE-001",
+  "benchmark_mode": "real-model",
+  "dataset_version": "M86-csg-benchmark-v1",
+  "protocol_version": "M86.1",
+  "provider": {
+    "name": "example-provider",
+    "api_family": "chat-completions",
+    "endpoint_class": null,
+    "region": null
+  },
+  "model": {
+    "requested_id": "example-model",
+    "resolved_id": "example-model-2026-01",
+    "revision": null
+  },
+  "invocation": {
+    "attempt": 1,
+    "temperature": 0,
+    "top_p": 1,
+    "max_output_tokens": 4096,
+    "seed": 42,
+    "timeout_seconds": 120,
+    "retry_of_run_id": null
+  },
+  "artifacts": {
+    "prompt_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "input_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "raw_output_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "normalized_output_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "prompt_path": "runs/RUN-EXAMPLE-001/prompt.txt",
+    "input_path": "runs/RUN-EXAMPLE-001/input.json",
+    "raw_output_path": "runs/RUN-EXAMPLE-001/raw_output.json",
+    "normalized_output_path": "runs/RUN-EXAMPLE-001/normalized_output.json"
+  },
+  "result": {
+    "status": "passed",
+    "score": 1.0,
+    "matched": 10,
+    "mismatched": 0,
+    "alias_matches": 1,
+    "mismatch_classes": [],
+    "error": null
+  },
+  "timestamps": {
+    "started_at": "2026-07-12T10:00:00Z",
+    "finished_at": "2026-07-12T10:00:05Z"
+  },
+  "environment": {
+    "runner": "ordo-benchmark-driver"
+  },
+  "provenance": {
+    "git_commit": null,
+    "build_session_id": "M86.1-EXAMPLE",
+    "current_tree_sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+  }
+}

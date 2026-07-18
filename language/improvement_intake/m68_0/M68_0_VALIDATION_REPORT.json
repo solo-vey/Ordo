@@ -1,0 +1,36 @@
+{
+  "milestone": "M68.0",
+  "title": "CLI clean-check hardening plan + fixture matrix",
+  "date": "2026-07-09",
+  "status": "passed-scope-validation",
+  "checks": {
+    "planning_docs_present": "passed",
+    "fixture_matrix_present": "passed",
+    "json_reports_parse": "passed",
+    "packages_diff_guard": "passed",
+    "cli_implementation_diff_guard": "passed",
+    "cli_tests_diff_guard": "passed",
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "new_opcodes_added": false,
+    "compiled_ir_regenerated": false,
+    "lockfiles_regenerated": false,
+    "embedded_cli_rebuilt": false
+  },
+  "scope": {
+    "base": "M67 first-wave closure",
+    "includes": [
+      "CLI clean-check hardening plan",
+      "fixture matrix",
+      "repo-level package hygiene planning",
+      "language spec alignment"
+    ],
+    "excludes": [
+      "implementation code",
+      "test fixtures",
+      "applied package patches",
+      "runtime regeneration"
+    ]
+  },
+  "errors": []
+}

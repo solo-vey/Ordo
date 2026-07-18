@@ -1,0 +1,31 @@
+{
+  "schema_version": "ordo.apf.antipattern_runtime_behavior_report.v1",
+  "status": "passed_focused_validation",
+  "behaviors": {
+    "block": "stop_transition_and_route_to_repair",
+    "allow_with_advisory": "continue_and_persist_findings_and_evidence",
+    "allow": "continue_and_persist_report",
+    "runtime_error": "fail_closed_and_route_to_repair"
+  },
+  "automatic_phase_dispatch": [
+    "after_state_update_before_transition"
+  ],
+  "callable_phase_support": [
+    "before_node_execution",
+    "before_repository_mutation",
+    "before_package_finalization",
+    "before_final_status_claim"
+  ],
+  "focused_tests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "rule_coverage": "6/6",
+  "real_adapter_smoke": {
+    "node": "N_FACTORY_MODE_SELECTION",
+    "decision": "allow",
+    "next": "N_APPLIED_PROJECT_GOAL",
+    "evidence_persisted": true
+  },
+  "final_closure_claimed": false
+}

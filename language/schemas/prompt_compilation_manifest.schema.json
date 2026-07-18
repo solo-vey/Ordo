@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/prompt_compilation_manifest.schema.json",
+  "title": "Ordo Prompt Compilation Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "compiler",
+    "compiled_from",
+    "compilation_target",
+    "guarantees_retained",
+    "guarantees_lost",
+    "equivalent_to_engine_runtime",
+    "source_binding",
+    "artifacts",
+    "evidence_basis"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.prompt_compilation_manifest.v1"
+    },
+    "compilation_target": {
+      "const": "prompt_only"
+    },
+    "equivalent_to_engine_runtime": {
+      "const": false
+    },
+    "guarantees_retained": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "guarantees_lost": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "compiled_from": {
+      "type": "object",
+      "required": [
+        "playbook_id",
+        "playbook_version",
+        "ordo_source_sha256"
+      ]
+    },
+    "compiler": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ]
+    },
+    "source_binding": {
+      "type": "object",
+      "required": [
+        "invalidated_when"
+      ]
+    },
+    "artifacts": {
+      "type": "object",
+      "required": [
+        "instructions",
+        "instructions_sha256"
+      ]
+    },
+    "evidence_basis": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}

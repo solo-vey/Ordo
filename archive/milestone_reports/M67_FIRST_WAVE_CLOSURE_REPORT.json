@@ -1,0 +1,39 @@
+{
+  "milestone": "M67 first-wave closure",
+  "closed_line": [
+    "M67.0",
+    "M67.2",
+    "M67.3",
+    "M67.4"
+  ],
+  "excluded_from_closure": [
+    "M67.1"
+  ],
+  "status": "closed-first-wave / passed",
+  "date": "2026-07-09",
+  "checks": {
+    "required_files_present": "passed",
+    "missing_files": [],
+    "json_reports_parse": {
+      "M67_0_VALIDATION_REPORT.json": "passed",
+      "M67_2_VALIDATION_REPORT.json": "passed",
+      "M67_3_VALIDATION_REPORT.json": "passed",
+      "M67_4_VALIDATION_REPORT.json": "passed"
+    },
+    "yaml_schemas_examples_parse": {
+      "language/schemas/clean_package_gate_schema.yaml": "passed",
+      "language/schemas/derived_artifact_sync_validation_profile_schema.yaml": "passed",
+      "language/examples/source/clean_package_gate_example.ordo.yaml": "passed"
+    },
+    "packages_diff_guard_m67_0_to_m67_4": "passed",
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "new_opcodes_added": false,
+    "compiled_ir_regenerated": false,
+    "lockfiles_regenerated": false,
+    "embedded_cli_rebuilt": false,
+    "package_local_changes_in_closed_line": false,
+    "m67_1_excluded_as_package_local": true
+  },
+  "errors": []
+}

@@ -1,0 +1,12 @@
+{
+  "milestone": "M65.2",
+  "status": "implemented-skeleton",
+  "prompt_files_created": 13,
+  "registry_entries": 13,
+  "prompt_refs_inserted": 22,
+  "source_yaml_old_sha256": "13a571a8837f6957deb56b27cde546bc94a20e4912728fe994494a5518e28417",
+  "source_yaml_new_sha256": "2d1ad885f0abe0bf1719d4d0c8071eaed778e6296996cfa9be136a4121ff4695",
+  "validation_status": "passed-prompt-registry-validation",
+  "runtime_core_changes": false,
+  "compiler_cli_opcode_changes": false
+}

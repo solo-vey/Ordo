@@ -1,0 +1,34 @@
+{
+  "milestone": "M51",
+  "title": "Publication Readiness Decision",
+  "status": "passed-preview-ready-owner-decision-required",
+  "package_version": "v0.12.0-preview-rc1",
+  "publication_performed": false,
+  "open_source_release": false,
+  "source_available_preview": true,
+  "functional_changes": false,
+  "book_pdf_regenerated": false,
+  "checks": {
+    "cli_unit_tests": "19/19 OK",
+    "active_packages_lint_compile_test_coverage": "passed",
+    "project_builder_helpers": "passed",
+    "hybrid_executor_helpers": "passed",
+    "history_event_lock_intake_generate_validate_output": "passed",
+    "history_event_validate_artifacts_consistency_go_no_go": "passed",
+    "repo_check_clean_source_archive": "passed"
+  },
+  "changed_areas": [
+    "docs/publication_readiness/",
+    "docs/reports/M51_PUBLICATION_READINESS_DECISION_REPORT.md",
+    "docs/design_decisions/DD-ORDO-M51-001_PUBLICATION_READINESS_DECISION.md",
+    "book/source/chapters/chapter_46_publication_readiness_decision.md",
+    "book/source/book_manifest.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "known_limitations": [
+    "Actual publication is still an explicit owner decision.",
+    "License remains source-available preview; this is not an open-source release.",
+    "Book PDF was not regenerated after Markdown updates."
+  ]
+}

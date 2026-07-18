@@ -1,0 +1,105 @@
+{
+  "backlog_id": "BL-ORDO-001",
+  "run_id": "RUN-10",
+  "operation": "action_family_mismatch_review",
+  "mismatch_count": 9,
+  "classification_errors": 0,
+  "mutation_scope_errors": 0,
+  "protected_state_violations": 0,
+  "real_control_intent_errors": 0,
+  "alias_normalization_gaps": 9,
+  "mismatches": [
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "Replace the prior field value with stateCode.",
+      "expected_family": "apply_correction",
+      "scorer_family": null,
+      "mutation_scope": "business",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "Replace the earlier alias with LU_CHANGE_STATE.",
+      "expected_family": "apply_correction",
+      "scorer_family": null,
+      "mutation_scope": "business",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "Temporarily stop the workflow and retain state.",
+      "expected_family": "pause_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "Continue the process from the paused checkpoint.",
+      "expected_family": "resume_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "Cancel and close the workflow as incomplete.",
+      "expected_family": "exit_process",
+      "scorer_family": null,
+      "mutation_scope": "control",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "Handle the weather query separately and do not advance.",
+      "expected_family": "redirect",
+      "scorer_family": null,
+      "mutation_scope": "none",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "Handle the poem request separately and do not advance.",
+      "expected_family": "redirect",
+      "scorer_family": null,
+      "mutation_scope": "none",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "Request a specific field answer without advancing.",
+      "expected_family": "request_classification_clarification",
+      "scorer_family": null,
+      "mutation_scope": "none",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "Request concrete details without changing state.",
+      "expected_family": "request_classification_clarification",
+      "scorer_family": null,
+      "mutation_scope": "none",
+      "verdict": "alias_gap",
+      "control_intent_error": false
+    }
+  ],
+  "decision": "all RUN-10 mismatches are scorer alias-normalization gaps",
+  "next_step": "extend aliases only for these observed semantic equivalents, rescore RUN-10, then continue RUN-11 and RUN-12"
+}

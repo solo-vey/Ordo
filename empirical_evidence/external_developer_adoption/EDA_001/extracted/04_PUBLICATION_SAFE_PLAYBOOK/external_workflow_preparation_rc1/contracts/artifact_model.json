@@ -1,0 +1,33 @@
+{
+  "schema": "external.workflow_preparation.artifacts.v1",
+  "source_of_truth": {
+    "business_content": "external process record after creation",
+    "progress": "work-tracking system business entity/checklist",
+    "implementation": "Optional downstream implementation work-tracking system reference; not required for Workflow Preparation readiness"
+  },
+  "generated_alpha_mode": "two_stage_copy_ready_then_linked_revision",
+  "lifecycle": [
+    "draft_generation",
+    "analyst_review",
+    "manual_knowledge_workspace_publication",
+    "capture_knowledge_workspace_url",
+    "manual_work_tracker_publication_with_knowledge_workspace_link",
+    "capture_work_tracker_url",
+    "synchronize_links",
+    "final_validation"
+  ],
+  "external_mutation": "prohibited",
+  "mandatory_external_links": [
+    "external_record_url",
+    "work_tracking_url"
+  ],
+  "optional_external_links": [],
+  "post_link_human_approval": "not_required",
+  "url_validation": "shape_only_no_host_or_remote_check",
+  "runtime_retention": "temporary evidence deleted after process completion; final package retained",
+  "link_placement": {
+    "external_record_url": "artifacts/02_WORK_TRACKING_RECORD.md",
+    "work_tracking_url": "README.md"
+  },
+  "link_duplication_policy": "Do not duplicate lifecycle URLs into process record, handoff, checklist, or unrelated artifacts."
+}

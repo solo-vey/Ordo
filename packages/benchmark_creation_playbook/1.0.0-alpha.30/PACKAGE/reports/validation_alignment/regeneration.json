@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "node_id": "N_TEST_DOCUMENT",
+  "template_id": "T_TEST_DOCUMENT",
+  "external_contract": {
+    "contract_id": "DOC-PASSPORT-v1",
+    "contract_version": "1.0.0",
+    "contract_sha256": "a0b4c574528620d01156f6b3dd7428f031743f6d38146f03a05c65d53e855969"
+  },
+  "checksums": {
+    "external": "a0b4c574528620d01156f6b3dd7428f031743f6d38146f03a05c65d53e855969",
+    "internal": "fea4a618dc10421283e23b1dea778ed78cf0a652589553ade3bd13a32ae84cf3"
+  },
+  "differences": [],
+  "unresolved_difference_count": 0,
+  "verdict_equivalence": {
+    "positive": true,
+    "negative": true,
+    "boundary": true
+  },
+  "regenerated": true
+}

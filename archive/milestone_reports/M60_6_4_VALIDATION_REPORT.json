@@ -1,0 +1,67 @@
+{
+  "milestone": "M60.6.4",
+  "status": "passed-with-calibration-lock",
+  "checks": [
+    {
+      "check": "model_benchmark_cli_commands_present",
+      "status": "passed"
+    },
+    {
+      "check": "transcript_replay_pilot_artifacts_present",
+      "status": "passed"
+    },
+    {
+      "check": "raw_model_metrics_minimum_columns_present",
+      "status": "passed"
+    },
+    {
+      "check": "failure_buckets_present",
+      "status": "passed"
+    },
+    {
+      "check": "nonzero_variance_present",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_decision_recorded",
+      "status": "passed"
+    },
+    {
+      "check": "weights_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_semantics_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "live_model_api_not_called",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_eligible",
+      "status": "blocked_expected",
+      "reason": "pilot is intentionally below case/repeatability/manual-review gates"
+    },
+    {
+      "check": "final_zip_extraction_check",
+      "status": "passed"
+    },
+    {
+      "check": "rc_with_developer_bundle_model_benchmark_test",
+      "status": "passed"
+    },
+    {
+      "check": "rc_with_developer_bundle_cli_pilot_smoke",
+      "status": "passed"
+    }
+  ],
+  "blockers_for_release": [],
+  "blockers_for_weight_calibration": [
+    "insufficient_cases",
+    "repeatability_not_checked",
+    "confidence_summary_not_present",
+    "manual_failure_review_not_done"
+  ],
+  "readiness": "ready as transcript-replay protocol pilot; not calibration-ready"
+}

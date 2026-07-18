@@ -1,0 +1,105 @@
+{
+  "schema_version": "ordo.evidence_catalog.v1",
+  "catalog_version": "1.0.0-alpha.24",
+  "evidence_classes": [
+    {
+      "id": "SOURCE_BASELINE",
+      "canonical_score_eligible": false,
+      "immutable": true
+    },
+    {
+      "id": "FIXTURE",
+      "canonical_score_eligible": false,
+      "immutable": true
+    },
+    {
+      "id": "IMPLEMENTATION",
+      "canonical_score_eligible": false,
+      "immutable": false
+    },
+    {
+      "id": "INTERNAL_SELF_VALIDATION",
+      "canonical_score_eligible": false,
+      "blindness": "NOT_BLIND"
+    },
+    {
+      "id": "INTERNAL_DRY_EVALUATION",
+      "canonical_score_eligible": false,
+      "blindness": "NOT_BLIND"
+    },
+    {
+      "id": "EXTERNAL_BLIND_RUN",
+      "canonical_score_eligible": true,
+      "blindness": "EXTERNAL_BLIND"
+    },
+    {
+      "id": "ANALYSIS_RCA",
+      "canonical_score_eligible": false
+    },
+    {
+      "id": "SCORE_LEDGER",
+      "canonical_score_eligible": false
+    },
+    {
+      "id": "TRANSFER_PACKAGE",
+      "canonical_score_eligible": false
+    }
+  ],
+  "required_catalog_roots": [
+    "00_catalog",
+    "01_source_baselines",
+    "02_test_cases",
+    "03_implementations",
+    "04_internal_self_validation",
+    "05_internal_dry_evaluation",
+    "06_external_blind_runs",
+    "07_analysis_rca",
+    "08_score_ledgers",
+    "09_lifecycle_ledgers",
+    "10_transfer_packages"
+  ],
+  "binding_requirements": [
+    "package_sha256",
+    "launch_prompt_sha256",
+    "methodology_sha256",
+    "test_case_profile_sha256",
+    "run_evidence_sha256",
+    "audit_sha256",
+    "user_acceptance_receipt_sha256"
+  ],
+  "score_eligibility": {
+    "required_evidence_class": "EXTERNAL_BLIND_RUN",
+    "required_status": "CONFIRMED",
+    "forbidden_statuses": [
+      "DRAFT",
+      "REJECTED",
+      "INVALIDATED",
+      "QUARANTINED",
+      "DEPRECATED"
+    ],
+    "requires_complete_bindings": true,
+    "requires_terminal_acceptance": true
+  },
+  "immutability": {
+    "original_external_run_archives": "append_only",
+    "historical_scores": "immutable_version_bound",
+    "corrections": "new_run_or_new_implementation_version"
+  },
+  "lifecycle_states": [
+    "DRAFT",
+    "VALIDATING",
+    "CONFIRMED",
+    "REJECTED",
+    "INVALIDATED",
+    "QUARANTINED",
+    "DEPRECATED",
+    "SUPERSEDED"
+  ],
+  "transfer_requirements": [
+    "catalog_manifest.json",
+    "SHA256SUMS.txt",
+    "restore_instructions.md",
+    "lifecycle_ledgers",
+    "all_referenced_objects_or_declared_external_bindings"
+  ]
+}

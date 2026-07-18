@@ -1,0 +1,51 @@
+{
+  "milestone": "M73.6",
+  "files": [
+    {
+      "file": "chapter_19_chomu_ne_vse_treba_formalizuvaty.md",
+      "heading_count_uk": 14,
+      "heading_count_en": 14,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_20_iak_pravylno_vykorystovuvaty_freeform.md",
+      "heading_count_uk": 27,
+      "heading_count_en": 27,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_21_freeform_coverage.md",
+      "heading_count_uk": 13,
+      "heading_count_en": 13,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_22_ordo_core.md",
+      "heading_count_uk": 24,
+      "heading_count_en": 24,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_23_ordo_profiles.md",
+      "heading_count_uk": 19,
+      "heading_count_en": 19,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "id": "BL-ORDO-024",
+  "merged_task": "BL-ORDO-013",
+  "status": "closed",
+  "capability": {
+    "construct": "PATTERN.DEF",
+    "patterns": 2,
+    "registry": "language/process_patterns/pattern_registry.v1.json",
+    "validator": "language/process_patterns/pattern_engine.py",
+    "review_tooling": "render_review_card"
+  },
+  "evidence": {
+    "packages": [
+      "history_event_guided_intake",
+      "ordo_applied_project_factory",
+      "ordo_hybrid_executor"
+    ],
+    "focused_tests": "9/9 passed",
+    "affected_regression": "37/37 passed",
+    "package_lints": "4/4 passed",
+    "sync_isolation_hygiene": "15/15 passed"
+  },
+  "blocking_issues": 0,
+  "non_destructive_gate": {
+    "pre_hash": "a7e22352392fb9ada0bfbef4bc976021adea4cbab08a183ba353e8078682931e",
+    "post_hash": "a7e22352392fb9ada0bfbef4bc976021adea4cbab08a183ba353e8078682931e",
+    "unchanged": true
+  }
+}

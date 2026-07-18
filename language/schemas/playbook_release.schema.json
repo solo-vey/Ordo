@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ordo Playbook Release",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "playbook_id",
+    "playbook_version",
+    "built_with",
+    "compatibility",
+    "changes",
+    "rollback"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.playbook_release.v1"
+    },
+    "playbook_id": {
+      "type": "string"
+    },
+    "playbook_version": {
+      "type": "string"
+    },
+    "previous_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "built_with": {
+      "type": "object",
+      "required": [
+        "language_version",
+        "framework_version"
+      ],
+      "properties": {
+        "language_version": {
+          "type": "string"
+        },
+        "framework_version": {
+          "type": "string"
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "required": [
+        "language",
+        "framework",
+        "previous_playbook"
+      ],
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "framework": {
+          "type": "string"
+        },
+        "previous_playbook": {
+          "enum": [
+            "compatible",
+            "revalidation_required",
+            "migration_required",
+            "incompatible"
+          ]
+        }
+      }
+    },
+    "changes": {
+      "type": "object",
+      "required": [
+        "summary",
+        "changed_nodes",
+        "changed_contracts",
+        "changed_outputs",
+        "changed_gates",
+        "completed_backlog_items"
+      ],
+      "properties": {
+        "summary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changed_nodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changed_contracts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changed_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changed_gates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "completed_backlog_items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "migration": {
+      "type": "object"
+    },
+    "rollback": {
+      "type": "object",
+      "required": [
+        "supported",
+        "instruction"
+      ]
+    },
+    "automatic_runtime_mutation": {
+      "const": false
+    }
+  }
+}

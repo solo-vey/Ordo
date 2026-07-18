@@ -1,0 +1,26 @@
+intake_assumption_and_unknown_register:
+  items:
+    - id: AUR-001
+      statement: null
+      classification: unknown
+      source: null
+      source_ref: null
+      reason: null
+      impact:
+        decision_nodes: []
+        gates: []
+        terminal_paths: []
+        outputs: []
+        tests: []
+      confirmation:
+        required: true
+        status: pending
+        confirmed_by: null
+      risk:
+        level: medium
+        consequence_if_wrong: null
+        mitigation: null
+      resolution:
+        action: null
+        deadline_or_trigger: null
+        evidence_required: []

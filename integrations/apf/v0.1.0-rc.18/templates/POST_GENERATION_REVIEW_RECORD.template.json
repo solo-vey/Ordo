@@ -1,0 +1,38 @@
+{
+  "schema_version": "ordo.apf.post_generation_review_record.v1",
+  "review_id": "REPLACE",
+  "artifact": {
+    "path": "REPLACE",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "artifact_type": "REPLACE",
+    "version": "REPLACE"
+  },
+  "criticality": "critical",
+  "review_profile": "full",
+  "authoritative_sources": [],
+  "claims": [],
+  "defects": [],
+  "invalidated_sections": [],
+  "preserved_sections": [],
+  "corrections": [],
+  "cross_artifact_checks": [],
+  "regression_checks": [],
+  "gates": {
+    "EVIDENCE-COVERAGE-01": "failed",
+    "NO-UNSUPPORTED-INFERENCE-01": "failed",
+    "CANONICAL-CONTRACT-01": "failed",
+    "CURRENT-VERSION-RECONCILIATION-01": "failed",
+    "PATH-DOMAIN-01": "failed",
+    "ROLLBACK-CONTRACT-01": "failed",
+    "CROSS-ARTIFACT-01": "failed",
+    "ADVERSARIAL-REVIEW-01": "failed",
+    "POST-CORRECTION-REVIEW-01": "failed"
+  },
+  "confirmation_eligibility": {
+    "eligible": false,
+    "blocking_reasons": [
+      "review_not_completed"
+    ]
+  },
+  "trace_events": []
+}

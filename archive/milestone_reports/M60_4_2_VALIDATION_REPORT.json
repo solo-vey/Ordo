@@ -1,0 +1,55 @@
+{
+  "milestone": "M60.4.2",
+  "title": "Stabilization / Full Regression Pass",
+  "date": "2026-07-07",
+  "status": "passed_with_class_split_regression",
+  "scope": "No feature work. Regression, smoke testing, repo hygiene, and validation reporting after M60.4.1 PathWalk M60-native adaptation.",
+  "checks": {
+    "core_cli_class_split_regression": {
+      "status": "passed",
+      "tests": 82,
+      "classes": 21,
+      "note": "Each unittest class from cli/tests/test_cli_workflow.py passed when run independently with bytecode disabled."
+    },
+    "pathwalk_pytest": {
+      "status": "passed",
+      "tests": 17,
+      "command": "pytest -q ordo_pathwalk/tests"
+    },
+    "py_compile": {
+      "status": "passed",
+      "targets": [
+        "cli/ordo",
+        "ordo_pathwalk"
+      ]
+    },
+    "repo_check": {
+      "status": "passed",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli python -m ordo.cli repo-check ."
+    },
+    "embedded_runtime_smoke": {
+      "status": "passed",
+      "covered": [
+        "runtime-status",
+        "verify-targets",
+        "next-step --format auto",
+        "intake --submit N_EVENT_GOAL",
+        "intake --submit N_PATH_SELECT",
+        "restore-session --to-seq 1",
+        "verify-session",
+        "embedded package blocked"
+      ]
+    },
+    "monolithic_unittest_discover": {
+      "status": "not_used_as_acceptance_gate",
+      "note": "The monolithic discover invocation remains noisy/long in this execution environment and was not used as the release gate. Class-split regression is the recorded acceptance method for M60.4.2."
+    }
+  },
+  "changes_made": [
+    "Added M60.4.2 validation report.",
+    "Updated changelog/current version notes to mark M60.4.2 as stabilization after M60.4.1.",
+    "Removed generated cache artifacts and generated package reports created during validation runs before packaging."
+  ],
+  "no_runtime_feature_changes": true,
+  "next_recommended_step": "M60.5 PathWalk Benchmark Readiness: matrix smoke, sample SUMMARY.json, and benchmark instructions for external model runs."
+}

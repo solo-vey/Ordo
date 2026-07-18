@@ -1,0 +1,26 @@
+schema_version: ordo.execution_progress_output_policy.v1
+policy_version: 1.0.0
+enabled: true
+canonical_format: 'Крок <step_id> — <short_summary> — <status>[: <reason>]'
+emit_after: meaningful_observable_step_state
+informational_only: true
+authoritative_sources:
+- driver_state
+- validator_output
+- receipt
+- state_snapshot
+- approval
+- terminal_record
+- evidence_package
+rules:
+- one_line_per_meaningful_step
+- aggregate_minor_subactions
+- no_chain_of_thought
+- no_unsupported_speculation
+- same_step_id_across_correction_attempts
+- terminal_status_must_match_authoritative_state
+- render_in_conversation_language
+failure_behavior:
+  action: suppress_and_log
+  telemetry_status: PROGRESS_EVENT_SUPPRESSED
+  business_route_mutation: false

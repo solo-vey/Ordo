@@ -1,0 +1,47 @@
+{
+  "added_files": [
+    "M65_2_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_IMPLEMENTATION_PATCH_REPORT.md",
+    "docs/design_decisions/DD-ORDO-M65-003_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_SKELETON.md",
+    "language/improvement_intake/m65_2/M65_2_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_IMPLEMENTATION_PATCH_REPORT.json",
+    "language/improvement_intake/m65_2/M65_2_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_IMPLEMENTATION_PATCH_REPORT.md",
+    "language/improvement_intake/m65_2/M65_2_VALIDATION_REPORT.json",
+    "m65_2_diff_report.json",
+    "packages/history_event_guided_intake/PROMPT_MANIFEST.json",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_IMPLEMENTATION_SUMMARY.md",
+    "packages/history_event_guided_intake/prompts/QUICK_START_PROMPT.md",
+    "packages/history_event_guided_intake/prompts/artifacts/implementation_prompt_generation_helper.md",
+    "packages/history_event_guided_intake/prompts/artifacts/jira_task_generation_helper.md",
+    "packages/history_event_guided_intake/prompts/artifacts/passport_generation_helper.md",
+    "packages/history_event_guided_intake/prompts/artifacts/qa_package_generation_helper.md",
+    "packages/history_event_guided_intake/prompts/nodes/N_DISPLAY_TEXTS_human_ui_texts_helper.md",
+    "packages/history_event_guided_intake/prompts/nodes/N_PATH_SELECT_source_type_clarification.md",
+    "packages/history_event_guided_intake/prompts/nodes/N_SOURCE_FIELD_external_fact_intake_helper.md",
+    "packages/history_event_guided_intake/prompts/nodes/N_VALUE_SEMANTICS_comparison_rule_helper.md",
+    "packages/history_event_guided_intake/prompts/repair/backtracking_invalidation_helper.md",
+    "packages/history_event_guided_intake/prompts/repair/gate_failure_explanation_helper.md",
+    "packages/history_event_guided_intake/prompts/repair/missing_artifact_resolution_helper.md",
+    "packages/history_event_guided_intake/prompts/runtime/START_PROMPT_HISTORY_EVENT_FACTORY_RUNTIME_MODE.md"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "FUTURE_BACKLOG.md",
+    "README.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_MATRIX.csv",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_MATRIX.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_PLAN.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_TARGET_STRUCTURE.md",
+    "packages/history_event_guided_intake/README.md",
+    "packages/history_event_guided_intake/START_HERE_RUNTIME_MODE.md",
+    "packages/history_event_guided_intake/START_PROMPT_RUNTIME_MODE.md",
+    "packages/history_event_guided_intake/source/program.ordo.yaml"
+  ],
+  "removed_files": [],
+  "counts": {
+    "added": 21,
+    "changed": 14,
+    "removed": 0
+  }
+}

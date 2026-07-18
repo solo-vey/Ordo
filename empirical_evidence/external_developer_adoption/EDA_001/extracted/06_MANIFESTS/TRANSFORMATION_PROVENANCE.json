@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.external_adoption_transformation.v1",
+  "case_id": "EDA-001",
+  "publication_identity": "External Workflow Preparation",
+  "source_archive_sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+  "source_archive_included": false,
+  "transformation": [
+    "Translated all visible Ukrainian-language content into English.",
+    "Replaced domain and platform-specific identities with neutral publication-safe terms.",
+    "Rebuilt the embedded playbook archive and all checksum/signature records.",
+    "Preserved historical timelines, version sequence, test counts, findings, and release-stage meaning.",
+    "Excluded original confidential inputs, run archives, URLs, personal identities, and reconstructive source material."
+  ],
+  "evidence_semantics_preserved": true,
+  "original_solution_reconstructable_from_package": false,
+  "publication_package_version": "1.1",
+  "additional_normalization": "Removed residual vendor-specific technical identifiers from the publication-safe derivative; semantic workflow meaning preserved."
+}

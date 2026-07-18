@@ -1,0 +1,18 @@
+{
+  "zip_integrity": "PASS",
+  "internal_checksums": "PASS",
+  "json_validation": "PASS",
+  "yaml_validation": "PASS",
+  "accepted_run_count": 30,
+  "accepted_run_count_reconciliation": "PASS",
+  "duplicate_logical_run_ids": "PASS_WITH_CASE_AND_CONDITION_SCOPING",
+  "historical_directories_absent": "PASS",
+  "temporary_backup_files_absent": "PASS",
+  "language_audit": "PASS_WITH_IMMUTABLE_EXCEPTIONS",
+  "errors": [],
+  "all_discovered_cases_dispositioned": "PASS",
+  "retained_test_case_count": 4,
+  "authoritatively_excluded_test_case_count": 1,
+  "deprecated_migrated_case_absent": "PASS",
+  "replacement_tc03_ex02_present": "PASS"
+}

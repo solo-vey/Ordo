@@ -1,0 +1,35 @@
+{
+  "schema_version": "ordo.m87.plain_prompt_baseline_runner.v1",
+  "milestone": "M87.3",
+  "status": "passed",
+  "implemented": {
+    "frozen_plain_prompt_template": true,
+    "arm_a_runner": true,
+    "canonical_pair_id": true,
+    "deterministic_pair_order": true,
+    "contamination_blocking": true,
+    "shared_payload_hash_binding": true,
+    "canonical_evidence_emission": true,
+    "immutable_run_directory": true,
+    "arm_metadata_artifact": true
+  },
+  "tests": {
+    "passed": 27,
+    "failed": 0
+  },
+  "external_provider_invoked": false,
+  "changed_files": [
+    {
+      "path": "benchmarks/ab/plain_prompt_runner.py",
+      "sha256": "85b0fb1fb9879884f00900e5f6949e31090ecbd5f030f8d3da79b8f37399a369"
+    },
+    {
+      "path": "benchmarks/ab/plain_prompt_template_manifest.v1.json",
+      "sha256": "46ad11b40cc48a32b958270942702d853df88821511cae5fc33fa58bf193af0c"
+    },
+    {
+      "path": "cli/tests/test_m87_3_plain_prompt_baseline_runner.py",
+      "sha256": "ebf3e6224001016540fb3e0654a85942afcbc1830f7da9adfba45946d7c9f040"
+    }
+  ]
+}

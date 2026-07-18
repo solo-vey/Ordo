@@ -1,0 +1,47 @@
+{
+  "tree_seed": 606,
+  "script_seed": 1620,
+  "turns": [
+    {
+      "index": 0,
+      "type": "invalid_backtrack_target",
+      "text": "давай повернемось до кроку 6",
+      "state_changing": false,
+      "expected_node_after": "STEP_0_1bdb4e",
+      "meta": {
+        "requested_step": 5,
+        "actual_confirmed_steps": 0
+      }
+    },
+    {
+      "index": 1,
+      "type": "forward_valid",
+      "text": "right",
+      "state_changing": true,
+      "expected_node_after": "STEP_1_f6164d",
+      "meta": {
+        "maps_to": "right"
+      }
+    },
+    {
+      "index": 2,
+      "type": "forward_natural_language",
+      "text": "вгору",
+      "state_changing": true,
+      "expected_node_after": "END",
+      "meta": {
+        "maps_to": "up"
+      }
+    }
+  ],
+  "ground_truth": [
+    {
+      "node_id": "STEP_0_1bdb4e",
+      "value": "right"
+    },
+    {
+      "node_id": "STEP_1_f6164d",
+      "value": "up"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "report_id": "APF_V0_1_0_RC_9_CONFIRMED_CLOSURE_REPORT",
+  "module_id": "ordo.applied_project_factory",
+  "current_version": "v0.1.0-rc.9-confirmed-closure",
+  "source_version": "v0.1.0-rc.9-real-module-testcase-generation",
+  "status": "accepted-baseline / ready-for-next-apf-patch",
+  "created_at": "2026-07-09T21:55:00+02:00",
+  "scope_boundary": "APF package/playbook creation process only; no Ordo language package changes",
+  "confirmed_decisions": [
+    "APF-RC9-01",
+    "APF-RC9-02",
+    "APF-RC9-03",
+    "APF-RC9-04",
+    "APF-RC9-05",
+    "APF-RC9-06",
+    "APF-RC9-07"
+  ],
+  "baseline_artifacts": [
+    "tests/REAL_MODULE_TESTCASE_TARGET_MANIFEST.yaml",
+    "tests/MODEL_CONFUSION_SCENARIO_CATALOG.yaml",
+    "tests/EXPECTED_BEHAVIOR_MATRIX.yaml",
+    "tests/GENERATED_TESTCASE_PLAN.yaml",
+    "utilities/apf_real_module_testcase_generator/APF_REAL_MODULE_TESTCASE_GENERATOR_MANIFEST.json",
+    "reports/APF_REAL_MODULE_TESTCASE_GENERATION_PLAN_REPORT.json"
+  ],
+  "checks": {
+    "rc9_confirmation_register_preserved": "passed",
+    "closure_doc_present": "passed",
+    "rc9_to_rc10_handoff_present": "passed",
+    "testcase_planning_artifacts_present": "passed",
+    "utility_packaging_artifacts_present": "passed",
+    "scope_boundary_preserved": "passed",
+    "no_ordo_language_package_changes": "passed",
+    "blocking_issues": 0
+  }
+}

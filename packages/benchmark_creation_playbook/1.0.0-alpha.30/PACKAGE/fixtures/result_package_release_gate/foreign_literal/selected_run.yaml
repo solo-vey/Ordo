@@ -1,0 +1,17 @@
+run_id: RUN_02
+canonical_facts:
+  document_id: DOC-88310
+  record_key: REC-902
+  field_path: item.processingState
+  operation: modified
+  change_id: CHG-2026-0002
+  occurred_at: 2026-07-15T10:15:00Z
+  new_value: approved
+  event_type: RECORD_PROCESSING_STATE_CHANGED
+forbidden_literals:
+  - DOC-74291
+  - REC-184
+  - CHG-2026-0001
+  - CHG-2026-0005
+  - CHG-1
+  - DOC-1

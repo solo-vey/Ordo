@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "baseline_sha256": "05af5011faf3905808515175e6997120cfaa953ee6d7212adeb82d9c3cf8ab7b",
+  "candidate_sha256": "2eaee4130d87afbb9da17cb1666bf7e438fc93802868a2ea37a480c1c1dcc095",
+  "allowlist": [
+    "A"
+  ],
+  "added_ids": [],
+  "removed_ids": [],
+  "changed_ids": [
+    "A"
+  ],
+  "out_of_scope_ids": [],
+  "unchanged_node_count": 1,
+  "total_node_count": 2,
+  "unchanged_node_ratio": 0.5,
+  "structural_diff": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "A"
+    ]
+  },
+  "semantic_diff": [
+    {
+      "path": "$.nodes",
+      "before": [
+        {
+          "id": "A",
+          "value": 1
+        },
+        {
+          "id": "B",
+          "value": 2
+        }
+      ],
+      "after": [
+        {
+          "id": "A",
+          "value": 3
+        },
+        {
+          "id": "B",
+          "value": 2
+        }
+      ]
+    }
+  ]
+}

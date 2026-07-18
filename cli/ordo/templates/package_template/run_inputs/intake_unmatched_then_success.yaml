@@ -1,0 +1,6 @@
+N_PACKAGE_GOAL: "Зібрати вимоги для першого Ordo-пакета з нуля"
+N_EXPECTED_OUTPUTS: "source yaml, compiled ir, reports"
+N_APPROVAL:
+  attempts:
+    - "можливо"
+    - "yes"

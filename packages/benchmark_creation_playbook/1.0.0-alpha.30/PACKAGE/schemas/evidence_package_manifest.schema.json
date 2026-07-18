@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence Package Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "package_id",
+    "playbook_version",
+    "status",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.evidence-package-manifest.v1"
+    },
+    "package_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "playbook_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "PRESENT_VERIFIED",
+        "PRESENT_UNVERIFIED",
+        "QUARANTINED"
+      ]
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "state"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state": {
+            "enum": [
+              "PRESENT_VERIFIED",
+              "PRESENT_UNVERIFIED",
+              "NOT_APPLICABLE",
+              "EXPECTED_MISSING",
+              "QUARANTINED",
+              "SUPERSEDED"
+            ]
+          }
+        }
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_backlog": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

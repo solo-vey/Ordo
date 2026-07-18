@@ -1,0 +1,34 @@
+test_cases:
+  - id: TC_NO_FINAL_WITHOUT_APPROVAL
+    fixture:
+      user_message: "зроби пакет одразу"
+    expected:
+      node: N_APPROVAL
+      gates:
+        - id: G_APPROVAL_CONFIRMED
+          status: blocked
+      assertions:
+        - id: A_NO_FINAL_WITHOUT_APPROVAL
+          projection: EXPECT.NOT
+      output:
+        final_package_created: false
+
+  - id: TC_GOAL_PRESENT_GATE
+    fixture:
+      state:
+        package_goal: "Створити пакет для збору вимог"
+    expected:
+      gates:
+        - id: G_GOAL_PRESENT
+          method: mechanical
+          trust_class: deterministic
+          status: passed
+
+
+  - id: TC_UNMATCHED_INPUT_CLARIFY
+    fixture:
+      user_message: "не знаю, поясни інакше"
+    expected:
+      clarify:
+        node: N_APPROVAL
+        action: CLARIFY.REQUEST

@@ -1,0 +1,272 @@
+{
+  "milestone": "M60.6.2",
+  "name": "Calibration Report Refinement",
+  "date": "2026-07-08",
+  "status": "passed-with-calibration-blocker",
+  "scope": "analysis/documentation only; no runtime-core semantics change; no scoring weight change",
+  "input_artifacts": {
+    "baseline": "M60.6/M60.6.1 artifact-only dry-run baseline",
+    "raw_metrics_csv": "RAW_METRICS.csv",
+    "summary_json": "SUMMARY.json",
+    "score_artifacts": "scores/*_score.json"
+  },
+  "baseline_shape": {
+    "scenario_count": 20,
+    "runtime_views": [
+      "json",
+      "ordo-code",
+      "json,ordo-code"
+    ],
+    "total_cases": 60,
+    "passed_cases": 60,
+    "gate_pass_rate": 1.0,
+    "driver_values": [
+      "benchmark-dry-run-ground-truth"
+    ],
+    "cli_mode_values": [
+      "enforced"
+    ]
+  },
+  "runtime_view_summary": [
+    {
+      "runtime_view": "json",
+      "cases": 20,
+      "passed_cases": 20,
+      "gate_pass_rate": 1.0,
+      "path_quality_score_mean": 1.0,
+      "path_quality_score_min": 1.0,
+      "path_quality_score_max": 1.0,
+      "path_quality_score_stdev": 0.0,
+      "cell_match_rate_mean": 1.0,
+      "cell_match_rate_min": 1.0,
+      "cell_match_rate_max": 1.0,
+      "cell_match_rate_stdev": 0.0,
+      "protocol_compliance_rate_mean": 1.0,
+      "protocol_compliance_rate_min": 1.0,
+      "protocol_compliance_rate_max": 1.0,
+      "protocol_compliance_rate_stdev": 0.0,
+      "distraction_recovery_rate_mean": 1.0,
+      "distraction_recovery_rate_min": 1.0,
+      "distraction_recovery_rate_max": 1.0,
+      "distraction_recovery_rate_stdev": 0.0,
+      "backtrack_accuracy_mean": 1.0,
+      "backtrack_accuracy_min": 1.0,
+      "backtrack_accuracy_max": 1.0,
+      "backtrack_accuracy_stdev": 0.0,
+      "turn_accuracy_rate_mean": 1.0,
+      "turn_accuracy_rate_min": 1.0,
+      "turn_accuracy_rate_max": 1.0,
+      "turn_accuracy_rate_stdev": 0.0
+    },
+    {
+      "runtime_view": "ordo-code",
+      "cases": 20,
+      "passed_cases": 20,
+      "gate_pass_rate": 1.0,
+      "path_quality_score_mean": 1.0,
+      "path_quality_score_min": 1.0,
+      "path_quality_score_max": 1.0,
+      "path_quality_score_stdev": 0.0,
+      "cell_match_rate_mean": 1.0,
+      "cell_match_rate_min": 1.0,
+      "cell_match_rate_max": 1.0,
+      "cell_match_rate_stdev": 0.0,
+      "protocol_compliance_rate_mean": 1.0,
+      "protocol_compliance_rate_min": 1.0,
+      "protocol_compliance_rate_max": 1.0,
+      "protocol_compliance_rate_stdev": 0.0,
+      "distraction_recovery_rate_mean": 1.0,
+      "distraction_recovery_rate_min": 1.0,
+      "distraction_recovery_rate_max": 1.0,
+      "distraction_recovery_rate_stdev": 0.0,
+      "backtrack_accuracy_mean": 1.0,
+      "backtrack_accuracy_min": 1.0,
+      "backtrack_accuracy_max": 1.0,
+      "backtrack_accuracy_stdev": 0.0,
+      "turn_accuracy_rate_mean": 1.0,
+      "turn_accuracy_rate_min": 1.0,
+      "turn_accuracy_rate_max": 1.0,
+      "turn_accuracy_rate_stdev": 0.0
+    },
+    {
+      "runtime_view": "json,ordo-code",
+      "cases": 20,
+      "passed_cases": 20,
+      "gate_pass_rate": 1.0,
+      "path_quality_score_mean": 1.0,
+      "path_quality_score_min": 1.0,
+      "path_quality_score_max": 1.0,
+      "path_quality_score_stdev": 0.0,
+      "cell_match_rate_mean": 1.0,
+      "cell_match_rate_min": 1.0,
+      "cell_match_rate_max": 1.0,
+      "cell_match_rate_stdev": 0.0,
+      "protocol_compliance_rate_mean": 1.0,
+      "protocol_compliance_rate_min": 1.0,
+      "protocol_compliance_rate_max": 1.0,
+      "protocol_compliance_rate_stdev": 0.0,
+      "distraction_recovery_rate_mean": 1.0,
+      "distraction_recovery_rate_min": 1.0,
+      "distraction_recovery_rate_max": 1.0,
+      "distraction_recovery_rate_stdev": 0.0,
+      "backtrack_accuracy_mean": 1.0,
+      "backtrack_accuracy_min": 1.0,
+      "backtrack_accuracy_max": 1.0,
+      "backtrack_accuracy_stdev": 0.0,
+      "turn_accuracy_rate_mean": 1.0,
+      "turn_accuracy_rate_min": 1.0,
+      "turn_accuracy_rate_max": 1.0,
+      "turn_accuracy_rate_stdev": 0.0
+    }
+  ],
+  "metric_variance_summary": [
+    {
+      "metric": "path_quality_score",
+      "cases": 60,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "population_stdev": 0.0,
+      "unique_values": [
+        1.0
+      ],
+      "calibration_signal": "absent_zero_variance"
+    },
+    {
+      "metric": "cell_match_rate",
+      "cases": 60,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "population_stdev": 0.0,
+      "unique_values": [
+        1.0
+      ],
+      "calibration_signal": "absent_zero_variance"
+    },
+    {
+      "metric": "protocol_compliance_rate",
+      "cases": 60,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "population_stdev": 0.0,
+      "unique_values": [
+        1.0
+      ],
+      "calibration_signal": "absent_zero_variance"
+    },
+    {
+      "metric": "distraction_recovery_rate",
+      "cases": 60,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "population_stdev": 0.0,
+      "unique_values": [
+        1.0
+      ],
+      "calibration_signal": "absent_zero_variance"
+    },
+    {
+      "metric": "backtrack_accuracy",
+      "cases": 60,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "population_stdev": 0.0,
+      "unique_values": [
+        1.0
+      ],
+      "calibration_signal": "absent_zero_variance"
+    },
+    {
+      "metric": "turn_accuracy_rate",
+      "cases": 60,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "population_stdev": 0.0,
+      "unique_values": [
+        1.0
+      ],
+      "calibration_signal": "absent_zero_variance"
+    }
+  ],
+  "runtime_metadata_hash_summary": [
+    {
+      "runtime_view": "json",
+      "canonical_ir_hash_count": 1,
+      "targets_manifest_hash_count": 1,
+      "session_trace_hash_count": 20,
+      "runtime_protocol_versions": [
+        "M60.4"
+      ],
+      "ordo_cli_versions": [
+        "0.12"
+      ]
+    },
+    {
+      "runtime_view": "ordo-code",
+      "canonical_ir_hash_count": 1,
+      "targets_manifest_hash_count": 1,
+      "session_trace_hash_count": 20,
+      "runtime_protocol_versions": [
+        "M60.4"
+      ],
+      "ordo_cli_versions": [
+        "0.12"
+      ]
+    },
+    {
+      "runtime_view": "json,ordo-code",
+      "canonical_ir_hash_count": 1,
+      "targets_manifest_hash_count": 1,
+      "session_trace_hash_count": 20,
+      "runtime_protocol_versions": [
+        "M60.4"
+      ],
+      "ordo_cli_versions": [
+        "0.12"
+      ]
+    }
+  ],
+  "scoring_weights": {
+    "unique_weight_sets": 1,
+    "weights": {
+      "backtrack_accuracy": 0.15,
+      "cell_match_rate": 0.45,
+      "distraction_recovery_rate": 0.15,
+      "protocol_compliance_rate": 0.25
+    },
+    "changed_in_m60_6_2": false
+  },
+  "calibration_decision": {
+    "weights_changed": false,
+    "reason": "Dry-run ground-truth baseline has all metrics saturated at 1.0 and zero variance; it is readiness evidence, not a statistical calibration dataset.",
+    "minimum_next_evidence_needed": [
+      "model/API-driven runs or equivalent model-behavior transcripts",
+      "non-perfect and failed cases to create variance",
+      "per-noise-type metrics and labels",
+      "runtime-view comparison using the same scenario set",
+      "confidence intervals or repeated runs across seeds/models",
+      "clear distinction between protocol violations and path-quality mistakes"
+    ]
+  },
+  "validation": {
+    "raw_metrics_present": true,
+    "expected_cases": 60,
+    "actual_cases": 60,
+    "score_artifacts_count": 60,
+    "default_weights_unchanged": true,
+    "real_model_benchmark_run": false,
+    "runtime_core_semantics_changed": false,
+    "pdf_generated": false
+  }
+}

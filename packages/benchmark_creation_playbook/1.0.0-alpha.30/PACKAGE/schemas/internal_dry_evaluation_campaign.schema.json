@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Internal dry evaluation campaign",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "candidate_sha256",
+    "evidence_class",
+    "runs",
+    "campaign_average",
+    "threshold_result",
+    "promotion_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.internal_dry_evaluation_campaign.v1"
+    },
+    "candidate_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidence_class": {
+      "const": "INTERNAL_DRY_EVALUATION"
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "campaign_average": {
+      "type": "number"
+    },
+    "threshold_result": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "promotion_status": {
+      "enum": [
+        "BLOCKED_AWAITING_USER_ACCEPTANCE",
+        "BLOCKED_THRESHOLD_FAILURE",
+        "READY_AFTER_ACCEPTANCE",
+        "READY_WITH_RECORDED_RISK"
+      ]
+    }
+  }
+}

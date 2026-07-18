@@ -1,0 +1,14 @@
+{
+  "schema_version": "ordo.bl_ordo_010.final_gate.v1",
+  "status": "passed",
+  "tests": "16/16 passed",
+  "package_lints": "4/4 passed",
+  "pdf_pages": 581,
+  "visual_verification": [
+    "page 1",
+    "page 275",
+    "page 581"
+  ],
+  "blocking_issues": 0,
+  "non_destructive": true
+}

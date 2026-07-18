@@ -1,0 +1,18 @@
+{
+  "milestone": "M68.2",
+  "status": "passed",
+  "checks": {
+    "python_syntax_compile": "passed",
+    "targeted_fixture_tests": "passed",
+    "hardened_report_shape_test": "passed",
+    "invalid_programmatic_profile_test": "passed",
+    "json_reports_parse": "passed",
+    "packages_diff_guard": "passed",
+    "runtime_core_diff_guard": "passed",
+    "compiler_diff_guard": "passed",
+    "opcode_diff_guard": "passed",
+    "zip_integrity": "passed"
+  },
+  "test_command": "PYTHONPATH=cli python -m unittest cli.tests.test_clean_check_fixtures -v",
+  "test_result": "Ran 11 tests OK"
+}

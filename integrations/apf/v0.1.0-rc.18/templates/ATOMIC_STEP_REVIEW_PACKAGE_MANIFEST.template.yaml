@@ -1,0 +1,19 @@
+atomic_step_review_manifest:
+  package_id: null
+  review_contract_version: '0.1'
+  generated_at: null
+  reviewed_step_count: 0
+  records: []
+  gate_evaluations: []
+  decomposition_proposals: []
+  human_decisions: []
+  post_render_reviews: []
+  unresolved_findings:
+    blocking: []
+    advisory: []
+    needs_human_decision: []
+  validation_report_ref: reviews/atomic_step/atomic_step_validation_report.yaml
+  integrity:
+    record_count: 0
+    refs_resolve: false
+    checksum: null

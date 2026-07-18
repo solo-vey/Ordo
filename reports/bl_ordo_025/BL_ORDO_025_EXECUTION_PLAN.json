@@ -1,0 +1,14 @@
+{
+  "schema_version": "ordo.bl_ordo_025.execution_plan.v1",
+  "id": "BL-ORDO-025",
+  "status": "completed",
+  "steps": [
+    "profile real APF lint phases",
+    "replace recursive/unbounded graph algorithms",
+    "define standard CI performance budget",
+    "add real and synthetic performance regressions",
+    "remove heavy-skip behavior",
+    "run affected regression and 4 package lints",
+    "synchronize closure artifacts and verify canonical archive"
+  ]
+}

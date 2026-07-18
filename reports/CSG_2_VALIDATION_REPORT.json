@@ -1,0 +1,22 @@
+{
+  "milestone": "CSG-2",
+  "title": "Strictness and Escalation Policy",
+  "status": "passed",
+  "artifacts": [
+    "language/CSG_2_STRICTNESS_AND_ESCALATION_POLICY.md",
+    "language/schemas/scope_guard_policy.schema.json",
+    "language/CSG_2_ESCALATION_REGRESSION_FIXTURES.yaml"
+  ],
+  "checks": {
+    "four_modes_defined": true,
+    "mode_resolution_required": true,
+    "counter_scope_defined": true,
+    "reset_rules_defined": true,
+    "four_levels_defined": true,
+    "suspension_non_terminal": true,
+    "counter_only_unrelated": true,
+    "forbidden_overrides_defined": true,
+    "diagnostics_defined": true,
+    "fixtures_present": true
+  }
+}

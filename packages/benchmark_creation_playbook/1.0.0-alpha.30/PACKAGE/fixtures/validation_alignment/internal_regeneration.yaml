@@ -1,0 +1,25 @@
+schema_version: ordo.internal_validation_rules.v1
+bound_contract_id: DOC-PASSPORT-v1
+bound_contract_version: 1.0.0
+bound_contract_sha256: a0b4c574528620d01156f6b3dd7428f031743f6d38146f03a05c65d53e855969
+rules:
+- rule_id: R_REQUIRED_TITLE
+  requirement:
+    kind: required
+    field: title
+  condition: always
+  severity: error
+  blocking: true
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass
+- rule_id: R_REQUIRED_OWNER
+  requirement:
+    kind: required
+    field: owner
+  condition: always
+  severity: error
+  blocking: true
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass

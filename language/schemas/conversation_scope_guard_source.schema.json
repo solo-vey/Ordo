@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo://schemas/conversation/conversation-scope-guard-source.schema.json",
+  "title": "Ordo Conversation Scope Guard Source Declaration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "supported",
+    "enabled"
+  ],
+  "properties": {
+    "supported": {
+      "type": "boolean"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "mode": {
+      "enum": [
+        "advisory",
+        "guided_redirect",
+        "strict_redirect",
+        "locked_process"
+      ]
+    },
+    "state_change_on_out_of_scope": {
+      "const": false
+    },
+    "scope": {
+      "type": [
+        "object",
+        "array",
+        "string"
+      ]
+    },
+    "out_of_scope_behavior": {
+      "type": [
+        "object",
+        "string"
+      ]
+    },
+    "escalation": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "enabled": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "mode"
+        ],
+        "properties": {
+          "supported": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

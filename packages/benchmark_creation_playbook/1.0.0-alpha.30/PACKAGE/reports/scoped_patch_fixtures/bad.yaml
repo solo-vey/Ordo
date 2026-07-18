@@ -1,0 +1,5 @@
+nodes:
+- id: A
+  value: 3
+- id: B
+  value: 9

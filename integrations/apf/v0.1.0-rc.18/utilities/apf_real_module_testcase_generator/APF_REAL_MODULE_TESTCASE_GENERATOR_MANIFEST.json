@@ -1,0 +1,28 @@
+{
+  "utility_id": "apf.real_module_testcase_generator",
+  "utility_type": "apf_packaging_utility",
+  "scope": "APF package testcase specification generation only",
+  "allowed_actions": [
+    "read_apf_package_metadata",
+    "generate_testcase_specification",
+    "generate_expected_behavior_matrix",
+    "generate_confusion_scenario_coverage_report"
+  ],
+  "forbidden_actions": [
+    "run_ordo_compiler",
+    "execute_ordo_runtime",
+    "modify_ordo_language_package",
+    "claim_runtime_test_passed_without_external_evidence"
+  ],
+  "inputs": [
+    "tests/REAL_MODULE_TESTCASE_TARGET_MANIFEST.yaml",
+    "tests/MODEL_CONFUSION_SCENARIO_CATALOG.yaml",
+    "tests/EXPECTED_BEHAVIOR_MATRIX.yaml"
+  ],
+  "outputs": [
+    "tests/GENERATED_TESTCASE_PLAN.yaml",
+    "reports/APF_REAL_MODULE_TESTCASE_GENERATION_PLAN_REPORT.json"
+  ],
+  "status": "packaged_specification_placeholder",
+  "implementation_status": "planning_contract_only"
+}

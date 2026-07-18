@@ -1,0 +1,57 @@
+{
+  "milestone": "M64-first-wave-closure",
+  "title": "M64 first-wave closure for M64.0 → M64.1 → M64.2 → M64.3",
+  "status": "closed-first-wave-passed",
+  "generated": "2026-07-09T18:05:00+02:00",
+  "closed_milestones": [
+    {
+      "milestone": "M64.0",
+      "status": "passed-intake-classification",
+      "role": "language improvement intake and classification"
+    },
+    {
+      "milestone": "M64.1",
+      "status": "passed-schema-convention",
+      "role": "program-level contract schema convention"
+    },
+    {
+      "milestone": "M64.2",
+      "status": "passed-docs-schema-convention",
+      "role": "interaction model, process rail, and conversation semantics docs"
+    },
+    {
+      "milestone": "M64.3",
+      "status": "passed-docs-lint-profile-design",
+      "role": "program-level approval gate lint/profile design"
+    }
+  ],
+  "accepted_stack": [
+    "program_contract",
+    "interaction_model",
+    "process_rail",
+    "conversation_semantics",
+    "program_level_approval_gate",
+    "program_level_approval_profile"
+  ],
+  "non_changes": [
+    "no runtime core changes",
+    "no compiler behavior changes",
+    "no CLI command changes",
+    "no Semantic JSON IR execution behavior changes",
+    "no opcode additions",
+    "no deterministic natural-language classifier",
+    "FLOW.JOIN not implemented",
+    "SHARED.TAIL.REFERENCE not implemented"
+  ],
+  "deferred_backlog": [
+    "CLI/linter enforcement for program_level_approval_gate",
+    "package profile / startup package standard",
+    "derived artifact sync/hash manifest hardening",
+    "deterministic natural-language classifier design only if separately approved",
+    "FLOW.JOIN future IR candidate",
+    "SHARED.TAIL.REFERENCE future IR candidate",
+    "APF / Ordo Node-Level Prompt Registry and Prompt References"
+  ],
+  "readiness": "ready-for-next-line-selection",
+  "blockers": []
+}

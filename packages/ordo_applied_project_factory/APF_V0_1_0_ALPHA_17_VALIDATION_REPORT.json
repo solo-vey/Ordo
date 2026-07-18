@@ -1,0 +1,64 @@
+{
+  "module": "ordo.applied_project_factory",
+  "version": "0.1.0-alpha.17",
+  "generated_at": "2026-07-08T14:05:00+02:00",
+  "scope": "branch_2_manual_tree_entry_adapter",
+  "status": "passed",
+  "human_review": {
+    "branch": "2. Ручне дерево рішень",
+    "decision": "confirmed_delta_only",
+    "closure": "closed_as_entry_adapter",
+    "auto_confirmed_downstream_from_branch_1": [
+      "draft_subtree_review_start",
+      "node_review",
+      "branch_review",
+      "terminal_or_continue_decision",
+      "terminal_output_binding",
+      "template_verification",
+      "mock_filled_examples",
+      "subtree_review_completion_check",
+      "approved_tree_consolidation",
+      "state_schema_blueprint",
+      "validation_gate_catalog",
+      "approval_to_generate_source_yaml",
+      "shared_validation_handoff_tail"
+    ]
+  },
+  "changes": [
+    "Branch 2 remains an entry adapter, not a separate full process.",
+    "Manual tree input accepts human formats: outline, if/then, table, Mermaid-like sketch, pseudocode, root+branches, subtree, full draft.",
+    "Manual input is captured as manual_tree_input and never directly approved.",
+    "Manual input is normalized into normalized_tree_draft with branch labels, conditions, terminal candidates, missing branches, implied gates/outputs, and open questions.",
+    "Structured manual trees join N_DRAFT_SUBTREE_REVIEW_START.",
+    "Partial/sketch manual trees join N_DRAFT_SUBTREE_GENERATION.",
+    "All downstream review/output/template/YAML approval/validation mechanics reuse the confirmed Branch 1 shared path.",
+    "Added assertions preventing direct approval and downstream duplication."
+  ],
+  "checks": {
+    "yaml_parse": {
+      "status": "passed"
+    },
+    "ordo_lint": {
+      "status": "passed",
+      "report": "packages/ordo_applied_project_factory/reports/lint_report.json"
+    },
+    "ordo_compile_force": {
+      "status": "passed",
+      "report": "packages/ordo_applied_project_factory/reports/compile_report.json"
+    },
+    "structural_next_reference_check": {
+      "status": "passed",
+      "refs_checked": 121,
+      "missing": []
+    },
+    "full_validation": {
+      "status": "deferred_by_design",
+      "reason": "shared terminal/pre-handoff gate only"
+    }
+  },
+  "source_sha256": "fd09b9e2d6189cc005a1b5637bedf4930c85d6ee5bc22ef667ebfe73e33a2393",
+  "artifacts": {
+    "dev_package": "ordo_applied_project_factory_v0_1_0_alpha_17_dev.zip",
+    "workspace": "ordo_github_workspace_v0_12_apf_v0_1_0_alpha_17_branch_2_manual_tree_entry_adapter.zip"
+  }
+}

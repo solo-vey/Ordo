@@ -1,0 +1,72 @@
+{
+  "milestone": "M62 Line Closure",
+  "date": "2026-07-08",
+  "status": "passed-line-closure",
+  "stable_base": "M62.3 — APF Language Pattern Extraction Plan",
+  "checks": [
+    {
+      "name": "workspace_py_compile",
+      "status": "passed",
+      "scope": "cli, ordo_pathwalk, utilities, packages"
+    },
+    {
+      "name": "selected_non_runtime_pytest",
+      "status": "passed",
+      "tests": "27 passed",
+      "scope": "PathWalk real-module tests + Visual Graph tests"
+    },
+    {
+      "name": "apf_lint",
+      "status": "passed"
+    },
+    {
+      "name": "apf_compile",
+      "status": "passed"
+    },
+    {
+      "name": "apf_test",
+      "status": "passed"
+    },
+    {
+      "name": "visual_graph_apf_mmd_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "visual_graph_apf_context_svg_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "pathwalk_apf_real_module_graph_smoke",
+      "status": "passed"
+    },
+    {
+      "name": "book_manifest_sanity",
+      "status": "passed",
+      "entries": 78,
+      "chapters": 68,
+      "missing_files": []
+    }
+  ],
+  "apf_graph_snapshot": {
+    "nodes": 54,
+    "edges": 78,
+    "gates": 38,
+    "assertions": 28,
+    "outputs": 1,
+    "unmatched_handlers": 54,
+    "branching_nodes": 19,
+    "linear_nodes": 35,
+    "dead_end_nodes": 0
+  },
+  "non_goals": [
+    "APF branch rewrite",
+    "new IR/opcodes",
+    "runtime-core changes",
+    "runtime execution",
+    "scoring/calibration",
+    "watchdog/process-boundary hardening"
+  ],
+  "known_notes": [
+    "PathWalk APF terminal-path enumeration remains future adaptation because APF has review-loop cycles."
+  ]
+}

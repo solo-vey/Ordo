@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "score_id",
+    "run_object_id",
+    "status",
+    "methodology_sha256",
+    "audit_sha256"
+  ],
+  "additionalProperties": true
+}

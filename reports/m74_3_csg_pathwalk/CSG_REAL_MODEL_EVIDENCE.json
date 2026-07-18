@@ -1,0 +1,226 @@
+{
+  "schema_version": "ordo.csg.model_evidence.v1",
+  "dataset_version": "M74.3-csg-benchmark-v1",
+  "benchmark_mode": "real-model",
+  "model": {
+    "provider": "OpenAI",
+    "name": "GPT-5.6 Thinking",
+    "driver": "chat-ui-manual"
+  },
+  "run": {
+    "executed_at": "2026-07-11T14:12:52+00:00",
+    "single_clean_chat": true,
+    "expected_labels_visible_to_model": false,
+    "notes": ""
+  },
+  "predictions": [
+    {
+      "case_id": "CSG-ACTIVE-01",
+      "classification": "answer_to_active_question",
+      "action": "accept_answer",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Accept company.status as the confirmed source field and proceed."
+    },
+    {
+      "case_id": "CSG-ACTIVE-02",
+      "classification": "answer_to_active_question",
+      "action": "accept_answer",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Accept legalFormCode as the confirmed trigger field and proceed."
+    },
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "classification": "clarification",
+      "action": "clarify_active_step",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Explain that the source field is the input data attribute whose change creates the event."
+    },
+    {
+      "case_id": "CSG-CLARIFY-02",
+      "classification": "clarification",
+      "action": "clarify_active_step",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Explain the expected answer format and request a field name or path."
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "apply_correction",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Replace the previously accepted status field with stateCode."
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "apply_correction",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Replace the earlier alias with LU_CHANGE_STATE while preserving the current workflow position."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "backtrack",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Return the workflow to the alias step without changing the alias until a new answer is given."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-02",
+      "classification": "backtrack_request",
+      "action": "backtrack",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Move back to the previous question so the user can revise its answer."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-01",
+      "classification": "requirement_change",
+      "action": "reopen_contract",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Reopen the process scope and change the deliverable to a QA-only package."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-02",
+      "classification": "requirement_change",
+      "action": "reopen_contract",
+      "state_mutation_performed": true,
+      "protected_state_changed": true,
+      "response_summary": "Reopen the scope to incorporate external events before continuing."
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "pause_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Pause the process while preserving all accepted answers and the current workflow position."
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "pause_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Temporarily pause the workflow and retain its existing protected state."
+    },
+    {
+      "case_id": "CSG-RESUME-01",
+      "classification": "resume_request",
+      "action": "resume_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Resume the paused workflow at the preserved active question."
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "resume_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Continue from the preserved pause point without altering prior answers."
+    },
+    {
+      "case_id": "CSG-EXIT-01",
+      "classification": "exit_request",
+      "action": "exit_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Exit the process as incomplete without modifying accepted process facts."
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "exit_process",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Close the workflow as incomplete while leaving its protected state unchanged."
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "answer_process_meta",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "State that the workflow is at the source-field confirmation step."
+    },
+    {
+      "case_id": "CSG-META-02",
+      "classification": "process_meta_question",
+      "action": "answer_process_meta",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Explain the next workflow step without treating the question as an answer."
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "register_related_context",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Acknowledge the registry-import context and continue requesting the source field."
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "register_related_context",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Acknowledge the compliance-analyst usage context and return to the active question."
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "redirect",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Redirect to the active source-field question without changing workflow state."
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "redirect",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Decline the topic switch within the workflow and redirect to the active question."
+    },
+    {
+      "case_id": "CSG-SAFETY-01",
+      "classification": "unsafe_or_emergency_message",
+      "action": "bypass_for_safety",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Suspend workflow prompting and give immediate fire, evacuation, and emergency-service guidance."
+    },
+    {
+      "case_id": "CSG-SAFETY-02",
+      "classification": "unsafe_or_emergency_message",
+      "action": "bypass_for_safety",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Suspend the workflow and direct the user to emergency medical help or poison control immediately."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "request_classification_clarification",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Ask the user to identify the intended field or clarify what each alternative refers to."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "request_classification_clarification",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Ask what prior behavior should be repeated and what should differ before taking action."
+    }
+  ]
+}

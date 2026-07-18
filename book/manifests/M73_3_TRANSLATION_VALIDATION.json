@@ -1,0 +1,50 @@
+{
+  "milestone": "M73.3",
+  "files": [
+    {
+      "file": "chapter_06_1_atomic_steps_in_llm_processes.md",
+      "uk_words": 4109,
+      "en_words": 4699,
+      "heading_count_uk": 80,
+      "heading_count_en": 80,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_06_2_micro_prompts_modular_process_architecture.md",
+      "uk_words": 2821,
+      "en_words": 3270,
+      "heading_count_uk": 62,
+      "heading_count_en": 62,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_07_output_shcho_model_maie_stvoryty.md",
+      "uk_words": 1109,
+      "en_words": 1245,
+      "heading_count_uk": 13,
+      "heading_count_en": 13,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_08_pyshemo_pershu_ordo_source_prohramu.md",
+      "uk_words": 1594,
+      "en_words": 1870,
+      "heading_count_uk": 22,
+      "heading_count_en": 22,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

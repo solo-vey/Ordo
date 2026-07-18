@@ -1,0 +1,67 @@
+artifact_sync:
+  sync_id: history_event_factory_artifact_sync
+  profile: standard
+  source_of_truth:
+    - path: packages/history_event_guided_intake/source/program.ordo.yaml
+      role: package_source
+    - path: packages/history_event_guided_intake/prompts/
+      role: prompt_source
+  derived_artifacts:
+    - artifact_id: prompt_manifest
+      path: packages/history_event_guided_intake/PROMPT_MANIFEST.json
+      derived_from:
+        - packages/history_event_guided_intake/prompts/
+      derivation_method: checksum_manifest
+      freshness_policy: must_match_hash
+      stale_action: block_release
+    - artifact_id: compiled_runtime_ir
+      path: packages/history_event_guided_intake/ordo.runtime.json
+      derived_from:
+        - packages/history_event_guided_intake/source/program.ordo.yaml
+      derivation_method: compiler_output
+      freshness_policy: manual_or_tool_verified
+      stale_action: open_delta_backlog
+      delta_backlog_ref: D-M67-001
+
+delta_backlog:
+  backlog_id: history_event_factory_delta_backlog
+  policy: explicit_deferred_deltas_only
+  entries:
+    - delta_id: D-M67-001
+      title: Regenerate compiled runtime IR after package source updates
+      area: compiled_ir_regeneration
+      severity: warning
+      source_change:
+        - packages/history_event_guided_intake/source/program.ordo.yaml
+      affected_artifacts:
+        - packages/history_event_guided_intake/ordo.runtime.json
+      reason_deferred: Runtime compilation is outside this package-consistency design milestone.
+      required_resolution: Regenerate compiled runtime IR in a later runtime or CLI validation gate.
+      release_blocking: false
+
+prompt_registry_packaging_checks:
+  checkset_id: history_event_factory_prompt_packaging_checks
+  profile: standard
+  required_checks:
+    - prompt_registry_present
+    - prompt_registry_schema_valid
+    - prompt_ids_unique
+    - prompt_paths_exist
+    - required_prompts_present
+    - prompt_refs_resolve
+    - prompt_targets_resolve
+    - prompt_manifest_present
+    - prompt_manifest_paths_exist
+    - prompt_manifest_checksums_match
+    - packaged_prompt_files_manifest_covered
+    - startup_profile_present
+    - startup_entry_files_exist
+    - startup_prompt_refs_resolve
+    - startup_prompts_manifest_covered
+    - authority_boundary_safe
+    - derived_artifacts_declared
+    - delta_backlog_covers_deferred_sync
+  decision_policy:
+    error_decision: blocked
+    warning_decision: approved_with_warnings
+    success_decision: approved

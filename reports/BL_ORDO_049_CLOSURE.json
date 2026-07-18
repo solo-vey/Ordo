@@ -1,0 +1,20 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "task": "BL-ORDO-049",
+  "status": "closed",
+  "canonical_release_created": false,
+  "summary": "ARF now recommends and records an analyst-confirmed delivery target after canonical playbook validation.",
+  "artifacts": [
+    "cli/tests/test_bl_ordo_049_delivery_target_decision.py",
+    "docs/ARF_DELIVERY_TARGET_DECISION_GATE.md",
+    "book/en/chapters/chapter_83_delivery_target_decision.md"
+  ],
+  "tests": {
+    "passed": 28,
+    "failed": 0
+  },
+  "apf_lint": "passed",
+  "cli_smoke": "passed",
+  "full_apf_compile": "blocked_by_preexisting_registry_gap",
+  "related_backlog_item": "BL-ORDO-050"
+}

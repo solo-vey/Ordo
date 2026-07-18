@@ -1,0 +1,71 @@
+{
+  "milestone": "M65.1",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "json_parse:M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "check": "json_parse:M65_1_VALIDATION_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "check": "json_parse:language/VALIDATION_REPORT.json",
+      "status": "passed"
+    },
+    {
+      "check": "csv_parse:adoption_matrix",
+      "status": "passed"
+    },
+    {
+      "check": "yaml_parse:packages/history_event_guided_intake/source/program.ordo.yaml",
+      "status": "passed"
+    },
+    {
+      "check": "yaml_parse:language/schemas/prompt_registry_schema.yaml",
+      "status": "passed"
+    },
+    {
+      "check": "yaml_parse:language/schemas/prompt_ref_schema.yaml",
+      "status": "passed"
+    },
+    {
+      "check": "source_yaml_unchanged",
+      "status": "passed",
+      "base_sha256": "13a571a8837f6957deb56b27cde546bc94a20e4912728fe994494a5518e28417",
+      "new_sha256": "13a571a8837f6957deb56b27cde546bc94a20e4912728fe994494a5518e28417"
+    }
+  ],
+  "added_count": 13,
+  "changed_count": 7,
+  "removed_count": 0,
+  "added_files": [
+    "M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.json",
+    "M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.md",
+    "M65_1_VALIDATION_REPORT.json",
+    "docs/design_decisions/DD-ORDO-M65-002_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN.md",
+    "language/improvement_intake/m65_1/M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.json",
+    "language/improvement_intake/m65_1/M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.md",
+    "language/improvement_intake/m65_1/M65_1_VALIDATION_REPORT.json",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_MATRIX.csv",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_MATRIX.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_PLAN.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_SMOKE_TEST_PLAN.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_TARGET_STRUCTURE.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_VALIDATION_PROFILE.md"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "FUTURE_BACKLOG.md",
+    "README.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json",
+    "packages/history_event_guided_intake/README.md"
+  ],
+  "removed_files": [],
+  "runtime_core_changed": "none",
+  "source_yaml_rewritten": "none",
+  "prompt_files_created_as_final_artifacts": "none"
+}

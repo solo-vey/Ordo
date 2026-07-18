@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "version": "",
+    "sha256": ""
+  },
+  "candidate": {
+    "version": "",
+    "sha256": ""
+  },
+  "criteria": [],
+  "material_improvements": [],
+  "protected_regressions": [],
+  "decision": "",
+  "next_route": ""
+}

@@ -1,0 +1,85 @@
+{
+  "generated": "2026-07-09T18:10:00+02:00",
+  "files": [
+    {
+      "path": "APF_TO_LANGUAGE_PATTERN_MAPPING.md",
+      "sha256": "7852b98128eb941f60172ea86dbb4b5a3d39f0c23de826ed21660a4ec716d186",
+      "size_bytes": 2453
+    },
+    {
+      "path": "HANDOFF.md",
+      "sha256": "0a92801ed6201c02cd215cd0548322dd54697190cbb6ddb093491add62844bc4",
+      "size_bytes": 891
+    },
+    {
+      "path": "LANGUAGE_IMPROVEMENT_BACKLOG.md",
+      "sha256": "58c9ff7f36db59296ba2465d138d6e162962eaeb5ed36e85b97e78c16fff0387",
+      "size_bytes": 6551
+    },
+    {
+      "path": "PROGRAM_LEVEL_CONTRACT_LANGUAGE_NOTE.md",
+      "sha256": "53bccef119aafbe7debf7add669b54d4218c2ac2bdf6c8a1d460eb044082c6b9",
+      "size_bytes": 2796
+    },
+    {
+      "path": "PROPOSED_LANGUAGE_PATCH_SEQUENCE.md",
+      "sha256": "1b63f80057cb7bbe82343237ae0e8c590bf84899203edb4efcdfdcecbc8de020",
+      "size_bytes": 1141
+    },
+    {
+      "path": "README.md",
+      "sha256": "c26c8042f49c63181f4531625df6502b60867727b044f5f65a602b81e0720532",
+      "size_bytes": 2083
+    },
+    {
+      "path": "SUMMARY.json",
+      "sha256": "378496455d6a0041675d306dd9a2d0a86050d83bde850b03116d12de19537aed",
+      "size_bytes": 888
+    },
+    {
+      "path": "VALIDATION_REQUIREMENTS.md",
+      "sha256": "880b4800a97549b51010ba3a584a739b98a077c71872712d63ea74317958119e",
+      "size_bytes": 1393
+    },
+    {
+      "path": "reports/VALIDATION_REPORT.json",
+      "sha256": "f94968cc08a839fe7420883ecaab803fe9d3cec3c912de380908c4a2dc31960b",
+      "size_bytes": 1909
+    },
+    {
+      "path": "source_reference/APF_BASE_PROCESS_PROGRAM_LEVEL_METADATA_IMPROVEMENT_PROMPT.md",
+      "sha256": "9855d7b71050e292c99454652a6c697d3af85480e2f792423ecbce5e47e27efc",
+      "size_bytes": 10005
+    },
+    {
+      "path": "source_reference/APF_DELTA_BACKLOG_REGISTER.md",
+      "sha256": "5ef5ec29c4d6ac3d2bc7b835f99beef82dac8e059439f03914155c76b4d37402",
+      "size_bytes": 4466
+    },
+    {
+      "path": "source_reference/APF_FULL_BACKLOG_CURRENT.md",
+      "sha256": "e3f87684fb2c0487f63cdc58bf9026b3d892cda41122aea8359e4ae64a095988",
+      "size_bytes": 6970
+    },
+    {
+      "path": "source_reference/APF_LANGUAGE_PATTERN_CANDIDATES.md",
+      "sha256": "4e41dae665901d36024959316fd57dabd3787c8468ad0d13d91e39561510511a",
+      "size_bytes": 2803
+    },
+    {
+      "path": "source_reference/APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md",
+      "sha256": "ecf5206c71b507e9f5a7d22e0a5de3c410715f2d99b56085ad4ae583fccfcb33",
+      "size_bytes": 8811
+    },
+    {
+      "path": "source_reference/APF_RC4_POST_SVG_CURRENT_STATE.md",
+      "sha256": "ed132ca18a6f88c3f149b7d501488962f82fddb2ddaa92cb8f528103c277080a",
+      "size_bytes": 3946
+    },
+    {
+      "path": "source_reference/ORDO_FUTURE_BACKLOG_M62_M63_REFERENCE.md",
+      "sha256": "3a3c786bc30d9223799d1ce9a7b13d3bf6bbc9d6f22b53d1e096ce576c4f3d0f",
+      "size_bytes": 6820
+    }
+  ]
+}

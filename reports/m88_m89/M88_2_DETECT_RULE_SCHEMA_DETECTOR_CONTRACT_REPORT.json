@@ -1,0 +1,43 @@
+{
+  "schema_version": "ordo.m88.detect_rule_detector_contract.v1",
+  "milestone": "M88.2",
+  "status": "passed",
+  "implemented": {
+    "canonical_detect_rule_schema": true,
+    "detector_protocol": true,
+    "detection_context": true,
+    "detection_evidence": true,
+    "antipattern_finding_contract": true,
+    "canonical_deterministic_detector": true,
+    "initial_rule_registry": true,
+    "rule_registry_validator": true,
+    "full_initial_antipattern_coverage": true
+  },
+  "rule_count": 6,
+  "tests": {
+    "passed": 24,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/schemas/detect_rule.schema.json",
+      "sha256": "e8e16e31ed6d9bdd265d4c84824d28d7741954f1fa1d324a851cf328149fd60c"
+    },
+    {
+      "path": "language/detector_contract.py",
+      "sha256": "dda5537577b25f944662e45172148f446be6bb15a2974ca2ebd2ec70c54055c9"
+    },
+    {
+      "path": "language/registries/detect_rule_registry.v1.json",
+      "sha256": "c02449806d9abd80d9fdb4069201fced25c8a0efd9246d1c5e884801bbc9c7c0"
+    },
+    {
+      "path": "language/validate_detect_rule_registry.py",
+      "sha256": "ef7a3e97d2576a8f01e799d6301375bc03f739d3f72bc78d7a6ef8674ee4216e"
+    },
+    {
+      "path": "cli/tests/test_m88_2_detect_rule_detector_contract.py",
+      "sha256": "303ff8164ddc35e4a73e8dc2028ff82f48c772cd83f092b7fbe38a9bcc530dc3"
+    }
+  ]
+}

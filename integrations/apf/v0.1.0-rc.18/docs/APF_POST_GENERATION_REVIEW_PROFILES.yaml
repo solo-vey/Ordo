@@ -1,0 +1,26 @@
+schema_version: ordo.apf.post_generation_review_profiles.v1
+profiles:
+  full:
+    criticalities:
+    - critical
+    claim_level_provenance: true
+    adversarial_review: true
+    cross_artifact_review: true
+    rollback_review: true
+    post_correction_independence: true
+  high-impact:
+    criticalities:
+    - high-impact
+    claim_level_provenance: true
+    adversarial_review: true
+    cross_artifact_review: true
+    rollback_review: when applicable
+    post_correction_independence: true
+  reduced:
+    criticalities:
+    - normal
+    claim_level_provenance: contract-sensitive claims only
+    adversarial_review: false
+    cross_artifact_review: when linked artifacts exist
+criticality_downgrade_rule: A failed gate or discovered defect cannot justify lowering
+  criticality.

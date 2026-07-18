@@ -1,0 +1,10 @@
+{
+  "milestone": "M74.5",
+  "status": "passed",
+  "added_files": [
+    "tools/apf_semantic_equivalence.py",
+    "tests/m74_5/test_apf_semantic_equivalence.py",
+    "M74_5_APF_MODULARIZATION_AND_EQUIVALENCE_CONTRACT.md",
+    "M74_5_VALIDATION_REPORT.json"
+  ]
+}

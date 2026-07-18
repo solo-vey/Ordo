@@ -1,0 +1,36 @@
+{
+  "schema_version": "ordo.milestone.validation.v1",
+  "milestone": "M70.1",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "policy_yaml_parse",
+      "status": "passed"
+    },
+    {
+      "id": "production_repo_check_clean",
+      "status": "passed"
+    },
+    {
+      "id": "policy_treatment_truthfulness",
+      "status": "passed"
+    },
+    {
+      "id": "delegated_packages_not_centrally_checked",
+      "status": "passed"
+    },
+    {
+      "id": "stdout_out_equivalence",
+      "status": "passed"
+    },
+    {
+      "id": "targeted_tests",
+      "status": "passed",
+      "count": 25
+    },
+    {
+      "id": "scope_guard",
+      "status": "passed"
+    }
+  ]
+}

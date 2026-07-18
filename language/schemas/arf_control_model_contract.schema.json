@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/arf_control_model_contract.schema.json",
+  "title": "ARF Control Model Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_id",
+    "default_control_profile",
+    "decision_model",
+    "default_role",
+    "undefined_action",
+    "modes",
+    "mode_switching",
+    "ambiguity_policy",
+    "transition_policy",
+    "node_contract_profiles"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.arf.control_model.v1"
+    },
+    "contract_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "default_control_profile": {
+      "const": "PROCESS_EXECUTOR_ONLY"
+    },
+    "decision_model": {
+      "const": "closed_world"
+    },
+    "default_role": {
+      "const": "executor"
+    },
+    "undefined_action": {
+      "const": "blocked_missing_instruction"
+    },
+    "modes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "EXECUTION_MODE",
+        "DESIGN_MODE",
+        "AUTHORIZED_MAINTENANCE_MODE"
+      ],
+      "properties": {
+        "EXECUTION_MODE": {
+          "$ref": "#/$defs/mode"
+        },
+        "DESIGN_MODE": {
+          "$ref": "#/$defs/mode"
+        },
+        "AUTHORIZED_MAINTENANCE_MODE": {
+          "$ref": "#/$defs/mode"
+        }
+      }
+    },
+    "mode_switching": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implicit_switching",
+        "explicit_transition_required",
+        "authorization_required_for"
+      ],
+      "properties": {
+        "implicit_switching": {
+          "const": "forbidden"
+        },
+        "explicit_transition_required": {
+          "const": true
+        },
+        "authorization_required_for": {
+          "type": "array",
+          "contains": {
+            "const": "AUTHORIZED_MAINTENANCE_MODE"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "EXECUTION_MODE",
+              "DESIGN_MODE",
+              "AUTHORIZED_MAINTENANCE_MODE"
+            ]
+          }
+        }
+      }
+    },
+    "ambiguity_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "missing_instruction_status",
+        "allowed_action",
+        "best_judgement_fallback"
+      ],
+      "properties": {
+        "missing_instruction_status": {
+          "const": "blocked_missing_instruction"
+        },
+        "allowed_action": {
+          "const": "request_exact_user_decision"
+        },
+        "best_judgement_fallback": {
+          "const": "forbidden"
+        }
+      }
+    },
+    "transition_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implicit_transitions",
+        "undefined_transition",
+        "allowed_transition_source"
+      ],
+      "properties": {
+        "implicit_transitions": {
+          "const": "forbidden"
+        },
+        "undefined_transition": {
+          "const": "blocked_missing_instruction"
+        },
+        "allowed_transition_source": {
+          "const": "active_node_explicit_transition_allowlist"
+        }
+      }
+    },
+    "node_contract_profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry",
+        "schema",
+        "explicit_profile_required",
+        "unknown_profile",
+        "multi_profile_node_policy"
+      ],
+      "properties": {
+        "registry": {
+          "const": "language/registry/arf_node_contract_profiles.v1.json"
+        },
+        "schema": {
+          "const": "language/schemas/arf_node_contract.schema.json"
+        },
+        "explicit_profile_required": {
+          "const": true
+        },
+        "unknown_profile": {
+          "const": "blocked_missing_instruction"
+        },
+        "multi_profile_node_policy": {
+          "const": "split_node"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "entry_conditions",
+        "allowed_capabilities",
+        "forbidden_capabilities",
+        "exit_conditions"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "executor",
+            "designer",
+            "authorized_maintainer"
+          ]
+        },
+        "entry_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allowed_capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "forbidden_capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "exit_conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

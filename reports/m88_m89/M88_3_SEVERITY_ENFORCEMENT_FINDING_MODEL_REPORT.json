@@ -1,0 +1,47 @@
+{
+  "schema_version": "ordo.m88.severity_enforcement_finding.v1",
+  "milestone": "M88.3",
+  "status": "passed",
+  "implemented": {
+    "canonical_antipattern_finding_schema": true,
+    "severity_policy": true,
+    "enforcement_policy": true,
+    "critical_must_block": true,
+    "decision_model": true,
+    "stable_finding_id": true,
+    "source_and_timestamp_binding": true,
+    "finding_validator": true,
+    "gate_report_aggregation": true,
+    "blocking_and_advisory_aggregation": true
+  },
+  "tests": {
+    "passed": 38,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/schemas/antipattern_finding.schema.json",
+      "sha256": "bae2b76699d0487b872c6efc62027ad8b269ccf2127cbe78171622a47aae0bc5"
+    },
+    {
+      "path": "language/schemas/antipattern_policy.schema.json",
+      "sha256": "37c214a235f1193b24599e3d9f47ff3874657a2a420786712d201abfbaa1d273"
+    },
+    {
+      "path": "language/registries/antipattern_policy.v1.json",
+      "sha256": "6a95d448e2ea2709fe020ea4fec7969b2085c70d6bbbf8a551b1e87834aff1ab"
+    },
+    {
+      "path": "language/antipattern_finding_model.py",
+      "sha256": "e234037f4817e0e92a8964dfecc77f173d03f6bfbd2beda2d9af2a0cbdbec787"
+    },
+    {
+      "path": "language/validate_antipattern_finding.py",
+      "sha256": "b4654db59b746ffba880dbb58b974516422025e335f6595fc59b0c66b67ea6b6"
+    },
+    {
+      "path": "cli/tests/test_m88_3_severity_enforcement_finding_model.py",
+      "sha256": "c79c9e9a212b561026aed3b997c8b5ac9888ee35dd8aefd6e0be170d96f439a3"
+    }
+  ]
+}

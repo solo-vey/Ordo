@@ -1,0 +1,50 @@
+{
+  "package": "ordo.applied_project_factory",
+  "version": "0.1.0-rc.6-apf-process-hardening",
+  "source_version": "0.1.0-rc.5-program-contract",
+  "status": "applied",
+  "scope": "APF package/playbook creation process only; no Ordo language package changes",
+  "gate": "APF_PACKAGE_CREATION_HARDENING_GATE",
+  "checks": [
+    {
+      "check": "package_profile_startup_standard",
+      "status": "passed"
+    },
+    {
+      "check": "derived_artifact_sync_strengthening",
+      "status": "passed"
+    },
+    {
+      "check": "delta_backlog_preservation",
+      "status": "passed"
+    },
+    {
+      "check": "prompt_registry_packaging_checks",
+      "status": "passed"
+    },
+    {
+      "check": "graph_svg_provenance_policy",
+      "status": "passed"
+    },
+    {
+      "check": "release_hygiene_clean_runtime_policy",
+      "status": "passed"
+    },
+    {
+      "check": "real_module_testcase_generation_backlog_preserved",
+      "status": "passed"
+    },
+    {
+      "check": "template_rendering_smoke_policy",
+      "status": "passed"
+    },
+    {
+      "check": "language_package_scope_boundary",
+      "status": "passed"
+    }
+  ],
+  "blocking_issues": [],
+  "notes": [
+    "This is an APF process package patch, not a language package patch."
+  ]
+}

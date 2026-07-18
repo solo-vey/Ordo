@@ -1,0 +1,116 @@
+program_contract:
+  program_id: history_event_factory_prompt_registry_example
+  program_version: "0.1"
+  lifecycle: draft
+  control_level: standard
+  execution_mode: chat_internal
+  runtime_profile:
+    human_role: analyst
+    ai_role: guided_executor
+    cli_role: validator
+  review_points:
+    - prompt_registry_review
+    - human_final_approval
+  validation_expectations:
+    commands:
+      - lint
+      - prompt-registry-check
+
+prompt_registry:
+  registry_id: history_event_factory_prompt_registry
+  version: "0.1"
+  default_language: uk
+  prompt_root: prompts/
+  prompts:
+    - prompt_id: hp.package.quick_start.v1
+      prompt_family: hp.package.quick_start
+      version: 1
+      supersedes: null
+      type: package_bootstrap
+      audience: human_to_ai
+      path: prompts/QUICK_START_PROMPT.md
+      required: true
+      lifecycle: stable
+      visibility: visible_to_analyst
+      state_change_allowed: false
+      validation_policy:
+        - required_file_and_readme_reference
+        - manifest_checksum_required
+
+    - prompt_id: hp.source_type.clarification.v1
+      prompt_family: hp.source_type.clarification
+      version: 1
+      supersedes: null
+      type: node_helper
+      audience: ai_runtime
+      path: prompts/hp.source_type.clarification.v1.md
+      attached_to:
+        node_id: ROOT_N1
+      required: recommended
+      lifecycle: stable
+      visibility: expose_on_request
+      state_change_allowed: false
+      validation_policy:
+        - resolve_node_and_file
+        - authority_safe_text_review
+
+    - prompt_id: hp.normalization.value_comparison.v1
+      prompt_family: hp.normalization.value_comparison
+      version: 1
+      supersedes: null
+      type: node_helper
+      audience: ai_runtime
+      path: prompts/hp.normalization.value_comparison.v1.md
+      attached_to:
+        node_id: B5_N3
+      required: recommended
+      lifecycle: stable
+      visibility: expose_on_request
+      state_change_allowed: false
+      validation_policy:
+        - resolve_node_and_file
+        - authority_safe_text_review
+
+nodes:
+  - id: ROOT_N1
+    type: decision
+    question: Which source path should the analyst use?
+    allowed_answers:
+      - source_document
+      - existing_passport
+      - ready_external_fact
+      - previous_current_comparison
+    prompt_refs:
+      - prompt_id: hp.source_type.clarification.v1
+        use: during_clarification
+        state_change_allowed: false
+
+  - id: B5_N3
+    type: confirmation
+    question: Confirm comparison rule for previous/current external data block.
+    prompt_refs:
+      - prompt_id: hp.normalization.value_comparison.v1
+        use: before_question
+        state_change_allowed: false
+      - prompt_id: hp.normalization.value_comparison.v1
+        use: during_clarification
+        state_change_allowed: false
+
+prompt_registry_consistency_gate:
+  gate_id: prompt_registry_consistency
+  profile: standard
+  required_checks:
+    - prompt_registry_present
+    - prompt_ids_unique
+    - prompt_paths_exist
+    - prompt_refs_resolve
+    - node_prompt_refs_target_existing_nodes
+    - prompt_visibility_declared
+    - prompt_language_declared_or_inherited
+    - prompt_authority_safe
+    - state_change_policy_consistent
+    - quick_start_discoverable
+    - prompt_manifest_coverage
+  approval_decision:
+    default_on_error: blocked
+    default_on_warning: approved_with_warnings

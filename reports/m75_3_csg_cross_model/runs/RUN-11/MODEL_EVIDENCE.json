@@ -1,0 +1,254 @@
+{
+  "schema_version": "ordo.csg.model_evidence.v1",
+  "dataset_version": "M74.3-csg-benchmark-v1",
+  "protocol_version": "M75.3.2",
+  "benchmark_mode": "real-model",
+  "model": {
+    "provider": "Anthropic",
+    "name": "Claude Sonnet 5",
+    "driver": "chat-ui-manual"
+  },
+  "run": {
+    "run_id": "RUN-11",
+    "executed_at": "2026-07-11T00:00:00Z",
+    "single_clean_chat": true,
+    "expected_labels_visible_to_model": false,
+    "notes": ""
+  },
+  "predictions": [
+    {
+      "case_id": "CSG-ACTIVE-01",
+      "classification": "answer_to_active_question",
+      "action": "accept_value_and_advance",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-ACTIVE-02",
+      "classification": "answer_to_active_question",
+      "action": "accept_value_and_advance",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "classification": "clarification",
+      "action": "answer_clarification_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-CLARIFY-02",
+      "classification": "clarification",
+      "action": "answer_clarification_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "overwrite_prior_answer",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "overwrite_prior_answer",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "navigate_to_prior_step",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-02",
+      "classification": "backtrack_request",
+      "action": "navigate_to_prior_step",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-01",
+      "classification": "requirement_change",
+      "action": "update_scope_definition",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-02",
+      "classification": "requirement_change",
+      "action": "update_scope_definition",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "suspend_process",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "suspend_process",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-RESUME-01",
+      "classification": "resume_request",
+      "action": "resume_process",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "resume_process",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-EXIT-01",
+      "classification": "exit_request",
+      "action": "terminate_process_incomplete",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "terminate_process_incomplete",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "report_current_step_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-META-02",
+      "classification": "process_meta_question",
+      "action": "describe_next_step_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "store_context_note",
+      "state_mutation_performed": true,
+      "mutation_scope": "context",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "store_context_note",
+      "state_mutation_performed": true,
+      "mutation_scope": "context",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "deflect_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "deflect_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-SAFETY-01",
+      "classification": "unsafe_or_emergency_message",
+      "action": "suspend_process_prioritize_safety",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-SAFETY-02",
+      "classification": "unsafe_or_emergency_message",
+      "action": "suspend_process_prioritize_safety",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "request_disambiguation_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "request_disambiguation_hold_state",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-11 semantic evidence."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_review_cards_validation.v1",
+  "milestone": "M61.0",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "case_summaries_loaded",
+      "status": "passed"
+    },
+    {
+      "check": "review_cards_present",
+      "status": "passed"
+    },
+    {
+      "check": "one_card_per_input_case",
+      "status": "passed"
+    },
+    {
+      "check": "review_card_matrix_written",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_execution_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "scoring_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "calibration_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_artifacts_not_read",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "outputs": [
+    "cards/*.json",
+    "cards/*.md",
+    "REVIEW_CARDS.json",
+    "REVIEW_CARDS.md",
+    "RAW_REVIEW_CARD_MATRIX.csv",
+    "VALIDATION_REPORT.json"
+  ]
+}

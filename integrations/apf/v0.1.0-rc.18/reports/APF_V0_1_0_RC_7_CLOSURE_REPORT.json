@@ -1,0 +1,40 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "version": "v0.1.0-rc.7-closure",
+  "source_version": "v0.1.0-rc.7-cli-integration-contracts-confirmed",
+  "status": "accepted-baseline",
+  "blocking_issues": [],
+  "scope_boundary": "APF package/playbook creation process only; no Ordo language package changes",
+  "confirmed_decisions": [
+    "APF-RC7-01 CLI_CAPABILITY_DISCOVERY_GATE after PACKAGE_PROFILE_GATE",
+    "APF-RC7-02 package profile to required CLI checks matrix",
+    "APF-RC7-03 runtime-capable packages require CLI evidence for runtime release ready/go",
+    "APF-RC7-04 source/design/reference packages may use explicit deferred CLI evidence",
+    "APF-RC7-05 reports/cli_evidence/ standard evidence path",
+    "APF-RC7-06 N_SHARED_TAIL node IDs and short gate names",
+    "APF-RC7-07 APF_PACKAGE_CREATION_HARDENING_GATE as aggregator"
+  ],
+  "checks": [
+    {
+      "check": "rc7_confirmations_recorded",
+      "status": "passed"
+    },
+    {
+      "check": "final_tail_frozen",
+      "status": "passed"
+    },
+    {
+      "check": "scope_boundary_preserved",
+      "status": "passed"
+    },
+    {
+      "check": "ordo_cli_implementation_out_of_scope",
+      "status": "passed"
+    },
+    {
+      "check": "rc8_handoff_created",
+      "status": "passed"
+    }
+  ],
+  "go_no_go": "go-for-apf-baseline-closure"
+}

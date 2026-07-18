@@ -1,0 +1,37 @@
+{
+  "milestone": "M62.2",
+  "title": "APF Documentation and Book Section",
+  "status": "passed-docs-consolidation-with-apf-pathwalk-cycle-note",
+  "date": "2026-07-08",
+  "scope": "documentation/book/package-index consolidation only",
+  "non_scope": [
+    "APF branch rewrite",
+    "runtime core changes",
+    "IR/opcode additions",
+    "runtime execution",
+    "scoring",
+    "calibration",
+    "watchdog/process-boundary hardening"
+  ],
+  "checks": {
+    "workspace_py_compile": "passed",
+    "workspace_selected_tests": "38 passed",
+    "workspace_apf_lint": "passed",
+    "workspace_apf_compile": "passed",
+    "workspace_apf_test": "passed",
+    "workspace_visual_graph_mmd": "passed",
+    "workspace_visual_graph_context_svg": "passed",
+    "workspace_pathwalk_apf_graph": "passed",
+    "workspace_pathwalk_apf_paths": "blocked_by_cycle_edges_expected_not_gate",
+    "developer_bundle_py_compile": "passed",
+    "developer_bundle_apf_lint_compile_test": "passed",
+    "pathwalk_rc_py_compile": "passed",
+    "book_manifest_sanity": "76 entries, 66 chapters, 0 missing files"
+  },
+  "apf_pathwalk_note": {
+    "graph_summary": "passed",
+    "terminal_path_enumeration": "blocked_by_10_cycle_edges_in_current_apf_alpha14",
+    "treatment": "documented as future APF adaptation, not an M62.2 blocker"
+  },
+  "next": "M62.3 — APF Language Pattern Extraction Plan"
+}

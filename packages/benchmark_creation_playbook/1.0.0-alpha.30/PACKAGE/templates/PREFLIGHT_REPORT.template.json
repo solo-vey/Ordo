@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.benchmark.preflight_report.v1",
+  "attempt_id": "ATTEMPT-<unique>",
+  "status": "passed|blocked_integrity|blocked_isolation|blocked_binding|blocked_environment",
+  "checks": [
+    {
+      "check_id": "PF-001",
+      "status": "passed|failed",
+      "expected": "<value>",
+      "observed": "<value>",
+      "evidence_reference": "<ref>",
+      "timestamp": "<rfc3339>"
+    }
+  ],
+  "blockers": [],
+  "sealed_before_execution": true
+}

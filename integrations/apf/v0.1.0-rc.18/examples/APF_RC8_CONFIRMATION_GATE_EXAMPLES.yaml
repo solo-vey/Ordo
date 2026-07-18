@@ -1,0 +1,41 @@
+rc8_confirmation_gate_examples:
+  node_change:
+    triggered: true
+    changed_nodes:
+      - node_id: N_SHARED_TAIL_APF_PACKAGE_CREATION_HARDENING_GATE
+        previous_role: monolithic hardening gate
+        new_role: aggregator gate
+        impact: medium
+        confirmation_required: true
+        confirmation_ref: APF-RC7-07
+
+  gate_order:
+    triggered: true
+    previous_tail_excerpt:
+      - APF_PACKAGE_CREATION_HARDENING_GATE
+      - PACKAGE_COMPOSITION_GATE
+      - FINAL_ARCHIVE_ASSEMBLY
+    new_tail_excerpt:
+      - RELEASE_HYGIENE_CLI_GATE
+      - ANALYST_START_SMOKE_CLI_GATE
+      - RENDER_SMOKE_CLI_GATE
+      - INSPECT_RELEASE_ZIP_CLI_GATE
+      - APF_PACKAGE_CREATION_HARDENING_GATE
+      - EXTERNAL_CHECK_EVIDENCE_GATE
+      - PACKAGE_COMPOSITION_GATE
+      - FINAL_ARCHIVE_ASSEMBLY
+    status: confirmed
+
+  package_profile_change:
+    triggered: true
+    affected_profiles:
+      - compiled_runtime
+      - hybrid
+    changed_rule: runtime-capable packages cannot receive runtime-release ready/go without required CLI evidence
+    confirmation_ref: APF-RC7-03
+
+  not_applicable_example:
+    gate: PACKAGE_PROFILE_CHANGE_CONFIRMATION_GATE
+    triggered: false
+    status: not-applicable
+    reason: patch did not change package profile taxonomy or profile-dependent readiness behavior

@@ -1,0 +1,11 @@
+schema_version: ordo.scoped_yaml_patch_declaration.v1
+patch_id: PATCH-000
+baseline_yaml: source/program.before.ordo.yaml
+candidate_yaml: source/program.after.ordo.yaml
+affected_node_allowlist:
+  - N_EXAMPLE
+allowed_paths: []
+expected_semantic_effect: ""
+prohibited_side_effects:
+  - unrelated_node_change
+  - whole_playbook_rebuild

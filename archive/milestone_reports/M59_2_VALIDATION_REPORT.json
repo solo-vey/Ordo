@@ -1,0 +1,54 @@
+{
+  "milestone": "M59.2",
+  "title": "Incremental intake + per-node evidence reports",
+  "status": "passed",
+  "scope": {
+    "included": [
+      "ordo intake --submit <NODE_ID> --answer <answer>",
+      "per-node runtime/evidence/*_evidence.json reports",
+      "SHA-256 report/evidence digests",
+      "embedded runtime CLI submit from compiled IR without source YAML",
+      "runtime START_HERE evidence protocol update"
+    ],
+    "deferred_to_next_steps": [
+      "hash-chain snapshots",
+      "ordo verify-session",
+      "canary in compiled IR",
+      "hard prohibition layer for direct compiled/* reads outside CLI evidence"
+    ]
+  },
+  "validation": {
+    "cli_tests": {
+      "status": "passed",
+      "result": "58/58 OK",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli python -m pytest -q cli/tests/test_cli_workflow.py"
+    },
+    "history_event_lint": {
+      "status": "passed",
+      "command": "PYTHONPATH=cli python -m ordo.cli lint packages/history_event_guided_intake"
+    },
+    "runtime_profile_build": {
+      "status": "passed",
+      "archive": "history_event_runtime_profile_m59_2.zip",
+      "sha256": "64a3d393c75864d1cc31e4cb701b77bf7a3b31de2c7963875230743200c15aa2"
+    },
+    "dev_profile_build": {
+      "status": "passed",
+      "archive": "history_event_dev_profile_m59_2.zip",
+      "sha256": "80e0cc1c12f30224fc6a2c1d3b8c4ac5fd8c2b57ce4a56216790761170b19d91"
+    },
+    "repo_check": {
+      "status": "passed_after_source_cleanup",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli python -m ordo.cli repo-check ."
+    }
+  },
+  "new_regression_tests": [
+    "test_intake_submit_writes_per_node_evidence_and_digest",
+    "test_intake_submit_blocks_skipping_earliest_incomplete_node",
+    "test_embedded_runtime_cli_can_submit_from_compiled_ir_without_source_yaml"
+  ],
+  "notes": [
+    "M59.2 remains Trust Level 1; it makes CLI bypass visible through missing evidence but does not yet cryptographically prevent all bypasses.",
+    "Partial submit validation can be blocked until all required nodes are closed; this is expected checkpoint behavior."
+  ]
+}

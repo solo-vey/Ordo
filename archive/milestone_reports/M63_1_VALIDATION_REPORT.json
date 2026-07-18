@@ -1,0 +1,25 @@
+{
+  "milestone": "M63.1_APF_RC_PACKAGE_IMPORT_METADATA_SYNC",
+  "status": "passed-package-import",
+  "generated_at": "2026-07-08T17:17:07.291469+00:00",
+  "checks": {
+    "lint": "passed",
+    "compile": "passed",
+    "test": "passed",
+    "coverage": "passed",
+    "validate_state": "passed",
+    "next_step": "ready_for_ai_next_move",
+    "validate_output": "passed",
+    "validate_artifacts": "passed",
+    "consistency": "passed_with_warnings",
+    "go_no_go": "go",
+    "repo_check_clean_source": "passed"
+  },
+  "blocking_issues": [],
+  "warnings": {
+    "consistency": "passed_with_warnings",
+    "known_non_blocking": "contract/default-value coverage warnings remain visible in APF reports",
+    "validate_factory_output": "APF-local / optional; not a parent CLI blocker"
+  },
+  "decision": "APF v0.1.0-rc.1 accepted for package-level release-candidate import as a standard applied module."
+}

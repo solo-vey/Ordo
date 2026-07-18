@@ -1,0 +1,90 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_noise_case.v1",
+  "milestone": "M60.7.4",
+  "case_id": "NOISE_TP_003_INVALID_BRANCH",
+  "case_type": "noise_path",
+  "noise_pattern": "invalid_branch",
+  "package": "sample.support_triage",
+  "source_path": "ordo_pathwalk/examples/m60_7_3_clean_path_testcases/source/program.ordo.yaml",
+  "path_id": "TP_003",
+  "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=medium -> G_TRIAGE_COMPLETE",
+  "node_sequence": [
+    "N_ISSUE_SUMMARY",
+    "N_SEVERITY"
+  ],
+  "scripted_steps": [
+    {
+      "step": 0,
+      "node": "N_ISSUE_SUMMARY",
+      "input_kind": "invalid_branch",
+      "answer": "__INVALID_BRANCH_SENTINEL__",
+      "expected_behavior": "reject_invalid_branch_without_advancing_current_node",
+      "submit_expected": false
+    },
+    {
+      "step": 2,
+      "node": "N_ISSUE_SUMMARY",
+      "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+      "to": "N_SEVERITY",
+      "target_type": "node",
+      "edge_type": "on_answer.default",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    },
+    {
+      "step": 3,
+      "node": "N_SEVERITY",
+      "answer": "medium",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate",
+      "edge_type": "on_answer.branch",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    }
+  ],
+  "clean_answer_steps": [
+    {
+      "step": 1,
+      "node": "N_ISSUE_SUMMARY",
+      "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+      "to": "N_SEVERITY",
+      "target_type": "node",
+      "edge_type": "on_answer.default",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    },
+    {
+      "step": 2,
+      "node": "N_SEVERITY",
+      "answer": "medium",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate",
+      "edge_type": "on_answer.branch",
+      "input_kind": "clean_answer",
+      "submit_expected": true
+    }
+  ],
+  "expected_terminal": {
+    "target": "G_TRIAGE_COMPLETE",
+    "type": "gate"
+  },
+  "expected_outputs": [
+    "OUT_TRIAGE_NOTE"
+  ],
+  "expected_state_updates": [
+    "issue_summary",
+    "owner_team",
+    "severity"
+  ],
+  "expected_noise_handling": {
+    "distraction": null,
+    "invalid_branch": "reject_invalid_branch_and_keep_current_node"
+  },
+  "readiness": {
+    "case_artifact_ready": true,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false,
+    "reason": "M60.7.4 emits first-noise testcase artifacts only; no runtime execution, scoring, or calibration is claimed."
+  }
+}

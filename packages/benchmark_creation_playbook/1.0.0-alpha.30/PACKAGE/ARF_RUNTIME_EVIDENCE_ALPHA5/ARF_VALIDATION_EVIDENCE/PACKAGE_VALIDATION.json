@@ -1,0 +1,57 @@
+{
+  "status": "PASSED",
+  "checks": [
+    {
+      "name": "target_exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "ordo_program_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "scoped_yaml_verifier_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "arf_meta_runtime_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "arf_integration_contract_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "backlog_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "all_in_one_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "local_validation_present",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "package_validators_executed": [
+    "package_startup_standard",
+    "process_rail_schema_convention",
+    "derived_artifact_sync_standard",
+    "generated_artifact_validation",
+    "clean_package_gate",
+    "go_no_go"
+  ],
+  "supplemental_local_checks": [
+    "yaml_json_parse",
+    "required_artifact_presence"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/ab_shared_task_dataset.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "benchmark_id",
+    "task_count",
+    "frozen_shared_fields",
+    "tasks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.ab_shared_task_dataset.v1"
+    },
+    "dataset_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "benchmark_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_count": {
+      "type": "integer",
+      "minimum": 20
+    },
+    "frozen_shared_fields": {
+      "type": "array",
+      "contains": {
+        "const": "shared_input"
+      },
+      "minItems": 3
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task_id",
+          "title",
+          "category",
+          "difficulty",
+          "shared_input",
+          "acceptance_criteria",
+          "required_output",
+          "risk_tags"
+        ],
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "pattern": "^AB-TASK-[0-9]{3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "difficulty": {
+            "enum": [
+              "easy",
+              "medium",
+              "hard"
+            ]
+          },
+          "shared_input": {
+            "type": "object"
+          },
+          "acceptance_criteria": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required_output": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "risk_tags": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

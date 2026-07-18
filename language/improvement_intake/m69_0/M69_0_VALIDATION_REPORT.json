@@ -1,0 +1,34 @@
+{
+  "milestone": "M69.0",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "yaml_schema_parse",
+      "status": "passed"
+    },
+    {
+      "check_id": "yaml_example_parse",
+      "status": "passed"
+    },
+    {
+      "check_id": "json_reports_parse",
+      "status": "passed"
+    },
+    {
+      "check_id": "workflow_diff_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "packages_diff_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "cli_implementation_test_diff_guard",
+      "status": "passed"
+    },
+    {
+      "check_id": "runtime_core_compiler_opcode_guard",
+      "status": "passed"
+    }
+  ]
+}

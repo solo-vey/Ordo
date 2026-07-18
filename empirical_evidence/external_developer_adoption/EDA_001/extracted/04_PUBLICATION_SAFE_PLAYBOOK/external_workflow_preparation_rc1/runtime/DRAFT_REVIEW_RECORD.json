@@ -1,0 +1,12 @@
+{
+  "schema": "external.workflow_preparation.draft_review.v1",
+  "draft_revision": 1,
+  "status": "not_reviewed",
+  "reviewer_role": "analyst",
+  "decision": null,
+  "reviewed_at": null,
+  "notes": [],
+  "corrections": [],
+  "confirmation_contract": "The analyst must explicitly answer that the downloaded draft is approved. Silence, implicit continuation, or model inference is not approval.",
+  "approver_authority": "analyst_only"
+}

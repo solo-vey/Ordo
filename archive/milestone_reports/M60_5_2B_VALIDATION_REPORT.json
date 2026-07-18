@@ -1,0 +1,13 @@
+{
+  "milestone": "M60.5.2b",
+  "title": "PathWalk External Job Dry-run Contract",
+  "runtime_core_changed": false,
+  "pathwalk_changed": true,
+  "commands_added": ["dry-run-plan", "dry-run-job", "dry-run-collect"],
+  "acceptance": {
+    "external_job_flow": "passed",
+    "pytest_pathwalk": "20/20 passed",
+    "py_compile": "passed",
+    "repo_check": "passed"
+  }
+}

@@ -1,0 +1,626 @@
+interaction_model:
+  human_role: pm_or_analyst_without_ordo_yaml_knowledge
+  ai_role: ai_ordo_project_factory_developer
+  proactive_ai_behavior: required
+  raw_tool_output_policy: ai_interprets_before_user
+  yaml_visibility_policy: hidden_from_pm_by_default
+intent:
+  id: INTENT_APPLIED_PROJECT_FACTORY
+  description: 'Допомогти PM/аналітику створити новий прикладний Ordo-проєкт будь-якого типу без написання YAML напряму; AI
+    обирає режим, у free-dialogue накопичує raw notes, структурує їх у candidate nodes/gates/outputs/templates, формує draft
+    tree, проводить depth-first review і генерує source/program.ordo.yaml. APF v0.1.0-alpha.13 фіксує user-facing формат показу
+    процесу під час design/review, щоб режим traversal, branch selection, node review decision і validation gate не змішувалися.
+    APF v0.1.0-alpha.14 додає четвертий режим старту — коригування існуючого процесу — з batch та targeted improvement subflows.
+    APF v0.1.0-alpha.16 adds progressive branch-1 authoring, input policy, terminal output binding, and template/mock-example
+    verification before YAML generation. APF v0.1.0-alpha.17 treats manual-tree authoring as an adapter into the progressive
+    review path rather than a separate downstream process. APF v0.1.0-alpha.18 closes the shared terminal output/template
+    subflow as a reusable block across all startup branches: terminal points explicitly choose an output policy; new artifacts
+    are described by free-form artifact intent rather than fixed type lists; the runtime shows available terminal state fields,
+    derives an output recipe with direct-insert vs generated sections, and uses file-first review packages for document-like
+    artifacts. Template/mock/mapping review is simplified to four user decisions: confirm, revise, defer, or remove artifact.
+    Deferred templates are recorded as unfinished and cannot be used by final gates until completed or removed. APF v0.1.0-alpha.19
+    closes the shared validation/handoff tail as the reusable final path for all startup branches and shared subflows: source
+    YAML generation approval, minimal validation, full-validation decision, validation result review, scoped correction loop,
+    final unfinished-items gate, handoff package generation, and final handoff. Validation failure UX is simplified: failed
+    checks show a short issue list and route either into correction mode or a blocked/deferred state; details live inside
+    correction mode. Skipped full validation for alpha is recorded as a limitation, never as passed. Handoff package generation
+    is file-first and blocked by failed minimal validation or active unfinished artifacts/templates. APF v0.1.0-alpha.20 closes
+    the whole-tree integration review after the branch and shared-tail closures: all four startup branches join the shared
+    output/template subflow and shared validation/handoff tail; terminal/deferred/unfinished gates are aligned; legacy unreachable
+    nodes are explicitly marked as deprecated compatibility nodes rather than active orphans; structural scan results are
+    recorded in the alpha.20 validation report.'
+  purpose: ' APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected control actions and blocked control
+    actions; review state must show which alternatives were intentionally not selected and which actions are blocked until
+    readiness conditions are met.'
+contract:
+  id: CONTRACT_APPLIED_PROJECT_FACTORY
+  required:
+  - factory_authoring_mode
+  - applied_project_goal
+  - applied_process_type
+  - runtime_human_role
+  - runtime_ai_role
+  - runtime_entry_point
+  - decision_tree_blueprint
+  - state_schema_blueprint
+  - output_artifact_catalog
+  - output_template_catalog
+  - validation_gate_catalog
+  - first_release_output_scope
+  - approval_to_generate_source_yaml
+  - domain_model_notes
+  - open_questions
+  - draft_tree_review_status
+  - basic_test_case_catalog
+  - domain_input_sources
+  - domain_output_template_sources
+  - approved_decision_tree
+  - tree_review_depth_first_complete
+  - free_dialogue_raw_notes
+  - free_dialogue_structured_notes
+  - candidate_decision_nodes
+  - candidate_gates
+  - candidate_outputs
+  - candidate_templates
+  - free_dialogue_draft_tree_ready
+  - stabilized_tree_branch
+  - self_hosted_authoring_loop_status
+  - focused_svg_policy
+  - graph_rendering_policy_status
+  - language_improvement_proposals_status
+  - module_versioning_policy
+  - graph_annotation_overlay_policy
+  - auto_svg_generation_policy
+  - user_facing_node_description_policy
+  - user_facing_extraction_policy
+  - process_feedback_policy
+  - process_feedback_policy_status
+  - node_review_display_contract
+  - node_review_display_policy_status
+  - confirmed_review_path
+  - current_review_branch
+  - unreviewed_sibling_branches
+  - deferred_return_points
+  - current_node_review_record
+  - node_review_control_gate_status
+  - node_decision_gate_policy
+  - current_node_review_decision
+  - node_review_ordo_layer_visibility
+  - incremental_yaml_update_policy
+  - incremental_yaml_validation_profile
+  - incremental_yaml_validation_status
+  - last_incremental_yaml_patch_summary
+  - full_project_validation_policy
+  - full_project_validation_status
+  - full_project_validation_required_before_handoff
+  - validation_findings_requiring_tree_correction
+  - selected_control_action
+  - not_selected_control_actions
+  - blocked_until_ready_actions
+  - control_action_decision_log
+  - control_action_bookkeeping_policy
+  - process_design_review_rendering_policy
+  - current_process_layer_label
+  - runtime_context_shift_notice
+  - current_node_display_block
+  - existing_process_improvement_status
+  - existing_process_baseline_source
+  - existing_process_baseline_validation_status
+  - improvement_mode
+  - batch_improvement_list
+  - candidate_improvements
+  - selected_candidate_improvements
+  - improvement_to_process_mapping
+  - affected_process_items
+  - before_after_change_cards
+  - target_process_item
+  - targeted_improvement_description
+  - targeted_after_proposal
+  - approved_item_changes
+  - rejected_item_changes
+  - deferred_item_changes
+  - confirmed_change_set
+  - scoped_yaml_patch_queue
+  - existing_process_shared_pipeline_join_status
+  - input_policy
+  - candidate_output_artifact_catalog
+  - terminal_output_binding_policy
+  - terminal_output_bindings
+  - approved_output_templates
+  - mock_filled_examples
+  - user_tree_vision_depth
+  - draft_subtree_status
+  - terminal_output_binding_points
+  - next_step_decision
+  - subtree_review_completion_status
+  - tree_consolidation_status
+  - accepted_deferred_for_alpha
+  - free_dialogue_candidate_output_policy
+  - free_dialogue_terminal_output_binding_policy
+  - candidate_template_hints
+  - output_related_open_questions
+  - manual_tree_input
+  - manual_tree_input_format
+  - manual_tree_input_completeness
+  - normalized_tree_draft
+  - manual_tree_normalization_status
+  - manual_tree_join_point
+  - manual_tree_branch_2_adapter_status
+  - manual_tree_downstream_path_source
+  - manual_tree_missing_items
+  - manual_tree_implied_outputs
+  - manual_tree_ambiguous_transitions
+  - artifact_review_mode_policy
+  - review_packages
+  - mapping_reports
+  - unfinished_output_templates
+  - terminal_path_ready_records
+  - antipattern_gate_status
+  - antipattern_findings
+  - antipattern_evidence_refs
+  - antipattern_repair_required
+state:
+  id: STATE_APPLIED_PROJECT_FACTORY
+  schema:
+    applied_project_goal: null
+    applied_process_type: null
+    runtime_human_role: null
+    runtime_ai_role: null
+    runtime_entry_point: null
+    decision_tree_blueprint: []
+    state_schema_blueprint: []
+    output_artifact_catalog: []
+    output_template_catalog: []
+    validation_gate_catalog: []
+    first_release_output_scope: source/program.ordo.yaml only
+    yaml_hidden_from_pm: true
+    confusion_tests_deferred: true
+    approval_to_generate_source_yaml: false
+    source_yaml_created: false
+    syntax_checked: false
+    semantic_ir_compiled: false
+    pm_visible_summary: null
+    factory_authoring_mode: null
+    domain_model_notes: []
+    domain_input_sources: []
+    domain_output_template_sources: []
+    open_questions: []
+    open_question_gate_status: not_started
+    manual_tree_authoring_notes: []
+    free_dialogue_notes: []
+    free_dialogue_readiness_signal: null
+    draft_tree_prototype: []
+    draft_tree_review_status: not_started
+    current_tree_review_node: null
+    approved_decision_tree: []
+    tree_review_depth_first_complete: false
+    basic_test_case_catalog: []
+    free_dialogue_raw_notes: []
+    free_dialogue_structured_notes: []
+    extracted_domain_hints: []
+    candidate_decision_nodes: []
+    candidate_gates: []
+    candidate_outputs: []
+    candidate_templates: []
+    candidate_open_questions: []
+    free_dialogue_draft_tree_ready: false
+    stabilized_tree_branch: null
+    self_hosted_authoring_loop_status: not_started
+    self_hosted_reuse_enabled: false
+    focused_svg_policy:
+      default_mode: context
+      show: root_to_current_node_plus_current_subtree
+      full_tree_policy: overview_only
+    current_graph_focus_node: null
+    current_graph_rendering_mode: context
+    graph_rendering_policy_status: proposed
+    language_improvement_proposals: []
+    language_improvement_proposals_status: none_detected
+    module_id: ordo.applied_project_factory
+    module_version: 0.1.0-rc.1
+    module_versioning_policy: module_local_versioning_with_parent_language_import_at_explicit_version
+    module_versioning_policy_status: null
+    parent_language_package_version: 0.12.0-preview-rc1
+    language_package_inclusion_model: standard_applied_module_in_m62_language_package
+    graph_annotation_overlay_policy: null
+    graph_annotation_overlay_status: null
+    graph_annotation_overlay_tool_version: ordo_visual_graph_generator 1.1.0-preview
+    auto_svg_generation_policy:
+      default: 'off'
+      generate_only_when_user_explicitly_requests: true
+      reason: avoid visual noise during node-by-node runtime review
+    user_facing_node_description_policy:
+      enabled: true
+      language: user_language
+      include_in_current_node_block: true
+      technical_aliases_secondary: true
+    user_facing_extraction_policy:
+      format: plain_language_sections
+      sections:
+      - what_i_heard
+      - what_it_means
+      - emerging_tree
+      - open_questions
+      avoid_yaml_style_alias_dump: true
+      technical_projection_internal: true
+    process_feedback_policy:
+      mode: feedback_can_change_current_process
+      steps:
+      - accept_feedback
+      - propose_new_step_shape
+      - ask_user_confirmation
+      - update_yaml
+      - reload_updated_yaml
+      - continue_from_current_runtime_position
+    process_feedback_policy_status: confirmed
+    process_feedback_items: []
+    pending_process_change: null
+    yaml_reload_after_process_change: false
+    node_review_display_contract:
+      show_human_description: true
+      show_question_or_action: true
+      show_transition_options: true
+      show_state_updates: true
+      show_gates: true
+      show_artifacts_outputs_templates: true
+      show_open_questions_and_deferred_branches: true
+      hide_technical_aliases_by_default: true
+      details_expandable_on_request: true
+    node_review_display_policy_status: confirmed
+    node_review_ordo_layer_visibility: short_always_detailed_on_request
+    confirmed_review_path: []
+    current_review_branch: null
+    unreviewed_sibling_branches: []
+    deferred_return_points: []
+    current_node_review_record: null
+    incremental_yaml_update_policy:
+      enabled: true
+      when: after_each_confirmed_tree_step_if_yaml_change_is_needed
+      write_mode: small_scoped_patch
+      avoid_full_regeneration_on_each_node: true
+      reason: keep confirmed decisions durable without paying full validation cost after every small step
+    incremental_yaml_validation_profile:
+      name: minimal_yaml_patch_check
+      checks:
+      - yaml_parse
+      - cli_lint
+      - cli_compile_refresh_ir
+      non_goals:
+      - full_test_suite
+      - coverage
+      - validate_state
+      - next_step
+      - factory_output_validation
+      - repo_check
+    incremental_yaml_validation_status: null
+    last_incremental_yaml_patch_summary: null
+    full_project_validation_policy:
+      run_when:
+      - terminal_tree_branch_reached
+      - before_project_generation_or_handoff
+      - when_minimal_checks_or_consistency_findings_request_full_validation
+      checks:
+      - lint
+      - compile
+      - test
+      - coverage
+      - validate-state
+      - next-step
+      - repo-check
+      - validate-output
+      - validate-artifacts
+      - consistency
+      - go-no-go
+      purpose: final integrity gate before declaring the project coherent and ready
+      m62_parent_cli_note: M62 parent CLI validates APF RC with validate-output, validate-artifacts, consistency and go-no-go;
+        APF factory-output fixture remains a module report artifact, not a parent core command.
+    full_project_validation_status: passed_with_non_blocking_warnings
+    full_project_validation_required_before_handoff: true
+    validation_findings_requiring_tree_correction:
+    - none
+    current_node_review_decision: null
+    corrected_review_nodes: []
+    deferred_review_nodes: []
+    node_decision_gate_policy:
+      control_gate_not_content_node: true
+      if_node_has_transition_options_show_options_instead_of_confirm_only: true
+      allowed_user_decisions:
+      - approve_current_node
+      - correct_current_node
+      - defer_current_node
+      applies_to: each current node shown by N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    node_review_control_gate_status: confirmed
+    selected_control_action: null
+    not_selected_control_actions: []
+    blocked_until_ready_actions: []
+    control_action_decision_log: []
+    control_action_bookkeeping_policy:
+      separate_from_tree_branches: true
+      unreviewed_sibling_branches_mean: real tree branches that still require future traversal
+      not_selected_control_actions_mean: available runtime actions intentionally not chosen for the current node decision
+      blocked_until_ready_actions_mean: runtime actions visible to the user but not currently allowed until readiness conditions
+        pass
+      display_in_current_node_state: true
+      do_not_add_not_selected_control_actions_to_deferred_return_points: true
+    process_design_review_rendering_policy:
+      enabled: true
+      applies_when: designing_or_reviewing_process_tree_with_user
+      purpose: Make the user-facing process-design review state explicit, durable, and not dependent on assistant memory.
+      required_sections_for_current_node_rendering:
+      - runtime_context_shift_notice
+      - current_node_title
+      - plain_language_description
+      - question_or_action
+      - transition_options_or_available_control_actions
+      - state_snapshot
+      - gates
+      - artifacts_outputs_templates
+      - open_questions_deferred_or_unreviewed_sibling_branches
+      - decision_prompt_with_mode_label
+      context_shift_notices:
+        tree_traversal: Зараз ми рухаємось по дереву / traversal, а не приймаємо review-рішення по вузлу.
+        node_review_decision: Зараз це review-рішення по показаному вузлу, не вибір гілки дерева.
+        tree_branch_selection: Зараз це вибір гілки дерева / traversal-рішення, не виправлення показаного вузла.
+        execution_gate: Зараз це execution/validation gate, не conceptual review вузла.
+      must_distinguish:
+      - tree_branch_options
+      - node_review_control_actions
+      - blocked_until_ready_actions
+      - not_selected_control_actions
+      - unreviewed_sibling_branches
+      style:
+        show_runtime_state_after_user_choice: true
+        show_yaml_patch_status: true
+        show_validation_status_or_not_run_reason: true
+        use_plain_user_language_first: true
+        hide_yaml_by_default: true
+    current_process_layer_label: null
+    runtime_context_shift_notice: null
+    current_node_display_block: null
+    existing_process_improvement_status: not_started
+    legacy_migration_status: not_started
+    migration_instruction_source: null
+    migration_clause_inventory_status: not_started
+    migration_ambiguity_capture_status: not_started
+    migration_dependency_reconstruction_status: not_started
+    migration_ordo_mapping_status: not_started
+    migration_traceability_status: not_started
+    migration_completeness_gate_status: not_started
+    migration_package_status: not_started
+    migration_unresolved_items: []
+    migration_shared_pipeline_join_status: not_started
+    existing_process_baseline_source: null
+    existing_process_baseline_validation_status: not_started
+    improvement_mode: null
+    batch_improvement_list: []
+    candidate_improvements: []
+    selected_candidate_improvements: []
+    improvement_to_process_mapping: []
+    affected_process_items: []
+    before_after_change_cards: []
+    target_process_item: null
+    targeted_improvement_description: null
+    targeted_after_proposal: null
+    targeted_change_decision: null
+    approved_item_changes: []
+    rejected_item_changes: []
+    deferred_item_changes: []
+    confirmed_change_set: []
+    scoped_yaml_patch_queue: []
+    existing_process_minimal_validation_status: not_started
+    existing_process_shared_pipeline_join_status: not_started
+    targeted_improvement_loop_status: not_started
+    input_policy: null
+    required_input_artifacts: []
+    optional_input_artifacts: []
+    input_constraints: []
+    input_examples: []
+    candidate_output_artifact_catalog: []
+    output_artifact_catalog_status: not_started
+    terminal_output_binding_policy: null
+    terminal_output_binding_points: []
+    terminal_output_bindings: []
+    selected_terminal_outputs: []
+    approved_output_templates: []
+    deferred_output_templates: []
+    removed_output_artifacts: []
+    mock_filled_examples: []
+    template_verification_status: not_started
+    user_tree_vision_depth: null
+    root_node_candidate: null
+    draft_subtree_candidate: null
+    draft_subtree_status: not_started
+    draft_nodes: []
+    draft_branches: []
+    terminal_candidates: []
+    current_branch_review_status: null
+    next_step_decision: null
+    open_correction_items: []
+    subtree_review_completion_status: null
+    approved_for_alpha_with_deferred_items: false
+    accepted_deferred_for_alpha: []
+    tree_consolidation_status: null
+    required_state_fields: []
+    optional_state_fields: []
+    template_required_state_fields: []
+    gate_required_state_fields: []
+    blocking_gates: []
+    warning_gates: []
+    terminal_gates: []
+    template_gates: []
+    handoff_gates: []
+    free_dialogue_candidate_output_policy: null
+    free_dialogue_terminal_output_binding_policy: null
+    candidate_template_hints: []
+    output_related_open_questions: []
+    free_dialogue_branch_3_consistency_status: null
+    manual_tree_input: null
+    manual_tree_input_format: null
+    manual_tree_input_completeness: null
+    normalized_tree_draft: []
+    manual_tree_normalization_status: null
+    manual_tree_join_point: null
+    manual_tree_branch_2_adapter_status: null
+    manual_tree_downstream_path_source: null
+    manual_tree_missing_items: []
+    manual_tree_implied_outputs: []
+    manual_tree_ambiguous_transitions: []
+    shared_output_template_subflow_status: closed
+    artifact_review_mode_policy:
+      default_for_document_like_artifacts: file_review_package
+      short_artifacts_may_use: inline_preview_review
+      file_first_review_required_contents:
+      - template_file
+      - mock_filled_example_file
+      - mapping_report
+      - assumptions_risks_summary
+    available_terminal_state_fields: []
+    free_form_artifact_intent: null
+    inferred_artifact_kind: null
+    artifact_intent_confirmation_status: null
+    output_recipe_catalog: []
+    direct_insert_fields: []
+    generated_sections: []
+    generation_instructions: []
+    review_packages: []
+    template_review_packages: []
+    mapping_reports: []
+    assumptions_risks_summaries: []
+    artifact_review_decisions: []
+    unfinished_output_templates: []
+    unfinished_artifacts: []
+    terminal_output_binding_confirmations: []
+    terminal_path_ready_records: []
+    template_file: null
+    mock_filled_example_file: null
+    mapping_report: null
+    assumptions_risks_summary: null
+    user_decisions_confirm_revise_defer_remove:
+    - confirm
+    - revise
+    - defer
+    - remove
+    shared_validation_handoff_tail_status: closed
+    source_yaml_generation_approval: approved
+    source_yaml_generation_scope: []
+    source_yaml_generation_status: completed
+    minimal_validation:
+      yaml_parse: null
+      lint: null
+      compile: null
+      structural_next_reference_check: null
+      orphan_dead_end_check: null
+    minimal_validation_status: passed
+    validation_fix_status: null
+    full_validation_decision: null
+    full_validation_status: passed
+    full_validation_required_for_final_release: true
+    full_validation_limitation_recorded: false
+    validation_issues: []
+    correction_loop:
+      validation_issue_ids: []
+      proposed_corrections: []
+      correction_scope: []
+      user_decision: null
+      correction_status: null
+    final_unfinished_items_gate:
+      unfinished_items: []
+      accepted_alpha_limitations: []
+      blocking_items: []
+      removed_artifacts: []
+      validation_limitations: []
+    final_readiness_status: ready_for_handoff
+    handoff_package:
+      package_status: null
+      package_files: []
+      package_summary: null
+    handoff_package_status: ready
+    handoff_status: accepted
+    revision_loop_status: null
+    whole_tree_integration_review_status: closed_human_review
+    whole_tree_integration_review_blocks:
+      startup_branches_integration: approved
+      shared_output_template_joins: approved
+      shared_validation_handoff_joins: approved
+      terminal_deferred_unfinished_gates: approved
+      orphans_dead_ends_duplication: approved_human_review
+    whole_tree_structural_scan_status: passed
+    whole_tree_structural_scan_report: reports/APF_V0_1_0_ALPHA_20_STRUCTURAL_SCAN.json
+    deprecated_legacy_compatibility_nodes:
+    - N_BASIC_TEST_CASE_CATALOG
+    - N_DECISION_TREE_BLUEPRINT
+    - N_DOMAIN_INPUT_OUTPUT_SOURCES
+    - N_FIRST_RELEASE_SCOPE
+    - N_GRAPH_ANNOTATION_OVERLAY_POLICY
+    - N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
+    - N_MODULE_VERSIONING_POLICY
+    - N_OUTPUT_TEMPLATE_CATALOG
+    - N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
+    - N_STABILIZED_TREE_BRANCH_HANDOFF
+    - N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
+    - N_TREE_REVIEW_CONTINUE_OR_APPROVE
+    - N_WORKING_CONTEXT_GRAPH_POLICY
+    release_channel: alpha
+    unresolved_active_orphan_nodes: []
+    minimal_yaml_patch_check_defined: true
+    full_project_validation_passed_or_alpha_exception: true
+    document_artifacts_file_first_review_verified: true
+    review_package_template_mock_mapping_verified: true
+    no_active_output_artifact_has_template_status_unfinished: true
+    terminal_path_has_no_unfinished_active_artifacts: true
+    final_readiness_has_no_active_blockers: true
+    handoff_package_file_first_summary_ready: true
+    no_unresolved_active_orphans_after_structural_scan: true
+    all_startup_branches_join_shared_paths: true
+    skipped_full_validation_recorded_or_not_skipped: true
+    optional_output_artifacts:
+    - handoff package
+    deferred_output_artifacts:
+    - none
+    no_document_outputs_flag: false_explicitly_confirmed
+    ai_should_propose_outputs: true
+    release_candidate_status: rc_ready
+    release_candidate_version: 0.1.0-rc.1
+    source_language_package_line: M62 line closure
+    antipattern_gate_report: null
+    antipattern_findings: []
+    antipattern_gate_status: not_run
+    antipattern_evidence_refs: []
+    antipattern_repair_required: false
+    antipattern_blocked_transition_target: null
+    antipattern_repair_target: null
+    antipattern_last_hook_id: null
+    antipattern_last_context_type: null
+    scope_confirmation_status: null
+    implementation_authorization_status: null
+    artifacts:
+      implementation_prompt: null
+      source_code: null
+      repository_patch: null
+      tests: null
+      implementation_artifacts: null
+    claims:
+      implementation_complete: false
+    package:
+      structure_valid: false
+      missing_mandatory_artifacts: []
+      final_label: null
+    process:
+      required_stages: []
+      completed_stages: []
+      stage_order: []
+      current_stage: null
+    conversation:
+      scope_confirmed: false
+    repository:
+      mutation_started: false
+    authorization:
+      repository_mutation: false
+    node:
+      decisions: []
+      responsibilities: []
+      execution_started: false
+      route_explicit: false
+      authorization_explicit: false
+    evidence:
+      supports_final_label: false

@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.milestone.report.v1",
+  "milestone": "M70.4",
+  "title": "Production CI/release validation",
+  "status": "implemented-production-validation / passed-validation",
+  "scope": "Validation of existing M70 policy and M69 CI/release gates; no new feature.",
+  "test_count": 46,
+  "standard_status": "passed",
+  "strict_status": "passed",
+  "untouched": [
+    "packages/*",
+    "runtime core",
+    "compiler behavior",
+    "opcodes",
+    "compiled IR",
+    "lockfiles"
+  ]
+}

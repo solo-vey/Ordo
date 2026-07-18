@@ -1,0 +1,1546 @@
+{
+  "integration_id": "APF-RC18-INTO-ORDO-LANGUAGE",
+  "status": "accepted",
+  "apf_version": "v0.1.0-rc.18-csg-language-baseline-aligned-confirmed-closure",
+  "blocking_issues": 0,
+  "ordo_core_changed": false,
+  "apf_internal_csg_enabled": false,
+  "source_dir": "integrations/apf/v0.1.0-rc.18",
+  "files": [
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/CURRENT_STATE.md",
+      "sha256": "d1b65ca9c9588725d1e86921a776f4bf7bc4ed5c52dbad9dba569688ce1abd44",
+      "size": 1102
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/README.md",
+      "sha256": "26d391b4cc551b0c8bb8a4f1da367354663863b79ab02737aba4c1bb18d10a69",
+      "size": 950
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/README_NEXT_CHAT.md",
+      "sha256": "be4d5d03885906dd75daeb9fc71539cb8725e284acbfc93dfb1aa0fc08b61107",
+      "size": 263
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/START_NEXT_MODEL.md",
+      "sha256": "9ededbed3dcc3ebc88582f7af76e8e94bb6c713cf300560d9e4d07b9ef7e7aa5",
+      "size": 684
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/VALIDATION_REPORT.json",
+      "sha256": "d0e83bef0655ad70290f4ccabc29aa004c870bb204facf45d3d46cccda9e36f0",
+      "size": 9190
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A0/A0_DECISIONS_AND_NEXT_PATCH_BOUNDARIES.md",
+      "sha256": "e091d954d171b6ebc14b11e1a023b952c2c7d5392f5a60322819c822d5344a6b",
+      "size": 3279
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A0/APF_ORDO_V0_12_ADAPTATION_SCOPE.md",
+      "sha256": "5e6645ebf1114c957f7eac8fc223cc5ce23fef453b1a0fffe688e42b67eb1b83",
+      "size": 4364
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A0/APF_ORDO_V0_12_COMPATIBILITY_MATRIX.json",
+      "sha256": "4a72e648b1c479302eb78e47af720b61e2c3e12be041cc5769d6c8a59d639679",
+      "size": 12328
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A0/APF_ORDO_V0_12_COMPATIBILITY_MATRIX.md",
+      "sha256": "8c68c8e9654bc90a71470cedff2bce818abbfa36deb4137e3f643ac3a229bbba",
+      "size": 7845
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A0/README.md",
+      "sha256": "7c26c098a8654ab19adbf0d3b4a5b0e5dbfaec6bb210f9d5a3e184a385f4a1d7",
+      "size": 1114
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A0/VALIDATION_REPORT.json",
+      "sha256": "a7a0fc842e4dedf6993a40b459683b3a5fdef17224538cf942ab59c2e8d1691e",
+      "size": 1044
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A1_PROGRAM_CONTRACT_AND_METADATA_ALIGNMENT_REPORT.md",
+      "sha256": "9ea4b2df432351cb7ef0cb9da5ae220b98391dec2403e02893599903ce687681",
+      "size": 1094
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A2_INTERACTION_PROCESS_RAIL_CONVERSATION_ALIGNMENT_REPORT.md",
+      "sha256": "927efa17aca5bc3a20dc916390318a0e82925619f508592d0ca6ed3b6642aa3d",
+      "size": 1398
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A3_PROMPT_REGISTRY_MIGRATION_REPORT.md",
+      "sha256": "6f0e9fc7d6461ad954b34d9f80981ca2908f1e20886e6d3c4c67ccda7a0c9fcc",
+      "size": 1025
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A4_IR_STATE_CHECKPOINT_ALIGNMENT_REPORT.md",
+      "sha256": "408cec38fc86d70818d7fed035aff02b1ace4e5049849c42c818ac3cd703acd2",
+      "size": 1438
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A5_VALIDATION_PROFILE_AND_RELEASE_HYGIENE_REPORT.md",
+      "sha256": "fcebb3ae9891a9a17fe5250ee165b130dbcda955be48ddd9cfc479913bcc6da5",
+      "size": 1460
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A6_REAL_CAPABILITY_AUDIT.json",
+      "sha256": "587a125e171e5385b569ac53ac9612c4d8187f4024af7fe8e2256ebf80520688",
+      "size": 5711
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A6_REAL_CAPABILITY_AUDIT.md",
+      "sha256": "4a7a9c9c98231d55850695aef9246a4ed05044ef9b6dd57b4a37a89f7786c593",
+      "size": 3494
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/adaptation/ordo_v0_12/A7_REGRESSION_VALIDATION_AND_RELEASE_CANDIDATE_CLOSURE.md",
+      "sha256": "85206a100ce4b1893eac2ae4f249d8fff96f61b0023a480f98453162b4e0f2f1",
+      "size": 2492
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_clean_source.zip",
+      "sha256": "7194f6f6c9fac173bc9d8cfe283d5d721b2a4748175346136daa95e59f17a178",
+      "size": 260827
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_dev.zip",
+      "sha256": "b3833f9efe27244475f28874eeede05e8a48bf897bf437909e7d3b3b45a33600",
+      "size": 1225408
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_runtime.zip",
+      "sha256": "b3455df20b81aad636564488dc6c2e76a3ee134c814e500be7a12295b5c56d17",
+      "size": 685370
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/backlog/APF_DELTA_BACKLOG_REGISTER.md",
+      "sha256": "e92117a555d7b2a3a926af6baea5a6c91ca2c535a0164675da910cb3beebf644",
+      "size": 3100
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/checksums/CHECKSUM_MANIFEST.json",
+      "sha256": "ddabcb92bc9a4fe157886656f074f229d5b8480f9c48bfc8fdacc8d9cb0e9b27",
+      "size": 61272
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/checksums/SHA256SUMS.txt",
+      "sha256": "7d2ac6be2c10c314fed498953a5b6ea5414bc59d5719a3d4b49d5d30015cc611",
+      "size": 38995
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_A2_INTERACTION_PROCESS_RAIL_POLICY.md",
+      "sha256": "c2200fd97dbafbc42ae683ac3c5af39aeb4de2fd600bab9d221cbff3025f1b9f",
+      "size": 1983
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_A4_IR_STATE_CHECKPOINT_ALIGNMENT_POLICY.md",
+      "sha256": "1c88bd504627a9b156f17839101896b6d1c432a856b4efe64d89917fefbf6465",
+      "size": 2095
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_A5_VALIDATION_AND_RELEASE_HYGIENE_POLICY.md",
+      "sha256": "d9822cbb217b7554d369e4600ab3de99e7a7cf8a93da7910e5c09ff890519740",
+      "size": 2680
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "sha256": "3d559f9a2c48b953069e344268e1899e6a7aeed03dacd9345e9e258ded0cf1af",
+      "size": 5430
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_SEVERITY_RULES.yaml",
+      "sha256": "17b5602ec91ac1fb58ffacd8617d6ccc403efd55c70fb3441f9ac2fe3b60e1be",
+      "size": 2562
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_DECOMPOSITION_PROPOSAL_POLICY.md",
+      "sha256": "665e5e1014fc936b632be57daeaa4883d13e9d27a885c461350fc89a46184580",
+      "size": 1062
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_PACKAGE_ARTIFACT_CONTRACT.yaml",
+      "sha256": "5196ada185c3e1a580eb3aae21300bd41327409f39b3974095f3717f796fc8b0",
+      "size": 2643
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_REVIEW_CONTRACT.yaml",
+      "sha256": "7213a6179f23e0dc1c048a4360a781777d7e147a47ed0e85e471898442481a6c",
+      "size": 3207
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_REVIEW_FLOW_INTEGRATION_CONTRACT.yaml",
+      "sha256": "b770a5a52993caca5a6d82da93c64233148d367ab96e45ff9191cd0b4b9777a7",
+      "size": 3702
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_REVIEW_POLICY.md",
+      "sha256": "158c00b29c058afcfc5f059e8796a0010fbc7ad2295da0cf4ce24dd054ab44a5",
+      "size": 2102
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_REVIEW_SCOPE.yaml",
+      "sha256": "9d0e75896f48aac0b707517d1d0ca67cecd26eb99761a2d0ef2e01da131f77ff",
+      "size": 1207
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_VALIDATION_INTEGRATION_CONTRACT.yaml",
+      "sha256": "483a4921fda7b8429362ac1501a3ecb3447d7cbfd77b9df2ed262ff917f6a68e",
+      "size": 3161
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_BASELINE_SELECTION_RULES.md",
+      "sha256": "68bd7783bbec29fd914784f49891f1234c6ea4cf553982a09ca3cb47e528e451",
+      "size": 627
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CAPABILITY_CLASSIFICATION_POLICY.md",
+      "sha256": "edd7322abf53b8efc56bf6ae54469b3af28866ad7895136d5a1ecfb3b405f618",
+      "size": 702
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONSUMER_ROLE_MODEL.md",
+      "sha256": "62e92569c8c72260ac4e6cdaf662d803a78ae13cdbac7d803a24f275090a08ae",
+      "size": 1335
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_AUTHORING_FLOW_INTEGRATION_CONTRACT.yaml",
+      "sha256": "7a6c519ba0470236c078be6d5f1489741ba8affad2cf156433ce6a21a6d124d8",
+      "size": 1289
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_CLASSIFICATION_CONTRACT.yaml",
+      "sha256": "57656bbf03557dc74f04357a7dfabf9f99a5cba4af73b37cffa3a94b311880db",
+      "size": 3643
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_CLASSIFICATION_POLICY.md",
+      "sha256": "e79080fce58e7095f56fdae89bc5726b03dfcea48b4b5780e991ee8c134c7cc2",
+      "size": 902
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_PACKAGE_AND_VALIDATION_CONTRACT.yaml",
+      "sha256": "e986ddd47dc672a02ebc1874fab73dfda5edd97aabf245071f1bdf1119529492",
+      "size": 1614
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_POLICY.md",
+      "sha256": "fee86cbc592b5c7c39a453bc56a981c76548973eda268b22c900e4ce11655c51",
+      "size": 1168
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_RESPONSE_AND_ESCALATION_POLICY.md",
+      "sha256": "5bc0ed450ecb2a8b43c7bd9fcedcaa0a29bdd2653f9adabb6f2cd31ce5ba6720",
+      "size": 1922
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_SCOPE.yaml",
+      "sha256": "cb982f2eb75ead6b0e3772c087a46932bd4e88f7ac1d417453fe004e7421780d",
+      "size": 1782
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_STATE_PROTECTION_AND_PROCESS_CONTROL_CONTRACT.yaml",
+      "sha256": "aa96cb44aae796ccb342e6cc596ba342ef6dd8758bd8faca69d5ba530378d68f",
+      "size": 4866
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_STATE_PROTECTION_POLICY.md",
+      "sha256": "4b383c451acf45fda519d4a2f9854ea270d41fd1329e7ecef7cebe553d695e8d",
+      "size": 1401
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_STRICTNESS_RESPONSE_ESCALATION_CONTRACT.yaml",
+      "sha256": "d86d876ccc5fde9a865cd28abcfda9c0fc57397893376d188acb2849dd45b735",
+      "size": 4605
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_AUTHORING_FLOW_INTEGRATION_CONTRACT.yaml",
+      "sha256": "c417f32c73554f17ba5793c4a2654389762f066b9afb0584d48bd05eb180356a",
+      "size": 2845
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_AUTHORING_FLOW_INTEGRATION_POLICY.md",
+      "sha256": "cc4094bb21e727ab1d39597c72c81c36b5358947be77ac025ff1e241c68ee86c",
+      "size": 1427
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "sha256": "5ad7ddc1173ee9a397b2f95c63c4f35e61e493ad1c1d169be35dfc1014bd229c",
+      "size": 6149
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_VALIDATION_GATE_CONTRACT.yaml",
+      "sha256": "9c693652d973e570115bb0e841d0ccac7074bbd3f4669d01b86d67e1944cd7fc",
+      "size": 3779
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_EXECUTION_TRACE_ARTIFACT_CONTRACT.yaml",
+      "sha256": "2dc33f70cf670da52b7517c760b0d3878306054d17c5d519ac370a07463aa13d",
+      "size": 2328
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_TEST_CONTRACT.yaml",
+      "sha256": "f405a8657804e47ea5350092004a9249bb5de2ba88b0c2304e936cf1cd65af2e",
+      "size": 1480
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_AND_TEST_POLICY.md",
+      "sha256": "94a370c28e30522030350c131df08ed86b2020663c4eb32da5b1502713462db3",
+      "size": 864
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_CONTRACT.yaml",
+      "sha256": "1c5062bb109f551a1965ea828b98f83a6f8d7978eb07e833aac746df703085b1",
+      "size": 2329
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_PROMPT_ATTACHMENT_MODEL.yaml",
+      "sha256": "165b68a7a2980cdc0551f537841058fc9765187d56e1a9f0c1feb857fbcd65c8",
+      "size": 1223
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_PROMPT_REGISTRY_CONTRACT.yaml",
+      "sha256": "2baf424d096a5669e92e8fc483381d802f6fc2f85841ab19a079681d26f269a1",
+      "size": 1403
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_GENERATED_PLAYBOOK_PROMPT_REGISTRY_POLICY.md",
+      "sha256": "987aeb6c191789fc2bc14696b6ae7911efbd2335bbea0eeb7130efca8957f065",
+      "size": 907
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_HUMAN_CONFIRMATION_REGISTER.md",
+      "sha256": "5d0da5a1e0b79438009e8a7a3918e7bdd71d76fca81918310f96ba3f9bbce354",
+      "size": 2526
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_INTERACTION_MODEL.yaml",
+      "sha256": "bcd19c00d4bdb2687a37d9c428d6140409ff90e2ab8e1183b1329ef29a8b2635",
+      "size": 1243
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_MINI_PROMPT_CANDIDATE_AND_APPROVAL_POLICY.md",
+      "sha256": "a58fdfd3789ed21a7d3851b0b119bca8a8e16aff7303e49dd8781c6f7f2d7c63",
+      "size": 2236
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_MINI_PROMPT_CANDIDATE_PROPOSAL_CONTRACT.yaml",
+      "sha256": "ba6b1f6538dbafbfaecb854d13aa7b9ca0089a9caf42d5aa0539555f0608d02a",
+      "size": 2800
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_MINI_PROMPT_HUMAN_APPROVAL_GATE.yaml",
+      "sha256": "58a3cf6619a46029759881622f38b8b2b5988f8e17691d006e610c3e1e2466e5",
+      "size": 2166
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PACKAGE_CREATION_HARDENING_AGGREGATOR_POLICY.md",
+      "sha256": "5f3e87e97ef4fb110a3c22c862b999abe0d5353a096e57fa4b40b724d63e802a",
+      "size": 1495
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PLAYBOOK_AUTHORED_MINI_PROMPT_FLOW_INTEGRATION_CONTRACT.yaml",
+      "sha256": "95eec511c8d0a2c693dfe474acdb9d7d7f9b5d1a4f43ba014d32c250dc3beae0",
+      "size": 1051
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PLAYBOOK_AUTHORED_MINI_PROMPT_FLOW_INTEGRATION_POLICY.md",
+      "sha256": "70a862c89e4c90a01ff506882a9a6bacbba9c379d0849fc2291e31ed0758a085",
+      "size": 1540
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROCESS_RAIL_AND_CONVERSATION_SEMANTICS.yaml",
+      "sha256": "570099f60f471dc698e24f31e2cb20a98efb84cb27bc4e54d920b464a3fd52e6",
+      "size": 1909
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROGRAM_LEVEL_CONTRACT.yaml",
+      "sha256": "a3c2a718f28fa2d3b43d8aa78f88e743cc0e393dfa73173f410c768a6200b462",
+      "size": 7720
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROGRAM_LEVEL_CONTRACT_ALIGNMENT_POLICY.md",
+      "sha256": "fc13b54e2a23e1c8d4112d0ae64bdb706d03fe13eb5ff66f1d88409ec17cf18b",
+      "size": 2632
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_APPLICATION_TRACE_CONTRACT.json",
+      "sha256": "21ed1159803da6d05daaa1ccb6b4fb222ca5efe8fcfc9c3082a53230765c3dfc",
+      "size": 655
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_ATTACHMENT_MAP.yaml",
+      "sha256": "8d0bc0ae0a5f54993c9b4d97ea0ac134f691a0fd84de28d8e0f200f1b751b625",
+      "size": 1063
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_REGISTRY.yaml",
+      "sha256": "3487a4b45c93cc1a7d66ea95d7777b0eac9f7fc78660a86925ae09c840474349",
+      "size": 3692
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_REGISTRY_MIGRATION_MAP.yaml",
+      "sha256": "d1f4acc719a9ea4fec11af6c15fd52821435a4e4b3cb9aaac721ae35c81fe07a",
+      "size": 1416
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_REGISTRY_POLICY.md",
+      "sha256": "f1b30b46d1c22968bf8a66ff8085b0e38771b496eec6375573c44906de3386f2",
+      "size": 1303
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_SUFFICIENCY_REVIEW_CONTRACT.yaml",
+      "sha256": "6abbbc949849df88c556871707cee12115066ba7db6c9349393f33f65842cdec",
+      "size": 5153
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_PROMPT_SUFFICIENCY_REVIEW_POLICY.md",
+      "sha256": "71021145d07f238ea3d7fc48b771322bb8a7a5df80b110218711cea2cd0422ae",
+      "size": 4265
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC10_CONFIRMATION_REGISTER.md",
+      "sha256": "e836023133ffb1d521168f7cb40e72165d35258a61702c2eed04111d480b6414",
+      "size": 836
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC10_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "fa5cc332efe6601feed30ba6c2c185eed5eb5aa85826fd0d5094b640741f566b",
+      "size": 1261
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC10_HANDOFF_READINESS_POLICY.md",
+      "sha256": "deaafd11a9180c708e4d7b8dcda2a39ee782daf13b6d6efd02e877840511c23b",
+      "size": 1196
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC10_TO_RC11_CONFIRMED_HANDOFF.md",
+      "sha256": "f9dcfce5a8db1b887e84739e47a5c32558344212b5017acd97c2614c7ebe4b83",
+      "size": 1084
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC10_TO_RC11_HANDOFF.md",
+      "sha256": "9e578f81a1a360bf6729c75d7e173461576251649f2283ab4a1a151bc8d43fb1",
+      "size": 573
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC11_CONCRETE_PLAYBOOK_STARTUP_GATE_POLICY.md",
+      "sha256": "f8c0881ad6658a070548a778a526071d0ce59a38bfc682ad4135556911e7dd0d",
+      "size": 930
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC11_CONFIRMATION_REGISTER.md",
+      "sha256": "ed9798053688c17b3fd0e129540fb579080b315dface95270981be7a0a4a82ee",
+      "size": 578
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC11_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "9743d1fdf648477f2aa5cecee0e2483a5541d6e5d1519662d30cfe75704b2954",
+      "size": 1408
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC11_TO_RC12_CONFIRMED_HANDOFF.md",
+      "sha256": "f80c97e3e320689564274efdfbafb8d50f3c1150141d18a2ee161553ef30569b",
+      "size": 956
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC11_TO_RC12_HANDOFF.md",
+      "sha256": "f87013ada36bb855c7e423c21de4b2990a283c8ecc0e3fd9794b30dde690a003",
+      "size": 261
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC12_CONCRETE_PLAYBOOK_INTAKE_GATE_POLICY.md",
+      "sha256": "dd94477f5061847e5e433dad00f500f6e11529bbe473ad51b41418dc0543b41d",
+      "size": 1124
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC12_CONFIRMATION_REGISTER.md",
+      "sha256": "97dc9a9c72db0700c15532ee0c2acac5b77a0ff75acbc9e58c77f56c649f19e1",
+      "size": 496
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC12_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "df5707603933c77daccdaa236c963898293937f11905218606dc90aea2a9894e",
+      "size": 1145
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC12_TO_NEXT_USER_DIRECTED_HANDOFF.md",
+      "sha256": "6c84457b66124ef732843c3a16b62e258911721c26495ec91ffed94d49f6a2e4",
+      "size": 599
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC12_TO_RC13_HANDOFF.md",
+      "sha256": "cc386f6c5d34d8ea4abbe0ef294d59c810ad80560e77786c1e094fc810fcd0db",
+      "size": 166
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC13_CONFIRMATION_REGISTER.md",
+      "sha256": "e2e3aaff8d8f69d317f5dffd3ade45b9ae46b11c50e23dd500bbca9742ba9644",
+      "size": 832
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC13_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "8e994512efebaaf2b7a3e2537fd063e5af26733ef9b225211c07afd92f1d548f",
+      "size": 1247
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC13_ORDO_V0_12_ADAPTATION_RELEASE_CANDIDATE_POLICY.md",
+      "sha256": "80204e4bf0daa330da07291407d213a0590b96a4d9879fbe9c4a6b2b5e8ca3fb",
+      "size": 1082
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC14_CONFIRMATION_REGISTER.md",
+      "sha256": "3b17effa10b466f987a9a66938af7311226e3437a12fb9e60fde1e70e490ba36",
+      "size": 587
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC14_PLAYBOOK_AUTHORED_MINI_PROMPT_SUPPORT_POLICY.md",
+      "sha256": "12440695f3d64bea7b3e0c3dee69c1647c56cf23edec37644d8e8b27ed45edab",
+      "size": 1122
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC15_CONFIRMATION_REGISTER.md",
+      "sha256": "67a82ad40ab9b018234034a9602603aa7ce0ceca418cbad2effcf6fd74e2f994",
+      "size": 785
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC15_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "177e8f480f7bef057f1f1cd8e3c3c39503f3041dc66841e019ccd724cc364cb7",
+      "size": 1041
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC15_EXECUTION_TRACE_SUPPORT_POLICY.md",
+      "sha256": "8206146e213444208f284c898859713d67411da4a300d872bff94dc75dc7881d",
+      "size": 967
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC17_CONFIRMATION_REGISTER.md",
+      "sha256": "7e20218fe6fdeade715400e82cc48d6a7608dda2953de46616c97f174bd3eced",
+      "size": 775
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC17_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "e9dcec154e7868fc646544be0007d3a36007c0bc65619baf0f699892c19a82aa",
+      "size": 1115
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC18_CONFIRMATION_REGISTER.md",
+      "sha256": "5283d80502d7f125737e6f5daf390f7b5388f5061784abcde4fe2ffbd4c3ed2e",
+      "size": 912
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC18_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "11d962d8c11f10f2d8b4d72d1b79b66e6bdb8bdb04994443643c5c3a654439ab",
+      "size": 1139
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC7_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "5a2cc7917902effa1ef0561d8e3b89860f8430c35dc587287e8c1601fa42f00e",
+      "size": 2578
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC7_CONFIRMATION_REGISTER.md",
+      "sha256": "e148a42b991d35f130cbc7c375c9fd743d7a207f9ad5436897407128a8080afe",
+      "size": 3292
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC7_TO_RC8_HANDOFF.md",
+      "sha256": "af191cab3279beb9ccd0c2b1b299bff0ee905ac2778d2e1e1257467a45e4d3ff",
+      "size": 1333
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_CONDITIONAL_CONFIRMATION_GATE_MODEL.md",
+      "sha256": "e3d7918173a180a9534948f50e659404b1f77a29b03ca15ac497c91481469642",
+      "size": 1154
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "1632f589fd7e80a75cd2ad1c014930a3fe82ac286da984bf7bd9779bfe0b7d09",
+      "size": 2235
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_GATE_ORDER_CONFIRMATION_POLICY.md",
+      "sha256": "144ea79a91e3c2073c6e32d9c73746aa376f4299e0555f5f872c24d25038a151",
+      "size": 1239
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_NODE_CHANGE_IMPACT_REVIEW_POLICY.md",
+      "sha256": "79bca911c8c1698173384195f1c3200f19d76cfb51f89eec4fd3f4c81f8c3d8b",
+      "size": 1329
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_NO_SILENT_PROCESS_MUTATION_POLICY.md",
+      "sha256": "c8c4d3223df366a0f73e724618c2c8676af0f80367461ddc07ce156ef631bec0",
+      "size": 1122
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_PACKAGE_PROFILE_CHANGE_CONFIRMATION_POLICY.md",
+      "sha256": "7206f53d5c144a68b1ac5f2726338918f6bd8271997e2cc853ce3204d112879b",
+      "size": 981
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_PROCESS_RAIL_CHANGE_CONFIRMATION_POLICY.md",
+      "sha256": "a6c5c3070e3153c14f997b8212825fddc2b989821350b57baf95fb8cb7dc98ce",
+      "size": 866
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_TO_RC9_CONFIRMED_HANDOFF.md",
+      "sha256": "0ca22cfb425e9388c617832f074bbc00756cbe902daad8b9e6643c6231b7381b",
+      "size": 1272
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC8_TO_RC9_HANDOFF.md",
+      "sha256": "8b6dd2c0231aece4a7268e12da47fcad514f8f45d146882103b536db99171648",
+      "size": 1235
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC9_CONFIRMATION_REGISTER.md",
+      "sha256": "abbf9ade724dd51f268eab388a55261b8132b7e99282bb028aecd6a5479d224b",
+      "size": 1738
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC9_CONFIRMED_CLOSURE_ACCEPTED_BASELINE.md",
+      "sha256": "74bae4dc3e01095a5e5794a32ab1de1039e7e7afbdbf8f8526ae386530ca8c94",
+      "size": 1911
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC9_REAL_MODULE_TESTCASE_GENERATION_POLICY.md",
+      "sha256": "2358be16e72b4753135b85d824a4982fcf98e67e7000737a51f22f9776e03cb1",
+      "size": 1193
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC9_TESTCASE_UTILITY_PACKAGING_POLICY.md",
+      "sha256": "f0072c01d47757fcea5cf27612ac390aed4c25dfa23e824f13cee393a7552a06",
+      "size": 807
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC9_TO_RC10_CONFIRMED_HANDOFF.md",
+      "sha256": "9e7cb7c422964dcaeaec0cf835b28d5d02b72f601f7ac99db8cfe30481ff92d6",
+      "size": 1028
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RC9_TO_RC10_HANDOFF.md",
+      "sha256": "cf70ed2b1dc42ee371ce153ac70e5675277b283c5451740255c75eaa40990ede",
+      "size": 576
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RELEASE_HYGIENE_AND_DERIVED_ARTIFACT_SYNC.yaml",
+      "sha256": "09b325b80add99b6241bb14b450251afe5658b7da5496cac54789b9bfe31421b",
+      "size": 2530
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "sha256": "856abfa63a582d2078f1079e926616749480e5fe610f5bf42824efd23b82d5aa",
+      "size": 1605
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_SOURCE_OF_TRUTH_CHAIN.yaml",
+      "sha256": "4985f6aad3824f0119d24193fdecb7bedb76aecfea5f37af6f7f5915c706bd0f",
+      "size": 1602
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_RUN_STATE_CONTRACT.yaml",
+      "sha256": "373a812be29f3d06a510af58dd2eee08dec4fe69569bff9720a6fa040b32f48c",
+      "size": 1953
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_VALIDATION_PROFILE_ORDO_V0_12.yaml",
+      "sha256": "b56295c559d898cfb42eb1a0442cfcfc975f2d1650f021d118ec221502595881",
+      "size": 3807
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/APF_VS_PLAYBOOK_AUTHORING_BOUNDARY.md",
+      "sha256": "58524c85af6b2b40424e958434fe59e08dc1fbb69249131c2efbda64e861e251",
+      "size": 665
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/docs/HANDOFF_READINESS_CHECKLIST.md",
+      "sha256": "93254600b048753df82efbac179092869a0556ef29ea7abf306cdce93791dcc6",
+      "size": 1080
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/examples/APF_RC8_CONFIRMATION_GATE_EXAMPLES.yaml",
+      "sha256": "483610368f1666966e0dedbbc3cb760113edf9a1d1575ba9a0167bd5b6dd2162",
+      "size": 1308
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/handoff/APF_MAIN_REASONING_AND_DECISIONS.md",
+      "sha256": "8d7001382484048524b43372be00fd17ae783c6f0738f870f30ce33ca983de69",
+      "size": 1391
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/handoff/START_PROMPT_FOR_NEW_CHAT.md",
+      "sha256": "201a7f803f0998695147520aac663758f266b47e94dd1db0e9d50d784c6276df",
+      "size": 622
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_0_SCOPE_AND_DECISIONS.md",
+      "sha256": "e627019fd83f542a6750618898818f674f577971685716f5346e846dad9b556a",
+      "size": 2094
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_1_CONTRACT_AND_REVIEW_RECORD.md",
+      "sha256": "90ce6393834a0a4c5338145fec95b47ae39a802ce9a89c89d9fc75c4520ce422",
+      "size": 787
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_2_ATOMICITY_GATES_AND_SEVERITY_RULES.md",
+      "sha256": "cc45c81bb11320993f34c521ad63a0e442b850465a18b67ebcc46d88ae5f0093",
+      "size": 1114
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_3_REVIEW_FLOW_INTEGRATION_AND_DECOMPOSITION_PROPOSAL.md",
+      "sha256": "48221f464b7b45f79badef16bb1e0df3cb81d749684beae9715e58c1cfae434d",
+      "size": 660
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_4_TEMPLATES_PACKAGE_ARTIFACTS_AND_VALIDATION_INTEGRATION.md",
+      "sha256": "c34410d65460c87aa1577f7ced5487321aa212e11736898dc22bb43a02521a2a",
+      "size": 699
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_5_REGRESSION_VALIDATION_AND_RELEASE_ASSEMBLY.md",
+      "sha256": "58686f1ba6a10a9e74aca2a5c938ce7cb0d7b750d6bf8f23957195deba227cbb",
+      "size": 438
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/atomic_step_review/ASR_5_REGRESSION_VALIDATION_REPORT.json",
+      "sha256": "704a52a22e5c1ab0e1e282d34de2164b2b0d79907dfb4d94565d3b66f325cfa3",
+      "size": 1016
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/CSG_0_SCOPE_AND_ALIGNMENT.md",
+      "sha256": "c0b122b2da502743a5eb1c97aeb639d7d6f3c3bd6e5fdfba88f5f567790e63ac",
+      "size": 729
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/CSG_1_DEVIATION_CLASSIFICATION_CONTRACT.md",
+      "sha256": "3a4c26581de7b766060e4f348bbfed7b2c13850d69036f7e53893e6fde829e1a",
+      "size": 389
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/CSG_2_STRICTNESS_RESPONSE_AND_ESCALATION_POLICY.md",
+      "sha256": "302ea8c098b9c9c06007f0584837d4ffaec2483205dd9c7924f34351c2d80c14",
+      "size": 685
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/CSG_3_STATE_PROTECTION_AND_PROCESS_CONTROL_CONTRACT.md",
+      "sha256": "ff8adab708de63e0d3cbca2274d55bec8a624fedb866c33ce21c2205ff2c61ba",
+      "size": 774
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/CSG_4_AUTHORING_PACKAGE_VALIDATION_REGRESSION_INTEGRATION.md",
+      "sha256": "c1ae86a2434bee5d1c5a3c68fdbcd56f6f7f1bcc2c8901160d3395641e4ab9cd",
+      "size": 749
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/CSG_5_RELEASE_CANDIDATE_ASSEMBLY.md",
+      "sha256": "d47f010d73682193a0a59beb56acb9baaf74d6f104750de69b9cb66fa5b0574f",
+      "size": 1175
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/alignment/CSG_A1_ALIGNMENT_REPORT.md",
+      "sha256": "27c846544461cc0142649d973c7adf29b6bd38713c0ed8e7378f0003aee12544",
+      "size": 501
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/alignment/CSG_A1_COMPATIBILITY_MATRIX.yaml",
+      "sha256": "12a36ed6421d10695aa32360334c0b70841c1c01a443e036b75ab83d75fbc715",
+      "size": 1173
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/conversation_scope_guard/alignment/CSG_A2_REGRESSION_VALIDATION_AND_RELEASE_ASSEMBLY.md",
+      "sha256": "29cff93b632ab904bb391dea8cfefe472498467ce4a6f634a1c28131beb46bf9",
+      "size": 905
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/ET_10_RELEASE_CANDIDATE_ASSEMBLY_REPORT.md",
+      "sha256": "e6611aa52b075697458bc7e7e7a93179a2d5a3eec32534a4a09d6f19b84089e3",
+      "size": 592
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/ET_5_GENERATED_PLAYBOOK_TRACE_ARTIFACTS_REPORT.md",
+      "sha256": "92cd38c9c95a5858b6a70642ff4392729f76b3f4701bee67a3d5f6c2cabbe173",
+      "size": 541
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/ET_6_VALIDATION_GATES_REPORT.md",
+      "sha256": "4c6b47ae0661dcb58671903097f8a1828c34abd853fa833976a592ee4246e4fb",
+      "size": 720
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/ET_7_RUNTIME_ADAPTER_CONTRACT_REPORT.md",
+      "sha256": "26748dd13fca3402c8c93c97e09b67dbf7249303f646cc8ac94da4a84d4aa515",
+      "size": 1018
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/ET_8_TEMPLATES_AND_AUTHORING_FLOW_INTEGRATION_REPORT.md",
+      "sha256": "cb79331fbfb9f674a49752fa25a16b466cd16e787a48725db904e79e493bf4f7",
+      "size": 678
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/pilot/ET_9_REGRESSION_AND_PILOT_REPORT.json",
+      "sha256": "33c0d8db68c953839d602055873d9c55ceb53f5684f3a34675007d3104516d42",
+      "size": 979
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/pilot/ET_9_REGRESSION_AND_PILOT_REPORT.md",
+      "sha256": "59cc836a5dc4c453c04f13ee60f2a3c173ba1811b3dea937072e645aeba95cbd",
+      "size": 1634
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/pilot/trace_disabled_playbook_config.yaml",
+      "sha256": "eb90905228b17395993ef691753256c3cff447ff2fd438d43c4f0de0bd2dd48a",
+      "size": 357
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/pilot/trace_enabled_adapter_conformance.yaml",
+      "sha256": "8ff6cb72328f9d682e24410ffc56e1cf213c0b8e34f616f3dfb865519b496dc8",
+      "size": 479
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/pilot/trace_enabled_event_mapping.yaml",
+      "sha256": "b093b1b7d73c001ae95b3ec76d83ead5a9da7cee776c73834f39302a93c3e19a",
+      "size": 483
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/execution_trace/pilot/trace_enabled_playbook_config.yaml",
+      "sha256": "b3b2e60ebc1bbf0c1d15003531df6029ad6bbc7a244357c36ad6d74d7978f311",
+      "size": 390
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/DD_APF_PMP_001.md",
+      "sha256": "3120d0547e8989ca795f024e8400b0fe7a963ca4a2f1cfcec14d864180e32dae",
+      "size": 2009
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_0_ENHANCEMENT_SCOPE.md",
+      "sha256": "3d001a0282242b18987e2219cac5f1a2792a2051887493fc9138a330fa57f130",
+      "size": 4018
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_1_PROMPT_SUFFICIENCY_REVIEW_CONTRACT_REPORT.md",
+      "sha256": "afb125c446d69f908229b54ef53b069ab0a87de5c99a286a88ba4a6cc623e75b",
+      "size": 1439
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_2_CANDIDATE_PROPOSAL_AND_HUMAN_APPROVAL_REPORT.md",
+      "sha256": "9dced850eddd76ccb6921acd39cc5e09dc77345cf81dfb4d4ea41d8cfd3355c7",
+      "size": 1140
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_3_GENERATED_PLAYBOOK_REGISTRY_AND_ATTACHMENT_REPORT.md",
+      "sha256": "06de8b460e6cd3295eae965a615fbb1250d8b857ff64c0f27da1ac99c268b54e",
+      "size": 642
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_4_VALIDATION_AND_TEST_CONTRACTS_REPORT.md",
+      "sha256": "55bdea5fe249b8b045fbd071123fb4ff7bccd2e40c89f4fc4f7d3c37575a16a9",
+      "size": 527
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_5_TEMPLATES_AND_APF_FLOW_INTEGRATION_REPORT.md",
+      "sha256": "93c7b93d2274d29e086c842b7ba93e4e2f8e1120ee2b07486090e4ee22c586f9",
+      "size": 600
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_6_REGRESSION_VALIDATION.md",
+      "sha256": "5bebf146dab1500aadaa95d7cb7b4a6553df2e219f93b1cf59870c618a3e639b",
+      "size": 2592
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_6_REGRESSION_VALIDATION_REPORT.json",
+      "sha256": "6ad1d1cabc52dc9c6973de16fcc918bf5076e414f341351fac79d287e99640e2",
+      "size": 4567
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/PMP_8_RETROSPECTIVE_AND_INTERNAL_APF_DECISION.md",
+      "sha256": "b8829385c06284284469420fa2a450f48864b43c8a226532586b0a411f7cdddd",
+      "size": 1283
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/PMP_7_PILOT_SCOPE.yaml",
+      "sha256": "3455b5131c5f150ab6bd039c2f887d6fde6a46a285b67545ee1aadd573cd5dbc",
+      "size": 678
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/PMP_7_REAL_PLAYBOOK_PILOT_REPORT.md",
+      "sha256": "4e724c5af24059982b14b16d9552c34f69776d9c2b68ffbd1ec2311b7cd753f9",
+      "size": 1034
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/PROMPT_SUFFICIENCY_REVIEW_MATRIX.yaml",
+      "sha256": "cac089dfd7d7305171edb5e658beacabccebf4eb9fd16e49df7369f849554583",
+      "size": 5722
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/candidates/he-prompt-candidate-001.yaml",
+      "sha256": "23f580c23c81ddcf46550696641eab7aee40dfd20b99768623f8feeb7d3ea64b",
+      "size": 2770
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/candidates/he-prompt-candidate-002.yaml",
+      "sha256": "ecb2d09c0179a882226f8a1bdda96024bb06adb1fc66a581de9bc9d95c723864",
+      "size": 3087
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/reviews/he-prompt-candidate-001.review.yaml",
+      "sha256": "8a729761c9a34a0d742f8e30da2bab15e784192180fb3d61a938d7899ecff004",
+      "size": 420
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/improvements/playbook_authored_mini_prompts/pilots/history_event_v1_42/reviews/he-prompt-candidate-002.review.yaml",
+      "sha256": "3a43f43878ea081ed50e50ebf8d8962def9ad83d58d266714a65fdc985edbae2",
+      "size": 420
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/PROMPT_MANIFEST.json",
+      "sha256": "49dcd12d55c69a319b6cce9d2a945e94bdf0983288f697e732d61030372bc523",
+      "size": 2441
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/QUICK_START_PROMPT.md",
+      "sha256": "390682537633f39592d4659eb36a29f5a1110f74204a1a3bb05e1b4bc6233f3e",
+      "size": 573
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/repair/apf.process.resume_after_deviation.v1.md",
+      "sha256": "82bfc4368ab749c9ced285748f3bfbc550f107b7956097b2f5e9e0529e67019b",
+      "size": 348
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/repair/apf.state.backtrack_invalidation.v1.md",
+      "sha256": "d221d83a91cf956d4c1f6cb44589c360f10ada13546cdc4d68542db00adf0428",
+      "size": 320
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/repair/apf.validation.gate_failure.v1.md",
+      "sha256": "37b77a13710256957f1cae25786c9cbf1c258ab2c839c66e70f27bb70a689073",
+      "size": 322
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/runtime/apf.runtime_start.v1.md",
+      "sha256": "31a6b8a402f743ea3bd95ffa9a4809875de2ccf37945671b486475be81aade1b",
+      "size": 577
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/prompts/validation/apf.validation.report_interpretation.v1.md",
+      "sha256": "356aa3c27ac8d209111698ce67b49ed758f35010ca9554d7f3de245625775112",
+      "size": 358
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_HANDOFF_READINESS_REPORT.json",
+      "sha256": "31f975a9533e64d4a1091e963656795d37bdc453410588b948410ccdeebabfac",
+      "size": 990
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_REAL_MODULE_TESTCASE_GENERATION_PLAN_REPORT.json",
+      "sha256": "15df4784cb32bbfc462d425064576e4821f7c2cfd17e84010cb45959d9ad937a",
+      "size": 1344
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_USER_DIRECTED_BACKLOG_UPDATE_REPORT.json",
+      "sha256": "d7e2aef06c58b8c10c49618f50702ec29049248809b329d4456478e66bc4d9ae",
+      "size": 1035
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_10_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "edd2a1c19db2bc22149c2b6feac52db712ae7ef00fe23ef8dcc6e35f2114379b",
+      "size": 1360
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_10_HANDOFF_READINESS_REPORT.json",
+      "sha256": "d13c3fceae4ece80fef03642d7ef30fa9445a9d0bd38ca21ca8c099fc1827f89",
+      "size": 673
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_11_CONCRETE_PLAYBOOK_STARTUP_CONTRACT_REPORT.json",
+      "sha256": "7840972db15a80c026cf377655235d62efddf3893566a5a4e64bb950db21d37e",
+      "size": 955
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_11_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "4d1b4d31d3bc575c6a3b84d8325fef2be8cfa727f6c2d3100685a37cb35b122d",
+      "size": 1337
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_12_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "73af8917b809cdecb107f01a6e9dd26fd77647fc02942d95755ce04c1f2a6a6f",
+      "size": 627
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_12_INTAKE_REQUIREMENT_CAPTURE_REPORT.json",
+      "sha256": "9444fdb726d4bdfb9dd23369daf6d676db4a5c789433281fc8fe7f4cc78ea466",
+      "size": 996
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_13_ORDO_V0_12_ADAPTATION_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "5ecb61d04a84c36671a35f26fc7f0336e9330a2623ab33b00ba3b0c1dce64cc5",
+      "size": 614
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_13_ORDO_V0_12_ADAPTATION_RELEASE_CANDIDATE_REPORT.json",
+      "sha256": "2b77e744d9e1cae6d38cc75f4b078d29e7513f4045193f2852744de65ea1ff50",
+      "size": 742
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_14_PLAYBOOK_AUTHORED_MINI_PROMPT_SUPPORT_RELEASE_CANDIDATE_REPORT.json",
+      "sha256": "7693a8afefbff81fb44ddc08a8a48cbf1d663ac9c8a873fb89ab1c786c37c91c",
+      "size": 1055
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_17_CONVERSATION_SCOPE_GUARD_SUPPORT_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "456450cb50db1d9cbfc93d485144a74efa3559f54534e0a429764dc34204e64a",
+      "size": 638
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_17_CONVERSATION_SCOPE_GUARD_SUPPORT_RELEASE_CANDIDATE_REPORT.json",
+      "sha256": "15d0fc1f80c08e020be1dac389ce1b0ce2dc5e0706591443a1f77e2bb71dd354",
+      "size": 729
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_18_CSG_LANGUAGE_BASELINE_ALIGNED_RELEASE_CANDIDATE_REPORT.json",
+      "sha256": "c0b178a608d2e091b3ad4a3f44aad4f4a458f4231802c40a480caeca3492833b",
+      "size": 1110
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_6_PACKAGE_CREATION_HARDENING_REPORT.json",
+      "sha256": "3f72055f536b42acfa0da67c5369b279d5bbcf87ba45c52d5671e2bf49c77fd2",
+      "size": 1257
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_7_CLI_INTEGRATION_CONTRACTS_REPORT.json",
+      "sha256": "0484e630eca687ee76b770a5cd1e5af617320d17d5f27bd5676b1095079fd222",
+      "size": 1482
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_7_CLOSURE_REPORT.json",
+      "sha256": "ea7ac05d852b52584b42105a136a091e0de1278b77c01556dd81cd62780b02ae",
+      "size": 1330
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_8_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "cc88b7ab71ddd7f3cf66f53cfabff07311e1e6daa8437009c34def6d845c2f8e",
+      "size": 1015
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_8_NODE_CHANGE_CONFIRMATION_REPORT.json",
+      "sha256": "4982732f833f39e00e488aaa4e044b18b46777e1c0b60f6cadc93d8a0c0b6b60",
+      "size": 1873
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_9_CONFIRMED_CLOSURE_REPORT.json",
+      "sha256": "dbfb29394e21be9a06bc86807e6b0b43f2c89fdee62cb07e182a674de0e781a6",
+      "size": 1358
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/APF_V0_1_0_RC_9_REAL_MODULE_TESTCASE_GENERATION_REPORT.json",
+      "sha256": "fb69058f4b6ca943e9b725f6647de43c28c25548388891a3a40bb757ff112865",
+      "size": 2007
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/CONSISTENCY_CHECK_REPORT.json",
+      "sha256": "daab3cc6d53c1a224bdfaf3194e67d1f3f77a6939567ffc0a72c60aeb33598e0",
+      "size": 260736
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/GO_NO_GO_REPORT.json",
+      "sha256": "d226156d189a8b15cd04bc2984c53abcae97e1e1f0cbe1a5ab0ca96f8e6f0432",
+      "size": 297686
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/M63_11_APF_RC6_PACKAGE_CREATION_HARDENING_REPORT.md",
+      "sha256": "14da215420a973b78b09ffe47f2fa7bcc70e4e37599d569da0b50ce0ad89eddf",
+      "size": 636
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/M63_12_APF_RC7_CLI_INTEGRATION_CONTRACTS_REPORT.md",
+      "sha256": "98df91a233d08c6442e25aeffbb812a2bc18fe2bfaf2d419339d3f2759ecad4c",
+      "size": 1562
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/artifact_validation_report.json",
+      "sha256": "91761ccd0ff865545e07a714513dc12dfd3202d10fe2225a2688affb7a671789",
+      "size": 99868
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/compile_report.json",
+      "sha256": "ee73632775cb6faa50e24cfa1879cba469817bcde9ad2351878cdc14fc8d33a5",
+      "size": 1105
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/coverage_report.json",
+      "sha256": "f341542a859552152a2ac7bb794fd0981df799dd67d50992fb1fd0567144b8ab",
+      "size": 2277
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/lint_report.json",
+      "sha256": "9b897ed04e3a7c6416aa8aa616b679d44892a85d2535fcdb280d313ce2f4bae8",
+      "size": 112
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/output_validation_report.json",
+      "sha256": "5e9f70d57ca3ce869bda4bc7571ecd0513c2e4a3c6ba9abbe2adc6dc2b0d90ca",
+      "size": 368
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/runtime_entry_report.json",
+      "sha256": "fc8dd824d567895a513c0fe8f634fc3460e17cd307f7921713a11af37eedfc7d",
+      "size": 2639
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/runtime_status_report.json",
+      "sha256": "736591ff5d96242e294797197dad836333a7588e60091f4889dc22c434af9ccf",
+      "size": 697
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/state_validation_report.json",
+      "sha256": "cccfc0f408bb6fb859eefcd73c2dc09c79a51f9263f230d17f1fb7e979245d16",
+      "size": 291249
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/target_verification_report.json",
+      "sha256": "50cab9e03bad8509f25b6c0d007d4b27672dd476b6f30b878425a97d06ddf017",
+      "size": 1162
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/reports/test_report.json",
+      "sha256": "57131a6a26e6983b90383cca227f48aab7f342b84045efd86a089d71a70fba6e",
+      "size": 72626
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/source_reference/APF_BASE_PROCESS_PROGRAM_LEVEL_METADATA_IMPROVEMENT_PROMPT.md",
+      "sha256": "9855d7b71050e292c99454652a6c697d3af85480e2f792423ecbce5e47e27efc",
+      "size": 10005
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/source_reference/APF_NODE_LEVEL_PROMPT_REGISTRY_IMPROVEMENT.md",
+      "sha256": "e3861028af9010c2db44f6e3f4292ba2e25eb81f70825369e2648e4f56ca4297",
+      "size": 15707
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/source_reference/APF_RELEASE_HYGIENE_AND_CLEAN_RUNTIME_GATE_IMPROVEMENT.md",
+      "sha256": "2bdc6b5eb10def1abb4e60d1e367420ec028bf73f36358f59cddf0d5718de00a",
+      "size": 13148
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/APF_CONCRETE_PLAYBOOK_AUTHORING_READINESS_REPORT.template.json",
+      "sha256": "44d4df2a8706b6d021e463a3a28332d533f7e2d4a0b5799970b4ffc26e50a886",
+      "size": 649
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/APF_CONCRETE_PLAYBOOK_INTAKE_COMPLETENESS_REPORT.template.json",
+      "sha256": "eb0d579296f91e32a63803bee09defa63565290ead0539a005de02ae8e80c0dd",
+      "size": 934
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/ATOMICITY_GATE_EVALUATION.template.yaml",
+      "sha256": "7a9f3680c0810c7ded0cc2a35ea1d520287992b01792578eeac8809634fa7239",
+      "size": 2614
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/ATOMIC_STEP_DECOMPOSITION_PROPOSAL.template.yaml",
+      "sha256": "6fc94a0edaa49ca59f240cf723d8df788a46f84cb1760e1be0643c8288f1c0fe",
+      "size": 883
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/ATOMIC_STEP_REVIEW_PACKAGE_MANIFEST.template.yaml",
+      "sha256": "a2f30471891e6f411e8edc5ab0e4234d508d46c06b65dcdac77890ce0258febc",
+      "size": 484
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/ATOMIC_STEP_REVIEW_RECORD.template.yaml",
+      "sha256": "1d01edf09bdd9b17526579b495c3d83652ec750ba882091ff52789fcdde22228",
+      "size": 2017
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/ATOMIC_STEP_REVIEW_VALIDATION_REPORT.template.yaml",
+      "sha256": "50dbcfb6c90419b192099776739ec507ad99098ecb5f7bd6f83b3714373e35f1",
+      "size": 1236
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONCRETE_PLAYBOOK_AUTHORING_PROTOCOL.template.md",
+      "sha256": "8d33af549c9994679566dff37c68d5f38a3b19dbd16ab79c7888c9a3fd913fcb",
+      "size": 2871
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONCRETE_PLAYBOOK_INTAKE_CONTRACT.template.yaml",
+      "sha256": "24642d25983742ceccefd9c909a7126fcb4ae825385038ffcd85c4e7b315ea51",
+      "size": 685
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONVERSATION_DEVIATION_CLASSIFICATION_RECORD.template.yaml",
+      "sha256": "51538cb8f95f410bfcc5001091d786e080d8deb15731a82628d65c439597b558",
+      "size": 323
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONVERSATION_SCOPE_GUARD_PACKAGE_MANIFEST.template.yaml",
+      "sha256": "db3e4446a5079ac6a3ddb7839aa86a2103a65792f16ad26f72dfd784b9ce1b74",
+      "size": 583
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONVERSATION_SCOPE_GUARD_POLICY_DECISION.template.yaml",
+      "sha256": "2315ab4e79e7c29ef7b2638ab7cbb689dcf594c0f6f66d6af1e65aaea510d979",
+      "size": 1256
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONVERSATION_SCOPE_GUARD_STATE_PROTECTION_RECORD.template.yaml",
+      "sha256": "769150340c3bb24dbdc02d1d4efdd3be12225386e9df66ff0f73c30a27c33120",
+      "size": 1102
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/CONVERSATION_SCOPE_GUARD_VALIDATION_REPORT.template.yaml",
+      "sha256": "1797e2a4de70b66e00614d3c1410ed155117a38a3cf55aa35ae2afc94bb21bf0",
+      "size": 827
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/EXECUTION_TRACE_DESIGN_DECISION.template.yaml",
+      "sha256": "863c66e6d919fc953f21bcc21f6742586e6a9ae4c8b891c29b6f3db4fe27fae4",
+      "size": 910
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_EXECUTION_TRACE_ARTIFACT_MANIFEST.template.yaml",
+      "sha256": "3565970403f430f1c2e516c12b6dc78015935c2678ab9ca0d5f370c9aa5493ea",
+      "size": 923
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_EXECUTION_TRACE_VALIDATION_REPORT.template.yaml",
+      "sha256": "6049110ba44a3c2274966f261eaf4b1f07002ec5a87ed3cf0533908a6ff8a1b3",
+      "size": 1156
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_MINI_PROMPT_TEST_SCENARIO_CATALOG.template.yaml",
+      "sha256": "cbc92f7b01c7519a3b82758af68a81c5a98f2f9e1008fa2b1cafd676bdf01fce",
+      "size": 437
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_MINI_PROMPT_VALIDATION_REPORT.template.json",
+      "sha256": "3fb0bbc5e379618341b5701a431c9f5413ef852a317a01934419b1f0e5a135d0",
+      "size": 597
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_PROMPT_ATTACHMENT_MAP.template.yaml",
+      "sha256": "88b43da4fb5b4c071faf2ddc20accd015b2a459bb050f1ed4df9eb6eb0a7def7",
+      "size": 346
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_PROMPT_REGISTRY.template.yaml",
+      "sha256": "309e4eca41c2c192853c89cc2ebe724661525a82e8cb6dde1bbe98d8c053b7b0",
+      "size": 518
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_TRACE_ADAPTER_CONFORMANCE_REPORT.template.yaml",
+      "sha256": "2cd2501940acc636e729f45a1cc479238cee57214263276543d85e11733b5efe",
+      "size": 794
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/GENERATED_PLAYBOOK_TRACE_ADAPTER_CONTRACT.template.yaml",
+      "sha256": "66c9980605b1914cc3777a385b7f5b1e7a29a4776fa6847c60859d4ec08da8e1",
+      "size": 2238
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/INTAKE_ASSUMPTION_AND_UNKNOWN_REGISTER.template.yaml",
+      "sha256": "e46164df8c6362f7596df7b6f638cddd40ca0330b4dbc072112780ee9d300dd0",
+      "size": 595
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/MINI_PROMPT_CANDIDATE_PROPOSAL.template.yaml",
+      "sha256": "54706a746b73668d831cfd4b13a58d09dae71f2ad51d007010d6871ef826e4de",
+      "size": 1460
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/MINI_PROMPT_HUMAN_REVIEW_RECORD.template.yaml",
+      "sha256": "cc45a12fb81dc4295a6c9300cc01957cebc369d0a79c69006b291847100e1bf1",
+      "size": 744
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/PLAYBOOK_AUTHORED_MINI_PROMPT_PACKAGE.template.yaml",
+      "sha256": "0ce5e05585373a7cd1924f2cdbe03996d0375f655c11b09aaccd5ddc78ea06b6",
+      "size": 413
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/PLAYBOOK_PACKAGE_STARTUP_MANIFEST.template.yaml",
+      "sha256": "1e6ef13f90cb2da6a1f2d064dd75a0b1d9f08924078c12c00043ec93ff0700a6",
+      "size": 1155
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/PLAYBOOK_REQUIREMENT_CAPTURE_MATRIX.template.yaml",
+      "sha256": "3d5f48506f33195ea1c970fd77f9e513033f45aea19be50d134e167c46766ca9",
+      "size": 529
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/PLAYBOOK_SCOPE_BOUNDARY_REGISTER.template.yaml",
+      "sha256": "13f570850cdd005f057fd6c448e092e4cf74e9f8ad099f03c5177e215214d554",
+      "size": 275
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/PROMPT_SUFFICIENCY_REVIEW_MATRIX.template.yaml",
+      "sha256": "b2141cc8340a3f7cae491164d9ef11a3e8f8d89fbafd493979540aded83e5d2f",
+      "size": 2092
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/CURRENT_STATE.md",
+      "sha256": "67121d7cf0b0a43202371b95b5e072e4e6b93612802c7c066e90978a1bfee3ae",
+      "size": 157
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/PLAYBOOK_PACKAGE_STARTUP_MANIFEST.yaml",
+      "sha256": "eaa187d0560d0df6465f936ddb9a6e6a356cce9cd45de012aa7e25b7ce9d8bcd",
+      "size": 696
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/README.md",
+      "sha256": "e9440a5670b4485ccfb4f8930ab5a733ed7b04d3216b583f38637fc6838f63ae",
+      "size": 400
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/config.yaml",
+      "sha256": "d43f8c698e834791956c7242073badcb65baa4ff48794d54b194816829e06526",
+      "size": 237
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/conversation_deviation_policy.md",
+      "sha256": "7be51972f9bb0a0b7b00e0b25a18fbe11c2d82611b7499111631bed808c06f22",
+      "size": 196
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/conversation_scope_guard.contract.yaml",
+      "sha256": "e04ea2cc1158873db8e8f46b1e4a56e8e4c3eb752dcfaa37880673cd5fcf02b0",
+      "size": 1021
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/conversation_scope_guard_tests.yaml",
+      "sha256": "ec355bda281fd847cf04297b91d2f9f0c5c9337daece09a3542f84cdbb471dc4",
+      "size": 426
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/conversation_scope_guard_trace_events.yaml",
+      "sha256": "41ac4ac1574cfacab15dc642d7a82270ff9a60f60d2194a5af332600999309cc",
+      "size": 382
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/design_decision.yaml",
+      "sha256": "abce080ee78412a9934b5f11f0979654f980ba43f2b20e0643ea848291e59e25",
+      "size": 149
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/regression_test_catalog.yaml",
+      "sha256": "e52a97afc2c35564e4fb36058d9d3ef99166343437bf61e07b8a23a8700c8e45",
+      "size": 440
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/response_templates.yaml",
+      "sha256": "319d3aaa3b78b75a88555e3a4e75756c18d7ce939d95ee9d8243834a4ac0f88e",
+      "size": 429
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/state_protection_assertions.yaml",
+      "sha256": "0039a4eb22c2b3d92615672720dbc996dba0226afe52b3bd25e8d91f38288b47",
+      "size": 305
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/conversation_scope_guard/validation_report.yaml",
+      "sha256": "242e230c64bce5e0260486f92c3a9c317e6427a1fa22ab4052523297c1ccab3b",
+      "size": 92
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/handoff/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/outputs/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/playbook.yaml",
+      "sha256": "cdd8b1d98e9db042051b88f353bcfdc3dc4b0492399c0272e9c1a80b0bcc31fa",
+      "size": 934
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reports/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/atomic_step_review_manifest.yaml",
+      "sha256": "a2f30471891e6f411e8edc5ab0e4234d508d46c06b65dcdac77890ce0258febc",
+      "size": 484
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/atomic_step_validation_report.yaml",
+      "sha256": "96760bfab90c3eaff705fcd7929da81acfe76e0e7a6f4883931d3d0ef6b37a34",
+      "size": 359
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/decomposition_proposals/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/gate_evaluations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/human_decisions/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/post_render_reviews/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/reviews/atomic_step/review_records/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/runtime/README.md",
+      "sha256": "58810f98725272ae0e07af34fb97f2b1f863eb520c86b1c18add9fa3d3b9ffb0",
+      "size": 745
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/runtime/trace_adapter_conformance_report.yaml",
+      "sha256": "2cd2501940acc636e729f45a1cc479238cee57214263276543d85e11733b5efe",
+      "size": 794
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/runtime/trace_adapter_contract.yaml",
+      "sha256": "66c9980605b1914cc3777a385b7f5b1e7a29a4776fa6847c60859d4ec08da8e1",
+      "size": 2238
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/templates/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/concrete_playbook_package_skeleton/tests/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/generated_playbook/conversation_scope_guard/conversation_deviation_policy.md",
+      "sha256": "7be51972f9bb0a0b7b00e0b25a18fbe11c2d82611b7499111631bed808c06f22",
+      "size": 196
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/generated_playbook/conversation_scope_guard/conversation_scope_guard.contract.yaml",
+      "sha256": "e04ea2cc1158873db8e8f46b1e4a56e8e4c3eb752dcfaa37880673cd5fcf02b0",
+      "size": 1021
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/generated_playbook/conversation_scope_guard/conversation_scope_guard_tests.yaml",
+      "sha256": "ec355bda281fd847cf04297b91d2f9f0c5c9337daece09a3542f84cdbb471dc4",
+      "size": 426
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/templates/generated_playbook/conversation_scope_guard/conversation_scope_guard_trace_events.yaml",
+      "sha256": "41ac4ac1574cfacab15dc642d7a82270ff9a60f60d2194a5af332600999309cc",
+      "size": 382
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/tests/EXPECTED_BEHAVIOR_MATRIX.yaml",
+      "sha256": "140a64eaa2115385da7592057de5f62c27cbf6bba073e267c25617e27126ee71",
+      "size": 1726
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/tests/GENERATED_TESTCASE_PLAN.yaml",
+      "sha256": "418b8fa321b9d8a5962a1fbeef1e3177ea2b1e608677ca211e3eae14ce1fd03d",
+      "size": 599
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/tests/MODEL_CONFUSION_SCENARIO_CATALOG.yaml",
+      "sha256": "7fc5e8020b98594bdccd7ddb811134be6470a5fbf952a51dd364ed6b2e581220",
+      "size": 3760
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/tests/REAL_MODULE_TESTCASE_TARGET_MANIFEST.yaml",
+      "sha256": "8df026c0222441b4fa3a95d024c5e7964605656db284809b14226c39cae14f91",
+      "size": 806
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/transfer/BACKLOG_FOR_NEXT_CHAT.md",
+      "sha256": "c4616ce9f8980b094319f140e88139ebd05413b4d6236fce9611f04a84c64bfc",
+      "size": 210
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/transfer/CURRENT_DIALOGUE_STATE.md",
+      "sha256": "a85ddb4d0e1b797260d120d5a73fed3e3c114dd4483e9f5397407ec3a9c93644",
+      "size": 365
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/transfer/MISSING_OR_UNAVAILABLE_ARTIFACTS.md",
+      "sha256": "37a46769973881c98fa1f264421c9b4b1d1c7c8dd5caae114f5c40d9671edc8d",
+      "size": 1572
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/transfer/SELF_CONTAINED_PROVENANCE.json",
+      "sha256": "f50baa5aab094f28fce7f76a79c76c6c1fd7f58c50059e0c00f03d33e8592468",
+      "size": 687
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/transfer/TRANSFER_MANIFEST.json",
+      "sha256": "a8e70fbfb2dccdd87503208ed8d2863a54051568845201bfaae3bdaa658e586b",
+      "size": 2156
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/APF_REAL_MODULE_TESTCASE_GENERATOR_MANIFEST.json",
+      "sha256": "374a786df3929fb2729dacc4f3c68e5bd67f7465305d6133e3acde3e8abb0deb",
+      "size": 932
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/README.md",
+      "sha256": "2fb7951ed9a90237a4c28059546ce2f865622f9d23c4da117228629135ad8ad8",
+      "size": 647
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/examples/expected_behavior_matrix.example.yaml",
+      "sha256": "140a64eaa2115385da7592057de5f62c27cbf6bba073e267c25617e27126ee71",
+      "size": 1726
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/examples/generated_testcase_plan.example.yaml",
+      "sha256": "418b8fa321b9d8a5962a1fbeef1e3177ea2b1e608677ca211e3eae14ce1fd03d",
+      "size": 599
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/examples/minimal_testcase_target_manifest.yaml",
+      "sha256": "8df026c0222441b4fa3a95d024c5e7964605656db284809b14226c39cae14f91",
+      "size": 806
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/examples/model_confusion_scenario_catalog.example.yaml",
+      "sha256": "7fc5e8020b98594bdccd7ddb811134be6470a5fbf952a51dd364ed6b2e581220",
+      "size": 3760
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/schemas/expected_behavior_matrix.schema.json",
+      "sha256": "f87753c54fed757afd9d00c5d37d1a7dc1195e5e880452f236d0cc4636f95f8c",
+      "size": 1173
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/schemas/generated_testcase_plan.schema.json",
+      "sha256": "63e618ff9ec0ec0e159c51ababd8716aee24d53afbba732434704fa75aa6c7c7",
+      "size": 736
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/schemas/model_confusion_scenario_catalog.schema.json",
+      "sha256": "a13bf2bb70cc12fd9c4891364204c2a4c91d3a91119d2c2f2252734e30d3fc75",
+      "size": 1013
+    },
+    {
+      "path": "integrations/apf/v0.1.0-rc.18/utilities/apf_real_module_testcase_generator/schemas/testcase_target_manifest.schema.json",
+      "sha256": "40192b8fa88c384de6e09175e51165509f311493acb648a4040befb9cfa27a1c",
+      "size": 1283
+    }
+  ]
+}

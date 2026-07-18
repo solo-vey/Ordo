@@ -1,0 +1,37 @@
+{
+  "schema_version": "ordo.benchmark.declared_contract_self_application_report.v1",
+  "archive": "/mnt/data/ORDO_BENCHMARK_CREATION_PLAYBOOK_V1_0_0_ALPHA_19.zip",
+  "archive_sha256": "9a4972bd06682adfc49df0a60c45a1c327c1311344c33e9216c4b73abdcf5b7a",
+  "checks": [
+    {
+      "id": "zip_opens",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "id": "required_paths_present",
+      "pass": true,
+      "missing": []
+    },
+    {
+      "id": "declared_validators_present",
+      "pass": true,
+      "missing": []
+    },
+    {
+      "id": "entrypoint_matches",
+      "pass": true,
+      "declared": "N001_FOCUSED_SCOPE",
+      "actual": "N001_FOCUSED_SCOPE"
+    },
+    {
+      "id": "internal_checksums_match",
+      "pass": true,
+      "mismatches": []
+    }
+  ],
+  "status": "PASS",
+  "release_disposition": "PASS_RELEASE",
+  "exact_sealed_zip_verified": true,
+  "all_declared_checks_executed": true
+}

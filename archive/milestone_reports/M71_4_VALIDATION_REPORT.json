@@ -1,0 +1,42 @@
+{
+  "milestone": "M71.4",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "focused_tests",
+      "status": "passed",
+      "count": 17
+    },
+    {
+      "id": "package_clean_check_standard",
+      "status": "passed",
+      "check_count": 43,
+      "warning_count": 0,
+      "error_count": 0
+    },
+    {
+      "id": "prompt_ref_resolution",
+      "status": "passed"
+    },
+    {
+      "id": "prompt_checksum_integrity",
+      "status": "passed"
+    },
+    {
+      "id": "application_phase_vocabulary",
+      "status": "passed"
+    },
+    {
+      "id": "source_list_order",
+      "status": "passed"
+    },
+    {
+      "id": "trace_payload_privacy",
+      "status": "passed"
+    },
+    {
+      "id": "navigation_authority_boundary",
+      "status": "passed"
+    }
+  ]
+}

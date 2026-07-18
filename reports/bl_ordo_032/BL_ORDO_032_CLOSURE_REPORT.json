@@ -1,0 +1,49 @@
+{
+  "schema_version": "ordo.bl_ordo_032.closure.v2",
+  "backlog_id": "BL-ORDO-032",
+  "status": "closed",
+  "closed_at": "2026-07-14T11:04:13.491534Z",
+  "title": "Hermetic and Non-Destructive Delivery Gate",
+  "test_evidence": {
+    "execution_unit": "pytest_node",
+    "inventory_nodes": 476,
+    "passed_nodes": 476,
+    "failed_nodes": 0,
+    "aggregation": "475 previously confirmed unaffected nodes plus final node-172 fix and affected-scope regression on final baseline"
+  },
+  "affected_regression": {
+    "status": "passed",
+    "tests_passed": 32,
+    "scope": [
+      "flow-reuse tests",
+      "full test_m76_1_apf_graph_validation.py",
+      "linter integration tests",
+      "backlog/maturity sync",
+      "generated-report isolation",
+      "production root hygiene"
+    ]
+  },
+  "package_lints": {
+    "history_event_guided_intake": "passed",
+    "ordo_applied_project_factory": "passed",
+    "ordo_hybrid_executor": "passed",
+    "ordo_project_builder": "passed"
+  },
+  "generated_artifact_isolation": "passed",
+  "manifest_sync": "passed",
+  "root_hygiene": "passed",
+  "blocking_issues": [],
+  "canonical_integrity": {
+    "hash_scope": "canonical source tree excluding SHA256SUMS.txt, mutable gate evidence, closure report and canonical report manifest",
+    "pre_validation_sha256": "a5b8e4872b927cfea4b311612b2e8af9ff643dc7ebe5f4ebbbb967763f5a6dbb",
+    "post_validation_sha256": "a5b8e4872b927cfea4b311612b2e8af9ff643dc7ebe5f4ebbbb967763f5a6dbb",
+    "unchanged": true
+  },
+  "runner_contracts": [
+    "affected-scope tests on final synchronized baseline",
+    "package lints on disposable copies",
+    "no source-tree writes during final gate",
+    "pre/post canonical hash comparison"
+  ],
+  "final_gate_status": "passed"
+}

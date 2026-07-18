@@ -1,0 +1,69 @@
+{
+  "schema_version": "ordo.question_registry.v1",
+  "playbook_id": "ordo_project_builder",
+  "questions": [
+    {
+      "question_id": "Q_N_PROJECT_GOAL",
+      "node_id": "N_PROJECT_GOAL",
+      "question_text": "Який Ordo-проєкт ви хочете створити і яку проблему він має вирішувати?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_PROJECT_DOMAIN",
+      "node_id": "N_PROJECT_DOMAIN",
+      "question_text": "Яку доменну область або тип процесу має описувати цей Ordo-проєкт?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_ROLES",
+      "node_id": "N_ROLES",
+      "question_text": "Хто буде людиною в цьому процесі і яку роль має виконувати ШІ?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_PROCESS_RAIL_GOAL",
+      "node_id": "N_PROCESS_RAIL_GOAL",
+      "question_text": "Що саме Process Rail має утримувати: питання, рішення, gates, повернення назад, outputs або інше?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_STATE_MODEL",
+      "node_id": "N_STATE_MODEL",
+      "question_text": "Який мінімальний state треба вести, щоб процес не губився?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MODE_SELECT",
+      "node_id": "N_MODE_SELECT",
+      "question_text": "Це Ordo-проєкт для створення інших проєктів, для виконання готового процесу чи змішаний режим?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_REQUIRED_OUTPUTS",
+      "node_id": "N_REQUIRED_OUTPUTS",
+      "question_text": "Які output artifacts має створювати цей Ordo-проєкт?",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DETERMINISTIC_HELPERS",
+      "node_id": "N_DETERMINISTIC_HELPERS",
+      "question_text": "Які частини процесу мають перевірятися детермінованими helper tools?",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPROVAL_BEFORE_COMPILE",
+      "node_id": "N_APPROVAL_BEFORE_COMPILE",
+      "question_text": "Підтверджуєте, що AI Ordo Developer може створити YAML draft і запускати lint/compile checks?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    }
+  ]
+}

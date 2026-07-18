@@ -1,0 +1,62 @@
+{
+  "milestone": "M54",
+  "title": "Runtime Guided Intake Entry Protocol",
+  "status": "passed",
+  "cli_status": "executed_cli_passed",
+  "executed_commands": [
+    "python -m unittest discover -s tests -v",
+    "ordo --version",
+    "ordo lint/compile/test/coverage packages/ordo_project_builder",
+    "ordo lint/compile/test/coverage packages/ordo_hybrid_executor",
+    "ordo lint/compile/test/coverage packages/history_event_guided_intake",
+    "ordo runtime-entry packages/history_event_guided_intake",
+    "ordo intake packages/history_event_guided_intake --answers run_inputs/intake_success.yaml --non-interactive",
+    "ordo validate-state packages/history_event_guided_intake --answers run_inputs/intake_success.yaml",
+    "ordo generate-output packages/history_event_guided_intake",
+    "ordo validate-output packages/history_event_guided_intake",
+    "ordo validate-artifacts packages/history_event_guided_intake",
+    "ordo consistency packages/history_event_guided_intake",
+    "ordo go-no-go packages/history_event_guided_intake",
+    "PYTHONDONTWRITEBYTECODE=1 ordo repo-check .."
+  ],
+  "test_result": "34/34 OK",
+  "active_package_result": "passed",
+  "history_event_runtime_entry": "ready next_node=N_EVENT_GOAL",
+  "history_event_go_no_go": "go",
+  "changed_files": [
+    "cli/ordo/runtime.py",
+    "cli/ordo/cli.py",
+    "cli/ordo/__init__.py",
+    "cli/tests/test_cli_workflow.py",
+    "cli/RUNTIME_ENTRY.md",
+    "language/RUNTIME_GUIDED_INTAKE_PROTOCOL.md",
+    "packages/history_event_guided_intake/START_HERE_RUNTIME_MODE.md",
+    "packages/history_event_guided_intake/source/program.ordo.yaml",
+    "packages/history_event_guided_intake/run_inputs/*.yaml",
+    "packages/history_event_guided_intake/tests/test_cases.yaml",
+    "packages/history_event_guided_intake/README.md",
+    "docs/runtime_guided_intake_entry_protocol.md",
+    "book/source/chapters/chapter_49_runtime_guided_intake_entry_protocol.md",
+    "README.md",
+    "CHANGELOG.md",
+    "language/CURRENT_VERSION.md"
+  ],
+  "new_runtime_rules": [
+    "START_HERE_RUNTIME_MODE.md is the mandatory AI Runtime Mode entry file for guided-intake packages.",
+    "ordo runtime-entry validates manifest/source/compiled IR freshness and derives first node from compiled IR.",
+    "Path A flows must not ask legacy A-subpath questions unless they exist in compiled IR.",
+    "AI user-facing protocol after each answer is Крок/Дія/Результат/Рішення."
+  ],
+  "new_cli_command": "ordo runtime-entry <package> [--state run_state.json]",
+  "new_validation_errors": [
+    "ORDO-RUNTIME-007 START_HERE_RUNTIME_MODE.md missing or empty",
+    "ORDO-RUNTIME-008 compiled IR cannot be loaded",
+    "ORDO-RUNTIME-009 no next NODE.DEF found in compiled IR (warning)"
+  ],
+  "known_limitations": [
+    "runtime-entry validates entry readiness and first node; it does not replace check-gate, validate-state, validate-output, validate-artifacts, consistency, or go-no-go.",
+    "AI wording remains model-assisted, but order and gates must be derived from runtime reports."
+  ],
+  "book_pdf_regenerated": false,
+  "repo_check": "passed"
+}

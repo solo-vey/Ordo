@@ -1,0 +1,10 @@
+{
+  "schema": "ordo.arf.consumed_release.v1",
+  "release_id": "ordo-2026.07.14-rc.8",
+  "archive_filename": "ORDO_ARF_CANONICAL_ORDO_2026_07_14_RC8 (1).zip",
+  "archive_sha256": "42a34c6f808605cd541563b3146e421d88653c3216e8c16528700354d18b5412",
+  "obtained_date": "2026-07-15",
+  "distribution_channel": "Provided by the Ordo team through personal channels for testing within an active collaboration.",
+  "public_distribution_claim": false,
+  "baseline_usage_statement": "The supplied archive was used as the execution baseline. This submission does not claim that no internal repositories, unpublished documentation, or unreleased materials were accessible."
+}

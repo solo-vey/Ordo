@@ -1,0 +1,20 @@
+schema_version: ordo.scoped_yaml_patch_policy.v1
+policy_id: SCOPED_YAML_PATCH_POLICY
+version: 1.0.0
+required_inputs:
+  - baseline_yaml
+  - candidate_yaml
+  - affected_node_allowlist
+required_outputs:
+  - verification_report_json
+  - structural_diff
+  - semantic_diff
+hard_failures:
+  - yaml_parse_failure
+  - duplicate_node_id
+  - empty_allowlist
+  - changed_node_outside_allowlist
+  - added_node_outside_allowlist
+  - removed_node_outside_allowlist
+  - unexplained_root_level_change
+acceptance: all_changes_are_scoped_and_explained

@@ -1,0 +1,54 @@
+{
+  "milestone": "M74.6",
+  "status": "passed_with_preexisting_pathwalk_limit",
+  "files": [
+    {
+      "path": "packages/ordo_applied_project_factory/source/module_manifest.yaml",
+      "sha256": "9698ba74a8f91586bbb9aa0c8e5f8db7812e2e3e0b739f7289fbda960284479f"
+    },
+    {
+      "path": "tools/assemble_ordo_modules.py",
+      "sha256": "84e149746be80cd9df258f6d2041e5b89f099f404bec526bc2f34593f4ed127a"
+    },
+    {
+      "path": "M74_6_VALIDATION_REPORT.json",
+      "sha256": "812769335ed9705855e2bd8e9e1a120de82977f3fe194ff658c667f615b96dea"
+    },
+    {
+      "path": "M74_6_APF_MODULARIZATION.md",
+      "sha256": "2ecf6a1b2986d7f82b5d8ea2ca6f337532fcdf7f74f160ac7ff0b0b868c008bf"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/00_program_metadata.ordo.module.yaml",
+      "sha256": "c2eda86cfba27d63060db7a97497014579eef425cf6ea670be63194d195f48fa"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/10_entry_and_project_contract.ordo.module.yaml",
+      "sha256": "def00be7856df02b19111f7c90489d12aa16d2ff3ecf0d70826af9370fdcee8b"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/20_process_design_rail.ordo.module.yaml",
+      "sha256": "96708b471342236c3d03aa09a50abac2ea5cdd060af4824727b975fd46fbf3b8"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/30_playbook_architecture.ordo.module.yaml",
+      "sha256": "b8499f6aa6ef32cce0037f6421502e2c2d7062979a439afc726f2f56e579f7bb"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/40_conversation_policy.ordo.module.yaml",
+      "sha256": "7ad018c6851ad2a0d5637148bb21f0afab9e6be03f6985a0b161186d19b09fe5"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/50_package_generation.ordo.module.yaml",
+      "sha256": "f7f1534eed306d6f5d5a672ab2224d984405b89ab5f4134ca4a01c25f2674052"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/60_validation_and_release.ordo.module.yaml",
+      "sha256": "8fd5345e073f6bbdf8c14da3955fbfb2a0c67d648093d5eebb6015f73ba92fc9"
+    },
+    {
+      "path": "packages/ordo_applied_project_factory/source/modules/70_assertions_and_status_semantics.ordo.module.yaml",
+      "sha256": "0994d79b313bde7a7507cdb873066908ea62da84cd42ac304a79f4e81932ca3e"
+    }
+  ]
+}

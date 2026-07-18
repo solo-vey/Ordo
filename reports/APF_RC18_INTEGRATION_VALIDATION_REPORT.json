@@ -1,0 +1,15 @@
+{
+  "milestone": "APF-RC18-INTEGRATION",
+  "status": "passed",
+  "checks": {
+    "source_checksum_manifest_passed": true,
+    "zip_integrity_passed": true,
+    "json_yaml_validation_passed": true,
+    "blocking_issues_zero": true,
+    "csg_language_alignment_passed": true,
+    "apf_internal_csg_disabled": true,
+    "ordo_core_unchanged": true,
+    "integrated_as_consumer_baseline": true
+  },
+  "note": "RC report retains a pre-confirmation flag; final baseline validation and CURRENT_STATE confirm acceptance."
+}

@@ -1,0 +1,1080 @@
+test_cases:
+- id: TC_A_TEST_CASES_AFTER_TREE_APPROVAL
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_TEST_CASES_AFTER_TREE_APPROVAL
+      projection: EXPECT.MUST
+- id: TC_A_FREE_DIALOGUE_FORMS_DRAFT_ON_WHAT_NEXT_SIGNAL
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FREE_DIALOGUE_FORMS_DRAFT_ON_WHAT_NEXT_SIGNAL
+      projection: EXPECT.MUST
+- id: TC_A_FACTORY_STARTS_WITH_THREE_MODES
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FACTORY_STARTS_WITH_THREE_MODES
+      projection: EXPECT.MUST
+- id: TC_G_TREE_REVIEW_DEPTH_FIRST_APPROVED
+  fixture:
+    state: {}
+  expected:
+    node: N_TREE_REVIEW_CONTINUE_OR_APPROVE
+    gates:
+    - id: G_TREE_REVIEW_DEPTH_FIRST_APPROVED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_DOMAIN_OPEN_QUESTIONS_TRIAGED
+  fixture:
+    state: {}
+  expected:
+    node: N_OPEN_QUESTIONS_REVIEW
+    gates:
+    - id: G_DOMAIN_OPEN_QUESTIONS_TRIAGED
+      method: human
+      trust_class: human_decision
+      status: passed
+- id: TC_G_FACTORY_AUTHORING_MODE_SELECTED
+  fixture:
+    state: {}
+  expected:
+    node: N_FACTORY_MODE_SELECTION
+    gates:
+    - id: G_FACTORY_AUTHORING_MODE_SELECTED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_APPLIED_PROJECT_GOAL_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_APPLIED_PROJECT_GOAL
+    gates:
+    - id: G_APPLIED_PROJECT_GOAL_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_APPLIED_PROCESS_TYPE_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_APPLIED_PROCESS_TYPE
+    gates:
+    - id: G_APPLIED_PROCESS_TYPE_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_RUNTIME_ROLES_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_RUNTIME_ROLES
+    gates:
+    - id: G_RUNTIME_ROLES_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_RUNTIME_ENTRY_POINT_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_RUNTIME_ENTRY_POINT
+    gates:
+    - id: G_RUNTIME_ENTRY_POINT_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_DECISION_TREE_BLUEPRINT_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_DECISION_TREE_BLUEPRINT
+    gates:
+    - id: G_DECISION_TREE_BLUEPRINT_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_STATE_SCHEMA_BLUEPRINT_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_STATE_SCHEMA_BLUEPRINT
+    gates:
+    - id: G_STATE_SCHEMA_BLUEPRINT_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_OUTPUT_ARTIFACT_CATALOG_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_OUTPUT_ARTIFACT_CATALOG
+    gates:
+    - id: G_OUTPUT_ARTIFACT_CATALOG_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_OUTPUT_TEMPLATE_CATALOG_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_OUTPUT_TEMPLATE_CATALOG
+    gates:
+    - id: G_OUTPUT_TEMPLATE_CATALOG_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_VALIDATION_GATE_CATALOG_PRESENT
+  fixture:
+    state: {}
+  expected:
+    node: N_VALIDATION_GATE_CATALOG
+    gates:
+    - id: G_VALIDATION_GATE_CATALOG_PRESENT
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_FIRST_RELEASE_SOURCE_YAML_ONLY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_FIRST_RELEASE_SCOPE
+    gates:
+    - id: G_FIRST_RELEASE_SOURCE_YAML_ONLY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_APPROVAL_TO_GENERATE_SOURCE_YAML
+  fixture:
+    state: {}
+  expected:
+    node: N_APPROVAL_TO_GENERATE_SOURCE_YAML
+    gates:
+    - id: G_APPROVAL_TO_GENERATE_SOURCE_YAML
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_A_FACTORY_HAS_NO_DOMAIN_LIMIT
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FACTORY_HAS_NO_DOMAIN_LIMIT
+      projection: EXPECT.NOT
+- id: TC_A_PM_DOES_NOT_WRITE_YAML_DIRECTLY
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_PM_DOES_NOT_WRITE_YAML_DIRECTLY
+      projection: EXPECT.MUST
+- id: TC_A_YAML_HIDDEN_FROM_PM_BY_DEFAULT
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_YAML_HIDDEN_FROM_PM_BY_DEFAULT
+      projection: EXPECT.MUST
+- id: TC_A_OUTPUT_TEMPLATES_DEFINED_IMMEDIATELY
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_OUTPUT_TEMPLATES_DEFINED_IMMEDIATELY
+      projection: EXPECT.MUST
+- id: TC_A_CONFUSION_TESTS_DEFERRED_FOR_M61_1
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_CONFUSION_TESTS_DEFERRED_FOR_M61_1
+      projection: EXPECT.MUST
+- id: TC_OUT_APPLIED_PROJECT_SOURCE_YAML_DEFINED
+  fixture: {}
+  expected:
+    output:
+      final_package_created: true
+    node: N_APPROVAL_TO_GENERATE_SOURCE_YAML
+- id: TC_N_DOMAIN_MODEL_OVERVIEW_COVERED
+  fixture: {}
+  expected:
+    node: N_DOMAIN_MODEL_OVERVIEW
+- id: TC_N_DOMAIN_INPUT_OUTPUT_SOURCES_COVERED
+  fixture: {}
+  expected:
+    node: N_DOMAIN_INPUT_OUTPUT_SOURCES
+- id: TC_N_FREE_DIALOGUE_INTAKE_COVERED
+  fixture: {}
+  expected:
+    node: N_FREE_DIALOGUE_INTAKE
+- id: TC_N_FREE_DIALOGUE_NEXT_SIGNAL_COVERED
+  fixture: {}
+  expected:
+    node: N_FREE_DIALOGUE_NEXT_SIGNAL
+- id: TC_N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY_COVERED
+  fixture: {}
+  expected:
+    node: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
+- id: TC_N_MANUAL_TREE_PROJECT_GOAL_COVERED
+  fixture: {}
+  expected:
+    node: N_MANUAL_TREE_PROJECT_GOAL
+- id: TC_N_MANUAL_TREE_RUNTIME_CONTEXT_COVERED
+  fixture: {}
+  expected:
+    node: N_MANUAL_TREE_RUNTIME_CONTEXT
+- id: TC_N_MANUAL_TREE_ROOT_NODE_COVERED
+  fixture: {}
+  expected:
+    node: N_MANUAL_TREE_ROOT_NODE
+- id: TC_N_TREE_DEPTH_FIRST_REVIEW_LOOP_COVERED
+  fixture: {}
+  expected:
+    node: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+- id: TC_G_BASIC_TEST_CASES_AFTER_TREE_APPROVAL
+  fixture:
+    state: {}
+  expected:
+    node: N_TREE_REVIEW_CONTINUE_OR_APPROVE
+    gates:
+    - id: G_BASIC_TEST_CASES_AFTER_TREE_APPROVAL
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_N_BASIC_TEST_CASE_CATALOG_COVERED
+  fixture: {}
+  expected:
+    node: N_BASIC_TEST_CASE_CATALOG
+- id: TC_N_FREE_DIALOGUE_STRUCTURED_EXTRACTION_COVERED
+  fixture: {}
+  expected:
+    node: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+- id: TC_N_FREE_DIALOGUE_ACCUMULATION_CHECK_COVERED
+  fixture: {}
+  expected:
+    node: N_FREE_DIALOGUE_ACCUMULATION_CHECK
+- id: TC_N_STABILIZED_TREE_BRANCH_HANDOFF_COVERED
+  fixture: {}
+  expected:
+    node: N_STABILIZED_TREE_BRANCH_HANDOFF
+- id: TC_G_FREE_DIALOGUE_NOTES_STRUCTURED
+  fixture:
+    state: {}
+  expected:
+    node: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+    gates:
+    - id: G_FREE_DIALOGUE_NOTES_STRUCTURED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_FREE_DIALOGUE_DRAFT_TREE_READY
+  fixture:
+    state: {}
+  expected:
+    node: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
+    gates:
+    - id: G_FREE_DIALOGUE_DRAFT_TREE_READY
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_SELF_HOSTED_BRANCH_STABILIZED
+  fixture:
+    state: {}
+  expected:
+    node: N_STABILIZED_TREE_BRANCH_HANDOFF
+    gates:
+    - id: G_SELF_HOSTED_BRANCH_STABILIZED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED
+  fixture:
+    state: {}
+  expected:
+    node: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+    gates:
+    - id: G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_A_FREE_DIALOGUE_ACCUMULATES_NOTES_BEFORE_DRAFT
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FREE_DIALOGUE_ACCUMULATES_NOTES_BEFORE_DRAFT
+      projection: EXPECT.MUST
+- id: TC_A_STABILIZED_BRANCH_REUSED_AS_AUTHORING_ALGORITHM
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_STABILIZED_BRANCH_REUSED_AS_AUTHORING_ALGORITHM
+      projection: EXPECT.MUST
+- id: TC_M61_5_SELF_HOSTED_FREE_DIALOGUE_PATH
+  fixture: {}
+  expected:
+    node: N_STABILIZED_TREE_BRANCH_HANDOFF
+    gates:
+    - id: G_SELF_HOSTED_BRANCH_STABILIZED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_N_WORKING_CONTEXT_GRAPH_POLICY_COVERED
+  fixture: {}
+  expected:
+    node: N_WORKING_CONTEXT_GRAPH_POLICY
+- id: TC_N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW_COVERED
+  fixture: {}
+  expected:
+    node: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
+- id: TC_G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_WORKING_CONTEXT_GRAPH_POLICY
+    gates:
+    - id: G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
+  fixture:
+    state: {}
+  expected:
+    node: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
+    gates:
+    - id: G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_A_CONTEXT_SVG_BY_DEFAULT_DURING_BRANCH_WORK
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_CONTEXT_SVG_BY_DEFAULT_DURING_BRANCH_WORK
+      projection: EXPECT.MUST
+- id: TC_A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED
+      projection: EXPECT.MUST
+- id: TC_N_MODULE_VERSIONING_POLICY_COVERED
+  fixture: {}
+  expected:
+    node: N_MODULE_VERSIONING_POLICY
+- id: TC_N_GRAPH_ANNOTATION_OVERLAY_POLICY_COVERED
+  fixture: {}
+  expected:
+    node: N_GRAPH_ANNOTATION_OVERLAY_POLICY
+- id: TC_G_MODULE_VERSIONING_POLICY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_MODULE_VERSIONING_POLICY
+    gates:
+    - id: G_MODULE_VERSIONING_POLICY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_GRAPH_ANNOTATION_OVERLAY_POLICY
+    gates:
+    - id: G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_A_APPLIED_PROJECT_FACTORY_USES_MODULE_VERSIONING
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_APPLIED_PROJECT_FACTORY_USES_MODULE_VERSIONING
+      projection: EXPECT.MUST
+- id: TC_A_GRAPH_ANNOTATION_OVERLAY_IS_REVIEW_AID
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_GRAPH_ANNOTATION_OVERLAY_IS_REVIEW_AID
+      projection: EXPECT.MUST
+- id: TC_A_LANGUAGE_PACKAGE_VERSION_IS_CONTAINER
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_LANGUAGE_PACKAGE_VERSION_IS_CONTAINER
+      projection: EXPECT.MUST
+- id: TC_A_NO_AUTOMATIC_SVG_DURING_TEXT_REVIEW
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_NO_AUTOMATIC_SVG_DURING_TEXT_REVIEW
+      projection: EXPECT.MUST
+- id: TC_A_CURRENT_NODE_BLOCK_HAS_HUMAN_DESCRIPTION
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_CURRENT_NODE_BLOCK_HAS_HUMAN_DESCRIPTION
+      projection: EXPECT.MUST
+- id: TC_A_EXTRACTION_SUMMARY_IS_USER_FACING
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_EXTRACTION_SUMMARY_IS_USER_FACING
+      projection: EXPECT.MUST
+- id: TC_A_PROCESS_FEEDBACK_CAN_REWRITE_YAML_AFTER_APPROVAL
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_PROCESS_FEEDBACK_CAN_REWRITE_YAML_AFTER_APPROVAL
+      projection: EXPECT.MUST
+- id: TC_N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION_COVERED
+  fixture: {}
+  expected:
+    node: N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
+- id: TC_G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_WORKING_CONTEXT_GRAPH_POLICY
+    gates:
+    - id: G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_USER_FACING_NODE_DESCRIPTIONS_ENABLED
+  fixture:
+    state: {}
+  expected:
+    node: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+    gates:
+    - id: G_USER_FACING_NODE_DESCRIPTIONS_ENABLED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_USER_FACING_EXTRACTION_SUMMARY_ENABLED
+  fixture:
+    state: {}
+  expected:
+    node: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+    gates:
+    - id: G_USER_FACING_EXTRACTION_SUMMARY_ENABLED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_PROCESS_FEEDBACK_LOOP_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
+    gates:
+    - id: G_PROCESS_FEEDBACK_LOOP_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_N_TREE_NODE_REVIEW_DISPLAY_CONTRACT_COVERED
+  fixture: {}
+  expected:
+    node: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
+- id: TC_G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    node: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
+    gates:
+    - id: G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES
+  fixture:
+    state: {}
+  expected:
+    node: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    gates:
+    - id: G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER
+  fixture:
+    state: {}
+  expected:
+    node: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    gates:
+    - id: G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_A_NODE_REVIEW_INCLUDES_STATE_GATES_ARTIFACTS
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_NODE_REVIEW_INCLUDES_STATE_GATES_ARTIFACTS
+      projection: EXPECT.MUST
+- id: TC_A_SIBLING_BRANCHES_ARE_TRACKED_DURING_DEPTH_FIRST_REVIEW
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_SIBLING_BRANCHES_ARE_TRACKED_DURING_DEPTH_FIRST_REVIEW
+      projection: EXPECT.MUST
+- id: TC_A_RUNTIME_CONTINUES_FROM_RELOADED_YAML_AFTER_PROCESS_CHANGE
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_RUNTIME_CONTINUES_FROM_RELOADED_YAML_AFTER_PROCESS_CHANGE
+      projection: EXPECT.MUST
+- id: TC_G_ALL_STARTUP_BRANCHES_JOIN_SHARED_PATHS
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_ALL_STARTUP_BRANCHES_JOIN_SHARED_PATHS
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_CONTROL_ACTION_BOOKKEEPING_SEPARATED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_CONTROL_ACTION_BOOKKEEPING_SEPARATED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL
+      method: human
+      trust_class: human_decision
+      status: passed
+- id: TC_G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT
+      method: human
+      trust_class: human_decision
+      status: passed
+- id: TC_G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_HANDOFF_PACKAGE_REQUIRES_FILE_FIRST_SUMMARY
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_HANDOFF_PACKAGE_REQUIRES_FILE_FIRST_SUMMARY
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_MINIMAL_YAML_PATCH_CHECK_DEFINED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_MINIMAL_YAML_PATCH_CHECK_DEFINED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_SHARED_OUTPUT_TEMPLATE_SUBFLOW_CLOSED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_SHARED_OUTPUT_TEMPLATE_SUBFLOW_CLOSED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_SHARED_VALIDATION_HANDOFF_TAIL_CLOSED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_SHARED_VALIDATION_HANDOFF_TAIL_CLOSED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_SKIPPED_FULL_VALIDATION_RECORDED_AS_ALPHA_LIMITATION
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_SKIPPED_FULL_VALIDATION_RECORDED_AS_ALPHA_LIMITATION
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_SOURCE_YAML_GENERATION_REQUIRES_APPROVAL
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_SOURCE_YAML_GENERATION_REQUIRES_APPROVAL
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_G_WHOLE_TREE_INTEGRATION_REVIEW_CLOSED
+  fixture:
+    state: {}
+  expected:
+    gates:
+    - id: G_WHOLE_TREE_INTEGRATION_REVIEW_CLOSED
+      method: mechanical
+      trust_class: deterministic
+      status: passed
+- id: TC_A_ALPHA20_LEGACY_ORPHANS_ARE_EXPLICITLY_DEPRECATED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_ALPHA20_LEGACY_ORPHANS_ARE_EXPLICITLY_DEPRECATED
+      projection: EXPECT.MUST
+- id: TC_A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON
+      projection: EXPECT.MUST
+- id: TC_A_ALPHA20_SHARED_VALIDATION_HANDOFF_JOIN_IS_SINGLETON
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_ALPHA20_SHARED_VALIDATION_HANDOFF_JOIN_IS_SINGLETON
+      projection: EXPECT.MUST
+- id: TC_A_ALPHA20_STARTUP_BRANCHES_INTEGRATED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_ALPHA20_STARTUP_BRANCHES_INTEGRATED
+      projection: EXPECT.MUST
+- id: TC_A_ALPHA20_UNFINISHED_AND_REMOVED_ARTIFACT_GATES_REMAIN_ALIGNED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_ALPHA20_UNFINISHED_AND_REMOVED_ARTIFACT_GATES_REMAIN_ALIGNED
+      projection: EXPECT.MUST
+- id: TC_A_CURRENT_NODE_RENDERING_MUST_SHOW_PROCESS_STATE
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_CURRENT_NODE_RENDERING_MUST_SHOW_PROCESS_STATE
+      projection: EXPECT.MUST
+- id: TC_A_DECISION_NODE_MUST_SHOW_ACTION_OPTIONS
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_DECISION_NODE_MUST_SHOW_ACTION_OPTIONS
+      projection: EXPECT.MUST
+- id: TC_A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST
+      projection: EXPECT.MUST
+- id: TC_A_FINAL_UNFINISHED_ITEMS_GATE_BLOCKS_ACTIVE_UNFINISHED_OUTPUTS
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FINAL_UNFINISHED_ITEMS_GATE_BLOCKS_ACTIVE_UNFINISHED_OUTPUTS
+      projection: EXPECT.MUST
+- id: TC_A_FREE_DIALOGUE_OUTPUT_CANDIDATES_NOT_DROPPED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FREE_DIALOGUE_OUTPUT_CANDIDATES_NOT_DROPPED
+      projection: EXPECT.NOT
+- id: TC_A_FULL_VALIDATION_IS_TERMINAL_OR_PRE_HANDOFF_GATE
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_FULL_VALIDATION_IS_TERMINAL_OR_PRE_HANDOFF_GATE
+      projection: EXPECT.MUST
+- id: TC_A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY
+      projection: EXPECT.MUST
+- id: TC_A_INCREMENTAL_YAML_PATCHES_AVOID_PER_NODE_FULL_REGENERATION
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_INCREMENTAL_YAML_PATCHES_AVOID_PER_NODE_FULL_REGENERATION
+      projection: EXPECT.MUST
+- id: TC_A_MANUAL_TREE_BRANCH_REUSES_BRANCH_1_SHARED_PATH
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_MANUAL_TREE_BRANCH_REUSES_BRANCH_1_SHARED_PATH
+      projection: EXPECT.MUST
+- id: TC_A_MANUAL_TREE_INPUT_NOT_APPROVED_DIRECTLY
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_MANUAL_TREE_INPUT_NOT_APPROVED_DIRECTLY
+      projection: EXPECT.MUST
+- id: TC_A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF
+      projection: EXPECT.MUST
+- id: TC_A_NEW_ARTIFACT_INTENT_IS_FREE_FORM_NOT_FIXED_TYPE_LIST
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_NEW_ARTIFACT_INTENT_IS_FREE_FORM_NOT_FIXED_TYPE_LIST
+      projection: EXPECT.MUST
+- id: TC_A_PROCESS_DESIGN_REVIEW_MUST_LABEL_MODE
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_PROCESS_DESIGN_REVIEW_MUST_LABEL_MODE
+      projection: EXPECT.MUST
+- id: TC_A_REVIEW_DECISIONS_ARE_SIMPLIFIED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_REVIEW_DECISIONS_ARE_SIMPLIFIED
+      projection: EXPECT.MUST
+- id: TC_A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES
+      projection: EXPECT.MUST
+- id: TC_A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED
+      projection: EXPECT.MUST
+- id: TC_A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT
+      projection: EXPECT.MUST
+- id: TC_A_UNFINISHED_TEMPLATE_NOT_APPROVED_FOR_OUTPUT_GENERATION
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_UNFINISHED_TEMPLATE_NOT_APPROVED_FOR_OUTPUT_GENERATION
+      projection: EXPECT.MUST
+- id: TC_A_VALIDATION_DETAILS_LIVE_INSIDE_CORRECTION_MODE
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_VALIDATION_DETAILS_LIVE_INSIDE_CORRECTION_MODE
+      projection: EXPECT.MUST
+- id: TC_A_VALIDATION_FINDINGS_ROUTE_BACK_TO_TREE_CORRECTION
+  fixture: {}
+  expected:
+    assertions:
+    - id: A_VALIDATION_FINDINGS_ROUTE_BACK_TO_TREE_CORRECTION
+      projection: EXPECT.MUST
+- id: TC_N_APPROVED_TREE_CONSOLIDATION_COVERED
+  fixture: {}
+  expected:
+    node: N_APPROVED_TREE_CONSOLIDATION
+- id: TC_N_BATCH_IMPROVEMENT_LIST_ENTRY_COVERED
+  fixture: {}
+  expected:
+    node: N_BATCH_IMPROVEMENT_LIST_ENTRY
+- id: TC_N_BEFORE_AFTER_AFFECTED_NODES_REVIEW_COVERED
+  fixture: {}
+  expected:
+    node: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
+- id: TC_N_BRANCH_REVIEW_COVERED
+  fixture: {}
+  expected:
+    node: N_BRANCH_REVIEW
+- id: TC_N_CANDIDATE_IMPROVEMENTS_EXTRACTION_COVERED
+  fixture: {}
+  expected:
+    node: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
+- id: TC_N_CANDIDATE_IMPROVEMENTS_SELECTION_COVERED
+  fixture: {}
+  expected:
+    node: N_CANDIDATE_IMPROVEMENTS_SELECTION
+- id: TC_N_CONFIRMED_CHANGE_SET_BUILDING_COVERED
+  fixture: {}
+  expected:
+    node: N_CONFIRMED_CHANGE_SET_BUILDING
+- id: TC_N_CURRENT_NODE_REVIEW_DECISION_GATE_COVERED
+  fixture: {}
+  expected:
+    node: N_CURRENT_NODE_REVIEW_DECISION_GATE
+- id: TC_N_DRAFT_SUBTREE_GENERATION_COVERED
+  fixture: {}
+  expected:
+    node: N_DRAFT_SUBTREE_GENERATION
+- id: TC_N_DRAFT_SUBTREE_REVIEW_START_COVERED
+  fixture: {}
+  expected:
+    node: N_DRAFT_SUBTREE_REVIEW_START
+- id: TC_N_EXISTING_PROCESS_BASELINE_DEFINITION_COVERED
+  fixture: {}
+  expected:
+    node: N_EXISTING_PROCESS_BASELINE_DEFINITION
+- id: TC_N_EXISTING_PROCESS_IMPROVEMENT_ENTRY_COVERED
+  fixture: {}
+  expected:
+    node: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
+- id: TC_N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION_COVERED
+  fixture: {}
+  expected:
+    node: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+- id: TC_N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE_COVERED
+  fixture: {}
+  expected:
+    node: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+- id: TC_N_IMPROVEMENT_TO_PROCESS_MAPPING_COVERED
+  fixture: {}
+  expected:
+    node: N_IMPROVEMENT_TO_PROCESS_MAPPING
+- id: TC_N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY_COVERED
+  fixture: {}
+  expected:
+    node: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+- id: TC_N_INPUT_ARTIFACTS_POLICY_COVERED
+  fixture: {}
+  expected:
+    node: N_INPUT_ARTIFACTS_POLICY
+- id: TC_N_MANUAL_TREE_COMPLETENESS_AND_JOIN_COVERED
+  fixture: {}
+  expected:
+    node: N_MANUAL_TREE_COMPLETENESS_AND_JOIN
+- id: TC_N_MANUAL_TREE_NORMALIZATION_COVERED
+  fixture: {}
+  expected:
+    node: N_MANUAL_TREE_NORMALIZATION
+- id: TC_N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH_COVERED
+  fixture: {}
+  expected:
+    node: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
+- id: TC_N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE_COVERED
+  fixture: {}
+  expected:
+    node: N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
+- id: TC_N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION_COVERED
+  fixture: {}
+  expected:
+    node: N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
+- id: TC_N_OUTPUT_REVIEW_PACKAGE_GENERATION_COVERED
+  fixture: {}
+  expected:
+    node: N_OUTPUT_REVIEW_PACKAGE_GENERATION
+- id: TC_N_OUTPUT_TEMPLATE_CREATION_LOOP_COVERED
+  fixture: {}
+  expected:
+    node: N_OUTPUT_TEMPLATE_CREATION_LOOP
+- id: TC_N_OUTPUT_TEMPLATE_REVIEW_LOOP_COVERED
+  fixture: {}
+  expected:
+    node: N_OUTPUT_TEMPLATE_REVIEW_LOOP
+- id: TC_N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION_COVERED
+  fixture: {}
+  expected:
+    node: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+- id: TC_N_PROGRESSIVE_TREE_AUTHORING_ENTRY_COVERED
+  fixture: {}
+  expected:
+    node: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
+- id: TC_N_SCOPED_YAML_PATCH_APPLICATION_COVERED
+  fixture: {}
+  expected:
+    node: N_SCOPED_YAML_PATCH_APPLICATION
+- id: TC_N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK_COVERED
+  fixture: {}
+  expected:
+    node: N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
+- id: TC_N_SHARED_TAIL_CORRECTION_LOOP_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_CORRECTION_LOOP
+- id: TC_N_SHARED_TAIL_FINAL_HANDOFF_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_FINAL_HANDOFF
+- id: TC_N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+- id: TC_N_SHARED_TAIL_FULL_VALIDATION_DECISION_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+- id: TC_N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+- id: TC_N_SHARED_TAIL_MINIMAL_VALIDATION_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_MINIMAL_VALIDATION
+- id: TC_N_SHARED_TAIL_SOURCE_YAML_GENERATION_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_SOURCE_YAML_GENERATION
+- id: TC_N_SHARED_TAIL_VALIDATION_RESULT_REVIEW_COVERED
+  fixture: {}
+  expected:
+    node: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+- id: TC_N_SUBTREE_REVIEW_COMPLETION_CHECK_COVERED
+  fixture: {}
+  expected:
+    node: N_SUBTREE_REVIEW_COMPLETION_CHECK
+- id: TC_N_TARGETED_BEFORE_AFTER_PROPOSAL_COVERED
+  fixture: {}
+  expected:
+    node: N_TARGETED_BEFORE_AFTER_PROPOSAL
+- id: TC_N_TARGETED_CHANGE_CLARIFICATION_COVERED
+  fixture: {}
+  expected:
+    node: N_TARGETED_CHANGE_CLARIFICATION
+- id: TC_N_TARGETED_CHANGE_DECISION_COVERED
+  fixture: {}
+  expected:
+    node: N_TARGETED_CHANGE_DECISION
+- id: TC_N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY_COVERED
+  fixture: {}
+  expected:
+    node: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
+- id: TC_N_TARGETED_MORE_IMPROVEMENTS_CHECK_COVERED
+  fixture: {}
+  expected:
+    node: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+- id: TC_N_TARGET_PROCESS_ITEM_IDENTIFICATION_COVERED
+  fixture: {}
+  expected:
+    node: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+- id: TC_N_TERMINAL_BRANCH_FULL_VALIDATION_GATE_COVERED
+  fixture: {}
+  expected:
+    node: N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
+- id: TC_N_TERMINAL_OR_CONTINUE_DECISION_COVERED
+  fixture: {}
+  expected:
+    node: N_TERMINAL_OR_CONTINUE_DECISION
+- id: TC_N_TERMINAL_OUTPUT_BINDING_CONFIRMATION_COVERED
+  fixture: {}
+  expected:
+    node: N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
+- id: TC_N_TERMINAL_OUTPUT_BINDING_LOOP_COVERED
+  fixture: {}
+  expected:
+    node: N_TERMINAL_OUTPUT_BINDING_LOOP
+- id: TC_N_TERMINAL_OUTPUT_BINDING_POLICY_COVERED
+  fixture: {}
+  expected:
+    node: N_TERMINAL_OUTPUT_BINDING_POLICY
+- id: TC_N_TERMINAL_PATH_READY_CHECK_COVERED
+  fixture: {}
+  expected:
+    node: N_TERMINAL_PATH_READY_CHECK
+- id: TC_N_USER_TREE_VISION_CAPTURE_COVERED
+  fixture: {}
+  expected:
+    node: N_USER_TREE_VISION_CAPTURE
+- id: TC_N_END_HANDOFF_ACCEPTED_COVERED
+  fixture: {}
+  expected:
+    node: END_HANDOFF_ACCEPTED

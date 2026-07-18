@@ -1,0 +1,88 @@
+{
+  "milestone": "M60.6.2",
+  "status": "passed-with-calibration-blocker",
+  "date": "2026-07-08",
+  "checks": [
+    {
+      "check": "raw_metrics_present",
+      "status": "passed"
+    },
+    {
+      "check": "expected_cases_60",
+      "status": "passed",
+      "actual_cases": 60
+    },
+    {
+      "check": "score_artifacts_60",
+      "status": "passed",
+      "actual_score_artifacts": 60
+    },
+    {
+      "check": "runtime_views_compared",
+      "status": "passed",
+      "runtime_views": [
+        "json",
+        "ordo-code",
+        "json,ordo-code"
+      ]
+    },
+    {
+      "check": "zero_variance_detected",
+      "status": "passed"
+    },
+    {
+      "check": "weights_not_changed",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_not_changed",
+      "status": "passed"
+    },
+    {
+      "check": "no_real_model_benchmark_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "book_source_only_no_pdf",
+      "status": "passed"
+    },
+    {
+      "check": "workspace_py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "workspace_pathwalk_pytest",
+      "status": "passed",
+      "result": "22/22 passed"
+    },
+    {
+      "check": "pathwalk_rc_with_developer_bundle_pytest",
+      "status": "passed",
+      "result": "22/22 passed"
+    },
+    {
+      "check": "raw_metrics_sanity",
+      "status": "passed",
+      "result": "60 cases; all metrics 1.0"
+    },
+    {
+      "check": "book_manifest_and_structure_audit_sanity",
+      "status": "passed"
+    },
+    {
+      "check": "final_zip_extraction_key_files",
+      "status": "passed"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "CALIBRATION-BLOCKER-ZERO-VARIANCE",
+      "severity": "expected-blocker",
+      "description": "M60.6 dry-run has all component metrics at 1.0, so it cannot support scoring weight calibration.",
+      "resolution": "Do not change weights; collect model/API or transcript-based benchmark data with variance before calibration."
+    }
+  ],
+  "weights_changed": false,
+  "runtime_core_semantics_changed": false,
+  "recommended_next_milestone": "M60.6.3 Model Benchmark Protocol Design"
+}

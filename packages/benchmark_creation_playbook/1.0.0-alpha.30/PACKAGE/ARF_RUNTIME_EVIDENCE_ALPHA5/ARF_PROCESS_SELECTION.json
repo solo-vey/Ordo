@@ -1,0 +1,28 @@
+{
+  "status": "SELECTED",
+  "operation": "release",
+  "runtime_mode": "EXECUTION_MODE",
+  "decision_model": "closed_world",
+  "route": [
+    "package_startup",
+    "program_contract",
+    "process_rail",
+    "derived_sync",
+    "generated_validation",
+    "clean_package_gate",
+    "go_no_go"
+  ],
+  "source_contracts": [
+    "language/ARF_DETERMINISTIC_CONTROL_MODEL_CONTRACT.md",
+    "language/ARF_NODE_CONTRACT_PROFILES.md",
+    "language/PACKAGE_STARTUP_STANDARD.md",
+    "language/PROCESS_RAIL_SCHEMA_CONVENTION.md",
+    "language/DERIVED_ARTIFACT_SYNC_STANDARD.md",
+    "language/GENERATED_ARTIFACT_VALIDATION.md",
+    "language/CLEAN_PACKAGE_GATE.md",
+    "language/GO_NO_GO.md",
+    "language/CSG_5_VALIDATION_REGRESSION_AND_RELEASE.md",
+    "tools/release_integrity.py",
+    "tools/check_generated_artifact_isolation.py"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "milestone": "M56",
+  "title": "Package Build Profiles: dev / runtime / evidence",
+  "status": "passed",
+  "cli_status": "executed_cli_passed",
+  "generated_at": "2026-07-06T19:32:40.553806+00:00",
+  "changed_files_summary": [
+    "cli/ordo/package_profiles.py",
+    "cli/ordo/cli.py",
+    "cli/ordo/repo_checks.py",
+    "cli/tests/test_cli_workflow.py",
+    "language/PACKAGE_PROFILES.md",
+    "language/RUNTIME_PACKAGE_STANDARD.md",
+    "cli/docs/PACKAGE_PROFILES.md",
+    "packages/*/PACKAGING_PROFILES.md",
+    "book/source/chapters/chapter_51_package_build_profiles.md",
+    "docs/design_decisions/DD-ORDO-M56-001_PACKAGE_BUILD_PROFILES.md",
+    "docs/reports/M56_PACKAGE_BUILD_PROFILES_REPORT.md"
+  ],
+  "new_cli_behavior": [
+    "ordo package --profile dev",
+    "ordo package --profile runtime",
+    "ordo package --profile evidence",
+    "runtime profile generates ordo.runtime.json",
+    "profiles generate reports/BUILD_MANIFEST.json and reports/SHA256SUMS.txt"
+  ],
+  "validation_errors": [
+    "ORDO-PACKAGE-001",
+    "ORDO-PACKAGE-002",
+    "ORDO-PACKAGE-003",
+    "ORDO-PACKAGE-004",
+    "ORDO-PACKAGE-005",
+    "ORDO-PACKAGE-006",
+    "ORDO-PACKAGE-007",
+    "ORDO-PACKAGE-008",
+    "ORDO-PACKAGE-009",
+    "ORDO-PACKAGE-010"
+  ],
+  "tests": {
+    "unittest_discover": "48/48 OK"
+  },
+  "active_package_checks": {
+    "ordo_project_builder": "lint/compile/test/coverage passed",
+    "ordo_hybrid_executor": "lint/compile/test/coverage passed",
+    "history_event_guided_intake": "lint/compile/test/coverage/go-no-go/validate-output passed"
+  },
+  "package_profile_self_check": {
+    "history_event_runtime_profile": "passed; excludes source/tests/run_inputs and includes compiled IR/start files/output_templates/ordo.runtime.json/build manifest/hash file",
+    "history_event_evidence_profile": "passed; reports only",
+    "history_event_dev_profile": "passed; includes source and tests"
+  },
+  "known_limitations": [
+    "Runtime profile requires compiled/program.ir.json at package build time; source archives may still omit compiled IR according to source-hygiene policy.",
+    "Evidence profile contains deterministic CLI evidence/provenance reports; it does not claim live model execution."
+  ],
+  "repo_check": "passed",
+  "archives": {
+    "full_package": "/mnt/data/ordo_github_workspace_v0_12_m56_package_build_profiles.zip",
+    "developer_bundle": "/mnt/data/ordo_developer_bundle_from_m56.zip"
+  }
+}

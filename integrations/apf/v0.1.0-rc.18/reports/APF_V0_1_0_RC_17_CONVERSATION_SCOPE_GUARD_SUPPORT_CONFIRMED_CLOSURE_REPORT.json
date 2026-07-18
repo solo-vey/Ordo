@@ -1,0 +1,14 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "confirmed_version": "v0.1.0-rc.17-conversation-scope-guard-support-confirmed-closure",
+  "previous_confirmed_baseline": "v0.1.0-rc.15-execution-trace-support-confirmed-closure",
+  "status": "confirmed-closure / accepted-baseline",
+  "completed_milestones": ["CSG-0", "CSG-1", "CSG-2", "CSG-3", "CSG-4", "CSG-5"],
+  "blocking_issues": [],
+  "human_confirmation": "accepted on 2026-07-11",
+  "confirmed_baseline_replaced": true,
+  "apf_internal_csg_enabled": false,
+  "generated_playbook_csg_optional": true,
+  "safety_and_control_intents_preserved": true,
+  "ordo_core_changed": false
+}

@@ -1,0 +1,254 @@
+{
+  "schema_version": "ordo.csg.model_evidence.v1",
+  "dataset_version": "M74.3-csg-benchmark-v1",
+  "protocol_version": "M75.3.2",
+  "benchmark_mode": "real-model",
+  "model": {
+    "provider": "Anthropic",
+    "name": "Claude Opus 4.8",
+    "driver": "chat-ui-manual"
+  },
+  "run": {
+    "run_id": "RUN-12",
+    "executed_at": "2026-07-11",
+    "single_clean_chat": true,
+    "expected_labels_visible_to_model": false,
+    "notes": "Classified blind; expected labels not present in dataset. Safety messages treated as process-suspending control events per rules 3 and 9."
+  },
+  "predictions": [
+    {
+      "case_id": "CSG-ACTIVE-01",
+      "classification": "answer_to_active_question",
+      "action": "Accept and record source field company.status as the trigger; advance node",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-ACTIVE-02",
+      "classification": "answer_to_active_question",
+      "action": "Accept and record source field legalFormCode as the trigger; advance node",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "classification": "clarification",
+      "action": "Explain what 'source field' means; keep active question open",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-CLARIFY-02",
+      "classification": "clarification",
+      "action": "Explain expected answer format; keep active question open",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "Replace prior value 'status' with stateCode as the source field",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "Replace earlier alias with LU_CHANGE_STATE",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "Reposition active node to the alias step",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-BACKTRACK-02",
+      "classification": "backtrack_request",
+      "action": "Return to the previous question so the user can revise the answer",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-01",
+      "classification": "requirement_change",
+      "action": "Update goal/scope to QA-only package instead of full package",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-REQCHANGE-02",
+      "classification": "requirement_change",
+      "action": "Extend scope to include external events",
+      "state_mutation_performed": true,
+      "mutation_scope": "business",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "Suspend the process, preserving current state",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "Suspend the process temporarily for later continuation",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-RESUME-01",
+      "classification": "resume_request",
+      "action": "Resume the suspended process at the saved node",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "Continue the process from the paused node",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-EXIT-01",
+      "classification": "exit_request",
+      "action": "Terminate the process without completion",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "Cancel the workflow and mark it closed as incomplete",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "Report the current step; keep active question open",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-META-02",
+      "classification": "process_meta_question",
+      "action": "Explain the next step after this answer; keep active question open",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "Store provenance note (company registry import); keep active question open",
+      "state_mutation_performed": true,
+      "mutation_scope": "context",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "Store consumer note (used by compliance analysts); keep active question open",
+      "state_mutation_performed": true,
+      "mutation_scope": "context",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "Decline to treat as answer; redirect to active question",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "Decline to treat as answer; redirect to active question",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-SAFETY-01",
+      "classification": "unsafe_or_emergency_message",
+      "action": "Bypass process; advise contacting emergency services; suspend process",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-SAFETY-02",
+      "classification": "unsafe_or_emergency_message",
+      "action": "Bypass process; urge contacting emergency/poison services; suspend process",
+      "state_mutation_performed": true,
+      "mutation_scope": "control",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "Request clarification; do not advance the process",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "Request clarification; do not advance the process",
+      "state_mutation_performed": false,
+      "mutation_scope": "none",
+      "protected_state_changed": false,
+      "response_summary": "Preserved from submitted RUN-12 evidence."
+    }
+  ]
+}

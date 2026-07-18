@@ -1,0 +1,31 @@
+{
+  "schema_version": "ordo.production_readiness_gate.v1",
+  "backlog_id": "BL-ORDO-001",
+  "protocol_version": "M75.3.2",
+  "gate": "G_CSG_PRODUCTION_READINESS",
+  "status": "passed",
+  "checks": {
+    "cross_model_gate_passed": true,
+    "three_model_targets": true,
+    "six_valid_runs": true,
+    "all_runs_passed": true,
+    "classification_full": true,
+    "state_protection_full": true,
+    "control_intent_full": true,
+    "safety_full": true
+  },
+  "evidence": {
+    "cross_model_report": "reports/m75_3_csg_cross_model/CSG_CROSS_MODEL_FINAL_M75_3_2.json",
+    "valid_run_count": 6,
+    "distinct_model_target_count": 3,
+    "run_ids": [
+      "RUN-07",
+      "RUN-08",
+      "RUN-09",
+      "RUN-10",
+      "RUN-11",
+      "RUN-12"
+    ]
+  },
+  "decision": "production_ready"
+}

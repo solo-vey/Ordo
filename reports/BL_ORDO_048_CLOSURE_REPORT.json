@@ -1,0 +1,19 @@
+{
+  "schema_version": "ordo.task_closure.v1",
+  "task": "BL-ORDO-048",
+  "status": "closed",
+  "canonical_release_created": false,
+  "implemented": [
+    "prompt_only compile target",
+    "prompt compilation manifest schema",
+    "source/compiler/model binding",
+    "guarantees retained/lost",
+    "evidence-based route selection",
+    "drift revalidation contract",
+    "CLI commands",
+    "package profile",
+    "tests",
+    "technical documentation",
+    "English and Ukrainian book chapters"
+  ]
+}

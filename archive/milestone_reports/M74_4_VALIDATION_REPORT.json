@@ -1,0 +1,35 @@
+{
+  "milestone": "M74.4",
+  "status": "passed",
+  "checks": {
+    "baseline_has_language": true,
+    "baseline_has_cli": true,
+    "baseline_excludes_book": true,
+    "baseline_excludes_reports": true,
+    "baseline_excludes_root_milestones": true,
+    "process_has_reports": true,
+    "book_has_uk": true,
+    "book_has_en": true,
+    "no_pycache": true,
+    "no_pyc": true
+  },
+  "outputs": {
+    "language_baseline": {
+      "path": "/mnt/data/m74_4_release_views/language_baseline",
+      "file_count": 1812,
+      "sha256_tree": "8c47dd26daf058f473f1558aeebf2faf5f99883bffeb9b90e4ccfaec4a331aad"
+    },
+    "process_archive": {
+      "path": "/mnt/data/m74_4_release_views/process_archive",
+      "file_count": 1058,
+      "sha256_tree": "31c5f8f0b781b966d5e7029f8cae8dcef117d14f760b306a8cd99f5d649b5dd1"
+    },
+    "book_source": {
+      "path": "/mnt/data/m74_4_release_views/book_source",
+      "file_count": 233,
+      "sha256_tree": "5a1f314c98da8f292759fc763bbef0a21f0c385a031c48d1ddad0d967b4ed3e5"
+    }
+  },
+  "archives_generated": false,
+  "blockers": []
+}

@@ -1,0 +1,67 @@
+{
+  "milestone": "M60.7.2",
+  "status": "passed",
+  "release_type": "implementation-slice",
+  "checks": [
+    {
+      "check": "real_module_paths_cli_added",
+      "status": "passed"
+    },
+    {
+      "check": "terminal_paths_artifacts_generated",
+      "status": "passed"
+    },
+    {
+      "check": "sample_terminal_paths_present",
+      "status": "passed",
+      "details": "3 terminal paths"
+    },
+    {
+      "check": "cycle_edges_absent_in_sample",
+      "status": "passed"
+    },
+    {
+      "check": "clean_path_readiness_metadata_present",
+      "status": "passed"
+    },
+    {
+      "check": "testcase_generation_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "noise_generation_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_artifacts_not_read",
+      "status": "passed"
+    },
+    {
+      "check": "selected_non_runtime_tests",
+      "status": "passed",
+      "details": "17 passed"
+    },
+    {
+      "check": "book_source_updated_without_pdf_generation",
+      "status": "passed"
+    },
+    {
+      "check": "weights_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_semantics_unchanged",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "known_not_gate": [
+    "runtime-harness/transcript-replay matrix tests remain excluded because they belong to the known M60.6 blocked branch"
+  ],
+  "artifacts": [
+    "M60_7_2_TERMINAL_PATH_ENUMERATION_REPORT.md",
+    "M60_7_2_TERMINAL_PATH_ENUMERATION_REPORT.json",
+    "reports/m60_7_2_terminal_path_enumeration/REAL_MODULE_TERMINAL_PATHS.json",
+    "reports/m60_7_2_terminal_path_enumeration/REAL_MODULE_TERMINAL_PATHS.md"
+  ]
+}

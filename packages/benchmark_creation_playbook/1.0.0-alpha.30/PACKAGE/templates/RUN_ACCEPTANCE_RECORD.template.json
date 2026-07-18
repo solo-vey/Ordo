@@ -1,0 +1,17 @@
+{
+  "schema_version":"benchmark.run_acceptance_record.v1",
+  "run_id":"RUN_01",
+  "variant":"yaml_playbook",
+  "playbook_version":"candidate-version",
+  "revision":1,
+  "status":"RECEIVED_NOT_CONFIRMED",
+  "artifact_audited":false,
+  "integrity_status":"UNRESOLVED",
+  "result_sha256":null,
+  "audit_sha256":null,
+  "scores":{"process_quality":0,"document_quality":0,"final_quality":0},
+  "confirmed_by_user":false,
+  "confirmation_evidence":null,
+  "supersedes_revision":null,
+  "history":[]
+}

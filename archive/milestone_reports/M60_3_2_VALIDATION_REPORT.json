@@ -1,0 +1,38 @@
+{
+  "milestone": "M60.3.2",
+  "title": "Runtime CLI Safety Patch",
+  "scope": "fail-fast bare intake in non-TTY automation; next-step stdout compactness; docs/book source sync",
+  "code_changes": [
+    "cli/ordo/intake.py",
+    "cli/ordo/cli.py",
+    "cli/tests/test_cli_workflow.py"
+  ],
+  "docs_updated": [
+    "language/RUNTIME_GUIDED_INTAKE_PROTOCOL.md",
+    "cli/docs/SCENARIO_TESTING_WITH_RUNTIME_CLI.md",
+    "docs/testing/ORDO_PATHWALK_SCENARIO_TESTING.md",
+    "book/source/chapters/chapter_57_scenario_testing_i_pathwalk.md"
+  ],
+  "tests": {
+    "focused": "RuntimeCliSafetyM60_3_2Test 2/2 passed",
+    "class_split_regression": "78/78 unittest methods passed by class/method split",
+    "repo_check": "passed after source cleanup with PYTHONDONTWRITEBYTECODE=1",
+    "embedded_runtime_smoke": "runtime-status ready; next-step auto emitted current_contract; bare intake failed fast; intake --submit passed; verify-targets passed; verify-session passed"
+  },
+  "accepted_behavior": {
+    "bare_intake_non_tty": "failed reason=no_answers_and_not_interactive_and_no_tty",
+    "next_step_stdout": "compact; checkpoint details remain in report file"
+  },
+  "not_in_scope": [
+    "restore-session",
+    "PathWalk utility source changes",
+    "score weight calibration",
+    "Python/Java targets"
+  ],
+  "created_at_utc": "2026-07-07T13:02:06Z",
+  "updated_at_utc": "2026-07-07T13:08:03Z",
+  "artifacts": {
+    "history_event_runtime_profile": "/mnt/data/history_event_runtime_profile_m60_3_2.zip",
+    "history_event_dev_profile": "/mnt/data/history_event_dev_profile_m60_3_2.zip"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.pathwalk.execution_evidence.v1",
+  "title": "Ordo PathWalk execution evidence v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evidence_id", "linkage", "outcome", "process", "diagnostics", "controls", "artifacts", "claims"],
+  "properties": {
+    "schema_version": {"const": "ordo.pathwalk.execution_evidence.v1"},
+    "evidence_id": {"type": "string", "minLength": 1},
+    "linkage": {
+      "type": "object",
+      "required": ["plan_fingerprint", "job_id", "case_id", "source_sha256", "case_sha256"],
+      "properties": {
+        "plan_fingerprint": {"type": ["string", "null"]},
+        "job_id": {"type": "string", "minLength": 1},
+        "case_id": {"type": ["string", "null"]},
+        "source_sha256": {"type": ["string", "null"]},
+        "case_sha256": {"type": ["string", "null"]}
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "required": ["status", "status_class", "failure_category", "retryable", "testcase_decision"],
+      "properties": {
+        "status": {"enum": ["passed", "testcase_failed", "process_failed", "timed_out", "invalid_output", "input_rejected", "infrastructure_error"]},
+        "status_class": {"enum": ["success", "testcase", "process", "watchdog", "evidence", "input", "infrastructure"]},
+        "failure_category": {"type": ["string", "null"]},
+        "retryable": {"type": "boolean"},
+        "testcase_decision": {"enum": ["pass", "fail", "not_evaluated"]}
+      }
+    },
+    "process": {"type": "object"},
+    "diagnostics": {"type": "object"},
+    "controls": {"type": "object"},
+    "artifacts": {"type": "object"},
+    "claims": {
+      "type": "object",
+      "required": ["raw_evidence_only", "scoring_performed", "calibration_performed"],
+      "properties": {
+        "raw_evidence_only": {"const": true},
+        "scoring_performed": {"const": false},
+        "calibration_performed": {"const": false}
+      }
+    }
+  }
+}

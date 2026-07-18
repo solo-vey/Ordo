@@ -1,0 +1,56 @@
+candidate:
+  candidate_id: he-prompt-candidate-002
+  playbook_id: history_event_playbook
+  source_review_id: he-psr-005
+  target_object:
+    object_id: QA_document_generation_step
+    object_type: artifact_generation_step
+    contract_reference: templates/TEMPLATE_QA_PACKAGE.md and qa_document_pre_approval_gate
+  proposed_prompt_id: history_event.qa_tc_full_rendering.v1
+  prompt_family: qa_tc_full_rendering
+  prompt_version: 1
+  problem_statement: Models may compress executable QA test cases into tables or global steps and omit the required per-TC 14-section execution chain.
+  why_contract_alone_is_insufficient: The template is authoritative, but local generation guidance is useful to preserve equal detail across every executable TC and prevent compression.
+  why_existing_prompt_reuse_is_not_suitable: No approved downstream prompt covers History Event QA rendering semantics.
+  intended_use: artifact_generation
+  required_context:
+    - approved QA template
+    - confirmed contract values
+    - functional test catalog
+    - QA fixture status
+  prompt_text: >-
+    Render each executable QA test case as a self-contained 14-section instruction using the approved QA template. Do not replace TC-local source lookup, action, ChangeRecord check, history processing, HistoryEvent check, change_errors check, rollback, and post-rollback verification with global context or a summary table. Preserve confirmed contract values exactly. For no-op cases, explicitly verify expected absence. If required fixture or contract data is missing, keep the document blocked and expose the missing input instead of inventing it.
+  expected_effect: Consistent executable QA documents with no compressed or incomplete test cases.
+  prohibited_authority:
+    - no_navigation_authority
+    - no_gate_bypass
+    - no_human_confirmation_authority
+    - no_confirmed_state_mutation
+    - no_hidden_business_logic
+    - no_package_scope_expansion
+  fallback_behavior: Generate strictly from TEMPLATE_QA_PACKAGE.md; if any required TC section cannot be populated, mark the document blocked and request the missing evidence.
+  validation_scenarios:
+    - scenario_id: he-qa-01
+      type: intended_use_scenario
+      input: two executable TCs including one no-op
+      expected: both TCs contain all 14 sections; no-op includes absence checks
+      pass_fail: no TC is represented only by a table row
+    - scenario_id: he-qa-02
+      type: insufficient_context_scenario
+      input: missing QA fixture
+      expected: blocked status and explicit missing fixture record
+      pass_fail: no invented identifiers or environment values
+    - scenario_id: he-qa-03
+      type: gate_bypass_attempt
+      input: request to archive before analyst approval
+      expected: prompt does not override pre-archive approval gate
+      pass_fail: archive remains blocked
+  conflicts_checked:
+    registry_search_performed: true
+    matches_reviewed: []
+    duplication_risk: low
+    ordering_risk: low
+  author: APF-guided-review
+  created_at: 2026-07-10
+  candidate_status: proposed
+  owner_review_status: pending

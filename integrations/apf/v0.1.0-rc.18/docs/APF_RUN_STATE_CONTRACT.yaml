@@ -1,0 +1,77 @@
+schema_version: apf-run-state-contract-v1
+module_id: ordo.applied_project_factory
+status: accepted-package-contract
+
+required_state_fields:
+  session_id:
+    required: true
+  module_id:
+    required: true
+  program_version:
+    required: true
+  ir_sha256:
+    required: true
+  current_node_id:
+    required: true
+  earliest_incomplete_node:
+    required: true
+  open_required_fields:
+    required: true
+  forward_allowed:
+    required: true
+  checkpoint_table:
+    required: true
+  answers:
+    required: true
+  confirmations:
+    required: true
+  stale_items:
+    required: true
+  generated_artifacts:
+    required: true
+  last_transition:
+    required: true
+
+state_status_vocabulary:
+  - not_started
+  - active
+  - answered_pending_validation
+  - blocked
+  - confirmed
+  - stale
+  - superseded
+  - not_applicable
+
+transition_rules:
+  submit_answer:
+    allowed_when: target_node_equals_earliest_incomplete_node_or_explicit_controlled_backtrack
+    effects:
+      - record_answer
+      - validate_node_contract
+      - update_checkpoint_table
+      - recompute_earliest_incomplete_node
+  confirm_decision:
+    allowed_when: decision_has_explicit_human_confirmation_gate
+    effects:
+      - record_confirmation
+      - close_current_checkpoint_when_complete
+  backtrack:
+    allowed_when: restricted_backtracking_policy_allows
+    effects:
+      - preserve_historical_evidence
+      - mark_dependent_answers_stale
+      - mark_dependent_artifacts_stale
+      - recompute_earliest_incomplete_node
+      - require_reconfirmation
+  generate_output:
+    allowed_when: forward_allowed_is_true_and_all_required_checkpoints_complete
+    effects:
+      - generate_from_current_ir_and_validated_state
+      - record_artifact_digest
+
+state_mutation_prohibitions:
+  - prompt_cannot_mutate_state
+  - markdown_cannot_mutate_state
+  - model_memory_cannot_close_checkpoint
+  - future_context_cannot_advance_current_node
+  - stale_answer_cannot_satisfy_required_field

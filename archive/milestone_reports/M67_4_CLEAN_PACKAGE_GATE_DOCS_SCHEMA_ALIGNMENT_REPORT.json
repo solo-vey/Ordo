@@ -1,0 +1,60 @@
+{
+  "milestone": "M67.4",
+  "title": "Clean Package Gate Docs/Schema Alignment to Implemented CLI",
+  "status": "accepted-docs-schema-alignment / passed-validation",
+  "date": "2026-07-09",
+  "scope": {
+    "language_docs_changed": true,
+    "schema_conventions_changed": true,
+    "cli_docs_changed": true,
+    "cli_code_changed": false,
+    "tests_changed": false,
+    "packages_changed": false,
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false,
+    "compiled_ir_regenerated": false,
+    "lockfiles_regenerated": false
+  },
+  "outputs": [
+    "language/CLEAN_PACKAGE_GATE.md",
+    "language/DERIVED_ARTIFACT_SYNC_VALIDATION_PROFILE.md",
+    "language/schemas/clean_package_gate_schema.yaml",
+    "language/schemas/derived_artifact_sync_validation_profile_schema.yaml",
+    "language/examples/source/clean_package_gate_example.ordo.yaml",
+    "language/spec/25_CLEAN_PACKAGE_GATE_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M67-004_CLEAN_PACKAGE_GATE_ALIGNMENT_TO_CLI.md"
+  ],
+  "aligned_to": "M67.3 ordo clean-check minimal implementation",
+  "diff_summary": {
+    "added_files": 13,
+    "changed_files": 8,
+    "removed_files": 0
+  },
+  "added_files": [
+    "M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.json",
+    "M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.md",
+    "M67_4_VALIDATION_REPORT.json",
+    "docs/design_decisions/DD-ORDO-M67-004_CLEAN_PACKAGE_GATE_ALIGNMENT_TO_CLI.md",
+    "language/CLEAN_PACKAGE_GATE.md",
+    "language/DERIVED_ARTIFACT_SYNC_VALIDATION_PROFILE.md",
+    "language/examples/source/clean_package_gate_example.ordo.yaml",
+    "language/improvement_intake/m67_4/M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.json",
+    "language/improvement_intake/m67_4/M67_4_CLEAN_PACKAGE_GATE_DOCS_SCHEMA_ALIGNMENT_REPORT.md",
+    "language/improvement_intake/m67_4/M67_4_VALIDATION_REPORT.json",
+    "language/schemas/clean_package_gate_schema.yaml",
+    "language/schemas/derived_artifact_sync_validation_profile_schema.yaml",
+    "language/spec/25_CLEAN_PACKAGE_GATE_MODEL.md"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "README.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "cli/docs/CLEAN_CHECK_COMMAND.md",
+    "language/CHANGELOG.md",
+    "language/README.md",
+    "language/VALIDATION_REPORT.json",
+    "language/spec/24_CLEAN_PACKAGE_CLI_MODEL.md"
+  ],
+  "removed_files": []
+}

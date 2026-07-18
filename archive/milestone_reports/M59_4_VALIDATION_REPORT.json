@@ -1,0 +1,31 @@
+{
+  "milestone": "M59.4",
+  "title": "Runtime UX hardening from external M58 comparison",
+  "status": "passed",
+  "scope": "CLI/runtime only; documentation style audit intentionally excluded",
+  "changes_adopted_from_m58": [
+    "intake --submit --answer-file for UTF-8/YAML/JSON payloads",
+    "automatic runtime/live_session_state.json resume cache",
+    "cleaner state snapshot envelope with session_chain and state keys"
+  ],
+  "protections_retained_from_m59_3": [
+    "embedded runtime CLI allowlist blocks authoring commands",
+    "compiled IR remains runtime source of truth",
+    "invalid branch answers are rejected",
+    "per-node evidence report path and SHA-256 digest",
+    "self-hashed tamper-evident session snapshots",
+    "verify-session canary scan and chain verification"
+  ],
+  "validation": {
+    "cli_regression_suite": "65/65 passed",
+    "focused_m59_4_tests": "3 new tests passed",
+    "embedded_runtime_smoke": "passed",
+    "embedded_verify_session": "session-chain: intact",
+    "embedded_authoring_command_block": "package blocked as expected"
+  },
+  "known_limits": [
+    "No MCP server-side state",
+    "No sandbox filesystem isolation",
+    "No cryptographic protection against a malicious actor with full source/filesystem access"
+  ]
+}

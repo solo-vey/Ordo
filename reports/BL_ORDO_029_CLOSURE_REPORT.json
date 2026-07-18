@@ -1,0 +1,33 @@
+{
+  "schema_version": "ordo.backlog.closure.v1",
+  "backlog_id": "BL-ORDO-029",
+  "status": "closed",
+  "merged_from": [
+    "BL-ORDO-028"
+  ],
+  "milestone": "M88.0",
+  "title": "Deterministic Node Execution and Transition Provenance",
+  "implementation": {
+    "node_local_context": "implemented",
+    "bidirectional_direct_edge_validation": "implemented",
+    "runtime_pre_action_gate": "implemented",
+    "compiled_ir_preservation": "implemented",
+    "apf_strict_migration": "implemented",
+    "recovery_diagnostics": "implemented"
+  },
+  "evidence": {
+    "focused_tests": "20/20 passed",
+    "affected_regression": "28/28 passed",
+    "package_lints": "4/4 passed",
+    "blocking_issues": 0
+  },
+  "closure_statement": "BL-ORDO-029 is closed; BL-ORDO-028 is merged and superseded.",
+  "final_gate": {
+    "affected_tests": "31/31 passed",
+    "package_lints": "4/4 passed",
+    "pre_hash": "1515e81f783e6b61daa4009991c00fc7894ad8ea7e096321c0f117d33b9cc87f",
+    "post_hash": "1515e81f783e6b61daa4009991c00fc7894ad8ea7e096321c0f117d33b9cc87f",
+    "non_destructive": true,
+    "blocking_issues": 0
+  }
+}

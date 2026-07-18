@@ -1,0 +1,13 @@
+{
+  "event_goal": null,
+  "selected_path": null,
+  "event_alias": null,
+  "display_name_uk": null,
+  "display_name_en": null,
+  "source_field": null,
+  "value_semantics": [],
+  "qa_scope": [],
+  "approval_received": false,
+  "output_allowed": false,
+  "final_package_created": false
+}

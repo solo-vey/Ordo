@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.evidence.run_metadata.v1",
+  "admission_status": "canonical_evidence",
+  "evidence_polarity": "positive",
+  "admitted_by_user": true,
+  "admitted_at": "2026-07-15",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "implementation": "instruction_only",
+  "package_version": "Memory Driver V8.0",
+  "run_id": "RUN_03",
+  "scenario_id": "S03_INVALID_AND_IRRELEVANT",
+  "verdict": "passed_with_evaluator_defect",
+  "composite_score": 91,
+  "source_archive": "OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_03(2).zip",
+  "source_archive_sha256": "eab17b058c3eacb6a7349055b2291029661db1b7f0800c1425770241456a0245",
+  "evaluator_override": {
+    "applied": true,
+    "reason": "Evaluator falsely reported D3 generated; direct artifact/state audit shows D3 absent and correct stop at N18."
+  }
+}

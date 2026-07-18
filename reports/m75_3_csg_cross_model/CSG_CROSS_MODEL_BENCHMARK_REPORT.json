@@ -1,0 +1,75 @@
+{
+  "schema_version": "ordo.csg.cross_model_benchmark.v1",
+  "policy": {
+    "minimum_distinct_model_targets": 3,
+    "minimum_runs_per_target": 2,
+    "require_every_run_passed": true,
+    "require_single_dataset_version": true
+  },
+  "score_file_count": 1,
+  "valid_run_count": 1,
+  "distinct_model_target_count": 1,
+  "dataset_versions": [
+    "M74.3-csg-benchmark-v1"
+  ],
+  "targets": {
+    "OpenAI:GPT-5.6 Thinking": {
+      "run_count": 1,
+      "all_runs_passed": true,
+      "minimum_runs_satisfied": false,
+      "files": [
+        "openai_gpt_5_6_thinking_run_01.json"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "file": "openai_gpt_5_6_thinking_run_01.json",
+      "target": "OpenAI:GPT-5.6 Thinking",
+      "status": "passed",
+      "real_model_evidence": true,
+      "dataset_version": "M74.3-csg-benchmark-v1",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_accuracy": 1.0,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 1.0,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    }
+  ],
+  "blockers": [
+    {
+      "code": "CSG_MODEL_TARGET_COUNT_INSUFFICIENT",
+      "actual": 1,
+      "required": 3
+    },
+    {
+      "code": "CSG_REPEAT_RUN_COUNT_INSUFFICIENT",
+      "target": "OpenAI:GPT-5.6 Thinking",
+      "actual": 1,
+      "required": 2
+    }
+  ],
+  "gates": {
+    "G_CSG_CROSS_MODEL_BENCHMARK_READY": "blocked"
+  },
+  "status": "blocked"
+}

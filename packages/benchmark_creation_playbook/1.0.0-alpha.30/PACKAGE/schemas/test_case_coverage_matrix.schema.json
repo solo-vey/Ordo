@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.test_case_coverage_matrix.schema.v1",
+  "title": "All-Test-Cases Current-State Coverage Matrix",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "discovered_test_case_count",
+    "retained_test_case_count",
+    "authoritatively_excluded_test_case_count",
+    "test_cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.test_case_coverage_matrix.v1"
+    },
+    "discovered_test_case_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "retained_test_case_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "authoritatively_excluded_test_case_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "test_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "test_case_id",
+          "lifecycle_state",
+          "disposition",
+          "reason"
+        ],
+        "properties": {
+          "test_case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lifecycle_state": {
+            "type": "string"
+          },
+          "disposition": {
+            "enum": [
+              "RETAINED",
+              "AUTHORITATIVELY_EXCLUDED"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "current_packages": {
+            "type": "array"
+          },
+          "accepted_runs": {
+            "type": "array"
+          },
+          "validation_status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

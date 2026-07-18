@@ -1,0 +1,25 @@
+{
+  "milestone": "M69.0",
+  "title": "CI / release clean gate design and policy matrix",
+  "status": "accepted-design / passed-scope-validation",
+  "base": "M68 first-wave closure",
+  "added_files": [
+    "cli/docs/CI_RELEASE_CLEAN_GATE_DESIGN.md",
+    "cli/docs/CI_RELEASE_GATE_POLICY_MATRIX.md",
+    "language/schemas/ci_release_clean_gate_policy_schema.yaml",
+    "language/examples/source/ci_release_clean_gate_policy_example.ordo.yaml",
+    "language/spec/28_CI_RELEASE_CLEAN_GATE_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M69-001_CI_RELEASE_CLEAN_GATE_DESIGN.md"
+  ],
+  "non_changes": [
+    ".github/workflows/*",
+    "packages/*",
+    "cli/ordo/*.py",
+    "cli/tests/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles"
+  ]
+}

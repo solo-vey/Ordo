@@ -1,0 +1,124 @@
+{
+  "status": "failed",
+  "runner": "pytest",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli pytest -q cli/tests --durations=0 --junitxml=reports/self_check_step3_pytest_junit.xml",
+  "total_tests": 148,
+  "passed": 147,
+  "failed": 1,
+  "subtests_passed": 10,
+  "duration_seconds": 84.28,
+  "failures": [
+    {
+      "test": "cli/tests/test_cli_workflow.py::RuntimeModeStartFilesStandardTest::test_minimal_prompt_exists_and_does_not_duplicate_protocol",
+      "cause": "START_PROMPT_RUNTIME_MODE.md contains 96 whitespace-delimited words; contract maximum is 90.",
+      "severity": "medium"
+    }
+  ],
+  "test_isolation_findings": [
+    {
+      "severity": "medium",
+      "finding": "Some CLI workflow tests leave generated lock reports in the source package reports directory, making a subsequent strict repo-check fail until cleanup.",
+      "paths": [
+        "packages/history_event_guided_intake/reports/lock_report.json",
+        "packages/history_event_guided_intake/reports/lock_validation_report.json"
+      ]
+    }
+  ],
+  "per_file": {
+    "cli/tests/test_ci_clean_gate_workflow.py": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.155
+    },
+    "cli/tests/test_ci_release_smoke_matrix.py": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 17.291
+    },
+    "cli/tests/test_clean_check_fixtures.py": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 2.74
+    },
+    "cli/tests/test_cli_workflow.py": {
+      "tests": 85,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 52.89
+    },
+    "cli/tests/test_language_cli_root_contracts.py": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.162
+    },
+    "cli/tests/test_m70_4_production_ci_release_validation.py": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 3.208
+    },
+    "cli/tests/test_m71_2_prompt_registry_schema_profile.py": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.026
+    },
+    "cli/tests/test_m71_3_history_event_prompt_registry_migration.py": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.114
+    },
+    "cli/tests/test_m71_4_runtime_prompt_trace_validation.py": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.079
+    },
+    "cli/tests/test_production_repo_hygiene_policy.py": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.381
+    },
+    "cli/tests/test_release_clean_gate_provenance_linkage.py": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.001
+    },
+    "cli/tests/test_release_clean_gate_workflow.py": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 0.001
+    },
+    "cli/tests/test_repo_check_clean_integration.py": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "duration_seconds": 6.806
+    }
+  },
+  "post_cleanup_repo_check": {
+    "status": "passed",
+    "exit_code": 0
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "milestone": "M74.3",
+  "status": "passed_with_open_empirical_gate",
+  "added_files": [
+    "ordo_pathwalk/runner/csg_benchmark.py",
+    "ordo_pathwalk/tests/test_csg_benchmark.py",
+    "M74_3_CSG_PATHWALK_EMPIRICAL_BENCHMARK.md",
+    "M74_3_VALIDATION_REPORT.json",
+    "reports/m74_3_csg_pathwalk/CSG_MODEL_BENCHMARK_DATASET.json",
+    "reports/m74_3_csg_pathwalk/CSG_SYNTHETIC_SCORER_EVIDENCE.json",
+    "reports/m74_3_csg_pathwalk/CSG_SYNTHETIC_SCORER_RESULT.json"
+  ],
+  "modified_files": [
+    "ordo_pathwalk/cli.py"
+  ],
+  "empirical_claim": "not_made"
+}

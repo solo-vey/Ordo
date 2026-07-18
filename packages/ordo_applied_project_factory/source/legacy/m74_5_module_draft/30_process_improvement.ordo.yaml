@@ -1,0 +1,430 @@
+nodes:
+- id: N_EXISTING_PROCESS_BASELINE_DEFINITION
+  description: 'Baseline не може бути лише людським описом або нотатками: для коригування потрібен повний контекст процесу.'
+  question: 'Надайте baseline існуючого процесу. Допустимі тільки: 1 — повний workspace/dev package archive; 2 — self-contained
+    source/program.ordo.yaml.'
+  answer_type: enum
+  allowed_answers:
+  - workspace_dev_package_archive
+  - self_contained_source_yaml
+  answer_options:
+    workspace_dev_package_archive: Повний workspace / dev package archive
+    self_contained_source_yaml: Самодостатній source/program.ordo.yaml
+  on_answer:
+    workspace_dev_package_archive:
+      label: 'baseline: повний workspace/dev package archive'
+      update_state:
+        existing_process_baseline_source: workspace_dev_package_archive
+        existing_process_baseline_validation_status: pending_load
+      next: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+    self_contained_source_yaml:
+      label: 'baseline: self-contained source/program.ordo.yaml'
+      update_state:
+        existing_process_baseline_source: self_contained_source_yaml
+        existing_process_baseline_validation_status: pending_load
+      next: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_EXISTING_PROCESS_BASELINE_DEFINITION remains unclear
+- id: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+  description: 'Вузол розділяє два режими зміни існуючого процесу: batch extraction із набору покращень або targeted dialogue
+    навколо одного елемента.'
+  question: 'Оберіть режим коригування: 1 — пакетний список покращень; 2 — точкове покращення через діалог.'
+  answer_type: enum
+  allowed_answers:
+  - batch_improvement_list
+  - targeted_dialogue_improvement
+  answer_options:
+    batch_improvement_list: Пакетний список покращень
+    targeted_dialogue_improvement: Точкове покращення через діалог
+  on_answer:
+    batch_improvement_list:
+      label: 1. Пакетний список покращень
+      update_state:
+        improvement_mode: batch_improvement_list
+        current_review_branch: batch_improvement_list_path
+        existing_process_improvement_status: batch_mode_started
+      next: N_BATCH_IMPROVEMENT_LIST_ENTRY
+    targeted_dialogue_improvement:
+      label: 2. Точкове покращення через діалог
+      update_state:
+        improvement_mode: targeted_dialogue_improvement
+        current_review_branch: targeted_dialogue_improvement_path
+        existing_process_improvement_status: targeted_mode_started
+      next: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION remains unclear
+- id: N_BATCH_IMPROVEMENT_LIST_ENTRY
+  description: 'Старт batch mode: користувач дає набір бажаних покращень одним пакетом.'
+  question: Надайте файл, текст або список покращень для існуючого процесу.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      batch_improvement_list: $answer
+      existing_process_improvement_status: batch_list_loaded
+    next: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_BATCH_IMPROVEMENT_LIST_ENTRY remains unclear
+- id: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
+  description: 'Extraction не змінює YAML: вона лише формує список можливих покращень.'
+  question: AI витягує з batch input candidate improvements і показує їх людською мовою для вибору.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      candidate_improvements: $answer.candidate_improvements
+      existing_process_improvement_status: candidate_improvements_extracted
+    next: N_CANDIDATE_IMPROVEMENTS_SELECTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_CANDIDATE_IMPROVEMENTS_EXTRACTION remains unclear
+- id: N_CANDIDATE_IMPROVEMENTS_SELECTION
+  description: Користувач явно відділяє approved/rejected/deferred candidates перед mapping на процес.
+  question: Оберіть, які candidate improvements застосувати, які відхилити, а які відкласти.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      selected_candidate_improvements: $answer.selected
+      rejected_item_changes: $answer.rejected
+      deferred_item_changes: $answer.deferred
+    next: N_IMPROVEMENT_TO_PROCESS_MAPPING
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_CANDIDATE_IMPROVEMENTS_SELECTION remains unclear
+- id: N_IMPROVEMENT_TO_PROCESS_MAPPING
+  description: Mapping визначає, які частини існуючого процесу будуть зачеплені змінами.
+  question: AI мапить вибрані покращення на вузли, transitions, gates, state, artifacts, templates або runtime policy.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      improvement_to_process_mapping: $answer.mapping
+      affected_process_items: $answer.affected_items
+    next: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_IMPROVEMENT_TO_PROCESS_MAPPING remains unclear
+- id: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
+  description: Перед patch application кожна зміна має отримати статус і бути зрозумілою користувачу.
+  question: 'Для кожного affected item показати before/after card і отримати рішення: прийняти, скоригувати, відкласти або
+    відхилити.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      before_after_change_cards: $answer.before_after_cards
+      approved_item_changes: $answer.approved
+      rejected_item_changes: $answer.rejected
+      deferred_item_changes: $answer.deferred
+    next: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW remains unclear
+- id: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
+  description: 'Старт targeted mode: користувач може назвати вузол, gate, state, artifact або просто описати проблему.'
+  question: Опишіть точкову проблему або елемент процесу, який хочете покращити.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      targeted_improvement_description: $answer
+      targeted_improvement_loop_status: started
+    next: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY remains unclear
+- id: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+  description: Перед пропозицією зміни треба знайти конкретний предмет коригування.
+  question: 'AI визначає цільовий елемент процесу: node, transition, gate, state, artifact, policy або problem area.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      target_process_item: $answer.target_process_item
+    next: N_TARGETED_CHANGE_CLARIFICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGET_PROCESS_ITEM_IDENTIFICATION remains unclear
+- id: N_TARGETED_CHANGE_CLARIFICATION
+  description: Не можна формувати after proposal без достатньо описаної бажаної зміни.
+  question: 'Уточніть бажану зміну: що зараз неправильно, як має стати, що додати, що не змінювати, локальна це правка чи
+    rule-level зміна.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      targeted_improvement_description: $answer.description
+      affected_process_items: $answer.affected_items
+    next: N_TARGETED_BEFORE_AFTER_PROPOSAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_CHANGE_CLARIFICATION remains unclear
+- id: N_TARGETED_BEFORE_AFTER_PROPOSAL
+  description: Before/after proposal робить точкову зміну перевірною до внесення в YAML.
+  question: AI показує target item, before snapshot, proposed after version, rationale, affected state/gates/artifacts і open
+    risks.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      targeted_after_proposal: $answer.after_proposal
+      before_after_change_cards: $append:$answer.before_after_card
+    next: N_TARGETED_CHANGE_DECISION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_BEFORE_AFTER_PROPOSAL remains unclear
+- id: N_TARGETED_CHANGE_DECISION
+  description: Decision gate для конкретного targeted after proposal.
+  question: Що робимо з цією запропонованою зміною?
+  answer_type: enum
+  allowed_answers:
+  - accept_change
+  - correct_change
+  - defer_change
+  - reject_change
+  answer_options:
+    accept_change: Прийняти зміну
+    correct_change: Скоригувати зміну
+    defer_change: Відкласти зміну
+    reject_change: Відхилити зміну
+  on_answer:
+    accept_change:
+      label: зміна прийнята
+      update_state:
+        targeted_change_decision: approved
+        approved_item_changes: $append:$answer.change
+      next: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+    correct_change:
+      label: зміна потребує корекції
+      update_state:
+        targeted_change_decision: needs_correction
+      next: N_TARGETED_CHANGE_CLARIFICATION
+    defer_change:
+      label: зміна відкладена
+      update_state:
+        targeted_change_decision: deferred
+        deferred_item_changes: $append:$answer.change
+      next: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+    reject_change:
+      label: зміна відхилена
+      update_state:
+        targeted_change_decision: rejected
+        rejected_item_changes: $append:$answer.change
+      next: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_CHANGE_DECISION remains unclear
+- id: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+  description: 'Loop-control вузол: або повертаємось до наступного target item, або виходимо до shared change pipeline.'
+  question: Чи є ще точкові покращення для цього процесу?
+  answer_type: enum
+  allowed_answers:
+  - more_targeted_improvements
+  - no_more_targeted_improvements
+  answer_options:
+    more_targeted_improvements: Так, хочу покращити ще один елемент
+    no_more_targeted_improvements: Ні, більше покращень немає
+  on_answer:
+    more_targeted_improvements:
+      label: ще одне точкове покращення
+      update_state:
+        targeted_improvement_loop_status: continue
+      next: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+    no_more_targeted_improvements:
+      label: targeted loop завершено
+      update_state:
+        targeted_improvement_loop_status: closed
+      next: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_MORE_IMPROVEMENTS_CHECK remains unclear
+- id: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+  description: Batch і targeted improvement modes сходяться тут; downstream validation/handoff не дублюється, а йде через
+    shared terminal pipeline.
+  question: Закрити активний режим коригування і перейти до спільного change pipeline для confirmed changes.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      existing_process_shared_pipeline_join_status: ready_to_build_change_set
+    next: N_CONFIRMED_CHANGE_SET_BUILDING
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE remains unclear
+- id: N_CONFIRMED_CHANGE_SET_BUILDING
+  description: Confirmed change set є єдиним дозволеним input для YAML patch application.
+  question: Сформувати confirmed change set з approved changes; rejected і deferred changes зберегти окремо.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      confirmed_change_set: $answer.confirmed_change_set
+      existing_process_improvement_status: confirmed_change_set_built
+    next: N_SCOPED_YAML_PATCH_APPLICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_CONFIRMED_CHANGE_SET_BUILDING remains unclear
+- id: N_SCOPED_YAML_PATCH_APPLICATION
+  description: 'Patch discipline: не перебудовувати весь процес, а змінювати лише підтверджені частини.'
+  question: Застосувати тільки scoped YAML patches, що відповідають confirmed change set.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      scoped_yaml_patch_queue: $answer.applied_patches
+      last_incremental_yaml_patch_summary: $answer.patch_summary
+      incremental_yaml_validation_status: pending
+    next: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_SCOPED_YAML_PATCH_APPLICATION remains unclear
+- id: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
+  description: Після мінімальної перевірки scoped patch joins the shared validation/handoff tail. Full validation/handoff
+    nodes are referenced, not duplicated.
+  question: 'Запустити мінімальну перевірку після patch: YAML parse, Ordo lint, compile/refresh IR.'
+  answer_type: enum
+  allowed_answers:
+  - minimal_validation_passed
+  - minimal_validation_failed
+  answer_options:
+    minimal_validation_passed: мінімальна перевірка пройдена
+    minimal_validation_failed: мінімальна перевірка знайшла проблему
+  on_answer:
+    minimal_validation_passed:
+      label: minimal validation passed; join shared full validation pipeline
+      update_state:
+        existing_process_minimal_validation_status: passed
+        existing_process_shared_pipeline_join_status: joined_shared_full_validation_pipeline
+        full_project_validation_status: pending
+      next: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+    minimal_validation_failed:
+      label: minimal validation failed; return to scoped correction
+      update_state:
+        existing_process_minimal_validation_status: failed
+        incremental_yaml_validation_status: failed
+      next: N_SCOPED_YAML_PATCH_APPLICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH remains unclear
+- id: N_INPUT_ARTIFACTS_POLICY
+  question: Які вхідні матеріали або джерела має використовувати цей процес? Якщо їх зараз немає або процес не регламентує
+    вхід — зафіксуйте відповідну input policy.
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      input_policy: $answer.policy
+      domain_input_sources: $answer.inputs
+      required_input_artifacts: $answer.required_inputs
+      optional_input_artifacts: $answer.optional_inputs
+      input_constraints: $answer.constraints
+      input_examples: $answer.examples
+    next: N_OUTPUT_ARTIFACT_CATALOG
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_input_policy_required_optional_none_unknown_or_later
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_explicit_input_policy_unknown
+      reason: input policy can be unknown or deferred but must be explicit
+  description: 'Atomic input-policy node. Input artifacts are not mandatory: user may have required inputs, optional inputs,
+    no predefined input, unknown/deferred input, or inputs produced later in the process.'
+gates:
+- id: G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
+  method: mechanical
+  trust_class: deterministic
+  description: Blocks readiness until missing-language-feature proposals are either captured in the proposal artifact or explicitly
+    marked as none detected.
+  condition: state.language_improvement_proposals_status is not null
+  on_fail: block
+- id: G_PROCESS_FEEDBACK_LOOP_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms process feedback can update the APF YAML after user approval, then reload and continue from the updated
+    process.
+  condition: state.process_feedback_policy_status is not null
+  on_fail: block
+assertions:
+- id: A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED
+  polarity: must
+  condition: missing_language_capabilities_are_recorded_in_language_improvement_proposals_artifact
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+- id: A_PROCESS_FEEDBACK_CAN_REWRITE_YAML_AFTER_APPROVAL
+  polarity: must
+  condition: process_feedback_is_confirmed_before_yaml_update_and_runtime_continues_after_reload
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_RUNTIME_CONTINUES_FROM_RELOADED_YAML_AFTER_PROCESS_CHANGE
+  polarity: must
+  condition: after_confirmed_process_feedback_runtime_uses_updated_yaml_not_memory_of_old_flow
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP

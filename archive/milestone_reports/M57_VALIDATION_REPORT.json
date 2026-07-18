@@ -1,0 +1,62 @@
+{
+  "milestone": "M57",
+  "title": "Runtime Checkpoint Discipline",
+  "status": "passed",
+  "cli_status": "executed_cli_passed",
+  "summary": {
+    "new_runtime_rules": [
+      "one node at a time",
+      "one contract at a time",
+      "one decision at a time",
+      "earliest incomplete node wins",
+      "no forward movement while mandatory checkpoint gaps remain"
+    ],
+    "new_run_state_fields": [
+      "last_closed_node",
+      "earliest_incomplete_node",
+      "checkpoint_table",
+      "forward_allowed",
+      "open_required_fields",
+      "node_merge_attempt_detected"
+    ],
+    "new_errors": [
+      "ORDO-CHECKPOINT-001",
+      "ORDO-CHECKPOINT-002",
+      "ORDO-CHECKPOINT-003",
+      "ORDO-CHECKPOINT-004",
+      "ORDO-CHECKPOINT-005",
+      "ORDO-CHECKPOINT-006"
+    ]
+  },
+  "changed_areas": [
+    "language/RUNTIME_CHECKPOINTS.md",
+    "cli/ordo/checkpoints.py",
+    "cli/ordo/helpers.py",
+    "cli/ordo/runtime.py",
+    "cli/ordo/cli.py",
+    "package START_HERE_RUNTIME_MODE.md files",
+    "book/source markdown only",
+    "docs/reports/M57_RUNTIME_CHECKPOINT_DISCIPLINE_REPORT.md",
+    "docs/design_decisions/DD-ORDO-M57-001_RUNTIME_CHECKPOINT_DISCIPLINE.md"
+  ],
+  "commands_executed": [
+    "cd cli && PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v",
+    "cd cli && PYTHONDONTWRITEBYTECODE=1 python -m pip install -e .",
+    "ordo --version",
+    "ordo lint/compile/test/coverage for active packages",
+    "ordo runtime-entry packages/history_event_guided_intake",
+    "ordo go-no-go packages/history_event_guided_intake --run-intake --answers run_inputs/intake_success.yaml --generate-output"
+  ],
+  "results": {
+    "cli_version": "0.33.0",
+    "unit_regression_tests": "53/53 OK",
+    "active_packages": "passed",
+    "history_event_runtime_entry": "ready",
+    "history_event_go_no_go": "go",
+    "pdf_regenerated": false
+  },
+  "known_limitations": [
+    "Batch answer fixtures remain supported for deterministic regression runs; live assistant turns must not merge nodes unless allow_batch_confirmation is true.",
+    "Checkpoint required fields are inferred from node update_state unless a package declares explicit required_fields."
+  ]
+}

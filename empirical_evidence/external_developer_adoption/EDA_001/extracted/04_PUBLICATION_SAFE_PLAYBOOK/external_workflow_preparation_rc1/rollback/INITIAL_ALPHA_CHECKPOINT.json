@@ -1,0 +1,8 @@
+{
+  "schema_version": "ordo.playbook.rollback_checkpoint.v1",
+  "playbook_id": "external.workflow_preparation",
+  "playbook_version": "0.1.0-alpha.1",
+  "checkpoint_role": "initial_release_baseline",
+  "runtime_state_included": false,
+  "verification_required_before_future_version_bump": true
+}

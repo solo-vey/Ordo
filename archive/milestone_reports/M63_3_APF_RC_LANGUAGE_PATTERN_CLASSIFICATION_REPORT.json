@@ -1,0 +1,29 @@
+{
+  "milestone": "M63.3",
+  "title": "APF RC Language Pattern Classification Update",
+  "status": "passed-design-classification-only",
+  "date": "2026-07-08",
+  "apf_module": "ordo.applied_project_factory",
+  "apf_version": "0.1.0-rc.1",
+  "checks": {
+    "source_yaml_modified": false,
+    "runtime_core_modified": false,
+    "ir_or_opcode_added": false,
+    "parent_cli_command_added": false,
+    "classification_matrix_created": true,
+    "future_ir_backlog_updated": true,
+    "known_limitations_retained": true,
+    "decision": "go_to_line_closure"
+  },
+  "future_ir_candidates": [
+    "FLOW.JOIN",
+    "SHARED.TAIL.REFERENCE"
+  ],
+  "optional_apf_local": [
+    "validate-factory-output"
+  ],
+  "non_blocking_warnings": [
+    "contract/default-value consistency warnings remain visible"
+  ],
+  "report": "M63_3_APF_RC_LANGUAGE_PATTERN_CLASSIFICATION_REPORT.md"
+}

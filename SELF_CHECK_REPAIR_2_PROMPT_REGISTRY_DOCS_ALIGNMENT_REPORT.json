@@ -1,0 +1,26 @@
+{
+  "repair_id": "SELF_CHECK-002",
+  "title": "Prompt Registry documentation and examples alignment",
+  "status": "repaired_passed",
+  "updated_files": [
+    "language/PROMPT_REGISTRY.md",
+    "language/PACKAGE_STARTUP_STANDARD.md",
+    "language/STARTUP_PACKAGE_PROFILE.md",
+    "language/STARTUP_PROFILE_VALIDATION_PROFILE.md",
+    "language/registry/STARTUP_PACKAGE_PROFILE_VALUES.md",
+    "language/spec/19_PROMPT_REGISTRY_MODEL.md",
+    "language/examples/source/prompt_registry_example.ordo.yaml",
+    "language/examples/source/startup_package_profile_example.ordo.yaml"
+  ],
+  "validation": {
+    "yaml_parse": "passed",
+    "m71_2_tests": "6 passed",
+    "strict_repo_gate": "passed"
+  },
+  "scope_guard": {
+    "package_logic_changed": false,
+    "runtime_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false
+  }
+}

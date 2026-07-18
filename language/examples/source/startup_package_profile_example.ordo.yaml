@@ -1,0 +1,77 @@
+program_contract:
+  program_id: history_event_guided_intake
+  version: "0.1"
+  lifecycle: release_candidate
+  control_level: standard
+
+startup_package_profile:
+  profile_id: history_event_factory_startup_profile
+  version: "0.1"
+  package_id: history_event_guided_intake
+  default_startup_mode: analyst_quick_start
+  default_language: uk
+  startup_root: ./
+
+  startup_modes:
+    - mode: analyst_quick_start
+      audience: analyst
+      entry_file: prompts/QUICK_START_PROMPT.md
+      prompt_id: hp.package.quick_start.v1
+      required: true
+      visibility: visible_to_analyst
+      state_change_allowed: false
+      resume_supported: false
+
+    - mode: analyst_runtime_mode
+      audience: analyst
+      entry_file: START_PROMPT_RUNTIME_MODE.md
+      prompt_id: hp.runtime.start.v1
+      required: true
+      visibility: visible_to_analyst
+      state_change_allowed: false
+      resume_supported: true
+
+    - mode: developer_maintenance
+      audience: developer
+      entry_file: START_PROMPT_DEVELOPER_MODE.md
+      required: recommended
+      visibility: developer
+      state_change_allowed: false
+      resume_supported: true
+
+  entry_files:
+    - path: README.md
+      role: readme
+      required: true
+      visibility: visible_to_analyst
+    - path: START_HERE_RUNTIME_MODE.md
+      role: start_here
+      required: true
+      visibility: visible_to_analyst
+    - path: START_PROMPT_RUNTIME_MODE.md
+      role: hp.runtime.start.v1
+      required: true
+      visibility: visible_to_analyst
+    - path: PROMPT_MANIFEST.json
+      role: manifest
+      required: recommended
+      visibility: developer
+
+  readiness_gates:
+    - check_id: startup_entry_files_exist
+      severity: error
+      profile: standard
+    - check_id: startup_prompt_refs_resolve
+      severity: error
+      profile: standard
+    - check_id: quick_start_discoverable_from_readme
+      severity: warning
+      profile: standard
+    - check_id: startup_manifest_coverage
+      severity: warning
+      profile: strict
+
+  authority_boundary:
+    startup_files_may_override_gates: false
+    startup_files_may_confirm_state: false
+    startup_files_may_claim_validation_success: false

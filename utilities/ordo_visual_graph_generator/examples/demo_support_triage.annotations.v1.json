@@ -1,0 +1,41 @@
+{
+  "schema": "ordo.graph.annotations.v1",
+  "run_id": "demo_support_triage_review_001",
+  "annotations": [
+    {
+      "target": "node:N3_USER_CONTEXT",
+      "highlight": "new",
+      "severity": "notice",
+      "source": "manual_review",
+      "comment": "New context node added for clearer evidence collection."
+    },
+    {
+      "target": "edge:N1_ISSUE_TYPE:A:N2_SEVERITY",
+      "highlight": "changed",
+      "severity": "info",
+      "source": "graph_diff",
+      "comment": "Login branch now carries an explicit annotation."
+    },
+    {
+      "target": "gate:G_FINAL_APPROVED",
+      "highlight": "important",
+      "severity": "blocker",
+      "source": "validator",
+      "comment": "Output must remain blocked until approval is true."
+    },
+    {
+      "target": "state:severity",
+      "highlight": "review",
+      "severity": "warning",
+      "source": "test_generator",
+      "comment": "Tests should cover all severity choices."
+    },
+    {
+      "target": "output:OUT_SUPPORT_TRIAGE_PACKAGE",
+      "highlight": "important",
+      "severity": "notice",
+      "source": "manual_review",
+      "comment": "Final generated archive."
+    }
+  ]
+}

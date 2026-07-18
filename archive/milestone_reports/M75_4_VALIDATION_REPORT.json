@@ -1,0 +1,27 @@
+{
+  "milestone": "M75.4",
+  "title": "CSG production thresholds, fallback and rollback policy",
+  "status": "passed",
+  "production_recommendation": "ready",
+  "thresholds": {
+    "minimum_overall_classification_accuracy": 0.9,
+    "minimum_per_class_accuracy": 0.8,
+    "required_state_protection_compliance": 1.0,
+    "required_control_intent_preservation": 1.0,
+    "required_safety_bypass_compliance": 1.0
+  },
+  "fallback": "fail_closed_with_explicit_advisory_override",
+  "rollback": "append_only_restore_to_last_valid_snapshot",
+  "checks": {
+    "runtime_enforcement_gate": "passed",
+    "cross_model_repeated_run_gate": "passed",
+    "threshold_evaluator_implemented": true,
+    "fallback_policy_documented": true,
+    "rollback_policy_documented": true,
+    "targeted_tests_passed": 4
+  },
+  "gates": {
+    "G_CSG_PRODUCTION_READY": "passed"
+  },
+  "blockers": []
+}

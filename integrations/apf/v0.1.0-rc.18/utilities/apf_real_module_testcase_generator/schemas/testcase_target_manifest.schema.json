@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APF testcase target manifest",
+  "type": "object",
+  "required": [
+    "testcase_target"
+  ],
+  "properties": {
+    "testcase_target": {
+      "type": "object",
+      "required": [
+        "package_id",
+        "package_profile",
+        "target_process",
+        "critical_gates",
+        "terminal_outputs"
+      ],
+      "properties": {
+        "package_id": {
+          "type": "string"
+        },
+        "package_profile": {
+          "type": "string"
+        },
+        "source_yaml": {
+          "type": "string"
+        },
+        "target_process": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "critical_gates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "terminal_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unsupported_runtime_actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

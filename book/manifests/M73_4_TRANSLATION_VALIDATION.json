@@ -1,0 +1,51 @@
+{
+  "milestone": "M73.4",
+  "files": [
+    {
+      "file": "chapter_09_kompiliuiemo_ordo_source_v_semantic_json_ir.md",
+      "heading_count_uk": 26,
+      "heading_count_en": 26,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_10_chomu_semantic_json_ir_zaraz_naikrashchyi.md",
+      "heading_count_uk": 26,
+      "heading_count_en": 26,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_11_gate_tse_ne_porada_a_kontrolna_tochka.md",
+      "heading_count_uk": 17,
+      "heading_count_en": 17,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_12_nehatyvni_perevirky_assert_not.md",
+      "heading_count_uk": 22,
+      "heading_count_en": 22,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_13_status_semantics.md",
+      "heading_count_uk": 23,
+      "heading_count_en": 23,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

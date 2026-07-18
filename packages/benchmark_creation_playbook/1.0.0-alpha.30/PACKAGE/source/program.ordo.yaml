@@ -1,0 +1,1849 @@
+ordo:
+  version: 1.0.0-alpha.29
+  package: ordo.benchmark_creation_playbook
+  control_level: strict
+  execution_mode: chat_internal
+program_contract:
+  id: PROGRAM_BENCHMARK_CREATION_PLAYBOOK
+  lifecycle: alpha
+  control_level: strict
+  execution_mode: chat_internal
+  compatibility:
+    language: '>=0.13.0-rc.1'
+    arf: '>=0.1.0-rc.1'
+  validation_expectations:
+  - focused_scope_before_action
+  - one_node_one_contract_one_decision
+  - backlog_status_and_evidence_sync
+  - no_false_execution_ready_claim
+  - cumulative_epic_extension_without_replacing_completed_nodes
+  - single_canonical_entrypoint
+  - all_route_authorized_nodes_reachable
+  - no_dangling_transition_targets
+  - no_accidental_dead_ends
+  - connectivity_report_and_svg_same_revision
+intent:
+  id: INTENT_AUTHOR_BENCHMARK_PLAYBOOK
+  description: Build a deterministic playbook for benchmark creation, execution, evaluation, comparison and improvement.
+contract:
+  id: CONTRACT_BL_BENCH_041_SCOPED_YAML_PATCH
+  required:
+  - affected_node_allowlist
+  - structural_diff
+  - semantic_diff
+  - out_of_scope_rejection
+  - unchanged_node_hash_proof
+state:
+  id: STATE_BENCHMARK_PLAYBOOK_AUTHORING
+  schema:
+    active_epic: NONE
+    focused_scope_confirmed: true
+    language_baseline_verified: true
+    charter_complete: true
+    vocabulary_complete: true
+    conceptual_model_complete: true
+    backlog_complete: true
+    self_validation_passed: true
+    epic_01_status: done
+    full_playbook_status: complete
+    task_class_model_complete: true
+    test_case_intake_complete: true
+    test_case_package_template_complete: true
+    epic_02_status: done
+    canonical_run_scenarios_complete: true
+    scenario_extensibility_complete: true
+    epic_03_status: done
+    package_variant_registry_complete: true
+    yaml_compiler_contract_complete: true
+    structured_compiler_contract_complete: true
+    historical_compiler_contract_complete: true
+    direct_adaptation_contract_complete: true
+    epic_04_status: done
+    step_bound_driver_contract_complete: true
+    adaptive_semantic_driver_contract_complete: true
+    driver_selection_gate_complete: true
+    blind_isolation_rules_complete: true
+    epic_05_status: done
+    universal_launch_protocol_complete: true
+    preflight_integrity_gate_complete: true
+    execution_logging_complete: true
+    terminal_route_handling_complete: true
+    epic_06_status: done
+    process_quality_contract_complete: true
+    process_failure_caps_complete: true
+    epic_07_status: done
+    document_contract_registry_complete: true
+    artifact_specific_rules_complete: true
+    document_failure_caps_complete: true
+    focused_artifact_review_complete: true
+    evaluation_report_template_complete: true
+    causal_diagnostic_prompt_complete: true
+    diagnostic_evidence_contract_complete: true
+    root_cause_classification_complete: true
+    epic_08_status: done
+    epic_09_status: done
+    epic_10_status: done
+    improvement_patch_workflow_complete: true
+    regression_scenario_selection_complete: true
+    five_cycle_improvement_mode_complete: true
+    stable_benchmark_evolution_complete: true
+    epic_11_status: done
+    scoped_yaml_patch_verifier_complete: true
+    execution_graph_connectivity_complete: true
+    execution_graph_connectivity_status: PASS
+    bl_bench_046_status: done
+interaction_model:
+  primary_actor: AI_Ordo_Developer
+  human_role: Benchmark_Owner
+  deviation_policy: explain_and_return_to_active_node
+  correction_policy: invalidate_affected_artifacts_and_revalidate
+process_rail:
+  rail_id: RAIL_BENCHMARK_PLAYBOOK_AUTHORING
+  checkpoint_policy: earliest_incomplete_node_first
+  forward_rule: all_required_fields_of_current_node_complete
+  backlog_sync_required: true
+  entrypoint: N001_FOCUSED_SCOPE
+  completion_terminal: T_PLAYBOOK_COMPLETED
+  connectivity_gate: G_EXECUTION_GRAPH_CONNECTIVITY
+  graph_policy: all route-authorized nodes and gates must be reachable from entrypoint; only declared terminals may end a
+    route
+nodes:
+- id: N001_FOCUSED_SCOPE
+  profile: capture_node
+  question: Confirm current authoring scope and exact epic.
+  answer_type: structured
+  required_fields:
+  - active_epic
+  - expected_outputs
+  on_complete:
+    update_state:
+      focused_scope_confirmed: true
+    next: N002_VERIFY_LANGUAGE_BASELINE
+- id: N002_VERIFY_LANGUAGE_BASELINE
+  profile: validator_node
+  validation:
+    sources:
+    - language/CURRENT_VERSION.md
+    - language/ARF_NODE_CONTRACT_PROFILES.md
+    - language/RUNTIME_MODEL.md
+    expected:
+      language_version: 0.13.0-rc.1
+      framework_version: 0.1.0-rc.1
+  on_pass:
+    update_state:
+      language_baseline_verified: true
+    next: N003_CREATE_CHARTER
+  on_fail:
+    next: T_BLOCKED_EVIDENCE
+- id: N003_CREATE_CHARTER
+  profile: execution_node
+  action: render_contract
+  allowlisted_outputs:
+  - 000_PLAYBOOK_CONTRACT.md
+  on_complete:
+    update_state:
+      charter_complete: true
+    next: N004_CREATE_DOMAIN_MODEL
+- id: N004_CREATE_DOMAIN_MODEL
+  profile: execution_node
+  action: render_domain_model
+  allowlisted_outputs:
+  - 001_DOMAIN_VOCABULARY.md
+  - 002_CONCEPTUAL_MODEL.md
+  on_complete:
+    update_state:
+      vocabulary_complete: true
+      conceptual_model_complete: true
+    next: N005_CREATE_BACKLOG
+- id: N005_CREATE_BACKLOG
+  profile: execution_node
+  action: render_backlog
+  allowlisted_outputs:
+  - BACKLOG.md
+  on_complete:
+    update_state:
+      backlog_complete: true
+    next: N006_VALIDATE_EPIC_01
+- id: N006_VALIDATE_EPIC_01
+  profile: validator_node
+  validation:
+    require_files:
+    - 000_PLAYBOOK_CONTRACT.md
+    - 001_DOMAIN_VOCABULARY.md
+    - 002_CONCEPTUAL_MODEL.md
+    - BACKLOG.md
+    require_backlog_done:
+    - BL-BENCH-001
+    - BL-BENCH-002
+    prohibit_claims:
+    - full_playbook_execution_ready
+    - runtime_package_ready
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_01_status: done
+    next: G_EPIC_01_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N007_ACTIVATE_EPIC_02
+  profile: capture_node
+  question: Confirm Epic 02 authoring scope and preserve completed Epic 01 artifacts.
+  answer_type: structured
+  required_fields:
+  - active_epic
+  - preserve_completed_nodes
+  on_complete:
+    next: N008_DEFINE_TASK_CLASSES
+- id: N008_DEFINE_TASK_CLASSES
+  profile: execution_node
+  action: render_task_class_model
+  allowlisted_outputs:
+  - 003_TASK_CLASS_MODEL.md
+  on_complete:
+    update_state:
+      task_class_model_complete: true
+    next: N009_DEFINE_TEST_CASE_INTAKE
+- id: N009_DEFINE_TEST_CASE_INTAKE
+  profile: execution_node
+  action: render_test_case_intake
+  allowlisted_outputs:
+  - 004_TEST_CASE_CREATION_INTAKE.md
+  - templates/TEST_CASE_INTAKE.template.yaml
+  on_complete:
+    update_state:
+      test_case_intake_complete: true
+    next: N010_DEFINE_TEST_CASE_PACKAGE
+- id: N010_DEFINE_TEST_CASE_PACKAGE
+  profile: execution_node
+  action: render_test_case_source_package_contract
+  allowlisted_outputs:
+  - 005_TEST_CASE_PACKAGE_TEMPLATE.md
+  - templates/TEST_CASE_CONTRACT.template.yaml
+  - templates/SOURCE_REGISTRY.template.yaml
+  - schemas/test_case_contract.schema.json
+  on_complete:
+    update_state:
+      test_case_package_template_complete: true
+    next: N011_VALIDATE_EPIC_02
+- id: N011_VALIDATE_EPIC_02
+  profile: validator_node
+  validation:
+    require_files:
+    - 003_TASK_CLASS_MODEL.md
+    - 004_TEST_CASE_CREATION_INTAKE.md
+    - 005_TEST_CASE_PACKAGE_TEMPLATE.md
+    - templates/TEST_CASE_INTAKE.template.yaml
+    - templates/TEST_CASE_CONTRACT.template.yaml
+    - templates/SOURCE_REGISTRY.template.yaml
+    - schemas/test_case_contract.schema.json
+    require_backlog_done:
+    - BL-BENCH-003
+    - BL-BENCH-004
+    - BL-BENCH-005
+    require_backlog_open:
+    - BL-BENCH-041
+    prohibit_claims:
+    - full_playbook_execution_ready
+    - scoped_yaml_patch_verification_implemented
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_02_status: done
+    next: G_EPIC_02_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N012_ACTIVATE_EPIC_03
+  profile: capture_node
+  question: Confirm Epic 03 authoring scope and preserve completed Epic 01-02 nodes.
+  answer_type: structured
+  required_fields:
+  - active_epic
+  - preserve_completed_nodes
+  on_complete:
+    next: N013_DEFINE_CANONICAL_RUNS
+- id: N013_DEFINE_CANONICAL_RUNS
+  profile: execution_node
+  action: render_canonical_run_scenario_contracts
+  allowlisted_outputs:
+  - 006_CANONICAL_RUN_SCENARIO_CONTRACT.md
+  - RUN_SCENARIO_REGISTRY.yaml
+  - templates/RUN_CONTRACT.template.yaml
+  - schemas/run_contract.schema.json
+  on_complete:
+    update_state:
+      canonical_run_scenarios_complete: true
+    next: N014_DEFINE_RUN_EXTENSIBILITY
+- id: N014_DEFINE_RUN_EXTENSIBILITY
+  profile: execution_node
+  action: render_run_scenario_extensibility
+  allowlisted_outputs:
+  - 007_RUN_SCENARIO_EXTENSIBILITY.md
+  - templates/RUN_EXTENSION_PROPOSAL.template.yaml
+  on_complete:
+    update_state:
+      scenario_extensibility_complete: true
+    next: N015_VALIDATE_EPIC_03
+- id: N015_VALIDATE_EPIC_03
+  profile: validator_node
+  validation:
+    require_files:
+    - 006_CANONICAL_RUN_SCENARIO_CONTRACT.md
+    - 007_RUN_SCENARIO_EXTENSIBILITY.md
+    - RUN_SCENARIO_REGISTRY.yaml
+    - templates/RUN_CONTRACT.template.yaml
+    - templates/RUN_EXTENSION_PROPOSAL.template.yaml
+    - schemas/run_contract.schema.json
+    require_backlog_done:
+    - BL-BENCH-006
+    - BL-BENCH-007
+    require_backlog_open:
+    - BL-BENCH-041
+    prohibit_claims:
+    - full_playbook_execution_ready
+    - scoped_yaml_patch_verification_implemented
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_03_status: done
+    next: G_EPIC_03_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N016_ACTIVATE_EPIC_04
+  profile: capture_node
+  question: Confirm Epic 04 package-variant authoring scope and preserve completed Epic 01-03 nodes.
+  answer_type: structured
+  required_fields:
+  - active_epic
+  - preserve_completed_nodes
+  on_complete:
+    next: N017_DEFINE_VARIANT_REGISTRY
+- id: N017_DEFINE_VARIANT_REGISTRY
+  profile: execution_node
+  action: render_package_variant_registry
+  allowlisted_outputs:
+  - 008_PACKAGE_VARIANT_REGISTRY.md
+  - PACKAGE_VARIANT_REGISTRY.yaml
+  - templates/PACKAGE_VARIANT_MANIFEST.template.yaml
+  - schemas/package_variant_manifest.schema.json
+  on_complete:
+    update_state:
+      package_variant_registry_complete: true
+    next: N018_DEFINE_YAML_COMPILER
+- id: N018_DEFINE_YAML_COMPILER
+  profile: execution_node
+  action: render_yaml_package_compiler_contract
+  allowlisted_outputs:
+  - 009_YAML_PACKAGE_COMPILER.md
+  on_complete:
+    update_state:
+      yaml_compiler_contract_complete: true
+    next: N019_DEFINE_STRUCTURED_COMPILER
+- id: N019_DEFINE_STRUCTURED_COMPILER
+  profile: execution_node
+  action: render_structured_instructions_compiler_contract
+  allowlisted_outputs:
+  - 010_STRUCTURED_INSTRUCTIONS_COMPILER.md
+  on_complete:
+    update_state:
+      structured_compiler_contract_complete: true
+    next: N020_DEFINE_HISTORICAL_COMPILER
+- id: N020_DEFINE_HISTORICAL_COMPILER
+  profile: execution_node
+  action: render_historically_accumulated_compiler_contract
+  allowlisted_outputs:
+  - 011_HISTORICALLY_ACCUMULATED_COMPILER.md
+  on_complete:
+    update_state:
+      historical_compiler_contract_complete: true
+    next: N021_DEFINE_DIRECT_ADAPTATION
+- id: N021_DEFINE_DIRECT_ADAPTATION
+  profile: execution_node
+  action: render_direct_domain_adaptation_contract
+  allowlisted_outputs:
+  - 012_DIRECT_DOMAIN_ADAPTATION_CONTRACT.md
+  on_complete:
+    update_state:
+      direct_adaptation_contract_complete: true
+    next: N022_VALIDATE_EPIC_04
+- id: N022_VALIDATE_EPIC_04
+  profile: validator_node
+  validation:
+    require_files:
+    - 008_PACKAGE_VARIANT_REGISTRY.md
+    - 009_YAML_PACKAGE_COMPILER.md
+    - 010_STRUCTURED_INSTRUCTIONS_COMPILER.md
+    - 011_HISTORICALLY_ACCUMULATED_COMPILER.md
+    - 012_DIRECT_DOMAIN_ADAPTATION_CONTRACT.md
+    - PACKAGE_VARIANT_REGISTRY.yaml
+    - templates/PACKAGE_VARIANT_MANIFEST.template.yaml
+    - schemas/package_variant_manifest.schema.json
+    require_backlog_done:
+    - BL-BENCH-008
+    - BL-BENCH-009
+    - BL-BENCH-010
+    - BL-BENCH-011
+    - BL-BENCH-012
+    require_backlog_open:
+    - BL-BENCH-041
+    prohibit_claims:
+    - full_playbook_execution_ready
+    - production_compilers_implemented
+    - scoped_yaml_patch_verification_implemented
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_04_status: done
+    next: G_EPIC_04_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N023_ACTIVATE_EPIC_05
+  profile: capture_node
+  question: Confirm Epic 05 blind-execution architecture scope and preserve completed Epic 01-04 nodes.
+  answer_type: structured
+  required_fields:
+  - active_epic
+  - preserve_completed_nodes
+  on_complete:
+    next: N024_DEFINE_STEP_BOUND_DRIVER
+- id: N024_DEFINE_STEP_BOUND_DRIVER
+  profile: execution_node
+  action: render_step_bound_driver_contract
+  allowlisted_outputs:
+  - 013_STEP_BOUND_DRIVER.md
+  - DRIVER_REGISTRY.yaml
+  on_complete:
+    update_state:
+      step_bound_driver_contract_complete: true
+    next: N025_DEFINE_ADAPTIVE_SEMANTIC_DRIVER
+- id: N025_DEFINE_ADAPTIVE_SEMANTIC_DRIVER
+  profile: execution_node
+  action: render_adaptive_semantic_driver_contract
+  allowlisted_outputs:
+  - 014_ADAPTIVE_SEMANTIC_DRIVER.md
+  - DRIVER_REGISTRY.yaml
+  on_complete:
+    update_state:
+      adaptive_semantic_driver_contract_complete: true
+    next: N026_DEFINE_DRIVER_SELECTION_AND_ISOLATION
+- id: N026_DEFINE_DRIVER_SELECTION_AND_ISOLATION
+  profile: execution_node
+  action: render_driver_selection_and_blind_isolation_contracts
+  allowlisted_outputs:
+  - 015_DRIVER_SELECTION_GATE.md
+  - 016_BLIND_ISOLATION_RULES.md
+  - templates/DRIVER_BINDING.template.yaml
+  - templates/BLIND_ISOLATION_MANIFEST.template.yaml
+  - schemas/driver_binding.schema.json
+  on_complete:
+    update_state:
+      driver_selection_gate_complete: true
+      blind_isolation_rules_complete: true
+    next: N027_VALIDATE_EPIC_05
+- id: N027_VALIDATE_EPIC_05
+  profile: validator_node
+  validation:
+    require_files:
+    - 013_STEP_BOUND_DRIVER.md
+    - 014_ADAPTIVE_SEMANTIC_DRIVER.md
+    - 015_DRIVER_SELECTION_GATE.md
+    - 016_BLIND_ISOLATION_RULES.md
+    - DRIVER_REGISTRY.yaml
+    - templates/DRIVER_BINDING.template.yaml
+    - templates/BLIND_ISOLATION_MANIFEST.template.yaml
+    - schemas/driver_binding.schema.json
+    require_backlog_done:
+    - BL-BENCH-013
+    - BL-BENCH-014
+    - BL-BENCH-015
+    - BL-BENCH-016
+    require_backlog_open:
+    - BL-BENCH-041
+    prohibit_claims:
+    - full_playbook_execution_ready
+    - production_driver_runtime_implemented
+    - scoped_yaml_patch_verification_implemented
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_05_status: done
+    next: G_EPIC_05_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N028_DEFINE_UNIVERSAL_LAUNCH_PROTOCOL
+  profile: execution_node
+  action: render_universal_launch_protocol
+  allowlisted_outputs:
+  - 017_UNIVERSAL_LAUNCH_PROTOCOL.md
+  - templates/LAUNCH_MANIFEST.template.yaml
+  - schemas/launch_manifest.schema.json
+  on_complete:
+    update_state:
+      universal_launch_protocol_complete: true
+    next: N029_DEFINE_PREFLIGHT_GATE
+- id: N029_DEFINE_PREFLIGHT_GATE
+  profile: execution_node
+  action: render_preflight_integrity_gate
+  allowlisted_outputs:
+  - 018_PREFLIGHT_INTEGRITY_GATE.md
+  - templates/PREFLIGHT_REPORT.template.json
+  on_complete:
+    update_state:
+      preflight_integrity_gate_complete: true
+    next: N030_DEFINE_EXECUTION_LOGGING
+- id: N030_DEFINE_EXECUTION_LOGGING
+  profile: execution_node
+  action: render_execution_logging_contract
+  allowlisted_outputs:
+  - 019_EXECUTION_LOGGING.md
+  - schemas/execution_log_event.schema.json
+  on_complete:
+    update_state:
+      execution_logging_complete: true
+    next: N031_DEFINE_TERMINAL_HANDLING
+- id: N031_DEFINE_TERMINAL_HANDLING
+  profile: execution_node
+  action: render_terminal_route_handling
+  allowlisted_outputs:
+  - 020_TERMINAL_ROUTE_HANDLING.md
+  - templates/TERMINAL_DISPOSITION.template.json
+  - schemas/terminal_disposition.schema.json
+  on_complete:
+    update_state:
+      terminal_route_handling_complete: true
+    next: N032_VALIDATE_EPIC_06
+- id: N032_VALIDATE_EPIC_06
+  profile: validator_node
+  validation:
+    require_files:
+    - 017_UNIVERSAL_LAUNCH_PROTOCOL.md
+    - 018_PREFLIGHT_INTEGRITY_GATE.md
+    - 019_EXECUTION_LOGGING.md
+    - 020_TERMINAL_ROUTE_HANDLING.md
+    - templates/LAUNCH_MANIFEST.template.yaml
+    - templates/PREFLIGHT_REPORT.template.json
+    - templates/TERMINAL_DISPOSITION.template.json
+    - schemas/launch_manifest.schema.json
+    - schemas/execution_log_event.schema.json
+    - schemas/terminal_disposition.schema.json
+    require_backlog_done:
+    - BL-BENCH-017
+    - BL-BENCH-018
+    - BL-BENCH-019
+    - BL-BENCH-020
+    require_backlog_open:
+    - BL-BENCH-041
+    prohibit_claims:
+    - full_playbook_execution_ready
+    - production_launcher_runtime_implemented
+    - process_scoring_defined
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_06_status: done
+    next: G_EPIC_06_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N033_ACTIVATE_EPIC_07
+  profile: capture_node
+  question: Confirm Epic 07 process-validation scope and preserve Epic 01-06 nodes.
+  answer_type: structured
+  required_fields:
+  - active_epic
+  - preserve_completed_nodes
+  - separate_process_from_document_quality
+  on_complete:
+    next: N034_DEFINE_PROCESS_QUALITY_CONTRACT
+- id: N034_DEFINE_PROCESS_QUALITY_CONTRACT
+  profile: execution_node
+  action: render_process_quality_contract
+  allowlisted_outputs:
+  - 021_PROCESS_QUALITY_CONTRACT.md
+  - templates/PROCESS_EVALUATION_REPORT.template.json
+  - schemas/process_evaluation_report.schema.json
+  on_complete:
+    update_state:
+      process_quality_contract_complete: true
+    next: N035_DEFINE_PROCESS_FAILURE_CAPS
+- id: N035_DEFINE_PROCESS_FAILURE_CAPS
+  profile: execution_node
+  action: render_process_failure_caps
+  allowlisted_outputs:
+  - 022_PROCESS_FAILURE_CAPS.md
+  - PROCESS_FAILURE_CAPS.yaml
+  on_complete:
+    update_state:
+      process_failure_caps_complete: true
+    next: N036_VALIDATE_EPIC_07
+- id: N036_VALIDATE_EPIC_07
+  profile: validator_node
+  validation:
+    require_files:
+    - 021_PROCESS_QUALITY_CONTRACT.md
+    - 022_PROCESS_FAILURE_CAPS.md
+    - PROCESS_FAILURE_CAPS.yaml
+    - templates/PROCESS_EVALUATION_REPORT.template.json
+    - schemas/process_evaluation_report.schema.json
+    require_backlog_done:
+    - BL-BENCH-021
+    - BL-BENCH-022
+    require_backlog_open:
+    - BL-BENCH-041
+    prohibit_claims:
+    - document_evaluation_ready
+    - production_evaluator_executable
+    - scoped_yaml_patch_verification_implemented
+  on_pass:
+    update_state:
+      self_validation_passed: true
+      epic_07_status: done
+    next: G_EPIC_07_COMPLETE
+  on_fail:
+    next: T_DRAFT_SAVED
+- id: N037_ACTIVATE_EPIC_08
+  profile: deterministic_node
+  instructions:
+  - Activate Epic 08 document validation scope.
+  - Keep process score separate from document score.
+  next: N038_DEFINE_DOCUMENT_CONTRACT_REGISTRY
+- id: N038_DEFINE_DOCUMENT_CONTRACT_REGISTRY
+  profile: deterministic_node
+  outputs:
+  - 023_DOCUMENT_QUALITY_CONTRACT_REGISTRY.md
+  - DOCUMENT_QUALITY_CONTRACT_REGISTRY.yaml
+  state_updates:
+    document_contract_registry_complete: true
+  next: N039_DEFINE_ARTIFACT_SPECIFIC_RULES
+- id: N039_DEFINE_ARTIFACT_SPECIFIC_RULES
+  profile: deterministic_node
+  outputs:
+  - 024_ARTIFACT_SPECIFIC_RULES.md
+  state_updates:
+    artifact_specific_rules_complete: true
+  next: N040_DEFINE_DOCUMENT_FAILURE_CAPS
+- id: N040_DEFINE_DOCUMENT_FAILURE_CAPS
+  profile: deterministic_node
+  outputs:
+  - 025_DOCUMENT_FAILURE_CAPS.md
+  - DOCUMENT_FAILURE_CAPS.yaml
+  state_updates:
+    document_failure_caps_complete: true
+  next: N041_DEFINE_FOCUSED_ARTIFACT_REVIEW
+- id: N041_DEFINE_FOCUSED_ARTIFACT_REVIEW
+  profile: deterministic_node
+  outputs:
+  - 026_FOCUSED_ARTIFACT_REVIEW.md
+  state_updates:
+    focused_artifact_review_complete: true
+  next: N042_DEFINE_DOCUMENT_EVALUATION_REPORT
+- id: N042_DEFINE_DOCUMENT_EVALUATION_REPORT
+  profile: deterministic_node
+  outputs:
+  - 027_EVALUATION_REPORT_TEMPLATE.md
+  - templates/DOCUMENT_EVALUATION_REPORT.template.json
+  - schemas/document_evaluation_report.schema.json
+  state_updates:
+    evaluation_report_template_complete: true
+  next: N043_VALIDATE_EPIC_08
+- id: N043_VALIDATE_EPIC_08
+  profile: deterministic_node
+  instructions:
+  - Validate all Epic 08 artifacts and machine-readable contracts.
+  - Prohibit production evaluator executable claim.
+  - Keep BL-BENCH-041 open.
+  next: G_EPIC_08_COMPLETE
+- id: N044_ACTIVATE_EPIC_09
+  profile: deterministic_node
+  instructions:
+  - Activate Epic 09 only after Epic 08 gate passed.
+  - Keep BL-BENCH-041 open.
+  next: N045_DEFINE_RESULT_REGISTRY
+- id: N045_DEFINE_RESULT_REGISTRY
+  profile: deterministic_node
+  outputs:
+  - 028_BENCHMARK_RESULT_REGISTRY.md
+  - RESULT_REGISTRY_POLICY.yaml
+  - templates/BENCHMARK_RESULT_RECORD.template.json
+  - schemas/benchmark_result_record.schema.json
+  state_updates:
+    benchmark_result_registry_complete: true
+  next: N046_DEFINE_COMPARATIVE_MATRIX
+- id: N046_DEFINE_COMPARATIVE_MATRIX
+  profile: deterministic_node
+  outputs:
+  - 029_COMPARATIVE_MATRIX.md
+  - templates/COMPARATIVE_MATRIX.template.csv
+  - templates/COMPARATIVE_MATRIX_BUILD.template.json
+  - schemas/comparative_matrix_build.schema.json
+  state_updates:
+    comparative_matrix_complete: true
+  next: N047_DEFINE_RESULT_UPDATE_RULES
+- id: N047_DEFINE_RESULT_UPDATE_RULES
+  profile: deterministic_node
+  outputs:
+  - 030_RESULT_UPDATE_RULES.md
+  state_updates:
+    result_update_rules_complete: true
+  next: N048_DEFINE_CROSS_VARIANT_COMPARISON
+- id: N048_DEFINE_CROSS_VARIANT_COMPARISON
+  profile: deterministic_node
+  outputs:
+  - 031_CROSS_VARIANT_COMPARISON.md
+  state_updates:
+    cross_variant_comparison_complete: true
+  next: N049_VALIDATE_EPIC_09
+- id: N049_VALIDATE_EPIC_09
+  profile: deterministic_node
+  instructions:
+  - Validate registry policy, templates and schemas.
+  - Verify result immutability, supersession and comparability rules.
+  - Do not claim production registry executable or real benchmark data.
+  - Keep BL-BENCH-041 open.
+  next: G_EPIC_09_COMPLETE
+- id: N050_ACTIVATE_EPIC_10
+  profile: state_gate
+  instruction: Activate Epic 10 Diagnostics scope and freeze the affected result evidence before causal questioning.
+  outputs:
+  - state.epic_10_active
+  next: N051_DEFINE_CAUSAL_DIAGNOSTIC_PROMPT
+- id: N051_DEFINE_CAUSAL_DIAGNOSTIC_PROMPT
+  profile: artifact_builder
+  instruction: Materialize the causal diagnostic request with exact provenance questions, uncertainty discipline and immutable
+    evidence binding.
+  outputs:
+  - 032_CAUSAL_DIAGNOSTIC_PROMPT.md
+  - templates/CAUSAL_DIAGNOSTIC_REQUEST.template.json
+  - schemas/causal_diagnostic_request.schema.json
+  - state.causal_diagnostic_prompt_complete
+  next: N052_DEFINE_DIAGNOSTIC_EVIDENCE_CONTRACT
+- id: N052_DEFINE_DIAGNOSTIC_EVIDENCE_CONTRACT
+  profile: artifact_builder
+  instruction: Materialize evidence hierarchy, claim corroboration, contradiction handling and counterfactual testing.
+  outputs:
+  - 033_DIAGNOSTIC_EVIDENCE_CONTRACT.md
+  - templates/DIAGNOSTIC_CASE.template.json
+  - schemas/diagnostic_case.schema.json
+  - state.diagnostic_evidence_contract_complete
+  next: N053_DEFINE_ROOT_CAUSE_CLASSIFICATION
+- id: N053_DEFINE_ROOT_CAUSE_CLASSIFICATION
+  profile: artifact_builder
+  instruction: Materialize versioned root-cause classes, primary/contributing rules and bounded patch-target mapping.
+  outputs:
+  - 034_ROOT_CAUSE_CLASSIFICATION.md
+  - ROOT_CAUSE_CLASSIFICATION.yaml
+  - state.root_cause_classification_complete
+  next: N054_VALIDATE_EPIC_10
+- id: N054_VALIDATE_EPIC_10
+  profile: mechanical_validator
+  instruction: Validate Epic 10 artifacts, schemas, Ordo topology, backlog evidence, all-in-one and checksum manifest.
+  outputs:
+  - VALIDATION_REPORT.json
+  - reports/SELF_VALIDATION.md
+  - state.self_validation_passed
+  next: G_EPIC_10_COMPLETE
+- id: N055_DEFINE_IMPROVEMENT_PATCH_WORKFLOW
+  profile: artifact_builder
+  instruction: Materialize bounded patch identity, allowlist, diff, regression, decision and rollback workflow.
+  outputs:
+  - 035_IMPROVEMENT_PATCH_WORKFLOW.md
+  - templates/IMPROVEMENT_PATCH_RECORD.template.json
+  - state.improvement_patch_workflow_complete
+  next: N056_SELECT_REGRESSION_SCENARIOS
+- id: N056_SELECT_REGRESSION_SCENARIOS
+  profile: decision_node
+  instruction: Select trigger, adjacent, cross-variant, terminal/correction and unaffected sentinel scenarios using deterministic
+    impact rules.
+  outputs:
+  - 036_REGRESSION_SCENARIO_SELECTION.md
+  - templates/REGRESSION_SELECTION.template.yaml
+  - state.regression_scenario_selection_complete
+  next: N057_DEFINE_FIVE_CYCLE_MODE
+- id: N057_DEFINE_FIVE_CYCLE_MODE
+  profile: artifact_builder
+  instruction: Define maximum five-cycle campaign, frozen baseline, stop criteria, anti-overfitting and rollback rules.
+  outputs:
+  - 037_FIVE_CYCLE_IMPROVEMENT_MODE.md
+  - templates/FIVE_CYCLE_CAMPAIGN.template.json
+  - state.five_cycle_improvement_mode_complete
+  next: N058_DEFINE_STABLE_EVOLUTION
+- id: N058_DEFINE_STABLE_EVOLUTION
+  profile: artifact_builder
+  instruction: Define change classes, versioned cohorts, compatibility dispositions, migration and release stability gates.
+  outputs:
+  - 038_STABLE_BENCHMARK_EVOLUTION.md
+  - IMPROVEMENT_POLICY.yaml
+  - state.stable_benchmark_evolution_complete
+  next: N059_VALIDATE_EPIC_11
+- id: N059_VALIDATE_EPIC_11
+  profile: mechanical_validator
+  instruction: Validate Epic 11 documents, templates, policy registry, backlog, cumulative Ordo topology, all-in-one and checksums.
+  outputs:
+  - VALIDATION_REPORT.json
+  - reports/SELF_VALIDATION.md
+  - state.self_validation_passed
+  next: G_EPIC_11_COMPLETE
+- id: N060_DEFINE_EVIDENCE_PACKAGE
+  profile: artifact_builder
+  instruction: Define checksum-bound benchmark evidence package, inventory, evidence states and release integrity controls.
+  outputs:
+  - 039_BENCHMARK_EVIDENCE_PACKAGE.md
+  - EVIDENCE_PACKAGE_POLICY.yaml
+  - EVIDENCE_PACKAGE_INDEX.md
+  - state.benchmark_evidence_package_complete
+  next: N061_DEFINE_HANDOFF_PACKAGE
+- id: N061_DEFINE_HANDOFF_PACKAGE
+  profile: artifact_builder
+  instruction: Define deterministic transfer package, receiver preflight, reading order, current-state record and reusable
+    transfer prompt.
+  outputs:
+  - 040_TRANSFER_HANDOFF_PACKAGE.md
+  - HANDOFF_POLICY.yaml
+  - handoff/HANDOFF_README.md
+  - handoff/CURRENT_STATE.md
+  - handoff/NEXT_ACTION.md
+  - handoff/TRANSFER_PROMPT.md
+  - state.transfer_handoff_package_complete
+  next: N062_VALIDATE_EPIC_12
+- id: N062_VALIDATE_EPIC_12
+  profile: mechanical_validator
+  instruction: Validate Epic 12 documents, policies, schemas, templates, handoff files, backlog, cumulative Ordo topology,
+    all-in-one and checksums.
+  outputs:
+  - VALIDATION_REPORT.json
+  - reports/SELF_VALIDATION.md
+  - state.self_validation_passed
+  next: G_EPIC_12_COMPLETE
+- id: N041_VERIFY_SCOPED_YAML_PATCH
+  profile: verification_node
+  action: Compare baseline and candidate YAML by canonical node hashes and semantic paths.
+  gates:
+  - G_BL_BENCH_041_COMPLETE
+  next: G_BL_BENCH_041_COMPLETE
+- id: N042_ARF_META_RUNTIME
+  type: validation
+  status: implemented
+  requires:
+  - language_package_binding
+  - arf_process_selection
+  - arf_execution_state
+  - arf_release_gate
+  on_fail: T_ROLLBACK_NO_CHANGE
+  on_pass: N063
+- id: N063
+  profile: deterministic_action
+  name: Freeze external validation contract
+  outputs:
+  - external_validation_contract_binding
+  next: N064
+- id: N064
+  profile: deterministic_action
+  name: Compare internal rules to external contract
+  inputs:
+  - external_validation_contract_binding
+  outputs:
+  - validation_alignment_report
+  on_aligned: N066
+  on_misaligned: N065
+- id: N065
+  profile: deterministic_action
+  name: Regenerate misaligned internal rules
+  condition: unresolved_blocking_differences_gt_0
+  outputs:
+  - regenerated_internal_rules
+  next: N066
+- id: N066
+  profile: deterministic_action
+  name: Revalidate document-generation node
+  inputs:
+  - regenerated_internal_rules
+  outputs:
+  - sealed_validation_alignment_report
+  next: G_VALIDATION_CONTRACT_ALIGNMENT
+- id: N067_FREEZE_RESULT_PACKAGE_RELEASE_INPUTS
+  profile: deterministic_action
+  name: Freeze selected-run facts, artifact versions and validator receipts
+  outputs:
+  - result_package_release_input_snapshot
+  next: N068_VALIDATE_RESULT_PACKAGE_CROSS_ARTIFACT
+- id: N068_VALIDATE_RESULT_PACKAGE_CROSS_ARTIFACT
+  profile: mechanical_validator
+  name: Validate package integrity, artifact receipts and selected-run consistency
+  inputs:
+  - result_package_release_input_snapshot
+  outputs:
+  - result_package_self_check_report
+  on_pass: N070_SEAL_RESULT_PACKAGE_RELEASE
+  on_regenerate: N069_REGENERATE_BLOCKED_ARTIFACTS
+  on_no_go: T_BLOCKED_RESULT_PACKAGE_RELEASE
+- id: N069_REGENERATE_BLOCKED_ARTIFACTS
+  profile: deterministic_action
+  name: Invalidate and regenerate failed or inconsistent artifact versions
+  condition: result_package_release_disposition == BLOCKED_REGENERATE
+  outputs:
+  - new_artifact_versions
+  next: N068_VALIDATE_RESULT_PACKAGE_CROSS_ARTIFACT
+- id: N070_SEAL_RESULT_PACKAGE_RELEASE
+  profile: release_gate
+  name: Permit handoff only after PASS_RELEASE
+  gates:
+  - G_RESULT_PACKAGE_RELEASE
+  next: G_RESULT_PACKAGE_RELEASE
+- id: N073_EVALUATION_METHODOLOGY_GATE
+  title: Bind evaluation methodology and test-case profile
+  type: gate
+  on_pass:
+    next: T_SUCCESS
+  on_fail:
+    next: T_BLOCKED
+  on_complete:
+    next: N074_BUILD_DECLARED_CONTRACT_INVENTORY
+- id: N074_BUILD_DECLARED_CONTRACT_INVENTORY
+  profile: validator_node
+  rules:
+  - load_PACKAGE_VALIDATION_METHODOLOGY_as_normative_source
+  - inventory_all_declared_paths_commands_versions_entrypoints_structural_expectations_parity_regressions_and_smoke_tests
+  - persist_versioned_DECLARED_CONTRACT_INVENTORY_json
+  on_complete:
+    next: N075_SEAL_EXTERNAL_TESTING_CANDIDATE
+- id: N075_SEAL_EXTERNAL_TESTING_CANDIDATE
+  profile: artifact_node
+  rules:
+  - seal_exact_candidate_zip
+  - freeze_sha256
+  - prohibit_post_seal_mutation
+  on_complete:
+    next: N076_SELF_APPLY_DECLARED_CONTRACTS
+- id: N076_SELF_APPLY_DECLARED_CONTRACTS
+  profile: validator_node
+  rules:
+  - extract_exact_sealed_zip_into_clean_consumer_workspace
+  - reject_duplicate_or_unsafe_archive_paths
+  - verify_internal_checksums_and_required_package_completeness
+  - verify_runtime_addressability_without_implicit_aliases
+  - verify_version_and_entrypoint_coherence
+  - verify_declared_structural_completeness_and_unique_ids
+  - execute_semantic_parity_command
+  - prove_correctable_failure_to_regeneration_revalidation_reachability
+  - execute_every_declared_validator_by_exact_declared_command
+  - execute_positive_and_negative_regressions
+  - execute_black_box_preflight_from_archive_only
+  - execute_no_business_artifacts_before_green_preflight_smoke_test
+  - persist_commands_exit_codes_and_twelve_check_results
+  - set_GREEN_LIGHT_true_only_when_all_checks_pass
+  on_pass:
+    next: G_DECLARED_CONTRACT_ARCHIVE_RELEASE
+  on_fail:
+    next: N077_SCOPED_DECLARED_CONTRACT_CORRECTION
+- id: N077_SCOPED_DECLARED_CONTRACT_CORRECTION
+  profile: correction_node
+  rules:
+  - increment_correction_pass
+  - classify_failed_methodology_check
+  - allow_only_scoped_candidate_fixes
+  - increment_patch_version
+  - rebuild_checksums_and_reseal
+  - preserve_immutable_per_pass_evidence
+  - maximum_five_passes
+  on_complete:
+    next: N078_DECLARED_CONTRACT_RETRY_DECISION
+- id: N078_DECLARED_CONTRACT_RETRY_DECISION
+  profile: decision_node
+  branches:
+  - when: correction_pass <= 5 and owner_input_required == false
+    next: N075_SEAL_EXTERNAL_TESTING_CANDIDATE
+  - when: correction_pass > 5 or owner_input_required == true
+    next: T_PRE_RELEASE_DECLARED_CONTRACT_MISMATCH
+- id: N079_SELECT_REPRESENTATION_PROFILE
+  profile: decision_node
+  rules:
+  - requested_representation_must_be_registered
+  - load_versioned_representation_profile
+  - identify_authoritative_source_type
+  on_complete:
+    next: N080_AUTHORIZE_REPRESENTATION_STRATEGY
+- id: N080_AUTHORIZE_REPRESENTATION_STRATEGY
+  profile: hard_gate_node
+  rules:
+  - source_type_must_be_allowed_by_profile
+  - strategy_must_exactly_match_registry
+  - unauthorized_conversion_is_fail_closed
+  on_pass:
+    next: N081_COMPILE_OR_ADAPT_REPRESENTATION
+  on_fail:
+    next: T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+- id: N081_COMPILE_OR_ADAPT_REPRESENTATION
+  profile: artifact_node
+  rules:
+  - apply_profile_specific_inclusion_rules
+  - apply_profile_specific_exclusion_rules
+  - preserve_common_semantic_invariants
+  - generate_checksum_bound_target
+  on_complete:
+    next: N082_EMIT_REPRESENTATION_LINEAGE_RECEIPTS
+- id: N082_EMIT_REPRESENTATION_LINEAGE_RECEIPTS
+  profile: evidence_node
+  outputs:
+  - SOURCE_TARGET_LINEAGE.json
+  - TRANSFORMATION_RECEIPT.json
+  - compiler_or_adaptation_strategy_declaration
+  on_complete:
+    next: N083_VALIDATE_REPRESENTATION_SEMANTICS
+- id: N083_VALIDATE_REPRESENTATION_SEMANTICS
+  profile: validator_node
+  rules:
+  - verify_all_common_invariants
+  - verify_representation_specific_rules
+  - verify_correction_loop_reachability
+  - persist_SEMANTIC_PARITY_REPORT_json
+  on_pass:
+    next: N084_VALIDATE_REPRESENTATION_DISCLOSURE
+  on_fail:
+    next: T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+- id: N084_VALIDATE_REPRESENTATION_DISCLOSURE
+  profile: validator_node
+  rules:
+  - verify_external_package_contains_only_permitted_disclosures
+  - mixed_accumulated_must_hide_yaml_compiler_provenance_benchmark_metadata_node_mappings_and_expected_routes
+  - domain_adapted_requires_actual_domain_source
+  - persist_DISCLOSURE_ISOLATION_REPORT_json
+  on_pass:
+    next: G_REPRESENTATION_COMPILATION_GOVERNANCE
+  on_fail:
+    next: T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+- id: N085_INITIALIZE_EVIDENCE_CATALOG
+  profile: artifact_node
+  rules:
+  - create_versioned_catalog_root
+  - create_required_evidence_class_partitions
+  - load_EVIDENCE_CATALOG_CONTRACT
+  on_complete:
+    next: N086_REGISTER_EVIDENCE_OBJECTS
+- id: N086_REGISTER_EVIDENCE_OBJECTS
+  profile: evidence_node
+  rules:
+  - assign_stable_object_id
+  - record_evidence_class_version_path_sha256_provenance_and_bindings
+  - reject_class_contamination
+  on_complete:
+    next: N087_ENFORCE_EVIDENCE_LIFECYCLE
+- id: N087_ENFORCE_EVIDENCE_LIFECYCLE
+  profile: hard_gate_node
+  rules:
+  - external_run_archives_are_append_only
+  - corrections_create_new_run_or_implementation_version
+  - record_rejection_invalidation_quarantine_deprecation_and_supersession_events
+  on_pass:
+    next: N088_VALIDATE_SCORE_ELIGIBILITY
+  on_fail:
+    next: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+- id: N088_VALIDATE_SCORE_ELIGIBILITY
+  profile: validator_node
+  rules:
+  - canonical_score_requires_confirmed_external_blind_run
+  - internal_evidence_is_never_canonical_score_eligible
+  - require_complete_package_prompt_methodology_profile_audit_acceptance_and_run_bindings
+  on_pass:
+    next: N089_VALIDATE_CATALOG_MANIFEST_PARITY
+  on_fail:
+    next: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+- id: N089_VALIDATE_CATALOG_MANIFEST_PARITY
+  profile: validator_node
+  rules:
+  - filesystem_matches_catalog_manifest
+  - all_object_sha256_values_match
+  - score_and_lifecycle_ledgers_reference_existing_objects
+  - persist_catalog_validation_report
+  on_pass:
+    next: N090_BUILD_RESTORABLE_TRANSFER_PACKAGE
+  on_fail:
+    next: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+- id: N090_BUILD_RESTORABLE_TRANSFER_PACKAGE
+  profile: artifact_node
+  rules:
+  - include_catalog_manifest_checksums_restore_instructions_and_lifecycle_ledgers
+  - include_all_referenced_objects_or_explicit_external_bindings
+  - seal_transfer_package
+  on_complete:
+    next: N091_VALIDATE_TRANSFER_RESTORABILITY
+- id: N091_VALIDATE_TRANSFER_RESTORABILITY
+  profile: validator_node
+  rules:
+  - extract_transfer_in_clean_workspace
+  - verify_checksums_and_manifest_parity
+  - verify_catalog_can_be_reconstructed_without_undocumented_local_files
+  on_pass:
+    next: G_EVIDENCE_BASE_CATALOG_GOVERNANCE
+  on_fail:
+    next: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+- id: N092_BIND_BEST_CONFIRMED_VERSION
+  title: Bind best confirmed artifact before improvement
+  action: Snapshot version, SHA-256, validator state and protected quality dimensions without allowing overwrite.
+  on_complete:
+    next: N093_AUTHORIZE_IMPROVEMENT_ATTEMPT
+- id: N093_AUTHORIZE_IMPROVEMENT_ATTEMPT
+  title: Authorize attempt from defect evidence and strategy
+  action: Emit IMPROVEMENT_ATTEMPT_RECEIPT and reject identical retry unless new evidence, facts or strategy exists.
+  on_pass:
+    next: N094_GENERATE_ISOLATED_CANDIDATE
+  on_fail:
+    next: T_IMPROVEMENT_PLATEAU_REACHED
+- id: N094_GENERATE_ISOLATED_CANDIDATE
+  title: Generate candidate without overwriting confirmed version
+  action: Create isolated candidate and rerun all applicable validators, semantic checks and cross-artifact gates.
+  on_complete:
+    next: N095_COMPUTE_IMPROVEMENT_DELTA
+- id: N095_COMPUTE_IMPROVEMENT_DELTA
+  title: Compute machine-readable quality delta
+  action: Compare baseline and candidate and emit bound IMPROVEMENT_DELTA_REPORT.
+  on_complete:
+    next: G_IMPROVEMENT_DELTA_PROVEN
+- id: N096_RETAIN_BEST_CONFIRMED_VERSION
+  title: Reject candidate and retain best confirmed version
+  action: Keep baseline byte-identical, record plateau or regression and prohibit automatic same-strategy retry.
+  on_complete:
+    next: G_BEST_CONFIRMED_VERSION_RETAINED
+- id: N097_PROMOTE_IMPROVED_CANDIDATE
+  title: Promote materially improved candidate
+  action: Atomically promote candidate only after material improvement and no protected regression are proven.
+  on_complete:
+    next: N055_DEFINE_IMPROVEMENT_PATCH_WORKFLOW
+- id: N098_INITIALIZE_PROGRESS_OUTPUT
+  title: Initialize execution progress output
+  action: Load the governed status registry, output policy, run language and evidence-binding rules without changing the business
+    route.
+  on_complete:
+    next: N099_CAPTURE_MEANINGFUL_STEP_EVENT
+- id: N099_CAPTURE_MEANINGFUL_STEP_EVENT
+  title: Capture meaningful completed step
+  action: Create one informational progress event only after an observable step result, correction action or terminal decision
+    exists.
+  on_complete:
+    next: N100_VALIDATE_PROGRESS_EVENT
+- id: N100_VALIDATE_PROGRESS_EVENT
+  title: Validate progress event schema and evidence binding
+  action: Validate canonical fields, status, evidence references, language, attempt and informational-only marker.
+  on_pass:
+    next: G_PROGRESS_EVENT_SCHEMA
+  on_fail:
+    next: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+- id: N101_RENDER_CONCISE_PROGRESS_LINE
+  title: Render concise user-visible progress line
+  action: Render one line in the canonical format without hidden reasoning, unsupported causal claims or sensitive state.
+  on_complete:
+    next: G_NO_REASONING_DISCLOSURE
+- id: N102_EMIT_AND_LOG_PROGRESS_EVENT
+  title: Emit and log progress event
+  action: Emit the concise line, persist the machine-readable event and preserve authoritative execution evidence as the only
+    proof.
+  on_complete:
+    next: G_PROGRESS_TERMINAL_COHERENCE
+- id: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+  title: Suppress malformed or unsafe progress event
+  action: Record PROGRESS_EVENT_SUPPRESSED telemetry without mutating Driver state, approvals, gates or terminal routing.
+  on_complete:
+    next: T_PLAYBOOK_COMPLETED
+- id: N104_SELECT_CURRENT_STATE_SNAPSHOT_POLICY
+  profile: decision_node
+  rules:
+  - bind_CURRENT_STATE_ONLY_policy
+  - bind_source_evidence_catalog
+  - prohibit_timestamp_only_authority_resolution
+  on_complete:
+    next: N105_INVENTORY_CURRENT_ARTIFACT_FAMILIES
+- id: N105_INVENTORY_CURRENT_ARTIFACT_FAMILIES
+  profile: artifact_node
+  rules:
+  - enumerate_logical_artifact_families
+  - enumerate_candidates_status_versions_provenance_and_run_bindings
+  - classify_historical_duplicate_and_development_only_material
+  on_complete:
+    next: N106_RESOLVE_AUTHORITATIVE_CURRENT_ARTIFACTS
+- id: N106_RESOLVE_AUTHORITATIVE_CURRENT_ARTIFACTS
+  profile: validator_node
+  rules:
+  - apply_authority_precedence_not_mtime
+  - select_one_current_authoritative_item_per_family
+  - record_selection_reason_and_excluded_alternatives
+  on_pass:
+    next: G_CURRENT_STATE_AUTHORITY_UNAMBIGUOUS
+  on_fail:
+    next: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+- id: N107_BIND_ACCEPTED_RUNS_TO_EXACT_VERSIONS
+  profile: validator_node
+  rules:
+  - bind_each_accepted_run_to_exact_playbook_driver_evaluator_methodology_scorecard_and_terminal
+  - distinguish_latest_available_version_from_accepted_run_bound_version
+  - retain_minimum_claim_required_historical_record_only_as_documented_exception
+  on_pass:
+    next: G_CURRENT_STATE_RUN_BINDINGS_COMPLETE
+  on_fail:
+    next: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+- id: N108_CALCULATE_CURRENT_STATE_EXCLUSIONS
+  profile: decision_node
+  rules:
+  - exclude_superseded_rejected_dry_self_check_intermediate_cache_backup_and_duplicate_material
+  - choose_source_package_pattern_A_B_or_C
+  - prove_exclusions_do_not_invalidate_current_bounded_claims
+  on_complete:
+    next: G_CURRENT_STATE_BOUNDED_CLAIMS_PRESERVED
+- id: N109_BUILD_CURRENT_STATE_ONLY_STAGING
+  profile: artifact_node
+  rules:
+  - copy_selected_current_artifacts_to_isolated_staging
+  - preserve_immutable_raw_evidence_byte_identical
+  - do_not_include_excluded_bytes
+  on_complete:
+    next: N110_GENERATE_CURRENT_STATE_REPORTS
+- id: N110_GENERATE_CURRENT_STATE_REPORTS
+  profile: artifact_node
+  rules:
+  - generate_CURRENT_STATE_MANIFEST
+  - generate_SELECTION_REPORT
+  - generate_EXCLUSION_REPORT
+  - generate_LANGUAGE_AUDIT
+  - validate_json_yaml_and_bindings
+  - generate_SHA256SUMS_last_and_freeze_staging
+  on_complete:
+    next: N111_SEAL_AND_REVALIDATE_CURRENT_STATE_ARCHIVE
+- id: N111_SEAL_AND_REVALIDATE_CURRENT_STATE_ARCHIVE
+  profile: validator_node
+  rules:
+  - seal_snapshot_zip
+  - calculate_zip_sha256
+  - extract_in_clean_workspace
+  - verify_zip_checksums_syntax_no_history_paths_unique_run_ids_and_all_bindings
+  - emit_green_light_report
+  on_pass:
+    next: G_CURRENT_STATE_ONLY_ARCHIVE_RELEASE
+  on_fail:
+    next: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+gates:
+- id: G_EPIC_01_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.charter_complete is true and state.vocabulary_complete is true and state.conceptual_model_complete is true
+    and state.backlog_complete is true and state.self_validation_passed is true
+  on_pass: N007_ACTIVATE_EPIC_02
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_02_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.task_class_model_complete is true and state.test_case_intake_complete is true and state.test_case_package_template_complete
+    is true and state.self_validation_passed is true
+  on_pass: N012_ACTIVATE_EPIC_03
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_03_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.canonical_run_scenarios_complete is true and state.scenario_extensibility_complete is true and state.self_validation_passed
+    is true
+  on_pass: N016_ACTIVATE_EPIC_04
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_04_COMPLETE
+  condition: package_variant_registry_complete and yaml_compiler_contract_complete and structured_compiler_contract_complete
+    and historical_compiler_contract_complete and direct_adaptation_contract_complete and backlog_complete and self_validation_passed
+  on_pass: N079_SELECT_REPRESENTATION_PROFILE
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_05_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.step_bound_driver_contract_complete is true and state.adaptive_semantic_driver_contract_complete is true
+    and state.driver_selection_gate_complete is true and state.blind_isolation_rules_complete is true and state.self_validation_passed
+    is true
+  on_pass: N028_DEFINE_UNIVERSAL_LAUNCH_PROTOCOL
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_06_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.universal_launch_protocol_complete is true and state.preflight_integrity_gate_complete is true and state.execution_logging_complete
+    is true and state.terminal_route_handling_complete is true and state.self_validation_passed is true
+  on_pass: N033_ACTIVATE_EPIC_07
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_07_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.process_quality_contract_complete is true and state.process_failure_caps_complete is true and state.self_validation_passed
+    is true
+  on_pass: N037_ACTIVATE_EPIC_08
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_08_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.document_contract_registry_complete is true and state.artifact_specific_rules_complete is true and state.document_failure_caps_complete
+    is true and state.focused_artifact_review_complete is true and state.evaluation_report_template_complete is true and state.self_validation_passed
+    is true
+  on_pass: N044_ACTIVATE_EPIC_09
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_09_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.benchmark_result_registry_complete is true and state.comparative_matrix_complete is true and state.result_update_rules_complete
+    is true and state.cross_variant_comparison_complete is true and state.self_validation_passed is true
+  on_pass: N050_ACTIVATE_EPIC_10
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_10_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.causal_diagnostic_prompt_complete is true and state.diagnostic_evidence_contract_complete is true and state.root_cause_classification_complete
+    is true and state.self_validation_passed is true
+  on_pass: N092_BIND_BEST_CONFIRMED_VERSION
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_11_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_patch_workflow_complete is true and state.regression_scenario_selection_complete is true and
+    state.five_cycle_improvement_mode_complete is true and state.stable_benchmark_evolution_complete is true and state.self_validation_passed
+    is true
+  on_pass: N060_DEFINE_EVIDENCE_PACKAGE
+  on_fail: T_DRAFT_SAVED
+- id: G_EPIC_12_COMPLETE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.benchmark_evidence_package_complete is true and state.transfer_handoff_package_complete is true and state.self_validation_passed
+    is true
+  on_pass: N041_VERIFY_SCOPED_YAML_PATCH
+  on_fail: T_DRAFT_SAVED
+- id: G_BL_BENCH_041_COMPLETE
+  profile: hard_gate
+  conditions:
+  - allowlist_declared
+  - no_out_of_scope_node_changes
+  - structural_diff_persisted
+  - semantic_diff_persisted
+  - unchanged_nodes_hash_identical
+  on_pass: N042_ARF_META_RUNTIME
+  on_fail: T_DRAFT_SAVED
+  method: mechanical
+  trust_class: deterministic
+- id: G_VALIDATION_CONTRACT_ALIGNMENT
+  profile: hard_gate
+  condition: all_document_generation_nodes_have_current_pass_alignment_report
+  on_pass: N067_FREEZE_RESULT_PACKAGE_RELEASE_INPUTS
+  on_fail: T_BLOCKED_VALIDATION_ALIGNMENT
+- id: G_RESULT_PACKAGE_RELEASE
+  profile: hard_gate
+  condition: result_package_self_check_report.release_disposition == PASS_RELEASE and result_package_self_check_report.releasable
+    == true
+  on_pass: G_EXECUTION_GRAPH_CONNECTIVITY
+  on_fail: T_BLOCKED_RESULT_PACKAGE_RELEASE
+- id: G_EXECUTION_GRAPH_CONNECTIVITY
+  profile: hard_gate
+  method: mechanical
+  trust_class: deterministic
+  condition: connectivity_report.status == PASS and unreachable_nodes == 0 and dangling_targets == 0 and accidental_dead_ends
+    == 0
+  on_pass: N098_INITIALIZE_PROGRESS_OUTPUT
+  on_fail: T_BLOCKED_EXECUTION_GRAPH_CONNECTIVITY
+- id: G_DECLARED_CONTRACT_ARCHIVE_RELEASE
+  profile: hard_gate
+  method: mechanical
+  trust_class: deterministic
+  condition: declared_contract_self_application_report.status == PASS and release_disposition == PASS_RELEASE and exact_sealed_zip_verified
+    == true and all_declared_checks_executed == true
+  on_pass: T_PLAYBOOK_COMPLETED
+  on_fail: N077_SCOPED_DECLARED_CONTRACT_CORRECTION
+- id: G_REPRESENTATION_COMPILATION_GOVERNANCE
+  profile: hard_gate
+  method: mechanical
+  trust_class: deterministic
+  condition: representation_registered and source_authorized and strategy_authorized and common_invariants_pass and representation_specific_rules_pass
+    and disclosure_isolation_pass and lineage_complete
+  on_pass: N085_INITIALIZE_EVIDENCE_CATALOG
+  on_fail: T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+- id: G_EVIDENCE_BASE_CATALOG_GOVERNANCE
+  profile: hard_gate
+  method: mechanical
+  trust_class: deterministic
+  condition: catalog_structure_valid and evidence_classes_separated and immutable_history_preserved and score_eligibility_pass
+    and bindings_complete and manifest_filesystem_parity_pass and transfer_restorable
+  on_pass: N104_SELECT_CURRENT_STATE_SNAPSHOT_POLICY
+  on_fail: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+- id: G_IMPROVEMENT_DELTA_PROVEN
+  profile: hard_gate
+  method: mechanical
+  condition: improvement_delta_report.material_improvements_count > 0 and improvement_delta_report.bound_comparison == true
+  on_pass: G_NO_PROTECTED_DIMENSION_REGRESSION
+  on_fail: N096_RETAIN_BEST_CONFIRMED_VERSION
+- id: G_NO_PROTECTED_DIMENSION_REGRESSION
+  profile: hard_gate
+  method: mechanical
+  condition: improvement_delta_report.protected_regressions_count == 0
+  on_pass: N097_PROMOTE_IMPROVED_CANDIDATE
+  on_fail: N096_RETAIN_BEST_CONFIRMED_VERSION
+- id: G_BEST_CONFIRMED_VERSION_RETAINED
+  profile: hard_gate
+  method: mechanical
+  condition: baseline_sha256_after == baseline_sha256_before and candidate_not_promoted == true and plateau_receipt_present
+    == true
+  on_pass: T_IMPROVEMENT_PLATEAU_REACHED
+  on_fail: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+- id: G_PROGRESS_EVENT_SCHEMA
+  profile: hard_gate
+  method: mechanical
+  trust_class: deterministic
+  condition: progress_event.schema_valid == true and progress_event.status_registered == true and progress_event.informational_only
+    == true
+  on_pass: G_PROGRESS_EVIDENCE_BINDING
+  on_fail: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+- id: G_PROGRESS_EVIDENCE_BINDING
+  profile: hard_gate
+  method: mechanical
+  trust_class: deterministic
+  condition: progress_event.authoritative_evidence_refs_count > 0 or progress_event.launch_start_exception == true
+  on_pass: N101_RENDER_CONCISE_PROGRESS_LINE
+  on_fail: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+- id: G_NO_REASONING_DISCLOSURE
+  profile: hard_gate
+  method: semantic
+  condition: rendered_progress_line.contains_hidden_reasoning == false and rendered_progress_line.contains_speculation ==
+    false
+  on_pass: G_PROGRESS_CONCISENESS
+  on_fail: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+- id: G_PROGRESS_CONCISENESS
+  profile: hard_gate
+  method: mechanical
+  condition: rendered_progress_line.single_line == true and rendered_progress_line.canonical_format == true and rendered_progress_line.minor_actions_aggregated
+    == true
+  on_pass: N102_EMIT_AND_LOG_PROGRESS_EVENT
+  on_fail: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+- id: G_PROGRESS_TERMINAL_COHERENCE
+  profile: hard_gate
+  method: mechanical
+  condition: progress_event.is_terminal == false or progress_event.status == authoritative_terminal_status
+  on_pass: T_PLAYBOOK_COMPLETED
+  on_fail: N103_SUPPRESS_INVALID_PROGRESS_EVENT
+- id: G_CURRENT_STATE_AUTHORITY_UNAMBIGUOUS
+  profile: hard_gate
+  method: mechanical
+  condition: exactly_one_authoritative_current_artifact_per_logical_family or documented_precedence_resolves_all_conflicts
+  on_pass: N107_BIND_ACCEPTED_RUNS_TO_EXACT_VERSIONS
+  on_fail: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+- id: G_CURRENT_STATE_RUN_BINDINGS_COMPLETE
+  profile: hard_gate
+  method: mechanical
+  condition: all_retained_accepted_runs_bound_to_exact_package_driver_evaluator_methodology_scorecard_terminal_and_sha256
+  on_pass: N108_CALCULATE_CURRENT_STATE_EXCLUSIONS
+  on_fail: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+- id: G_CURRENT_STATE_BOUNDED_CLAIMS_PRESERVED
+  profile: hard_gate
+  method: mechanical
+  condition: all_exclusions_preserve_current_bounded_claims and all_exceptions_are_minimal_and_documented
+  on_pass: N109_BUILD_CURRENT_STATE_ONLY_STAGING
+  on_fail: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+- id: G_CURRENT_STATE_ONLY_ARCHIVE_RELEASE
+  profile: hard_gate
+  method: mechanical
+  condition: snapshot_zip_integrity_pass and internal_checksums_pass and reports_complete and no_historical_or_superseded_material
+    and bindings_complete and language_audit_pass
+  on_pass: T_CURRENT_STATE_ONLY_ARCHIVE_READY
+  on_fail: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+terminals:
+- id: T_EPIC_12_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 039_BENCHMARK_EVIDENCE_PACKAGE.md
+  - 040_TRANSFER_HANDOFF_PACKAGE.md
+  - EVIDENCE_PACKAGE_POLICY.yaml
+  - HANDOFF_POLICY.yaml
+  - handoff/HANDOFF_README.md
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 000_PLAYBOOK_CONTRACT.md
+  - 001_DOMAIN_VOCABULARY.md
+  - 002_CONCEPTUAL_MODEL.md
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_BLOCKED_EVIDENCE
+  profile: terminal_node
+  status: blocked_evidence
+- id: T_DRAFT_SAVED
+  profile: terminal_node
+  status: draft_saved
+- id: T_EPIC_02_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 003_TASK_CLASS_MODEL.md
+  - 004_TEST_CASE_CREATION_INTAKE.md
+  - 005_TEST_CASE_PACKAGE_TEMPLATE.md
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_03_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 006_CANONICAL_RUN_SCENARIO_CONTRACT.md
+  - 007_RUN_SCENARIO_EXTENSIBILITY.md
+  - RUN_SCENARIO_REGISTRY.yaml
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_04_COMPLETED
+  status: completed
+  message: Epic 04 package variant contracts completed; full playbook remains not execution-ready.
+- id: T_EPIC_05_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 013_STEP_BOUND_DRIVER.md
+  - 014_ADAPTIVE_SEMANTIC_DRIVER.md
+  - 015_DRIVER_SELECTION_GATE.md
+  - 016_BLIND_ISOLATION_RULES.md
+  - DRIVER_REGISTRY.yaml
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_06_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 017_UNIVERSAL_LAUNCH_PROTOCOL.md
+  - 018_PREFLIGHT_INTEGRITY_GATE.md
+  - 019_EXECUTION_LOGGING.md
+  - 020_TERMINAL_ROUTE_HANDLING.md
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_07_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 021_PROCESS_QUALITY_CONTRACT.md
+  - 022_PROCESS_FAILURE_CAPS.md
+  - PROCESS_FAILURE_CAPS.yaml
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_08_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 023_DOCUMENT_QUALITY_CONTRACT_REGISTRY.md
+  - 024_ARTIFACT_SPECIFIC_RULES.md
+  - 025_DOCUMENT_FAILURE_CAPS.md
+  - 026_FOCUSED_ARTIFACT_REVIEW.md
+  - 027_EVALUATION_REPORT_TEMPLATE.md
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_09_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 028_BENCHMARK_RESULT_REGISTRY.md
+  - 029_COMPARATIVE_MATRIX.md
+  - 030_RESULT_UPDATE_RULES.md
+  - 031_CROSS_VARIANT_COMPARISON.md
+  - RESULT_REGISTRY_POLICY.yaml
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_10_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 032_CAUSAL_DIAGNOSTIC_PROMPT.md
+  - 033_DIAGNOSTIC_EVIDENCE_CONTRACT.md
+  - 034_ROOT_CAUSE_CLASSIFICATION.md
+  - ROOT_CAUSE_CLASSIFICATION.yaml
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_EPIC_11_COMPLETED
+  profile: terminal_node
+  status: epic_completed
+  mandatory_evidence:
+  - 035_IMPROVEMENT_PATCH_WORKFLOW.md
+  - 036_REGRESSION_SCENARIO_SELECTION.md
+  - 037_FIVE_CYCLE_IMPROVEMENT_MODE.md
+  - 038_STABLE_BENCHMARK_EVOLUTION.md
+  - IMPROVEMENT_POLICY.yaml
+  - BACKLOG.md
+  - VALIDATION_REPORT.json
+- id: T_BL_BENCH_041_COMPLETED
+  profile: terminal_node
+  status: task_completed
+  mandatory_evidence:
+  - 041_SCOPED_YAML_PLAYBOOK_PATCH_VERIFICATION.md
+  - tools/verify_scoped_yaml_patch.py
+  - SCOPED_YAML_PATCH_POLICY.yaml
+  - reports/SCOPED_YAML_PATCH_SELF_TEST.json
+- id: T_BL_BENCH_043_COMPLETED
+  profile: terminal_node
+  status: task_completed
+  mandatory_evidence:
+  - 043_EXTERNAL_INTERNAL_VALIDATION_CONTRACT_ALIGNMENT_GATE.md
+  - tools/validate_contract_alignment.py
+  - VALIDATION_ALIGNMENT_POLICY.yaml
+  - reports/VALIDATION_ALIGNMENT_ACCEPTANCE_TESTS.json
+- id: T_BLOCKED_VALIDATION_ALIGNMENT
+  profile: terminal_node
+  status: blocked_validation_alignment
+- id: T_BL_BENCH_045_COMPLETED
+  profile: terminal_node
+  status: task_completed
+  mandatory_evidence:
+  - 045_MANDATORY_RESULT_PACKAGE_SELF_VALIDATION_RELEASE_GATE.md
+  - tools/validate_result_package_release.py
+  - RESULT_PACKAGE_RELEASE_GATE_POLICY.yaml
+  - reports/RESULT_PACKAGE_RELEASE_GATE_ACCEPTANCE_TESTS.json
+- id: T_BLOCKED_RESULT_PACKAGE_RELEASE
+  profile: terminal_node
+  status: blocked_result_package_release
+- id: T_ROLLBACK_NO_CHANGE
+  status: terminal
+  description: ARF or prerequisite failure; rollback/no-change.
+- id: T_BLOCKED_EXECUTION_GRAPH_CONNECTIVITY
+  status: terminal
+  description: Release blocked by graph connectivity failure.
+- id: T_PLAYBOOK_COMPLETED
+  status: terminal
+  description: Canonical connected playbook route completed and released.
+- id: T_PRE_RELEASE_DECLARED_CONTRACT_MISMATCH
+  profile: terminal_node
+  status: NO_CHANGE
+  reason: PRE_RELEASE_DECLARED_CONTRACT_MISMATCH
+  mandatory_evidence:
+  - DECLARED_CONTRACT_INVENTORY.json
+  - DECLARED_CONTRACT_SELF_APPLICATION_REPORT.json
+  - PRE_RELEASE_DECLARED_CONTRACT_EVIDENCE/
+- id: T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+  profile: terminal_node
+  status: NO_CHANGE
+  reason: REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+  mandatory_evidence:
+  - REPRESENTATION_REGISTRY.json
+  - SOURCE_TARGET_LINEAGE.json
+  - TRANSFORMATION_RECEIPT.json
+  - SEMANTIC_PARITY_REPORT.json
+  - DISCLOSURE_ISOLATION_REPORT.json
+- id: T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+  label: NO_CHANGE / EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE
+  terminal: true
+  release_allowed: false
+- id: T_IMPROVEMENT_PLATEAU_REACHED
+  label: IMPROVEMENT_PLATEAU_REACHED
+  terminal: true
+  release_allowed: true
+  description: Candidate provided no proven net improvement; best confirmed version retained and current loop ended.
+- id: T_SUCCESS
+  status: terminal
+  description: Compatibility success terminal declared by evaluation methodology gate.
+- id: T_BLOCKED
+  status: terminal
+  description: Compatibility blocked terminal declared by evaluation methodology gate.
+- id: T_CURRENT_STATE_ONLY_ARCHIVE_READY
+  status: CURRENT_STATE_ONLY_ARCHIVE_READY / PASS_RELEASE
+- id: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+  status: NO_CHANGE / CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED
+outputs:
+- id: OUT_EPIC_01_PACKAGE
+  type: package
+  allowed_after:
+  - G_EPIC_01_COMPLETE
+- id: OUT_EPIC_03_PACKAGE
+  type: package
+  allowed_after:
+  - G_EPIC_03_COMPLETE
+- reports/EXECUTION_GRAPH_CONNECTIVITY_REPORT.json
+- visualizations/EXECUTION_GRAPH_CANONICAL.svg
+execution_graph_contract:
+  schema_version: ordo.execution_graph_connectivity.v1
+  entrypoint: N001_FOCUSED_SCOPE
+  completion_terminal: T_PLAYBOOK_COMPLETED
+  route_authorized_node_ids:
+  - N001_FOCUSED_SCOPE
+  - N002_VERIFY_LANGUAGE_BASELINE
+  - N003_CREATE_CHARTER
+  - N004_CREATE_DOMAIN_MODEL
+  - N005_CREATE_BACKLOG
+  - N006_VALIDATE_EPIC_01
+  - N007_ACTIVATE_EPIC_02
+  - N008_DEFINE_TASK_CLASSES
+  - N009_DEFINE_TEST_CASE_INTAKE
+  - N010_DEFINE_TEST_CASE_PACKAGE
+  - N011_VALIDATE_EPIC_02
+  - N012_ACTIVATE_EPIC_03
+  - N013_DEFINE_CANONICAL_RUNS
+  - N014_DEFINE_RUN_EXTENSIBILITY
+  - N015_VALIDATE_EPIC_03
+  - N016_ACTIVATE_EPIC_04
+  - N017_DEFINE_VARIANT_REGISTRY
+  - N018_DEFINE_YAML_COMPILER
+  - N019_DEFINE_STRUCTURED_COMPILER
+  - N020_DEFINE_HISTORICAL_COMPILER
+  - N021_DEFINE_DIRECT_ADAPTATION
+  - N022_VALIDATE_EPIC_04
+  - N023_ACTIVATE_EPIC_05
+  - N024_DEFINE_STEP_BOUND_DRIVER
+  - N025_DEFINE_ADAPTIVE_SEMANTIC_DRIVER
+  - N026_DEFINE_DRIVER_SELECTION_AND_ISOLATION
+  - N027_VALIDATE_EPIC_05
+  - N028_DEFINE_UNIVERSAL_LAUNCH_PROTOCOL
+  - N029_DEFINE_PREFLIGHT_GATE
+  - N030_DEFINE_EXECUTION_LOGGING
+  - N031_DEFINE_TERMINAL_HANDLING
+  - N032_VALIDATE_EPIC_06
+  - N033_ACTIVATE_EPIC_07
+  - N034_DEFINE_PROCESS_QUALITY_CONTRACT
+  - N035_DEFINE_PROCESS_FAILURE_CAPS
+  - N036_VALIDATE_EPIC_07
+  - N037_ACTIVATE_EPIC_08
+  - N038_DEFINE_DOCUMENT_CONTRACT_REGISTRY
+  - N039_DEFINE_ARTIFACT_SPECIFIC_RULES
+  - N040_DEFINE_DOCUMENT_FAILURE_CAPS
+  - N041_DEFINE_FOCUSED_ARTIFACT_REVIEW
+  - N042_DEFINE_DOCUMENT_EVALUATION_REPORT
+  - N043_VALIDATE_EPIC_08
+  - N044_ACTIVATE_EPIC_09
+  - N045_DEFINE_RESULT_REGISTRY
+  - N046_DEFINE_COMPARATIVE_MATRIX
+  - N047_DEFINE_RESULT_UPDATE_RULES
+  - N048_DEFINE_CROSS_VARIANT_COMPARISON
+  - N049_VALIDATE_EPIC_09
+  - N050_ACTIVATE_EPIC_10
+  - N051_DEFINE_CAUSAL_DIAGNOSTIC_PROMPT
+  - N052_DEFINE_DIAGNOSTIC_EVIDENCE_CONTRACT
+  - N053_DEFINE_ROOT_CAUSE_CLASSIFICATION
+  - N054_VALIDATE_EPIC_10
+  - N055_DEFINE_IMPROVEMENT_PATCH_WORKFLOW
+  - N056_SELECT_REGRESSION_SCENARIOS
+  - N057_DEFINE_FIVE_CYCLE_MODE
+  - N058_DEFINE_STABLE_EVOLUTION
+  - N059_VALIDATE_EPIC_11
+  - N060_DEFINE_EVIDENCE_PACKAGE
+  - N061_DEFINE_HANDOFF_PACKAGE
+  - N062_VALIDATE_EPIC_12
+  - N041_VERIFY_SCOPED_YAML_PATCH
+  - N042_ARF_META_RUNTIME
+  - N063
+  - N064
+  - N065
+  - N066
+  - N067_FREEZE_RESULT_PACKAGE_RELEASE_INPUTS
+  - N068_VALIDATE_RESULT_PACKAGE_CROSS_ARTIFACT
+  - N069_REGENERATE_BLOCKED_ARTIFACTS
+  - N070_SEAL_RESULT_PACKAGE_RELEASE
+  - N079_SELECT_REPRESENTATION_PROFILE
+  - N080_AUTHORIZE_REPRESENTATION_STRATEGY
+  - N081_COMPILE_OR_ADAPT_REPRESENTATION
+  - N082_EMIT_REPRESENTATION_LINEAGE_RECEIPTS
+  - N083_VALIDATE_REPRESENTATION_SEMANTICS
+  - N084_VALIDATE_REPRESENTATION_DISCLOSURE
+  route_authorized_gate_ids:
+  - G_EPIC_01_COMPLETE
+  - G_EPIC_02_COMPLETE
+  - G_EPIC_03_COMPLETE
+  - G_EPIC_04_COMPLETE
+  - G_EPIC_05_COMPLETE
+  - G_EPIC_06_COMPLETE
+  - G_EPIC_07_COMPLETE
+  - G_EPIC_08_COMPLETE
+  - G_EPIC_09_COMPLETE
+  - G_EPIC_10_COMPLETE
+  - G_EPIC_11_COMPLETE
+  - G_EPIC_12_COMPLETE
+  - G_BL_BENCH_041_COMPLETE
+  - G_VALIDATION_CONTRACT_ALIGNMENT
+  - G_RESULT_PACKAGE_RELEASE
+  - G_EXECUTION_GRAPH_CONNECTIVITY
+  - G_REPRESENTATION_COMPILATION_GOVERNANCE
+  allowed_cycle_edges:
+  - - N069_REGENERATE_BLOCKED_ARTIFACTS
+    - N068_VALIDATE_RESULT_PACKAGE_CROSS_ARTIFACT
+  fail_closed_on:
+  - orphan_node
+  - unreachable_node
+  - unreachable_gate
+  - dangling_target
+  - accidental_dead_end
+  - missing_entrypoint
+  - missing_completion_terminal
+  same_revision_outputs:
+  - reports/EXECUTION_GRAPH_CONNECTIVITY_REPORT.json
+  - visualizations/EXECUTION_GRAPH_CANONICAL.svg
+black_box_pre_release_campaign:
+  node_id: N071_RUN_BLACK_BOX_PRE_RELEASE_CAMPAIGN
+  gate_id: G_BLACK_BOX_PRE_RELEASE_CAMPAIGN
+  tool: tools/run_black_box_pre_release_campaign.py
+  required_runs:
+  - RUN_01
+  - RUN_02
+  - RUN_03
+  - RUN_04
+  - RUN_05
+  on_pass: T_PLAYBOOK_COMPLETED
+  on_fail: T_BLOCKED_BLACK_BOX_CAMPAIGN
+internal_dry_evaluation:
+  node_id: N072_EVALUATE_INTERNAL_DRY_RUNS
+  gate_id: G_USER_ACCEPTANCE_FOR_EXTERNAL_BLIND_TESTING
+  tool: tools/manage_internal_dry_evaluation.py
+  evidence_class: INTERNAL_DRY_EVALUATION
+  blind_status: NOT_BLIND
+  canonical_status: NOT_CANONICAL_BENCHMARK_EVIDENCE
+  on_threshold_pass: T_AWAITING_USER_ACCEPTANCE
+  on_accept: T_READY_FOR_EXTERNAL_BLIND_TESTING
+  on_reject: N055_DEFINE_IMPROVEMENT_PATCH_WORKFLOW
+  on_pause: T_PAUSED_FOR_OWNER_INPUT
+declared_contract_archive_self_application:
+  enabled: true
+  inventory: DECLARED_CONTRACT_INVENTORY.json
+  max_correction_passes: 5
+  exact_sealed_zip_required: true
+  clean_consumer_workspace_required: true
+  release_gate: G_DECLARED_CONTRACT_ARCHIVE_RELEASE
+  fail_terminal: T_PRE_RELEASE_DECLARED_CONTRACT_MISMATCH
+  methodology_path: PACKAGE_VALIDATION_METHODOLOGY.md
+  machine_methodology_path: PACKAGE_VALIDATION_METHODOLOGY.json
+  mandatory_check_count: 12
+representation_compilation_governance:
+  enabled: true
+  registry: REPRESENTATION_REGISTRY.json
+  validator: tools/validate_representation_governance.py
+  gate: G_REPRESENTATION_COMPILATION_GOVERNANCE
+  fail_terminal: T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE
+  profiles:
+  - YAML_PLAYBOOK
+  - STRUCTURED_INSTRUCTIONS
+  - MIXED_ACCUMULATED_INSTRUCTIONS
+  - DOMAIN_ADAPTED_ALL_IN_ONE
+evidence_base_catalog_governance:
+  contract: EVIDENCE_CATALOG_CONTRACT.json
+  validator: tools/validate_evidence_catalog.py
+  acceptance_report: reports/EVIDENCE_CATALOG_GOVERNANCE_ACCEPTANCE_TESTS.json
+  gate: G_EVIDENCE_BASE_CATALOG_GOVERNANCE
+improvement_plateau_governance:
+  policy: IMPROVEMENT_PLATEAU_POLICY.json
+  required_on_routes:
+  - correction
+  - regeneration
+  - improvement
+  - package_self_validation_correction
+  candidate_isolated_until_acceptance: true
+  same_strategy_retry_requires_new_evidence: true
+  terminal_marker: IMPROVEMENT_PLATEAU_REACHED
+execution_progress_output_governance:
+  enabled: true
+  policy: EXECUTION_PROGRESS_OUTPUT_POLICY.yaml
+  status_registry: EXECUTION_PROGRESS_STATUS_REGISTRY.yaml
+  schema: schemas/execution_progress_event.schema.json
+  renderer: tools/render_execution_progress_event.py
+  informational_only: true
+  suppression_status: PROGRESS_EVENT_SUPPRESSED
+  gates:
+  - G_PROGRESS_EVENT_SCHEMA
+  - G_PROGRESS_EVIDENCE_BINDING
+  - G_NO_REASONING_DISCLOSURE
+  - G_PROGRESS_CONCISENESS
+  - G_PROGRESS_TERMINAL_COHERENCE
+current_state_only_evidence_snapshot_governance:
+  policy: CURRENT_STATE_ONLY_EVIDENCE_POLICY.json
+  builder: tools/build_current_state_evidence_snapshot.py
+  validator: tools/validate_current_state_evidence_snapshot.py
+  required_reports:
+  - README.md
+  - CURRENT_STATE_MANIFEST.json
+  - SELECTION_REPORT.json
+  - EXCLUSION_REPORT.json
+  - LANGUAGE_AUDIT.json
+  - SHA256SUMS.txt
+  max_automatic_correction_passes: 5
+  success_terminal: T_CURRENT_STATE_ONLY_ARCHIVE_READY
+  failure_terminal: T_CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED

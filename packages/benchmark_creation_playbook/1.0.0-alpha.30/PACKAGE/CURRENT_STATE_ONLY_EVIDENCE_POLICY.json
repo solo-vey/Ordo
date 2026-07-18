@@ -1,0 +1,72 @@
+{
+  "schema_version": "ordo.current_state_evidence.policy.v1",
+  "policy_version": "1.1.0",
+  "mode": "CURRENT_STATE_ONLY",
+  "authority_precedence": [
+    "current_manifest",
+    "acceptance_record",
+    "approval_record",
+    "run_index",
+    "release_binding",
+    "semantic_version",
+    "explicit_current_state_declaration"
+  ],
+  "timestamp_only_selection_forbidden": true,
+  "retention_rule": "latest_authoritative_state_per_logical_artifact_family_per_retained_test_case",
+  "run_rules": {
+    "retain_latest_accepted_per_condition": true,
+    "bind_exact_run_used_package": true,
+    "retain_failed_only_if_required_by_current_bounded_claim": true
+  },
+  "package_patterns": {
+    "A": "immutable_archive_only",
+    "B": "required_extracted_current_files_only",
+    "C": "archive_and_extracted_files_with_documented_validator_need"
+  },
+  "immutable_raw_evidence": true,
+  "required_reports": [
+    "README.md",
+    "CURRENT_STATE_MANIFEST.json",
+    "SELECTION_REPORT.json",
+    "EXCLUSION_REPORT.json",
+    "TEST_CASE_COVERAGE_MATRIX.json",
+    "LANGUAGE_AUDIT.json",
+    "SHA256SUMS.txt"
+  ],
+  "excluded_patterns": [
+    "version-history",
+    "historical",
+    "superseded",
+    "rejected",
+    "dry_run",
+    "self_check",
+    "__pycache__",
+    ".pyc",
+    ".bak",
+    ".tmp",
+    ".old",
+    ".orig"
+  ],
+  "fail_closed_codes": [
+    "AMBIGUOUS_CURRENT_AUTHORITY",
+    "MISSING_PROVENANCE",
+    "RUN_PACKAGE_BINDING_MISSING",
+    "CHECKSUM_MISMATCH",
+    "CURRENT_CLAIM_DEPENDENCY_REMOVED",
+    "INCOMPLETE_ACCEPTED_RUN_SET",
+    "MISSING_TEST_CASE_DISPOSITION",
+    "LATEST_TEST_CASE_ONLY_EXPORT",
+    "INCOMPLETE_TEST_CASE_COVERAGE"
+  ],
+  "success_terminal": "CURRENT_STATE_ONLY_ARCHIVE_READY / PASS_RELEASE",
+  "failure_terminal": "NO_CHANGE / CURRENT_STATE_EVIDENCE_SELECTION_BLOCKED",
+  "scope": "ALL_RETAINED_TEST_CASES",
+  "test_case_coverage": {
+    "inventory_all_test_cases": true,
+    "selection_independent_per_test_case": true,
+    "latest_test_case_only_forbidden": true,
+    "required_coverage_matrix": "TEST_CASE_COVERAGE_MATRIX.json",
+    "reconciliation_rule": "discovered_test_cases = retained_test_cases + authoritatively_excluded_test_cases",
+    "missing_disposition_is_blocker": true
+  }
+}

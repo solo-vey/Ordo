@@ -1,0 +1,35 @@
+{
+  "schema_version": "ordo.acceptance_tests.v1",
+  "backlog_id": "BL-BENCH-055",
+  "tests": [
+    {
+      "id": "positive_current_selection",
+      "status": "PASS"
+    },
+    {
+      "id": "superseded_excluded",
+      "status": "PASS"
+    },
+    {
+      "id": "required_reports_present",
+      "status": "PASS"
+    },
+    {
+      "id": "clean_room_zip_validation",
+      "status": "PASS"
+    },
+    {
+      "id": "immutable_source_unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "declaration_present",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "total": 6,
+    "status": "PASS"
+  }
+}

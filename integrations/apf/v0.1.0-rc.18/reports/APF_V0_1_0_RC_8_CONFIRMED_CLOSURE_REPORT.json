@@ -1,0 +1,27 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "current_version": "v0.1.0-rc.8-confirmed-closure",
+  "source_version": "v0.1.0-rc.8-node-change-confirmation",
+  "status": "accepted-baseline / ready-for-next-apf-patch",
+  "blocking_issues": 0,
+  "scope_boundary": "APF package/playbook creation process only; no Ordo language package changes",
+  "confirmed_items": {
+    "APF-RC8-01": "confirmed",
+    "APF-RC8-02": "confirmed",
+    "APF-RC8-03": "confirmed",
+    "APF-RC8-04": "confirmed",
+    "APF-RC8-05": "confirmed",
+    "APF-RC8-06": "confirmed",
+    "APF-RC8-07": "confirmed"
+  },
+  "accepted_baseline": "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC8_CONFIRMED_CLOSURE.zip",
+  "validation": {
+    "rc8_confirmation_register_updated": "passed",
+    "closure_doc_present": "passed",
+    "rc8_to_rc9_handoff_present": "passed",
+    "scope_boundary_preserved": "passed",
+    "no_silent_process_mutation_confirmed": "passed",
+    "conditional_activation_model_confirmed": "passed",
+    "zip_integrity": "passed"
+  }
+}

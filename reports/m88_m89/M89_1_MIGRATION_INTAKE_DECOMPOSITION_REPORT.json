@@ -1,0 +1,39 @@
+{
+  "schema_version": "ordo.m89.migration_intake_decomposition.v1",
+  "milestone": "M89.1",
+  "status": "passed",
+  "implemented": {
+    "canonical_migration_intake_contract": true,
+    "zero_silent_loss_policy": true,
+    "mandatory_constraint_preservation": true,
+    "authorization_boundary_preservation": true,
+    "evidence_requirement_preservation": true,
+    "canonical_decomposition_units": 10,
+    "eight_step_decomposition_protocol": true,
+    "traceability_reconciliation": true,
+    "unmapped_mandatory_blocking_gate": true,
+    "forbidden_shortcuts": true
+  },
+  "tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/schemas/process_instruction_migration_intake.schema.json",
+      "sha256": "4748ebb4521f4c61276866155908c36ba76df45cc74e7c98cdde9221a2c917a2"
+    },
+    {
+      "path": "language/migration/decomposition_protocol.v1.json",
+      "sha256": "efb848fdb7f3c28310b73a8ef33db86df03d73ed71e1d64cd4fe38b74a37b8c6"
+    },
+    {
+      "path": "language/migration/migration_intake_contract.py",
+      "sha256": "c850fc2f0ce38bef1ae432ea8fd72f4ba5e0f1a5e171de9fe912bcf6f41e0894"
+    },
+    {
+      "path": "cli/tests/test_m89_1_migration_intake_decomposition.py",
+      "sha256": "8b5a6e5a3d0e3a7dcbcd0c9e272dee9f1f70aba214d818f9fa25ae8a2ddd95c5"
+    }
+  ]
+}

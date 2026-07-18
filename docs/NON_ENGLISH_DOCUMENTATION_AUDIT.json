@@ -1,0 +1,1033 @@
+{
+  "schema_version": "1.0.0",
+  "policy": "English-only outside localized book trees",
+  "generated_at": "2026-07-11",
+  "files": [
+    {
+      "file": "CHANGELOG.md",
+      "cyrillic_character_count": 330,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "COMMERCIAL_LICENSE.md",
+      "cyrillic_character_count": 11,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "M54_VALIDATION_REPORT.json",
+      "cyrillic_character_count": 23,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "M60_6_2_CALIBRATION_REFINEMENT_REPORT.md",
+      "cyrillic_character_count": 20,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "M60_6_3_MODEL_BENCHMARK_PROTOCOL_REPORT.md",
+      "cyrillic_character_count": 20,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "M62_1_APF_PACKAGE_IMPORT_REPORT.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "M63_1_LICENSE_FILES_PATCH_REPORT.md",
+      "cyrillic_character_count": 11,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "NOTICE.md",
+      "cyrillic_character_count": 22,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "README.md",
+      "cyrillic_character_count": 22,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "README_LICENSE_SECTION.md",
+      "cyrillic_character_count": 11,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/README.md",
+      "cyrillic_character_count": 13,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/CLI_AS_DETERMINISTIC_HELPER.md",
+      "cyrillic_character_count": 208,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/ORDO_LANGUAGE_MODEL_IMPROVEMENTS_PACKAGE.md",
+      "cyrillic_character_count": 10323,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/apf_language_model_improvements_package.md",
+      "cyrillic_character_count": 10323,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/architecture.md",
+      "cyrillic_character_count": 99,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/first_package_tutorial.md",
+      "cyrillic_character_count": 2034,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/future_backlog.md",
+      "cyrillic_character_count": 25,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/getting_started.md",
+      "cyrillic_character_count": 154,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/history_event_guided_intake_package.md",
+      "cyrillic_character_count": 159,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/license_policy.md",
+      "cyrillic_character_count": 11,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/lockfile.md",
+      "cyrillic_character_count": 264,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/CHANGELOG.md",
+      "cyrillic_character_count": 239,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/CURRENT_VERSION.md",
+      "cyrillic_character_count": 69,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/README.md",
+      "cyrillic_character_count": 1141,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/START_FILES_STANDARD.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/CONCEPT.md",
+      "cyrillic_character_count": 3426,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/PROMPT_REGISTRY_TARGET_STRUCTURE.md",
+      "cyrillic_character_count": 112,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/README.md",
+      "cyrillic_character_count": 412,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/APF_V0_1_0_ALPHA_17_VALIDATION_REPORT.json",
+      "cyrillic_character_count": 17,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/MODULE_CHANGELOG.md",
+      "cyrillic_character_count": 25,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/README.md",
+      "cyrillic_character_count": 168,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_hybrid_executor/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_hybrid_executor/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_project_builder/README.md",
+      "cyrillic_character_count": 188,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_project_builder/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_project_builder/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_project_builder/run_inputs/authoring_success.yaml",
+      "cyrillic_character_count": 125,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_project_builder/source/program.ordo.yaml",
+      "cyrillic_character_count": 658,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_project_builder/tests/test_cases.yaml",
+      "cyrillic_character_count": 44,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_hybrid_executor/run_inputs/execution_success.yaml",
+      "cyrillic_character_count": 45,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_hybrid_executor/source/program.ordo.yaml",
+      "cyrillic_character_count": 400,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/docs/BRANCH_1_PROGRESSIVE_TREE_AUTHORING_POLICY.md",
+      "cyrillic_character_count": 25,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/docs/LANGUAGE_MODEL_IMPROVEMENTS_PACKAGE.md",
+      "cyrillic_character_count": 10323,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/docs/USER_FACING_RUNTIME_REVIEW_POLICY.md",
+      "cyrillic_character_count": 65,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/run_inputs/alpha21_full_validation_state.yaml",
+      "cyrillic_character_count": 179,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/run_inputs/factory_success.yaml",
+      "cyrillic_character_count": 2181,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/run_inputs/rc1_full_validation_state.yaml",
+      "cyrillic_character_count": 179,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/source/program.ordo.yaml",
+      "cyrillic_character_count": 10859,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/ordo_applied_project_factory/generated_examples/decision_note_assistant/source/program.ordo.yaml",
+      "cyrillic_character_count": 598,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/domain/history_event_domain_notes.md",
+      "cyrillic_character_count": 153,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/prompts/hp.package.quick_start.v1.md",
+      "cyrillic_character_count": 197,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/prompts/hp.runtime.start.v1.md",
+      "cyrillic_character_count": 264,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/run_inputs/answers_blocked.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/run_inputs/answers_success.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/run_inputs/intake_success.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/run_inputs/intake_unmatched_then_success.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/source/program.ordo.yaml",
+      "cyrillic_character_count": 951,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "packages/history_event_guided_intake/tests/test_cases.yaml",
+      "cyrillic_character_count": 75,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "utilities/ordo_visual_graph_generator/TRACE_OVERLAY_SCHEMA.md",
+      "cyrillic_character_count": 56,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "utilities/ordo_visual_graph_generator/examples/program_error_user_survey_with_artifacts.ordo.yaml",
+      "cyrillic_character_count": 791,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_000.json",
+      "cyrillic_character_count": 29,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_001.json",
+      "cyrillic_character_count": 18,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_002.json",
+      "cyrillic_character_count": 25,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_003.json",
+      "cyrillic_character_count": 61,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_004.json",
+      "cyrillic_character_count": 6,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_008.json",
+      "cyrillic_character_count": 5,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_009.json",
+      "cyrillic_character_count": 41,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_010.json",
+      "cyrillic_character_count": 31,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_011.json",
+      "cyrillic_character_count": 46,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_012.json",
+      "cyrillic_character_count": 95,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_013.json",
+      "cyrillic_character_count": 5,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_014.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_016.json",
+      "cyrillic_character_count": 30,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_017.json",
+      "cyrillic_character_count": 65,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_018.json",
+      "cyrillic_character_count": 6,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_calibration_prep_baseline/scenarios/scenario_019.json",
+      "cyrillic_character_count": 7,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/scenarios/scenario_000.json",
+      "cyrillic_character_count": 23,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/scenarios/scenario_002.json",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/transcripts/scenario_000_json_transcript-replay_transcript.json",
+      "cyrillic_character_count": 23,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/tree_source/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/tree_source/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_000_json/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_000_json/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_001_json/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_001_json/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_002_json/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_002_json/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_002_json/compiled/program.ir.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_001_json/compiled/program.ir.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/sandboxes/scenario_000_json/compiled/program.ir.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/tree_source/source/program.ordo.yaml",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json_source/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json_source/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json_source/compiled/program.ir.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json_source/source/program.ordo.yaml",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "reports/m60_6_4_transcript_replay_pilot/runtime_templates/json/compiled/program.ir.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_000.json",
+      "cyrillic_character_count": 29,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_001.json",
+      "cyrillic_character_count": 18,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_002.json",
+      "cyrillic_character_count": 25,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_003.json",
+      "cyrillic_character_count": 61,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_004.json",
+      "cyrillic_character_count": 6,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_008.json",
+      "cyrillic_character_count": 5,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_009.json",
+      "cyrillic_character_count": 41,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_010.json",
+      "cyrillic_character_count": 31,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_011.json",
+      "cyrillic_character_count": 46,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_012.json",
+      "cyrillic_character_count": 95,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_013.json",
+      "cyrillic_character_count": 5,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_014.json",
+      "cyrillic_character_count": 28,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_016.json",
+      "cyrillic_character_count": 30,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_017.json",
+      "cyrillic_character_count": 65,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_018.json",
+      "cyrillic_character_count": 6,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_019.json",
+      "cyrillic_character_count": 7,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/transcripts/scenario_000_json_transcript-replay_transcript.json",
+      "cyrillic_character_count": 23,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/design_notes/ORDO_V0_12_RELIABILITY_TRUST_SEMANTICS.md",
+      "cyrillic_character_count": 616,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/00_ORDO_OVERVIEW.md",
+      "cyrillic_character_count": 621,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/01_ORDO_CORE.md",
+      "cyrillic_character_count": 212,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/02_ORDO_SOURCE_SYNTAX.md",
+      "cyrillic_character_count": 81,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/03_SEMANTIC_JSON_IR.md",
+      "cyrillic_character_count": 238,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/04_EXECUTION_MODEL.md",
+      "cyrillic_character_count": 703,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/05_GATE_AND_ASSERTION_MODEL.md",
+      "cyrillic_character_count": 373,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/06_DEBUG_TEST_IMPROVEMENT_LAYER.md",
+      "cyrillic_character_count": 290,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/07_FREEFORM_MODEL.md",
+      "cyrillic_character_count": 252,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/08_LIBRARY_MODEL.md",
+      "cyrillic_character_count": 55,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/11_PROCESS_RAIL_MODEL.md",
+      "cyrillic_character_count": 366,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/12_PROJECT_BUILDER_MODEL.md",
+      "cyrillic_character_count": 329,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/spec/15_CONTRACT_ARTIFACT_COVERAGE_MODEL.md",
+      "cyrillic_character_count": 31,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/examples/source/basic_summary.ordo.yaml",
+      "cyrillic_character_count": 41,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/examples/source/reliability_strict_example.ordo.yaml",
+      "cyrillic_character_count": 53,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/improvement_intake/m65_0/APF_NODE_LEVEL_PROMPT_REGISTRY_IMPROVEMENT_SOURCE.md",
+      "cyrillic_character_count": 126,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/improvement_intake/m71_0/APF_PROMPT_REGISTRY_STABLE_PROMPT_IDS_IMPROVEMENT.md",
+      "cyrillic_character_count": 3174,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "language/improvement_intake/m71_1/APF_PROMPT_REGISTRY_STABLE_PROMPT_IDS_IMPROVEMENT.md",
+      "cyrillic_character_count": 3174,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/concepts/AI_GUIDED_AUTHORING_AND_HYBRID_EXECUTION.md",
+      "cyrillic_character_count": 599,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/concepts/ORDO_PROJECT_BUILDER.md",
+      "cyrillic_character_count": 491,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/concepts/PROCESS_RAIL_MODEL.md",
+      "cyrillic_character_count": 1337,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/design_decisions/DD-ORDO-M26-001_PROCESS_RAIL_CORE_MODEL.md",
+      "cyrillic_character_count": 594,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/design_decisions/DD-ORDO-M27-001_ORDO_PROJECT_BUILDER.md",
+      "cyrillic_character_count": 412,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/design_decisions/DD-ORDO-M30-001_BOOK_SPEC_ALIGNMENT.md",
+      "cyrillic_character_count": 359,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/reports/M60_6_2_CALIBRATION_REFINEMENT_REPORT.md",
+      "cyrillic_character_count": 20,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/reports/M60_6_3_MODEL_BENCHMARK_PROTOCOL_REPORT.md",
+      "cyrillic_character_count": 20,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/improvement_intake/M64_PREP_PACK/source_reference/APF_RC4_POST_SVG_CURRENT_STATE.md",
+      "cyrillic_character_count": 70,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "docs/improvement_intake/M64_PREP_PACK/source_reference/ORDO_FUTURE_BACKLOG_M62_M63_REFERENCE.md",
+      "cyrillic_character_count": 25,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/docs/CLI_HELPER_COMMANDS_M29.md",
+      "cyrillic_character_count": 71,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/docs/CLI_IN_PROJECT_AUTHORING.md",
+      "cyrillic_character_count": 202,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/README.md",
+      "cyrillic_character_count": 303,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/compiled/program.ir.json",
+      "cyrillic_character_count": 416,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/domain/history_event_domain_notes.md",
+      "cyrillic_character_count": 153,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/reports/intake_report.json",
+      "cyrillic_character_count": 248,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/reports/run_report.json",
+      "cyrillic_character_count": 310,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/run_inputs/answers_blocked.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/run_inputs/answers_success.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/run_inputs/intake_success.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/run_inputs/intake_unmatched_then_success.yaml",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/intake_trace_log.json",
+      "cyrillic_character_count": 248,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/trace_log.json",
+      "cyrillic_character_count": 310,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/source/program.ordo.yaml",
+      "cyrillic_character_count": 523,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/tests/test_cases.yaml",
+      "cyrillic_character_count": 75,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_001_after_N_EVENT_GOAL.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_002_after_N_PATH_SELECT.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_003_after_N_EVENT_ALIAS.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_004_after_N_DISPLAY_NAME_UK.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_005_after_N_DISPLAY_NAME_EN.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_006_after_N_SOURCE_FIELD.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_007_after_N_VALUE_SEMANTICS.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_008_after_N_QA_SCOPE.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_009_after_N_APPROVAL.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203732Z_010_after_G_APPROVAL_CONFIRMED.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_001_after_N_EVENT_GOAL.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_002_after_N_PATH_SELECT.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_003_after_N_EVENT_ALIAS.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_004_after_N_DISPLAY_NAME_UK.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_005_after_N_DISPLAY_NAME_EN.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_006_after_N_SOURCE_FIELD.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_007_after_N_VALUE_SEMANTICS.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_008_after_N_QA_SCOPE.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_009_after_N_APPROVAL.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203733Z_010_after_G_APPROVAL_CONFIRMED.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_001_after_N_EVENT_GOAL.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_002_after_N_PATH_SELECT.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_003_after_N_EVENT_ALIAS.json",
+      "cyrillic_character_count": 42,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_004_after_N_DISPLAY_NAME_UK.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_005_after_N_DISPLAY_NAME_EN.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_006_after_N_SOURCE_FIELD.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_007_after_N_VALUE_SEMANTICS.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_008_after_N_QA_SCOPE.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_009_after_N_APPROVAL.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/INTAKE-20260705T203734Z_010_after_G_APPROVAL_CONFIRMED.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/RUN-20260705T203731Z_state_final.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/examples/history_event_guided_intake/runtime/state_snapshots/RUN-20260705T203734Z_state_final.json",
+      "cyrillic_character_count": 62,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/README.md",
+      "cyrillic_character_count": 199,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/START_HERE_RUNTIME_MODE.md",
+      "cyrillic_character_count": 27,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/START_PROMPT_RUNTIME_MODE.md",
+      "cyrillic_character_count": 90,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/run_inputs/answers_blocked.yaml",
+      "cyrillic_character_count": 36,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/run_inputs/answers_success.yaml",
+      "cyrillic_character_count": 36,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/run_inputs/intake_success.yaml",
+      "cyrillic_character_count": 34,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/run_inputs/intake_unmatched_then_success.yaml",
+      "cyrillic_character_count": 41,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/source/program.ordo.yaml",
+      "cyrillic_character_count": 241,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "cli/ordo/templates/package_template/tests/test_cases.yaml",
+      "cyrillic_character_count": 60,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "cyrillic_character_count": 304702,
+      "migration_status": "review_required"
+    },
+    {
+      "file": "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
+      "cyrillic_character_count": 257376,
+      "migration_status": "review_required"
+    }
+  ],
+  "count": 205
+}

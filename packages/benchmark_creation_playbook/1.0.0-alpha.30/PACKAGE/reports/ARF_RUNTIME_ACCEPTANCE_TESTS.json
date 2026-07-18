@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "name": "clean_reference",
+      "returncode": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "missing_package",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "corrupt_package",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "incompatible_arf",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    },
+    {
+      "name": "local_only_patch_rejected",
+      "returncode": 2,
+      "expected": 2,
+      "status": "PASS"
+    }
+  ]
+}

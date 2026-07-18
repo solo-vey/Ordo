@@ -1,0 +1,43 @@
+{
+  "schema_version": "ordo.m89.clause_inventory_classification.v1",
+  "milestone": "M89.2",
+  "status": "passed",
+  "implemented": {
+    "canonical_clause_inventory": true,
+    "normativity_classification": true,
+    "mandatory_semantics_marker": true,
+    "multi_class_semantic_classification": true,
+    "classification_confidence": true,
+    "canonical_ambiguity_record": true,
+    "ambiguity_cross_references": true,
+    "low_confidence_capture_gate": true,
+    "critical_ambiguity_blocking": true,
+    "silent_ambiguity_resolution_forbidden": true
+  },
+  "tests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/schemas/migration_clause_inventory.schema.json",
+      "sha256": "f71dba6f99e18ce08f58894cfa45d188a9a11fc7a4643977bd6178299b66c2d7"
+    },
+    {
+      "path": "language/schemas/migration_ambiguity.schema.json",
+      "sha256": "c72f6cd39267a3b3abae956e8dd88dffde550a5b7dd24518b3c042ad98d2e52b"
+    },
+    {
+      "path": "language/migration/clause_inventory_model.py",
+      "sha256": "e63460b9572ae5c4843dd0a6ed4a670a20df6ab1cd01c094cffe66048522070c"
+    },
+    {
+      "path": "language/migration/semantic_classification_protocol.v1.json",
+      "sha256": "a182418f4448d1b156ce9c4fd3f046ad20064ce1b75449ecfb5a915764c77a6e"
+    },
+    {
+      "path": "cli/tests/test_m89_2_clause_inventory_classification.py",
+      "sha256": "aba5ade8b43d40405d113653f3d59d5fceaf01965d80795dfc0390f9951d3c47"
+    }
+  ]
+}

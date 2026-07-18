@@ -1,0 +1,41 @@
+CONVERSATION.SCOPE.DEF:
+  id: CSG_MAIN
+  enabled: true
+  mode: guided_redirect
+  scope:
+    process_id: PROCESS_ID
+    active_node_ref: STATE.current_node
+    active_question_ref: STATE.current_question
+    accepted_context:
+    - answer_to_active_question
+    - clarification
+    - correction
+    - backtrack_request
+    - requirement_change
+    - pause_request
+    - resume_request
+    - exit_request
+    - process_meta_question
+    - related_context
+    - safety_or_error_message
+  out_of_scope_behavior:
+    answer_external_question: false
+    acknowledge_message: true
+    repeat_active_question: true
+    preserve_state: true
+    complete_active_node: false
+    change_selected_path: false
+    confirm_state_value: false
+  escalation:
+    counter_scope: active_node
+    reset_on:
+    - valid_process_answer
+    - node_transition
+    - process_resume
+    levels:
+      1: gentle_redirect
+      2: explicit_scope_reminder
+      3: offer_pause_or_exit
+      4: suspend_until_process_choice
+  trace:
+    required: true

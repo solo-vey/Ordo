@@ -1,0 +1,12 @@
+{
+  "baseline": {
+    "sha256_before": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "sha256_after": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "candidate": {},
+  "material_improvements": [],
+  "protected_regressions": [],
+  "decision": "ACCEPT_IMPROVED",
+  "next_route": "PROMOTE",
+  "retry": {}
+}

@@ -1,0 +1,124 @@
+{
+  "status": "ok",
+  "total_test_cases": 3,
+  "gate_pass_rate": 1.0,
+  "path_quality_score": {
+    "mean": 1.0,
+    "median": 1.0,
+    "stdev": 0.0,
+    "min": 1.0,
+    "max": 1.0
+  },
+  "failed_test_cases": [],
+  "breakdown_by_driver": {
+    "matrix-smoke-ground-truth": {
+      "count": 3,
+      "mean": 1.0
+    }
+  },
+  "breakdown_by_cli_mode": {
+    "enforced": {
+      "count": 3,
+      "mean": 1.0
+    }
+  },
+  "breakdown_by_runtime_view": {
+    "json,ordo-code": {
+      "count": 1,
+      "mean": 1.0
+    },
+    "json": {
+      "count": 1,
+      "mean": 1.0
+    },
+    "ordo-code": {
+      "count": 1,
+      "mean": 1.0
+    }
+  },
+  "runtime_protocol_versions": [
+    "M60.4"
+  ],
+  "matrix_smoke": {
+    "status": "passed",
+    "runtime_views": [
+      "json",
+      "ordo-code",
+      "json,ordo-code"
+    ],
+    "tree_seed": 42,
+    "script_seed": 100,
+    "depth": 2,
+    "branching": [
+      2,
+      2
+    ],
+    "rows": [
+      {
+        "runtime_view": "json",
+        "sandbox": "sandboxes/scenario_000_json",
+        "score_file": "scores/scenario_000_json_score.json",
+        "gate_passed": true,
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0,
+        "runtime_metadata": {
+          "ordo_cli_version": "0.12",
+          "runtime_protocol_version": "M60.4",
+          "runtime_view": "json",
+          "runtime_package_hash": null,
+          "canonical_ir_hash": "sha256:ec1bb82744683d4b0b165f694d776804290d7eebea771af4a3c7dc7e1f1ad748",
+          "targets_manifest_hash": "sha256:f2261f82c9d2708460b50cd5be3422d3843d442d8a646e0b2de3bcf9e91c467a",
+          "session_trace_hash": "sha256:a40396b709e9b7b91408cd685459f3aa7d64ca05b053634d3d19de3765c414ff",
+          "targets": [
+            "json-ir",
+            "session-trace"
+          ]
+        }
+      },
+      {
+        "runtime_view": "ordo-code",
+        "sandbox": "sandboxes/scenario_000_ordo-code",
+        "score_file": "scores/scenario_000_ordo-code_score.json",
+        "gate_passed": true,
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0,
+        "runtime_metadata": {
+          "ordo_cli_version": "0.12",
+          "runtime_protocol_version": "M60.4",
+          "runtime_view": "ordo-code",
+          "runtime_package_hash": null,
+          "canonical_ir_hash": "sha256:f2a8e423e464a608d927cd6497c1cc10331fd0dc7b80b87332f38195e7dae4d6",
+          "targets_manifest_hash": "sha256:3eecd108f28afc8330b536197b96c5ef84c16606f836a1c5e4893f86dfbb9142",
+          "session_trace_hash": "sha256:e7781e9eeef4020ce37a9da3ca47d584eee0cd9ba68c3428de4ad02c2fc1c6d3",
+          "targets": [
+            "json-ir",
+            "ordo-code-view",
+            "session-trace"
+          ]
+        }
+      },
+      {
+        "runtime_view": "json,ordo-code",
+        "sandbox": "sandboxes/scenario_000_json_ordo-code",
+        "score_file": "scores/scenario_000_json_ordo-code_score.json",
+        "gate_passed": true,
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0,
+        "runtime_metadata": {
+          "ordo_cli_version": "0.12",
+          "runtime_protocol_version": "M60.4",
+          "runtime_view": "json,ordo-code",
+          "runtime_package_hash": null,
+          "canonical_ir_hash": "sha256:a1268890f80b88b32ec8f35fcb465400a55db743a9104ac4f59080002018a4a7",
+          "targets_manifest_hash": "sha256:b1f2707cb5d47e485a386bec5fa0eb2c1b2735a3833c2c833a79bf78840e41b4",
+          "session_trace_hash": "sha256:98c700c1acc8951998c1d4ebdbf81f6442e3c0561eb837e30c1a2da8f2a7e4d5",
+          "targets": [
+            "json-ir",
+            "ordo-code-view",
+            "session-trace"
+          ]
+        }
+      }
+    ]
+  }
+}

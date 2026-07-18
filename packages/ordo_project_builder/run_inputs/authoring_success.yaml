@@ -1,0 +1,21 @@
+answers:
+  N_PROJECT_GOAL: створити пакет для опитування користувача перед підготовкою аналітичного документа
+  N_PROJECT_DOMAIN: аналітичний intake
+  N_ROLES:
+    human_roles:
+      - pm
+    ai_roles:
+      - ordo_developer
+  N_PROCESS_RAIL_GOAL: утримувати питання, рішення, gates, повернення назад і output readiness
+  N_STATE_MODEL: project_goal, domain, roles, rail nodes, gates, outputs, approval
+  N_MODE_SELECT: authoring
+  N_REQUIRED_OUTPUTS:
+    - ordo.yml
+    - source/program.ordo.yaml
+    - compiled/program.ir.json
+  N_DETERMINISTIC_HELPERS:
+    - lint
+    - compile
+    - test
+    - coverage
+  N_APPROVAL_BEFORE_COMPILE: 'yes'

@@ -1,0 +1,55 @@
+{
+  "schema_version": "ordo.m87.ab_protocol_rubric.v1",
+  "milestone": "M87.1",
+  "status": "passed",
+  "backlog_reference_registered": "language/improvement_intake/bl_ordo_020_references/APF_SCOPE_CONFIRMATION_EXECUTION_ROUTING_ANTIPATTERNS_UK.md",
+  "implemented": {
+    "paired_design": true,
+    "canonical_pair_id": true,
+    "frozen_plain_prompt_arm": true,
+    "frozen_ordo_arm": true,
+    "shared_controls": true,
+    "counterbalancing": true,
+    "blind_scoring": true,
+    "contamination_controls": true,
+    "weighted_100_point_rubric": true,
+    "critical_failure_cap": true,
+    "statistical_analysis_plan": true,
+    "closure_thresholds": true
+  },
+  "rubric_dimensions": 7,
+  "tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/improvement_intake/bl_ordo_020_references/APF_SCOPE_CONFIRMATION_EXECUTION_ROUTING_ANTIPATTERNS_UK.md",
+      "sha256": "f2d7182ab7feb4198115ec88d4d56050c3e59beeadff79efac1661b88511ef3c"
+    },
+    {
+      "path": "CONSOLIDATED_BACKLOG.md",
+      "sha256": "e8766c98baae6ebf0516b2f65edb2a30951439507601d0d45f6556ccdc74bdfd"
+    },
+    {
+      "path": "benchmarks/ab/ordo_vs_plain_prompt_protocol.v1.json",
+      "sha256": "710ec75aec9d0ea216db8c127fa9d8c7ee8ca20ceb2e03ac94cd2c4f6bf04e34"
+    },
+    {
+      "path": "benchmarks/ab/ordo_vs_plain_prompt_scoring_rubric.v1.json",
+      "sha256": "315cdab00e3845eb4b65c9281641ddd2e32f0e156672ff18abff9142e5f82a29"
+    },
+    {
+      "path": "benchmarks/schemas/ab_pair_result.schema.json",
+      "sha256": "b879e8dcda781444c100a19bf664066921c309e5ab56ba153296c53e0f2f2538"
+    },
+    {
+      "path": "benchmarks/ab/validate_ab_protocol.py",
+      "sha256": "f1a71ef5bcf97a2159a947f0ab3436688c10263f0a5d7fe1782cef26de0ca264"
+    },
+    {
+      "path": "cli/tests/test_m87_1_ab_protocol_rubric.py",
+      "sha256": "315f7325596481e677414baa5552776c108fcf2b6ddfded0d79ba62c34dbb496"
+    }
+  ]
+}

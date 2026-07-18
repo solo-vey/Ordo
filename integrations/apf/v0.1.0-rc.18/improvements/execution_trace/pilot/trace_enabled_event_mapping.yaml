@@ -1,0 +1,25 @@
+playbook_id: pilot.trace_enabled
+schema_version: "1.0"
+coverage:
+  run_lifecycle:
+    - run_started
+    - run_completed
+    - run_failed
+    - run_cancelled
+  nodes:
+    - node_entered
+    - node_exited
+  decisions:
+    - decision_evaluated
+    - decision_selected
+  gates:
+    - gate_evaluated
+    - gate_passed
+    - gate_failed
+  state:
+    - state_changed
+    - state_snapshot
+  outputs:
+    - artifact_generation_started
+    - artifact_generated
+  terminal_event_required: true

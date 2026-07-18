@@ -1,0 +1,21 @@
+{
+  "event_goal": "створити історичну подію зміни статусу компанії",
+  "selected_path": "A1",
+  "event_alias": "LU_CHANGE_STATUS",
+  "display_name_uk": "Зміна статусу компанії",
+  "display_name_en": "Company status changed",
+  "source_field": "item.status",
+  "value_semantics": [
+    "old status",
+    "new status",
+    "status normalization"
+  ],
+  "qa_scope": [
+    "unit tests",
+    "manual QA",
+    "regression suite"
+  ],
+  "approval_received": true,
+  "output_allowed": false,
+  "final_package_created": false
+}

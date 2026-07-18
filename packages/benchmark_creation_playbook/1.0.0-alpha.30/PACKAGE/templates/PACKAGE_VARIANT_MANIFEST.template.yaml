@@ -1,0 +1,19 @@
+schema_version: ordo.benchmark.package_variant_manifest.v1
+variant:
+  id: <PV-YAML|PV-STRUCTURED|PV-HISTORICAL|PV-DIRECT>
+  version: <SEMVER>
+  source_revision: <ID>
+  source_sha256: <SHA256>
+  compiler_profile:
+    id: <PROFILE_ID>
+    version: <SEMVER>
+  supported_runs: [RUN_01, RUN_02, RUN_03, RUN_04, RUN_05]
+  driver_family: <step_bound|semantic_adaptive|pending_driver_selection>
+  generated_at: <RFC3339>
+  contamination_declaration:
+    status: <clean|finding|blocked>
+    checked_sources: []
+    findings: []
+  deviations: []
+  files: []
+  readiness: <draft|variant_ready|blocked>

@@ -1,0 +1,11 @@
+answers:
+  N_LOAD_IR: semantic json ir loaded
+  N_CLASSIFY_INPUT:
+    class: answer_current_question
+  N_VALIDATE_STATE: helper validation passed
+  N_INTERPRET_HELPER: Нам достатньо даних для переходу до наступного кроку.
+  N_HANDLE_DEVIATION: no deviation detected
+  N_OUTPUT_GATE:
+    allowed: true
+  N_NEXT_MOVE:
+    next_node: N_CLASSIFY_INPUT

@@ -1,0 +1,7 @@
+{
+  "schema": "ordo.playbook.rollback_checkpoint_reference.v1",
+  "playbook_version": "0.1.0-alpha.2",
+  "archive": "../checkpoints/external_workflow_preparation_0.1.0-alpha.2_checkpoint.zip",
+  "sha256": "753e0a1d4179bac9d19bec2ea057323616ec25bf1757107a2f31b99d0973ca94",
+  "restore_round_trip": "passed"
+}

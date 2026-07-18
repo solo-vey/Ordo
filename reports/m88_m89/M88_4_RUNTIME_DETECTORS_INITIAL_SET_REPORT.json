@@ -1,0 +1,43 @@
+{
+  "schema_version": "ordo.m88.runtime_detectors.v1",
+  "milestone": "M88.4",
+  "status": "passed",
+  "implemented": {
+    "runtime_signal_extractors": true,
+    "six_initial_antipattern_detectors": true,
+    "runtime_orchestrator": true,
+    "single_antipattern_evaluation": true,
+    "batch_evaluation": true,
+    "context_filtering": true,
+    "runtime_gate_report": true,
+    "cli_entrypoint": true,
+    "positive_and_negative_fixtures": true
+  },
+  "detector_count": 6,
+  "tests": {
+    "passed": 48,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/runtime/antipattern_signal_extractors.py",
+      "sha256": "01fdcdcce98c8df4629ef2b13e2a10a63bc6dc05d3f172b76a7745e54c0f2714"
+    },
+    {
+      "path": "language/runtime/antipattern_runtime.py",
+      "sha256": "e44391eb25a457673c5930fb933fc0c2c336549e7c898c8cfd550d1aa82d8b86"
+    },
+    {
+      "path": "cli/ordo/antipattern_runtime_cli.py",
+      "sha256": "df7477f2004f32204edde6309b9a24e59c2c49520141b047df9e24c2af3eee1e"
+    },
+    {
+      "path": "language/runtime/fixtures/initial_antipattern_runtime_cases.v1.json",
+      "sha256": "619bf073a438c3ff514d1148c382b55a6ee925193ff83328ab893282846d3d1c"
+    },
+    {
+      "path": "cli/tests/test_m88_4_runtime_detectors.py",
+      "sha256": "52f248377ce93ea5e30758801b193883f35e7c766593d3c2eb08a121bd1fd9c4"
+    }
+  ]
+}

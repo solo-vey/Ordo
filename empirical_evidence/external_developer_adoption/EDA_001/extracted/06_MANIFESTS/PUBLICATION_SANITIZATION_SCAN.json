@@ -1,0 +1,6 @@
+{
+  "schema_version": "ordo.publication_sanitization_scan.v1",
+  "status": "passed",
+  "findings": [],
+  "scanned_text_files": 59
+}

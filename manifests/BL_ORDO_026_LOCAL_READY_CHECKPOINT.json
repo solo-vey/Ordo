@@ -1,0 +1,9 @@
+{
+  "schema_version": "ordo.task_checkpoint.v1",
+  "task": "BL-ORDO-026",
+  "status": "local_ready_checkpoint",
+  "baseline_archive": "ORDO_ARF_CANONICAL_BL_ORDO_010_PDF_CORRECTED_2026-07-14.zip",
+  "baseline_sha256": "9f8341093ebc25a233ebf9181c895a2c02b15821398d9cc79b049a4590644b25",
+  "preparation_tree_hash": "9a52266e2e37a956bb9b7746e9c2ef081920360bc0d75ed267d76f20b7b914db",
+  "restore_instruction": "Restore this local-ready archive; to roll back, restore and verify the corrected BL-ORDO-010 archive."
+}

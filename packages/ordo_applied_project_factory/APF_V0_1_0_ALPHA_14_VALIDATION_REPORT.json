@@ -1,0 +1,100 @@
+{
+  "package": "ordo.applied_project_factory",
+  "version": "0.1.0-alpha.14",
+  "release_type": "scoped_existing_process_improvement_branch_patch",
+  "generated_at": "2026-07-08T00:00:00+02:00",
+  "status": "passed_minimal_validation",
+  "scope": {
+    "included": "Fourth startup mode for correcting an existing Ordo process; baseline selection; batch and targeted improvement subflows; confirmed-change-set and scoped-patch pipeline; join to existing terminal/pre-handoff validation pipeline.",
+    "excluded": "Full CLI validation/test/coverage/repo-check are deferred by design to the terminal/pre-handoff gate; no duplicated downstream shared validation/handoff nodes were added."
+  },
+  "checks": [
+    {
+      "check": "yaml_parse",
+      "status": "passed",
+      "evidence": "source/program.ordo.yaml parsed with PyYAML"
+    },
+    {
+      "check": "cli_lint",
+      "status": "passed",
+      "evidence": "packages/ordo_applied_project_factory/reports/lint_report.json"
+    },
+    {
+      "check": "cli_compile_refresh_ir",
+      "status": "passed",
+      "evidence": "packages/ordo_applied_project_factory/reports/compile_report.json and compiled/program.ir.json refreshed"
+    },
+    {
+      "check": "full_validation",
+      "status": "deferred_by_design",
+      "reason": "Full validation remains terminal/pre-handoff per alpha.10+ policy and the new branch joins the existing shared gate."
+    }
+  ],
+  "changed_files": [
+    "packages/ordo_applied_project_factory/source/program.ordo.yaml",
+    "packages/ordo_applied_project_factory/ordo.yml",
+    "packages/ordo_applied_project_factory/README.md",
+    "packages/ordo_applied_project_factory/VERSION.md",
+    "packages/ordo_applied_project_factory/MODULE_CHANGELOG.md",
+    "packages/ordo_applied_project_factory/run_inputs/factory_success.yaml",
+    "packages/ordo_applied_project_factory/reports/lint_report.json",
+    "packages/ordo_applied_project_factory/reports/compile_report.json",
+    "packages/ordo_applied_project_factory/compiled/program.ir.json",
+    "packages/ordo_applied_project_factory/compiled/program.ordo.view",
+    "packages/ordo_applied_project_factory/compiled/targets.manifest.json"
+  ],
+  "new_runtime_fields": [
+    "existing_process_improvement_status",
+    "existing_process_baseline_source",
+    "existing_process_baseline_validation_status",
+    "improvement_mode",
+    "batch_improvement_list",
+    "candidate_improvements",
+    "selected_candidate_improvements",
+    "improvement_to_process_mapping",
+    "affected_process_items",
+    "before_after_change_cards",
+    "target_process_item",
+    "targeted_improvement_description",
+    "targeted_after_proposal",
+    "approved_item_changes",
+    "rejected_item_changes",
+    "deferred_item_changes",
+    "confirmed_change_set",
+    "scoped_yaml_patch_queue",
+    "existing_process_shared_pipeline_join_status",
+    "existing_process_minimal_validation_status",
+    "targeted_improvement_loop_status"
+  ],
+  "new_nodes": [
+    "N_EXISTING_PROCESS_IMPROVEMENT_ENTRY",
+    "N_EXISTING_PROCESS_BASELINE_DEFINITION",
+    "N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION",
+    "N_BATCH_IMPROVEMENT_LIST_ENTRY",
+    "N_CANDIDATE_IMPROVEMENTS_EXTRACTION",
+    "N_CANDIDATE_IMPROVEMENTS_SELECTION",
+    "N_IMPROVEMENT_TO_PROCESS_MAPPING",
+    "N_BEFORE_AFTER_AFFECTED_NODES_REVIEW",
+    "N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY",
+    "N_TARGET_PROCESS_ITEM_IDENTIFICATION",
+    "N_TARGETED_CHANGE_CLARIFICATION",
+    "N_TARGETED_BEFORE_AFTER_PROPOSAL",
+    "N_TARGETED_CHANGE_DECISION",
+    "N_TARGETED_MORE_IMPROVEMENTS_CHECK",
+    "N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE",
+    "N_CONFIRMED_CHANGE_SET_BUILDING",
+    "N_SCOPED_YAML_PATCH_APPLICATION",
+    "N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH"
+  ],
+  "shared_tail_join": {
+    "from": "N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH",
+    "to": "N_TERMINAL_BRANCH_FULL_VALIDATION_GATE",
+    "note": "Downstream full-validation/result/handoff behavior is reused; no duplicated shared tail nodes were committed."
+  },
+  "blockers": [],
+  "notes": [
+    "User explicitly requested the fourth mode after confirming batch and targeted subflows.",
+    "User flagged repeated full-validation/handoff nodes; alpha.14 encodes this as a shared-tail join rather than duplicate branch-local nodes.",
+    "CLI stderr contains a spreadsheet-runtime warmup warning unrelated to Ordo lint/compile; both Ordo commands exited with return code 0."
+  ]
+}

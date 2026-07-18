@@ -1,0 +1,15 @@
+{
+  "milestone": "M75.2",
+  "title": "CSG multi-step integration validation",
+  "status": "passed",
+  "checks": {
+    "test_execution_protocol_documented": true,
+    "partitioned_suite_launcher_added": true,
+    "multi_step_state_protection": true,
+    "pause_safety_resume_flow": true,
+    "requirement_change_reopen_flow": true,
+    "exit_blocks_following_execution": true,
+    "targeted_tests_passed": 15
+  },
+  "blockers": []
+}

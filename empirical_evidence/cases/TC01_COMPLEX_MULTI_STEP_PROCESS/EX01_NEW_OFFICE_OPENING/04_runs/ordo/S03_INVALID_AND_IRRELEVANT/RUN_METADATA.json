@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.evidence.run_metadata.v1",
+  "admission_status": "canonical_evidence",
+  "implementation": "ordo",
+  "package_version": "RC22",
+  "scenario_id": "S03_INVALID_AND_IRRELEVANT",
+  "scenario_status": "scenario_passed",
+  "terminal_condition": "S03_VALIDATION_COMPLETE_AT_N02",
+  "user_admission_confirmed": true
+}

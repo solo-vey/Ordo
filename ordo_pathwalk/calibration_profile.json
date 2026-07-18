@@ -1,0 +1,35 @@
+{
+  "schema_version": "ordo.pathwalk.calibration_profile.v1",
+  "milestone": "M76.4",
+  "primary_purpose": "ordo_release_qa",
+  "secondary_purposes": [
+    "benchmark_pinned_model_comparison",
+    "compatibility_current_regression",
+    "exploratory_research"
+  ],
+  "default_weights": {
+    "cell_match_rate": 0.45,
+    "protocol_compliance_rate": 0.25,
+    "distraction_recovery_rate": 0.15,
+    "backtrack_accuracy": 0.15
+  },
+  "weight_status": "locked_pending_eligible_real_model_dataset",
+  "hard_gates": {
+    "all_required_cases_gate_passed": true,
+    "per_case_protocol_compliance_rate": 1.0,
+    "direct_compiled_access_violations": 0,
+    "complete_required_category_coverage": true,
+    "evidence_integrity_required": true,
+    "runtime_hashes_required": true
+  },
+  "calibration_eligibility": {
+    "min_model_versions": 3,
+    "min_runs_per_model": 2,
+    "min_scored_cases": 100,
+    "min_nonperfect_completed_cases": 20,
+    "min_hard_or_protocol_failures": 10,
+    "min_weighted_components_with_nonzero_variance": 3,
+    "manual_failure_adjudication_required": true,
+    "uncertainty_summary_required": true
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "benchmark.result_record.v1",
+  "event_type": "attempt_result",
+  "record_id": "<uuid>",
+  "evaluation_id": "<uuid>",
+  "status": "active",
+  "identity": {
+    "benchmark_suite_id": "<id>",
+    "test_case_id": "<id>",
+    "test_case_version": "<semver>",
+    "run_id": "RUN_01",
+    "run_contract_version": "<semver>",
+    "package_variant_id": "PV-YAML",
+    "package_version": "<semver>",
+    "driver_id": "DRV-STEP-BOUND",
+    "driver_version": "<semver>",
+    "attempt_id": "<immutable-attempt-id>"
+  },
+  "execution": {
+    "started_at": "<date-time>",
+    "completed_at": "<date-time>",
+    "terminal_disposition": "T_COMPLETED",
+    "blind_isolation_status": "clean",
+    "contamination_findings": []
+  },
+  "process_evaluation": {
+    "contract_id": "<id>",
+    "contract_version": "<semver>",
+    "raw_score": null,
+    "applied_caps": [],
+    "final_score": null,
+    "report_ref": "<path-or-uri>"
+  },
+  "artifact_evaluations": [
+    {
+      "artifact_type": "jira",
+      "artifact_ref": "<path-or-uri>",
+      "state": "evaluated",
+      "contract_id": "<id>",
+      "contract_version": "<semver>",
+      "raw_score": null,
+      "applied_caps": [],
+      "final_score": null,
+      "report_ref": "<path-or-uri>"
+    }
+  ],
+  "aggregates": {
+    "document_formula_id": "<id-or-null>",
+    "document_formula_version": "<version-or-null>",
+    "document_score": null,
+    "overall_formula_id": "<id-or-null>",
+    "overall_formula_version": "<version-or-null>",
+    "overall_score": null
+  },
+  "comparability": {
+    "status": "pending",
+    "cohort_id": "<id-or-null>",
+    "reasons": []
+  },
+  "evidence": {
+    "terminal_disposition_ref": "<path-or-uri>",
+    "execution_log_ref": "<path-or-uri>",
+    "checksums": {}
+  },
+  "supersession": {
+    "supersedes_record_id": null,
+    "reason": null
+  },
+  "created_at": "<date-time>",
+  "created_by": "<evaluator-or-system>"
+}

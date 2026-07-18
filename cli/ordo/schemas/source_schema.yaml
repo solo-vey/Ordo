@@ -1,0 +1,44 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "Ordo Source v0.12 schema"
+type: object
+required: [ordo]
+properties:
+  ordo:
+    type: object
+    required: [version, package, control_level, execution_mode]
+  execution_trace:
+    type: object
+    additionalProperties: false
+    properties:
+      id: {type: string}
+      enabled: {type: boolean}
+      version: {type: string, pattern: '^[0-9]+\.[0-9]+$'}
+      capture_level: {enum: [minimal, standard, full, audit]}
+      storage:
+        type: object
+        additionalProperties: false
+        properties:
+          format: {enum: [json]}
+          path: {type: string}
+          append_only: {const: true}
+      replay:
+        type: object
+        additionalProperties: false
+        properties:
+          replayable: {type: boolean}
+          replay_mode: {enum: [deterministic, re_evaluate, simulation, audit_only]}
+          required_inputs_preserved: {type: boolean}
+          external_dependencies:
+            type: object
+            properties:
+              strategy: {enum: [recorded, referenced, mocked, unavailable]}
+          sensitive_values:
+            type: object
+            properties:
+              strategy: {enum: [redacted, reference, hashed, excluded]}
+
+# BL-ORDO-029 conventions (validated semantically by graph_validation.py)
+# graph_contract.transition_provenance: {enabled: boolean, mode: strict|advisory}
+# nodes[].allowed_from: direct predecessor node IDs only
+# nodes[].entry_modes: explicit root/resume/retry/recovery/migration entry modes
+# nodes[].node_context: bounded node-local context declaration

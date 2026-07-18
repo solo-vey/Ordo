@@ -1,0 +1,47 @@
+alignment_id: CSG-A1
+source_language_baseline: ORDO_LANGUAGE_BASELINE_WITH_CSG_v0_1
+apf_baseline: v0.1.0-rc.17-conversation-scope-guard-support-confirmed-closure
+status: completed
+conceptual_conflicts: 0
+changes:
+- area: classification_record
+  before: APF-local field names
+  after: canonical DEVIATION.CLASSIFY schema
+  compatibility: aligned
+- area: confidence_enum
+  before:
+  - high
+  - medium
+  - low
+  after:
+  - confirmed
+  - high
+  - medium
+  - low
+  - unknown
+  compatibility: aligned
+- area: counter_scope
+  before:
+  - active_node
+  - process
+  after:
+  - active_node
+  - deviation_session
+  - process_run
+  compatibility: aligned
+- area: package_binding
+  before: implicit artifact map
+  after: supported/enabled/decision_status/contract/policy/tests/trace_events
+  compatibility: aligned
+- area: artifact_names
+  before: APF-local names
+  after: canonical generated-playbook names
+  compatibility: aligned
+- area: trace_events_artifact
+  before: embedded hooks
+  after: dedicated canonical artifact
+  compatibility: aligned
+- area: metadata
+  before: working-enhancement/normative-working
+  after: aligned-with-ordo-csg-baseline-v0.1
+  compatibility: aligned

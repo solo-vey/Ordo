@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ordo-cli"
+version = "0.37.0"
+description = "Ordo v0.12 CLI for lint, compile, static tests, coverage, Process Rail helper checks, guided intake, output generation, artifact validation, consistency reports, go/no-go decisions, dependency locks, and repository self-checks, runtime source-of-truth checks, and CLI truthfulness validation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0", "jsonschema>=4.0"]
+keywords = ["ordo", "ai-agents", "workflow", "compiler", "linter", "semantic-ir"]
+authors = [
+  { name = "Ordo Language Project" }
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Compilers",
+  "Topic :: Software Development :: Quality Assurance"
+]
+
+[project.scripts]
+ordo = "ordo.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ordo*"]
+
+[tool.setuptools.package-data]
+ordo = ["schemas/*.yaml", "templates/package_template/**/*"]

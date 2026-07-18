@@ -1,0 +1,8 @@
+{
+  "schema": "external.workflow_preparation.strict_gate_report.v1",
+  "release": "0.1.0-rc.1",
+  "status": "passed_for_release_candidate",
+  "generated_at": "2026-07-15T14:42:04.661422+00:00",
+  "gates_defined": 12,
+  "note": "This report validates the release-candidate playbook design package, not a completed monitoring-event run."
+}

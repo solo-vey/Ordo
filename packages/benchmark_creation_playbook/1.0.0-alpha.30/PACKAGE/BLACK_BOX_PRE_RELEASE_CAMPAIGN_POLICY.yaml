@@ -1,0 +1,27 @@
+schema_version: ordo.black_box_campaign_policy.v1
+campaign_id: PRE_RELEASE_SELF_VALIDATION
+required_runs:
+- RUN_01
+- RUN_02
+- RUN_03
+- RUN_04
+- RUN_05
+sealed_candidate_required: true
+manual_artifact_mutation_forbidden: true
+executor_mode: deterministic_external_harness
+expected_outcomes:
+  RUN_01: PASS_RELEASE
+  RUN_02: PASS_RELEASE_AFTER_CORRECTION
+  RUN_03: EXPECTED_HARD_STOP
+  RUN_04: PASS_RELEASE
+  RUN_05: EXPECTED_HARD_STOP
+release_blockers:
+- missing_run
+- unexpected_terminal
+- missing_receipt
+- missing_approval
+- cross_artifact_mismatch
+- tampered_zip
+- manual_mutation
+- missing_evidence_archive
+evidence_class: PRE_RELEASE_SELF_VALIDATION

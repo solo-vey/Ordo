@@ -1,0 +1,25 @@
+{
+  "schema_version": "ordo.bl_ordo_010.localization_validation.v1",
+  "status": "passed",
+  "chapter_count": 96,
+  "appendices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "asset_count": 22,
+  "manifest_hashes_valid": true,
+  "source_strategy": {
+    "A": "generated from canonical registries/specifications",
+    "B": "generated from opcode/source construct catalogs",
+    "C": "generated from linted canonical package sources",
+    "D-E": "persisted English translations",
+    "F": "generated from current schemas",
+    "G": "current APF cache contract"
+  },
+  "pdf": "pending_build"
+}

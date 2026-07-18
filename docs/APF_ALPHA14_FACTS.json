@@ -1,0 +1,13 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "module_version": "0.1.0-alpha.14",
+  "language_compatibility": "ordo >= 0.12.0-preview-rc1",
+  "node_count": 54,
+  "gate_count": 38,
+  "assertion_count": 28,
+  "output_count": 1,
+  "validation_status": "passed_minimal_validation",
+  "full_validation": "Full CLI validation/test/coverage/repo-check are deferred by design to the terminal/pre-handoff gate; no duplicated downstream shared validation/handoff nodes were added.",
+  "apf_branch_package_present": true,
+  "source_yaml_sha256": "dbeb51f58b19a1048146f9714a523213b0b61c99cbbc1ba1aed75c85b366e14a"
+}

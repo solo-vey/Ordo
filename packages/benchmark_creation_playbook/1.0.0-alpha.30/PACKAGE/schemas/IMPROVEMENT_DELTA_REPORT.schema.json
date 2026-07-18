@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "baseline",
+    "candidate",
+    "criteria",
+    "material_improvements",
+    "protected_regressions",
+    "decision",
+    "next_route"
+  ],
+  "properties": {
+    "baseline": {
+      "type": "object"
+    },
+    "candidate": {
+      "type": "object"
+    },
+    "criteria": {
+      "type": "array"
+    },
+    "material_improvements": {
+      "type": "array"
+    },
+    "protected_regressions": {
+      "type": "array"
+    },
+    "decision": {
+      "enum": [
+        "ACCEPT_IMPROVED",
+        "REJECT_PLATEAU",
+        "REJECT_REGRESSION"
+      ]
+    },
+    "next_route": {
+      "type": "string"
+    }
+  }
+}

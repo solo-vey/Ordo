@@ -1,0 +1,9 @@
+{
+  "schema_version": "ordo.release_identity.v1",
+  "release_id": "ordo-2026.07.17-rc.10",
+  "archive_filename": "ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip",
+  "internal_root": "ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10",
+  "language_version": "0.14.0-rc.1",
+  "framework_version": "0.6.0-rc.1",
+  "identity_source": "manifests/RELEASE_IDENTITY.json"
+}

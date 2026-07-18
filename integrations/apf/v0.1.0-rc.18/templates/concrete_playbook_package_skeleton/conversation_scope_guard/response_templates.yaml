@@ -1,0 +1,5 @@
+response_templates:
+  gentle_redirect: {required_parts: [brief_acknowledgement, active_step_reminder, active_question]}
+  explicit_scope_reminder: {required_parts: [scope_boundary, state_preserved_notice, active_question]}
+  offer_pause_or_exit: {required_parts: [repeated_deviation_notice, return_option, pause_option, exit_option]}
+  suspend_until_process_choice: {required_parts: [suspension_notice, allowed_process_choices]}

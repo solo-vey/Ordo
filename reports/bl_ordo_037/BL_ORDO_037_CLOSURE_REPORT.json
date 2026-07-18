@@ -1,0 +1,20 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "task": "BL-ORDO-037",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.5",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.3.0-rc.1",
+  "implemented": [
+    "append-only digest-chained journey event journal",
+    "atomic consolidated YAML",
+    "accepted and rejected answer capture",
+    "state/transition/trace/snapshot linkage",
+    "validate-journey CLI",
+    "stable canonical question IDs"
+  ],
+  "deferred_to": [
+    "BL-ORDO-038"
+  ],
+  "blocking_issues": 0
+}

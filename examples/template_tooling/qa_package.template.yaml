@@ -1,0 +1,18 @@
+template_id: qa.package
+version: 1.0.0
+render_mode: model_rendered
+input_schema:
+  required: [scope, findings]
+  properties:
+    scope: {type: string}
+    findings: {type: array}
+output_contract:
+  format: markdown
+  required_sections: [Summary, Findings, Decision]
+review_profile:
+  mode: strict
+compatibility:
+  ordo: ">=0.12.0"
+model_contract:
+  prompt_ref: prompt.qa.package.render.v1
+  provenance_required: true

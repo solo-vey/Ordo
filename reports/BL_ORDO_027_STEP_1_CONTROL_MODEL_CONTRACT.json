@@ -1,0 +1,25 @@
+{
+  "schema_version": "ordo.arf.bl_ordo_027.step_report.v1",
+  "backlog_id": "BL-ORDO-027",
+  "step": "control_model_contract",
+  "status": "passed",
+  "artifacts": [
+    "language/schemas/arf_control_model_contract.schema.json",
+    "language/integration/arf_control_model.v1.json",
+    "language/ARF_DETERMINISTIC_CONTROL_MODEL_CONTRACT.md"
+  ],
+  "confirmed_properties": {
+    "modes": [
+      "EXECUTION_MODE",
+      "DESIGN_MODE",
+      "AUTHORIZED_MAINTENANCE_MODE"
+    ],
+    "default_control_profile": "PROCESS_EXECUTOR_ONLY",
+    "decision_model": "closed_world",
+    "implicit_mode_switching": "forbidden",
+    "implicit_transitions": "forbidden",
+    "missing_instruction_status": "blocked_missing_instruction",
+    "best_judgement_fallback": "forbidden"
+  },
+  "next_step": "node_contract_profiles"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scoped YAML Patch Verification Report",
+  "type": "object",
+  "required": [
+    "status",
+    "baseline_sha256",
+    "candidate_sha256",
+    "allowlist",
+    "changed_ids",
+    "out_of_scope_ids",
+    "unchanged_node_ratio"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "baseline_sha256": {
+      "type": "string"
+    },
+    "candidate_sha256": {
+      "type": "string"
+    },
+    "allowlist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "changed_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "out_of_scope_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unchanged_node_ratio": {
+      "type": "number"
+    },
+    "semantic_diff": {
+      "type": "array"
+    }
+  }
+}

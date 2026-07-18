@@ -1,0 +1,478 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.local/schemas/apf/post-generation-review-record.v1.json",
+  "title": "APF Post-Generation Review Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_id",
+    "artifact",
+    "criticality",
+    "review_profile",
+    "authoritative_sources",
+    "claims",
+    "defects",
+    "invalidated_sections",
+    "preserved_sections",
+    "corrections",
+    "cross_artifact_checks",
+    "regression_checks",
+    "gates",
+    "confirmation_eligibility",
+    "trace_events"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.apf.post_generation_review_record.v1"
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "artifact_type",
+        "version"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "artifact_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "criticality": {
+      "enum": [
+        "critical",
+        "high-impact",
+        "normal"
+      ]
+    },
+    "review_profile": {
+      "enum": [
+        "full",
+        "high-impact",
+        "reduced",
+        "not-applicable"
+      ]
+    },
+    "authoritative_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "source_class",
+          "locator",
+          "sha256",
+          "status"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "source_class": {
+            "enum": [
+              "confirmed_user",
+              "canonical_example",
+              "repository_derived",
+              "package_confirmed",
+              "official_schema"
+            ]
+          },
+          "locator": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "status": {
+            "enum": [
+              "verified",
+              "unavailable",
+              "superseded"
+            ]
+          }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "section",
+          "text",
+          "sensitivity",
+          "materialization_class",
+          "source_ids",
+          "status"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "sensitivity": {
+            "enum": [
+              "executable",
+              "contract-sensitive",
+              "descriptive"
+            ]
+          },
+          "materialization_class": {
+            "enum": [
+              "confirmed_user",
+              "canonical_example",
+              "repository_derived",
+              "package_confirmed",
+              "official_schema",
+              "model_proposed",
+              "unknown"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "proposal",
+              "placeholder",
+              "blocked",
+              "rejected"
+            ]
+          }
+        }
+      }
+    },
+    "defects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "defect_id",
+          "taxonomy",
+          "severity",
+          "status",
+          "section",
+          "description",
+          "evidence",
+          "required_action"
+        ],
+        "properties": {
+          "defect_id": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "enum": [
+              "unsupported_parameter",
+              "schema_field_absent",
+              "required_field_missing",
+              "name_based_semantic_inference",
+              "path_domain_confusion",
+              "legacy_current_mixing",
+              "action_rollback_drift",
+              "hidden_assumption",
+              "unreconciled_example",
+              "cross_artifact_conflict",
+              "stale_contract",
+              "unverified_confirmation",
+              "review_scope_bypass",
+              "other"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "status": {
+            "enum": [
+              "open",
+              "corrected",
+              "accepted-risk",
+              "not-applicable"
+            ]
+          },
+          "section": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "invalidated_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preserved_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "correction_id",
+          "defect_ids",
+          "scope",
+          "status",
+          "validator_independent"
+        ],
+        "properties": {
+          "correction_id": {
+            "type": "string"
+          },
+          "defect_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scope": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "completed",
+              "not-required",
+              "blocked"
+            ]
+          },
+          "validator_independent": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cross_artifact_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "related_artifact",
+          "result",
+          "details"
+        ],
+        "properties": {
+          "related_artifact": {
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "passed",
+              "failed",
+              "not-applicable"
+            ]
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "regression_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "check_id",
+          "result"
+        ],
+        "properties": {
+          "check_id": {
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "passed",
+              "failed",
+              "not-applicable"
+            ]
+          }
+        }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "EVIDENCE-COVERAGE-01",
+        "NO-UNSUPPORTED-INFERENCE-01",
+        "CANONICAL-CONTRACT-01",
+        "CURRENT-VERSION-RECONCILIATION-01",
+        "PATH-DOMAIN-01",
+        "ROLLBACK-CONTRACT-01",
+        "CROSS-ARTIFACT-01",
+        "ADVERSARIAL-REVIEW-01",
+        "POST-CORRECTION-REVIEW-01"
+      ],
+      "properties": {
+        "EVIDENCE-COVERAGE-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "NO-UNSUPPORTED-INFERENCE-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "CANONICAL-CONTRACT-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "CURRENT-VERSION-RECONCILIATION-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "PATH-DOMAIN-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "ROLLBACK-CONTRACT-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "CROSS-ARTIFACT-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "ADVERSARIAL-REVIEW-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        },
+        "POST-CORRECTION-REVIEW-01": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-applicable"
+          ]
+        }
+      }
+    },
+    "confirmation_eligibility": {
+      "type": "object",
+      "required": [
+        "eligible",
+        "blocking_reasons"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "blocking_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "trace_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event",
+          "timestamp",
+          "artifact_path",
+          "status"
+        ],
+        "properties": {
+          "event": {
+            "enum": [
+              "POST_GENERATION_REVIEW_STARTED",
+              "UNSUPPORTED_INFERENCE_DETECTED",
+              "ARTIFACT_SECTION_INVALIDATED",
+              "TARGETED_REGENERATION_COMPLETED",
+              "POST_CORRECTION_REVIEW_PASSED",
+              "ARTIFACT_CONFIRMATION_ELIGIBLE"
+            ]
+          },
+          "timestamp": {
+            "type": "string"
+          },
+          "artifact_path": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

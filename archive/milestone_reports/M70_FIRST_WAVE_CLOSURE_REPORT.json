@@ -1,0 +1,22 @@
+{
+  "schema_version": "ordo.milestone.report.v1",
+  "milestone": "M70 first-wave closure",
+  "status": "closed-first-wave / passed-validation",
+  "scope": [
+    "production repo hygiene policy",
+    "language/CLI root contracts",
+    "CI/release production validation"
+  ],
+  "not_required": [
+    "M70.3 bounded remediation because no blockers were found"
+  ],
+  "untouched": [
+    "packages/*",
+    "runtime core",
+    "compiler behavior",
+    "opcodes",
+    "compiled IR",
+    "lockfiles",
+    "embedded CLI bundles"
+  ]
+}

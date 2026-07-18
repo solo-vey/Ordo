@@ -1,0 +1,45 @@
+{
+  "schema_version": "ordo.m87.shared_dataset_contamination.v1",
+  "milestone": "M87.2",
+  "status": "passed",
+  "implemented": {
+    "shared_task_dataset": true,
+    "minimum_twenty_tasks": true,
+    "broad_failure_class_coverage": true,
+    "frozen_shared_input": true,
+    "frozen_acceptance_criteria": true,
+    "frozen_required_output": true,
+    "plain_prompt_ordo_token_scanner": true,
+    "arm_content_equivalence_validation": true,
+    "stable_shared_payload_hash": true
+  },
+  "task_count": 20,
+  "distinct_categories": 20,
+  "hard_tasks": 11,
+  "tests": {
+    "passed": 20,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "benchmarks/datasets/ordo_vs_plain_prompt_shared_tasks.v1.json",
+      "sha256": "c13d40763fb4c174e0c8bb90d4be429e64a811d6779b0932b5448f19c41e52f5"
+    },
+    {
+      "path": "benchmarks/schemas/ab_shared_task_dataset.schema.json",
+      "sha256": "9e7832a2443824c63545f28176669a7b715d9bea7e89aa7bd3f36ece7d570f9b"
+    },
+    {
+      "path": "benchmarks/ab/contamination_controls.py",
+      "sha256": "da87050ebd7dc7bac092901a8589c077c0a44491b939049eb0b594a8b2e1b5ee"
+    },
+    {
+      "path": "benchmarks/ab/validate_shared_dataset.py",
+      "sha256": "d52e4d2bd53afd7d565e793584bd5f54e5217549b7c95036d16cad6f6b926c7f"
+    },
+    {
+      "path": "cli/tests/test_m87_2_shared_dataset_contamination.py",
+      "sha256": "06b7441aee7fd32030b745364f118a2381aac9592a64f3dc98c495abfa263f0a"
+    }
+  ]
+}

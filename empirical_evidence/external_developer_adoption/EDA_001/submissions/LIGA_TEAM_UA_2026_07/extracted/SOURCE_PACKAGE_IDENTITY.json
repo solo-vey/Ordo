@@ -1,0 +1,11 @@
+{
+  "schema": "ordo.arf.source_package_identity.v1",
+  "original_private_package_filename": "INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip",
+  "sha256": "5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c",
+  "hash_calculated_at": "2026-07-16",
+  "hash_verified_by_submitter_on": "macOS using shasum -a 256",
+  "responsible_submitter_id": "liga-team-ua",
+  "included_in_submission": true,
+  "immutability_note": "This exact ZIP is the object submitted to OpenTimestamps and must not be modified.",
+  "timestamped_object": true
+}

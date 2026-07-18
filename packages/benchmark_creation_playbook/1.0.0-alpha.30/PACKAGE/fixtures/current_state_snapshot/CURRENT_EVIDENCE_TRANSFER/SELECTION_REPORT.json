@@ -1,0 +1,46 @@
+{
+  "schema_version": "ordo.current_state_selection_report.v1",
+  "artifact_families": [
+    {
+      "logical_artifact_id": "playbook.main",
+      "candidates_found": [
+        "playbook_v1.txt",
+        "playbook_v2.txt"
+      ],
+      "selected": "playbook_v2.txt",
+      "selection_reason": "authoritative status and semantic version",
+      "version_comparison": [
+        "1.0.0",
+        "2.0.0"
+      ],
+      "accepted_status": "current",
+      "run_binding": null,
+      "sha256": "97b0560280ed60a5a1eaa1bc45492543c8a986ad5a25b468c427eb83c3e88191",
+      "excluded_alternatives": [
+        "playbook_v1.txt"
+      ]
+    },
+    {
+      "logical_artifact_id": "run.case1",
+      "candidates_found": [
+        "run_old.json",
+        "run_current.json"
+      ],
+      "selected": "run_current.json",
+      "selection_reason": "authoritative status and semantic version",
+      "version_comparison": [
+        "1",
+        "2"
+      ],
+      "accepted_status": "accepted",
+      "run_binding": {
+        "package": "playbook.main",
+        "evaluator": "GPT-5.6 Thinking"
+      },
+      "sha256": "4b710fe4bd453a054b33477037f14de40a811a2ffe3fa3ca96c7eb91c9277f5c",
+      "excluded_alternatives": [
+        "run_old.json"
+      ]
+    }
+  ]
+}

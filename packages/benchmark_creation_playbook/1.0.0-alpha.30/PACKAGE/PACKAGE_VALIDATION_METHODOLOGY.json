@@ -1,0 +1,73 @@
+{
+  "schema_version": "ordo.benchmark.package_validation_methodology.v1",
+  "methodology_version": "1.0",
+  "status": "canonical_accumulating",
+  "purpose": "Pre-release validation of exact sealed external-testing archives using the same declared contracts exposed to external executors.",
+  "check_order": [
+    {
+      "id": "physical_integrity",
+      "mandatory": true
+    },
+    {
+      "id": "package_completeness",
+      "mandatory": true
+    },
+    {
+      "id": "runtime_addressability",
+      "mandatory": true
+    },
+    {
+      "id": "version_coherence",
+      "mandatory": true
+    },
+    {
+      "id": "entrypoint_coherence",
+      "mandatory": true
+    },
+    {
+      "id": "structural_completeness",
+      "mandatory": true
+    },
+    {
+      "id": "semantic_parity",
+      "mandatory": true
+    },
+    {
+      "id": "correction_loop_reachability",
+      "mandatory": true
+    },
+    {
+      "id": "validator_reality",
+      "mandatory": true
+    },
+    {
+      "id": "positive_negative_regressions",
+      "mandatory": true
+    },
+    {
+      "id": "black_box_preflight",
+      "mandatory": true
+    },
+    {
+      "id": "execution_smoke_test",
+      "mandatory": true
+    }
+  ],
+  "max_correction_cycles": 5,
+  "pass_forbidden_bases": [
+    "count_only",
+    "checksum_file_presence_only",
+    "validator_run_against_other_workspace",
+    "oracle_only",
+    "implicit_path_equivalence",
+    "unexecuted_external_command"
+  ],
+  "green_light_required_fields": [
+    "cycle",
+    "archive_sha256",
+    "commands",
+    "exit_codes",
+    "check_results",
+    "GREEN_LIGHT"
+  ]
+}

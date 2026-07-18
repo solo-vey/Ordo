@@ -1,0 +1,167 @@
+{
+  "schema_version": "ordo.apf.post_generation_review_record.v1",
+  "review_id": "M83-ATOMICITY_GATE_CONTRACT",
+  "artifact": {
+    "path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+    "sha256": "3d559f9a2c48b953069e344268e1899e6a7aeed03dacd9345e9e258ded0cf1af",
+    "artifact_type": "atomicity_gate_contract",
+    "version": "v0.1.0-rc.18"
+  },
+  "criticality": "high-impact",
+  "review_profile": "high-impact",
+  "authoritative_sources": [
+    {
+      "source_id": "SELF",
+      "source_class": "package_confirmed",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "sha256": "3d559f9a2c48b953069e344268e1899e6a7aeed03dacd9345e9e258ded0cf1af",
+      "status": "verified"
+    },
+    {
+      "source_id": "REL1",
+      "source_class": "repository_derived",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_SEVERITY_RULES.yaml",
+      "sha256": "17b5602ec91ac1fb58ffacd8617d6ccc403efd55c70fb3441f9ac2fe3b60e1be",
+      "status": "verified"
+    },
+    {
+      "source_id": "REL2",
+      "source_class": "repository_derived",
+      "locator": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_REVIEW_CONTRACT.yaml",
+      "sha256": "7213a6179f23e0dc1c048a4360a781777d7e147a47ed0e85e471898442481a6c",
+      "status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C001",
+      "section": "normative",
+      "text": "- blocked",
+      "sensitivity": "contract-sensitive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    },
+    {
+      "claim_id": "C002",
+      "section": "normative",
+      "text": "blocking_issue: blocked",
+      "sensitivity": "contract-sensitive",
+      "materialization_class": "package_confirmed",
+      "source_ids": [
+        "SELF"
+      ],
+      "status": "supported"
+    }
+  ],
+  "defects": [
+    {
+      "defect_id": "SYS-POSTGEN-001",
+      "taxonomy": "unverified_confirmation",
+      "severity": "critical",
+      "status": "corrected",
+      "section": "confirmation pipeline",
+      "description": "Prior package lacked a unified claim-level post-generation review gate capable of blocking confirmation after structural validation.",
+      "evidence": [
+        "archive/milestone_reports/M83_0_VALIDATION_REPORT.json"
+      ],
+      "required_action": "Add schema-bound blocking review gate and independent validator."
+    }
+  ],
+  "invalidated_sections": [
+    "confirmation pipeline dependency"
+  ],
+  "preserved_sections": [
+    "existing artifact normative content"
+  ],
+  "corrections": [
+    {
+      "correction_id": "M83-CORR-001",
+      "defect_ids": [
+        "SYS-POSTGEN-001"
+      ],
+      "scope": "Additive post-generation review schema, gate contract, validator, templates and regression fixtures.",
+      "status": "completed",
+      "validator_independent": true
+    }
+  ],
+  "cross_artifact_checks": [
+    {
+      "related_artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_SEVERITY_RULES.yaml",
+      "result": "passed",
+      "details": "No contradictory current normative requirement detected during bounded cross-artifact review."
+    },
+    {
+      "related_artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMIC_STEP_REVIEW_CONTRACT.yaml",
+      "result": "passed",
+      "details": "No contradictory current normative requirement detected during bounded cross-artifact review."
+    }
+  ],
+  "regression_checks": [
+    {
+      "check_id": "schema_validation",
+      "result": "passed"
+    },
+    {
+      "check_id": "claim_materialization",
+      "result": "passed"
+    },
+    {
+      "check_id": "blocking_defect_enforcement",
+      "result": "passed"
+    },
+    {
+      "check_id": "post_correction_independence",
+      "result": "passed"
+    }
+  ],
+  "gates": {
+    "EVIDENCE-COVERAGE-01": "passed",
+    "NO-UNSUPPORTED-INFERENCE-01": "passed",
+    "CANONICAL-CONTRACT-01": "passed",
+    "CURRENT-VERSION-RECONCILIATION-01": "passed",
+    "PATH-DOMAIN-01": "passed",
+    "ROLLBACK-CONTRACT-01": "not-applicable",
+    "CROSS-ARTIFACT-01": "passed",
+    "ADVERSARIAL-REVIEW-01": "passed",
+    "POST-CORRECTION-REVIEW-01": "passed"
+  },
+  "confirmation_eligibility": {
+    "eligible": true,
+    "blocking_reasons": []
+  },
+  "trace_events": [
+    {
+      "event": "POST_GENERATION_REVIEW_STARTED",
+      "timestamp": "2026-07-18T00:00:00Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "status": "started"
+    },
+    {
+      "event": "ARTIFACT_SECTION_INVALIDATED",
+      "timestamp": "2026-07-18T00:00:01Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "status": "systemic_confirmation_dependency"
+    },
+    {
+      "event": "TARGETED_REGENERATION_COMPLETED",
+      "timestamp": "2026-07-18T00:00:02Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "status": "additive_layer_completed"
+    },
+    {
+      "event": "POST_CORRECTION_REVIEW_PASSED",
+      "timestamp": "2026-07-18T00:00:03Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "status": "passed"
+    },
+    {
+      "event": "ARTIFACT_CONFIRMATION_ELIGIBLE",
+      "timestamp": "2026-07-18T00:00:04Z",
+      "artifact_path": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "status": "eligible"
+    }
+  ]
+}

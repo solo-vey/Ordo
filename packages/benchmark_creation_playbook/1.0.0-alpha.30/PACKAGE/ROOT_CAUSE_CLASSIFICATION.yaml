@@ -1,0 +1,33 @@
+schema_version: ordo.benchmark.root_cause_registry.v1
+registry_version: 1.0.0
+classes:
+- code: RC-PLAYBOOK-NODE
+  layer: authoring
+- code: RC-PROMPT
+  layer: authoring
+- code: RC-TEMPLATE
+  layer: authoring
+- code: RC-DRIVER
+  layer: execution
+- code: RC-RUNTIME-CONTRACT
+  layer: execution
+- code: RC-SOURCE-EVIDENCE
+  layer: authoring
+- code: RC-COMPILER-LINEAGE
+  layer: compilation
+- code: RC-RENDERING
+  layer: compilation
+- code: RC-VALIDATOR-GATE
+  layer: evaluation
+- code: RC-EVALUATOR-CONTRACT
+  layer: evaluation
+- code: RC-PACKAGING
+  layer: handoff
+- code: RC-RESULT-REGISTRY
+  layer: registry
+- code: RC-HUMAN-DECISION
+  layer: cross-cutting
+- code: RC-MULTI-FACTOR
+  layer: cross-cutting
+- code: RC-UNKNOWN
+  layer: cross-cutting

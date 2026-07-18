@@ -1,0 +1,32 @@
+{
+  "schema_version": "ordo.internal_dry_evaluation_policy.v1",
+  "evidence_labels": [
+    "INTERNAL_DRY_EVALUATION",
+    "NOT_BLIND",
+    "NOT_CANONICAL_BENCHMARK_EVIDENCE"
+  ],
+  "thresholds": {
+    "min_process_per_run": 85,
+    "min_document_per_run": 80,
+    "min_final_per_run": 83,
+    "min_campaign_average": 85
+  },
+  "zero_tolerance": [
+    "manual_mutation",
+    "terminal_mismatch",
+    "incomplete_driver_receipts",
+    "cross_artifact_fidelity_failure"
+  ],
+  "allowed_decisions": [
+    "ACCEPT_FOR_EXTERNAL_BLIND_TESTING",
+    "REJECT_AND_IMPROVE",
+    "ACCEPT_WITH_RECORDED_RISK",
+    "PAUSE_FOR_OWNER_INPUT"
+  ],
+  "external_bundle_requires": [
+    "valid_user_acceptance_receipt",
+    "accepted_candidate_sha256_match",
+    "threshold_pass_or_recorded_risk",
+    "neutral_prompt_leakage_check"
+  ]
+}

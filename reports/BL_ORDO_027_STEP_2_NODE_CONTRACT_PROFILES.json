@@ -1,0 +1,79 @@
+{
+  "schema_version": "ordo.arf.bl_ordo_027.step_report.v1",
+  "backlog_id": "BL-ORDO-027",
+  "step": 2,
+  "title": "Node contract profiles",
+  "status": "passed",
+  "profiles_defined": 6,
+  "profiles": [
+    "routing_node",
+    "capture_node",
+    "execution_node",
+    "validator_node",
+    "authorization_node",
+    "terminal_node"
+  ],
+  "positive_examples": [
+    {
+      "node_id": "N_MODE_ROUTE",
+      "profile": "routing_node",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "node_id": "N_INPUT_CAPTURE",
+      "profile": "capture_node",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "node_id": "N_EXECUTE",
+      "profile": "execution_node",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "node_id": "N_VALIDATE",
+      "profile": "validator_node",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "node_id": "N_AUTHORIZE_MUTATION",
+      "profile": "authorization_node",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "node_id": "N_TERMINAL",
+      "profile": "terminal_node",
+      "valid": true,
+      "errors": []
+    }
+  ],
+  "negative_cases": [
+    {
+      "case": "unknown_profile",
+      "rejected": true
+    },
+    {
+      "case": "execution_missing_validation_gates",
+      "rejected": true
+    },
+    {
+      "case": "validator_not_independent",
+      "rejected": true
+    },
+    {
+      "case": "authorization_transitive",
+      "rejected": true
+    },
+    {
+      "case": "terminal_self_declared_status",
+      "rejected": true
+    }
+  ],
+  "control_model_binding_valid": true,
+  "errors": [],
+  "next_step": "instruction_precedence"
+}

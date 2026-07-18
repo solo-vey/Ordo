@@ -1,0 +1,16 @@
+{
+  "contract_id": "apf_prompt_application_trace_v1",
+  "status": "package-local-evidence-contract",
+  "runtime_core_extension": false,
+  "selection_order": [
+    "resolve_current_object",
+    "resolve_only_selected_object_prompt_refs",
+    "preserve_same_phase_source_order",
+    "resolve_prompt_through_manifest",
+    "verify_sha256_before_use",
+    "record_application_evidence"
+  ],
+  "record_fields": ["prompt_id", "use", "sha256", "ordinal"],
+  "forbidden_fields": ["prompt_text", "hidden_reasoning", "prompt_derived_navigation"],
+  "authority_rule": "prompt evidence records local application only and cannot prove navigation or state authority"
+}

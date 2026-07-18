@@ -1,0 +1,24 @@
+{
+  "status": "repaired_passed",
+  "repair_id": "SELF_CHECK-004",
+  "changes": {
+    "runtime_prompt_word_limit": {
+      "before": 90,
+      "after": 256
+    },
+    "test_isolation": "dependency lock test now runs against a temporary package copy"
+  },
+  "validation": {
+    "focused_tests": "2 passed",
+    "full_suite_equivalent": "all 13 test files passed in isolated groups; 147 tests + 10 subtests",
+    "cli_workflow": "85 passed",
+    "lock_reports_left_in_source": false,
+    "strict_repo_gate": "passed"
+  },
+  "changed_files": [
+    "cli/ordo/runtime.py",
+    "cli/tests/test_cli_workflow.py",
+    "packages/history_event_guided_intake/cli_embedded/ordo_pkg/ordo/runtime.py",
+    "packages/ordo_applied_project_factory/cli_embedded/ordo_pkg/ordo/runtime.py"
+  ]
+}

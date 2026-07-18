@@ -1,0 +1,70 @@
+{
+  "release": "1.0.0-alpha.22",
+  "task": "BL-BENCH-051",
+  "status": "PASS",
+  "acceptance_tests": {
+    "status": "PASS",
+    "passed": 8,
+    "total": 8,
+    "results": [
+      {
+        "case": "negative_domain_from_yaml",
+        "expected_exit": 2,
+        "actual_exit": 2,
+        "pass": true
+      },
+      {
+        "case": "negative_mixed_disclosure",
+        "expected_exit": 2,
+        "actual_exit": 2,
+        "pass": true
+      },
+      {
+        "case": "negative_structured_drift",
+        "expected_exit": 2,
+        "actual_exit": 2,
+        "pass": true
+      },
+      {
+        "case": "negative_wrong_strategy",
+        "expected_exit": 2,
+        "actual_exit": 2,
+        "pass": true
+      },
+      {
+        "case": "positive_domain",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "pass": true
+      },
+      {
+        "case": "positive_mixed",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "pass": true
+      },
+      {
+        "case": "positive_structured",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "pass": true
+      },
+      {
+        "case": "positive_yaml",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "pass": true
+      }
+    ]
+  },
+  "nodes_added": [
+    "N079_SELECT_REPRESENTATION_PROFILE",
+    "N080_AUTHORIZE_REPRESENTATION_STRATEGY",
+    "N081_COMPILE_OR_ADAPT_REPRESENTATION",
+    "N082_EMIT_REPRESENTATION_LINEAGE_RECEIPTS",
+    "N083_VALIDATE_REPRESENTATION_SEMANTICS",
+    "N084_VALIDATE_REPRESENTATION_DISCLOSURE"
+  ],
+  "gate_added": "G_REPRESENTATION_COMPILATION_GOVERNANCE",
+  "terminal_added": "T_REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE"
+}

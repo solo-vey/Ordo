@@ -1,0 +1,708 @@
+gates:
+- id: G_FACTORY_AUTHORING_MODE_SELECTED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.factory_authoring_mode is not null
+  on_fail: block
+- id: G_APPLIED_PROJECT_GOAL_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.applied_project_goal is not null
+  on_fail: block
+- id: G_APPLIED_PROCESS_TYPE_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.applied_process_type is not null
+  on_fail: block
+- id: G_RUNTIME_ROLES_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.runtime_human_role is not null and state.runtime_ai_role is not null
+  on_fail: block
+- id: G_RUNTIME_ENTRY_POINT_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.runtime_entry_point is not null
+  on_fail: block
+- id: G_STATE_SCHEMA_BLUEPRINT_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.state_schema_blueprint is not empty
+  on_fail: block
+- id: G_FIRST_RELEASE_SOURCE_YAML_ONLY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.first_release_output_scope is not null
+  on_fail: block
+- id: G_APPROVAL_TO_GENERATE_SOURCE_YAML
+  method: mechanical
+  trust_class: deterministic
+  condition: state.approval_to_generate_source_yaml is true
+  on_fail: block
+- id: G_DOMAIN_OPEN_QUESTIONS_TRIAGED
+  method: human
+  trust_class: human_decision
+  condition: open questions are classified as blocking_now, defer_until_tree, defer_until_compile, or defer_to_runtime_project
+  on_fail: block
+- id: G_MODULE_VERSIONING_POLICY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.module_versioning_policy is not null and state.module_versioning_policy_status is not null
+  on_fail: block
+  description: Confirms Project Factory has its own module-local versioning independent from the parent language package version.
+- id: G_SOURCE_YAML_GENERATION_REQUIRES_APPROVAL
+  method: mechanical
+  trust_class: deterministic
+  condition: state.source_yaml_generation_approval == approved or state.approval_to_generate_source_yaml is true
+  on_fail: block
+  description: source/program.ordo.yaml generation/update requires explicit user approval and visible scope.
+- id: G_OUTPUT_ARTIFACT_CATALOG_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.output_artifact_catalog is not empty
+  on_fail: block
+- id: G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.candidate_outputs is not empty and state.candidate_templates is not empty
+  on_fail: block
+- id: G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms SVG is not generated automatically during runtime review; context SVG is produced only when explicitly
+    requested.
+  condition: state.auto_svg_generation_policy.generate_only_when_user_explicitly_requests is true
+  on_fail: block
+- id: G_USER_FACING_NODE_DESCRIPTIONS_ENABLED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms every current-node review should include a human-readable node description in the user language.
+  condition: state.user_facing_node_description_policy.include_in_current_node_block is true
+  on_fail: block
+- id: G_USER_FACING_EXTRACTION_SUMMARY_ENABLED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms free-dialogue extraction is presented as a plain-language summary before any technical projection.
+  condition: state.user_facing_extraction_policy.avoid_yaml_style_alias_dump is true
+  on_fail: block
+- id: G_CONTROL_ACTION_BOOKKEEPING_SEPARATED
+  method: mechanical
+  trust_class: deterministic
+  description: Ensures runtime review separates real unreviewed sibling branches from not-selected or blocked control actions.
+  condition: state.control_action_bookkeeping_policy.separate_from_tree_branches is true and state.not_selected_control_actions
+    is not null and state.blocked_until_ready_actions is not null
+  on_fail: block
+- id: G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms tree review uses small scoped YAML patches and minimal checks after confirmed steps instead of full
+    regeneration/validation after every node.
+  condition: state.incremental_yaml_update_policy.enabled is true and state.incremental_yaml_validation_profile.name is not
+    null
+  on_fail: block
+- id: G_MINIMAL_YAML_PATCH_CHECK_DEFINED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms the minimal per-step validation profile is defined as YAML parse plus minimal CLI checks.
+  condition: state.minimal_yaml_patch_check_defined is true
+  on_fail: block
+- id: G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
+  method: mechanical
+  trust_class: deterministic
+  description: Blocks readiness until missing-language-feature proposals are either captured in the proposal artifact or explicitly
+    marked as none detected.
+  condition: state.language_improvement_proposals_status is not null
+  on_fail: block
+- id: G_PROCESS_FEEDBACK_LOOP_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms process feedback can update the APF YAML after user approval, then reload and continue from the updated
+    process.
+  condition: state.process_feedback_policy_status is not null
+  on_fail: block
+- id: G_DECISION_TREE_BLUEPRINT_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.decision_tree_blueprint is not empty
+  on_fail: block
+- id: G_TREE_REVIEW_DEPTH_FIRST_APPROVED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.tree_review_depth_first_complete is true
+  on_fail: block
+- id: G_BASIC_TEST_CASES_AFTER_TREE_APPROVAL
+  method: mechanical
+  trust_class: deterministic
+  condition: state.basic_test_case_catalog is not empty
+  on_fail: block
+- id: G_FREE_DIALOGUE_NOTES_STRUCTURED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.free_dialogue_structured_notes is not empty
+  on_fail: block
+- id: G_FREE_DIALOGUE_DRAFT_TREE_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.free_dialogue_draft_tree_ready is true
+  on_fail: block
+- id: G_SELF_HOSTED_BRANCH_STABILIZED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.stabilized_tree_branch is not null and state.self_hosted_reuse_enabled is true
+  on_fail: block
+- id: G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  description: Blocks readiness until the factory confirms that focused/context SVG is the default visualization while working
+    on a specific tree branch.
+  condition: state.graph_rendering_policy_status is not null and state.current_graph_rendering_mode is not null
+  on_fail: block
+- id: G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.graph_annotation_overlay_policy is not null and state.graph_annotation_overlay_status is not null
+  on_fail: warn
+  description: Confirms how graph generator v1.1 annotation overlay is used as an optional review layer.
+- id: G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.node_review_display_policy_status is not null
+  on_fail: block
+- id: G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES
+  method: mechanical
+  trust_class: deterministic
+  condition: state.confirmed_review_path is not empty and state.current_review_branch is not null and state.unreviewed_sibling_branches
+    is not empty and state.deferred_return_points is not empty
+  on_fail: block
+- id: G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER
+  method: mechanical
+  trust_class: deterministic
+  condition: state.current_node_review_record is not null
+  on_fail: block
+- id: G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT
+  method: human
+  trust_class: human_decision
+  description: Blocks forward progress until the user chooses approve/correct/defer for the currently displayed node; generic
+    confirmation is not enough when options exist.
+  condition: state.current_node_review_decision in [approved, needs_correction, deferred] and state.node_review_control_gate_status
+    is not null
+  on_fail: block
+- id: G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms APF has a durable user-facing rendering contract for process-design review, including mode labels/context-shift
+    notices and current-node state/gates/artifacts sections.
+  condition: state.process_design_review_rendering_policy.enabled is true and state.process_design_review_rendering_policy.required_sections_for_current_node_rendering
+    is not empty
+  on_fail: block
+- id: G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL
+  method: human
+  trust_class: human_decision
+  description: 'Blocks ambiguous user-facing process review prompts: every current-node display must indicate whether the
+    user is choosing a tree branch, reviewing a node, or passing an execution/validation gate.'
+  condition: state.runtime_context_shift_notice is not null or state.current_process_layer_label is not null
+  on_fail: block
+- id: G_ALL_STARTUP_BRANCHES_JOIN_SHARED_PATHS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.all_startup_branches_join_shared_paths is true
+  on_fail: block
+  description: All four startup modes must join the shared output/template subflow where terminal outputs are involved and
+    the shared validation/handoff tail before handoff.
+- id: G_OUTPUT_TEMPLATE_CATALOG_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.output_template_catalog is not empty
+  on_fail: block
+- id: G_SHARED_OUTPUT_TEMPLATE_SUBFLOW_CLOSED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.shared_output_template_subflow_status is one of closed
+  on_fail: block
+  description: The shared output/template subflow has completed human review and is available to all startup branches.
+- id: G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW
+  method: mechanical
+  trust_class: deterministic
+  condition: state.document_artifacts_file_first_review_verified is true
+  on_fail: block
+  description: Document-like artifacts must be reviewed through a downloadable file package unless explicitly short enough
+    for inline preview.
+- id: G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING
+  method: mechanical
+  trust_class: deterministic
+  condition: state.review_package_template_mock_mapping_verified is true
+  on_fail: block
+  description: A review package is incomplete without template, mock-filled example, and state-field mapping report.
+- id: G_VALIDATION_GATE_CATALOG_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.validation_gate_catalog is not empty
+  on_fail: block
+- id: G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms full CLI validation is a terminal/pre-handoff gate, not a per-node operation during tree review.
+  condition: state.full_project_validation_policy.run_when is not empty and state.full_project_validation_required_before_handoff
+    is true
+  on_fail: block
+- id: G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF
+  method: mechanical
+  trust_class: deterministic
+  description: Blocks final/release handoff until full validation passed; for alpha, explicit skipped_for_alpha limitation
+    may continue only through the shared tail readiness gate.
+  condition: state.full_project_validation_passed_or_alpha_exception is true
+  on_fail: block
+- id: G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.no_active_output_artifact_has_template_status_unfinished is true
+  on_fail: block
+  description: Unfinished templates cannot be used for artifact generation; user must complete or remove the artifact.
+- id: G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.terminal_path_has_no_unfinished_active_artifacts is true
+  on_fail: block
+  description: Terminal path readiness requires no unfinished active artifacts/templates.
+- id: G_SHARED_VALIDATION_HANDOFF_TAIL_CLOSED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.shared_validation_handoff_tail_status is one of closed
+  on_fail: block
+  description: The shared validation/handoff tail has completed human review and is the reusable final path for all startup
+    branches.
+- id: G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF
+  method: mechanical
+  trust_class: deterministic
+  condition: state.minimal_validation_status is one of passed
+  on_fail: block
+  description: Handoff is blocked if minimal validation failed or has not run.
+- id: G_SKIPPED_FULL_VALIDATION_RECORDED_AS_ALPHA_LIMITATION
+  method: mechanical
+  trust_class: deterministic
+  condition: state.skipped_full_validation_recorded_or_not_skipped is true
+  on_fail: block
+  description: Skipped full validation is allowed for alpha only as an explicit limitation, never as passed.
+- id: G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.final_readiness_has_no_active_blockers is true
+  on_fail: block
+  description: Handoff package generation requires no active blockers.
+- id: G_HANDOFF_PACKAGE_REQUIRES_FILE_FIRST_SUMMARY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.handoff_package_file_first_summary_ready is true
+  on_fail: block
+  description: Final handoff must provide a file-first package plus a short summary.
+- id: G_WHOLE_TREE_INTEGRATION_REVIEW_CLOSED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.whole_tree_integration_review_status is one of closed_human_review
+  on_fail: block
+  description: Whole-tree integration review must be closed before alpha.20 handoff/integration package is treated as integrated.
+- id: G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN
+  method: mechanical
+  trust_class: deterministic
+  condition: state.no_unresolved_active_orphans_after_structural_scan is true
+  on_fail: block
+  description: Real structural scan must not contain active unresolved orphan nodes. Deprecated legacy compatibility nodes
+    are allowed only when explicitly marked.
+assertions:
+- id: A_FACTORY_HAS_NO_DOMAIN_LIMIT
+  polarity: not
+  condition: factory_restricts_applied_project_type_to_document_generating_only
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_FACTORY_STARTS_WITH_THREE_MODES
+  polarity: must
+  condition: factory_mode_selection_offers_domain_model_manual_tree_and_free_dialogue
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_APPLIED_PROJECT_FACTORY_USES_MODULE_VERSIONING
+  polarity: must
+  condition: applied_project_factory_version_is_module_local_not_language_package_milestone
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_PM_DOES_NOT_WRITE_YAML_DIRECTLY
+  polarity: must
+  condition: ai_translates_pm_answers_to_ordo_source_yaml
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_YAML_HIDDEN_FROM_PM_BY_DEFAULT
+  polarity: must
+  condition: pm_sees_summary_before_source_yaml_details
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CONFUSION_TESTS_DEFERRED_FOR_M61_1
+  polarity: must
+  condition: confusion_tests_are_explicitly_deferred_not_deleted
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+- id: A_LANGUAGE_PACKAGE_VERSION_IS_CONTAINER
+  polarity: must
+  condition: language_package_version_only_declares_compatibility_and_inclusion_not_module_iteration_number
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_AUTOMATIC_SVG_DURING_TEXT_REVIEW
+  polarity: must
+  condition: svg_is_generated_only_when_user_explicitly_requests_it
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CURRENT_NODE_BLOCK_HAS_HUMAN_DESCRIPTION
+  polarity: must
+  condition: current_node_review_includes_user_language_description_before_technical_aliases
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_EXTRACTION_SUMMARY_IS_USER_FACING
+  polarity: must
+  condition: structured_extraction_is_presented_as_what_i_heard_what_it_means_emerging_tree_open_questions
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_INCREMENTAL_YAML_PATCHES_AVOID_PER_NODE_FULL_REGENERATION
+  polarity: must
+  condition: confirmed_tree_steps_are_persisted_as_scoped_yaml_patches_with_minimal_checks_not_full_validation_each_time
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_DECISION_NODE_MUST_SHOW_ACTION_OPTIONS
+  polarity: must
+  condition: if_current_runtime_node_has_allowed_answers_then_user_prompt_must_request_one_allowed_action_not_generic_confirmation_only
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_PROCESS_DESIGN_REVIEW_MUST_LABEL_MODE
+  polarity: must
+  condition: process_design_review_output_explicitly_labels_tree_traversal_vs_branch_selection_vs_node_review_decision_vs_execution_gate
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_REVIEW_DECISIONS_ARE_SIMPLIFIED
+  polarity: must
+  condition: artifact_review_user_decisions_are_confirm_revise_defer_remove
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Artifact/template review should not expose excessive micro-decisions; detailed changes are interpreted under
+    revise.
+- id: A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED
+  polarity: must
+  condition: missing_language_capabilities_are_recorded_in_language_improvement_proposals_artifact
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+- id: A_PROCESS_FEEDBACK_CAN_REWRITE_YAML_AFTER_APPROVAL
+  polarity: must
+  condition: process_feedback_is_confirmed_before_yaml_update_and_runtime_continues_after_reload
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_RUNTIME_CONTINUES_FROM_RELOADED_YAML_AFTER_PROCESS_CHANGE
+  polarity: must
+  condition: after_confirmed_process_feedback_runtime_uses_updated_yaml_not_memory_of_old_flow
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_FREE_DIALOGUE_FORMS_DRAFT_ON_WHAT_NEXT_SIGNAL
+  polarity: must
+  condition: when_user_asks_what_next_model_proposes_first_draft_tree_for_review
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_TEST_CASES_AFTER_TREE_APPROVAL
+  polarity: must
+  condition: basic_test_cases_are_generated_after_decision_tree_is_approved
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_FREE_DIALOGUE_ACCUMULATES_NOTES_BEFORE_DRAFT
+  polarity: must
+  condition: free_dialogue_raw_notes_are_structured_before_draft_tree_summary
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_STABILIZED_BRANCH_REUSED_AS_AUTHORING_ALGORITHM
+  polarity: must
+  condition: stabilized_free_dialogue_branch_can_be_used_as_algorithm_for_next_branches
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CONTEXT_SVG_BY_DEFAULT_DURING_BRANCH_WORK
+  polarity: must
+  condition: branch_authoring_uses_context_svg_unless_full_tree_review_is_explicitly_requested
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_GRAPH_ANNOTATION_OVERLAY_IS_REVIEW_AID
+  polarity: must
+  condition: graph_annotation_overlay_does_not_replace_source_yaml_or_validator_results
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+- id: A_NODE_REVIEW_INCLUDES_STATE_GATES_ARTIFACTS
+  polarity: must
+  condition: every_user_facing_current_node_review_includes_state_gates_and_artifacts_sections
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_SIBLING_BRANCHES_ARE_TRACKED_DURING_DEPTH_FIRST_REVIEW
+  polarity: must
+  condition: unreviewed_sibling_branches_and_deferred_return_points_are_not_lost_when_following_one_branch_depth_first
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CURRENT_NODE_RENDERING_MUST_SHOW_PROCESS_STATE
+  polarity: must
+  condition: current_node_rendering_includes_current_node_state_gates_artifacts_pending_branches_and_decision_prompt
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+- id: A_FREE_DIALOGUE_OUTPUT_CANDIDATES_NOT_DROPPED
+  condition: free_dialogue_notes_mention_outputs_but_candidate_output_artifact_catalog_empty_without_no_output_policy
+  severity: block
+  on_fail: STOP
+  description: Free-dialogue extraction must not drop output/document/template mentions; if outputs are absent, deferred,
+    or unknown, that policy must be explicit.
+  polarity: not
+  phase:
+  - runtime
+  - test
+- id: A_MANUAL_TREE_INPUT_NOT_APPROVED_DIRECTLY
+  condition: manual_tree_input_requires_normalized_tree_draft_before_approved_decision_tree
+  severity: block
+  polarity: must
+  phase:
+  - runtime
+  - test
+  on_fail: STOP
+  description: Branch 2 manual_tree_input must be normalized and reviewed; it cannot become approved_decision_tree directly.
+- id: A_MANUAL_TREE_BRANCH_REUSES_BRANCH_1_SHARED_PATH
+  condition: manual_tree_join_point_routes_to_shared_branch_1_downstream_path
+  severity: block
+  polarity: must
+  phase:
+  - runtime
+  - test
+  on_fail: STOP
+  description: Branch 2 must remain an entry adapter and reuse branch 1 downstream review/output/template/validation mechanics.
+- id: A_ALPHA20_STARTUP_BRANCHES_INTEGRATED
+  polarity: must
+  condition: branch_1_branch_2_branch_3_branch_4_have_valid_join_paths
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: All four startup branches are integrated into the current APF tree.
+- id: A_OUTPUT_TEMPLATES_DEFINED_IMMEDIATELY
+  polarity: must
+  condition: output_template_catalog_is_collected_before_source_yaml_generation
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NEW_ARTIFACT_INTENT_IS_FREE_FORM_NOT_FIXED_TYPE_LIST
+  polarity: must
+  condition: new_output_artifact_intent_capture_accepts_free_form_description_and_uses_examples_only_as_hints
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Users describe what artifact they need; the runtime must not force a fixed artifact type list.
+- id: A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST
+  polarity: must
+  condition: document_like_artifact_review_uses_downloadable_template_mock_mapping_package_by_default
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Large/document-like artifacts are reviewed as files, not dumped into chat.
+- id: A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT
+  polarity: must
+  condition: terminal_output_binding_confirmed_only_after_review_package_or_explicit_no_output_required
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Terminal outputs require review package confirmation unless no-output was explicitly confirmed.
+- id: A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON
+  polarity: must
+  condition: terminal_output_template_logic_is_shared_not_duplicated
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Output/template review must use the shared reusable subflow.
+- id: A_FULL_VALIDATION_IS_TERMINAL_OR_PRE_HANDOFF_GATE
+  polarity: must
+  condition: full_cli_validation_runs_at_terminal_branch_or_before_project_generation_handoff_or_when_findings_require_it
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_VALIDATION_FINDINGS_ROUTE_BACK_TO_TREE_CORRECTION
+  polarity: must
+  condition: full_validation_findings_create_tree_yaml_correction_loop_instead_of_false_ready_status
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_UNFINISHED_TEMPLATE_NOT_APPROVED_FOR_OUTPUT_GENERATION
+  polarity: must
+  condition: unfinished_template_blocks_artifact_use_until_completed_or_removed
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Deferred/unfinished templates are not alpha-approved and cannot generate outputs until resolved.
+- id: A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES
+  polarity: must
+  condition: all_startup_branches_join_shared_validation_handoff_tail_instead_of_defining_duplicate_handoff_nodes
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Validation/handoff tail is a shared reusable block, not duplicated in each branch.
+- id: A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF
+  polarity: must
+  condition: minimal_validation_failed_routes_to_correction_or_blocked_deferred_state_and_never_to_handoff
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Failed minimal validation blocks handoff.
+- id: A_VALIDATION_DETAILS_LIVE_INSIDE_CORRECTION_MODE
+  polarity: must
+  condition: failed_validation_ux_offers_correction_or_defer_not_separate_show_details_branch
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+  description: Validation failure UX avoids micro-branching; details are shown inside correction mode.
+- id: A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED
+  polarity: must
+  condition: full_validation_status_skipped_is_recorded_as_alpha_limitation_not_passed
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Skipped full validation must not be presented as passed.
+- id: A_FINAL_UNFINISHED_ITEMS_GATE_BLOCKS_ACTIVE_UNFINISHED_OUTPUTS
+  polarity: must
+  condition: final_unfinished_items_gate_blocks_active_unfinished_artifacts_templates_or_requires_removal
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Active unfinished output/template items must be completed or removed before handoff.
+- id: A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY
+  polarity: must
+  condition: handoff_package_provides_downloadable_package_and_short_summary_not_chat_only
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Handoff must be package/file-first and include a concise summary.
+- id: A_ALPHA20_SHARED_VALIDATION_HANDOFF_JOIN_IS_SINGLETON
+  polarity: must
+  condition: validation_handoff_tail_is_shared_not_duplicated
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Validation/handoff must use the shared final tail.
+- id: A_ALPHA20_UNFINISHED_AND_REMOVED_ARTIFACT_GATES_REMAIN_ALIGNED
+  polarity: must
+  condition: unfinished_blocks_active_use_removed_excluded_from_binding_accepted_alpha_limitations_recorded
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Terminal/deferred/unfinished gates remain aligned in integrated tree.
+- id: A_ALPHA20_LEGACY_ORPHANS_ARE_EXPLICITLY_DEPRECATED
+  polarity: must
+  condition: unreachable_legacy_nodes_are_marked_deprecated_legacy_compatibility
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+  description: Legacy unreachable nodes are kept only as deprecated compatibility nodes, not unresolved active orphans.

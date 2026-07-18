@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.example/schemas/run_contract.schema.json",
+  "title": "Benchmark RUN Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "scenario_version",
+    "name",
+    "purpose",
+    "fact_statuses",
+    "disclosure_policy",
+    "correction_policy",
+    "expected_terminal",
+    "required_behaviors",
+    "forbidden_behaviors",
+    "allowed_outputs",
+    "forbidden_outputs",
+    "evaluator_invariants",
+    "visibility"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "benchmark.run_contract.v1"
+    },
+    "run_id": {
+      "pattern": "^RUN_[0-9]{2,}$"
+    },
+    "scenario_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 10
+    },
+    "fact_statuses": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "confirmed",
+          "tentative",
+          "withdrawn",
+          "superseded",
+          "unavailable",
+          "irrelevant"
+        ]
+      },
+      "minItems": 1
+    },
+    "disclosure_policy": {
+      "type": "object",
+      "required": [
+        "mode",
+        "rules"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "correction_policy": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "trigger",
+        "invalidate_dependent_artifacts",
+        "approval_version_bound"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "trigger": {
+          "type": "string"
+        },
+        "invalidate_dependent_artifacts": {
+          "type": "boolean"
+        },
+        "approval_version_bound": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "expected_terminal": {
+      "enum": [
+        "T_COMPLETED",
+        "T_INPUT_BLOCKED",
+        "T_SCENARIO_EXHAUSTED"
+      ]
+    },
+    "required_behaviors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "forbidden_behaviors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "allowed_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "forbidden_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "evaluator_invariants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "visibility": {
+      "type": "object",
+      "required": [
+        "executor_visible",
+        "driver_private",
+        "evaluator_only"
+      ],
+      "properties": {
+        "executor_visible": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "driver_private": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evaluator_only": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

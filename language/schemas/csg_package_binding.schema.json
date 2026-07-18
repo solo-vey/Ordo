@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo://schemas/conversation/csg-package-binding.schema.json",
+  "title": "Ordo CSG Package Binding",
+  "type": "object",
+  "required": [
+    "supported",
+    "enabled",
+    "decision_status"
+  ],
+  "properties": {
+    "supported": {
+      "type": "boolean"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "decision_status": {
+      "enum": [
+        "confirmed_enabled",
+        "confirmed_not_required"
+      ]
+    },
+    "contract": {
+      "type": "string"
+    },
+    "policy": {
+      "type": "string"
+    },
+    "tests": {
+      "type": "string"
+    },
+    "trace_events": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "enabled": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "contract",
+          "policy",
+          "tests",
+          "trace_events"
+        ],
+        "properties": {
+          "decision_status": {
+            "const": "confirmed_enabled"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "enabled": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "decision_status": {
+            "const": "confirmed_not_required"
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "ordo.m87.qualified_closure.v1",
+  "milestone": "M87.6",
+  "status": "passed",
+  "bl_ordo_018": "closed-qualified",
+  "quality_noninferiority_margin": -0.1,
+  "observed_lower_ci": -0.08333333333333333,
+  "observed_mean_difference": 0.65625,
+  "closure_gate": {
+    "schema_version": "ordo.ab_closure_gate.v1",
+    "status": "passed",
+    "issues": [],
+    "requirements": {
+      "minimum_pairs": 60,
+      "minimum_models": 2,
+      "external_real_model_evidence": true,
+      "blind_scoring_complete": true,
+      "quality_noninferiority_margin": -0.1
+    }
+  },
+  "followup_backlog_id": "BL-ORDO-023",
+  "tests": {
+    "passed": 14,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "benchmarks/ab/ab_closure_gate.py",
+      "sha256": "1047352bce682b16e4871c73693512f68fae534dadb59b1ab5039134ef2b86e0"
+    },
+    {
+      "path": "cli/tests/test_m87_5_statistical_analysis_closure.py",
+      "sha256": "7a4ca53b0172ef105924c88123a825c575c513c0730eac30415fc096822839bc"
+    },
+    {
+      "path": "CONSOLIDATED_BACKLOG.md",
+      "sha256": "b6e203ddf365ea18ec347d4010534b997d69d206be883308561e56e9e1dfe009"
+    }
+  ]
+}

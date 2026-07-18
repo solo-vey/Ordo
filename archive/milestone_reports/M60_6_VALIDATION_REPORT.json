@@ -1,0 +1,35 @@
+{
+  "milestone": "M60.6",
+  "title": "Benchmark Dry Run / Calibration Preparation",
+  "status": "passed",
+  "base": "M60.5.4",
+  "checks": {
+    "py_compile_workspace_cli_and_pathwalk": "passed",
+    "pathwalk_pytest_workspace_context": "22/22 passed",
+    "pathwalk_pytest_standalone_with_workspace_cli_pythonpath": "22/22 passed",
+    "dry_run_plan": "passed",
+    "independent_job_scripts": "60/60 passed",
+    "dry_run_collect": "passed",
+    "raw_metrics_rows": 60,
+    "score_artifacts": 60,
+    "runtime_view_counts": {
+      "json,ordo-code": 20,
+      "json": 20,
+      "ordo-code": 20
+    },
+    "gate_failed": 0,
+    "protocol_not_1": 0,
+    "path_quality_not_1": 0,
+    "missing_canonical_ir_hash": 0,
+    "missing_targets_manifest_hash": 0,
+    "missing_session_trace_hash": 0
+  },
+  "blockers": [],
+  "weights_changed": false,
+  "release_artifacts_expected": [
+    "updated workspace",
+    "developer bundle",
+    "book source",
+    "PathWalk RC next version"
+  ]
+}

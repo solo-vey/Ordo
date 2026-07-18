@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "APF generated testcase plan",
+  "type": "object",
+  "required": [
+    "generated_testcase_plan"
+  ],
+  "properties": {
+    "generated_testcase_plan": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "generated_by": {
+          "type": "string"
+        },
+        "runtime_execution": {
+          "type": "string"
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

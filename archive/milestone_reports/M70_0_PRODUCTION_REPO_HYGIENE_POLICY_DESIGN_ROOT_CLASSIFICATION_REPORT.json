@@ -1,0 +1,119 @@
+{
+  "milestone": "M70.0",
+  "status": "accepted-design",
+  "title": "Production repo hygiene policy design and root classification",
+  "classification": [
+    {
+      "root_id": "language_core",
+      "path": "language/",
+      "role": "language_core",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": true,
+      "current_treatment": "not_applicable",
+      "future_checker": "language_root_contract"
+    },
+    {
+      "root_id": "cli_core",
+      "path": "cli/",
+      "role": "cli_utility",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": true,
+      "current_treatment": "not_applicable",
+      "future_checker": "cli_root_contract"
+    },
+    {
+      "root_id": "canonical_cli_example",
+      "path": "cli/examples/history_event_guided_intake/",
+      "role": "example_package",
+      "exists": true,
+      "root_ordo_yml": true,
+      "release_critical": false,
+      "current_treatment": "optional",
+      "future_checker": "clean_check"
+    },
+    {
+      "root_id": "applied_packages",
+      "path": "packages/",
+      "role": "applied_packages",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": false,
+      "current_treatment": "delegated",
+      "future_checker": "package_local_opt_in"
+    },
+    {
+      "root_id": "companion_utilities",
+      "path": "utilities/",
+      "role": "companion_utility",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": "scope_dependent",
+      "current_treatment": "not_applicable",
+      "future_checker": "utility_specific"
+    },
+    {
+      "root_id": "pathwalk_utility",
+      "path": "ordo_pathwalk/",
+      "role": "companion_utility",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": "scope_dependent",
+      "current_treatment": "not_applicable",
+      "future_checker": "python_utility_contract"
+    },
+    {
+      "root_id": "book_area",
+      "path": "book/",
+      "role": "book_or_docs",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": "scope_dependent",
+      "current_treatment": "not_applicable",
+      "future_checker": "publication_contract"
+    },
+    {
+      "root_id": "docs_area",
+      "path": "docs/",
+      "role": "book_or_docs",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": true,
+      "current_treatment": "not_applicable",
+      "future_checker": "docs_contract"
+    },
+    {
+      "root_id": "workflow_area",
+      "path": ".github/",
+      "role": "workflow_area",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": true,
+      "current_treatment": "ignored",
+      "future_checker": "existing_repo_workflow_checks"
+    },
+    {
+      "root_id": "reports_area",
+      "path": "reports/",
+      "role": "generated_artifact_area",
+      "exists": true,
+      "root_ordo_yml": false,
+      "release_critical": false,
+      "current_treatment": "ignored",
+      "future_checker": "existing_generated_metadata_checks"
+    }
+  ],
+  "decisions": [
+    "Do not mark language/ or cli/ required under package clean-check yet",
+    "Keep packages/ delegated",
+    "Allow canonical CLI example as optional",
+    "Use root-specific repo contracts before enforcement"
+  ],
+  "scope": {
+    "implementation_changed": false,
+    "production_policy_added": false,
+    "packages_changed": false,
+    "runtime_changed": false
+  }
+}

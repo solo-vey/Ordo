@@ -1,0 +1,28 @@
+{
+  "milestone": "M60.5.1",
+  "title": "Benchmark Dry-run Blocker Fix",
+  "status": "passed",
+  "scope": "PathWalk benchmark-readiness; no runtime-core semantic change",
+  "changes": [
+    "Added benchmark-dry-run command",
+    "Added dry-run-case worker command",
+    "Added runner/dry_run.py",
+    "Added RAW_METRICS.csv generation",
+    "Added no-rerun verification scoring mode",
+    "Updated matrix-smoke to avoid duplicate embedded verification during scoring",
+    "Added benchmark dry-run orchestration test",
+    "Added sample dry-run artifacts"
+  ],
+  "validation": {
+    "benchmark_dry_run_json_scenario_count_2": "passed",
+    "pathwalk_pytest": "19/19 passed",
+    "py_compile": "passed",
+    "repo_check": "passed"
+  },
+  "not_included": [
+    "score weight calibration",
+    "real API/model benchmark",
+    "MCP/sandbox",
+    "Python/Java targets"
+  ]
+}

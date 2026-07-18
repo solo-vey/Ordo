@@ -1,0 +1,18 @@
+{
+  "schema_version": "benchmark.comparative_matrix_build.v1",
+  "matrix_build_id": "<uuid>",
+  "registry_high_water_mark": "<event-id-or-hash>",
+  "policy_versions": {
+    "result_registry": "1.0",
+    "comparison": "1.0"
+  },
+  "view": "attempt_detail",
+  "filters": {},
+  "generated_at": "<date-time>",
+  "included_record_count": 0,
+  "excluded_record_count": 0,
+  "excluded_reasons": {},
+  "source_registry_ref": "<path-or-uri>",
+  "output_ref": "<path-or-uri>",
+  "output_sha256": "<sha256>"
+}

@@ -1,0 +1,80 @@
+release_hygiene:
+  profile_id: apf.release_hygiene.ordo_v0_12.v1
+  module_id: ordo.applied_project_factory
+  milestone: A5
+  package_classes:
+    clean_source_package:
+      allowed:
+        - canonical source contracts
+        - policies and documentation
+        - schemas and templates
+        - prompt registry source and prompt files
+        - tests and utilities source
+        - adaptation reports explicitly included by release policy
+      prohibited:
+        - stale compiled IR
+        - stale run_state
+        - stale generated outputs
+        - local execution logs
+        - temporary files
+        - caches
+        - unreferenced evidence records
+      cli_gate: ordo clean-check <package> --profile standard --json
+    runtime_or_dev_package:
+      allowed:
+        - compiled IR generated from current source
+        - run_state tied to current IR hash
+        - generated outputs from current state
+        - runtime diagnostics
+      must_not_be_presented_as_clean_source: true
+    evidence_pack:
+      allowed:
+        - validation reports
+        - command outputs
+        - checksums
+        - prompt application identity traces
+        - capability audit evidence
+        - closure and confirmation records
+      must_reference:
+        - source package identity
+        - source package checksum
+        - validation profile
+        - generation timestamp or run identity
+  derived_artifact_sync:
+    required_fields:
+      - artifact_id
+      - path
+      - derived_from
+      - derivation_method
+      - freshness_policy
+      - stale_action
+    freshness_policies:
+      - must_exist
+      - must_match_hash
+      - manual_or_tool_verified
+      - regenerate_required
+      - not_applicable
+    stale_actions:
+      - block_release
+      - regenerate
+      - mark_historical
+      - remove_from_clean_source
+      - record_delta_backlog
+    silent_regeneration_allowed: false
+  release_gates:
+    - source_package_classified
+    - validation_profile_resolved
+    - derived_artifacts_fresh_or_absent
+    - prompt_manifest_checksums_match
+    - no_untracked_generated_outputs
+    - clean_check_passed
+    - repo_check_passed
+    - repo_check_clean_passed_when_policy_applies
+    - evidence_pack_separated
+    - checksum_manifest_regenerated_at_final_assembly
+    - delta_backlog_empty_or_explicitly_nonblocking
+    - human_release_confirmation
+  current_working_copy:
+    checksum_manifest_regeneration: deferred-to-A7-final-assembly
+    clean_release_claimed: false
+    confirmed_release_changed: false

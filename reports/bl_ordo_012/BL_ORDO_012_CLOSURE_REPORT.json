@@ -1,0 +1,33 @@
+{
+  "schema_version": "ordo.backlog_closure_report.v1",
+  "backlog_id": "BL-ORDO-012",
+  "status": "closed",
+  "closed_at": "2026-07-14T13:00:00Z",
+  "title": "Startup/package profile and derived-artifact hardening reconciliation",
+  "implementation": {
+    "canonical_packages_migrated": [
+      "history_event_guided_intake",
+      "ordo_applied_project_factory",
+      "ordo_hybrid_executor",
+      "ordo_project_builder"
+    ],
+    "startup_contract": "all packages declare startup_package_profile with fail-closed authority boundary",
+    "artifact_sync_contract": "all packages declare strict artifact_sync with SHA-256 fingerprints",
+    "hardening": [
+      "path containment",
+      "duplicate artifact detection",
+      "source/derived separation",
+      "strict SHA-256 requirement",
+      "authority-boundary enforcement"
+    ]
+  },
+  "validation": {
+    "affected_regression": "67 passed, 4 subtests passed",
+    "package_lints": "4/4 passed",
+    "blocking_issues": 0
+  },
+  "supersedes": [
+    "archive/milestone_reports/M81_0_STARTUP_DERIVED_ARTIFACT_RECONCILIATION_REPORT.json",
+    "archive/milestone_reports/M81_0_STARTUP_DERIVED_ARTIFACT_RECONCILIATION_REPORT.md"
+  ]
+}

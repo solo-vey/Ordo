@@ -1,0 +1,25 @@
+{
+  "schema": "external.workflow_preparation.external_links.v1",
+  "package_revision": 1,
+  "external_record_url": null,
+  "work_tracking_url": null,
+  "linking_rules": [
+    "Capture the external process record URL first.",
+    "Insert the external documentation system URL into the copy-ready work-tracking record document.",
+    "Capture the Workflow Preparation work-tracking system URL second.",
+    "Insert the workflow-tracking URL into README.md only.",
+    "Do not duplicate either URL into other business artifacts.",
+    "Do not fabricate URLs.",
+    "Do not enforce host/domain allowlists or remote accessibility checks.",
+    "Do not require a second analyst approval after synchronization."
+  ],
+  "status": "awaiting_external_publication",
+  "retained_fields_after_completion": [
+    "external_record_url",
+    "work_tracking_url"
+  ],
+  "placement": {
+    "external_record_url": "artifacts/02_WORK_TRACKING_RECORD.md",
+    "work_tracking_url": "README.md"
+  }
+}

@@ -1,0 +1,30 @@
+Gate:
+  type: object
+  required:
+    - id
+    - method
+    - trust_class
+    - assert
+  properties:
+    id:
+      type: string
+      description: Namespaced ID in compiled IR.
+    source_local_id:
+      type: string
+    method:
+      enum: [mechanical, self_verification, self_consistency, human]
+    trust_class:
+      enum: [deterministic, model_judgment, repeated_model_judgment, human_decision]
+    assert:
+      type: string
+    source:
+      type: string
+    params:
+      type: object
+    protocol:
+      type: array
+      items: { type: string }
+    on_fail:
+      type: string
+    on_pass:
+      type: string

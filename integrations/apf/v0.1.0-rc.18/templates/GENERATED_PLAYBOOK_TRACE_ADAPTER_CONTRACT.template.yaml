@@ -1,0 +1,76 @@
+adapter_contract:
+  adapter_id: <playbook_namespace>.execution_trace_adapter
+  version: '1.0'
+  ordo_alignment: v0.12-M72
+  runtime_mode: runtime_enforced
+  implementation:
+    language: <runtime language>
+    module: <module path>
+    storage_driver: <driver id>
+  operations:
+    initialize_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    append_event:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    record_state_reference:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    pause_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    resume_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    finalize_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    fail_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    cancel_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    compute_integrity:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    store_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    load_trace:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    prepare_replay_input:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+    toggle_capture:
+      implemented: false
+      handler: <handler>
+      evidence_ref: <test or report ref>
+  sequence_control:
+    strategy: serialized_per_trace
+    idempotency: event_id_or_idempotency_key
+  security:
+    redaction_before_persist: true
+    policy_ref: runtime/trace_redaction_policy.yaml
+    hidden_chain_of_thought_allowed: false
+  error_handling:
+    fail_closed_for_required_events: true
+    preserve_last_valid_state: true
+    error_code_catalog_ref: docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml
+  conformance:
+    status: pending
+    report_ref: runtime/trace_adapter_conformance_report.yaml

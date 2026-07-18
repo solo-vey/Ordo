@@ -1,0 +1,14 @@
+{
+  "kind": "apf_semantic_equivalence_report",
+  "status": "passed",
+  "equivalent": true,
+  "left_digest": "4cfe97dae713ac8b6cabce67a47e527b76461b3be29040a232e8b03aaec77a6e",
+  "right_digest": "4cfe97dae713ac8b6cabce67a47e527b76461b3be29040a232e8b03aaec77a6e",
+  "package_equal": true,
+  "ordo_version_equal": true,
+  "ops_left": 407,
+  "ops_right": 407,
+  "added_ops": [],
+  "removed_ops": [],
+  "changed_ops": []
+}

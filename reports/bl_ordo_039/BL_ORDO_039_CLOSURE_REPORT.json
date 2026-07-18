@@ -1,0 +1,15 @@
+{
+  "task": "BL-ORDO-039",
+  "status": "closed",
+  "release_id": "ordo-2026.07.14-rc.6",
+  "language_version": "0.13.0-rc.1",
+  "framework_version": "0.4.0-rc.1",
+  "implemented": [
+    "rollback checkpoint schema",
+    "checkpoint manager",
+    "checksum verification",
+    "restore round-trip",
+    "package release linkage"
+  ],
+  "blocking_issues": 0
+}

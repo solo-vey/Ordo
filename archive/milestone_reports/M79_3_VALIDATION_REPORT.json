@@ -1,0 +1,16 @@
+{
+  "milestone": "M79.3",
+  "status": "passed",
+  "capability": "generic_template_review_engine",
+  "evidence_schema": "ordo.template.review_evidence.v1",
+  "target_and_adjacent_tests": {"passed": 18, "failed": 0},
+  "checks": [
+    "artifact existence and non-empty output",
+    "output format",
+    "required sections",
+    "forbidden content",
+    "JSON/YAML parseability",
+    "render-evidence provenance",
+    "strict-profile evidence requirement"
+  ]
+}

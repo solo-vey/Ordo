@@ -1,0 +1,38 @@
+{
+  "milestone": "M68.3",
+  "title": "Repo-level package hygiene design",
+  "status": "accepted-design",
+  "level": "L0 design / repo hygiene policy model",
+  "preferred_future_command": "ordo repo-check <repo> --clean",
+  "added_files": [
+    "cli/docs/REPO_LEVEL_PACKAGE_HYGIENE_DESIGN.md",
+    "language/spec/27_REPO_LEVEL_PACKAGE_HYGIENE_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M68-002_REPO_LEVEL_PACKAGE_HYGIENE_DESIGN.md",
+    "M68_3_REPO_LEVEL_PACKAGE_HYGIENE_DESIGN_REPORT.md",
+    "M68_3_REPO_LEVEL_PACKAGE_HYGIENE_DESIGN_REPORT.json",
+    "M68_3_VALIDATION_REPORT.json",
+    "language/improvement_intake/m68_3/M68_3_REPO_LEVEL_PACKAGE_HYGIENE_DESIGN_REPORT.md",
+    "language/improvement_intake/m68_3/M68_3_VALIDATION_REPORT.json"
+  ],
+  "changed_files": [
+    "cli/docs/REPO_LEVEL_PACKAGE_HYGIENE_PLAN.md",
+    "cli/docs/CLEAN_CHECK_HARDENING_PLAN.md",
+    "README.md",
+    "CHANGELOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/README.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "scope_guard": {
+    "packages_changed": false,
+    "cli_implementation_changed": false,
+    "cli_tests_changed": false,
+    "runtime_core_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false,
+    "compiled_ir_regenerated": false,
+    "lockfiles_regenerated": false,
+    "embedded_cli_rebuilt": false
+  }
+}

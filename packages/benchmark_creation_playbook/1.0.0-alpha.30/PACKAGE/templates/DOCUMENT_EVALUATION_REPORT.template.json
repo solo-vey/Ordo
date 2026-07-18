@@ -1,0 +1,29 @@
+{
+  "evaluation_id": "<uuid>",
+  "evaluated_at": "<iso8601>",
+  "artifact": {
+    "path": "<path>",
+    "sha256": "<sha256>",
+    "artifact_type": "jira"
+  },
+  "contract": {
+    "contract_id": "DQC-JIRA-1",
+    "version": "1.0.0"
+  },
+  "focused_scope": {
+    "final_rendered_artifact_checked": true,
+    "relevant_rules": [],
+    "excluded_rules": [],
+    "external_references": []
+  },
+  "criteria": [],
+  "findings": [],
+  "caps": [],
+  "scores": {
+    "raw_score": 0,
+    "final_score": 0
+  },
+  "status": "evaluated",
+  "uncertainty": [],
+  "supersedes": null
+}

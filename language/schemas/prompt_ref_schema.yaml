@@ -1,0 +1,46 @@
+# Prompt Reference Schema Convention v1
+# Status: M65.0 documented source/schema convention, not enforced runtime schema.
+# This file defines the shape of prompt references on nodes, artifacts, templates, gates, and package assembly steps.
+
+type: object
+name: prompt_ref_schema_v1
+status: convention
+properties:
+  prompt_id:
+    type: string
+    description: Must resolve to prompt_registry.prompts[*].prompt_id.
+  use:
+    type: string
+    enum_or_convention:
+      - before_question
+      - during_clarification
+      - after_answer
+      - on_gate_fail
+      - on_backtrack
+      - artifact_generation
+      - validation_review
+  required_for_profile:
+    type: array
+    items:
+      type: string
+      enum_or_convention:
+        - light
+        - standard
+        - strict
+  state_change_allowed:
+    type: boolean
+    description: Optional local override must not contradict registry-level prompt metadata.
+  notes:
+    type: string
+validation_notes:
+  required_checks:
+    - prompt_ref_has_prompt_id
+    - prompt_ref_use_declared
+    - prompt_ref_resolves_to_registry_entry
+    - prompt_ref_state_change_policy_consistent_with_registry
+  m65_0: Documentation/schema/lint-profile design only.
+  non_changes:
+    - no runtime core changes
+    - no compiler behavior changes
+    - no CLI command changes
+    - no opcode promotion

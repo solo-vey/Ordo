@@ -1,0 +1,20 @@
+{
+  "report_id": "APF_CONCRETE_PLAYBOOK_AUTHORING_READINESS_REPORT",
+  "status": "ready | partial | blocked",
+  "authoring_mode": "concrete_playbook_package",
+  "source_apf_baseline": null,
+  "source_apf_version": null,
+  "required_artifacts": {
+    "authoring_protocol": "present | missing",
+    "startup_manifest": "present | missing",
+    "boundary_policy": "present | missing",
+    "package_skeleton": "present | missing"
+  },
+  "scope_checks": {
+    "apf_baseline_mutation_allowed": false,
+    "ordo_language_package_changes_allowed": false,
+    "real_playbook_creation_started": false
+  },
+  "unresolved_fields": [],
+  "blocking_issues": []
+}

@@ -1,0 +1,77 @@
+program:
+  id: prompt_registry_validation_example
+  name: Prompt Registry Validation Example
+
+prompt_registry_validation_profile:
+  profile_id: history_event_factory_prompt_registry_validation
+  version: "0.2"
+  applies_to:
+    package_id: history_event_guided_intake
+    prompt_registry_id: history_event_factory_prompt_registry
+  selected_profile: standard
+  default_decision_policy: blocked
+  controlled_application_phases:
+    - before_question
+    - during_clarification
+    - after_answer
+    - before_confirmation
+    - on_open_gap
+    - on_gate_fail
+    - before_artifact_generation
+  identity_policy:
+    prompt_id_pattern: '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+\.v[1-9][0-9]*$'
+    prompt_family_required: true
+    version_required: true
+    node_independence_required: true
+    semantic_filename_required: true
+    stable_id_immutable: true
+    supersedes_same_family_only: true
+    supersedes_lower_version_only: true
+    supersedes_lineage_acyclic: true
+  attachment_policy:
+    authoritative_source: node_or_artifact_prompt_refs
+    reverse_mapping_role: derived_or_validated_mirror
+    list_order_is_normative: true
+    prompt_may_change_navigation: false
+  severity_model:
+    - severity: error
+      blocks_approval: true
+      requires_rationale: false
+    - severity: warning
+      blocks_approval: false
+      requires_rationale: true
+    - severity: info
+      blocks_approval: false
+      requires_rationale: false
+  checks:
+    - check_id: prompt_ids_semantic_and_node_independent
+      category: identity
+      severity: error
+      profiles: {light: warning, standard: error, strict: error}
+      target: prompt_registry.prompts[].prompt_id
+      description: Prompt identifiers describe semantic roles and do not encode node ids.
+      owner_action: Migrate node-coupled identifiers to stable semantic versioned ids.
+    - check_id: prompt_id_version_matches_version_field
+      category: identity
+      severity: error
+      profiles: {light: warning, standard: error, strict: error}
+      target: prompt_registry.prompts[]
+      description: The .vN suffix equals the integer version field.
+      owner_action: Align prompt_id suffix and version.
+    - check_id: prompt_ref_application_phase_valid
+      category: application
+      severity: error
+      profiles: {light: warning, standard: error, strict: error}
+      target: prompt_refs[].use
+      description: Application phase belongs to the controlled vocabulary.
+      owner_action: Replace the phase with a supported value.
+    - check_id: prompt_authority_safe
+      category: authority
+      severity: error
+      profiles: {light: warning, standard: error, strict: error}
+      target: prompts/**/*.md
+      description: Local guidance does not alter navigation, bypass gates, or silently mutate confirmed state.
+      owner_action: Remove authority-conflicting instructions.
+  decision:
+    value: approved_with_warnings
+    rationale: Schema/profile is ready; package identity migration remains a later M71 step.

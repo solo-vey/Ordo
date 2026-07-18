@@ -1,0 +1,11 @@
+rules:
+- rule_id: R_REQUIRED_TITLE
+  requirement:
+    kind: required
+    field: title
+  condition: always
+  severity: error
+  blocking: false
+  exceptions: []
+  lineage_requirement: contract_bound
+  terminal_predicate: must_pass

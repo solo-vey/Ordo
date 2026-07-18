@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "id": "BL-ORDO-023",
+  "title": "99/100 Cross-Model CSG Benchmark Closure",
+  "status": "closed",
+  "closure_basis": "Existing canonical RC10 cross-model evidence recalculated under the owner-approved 99/100 criterion.",
+  "result": {
+    "overall_score_100": 99.487,
+    "minimum_run_score_100": 98.462,
+    "classification_accuracy_percent": 100.0,
+    "valid_runs": 6,
+    "models": 3,
+    "critical_mismatches": 0,
+    "semantic_errors": 0
+  },
+  "closure_evidence": "reports/BL_ORDO_023_99_OF_100_RECALCULATION.json",
+  "canonical_release_created": false
+}

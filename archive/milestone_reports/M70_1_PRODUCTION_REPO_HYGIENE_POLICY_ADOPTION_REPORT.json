@@ -1,0 +1,33 @@
+{
+  "milestone": "M70.1",
+  "title": "Production repo_hygiene.yml adoption",
+  "status": "implemented-safe-initial-policy / passed-validation",
+  "added": [
+    "repo_hygiene.yml",
+    "cli/docs/PRODUCTION_REPO_HYGIENE_POLICY_ADOPTION.md",
+    "cli/tests/test_production_repo_hygiene_policy.py"
+  ],
+  "policy": {
+    "required_roots": 0,
+    "optional_roots": 1,
+    "delegated_roots": 1,
+    "not_applicable_or_ignored_roots": 8
+  },
+  "validation": {
+    "production_repo_check": "passed",
+    "new_tests": 4,
+    "clean_check_tests": 11,
+    "repo_integration_tests": 4,
+    "ci_release_smoke_tests": 6
+  },
+  "untouched": [
+    "packages/*",
+    "cli/ordo/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles",
+    "embedded CLI bundles"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.migration_fixture.v1",
+  "fixture_id": "LEGACY-ALL-IN-ONE-001",
+  "source_ref": "legacy_all_in_one_instruction.md",
+  "expected_clause_count": 10,
+  "expected_mandatory_count": 10,
+  "expected_unit_types": [
+    "stage",
+    "action",
+    "decision",
+    "gate",
+    "artifact",
+    "evidence",
+    "authorization",
+    "recovery"
+  ],
+  "expected_gate_status": "passed"
+}

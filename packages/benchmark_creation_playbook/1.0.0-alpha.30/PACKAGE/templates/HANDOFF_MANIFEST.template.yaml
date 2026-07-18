@@ -1,0 +1,8 @@
+schema_version: ordo.benchmark.handoff-manifest.v1
+handoff_id: ""
+baseline_version: ""
+status: READY_WITH_OPEN_WORK
+reading_order: []
+authoritative_files: []
+open_work: []
+checksums_verified: false

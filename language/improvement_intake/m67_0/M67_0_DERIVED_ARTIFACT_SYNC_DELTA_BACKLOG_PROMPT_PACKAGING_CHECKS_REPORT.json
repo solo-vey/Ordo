@@ -1,0 +1,14 @@
+{
+  "milestone": "M67.0",
+  "title": "Derived Artifact Sync / Delta Backlog / Prompt Registry Packaging Checks",
+  "status": "accepted-docs-schema-convention",
+  "non_changes": [
+    "no runtime core changes",
+    "no compiler behavior changes",
+    "no CLI command changes",
+    "no Semantic JSON IR execution changes",
+    "no new opcodes",
+    "no compiled IR regeneration"
+  ],
+  "next": "M67.1 — apply artifact_sync/delta_backlog/packaging checks to History Event Factory package"
+}

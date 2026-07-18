@@ -1,0 +1,57 @@
+{
+  "milestone": "M74.3",
+  "title": "CSG \u00d7 PathWalk empirical benchmark infrastructure",
+  "status": "passed_with_open_empirical_gate",
+  "scope": "benchmark infrastructure and evidence honesty gate",
+  "checks": [
+    {
+      "check": "canonical_13_class_taxonomy_covered",
+      "status": "passed",
+      "evidence": "26 cases; two per class"
+    },
+    {
+      "check": "dataset_machine_readable",
+      "status": "passed",
+      "dataset_sha256": "sha256:1ba61e757388fd2866a03e87a5e812adb789cc64c88eccb9b1921de2589a3224"
+    },
+    {
+      "check": "deterministic_scorer_implemented",
+      "status": "passed"
+    },
+    {
+      "check": "state_protection_scoring",
+      "status": "passed"
+    },
+    {
+      "check": "control_and_safety_scoring",
+      "status": "passed"
+    },
+    {
+      "check": "synthetic_evidence_cannot_pass_empirical_gate",
+      "status": "passed",
+      "evidence_status": "blocked"
+    },
+    {
+      "check": "targeted_unit_tests",
+      "status": "passed",
+      "count": 4
+    },
+    {
+      "check": "real_model_evidence",
+      "status": "not_run"
+    }
+  ],
+  "gates": {
+    "G_CSG_BENCHMARK_INFRASTRUCTURE_READY": "passed",
+    "G_CSG_MODEL_BENCHMARK_READY": "blocked_pending_real_model_evidence",
+    "G_CSG_PRODUCTION_READY": "blocked"
+  },
+  "maturity_delta": {
+    "model_benchmark": "infrastructure_ready_not_run",
+    "production_recommendation": "not_ready"
+  },
+  "blocking_issues": [],
+  "open_requirements": [
+    "Run the canonical dataset against at least one real model and score the resulting evidence."
+  ]
+}

@@ -1,0 +1,448 @@
+coverage_rules:
+- kind: coverage_rule
+  id: COVERAGE_CONFIRMED_FACTORY_CONTRACTS_TO_ARTIFACTS
+  input: confirmed_contracts
+  output: artifact_requirements
+  failure_policy: no_go
+  description: Every confirmed factory contract must have artifact coverage.
+go_no_go:
+  kind: go_no_go
+  status: go
+  blocking_issues: []
+  warnings:
+  - M61.1 intentionally defers confusion/self-test generation until a later milestone.
+  - M61.5 stabilizes the free-dialogue branch as a self-hosted authoring loop; confusion/self-test generation remains deferred.
+  - M61.6 adds focused/context SVG-by-default policy and a language-improvement proposal artifact for provisional language
+    gaps.
+  - APF v0.1.0-alpha.8 makes SVG generation on-request only and requires user-facing node descriptions, plain-language extraction
+    summaries, and a process-feedback YAML reload loop.
+  - APF v0.1.0-alpha.11 uses incremental YAML patches with minimal checks during tree review; full CLI validation is deferred
+    to terminal/pre-handoff gate.
+  - APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected/blocked control actions during runtime review.
+nodes:
+- id: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+  description: 'Shared tail step 4: review full validation result. Failed checks route to correction or blocked/deferred;
+    failed/skipped is never called passed.'
+  question: 'Full validation завершено. Review result: passed або failed. Якщо failed, показати короткий issue list і перейти
+    до correction або blocked defer.'
+  answer_type: enum
+  allowed_answers:
+  - full_validation_passed
+  - full_validation_failed_start_correction
+  - full_validation_failed_defer_fix
+  answer_options:
+    full_validation_passed: Full validation passed
+    full_validation_failed_start_correction: Full validation failed → перейти до виправлення
+    full_validation_failed_defer_fix: Full validation failed → відкласти виправлення
+  user_facing_contract:
+    show_check_result_summary: true
+    show_short_issue_list_on_failure: true
+    details_are_inside_correction_mode: true
+    do_not_call_failed_or_skipped_passed: true
+  on_answer:
+    full_validation_passed:
+      label: full validation passed
+      update_state:
+        full_validation_status: passed
+        validation_issues: []
+      next: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    full_validation_failed_start_correction:
+      label: full validation failed; correction mode
+      update_state:
+        full_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: correction_loop_started
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+    full_validation_failed_defer_fix:
+      label: full validation failed; fix deferred
+      update_state:
+        full_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: deferred
+        handoff_blocked_for_release: true
+      next: STOP_VALIDATION_FIX_DEFERRED_HANDOFF_BLOCKED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_full_validation_passed_failed_correction_or_defer
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: full validation result unclear
+- id: N_SHARED_TAIL_CORRECTION_LOOP
+  description: 'Shared tail step 5: scoped correction loop for validation issues. It shows what is broken, proposes minimal
+    scoped fixes, and distinguishes technical fixes from process-logic changes.'
+  question: Validation issues require correction. Review the short issue list and a scoped correction plan. Apply scoped corrections,
+    request/manual revision, or defer correction.
+  answer_type: enum
+  allowed_answers:
+  - apply_scoped_corrections
+  - manual_revision_requested
+  - defer_correction
+  answer_options:
+    apply_scoped_corrections: Застосувати scoped corrections
+    manual_revision_requested: Виправити вручну / уточнити
+    defer_correction: Відкласти correction
+  user_facing_contract:
+    show_what_is_broken: true
+    show_minimal_scoped_fix: true
+    label_if_process_logic_changes: true
+    do_not_apply_large_unexplained_patch: true
+  on_answer:
+    apply_scoped_corrections:
+      label: scoped corrections applied
+      update_state:
+        correction_loop:
+          user_decision: apply_scoped_corrections
+          correction_status: applied
+          proposed_corrections: $answer.corrections
+          correction_scope: $answer.scope
+      next: N_SHARED_TAIL_MINIMAL_VALIDATION
+    manual_revision_requested:
+      label: manual revision requested
+      update_state:
+        correction_loop:
+          user_decision: manual_revision_requested
+          correction_status: pending
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    defer_correction:
+      label: correction deferred
+      update_state:
+        correction_loop:
+          user_decision: deferred
+          correction_status: deferred
+        handoff_blocked: true
+      next: STOP_VALIDATION_FIX_DEFERRED_HANDOFF_BLOCKED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_apply_manual_or_defer_correction
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: correction decision unclear
+- id: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+  description: 'Shared tail step 6: final unfinished-items/readiness gate before handoff package generation.'
+  question: 'Final readiness check: unfinished artifacts/templates, deferred outputs, validation limitations, accepted alpha
+    limitations, removed artifacts, and blocking items.'
+  answer_type: enum
+  allowed_answers:
+  - ready_for_handoff
+  - resolve_blockers
+  - remove_blocking_artifacts
+  - defer_handoff
+  answer_options:
+    ready_for_handoff: Blocking items немає → перейти до handoff package generation
+    resolve_blockers: Доробити blockers
+    remove_blocking_artifacts: Видалити blocking artifacts
+    defer_handoff: Відкласти handoff
+  user_facing_contract:
+    show_final_readiness_card: true
+    show_alpha_limitations_separately: true
+    if_blocked_keep_options_simple:
+    - resolve_blockers
+    - remove_blocking_artifacts
+    - defer_handoff
+    do_not_use_removed_artifacts: true
+    do_not_use_unfinished_active_artifacts: true
+  on_answer:
+    ready_for_handoff:
+      label: ready for handoff
+      update_state:
+        final_readiness_status: ready_for_handoff
+      next: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+    resolve_blockers:
+      label: blockers need correction
+      update_state:
+        final_readiness_status: blocked
+        open_correction_items: $append:$answer.blockers
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+    remove_blocking_artifacts:
+      label: blocking artifacts removed
+      update_state:
+        removed_output_artifacts: $append:$answer.artifacts
+      next: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    defer_handoff:
+      label: handoff deferred
+      update_state:
+        final_readiness_status: deferred
+      next: STOP_HANDOFF_DEFERRED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_ready_resolve_remove_or_defer_handoff
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: final readiness decision unclear
+- id: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+  description: 'Shared tail step 7: generate a file-first handoff package after final readiness is ready_for_handoff.'
+  question: 'Процес готовий до handoff. Згенерувати handoff package: source YAML, compiled artifacts, validation report, output/template
+    catalog, terminal binding summary, alpha limitations, unfinished/removed items log, changelog/release notes, usage/start
+    prompt notes.'
+  answer_type: enum
+  allowed_answers:
+  - handoff_package_generated
+  - handoff_package_failed
+  answer_options:
+    handoff_package_generated: Handoff package generated
+    handoff_package_failed: Handoff package generation failed
+  user_facing_contract:
+    file_first_handoff_package: true
+    show_package_summary_card: true
+    include_download_link: true
+    show_alpha_limitations: true
+    do_not_generate_if_final_readiness_not_ready: true
+  on_answer:
+    handoff_package_generated:
+      label: handoff package ready
+      update_state:
+        handoff_package_status: ready
+        handoff_package:
+          package_status: generated
+          package_files: $answer.files
+          package_summary: $answer.summary
+      next: N_SHARED_TAIL_FINAL_HANDOFF
+    handoff_package_failed:
+      label: handoff package failed
+      update_state:
+        handoff_package_status: failed
+        open_correction_items: $append:$answer.issue
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_handoff_package_generated_or_failed
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: handoff package status unclear
+- id: N_SHARED_TAIL_FINAL_HANDOFF
+  description: 'Shared tail step 8: final handoff decision after package generation. User either accepts the package or returns
+    it for revision.'
+  question: Handoff package готовий. Прийняти package або повернутись до правок?
+  answer_type: enum
+  allowed_answers:
+  - accept_handoff_package
+  - return_to_revision
+  answer_options:
+    accept_handoff_package: Прийняти handoff package
+    return_to_revision: Повернутись до правок
+  user_facing_contract:
+    show_final_handoff_summary: true
+    show_package_link: true
+    show_validation_status_without_overclaiming: true
+    show_alpha_limitations_if_any: true
+    only_two_actions:
+    - accept_handoff_package
+    - return_to_revision
+  on_answer:
+    accept_handoff_package:
+      label: handoff accepted
+      update_state:
+        handoff_status: accepted
+        process_package_status: ready_for_use_or_next_review
+      next: END_HANDOFF_ACCEPTED
+    return_to_revision:
+      label: handoff returned for revision
+      update_state:
+        handoff_status: returned_for_revision
+        revision_loop_status: opened
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_accept_handoff_or_return_to_revision
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: final handoff decision unclear
+- id: END_HANDOFF_ACCEPTED
+  description: 'Terminal marker: handoff package accepted and process package ready for use or next review.'
+  terminal: true
+  required_fields: []
+  on_enter:
+    update_state:
+      handoff_status: accepted
+      process_package_status: ready_for_use_or_next_review
+  on_unmatched_input:
+    action: IGNORE
+    reason: terminal node
+gates:
+- id: G_VALIDATION_GATE_CATALOG_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.validation_gate_catalog is not empty
+  on_fail: block
+- id: G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE
+  method: mechanical
+  trust_class: deterministic
+  description: Confirms full CLI validation is a terminal/pre-handoff gate, not a per-node operation during tree review.
+  condition: state.full_project_validation_policy.run_when is not empty and state.full_project_validation_required_before_handoff
+    is true
+  on_fail: block
+- id: G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF
+  method: mechanical
+  trust_class: deterministic
+  description: Blocks final/release handoff until full validation passed; for alpha, explicit skipped_for_alpha limitation
+    may continue only through the shared tail readiness gate.
+  condition: state.full_project_validation_passed_or_alpha_exception is true
+  on_fail: block
+- id: G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.no_active_output_artifact_has_template_status_unfinished is true
+  on_fail: block
+  description: Unfinished templates cannot be used for artifact generation; user must complete or remove the artifact.
+- id: G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.terminal_path_has_no_unfinished_active_artifacts is true
+  on_fail: block
+  description: Terminal path readiness requires no unfinished active artifacts/templates.
+- id: G_SHARED_VALIDATION_HANDOFF_TAIL_CLOSED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.shared_validation_handoff_tail_status is one of closed
+  on_fail: block
+  description: The shared validation/handoff tail has completed human review and is the reusable final path for all startup
+    branches.
+- id: G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF
+  method: mechanical
+  trust_class: deterministic
+  condition: state.minimal_validation_status is one of passed
+  on_fail: block
+  description: Handoff is blocked if minimal validation failed or has not run.
+- id: G_SKIPPED_FULL_VALIDATION_RECORDED_AS_ALPHA_LIMITATION
+  method: mechanical
+  trust_class: deterministic
+  condition: state.skipped_full_validation_recorded_or_not_skipped is true
+  on_fail: block
+  description: Skipped full validation is allowed for alpha only as an explicit limitation, never as passed.
+- id: G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.final_readiness_has_no_active_blockers is true
+  on_fail: block
+  description: Handoff package generation requires no active blockers.
+- id: G_HANDOFF_PACKAGE_REQUIRES_FILE_FIRST_SUMMARY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.handoff_package_file_first_summary_ready is true
+  on_fail: block
+  description: Final handoff must provide a file-first package plus a short summary.
+- id: G_WHOLE_TREE_INTEGRATION_REVIEW_CLOSED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.whole_tree_integration_review_status is one of closed_human_review
+  on_fail: block
+  description: Whole-tree integration review must be closed before alpha.20 handoff/integration package is treated as integrated.
+- id: G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN
+  method: mechanical
+  trust_class: deterministic
+  condition: state.no_unresolved_active_orphans_after_structural_scan is true
+  on_fail: block
+  description: Real structural scan must not contain active unresolved orphan nodes. Deprecated legacy compatibility nodes
+    are allowed only when explicitly marked.
+assertions:
+- id: A_FULL_VALIDATION_IS_TERMINAL_OR_PRE_HANDOFF_GATE
+  polarity: must
+  condition: full_cli_validation_runs_at_terminal_branch_or_before_project_generation_handoff_or_when_findings_require_it
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_VALIDATION_FINDINGS_ROUTE_BACK_TO_TREE_CORRECTION
+  polarity: must
+  condition: full_validation_findings_create_tree_yaml_correction_loop_instead_of_false_ready_status
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_UNFINISHED_TEMPLATE_NOT_APPROVED_FOR_OUTPUT_GENERATION
+  polarity: must
+  condition: unfinished_template_blocks_artifact_use_until_completed_or_removed
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Deferred/unfinished templates are not alpha-approved and cannot generate outputs until resolved.
+- id: A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES
+  polarity: must
+  condition: all_startup_branches_join_shared_validation_handoff_tail_instead_of_defining_duplicate_handoff_nodes
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Validation/handoff tail is a shared reusable block, not duplicated in each branch.
+- id: A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF
+  polarity: must
+  condition: minimal_validation_failed_routes_to_correction_or_blocked_deferred_state_and_never_to_handoff
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Failed minimal validation blocks handoff.
+- id: A_VALIDATION_DETAILS_LIVE_INSIDE_CORRECTION_MODE
+  polarity: must
+  condition: failed_validation_ux_offers_correction_or_defer_not_separate_show_details_branch
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+  description: Validation failure UX avoids micro-branching; details are shown inside correction mode.
+- id: A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED
+  polarity: must
+  condition: full_validation_status_skipped_is_recorded_as_alpha_limitation_not_passed
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Skipped full validation must not be presented as passed.
+- id: A_FINAL_UNFINISHED_ITEMS_GATE_BLOCKS_ACTIVE_UNFINISHED_OUTPUTS
+  polarity: must
+  condition: final_unfinished_items_gate_blocks_active_unfinished_artifacts_templates_or_requires_removal
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Active unfinished output/template items must be completed or removed before handoff.
+- id: A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY
+  polarity: must
+  condition: handoff_package_provides_downloadable_package_and_short_summary_not_chat_only
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Handoff must be package/file-first and include a concise summary.
+- id: A_ALPHA20_SHARED_VALIDATION_HANDOFF_JOIN_IS_SINGLETON
+  polarity: must
+  condition: validation_handoff_tail_is_shared_not_duplicated
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Validation/handoff must use the shared final tail.
+- id: A_ALPHA20_UNFINISHED_AND_REMOVED_ARTIFACT_GATES_REMAIN_ALIGNED
+  polarity: must
+  condition: unfinished_blocks_active_use_removed_excluded_from_binding_accepted_alpha_limitations_recorded
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Terminal/deferred/unfinished gates remain aligned in integrated tree.
+- id: A_ALPHA20_LEGACY_ORPHANS_ARE_EXPLICITLY_DEPRECATED
+  polarity: must
+  condition: unreachable_legacy_nodes_are_marked_deprecated_legacy_compatibility
+  phase:
+  - runtime
+  - test
+  severity: warn
+  on_fail: WARN
+  description: Legacy unreachable nodes are kept only as deprecated compatibility nodes, not unresolved active orphans.

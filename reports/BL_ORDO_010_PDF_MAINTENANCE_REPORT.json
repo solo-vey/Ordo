@@ -1,0 +1,39 @@
+{
+  "schema_version": "ordo.bl_ordo_010.pdf_maintenance.v1",
+  "status": "passed",
+  "verified_at": "2026-07-14",
+  "english_pdf": {
+    "file": "book/en/compiled/ordo_for_beginners_en.pdf",
+    "pages": 585,
+    "sha256": "53c491da75ab301066e0e32379bea1804b62e46aeb126807defd0daa1532975b",
+    "preface_before_toc": true,
+    "toc_title": "Table of Contents",
+    "toc_color": "black",
+    "clickable": true,
+    "link_annotations": 108,
+    "toc_link_pages": [
+      3,
+      4,
+      5
+    ]
+  },
+  "ukrainian_pdf": {
+    "source": "book/releases/frozen/uk/ordo_for_beginners_v0_12_M72_uk_frozen.pdf",
+    "file": "book/uk/compiled/ordo_for_beginners_uk.pdf",
+    "pages": 520,
+    "sha256": "d0ded669f86c01e7c44f34c7461147c471ae560c37fe7e523bd84634c2750a82",
+    "status": "latest_available_ukrainian_pdf_moved_to_locale_catalog"
+  },
+  "cleanup": {
+    "remaining_pdf_count": 2,
+    "removed_legacy_pdfs": [
+      "book/compiled/ordo_for_beginners_v0_12_M72_execution_trace.pdf",
+      "book/compiled/ordo_for_beginners_v0_12_m58_full_book.pdf",
+      "book/releases/frozen/uk/ordo_for_beginners_v0_12_M72_uk_frozen.pdf"
+    ],
+    "remaining_pdfs": [
+      "book/en/compiled/ordo_for_beginners_en.pdf",
+      "book/uk/compiled/ordo_for_beginners_uk.pdf"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+contract_id: apf.playbook_authored_mini_prompt_flow_integration.v1
+status: accepted-working-enhancement-contract
+applies_to: concrete_playbook_authoring
+sequence:
+- startup_and_intake
+- decision_tree_and_terminal_paths
+- object_contracts
+- prompt_sufficiency_review
+- candidate_proposal_if_required
+- human_approval
+- generated_playbook_registry_and_attachment
+- mini_prompt_validation_and_tests
+- package_assembly
+- final_readiness_validation
+conditional_artifacts:
+  create_prompt_package_when_any:
+  - existing_prompt_reuse
+  - new_prompt_candidate
+  - needs_human_decision
+  omit_prompt_package_when_all:
+  - simple_instruction_sufficient
+  - excluded_with_rationale
+blocking_conditions:
+- missing_prompt_sufficiency_record
+- unresolved_human_decision
+- unapproved_prompt_activated
+- approved_prompt_missing_manifest_or_checksum
+- approved_prompt_missing_attachment_validation
+- approved_prompt_missing_mandatory_tests
+- prompt_authority_violation
+out_of_scope:
+- internal_apf_node_mini_prompts
+- ordo_core_changes
+- live_model_replay_requirement

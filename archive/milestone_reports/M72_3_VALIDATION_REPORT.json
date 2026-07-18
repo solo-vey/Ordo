@@ -1,0 +1,53 @@
+{
+  "milestone": "M72.3",
+  "title": "EXECUTION_TRACE Tooling, Testing & Documentation",
+  "status": "passed-with-environment-note",
+  "scope": [
+    "canonical examples",
+    "integrity and tamper tests",
+    "replay-mode tests",
+    "redaction tests",
+    "tooling guide",
+    "book chapter and PDF",
+    "release manifests"
+  ],
+  "targeted_tests": {
+    "passed": 13,
+    "failed": 0,
+    "command": "pytest -q test_m72_2... test_m72_3..."
+  },
+  "full_suite": {
+    "collected": 161,
+    "status": "not-completed-in-session-time-limit",
+    "note": "No failure was observed before timeout; authoritative M72 validation is targeted suite plus static/package checks."
+  },
+  "examples": [
+    {
+      "file": "language/examples/execution_trace_full.yaml",
+      "events": 3,
+      "event_count": 3,
+      "status": "passed"
+    },
+    {
+      "file": "language/examples/execution_trace_minimal.yaml",
+      "events": 3,
+      "event_count": 3,
+      "status": "passed"
+    },
+    {
+      "file": "language/examples/execution_trace_replayable.yaml",
+      "events": 5,
+      "event_count": 5,
+      "status": "passed"
+    }
+  ],
+  "book": {
+    "manifest_entries": 79,
+    "image_references_checked": 83,
+    "missing_assets": 0,
+    "pdf_present": true,
+    "pdf_size_bytes": 1837543,
+    "pdf_pages": 510
+  },
+  "blockers": []
+}

@@ -1,0 +1,46 @@
+{
+  "package": "APF_A0_ORDO_V0_12_ADAPTATION_SCOPE_AND_COMPATIBILITY_MATRIX",
+  "status": "passed-with-human-confirmation-required",
+  "checks": [
+    {
+      "check": "baseline_identified",
+      "status": "passed"
+    },
+    {
+      "check": "scope_and_out_of_scope_defined",
+      "status": "passed"
+    },
+    {
+      "check": "capability_status_vocabulary_defined",
+      "status": "passed"
+    },
+    {
+      "check": "compatibility_matrix_present",
+      "status": "passed",
+      "entries": 30
+    },
+    {
+      "check": "confirmed_apf_rc12_boundaries_preserved",
+      "status": "passed"
+    },
+    {
+      "check": "deferred_backlog_not_started",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_claims_separated_from_conventions",
+      "status": "passed"
+    },
+    {
+      "check": "apf_source_mutated",
+      "status": "not-performed-by-design"
+    }
+  ],
+  "blockers": [],
+  "human_confirmation_required": [
+    "A0 scope",
+    "compatibility classifications",
+    "A0 decisions",
+    "permission to begin A1"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "milestone": "M71 first-wave closure",
+  "status": "passed",
+  "tests": {
+    "count": 17,
+    "result": "passed"
+  },
+  "checks": [
+    "milestone_reports_present",
+    "semantic_ids_versioned",
+    "prompt_refs_resolve",
+    "checksums_match",
+    "application_order_valid",
+    "trace_contract_private",
+    "navigation_authority_preserved",
+    "package_clean_check_passed"
+  ]
+}

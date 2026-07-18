@@ -1,0 +1,116 @@
+{
+  "schema_version": "ordo.csg_mismatch_taxonomy.v1",
+  "taxonomy_version": "M86.4",
+  "classes": [
+    {
+      "id": "none",
+      "severity": "none",
+      "alias_eligible": false
+    },
+    {
+      "id": "alias_gap",
+      "severity": "info",
+      "alias_eligible": true
+    },
+    {
+      "id": "fabricated_opcode",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "missing_required_field",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "invalid_enum",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "state_protection_violation",
+      "severity": "critical",
+      "alias_eligible": false
+    },
+    {
+      "id": "dangling_transition",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "illegal_cycle",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "gate_semantics_reversal",
+      "severity": "critical",
+      "alias_eligible": false
+    },
+    {
+      "id": "default_semantic_drift",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "type_coercion",
+      "severity": "warning",
+      "alias_eligible": false
+    },
+    {
+      "id": "cross_field_contradiction",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "ordering_semantic_drift",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "duplicate_identifier",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "unbound_reference",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "lossy_normalization",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "unsafe_interpolation",
+      "severity": "critical",
+      "alias_eligible": false
+    },
+    {
+      "id": "undeclared_side_effect",
+      "severity": "critical",
+      "alias_eligible": false
+    },
+    {
+      "id": "null_semantics",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "operator_precedence",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "provider_error",
+      "severity": "error",
+      "alias_eligible": false
+    },
+    {
+      "id": "unknown_mismatch",
+      "severity": "error",
+      "alias_eligible": false
+    }
+  ]
+}

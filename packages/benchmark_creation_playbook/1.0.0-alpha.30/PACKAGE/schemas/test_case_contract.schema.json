@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "benchmark.test_case_contract.schema.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identity",
+    "classification",
+    "semantic_target",
+    "authority",
+    "input_policy",
+    "artifact_contract",
+    "process_contract",
+    "scenario_coverage",
+    "variant_comparability",
+    "evaluation",
+    "reproducibility",
+    "approval"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "benchmark.test_case_contract.v1"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "suite_id",
+        "suite_version",
+        "test_case_id",
+        "test_case_version",
+        "title",
+        "owner"
+      ]
+    },
+    "classification": {
+      "type": "object",
+      "required": [
+        "primary",
+        "secondary",
+        "rationale"
+      ],
+      "properties": {
+        "primary": {
+          "enum": [
+            "TC01",
+            "TC02",
+            "TC03"
+          ]
+        },
+        "secondary": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "TC01",
+              "TC02",
+              "TC03"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "rationale": {
+          "type": "array",
+          "minItems": 1
+        }
+      }
+    },
+    "semantic_target": {
+      "type": "object",
+      "required": [
+        "goal",
+        "invariant_across_variants",
+        "non_goals"
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "canonical_sources",
+        "supporting_sources",
+        "forbidden_or_stale_sources"
+      ]
+    },
+    "input_policy": {
+      "type": "object",
+      "required": [
+        "confirmed_public_facts",
+        "hidden_fact_domains",
+        "invention_policy",
+        "hard_stop_fields"
+      ],
+      "properties": {
+        "invention_policy": {
+          "const": "forbidden"
+        }
+      }
+    },
+    "artifact_contract": {
+      "type": "object",
+      "required": [
+        "routes"
+      ]
+    },
+    "process_contract": {
+      "type": "object",
+      "required": [
+        "required_behaviors",
+        "expected_terminal_classes"
+      ]
+    },
+    "scenario_coverage": {
+      "type": "object",
+      "required": [
+        "required_dimensions"
+      ]
+    },
+    "variant_comparability": {
+      "type": "object",
+      "required": [
+        "planned_variants",
+        "allowed_representation_differences",
+        "forbidden_semantic_differences"
+      ]
+    },
+    "evaluation": {
+      "type": "object",
+      "required": [
+        "process_contract_binding",
+        "document_contract_bindings",
+        "aggregation",
+        "failure_caps",
+        "excluded_dimensions"
+      ]
+    },
+    "reproducibility": {
+      "type": "object",
+      "required": [
+        "required_identity_fields",
+        "manifest_required"
+      ]
+    },
+    "approval": {
+      "type": "object",
+      "required": [
+        "status",
+        "reviewed_contract_hash",
+        "reviewer",
+        "reference"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "needs_changes",
+            "blocked",
+            "superseded"
+          ]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

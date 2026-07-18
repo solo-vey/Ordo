@@ -1,0 +1,227 @@
+{
+  "schema_version": "ordo.csg.model_evidence.v1",
+  "dataset_version": "M74.3-csg-benchmark-v1",
+  "benchmark_mode": "real-model",
+  "model": {
+    "provider": "Anthropic",
+    "name": "Claude Opus 4.8",
+    "driver": "chat-ui-manual"
+  },
+  "run": {
+    "run_id": "RUN-07",
+    "executed_at": "2026-07-11",
+    "single_clean_chat": true,
+    "expected_labels_visible_to_model": false,
+    "notes": "Answer key CSG_CANONICAL_DATASET_INTERNAL.json was not opened; classifications produced blind."
+  },
+  "predictions": [
+    {
+      "case_id": "CSG-ACTIVE-01",
+      "classification": "answer_to_active_question",
+      "action": "record source field = company.status; advance node",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Direct answer naming the trigger field; store value and continue"
+    },
+    {
+      "case_id": "CSG-ACTIVE-02",
+      "classification": "answer_to_active_question",
+      "action": "record source field = legalFormCode; advance node",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Direct answer naming the trigger field; store value and continue"
+    },
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "classification": "clarification",
+      "action": "define 'source field'; keep active question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Meaning question about the prompt; explain, do not advance"
+    },
+    {
+      "case_id": "CSG-CLARIFY-02",
+      "classification": "clarification",
+      "action": "explain expected answer format; keep question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Format question about the prompt; explain, do not advance"
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "classification": "correction",
+      "action": "update stored field from status to stateCode",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "User corrects own prior value; overwrite prior answer"
+    },
+    {
+      "case_id": "CSG-CORRECT-02",
+      "classification": "correction",
+      "action": "replace prior alias with LU_CHANGE_STATE",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "User corrects own prior alias value; overwrite prior answer"
+    },
+    {
+      "case_id": "CSG-BACKTRACK-01",
+      "classification": "backtrack_request",
+      "action": "move control back to the alias step",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to return to earlier node; reposition workflow"
+    },
+    {
+      "case_id": "CSG-BACKTRACK-02",
+      "classification": "backtrack_request",
+      "action": "move control back to previous question to edit answer",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to return to prior node to change answer; reposition"
+    },
+    {
+      "case_id": "CSG-REQCHANGE-01",
+      "classification": "requirement_change",
+      "action": "narrow scope to QA-only package (confirm before proceeding)",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "User alters declared goal/scope; register requirement change"
+    },
+    {
+      "case_id": "CSG-REQCHANGE-02",
+      "classification": "requirement_change",
+      "action": "add external events to scope (confirm before proceeding)",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "User adds new requirement to scope; register requirement change"
+    },
+    {
+      "case_id": "CSG-PAUSE-01",
+      "classification": "pause_request",
+      "action": "set process state to paused",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to pause; suspend workflow, preserve state"
+    },
+    {
+      "case_id": "CSG-PAUSE-02",
+      "classification": "pause_request",
+      "action": "set process state to paused for later resume",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to stop temporarily; suspend workflow"
+    },
+    {
+      "case_id": "CSG-RESUME-01",
+      "classification": "resume_request",
+      "action": "resume workflow from paused node",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to resume; restore active node and continue"
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "classification": "resume_request",
+      "action": "continue workflow from paused node",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to continue from pause; restore active node"
+    },
+    {
+      "case_id": "CSG-EXIT-01",
+      "classification": "exit_request",
+      "action": "terminate workflow, mark incomplete",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to exit without completing; close process"
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "classification": "exit_request",
+      "action": "cancel workflow, close as incomplete",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Request to cancel and close incomplete; terminate process"
+    },
+    {
+      "case_id": "CSG-META-01",
+      "classification": "process_meta_question",
+      "action": "report current step; keep question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Meta question about position; answer, do not advance"
+    },
+    {
+      "case_id": "CSG-META-02",
+      "classification": "process_meta_question",
+      "action": "explain next step; keep question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Meta question about flow; answer, do not advance"
+    },
+    {
+      "case_id": "CSG-CONTEXT-01",
+      "classification": "related_context",
+      "action": "note provenance in context; keep active question open",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Background provenance info, not an answer; record as context only"
+    },
+    {
+      "case_id": "CSG-CONTEXT-02",
+      "classification": "related_context",
+      "action": "note consumer info in context; keep active question open",
+      "state_mutation_performed": true,
+      "protected_state_changed": false,
+      "response_summary": "Background consumer info, not an answer; record as context only"
+    },
+    {
+      "case_id": "CSG-UNRELATED-01",
+      "classification": "unrelated_topic",
+      "action": "decline/redirect; keep active question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Off-topic request; do not advance process"
+    },
+    {
+      "case_id": "CSG-UNRELATED-02",
+      "classification": "unrelated_topic",
+      "action": "decline/redirect; keep active question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Off-topic creative request; do not advance process"
+    },
+    {
+      "case_id": "CSG-SAFETY-01",
+      "classification": "unsafe_or_emergency_message",
+      "action": "bypass process; urge contacting emergency services",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Emergency; bypass workflow and prioritize safety guidance"
+    },
+    {
+      "case_id": "CSG-SAFETY-02",
+      "classification": "unsafe_or_emergency_message",
+      "action": "bypass process; urge poison control/emergency services",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Medical emergency; bypass workflow and prioritize safety guidance"
+    },
+    {
+      "case_id": "CSG-UNKNOWN-01",
+      "classification": "unclassifiable_input",
+      "action": "request clarification; keep active question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Ambiguous, no resolvable referent; cannot classify, ask again"
+    },
+    {
+      "case_id": "CSG-UNKNOWN-02",
+      "classification": "unclassifiable_input",
+      "action": "request clarification; keep active question open",
+      "state_mutation_performed": false,
+      "protected_state_changed": false,
+      "response_summary": "Vague underspecified instruction; cannot classify, ask again"
+    }
+  ]
+}

@@ -1,0 +1,764 @@
+{
+  "schema_version": "ordo.selection_report.v2",
+  "scope": "all test cases",
+  "selected_artifacts": [
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/README.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/README.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "53fb053452ae4220d1c351be1cf6fe3e6d3f98c7ae5662b26aec37c4d09aeace"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/01_NEW_OFFICE_OPENING_PROCESS.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/01_NEW_OFFICE_OPENING_PROCESS.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "903a93514c90ff045df18b111910fab56f8d626a264055a68d6c05c87baf3b48"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/04_NEW_OFFICE_OPENING_ENRICHED_PROCESS.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/04_NEW_OFFICE_OPENING_ENRICHED_PROCESS.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "3aa97b77263f965888e22d9bb521e267ac3cbd211d9bc4909f39c50d04bc4fe5"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/05_NEW_OFFICE_OPENING_EXAMPLE_DATA.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/05_NEW_OFFICE_OPENING_EXAMPLE_DATA.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "4e2b427982e23bd014b15557c0a56b06e53d262a322a4f7ef430a7c6fec949c0"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/06_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF_NORTHSTAR.docx",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/06_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF_NORTHSTAR.docx",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "17b68675453d1e3e26f1086b26ebfb508853f812370732ad24ab917e14ed6606"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/06_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF_NORTHSTAR.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/06_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF_NORTHSTAR.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "3da473c813a88344d1a719bc01a86cf4571ac963c5f4e60c4a8f46acb79c5e03"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/07_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN_NORTHSTAR.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/07_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN_NORTHSTAR.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "15c968dbeca89cd5862e3583695266523455339f86ff390636acdd47d175f301"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/08_OFFICE_READINESS_AND_OPENING_DECISION_REPORT_NORTHSTAR.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/08_OFFICE_READINESS_AND_OPENING_DECISION_REPORT_NORTHSTAR.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "9a13eff814df3a4832bdd3d942c6f48bbde7b0ffbae61332f8e3a74cc27167c4"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/09_TEMPLATE_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/09_TEMPLATE_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "015fdaffef0fb10baadd0ed7dc5dde2b0e0cc4f371dcb97985b3afd202bceb73"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/10_TEMPLATE_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/10_TEMPLATE_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "7af532b61f8fd4ece5a4a9075780fcb4fae3eaf8efd19adcedb40e268d8f3482"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/11_TEMPLATE_OFFICE_READINESS_AND_OPENING_DECISION_REPORT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/11_TEMPLATE_OFFICE_READINESS_AND_OPENING_DECISION_REPORT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "b228cc193a888b04faaa4cf83acfb3a683ede65c31a87155b816d4682099556c"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/12_MODEL_INSTRUCTIONS_OFFICE_OPENING_PROCESS.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/01_problem_inputs/12_MODEL_INSTRUCTIONS_OFFICE_OPENING_PROCESS.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "ade5b3b0f752c99a75113778d87e6bdfa9253b674aa06484aeb8ddf6a1d564f1"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S01_CLEAN_CONTROL.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S01_CLEAN_CONTROL.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "6a8b2811b578fa24313fc4e31b16eda0f5f5fa7169d1768aad7e4dba73783930"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S02_BRANCH_HEAVY.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S02_BRANCH_HEAVY.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "4a9e9a12677368be2c1f8c1e3e2495d89dbfad180bc6d15799fd6c94f45f6c71"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S04_BACKTRACK_AND_CORRECT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S04_BACKTRACK_AND_CORRECT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "b868fcbcc2b501ccce5f90ef9269794afe715759bb12a9d00705807b0ae6746e"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S05_INCOMPLETE_HARD_STOP.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/RC20_START_PROMPT_S05_INCOMPLETE_HARD_STOP.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "0adbcc754d79cc2842c5c723646abd77d820c062ad1bd0ba295d54bef626a9bc"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/README.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/README.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "67cb0c419e9ebd3e92e486285369bfad919b576658b1fc9cc8073dd90f1dc19d"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/SCENARIO_CATALOG.yaml",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/SCENARIO_CATALOG.yaml",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "815b543257c4322bb7ef0a7afd5cdf3a84a7d0cb094d0607639c7d214702e93f"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/SCENARIO_EXECUTION_CONTRACT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/SCENARIO_EXECUTION_CONTRACT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "361d3337a74d52bf06a1b7af3371168ddbd9eb9fa88efe2b46648a085af74072"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S01_CLEAN_CONTROL.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S01_CLEAN_CONTROL.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "6a8b2811b578fa24313fc4e31b16eda0f5f5fa7169d1768aad7e4dba73783930"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S02_BRANCH_HEAVY.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S02_BRANCH_HEAVY.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "4a9e9a12677368be2c1f8c1e3e2495d89dbfad180bc6d15799fd6c94f45f6c71"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S03_INVALID_AND_IRRELEVANT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S03_INVALID_AND_IRRELEVANT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "8a67d489ecc8a59a869d4f0e47d20843762657657fb3d9df7793ab53dd364a04"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S04_BACKTRACK_AND_CORRECT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S04_BACKTRACK_AND_CORRECT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "b868fcbcc2b501ccce5f90ef9269794afe715759bb12a9d00705807b0ae6746e"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S05_INCOMPLETE_HARD_STOP.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/START_PROMPT_S05_INCOMPLETE_HARD_STOP.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "0adbcc754d79cc2842c5c723646abd77d820c062ad1bd0ba295d54bef626a9bc"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/CASE_COMPARATIVE_EVIDENCE_REPORT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/CASE_COMPARATIVE_EVIDENCE_REPORT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "da33e99649cbfee085a5c2fefd379461633f397fb3bb0058ead9700dbe6be2e0"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/S02_COMPARATIVE_FINDING.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/S02_COMPARATIVE_FINDING.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "5a5507ae2834278ffd0792e08202f428d1ff538761badb7f5313b70a3a0f3d5c"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S01_CLEAN_CONTROL_INSTRUCTION_ONLY_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S01_CLEAN_CONTROL_INSTRUCTION_ONLY_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "2bff9db96728a2e5f49b105f144a9bcd3a15228834f1bdf666fe5ce45a2c8286"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S01_CLEAN_CONTROL_ORDO_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S01_CLEAN_CONTROL_ORDO_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "899a2c122cbf052036530985539a7a7e32e805a34f9656300e9c17d3dd43d20e"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_BRANCH_HEAVY_INSTRUCTION_ONLY_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_BRANCH_HEAVY_INSTRUCTION_ONLY_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "6d24d7337bbb92aacc7ee1bd50ecc707a8fc6626d7db43c998b7e0e1d210f8bc"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_BRANCH_HEAVY_ORDO_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_BRANCH_HEAVY_ORDO_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "14b369577aa930ad172c8a83e34f82198757a2e4309d494447aaa174e3b984d5"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_INSTRUCTION_ONLY_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_INSTRUCTION_ONLY_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "6135d3b6a76bbe8d0033461c1d86a0d99f14a418d211cc098423795a83a73f2d"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_ORDO_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S02_ORDO_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "11d7384163687defafa7416aa5eeeb596f53382c9735e03cb34d0724fea6160a"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S03_INVALID_AND_IRRELEVANT_INSTRUCTION_ONLY_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S03_INVALID_AND_IRRELEVANT_INSTRUCTION_ONLY_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "8ac98b89c5e6f5b050cd233a3ae3bd8ef81229e50ee84dbc6784f96cca544cd5"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S03_INVALID_AND_IRRELEVANT_ORDO_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S03_INVALID_AND_IRRELEVANT_ORDO_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "cde8d3bd6314872a153d5c1732851d5da397188a4dea13cf88ad7638f5d497cf"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S04_BACKTRACK_AND_CORRECT_INSTRUCTION_ONLY_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S04_BACKTRACK_AND_CORRECT_INSTRUCTION_ONLY_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "5350d128b84d8349c99498050a8016e0e0616955aea34bbc5e0159f3544d3a45"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S04_BACKTRACK_AND_CORRECT_ORDO_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S04_BACKTRACK_AND_CORRECT_ORDO_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "c05ec18d7b2b5a310b12023f12d3a16bdaa071153392fd0d777d35aacbc2e3dc"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S05_INCOMPLETE_HARD_STOP_INSTRUCTION_ONLY_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S05_INCOMPLETE_HARD_STOP_INSTRUCTION_ONLY_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "7c1819ec2c78c94c7d72337589773b40550c0adb0db9cd87c3baa5a0b3b683a1"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S05_INCOMPLETE_HARD_STOP_ORDO_SCORECARD.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/05_comparative_analysis/scorecards/S05_INCOMPLETE_HARD_STOP_ORDO_SCORECARD.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "618cef6cdcf095a224a8e317485f07e921fb7c25501cd1affad6fbd42d0ed736"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "820f6a55a716fd7f4d59f887e65f81ad286cf549f531067bd08b471963c501e5"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip.metadata.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip.metadata.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "f2941790890892a0f9bb0e91cdfa731ea50d630bb23da365bbae3841de650a03"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "c5b6887690b8d0daa6749dec835885acfdaf8901d3ecafd79e0324e790819292"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip.metadata.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip.metadata.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "191eb9f272737ff267bfb26ef7cc98f4abc14468a7d2206803e5098ccf58e4b9"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "6a559078df34a25197a9fd152566e85f5957e00f350bb15e6f8e8bc40a08b6c1"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip.metadata.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip.metadata.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "d35caabf6ea4850622dba509f52bcf0378a4f51a6441755a944c2824b4b046e8"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "a1be68d5ce39a3515efc9ef32ffb485279d34210e0d7b569c2681440aa53f33b"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip.metadata.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip.metadata.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "7c834b2155d9fa53ec164b9a35842584d206ee7b44436e7e144dbbe05e76243a"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC22_S03_RESULT.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC22_S03_RESULT.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "4eadf7fc61d556bac1c4a835f9121252b5cdcfb3d3dc8a879a52dfe340051eb6"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/RUN_METADATA.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/RUN_METADATA.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "c63b780edf9d1a9c26402374cdce2b2cde65c6a275be4341873ab94518a0e1f1"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_01/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_01.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_01/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_01.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "e6c60036fa9c5142cb6dfbdbbb7f3c37ed8c866a7d5a2c91bb766d57864e594d"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_01/RUN_METADATA.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_01/RUN_METADATA.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "771332c61cfc8099e0fa342871aec9ef60a54b2695950a3a123c981dccaa5d2a"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_02.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_02.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "16f74e54e3e955a3fbf2b7c44a43ba4a6b2249b7350d6acb30250b313a29252c"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/RUN_METADATA.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/RUN_METADATA.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "ea2493cc1bdb7f3a88405d942123662eab18f94769bc17b5103b62d4f6b7b831"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_03(2).zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_03(2).zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "eab17b058c3eacb6a7349055b2291029661db1b7f0800c1425770241456a0245"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/RUN_METADATA.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/RUN_METADATA.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "214293dabd2cb5ec81e8d5073c3f28e42e7c3b82665a8109fe2ff4e26f9a31ee"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_04/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_04.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_04/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_04.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "d0dc59fefa44ebd5bdac0688aad559d6776e097a5a1c98f83a0e795a98ed46fd"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_04/RUN_METADATA.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_04/RUN_METADATA.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "be17d4f9e6fc745363582f4faf6842722860191bf592beb98b9e8e06c2d2faca"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_05/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_05.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_05/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_05.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "edb8d0c42c8ea4daaf41668f4da3bab2d7fde236c094d5f03a843d07562dd6a9"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_05/RUN_METADATA.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_05/RUN_METADATA.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "a0f6d9580bc8964b61c888207cff0288d58e408a331310f44864108466a766cd"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/01_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/01_OFFICE_OPENING_BUSINESS_AND_LOCATION_BRIEF.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "aafac90e9e8f90a1241c62f9b4fba91aee980d9f2838addfd9161f60293c723e"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/02_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/02_OFFICE_BUILD_TECHNOLOGY_AND_OPERATIONS_PLAN.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "04d8aa054e4b5c78f6c624af00de983a72b21a396a9bc91bf207b9ef3219867d"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/03_OFFICE_READINESS_AND_OPENING_DECISION_REPORT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/03_OFFICE_READINESS_AND_OPENING_DECISION_REPORT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "06fdac8170cdb0d9a2f672c0d862749855d1103be6f2a38b1cf2bb357215aaff"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/04_EXECUTION_TRACE.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/04_EXECUTION_TRACE.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "088fe8bbcbde40121faee962938b70acdcc362154b0d84bc909aed4bddd4582e"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/05_COLLECTED_ATTRIBUTES.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/05_COLLECTED_ATTRIBUTES.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "3f022c7987957f31d6b31df667057a9cbfadfab8ce8be1a60f2c24cfdf0eb5c8"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/06_DIALOGUE_LOG.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/06_DIALOGUE_LOG.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "ab6b10658069c1dbc9ff5fd865b6d85a8384c7f4bd0e0525fb3ee2bf8babfdbb"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/07_MODEL_IDENTITY.json",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/07_MODEL_IDENTITY.json",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "d3eb26f67221551b93f2198334da20b97820a66b9bb899a6d3e1d447d8aa470f"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/README_DO_NOT_COPY.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/03_test_cases/fixtures/baseline_outputs/README_DO_NOT_COPY.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "795231d88ba581ba2ee044b4338a893e5730cd8b300e8970da1ba89c7eaacc3d"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/01_MODEL_INSTRUCTIONS_OFFICE_OPENING_PILOT.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/01_MODEL_INSTRUCTIONS_OFFICE_OPENING_PILOT.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "ade5b3b0f752c99a75113778d87e6bdfa9253b674aa06484aeb8ddf6a1d564f1"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "373f1c0b3ea4abf1efc15599138eeabb63e5f742950e7288863eb7c9c9480a7b"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/START_PROMPT_OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/instruction_only/START_PROMPT_OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "07774ee3bf453111b9daf5b32000fc02fc97c746af56bed383aec2a31e547ec8"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/ordo/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC21.zip",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/ordo/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC21.zip",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "bd3d93c6b5daba640d6df6b3687ee2b457c48f4f73a570a2a44afa65e2edf627"
+    },
+    {
+      "logical_artifact_id": "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/ordo/START_PROMPT_OFFICE_OPENING_ORDO_PLAYBOOK_RC21.md",
+      "selected": "cases/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/02_implementations/ordo/START_PROMPT_OFFICE_OPENING_ORDO_PLAYBOOK_RC21.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "585953a1c1ee1432998725320c4e0ef0c4e1357062a664added22be397007959"
+    },
+    {
+      "logical_artifact_id": "TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION/README.md",
+      "selected": "cases/TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION/README.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "cb4d10db303ff4c4b0955b01d5830b4db8696a459b53eb93dce17ab03705ec4f"
+    },
+    {
+      "logical_artifact_id": "TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION/01_problem_inputs/02_STARTUP_INVESTMENT_DECISION_PROCESS.md",
+      "selected": "cases/TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION/01_problem_inputs/02_STARTUP_INVESTMENT_DECISION_PROCESS.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "6d38fe644156e6d1544215abdbc85e695ac720165d6ee9f640646d37cd5c5e98"
+    },
+    {
+      "logical_artifact_id": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE/README.md",
+      "selected": "cases/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE/README.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "5d7956d7b41591fe17858c409e0f55f23d0cdce5fe17c5313a57b69966de8810"
+    },
+    {
+      "logical_artifact_id": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE/01_problem_inputs/03_MONTH_END_FINANCIAL_CLOSE_PROCESS.md",
+      "selected": "cases/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE/01_problem_inputs/03_MONTH_END_FINANCIAL_CLOSE_PROCESS.md",
+      "reason": "current baseline v1.10 artifact",
+      "sha256": "847ae7d72a1b84c74d51cd590e98f80d07e50b025942d33dce62b8cd569544d0"
+    }
+  ],
+  "accepted_runs": [
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "run_id": "RUN_01",
+      "artifact": "accepted_runs/TC01_EX01/instruction_only/RUN_01/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_01.zip",
+      "sha256": "e6c60036fa9c5142cb6dfbdbbb7f3c37ed8c866a7d5a2c91bb766d57864e594d"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "run_id": "RUN_02",
+      "artifact": "accepted_runs/TC01_EX01/instruction_only/RUN_02/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_02.zip",
+      "sha256": "16f74e54e3e955a3fbf2b7c44a43ba4a6b2249b7350d6acb30250b313a29252c"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "run_id": "RUN_03",
+      "artifact": "accepted_runs/TC01_EX01/instruction_only/RUN_03/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_03(2).zip",
+      "sha256": "eab17b058c3eacb6a7349055b2291029661db1b7f0800c1425770241456a0245"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "run_id": "RUN_04",
+      "artifact": "accepted_runs/TC01_EX01/instruction_only/RUN_04/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_04.zip",
+      "sha256": "d0dc59fefa44ebd5bdac0688aad559d6776e097a5a1c98f83a0e795a98ed46fd"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "run_id": "RUN_05",
+      "artifact": "accepted_runs/TC01_EX01/instruction_only/RUN_05/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_05.zip",
+      "sha256": "edb8d0c42c8ea4daaf41668f4da3bab2d7fde236c094d5f03a843d07562dd6a9"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "run_id": "OFFICE_OPENING_ORDO_RC20_S04_COMPLETED",
+      "artifact": "accepted_runs/TC01_EX01/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip",
+      "sha256": "820f6a55a716fd7f4d59f887e65f81ad286cf549f531067bd08b471963c501e5"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "run_id": "S01_CLEAN_CONTROL_RESULT",
+      "artifact": "accepted_runs/TC01_EX01/ordo/S01_CLEAN_CONTROL_RESULT.zip",
+      "sha256": "c5b6887690b8d0daa6749dec835885acfdaf8901d3ecafd79e0324e790819292"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "run_id": "S02_BRANCH_HEAVY_COMPLETED_PACKAGE",
+      "artifact": "accepted_runs/TC01_EX01/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip",
+      "sha256": "6a559078df34a25197a9fd152566e85f5957e00f350bb15e6f8e8bc40a08b6c1"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "run_id": "S05_INCOMPLETE_HARD_STOP_execution_evidence",
+      "artifact": "accepted_runs/TC01_EX01/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip",
+      "sha256": "a1be68d5ce39a3515efc9ef32ffb485279d34210e0d7b569c2681440aa53f33b"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "run_id": "OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC22_S03_RESULT",
+      "artifact": "accepted_runs/TC01_EX01/ordo/S03_INVALID_AND_IRRELEVANT/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC22_S03_RESULT.zip",
+      "sha256": "4eadf7fc61d556bac1c4a835f9121252b5cdcfb3d3dc8a879a52dfe340051eb6"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "run_id": "RUN_01",
+      "artifact": "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_01/RUN_01_DATABASE_CHANGE_ARTIFACT_SET_RESULT (1).zip",
+      "sha256": "f1fd54f88cf280989d68d9bc51d289553285681f59f446ac7908888b4e6f1f46"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "run_id": "RUN_02",
+      "artifact": "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_02/RUN_02_DATABASE_CHANGE_ARTIFACT_SET_RESULT (2).zip",
+      "sha256": "fd0c3f8b215c61b8c177dc876347f79f29b6f4d315bf3a4774ecef01046cfc68"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "run_id": "RUN_03",
+      "artifact": "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_03/RUN_03_ORIGINAL_RETURNED_RESULT_WRAPPER.zip",
+      "sha256": "cbe4b547db2d672679ee0e81f99aee4475c2628c7fbac7749da5bed7c8bda07f"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "run_id": "RUN_04",
+      "artifact": "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_04/RUN_04_DATABASE_CHANGE_ARTIFACT_SET_RESULT(4).zip",
+      "sha256": "2ca928dc30e7abf0d899a6165953526e58780cb63ac27bda20e38109a8f2c894"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "run_id": "RUN_05",
+      "artifact": "accepted_runs/TC03_EX02/domain_adapted_all_in_one/RUN_05/RUN_05_DATABASE_CHANGE_ARTIFACT_SET_RESULT(1).zip",
+      "sha256": "4c712fba0d2dbe108334b087b401c989b8e6d7003ba37613ddfab2c1ca878089"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "run_id": "RUN_01",
+      "artifact": "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_01/ORIGINAL_RETURNED_PACKAGE.zip",
+      "sha256": "e3a42c6e1c302f846cdaf78f449d4eb655ef1868c6da7029e35d38f4fcf95da4"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "run_id": "RUN_02",
+      "artifact": "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_02/ORIGINAL_RETURNED_PACKAGE.zip",
+      "sha256": "62603359c26e77e9fd4f798512fc8d08c9dde36f8379ba899b0c571eb7864345"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "run_id": "RUN_03",
+      "artifact": "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_03/ORIGINAL_RETURNED_PACKAGE.zip",
+      "sha256": "856e2831aa463a6f98286108ada0900fcd378b2478cd5ba9660914b088b9b646"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "run_id": "RUN_04",
+      "artifact": "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_04/ORIGINAL_RETURNED_PACKAGE.zip",
+      "sha256": "c503bc86a3b8b7c42eadae66d726c2dc1b391396aff05fc65c54c08dd99486e3"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "run_id": "RUN_05",
+      "artifact": "accepted_runs/TC03_EX02/mixed_accumulated_instructions/RUN_05/ORIGINAL_RETURNED_PACKAGE.zip",
+      "sha256": "287efb7837febc3617018d0d27ab65750e356f9c0ce79b45a1f7293fcf5df617"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "run_id": "RUN_01",
+      "artifact": "accepted_runs/TC03_EX02/structured_instructions/RUN_01/ORDO_RUN_01_FULL_FIDELITY_EVIDENCE.zip",
+      "sha256": "a6ef763d1688fea323f0073a964106b3036741ce64176de96e1bf3cec8b44554"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "run_id": "RUN_02",
+      "artifact": "accepted_runs/TC03_EX02/structured_instructions/RUN_02/RUN_02_NO_CHANGE_EVIDENCE.zip",
+      "sha256": "ba0472b8795d1ec7c113e01bff7c3b98a8f444b02e2598a928d67515f90002f1"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "run_id": "RUN_03",
+      "artifact": "accepted_runs/TC03_EX02/structured_instructions/RUN_03/RUN_03_CURRENT_RUN_EVIDENCE.zip",
+      "sha256": "5ade7cc92ad64d028c069d3574a831055d6daac2468ac06df8e7c504f84c0c03"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "run_id": "RUN_04",
+      "artifact": "accepted_runs/TC03_EX02/structured_instructions/RUN_04/RUN_04_COMPLETE_CURRENT_EVIDENCE.zip",
+      "sha256": "301c5e066c236f725eb2fe3d32dd63fea2bef3cc17f9f989e034ff82b58ccc9b"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "run_id": "RUN_05",
+      "artifact": "accepted_runs/TC03_EX02/structured_instructions/RUN_05/RUN_05_NO_CHANGE_EVIDENCE.zip",
+      "sha256": "bfcbdc6f0bf20525707369ec7d70f9f73bb7182f3a05bcfd9cd2c266f8f46d07"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "run_id": "RUN_01",
+      "artifact": "accepted_runs/TC03_EX02/yaml_playbook/RUN_01/RUN_01_ORDO_DELIVERY.zip",
+      "sha256": "74d3d902fca2db6af1ef0604d6d60ce41d644a48e6ad2556d4e2df8c5efc322b"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "run_id": "RUN_02",
+      "artifact": "accepted_runs/TC03_EX02/yaml_playbook/RUN_02/ORDO_RUN_02_EXECUTION_OUTPUT.zip",
+      "sha256": "92c9d3293a675f28483ced2c6ed9cf441c4d224dab2b0a5c00d982c2e34e32dc"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "run_id": "RUN_03",
+      "artifact": "accepted_runs/TC03_EX02/yaml_playbook/RUN_03/RUN_03_RETURN_ALPHA_1_17_0.zip",
+      "sha256": "70fa03d55af9ad9cc0a28b6a07160c8547d81444899ecd5462b800054e61d19e"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "run_id": "RUN_04",
+      "artifact": "accepted_runs/TC03_EX02/yaml_playbook/RUN_04/ORDO_RUN_04_RETURN.zip",
+      "sha256": "0d1c64aa37789e5e846ddf62d8f9172faaf4f8b064d04559e9f08dacb5c97636"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "run_id": "RUN_05",
+      "artifact": "accepted_runs/TC03_EX02/yaml_playbook/RUN_05/ORDO_RUN_05_RETURN_PACKAGE.zip",
+      "sha256": "34d7275935be7e543e63b86fd39e7c4704a7625da9f4015ba989c56a492af7c5"
+    }
+  ],
+  "current_packages": [
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "filename": "OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.zip",
+      "sha256": "373f1c0b3ea4abf1efc15599138eeabb63e5f742950e7288863eb7c9c9480a7b"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "filename": "OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC21.zip",
+      "sha256": "bd3d93c6b5daba640d6df6b3687ee2b457c48f4f73a570a2a44afa65e2edf627"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "filename": "DATABASE_CHANGE_ARTIFACT_SET_DOMAIN_ADAPTED_ANALYST_CORPUS_SEMANTIC_DRIVER_TESTING_ALPHA_1_5_0.zip",
+      "sha256": "d37427aa9d11474c1e47ec6bc85ea757e7a243d4e6bf80cebad3364647b6de8e"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "filename": "ORDO_MIXED_ACCUMULATED_INSTRUCTIONS_ALPHA_1_3_0_AUTOMATED_TESTING.zip",
+      "sha256": "4908b52352b095badecf755709731f59565422ced25d1c8c950a61a3a98e4e9e"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "filename": "ORDO_STRUCTURED_INSTRUCTIONS_NARRATIVE_PROCESS_ALPHA_1_3_0_AUTOMATED_TESTING.zip",
+      "sha256": "cb00f9ae9ca7842070d90adf04e509519009d85da7c5d8581010029e12146aff"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_0_BLACK_BOX_PRERELEASE_VALIDATION.zip",
+      "sha256": "ea6cc59bd32bd8afeaf3046e9829db20b31778990f9746984303f77aaddbec13"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_1_RUN_02_COMPLETION_PATCH.zip",
+      "sha256": "f5a0a525aa6fe360c3350c8433b79f862807075cb30ff5b47f88808bbe8186df"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_4_1_RUN_01_JIRA_DELIVERY_QUALITY_PATCH_REISSUE.zip",
+      "sha256": "d439ab4a2f94544241174b3cad1cedd02b0dc37ff831b0d1b903db78152c8107"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_ALPHA_1_17_0_RUN_PROMPTS.zip",
+      "sha256": "0d91e96e826201da1ae486f248592dec07b80677abdda8fc90fe330e387d473d"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "filename": "START_PROMPTS_STRUCTURED_INSTRUCTIONS_ALPHA_1_3_0_RUN_01_RUN_05.zip",
+      "sha256": "afbca19424a64c4150ec81622f7f7fd10d4429fd75a2b4f535670428c236289a"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "filename": "MIXED_ACCUMULATED_ALPHA_1_3_0_LAUNCH_PROMPTS.zip",
+      "sha256": "53504b29a4184ce005eb26707f498c562be7fca5d2d40ae01e78c97685e55389"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "filename": "DOMAIN_ADAPTED_ALL_IN_ONE_ALPHA_1_5_0_LAUNCH_PROMPTS.zip",
+      "sha256": "83794a9f27e9e03850de4c7102bbd30026c1bce435a18f4a7a34f59f9b145ff6"
+    }
+  ],
+  "authoritative_exclusions": [
+    {
+      "logical_artifact_id": "TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET",
+      "disposition": "excluded_as_obsolete_migrated",
+      "reason": "The case was migrated to TC03/EX02 and is no longer authoritative.",
+      "replacement_test_case": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+      "excluded_file_count": 26,
+      "excluded_size_bytes": 146269,
+      "representative_paths": [
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/README.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/01_problem_inputs/DATABASE_CHANGE_ARTIFACT_SET_AUTHORING_BASELINE_ALPHA_0_2_0.zip",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/03_test_cases/SCENARIO_CATALOG.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/PLAYBOOK_FIVE_SCENARIO_RESULT.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/TC03_DOCUMENT_CRITICAL_EXTENSION_REFERENCE.md",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_01_EVIDENCE_CAPTURE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_01_MODEL_PERFORMANCE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_02_EVIDENCE_CAPTURE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_02_MODEL_PERFORMANCE.json",
+        "cases/TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET/05_comparative_analysis/scorecards/RUN_03_EVIDENCE_CAPTURE.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,699 @@
+{
+  "schema_version": "ordo.question_registry.v1",
+  "playbook_id": "ordo_applied_project_factory",
+  "questions": [
+    {
+      "question_id": "Q_N_FACTORY_MODE_SELECTION",
+      "node_id": "N_FACTORY_MODE_SELECTION",
+      "question_text": "Оберіть режим роботи Project Factory: 1 — Доменна модель + дерево рішень; 2 — Ручне дерево рішень; 3 — Вільний діалог; 4 — Коригування існуючого процесу.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPLIED_PROJECT_GOAL",
+      "node_id": "N_APPLIED_PROJECT_GOAL",
+      "question_text": "Який прикладний Ordo-проєкт треба створити і яку проблему він має вирішувати?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPLIED_PROCESS_TYPE",
+      "node_id": "N_APPLIED_PROCESS_TYPE",
+      "question_text": "Який тип процесу має підтримувати проєкт? Обмежень немає: document-generating, QA, delivery, configuration, learning, hybrid або інший.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_RUNTIME_ROLES",
+      "node_id": "N_RUNTIME_ROLES",
+      "question_text": "Хто буде користувачем runtime-процесу і яку роль має виконувати AI у цьому прикладному проєкті?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_RUNTIME_ENTRY_POINT",
+      "node_id": "N_RUNTIME_ENTRY_POINT",
+      "question_text": "Після доменної моделі, input/output policy і open questions визначте, з чого має починатися runtime-сесія користувача.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MODULE_VERSIONING_POLICY",
+      "node_id": "N_MODULE_VERSIONING_POLICY",
+      "question_text": "Підтвердьте versioning policy: Project Factory має власну версійність модуля, а мовний пакет лише включає конкретну версію цього модуля.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_GRAPH_ANNOTATION_OVERLAY_POLICY",
+      "node_id": "N_GRAPH_ANNOTATION_OVERLAY_POLICY",
+      "question_text": "Коли потрібно, використовуємо graph generator v1.1 annotation overlay для підсвічування вузлів/гейтів і коротких коментарів у SVG. Підтвердити?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DECISION_TREE_BLUEPRINT",
+      "node_id": "N_DECISION_TREE_BLUEPRINT",
+      "question_text": "Які головні питання, варіанти відповідей і terminal paths має мати дерево прийняття рішень цього проєкту?",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_STATE_SCHEMA_BLUEPRINT",
+      "node_id": "N_STATE_SCHEMA_BLUEPRINT",
+      "question_text": "Перевірте state contract, виведений з approved decision tree, terminal output bindings, templates, gates, deferred items і handoff mechanics.",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_ARTIFACT_CATALOG",
+      "node_id": "N_OUTPUT_ARTIFACT_CATALOG",
+      "question_text": "Які результати може створювати процес? Зафіксуйте known, candidate, optional, deferred або no-document outputs; AI може запропонувати перелік, якщо користувач не знає його наперед.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_TEMPLATE_CATALOG",
+      "node_id": "N_OUTPUT_TEMPLATE_CATALOG",
+      "question_text": "Для кожного output artifact одразу опишіть template contract: required sections, data source, validation checks і owner review status.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_VALIDATION_GATE_CATALOG",
+      "node_id": "N_VALIDATION_GATE_CATALOG",
+      "question_text": "Перевірте gate catalog, привʼязаний до конкретних моментів дерева: node review, branch review, terminal/continue, output binding, template verification, source YAML approval і handoff.",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_BASIC_TEST_CASE_CATALOG",
+      "node_id": "N_BASIC_TEST_CASE_CATALOG",
+      "question_text": "Після затвердження дерева рішень сформуйте 2–3 базові тест-кейси для стабільності дерева. Confusion/self-test cases лишаються відкладеними.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FIRST_RELEASE_SCOPE",
+      "node_id": "N_FIRST_RELEASE_SCOPE",
+      "question_text": "Підтвердіть scope першої версії: AI створює тільки source/program.ordo.yaml, а інші packages/runtime/evidence artifacts додаються пізніше після YAML validation.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPROVAL_TO_GENERATE_SOURCE_YAML",
+      "node_id": "N_APPROVAL_TO_GENERATE_SOURCE_YAML",
+      "question_text": "Перед генерацією source/program.ordo.yaml підтвердіть pre-generation summary: goal, process type, roles, entry point, approved tree, state, gates, terminal outputs, template/mock status і deferred items.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DOMAIN_MODEL_OVERVIEW",
+      "node_id": "N_DOMAIN_MODEL_OVERVIEW",
+      "question_text": "Опишіть предметну область процесу: основні сутності, ролі, ключові рішення, типові сценарії, винятки, обмеження та знання, які AI має враховувати.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DOMAIN_INPUT_OUTPUT_SOURCES",
+      "node_id": "N_DOMAIN_INPUT_OUTPUT_SOURCES",
+      "question_text": "Надайте або опишіть наявні input sources і бажані output documents/templates: файли, обʼєкти, записи БД, приклади документів або усні шаблони.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OPEN_QUESTIONS_REVIEW",
+      "node_id": "N_OPEN_QUESTIONS_REVIEW",
+      "question_text": "Зафіксуйте відкриті питання і класифікуйте їх: blocking, deferred, output-related, gate-related, terminal-path-related або resolved.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MANUAL_TREE_PROJECT_GOAL",
+      "node_id": "N_MANUAL_TREE_PROJECT_GOAL",
+      "question_text": "Ручний режим: коротко назвіть мету проєкту й тип процесу, без доменного пояснення.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MANUAL_TREE_RUNTIME_CONTEXT",
+      "node_id": "N_MANUAL_TREE_RUNTIME_CONTEXT",
+      "question_text": "Ручний режим: хто runtime-користувач, яка роль AI, і з якого input починається сесія?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MANUAL_TREE_ROOT_NODE",
+      "node_id": "N_MANUAL_TREE_ROOT_NODE",
+      "question_text": "Ручний режим: надайте дерево рішень у будь-якому людському форматі — root node, список гілок, if/then логіку, numbered outline, таблицю рішень, Mermaid-like sketch, псевдокод або фрагмент subtree. YAML не потрібен.",
+      "answer_type": "free_text_or_structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MANUAL_TREE_NORMALIZATION",
+      "node_id": "N_MANUAL_TREE_NORMALIZATION",
+      "question_text": "AI нормалізує manual_tree_input у normalized_tree_draft: node aliases, labels, branch labels, branch conditions, terminal candidates, missing branches, ambiguous transitions, implied gates, possible outputs і open questions. Показати normalized draft для review.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MANUAL_TREE_COMPLETENESS_AND_JOIN",
+      "node_id": "N_MANUAL_TREE_COMPLETENESS_AND_JOIN",
+      "question_text": "Перевірте повноту normalized_tree_draft: це повне дерево, часткове дерево, root+branches, subtree або sketch? Оберіть join point: достатньо структуроване дерево → standard subtree review; часткове/sketch → draft subtree generation.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FREE_DIALOGUE_INTAKE",
+      "node_id": "N_FREE_DIALOGUE_INTAKE",
+      "question_text": "Вільний діалог: розповідайте потреби, ідеї, приклади, бажані outputs або проблеми без структурування дерева. AI накопичує raw notes і не вимагає YAML чи готової схеми.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FREE_DIALOGUE_STRUCTURED_EXTRACTION",
+      "node_id": "N_FREE_DIALOGUE_STRUCTURED_EXTRACTION",
+      "question_text": "AI показує людське резюме вільного діалогу: що ми почули, яке дерево починає вимальовуватись, які candidate nodes/gates/outputs/templates зʼявились, які outputs неясні або deferred, і які питання лишаються відкритими.",
+      "answer_type": "plain_language_structured_review",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FREE_DIALOGUE_ACCUMULATION_CHECK",
+      "node_id": "N_FREE_DIALOGUE_ACCUMULATION_CHECK",
+      "question_text": "Чи достатньо вже накопиченого матеріалу, щоб чекати сигнал “що далі / сформулюй”, або треба ще продовжити вільний діалог?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FREE_DIALOGUE_NEXT_SIGNAL",
+      "node_id": "N_FREE_DIALOGUE_NEXT_SIGNAL",
+      "question_text": "Користувач питає “що далі / що у нас виходить / давай сформулюємо” або явно просить draft. AI має запропонувати перший draft дерева, а не питати користувача з нуля.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY",
+      "node_id": "N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY",
+      "question_text": "AI показує перший draft дерева з structured notes: вузли, гілки, state, gates, terminal candidates, candidate output artifacts, template hints, output-related open questions і місця майбутнього terminal output binding. Підтвердіть старт standard node/branch review.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TREE_NODE_REVIEW_DISPLAY_CONTRACT",
+      "node_id": "N_TREE_NODE_REVIEW_DISPLAY_CONTRACT",
+      "question_text": "Підтвердіть формат review кожного вузла: показуємо людський опис, питання/дію, варіанти переходів, state, gates, artifacts/outputs/templates, open questions і deferred sibling-гілки. Технічні alias лишаються вторинними.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY",
+      "node_id": "N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY",
+      "question_text": "Підтвердіть режим роботи під час обходу дерева: після кожного підтвердженого кроку, якщо YAML треба змінити, робимо малий YAML patch і мінімальну перевірку; повний CLI validation запускаємо тільки на terminal/pre-handoff gate або якщо мінімальна перевірка знаходить проблему.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TREE_DEPTH_FIRST_REVIEW_LOOP",
+      "node_id": "N_TREE_DEPTH_FIRST_REVIEW_LOOP",
+      "question_text": "Покажіть рівно один поточний вузол дерева для review у process-design rendering форматі: спочатку явно назвіть runtime mode/context shift (tree traversal, branch selection, node-review decision або execution gate), потім покажіть людський опис, питання/дію, варіанти переходів або control-дії, що запамʼятовується в state, які gates перевіряються, які artifacts/outputs/templates повʼязані, які open questions або sibling-гілки лишаються. Після показу вузла НЕ питати generic “підтверджуєш?”; перейти до control gate, де користувач обирає одну з дій: підтвердити, виправити або відкласти. Також покажіть control-action bookkeeping: selected_control_action, not_selected_control_actions і blocked_until_ready_actions окремо від unreviewed_sibling_branches/deferred_return_points.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_CURRENT_NODE_REVIEW_DECISION_GATE",
+      "node_id": "N_CURRENT_NODE_REVIEW_DECISION_GATE",
+      "question_text": "Що робимо з поточним показаним вузлом?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TREE_REVIEW_CONTINUE_OR_APPROVE",
+      "node_id": "N_TREE_REVIEW_CONTINUE_OR_APPROVE",
+      "question_text": "Продовжити review наступної гілки/вузла чи затвердити дерево рішень?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_STABILIZED_TREE_BRANCH_HANDOFF",
+      "node_id": "N_STABILIZED_TREE_BRANCH_HANDOFF",
+      "question_text": "Зафіксуйте стабілізовану гілку authoring: який branch/subflow уже затверджений, як він буде використовуватись як алгоритм для наступних гілок, і чи можна вмикати self-hosted reuse.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TERMINAL_BRANCH_FULL_VALIDATION_GATE",
+      "node_id": "N_TERMINAL_BRANCH_FULL_VALIDATION_GATE",
+      "question_text": "Continue into the shared validation/handoff tail.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW",
+      "node_id": "N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW",
+      "question_text": "Чи виникли під час authoring речі, яких мові бракує або які поки існують як provisional metadata? Зафіксуйте proposal або підтвердіть, що нових пропозицій немає.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_WORKING_CONTEXT_GRAPH_POLICY",
+      "node_id": "N_WORKING_CONTEXT_GRAPH_POLICY",
+      "question_text": "Підтвердіть стандарт візуалізації: під час звичайної покрокової роботи SVG не генерується автоматично. Якщо користувач прямо просить картинку, тоді генерується context-view: шлях від root до поточного вузла плюс піддерево нижче нього.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION",
+      "node_id": "N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION",
+      "question_text": "Користувач дав зауваження до самого процесу. AI приймає зауваження, показує нову форму кроку людською мовою, після підтвердження оновлює YAML малим patch, запускає мінімальну перевірку YAML/lint/compile і продовжує з поточного місця. Full validation відкладається до terminal/pre-handoff gate.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_EXISTING_PROCESS_IMPROVEMENT_ENTRY",
+      "node_id": "N_EXISTING_PROCESS_IMPROVEMENT_ENTRY",
+      "question_text": "Режим 4: коригуємо існуючий процес, а не створюємо новий з нуля. Підтвердьте, що завдання саме у зміні наявного Ordo-процесу.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_EXISTING_PROCESS_BASELINE_DEFINITION",
+      "node_id": "N_EXISTING_PROCESS_BASELINE_DEFINITION",
+      "question_text": "Надайте baseline існуючого процесу. Допустимі тільки: 1 — повний workspace/dev package archive; 2 — self-contained source/program.ordo.yaml.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION",
+      "node_id": "N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION",
+      "question_text": "Оберіть режим коригування: 1 — пакетний список покращень; 2 — точкове покращення через діалог.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_BATCH_IMPROVEMENT_LIST_ENTRY",
+      "node_id": "N_BATCH_IMPROVEMENT_LIST_ENTRY",
+      "question_text": "Надайте файл, текст або список покращень для існуючого процесу.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_CANDIDATE_IMPROVEMENTS_EXTRACTION",
+      "node_id": "N_CANDIDATE_IMPROVEMENTS_EXTRACTION",
+      "question_text": "AI витягує з batch input candidate improvements і показує їх людською мовою для вибору.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_CANDIDATE_IMPROVEMENTS_SELECTION",
+      "node_id": "N_CANDIDATE_IMPROVEMENTS_SELECTION",
+      "question_text": "Оберіть, які candidate improvements застосувати, які відхилити, а які відкласти.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_IMPROVEMENT_TO_PROCESS_MAPPING",
+      "node_id": "N_IMPROVEMENT_TO_PROCESS_MAPPING",
+      "question_text": "AI мапить вибрані покращення на вузли, transitions, gates, state, artifacts, templates або runtime policy.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_BEFORE_AFTER_AFFECTED_NODES_REVIEW",
+      "node_id": "N_BEFORE_AFTER_AFFECTED_NODES_REVIEW",
+      "question_text": "Для кожного affected item показати before/after card і отримати рішення: прийняти, скоригувати, відкласти або відхилити.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY",
+      "node_id": "N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY",
+      "question_text": "Опишіть точкову проблему або елемент процесу, який хочете покращити.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TARGET_PROCESS_ITEM_IDENTIFICATION",
+      "node_id": "N_TARGET_PROCESS_ITEM_IDENTIFICATION",
+      "question_text": "AI визначає цільовий елемент процесу: node, transition, gate, state, artifact, policy або problem area.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TARGETED_CHANGE_CLARIFICATION",
+      "node_id": "N_TARGETED_CHANGE_CLARIFICATION",
+      "question_text": "Уточніть бажану зміну: що зараз неправильно, як має стати, що додати, що не змінювати, локальна це правка чи rule-level зміна.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TARGETED_BEFORE_AFTER_PROPOSAL",
+      "node_id": "N_TARGETED_BEFORE_AFTER_PROPOSAL",
+      "question_text": "AI показує target item, before snapshot, proposed after version, rationale, affected state/gates/artifacts і open risks.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TARGETED_CHANGE_DECISION",
+      "node_id": "N_TARGETED_CHANGE_DECISION",
+      "question_text": "Що робимо з цією запропонованою зміною?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TARGETED_MORE_IMPROVEMENTS_CHECK",
+      "node_id": "N_TARGETED_MORE_IMPROVEMENTS_CHECK",
+      "question_text": "Чи є ще точкові покращення для цього процесу?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE",
+      "node_id": "N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE",
+      "question_text": "Закрити активний режим коригування і перейти до спільного change pipeline для confirmed changes.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_CONFIRMED_CHANGE_SET_BUILDING",
+      "node_id": "N_CONFIRMED_CHANGE_SET_BUILDING",
+      "question_text": "Сформувати confirmed change set з approved changes; rejected і deferred changes зберегти окремо.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SCOPED_YAML_PATCH_APPLICATION",
+      "node_id": "N_SCOPED_YAML_PATCH_APPLICATION",
+      "question_text": "Застосувати тільки scoped YAML patches, що відповідають confirmed change set.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH",
+      "node_id": "N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH",
+      "question_text": "Запустити мінімальну перевірку після patch: YAML parse, Ordo lint, compile/refresh IR.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_INPUT_ARTIFACTS_POLICY",
+      "node_id": "N_INPUT_ARTIFACTS_POLICY",
+      "question_text": "Які вхідні матеріали або джерела має використовувати цей процес? Якщо їх зараз немає або процес не регламентує вхід — зафіксуйте відповідну input policy.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TERMINAL_OUTPUT_BINDING_POLICY",
+      "node_id": "N_TERMINAL_OUTPUT_BINDING_POLICY",
+      "question_text": "Підтвердьте policy: кожна terminal point має окремо вибрати outputs, перевірити templates/mock examples або явно позначити no-output/deferred output.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_PROGRESSIVE_TREE_AUTHORING_ENTRY",
+      "node_id": "N_PROGRESSIVE_TREE_AUTHORING_ENTRY",
+      "question_text": "Переходимо до progressive tree authoring: користувач може описати тільки root і перші гілки, глибший subtree, повний draft або просто логіку словами.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_USER_TREE_VISION_CAPTURE",
+      "node_id": "N_USER_TREE_VISION_CAPTURE",
+      "question_text": "Як ви зараз бачите старт дерева? Можна описати root + перші гілки, одну наступну гілку, subtree на 2–5 рівнів, повний draft або free-form logic.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DRAFT_SUBTREE_GENERATION",
+      "node_id": "N_DRAFT_SUBTREE_GENERATION",
+      "question_text": "AI формує draft-subtree з user tree vision: root/current node, питання/дії, branches, deeper nodes, terminal candidates, output binding candidates і risks.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DRAFT_SUBTREE_REVIEW_START",
+      "node_id": "N_DRAFT_SUBTREE_REVIEW_START",
+      "question_text": "Починаємо standard verification draft-subtree: current node, branches, terminal/continue decisions, output binding, sibling branches and deferred return points.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_BRANCH_REVIEW",
+      "node_id": "N_BRANCH_REVIEW",
+      "question_text": "Перевірте вихідні гілки поточного вузла: label, умова/відповідь, next node або terminal candidate, state updates, gates, sibling/deferred status.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TERMINAL_OR_CONTINUE_DECISION",
+      "node_id": "N_TERMINAL_OR_CONTINUE_DECISION",
+      "question_text": "Що відбувається далі по цій гілці?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TERMINAL_OUTPUT_BINDING_LOOP",
+      "node_id": "N_TERMINAL_OUTPUT_BINDING_LOOP",
+      "question_text": "Terminal point reached. Define output policy: use existing output, add a new artifact, confirm no output is needed, or defer the output decision.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK",
+      "node_id": "N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK",
+      "question_text": "Check template status for each active output artifact: existing, missing/new recipe needed, partial, accepted for alpha, or unfinished/deferred.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION",
+      "node_id": "N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION",
+      "question_text": "Route template handling for selected outputs: use existing, create new recipe/template, complete partial, accept for alpha with risks, defer as unfinished, or remove output.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_TEMPLATE_REVIEW_LOOP",
+      "node_id": "N_OUTPUT_TEMPLATE_REVIEW_LOOP",
+      "question_text": "After the user reviews the template/mock/mapping package, choose one simple action: confirm, revise, defer, or remove artifact.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_TEMPLATE_CREATION_LOOP",
+      "node_id": "N_OUTPUT_TEMPLATE_CREATION_LOOP",
+      "question_text": "Create or complete an output recipe/template. The user may use guided, free-form, uploaded-template, or AI-proposed mode; no template-engine syntax knowledge is required.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TERMINAL_PATH_READY_CHECK",
+      "node_id": "N_TERMINAL_PATH_READY_CHECK",
+      "question_text": "Show terminal path readiness: output policy, active artifacts, template/mock/mapping status, alpha limitations, removed artifacts, unfinished blockers. Confirm ready only if there are no unfinished active artifacts/templates.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SUBTREE_REVIEW_COMPLETION_CHECK",
+      "node_id": "N_SUBTREE_REVIEW_COMPLETION_CHECK",
+      "question_text": "Показати subtree review status: confirmed nodes/branches, unreviewed siblings, deferred return points, terminal output binding, corrections, blocking open questions. Що робимо далі?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPROVED_TREE_CONSOLIDATION",
+      "node_id": "N_APPROVED_TREE_CONSOLIDATION",
+      "question_text": "Зберіть approved tree summary: root, branches, terminal paths, output bindings, templates, deferred alpha items, risks, implied state fields, gates і outputs/templates.",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE",
+      "node_id": "N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE",
+      "question_text": "Describe freely what artifact should be created at this terminal point and why. The runtime shows available terminal state fields first; examples are hints only, not a closed list.",
+      "answer_type": "free_text_or_structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION",
+      "node_id": "N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION",
+      "question_text": "Confirm the interpreted artifact intent: purpose, audience, expected sections, and initial direct-vs-generated fill logic.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OUTPUT_REVIEW_PACKAGE_GENERATION",
+      "node_id": "N_OUTPUT_REVIEW_PACKAGE_GENERATION",
+      "question_text": "Generate a review package for the artifact/template: template file, mock-filled example, mapping report, and assumptions/risks summary. Use file-first mode for document-like artifacts.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_TERMINAL_OUTPUT_BINDING_CONFIRMATION",
+      "node_id": "N_TERMINAL_OUTPUT_BINDING_CONFIRMATION",
+      "question_text": "Confirm the final output binding for this terminal point: active artifacts, approved/alpha templates, reviewed mock examples, state mapping, removed artifacts, and unfinished blockers.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_SOURCE_YAML_GENERATION",
+      "node_id": "N_SHARED_TAIL_SOURCE_YAML_GENERATION",
+      "question_text": "Процесна структура підтверджена. Згенерувати або оновити source/program.ordo.yaml на основі approved tree, state schema, gates і output/template bindings?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_MINIMAL_VALIDATION",
+      "node_id": "N_SHARED_TAIL_MINIMAL_VALIDATION",
+      "question_text": "Запустити minimal validation: YAML parse, Ordo lint, Ordo compile, structural next-reference check, and basic orphan/dead-end check.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_FULL_VALIDATION_DECISION",
+      "node_id": "N_SHARED_TAIL_FULL_VALIDATION_DECISION",
+      "question_text": "Minimal validation passed. Запустити full validation зараз чи явно пропустити її для alpha?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_VALIDATION_RESULT_REVIEW",
+      "node_id": "N_SHARED_TAIL_VALIDATION_RESULT_REVIEW",
+      "question_text": "Full validation завершено. Review result: passed або failed. Якщо failed, показати короткий issue list і перейти до correction або blocked defer.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_CORRECTION_LOOP",
+      "node_id": "N_SHARED_TAIL_CORRECTION_LOOP",
+      "question_text": "Validation issues require correction. Review the short issue list and a scoped correction plan. Apply scoped corrections, request/manual revision, or defer correction.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE",
+      "node_id": "N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE",
+      "question_text": "Final readiness check: unfinished artifacts/templates, deferred outputs, validation limitations, accepted alpha limitations, removed artifacts, and blocking items.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION",
+      "node_id": "N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION",
+      "question_text": "Процес готовий до handoff. Згенерувати handoff package: source YAML, compiled artifacts, validation report, output/template catalog, terminal binding summary, alpha limitations, unfinished/removed items log, changelog/release notes, usage/start prompt notes.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_SHARED_TAIL_FINAL_HANDOFF",
+      "node_id": "N_SHARED_TAIL_FINAL_HANDOFF",
+      "question_text": "Handoff package готовий. Прийняти package або повернутись до правок?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LEGACY_INSTRUCTION_MIGRATION_ENTRY",
+      "node_id": "N_LEGACY_INSTRUCTION_MIGRATION_ENTRY",
+      "question_text": "Режим 5: мігруємо стару монолітну інструкцію у структурований Ordo-playbook. Підтвердьте, що завдання саме у zero-silent-loss migration, а не у створенні нового процесу з нуля.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LEGACY_MIGRATION_SOURCE_INTAKE",
+      "node_id": "N_LEGACY_MIGRATION_SOURCE_INTAKE",
+      "question_text": "Надайте джерело для міграції: 1 — вставлений текст старої інструкції; 2 — прикріплений файл або архів з інструкцією.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LEGACY_MIGRATION_CLAUSE_INVENTORY",
+      "node_id": "N_LEGACY_MIGRATION_CLAUSE_INVENTORY",
+      "question_text": "Побудуйте clause inventory, зафіксуйте ambiguity та missing context. Продовжуємо, коли інвентаризація готова.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION",
+      "node_id": "N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION",
+      "question_text": "Відновіть залежності між clauses і підготуйте dependency graph. Коли dependency reconstruction готовий, продовжуємо.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LEGACY_MIGRATION_ORDO_MAPPING",
+      "node_id": "N_LEGACY_MIGRATION_ORDO_MAPPING",
+      "question_text": "Побудуйте Ordo mapping і traceability matrix. Продовжуємо тільки коли кожен clause має покриття або явний unresolved status.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_LEGACY_MIGRATION_COMPLETENESS_GATE",
+      "node_id": "N_LEGACY_MIGRATION_COMPLETENESS_GATE",
+      "question_text": "Перевірте completeness gate: чи всі clauses покриті або явно позначені як unresolved? Тільки після цього міграція може перейти в спільний validation/handoff tail.",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DISCUSSION_CONTEXT",
+      "node_id": "N_DISCUSSION_CONTEXT",
+      "question_text": "Опишіть обговорення або вставте короткий фрагмент нотаток, з яких треба зробити decision note.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DECISION_TYPE",
+      "node_id": "N_DECISION_TYPE",
+      "question_text": "Який тип рішення потрібно зафіксувати?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DECISION_SUMMARY",
+      "node_id": "N_DECISION_SUMMARY",
+      "question_text": "Яке рішення пропонується зафіксувати одним-двома реченнями?",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_ALTERNATIVES_CONSIDERED",
+      "node_id": "N_ALTERNATIVES_CONSIDERED",
+      "question_text": "Які альтернативи розглядалися і чому їх не обрали?",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_DECISION_STATUS",
+      "node_id": "N_DECISION_STATUS",
+      "question_text": "Статус рішення — вже прийнято чи ще потребує уточнення?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_RATIONALE",
+      "node_id": "N_RATIONALE",
+      "question_text": "Чому саме це рішення прийнято? Вкажіть основні причини або trade-offs.",
+      "answer_type": "free_text",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_OPEN_QUESTIONS",
+      "node_id": "N_OPEN_QUESTIONS",
+      "question_text": "Які питання треба закрити перед фінальним рішенням?",
+      "answer_type": "list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_FOLLOW_UP_ACTIONS",
+      "node_id": "N_FOLLOW_UP_ACTIONS",
+      "question_text": "Які наступні дії, власники або дедлайни треба зафіксувати?",
+      "answer_type": "structured_list",
+      "capture_for_journey": true
+    },
+    {
+      "question_id": "Q_N_APPROVAL_TO_RENDER_NOTE",
+      "node_id": "N_APPROVAL_TO_RENDER_NOTE",
+      "question_text": "Підтверджуєте, що AI може сформувати decision note за зібраними відповідями?",
+      "answer_type": "enum",
+      "capture_for_journey": true
+    }
+  ]
+}

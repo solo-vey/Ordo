@@ -1,0 +1,16 @@
+{
+  "playbook_id": "example-active-playbook",
+  "versions": {
+    "language": "0.12.0-preview-rc1",
+    "framework": "implicit_milestone_line"
+  },
+  "lines": [
+    "language",
+    "framework"
+  ],
+  "constructs": [
+    "startup_package_profile",
+    "FLOW.JOIN",
+    "graph_contract.transition_provenance"
+  ]
+}

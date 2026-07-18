@@ -1,0 +1,42 @@
+{
+  "milestone": "M68.2",
+  "title": "Clean-check output / exit-code hardening",
+  "status": "implemented-hardening",
+  "scope": "CLI implementation hardening plus fixture tests; no package-local changes",
+  "changed_files": [
+    "cli/ordo/clean_check.py",
+    "cli/tests/test_clean_check_fixtures.py",
+    "cli/docs/CLEAN_CHECK_COMMAND.md",
+    "cli/docs/CLEAN_CHECK_HARDENING_PLAN.md",
+    "README.md",
+    "CHANGELOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/README.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "added_report_fields": [
+    "schema_version",
+    "profile_requested",
+    "fail_on_warning",
+    "exit_policy",
+    "summary.passed_count",
+    "summary.failed_count",
+    "summary.not_applicable_count"
+  ],
+  "exit_code_policy": {
+    "passed": 0,
+    "passed_with_warnings_default": 0,
+    "passed_with_warnings_fail_on_warning": 1,
+    "blocked": 1
+  },
+  "non_changes": [
+    "packages/*",
+    "runtime core",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles",
+    "embedded CLI bundles"
+  ]
+}

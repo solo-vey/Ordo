@@ -1,0 +1,33 @@
+{
+  "schema_version": "ordo.backlog_closure_report.v1",
+  "backlog_id": "BL-ORDO-011",
+  "merged_backlog_ids": [
+    "BL-ORDO-009"
+  ],
+  "status": "closed",
+  "milestone": "M88.1",
+  "title": "Prompt and Mini-Prompt Governance Reconciliation",
+  "implementation": {
+    "repository_prompt_governance_gate": "cli/ordo/prompt_governance.py",
+    "canonical_packages_audited": "4/4",
+    "apf_registry_entries": 6,
+    "candidate_governance": "human_approval_fail_closed",
+    "internal_apf_mini_prompt_decision": "internal_mini_prompts_not_applicable_in_current_baseline"
+  },
+  "tests": {
+    "prompt_governance_regression": "29/29 passed",
+    "package_lints": "4/4 passed",
+    "final_affected_and_hygiene_regression": "44/44 passed"
+  },
+  "blocking_issues": 0,
+  "evidence": [
+    "reports/bl_ordo_011/BL_ORDO_011_PROMPT_GOVERNANCE_AUDIT.json",
+    "docs/PROMPT_AND_MINI_PROMPT_GOVERNANCE.md",
+    "reports/m78_1_apf_internal_mini_prompt_review/M78_1_APF_INTERNAL_MINI_PROMPT_APPLICABILITY_REVIEW.json"
+  ],
+  "non_destructive_gate": {
+    "pre_hash": "ad5e242f3611c22b3996e11b5670c92dc10835c513ac35a58ab8aa3104d6b9e3",
+    "post_hash": "ad5e242f3611c22b3996e11b5670c92dc10835c513ac35a58ab8aa3104d6b9e3",
+    "unchanged": true
+  }
+}

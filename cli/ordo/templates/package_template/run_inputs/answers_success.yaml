@@ -1,0 +1,6 @@
+N_PACKAGE_GOAL: "Створити пакет для керованого збору вимог"
+N_EXPECTED_OUTPUTS:
+  - README.md
+  - compiled/program.ir.json
+  - reports/run_report.json
+N_APPROVAL: "yes"

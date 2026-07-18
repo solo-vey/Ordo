@@ -1,0 +1,72 @@
+{
+  "status": "ready",
+  "mode": "runtime_guided_intake_entry_protocol",
+  "cli_status": "executed_cli_passed",
+  "executed_commands": [
+    "runtime-entry"
+  ],
+  "auto_compiled_ir": false,
+  "entry_sequence": [
+    "read START_HERE_RUNTIME_MODE.md",
+    "read ordo.yml or ordo.runtime.json",
+    "resolve source/program.ordo.yaml",
+    "verify compiled/program.ir.json freshness",
+    "load compiled IR as runtime",
+    "initialize/load run_state",
+    "derive next step from IR + run_state"
+  ],
+  "runtime_status": {
+    "status": "ready",
+    "mode": "runtime_source_of_truth_check",
+    "package": "ordo.applied_project_factory",
+    "package_version": "0.1.0-rc.4-post-svg",
+    "source_of_truth": {
+      "manifest": "ordo.yml",
+      "manifest_kind": "ordo.yml",
+      "editable_source": "source/program.ordo.yaml",
+      "runtime_ir": "compiled/program.ir.json",
+      "run_state": "run_state.json or reports/intake_report.json",
+      "generated_artifacts": "generated_outputs/"
+    },
+    "freshness": {
+      "source_exists": true,
+      "compiled_ir_exists": true,
+      "source_mtime": 1783628565.887292,
+      "compiled_ir_mtime": 1783628662.8724475,
+      "checked_at_epoch": 1783628672.5255816
+    },
+    "issues": [],
+    "warnings": []
+  },
+  "workspace": {
+    "loaded_manifest": "ordo.yml",
+    "loaded_source": "source/program.ordo.yaml",
+    "loaded_ir": "compiled/program.ir.json",
+    "run_state": "default_runtime_state",
+    "generated_outputs": "generated_outputs/"
+  },
+  "guardrails": {
+    "must_use_compiled_ir_when_ready": true,
+    "must_not_invent_question_order": true,
+    "must_check_gate_before_advancing": true,
+    "must_not_generate_draft_before_validate_state": true,
+    "must_not_generate_final_before_validate_output_and_consistency": true,
+    "after_A_path_use_runtime_A_flow_without_A1_A5_subquestions": true,
+    "human_protocol_fields": [
+      "Крок",
+      "Дія",
+      "Результат",
+      "Рішення",
+      "One question"
+    ],
+    "checkpoint_discipline": "one node at a time; earliest incomplete node wins"
+  },
+  "next_step": {
+    "source": "compiled_ir",
+    "node_id": "N_EXECUTION_MODE_DECLARATION",
+    "question": "Оголосіть режим виконання APF. Рекомендовано 3 — hybrid для створення/покращення процесів: runtime веде шлях/стан/gates, authoring використовується лише коли змінюється сам APF-процес. 1 — source-authoring; 2 — compiled-runtime; 3 — hybrid.",
+    "answer_type": "enum"
+  },
+  "issues": [],
+  "warnings": []
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "ordo.apf.antipattern_integration_closure_report.v1",
+  "package_id": "ordo.applied_project_factory",
+  "backlog_item": "BL-ORDO-020",
+  "status": "integration_complete_ready_for_final_closure_gate",
+  "baseline": "M89.5",
+  "canonical_rule_count": 6,
+  "covered_rule_count": 6,
+  "critical_node_count": 10,
+  "hook_count": 13,
+  "focused_test_count": 18,
+  "focused_tests_passed": 18,
+  "focused_tests_failed": 0,
+  "verified": [
+    "activation profile bound to APF runtime",
+    "explicit hooks present on critical nodes",
+    "all six canonical rules bound with no unknown rules",
+    "blocking findings stop normal transitions and route to repair",
+    "advisory findings persist evidence and allow transition",
+    "state and evidence contracts validated",
+    "positive, negative, deterministic regression and end-to-end tests passed",
+    "integration graph and runtime documentation generated"
+  ],
+  "remaining_gate": "Run the final BL-ORDO-020 closure gate and reconcile package manifests/checksums before declaring closure in a release handoff.",
+  "artifacts": [
+    "docs/APF_ANTIPATTERN_RUNTIME_INTEGRATION.md",
+    "visuals/antipattern_runtime_integration/apf_antipattern_runtime_integration.svg",
+    "visuals/antipattern_runtime_integration/apf_antipattern_runtime_integration.png",
+    "reports/APF_ANTIPATTERN_INTEGRATION_CLOSURE_REPORT.json",
+    "reports/APF_ANTIPATTERN_INTEGRATION_CLOSURE_REPORT.md"
+  ]
+}

@@ -1,0 +1,9 @@
+playbook_scope_boundary_register:
+  in_scope: []
+  out_of_scope: []
+  external_dependencies: []
+  apf_improvement_candidates: []
+  boundary_checks:
+    apf_baseline_mutation_allowed: false
+    ordo_language_package_changes_allowed: false
+    cross_package_scope_clear: false

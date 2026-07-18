@@ -1,0 +1,22 @@
+{
+  "package_type": "ordo_language_improvement_integration_pack",
+  "status": "planning-package/not-applied",
+  "generated": "2026-07-09T18:10:00+02:00",
+  "source_context": "APF v0.1.0-rc.4-post-svg and earlier Ordo/APF language-pattern extraction work",
+  "target_line": "Ordo language package / proposed M64 prep line",
+  "main_goal": "Preserve and order language-level improvements discovered during APF implementation.",
+  "improvement_groups": [
+    "program_level_contract",
+    "interaction_semantics",
+    "process_rail_policy",
+    "hybrid_execution_model",
+    "runtime_and_package_profile_gates",
+    "derived_artifact_sync_and_hashing",
+    "svg_graph_artifact_standard",
+    "delta_backlog_preservation",
+    "flow_join_shared_tail_future_ir",
+    "real_module_testcase_generation"
+  ],
+  "next_apf_step_recommended": "FUTURE-PROGRAM-CONTRACT-01",
+  "blocking_issues": []
+}

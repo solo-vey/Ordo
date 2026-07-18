@@ -1,0 +1,36 @@
+{
+  "schema_version": "ordo.m87_7.integration_closure.v1",
+  "status": "closed_with_owner_approved_evidence_waiver",
+  "date": "2026-07-12",
+  "scope": "Selective integration of M87.7 changes into the newer M89 baseline.",
+  "evidence": {
+    "source_m87_7_delivery_gate": {
+      "tests_passed": 416,
+      "tests_failed": 0,
+      "apf_lint": "skipped_heavy_env",
+      "source": "reports/m87_7_integration/SOURCE_M87_7_DELIVERY_GATE_REPORT.json"
+    },
+    "integrated_targeted_tests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "m88_m89_regression": {
+      "passed": 53,
+      "failed": 0
+    },
+    "internal_checksums": {
+      "entries": 3524,
+      "issues": 0
+    }
+  },
+  "owner_decision": {
+    "approved": true,
+    "decision": "Accept integration and close the candidate qualification.",
+    "limitations": [
+      "The complete integrated delivery gate did not finish inside the available execution window.",
+      "Independent unrestricted CI verification remains required under BL-ORDO-026.",
+      "This closure does not claim a no-skip-heavy full CI run."
+    ]
+  },
+  "follow_up_backlog": "BL-ORDO-026"
+}

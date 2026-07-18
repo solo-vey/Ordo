@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.benchmark.run_metadata.v2",
+  "test_case": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+  "implementation": "yaml_playbook",
+  "playbook_version": "Alpha 1.17.0",
+  "run_id": "RUN_05",
+  "status": "accepted",
+  "source_archive": "ORDO_RUN_05_RETURN_PACKAGE.zip",
+  "source_sha256": "34d7275935be7e543e63b86fd39e7c4704a7625da9f4015ba989c56a492af7c5",
+  "scores": {
+    "process": 100,
+    "documents": 100,
+    "final": 100,
+    "passport": 100,
+    "jira": 100,
+    "manual_qa": 100,
+    "automation": 100,
+    "terminal": "T_INPUT_BLOCKED / no_go",
+    "interpretation": "Correct authoritative hard stop; 100 document outcome means correct non-generation."
+  },
+  "accepted_by_user": true,
+  "note": "Accepted external execution result; scores fixed in the implementation scorecard."
+}

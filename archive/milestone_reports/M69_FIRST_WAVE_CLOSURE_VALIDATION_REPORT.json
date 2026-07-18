@@ -1,0 +1,8 @@
+{
+  "targeted_tests": 34,
+  "test_result": "OK",
+  "json_parse": "passed",
+  "workflow_yaml_parse": "passed",
+  "scope_guards": "passed",
+  "zip_integrity": "passed"
+}

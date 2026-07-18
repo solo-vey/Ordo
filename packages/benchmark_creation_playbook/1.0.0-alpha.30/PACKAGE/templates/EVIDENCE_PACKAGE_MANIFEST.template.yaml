@@ -1,0 +1,9 @@
+schema_version: ordo.benchmark.evidence-package-manifest.v1
+package_id: ""
+playbook_version: ""
+scope: ""
+status: PRESENT_UNVERIFIED
+files: []
+known_limitations: []
+open_backlog: []
+manifest_sha256: ""

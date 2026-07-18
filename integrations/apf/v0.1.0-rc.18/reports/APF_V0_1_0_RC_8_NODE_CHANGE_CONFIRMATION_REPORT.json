@@ -1,0 +1,70 @@
+{
+  "package": "ordo.applied_project_factory",
+  "version": "v0.1.0-rc.8-node-change-confirmation",
+  "source_version": "v0.1.0-rc.7-closure",
+  "status": "passed",
+  "scope_boundary": "APF package/playbook creation process only; no Ordo language package changes",
+  "added_policies": [
+    "APF_RC8_NO_SILENT_PROCESS_MUTATION_POLICY",
+    "APF_RC8_NODE_CHANGE_IMPACT_REVIEW_POLICY",
+    "APF_RC8_GATE_ORDER_CONFIRMATION_POLICY",
+    "APF_RC8_PROCESS_RAIL_CHANGE_CONFIRMATION_POLICY",
+    "APF_RC8_PACKAGE_PROFILE_CHANGE_CONFIRMATION_POLICY",
+    "APF_HUMAN_CONFIRMATION_REGISTER",
+    "APF_RC8_CONDITIONAL_CONFIRMATION_GATE_MODEL"
+  ],
+  "added_gates": [
+    "NODE_CHANGE_IMPACT_REVIEW_GATE",
+    "GATE_ORDER_CONFIRMATION_GATE",
+    "PROCESS_RAIL_CHANGE_CONFIRMATION_GATE",
+    "PACKAGE_PROFILE_CHANGE_CONFIRMATION_GATE"
+  ],
+  "confirmation_items": [
+    "APF-RC8-01",
+    "APF-RC8-02",
+    "APF-RC8-03",
+    "APF-RC8-04",
+    "APF-RC8-05",
+    "APF-RC8-06",
+    "APF-RC8-07"
+  ],
+  "checks": [
+    {
+      "check": "rc7_closure_baseline_preserved",
+      "status": "passed"
+    },
+    {
+      "check": "no_silent_process_mutation_policy_present",
+      "status": "passed"
+    },
+    {
+      "check": "node_change_impact_review_gate_defined",
+      "status": "passed"
+    },
+    {
+      "check": "gate_order_confirmation_gate_defined",
+      "status": "passed"
+    },
+    {
+      "check": "process_rail_change_confirmation_gate_defined",
+      "status": "passed"
+    },
+    {
+      "check": "package_profile_change_confirmation_gate_defined",
+      "status": "passed"
+    },
+    {
+      "check": "human_confirmation_register_present",
+      "status": "passed"
+    },
+    {
+      "check": "conditional_activation_model_present",
+      "status": "passed"
+    },
+    {
+      "check": "scope_boundary_preserved",
+      "status": "passed"
+    }
+  ],
+  "blocking_issues": []
+}

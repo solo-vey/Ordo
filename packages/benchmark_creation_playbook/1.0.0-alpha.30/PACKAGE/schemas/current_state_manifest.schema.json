@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.current_state_manifest.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "transfer_version",
+    "source_archive",
+    "selection_policy",
+    "retained",
+    "excluded",
+    "known_limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.current_state_manifest.v1"
+    },
+    "dataset_version": {
+      "type": "string"
+    },
+    "transfer_version": {
+      "type": "string"
+    },
+    "source_archive": {
+      "type": "object",
+      "required": [
+        "filename",
+        "sha256"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "selection_policy": {
+      "type": "string"
+    },
+    "retained": {
+      "type": "object"
+    },
+    "excluded": {
+      "type": "object"
+    },
+    "known_limitations": {
+      "type": "array"
+    }
+  }
+}

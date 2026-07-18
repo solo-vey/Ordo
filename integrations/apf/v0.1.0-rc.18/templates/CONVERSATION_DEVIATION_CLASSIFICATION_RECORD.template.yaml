@@ -1,0 +1,11 @@
+op: DEVIATION.CLASSIFY
+message_ref: message-ref
+active_node_ref: NODE_ID
+active_question_ref: STATE.current_question
+classification: unclassifiable_input
+confidence: unknown
+matched_scope_evidence: []
+classification_reason: ''
+state_mutation_allowed: false
+action: request_classification_clarification
+trace_required: true

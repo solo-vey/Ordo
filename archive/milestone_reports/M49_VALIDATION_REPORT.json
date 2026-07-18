@@ -1,0 +1,31 @@
+{
+  "milestone": "M49",
+  "title": "External Feedback Intake",
+  "status": "passed",
+  "release_candidate": "v0.12.0-preview-rc1",
+  "new_functionality": false,
+  "publication_action": false,
+  "pdf_regenerated": false,
+  "changed_areas": [
+    "docs/external_feedback",
+    "docs/reports",
+    "docs/design_decisions",
+    "book/source/chapters",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "checks": {
+    "cli_unit_tests": "19/19 OK",
+    "active_packages_lint_compile_test_coverage": "passed",
+    "helper_commands_validate_state_next_step": "passed",
+    "history_event_validate_artifacts_consistency_go_no_go": "passed",
+    "repo_check_after_cleanup": "passed",
+    "source_archive_generated_metadata": "absent",
+    "package_generated_artifacts": "absent except .gitkeep"
+  },
+  "notes": [
+    "M49 adds feedback-intake and decision materials only.",
+    "No language semantics or CLI behavior changed.",
+    "Book source Markdown updated; PDF was not regenerated."
+  ]
+}

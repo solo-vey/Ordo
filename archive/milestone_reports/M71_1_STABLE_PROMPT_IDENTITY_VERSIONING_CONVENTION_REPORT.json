@@ -1,0 +1,18 @@
+{
+  "milestone": "M71.1",
+  "status": "accepted-convention",
+  "validation": "passed",
+  "decision": "stable_semantic_prompt_identity",
+  "canonical_pattern": "<namespace>.<semantic_role>.v<major>",
+  "rules": {
+    "prompt_id_independent_of_node_id": true,
+    "prompt_id_immutable": true,
+    "prompt_family_required": true,
+    "version_positive_integer": true,
+    "supersedes_same_family_only": true,
+    "prompt_refs_authoritative": true,
+    "reverse_mapping_derived_only": true,
+    "navigation_authority": "executable_decision_model"
+  },
+  "package_migration_performed": false
+}

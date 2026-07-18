@@ -1,0 +1,6 @@
+business_need: Notify customers when a company changes its primary industry code.
+subject_type: COMPANY
+jurisdictions:
+- UA
+known_data_basis: internal history event
+trigger_draft: Company changed its primary industry code.

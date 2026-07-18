@@ -1,0 +1,17 @@
+{
+  "backlog_item": "BL-ORDO-007",
+  "milestone": "M88.0",
+  "status": "passed",
+  "affected_regression": "68/68 passed",
+  "sync_hygiene": "15/15 passed",
+  "package_lints": "4/4 passed",
+  "real_package_equivalence": [
+    "ordo_applied_project_factory",
+    "ordo_hybrid_executor"
+  ],
+  "blocking_issues": 0,
+  "non_destructive_gate": "passed",
+  "pre_hash": "03e4b035029e7d46824b3731bc570eff8de0dfadc11c76a995bf9eea4fbf36b2",
+  "post_hash": "03e4b035029e7d46824b3731bc570eff8de0dfadc11c76a995bf9eea4fbf36b2",
+  "pre_hash_equals_post_hash": true
+}

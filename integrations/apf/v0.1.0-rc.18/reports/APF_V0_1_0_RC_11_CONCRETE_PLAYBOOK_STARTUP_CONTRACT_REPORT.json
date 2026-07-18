@@ -1,0 +1,32 @@
+{
+  "report_id": "APF_V0_1_0_RC_11_CONCRETE_PLAYBOOK_STARTUP_CONTRACT_REPORT",
+  "module_id": "ordo.applied_project_factory",
+  "current_version": "v0.1.0-rc.11-concrete-playbook-startup-contract",
+  "source_version": "v0.1.0-rc.10-confirmed-closure",
+  "status": "ready/go",
+  "confirmed_decisions": [
+    "APF-RC11-01",
+    "APF-RC11-02",
+    "APF-RC11-03",
+    "APF-RC11-04",
+    "APF-RC11-05",
+    "APF-RC11-06",
+    "APF-RC11-07"
+  ],
+  "gate": "CONCRETE_PLAYBOOK_STARTUP_GATE",
+  "artifacts": {
+    "authoring_protocol_template": "present",
+    "startup_manifest_template": "present",
+    "boundary_policy": "present",
+    "package_skeleton": "present",
+    "authoring_readiness_report_template": "present"
+  },
+  "scope_checks": {
+    "apf_only": true,
+    "real_playbook_created": false,
+    "real_analyst_intake_started": false,
+    "ordo_language_package_changed": false,
+    "runtime_or_compiler_executed": false
+  },
+  "blocking_issues": []
+}

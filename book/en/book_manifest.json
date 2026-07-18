@@ -1,0 +1,794 @@
+{
+  "schema_version": "2.0.0",
+  "book_id": "ordo_for_beginners",
+  "locale": "en",
+  "role": "source_of_truth",
+  "baseline": "BL-ORDO-010-closure",
+  "generated_at": "2026-07-14",
+  "chapters": [
+    {
+      "chapter_id": "00_title",
+      "file": "chapters/00_title.md",
+      "version": "1.0.0",
+      "sha256": "8ab9aff2da931d5fa8fe7e1b02868e51fd7a55907abaeda5644cbfa24c0d0d78",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "01_peredmova",
+      "file": "chapters/01_peredmova.md",
+      "version": "1.0.0",
+      "sha256": "101763ae581356e7ba75413262b3c7c5a2d435f2124750f694e49061869188a1",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "02_yak_problema_peretvorylasia_na_ideiu",
+      "file": "chapters/02_yak_problema_peretvorylasia_na_ideiu.md",
+      "version": "1.0.0",
+      "sha256": "2230d43127e3c16274a8c37955c5fe7e097c6436e782ed3270d1e9b442590741",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "02_dlia_koho_tsia_knyha",
+      "file": "chapters/02_dlia_koho_tsia_knyha.md",
+      "version": "1.0.0",
+      "sha256": "e75d45374d9e4f7fcd9868913fcd1c3d18c59623f971f8974448c463d972c9c7",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "03_yak_chytaty_knyhu",
+      "file": "chapters/03_yak_chytaty_knyhu.md",
+      "version": "1.0.0",
+      "sha256": "c41b5f6f775b6ff762be210f58bb6b8c2b6a1c6689bd16b7df0a4ba24cf18b90",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "04_vstup_holovna_ideia_ordo",
+      "file": "chapters/04_vstup_holovna_ideia_ordo.md",
+      "version": "1.0.0",
+      "sha256": "2cf0b4d91bbef4a6db7231af1eaa3478e35d3153a04592b21c9f72acd6d7205e",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_01_chomu_zvychainykh_promptiv_nedostatno",
+      "file": "chapters/chapter_01_chomu_zvychainykh_promptiv_nedostatno.md",
+      "version": "1.0.0",
+      "sha256": "7b47275723908ad2e0419a932205b0fe31324488317d958b157d791a4df916d6",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_02_shcho_take_ordo_prostymy_slovamy",
+      "file": "chapters/chapter_02_shcho_take_ordo_prostymy_slovamy.md",
+      "version": "1.0.0",
+      "sha256": "b0666efc152f5c6e44a4f548e2f3063d6b6867f31eaea61254b4982363abd55c",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_03_ordo_iak_mova_keruvannia_modelliu",
+      "file": "chapters/chapter_03_ordo_iak_mova_keruvannia_modelliu.md",
+      "version": "1.0.0",
+      "sha256": "f7e96741c93eec95b7e82cc46c4ade4114e4fd3cb0af959b0344e1cfafc59f12",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_04_intent_contract_context",
+      "file": "chapters/chapter_04_intent_contract_context.md",
+      "version": "1.0.0",
+      "sha256": "d6c32393d9d57c62ff2798a4166c88898657ee180fb780018a81f8b865d5f504",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_05_state_pamiat_protsesu",
+      "file": "chapters/chapter_05_state_pamiat_protsesu.md",
+      "version": "1.0.0",
+      "sha256": "2f83be3117d90d5346f1ab4b21674cc9345bcb7b1d89eab29085c4947f23508a",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_06_entry_i_node_iak_model_stavyt_pytannia",
+      "file": "chapters/chapter_06_entry_i_node_iak_model_stavyt_pytannia.md",
+      "version": "1.0.0",
+      "sha256": "3d0e324252df787e791c3c87b6d8d8d49dcce20445f82fde4d38b39deb8c7e5a",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_06_1_atomic_steps_in_llm_processes",
+      "file": "chapters/chapter_06_1_atomic_steps_in_llm_processes.md",
+      "version": "1.0.0",
+      "sha256": "0f593d3b07f252974994bb6e30544611bdbdba67a7460e3d1ecbf982de1867c8",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_06_2_micro_prompts_modular_process_architecture",
+      "file": "chapters/chapter_06_2_micro_prompts_modular_process_architecture.md",
+      "version": "1.0.0",
+      "sha256": "c95bdacbddc765194717477da88d3d8e97652eea5843090c1ef72b3d15c3d803",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_07_output_shcho_model_maie_stvoryty",
+      "file": "chapters/chapter_07_output_shcho_model_maie_stvoryty.md",
+      "version": "1.0.0",
+      "sha256": "942c242c7134d7e398382642fa1813a885d514296828bd185b1dbd0be7dc603b",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_08_pyshemo_pershu_ordo_source_prohramu",
+      "file": "chapters/chapter_08_pyshemo_pershu_ordo_source_prohramu.md",
+      "version": "1.0.0",
+      "sha256": "16e9a5e9a8634b06df5e93a85b5eabec3f6707159e6e4271cd004570d1784540",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_09_kompiliuiemo_ordo_source_v_semantic_json_ir",
+      "file": "chapters/chapter_09_kompiliuiemo_ordo_source_v_semantic_json_ir.md",
+      "version": "1.0.0",
+      "sha256": "945c0ef96a6f42f331620a635c76d300806db9036c7ee8706dc2eac7b3ca1266",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_10_chomu_semantic_json_ir_zaraz_naikrashchyi",
+      "file": "chapters/chapter_10_chomu_semantic_json_ir_zaraz_naikrashchyi.md",
+      "version": "1.0.0",
+      "sha256": "0c89c029c86ad1ccee0087a5c4557324d2b929aaa2fd4cedd96f3569b9e526a9",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_11_gate_tse_ne_porada_a_kontrolna_tochka",
+      "file": "chapters/chapter_11_gate_tse_ne_porada_a_kontrolna_tochka.md",
+      "version": "1.0.0",
+      "sha256": "00f185842e195a4914eddea4d0b8bcecf2512ad35901aaafdbb4cdf398e62446",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_12_nehatyvni_perevirky_assert_not",
+      "file": "chapters/chapter_12_nehatyvni_perevirky_assert_not.md",
+      "version": "1.0.0",
+      "sha256": "923dbfa3afc6775bd61985909f71248b528f36ea748022f6d51bc20ea126a3cf",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_13_status_semantics",
+      "file": "chapters/chapter_13_status_semantics.md",
+      "version": "1.0.0",
+      "sha256": "ba9adce1ff7602724cd73d7ea68833ced17ada59c0e6fa0acc111f2d7e409927",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_14_chomu_ordo_prohramy_potribno_debazhyty",
+      "file": "chapters/chapter_14_chomu_ordo_prohramy_potribno_debazhyty.md",
+      "version": "1.0.0",
+      "sha256": "946579f8d049864eab31520be971c460400b61c153c8fc31e58cc809f37328a1",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_15_debug_mode_i_execution_trace",
+      "file": "chapters/chapter_15_debug_mode_i_execution_trace.md",
+      "version": "1.0.0",
+      "sha256": "22d86441f19d76d54a6b90b47dffb071deb2520b5ba2dbea0a6a99f5b3f63140",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_16_testy_fixtures_i_expected_behavior",
+      "file": "chapters/chapter_16_testy_fixtures_i_expected_behavior.md",
+      "version": "1.0.0",
+      "sha256": "009b76eed783d22fffb89a387d89c1d6487952996c14f6343f8f2e9818b1b9bc",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_17_regression_suite_i_coverage",
+      "file": "chapters/chapter_17_regression_suite_i_coverage.md",
+      "version": "1.0.0",
+      "sha256": "f765c8bd42206491e5507da6a57b23cd433e0fffa0e6f5505ec551b0666f6e8e",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_18_feedback_and_improvement_loop",
+      "file": "chapters/chapter_18_feedback_and_improvement_loop.md",
+      "version": "1.0.0",
+      "sha256": "4ca6da3ebfd1e213c38c51314592fa88e51c37853fb6f33a1e5c5784c1c3c9ce",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_19_chomu_ne_vse_treba_formalizuvaty",
+      "file": "chapters/chapter_19_chomu_ne_vse_treba_formalizuvaty.md",
+      "version": "1.0.0",
+      "sha256": "5819f673c805a4687da87206f5673afdb66f0791b34c7649b7410268845daeec",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_20_iak_pravylno_vykorystovuvaty_freeform",
+      "file": "chapters/chapter_20_iak_pravylno_vykorystovuvaty_freeform.md",
+      "version": "1.0.0",
+      "sha256": "ad58a40e5dcfecb567ec10c7457ab62737d161d040f4047bea214fa08b43b24e",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_21_freeform_coverage",
+      "file": "chapters/chapter_21_freeform_coverage.md",
+      "version": "1.0.0",
+      "sha256": "fac87090056145314d82ed95852d7c2f45a3e4bd2e759a437ab435545bd94008",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_22_ordo_core",
+      "file": "chapters/chapter_22_ordo_core.md",
+      "version": "1.0.0",
+      "sha256": "4a129ed7ea7bbda20f78d60c8d2b5d72545c26daf55671567a0a7fe6a8d545b4",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_23_ordo_profiles",
+      "file": "chapters/chapter_23_ordo_profiles.md",
+      "version": "1.0.0",
+      "sha256": "78996e17b99d9ce0a5d2ed91843be352e93bee0ccef558f9ac65f5c789ce698d",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_24_domain_packs",
+      "file": "chapters/chapter_24_domain_packs.md",
+      "version": "1.0.0",
+      "sha256": "c18874f48a6697e3b63ef361b9a7b3af1e609a9b57ab7610b49078754ada5efd",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_25_biblioteky_ordo_include_import_i_povtorne_vykorystannia_hotovykh_rishen",
+      "file": "chapters/chapter_25_biblioteky_ordo_include_import_i_povtorne_vykorystannia_hotovykh_rishen.md",
+      "version": "1.0.0",
+      "sha256": "89dd711cc68233c6af766b018468883f6270f6900f6d64906ab5f995eda52b92",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_26_chomu_all_in_one_bilshe_ne_holovnyi_format",
+      "file": "chapters/chapter_26_chomu_all_in_one_bilshe_ne_holovnyi_format.md",
+      "version": "1.0.0",
+      "sha256": "c960f9a1195f4720f9725484c3f31402490b970adb3c7c2769d80c9eb0adab0e",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_27_documentation_runtime",
+      "file": "chapters/chapter_27_documentation_runtime.md",
+      "version": "1.0.0",
+      "sha256": "dc2b2a8b2a6285e33c1ed4fe169b064863b6bef4a5200717d7b16ee6fcfac12a",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_28_rendered_artifact_validation",
+      "file": "chapters/chapter_28_rendered_artifact_validation.md",
+      "version": "1.0.0",
+      "sha256": "6335f7b65fab31feb084f109d4079ef3a0949c4adfaf3f1dd7fd055a3e970be0",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_29_staryi_playbook_iak_markdown_baza_znan",
+      "file": "chapters/chapter_29_staryi_playbook_iak_markdown_baza_znan.md",
+      "version": "1.0.0",
+      "sha256": "b55967494bec8cf30207cd9c07a50762c1c63f0c8101971d82f6df640b75f4c5",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_30_mihratsiia_playbook_a_v_ordo",
+      "file": "chapters/chapter_30_mihratsiia_playbook_a_v_ordo.md",
+      "version": "1.0.0",
+      "sha256": "bbf54590bdcc3c65dfb1c423770d1170959222532093f8da2bb8e587379fe0ab",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_31_guided_intake_iak_ordo_prohrama",
+      "file": "chapters/chapter_31_guided_intake_iak_ordo_prohrama.md",
+      "version": "1.0.0",
+      "sha256": "af3817ea6de0840bc24360fc6f0cf3fbacfaf5f524ed619f02fed8ac1015ef50",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_32_package_generation",
+      "file": "chapters/chapter_32_package_generation.md",
+      "version": "1.0.0",
+      "sha256": "1f4ce53114d7e701c1d342cc004e47b4c7544d000a2dc6bb763eff99723c2d6a",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_33_shcho_lyshylos_u_freeform",
+      "file": "chapters/chapter_33_shcho_lyshylos_u_freeform.md",
+      "version": "1.0.0",
+      "sha256": "087464ae08111e89bc3eaccb445c92867204a84f13ee27d42f65da5e1dad15f0",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_34_minimalni_vymohy_do_avtora",
+      "file": "chapters/chapter_34_minimalni_vymohy_do_avtora.md",
+      "version": "1.0.0",
+      "sha256": "c955fbb9ecaacf63f50953a754f1aea58bd7f29ae91c4d4cf0e2ced0392d6e54",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_35_iak_ne_zlamaty_playbook",
+      "file": "chapters/chapter_35_iak_ne_zlamaty_playbook.md",
+      "version": "1.0.0",
+      "sha256": "56e78ea9440613cb2de0049d29d461d4abf5181e2bd572d2e751fc6c55fe6403",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_36_iak_otsiniuvaty_pokryttia_ordo",
+      "file": "chapters/chapter_36_iak_otsiniuvaty_pokryttia_ordo.md",
+      "version": "1.0.0",
+      "sha256": "3c0f087f5574d50d596e48194e345f2aa3f8a55df91bf7686e20331f751779a6",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_37_ordo_bez_runtime",
+      "file": "chapters/chapter_37_ordo_bez_runtime.md",
+      "version": "1.0.0",
+      "sha256": "3c0f087f5574d50d596e48194e345f2aa3f8a55df91bf7686e20331f751779a6",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_38_ordo_z_helper_runner",
+      "file": "chapters/chapter_38_ordo_z_helper_runner.md",
+      "version": "1.0.0",
+      "sha256": "ab7d87f31aaa123bdc411b88800f919ee5fc52d595e50468d7dcb567e02ea0cc",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_39_ordo_iak_native_model_language",
+      "file": "chapters/chapter_39_ordo_iak_native_model_language.md",
+      "version": "1.0.0",
+      "sha256": "80482b317434d4a1a670588ca42dc93a59c2a472c994314ede8fecc198a09255",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_40_process_rail",
+      "file": "chapters/chapter_40_process_rail.md",
+      "version": "1.0.0",
+      "sha256": "9738368b156b524226c37b064a80511ceca5a3d9d12094c0cfd7b025db113cf8",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_41_contract_artifact_coverage_go_no_go",
+      "file": "chapters/chapter_41_contract_artifact_coverage_go_no_go.md",
+      "version": "1.0.0",
+      "sha256": "31899b293259848f7bb6a4b66254dcce13253577067c159f9136278b2ce7d2cb",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_42_external_audit_pre_release",
+      "file": "chapters/chapter_42_external_audit_pre_release.md",
+      "version": "1.0.0",
+      "sha256": "a7fbacd0cae14a5cdc759bce99bc43f6dc4a02ad5b112f754a876a25e73d0fc4",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_43_final_handoff",
+      "file": "chapters/chapter_43_final_handoff.md",
+      "version": "1.0.0",
+      "sha256": "0477b0716a97f0d4943f614217a29b427930ca62f2a37db60531c2486fcbf8ce",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_44_external_feedback_intake",
+      "file": "chapters/chapter_44_external_feedback_intake.md",
+      "version": "1.0.0",
+      "sha256": "d3bc8fcd4759c50ae9cb1e142920b64d0200d8a9f0b8e6ee838570a286a5a9b5",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_45_feedback_decision_planning",
+      "file": "chapters/chapter_45_feedback_decision_planning.md",
+      "version": "1.0.0",
+      "sha256": "3296d12ef478aa5a7d7dcba5507a01364e99131bc4c187b1bc2e18fec4aca06c",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_46_publication_readiness_decision",
+      "file": "chapters/chapter_46_publication_readiness_decision.md",
+      "version": "1.0.0",
+      "sha256": "6150e7d8130bd0928d88dcc8ade0fb8c280f70565f3da5302149907773625f62",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_47_two_tier_rendering_model",
+      "file": "chapters/chapter_47_two_tier_rendering_model.md",
+      "version": "1.0.0",
+      "sha256": "0e6e9e9761dbcd9bc854d7c849d445ecd086a7e5e5598e4796c3f104342f5178",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_48_runtime_source_of_truth",
+      "file": "chapters/chapter_48_runtime_source_of_truth.md",
+      "version": "1.0.0",
+      "sha256": "ca1ce4eca2d2bc729bd81aad83c136d33c9e7d7c6ad42c2c597180f2f2d1b32e",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_49_runtime_guided_intake_entry_protocol",
+      "file": "chapters/chapter_49_runtime_guided_intake_entry_protocol.md",
+      "version": "1.0.0",
+      "sha256": "33db1ed07820d5fe0e2d172efd3a065b6e3ee1772007729f64b580c1a834f73a",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_50_runtime_mode_start_files_standard",
+      "file": "chapters/chapter_50_runtime_mode_start_files_standard.md",
+      "version": "1.0.0",
+      "sha256": "9b062c79c1b9360c825bcac052b81782649faa6243b18606d06967c8a1a6ccb2",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_51_package_build_profiles",
+      "file": "chapters/chapter_51_package_build_profiles.md",
+      "version": "1.0.0",
+      "sha256": "7dd6670d83a02092bf02a088d39da1b46f06da4f8d705a7859ea738a8a29c151",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_52_runtime_checkpoint_discipline",
+      "file": "chapters/chapter_52_runtime_checkpoint_discipline.md",
+      "version": "1.0.0",
+      "sha256": "fe4107c910a4901c6467bdfe77ae6c3146fee51289600639120b53822d03b305",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_53_cli_enforced_runtime_package",
+      "file": "chapters/chapter_53_cli_enforced_runtime_package.md",
+      "version": "1.0.0",
+      "sha256": "7dfe31c7369b7714ce2d9ada66f97a2bee8c2659a605f0b7c7ee248b4f6e606c",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_54_multi_target_runtime_compilation",
+      "file": "chapters/chapter_54_multi_target_runtime_compilation.md",
+      "version": "1.0.0",
+      "sha256": "96305a1dc05f909ee2d3abaa7202f09bb9bd5c691a3858d552d0de8361360282",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_55_ordo_code_runtime_view",
+      "file": "chapters/chapter_55_ordo_code_runtime_view.md",
+      "version": "1.0.0",
+      "sha256": "26e193ba08a4334ae4c78fb038fc18b0a6ac955bef6148709c74aacb618dd5f8",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_56_session_trace_proof_program",
+      "file": "chapters/chapter_56_session_trace_proof_program.md",
+      "version": "1.0.0",
+      "sha256": "d427244b93cb4de742e43e85c073ec23e010e551eeb387c45ffb86a5cbde4a59",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_57_scenario_testing_and_pathwalk",
+      "file": "chapters/chapter_57_scenario_testing_and_pathwalk.md",
+      "version": "1.0.0",
+      "sha256": "0f649f1d11e1a67d5da0627465ea5b278b07c7a12289ba0b94471215233b0dbf",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_58_restore_session_safe_backtracking",
+      "file": "chapters/chapter_58_restore_session_safe_backtracking.md",
+      "version": "1.0.0",
+      "sha256": "87e30b9ef717120c15d4a84ef13103c631b81997a150f4d1d0e068d4bbb4724c",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_59_pathwalk_benchmark_readiness",
+      "file": "chapters/chapter_59_pathwalk_benchmark_readiness.md",
+      "version": "1.0.0",
+      "sha256": "1a9eda7f2572cdbce6dce23ae78b6100a8663bd26d5df818c27e73c85f5cf3cf",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_60_model_benchmark_protocol",
+      "file": "chapters/chapter_60_model_benchmark_protocol.md",
+      "version": "1.0.0",
+      "sha256": "8d21557dc0f41649602d2206d5dbd44f5da2c2ebcf9f7fda8488199fa74c8942",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_61_real_module_testcase_generation",
+      "file": "chapters/chapter_61_real_module_testcase_generation.md",
+      "version": "1.0.0",
+      "sha256": "b7c832dafa51858c41e77b92a87f5cbe6441d7f0a640ee128c83b426c7329d15",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_62_human_review_scenario_cards",
+      "file": "chapters/chapter_62_human_review_scenario_cards.md",
+      "version": "1.0.0",
+      "sha256": "8aaee80aa4f85c3f38428f44a525bbf7f687b91ba8a67fda70b8cf38a047ddbd",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_63_visual_graph_generator",
+      "file": "chapters/chapter_63_visual_graph_generator.md",
+      "version": "1.0.0",
+      "sha256": "91af484dfab17291f46b2b3d07fbf5b2ec49757a805a9826a3f99308ca6dd033",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_64_companion_utility_workflow",
+      "file": "chapters/chapter_64_companion_utility_workflow.md",
+      "version": "1.0.0",
+      "sha256": "14d59bbd6e126780cf121f2cb2a4683d82994a2f2719f725286a125611402b6c",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_65_m61_companion_utilities_line_closure",
+      "file": "chapters/chapter_65_m61_companion_utilities_line_closure.md",
+      "version": "1.0.0",
+      "sha256": "4d4498272c0ddf296bf2302cf819a6e7037d3e71cef21837ecc8c330481dc73c",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_66_apf_standard_applied_module",
+      "file": "chapters/chapter_66_apf_standard_applied_module.md",
+      "version": "1.0.0",
+      "sha256": "c9b0a6d55fe5382b01ffc9ae4c09bdde2f849e810cfded519251c5a9ac557129",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_67_apf_language_pattern_extraction",
+      "file": "chapters/chapter_67_apf_language_pattern_extraction.md",
+      "version": "1.0.0",
+      "sha256": "ec02c2d8f669d9c2e6f68b6a9948155957a01cfadc9db53e65510107cd3a0c2f",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_68_m62_apf_integration_line_closure",
+      "file": "chapters/chapter_68_m62_apf_integration_line_closure.md",
+      "version": "1.0.0",
+      "sha256": "1f400d6293fba3b304d189b1398199b62ab36464e1e25282e21e892ba890e381",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_69_apf_release_candidate_integration",
+      "file": "chapters/chapter_69_apf_release_candidate_integration.md",
+      "version": "1.0.0",
+      "sha256": "db84ea6bc39425c36e16da273693583351771b8343186697a1fc02f10e8f8bd2",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_70_apf_rc1_standard_module",
+      "file": "chapters/chapter_70_apf_rc1_standard_module.md",
+      "version": "1.0.0",
+      "sha256": "37d76802d720374416a03644192f5228a61d34d2ad673dcc7767099c8bc9e8d4",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_71_apf_rc_validation_profile",
+      "file": "chapters/chapter_71_apf_rc_validation_profile.md",
+      "version": "1.0.0",
+      "sha256": "87444b2e4c25c70678600410a1eaf5a5b7a2c3d3749437b4b85dd098768d8166",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_72_apf_rc_language_pattern_classification",
+      "file": "chapters/chapter_72_apf_rc_language_pattern_classification.md",
+      "version": "1.0.0",
+      "sha256": "055b845dd8cf461cf4bf2abe82082e32af99932a11e292468af9069ccccf7152",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_73_how_apf_began_creating_itself",
+      "file": "chapters/chapter_73_how_apf_began_creating_itself.md",
+      "version": "1.0.0",
+      "sha256": "59c965841e1c2ca97d55f976aeff431c7d04d39db4f9889223057226a3902a20",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_74_execution_trace_core_language_element",
+      "file": "chapters/chapter_74_execution_trace_core_language_element.md",
+      "version": "1.0.0",
+      "sha256": "7b3559a8ee35750c052556ffc5f243040fda3a1851016e0ab38eed865f32829d",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_75_execution_trace_tooling_testing_replay",
+      "file": "chapters/chapter_75_execution_trace_tooling_testing_replay.md",
+      "version": "1.0.0",
+      "sha256": "49c7bc025839b2e1592cecd2f9c0eb8d9e460b9a290159caf29b06a3bd83987f",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_76_backlog_maturity_and_pathwalk_purpose",
+      "file": "chapters/chapter_76_backlog_maturity_and_pathwalk_purpose.md",
+      "version": "1.0.0",
+      "sha256": "806190ff4985fb86355776f7fff01164d15ca9ea5163872ca0bc1db53617cbf5",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_77_optional_flow_reuse",
+      "file": "chapters/chapter_77_optional_flow_reuse.md",
+      "version": "1.0.0",
+      "sha256": "b5f0269a33d6b4ccd608614e327552bb9f45e17caec61d59cd947fea2747c849",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_78_apf_replay_prompt_registry_and_mini_prompts",
+      "file": "chapters/chapter_78_apf_replay_prompt_registry_and_mini_prompts.md",
+      "version": "1.0.0",
+      "sha256": "b972761d81c515317fe4299b62239b96d53992ca298a9ca3591ee6596b4b5976",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_79_generic_template_tooling",
+      "file": "chapters/chapter_79_generic_template_tooling.md",
+      "version": "1.0.0",
+      "sha256": "5184f862d7c9e2e0ae2458c1295f6f6f7ae4fcb671eca15d650cf7b70ced11d2",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_80_session_package_load_and_cache",
+      "file": "chapters/chapter_80_session_package_load_and_cache.md",
+      "version": "1.0.0",
+      "sha256": "6d1dd97a8f4158401ae349db86be0b01b10e7b410698715e584af6c90178ad2d",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_81_deterministic_arf_runtime_control_model",
+      "file": "chapters/chapter_81_deterministic_arf_runtime_control_model.md",
+      "version": "1.0.0",
+      "sha256": "3ce134d17f5aeaeaca15dd98993a75cca7c4aef28617fdbddd8f86156b3180a3",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_a_ordo_glossary",
+      "file": "chapters/appendix_a_ordo_glossary.md",
+      "version": "1.0.0",
+      "sha256": "00783ffc21f670904bf27f88303c7817604e6958845ea0e61c73d632df11a0af",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_b_opcode_catalog",
+      "file": "chapters/appendix_b_opcode_catalog.md",
+      "version": "1.0.0",
+      "sha256": "b3d137f79ce966ea03c1aa61013e895eb353359e0f99ca7672212cf797eb8002",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_c_verified_program_examples",
+      "file": "chapters/appendix_c_verified_program_examples.md",
+      "version": "1.0.0",
+      "sha256": "2726adf87780dcb4824ad8e6c410b51ea25d51451decef0e52cbe412acf029d1",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_d_checklists",
+      "file": "chapters/appendix_d_checklists.md",
+      "version": "1.0.0",
+      "sha256": "4c114deb8331c6738d44f12c9c9c91d628b74da75363f8fed965a7b106cdba33",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_e_anti_patterns",
+      "file": "chapters/appendix_e_anti_patterns.md",
+      "version": "1.0.0",
+      "sha256": "22799c46900f123131ba46b9bb40cc6a8a50e2a4e6ddccd3c5dd3b75624bdbc1",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_f_practical_yaml_reference",
+      "file": "chapters/appendix_f_practical_yaml_reference.md",
+      "version": "1.0.0",
+      "sha256": "a9ad290f662286c84380b2550d369fb1efd3ea3b0f017d1d58da2098b9ecd19b",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "appendix_apf_session_package_cache",
+      "file": "chapters/appendix_apf_session_package_cache.md",
+      "version": "1.0.0",
+      "sha256": "2a96cb22d5e11b80c0977dd36d76afd196d49bd60eb2dcce4a445b10e38ecce8",
+      "status": "canonical_ready"
+    },
+    {
+      "chapter_id": "chapter_84_blind_automation_and_causal_improvement",
+      "file": "chapters/chapter_84_blind_automation_and_causal_improvement.md",
+      "version": "1.0.0",
+      "sha256": "fd84f5be74a7b0c97a5297005ea4a24c34c857d0c3840a0196bf206591236aad",
+      "status": "change_bundle_ready"
+    }
+  ],
+  "assets": [
+    {
+      "file": "assets/mascots/128x128/Nebu_attention_128x128.png",
+      "sha256": "687f76998bf3cbb281d359fc277385d7a1218ac96aa1c550faa452dedd818aa2"
+    },
+    {
+      "file": "assets/mascots/128x128/Nebu_base_128x128.png",
+      "sha256": "f7c0f92972631eab0c7a63e828df84697098ad1d0b2cadbd9521ee691af10a45"
+    },
+    {
+      "file": "assets/mascots/128x128/Nebu_idea_128x128.png",
+      "sha256": "5cb9c5e82d3b9cecb0c651949c60954611fa3dc88a65bf8d8d0c8a4bcb6de386"
+    },
+    {
+      "file": "assets/mascots/128x128/Nebu_interesting_128x128.png",
+      "sha256": "260aa4185cf3b6608dc36260c354b17d229a666784e873df5a102d6e68d0c107"
+    },
+    {
+      "file": "assets/mascots/128x128/Nebu_thinking_128x128.png",
+      "sha256": "10ac6af99464a9f88dbca599ddf4640b0f5bf6c4a6f93007815cc1bb01cc2c94"
+    },
+    {
+      "file": "assets/mascots/256x256/Nebu_attention_256x256.png",
+      "sha256": "591bb6ed7da0e31b4d24f9df2be0c5d9e7d91ecb5b3869f15032d10e604faccb"
+    },
+    {
+      "file": "assets/mascots/256x256/Nebu_base_256x256.png",
+      "sha256": "4211d0ca945cbdc474b99572999b375e1ed2a7244e28e8bb005626efd790319d"
+    },
+    {
+      "file": "assets/mascots/256x256/Nebu_idea_256x256.png",
+      "sha256": "ab0de90a838d95d8aa8f6376074b20f91efa68253a7db009760e5f41d3042c01"
+    },
+    {
+      "file": "assets/mascots/256x256/Nebu_interesting_256x256.png",
+      "sha256": "da8775ca646003be3a30ede499d9f2acc43205b8c897a75d593487654601a6e1"
+    },
+    {
+      "file": "assets/mascots/256x256/Nebu_thinking_256x256.png",
+      "sha256": "baa9ade79a673360ae8fdf5351f893d6dff83d5bf977c6c3014d3eb9404300d4"
+    },
+    {
+      "file": "assets/mascots/64x64/Nebu_attention_64x64.png",
+      "sha256": "09e1ee16740b225bfe5e6d74858a2a5ffa728d41e4fa7d4b1f6db961a598d5a2"
+    },
+    {
+      "file": "assets/mascots/64x64/Nebu_base_64x64.png",
+      "sha256": "6e222ae0a9ad1717659dc21af61483d983dde684c7aa6f4152ce7c9d255233e5"
+    },
+    {
+      "file": "assets/mascots/64x64/Nebu_idea_64x64.png",
+      "sha256": "e26d7f758e6db954ebbf19ddcdd79b36f0f390395eb5937f3f36af0294141d50"
+    },
+    {
+      "file": "assets/mascots/64x64/Nebu_interesting_64x64.png",
+      "sha256": "efeff1eaa84bcb11bb5487a536bac646772801005ba657b595a51a6105ca484d"
+    },
+    {
+      "file": "assets/mascots/64x64/Nebu_thinking_64x64.png",
+      "sha256": "064b1af61a871cc6b20ff4c450a403e6679810484733d027cfe49943ee5ae290"
+    },
+    {
+      "file": "assets/mascots/PLACEMENT_RULES.md",
+      "sha256": "90781b8b4c0236424936914356643bdb29ccec498862f9b30a8fd8ae7633ba67"
+    },
+    {
+      "file": "assets/mascots/README.md",
+      "sha256": "f15f9bf5897b874f661905c9437739ccc85445c36bffa7797b6fa995902acd97"
+    },
+    {
+      "file": "assets/mascots/original/Nebu_attention.png",
+      "sha256": "6003619ce7d8647a055403a301fe168064677603c3920cfb0cf9b1c7dd2ecdba"
+    },
+    {
+      "file": "assets/mascots/original/Nebu_base.png",
+      "sha256": "b624176102cbbb0f29bda685ada7d532309c2950729c69d7328dfc5e36be70e6"
+    },
+    {
+      "file": "assets/mascots/original/Nebu_idea.png",
+      "sha256": "82991568067dcc6ccdd9b787a496d64e047c0764bc30d12c5693cc37470290d8"
+    },
+    {
+      "file": "assets/mascots/original/Nebu_interesting.png",
+      "sha256": "9dbc9f33ee8aaade2c3763a2861b7bf83ce3cd8338800a9fcae4d7eb78eafe7a"
+    },
+    {
+      "file": "assets/mascots/original/Nebu_thinking.png",
+      "sha256": "2d2405b115f2295a99224c8c2c4ca6022be8cde2b404b40ad063b025ed15f811"
+    }
+  ],
+  "compiled_outputs": [
+    "compiled/ordo_for_beginners_en.pdf"
+  ],
+  "current_pdf": {
+    "file": "compiled/ordo_for_beginners_en.pdf",
+    "sha256": "53c491da75ab301066e0e32379bea1804b62e46aeb126807defd0daa1532975b",
+    "status": "canonical_current"
+  },
+  "table_of_contents": {
+    "placement": "after_preface",
+    "title": "Table of Contents",
+    "color": "black",
+    "clickable": true,
+    "depth": "chapter_level"
+  }
+}

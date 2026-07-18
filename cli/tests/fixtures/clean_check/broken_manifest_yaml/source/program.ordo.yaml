@@ -1,0 +1,6 @@
+program_id: clean_check_fixture
+version: '0.1'
+nodes:
+  - id: N_START
+    type: question
+    question: Fixture start node.

@@ -1,0 +1,42 @@
+{
+  "milestone": "M74.7",
+  "title": "Clean public baseline and M74 closure",
+  "status": "passed",
+  "release_products": {
+    "language_baseline": {
+      "path": "/mnt/data/m74_7_release_products/language_baseline",
+      "file_count": 1652,
+      "sha256_tree": "3c5bc156d7968eececc949bc8f16debbbf936c2625baa3d101f31624872637fc"
+    },
+    "process_archive": {
+      "path": "/mnt/data/m74_7_release_products/process_archive",
+      "file_count": 1244,
+      "sha256_tree": "47a7051b8d3a81847ce6c69cb5bfe980b0ac342c82ce769902eb9efa9d99f39d"
+    },
+    "book_source": {
+      "path": "/mnt/data/m74_7_release_products/book_source",
+      "file_count": 233,
+      "sha256_tree": "c150c532501e89c0911d2c131bc32310e6ce614fbfa11b1e27cc2693056b52ba"
+    }
+  },
+  "checks": {
+    "language_has_no_book": true,
+    "language_has_no_process_history_dirs": true,
+    "language_has_no_milestone_reports": true,
+    "all_products_clean": true,
+    "json_parse": "passed",
+    "yaml_parse": "passed_with_expected_exclusions",
+    "intermediate_archives_created": false,
+    "csg_maturity_truthful": true,
+    "csg_real_model_benchmark_gate": "open",
+    "apf_modularization_equivalence": "passed"
+  },
+  "expected_yaml_exclusions": [
+    "model-assisted Jinja YAML template is not raw YAML before rendering",
+    "two deliberately broken YAML test fixtures remain invalid by design"
+  ],
+  "blocking_issues": [],
+  "open_non_blocking_items": [
+    "Run CSG benchmark with real model transcript evidence before production recommendation."
+  ]
+}

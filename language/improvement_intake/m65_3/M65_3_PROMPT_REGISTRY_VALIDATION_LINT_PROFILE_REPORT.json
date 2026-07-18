@@ -1,0 +1,36 @@
+{
+  "milestone": "M65.3",
+  "title": "Prompt Registry Validation / Lint Profile Design",
+  "status": "accepted-design / passed-docs-schema-validation",
+  "runtime_core_changed": false,
+  "compiler_changed": false,
+  "cli_changed": false,
+  "new_opcodes_added": false,
+  "deterministic_classifier_added": false,
+  "compiled_ir_regenerated": false,
+  "added_files": [
+    "language/PROMPT_REGISTRY_VALIDATION_PROFILE.md",
+    "language/schemas/prompt_registry_validation_profile_schema.yaml",
+    "language/examples/source/prompt_registry_validation_profile_example.ordo.yaml",
+    "language/spec/20_PROMPT_REGISTRY_VALIDATION_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M65-004_PROMPT_REGISTRY_VALIDATION_LINT_PROFILE.md",
+    "language/improvement_intake/m65_3/M65_3_PROMPT_REGISTRY_VALIDATION_LINT_PROFILE_REPORT.md",
+    "language/improvement_intake/m65_3/M65_3_PROMPT_REGISTRY_VALIDATION_LINT_PROFILE_REPORT.json",
+    "language/improvement_intake/m65_3/M65_3_VALIDATION_REPORT.json"
+  ],
+  "changed_files": [
+    "language/registry/PROMPT_REGISTRY_VALUES.md",
+    "language/README.md",
+    "language/CHANGELOG.md",
+    "README.md",
+    "CHANGELOG.md",
+    "FUTURE_BACKLOG.md",
+    "STABLE_PACKAGE_INDEX.md"
+  ],
+  "checks": {
+    "yaml_parse": "passed",
+    "json_reports_parse": "passed",
+    "no_runtime_core_changes": "passed",
+    "zip_integrity": "pending"
+  }
+}

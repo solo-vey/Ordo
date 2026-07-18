@@ -1,0 +1,31 @@
+{
+  "schema_version": "ordo.benchmark.test_case_evaluation_profile.v1",
+  "profile_id": "<TEST_CASE_ID>",
+  "version": "1.0.0",
+  "inherits": {
+    "methodology_id": "ORDO-BENCH-EVAL",
+    "version": "1.0.0"
+  },
+  "canonical_documents": [
+    {
+      "id": "passport",
+      "weight": 0.25
+    },
+    {
+      "id": "jira",
+      "weight": 0.25
+    },
+    {
+      "id": "manual_qa",
+      "weight": 0.25
+    },
+    {
+      "id": "automation",
+      "weight": 0.25
+    }
+  ],
+  "expected_terminal_states": {},
+  "scenario_specific_checks": [],
+  "caps": [],
+  "overrides": []
+}

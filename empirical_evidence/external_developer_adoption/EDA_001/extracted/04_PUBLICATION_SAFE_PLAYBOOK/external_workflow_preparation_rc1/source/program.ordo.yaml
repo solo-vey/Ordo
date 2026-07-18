@@ -1,0 +1,660 @@
+ordo:
+  version: '0.13'
+  package: external.workflow_preparation
+  control_level: strict
+  execution_mode: manual_analyst_guided
+intent:
+  id: INTENT_EXTERNAL_WORKFLOW_PREPARATION
+  description: Guide one monitoring event from business need to a complete, auditable business-ready handoff without
+    performing technical event implementation.
+contract:
+  id: CONTRACT_EXTERNAL_WORKFLOW_PREPARATION
+  required:
+  - business_need
+  - monitoring_relevance
+  - subject_type
+  - jurisdictions
+  - data_mode
+  - monitoring_type
+  - monitoring_group_alias
+  - monitoring_event_alias
+  - monitoring_event_subtype
+  - config_option_key
+  - source_history_basis
+  - names_uk_en
+  - user_planes
+  - trigger_templates
+  - placeholder_contract
+  - scenario_model
+  - acceptance_criteria
+  - signoff_plan
+  - external_lifecycle_links
+  unsupported:
+  - technical event implementation
+  - handler code
+  - Monitoring Center REST delivery
+  - frontend implementation
+  - secret collection
+state:
+  id: STATE_EXTERNAL_WORKFLOW_PREPARATION
+  schema:
+    run_status: active
+    current_node: N_INTAKE
+    business_need: null
+    monitoring_relevance: null
+    relevance_rationale: null
+    subject_type: null
+    jurisdictions: []
+    data_ownership: null
+    data_normalized: null
+    remediation_possible: null
+    data_mode: null
+    external_dependencies: []
+    monitoring_type: null
+    monitoring_group_alias: null
+    monitoring_event_alias: null
+    monitoring_event_subtype: null
+    config_option_key: null
+    source_history_basis: []
+    names_uk_en: {}
+    monitoring_depth: null
+    user_planes: {}
+    trigger_templates: {}
+    placeholder_contract: []
+    missing_value_fallback: —
+    scenario_model: {}
+    delivery_channels: []
+    acceptance_criteria: []
+    signoff_plan: []
+    signoffs: []
+    external_record_url: null
+    external_lifecycle_links: {}
+    open_questions: []
+    stale_artifacts: []
+    evidence: []
+    handoff_allowed: false
+    terminal_outcome: null
+    draft_package_status: not_generated
+    draft_review_decision: null
+    draft_review_notes: []
+    work_tracking_url: null
+    external_link_registry: {}
+    package_revision: 1
+    cancelled_run_resumable: false
+    cancelled_at: null
+    draft_approved_by_analyst: false
+    approver_set_proposed: []
+    approver_set_confirmed_by_product_po: false
+    runtime_evidence_retention: until_process_completion
+    post_link_second_approval_required: false
+    url_host_validation: none
+graph_contract:
+  entry_node: N_INTAKE
+  terminal_nodes:
+  - T_BUSINESS_READY
+  - T_NOT_RELEVANT
+  - T_UNDELIVERABLE
+  - T_CANCELLED
+  safe_stop_node: T_BLOCKED
+nodes:
+- id: N_INTAKE
+  purpose: Establish one-event scope and business need
+  entry_condition: new or resumed run
+  required_inputs: []
+  actions:
+  - Capture initiator, business need, target outcome, known constraints
+  - Split multi-event intake into separate runs
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_RELEVANCE
+  backtrack_target: null
+  evidence_emitted:
+  - EVIDENCE_N_INTAKE
+- id: N_RELEVANCE
+  purpose: Confirm that the need is a valuable monitoring signal
+  entry_condition: business need present
+  required_inputs:
+  - business_need
+  actions:
+  - Assess time-based change/state, consumer, value, and loss if not monitored
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_DATA_OWNERSHIP
+  - T_NOT_RELEVANT
+  backtrack_target: N_INTAKE
+  evidence_emitted:
+  - EVIDENCE_N_RELEVANCE
+- id: N_DATA_OWNERSHIP
+  purpose: Determine whether source data is internally owned
+  entry_condition: relevance confirmed
+  required_inputs:
+  - monitoring_relevance
+  actions:
+  - Record source owner and evidence
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_DATA_QUALITY
+  - N_CROSS_TEAM_CONTRACT
+  backtrack_target: N_RELEVANCE
+  evidence_emitted:
+  - EVIDENCE_N_DATA_OWNERSHIP
+- id: N_DATA_QUALITY
+  purpose: Assess sufficiency and normalization
+  entry_condition: internal data selected
+  required_inputs:
+  - data_ownership
+  actions:
+  - Check required fields, comparability, no-op detection, and supported depth
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_IDENTITY_BUNDLE
+  - N_REMEDIATION_DECISION
+  backtrack_target: N_DATA_OWNERSHIP
+  evidence_emitted:
+  - EVIDENCE_N_DATA_QUALITY
+- id: N_REMEDIATION_DECISION
+  purpose: Decide whether internal raw data can be remediated
+  entry_condition: data insufficient
+  required_inputs:
+  - data_normalized
+  actions:
+  - Describe normalization model, owners, tasks, and durable agent instructions
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_IDENTITY_BUNDLE
+  - T_UNDELIVERABLE
+  backtrack_target: N_DATA_QUALITY
+  evidence_emitted:
+  - EVIDENCE_N_REMEDIATION_DECISION
+- id: N_CROSS_TEAM_CONTRACT
+  purpose: Capture external data delivery dependency
+  entry_condition: external data selected
+  required_inputs:
+  - data_ownership
+  actions:
+  - Capture provider, scope, format, cadence, risks, limits, ownership, and target evidence
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_IDENTITY_BUNDLE
+  - T_BLOCKED
+  backtrack_target: N_DATA_OWNERSHIP
+  evidence_emitted:
+  - EVIDENCE_N_CROSS_TEAM_CONTRACT
+- id: N_IDENTITY_BUNDLE
+  purpose: Define exact monitoring identities without conflation
+  entry_condition: data mode selected
+  required_inputs:
+  - data_mode
+  actions:
+  - Capture monitoring type, supported subject/group, event alias, MonitoringEvent.subtype, config key, and source
+    history alias
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_USER_PLANES
+  backtrack_target: N_DATA_OWNERSHIP
+  evidence_emitted:
+  - EVIDENCE_N_IDENTITY_BUNDLE
+- id: N_USER_PLANES
+  purpose: Define setup, tracking, and trigger user planes
+  entry_condition: identity bundle complete
+  required_inputs:
+  - monitoring_group_alias
+  - monitoring_event_alias
+  actions:
+  - Capture UA/EN labels, depth, jurisdictions, defaults, tracking behavior, and trigger presentation
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_TRIGGER_CONTRACT
+  backtrack_target: N_IDENTITY_BUNDLE
+  evidence_emitted:
+  - EVIDENCE_N_USER_PLANES
+- id: N_TRIGGER_CONTRACT
+  purpose: Define bilingual configurable trigger contract
+  entry_condition: three planes complete
+  required_inputs:
+  - user_planes
+  actions:
+  - Capture UA/EN human examples and one configurable template per language
+  - Define placeholders, source fields, transformations, formats, requiredness, fallback, and rendered examples
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_SCENARIOS
+  backtrack_target: N_USER_PLANES
+  evidence_emitted:
+  - EVIDENCE_N_TRIGGER_CONTRACT
+- id: N_SCENARIOS
+  purpose: Define scenario aggregation and classification
+  entry_condition: trigger contract complete
+  required_inputs:
+  - trigger_templates
+  - placeholder_contract
+  actions:
+  - Classify positive, no-op, invalid-data, and out-of-scope scenarios
+  - Record one-event versus multi-source aggregation decision
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_DRAFT_PACKAGE
+  backtrack_target: N_TRIGGER_CONTRACT
+  evidence_emitted:
+  - EVIDENCE_N_SCENARIOS
+- id: N_DRAFT_PACKAGE
+  purpose: Generate the first reviewable analytical package
+  entry_condition: scenario model complete
+  required_inputs:
+  - scenario_model
+  actions:
+  - Generate draft business passport, work-tracking system business entity draft, lifecycle checklist, Monitoring Center preview,
+    handoff draft, and draft gate report
+  - Mark package as DRAFT and prohibit business-ready status
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_DRAFT_REVIEW
+  backtrack_target: N_SCENARIOS
+  evidence_emitted:
+  - EVIDENCE_N_DRAFT_PACKAGE
+- id: N_DRAFT_REVIEW
+  purpose: Collect explicit analyst confirmation of the downloaded draft package
+  entry_condition: draft package generated
+  required_inputs:
+  - draft_package_status
+  actions:
+  - Provide the complete draft package for download and review
+  - Ask the analyst explicitly whether the draft is approved
+  - Proceed only after an explicit approval; on correction, return to the earliest affected node and regenerate
+  accepted_answer_contract: The analyst must explicitly approve, request corrections, or cancel. Implicit continuation
+    and model inference are invalid.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Set draft_approved_by_analyst only from the analyst explicit answer; corrections invalidate dependent
+    artifacts.
+  next_transitions:
+  - N_ACCEPTANCE
+  - T_CANCELLED
+  backtrack_target: N_DRAFT_PACKAGE
+  evidence_emitted:
+  - EVIDENCE_N_DRAFT_REVIEW
+- id: N_ACCEPTANCE
+  purpose: Define and verify measurable business acceptance criteria
+  entry_condition: draft approved
+  required_inputs:
+  - acceptance_criteria
+  - draft_review_decision
+  actions:
+  - Validate criteria against user-visible behavior and source-to-template traceability
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_SIGNOFF_PLAN
+  backtrack_target: N_DRAFT_REVIEW
+  evidence_emitted:
+  - EVIDENCE_N_ACCEPTANCE
+- id: N_SIGNOFF_PLAN
+  purpose: Define and collect role-specific content sign-off
+  entry_condition: acceptance criteria complete
+  required_inputs:
+  - data_mode
+  - signoff_plan
+  actions:
+  - Propose a minimum approver set based on the selected data mode
+  - Require Product/PO to confirm or edit the proposed set
+  - Collect each human approver own decision and evidence
+  - Never treat the model as an approver or allow it to approve for a human
+  accepted_answer_contract: Product/PO must explicitly confirm or edit the proposed approver set; every required
+    human approves personally.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_MANUAL_knowledge_workspace_PUBLICATION
+  - T_BLOCKED
+  backtrack_target: N_ACCEPTANCE
+  evidence_emitted:
+  - EVIDENCE_N_SIGNOFF_PLAN
+- id: N_MANUAL_knowledge_workspace_PUBLICATION
+  purpose: Pause for analyst to create the external process record manually
+  entry_condition: content approved and signed off
+  required_inputs:
+  - signoffs
+  actions:
+  - Provide copy-ready external process record content
+  - Ask analyst to create the page manually and return its real URL
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_CAPTURE_knowledge_workspace_LINK
+  - T_BLOCKED
+  backtrack_target: N_SIGNOFF_PLAN
+  evidence_emitted:
+  - EVIDENCE_N_MANUAL_knowledge_workspace_PUBLICATION
+- id: N_CAPTURE_knowledge_workspace_LINK
+  purpose: Record the external process record URL without host/domain validation
+  entry_condition: analyst returned external documentation system URL
+  required_inputs:
+  - external_record_url
+  actions:
+  - Record the analyst-provided URL exactly as supplied
+  - Reject only empty or clearly non-URL text; do not enforce host/domain allowlists or remote accessibility
+  - Generate the minimal linked external documentation system registry row
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_MANUAL_WORK TRACKER_PUBLICATION
+  backtrack_target: N_MANUAL_knowledge_workspace_PUBLICATION
+  evidence_emitted:
+  - EVIDENCE_N_CAPTURE_knowledge_workspace_LINK
+- id: N_MANUAL_WORK TRACKER_PUBLICATION
+  purpose: Pause for analyst to create the work-tracking system business entity manually
+  entry_condition: real external documentation system URL recorded
+  required_inputs:
+  - external_record_url
+  actions:
+  - Provide copy-ready work-tracking system content containing the external documentation system URL
+  - Ask analyst to create the work-tracking system entity manually and return its real URL
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_CAPTURE_WORK TRACKER_LINK
+  - T_BLOCKED
+  backtrack_target: N_CAPTURE_knowledge_workspace_LINK
+  evidence_emitted:
+  - EVIDENCE_N_MANUAL_WORK TRACKER_PUBLICATION
+- id: N_CAPTURE_WORK TRACKER_LINK
+  purpose: Record the mandatory Workflow Preparation work-tracking system URL
+  entry_condition: analyst returned work-tracking system URL
+  required_inputs:
+  - work_tracking_url
+  actions:
+  - Record the analyst-provided work-tracking record URL exactly as supplied
+  - Reject only empty or clearly non-URL text; do not enforce host/domain allowlists or remote accessibility
+  - Record the work-tracking system URL for insertion into README.md only
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_LINK_SYNCHRONIZATION
+  backtrack_target: N_MANUAL_WORK TRACKER_PUBLICATION
+  evidence_emitted:
+  - EVIDENCE_N_CAPTURE_WORK TRACKER_LINK
+- id: N_LINK_SYNCHRONIZATION
+  purpose: Regenerate the package with synchronized external lifecycle links
+  entry_condition: both external URLs recorded
+  required_inputs:
+  - external_record_url
+  - work_tracking_url
+  actions:
+  - Insert the external-record URL into the work-tracking artifact
+  - Insert the workflow-tracking URL into README.md only
+  - Keep the external documentation system URL in the work-tracking record artifact and the work-tracking system URL in README.md; do not duplicate them into other business artifacts
+  - Increment package revision without changing playbook specification version
+  - Run stale-link, duplicate-link-placement, and stale-wording scans
+  - Do not request a second analyst approval when business content is unchanged
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_FINAL_VALIDATION
+  backtrack_target: N_CAPTURE_WORK TRACKER_LINK
+  evidence_emitted:
+  - EVIDENCE_N_LINK_SYNCHRONIZATION
+- id: N_FINAL_VALIDATION
+  purpose: Run strict business-ready validation on the linked package
+  entry_condition: external links synchronized
+  required_inputs:
+  - external_lifecycle_links
+  actions:
+  - Run completeness, identity, bilingual, source-to-template, scenario, status-staleness, sign-off, link-consistency,
+    and downstream-readiness checks
+  - Confirm explicit analyst draft approval exists
+  - Confirm the external documentation system URL appears in the work-tracking record artifact and the work-tracking record URL appears in README.md
+  - After success, remove temporary runtime evidence and personal sign-off working data according to completion-retention
+    policy while preserving the final package
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - T_BUSINESS_READY
+  - T_BLOCKED
+  backtrack_target: N_LINK_SYNCHRONIZATION
+  evidence_emitted:
+  - EVIDENCE_N_FINAL_VALIDATION
+- id: T_BLOCKED
+  purpose: Safe stop with explicit blockers
+  entry_condition: blocking gate failed
+  required_inputs: []
+  actions:
+  - Emit blocker report with owner, destination, and resumption point
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions:
+  - N_INTAKE
+  backtrack_target: null
+  evidence_emitted:
+  - EVIDENCE_T_BLOCKED
+- id: T_BUSINESS_READY
+  purpose: 'Terminal success: approved handoff package'
+  entry_condition: all gates passed
+  required_inputs: []
+  actions:
+  - Freeze evidence and emit handoff package
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions: []
+  backtrack_target: null
+  evidence_emitted:
+  - EVIDENCE_T_BUSINESS_READY
+- id: T_NOT_RELEVANT
+  purpose: 'Terminal non-success: not a monitoring event'
+  entry_condition: relevance failed
+  required_inputs: []
+  actions:
+  - Record rationale to prevent duplicate rediscovery
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions: []
+  backtrack_target: null
+  evidence_emitted:
+  - EVIDENCE_T_NOT_RELEVANT
+- id: T_UNDELIVERABLE
+  purpose: 'Terminal non-success: no feasible data path'
+  entry_condition: data path failed
+  required_inputs: []
+  actions:
+  - Record evidence and escalation history
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions: []
+  backtrack_target: null
+  evidence_emitted:
+  - EVIDENCE_T_UNDELIVERABLE
+- id: T_CANCELLED
+  purpose: Terminal cancellation
+  entry_condition: explicit cancellation
+  required_inputs: []
+  actions:
+  - Close the run as non-resumable
+  - Preserve only the minimum audit record until the applicable retention rule deletes it
+  accepted_answer_contract: Answer must be explicit, attributable, and compatible with the node contract.
+  rejected_answer_behavior: Explain the exact defect, preserve prior valid state, and request only the missing or
+    corrected value.
+  state_changes: Persist accepted values and evidence; mark dependent artifacts stale after corrections.
+  next_transitions: []
+  backtrack_target: null
+  evidence_emitted:
+  - EVIDENCE_T_CANCELLED
+gates:
+- id: G_RELEVANCE
+  condition: monitoring_relevance == true
+  trust_class: human_decision
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_DATA_MODE
+  condition: data_mode in [IN_HOUSE,CROSS_TEAM,REMEDIATION]
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_IDENTITY_EXACT
+  condition: all identity fields present and subject type is not substituted for event subtype
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_BILINGUAL
+  condition: UA and EN names, examples, and templates present
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_PLACEHOLDER_TRACE
+  condition: every placeholder maps to source, format, fallback, and rendered example
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_SCENARIOS
+  condition: positive/no-op/invalid-data/out-of-scope covered
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_THREE_PLANES
+  condition: setup/tracking/trigger planes complete
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_DRAFT_APPROVAL
+  condition: analyst explicitly approved the downloaded draft
+  trust_class: human_decision
+  on_failure: N_DRAFT_REVIEW
+  message_contract: State that explicit analyst approval is required before external publication.
+- id: G_SIGNOFF
+  condition: Product/PO confirmed or edited the proposed approver set and all required human approvers personally
+    signed; model approval is prohibited
+  trust_class: human_decision
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_EXTERNAL_LINKS
+  condition: external process record URL and Workflow Preparation work-tracking system URL are present; no implementation work-tracking system URL
+    or host allowlist is required
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_STALE_SCAN
+  condition: no stale wording, status, or identity references
+  trust_class: deterministic
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+- id: G_HANDOFF
+  condition: all mandatory gates passed
+  trust_class: composite
+  on_failure: T_BLOCKED
+  message_contract: State what is wrong, why it blocks, who owns the fix, where it must be recorded, and resume
+    node.
+artifacts:
+- id: A_PROCESS_RECORD
+  path: artifacts/01_PROCESS_RECORD.md
+  required_for: business_ready
+- id: A_WORK_TRACKING_ITEM
+  path: artifacts/02_WORK_TRACKING_RECORD.md
+  required_for: business_ready
+- id: A_LIFECYCLE_CHECKLIST
+  path: artifacts/03_LIFECYCLE_CHECKLIST.md
+  required_for: business_ready
+- id: A_HANDOFF
+  path: artifacts/04_EVENT_PLAYBOOK_HANDOFF.md
+  required_for: business_ready
+- id: A_GATE_REPORT
+  path: reports/STRICT_BUSINESS_GATE_REPORT.json
+  required_for: business_ready
+- id: A_DECISION_LOG
+  path: runtime/DECISION_LOG.json
+  required_for: business_ready
+- id: A_UNCERTAINTY_REGISTER
+  path: runtime/UNCERTAINTY_REGISTER.json
+  required_for: business_ready
+- id: A_EXTERNAL_LINK_REGISTRY
+  path: runtime/EXTERNAL_LINK_REGISTRY.json
+  required_for: business_ready
+- id: A_DRAFT_REVIEW_RECORD
+  path: runtime/DRAFT_REVIEW_RECORD.json
+  required_for: business_ready
+policies:
+  retry: No fixed retry limit for human corrections; repeated invalid input triggers concise examples and optional
+    escalation.
+  backtrack: Return to earliest affected node; invalidate dependent approvals and artifacts; preserve immutable
+    evidence history.
+  resume: Resume active or blocked runs from the last passed gate after validating external links and stale-state
+    markers. Cancelled runs are not resumable.
+  cancel: Cancellation is terminal and non-resumable. Temporary run evidence is removed when the process is completed
+    or closed; retain only the durable final package or minimum closure record required by organizational policy.
+  privacy: Do not store secrets. Use synthetic or masked fixtures. Temporary personal sign-off working data exists
+    only until process completion; durable outputs should minimize personal data.
+  external_systems: The playbook generates copy-ready documents only. The analyst manually creates external documentation system and
+    work-tracking system records, then returns real URLs for package synchronization and final validation.
+  runtime: Production execution is manual by an analyst with guided playbook instructions; no direct work-tracking system or external documentation system
+    mutation is permitted.
+  retention: Temporary runtime evidence and personal sign-off working data are retained only until process completion.
+    The final package is durable; the external documentation system URL is retained in the work-tracking record artifact and the work-tracking record URL in README.md.
+  approvals: The model may propose role sets, but the model cannot approve. Product/PO confirms or edits the approver
+    set; each required person records their own approval.
+  url_validation: No work-tracking system/external documentation system domain allowlist or remote accessibility validation. Capture analyst-provided
+    non-empty URL-shaped values.
+  linked_package_approval: No second analyst approval after URL synchronization when deterministic checks confirm
+    business content is unchanged.

@@ -1,0 +1,43 @@
+{
+  "schema_version": "ordo.execution_progress_acceptance.v1",
+  "tests": [
+    {
+      "fixture": "negative_multiline.json",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true,
+      "output": "{\"status\": \"PROGRESS_EVENT_SUPPRESSED\", \"errors\": [\"not_single_line\"]}"
+    },
+    {
+      "fixture": "negative_reasoning_disclosure.json",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true,
+      "output": "{\"status\": \"PROGRESS_EVENT_SUPPRESSED\", \"errors\": [\"reasoning_disclosure\"]}"
+    },
+    {
+      "fixture": "negative_unbound_event.json",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true,
+      "output": "{\"status\": \"PROGRESS_EVENT_SUPPRESSED\", \"errors\": [\"unbound_event\"]}"
+    },
+    {
+      "fixture": "negative_unknown_status.json",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true,
+      "output": "{\"status\": \"PROGRESS_EVENT_SUPPRESSED\", \"errors\": [\"unregistered_status\"]}"
+    },
+    {
+      "fixture": "positive_bound_event.json",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true,
+      "output": "Крок T036 — Passport validation — FAIL: відсутні rollback assertions"
+    }
+  ],
+  "passed": 5,
+  "total": 5,
+  "status": "PASS"
+}

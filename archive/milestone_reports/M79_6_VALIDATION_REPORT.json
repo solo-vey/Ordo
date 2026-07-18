@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.milestone.validation.v1",
+  "milestone": "M79.6",
+  "status": "passed",
+  "release": "ordo-generic-template-tooling-0.1.0",
+  "tests": {
+    "m79_0_to_m79_2": 13,
+    "m79_3_to_m79_5": 11,
+    "total": 24,
+    "failed": 0
+  },
+  "checks": {
+    "sha256_manifest": "passed",
+    "zip_integrity": "passed",
+    "cli_validate_smoke": "passed",
+    "cli_registry_smoke": "passed",
+    "backlog_sync": "passed"
+  },
+  "artifact": "ORDO_GENERIC_TEMPLATE_TOOLING_RELEASE_v0_1_0.zip",
+  "recommendation": "ready_for_controlled_adoption"
+}

@@ -1,0 +1,284 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "previous_confirmed_baseline": "v0.1.0-rc.17-conversation-scope-guard-support-confirmed-closure",
+  "status": "confirmed-closure / accepted-baseline",
+  "blocking_issues": [],
+  "enhancement": {
+    "backlog_id": "BL-APF-002A",
+    "completed_milestones": [
+      "PMP-0",
+      "PMP-1",
+      "PMP-2",
+      "PMP-3",
+      "PMP-4",
+      "PMP-5",
+      "PMP-6",
+      "PMP-7",
+      "PMP-8"
+    ],
+    "technical_status": "completed"
+  },
+  "regression_checks": {
+    "checks_passed": 33,
+    "blockers": 0,
+    "apf_scope_boundary_preserved": "passed",
+    "simple_playbooks_do_not_require_prompt_package": "passed",
+    "unapproved_prompts_cannot_activate": "passed",
+    "prompt_authority_boundary_preserved": "passed",
+    "internal_apf_prompts_not_started": "passed",
+    "ordo_core_unchanged": "passed"
+  },
+  "pilot": {
+    "status": "completed-as-technical-evidence",
+    "target": "History Event Playbook v1.42",
+    "candidate_proposals_created": 2,
+    "prompts_activated": 0,
+    "target_playbook_mutated": false,
+    "downstream_candidate_decision_blocks_apf_release": false
+  },
+  "deferred_backlog": {
+    "BL-APF-001": "deferred",
+    "BL-APF-002B": "deferred"
+  },
+  "release_decision": {
+    "technical_release_candidate_ready": true,
+    "confirmed_release": true,
+    "confirmation_required": false
+  },
+  "syntax_validation": {
+    "json_files_validated": 54,
+    "yaml_files_validated": 101,
+    "errors": []
+  },
+  "package_assembly": {
+    "checksum_manifest_regenerated": true,
+    "package_class": "confirmed-baseline-source-plus-provenance-and-evidence",
+    "files_in_package": 307,
+    "checksummed_files": 305
+  },
+  "execution_trace_enhancement": {
+    "ET_5": {
+      "status": "passed",
+      "blocking_issues": 0,
+      "checks": {
+        "artifact_contract_present": true,
+        "artifact_manifest_template_present": true,
+        "conditional_generation_defined": true,
+        "runtime_enforced_adapter_condition_defined": true,
+        "apf_internal_trace_enabled": false,
+        "actual_trace_generation_claimed": false
+      }
+    },
+    "ET_6": {
+      "status": "passed",
+      "blocking_issues": 0,
+      "checks": {
+        "validation_gate_contract_present": true,
+        "validation_report_template_present": true,
+        "schema_and_config_gate_defined": true,
+        "artifact_completeness_gate_defined": true,
+        "event_coverage_gate_defined": true,
+        "integrity_gate_defined": true,
+        "security_and_redaction_gate_defined": true,
+        "replay_readiness_gate_defined": true,
+        "runtime_consistency_gate_defined": true,
+        "runtime_enforced_adapter_conformance_required": true,
+        "apf_internal_trace_enabled": false,
+        "actual_trace_generation_claimed": false
+      }
+    },
+    "ET_7": {
+      "status": "passed",
+      "blocking_issues": 0,
+      "checks": {
+        "runtime_adapter_contract_present": true,
+        "adapter_contract_template_present": true,
+        "adapter_conformance_template_present": true,
+        "required_operation_set_defined": true,
+        "append_only_and_sequence_rules_defined": true,
+        "redaction_before_persistence_required": true,
+        "capture_toggle_preserves_existing_traces": true,
+        "replay_readiness_boundary_defined": true,
+        "apf_internal_trace_enabled": false,
+        "actual_trace_generation_claimed": false
+      }
+    },
+    "ET_8": {
+      "status": "passed",
+      "blocking_issues": 0,
+      "checks": {
+        "authoring_flow_integration_contract_present": true,
+        "authoring_policy_present": true,
+        "design_decision_template_present": true,
+        "canonical_authoring_protocol_updated": true,
+        "startup_manifest_updated": true,
+        "playbook_package_skeleton_updated": true,
+        "handoff_requirements_updated": true,
+        "conditional_artifact_generation_preserved": true,
+        "runtime_enforced_adapter_requirement_preserved": true,
+        "apf_internal_trace_enabled": false,
+        "actual_trace_generation_claimed": false
+      }
+    },
+    "ET_9": {
+      "status": "passed",
+      "blocking_issues": 0,
+      "checks_passed": 24,
+      "checks": {
+        "trace_disabled_scenario_passed": true,
+        "trace_enabled_scenario_passed": true,
+        "runtime_toggle_verified": true,
+        "runtime_enforced_adapter_conformance_verified": true,
+        "event_coverage_verified": true,
+        "replay_readiness_verified": true,
+        "apf_internal_trace_enabled": false,
+        "actual_trace_generation_claimed": false,
+        "mini_prompt_regression_detected": false,
+        "ordo_core_changed": false
+      }
+    },
+    "ET_10": {
+      "status": "passed",
+      "blocking_issues": 0,
+      "checks": {
+        "release_metadata_updated": true,
+        "ET_0_through_ET_10_complete": true,
+        "regression_checks_passed": 24,
+        "apf_internal_trace_enabled": false,
+        "actual_trace_generation_claimed": false,
+        "ordo_core_changed": false,
+        "mini_prompt_capability_preserved": true
+      }
+    }
+  },
+  "confirmed_version": "v0.1.0-rc.18-csg-language-baseline-aligned-confirmed-closure",
+  "human_confirmation": {
+    "status": "accepted",
+    "date": "2026-07-11",
+    "process_owner_decision": "confirmed-as-new-baseline"
+  },
+  "atomic_step_review_enhancement": {
+    "completed_milestones": [
+      "ASR-0",
+      "ASR-1",
+      "ASR-2",
+      "ASR-3",
+      "ASR-4",
+      "ASR-5"
+    ],
+    "status": "passed",
+    "blocking_issues": 0,
+    "regression_checks_passed": 28,
+    "confirmed_release": true,
+    "human_confirmation_required": false
+  },
+  "working_enhancements": {
+    "ASR-3": {
+      "status": "passed",
+      "checks": [
+        "review_flow_integrated",
+        "decomposition_proposal_contract_present",
+        "human_decision_boundary_enforced",
+        "re_review_after_split_required",
+        "no_automatic_business_logic_rewrite"
+      ],
+      "blockers": 0
+    },
+    "ASR-4": {
+      "status": "passed",
+      "checks": [
+        "package_artifact_contract_added",
+        "validation_contract_added",
+        "templates_added",
+        "skeleton_updated",
+        "blocking_assembly_rules_added"
+      ],
+      "blockers": 0
+    }
+  },
+  "working_enhancement": "CSG-A2-confirmed",
+  "conversation_scope_guard": {
+    "stage": "CSG-4-completed",
+    "classification_contract": "passed",
+    "classification_template": "passed",
+    "apf_internal_enabled": false,
+    "blocking_issues": 0,
+    "strictness_response_escalation_contract": "passed",
+    "policy_decision_template": "passed",
+    "canonical_modes": 4,
+    "escalation_levels": 4,
+    "state_protection_contract": "passed",
+    "process_control_contract": "passed",
+    "state_protection_template": "passed",
+    "classification_before_mutation_enforced": true,
+    "pause_preserves_state": true,
+    "resume_skips_unresolved_gates": false,
+    "exit_incomplete_status_enforced": true,
+    "control_and_safety_bypass_enforced": true,
+    "authoring_flow_integration": "passed",
+    "package_artifact_contract": "passed",
+    "package_skeleton_updated": true,
+    "validation_gate_contract": "passed",
+    "regression_catalog_integrated": true
+  },
+  "working_release": null,
+  "conversation_scope_guard_enhancement": {
+    "completed_milestones": [
+      "CSG-0",
+      "CSG-1",
+      "CSG-2",
+      "CSG-3",
+      "CSG-4",
+      "CSG-5"
+    ],
+    "status": "passed",
+    "blocking_issues": 0,
+    "checks": {
+      "optional_capability_explicit": true,
+      "apf_internal_csg_enabled": false,
+      "classification_contract_present": true,
+      "strictness_and_escalation_present": true,
+      "state_protection_present": true,
+      "pause_resume_exit_semantics_present": true,
+      "conditional_package_artifacts_present": true,
+      "validation_and_regression_present": true,
+      "safety_and_control_intents_preserved": true,
+      "ordo_core_changed": false
+    },
+    "confirmed_release": true,
+    "human_confirmation_required": false
+  },
+  "csg_language_alignment": {
+    "stage": "CSG-A2-completed",
+    "status": "passed",
+    "blocking_issues": 0,
+    "conceptual_conflicts": 0,
+    "classification_schema_aligned": true,
+    "confidence_enum_aligned": true,
+    "counter_scope_aligned": true,
+    "package_binding_aligned": true,
+    "canonical_artifact_names_added": true,
+    "dedicated_trace_events_artifact_added": true,
+    "apf_internal_csg_enabled": false,
+    "regression_checks_total": 32,
+    "regression_checks_passed": 32,
+    "regression_checks_failed": 0,
+    "release_candidate_assembled": true,
+    "human_confirmation_required": false,
+    "confirmed_release": true,
+    "confirmation_status": "accepted"
+  },
+  "release_candidate": {
+    "version": "v0.1.0-rc.18-csg-language-baseline-aligned-confirmed-closure",
+    "source_confirmed_baseline": "v0.1.0-rc.17-conversation-scope-guard-support-confirmed-closure",
+    "status": "confirmed-closure / accepted-baseline",
+    "blocking_issues": 0
+  },
+  "package_validation": {
+    "json_valid": 54,
+    "yaml_valid": 101,
+    "errors": 0,
+    "zip_integrity": "passed",
+    "checksum_errors": 0
+  }
+}

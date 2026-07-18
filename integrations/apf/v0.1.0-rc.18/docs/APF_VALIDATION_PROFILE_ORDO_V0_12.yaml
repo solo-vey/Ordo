@@ -1,0 +1,118 @@
+validation_profile:
+  profile_id: apf.ordo_v0_12.standard.v1
+  module_id: ordo.applied_project_factory
+  baseline_version: v0.1.0-rc.12-confirmed-closure
+  adaptation_milestone: A5
+  target_ordo_version: "0.12"
+  profile_status: applied-working-state
+  release_claim_status: not-yet-confirmed
+  command_groups:
+    parent_compatible_required:
+      - command: lint
+        enforcement: cli-supported
+        blocking: true
+      - command: compile
+        enforcement: cli-supported
+        blocking: true
+      - command: test
+        enforcement: cli-supported
+        blocking: true
+      - command: coverage
+        enforcement: cli-supported
+        blocking: true
+      - command: validate-state
+        enforcement: cli-supported
+        blocking: true
+      - command: next-step
+        enforcement: cli-supported
+        blocking: true
+      - command: validate-output
+        enforcement: cli-supported
+        blocking: true
+      - command: validate-artifacts
+        enforcement: cli-supported
+        blocking: true
+      - command: consistency
+        enforcement: cli-supported
+        blocking: true
+      - command: go-no-go
+        enforcement: cli-supported
+        blocking: true
+      - command: clean-check
+        invocation: ordo clean-check <package> --profile standard --json
+        enforcement: cli-supported
+        blocking: true
+      - command: repo-check
+        enforcement: cli-supported
+        blocking: true
+      - command: repo-check --clean
+        enforcement: cli-supported-policy-gated
+        blocking: true
+    apf_local_required:
+      - check_id: apf.program_contract.alignment
+        implementation: package-local-validation
+        blocking: true
+      - check_id: apf.interaction_process_rail.alignment
+        implementation: package-local-validation
+        blocking: true
+      - check_id: apf.prompt_registry.integrity
+        implementation: package-local-validation
+        blocking: true
+      - check_id: apf.prompt_manifest.checksums
+        implementation: package-local-validation
+        blocking: true
+      - check_id: apf.runtime_contracts.consistency
+        implementation: package-local-validation
+        blocking: true
+      - check_id: apf.deferred_backlog.not_started
+        implementation: package-local-validation
+        blocking: true
+      - check_id: apf.scope_boundary.preserved
+        implementation: package-local-validation
+        blocking: true
+    evidence_only_or_deferred:
+      - capability: prompt_application_trace_writer
+        status: package-local-evidence-only
+        blocking: false
+      - capability: replay
+        status: pending-A6-capability-audit
+        blocking: false
+      - capability: state_snapshot
+        status: pending-A6-capability-audit
+        blocking: false
+      - capability: state_diff
+        status: pending-A6-capability-audit
+        blocking: false
+      - capability: restore_or_rollback
+        status: pending-A6-capability-audit
+        blocking: false
+  status_vocabulary:
+    - enforced
+    - cli-supported
+    - documented-convention
+    - package-local-validation
+    - package-local-evidence-only
+    - deferred
+    - unsupported
+  execution_order:
+    - startup_and_profile_resolution
+    - source_and_registry_integrity
+    - lint
+    - compile
+    - test
+    - coverage
+    - validate-state
+    - next-step
+    - validate-output
+    - validate-artifacts
+    - consistency
+    - go-no-go
+    - clean-check
+    - repo-check
+    - repo-check --clean
+    - apf_local_required_checks
+  false_green_prohibition: true
+  parent_cli_extension_claimed: false
+  notes:
+    - APF-local checks do not become parent CLI commands merely because they are required by APF.
+    - A confirmed APF release requires both parent-compatible evidence and APF-local validation evidence.

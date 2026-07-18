@@ -1,0 +1,35 @@
+{
+  "milestone": "M60.7 line closure",
+  "generated_at": "2026-07-08T10:45:00+02:00",
+  "status": "passed-line-closure",
+  "stable_base": "M60.7.5",
+  "scope": "artifact-only real-module testcase generation line closure",
+  "completed_chain": [
+    "source/program.ordo.yaml",
+    "REAL_MODULE_GRAPH_SUMMARY.json/.md",
+    "REAL_MODULE_TERMINAL_PATHS.json/.md",
+    "clean-path cases + RAW_TESTCASE_MATRIX.csv",
+    "bounded noise cases + RAW_NOISE_TESTCASE_MATRIX.csv"
+  ],
+  "supported_noise_patterns": [
+    "distraction",
+    "invalid_branch",
+    "clarification_without_submit",
+    "skip_ahead"
+  ],
+  "deferred_future_improvements": [
+    "backtrack",
+    "correction_backtrack",
+    "runtime execution of generated cases",
+    "scoring generated real-module cases",
+    "model/API benchmark orchestration",
+    "watchdog/process-boundary hardening for transcript replay matrix"
+  ],
+  "runtime_core_semantics_changed": false,
+  "scoring_weights_changed": false,
+  "pdf_generated": false,
+  "release_gate_exclusions": [
+    "runtime-harness / transcript-replay matrix known blocked branch"
+  ],
+  "decision": "Stop M60.7 noise expansion at M60.7.5 and treat remaining patterns as future improvements."
+}

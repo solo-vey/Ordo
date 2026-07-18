@@ -1,0 +1,38 @@
+{
+  "schema_version": "ordo.empirical_evidence.external_developer_submission.v1",
+  "submission_id": "EDA-SUBMISSION-XXX",
+  "team_declaration": {
+    "team_identifier": "pseudonymous-or-public-id",
+    "external_to_ordo_authors": true,
+    "internal_repository_access": "no",
+    "unpublished_material_access": "no"
+  },
+  "consumed_release": {
+    "release_id": "<release-id>",
+    "archive_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "distribution_channel": "public distribution channel",
+    "obtained_at": "not_recorded",
+    "public_release_use_claim": true
+  },
+  "development_timeline": {
+    "start": "not_recorded",
+    "end": "not_recorded",
+    "active_work_time": "not_recorded",
+    "milestones": []
+  },
+  "source_package_identity": {
+    "filename": "<confidential-original-filename>",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash_recorded_at": "not_recorded"
+  },
+  "testing_summary": {
+    "tests_executed": 0,
+    "passed": 0,
+    "failed": 0,
+    "final_package_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "post_unpack_verification": "not_recorded"
+  },
+  "author_assistance": "none_recorded",
+  "declared_independence_level": "self_declared_independence_unverified",
+  "evidence_records": []
+}

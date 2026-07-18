@@ -1,0 +1,53 @@
+{
+  "schema_version": "ordo.benchmark.representation_registry.v1",
+  "registry_version": "1.0.0",
+  "common_invariants": [
+    "intent",
+    "business_outcome",
+    "required_inputs",
+    "required_outputs",
+    "state_mutations",
+    "gates",
+    "terminal_semantics",
+    "correction_ownership",
+    "correction_loop_reachability",
+    "evidence_obligations",
+    "failure_and_hard_stop_behavior"
+  ],
+  "representations": {
+    "YAML_PLAYBOOK": {
+      "profile": "profiles/YAML_PLAYBOOK.profile.json",
+      "allowed_source_types": [
+        "CANONICAL_ORDO_YAML"
+      ],
+      "strategy": "formal_yaml_preservation",
+      "external_disclosure": "formal_source_allowed"
+    },
+    "STRUCTURED_INSTRUCTIONS": {
+      "profile": "profiles/STRUCTURED_INSTRUCTIONS.profile.json",
+      "allowed_source_types": [
+        "CANONICAL_ORDO_YAML"
+      ],
+      "strategy": "yaml_to_structured_instructions",
+      "external_disclosure": "compiled_instructions_only"
+    },
+    "MIXED_ACCUMULATED_INSTRUCTIONS": {
+      "profile": "profiles/MIXED_ACCUMULATED_INSTRUCTIONS.profile.json",
+      "allowed_source_types": [
+        "CANONICAL_ORDO_YAML",
+        "CONTROLLED_ACCUMULATION_CORPUS"
+      ],
+      "strategy": "controlled_historical_accumulation",
+      "external_disclosure": "no_yaml_no_compiler_no_provenance_no_benchmark_metadata_no_node_mapping"
+    },
+    "DOMAIN_ADAPTED_ALL_IN_ONE": {
+      "profile": "profiles/DOMAIN_ADAPTED_ALL_IN_ONE.profile.json",
+      "allowed_source_types": [
+        "DOMAIN_ALL_IN_ONE_CORPUS"
+      ],
+      "strategy": "direct_domain_adaptation",
+      "external_disclosure": "domain_corpus_and_adapted_process_only"
+    }
+  },
+  "failure_terminal": "NO_CHANGE / REPRESENTATION_COMPILATION_GOVERNANCE_FAILURE"
+}

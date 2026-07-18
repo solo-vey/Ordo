@@ -1,0 +1,37 @@
+module:
+  id: apf.blind_automation_design
+  version: 1.0.0
+  purpose: Design blind testing, Driver behavior, evaluation separation, and causal improvement contracts for generated playbooks.
+imports: []
+exports:
+  nodes:
+    - APF.N.BLIND_PROFILE_SELECT
+    - APF.N.BLIND_PACKAGE_DESIGN
+    - APF.N.CAUSAL_REVIEW_DESIGN
+  gates:
+    - APF.G.BLIND_AUTOMATION_CONTRACT_COMPLETE
+nodes:
+  - id: APF.N.BLIND_PROFILE_SELECT
+    type: decision
+    prompt: Determine whether the stabilized playbook is step-bound or semantic-adaptive. Do not force a step sequence onto adaptive instructions.
+    outputs: [execution_profile, profile_rationale]
+  - id: APF.N.BLIND_PACKAGE_DESIGN
+    type: action
+    requires: [execution_profile]
+    prompt: Define hidden scenario boundaries, Driver protocol, disclosure policy, terminal states, artifact versioning, invalidation, version-scoped approvals, audit logging, independent evaluation, and clean-context regression requirements.
+    outputs: [blind_automation_profile, driver_contract, external_evaluation_contract]
+  - id: APF.N.CAUSAL_REVIEW_DESIGN
+    type: action
+    prompt: Add a narrow causal diagnostic review template that traces defects to node, prompt, template, contract, Driver, runner, or validator and requires corroborating logs or files.
+    outputs: [diagnostic_causal_review_contract]
+gates:
+  - id: APF.G.BLIND_AUTOMATION_CONTRACT_COMPLETE
+    type: validation
+    assert:
+      - self_scoring == false
+      - driver_protocol_complete == true
+      - disclosure_guard_enabled == true
+      - artifact_approval_version_scoped == true
+      - correction_invalidates_dependents == true
+      - process_and_document_evaluation_separated == true
+      - diagnostic_corroboration_required == true

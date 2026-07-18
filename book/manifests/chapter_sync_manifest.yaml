@@ -1,0 +1,1142 @@
+schema_version: 1.0.0
+book_id: ordo_for_beginners
+primary_locale: en
+secondary_locales:
+- uk
+version_policy: semantic-per-chapter
+generated_at: '2026-07-11'
+chapters:
+- chapter_id: 00_title
+  order: 1
+  en:
+    version: 1.0.0
+    file: 00_title.md
+    sha256: 8ab9aff2da931d5fa8fe7e1b02868e51fd7a55907abaeda5644cbfa24c0d0d78
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: 00_title.md
+    sha256: 10bfd25c896da574807bc7611e7f0f1032633bba6c264a2fc6e830c6bc0ff511
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 01_peredmova
+  order: 2
+  en:
+    version: 1.0.0
+    file: 01_peredmova.md
+    sha256: 101763ae581356e7ba75413262b3c7c5a2d435f2124750f694e49061869188a1
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: 01_peredmova.md
+    sha256: 9830ecd33e59a4bcc7ee089468bd964b8d9ad1724938f2b5bf2b474dc0725159
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 02_yak_problema_peretvorylasia_na_ideiu
+  order: 3
+  en:
+    version: 1.0.0
+    file: 02_yak_problema_peretvorylasia_na_ideiu.md
+    sha256: 2230d43127e3c16274a8c37955c5fe7e097c6436e782ed3270d1e9b442590741
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: 02_yak_problema_peretvorylasia_na_ideiu.md
+    sha256: c682f9e8d9f0417ca38907efc586a67f096a98a062cc1c61d254e615c91b43fc
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 02_dlia_koho_tsia_knyha
+  order: 4
+  en:
+    version: 1.0.0
+    file: 02_dlia_koho_tsia_knyha.md
+    sha256: e75d45374d9e4f7fcd9868913fcd1c3d18c59623f971f8974448c463d972c9c7
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: 02_dlia_koho_tsia_knyha.md
+    sha256: 1fbbbc67a4a89ca5b412cf547c90c66c5e9f16fa55c00be5f83b55016e041dde
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 03_yak_chytaty_knyhu
+  order: 5
+  en:
+    version: 1.0.0
+    file: 03_yak_chytaty_knyhu.md
+    sha256: c41b5f6f775b6ff762be210f58bb6b8c2b6a1c6689bd16b7df0a4ba24cf18b90
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: 03_yak_chytaty_knyhu.md
+    sha256: 4c40fe6992386e7555f17d38cd328937abb18a895bacdb7d386782a2002143bc
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 04_vstup_holovna_ideia_ordo
+  order: 6
+  en:
+    version: 1.0.0
+    file: 04_vstup_holovna_ideia_ordo.md
+    sha256: 2cf0b4d91bbef4a6db7231af1eaa3478e35d3153a04592b21c9f72acd6d7205e
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: 04_vstup_holovna_ideia_ordo.md
+    sha256: 0434ba3f413d1fbc2d2aa0fcf2e1444f10bf987db52a8239bc35eacefa482935
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 01_chomu_zvychainykh_promptiv_nedostatno
+  order: 7
+  en:
+    version: 1.0.0
+    file: chapter_01_chomu_zvychainykh_promptiv_nedostatno.md
+    sha256: 7b47275723908ad2e0419a932205b0fe31324488317d958b157d791a4df916d6
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_01_chomu_zvychainykh_promptiv_nedostatno.md
+    sha256: 2316eb17c25ab061f038c41789a8b63c94a814f154007ef7f2cfe7972e581d9e
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 02_shcho_take_ordo_prostymy_slovamy
+  order: 8
+  en:
+    version: 1.0.0
+    file: chapter_02_shcho_take_ordo_prostymy_slovamy.md
+    sha256: b0666efc152f5c6e44a4f548e2f3063d6b6867f31eaea61254b4982363abd55c
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_02_shcho_take_ordo_prostymy_slovamy.md
+    sha256: 63d561baad340890c8f6c50fbd207c6ef710ee09ba56065149edd3831e98b322
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 03_ordo_iak_mova_keruvannia_modelliu
+  order: 9
+  en:
+    version: 1.0.0
+    file: chapter_03_ordo_iak_mova_keruvannia_modelliu.md
+    sha256: f7e96741c93eec95b7e82cc46c4ade4114e4fd3cb0af959b0344e1cfafc59f12
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_03_ordo_iak_mova_keruvannia_modelliu.md
+    sha256: dab8b7be77ffcdd9102ef22ae84ca60704ee28661c7809ffdbd7ad4d92d935c4
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 04_intent_contract_context
+  order: 10
+  en:
+    version: 1.0.0
+    file: chapter_04_intent_contract_context.md
+    sha256: d6c32393d9d57c62ff2798a4166c88898657ee180fb780018a81f8b865d5f504
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_04_intent_contract_context.md
+    sha256: 5555d9d58d359fee78a8b13b51474d44fb04788e8e3a860f9182cc0007dfaa95
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 05_state_pamiat_protsesu
+  order: 11
+  en:
+    version: 1.0.0
+    file: chapter_05_state_pamiat_protsesu.md
+    sha256: 373cf55cb5374fe8e7a47171f554f13cc7a9a06ee09952838fb4c98d31f9c2f2
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_05_state_pamiat_protsesu.md
+    sha256: b5b5c6f646662db1ea875a236f67c63e8b0f9c1492e501a40458797c36decec6
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 06_entry_i_node_iak_model_stavyt_pytannia
+  order: 12
+  en:
+    version: 1.0.0
+    file: chapter_06_entry_i_node_iak_model_stavyt_pytannia.md
+    sha256: 7b385cdddd461b257830101e65326aeec1f6b403c5e6ec2a3ffbf886acfcc724
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_06_entry_i_node_iak_model_stavyt_pytannia.md
+    sha256: e07745bb3bf63c5c2a887501f25d03b7515f3e96b54c0a7d63d7e48cfebef894
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 06_1_atomic_steps_in_llm_processes
+  order: 13
+  en:
+    version: 1.0.0
+    file: chapter_06_1_atomic_steps_in_llm_processes.md
+    sha256: 0f593d3b07f252974994bb6e30544611bdbdba67a7460e3d1ecbf982de1867c8
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_06_1_atomic_steps_in_llm_processes.md
+    sha256: 3df8caf83290da4f9a40687ecfca4d2bb8b59e46d39dd00c53c5842cb275b020
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 06_2_micro_prompts_modular_process_architecture
+  order: 14
+  en:
+    version: 1.0.0
+    file: chapter_06_2_micro_prompts_modular_process_architecture.md
+    sha256: c95bdacbddc765194717477da88d3d8e97652eea5843090c1ef72b3d15c3d803
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_06_2_micro_prompts_modular_process_architecture.md
+    sha256: 619b4ad7a8170e8344ec86836302e2fd5448e49f6c178ef7a4beb29ec3374f11
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 07_output_shcho_model_maie_stvoryty
+  order: 15
+  en:
+    version: 1.0.0
+    file: chapter_07_output_shcho_model_maie_stvoryty.md
+    sha256: 942c242c7134d7e398382642fa1813a885d514296828bd185b1dbd0be7dc603b
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_07_output_shcho_model_maie_stvoryty.md
+    sha256: 2b1f5303b2488e21d0b04b795beac7ba0221cdabb8206a7d1e849dadfeac0927
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 08_pyshemo_pershu_ordo_source_prohramu
+  order: 16
+  en:
+    version: 1.0.0
+    file: chapter_08_pyshemo_pershu_ordo_source_prohramu.md
+    sha256: 16e9a5e9a8634b06df5e93a85b5eabec3f6707159e6e4271cd004570d1784540
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_08_pyshemo_pershu_ordo_source_prohramu.md
+    sha256: 405e097aabe4399b52cd62da160e941b486b3714f688ca28508ced744d8ac771
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 09_kompiliuiemo_ordo_source_v_semantic_json_ir
+  order: 17
+  en:
+    version: 1.0.0
+    file: chapter_09_kompiliuiemo_ordo_source_v_semantic_json_ir.md
+    sha256: 945c0ef96a6f42f331620a635c76d300806db9036c7ee8706dc2eac7b3ca1266
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_09_kompiliuiemo_ordo_source_v_semantic_json_ir.md
+    sha256: fdc0817e6cf5433e53d497cbd41892a7817e73a5be1864b888145f6e3ba7b470
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 10_chomu_semantic_json_ir_zaraz_naikrashchyi
+  order: 18
+  en:
+    version: 1.0.0
+    file: chapter_10_chomu_semantic_json_ir_zaraz_naikrashchyi.md
+    sha256: 0c89c029c86ad1ccee0087a5c4557324d2b929aaa2fd4cedd96f3569b9e526a9
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_10_chomu_semantic_json_ir_zaraz_naikrashchyi.md
+    sha256: 232e3d203bc9c8d8f95df1832b96080e31f59eda067cb873c5bafd0a9713ae29
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 11_gate_tse_ne_porada_a_kontrolna_tochka
+  order: 19
+  en:
+    version: 1.0.0
+    file: chapter_11_gate_tse_ne_porada_a_kontrolna_tochka.md
+    sha256: 00f185842e195a4914eddea4d0b8bcecf2512ad35901aaafdbb4cdf398e62446
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_11_gate_tse_ne_porada_a_kontrolna_tochka.md
+    sha256: 8bf8b4b5889f5f2f045a154eafe4d7b3c5638834cf9d18131ae07e7483c6c73c
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 12_nehatyvni_perevirky_assert_not
+  order: 20
+  en:
+    version: 1.0.0
+    file: chapter_12_nehatyvni_perevirky_assert_not.md
+    sha256: 923dbfa3afc6775bd61985909f71248b528f36ea748022f6d51bc20ea126a3cf
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_12_nehatyvni_perevirky_assert_not.md
+    sha256: d719fc74e6fa0fa8e2694b4fc2bd3b6b5b7d26c0b491b1322701641b7313fd28
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 13_status_semantics
+  order: 21
+  en:
+    version: 1.0.0
+    file: chapter_13_status_semantics.md
+    sha256: ba9adce1ff7602724cd73d7ea68833ced17ada59c0e6fa0acc111f2d7e409927
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_13_status_semantics.md
+    sha256: 7e71ee1a4f27119f7ee676ef0f1c112ab37422808e85d636df0f4404756a0f0a
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 14_chomu_ordo_prohramy_potribno_debazhyty
+  order: 22
+  en:
+    version: 1.0.0
+    file: chapter_14_chomu_ordo_prohramy_potribno_debazhyty.md
+    sha256: 946579f8d049864eab31520be971c460400b61c153c8fc31e58cc809f37328a1
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_14_chomu_ordo_prohramy_potribno_debazhyty.md
+    sha256: 3ee83c564110389da80531e62e4e8871a9a36a2f680556239ca6f3385ff034f3
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 15_debug_mode_i_execution_trace
+  order: 23
+  en:
+    version: 1.0.0
+    file: chapter_15_debug_mode_i_execution_trace.md
+    sha256: 22d86441f19d76d54a6b90b47dffb071deb2520b5ba2dbea0a6a99f5b3f63140
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_15_debug_mode_i_execution_trace.md
+    sha256: 6cc0c5e6728d8b5dac1aebdef11f5d7fac10271009111f17f27ea6a0b23eeba3
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 16_testy_fixtures_i_expected_behavior
+  order: 24
+  en:
+    version: 1.0.0
+    file: chapter_16_testy_fixtures_i_expected_behavior.md
+    sha256: 009b76eed783d22fffb89a387d89c1d6487952996c14f6343f8f2e9818b1b9bc
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_16_testy_fixtures_i_expected_behavior.md
+    sha256: a037efc5bcc9ac3fa9b05f6f35348e2f19c22eac0dbf5064de2e1b1fd9d842b8
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 17_regression_suite_i_coverage
+  order: 25
+  en:
+    version: 1.0.0
+    file: chapter_17_regression_suite_i_coverage.md
+    sha256: f765c8bd42206491e5507da6a57b23cd433e0fffa0e6f5505ec551b0666f6e8e
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_17_regression_suite_i_coverage.md
+    sha256: c4aca919cf8e2a5a96a458b0ae4cc11e6c8dc7b1482e8ee1f81c4be1ae4a38e1
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 18_feedback_and_improvement_loop
+  order: 26
+  en:
+    version: 1.0.0
+    file: chapter_18_feedback_and_improvement_loop.md
+    sha256: 4ca6da3ebfd1e213c38c51314592fa88e51c37853fb6f33a1e5c5784c1c3c9ce
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_18_feedback_and_improvement_loop.md
+    sha256: bc4e95d6b2f98b9ad6295986ce71e180051a78d35bd55a76cdd34fb7a52819fc
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 19_chomu_ne_vse_treba_formalizuvaty
+  order: 27
+  en:
+    version: 1.0.0
+    file: chapter_19_chomu_ne_vse_treba_formalizuvaty.md
+    sha256: 5819f673c805a4687da87206f5673afdb66f0791b34c7649b7410268845daeec
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_19_chomu_ne_vse_treba_formalizuvaty.md
+    sha256: a7db369862acbe3261c1c6fa029d9d6ddf4ea468c1460646f49a86d1ba4d22b6
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 20_iak_pravylno_vykorystovuvaty_freeform
+  order: 28
+  en:
+    version: 1.0.0
+    file: chapter_20_iak_pravylno_vykorystovuvaty_freeform.md
+    sha256: ad58a40e5dcfecb567ec10c7457ab62737d161d040f4047bea214fa08b43b24e
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_20_iak_pravylno_vykorystovuvaty_freeform.md
+    sha256: cc212a24b0514102db1e6a7c2cc426c7fdeb2e8be391373e615053c29db6b1ac
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 21_freeform_coverage
+  order: 29
+  en:
+    version: 1.0.0
+    file: chapter_21_freeform_coverage.md
+    sha256: fac87090056145314d82ed95852d7c2f45a3e4bd2e759a437ab435545bd94008
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_21_freeform_coverage.md
+    sha256: f150e40828516c5d30e44cfc27fc0f4e17cf24d9c408c8975eb071af965b03c9
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 22_ordo_core
+  order: 30
+  en:
+    version: 1.0.0
+    file: chapter_22_ordo_core.md
+    sha256: 4a129ed7ea7bbda20f78d60c8d2b5d72545c26daf55671567a0a7fe6a8d545b4
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_22_ordo_core.md
+    sha256: 7f76b6d3aa44e79f6dddc1ad1c8bbae53ad8934ff069448509c91ca881fe80a8
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 23_ordo_profiles
+  order: 31
+  en:
+    version: 1.0.0
+    file: chapter_23_ordo_profiles.md
+    sha256: 78996e17b99d9ce0a5d2ed91843be352e93bee0ccef558f9ac65f5c789ce698d
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_23_ordo_profiles.md
+    sha256: 4c8562917d3c9dd2231f9566242f5ae9c08fd6a0a07dd8cc38e0e697e12e739b
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 24_domain_packs
+  order: 32
+  en:
+    version: 1.0.0
+    file: chapter_24_domain_packs.md
+    sha256: c18874f48a6697e3b63ef361b9a7b3af1e609a9b57ab7610b49078754ada5efd
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_24_domain_packs.md
+    sha256: 2d2f8492ca7709f18d4258c1acbe07e164d8c9392cc3cd92aae184a1304fec87
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 25_biblioteky_ordo_include_import_i_povtorne_vykorystannia_hotovykh_rishen
+  order: 33
+  en:
+    version: 1.0.0
+    file: chapter_25_biblioteky_ordo_include_import_i_povtorne_vykorystannia_hotovykh_rishen.md
+    sha256: 89dd711cc68233c6af766b018468883f6270f6900f6d64906ab5f995eda52b92
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_25_biblioteky_ordo_include_import_i_povtorne_vykorystannia_hotovykh_rishen.md
+    sha256: 882ebc7c1db08b7a16180ad6557be95b22fe702fb9254e20717fcf02d5465ce1
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 26_chomu_all_in_one_bilshe_ne_holovnyi_format
+  order: 34
+  en:
+    version: 1.0.0
+    file: chapter_26_chomu_all_in_one_bilshe_ne_holovnyi_format.md
+    sha256: c960f9a1195f4720f9725484c3f31402490b970adb3c7c2769d80c9eb0adab0e
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_26_chomu_all_in_one_bilshe_ne_holovnyi_format.md
+    sha256: 53eee48002c597eee68983d9228805310f380b796ef4fe6c0b0780bd503bf589
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 27_documentation_runtime
+  order: 35
+  en:
+    version: 1.0.0
+    file: chapter_27_documentation_runtime.md
+    sha256: dc2b2a8b2a6285e33c1ed4fe169b064863b6bef4a5200717d7b16ee6fcfac12a
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_27_documentation_runtime.md
+    sha256: 3fb88b017464fc8cbaf14426098ccca029f14157f157c41e0628bc9951cabf9c
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 28_rendered_artifact_validation
+  order: 36
+  en:
+    version: 1.0.0
+    file: chapter_28_rendered_artifact_validation.md
+    sha256: 78260b8a6b867a06e4d2285e529a665e668875df0931f66cb1be42d5da9adac1
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_28_rendered_artifact_validation.md
+    sha256: 7f49969abd473ec592b8ee08bd849ce366231fdc48560a06070d05a5c4d8cd29
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 29_staryi_playbook_iak_markdown_baza_znan
+  order: 37
+  en:
+    version: 1.0.0
+    file: chapter_29_staryi_playbook_iak_markdown_baza_znan.md
+    sha256: b55967494bec8cf30207cd9c07a50762c1c63f0c8101971d82f6df640b75f4c5
+    status: canonical_ready
+  uk:
+    version: 1.0.0
+    file: chapter_29_staryi_playbook_iak_markdown_baza_znan.md
+    sha256: e9cba6537f0e55bd011990873691d665a2c8048fe61fafde2001c77e28424619
+    status: synced
+  sync_status: synced
+  next_action: none
+- chapter_id: 30_mihratsiia_playbook_a_v_ordo
+  order: 38
+  en:
+    version: 0.0.0
+    file: chapter_30_mihratsiia_playbook_a_v_ordo.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_30_mihratsiia_playbook_a_v_ordo.md
+    sha256: cc613d32b0625807e90814b231af4b4f589c62d442babd51448a274a23e7b407
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 31_guided_intake_iak_ordo_prohrama
+  order: 39
+  en:
+    version: 0.0.0
+    file: chapter_31_guided_intake_iak_ordo_prohrama.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_31_guided_intake_iak_ordo_prohrama.md
+    sha256: 4cb635b063fa5c70cd4e9cf8ea1fe8dcffeedfee35f90ffcb90767b0219b174c
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 32_package_generation
+  order: 40
+  en:
+    version: 0.0.0
+    file: chapter_32_package_generation.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_32_package_generation.md
+    sha256: beb1bbe30d89b5985a7f1ce14e341b5f481722e746f752c710b0d353bf217ab9
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 33_shcho_lyshylos_u_freeform
+  order: 41
+  en:
+    version: 0.0.0
+    file: chapter_33_shcho_lyshylos_u_freeform.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_33_shcho_lyshylos_u_freeform.md
+    sha256: ff9dcbfaf7752ca0bf1fc0d3afec3b5a48403f5347f0db7a84ff3d682996bb8c
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 34_minimalni_vymohy_do_avtora
+  order: 42
+  en:
+    version: 0.0.0
+    file: chapter_34_minimalni_vymohy_do_avtora.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_34_minimalni_vymohy_do_avtora.md
+    sha256: af5a9aed5f446213e0802f99975c2213907fbc75319ca28598d69845def58ef3
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 35_iak_ne_zlamaty_playbook
+  order: 43
+  en:
+    version: 0.0.0
+    file: chapter_35_iak_ne_zlamaty_playbook.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_35_iak_ne_zlamaty_playbook.md
+    sha256: 4c158585fc40a8c5db672ff76d83948181b22209e8a5419d6e9c0716e38e0f16
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 36_iak_otsiniuvaty_pokryttia_ordo
+  order: 44
+  en:
+    version: 0.0.0
+    file: chapter_36_iak_otsiniuvaty_pokryttia_ordo.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_36_iak_otsiniuvaty_pokryttia_ordo.md
+    sha256: c84eec069c84375c0c2e014b5651937b0ff1337791bbe16bff50e0bc1db7d290
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 37_ordo_bez_runtime
+  order: 45
+  en:
+    version: 0.0.0
+    file: chapter_37_ordo_bez_runtime.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_37_ordo_bez_runtime.md
+    sha256: 30f4be907d87bd1faded0d104caa42de3b59ea49257587760bcbc8941c5f0063
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 38_ordo_z_helper_runner
+  order: 46
+  en:
+    version: 0.0.0
+    file: chapter_38_ordo_z_helper_runner.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_38_ordo_z_helper_runner.md
+    sha256: 948117c8352ccc7f79a8b479e4c1f09bf23bbe7574cbfe8485d349cf5aec5ce1
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 39_ordo_iak_native_model_language
+  order: 47
+  en:
+    version: 0.0.0
+    file: chapter_39_ordo_iak_native_model_language.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_39_ordo_iak_native_model_language.md
+    sha256: ae356b319bfed5f511ddecb9881924a28573f95efe2738acd370168726ba2c9e
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 40_process_rail
+  order: 48
+  en:
+    version: 0.0.0
+    file: chapter_40_process_rail.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_40_process_rail.md
+    sha256: f7d2919c1ae2b2e9432f9bc42b007513ec5ba562d17f5fe068a9538ca74d38d9
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 41_contract_artifact_coverage_go_no_go
+  order: 49
+  en:
+    version: 0.0.0
+    file: chapter_41_contract_artifact_coverage_go_no_go.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_41_contract_artifact_coverage_go_no_go.md
+    sha256: 3ef2403ae12cc2b51d1c02973e8f15a72197b09de19f47b1356f70f712a704ef
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 42_external_audit_pre_release
+  order: 50
+  en:
+    version: 0.0.0
+    file: chapter_42_external_audit_pre_release.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_42_external_audit_pre_release.md
+    sha256: 0cc91ffa87acd77fdf869751f5c29c84c858019dab314ff168de43a4ac588889
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 43_final_handoff
+  order: 51
+  en:
+    version: 0.0.0
+    file: chapter_43_final_handoff.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_43_final_handoff.md
+    sha256: 31d4c9913abc418778344f667d91150ad13e37a488b9f66a520ddcf7083207bf
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 44_external_feedback_intake
+  order: 52
+  en:
+    version: 0.0.0
+    file: chapter_44_external_feedback_intake.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_44_external_feedback_intake.md
+    sha256: 5252436b904b191e851a665b4c4befb48ffefc2341c27ae05a11f51bddb5b126
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 45_feedback_decision_planning
+  order: 53
+  en:
+    version: 0.0.0
+    file: chapter_45_feedback_decision_planning.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_45_feedback_decision_planning.md
+    sha256: 5036f1e1eb686e06e77f65e75b71d6ecd535fd5eb4a61208e4776ed0bc2e9a0e
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 46_publication_readiness_decision
+  order: 54
+  en:
+    version: 0.0.0
+    file: chapter_46_publication_readiness_decision.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_46_publication_readiness_decision.md
+    sha256: e9775ff20199c0cdf56939dcec1cc9e8b6a29b84242aad99f1d1ccbfc572c7bb
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 47_two_tier_rendering_model
+  order: 55
+  en:
+    version: 0.0.0
+    file: chapter_47_two_tier_rendering_model.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_47_two_tier_rendering_model.md
+    sha256: af970d43915af05cd5d09167cb436d24f76e8067cbf5f701923760868137590a
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 48_runtime_source_of_truth
+  order: 56
+  en:
+    version: 0.0.0
+    file: chapter_48_runtime_source_of_truth.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_48_runtime_source_of_truth.md
+    sha256: fa1f4d27aa66a91d96f8d60810a33ba111ade1653d5c9f8ae4f934716bf4c67e
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 49_runtime_guided_intake_entry_protocol
+  order: 57
+  en:
+    version: 0.0.0
+    file: chapter_49_runtime_guided_intake_entry_protocol.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_49_runtime_guided_intake_entry_protocol.md
+    sha256: 93cd7aa0e7a29402e69c84979c4a9bc8f92feeca6e7639447533b83a23ab2197
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 50_runtime_mode_start_files_standard
+  order: 58
+  en:
+    version: 0.0.0
+    file: chapter_50_runtime_mode_start_files_standard.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_50_runtime_mode_start_files_standard.md
+    sha256: 5e4fac02c3dbb3d8fcb62713392f0f16d1a680a03cb94a6be9f45ea7dcfed5c6
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 51_package_build_profiles
+  order: 59
+  en:
+    version: 0.0.0
+    file: chapter_51_package_build_profiles.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_51_package_build_profiles.md
+    sha256: 86f405a8b113d5c2229a195bd8eecbd68fd78405e1623b1681982ccc672115fa
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 52_runtime_checkpoint_discipline
+  order: 60
+  en:
+    version: 0.0.0
+    file: chapter_52_runtime_checkpoint_discipline.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_52_runtime_checkpoint_discipline.md
+    sha256: 7910f490a443f7bb437612b173259468d0641c68012b9feaf3102087edef7313
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 53_cli_enforced_runtime_package
+  order: 61
+  en:
+    version: 0.0.0
+    file: chapter_53_cli_enforced_runtime_package.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_53_cli_enforced_runtime_package.md
+    sha256: 2e4e0c01bf610ed5712755df2aa9d3a2de82b864d934adac818c3a9370a4dc31
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 54_multi_target_runtime_compilation
+  order: 62
+  en:
+    version: 0.0.0
+    file: chapter_54_multi_target_runtime_compilation.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_54_multi_target_runtime_compilation.md
+    sha256: 5acc9f1720b6c5969a9ae0a53bdb9f1de1bf0ff64e0f29cd70cd9f4226519fa1
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 55_ordo_code_runtime_view
+  order: 63
+  en:
+    version: 0.0.0
+    file: chapter_55_ordo_code_runtime_view.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_55_ordo_code_runtime_view.md
+    sha256: c7aa3d7b7a21aeeb36396e80f99388c0b5d5fe7c73ec3be5e1210f9ab5173f91
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 56_session_trace_proof_program
+  order: 64
+  en:
+    version: 0.0.0
+    file: chapter_56_session_trace_proof_program.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_56_session_trace_proof_program.md
+    sha256: a6aae7768a67fbb9cabf58f40ec81128428294c15d9a5a5ac97e581536d1ee89
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 57_scenario_testing_i_pathwalk
+  order: 65
+  en:
+    version: 0.0.0
+    file: chapter_57_scenario_testing_i_pathwalk.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_57_scenario_testing_i_pathwalk.md
+    sha256: 2a76d60b74dd52fc7553fc0ab31ad281aff42fa883edc320397baca3ff7cdf8f
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 58_restore_session_append_only_rollback
+  order: 66
+  en:
+    version: 0.0.0
+    file: chapter_58_restore_session_append_only_rollback.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_58_restore_session_append_only_rollback.md
+    sha256: ba7e9d00f8e5a89da3e50c93303cbd6d400752994c6350e2cdbaecd6ee444666
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 59_pathwalk_benchmark_readiness
+  order: 67
+  en:
+    version: 0.0.0
+    file: chapter_59_pathwalk_benchmark_readiness.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_59_pathwalk_benchmark_readiness.md
+    sha256: 4b4a750fe37923e5979124ce8e8f6d18e1542175c09a278329f3e1ebfc836e62
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 60_model_benchmark_protocol
+  order: 68
+  en:
+    version: 0.0.0
+    file: chapter_60_model_benchmark_protocol.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_60_model_benchmark_protocol.md
+    sha256: d3e8956f0ce8b67a2c8766fe79fa2e5acd8f6362761eac0e29abc743338c05d4
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 61_real_module_testcase_generation
+  order: 69
+  en:
+    version: 0.0.0
+    file: chapter_61_real_module_testcase_generation.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_61_real_module_testcase_generation.md
+    sha256: c794e25fdf55268ebef55e70848c69894c8a3c923e9bb68ae6640f66fadb5490
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 62_human_review_scenario_cards
+  order: 70
+  en:
+    version: 0.0.0
+    file: chapter_62_human_review_scenario_cards.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_62_human_review_scenario_cards.md
+    sha256: f2cc93d6af0c18e733f80eaffd7d6809b01d8e1cfece96587df41c74fa50acfb
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 63_visual_graph_generator
+  order: 71
+  en:
+    version: 0.0.0
+    file: chapter_63_visual_graph_generator.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_63_visual_graph_generator.md
+    sha256: 5763acd14d75b8d96ead2e570f1a449abf7f9d2f9bac7b3dfbf78bb9b2f8a0c7
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 64_companion_utility_workflow
+  order: 72
+  en:
+    version: 0.0.0
+    file: chapter_64_companion_utility_workflow.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_64_companion_utility_workflow.md
+    sha256: 3bde1c3943b2b1ec2bb9b0228affd4b4ba0c368e0ee7251059a69d607439960a
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 73_yak_apf_pochav_stvoriuvaty_sam_sebe
+  order: 73
+  en:
+    version: 0.0.0
+    file: chapter_73_yak_apf_pochav_stvoriuvaty_sam_sebe.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_73_yak_apf_pochav_stvoriuvaty_sam_sebe.md
+    sha256: 7d955c0a0c12f4d838bd4484e25a73cbd0a1edf89bcea4469f0c664b1ab2c601
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 74_execution_trace_core_language_element
+  order: 74
+  en:
+    version: 0.0.0
+    file: chapter_74_execution_trace_core_language_element.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_74_execution_trace_core_language_element.md
+    sha256: 5fd2d1fd8b4aa66c2a797c0cb4a0729a34e02330d184b02c98c90092d038ff79
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: 75_execution_trace_tooling_testing_replay
+  order: 75
+  en:
+    version: 0.0.0
+    file: chapter_75_execution_trace_tooling_testing_replay.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: chapter_75_execution_trace_tooling_testing_replay.md
+    sha256: 1884372fc7d896fa28cbb2bb800d7f930793e2945c7d674673924a34868a5c6a
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: a_slovnyk_ordo
+  order: 76
+  en:
+    version: 0.0.0
+    file: appendix_a_slovnyk_ordo.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: appendix_a_slovnyk_ordo.md
+    sha256: e2238de66d77bc5b16c905f8911fed629d004a3e57373d0256d3d2348d70d07a
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: b_kataloh_op_kodiv
+  order: 77
+  en:
+    version: 0.0.0
+    file: appendix_b_kataloh_op_kodiv.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: appendix_b_kataloh_op_kodiv.md
+    sha256: 419f3ed9dcf0574c2be3a6839e1d8f4e739c3d536786c339c77f029dc4ca16b9
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: c_pryklady_prohram
+  order: 78
+  en:
+    version: 0.0.0
+    file: appendix_c_pryklady_prohram.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: appendix_c_pryklady_prohram.md
+    sha256: 22a1d2537920e6f11f3d29dc6a04c0811e74409dc7863b76fe2b0a177dd3a126
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: d_cheklysty
+  order: 79
+  en:
+    version: 0.0.0
+    file: appendix_d_cheklysty.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: appendix_d_cheklysty.md
+    sha256: ff4a197fd4165e067504590f63084d3edd3e8b25f8326d9e5beeb495b44ab8e4
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: e_antypaterny
+  order: 80
+  en:
+    version: 0.0.0
+    file: appendix_e_antypaterny.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: appendix_e_antypaterny.md
+    sha256: 817b3bde936da9dfb9591d6ffefc749c4f04e0cd7335d48f8def1bed48361a5d
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical
+- chapter_id: f_praktychnyi_dovidnyk_opkodiv_i_yaml_atrybutiv
+  order: 81
+  en:
+    version: 0.0.0
+    file: appendix_f_praktychnyi_dovidnyk_opkodiv_i_yaml_atrybutiv.md
+    sha256: null
+    status: translation_required
+  uk:
+    version: 1.0.0
+    file: appendix_f_praktychnyi_dovidnyk_opkodiv_i_yaml_atrybutiv.md
+    sha256: d3aba347992dff74db06b0476ca2cf304f8b33b678c36403d22ca40ff7af7678
+    status: baseline_ready
+  sync_status: en_translation_required
+  next_action: translate_uk_baseline_to_en_then_designate_en_as_canonical

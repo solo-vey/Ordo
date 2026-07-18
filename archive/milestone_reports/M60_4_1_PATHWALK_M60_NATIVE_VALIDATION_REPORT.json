@@ -1,0 +1,43 @@
+{
+  "milestone": "M60.4.1",
+  "title": "PathWalk M60-native Adaptation + Branch-aware Runtime Current Node",
+  "generated_at": "2026-07-07T13:40:01.347663+00:00",
+  "scope": {
+    "ordo_core_patch": [
+      "branch-aware live runtime current_node for next-step/intake submit"
+    ],
+    "pathwalk_patch": [
+      "M60.4 embedded CLI launcher",
+      "runtime_view modes",
+      "verify-targets/session-trace scoring",
+      "retry/backoff helpers",
+      "pytest suite",
+      "runtime metadata in scores"
+    ],
+    "excluded": [
+      "score weight calibration final decision",
+      "MCP/sandbox",
+      "Python/Java targets"
+    ]
+  },
+  "validation": {
+    "pathwalk_pytest": "17/17 passed",
+    "targeted_core_tests": [
+      "RuntimeBranchAwareLiveCurrentNodeM60_4_1Test passed",
+      "RuntimeCheckpointDisciplineTest passed",
+      "RuntimeIncrementalIntakeEvidenceTest passed"
+    ],
+    "manual_m60_runtime_smoke": [
+      "generated PathWalk source package",
+      "built M60.4 runtime package runtime_view=json,ordo-code",
+      "embedded next-step selected branch current_node",
+      "intake completed selected branch",
+      "verify-targets passed",
+      "verify-session passed",
+      "score path_quality_score=1.0"
+    ]
+  },
+  "notes": [
+    "Full monolithic CLI unittest run remains noisy/long in this environment; targeted relevant classes passed."
+  ]
+}

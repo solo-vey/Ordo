@@ -1,0 +1,26 @@
+{
+  "schema_version": "ordo.apf.antipattern_state_evidence_verification.v1",
+  "status": "passed",
+  "contract_id": "APF_ANTIPATTERN_STATE_EVIDENCE_V1",
+  "state_fields_checked": 9,
+  "missing_fields": [],
+  "default_mismatches": [],
+  "schemas_added": [
+    "language/schemas/antipattern_gate_report.schema.json",
+    "language/schemas/antipattern_evidence_ref.schema.json"
+  ],
+  "runtime_contract": "packages/ordo_applied_project_factory/integration/antipattern_state_contract.apf.v1.json",
+  "tests": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "verified_invariants": [
+    "block_requires_repair_required_true",
+    "block_requires_repair_target",
+    "non_block_clears_blocked_transition_target",
+    "evidence_ref_report_digest_matches_persisted_report",
+    "finding_ids_are_unique",
+    "evidence_ids_are_unique"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "ordo.ordo_prompt_template_manifest.v1",
+  "template_version": "M87.4-ordo-prompt-v1",
+  "arm": "B",
+  "benchmark_id": "ordo-vs-plain-prompt-v1",
+  "required_content": [
+    "same shared task facts as arm A",
+    "same acceptance criteria as arm A",
+    "same required output fields as arm A",
+    "Ordo contracts",
+    "state protection",
+    "mandatory process gates",
+    "truthful completion labels"
+  ],
+  "forbidden_content": [
+    "additional task facts unavailable to arm A",
+    "different acceptance criteria",
+    "different required output fields"
+  ]
+}

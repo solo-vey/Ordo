@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Benchmark Driver Binding",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "package",
+    "variant",
+    "selection"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.driver_binding.v1"
+    },
+    "package": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "sha256"
+      ]
+    },
+    "variant": {
+      "type": "object",
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "required": [
+        "driver_family",
+        "driver_contract_version",
+        "checks",
+        "selection_reason",
+        "unsupported_gaps",
+        "binding_status"
+      ],
+      "properties": {
+        "driver_family": {
+          "enum": [
+            "DRV-STEP-BOUND",
+            "DRV-SEMANTIC-ADAPTIVE",
+            "UNSUPPORTED_OR_HYBRID"
+          ]
+        },
+        "binding_status": {
+          "enum": [
+            "passed",
+            "blocked"
+          ]
+        }
+      }
+    }
+  }
+}

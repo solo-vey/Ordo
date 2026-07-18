@@ -1,0 +1,138 @@
+{
+  "schema_version": "ordo.current_state_manifest.v2",
+  "dataset_version": "ORDO_EMPIRICAL_EVIDENCE_BASE_v1_10+EX02_CURRENT_OVERLAY",
+  "transfer_version": "ALL_CASES_CURRENT_STATE_ONLY_2026-07-18_REV2_TC02_EX02_REMOVED",
+  "creation_date": "2026-07-18",
+  "source_archives": [
+    {
+      "filename": "ORDO_EMPIRICAL_EVIDENCE_BASE_v1_10_YAML_ALPHA_1_17_ACCEPTED.zip",
+      "sha256": "57c7390a87575ba57eb8ee5ac828e49855e02c15b88dba6580f36929192abec8",
+      "role": "whole evidence baseline"
+    },
+    {
+      "filename": "EX02_CURRENT_STATE_ONLY_EVIDENCE_TRANSFER_2026-07-18.zip",
+      "sha256": "61141f8c3aadcbe2085cb97560a3b8e44e19793e96af05bb759634b07fb42280",
+      "role": "authoritative TC03/EX02 current-state overlay"
+    }
+  ],
+  "selection_policy": "all discovered test cases; latest authoritative artifacts and accepted runs only; TC02/EX02 authoritatively excluded as obsolete and migrated to TC03/EX02; no historical versions",
+  "discovered_test_cases": [
+    "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING",
+    "TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION",
+    "TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET",
+    "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE",
+    "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET"
+  ],
+  "retained_test_cases": [
+    "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING",
+    "TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION",
+    "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE",
+    "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET"
+  ],
+  "test_cases_with_accepted_runs": [
+    "TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING",
+    "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET"
+  ],
+  "test_cases_without_accepted_runs": [
+    "TC02_INTERRELATED_ARTIFACT_SET/EX01_STARTUP_INVESTMENT_DECISION",
+    "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX01_MONTHLY_FINANCIAL_CLOSE"
+  ],
+  "retained_accepted_run_count": 30,
+  "retained_current_packages": [
+    {
+      "case": "TC01_EX01",
+      "condition": "instruction_only",
+      "filename": "OFFICE_OPENING_INSTRUCTION_ONLY_V1_0.zip",
+      "sha256": "373f1c0b3ea4abf1efc15599138eeabb63e5f742950e7288863eb7c9c9480a7b"
+    },
+    {
+      "case": "TC01_EX01",
+      "condition": "ordo",
+      "filename": "OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC21.zip",
+      "sha256": "bd3d93c6b5daba640d6df6b3687ee2b457c48f4f73a570a2a44afa65e2edf627"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "filename": "DATABASE_CHANGE_ARTIFACT_SET_DOMAIN_ADAPTED_ANALYST_CORPUS_SEMANTIC_DRIVER_TESTING_ALPHA_1_5_0.zip",
+      "sha256": "d37427aa9d11474c1e47ec6bc85ea757e7a243d4e6bf80cebad3364647b6de8e"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "filename": "ORDO_MIXED_ACCUMULATED_INSTRUCTIONS_ALPHA_1_3_0_AUTOMATED_TESTING.zip",
+      "sha256": "4908b52352b095badecf755709731f59565422ced25d1c8c950a61a3a98e4e9e"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "filename": "ORDO_STRUCTURED_INSTRUCTIONS_NARRATIVE_PROCESS_ALPHA_1_3_0_AUTOMATED_TESTING.zip",
+      "sha256": "cb00f9ae9ca7842070d90adf04e509519009d85da7c5d8581010029e12146aff"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_0_BLACK_BOX_PRERELEASE_VALIDATION.zip",
+      "sha256": "ea6cc59bd32bd8afeaf3046e9829db20b31778990f9746984303f77aaddbec13"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_1_RUN_02_COMPLETION_PATCH.zip",
+      "sha256": "f5a0a525aa6fe360c3350c8433b79f862807075cb30ff5b47f88808bbe8186df"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_YAML_FULL_FIDELITY_ALPHA_1_17_4_1_RUN_01_JIRA_DELIVERY_QUALITY_PATCH_REISSUE.zip",
+      "sha256": "d439ab4a2f94544241174b3cad1cedd02b0dc37ff831b0d1b903db78152c8107"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "yaml_playbook",
+      "filename": "ORDO_ALPHA_1_17_0_RUN_PROMPTS.zip",
+      "sha256": "0d91e96e826201da1ae486f248592dec07b80677abdda8fc90fe330e387d473d"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "structured_instructions",
+      "filename": "START_PROMPTS_STRUCTURED_INSTRUCTIONS_ALPHA_1_3_0_RUN_01_RUN_05.zip",
+      "sha256": "afbca19424a64c4150ec81622f7f7fd10d4429fd75a2b4f535670428c236289a"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "mixed_accumulated_instructions",
+      "filename": "MIXED_ACCUMULATED_ALPHA_1_3_0_LAUNCH_PROMPTS.zip",
+      "sha256": "53504b29a4184ce005eb26707f498c562be7fca5d2d40ae01e78c97685e55389"
+    },
+    {
+      "case": "TC03_EX02",
+      "condition": "domain_adapted_all_in_one",
+      "filename": "DOMAIN_ADAPTED_ALL_IN_ONE_ALPHA_1_5_0_LAUNCH_PROMPTS.zip",
+      "sha256": "83794a9f27e9e03850de4c7102bbd30026c1bce435a18f4a7a34f59f9b145ff6"
+    }
+  ],
+  "provenance_policy": {
+    "executor_model": "GPT-5.6 Thinking",
+    "evaluator_model": "GPT-5.6 Thinking",
+    "relation": "different_chat_same_model",
+    "verification": "user_attested_not_cryptographically_verified"
+  },
+  "known_limitations": [
+    "TC01 provenance is user-attested and not cryptographically verified.",
+    "TC02/EX02 is intentionally excluded because it is obsolete and migrated to TC03/EX02; the replacement case is retained as authoritative."
+  ],
+  "total_retained_files_before_checksum": 285,
+  "total_retained_size_before_checksum": 11795693,
+  "excluded_historical_file_count": 26,
+  "excluded_historical_size": 146269,
+  "authoritatively_excluded_test_cases": [
+    {
+      "test_case": "TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET",
+      "lifecycle_state": "deprecated_migrated",
+      "disposition": "excluded",
+      "reason": "Obsolete test case migrated into TC03/EX02; retained evidence is represented by the authoritative TC03/EX02 case.",
+      "replacement_test_case": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET"
+    }
+  ]
+}

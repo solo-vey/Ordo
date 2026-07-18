@@ -1,0 +1,20 @@
+{
+  "milestone": "CSG-1",
+  "title": "Deviation Classification Contract",
+  "status": "passed",
+  "artifacts": [
+    "language/CSG_1_DEVIATION_CLASSIFICATION_CONTRACT.md",
+    "language/schemas/deviation_classification.schema.json",
+    "language/CSG_1_CLASSIFICATION_REGRESSION_FIXTURES.yaml"
+  ],
+  "checks": {
+    "taxonomy_complete": true,
+    "schema_blocks_unrelated_mutation": true,
+    "schema_blocks_unclassifiable_mutation": true,
+    "safety_bypass_enforced": true,
+    "precedence_defined": true,
+    "ambiguity_rule_defined": true,
+    "diagnostics_defined": true,
+    "regression_fixtures_present": true
+  }
+}

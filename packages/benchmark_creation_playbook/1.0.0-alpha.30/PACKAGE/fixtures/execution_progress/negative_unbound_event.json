@@ -1,0 +1,15 @@
+{
+  "event_id": "EVT-1",
+  "run_id": "RUN_01",
+  "step_id": "T036",
+  "step_sequence": 36,
+  "attempt": 1,
+  "short_summary": "Passport validation",
+  "status": "FAIL",
+  "reason": "відсутні rollback assertions",
+  "authoritative_evidence_refs": [],
+  "emitted_at": "2026-07-17T12:00:00Z",
+  "language": "uk",
+  "informational_only": true,
+  "is_terminal": false
+}

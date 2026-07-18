@@ -1,0 +1,41 @@
+schema_version: ordo.apf.post_generation_defect_taxonomy.v1
+severity_rules:
+  critical: Can produce unsafe execution, destructive state change, invalid rollback,
+    or false authorization.
+  high: Can produce incorrect implementation or contract violation without immediate
+    destructive effect.
+  medium: Material quality or maintainability defect with bounded operational impact.
+  low: Editorial or non-blocking clarity defect.
+taxonomies:
+- id: unsupported_parameter
+  default_severity: high
+- id: schema_field_absent
+  default_severity: high
+- id: required_field_missing
+  default_severity: high
+- id: name_based_semantic_inference
+  default_severity: high
+- id: path_domain_confusion
+  default_severity: critical
+- id: legacy_current_mixing
+  default_severity: high
+- id: action_rollback_drift
+  default_severity: critical
+- id: hidden_assumption
+  default_severity: high
+- id: unreconciled_example
+  default_severity: medium
+- id: cross_artifact_conflict
+  default_severity: critical
+- id: stale_contract
+  default_severity: high
+- id: unverified_confirmation
+  default_severity: critical
+- id: review_scope_bypass
+  default_severity: critical
+selective_invalidation:
+  rule: Invalidate the smallest safely identifiable section and all dependent claims.
+  whole_artifact_conditions:
+  - source-of-truth relationship compromised
+  - defect scope cannot be bounded
+  - cross-artifact conflict affects global semantics

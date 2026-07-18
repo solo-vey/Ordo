@@ -1,0 +1,5 @@
+{
+  "schema_version": "ordo.pre_release_check_note.v1",
+  "status": "passed",
+  "legacy_message": "clean-check: passed profile=strict (/mnt/data/ordo_github_workspace_v0_12_pre_release_after_full_self_check/packages/history_event_guided_intake/reports/clean_check_report.json)"
+}

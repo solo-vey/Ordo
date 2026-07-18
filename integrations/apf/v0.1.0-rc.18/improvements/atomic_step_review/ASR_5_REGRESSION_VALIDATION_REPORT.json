@@ -1,0 +1,28 @@
+{
+  "milestone": "ASR-5",
+  "status": "passed",
+  "blocking_issues": 0,
+  "checks_passed": 28,
+  "checks": {
+    "asr_contracts_present": true,
+    "all_active_steps_require_review": true,
+    "advisory_does_not_block": true,
+    "blocking_findings_block_transition": true,
+    "human_decision_boundary_preserved": true,
+    "post_decomposition_rereview_required": true,
+    "post_render_review_required_where_applicable": true,
+    "artifact_level_status_preserved": true,
+    "hidden_reconstruction_blocked": true,
+    "partial_success_transition_blocked": true,
+    "generation_and_approval_separated": true,
+    "confirmed_state_transition_explicit": true,
+    "failure_routes_localizable": true,
+    "prompt_sufficiency_runs_after_asr": true,
+    "execution_trace_mapping_runs_after_asr": true,
+    "mini_prompt_support_preserved": true,
+    "execution_trace_support_preserved": true,
+    "apf_internal_trace_enabled": false,
+    "internal_apf_mini_prompts_started": false,
+    "ordo_core_changed": false
+  }
+}

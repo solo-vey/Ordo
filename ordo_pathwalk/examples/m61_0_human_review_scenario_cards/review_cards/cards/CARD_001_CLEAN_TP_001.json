@@ -1,0 +1,77 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_review_card.v1",
+  "milestone": "M61.0",
+  "card_id": "CARD_001_CLEAN_TP_001",
+  "case_id": "CLEAN_TP_001",
+  "case_type": "clean_path",
+  "noise_pattern": "none",
+  "path_id": "TP_001",
+  "package": "sample.support_triage",
+  "source_path": "ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+  "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=high -> G_TRIAGE_COMPLETE",
+  "review_goal": "Human QA/developer review of expected model behavior for a generated real-module testcase.",
+  "review_focus": [
+    "Follow the expected path without extra detours.",
+    "Reach the expected terminal target.",
+    "Expose any expected output only after its allowed terminal/gate."
+  ],
+  "scripted_steps": [
+    {
+      "step": 1,
+      "node": "N_ISSUE_SUMMARY",
+      "input_kind": "clean_answer",
+      "input": "sample_answer_for_N_ISSUE_SUMMARY",
+      "expected_behavior": "accept_answer_and_advance_along_terminal_path",
+      "submit_expected": true,
+      "target": "N_SEVERITY",
+      "target_type": "node"
+    },
+    {
+      "step": 2,
+      "node": "N_SEVERITY",
+      "input_kind": "clean_answer",
+      "input": "high",
+      "expected_behavior": "accept_answer_and_advance_along_terminal_path",
+      "submit_expected": true,
+      "target": "G_TRIAGE_COMPLETE",
+      "target_type": "gate"
+    }
+  ],
+  "expected_terminal": {
+    "target": "G_TRIAGE_COMPLETE",
+    "type": "gate"
+  },
+  "expected_outputs": [
+    "OUT_TRIAGE_NOTE"
+  ],
+  "expected_state_updates": [
+    "issue_summary",
+    "owner_team",
+    "severity"
+  ],
+  "checklist": [
+    {
+      "item": "Current-node state remains coherent through the card.",
+      "required": true
+    },
+    {
+      "item": "No step with submit_expected=false advances the path.",
+      "required": false
+    },
+    {
+      "item": "Expected terminal target is reached after all valid submits.",
+      "required": true
+    },
+    {
+      "item": "No runtime execution, model scoring, or calibration is implied by this card.",
+      "required": true
+    }
+  ],
+  "readiness": {
+    "review_card_ready": true,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false,
+    "reason": "M61.0 emits human-review cards only; runtime execution, scoring, and calibration remain future milestones."
+  }
+}

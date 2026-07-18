@@ -1,0 +1,14 @@
+{
+  "milestone": "M70.0",
+  "status": "passed",
+  "checks": {
+    "classification_complete": true,
+    "language_root_manifest_absent_confirmed": true,
+    "cli_root_manifest_absent_confirmed": true,
+    "canonical_example_manifest_present": true,
+    "production_policy_not_added": true,
+    "cli_implementation_unchanged": true,
+    "packages_unchanged": true,
+    "runtime_compiler_opcodes_unchanged": true
+  }
+}

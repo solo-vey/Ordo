@@ -1,0 +1,137 @@
+[
+  {
+    "lip_id": "LIP-01",
+    "title": "Program-level contract layer",
+    "priority": "P0",
+    "initial_home": "schema convention + package authoring standard",
+    "target_milestone": "M64.1",
+    "m64_0_decision": "Accept first wave",
+    "notes": "Do not promote to opcode; define top-level contract schema and review block first."
+  },
+  {
+    "lip_id": "LIP-02",
+    "title": "Interaction model",
+    "priority": "P0",
+    "initial_home": "schema convention + validation/lint candidate",
+    "target_milestone": "M64.2",
+    "m64_0_decision": "Accept first wave",
+    "notes": "Document human/AI/CLI ownership and raw-tool-output policy."
+  },
+  {
+    "lip_id": "LIP-03",
+    "title": "Process rail definition",
+    "priority": "P0",
+    "initial_home": "process model convention",
+    "target_milestone": "M64.2",
+    "m64_0_decision": "Accept first wave",
+    "notes": "Policy layer for deviation/resume/backtracking; no deterministic classifier yet."
+  },
+  {
+    "lip_id": "LIP-04",
+    "title": "Conversation semantics",
+    "priority": "P0",
+    "initial_home": "schema convention + runtime/lint candidate later",
+    "target_milestone": "M64.2",
+    "m64_0_decision": "Accept as policy contract",
+    "notes": "Allowed input classes and routing policies; not a full NL classifier."
+  },
+  {
+    "lip_id": "LIP-05",
+    "title": "Hybrid execution model",
+    "priority": "P0",
+    "initial_home": "package standard + runtime profile convention",
+    "target_milestone": "M64.2",
+    "m64_0_decision": "Accept first wave",
+    "notes": "Clarifies AI driver / CLI validator / human reviewer boundary."
+  },
+  {
+    "lip_id": "LIP-06",
+    "title": "Program-level approval gate",
+    "priority": "P0",
+    "initial_home": "gate standard / lint candidate",
+    "target_milestone": "M64.3",
+    "m64_0_decision": "Accept as lint/profile design",
+    "notes": "Implement as documented gate and validation profile before compiler/IR semantics."
+  },
+  {
+    "lip_id": "LIP-07",
+    "title": "Package profile and startup gates",
+    "priority": "P1",
+    "initial_home": "package standard",
+    "target_milestone": "M64.4",
+    "m64_0_decision": "Defer after first wave",
+    "notes": "Generalize compile/start-prompt/README startup gates."
+  },
+  {
+    "lip_id": "LIP-08",
+    "title": "Derived artifact synchronization",
+    "priority": "P1",
+    "initial_home": "package validation standard",
+    "target_milestone": "M64.5",
+    "m64_0_decision": "Defer after first wave",
+    "notes": "Use warning/error modes; avoid making every stale doc a blocker."
+  },
+  {
+    "lip_id": "LIP-09",
+    "title": "SVG graph artifact standard",
+    "priority": "P1",
+    "initial_home": "companion utility/package artifact standard",
+    "target_milestone": "M64.6",
+    "m64_0_decision": "Defer after first wave",
+    "notes": "Promote provenance/manifest standard only, not renderer implementation."
+  },
+  {
+    "lip_id": "LIP-10",
+    "title": "Delta backlog convention",
+    "priority": "P1",
+    "initial_home": "release discipline/package standard",
+    "target_milestone": "M64.4 or M64.5",
+    "m64_0_decision": "Accept as backlog discipline",
+    "notes": "Preserve cross-chat improvement prompts with structured metadata."
+  },
+  {
+    "lip_id": "LIP-11",
+    "title": "FLOW.JOIN / SHARED.TAIL.REFERENCE",
+    "priority": "P2",
+    "initial_home": "future IR design candidate",
+    "target_milestone": "M64.8 or M65",
+    "m64_0_decision": "Design spike only",
+    "notes": "Do not implement quickly; affects graph/IR/compiler/path enumeration/rendering."
+  },
+  {
+    "lip_id": "LIP-12",
+    "title": "Real-module testcase generation mode",
+    "priority": "P2",
+    "initial_home": "companion utility/testing standard",
+    "target_milestone": "M64.7 or M65",
+    "m64_0_decision": "Defer",
+    "notes": "Artifact generation is useful; runtime execution/scoring remains out of scope."
+  },
+  {
+    "lip_id": "LIP-13",
+    "title": "Two-tier rendering model for output templates",
+    "priority": "P1",
+    "initial_home": "language/rendering docs + renderer capability standard",
+    "target_milestone": "M64.4+",
+    "m64_0_decision": "Docs hardening",
+    "notes": "Already partially present; improve guide and validation expectations, not new core runtime."
+  },
+  {
+    "lip_id": "LIP-14",
+    "title": "Attribute/value schema documentation standard",
+    "priority": "P1",
+    "initial_home": "language book + schema docs",
+    "target_milestone": "M64.4+",
+    "m64_0_decision": "Accept as documentation standard",
+    "notes": "Every YAML field needs meaning/type/enum values/compiler behavior/validation behavior."
+  },
+  {
+    "lip_id": "LIP-15",
+    "title": "Visual graph annotation/highlight standard",
+    "priority": "P2",
+    "initial_home": "graph utility feature standard",
+    "target_milestone": "M64.6+",
+    "m64_0_decision": "Defer",
+    "notes": "Useful companion utility extension; not language core."
+  }
+]

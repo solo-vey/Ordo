@@ -1,0 +1,43 @@
+{
+  "milestone": "M60.7 line closure",
+  "status": "passed-line-closure",
+  "stable_base": "M60.7.5",
+  "checks": [
+    {
+      "check": "line_closure_report_present",
+      "status": "passed"
+    },
+    {
+      "check": "m60_7_5_stable_base_identified",
+      "status": "passed"
+    },
+    {
+      "check": "noise_expansion_boundary_recorded",
+      "status": "passed"
+    },
+    {
+      "check": "future_improvements_recorded",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_core_semantics_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "scoring_weights_unchanged",
+      "status": "passed"
+    },
+    {
+      "check": "pdf_not_generated",
+      "status": "passed"
+    },
+    {
+      "check": "known_runtime_harness_blocker_not_used_as_gate",
+      "status": "passed-with-note"
+    }
+  ],
+  "blockers": [],
+  "notes": [
+    "M60.7 line closure is documentation/release-boundary only; no new feature implementation."
+  ]
+}

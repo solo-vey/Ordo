@@ -1,0 +1,48 @@
+{
+  "schema_version": "ordo.acceptance.v1",
+  "task": "BL-BENCH-052",
+  "passed": 6,
+  "total": 6,
+  "cases": [
+    {
+      "case": "empty_canonical_catalog",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "case": "internal_run_in_score_ledger",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "expected_code": "INTERNAL_EVIDENCE_IN_SCORE_LEDGER",
+      "code_detected": true
+    },
+    {
+      "case": "missing_catalog_root",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "expected_code": "MISSING_CATALOG_ROOT",
+      "code_detected": true
+    },
+    {
+      "case": "broken_sha",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "expected_code": "OBJECT_SHA_MISMATCH",
+      "code_detected": true
+    },
+    {
+      "case": "blind_class_contamination",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "expected_code": "BLIND_CLASS_CONTAMINATION",
+      "code_detected": true
+    },
+    {
+      "case": "incomplete_binding",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "expected_code": "INCOMPLETE_RUN_BINDING",
+      "code_detected": true
+    }
+  ]
+}

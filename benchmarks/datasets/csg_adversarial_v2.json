@@ -1,0 +1,366 @@
+{
+  "schema_version": "ordo.csg.adversarial_dataset.v2",
+  "dataset_version": "M86.3-csg-adversarial-v2",
+  "description": "Expanded adversarial CSG benchmark cases covering alias, structural, semantic, state, graph, typing, ordering, provenance, and safety failures.",
+  "taxonomy_version": "M86.3",
+  "case_count": 20,
+  "cases": [
+    {
+      "case_id": "CSG-ADV-001",
+      "title": "Alias-equivalent opcode",
+      "category": "alias_gap",
+      "input": {
+        "opcode": "DECISION.LOG"
+      },
+      "candidate": {
+        "opcode": "DECISION_RECORD"
+      },
+      "expected": {
+        "semantic_match": true,
+        "normalized_opcode": "DECISION.LOG",
+        "mismatch_class": "alias_gap"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-002",
+      "title": "Unknown opcode fabrication",
+      "category": "fabricated_opcode",
+      "input": {
+        "allowed_opcodes": [
+          "TRACE.LOG",
+          "STATE.SNAPSHOT"
+        ]
+      },
+      "candidate": {
+        "opcode": "MEMORY.COMMIT"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "fabricated_opcode"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-003",
+      "title": "Required field omission",
+      "category": "missing_required_field",
+      "input": {
+        "required": [
+          "id",
+          "type",
+          "next"
+        ]
+      },
+      "candidate": {
+        "id": "n1",
+        "type": "gate"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "missing_required_field"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-004",
+      "title": "Illegal enum substitution",
+      "category": "invalid_enum",
+      "input": {
+        "field": "mode",
+        "allowed": [
+          "normal",
+          "debug",
+          "test"
+        ]
+      },
+      "candidate": {
+        "mode": "production"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "invalid_enum"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-005",
+      "title": "State protection bypass",
+      "category": "state_protection_violation",
+      "input": {
+        "protected": [
+          "approved_scope"
+        ]
+      },
+      "candidate": {
+        "operation": "overwrite",
+        "target": "approved_scope"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "state_protection_violation"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-006",
+      "title": "Transition to missing node",
+      "category": "dangling_transition",
+      "input": {
+        "nodes": [
+          "start",
+          "end"
+        ]
+      },
+      "candidate": {
+        "from": "start",
+        "to": "review"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "dangling_transition"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-007",
+      "title": "Cycle where DAG is required",
+      "category": "illegal_cycle",
+      "input": {
+        "acyclic": true
+      },
+      "candidate": {
+        "edges": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "b",
+            "a"
+          ]
+        ]
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "illegal_cycle"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-008",
+      "title": "Gate polarity reversal",
+      "category": "gate_semantics_reversal",
+      "input": {
+        "condition": "validation_passed",
+        "on_true": "release",
+        "on_false": "block"
+      },
+      "candidate": {
+        "condition": "validation_passed",
+        "on_true": "block",
+        "on_false": "release"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "gate_semantics_reversal"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-009",
+      "title": "Default value semantic drift",
+      "category": "default_semantic_drift",
+      "input": {
+        "field": "strict",
+        "default": true
+      },
+      "candidate": {
+        "field": "strict",
+        "default": false
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "default_semantic_drift"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-010",
+      "title": "Type coercion ambiguity",
+      "category": "type_coercion",
+      "input": {
+        "field": "retries",
+        "type": "integer"
+      },
+      "candidate": {
+        "retries": "3"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "type_coercion"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-011",
+      "title": "Cross-field contradiction",
+      "category": "cross_field_contradiction",
+      "input": {
+        "mode": "dry_run"
+      },
+      "candidate": {
+        "mode": "dry_run",
+        "mutates_state": true
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "cross_field_contradiction"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-012",
+      "title": "Ordering-sensitive semantic change",
+      "category": "ordering_semantic_drift",
+      "input": {
+        "steps": [
+          "validate",
+          "compile",
+          "package"
+        ]
+      },
+      "candidate": {
+        "steps": [
+          "compile",
+          "validate",
+          "package"
+        ]
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "ordering_semantic_drift"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-013",
+      "title": "Duplicate identifier collision",
+      "category": "duplicate_identifier",
+      "input": {
+        "unique_key": "id"
+      },
+      "candidate": {
+        "nodes": [
+          {
+            "id": "x"
+          },
+          {
+            "id": "x"
+          }
+        ]
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "duplicate_identifier"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-014",
+      "title": "Unbound reference",
+      "category": "unbound_reference",
+      "input": {
+        "declared": [
+          "customer_id"
+        ]
+      },
+      "candidate": {
+        "expression": "${order_id}"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "unbound_reference"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-015",
+      "title": "Lossy normalization",
+      "category": "lossy_normalization",
+      "input": {
+        "value": "01",
+        "type": "string"
+      },
+      "candidate": {
+        "normalized": 1
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "lossy_normalization"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-016",
+      "title": "Security-sensitive interpolation",
+      "category": "unsafe_interpolation",
+      "input": {
+        "context": "shell"
+      },
+      "candidate": {
+        "value": "${user_input}"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "unsafe_interpolation"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-017",
+      "title": "Hidden side effect",
+      "category": "undeclared_side_effect",
+      "input": {
+        "declared_effects": []
+      },
+      "candidate": {
+        "operation": "notify_external_system"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "undeclared_side_effect"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-018",
+      "title": "Ambiguous null semantics",
+      "category": "null_semantics",
+      "input": {
+        "field": "owner",
+        "nullable": false
+      },
+      "candidate": {
+        "owner": null
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "null_semantics"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-019",
+      "title": "Equivalent commutative condition",
+      "category": "semantic_equivalence",
+      "input": {
+        "expression": "A AND B"
+      },
+      "candidate": {
+        "expression": "B AND A"
+      },
+      "expected": {
+        "semantic_match": true,
+        "mismatch_class": "none"
+      }
+    },
+    {
+      "case_id": "CSG-ADV-020",
+      "title": "Non-equivalent precedence change",
+      "category": "operator_precedence",
+      "input": {
+        "expression": "A AND (B OR C)"
+      },
+      "candidate": {
+        "expression": "(A AND B) OR C"
+      },
+      "expected": {
+        "semantic_match": false,
+        "mismatch_class": "operator_precedence"
+      }
+    }
+  ]
+}

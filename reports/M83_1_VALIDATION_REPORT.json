@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.m83.1.validation.v1",
+  "milestone": "M83.1",
+  "status": "passed",
+  "implemented": [
+    "claim-level provenance schema",
+    "source materialization classes",
+    "nine-gate result model",
+    "confirmation eligibility algorithm",
+    "machine-readable review template"
+  ],
+  "artifacts": [
+    "integrations/apf/v0.1.0-rc.18/docs/APF_POST_GENERATION_REVIEW_RECORD_SCHEMA.json",
+    "integrations/apf/v0.1.0-rc.18/docs/APF_POST_GENERATION_CONFIRMATION_GATE_CONTRACT.yaml",
+    "integrations/apf/v0.1.0-rc.18/templates/POST_GENERATION_REVIEW_RECORD.template.json"
+  ]
+}

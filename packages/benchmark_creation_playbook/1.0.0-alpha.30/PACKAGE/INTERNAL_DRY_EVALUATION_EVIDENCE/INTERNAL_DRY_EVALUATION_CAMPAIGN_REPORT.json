@@ -1,0 +1,317 @@
+{
+  "schema_version": "ordo.internal_dry_evaluation_campaign.v1",
+  "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6",
+  "evidence_class": "INTERNAL_DRY_EVALUATION",
+  "blindness": "NOT_BLIND",
+  "canonical_status": "NOT_CANONICAL_BENCHMARK_EVIDENCE",
+  "runs": [
+    {
+      "run_id": "RUN_01",
+      "labels": [
+        "INTERNAL_DRY_EVALUATION",
+        "NOT_BLIND",
+        "NOT_CANONICAL_BENCHMARK_EVIDENCE"
+      ],
+      "process_quality": 100,
+      "document_quality": 100,
+      "final_quality": 100,
+      "terminal_state_correct": true,
+      "driver_receipts_complete": true,
+      "selected_route_trace": [
+        {
+          "seq": 1,
+          "event": "candidate_opened",
+          "decision_evidence": {
+            "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+          }
+        },
+        {
+          "seq": 2,
+          "event": "neutral_prompt_loaded",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 3,
+          "event": "authoritative_input_bound",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 4,
+          "event": "validators_submitted_to_driver",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 8,
+          "event": "terminal_recomputed",
+          "decision_evidence": {
+            "terminal": "PASS_RELEASE"
+          }
+        },
+        {
+          "seq": 9,
+          "event": "final_zip_reopened_and_verified",
+          "decision_evidence": {}
+        }
+      ],
+      "correction_loop_used": false,
+      "zero_tolerance_defects": [],
+      "limitations": [
+        "Deterministic harness evidence; no independent external LLM execution.",
+        "Document score reflects packaged validation evidence because canonical generated documents are not embedded in this evidence ZIP."
+      ]
+    },
+    {
+      "run_id": "RUN_02",
+      "labels": [
+        "INTERNAL_DRY_EVALUATION",
+        "NOT_BLIND",
+        "NOT_CANONICAL_BENCHMARK_EVIDENCE"
+      ],
+      "process_quality": 100,
+      "document_quality": 100,
+      "final_quality": 100,
+      "terminal_state_correct": true,
+      "driver_receipts_complete": true,
+      "selected_route_trace": [
+        {
+          "seq": 1,
+          "event": "candidate_opened",
+          "decision_evidence": {
+            "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+          }
+        },
+        {
+          "seq": 2,
+          "event": "neutral_prompt_loaded",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 3,
+          "event": "authoritative_input_bound",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 4,
+          "event": "validators_submitted_to_driver",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 5,
+          "event": "revision_01_invalidated",
+          "decision_evidence": {
+            "reason": "foreign_literal_regression_fixture"
+          }
+        },
+        {
+          "seq": 6,
+          "event": "canonical_regeneration_requested",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 7,
+          "event": "revision_02_validated",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 8,
+          "event": "terminal_recomputed",
+          "decision_evidence": {
+            "terminal": "PASS_RELEASE"
+          }
+        },
+        {
+          "seq": 9,
+          "event": "final_zip_reopened_and_verified",
+          "decision_evidence": {}
+        }
+      ],
+      "correction_loop_used": true,
+      "zero_tolerance_defects": [],
+      "limitations": [
+        "Deterministic harness evidence; no independent external LLM execution.",
+        "Document score reflects packaged validation evidence because canonical generated documents are not embedded in this evidence ZIP."
+      ]
+    },
+    {
+      "run_id": "RUN_03",
+      "labels": [
+        "INTERNAL_DRY_EVALUATION",
+        "NOT_BLIND",
+        "NOT_CANONICAL_BENCHMARK_EVIDENCE"
+      ],
+      "process_quality": 100,
+      "document_quality": 100,
+      "final_quality": 100,
+      "terminal_state_correct": true,
+      "driver_receipts_complete": true,
+      "selected_route_trace": [
+        {
+          "seq": 1,
+          "event": "candidate_opened",
+          "decision_evidence": {
+            "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+          }
+        },
+        {
+          "seq": 2,
+          "event": "neutral_prompt_loaded",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 3,
+          "event": "authoritative_input_bound",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 4,
+          "event": "validators_submitted_to_driver",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 8,
+          "event": "terminal_recomputed",
+          "decision_evidence": {
+            "terminal": "EXPECTED_HARD_STOP"
+          }
+        },
+        {
+          "seq": 9,
+          "event": "final_zip_reopened_and_verified",
+          "decision_evidence": {}
+        }
+      ],
+      "correction_loop_used": false,
+      "zero_tolerance_defects": [],
+      "limitations": [
+        "Deterministic harness evidence; no independent external LLM execution.",
+        "Document score reflects packaged validation evidence because canonical generated documents are not embedded in this evidence ZIP."
+      ]
+    },
+    {
+      "run_id": "RUN_04",
+      "labels": [
+        "INTERNAL_DRY_EVALUATION",
+        "NOT_BLIND",
+        "NOT_CANONICAL_BENCHMARK_EVIDENCE"
+      ],
+      "process_quality": 100,
+      "document_quality": 100,
+      "final_quality": 100,
+      "terminal_state_correct": true,
+      "driver_receipts_complete": true,
+      "selected_route_trace": [
+        {
+          "seq": 1,
+          "event": "candidate_opened",
+          "decision_evidence": {
+            "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+          }
+        },
+        {
+          "seq": 2,
+          "event": "neutral_prompt_loaded",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 3,
+          "event": "authoritative_input_bound",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 4,
+          "event": "validators_submitted_to_driver",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 8,
+          "event": "terminal_recomputed",
+          "decision_evidence": {
+            "terminal": "PASS_RELEASE"
+          }
+        },
+        {
+          "seq": 9,
+          "event": "final_zip_reopened_and_verified",
+          "decision_evidence": {}
+        }
+      ],
+      "correction_loop_used": false,
+      "zero_tolerance_defects": [],
+      "limitations": [
+        "Deterministic harness evidence; no independent external LLM execution.",
+        "Document score reflects packaged validation evidence because canonical generated documents are not embedded in this evidence ZIP."
+      ]
+    },
+    {
+      "run_id": "RUN_05",
+      "labels": [
+        "INTERNAL_DRY_EVALUATION",
+        "NOT_BLIND",
+        "NOT_CANONICAL_BENCHMARK_EVIDENCE"
+      ],
+      "process_quality": 100,
+      "document_quality": 100,
+      "final_quality": 100,
+      "terminal_state_correct": true,
+      "driver_receipts_complete": true,
+      "selected_route_trace": [
+        {
+          "seq": 1,
+          "event": "candidate_opened",
+          "decision_evidence": {
+            "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+          }
+        },
+        {
+          "seq": 2,
+          "event": "neutral_prompt_loaded",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 3,
+          "event": "authoritative_input_bound",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 4,
+          "event": "validators_submitted_to_driver",
+          "decision_evidence": {}
+        },
+        {
+          "seq": 8,
+          "event": "terminal_recomputed",
+          "decision_evidence": {
+            "terminal": "EXPECTED_HARD_STOP"
+          }
+        },
+        {
+          "seq": 9,
+          "event": "final_zip_reopened_and_verified",
+          "decision_evidence": {}
+        }
+      ],
+      "correction_loop_used": false,
+      "zero_tolerance_defects": [],
+      "limitations": [
+        "Deterministic harness evidence; no independent external LLM execution.",
+        "Document score reflects packaged validation evidence because canonical generated documents are not embedded in this evidence ZIP."
+      ]
+    }
+  ],
+  "campaign_average": 100.0,
+  "thresholds": {
+    "min_process_per_run": 85,
+    "min_document_per_run": 80,
+    "min_final_per_run": 83,
+    "min_campaign_average": 85
+  },
+  "threshold_result": "PASS",
+  "zero_tolerance_defects": [],
+  "promotion_status": "BLOCKED_AWAITING_USER_ACCEPTANCE",
+  "required_user_decision": [
+    "ACCEPT_FOR_EXTERNAL_BLIND_TESTING",
+    "REJECT_AND_IMPROVE",
+    "ACCEPT_WITH_RECORDED_RISK",
+    "PAUSE_FOR_OWNER_INPUT"
+  ]
+}

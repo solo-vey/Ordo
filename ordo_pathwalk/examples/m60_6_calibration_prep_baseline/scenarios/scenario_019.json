@@ -1,0 +1,51 @@
+{
+  "tree_seed": 606,
+  "script_seed": 1625,
+  "turns": [
+    {
+      "index": 0,
+      "type": "invalid_direction_current_step",
+      "text": "left",
+      "state_changing": false,
+      "expected_node_after": "STEP_0_1bdb4e",
+      "meta": {
+        "node_id": "STEP_0_1bdb4e",
+        "valid_options": [
+          "back",
+          "right",
+          "up"
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "type": "forward_natural_language",
+      "text": "направо",
+      "state_changing": true,
+      "expected_node_after": "STEP_1_f6164d",
+      "meta": {
+        "maps_to": "right"
+      }
+    },
+    {
+      "index": 2,
+      "type": "forward_valid",
+      "text": "left",
+      "state_changing": true,
+      "expected_node_after": "END",
+      "meta": {
+        "maps_to": "left"
+      }
+    }
+  ],
+  "ground_truth": [
+    {
+      "node_id": "STEP_0_1bdb4e",
+      "value": "right"
+    },
+    {
+      "node_id": "STEP_1_f6164d",
+      "value": "left"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": "ordo.benchmark.declared_contract_inventory.v2",
+  "max_correction_passes": 5,
+  "declared_entrypoint": "N001_FOCUSED_SCOPE",
+  "program_path": "source/program.ordo.yaml",
+  "required_paths": [
+    "source/program.ordo.yaml",
+    "SHA256SUMS.txt",
+    "README.md",
+    "BACKLOG.md",
+    "tools/validate_declared_contract_archive.py",
+    "PACKAGE_VALIDATION_METHODOLOGY.md",
+    "PACKAGE_VALIDATION_METHODOLOGY.json",
+    "DECLARED_CONTRACT_INVENTORY.json",
+    "tools/validate_package_pre_release_semantics.py"
+  ],
+  "declared_validators": [
+    {
+      "id": "package_pre_release_semantics",
+      "path": "tools/validate_package_pre_release_semantics.py",
+      "command": "python tools/validate_package_pre_release_semantics.py source/program.ordo.yaml --out reports/PRE_RELEASE_SEMANTIC_PARITY.json",
+      "expected_exit_code": 0,
+      "required": true
+    },
+    {
+      "id": "methodology_binding",
+      "path": "tools/validate_evaluation_methodology_binding.py",
+      "command": "python tools/validate_evaluation_methodology_binding.py --methodology EVALUATION_METHODOLOGY.json --profile fixtures/evaluation_methodology/valid_profile.json --audit fixtures/evaluation_methodology/valid_audit.json --out reports/PRE_RELEASE_METHODOLOGY_BINDING.json",
+      "expected_exit_code": 0,
+      "required": true
+    }
+  ],
+  "release_criteria": [
+    "physical_integrity",
+    "package_completeness",
+    "runtime_addressability",
+    "version_coherence",
+    "entrypoint_coherence",
+    "structural_completeness",
+    "semantic_parity",
+    "correction_loop_reachability",
+    "validator_reality",
+    "positive_negative_regressions",
+    "black_box_preflight",
+    "execution_smoke_test"
+  ],
+  "methodology": {
+    "path": "PACKAGE_VALIDATION_METHODOLOGY.md",
+    "machine_contract_path": "PACKAGE_VALIDATION_METHODOLOGY.json",
+    "version": "1.0"
+  },
+  "package_version": "1.0.0-alpha.21",
+  "version_coherence_files": [
+    "README.md",
+    "BACKLOG.md",
+    "PLAYBOOK_CHANGELOG.md",
+    "source/program.ordo.yaml",
+    "DECLARED_CONTRACT_INVENTORY.json"
+  ],
+  "referenced_paths": [
+    "BACKLOG.md",
+    "DECLARED_CONTRACT_INVENTORY.json",
+    "EVALUATION_METHODOLOGY.json",
+    "PACKAGE_VALIDATION_METHODOLOGY.json",
+    "PACKAGE_VALIDATION_METHODOLOGY.md",
+    "README.md",
+    "RESULT_PACKAGE_RELEASE_GATE_POLICY.yaml",
+    "SHA256SUMS.txt",
+    "fixtures/evaluation_methodology/valid_audit.json",
+    "fixtures/evaluation_methodology/valid_profile.json",
+    "source/program.ordo.yaml",
+    "templates/EVALUATION_PROFILE_TEMPLATE.json",
+    "tools/validate_declared_contract_archive.py",
+    "tools/validate_evaluation_methodology_binding.py",
+    "tools/validate_execution_graph_connectivity.py",
+    "tools/validate_package_pre_release_semantics.py",
+    "tools/validate_result_package_release.py"
+  ],
+  "structural_expectations": {
+    "node_count": 78,
+    "gate_count": 17,
+    "terminal_count": 23,
+    "unique_ids_required": true
+  },
+  "semantic_parity": {
+    "command": "python tools/validate_package_pre_release_semantics.py source/program.ordo.yaml --out reports/PRE_RELEASE_SEMANTIC_PARITY.json",
+    "report_path": "reports/PRE_RELEASE_SEMANTIC_PARITY.json",
+    "expected_status": "PASS"
+  },
+  "correction_loop": {
+    "failure_node": "N077_SCOPED_DECLARED_CONTRACT_CORRECTION",
+    "retry_node": "N078_DECLARED_CONTRACT_RETRY_DECISION",
+    "reseal_node": "N075_SEAL_EXTERNAL_TESTING_CANDIDATE",
+    "max_passes": 5
+  },
+  "regressions": [
+    {
+      "id": "positive_semantic_parity",
+      "kind": "positive",
+      "command": "python tools/validate_package_pre_release_semantics.py source/program.ordo.yaml --out reports/PRE_RELEASE_SEMANTIC_PARITY_REGRESSION.json",
+      "expected_exit_code": 0
+    },
+    {
+      "id": "negative_methodology_binding",
+      "kind": "negative",
+      "command": "python tools/validate_evaluation_methodology_binding.py --methodology EVALUATION_METHODOLOGY.json --profile fixtures/evaluation_methodology/valid_profile.json --audit fixtures/evaluation_methodology/bad_audit.json --out reports/PRE_RELEASE_BAD_AUDIT.json",
+      "expected_nonzero": true
+    }
+  ],
+  "launch_preflight_command": "python tools/validate_declared_contract_archive.py <SEALED_ZIP> --report <GREEN_LIGHT_REPORT>"
+}

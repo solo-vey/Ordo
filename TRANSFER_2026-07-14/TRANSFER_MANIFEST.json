@@ -1,0 +1,474 @@
+{
+  "schema_version": "ordo.transfer_manifest.v1",
+  "created_at": "2026-07-14",
+  "source_archive": "ORDO_ARF_MAXIMALLY_RESTORED_2026-07-14.zip",
+  "source_archive_sha256": "46870d453cd198ef47112614591d8adcb68ae0349f19c7962d702b1c5529b647",
+  "transfer_files": [
+    {
+      "path": "TRANSFER_2026-07-14/README_NEXT_CHAT_UK.md",
+      "sha256": "6873066ea059fb18459194903591c433fe97c20db78f55ac63c58dccb4327f05",
+      "size": 2817
+    },
+    {
+      "path": "TRANSFER_2026-07-14/CURRENT_DIALOG_STATE_UK.md",
+      "sha256": "dcf3dd2290c87c254ad06c578b6b24d50f0f4a8ada6b862f9af250034d85043b",
+      "size": 3786
+    },
+    {
+      "path": "TRANSFER_2026-07-14/RECOVERY_AND_TRUST_STATUS_UK.md",
+      "sha256": "06e2b0eca3b6ddcaa0752b9d6a35b811f131a488671d3bbc9cbd354533b792bc",
+      "size": 4106
+    },
+    {
+      "path": "TRANSFER_2026-07-14/BACKLOG_DETAILED_UK.md",
+      "sha256": "fa73361c3418bfe39cfbc3388c11c937b045e40cfe274e56205c18d99ea44a86",
+      "size": 7061
+    },
+    {
+      "path": "TRANSFER_2026-07-14/BACKLOG_RELATED_FILES_INDEX_UK.md",
+      "sha256": "51b5a968377a9f2350b6a83249f85361786a566eef4f5a32c402fda257a29fe7",
+      "size": 1080
+    },
+    {
+      "path": "TRANSFER_2026-07-14/ANTIPATTERN_REFERENCE_INDEX_UK.md",
+      "sha256": "2e21da3480a25ea890aa6b9787426f3ee32b7918f3f546b3bd9c7ebd2edd175c",
+      "size": 2512
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/CONSOLIDATED_BACKLOG.md",
+      "sha256": "61bec5fd43585d9ec79ed90a7fc9601cdf0926506d7334debc06217175818431",
+      "size": 22707
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/FUTURE_BACKLOG.md",
+      "sha256": "cd939499d339acf63c6f54a11797069b37260fe9d88fa7fbf7b82388fd623ea7",
+      "size": 9300
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/CURRENT_MATURITY_STATE.md",
+      "sha256": "2a268509ffa1ebd014ddc0aa5bf73e03f0fbc9bf8aa4c4e0b1d88834147437ff",
+      "size": 1441
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/APF_SESSION_PACKAGE_LOAD_AND_CACHE_BACKLOG.md",
+      "sha256": "98268a49d0a4e820c0751d4847cc7b02c499c76a15ab53791232f68b771c1b9b",
+      "size": 1640
+    },
+    {
+      "path": "TRANSFER_2026-07-14/closure_evidence/DELIVERY_GATE_REPORT.json",
+      "sha256": "caca7ae93ceeb5ffe6965e9d6a22b307d6b676c3fca326061ab4707062d7554f",
+      "size": 1274
+    },
+    {
+      "path": "TRANSFER_2026-07-14/closure_evidence/BL_ORDO_032_CLOSURE_REPORT.json",
+      "sha256": "5c57e0eef9cf7f96c5ef65d4c0a81d493bb97a075bd7e33e3315ad07392de56e",
+      "size": 1681
+    },
+    {
+      "path": "TRANSFER_2026-07-14/closure_evidence/BL_ORDO_032_CLOSURE_REPORT.md",
+      "sha256": "7304a27884dcbde2f92989af5684954b065c272010eaeec657845d844a871789",
+      "size": 677
+    },
+    {
+      "path": "TRANSFER_2026-07-14/recovery_evidence/RECOVERY_STATUS_UK.md",
+      "sha256": "f26ce27e4929feca1ed200009d34493f426676b1f234786d494ffe801a946c69",
+      "size": 3395
+    },
+    {
+      "path": "TRANSFER_2026-07-14/recovery_evidence/RECOVERY_GAPS.json",
+      "sha256": "f892d40e169b2948e1d9a2e226d08af0caa8de84b0845dbc85d5fd161a0e64d2",
+      "size": 887
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/ANTIPATTERN_FUNDAMENTAL_TAXONOMY.md",
+      "sha256": "7c5fb363694ed47e2f346addc88614678ece2e8cf3efed19de559ed29d7588d0",
+      "size": 1508
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/antipattern_finding_model.py",
+      "sha256": "a677115f58b03640c9d581c97c345cb978a908e22f1321cd6fbcef7189a33b1b",
+      "size": 2097
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/manifests/APF_FUNDAMENTAL_ANTIPATTERN_BINDING_SHA256SUMS.txt",
+      "sha256": "11112ee863fd131a52374662f03d4cd56d951448a53c57d4ff913e6e1cc92249",
+      "size": 1331
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/ANTIPATTERN_FUNDAMENTAL_TAXONOMY_MIGRATION_REPORT.json",
+      "sha256": "47110dfdfcf085dae8af8ac089d0f474c5a91f55d5076317a6863efccb20604d",
+      "size": 736
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/ANTIPATTERN_FUNDAMENTAL_TAXONOMY_MIGRATION_REPORT.md",
+      "sha256": "3038e0cf20f13a843b12684f0b1d5f3e37a5c75b1c16c5faf0c9dfa496195477",
+      "size": 319
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/APF_FUNDAMENTAL_ANTIPATTERN_RUNTIME_BINDING_REPORT.json",
+      "sha256": "eb7258686ab89f0cac652fa2fd4d8b89056c6db4d790951163db51b1bdbbed69",
+      "size": 1108
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/APF_FUNDAMENTAL_ANTIPATTERN_RUNTIME_BINDING_REPORT.md",
+      "sha256": "78a7bf53f20660327035737fa4937d9d87dd06d29199473054f1711ce500d43c",
+      "size": 708
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/book/en/chapters/appendix_e_anti_patterns.md",
+      "sha256": "22799c46900f123131ba46b9bb40cc6a8a50e2a4e6ddccd3c5dd3b75624bdbc1",
+      "size": 13020
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/cli/tests/test_m88_1_antipattern_def_registry.py",
+      "sha256": "d968cdd5bfc13e19441b2cc6d454acb00a93dd15d6ee1d840cddd275070e9af8",
+      "size": 1302
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/docs/APF_ANTIPATTERN_RUNTIME_INTEGRATION.md",
+      "sha256": "a206238adaad2bf53b6f6cc3497926ce0819a3129da1cf1fa93be11b40657e5a",
+      "size": 1527
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/docs/APF_ANTIPATTERN_WIRING_CONTRACT.md",
+      "sha256": "00bb7e085b7f4ba5c11a384e6e515f4f3c3081f6464afb792a83844812b9916a",
+      "size": 1878
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/antipattern_hook_inventory.apf.v1.json",
+      "sha256": "0e2a33432e61352092f070e3daed1a05e17af5d6142627b3b0f97677699ea4bf",
+      "size": 5175
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/antipattern_hook_runtime.py",
+      "sha256": "5f11439a34a352db82764efadc2c9936f64b63b0f127549ed978b15f133dfc92",
+      "size": 7954
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/antipattern_runtime_binding.apf.v1.json",
+      "sha256": "12a27dc879dc2ed190ddc1b308ec85f40b2d29c0ef7b754a4cdb57cc4dfecf0f",
+      "size": 3198
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/antipattern_runtime_binding.py",
+      "sha256": "995d7e00467a3cb6782ffa0c9e6a1d30485bf12f562993c02590608621574e09",
+      "size": 5009
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/antipattern_state_contract.apf.v1.json",
+      "sha256": "804304757e5deacd8c03dcb7a2fdcefe15a97f8280498292b7926729e5fcee4e",
+      "size": 1201
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/fixtures_antipattern_e2e.apf.v1.json",
+      "sha256": "11d963b6ce45be32c98fc25acf6da6f3d04472d46d652bc5f28265de85dcf42a",
+      "size": 4802
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/test_antipattern_all_rules_e2e.py",
+      "sha256": "39a89c72273f1518223cd38ab091e3e626b0c0667a537dbcbf802955e00f54a3",
+      "size": 9718
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/test_antipattern_fundamental_taxonomy_binding.py",
+      "sha256": "1571dd4ea209725a99b5895724671e28e0fae6f8bd4a1e1fe0de20900dce37d3",
+      "size": 1757
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/test_antipattern_hook_runtime.py",
+      "sha256": "ef3b51dd8a523199a6c352e2be42a0d22e6b1a1910854887e04747d7e49caeab",
+      "size": 4620
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/test_antipattern_state_evidence_contract.py",
+      "sha256": "62c6c6df6ed198bacae78dbae47476bd903f64af8f650057293d022e4cf81f68",
+      "size": 6574
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/integration/validate_antipattern_rule_coverage.py",
+      "sha256": "8f8300200d47f86071d9b9d39b5962a3591492e413ece5eaa821995ca9b8d160",
+      "size": 4076
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_EXTENDED_E2E_TEST_REPORT.json",
+      "sha256": "0dcf00de84d51109b7ed1b7489ee932619454f626bbe1791172a8881c9df56d2",
+      "size": 926
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_EXTENDED_E2E_TEST_REPORT.md",
+      "sha256": "d53e0fdabf738dcee16500f8673b0c4ae9c56e35ece8375651a567514d769bb6",
+      "size": 438
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_INTEGRATION_CLOSURE_REPORT.json",
+      "sha256": "11cdd717384c2e8e51ee362311f6c1f9bc70f134825566d68db1806bd1a36d8e",
+      "size": 1452
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_INTEGRATION_CLOSURE_REPORT.md",
+      "sha256": "4fa5ce81e35d11dd5a1133c4e1031d2fa6ba5fe33d83fa79284b261fa03f9f68",
+      "size": 892
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_RULE_COVERAGE_REPORT.json",
+      "sha256": "d9ead7bff484510f74abfb0c908909de7f8b9c429bd2085cb1bff9596544b9a8",
+      "size": 5892
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_RULE_COVERAGE_REPORT.md",
+      "sha256": "3af44aabcea95f9224496c6646b756fc63d61dec06b9fdbda77815f34534eeaa",
+      "size": 612
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_RUNTIME_BEHAVIOR_REPORT.json",
+      "sha256": "c0c9fb49bbf9b325324606b460cb39021cade2c44abfa80ced3ed360c57a7ac9",
+      "size": 890
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_RUNTIME_BEHAVIOR_REPORT.md",
+      "sha256": "f9c91000a3b119ff46874e5adb65f7e705b9665a2486c9e9fb46a79656734826",
+      "size": 1425
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_STATE_EVIDENCE_CONTRACT_REPORT.json",
+      "sha256": "cc98e4714fbf88badf5d431dedb1f4aaab340e1009672e0ad7dfd78d5a27054d",
+      "size": 844
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/reports/APF_ANTIPATTERN_STATE_EVIDENCE_CONTRACT_REPORT.md",
+      "sha256": "970c068b948c31eb6be7998ddb6fe83581b32490f10efc6b2b8efd9e64d0025a",
+      "size": 518
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/visuals/antipattern_runtime_integration/apf_antipattern_runtime_integration.dot",
+      "sha256": "4742b26971e1ad4d7e06cf0db00f5791d6d0791c485d38f32bfe58c6586186f2",
+      "size": 3784
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/visuals/antipattern_runtime_integration/apf_antipattern_runtime_integration.png",
+      "sha256": "98e87676bb6281d1e8fa21b4f40aefb8657aacc074b74f538d9db7f8c1106a68",
+      "size": 316265
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/packages/ordo_applied_project_factory/visuals/antipattern_runtime_integration/apf_antipattern_runtime_integration.svg",
+      "sha256": "b2fc4bab1ad133c6657050f4ba4690fe8086f1096456030b3a6f1afbc271bc5b",
+      "size": 23047
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/recovery/2026-07-14/source_delta/HISTORY_EVENT_FACTORY_ANTIPATTERNS_FROM_RECENT_FAILURES_UK.md",
+      "sha256": "1beff4db84f3148b3246b9a84f02ced0b24c2b4afe9a5e0923d9e66328ff8e42",
+      "size": 13086
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/language/ANTIPATTERN_FUNDAMENTAL_TAXONOMY.md",
+      "sha256": "7c5fb363694ed47e2f346addc88614678ece2e8cf3efed19de559ed29d7588d0",
+      "size": 1508
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/language/antipattern_finding_model.py",
+      "sha256": "a677115f58b03640c9d581c97c345cb978a908e22f1321cd6fbcef7189a33b1b",
+      "size": 2097
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/manifests/APF_FUNDAMENTAL_ANTIPATTERN_BINDING_SHA256SUMS.txt",
+      "sha256": "11112ee863fd131a52374662f03d4cd56d951448a53c57d4ff913e6e1cc92249",
+      "size": 1331
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/reports/ANTIPATTERN_FUNDAMENTAL_TAXONOMY_MIGRATION_REPORT.json",
+      "sha256": "47110dfdfcf085dae8af8ac089d0f474c5a91f55d5076317a6863efccb20604d",
+      "size": 736
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/reports/ANTIPATTERN_FUNDAMENTAL_TAXONOMY_MIGRATION_REPORT.md",
+      "sha256": "3038e0cf20f13a843b12684f0b1d5f3e37a5c75b1c16c5faf0c9dfa496195477",
+      "size": 319
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/reports/APF_FUNDAMENTAL_ANTIPATTERN_RUNTIME_BINDING_REPORT.json",
+      "sha256": "eb7258686ab89f0cac652fa2fd4d8b89056c6db4d790951163db51b1bdbbed69",
+      "size": 1108
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/TRANSFER_2026-07-14/antipattern_reference_pack/reports/APF_FUNDAMENTAL_ANTIPATTERN_RUNTIME_BINDING_REPORT.md",
+      "sha256": "78a7bf53f20660327035737fa4937d9d87dd06d29199473054f1711ce500d43c",
+      "size": 708
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/m88_m89/M88_0_ANTIPATTERN_LAYER_CAPABILITY_AUDIT.json",
+      "sha256": "fc14b7d57ec4eedacab85ebe29a41609412a985d0d96da6376a071bc5cf0cbd2",
+      "size": 7921
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/m88_m89/M88_0_ANTIPATTERN_LAYER_CAPABILITY_AUDIT.md",
+      "sha256": "b0142c5ed9a2f63a5bef855902c715c0a8970de0da62551a61c66dc1bce3bdc9",
+      "size": 969
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/m88_m89/M88_1_ANTIPATTERN_DEF_SCHEMA_INITIAL_REGISTRY_REPORT.json",
+      "sha256": "4271689ab8f1a6e2a59af77babb1ce3430da4f44499eaea0fb1851389f35bc04",
+      "size": 1140
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/reports/m88_m89/M88_1_ANTIPATTERN_DEF_SCHEMA_INITIAL_REGISTRY_REPORT.md",
+      "sha256": "053214fb2301545ec2f7e8c9c1e1d0cc1ffdcedc3e356884b8b40bc2680d3e75",
+      "size": 444
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/integration/ANTIPATTERN_WIRING_CONTRACT.md",
+      "sha256": "ebf28e3690f0d6a4d320b8b82511df3e2d041dccd98bef294368642ef4ff0c93",
+      "size": 2592
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/integration/antipattern_activation_profile.apf.v1.json",
+      "sha256": "6981809596d2ccf8d77625da53e98ccf39dae353e8859f3b503af4199c64bdae",
+      "size": 1724
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/integration/antipattern_gate_adapter.py",
+      "sha256": "ebfb7ba7582e258aa6dc945f573e4d20f255846fdf00279259aa03bd9b8da930",
+      "size": 4328
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/registries/antipattern_policy.v1.json",
+      "sha256": "6a95d448e2ea2709fe020ea4fec7969b2085c70d6bbbf8a551b1e87834aff1ab",
+      "size": 444
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/registries/antipattern_registry.v1.json",
+      "sha256": "517fcc773fb56da05fcaadd1aa7ecd45f9ab2be4bb904676d2b350ee0596edab",
+      "size": 12636
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/registries/antipattern_taxonomy_governance.v1.json",
+      "sha256": "8a2012535e64213a1d38f60d2cd1ac9ef817690c5e588c4f41003144a4110a26",
+      "size": 1298
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/registries/fundamental_antipattern_registry.v1.json",
+      "sha256": "f1df47964a7e80e750b88728e80c95d0602f2a4168081fd605d1b5dbe181225b",
+      "size": 9649
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/runtime/antipattern_runtime.py",
+      "sha256": "1035962abc326bec457ac82ce563adc055516b09a317700135e3530d6a39ced0",
+      "size": 1680
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/runtime/antipattern_signal_extractors.py",
+      "sha256": "8f25ad963bb549c8dae753fb7d4d455fc3cd98277209212b0ab0f464e3a10b8b",
+      "size": 2029
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/schemas/antipattern_def.schema.json",
+      "sha256": "1d535e56b34efe6047f01c54df9a8cc83792de00245b7d810dd8e7e57191610f",
+      "size": 5283
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/schemas/antipattern_evidence_ref.schema.json",
+      "sha256": "191690ff5ce2c1c9990d3a2929e0ed570f40a10d2c7bc754a4cb85e20abe7a05",
+      "size": 1210
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/schemas/antipattern_finding.schema.json",
+      "sha256": "bae2b76699d0487b872c6efc62027ad8b269ccf2127cbe78171622a47aae0bc5",
+      "size": 3497
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/schemas/antipattern_gate_report.schema.json",
+      "sha256": "e1aadebebe5530edd6f290f0cdcab8a383b690cda4a8512a7e202949da27abce",
+      "size": 1850
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/schemas/antipattern_policy.schema.json",
+      "sha256": "37c214a235f1193b24599e3d9f47ff3874657a2a420786712d201abfbaa1d273",
+      "size": 1389
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/schemas/antipattern_wiring_hook.schema.json",
+      "sha256": "e377392f50c619ce705152fa4d49be7e9f2b661dbf3bc46c31a047e5e9c4875b",
+      "size": 4715
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/improvement_intake/bl_ordo_020_references/APF_IMPLEMENTATION_PROMPT_AS_IMPLEMENTATION_ANTIPATTERNS_UK.md",
+      "sha256": "d1a13871eceb433f3ff3e76997e9b3cf1d919c614d3b13e839c9d312fa3e8aec",
+      "size": 2572
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/improvement_intake/bl_ordo_020_references/APF_PATTERNS_AND_ANTIPATTERNS_CATALOG.md",
+      "sha256": "5afd0cb5e57d5a938e636bed87f003d1064ff2952ac77bc670d470345b51978b",
+      "size": 43561
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/improvement_intake/bl_ordo_020_references/APF_PLAYBOOK_ANTIPATTERNS_AND_PATTERNS_CATALOG_UK.md",
+      "sha256": "e7c953e279a9de05747fcd412754a6570a634c90118fb9916832f6c9d86faa39",
+      "size": 20795
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/improvement_intake/bl_ordo_020_references/APF_SCOPE_CONFIRMATION_EXECUTION_ROUTING_ANTIPATTERNS_UK.md",
+      "sha256": "f2d7182ab7feb4198115ec88d4d56050c3e59beeadff79efac1661b88511ef3c",
+      "size": 3133
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/improvement_intake/bl_ordo_020_references/HISTORY_EVENT_FACTORY_ANTIPATTERNS_FROM_RECENT_FAILURES_UK.md",
+      "sha256": "1beff4db84f3148b3246b9a84f02ced0b24c2b4afe9a5e0923d9e66328ff8e42",
+      "size": 13086
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/runtime/fixtures/antipattern_integration_cases.v1.json",
+      "sha256": "29aafb97fed03122c2c59b977bb004a1a761878b74056dd63de21b49e3c514bb",
+      "size": 3032
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/runtime/fixtures/initial_antipattern_runtime_cases.v1.json",
+      "sha256": "619bf073a438c3ff514d1148c382b55a6ee925193ff83328ab893282846d3d1c",
+      "size": 2640
+    },
+    {
+      "path": "TRANSFER_2026-07-14/antipattern_reference_pack/language/integration/examples/apf_antipattern_hook.example.json",
+      "sha256": "5f6c8a2b634255cd6c4ef70ee744e16ca19ff7b895811fee5e9d3d2d2d5d8fcb",
+      "size": 1649
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/manifests/CONSOLIDATED_BACKLOG.json",
+      "sha256": "e670b8c2fd19864e602233c457e9123d3b474fe5d3989019461d0cf274a97122",
+      "size": 6424
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/manifests/CURRENT_MATURITY_STATE.json",
+      "sha256": "dae40400a256eef66474d792af14667833a01df9fab6933e99a73ec8e35611a2",
+      "size": 2846
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/manifests/STATUS_SUPERSESSION_REGISTRY.json",
+      "sha256": "d6189c88c2eccf853851ecd2863b607615cbf0fea7f6c7068af5a3f195a83e7f",
+      "size": 1408
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/docs/future_backlog.md",
+      "sha256": "8363d208ebc8f9fe2d43da513f17155035732d03ffd8d62a8dbf238b5cc760c7",
+      "size": 7441
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/docs/future_backlog_m74_sync_snapshot.md",
+      "sha256": "8d96cea08110d0befa18c0ce26e864205901c19091308ba663424284352f1400",
+      "size": 9283
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/language/DELTA_BACKLOG_STANDARD.md",
+      "sha256": "3bfec453e3ebaaefbd20709ca34a7fd81b533bb2de3e35a7d4a85c8e5a4940cb",
+      "size": 1350
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/language/spec/23_DERIVED_ARTIFACT_SYNC_DELTA_BACKLOG_MODEL.md",
+      "sha256": "49dab7bc43769ab4cfe165c41f8eaa8475452d01e95d174a0e7e83689f2c52c9",
+      "size": 1576
+    },
+    {
+      "path": "TRANSFER_2026-07-14/backlog_related/language/schemas/delta_backlog_schema.yaml",
+      "sha256": "b46b319dcfde0bc1e844d7e92a362bfc5b29bec4d159c1e49657073426810bf6",
+      "size": 1169
+    }
+  ],
+  "antipattern_files_copied": 70
+}

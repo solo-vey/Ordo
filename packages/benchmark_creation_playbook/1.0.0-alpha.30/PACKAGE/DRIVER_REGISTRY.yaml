@@ -1,0 +1,14 @@
+schema_version: ordo.benchmark.driver_registry.v1
+registry_version: 0.5.0
+drivers:
+  - id: DRV-STEP-BOUND
+    contract: 013_STEP_BOUND_DRIVER.md
+    selection_profile: stable_closed_node_graph
+    required_capabilities: [checkpoint_resolution, node_response_validation, declared_transition, correction_invalidation, terminal_predicate]
+  - id: DRV-SEMANTIC-ADAPTIVE
+    contract: 014_ADAPTIVE_SEMANTIC_DRIVER.md
+    selection_profile: obligation_and_intent_model
+    required_capabilities: [obligation_resolution, semantic_intent_selection, deterministic_tiebreak, correction_invalidation, terminal_predicate]
+unsupported_status: UNSUPPORTED_OR_HYBRID
+selection_contract: 015_DRIVER_SELECTION_GATE.md
+isolation_contract: 016_BLIND_ISOLATION_RULES.md

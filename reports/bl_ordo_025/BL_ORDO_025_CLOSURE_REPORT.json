@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.bl_ordo_025.closure.v1",
+  "id": "BL-ORDO-025",
+  "status": "closed",
+  "closed_at": "2026-07-14T15:00:00Z",
+  "summary": "APF linter memory and performance hardening completed; full APF lint is mandatory and fits standard CI budget without heavy skip.",
+  "implementation": {
+    "flow_reuse": "bounded deterministic partition refinement; no recursive signature growth",
+    "graph_scc": "iterative O(V+E) SCC traversal; no Python recursion dependency",
+    "delivery_gate": "--skip-heavy deprecated no-op; no tests or lints skipped"
+  },
+  "budget": {
+    "profile": "standard_ci",
+    "max_rss_mib": 512,
+    "max_seconds": 15,
+    "synthetic_graph_max_seconds": 10
+  },
+  "evidence": {
+    "affected_regression": "17/17 passed",
+    "performance_tests": "4/4 passed",
+    "package_lints": "4/4 passed",
+    "real_apf_lint": "passed within budget",
+    "large_linear_graph_nodes": 5000,
+    "large_cyclic_graph_nodes": 1200,
+    "blocking_issues": 0
+  }
+}

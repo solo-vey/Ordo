@@ -1,0 +1,8 @@
+{
+  "schema_version": "ordo.empirical_evidence.task_class.v1",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "title": "Complex Multi-Step Process",
+  "scope": "Long, branch-heavy processes requiring state, gate, correction, and completion control.",
+  "status": "active",
+  "scoring_profile": "composite_quality_scoring_method.v1"
+}

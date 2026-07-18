@@ -1,0 +1,46 @@
+schema_version: benchmark.evidence_governance.v1
+policy_version: 1.0.0-alpha.7
+canonical_promotion:
+  requires_user_confirmation: true
+  requires_actual_artifact_audit: true
+  requires_integrity_resolved: true
+  forbids_summary_only_acceptance: true
+run_states:
+  - RECEIVED_NOT_CONFIRMED
+  - AUDITED_AWAITING_CONFIRMATION
+  - CONFIRMED
+  - REJECTED
+  - QUARANTINED
+  - SUPERSEDED
+playbook_states: [WORKING, CANDIDATE, REJECTED, APPROVED]
+principal_scores:
+  - process_quality
+  - document_quality
+  - final_quality
+formulas:
+  document_quality: round((passport + jira + manual_qa + automation) / 4)
+  final_quality: round((process_quality + document_quality) / 2)
+canonical_variants:
+  - yaml_playbook
+  - structured_instructions
+  - mixed_accumulated_instructions
+  - domain_adapted_all_in_one
+run_ids: [RUN_01, RUN_02, RUN_03, RUN_04, RUN_05]
+scoreboard:
+  include_states: [CONFIRMED]
+  exclude_states: [RECEIVED_NOT_CONFIRMED, AUDITED_AWAITING_CONFIRMATION, REJECTED, QUARANTINED, SUPERSEDED]
+  empty_cell: "—"
+revision_policy:
+  immutable: true
+  naming: revision_NN
+  silent_overwrite_forbidden: true
+launch_prompt:
+  must_be_neutral: true
+  forbidden_content:
+    - improvement_hints
+    - expected_terminal_state
+    - hidden_validation_targets
+    - prior_run_findings
+release:
+  immutable_published_versions: true
+  required_files: [MANIFEST.json, FILE_MANIFEST_SHA256.json, SHA256SUMS.txt, SYNC_REPORT.md]

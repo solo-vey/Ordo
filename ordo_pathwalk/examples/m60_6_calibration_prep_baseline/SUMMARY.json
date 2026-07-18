@@ -1,0 +1,605 @@
+{
+  "status": "ok",
+  "total_test_cases": 60,
+  "gate_pass_rate": 1.0,
+  "path_quality_score": {
+    "mean": 1.0,
+    "median": 1.0,
+    "stdev": 0.0,
+    "min": 1.0,
+    "max": 1.0
+  },
+  "failed_test_cases": [],
+  "breakdown_by_driver": {
+    "benchmark-dry-run-ground-truth": {
+      "count": 60,
+      "mean": 1.0
+    }
+  },
+  "breakdown_by_cli_mode": {
+    "enforced": {
+      "count": 60,
+      "mean": 1.0
+    }
+  },
+  "breakdown_by_runtime_view": {
+    "json,ordo-code": {
+      "count": 20,
+      "mean": 1.0
+    },
+    "json": {
+      "count": 20,
+      "mean": 1.0
+    },
+    "ordo-code": {
+      "count": 20,
+      "mean": 1.0
+    }
+  },
+  "runtime_protocol_versions": [
+    "M60.4"
+  ],
+  "benchmark_dry_run": {
+    "status": "passed",
+    "execution_contract": "artifact-only-external-job",
+    "scenario_count": 20,
+    "runtime_views": [
+      "json",
+      "ordo-code",
+      "json,ordo-code"
+    ],
+    "expected_cases": 60,
+    "completed_cases": 60,
+    "passed_cases": 60,
+    "tree_seed": 606,
+    "script_seed_start": 1606,
+    "depth": 2,
+    "branching": [
+      2,
+      3
+    ],
+    "raw_metrics_csv": "RAW_METRICS.csv",
+    "case_results": [
+      {
+        "job_id": "scenario_000_json",
+        "scenario_id": "scenario_000",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_000_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_000_ordo-code",
+        "scenario_id": "scenario_000",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_000_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_000_json_ordo-code",
+        "scenario_id": "scenario_000",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_000_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_001_json",
+        "scenario_id": "scenario_001",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_001_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_001_ordo-code",
+        "scenario_id": "scenario_001",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_001_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_001_json_ordo-code",
+        "scenario_id": "scenario_001",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_001_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_002_json",
+        "scenario_id": "scenario_002",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_002_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_002_ordo-code",
+        "scenario_id": "scenario_002",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_002_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_002_json_ordo-code",
+        "scenario_id": "scenario_002",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_002_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_003_json",
+        "scenario_id": "scenario_003",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_003_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_003_ordo-code",
+        "scenario_id": "scenario_003",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_003_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_003_json_ordo-code",
+        "scenario_id": "scenario_003",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_003_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_004_json",
+        "scenario_id": "scenario_004",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_004_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_004_ordo-code",
+        "scenario_id": "scenario_004",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_004_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_004_json_ordo-code",
+        "scenario_id": "scenario_004",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_004_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_005_json",
+        "scenario_id": "scenario_005",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_005_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_005_ordo-code",
+        "scenario_id": "scenario_005",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_005_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_005_json_ordo-code",
+        "scenario_id": "scenario_005",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_005_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_006_json",
+        "scenario_id": "scenario_006",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_006_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_006_ordo-code",
+        "scenario_id": "scenario_006",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_006_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_006_json_ordo-code",
+        "scenario_id": "scenario_006",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_006_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_007_json",
+        "scenario_id": "scenario_007",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_007_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_007_ordo-code",
+        "scenario_id": "scenario_007",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_007_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_007_json_ordo-code",
+        "scenario_id": "scenario_007",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_007_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_008_json",
+        "scenario_id": "scenario_008",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_008_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_008_ordo-code",
+        "scenario_id": "scenario_008",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_008_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_008_json_ordo-code",
+        "scenario_id": "scenario_008",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_008_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_009_json",
+        "scenario_id": "scenario_009",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_009_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_009_ordo-code",
+        "scenario_id": "scenario_009",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_009_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_009_json_ordo-code",
+        "scenario_id": "scenario_009",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_009_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_010_json",
+        "scenario_id": "scenario_010",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_010_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_010_ordo-code",
+        "scenario_id": "scenario_010",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_010_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_010_json_ordo-code",
+        "scenario_id": "scenario_010",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_010_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_011_json",
+        "scenario_id": "scenario_011",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_011_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_011_ordo-code",
+        "scenario_id": "scenario_011",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_011_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_011_json_ordo-code",
+        "scenario_id": "scenario_011",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_011_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_012_json",
+        "scenario_id": "scenario_012",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_012_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_012_ordo-code",
+        "scenario_id": "scenario_012",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_012_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_012_json_ordo-code",
+        "scenario_id": "scenario_012",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_012_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_013_json",
+        "scenario_id": "scenario_013",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_013_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_013_ordo-code",
+        "scenario_id": "scenario_013",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_013_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_013_json_ordo-code",
+        "scenario_id": "scenario_013",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_013_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_014_json",
+        "scenario_id": "scenario_014",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_014_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_014_ordo-code",
+        "scenario_id": "scenario_014",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_014_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_014_json_ordo-code",
+        "scenario_id": "scenario_014",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_014_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_015_json",
+        "scenario_id": "scenario_015",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_015_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_015_ordo-code",
+        "scenario_id": "scenario_015",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_015_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_015_json_ordo-code",
+        "scenario_id": "scenario_015",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_015_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_016_json",
+        "scenario_id": "scenario_016",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_016_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_016_ordo-code",
+        "scenario_id": "scenario_016",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_016_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_016_json_ordo-code",
+        "scenario_id": "scenario_016",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_016_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_017_json",
+        "scenario_id": "scenario_017",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_017_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_017_ordo-code",
+        "scenario_id": "scenario_017",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_017_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_017_json_ordo-code",
+        "scenario_id": "scenario_017",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_017_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_018_json",
+        "scenario_id": "scenario_018",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_018_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_018_ordo-code",
+        "scenario_id": "scenario_018",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_018_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_018_json_ordo-code",
+        "scenario_id": "scenario_018",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_018_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_019_json",
+        "scenario_id": "scenario_019",
+        "runtime_view": "json",
+        "status": "passed",
+        "score_file": "scores/scenario_019_json_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_019_ordo-code",
+        "scenario_id": "scenario_019",
+        "runtime_view": "ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_019_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      },
+      {
+        "job_id": "scenario_019_json_ordo-code",
+        "scenario_id": "scenario_019",
+        "runtime_view": "json,ordo-code",
+        "status": "passed",
+        "score_file": "scores/scenario_019_json_ordo-code_score.json",
+        "path_quality_score": 1.0,
+        "protocol_compliance_rate": 1.0
+      }
+    ]
+  }
+}

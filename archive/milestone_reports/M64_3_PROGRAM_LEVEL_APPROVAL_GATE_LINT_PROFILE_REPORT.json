@@ -1,0 +1,37 @@
+{
+  "milestone": "M64.3",
+  "name": "Program-level approval gate lint/profile design",
+  "status": "passed-docs-lint-profile-design",
+  "scope": "docs/schema/lint-profile design only",
+  "created": [
+    "language/PROGRAM_LEVEL_APPROVAL_GATE.md",
+    "language/PROGRAM_LEVEL_APPROVAL_PROFILE.md",
+    "language/registry/PROGRAM_LEVEL_APPROVAL_GATE_VALUES.md",
+    "language/schemas/program_level_approval_gate_schema.yaml",
+    "language/examples/source/program_level_approval_gate_example.ordo.yaml",
+    "language/spec/18_PROGRAM_LEVEL_APPROVAL_GATE_MODEL.md",
+    "M64_3_PROGRAM_LEVEL_APPROVAL_GATE_LINT_PROFILE_REPORT.md",
+    "M64_3_PROGRAM_LEVEL_APPROVAL_GATE_LINT_PROFILE_REPORT.json",
+    "M64_3_VALIDATION_REPORT.json"
+  ],
+  "updated": [
+    "README.md",
+    "CHANGELOG.md",
+    "FUTURE_BACKLOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/README.md",
+    "language/CHANGELOG.md",
+    "language/CURRENT_VERSION.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "non_changes": [
+    "no runtime core changes",
+    "no compiler behavior changes",
+    "no CLI command changes",
+    "no opcode additions",
+    "no deterministic natural-language classifier",
+    "no FLOW.JOIN implementation",
+    "no SHARED.TAIL.REFERENCE implementation"
+  ],
+  "readiness": "ready-for-review-or-first-wave-closure"
+}

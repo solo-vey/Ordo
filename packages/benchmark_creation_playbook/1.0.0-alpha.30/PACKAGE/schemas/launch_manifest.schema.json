@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Benchmark Launch Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "attempt_id",
+    "benchmark_suite_id",
+    "test_case_id",
+    "run_id",
+    "package_variant_id",
+    "package_version",
+    "package_digest",
+    "driver_binding_ref",
+    "blind_isolation_manifest_ref",
+    "launch_mode",
+    "output_directory",
+    "self_scoring_forbidden",
+    "expected_return_files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.launch_manifest.v1"
+    },
+    "attempt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "benchmark_suite_id": {
+      "type": "string"
+    },
+    "test_case_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "pattern": "^RUN_[0-9]{2,}$"
+    },
+    "package_variant_id": {
+      "enum": [
+        "PV-YAML",
+        "PV-STRUCTURED",
+        "PV-HISTORICAL",
+        "PV-DIRECT"
+      ]
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "package_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "driver_binding_ref": {
+      "type": "string"
+    },
+    "blind_isolation_manifest_ref": {
+      "type": "string"
+    },
+    "launch_mode": {
+      "enum": [
+        "blind",
+        "diagnostic-nonblind",
+        "replay"
+      ]
+    },
+    "output_directory": {
+      "type": "string"
+    },
+    "self_scoring_forbidden": {
+      "const": true
+    },
+    "expected_return_files": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,40 @@
+{
+  "milestone": "BL-ORDO-010 translation continuation",
+  "chapters": [
+    63,
+    64,
+    73,
+    74,
+    75
+  ],
+  "source_locale": "uk",
+  "target_locale": "en",
+  "status": "passed",
+  "files": [
+    {
+      "path": "book/en/chapters/chapter_63_visual_graph_generator.md",
+      "sha256": "91af484dfab17291f46b2b3d07fbf5b2ec49757a805a9826a3f99308ca6dd033",
+      "bytes": 2262
+    },
+    {
+      "path": "book/en/chapters/chapter_64_companion_utility_workflow.md",
+      "sha256": "14d59bbd6e126780cf121f2cb2a4683d82994a2f2719f725286a125611402b6c",
+      "bytes": 2851
+    },
+    {
+      "path": "book/en/chapters/chapter_73_how_apf_began_creating_itself.md",
+      "sha256": "59c965841e1c2ca97d55f976aeff431c7d04d39db4f9889223057226a3902a20",
+      "bytes": 16767
+    },
+    {
+      "path": "book/en/chapters/chapter_74_execution_trace_core_language_element.md",
+      "sha256": "7b3559a8ee35750c052556ffc5f243040fda3a1851016e0ab38eed865f32829d",
+      "bytes": 3921
+    },
+    {
+      "path": "book/en/chapters/chapter_75_execution_trace_tooling_testing_replay.md",
+      "sha256": "49c7bc025839b2e1592cecd2f9c0eb8d9e460b9a290159caf29b06a3bd83987f",
+      "bytes": 2451
+    }
+  ]
+}

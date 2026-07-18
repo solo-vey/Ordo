@@ -1,0 +1,45 @@
+{
+  "schema_version": "ordo.m89.dependency_reconstruction_mapping.v1",
+  "milestone": "M89.3",
+  "status": "passed",
+  "implemented": {
+    "canonical_dependency_graph": true,
+    "canonical_ordo_mapping": true,
+    "stable_unit_and_edge_ids": true,
+    "nine_dependency_relations": true,
+    "topological_ordering": true,
+    "ordering_relations_include_produces_consumes_evidences": true,
+    "ordering_cycle_detection": true,
+    "recovery_cycle_allowance": true,
+    "dangling_reference_detection": true,
+    "authorization_dependency_validation": true,
+    "mandatory_mapping_gate": true,
+    "source_traceability_for_nodes_and_edges": true
+  },
+  "tests": {
+    "passed": 26,
+    "failed": 0
+  },
+  "changed_files": [
+    {
+      "path": "language/schemas/migration_dependency_graph.schema.json",
+      "sha256": "a6f0bb6606b3825d6521205c2bf42a0d680aefe481fdf2d3c77ae02b2fe0e450"
+    },
+    {
+      "path": "language/schemas/migration_ordo_mapping.schema.json",
+      "sha256": "43e95dbc85abb82c9c8e4b9d2a8389df6eed3c950dc56ffd694d81955901d865"
+    },
+    {
+      "path": "language/migration/dependency_reconstruction_model.py",
+      "sha256": "146ea5fb1c1d0b1980cc43e97edfad543b342da9d795a46cd56d476a2a3cb513"
+    },
+    {
+      "path": "language/migration/dependency_reconstruction_protocol.v1.json",
+      "sha256": "aeb5bf45eed03b0e6bae9f4c6adca74222f3d04779235e9e3de072e5c98b6afe"
+    },
+    {
+      "path": "cli/tests/test_m89_3_dependency_reconstruction_ordo_mapping.py",
+      "sha256": "32bda5a12a625beae2e56d059f63fc4a74820f2164385767f5f3542b7bf9b44f"
+    }
+  ]
+}

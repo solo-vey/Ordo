@@ -1,0 +1,26 @@
+schema_version: ordo.apf.post_generation_confirmation_gate.v1
+gate_id: APF-POST-GENERATION-CONFIRMATION
+applies_to:
+- critical
+- high-impact
+blocking: true
+required_gate_results:
+  critical: all nine gates passed or explicitly not-applicable where contract permits
+  high-impact: all applicable gates passed
+eligibility_algorithm:
+- record schema valid
+- artifact SHA-256 matches reviewed artifact
+- all executable and contract-sensitive claims are supported or explicitly blocked/proposed
+- no open critical or high defects
+- all required gates passed
+- post-correction review passed when material corrections exist
+- all related-artifact conflicts resolved or explicitly superseded
+forbidden_bypasses:
+- criticality downgrade after gate failure
+- automatic confirmation after structural validation only
+- correction self-attestation without independent validation
+- materialization of model_proposed or unknown claims
+terminal_states:
+- confirmation_eligible
+- blocked
+- not_applicable

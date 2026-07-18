@@ -1,0 +1,160 @@
+contract_id: apf.prompt_sufficiency_review.v1
+status: accepted-working-contract
+applies_to: downstream_playbooks_authored_by_apf
+confirmed_apf_baseline: v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure
+milestone: PMP-1
+
+purpose: >-
+  Determine whether a relevant object in a playbook being authored can be executed
+  reliably from its deterministic contract alone, should reuse an already approved
+  prompt, requires a new mini-prompt candidate, must prohibit prompt use, or needs a
+  human decision before authoring continues.
+
+authority_order:
+  - deterministic_contract
+  - deterministic_rule
+  - approved_existing_prompt_reuse
+  - new_mini_prompt_candidate
+
+review_timing:
+  after:
+    - object_contract_defined
+    - required_fields_defined
+    - blocking_gates_defined
+    - transition_rules_defined_when_applicable
+  before:
+    - prompt_candidate_creation
+    - downstream_prompt_registry_activation
+    - final_playbook_readiness
+
+review_scope:
+  required_object_types:
+    - decision_node
+    - complex_question_node
+    - confirmation_node
+    - recovery_or_backtracking_handler
+    - blocking_gate
+    - artifact_generation_step
+    - complex_human_review_step
+    - validation_report_interpretation_step
+  normally_excluded_object_types:
+    - static_metadata
+    - simple_transition
+    - enum_definition
+    - mechanical_validation_rule
+    - object_where_prompt_would_only_duplicate_contract
+  exclusion_rule: >-
+    Exclusion must be explicit and justified. An object cannot be excluded merely to
+    avoid producing a review record.
+
+classification_vocabulary:
+  - simple_instruction_sufficient
+  - existing_prompt_reuse
+  - new_prompt_candidate
+  - prompt_prohibited
+  - needs_human_decision
+
+required_review_record:
+  fields:
+    - review_id
+    - playbook_id
+    - object_id
+    - object_type
+    - contract_reference
+    - review_status
+    - classification
+    - rationale
+    - ambiguity_risk
+    - execution_variance_risk
+    - recovery_guidance_need
+    - artifact_generation_complexity
+    - existing_prompt_search_performed
+    - existing_prompt_matches
+    - contract_strengthening_attempted
+    - contract_strengthening_result
+    - reviewer
+    - reviewed_at
+    - blocking_findings
+  review_status_values:
+    - pending
+    - completed
+    - needs_revision
+    - blocked
+
+classification_rules:
+  simple_instruction_sufficient:
+    requires:
+      - object_contract_is_complete
+      - expected_execution_is_unambiguous
+      - no_special_recovery_or_rendering_guidance_needed
+      - prompt_would_only_repeat_contract
+    next_action: continue_without_prompt_artifacts
+
+  existing_prompt_reuse:
+    requires:
+      - object_contract_is_complete
+      - guidance_is_still_useful
+      - compatible_approved_prompt_exists
+      - authority_and_context_match
+    next_action: defer_attachment_details_to_PMP_3
+
+  new_prompt_candidate:
+    requires:
+      - object_contract_is_complete
+      - deterministic_strengthening_was_attempted
+      - no_compatible_approved_prompt_exists
+      - guidance_need_is_local_and_testable
+      - prompt_would_not_own_navigation_gate_or_state
+    next_action: create_candidate_only_under_PMP_2
+
+  prompt_prohibited:
+    triggered_by_any:
+      - requested_prompt_would_define_navigation
+      - requested_prompt_would_bypass_gate
+      - requested_prompt_would_confirm_human_decision
+      - requested_prompt_would_introduce_hidden_business_or_process_logic
+      - deterministic_contract_is_missing_or_materially_weak
+    next_action: block_prompt_creation_and_fix_authoritative_contract
+
+  needs_human_decision:
+    triggered_by_any:
+      - prompt_necessity_materially_changes_playbook_experience
+      - acceptable_execution_variance_is_unknown
+      - multiple_valid_guidance_models_exist
+      - reuse_or_new_candidate_choice_affects_shared_prompt_governance
+    next_action: keep_checkpoint_open_until_human_decision
+
+contract_strengthening_gate:
+  mandatory_questions:
+    - Can the ambiguity be removed by improving fields, schema, enums, gate criteria or transition rules?
+    - Can a deterministic helper or validation rule replace prose guidance?
+    - Would a prompt merely restate the contract?
+  failure_effect: new_prompt_candidate_is_not_allowed
+
+readiness_effects:
+  block_playbook_prompt_readiness_when:
+    - required_review_record_missing
+    - review_status_not_completed
+    - classification_missing_or_invalid
+    - new_prompt_candidate_selected_without_completed_contract_strengthening_gate
+    - needs_human_decision_unresolved
+    - prompt_prohibited_but_prompt_artifact_exists_or_is_attached
+  does_not_block_when:
+    - excluded_object_has_valid_justification
+    - simple_instruction_sufficient_has_completed_rationale
+
+human_authority:
+  required_for:
+    - resolution_of_needs_human_decision
+    - later_activation_of_new_prompt_candidate
+  not_required_for:
+    - recording_simple_instruction_sufficient
+    - recording_prompt_prohibited_due_to_authority_violation
+
+non_goals:
+  - generate_prompt_text
+  - approve_prompt_text
+  - activate_prompt_ref
+  - create_downstream_prompt_registry
+  - add_mini_prompts_to_internal_apf_nodes
+  - modify_ordo_core

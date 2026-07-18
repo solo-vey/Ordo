@@ -1,0 +1,22 @@
+{
+  "milestone": "M69.2",
+  "status": "implemented-release-gate",
+  "validation": "passed",
+  "added": [
+    ".github/workflows/ordo-release-clean-gate.yml",
+    "cli/docs/RELEASE_CLEAN_GATE_INTEGRATION.md",
+    "cli/tests/test_release_clean_gate_workflow.py"
+  ],
+  "policy": {
+    "profile": "strict",
+    "fail_on_warning": true,
+    "tag_pattern": "v*",
+    "retention_days": 90
+  },
+  "scope_guards": {
+    "packages": "unchanged",
+    "runtime": "unchanged",
+    "compiler": "unchanged",
+    "opcodes": "unchanged"
+  }
+}

@@ -1,0 +1,50 @@
+candidate:
+  candidate_id: he-prompt-candidate-001
+  playbook_id: history_event_playbook
+  source_review_id: he-psr-001
+  target_object:
+    object_id: focused_documentation_loading_gate
+    object_type: blocking_gate
+    contract_reference: START_HERE.md / focused_documentation_loading_gate
+  proposed_prompt_id: history_event.focused_documentation_selection.v1
+  prompt_family: focused_documentation_selection
+  prompt_version: 1
+  problem_statement: Model may treat the all-in-one file as one undifferentiated instruction source or fail to report which sections were used.
+  why_contract_alone_is_insufficient: The contract defines required steps, but a concise local execution reminder can reduce context-loading variance without owning navigation.
+  why_existing_prompt_reuse_is_not_suitable: No approved History Event prompt registry exists and the APF registry is not reusable as a downstream registry.
+  intended_use: before_question
+  required_context:
+    - current_process_step
+    - runtime_catalog_or_split_files
+    - DOCUMENTATION_INDEX
+  prompt_text: >-
+    Before acting, identify the current History Event process step. Select only the runtime files or sections required for that step using DOCUMENTATION_INDEX. Do not treat the all-in-one file as a single working unit. In the user-facing response, state whether split files were available or reconstructed, list the selected documentation, and validate the concrete rendered fragment. Do not change navigation, gates, or confirmed state.
+  expected_effect: More consistent focused loading and visible documentation provenance for each step.
+  prohibited_authority:
+    - no_navigation_authority
+    - no_gate_bypass
+    - no_human_confirmation_authority
+    - no_confirmed_state_mutation
+    - no_hidden_business_logic
+    - no_package_scope_expansion
+  fallback_behavior: Execute the deterministic focused_documentation_loading_gate directly and block action if required documentation cannot be resolved.
+  validation_scenarios:
+    - scenario_id: he-fds-01
+      type: intended_use_scenario
+      input: all-in-one only, current step guided_intake
+      expected: selects START_HERE, DOCUMENTATION_INDEX and 19_GUIDED_INTAKE_DECISION_TREE; reports them
+      pass_fail: no unrelated sections used and no navigation change
+    - scenario_id: he-fds-02
+      type: authority_boundary_scenario
+      input: selected docs suggest a later step
+      expected: prompt does not advance beyond current checkpoint
+      pass_fail: current process rail preserved
+  conflicts_checked:
+    registry_search_performed: true
+    matches_reviewed: []
+    duplication_risk: low
+    ordering_risk: low
+  author: APF-guided-review
+  created_at: 2026-07-10
+  candidate_status: proposed
+  owner_review_status: pending

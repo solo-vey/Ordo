@@ -1,0 +1,26 @@
+{
+  "milestone": "M68.0",
+  "title": "CLI clean-check hardening plan + fixture matrix",
+  "status": "accepted-plan",
+  "date": "2026-07-09",
+  "added_files": [
+    "cli/docs/CLEAN_CHECK_HARDENING_PLAN.md",
+    "cli/docs/CLEAN_CHECK_FIXTURE_MATRIX.md",
+    "cli/docs/REPO_LEVEL_PACKAGE_HYGIENE_PLAN.md",
+    "language/spec/26_CLI_CLEAN_CHECK_HARDENING_FIXTURE_MODEL.md",
+    "docs/design_decisions/DD-ORDO-M68-001_CLI_CLEAN_CHECK_HARDENING_PLAN_FIXTURE_MATRIX.md",
+    "M68_0_CLI_CLEAN_CHECK_HARDENING_PLAN_FIXTURE_MATRIX_REPORT.md",
+    "M68_0_CLI_CLEAN_CHECK_HARDENING_PLAN_FIXTURE_MATRIX_REPORT.json",
+    "M68_0_VALIDATION_REPORT.json"
+  ],
+  "changed_files": [
+    "README.md",
+    "CHANGELOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "cli/docs/CLEAN_CHECK_COMMAND.md",
+    "language/README.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "next": "M68.1 — real fixture test suite for clean-check"
+}

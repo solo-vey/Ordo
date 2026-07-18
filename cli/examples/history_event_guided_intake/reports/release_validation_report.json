@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "generated_at": "2026-07-05T20:37:34.719480+00:00",
+  "package": {
+    "root": "/mnt/data/ordo_github_workspace/packages/history_event_guided_intake",
+    "name": "history_event.guided_intake",
+    "version": "0.1.0",
+    "ordo_version": "0.12",
+    "control_level": "standard",
+    "execution_mode": "chat_internal"
+  },
+  "steps": [
+    {
+      "name": "lint",
+      "status": "passed",
+      "report": "reports/lint_report.json",
+      "details": {}
+    },
+    {
+      "name": "compile",
+      "status": "passed",
+      "report": "reports/compile_report.json",
+      "details": {
+        "ops_count": 39
+      }
+    },
+    {
+      "name": "test",
+      "status": "passed",
+      "report": "reports/test_report.json",
+      "details": {
+        "test_cases": 11,
+        "passed": 11,
+        "failed": 0,
+        "errors": 0,
+        "warnings": 0
+      }
+    },
+    {
+      "name": "coverage",
+      "status": "generated",
+      "report": "reports/coverage_report.json",
+      "details": {
+        "test_cases": 11,
+        "gates_total": 9,
+        "gates_covered": 9,
+        "assertions_total": 1,
+        "assertions_covered": 1,
+        "nodes_total": 9,
+        "nodes_covered": 9,
+        "freeform_total": 2
+      }
+    },
+    {
+      "name": "run",
+      "status": "passed",
+      "report": "reports/run_report.json",
+      "details": {}
+    },
+    {
+      "name": "intake",
+      "status": "passed",
+      "report": "reports/intake_report.json",
+      "details": {}
+    },
+    {
+      "name": "package",
+      "status": "created",
+      "report": "release/history_event.guided_intake-0.1.0.zip",
+      "details": {}
+    }
+  ],
+  "release_archive": "/mnt/data/ordo_github_workspace/packages/history_event_guided_intake/release/history_event.guided_intake-0.1.0.zip",
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "infos": 0,
+    "runtime_status": "executed"
+  },
+  "issues": []
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.execution_graph_connectivity.acceptance.v1",
+  "status": "PASS",
+  "passed": 5,
+  "total": 5,
+  "cases": [
+    {
+      "id": "connected_positive",
+      "pass": true
+    },
+    {
+      "id": "dead_end_negative",
+      "pass": true
+    },
+    {
+      "id": "dangling_negative",
+      "pass": true
+    },
+    {
+      "id": "unreachable_negative",
+      "pass": true
+    },
+    {
+      "id": "missing_entry_negative",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "source": "source/program.ordo.yaml",
+  "output": "compiled/program.ir.json",
+  "ops_count": 597,
+  "lint_status": "passed",
+  "contract_artifact_reference_check": {
+    "status": "passed",
+    "summary": {
+      "contracts": 6,
+      "artifacts": 25,
+      "artifact_requirements": 8,
+      "coverage_rules": 1,
+      "rendered_artifact_assertions": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "issues": []
+  },
+  "opcode_registry_check": {
+    "status": "skipped",
+    "reason": "OPCODE_CATALOG.md not found near package; registry check skipped.",
+    "ops": [
+      "ARTIFACT.DEF",
+      "ARTIFACT.REQUIREMENT",
+      "ASSERTION.DEF",
+      "ASSERTION.PROJECT",
+      "CLARIFY.REQUEST",
+      "CONTRACT.DEF",
+      "CONTRACT.INSTANCE",
+      "CONVERSATION.SEMANTICS",
+      "COVERAGE.RULE",
+      "FREEFORM.DEF",
+      "GATE.DEF",
+      "GO_NO_GO.DECISION",
+      "INTENT.DEF",
+      "INTERACTION.MODEL",
+      "LIB.INCLUDE",
+      "NODE.DEF",
+      "OUTPUT.DEF",
+      "PROCESS_RAIL.DEF",
+      "PROGRAM.DEF",
+      "STATE.SCHEMA"
+    ],
+    "missing_ops": []
+  }
+}

@@ -1,0 +1,50 @@
+kind: ordo_local_module_manifest
+version: '1.0'
+assembly_target: program.ordo.yaml
+modules:
+- path: modules/00_program_metadata.ordo.module.yaml
+  owns_top_level_keys:
+  - ordo
+  - module
+  - includes
+- path: modules/10_entry_and_project_contract.ordo.module.yaml
+  owns_top_level_keys:
+  - interaction_model
+  - intent
+  - contract
+  - state
+- id: 15_session_package_cache
+  path: modules/15_session_package_cache.ordo.module.yaml
+  owns_top_level_keys:
+  - runtime_capabilities
+- path: modules/20_process_design_rail.ordo.module.yaml
+  owns_top_level_keys:
+  - process_rail
+  - graph_contract
+- path: modules/30_playbook_architecture.ordo.module.yaml
+  owns_top_level_keys:
+  - nodes
+- path: modules/40_conversation_policy.ordo.module.yaml
+  owns_top_level_keys:
+  - conversation_semantics
+- path: modules/50_package_generation.ordo.module.yaml
+  owns_top_level_keys:
+  - outputs
+  - freeform
+  - contracts
+  - artifacts
+  - artifact_requirements
+- path: modules/60_validation_and_release.ordo.module.yaml
+  owns_top_level_keys:
+  - coverage_rules
+  - go_no_go
+- path: modules/70_assertions_and_status_semantics.ordo.module.yaml
+  owns_top_level_keys:
+  - gates
+  - assertions
+- id: 35_optional_flow_reuse
+  path: modules/35_optional_flow_reuse.ordo.module.yaml
+  owns_top_level_keys:
+  - flow_reuse
+duplicate_key_policy: blocking
+semantic_equivalence_required: true

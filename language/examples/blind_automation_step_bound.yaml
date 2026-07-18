@@ -1,0 +1,31 @@
+schema_version: ordo.blind_automation_profile.v1
+profile_id: sample.step_bound
+execution_profile: step_bound
+self_scoring: false
+driver_protocol: [start, ask, answer, present, correction, finish]
+disclosure_policy:
+  mode: step_bound
+  over_disclosure_guard: true
+terminal_state_contract: [T_COMPLETED, T_INPUT_BLOCKED, T_SCENARIO_EXHAUSTED, NO_GO, not_ready]
+fact_statuses: [confirmed, tentative, withdrawn, superseded, unavailable, irrelevant]
+artifact_versioning:
+  immutable_versions: true
+  approval_scope: artifact_version
+correction_invalidation:
+  invalidate_dependents: true
+  invalidate_approvals: true
+  consistency_review: true
+evaluation_contract:
+  independent: true
+  separate_process_and_document_scores: true
+  default_weighting: {process: 0.5, document_quality: 0.5}
+diagnostic_causal_review:
+  self_scoring_prohibited: true
+  corroboration_required: true
+  allowed_claim_statuses: [model_reported, trace_corroborated, file_corroborated, reproduced, rejected]
+step_catalog:
+  - {step_id: collect_source, order: 1, mandatory: true}
+  - {step_id: approve_passport, order: 2, mandatory: true}
+step_disclosure_bindings:
+  collect_source: [document_id, record_key]
+  approve_passport: [passport_review_result]

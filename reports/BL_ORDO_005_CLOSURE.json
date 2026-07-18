@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "backlog_id": "BL-ORDO-005",
+  "title": "Cross-model and repeated-run CSG benchmark",
+  "status": "closed",
+  "closure_reason": "The cross-model repeated-run benchmark was completed using six valid real-model runs across three model targets, two runs per target, with every run passing.",
+  "closure_evidence": [
+    "reports/BL_ORDO_001_FINAL_CROSS_MODEL_REBUILD.json",
+    "reports/BL_ORDO_001_PRODUCTION_READINESS_GATE.json"
+  ],
+  "metrics": {
+    "distinct_model_targets": 3,
+    "valid_runs": 6,
+    "minimum_runs_per_target": 2,
+    "all_runs_passed": true
+  },
+  "remaining": []
+}

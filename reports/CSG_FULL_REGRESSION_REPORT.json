@@ -1,0 +1,69 @@
+{
+  "suite_id": "CSG-FULL-REGRESSION",
+  "groups": {
+    "classification": {
+      "status": "passed"
+    },
+    "strictness_modes": {
+      "status": "passed"
+    },
+    "escalation": {
+      "status": "passed"
+    },
+    "state_protection": {
+      "status": "passed"
+    },
+    "response_actions": {
+      "status": "passed"
+    },
+    "pause_resume_exit": {
+      "status": "passed"
+    },
+    "controlled_change": {
+      "status": "passed"
+    },
+    "safety_bypass": {
+      "status": "passed"
+    },
+    "authoring_flow": {
+      "status": "passed"
+    },
+    "package_binding": {
+      "status": "passed"
+    },
+    "manifest_source_consistency": {
+      "status": "passed"
+    },
+    "apf_boundary": {
+      "status": "passed"
+    }
+  },
+  "cross_artifact_invariants": {
+    "optional": true,
+    "core_disabled": true,
+    "apf_self_disabled": true,
+    "four_modes": true,
+    "taxonomy": true,
+    "unrelated_no_mutation": true,
+    "safety_bypass": true,
+    "suspension_not_completion": true,
+    "exit_incomplete": true,
+    "package_binding": true,
+    "profile_no_activation": true,
+    "domain_no_activation": true
+  },
+  "status": "passed_specification_consistency",
+  "validation_scope": "specification_and_cross_artifact_consistency",
+  "execution_evidence": {
+    "model_execution_performed": false,
+    "helper_runner_execution_performed": false,
+    "cli_fixture_execution_performed": false,
+    "fixtures_are_declarative_examples": true
+  },
+  "does_not_establish": [
+    "model_classification_accuracy",
+    "runtime_state_protection_compliance",
+    "toolchain_support",
+    "production_readiness"
+  ]
+}

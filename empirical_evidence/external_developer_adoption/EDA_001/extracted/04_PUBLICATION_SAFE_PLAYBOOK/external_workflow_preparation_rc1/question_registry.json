@@ -1,0 +1,155 @@
+{
+  "schema": "ordo.question_registry.v1",
+  "questions": [
+    {
+      "id": "EWP.Q.001",
+      "node_id": "N_INTAKE",
+      "prompt": "Establish one-event scope and business need",
+      "mandatory": false,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.002",
+      "node_id": "N_RELEVANCE",
+      "prompt": "Confirm that the need is a valuable monitoring signal",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.003",
+      "node_id": "N_DATA_OWNERSHIP",
+      "prompt": "Determine whether source data is internally owned",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.004",
+      "node_id": "N_DATA_QUALITY",
+      "prompt": "Assess sufficiency and normalization",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.005",
+      "node_id": "N_REMEDIATION_DECISION",
+      "prompt": "Decide whether internal raw data can be remediated",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.006",
+      "node_id": "N_CROSS_TEAM_CONTRACT",
+      "prompt": "Capture external data delivery dependency",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.007",
+      "node_id": "N_IDENTITY_BUNDLE",
+      "prompt": "Define exact monitoring identities without conflation",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.008",
+      "node_id": "N_USER_PLANES",
+      "prompt": "Define setup, tracking, and trigger user planes",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.009",
+      "node_id": "N_TRIGGER_CONTRACT",
+      "prompt": "Define bilingual configurable trigger contract",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.010",
+      "node_id": "N_SCENARIOS",
+      "prompt": "Define scenario aggregation and classification",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.011",
+      "node_id": "N_ARTIFACTS",
+      "prompt": "Generate business package drafts",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.012",
+      "node_id": "N_ACCEPTANCE",
+      "prompt": "Define measurable business acceptance criteria",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.013",
+      "node_id": "N_SIGNOFF_PLAN",
+      "prompt": "Define and collect role-specific sign-off",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.014",
+      "node_id": "N_EXTERNAL_LINKS",
+      "prompt": "Bind external lifecycle references",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "EWP.Q.015",
+      "node_id": "N_FINAL_VALIDATION",
+      "prompt": "Run strict business-ready validation",
+      "mandatory": true,
+      "materiality": "contract_or_process",
+      "fallback": "block_and_record_open_question"
+    },
+    {
+      "id": "Q_DRAFT_APPROVAL",
+      "node_id": "N_DRAFT_REVIEW",
+      "prompt": "You reviewed the uploaded draft package. Do you approve this draft?",
+      "required": true,
+      "accepted": [
+        "explicit_approve",
+        "request_corrections",
+        "cancel"
+      ]
+    },
+    {
+      "id": "Q_knowledge_workspace_URL",
+      "node_id": "N_CAPTURE_knowledge_workspace_LINK",
+      "prompt": "Provide the URL of the created external process-record page.",
+      "required": true
+    },
+    {
+      "id": "Q_WORK_TRACKING_RECORD_URL",
+      "node_id": "N_CAPTURE_WORK TRACKER_LINK",
+      "prompt": "Provide the URL of the created workflow-preparation work-tracking record.",
+      "required": true
+    },
+    {
+      "id": "Q_APPROVER_SET_CONFIRM",
+      "node_id": "N_SIGNOFF_PLAN",
+      "prompt": "Confirm or revise the proposed approver list.",
+      "required": true,
+      "owner": "Product/PO"
+    }
+  ]
+}

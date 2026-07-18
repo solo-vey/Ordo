@@ -1,0 +1,46 @@
+{
+  "package_id": "history_event.guided_intake",
+  "package_version": "0.1.1",
+  "profile": "runtime",
+  "runtime_source": "compiled/program.ir.json",
+  "templates": "output_templates/",
+  "source_yaml_included": false,
+  "embedded_cli_included": true,
+  "embedded_cli_path": "cli_embedded/ordo",
+  "trust_level": "level_1_cli_in_package_hard_stop",
+  "trust_level_detail": "level_1_cli_in_package_hard_stop_hash_chain_human_verify_m59_4_hardened_m60_4_restore_session",
+  "trust_level_capabilities": [
+    "embedded_cli",
+    "hard_stop",
+    "per_node_evidence",
+    "hash_chain",
+    "verify_session",
+    "restore_session",
+    "canary",
+    "multi_target_manifest",
+    "session_trace",
+    "runtime_view_modes",
+    "ordo_code_view"
+  ],
+  "runtime_view": "ordo-code",
+  "runtime_view_behavior": {
+    "runtime_view": "ordo-code",
+    "ai_facing_mode": "ordo_code_contract",
+    "default_next_step_format": "ordo-code",
+    "question_protocol": "AI shows CLI-rendered current_contract fragment plus question and report digest.",
+    "allowed_cli_formats": [
+      "ordo-code"
+    ]
+  },
+  "canonical_target": "json-ir",
+  "targets_manifest": "compiled/targets.manifest.json",
+  "compiled_targets": [
+    "json-ir",
+    "ordo-code-view",
+    "session-trace"
+  ],
+  "source_yaml_sha256": "13a571a8837f6957deb56b27cde546bc94a20e4912728fe994494a5518e28417",
+  "compiled_ir_sha256": "1d5b492bf6d3267bf7577f57285c7d63aa534fa2f64859e5abe960b022410fee",
+  "compiler_version": "0.12",
+  "cli_validation_status": "executed_cli_passed"
+}

@@ -1,0 +1,61 @@
+# Prompt registry validation profile schema convention
+# Status: M71.2 schema/profile update; still a convention, not runtime enforcement.
+
+prompt_registry_validation_profile:
+  profile_id: string
+  version: string
+  applies_to:
+    package_id: string
+    prompt_registry_id: string
+  selected_profile: enum(light, standard, strict)
+  default_decision_policy: enum(approved, approved_with_warnings, blocked, not_applicable)
+  controlled_application_phases:
+    - before_question
+    - during_clarification
+    - after_answer
+    - before_confirmation
+    - on_open_gap
+    - on_gate_fail
+    - before_artifact_generation
+  identity_policy:
+    prompt_id_pattern: '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+\.v[1-9][0-9]*$'
+    prompt_family_required: true
+    version_required: true
+    node_independence_required: true
+    semantic_filename_required: true
+    stable_id_immutable: true
+    supersedes_same_family_only: true
+    supersedes_lower_version_only: true
+    supersedes_lineage_acyclic: true
+  attachment_policy:
+    authoritative_source: node_or_artifact_prompt_refs
+    reverse_mapping_role: derived_or_validated_mirror
+    list_order_is_normative: true
+    prompt_may_change_navigation: false
+  severity_model:
+    - severity: enum(error, warning, info)
+      blocks_approval: boolean
+      requires_rationale: boolean
+  checks:
+    - check_id: string
+      category: enum(structure, identity, lineage, reference, file, application, authority, traceability)
+      severity: enum(error, warning, info)
+      profiles:
+        light: enum(error, warning, info, disabled)
+        standard: enum(error, warning, info, disabled)
+        strict: enum(error, warning, info, disabled)
+      target: string
+      description: string
+      owner_action: string
+  finding_record:
+    finding_id: string
+    severity: enum(error, warning, info)
+    profile: enum(light, standard, strict)
+    check: string
+    target: string
+    message: string
+    owner_action: string
+    status: enum(open, accepted_risk, fixed, not_applicable)
+  decision:
+    value: enum(approved, approved_with_warnings, blocked, not_applicable)
+    rationale: string

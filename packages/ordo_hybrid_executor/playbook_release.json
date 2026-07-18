@@ -1,0 +1,50 @@
+{
+  "schema_version": "ordo.playbook_release.v1",
+  "playbook_id": "ordo.hybrid_executor",
+  "playbook_version": "0.1.1",
+  "previous_version": "0.1.1",
+  "built_with": {
+    "language_version": "0.14.0-rc.1",
+    "framework_version": "0.6.0-rc.1"
+  },
+  "compatibility": {
+    "language": ">=0.14.0-rc.1,<0.15.0",
+    "framework": ">=0.6.0-rc.1,<0.7.0",
+    "previous_playbook": "compatible"
+  },
+  "changes": {
+    "backlog_items": [
+      "BL-ORDO-039"
+    ],
+    "summary": [
+      "Added mandatory verified rollback checkpoint governance."
+    ],
+    "changed_nodes": [],
+    "changed_contracts": [
+      "ordo.playbook.rollback_checkpoint.v1"
+    ],
+    "changed_outputs": [
+      "runtime/MANUAL_RUN_JOURNEY.yaml",
+      "runtime/manual_run_journey.events.jsonl"
+    ],
+    "changed_gates": [
+      "journey validation"
+    ]
+  },
+  "migration": {
+    "required": false,
+    "instructions": [
+      "Revalidate active runtime before adopting a different playbook version."
+    ]
+  },
+  "rollback": {
+    "supported": true,
+    "checkpoint_required_before_version_bump": true,
+    "verification_required": true,
+    "manifest_schema": "ordo.playbook.rollback_checkpoint.v1",
+    "restore_round_trip_required": true,
+    "runtime_state_checkpoint_when_active": true,
+    "instruction": "Restore the previous immutable verified checkpoint archive and validate it before resuming."
+  },
+  "automatic_runtime_mutation": false
+}

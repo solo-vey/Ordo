@@ -1,0 +1,78 @@
+contract_id: apf.generated_playbook_mini_prompt.validation.v1
+status: accepted-working-contract
+applies_to: approved mini-prompts generated for downstream playbooks
+
+required_validation_dimensions:
+  - structural_integrity
+  - registry_manifest_integrity
+  - attachment_integrity
+  - authority_boundary
+  - context_sufficiency
+  - fallback_behavior
+  - duplication_and_conflict
+  - human_approval_integrity
+  - test_coverage
+
+required_checks:
+  structural_integrity:
+    - prompt_file_exists
+    - prompt_id_is_semantic_and_versioned
+    - prompt_id_is_unique
+    - prompt_id_is_not_node_id
+  registry_manifest_integrity:
+    - registry_entry_exists
+    - manifest_entry_exists
+    - sha256_matches_prompt_file
+    - lifecycle_status_is_approved
+  attachment_integrity:
+    - prompt_ref_targets_registered_prompt
+    - use_phase_is_allowed
+    - source_order_is_preserved
+    - target_object_exists
+  authority_boundary:
+    - prompt_does_not_define_next_node
+    - prompt_does_not_bypass_gate
+    - prompt_does_not_confirm_human_decision
+    - prompt_does_not_create_hidden_business_logic
+    - prompt_does_not_mutate_confirmed_state
+  context_sufficiency:
+    - required_context_is_declared
+    - insufficient_context_behavior_is_safe
+    - irrelevant_context_does_not_change_authority
+  fallback_behavior:
+    - prompt_absence_has_defined_fallback
+    - prompt_failure_does_not_corrupt_process_state
+  duplication_and_conflict:
+    - no_equivalent_approved_prompt_exists
+    - no_conflicting_prompt_ref_exists_for_same_phase
+    - prompt_does_not_duplicate_object_contract
+  human_approval_integrity:
+    - approval_record_exists
+    - approved_text_hash_matches_active_prompt
+    - scope_and_use_match_approval
+    - material_change_requires_reapproval
+  test_coverage:
+    - intended_use
+    - insufficient_context
+    - irrelevant_context
+    - authority_boundary
+    - gate_bypass_attempt
+    - prompt_absent_fallback
+
+readiness_statuses:
+  - passed
+  - passed_with_notes
+  - blocked
+
+blocking_rules:
+  - any authority-boundary failure
+  - missing approval
+  - checksum mismatch
+  - unregistered or unattached prompt
+  - missing required fallback
+  - missing mandatory test scenario
+
+non_claims:
+  - does_not_require_live_model_replay
+  - does_not_claim_deterministic_natural_language_output
+  - does_not_extend_ordo_core

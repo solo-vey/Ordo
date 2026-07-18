@@ -1,0 +1,15 @@
+{
+  "milestone": "M69.2",
+  "status": "passed",
+  "checks": {
+    "workflow_yaml_parse": "passed",
+    "targeted_tests": "passed",
+    "strict_release_smoke": "passed",
+    "json_reports_parse": "passed",
+    "packages_diff_guard": "passed",
+    "cli_implementation_diff_guard": "passed",
+    "runtime_diff_guard": "passed"
+  },
+  "test_count": 23,
+  "smoke_exit_code": 0
+}

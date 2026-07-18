@@ -1,0 +1,25 @@
+{
+  "milestone": "M72.2",
+  "title": "EXECUTION_TRACE Runtime & Compiler Integration",
+  "status": "passed_targeted_validation",
+  "scope": [
+    "compiler normalization and EXECUTION_TRACE.DEF emission",
+    "runtime append-only JSON lifecycle",
+    "capture policies",
+    "replay planning",
+    "integrity and redaction",
+    "runtime/compiler docs and book sync"
+  ],
+  "out_of_scope": [
+    "CLI user commands",
+    "full historical session trace migration",
+    "release packaging and full regression suite"
+  ],
+  "validation": {
+    "new_tests": "6 passed",
+    "python_compile": "passed",
+    "schema_parse": "passed",
+    "runtime_smoke": "passed",
+    "existing_cli_workflow": "started but did not complete within environment timeout; no failure output observed"
+  }
+}

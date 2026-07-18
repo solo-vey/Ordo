@@ -1,0 +1,295 @@
+{
+  "run_id": "INTAKE-20260705T203734Z",
+  "mode": "guided_intake",
+  "execution_mode": "chat_internal",
+  "trace_source": "runtime_enforced",
+  "started_at": "2026-07-05T20:37:34.700257+00:00",
+  "input": {
+    "answers_file": "/mnt/data/ordo_github_workspace/packages/history_event_guided_intake/run_inputs/intake_success.yaml",
+    "start_node": "N_EVENT_GOAL",
+    "non_interactive": true
+  },
+  "events": [
+    {
+      "type": "node_answered",
+      "node": "N_EVENT_GOAL",
+      "answer": "створити історичну подію зміни статусу компанії",
+      "next": "N_PATH_SELECT",
+      "state_diff": {
+        "event_goal": {
+          "before": null,
+          "after": "створити історичну подію зміни статусу компанії"
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_PATH_SELECT",
+      "answer": "A1",
+      "next": "N_EVENT_ALIAS",
+      "state_diff": {
+        "selected_path": {
+          "before": null,
+          "after": "A1"
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_EVENT_ALIAS",
+      "answer": "LU_CHANGE_STATUS",
+      "next": "N_DISPLAY_NAME_UK",
+      "state_diff": {
+        "event_alias": {
+          "before": null,
+          "after": "LU_CHANGE_STATUS"
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_DISPLAY_NAME_UK",
+      "answer": "Зміна статусу компанії",
+      "next": "N_DISPLAY_NAME_EN",
+      "state_diff": {
+        "display_name_uk": {
+          "before": null,
+          "after": "Зміна статусу компанії"
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_DISPLAY_NAME_EN",
+      "answer": "Company status changed",
+      "next": "N_SOURCE_FIELD",
+      "state_diff": {
+        "display_name_en": {
+          "before": null,
+          "after": "Company status changed"
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_SOURCE_FIELD",
+      "answer": "item.status",
+      "next": "N_VALUE_SEMANTICS",
+      "state_diff": {
+        "source_field": {
+          "before": null,
+          "after": "item.status"
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_VALUE_SEMANTICS",
+      "answer": [
+        "old status",
+        "new status",
+        "status normalization"
+      ],
+      "next": "N_QA_SCOPE",
+      "state_diff": {
+        "value_semantics": {
+          "before": [],
+          "after": [
+            "old status",
+            "new status",
+            "status normalization"
+          ]
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_QA_SCOPE",
+      "answer": [
+        "unit tests",
+        "manual QA",
+        "regression suite"
+      ],
+      "next": "N_APPROVAL",
+      "state_diff": {
+        "qa_scope": {
+          "before": [],
+          "after": [
+            "unit tests",
+            "manual QA",
+            "regression suite"
+          ]
+        }
+      }
+    },
+    {
+      "type": "node_answered",
+      "node": "N_APPROVAL",
+      "answer": "yes",
+      "next": "G_APPROVAL_CONFIRMED",
+      "state_diff": {
+        "approval_received": {
+          "before": false,
+          "after": true
+        }
+      }
+    },
+    {
+      "type": "gate_evaluated",
+      "gate": "G_APPROVAL_CONFIRMED",
+      "result": {
+        "id": "G_APPROVAL_CONFIRMED",
+        "method": "human",
+        "trust_class": "human_decision",
+        "status": "passed",
+        "condition": "approval_received is confirmed by user",
+        "reason": "approval_received=True in state; treated as explicit user-confirmed state for MVP run"
+      }
+    }
+  ],
+  "state_snapshots": [
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_000_initial.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_001_after_N_EVENT_GOAL.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_002_after_N_PATH_SELECT.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_003_after_N_EVENT_ALIAS.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_004_after_N_DISPLAY_NAME_UK.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_005_after_N_DISPLAY_NAME_EN.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_006_after_N_SOURCE_FIELD.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_007_after_N_VALUE_SEMANTICS.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_008_after_N_QA_SCOPE.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_009_after_N_APPROVAL.json",
+    "runtime/state_snapshots/INTAKE-20260705T203734Z_010_after_G_APPROVAL_CONFIRMED.json"
+  ],
+  "finished_at": "2026-07-05T20:37:34.702179+00:00",
+  "state": {
+    "event_goal": "створити історичну подію зміни статусу компанії",
+    "selected_path": "A1",
+    "event_alias": "LU_CHANGE_STATUS",
+    "display_name_uk": "Зміна статусу компанії",
+    "display_name_en": "Company status changed",
+    "source_field": "item.status",
+    "value_semantics": [
+      "old status",
+      "new status",
+      "status normalization"
+    ],
+    "qa_scope": [
+      "unit tests",
+      "manual QA",
+      "regression suite"
+    ],
+    "approval_received": true,
+    "output_allowed": false,
+    "final_package_created": false
+  },
+  "gate_report": [
+    {
+      "id": "G_EVENT_GOAL_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.event_goal is not null",
+      "reason": "mechanical condition evaluated: state.event_goal is not null; state.event_goal='створити історичну подію зміни статусу компанії'"
+    },
+    {
+      "id": "G_PATH_SELECTED",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.selected_path is not null",
+      "reason": "mechanical condition evaluated: state.selected_path is not null; state.selected_path='A1'"
+    },
+    {
+      "id": "G_ALIAS_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.event_alias is not null",
+      "reason": "mechanical condition evaluated: state.event_alias is not null; state.event_alias='LU_CHANGE_STATUS'"
+    },
+    {
+      "id": "G_DISPLAY_NAME_UK_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.display_name_uk is not null",
+      "reason": "mechanical condition evaluated: state.display_name_uk is not null; state.display_name_uk='Зміна статусу компанії'"
+    },
+    {
+      "id": "G_DISPLAY_NAME_EN_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.display_name_en is not null",
+      "reason": "mechanical condition evaluated: state.display_name_en is not null; state.display_name_en='Company status changed'"
+    },
+    {
+      "id": "G_SOURCE_FIELD_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.source_field is not null",
+      "reason": "mechanical condition evaluated: state.source_field is not null; state.source_field='item.status'"
+    },
+    {
+      "id": "G_VALUE_SEMANTICS_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.value_semantics is not empty",
+      "reason": "mechanical condition evaluated: state.value_semantics is not empty; state.value_semantics=['old status', 'new status', 'status normalization']"
+    },
+    {
+      "id": "G_QA_SCOPE_PRESENT",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "status": "passed",
+      "condition": "state.qa_scope is not empty",
+      "reason": "mechanical condition evaluated: state.qa_scope is not empty; state.qa_scope=['unit tests', 'manual QA', 'regression suite']"
+    },
+    {
+      "id": "G_APPROVAL_CONFIRMED",
+      "method": "human",
+      "trust_class": "human_decision",
+      "status": "passed",
+      "condition": "approval_received is confirmed by user",
+      "reason": "approval_received=True in state; treated as explicit user-confirmed state for MVP run"
+    }
+  ],
+  "assertion_report": [
+    {
+      "id": "A_NO_FINAL_HISTORY_EVENT_PACKAGE_WITHOUT_APPROVAL",
+      "polarity": "not",
+      "severity": "block",
+      "phase": [
+        "runtime",
+        "test"
+      ],
+      "status": "passed",
+      "condition": "final_package_created_without_approval",
+      "reason": "checked final_package_created without approval_received/G_APPROVAL_CONFIRMED"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "OUT_HISTORY_EVENT_PACKAGE",
+      "type": "archive",
+      "allowed": true,
+      "required_gates": [
+        "G_EVENT_GOAL_PRESENT",
+        "G_PATH_SELECTED",
+        "G_ALIAS_PRESENT",
+        "G_DISPLAY_NAME_UK_PRESENT",
+        "G_DISPLAY_NAME_EN_PRESENT",
+        "G_SOURCE_FIELD_PRESENT",
+        "G_VALUE_SEMANTICS_PRESENT",
+        "G_QA_SCOPE_PRESENT",
+        "G_APPROVAL_CONFIRMED"
+      ],
+      "missing_or_not_passed_gates": []
+    }
+  ],
+  "violations": [],
+  "blocked_outputs": [],
+  "status": "passed"
+}

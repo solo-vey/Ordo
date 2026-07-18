@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "passed": 8,
+  "total": 8,
+  "results": [
+    {
+      "case": "negative_domain_from_yaml",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true
+    },
+    {
+      "case": "negative_mixed_disclosure",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true
+    },
+    {
+      "case": "negative_structured_drift",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true
+    },
+    {
+      "case": "negative_wrong_strategy",
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "pass": true
+    },
+    {
+      "case": "positive_domain",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true
+    },
+    {
+      "case": "positive_mixed",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true
+    },
+    {
+      "case": "positive_structured",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true
+    },
+    {
+      "case": "positive_yaml",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "pass": true
+    }
+  ]
+}

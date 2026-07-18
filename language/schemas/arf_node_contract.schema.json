@@ -1,0 +1,393 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/arf_node_contract.schema.json",
+  "title": "ARF Node Contract Profiles",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/routing_node"
+    },
+    {
+      "$ref": "#/$defs/capture_node"
+    },
+    {
+      "$ref": "#/$defs/execution_node"
+    },
+    {
+      "$ref": "#/$defs/validator_node"
+    },
+    {
+      "$ref": "#/$defs/authorization_node"
+    },
+    {
+      "$ref": "#/$defs/terminal_node"
+    }
+  ],
+  "$defs": {
+    "string_list": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "base": {
+      "type": "object",
+      "required": [
+        "node_id",
+        "profile",
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_actions",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "ambiguity_route"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]+$"
+        },
+        "profile": {
+          "enum": [
+            "routing_node",
+            "capture_node",
+            "execution_node",
+            "validator_node",
+            "authorization_node",
+            "terminal_node"
+          ]
+        },
+        "atomic_responsibility": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prerequisites": {
+          "$ref": "#/$defs/string_list"
+        },
+        "allowed_inputs": {
+          "$ref": "#/$defs/string_list"
+        },
+        "allowed_actions": {
+          "$ref": "#/$defs/string_list",
+          "minItems": 1
+        },
+        "required_outputs": {
+          "$ref": "#/$defs/string_list"
+        },
+        "validation_gates": {
+          "$ref": "#/$defs/string_list"
+        },
+        "explicit_transitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "on",
+              "to"
+            ],
+            "properties": {
+              "on": {
+                "type": "string",
+                "minLength": 1
+              },
+              "to": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "forbidden_transitions": {
+          "$ref": "#/$defs/string_list"
+        },
+        "invalidation_effects": {
+          "$ref": "#/$defs/string_list"
+        },
+        "authorization_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "required",
+            "scope"
+          ],
+          "properties": {
+            "required": {
+              "type": "boolean"
+            },
+            "scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "authorization_type": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "ambiguity_route": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "allowed_action"
+          ],
+          "properties": {
+            "status": {
+              "const": "blocked_missing_instruction"
+            },
+            "allowed_action": {
+              "const": "request_exact_user_decision"
+            }
+          }
+        }
+      }
+    },
+    "routing_node": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "allowed_inputs"
+          ],
+          "properties": {
+            "profile": {
+              "const": "routing_node"
+            },
+            "node_id": {},
+            "atomic_responsibility": {},
+            "prerequisites": {},
+            "allowed_inputs": {},
+            "allowed_actions": {},
+            "explicit_transitions": {
+              "minItems": 1
+            },
+            "forbidden_transitions": {},
+            "ambiguity_route": {}
+          }
+        }
+      ]
+    },
+    "capture_node": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "allowed_inputs",
+            "required_outputs",
+            "validation_gates"
+          ],
+          "properties": {
+            "profile": {
+              "const": "capture_node"
+            },
+            "node_id": {},
+            "atomic_responsibility": {},
+            "prerequisites": {},
+            "allowed_inputs": {
+              "minItems": 1
+            },
+            "allowed_actions": {},
+            "required_outputs": {
+              "minItems": 1
+            },
+            "validation_gates": {
+              "minItems": 1
+            },
+            "explicit_transitions": {
+              "minItems": 1
+            },
+            "forbidden_transitions": {},
+            "ambiguity_route": {}
+          }
+        }
+      ]
+    },
+    "execution_node": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "allowed_inputs",
+            "required_outputs",
+            "validation_gates",
+            "invalidation_effects",
+            "authorization_boundary"
+          ],
+          "properties": {
+            "profile": {
+              "const": "execution_node"
+            },
+            "node_id": {},
+            "atomic_responsibility": {},
+            "prerequisites": {},
+            "allowed_inputs": {},
+            "allowed_actions": {},
+            "required_outputs": {
+              "minItems": 1
+            },
+            "validation_gates": {
+              "minItems": 1
+            },
+            "explicit_transitions": {
+              "minItems": 1
+            },
+            "forbidden_transitions": {},
+            "invalidation_effects": {},
+            "authorization_boundary": {},
+            "ambiguity_route": {}
+          }
+        }
+      ]
+    },
+    "validator_node": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "validation_target",
+            "validation_rules",
+            "machine_checkable_outputs",
+            "independent_from_target"
+          ],
+          "properties": {
+            "profile": {
+              "const": "validator_node"
+            },
+            "node_id": {},
+            "atomic_responsibility": {},
+            "prerequisites": {},
+            "allowed_actions": {},
+            "explicit_transitions": {
+              "minItems": 1
+            },
+            "forbidden_transitions": {},
+            "ambiguity_route": {},
+            "validation_target": {
+              "type": "string",
+              "minLength": 1
+            },
+            "validation_rules": {
+              "$ref": "#/$defs/string_list",
+              "minItems": 1
+            },
+            "machine_checkable_outputs": {
+              "$ref": "#/$defs/string_list",
+              "minItems": 1
+            },
+            "independent_from_target": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "authorization_node": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authorization_type",
+            "authorized_scope",
+            "active_decision_only",
+            "non_transitive"
+          ],
+          "properties": {
+            "profile": {
+              "const": "authorization_node"
+            },
+            "node_id": {},
+            "atomic_responsibility": {},
+            "prerequisites": {},
+            "allowed_actions": {},
+            "explicit_transitions": {
+              "minItems": 1
+            },
+            "forbidden_transitions": {},
+            "ambiguity_route": {},
+            "authorization_type": {
+              "type": "string",
+              "minLength": 1
+            },
+            "authorized_scope": {
+              "type": "string",
+              "minLength": 1
+            },
+            "active_decision_only": {
+              "const": true
+            },
+            "non_transitive": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "terminal_node": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "closure_prerequisites",
+            "evidence_requirements",
+            "status_derivation",
+            "validation_gates"
+          ],
+          "properties": {
+            "profile": {
+              "const": "terminal_node"
+            },
+            "node_id": {},
+            "atomic_responsibility": {},
+            "prerequisites": {},
+            "allowed_actions": {},
+            "validation_gates": {
+              "minItems": 1
+            },
+            "explicit_transitions": {},
+            "forbidden_transitions": {},
+            "ambiguity_route": {},
+            "closure_prerequisites": {
+              "$ref": "#/$defs/string_list",
+              "minItems": 1
+            },
+            "evidence_requirements": {
+              "$ref": "#/$defs/string_list",
+              "minItems": 1
+            },
+            "status_derivation": {
+              "const": "weakest_mandatory_check"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+contract_id: apf.mini_prompt_candidate_proposal.v1
+status: accepted-working-contract
+applies_to: downstream_playbooks_authored_by_apf
+confirmed_apf_baseline: v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure
+milestone: PMP-2
+purpose: Define how APF creates a reviewable mini-prompt proposal after Prompt Sufficiency
+  Review classifies an object as new_prompt_candidate, without activating or attaching
+  the prompt before explicit human approval.
+entry_preconditions:
+- completed_prompt_sufficiency_review_record
+- classification_equals_new_prompt_candidate
+- contract_strengthening_gate_passed
+- no_compatible_approved_prompt_found
+- target_object_contract_complete
+candidate_lifecycle:
+  statuses:
+  - proposed
+  - needs_revision
+  - approved
+  - rejected
+  - deferred
+  - withdrawn
+  initial_status: proposed
+  active_statuses: []
+  activation_rule: Approval records permission to proceed to PMP-3 registry and attachment
+    generation; approval does not itself activate or attach the prompt.
+  terminal_without_activation:
+  - rejected
+  - withdrawn
+  nonterminal:
+  - proposed
+  - needs_revision
+  - deferred
+  - approved
+required_candidate_fields:
+- candidate_id
+- playbook_id
+- target_object
+- source_review_id
+- proposed_prompt_id
+- prompt_family
+- prompt_version
+- problem_statement
+- why_contract_alone_is_insufficient
+- why_existing_prompt_reuse_is_not_suitable
+- intended_use
+- required_context
+- prompt_text
+- expected_effect
+- prohibited_authority
+- fallback_behavior
+- validation_scenarios
+- conflicts_checked
+- author
+- created_at
+- candidate_status
+- owner_review_status
+prompt_identity_rules:
+  prompt_id_must_be_semantic_and_versioned: true
+  prompt_id_must_not_equal_node_id: true
+  format: <playbook_namespace>.<semantic_role>.v<major>
+  candidate_id_is_not_prompt_id: true
+allowed_intended_use_values:
+- before_question
+- during_clarification
+- after_answer
+- on_gate_fail
+- on_backtrack
+- artifact_generation
+- validation_review
+prohibited_authority_must_include:
+- no_navigation_authority
+- no_gate_bypass
+- no_human_confirmation_authority
+- no_confirmed_state_mutation
+- no_hidden_business_logic
+- no_package_scope_expansion
+validation_scenario_minimum:
+- intended_use_scenario
+- insufficient_context_scenario
+- authority_boundary_scenario
+- gate_bypass_attempt
+- prompt_absent_fallback_scenario
+human_review_required: true
+human_review_gate_ref: docs/APF_MINI_PROMPT_HUMAN_APPROVAL_GATE.yaml
+pre_approval_effects:
+  registry_entry_allowed: false
+  manifest_entry_allowed: false
+  prompt_ref_allowed: false
+  runtime_application_allowed: false
+  normative_playbook_status_allowed: false
+  proposal_artifact_allowed: true
+non_goals:
+- create_active_registry_entry
+- attach_prompt_ref
+- execute_prompt
+- add_internal_apf_mini_prompts
+- modify_ordo_core
+- start_BL_APF_001

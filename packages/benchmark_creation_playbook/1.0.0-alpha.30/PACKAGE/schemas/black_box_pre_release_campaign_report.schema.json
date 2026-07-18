@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BlackBoxPreReleaseCampaignReport",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "candidate_sha256",
+    "runs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.black_box_campaign_report.v1"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED_OWNER_INPUT"
+      ]
+    },
+    "candidate_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5
+    }
+  }
+}

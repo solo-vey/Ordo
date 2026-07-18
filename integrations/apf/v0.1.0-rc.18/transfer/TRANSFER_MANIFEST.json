@@ -1,0 +1,53 @@
+{
+  "package_id": "APF_V0_1_0_RC_13_ORDO_V0_12_ADAPTATION_CONFIRMED_BASELINE",
+  "source_baseline": "v0.1.0-rc.17-conversation-scope-guard-support-confirmed-closure",
+  "source_package": "APF_V0_1_0_RC_13_ORDO_V0_12_ADAPTATION_CONFIRMED_BASELINE.zip",
+  "purpose": "Transfer APF rc.18 aligned with the Ordo CSG language baseline.",
+  "read_first": [
+    "README_NEXT_CHAT.md",
+    "CURRENT_STATE.md",
+    "docs/APF_RC14_PLAYBOOK_AUTHORED_MINI_PROMPT_SUPPORT_POLICY.md",
+    "docs/APF_RC14_CONFIRMATION_REGISTER.md",
+    "backlog/APF_DELTA_BACKLOG_REGISTER.md",
+    "VALIDATION_REPORT.json"
+  ],
+  "backlog_items": [
+    "BL-APF-001",
+    "BL-APF-002"
+  ],
+  "implementation_started": false,
+  "implementation_order_decided": false,
+  "next_action": "Validate the package and obtain explicit human confirmation before marking rc.18 as confirmed baseline.",
+  "scope_boundary": "APF package/process only; no Ordo language/compiler/runtime modification.",
+  "source_baselines_merged": [
+    "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC9_CONFIRMED_CLOSURE.zip",
+    "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC12_CONFIRMED_CLOSURE_WITH_USER_BACKLOG.zip",
+    "APF_CHAT_TRANSFER_PACKAGE_CURRENT_STATE_RC12.zip"
+  ],
+  "completeness": {
+    "available_rc7_rc9_primary_artifacts_included": true,
+    "original_cli_evidence_directory_available": false,
+    "missing_artifacts_report": "transfer/MISSING_OR_UNAVAILABLE_ARTIFACTS.md"
+  },
+  "adaptation": {
+    "target": "Ordo v0.12 pre-release",
+    "completed_milestones": [
+      "A0",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "A7"
+    ],
+    "candidate_version": "v0.1.0-rc.13-ordo-v0.12-adaptation-release-candidate",
+    "status": "confirmed-closure / accepted-baseline",
+    "human_confirmation": "accepted on 2026-07-10",
+    "confirmed_version": "v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure",
+    "confirmed_baseline_replaced": true
+  },
+  "package": "APF_V0_1_0_RC_18_CSG_LANGUAGE_BASELINE_ALIGNED_RELEASE_CANDIDATE.zip",
+  "status": "release-candidate-ready-for-human-confirmation",
+  "canonical_version": "v0.1.0-rc.18-csg-language-baseline-aligned-release-candidate"
+}

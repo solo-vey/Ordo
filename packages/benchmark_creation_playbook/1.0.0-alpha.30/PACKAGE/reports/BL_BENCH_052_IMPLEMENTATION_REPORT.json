@@ -1,0 +1,64 @@
+{
+  "task": "BL-BENCH-052",
+  "status": "DONE",
+  "version": "1.0.0-alpha.24",
+  "nodes_added": [
+    "N085_INITIALIZE_EVIDENCE_CATALOG",
+    "N086_REGISTER_EVIDENCE_OBJECTS",
+    "N087_ENFORCE_EVIDENCE_LIFECYCLE",
+    "N088_VALIDATE_SCORE_ELIGIBILITY",
+    "N089_VALIDATE_CATALOG_MANIFEST_PARITY",
+    "N090_BUILD_RESTORABLE_TRANSFER_PACKAGE",
+    "N091_VALIDATE_TRANSFER_RESTORABILITY"
+  ],
+  "gate_added": "G_EVIDENCE_BASE_CATALOG_GOVERNANCE",
+  "terminal_added": "T_EVIDENCE_BASE_CATALOG_GOVERNANCE_FAILURE",
+  "acceptance_tests": {
+    "schema_version": "ordo.acceptance.v1",
+    "task": "BL-BENCH-052",
+    "passed": 6,
+    "total": 6,
+    "cases": [
+      {
+        "case": "empty_canonical_catalog",
+        "expected": "PASS",
+        "actual": "PASS"
+      },
+      {
+        "case": "internal_run_in_score_ledger",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expected_code": "INTERNAL_EVIDENCE_IN_SCORE_LEDGER",
+        "code_detected": true
+      },
+      {
+        "case": "missing_catalog_root",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expected_code": "MISSING_CATALOG_ROOT",
+        "code_detected": true
+      },
+      {
+        "case": "broken_sha",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expected_code": "OBJECT_SHA_MISMATCH",
+        "code_detected": true
+      },
+      {
+        "case": "blind_class_contamination",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expected_code": "BLIND_CLASS_CONTAMINATION",
+        "code_detected": true
+      },
+      {
+        "case": "incomplete_binding",
+        "expected": "FAIL",
+        "actual": "FAIL",
+        "expected_code": "INCOMPLETE_RUN_BINDING",
+        "code_detected": true
+      }
+    ]
+  }
+}

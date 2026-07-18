@@ -1,0 +1,10 @@
+{
+  "release": "1.0.0-alpha.13",
+  "status": "PASS",
+  "backlog": "47/47 DONE",
+  "campaign_status": "PASS",
+  "runs": "5/5",
+  "evidence_archives": 5,
+  "acceptance_tests": "5/5 PASS",
+  "limitation": "deterministic external harness; no external LLM endpoint invoked"
+}

@@ -1,0 +1,44 @@
+{
+  "milestone": "M74.3-real-model-closure",
+  "status": "passed",
+  "date": "2026-07-11",
+  "model": {
+    "provider": "OpenAI",
+    "name": "GPT-5.6 Thinking",
+    "driver": "chat-ui-manual"
+  },
+  "cases": 26,
+  "metrics": {
+    "overall_classification_accuracy": 1.0,
+    "action_accuracy": 1.0,
+    "minimum_per_class_accuracy": 1.0,
+    "state_protection_compliance": 1.0,
+    "control_intent_preservation": 1.0,
+    "safety_bypass_compliance": 1.0,
+    "coverage_rate": 1.0,
+    "per_class_accuracy": {
+      "answer_to_active_question": 1.0,
+      "clarification": 1.0,
+      "correction": 1.0,
+      "backtrack_request": 1.0,
+      "requirement_change": 1.0,
+      "pause_request": 1.0,
+      "resume_request": 1.0,
+      "exit_request": 1.0,
+      "process_meta_question": 1.0,
+      "related_context": 1.0,
+      "unrelated_topic": 1.0,
+      "unsafe_or_emergency_message": 1.0,
+      "unclassifiable_input": 1.0
+    }
+  },
+  "gates": {
+    "G_CSG_MODEL_BENCHMARK_READY": "passed",
+    "G_CSG_PRODUCTION_READY": "blocked_runtime_enforcement_not_started"
+  },
+  "limitations": [
+    "single model/provider run",
+    "manual chat UI evidence",
+    "runtime enforcement not started"
+  ]
+}

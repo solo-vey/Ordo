@@ -1,0 +1,55 @@
+{
+  "schema_version": "ordo.black_box_campaign_report.v1",
+  "status": "PASS",
+  "evidence_class": "PRE_RELEASE_SELF_VALIDATION",
+  "executor_mode": "deterministic_external_harness",
+  "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6",
+  "candidate_file": "ORDO_BENCHMARK_CREATION_PLAYBOOK_V1_0_0_ALPHA_13_CANDIDATE.zip",
+  "candidate_zip_integrity": "PASS",
+  "runs": [
+    {
+      "run_id": "RUN_01",
+      "status": "PASS",
+      "terminal": "PASS_RELEASE",
+      "archive": "RUN_01_PRE_RELEASE_EVIDENCE.zip",
+      "archive_sha256": "f6c5370c1e12e553b46beee2a33d4c83cab3e19170de7002ce9a6550640279c8",
+      "correction_loop_used": false
+    },
+    {
+      "run_id": "RUN_02",
+      "status": "PASS",
+      "terminal": "PASS_RELEASE",
+      "archive": "RUN_02_PRE_RELEASE_EVIDENCE.zip",
+      "archive_sha256": "85d7519b022a9ead6d9c291b46eafd92914fe1ddd0a2892ed3373c55415cd55c",
+      "correction_loop_used": true
+    },
+    {
+      "run_id": "RUN_03",
+      "status": "PASS",
+      "terminal": "EXPECTED_HARD_STOP",
+      "archive": "RUN_03_PRE_RELEASE_EVIDENCE.zip",
+      "archive_sha256": "f2c913c8fecd28a0a91e547bf7034581fa6f2776857199bf5d45030b392674b2",
+      "correction_loop_used": false
+    },
+    {
+      "run_id": "RUN_04",
+      "status": "PASS",
+      "terminal": "PASS_RELEASE",
+      "archive": "RUN_04_PRE_RELEASE_EVIDENCE.zip",
+      "archive_sha256": "05818e508c8b92eab78acb11b215f6d296256499ef662ad64f666c040fb42c3b",
+      "correction_loop_used": false
+    },
+    {
+      "run_id": "RUN_05",
+      "status": "PASS",
+      "terminal": "EXPECTED_HARD_STOP",
+      "archive": "RUN_05_PRE_RELEASE_EVIDENCE.zip",
+      "archive_sha256": "40ffbb5b6c808918e14321c17098bc073a9fa8d2813d6aec4e98e74bc6d804de",
+      "correction_loop_used": false
+    }
+  ],
+  "release_allowed": true,
+  "limitations": [
+    "No external LLM endpoint is invoked; this campaign validates the packaged deterministic execution, Driver, correction, evidence, and release contracts."
+  ]
+}

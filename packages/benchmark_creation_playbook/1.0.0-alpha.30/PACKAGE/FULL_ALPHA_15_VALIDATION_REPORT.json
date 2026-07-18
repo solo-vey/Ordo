@@ -1,0 +1,13 @@
+{
+  "schema_version": "ordo.alpha15.validation.v1",
+  "status": "PASS",
+  "checks": {
+    "internal_evaluation_runs": 5,
+    "threshold_result": "PASS",
+    "promotion_status": "BLOCKED_AWAITING_USER_ACCEPTANCE",
+    "acceptance_tests": "5/5 PASS",
+    "user_acceptance_receipt_present": false,
+    "external_bundle_generated": false
+  },
+  "note": "Implementation is complete; promotion is intentionally fail-closed until explicit user acceptance."
+}

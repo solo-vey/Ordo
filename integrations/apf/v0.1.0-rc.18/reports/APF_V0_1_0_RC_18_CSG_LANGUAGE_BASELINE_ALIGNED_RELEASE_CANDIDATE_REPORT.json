@@ -1,0 +1,39 @@
+{
+  "report_id": "APF-RC18-CSG-LANGUAGE-ALIGNMENT-RC",
+  "version": "v0.1.0-rc.18-csg-language-baseline-aligned-release-candidate",
+  "source_confirmed_baseline": "v0.1.0-rc.17-conversation-scope-guard-support-confirmed-closure",
+  "language_baseline": "ORDO_LANGUAGE_BASELINE_WITH_CSG_v0_1",
+  "milestones": [
+    "CSG-A1",
+    "CSG-A2"
+  ],
+  "status": "release-candidate-ready-for-human-confirmation",
+  "regression": {
+    "checks_total": 32,
+    "passed": 32,
+    "failed": 0,
+    "blockers": 0
+  },
+  "compatibility": {
+    "classification_schema": "passed",
+    "confidence_enum": "passed",
+    "counter_scope": "passed",
+    "package_binding": "passed",
+    "canonical_artifacts": "passed",
+    "trace_events_artifact": "passed",
+    "behavioral_compatibility": "passed"
+  },
+  "preserved": {
+    "apf_internal_csg_enabled": false,
+    "mini_prompt_support": true,
+    "execution_trace_support": true,
+    "atomic_step_review_support": true,
+    "ordo_core_changed": false
+  },
+  "human_confirmation_required": true,
+  "validation": {
+    "json_valid": 53,
+    "yaml_valid": 101,
+    "errors": 0
+  }
+}

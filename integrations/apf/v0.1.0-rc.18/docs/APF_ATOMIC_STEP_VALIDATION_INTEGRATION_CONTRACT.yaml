@@ -1,0 +1,84 @@
+contract_id: apf.atomic_step_review.validation_integration
+version: '0.1'
+status: active
+purpose: Define blocking and advisory package validation for Atomic Step Review evidence.
+validation_scope:
+  - process_steps
+  - decision_and_gate_steps
+  - reconstruction_branches
+  - artifact_generation_steps
+  - validation_and_approval_steps
+  - state_transition_steps
+validation_gates:
+  ASR_RECORD_COVERAGE_GATE:
+    severity: blocking
+    passes_when:
+      - every_active_step_has_current_review_record
+      - review_record_step_ref_resolves
+    diagnostic_code: ASR_RECORD_COVERAGE_MISSING
+  ASR_GATE_EVIDENCE_GATE:
+    severity: blocking
+    passes_when:
+      - required_atomicity_gates_have_evaluations
+      - each_evaluation_has_evidence_refs
+    diagnostic_code: ASR_GATE_EVIDENCE_MISSING
+  ASR_BLOCKING_FINDINGS_GATE:
+    severity: blocking
+    passes_when:
+      - no_unresolved_blocking_findings
+    diagnostic_code: ASR_UNRESOLVED_BLOCKING_FINDING
+  ASR_HUMAN_DECISION_GATE:
+    severity: blocking
+    passes_when:
+      - no_pending_required_human_decisions
+      - applied_semantic_changes_have_approved_decision_refs
+    diagnostic_code: ASR_HUMAN_DECISION_MISSING
+  ASR_REVIEW_AFTER_DECOMPOSITION_GATE:
+    severity: blocking
+    passes_when:
+      - every_applied_decomposition_has_post_split_review_records
+      - superseded_step_is_not_active
+    diagnostic_code: ASR_POST_SPLIT_REVIEW_MISSING
+  ASR_ARTIFACT_LEVEL_STATUS_GATE:
+    severity: blocking
+    passes_when:
+      - each_independent_artifact_has_own_generation_validation_and_approval_status
+      - package_status_does_not_mask_failed_artifact
+    diagnostic_code: ASR_ARTIFACT_STATUS_COLLAPSED
+  ASR_POST_RENDER_REVIEW_GATE:
+    severity: blocking
+    passes_when:
+      - materialized_artifacts_are_reviewed_as_rendered_outputs
+      - plan_or_intent_is_not_used_as_validation_evidence
+    diagnostic_code: ASR_POST_RENDER_EVIDENCE_MISSING
+  ASR_LOCAL_FAILURE_ROUTE_GATE:
+    severity: advisory
+    escalates_to_blocking_when:
+      - failure_requires_repeating_confirmed_inputs
+      - failure_route_can_change_unrelated_approved_results
+    diagnostic_code: ASR_FAILURE_ROUTE_TOO_BROAD
+  ASR_MANIFEST_INTEGRITY_GATE:
+    severity: blocking
+    passes_when:
+      - manifest_counts_match_actual_records
+      - all_manifest_refs_resolve
+      - integrity_checksum_is_present_when_release_checksums_are_enabled
+    diagnostic_code: ASR_MANIFEST_INTEGRITY_FAILED
+aggregation:
+  passed: all_blocking_gates_passed_and_no_advisories
+  passed_with_advisories: all_blocking_gates_passed_and_one_or_more_advisories
+  blocked: one_or_more_blocking_gates_failed
+release_policy:
+  passed: allow
+  passed_with_advisories: allow_with_recorded_recommendations
+  blocked: prohibit
+integration_points:
+  authoring_readiness: run_before_step_confirmation
+  prompt_sufficiency: run_after_post_asr_structure_is_confirmed
+  execution_trace_mapping: use_post_asr_step_ids
+  artifact_validation: require_artifact_level_status
+  package_assembly: require_package_level_asr_validation_report
+non_goals:
+  - replacing_business_validation
+  - replacing_runtime_execution_tests
+  - hidden_reasoning_capture

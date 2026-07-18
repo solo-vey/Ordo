@@ -1,0 +1,22 @@
+{
+  "schema_version": "ordo.validation_report.v1",
+  "milestone": "M82.3",
+  "status": "passed",
+  "checks": [
+    {"check": "generate_only_no_execution", "status": "passed"},
+    {"check": "generate_and_run_worker_boundary", "status": "passed"},
+    {"check": "execution_evidence_v1_collected", "status": "passed"},
+    {"check": "clean_and_noise_case_sets_supported", "status": "passed"},
+    {"check": "output_overwrite_guard", "status": "passed"},
+    {"check": "cli_smoke", "status": "passed"},
+    {"check": "m82_1_m82_2_m76_2_regression", "status": "passed", "evidence": "23 tests passed"}
+  ],
+  "blockers": [],
+  "claims": {
+    "generation_integration_ready": true,
+    "hardened_execution_integration_ready": true,
+    "raw_execution_evidence_ready": true,
+    "scoring_ready": false,
+    "calibration_ready": false
+  }
+}

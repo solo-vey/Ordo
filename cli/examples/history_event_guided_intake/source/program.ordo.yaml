@@ -1,0 +1,278 @@
+ordo:
+  version: '0.12'
+  package: history_event.guided_intake
+  control_level: standard
+  execution_mode: chat_internal
+includes:
+- library: ordo.validation.contract_first
+  version: ^0.2.0
+  as: contract_first
+- library: ordo.qa.release_validation
+  version: ^0.1.0
+  as: qa_release
+intent:
+  id: INTENT_HISTORY_EVENT_GUIDED_INTAKE
+  description: Керовано зібрати мінімальний контракт для створення нового History Event package без передчасної генерації фінального архіву.
+contract:
+  id: CONTRACT_HISTORY_EVENT_GUIDED_INTAKE
+  required:
+  - event_goal
+  - selected_path
+  - event_alias
+  - display_name_uk
+  - display_name_en
+  - source_field
+  - value_semantics
+  - qa_scope
+  - approval_before_package
+state:
+  id: STATE_HISTORY_EVENT_GUIDED_INTAKE
+  schema:
+    event_goal: null
+    selected_path: null
+    event_alias: null
+    display_name_uk: null
+    display_name_en: null
+    source_field: null
+    value_semantics: []
+    qa_scope: []
+    approval_received: false
+    output_allowed: false
+    final_package_created: false
+nodes:
+- id: N_EVENT_GOAL
+  question: Яку бізнесову зміну має відображати нова історична подія?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      event_goal: $answer
+    next: N_PATH_SELECT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: event goal remains unclear
+- id: N_PATH_SELECT
+  question: Який Ordo path підходить для цієї події?
+  answer_type: enum
+  allowed_answers:
+  - A1
+  - A2
+  - A3
+  - A4
+  - A5
+  on_answer:
+    A1:
+      update_state:
+        selected_path: A1
+      next: N_EVENT_ALIAS
+    A2:
+      update_state:
+        selected_path: A2
+      next: N_EVENT_ALIAS
+    A3:
+      update_state:
+        selected_path: A3
+      next: N_EVENT_ALIAS
+    A4:
+      update_state:
+        selected_path: A4
+      next: N_EVENT_ALIAS
+    A5:
+      update_state:
+        selected_path: A5
+      next: N_EVENT_ALIAS
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_allowed_answers
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: path selection did not match allowed paths
+- id: N_EVENT_ALIAS
+  question: Який технічний alias події?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      event_alias: $answer
+    next: N_DISPLAY_NAME_UK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: event alias remains unclear
+- id: N_DISPLAY_NAME_UK
+  question: Яка українська назва події для користувача?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      display_name_uk: $answer
+    next: N_DISPLAY_NAME_EN
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: Ukrainian display name remains unclear
+- id: N_DISPLAY_NAME_EN
+  question: Яка англійська назва події для технічної документації?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      display_name_en: $answer
+    next: N_SOURCE_FIELD
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: English display name remains unclear
+- id: N_SOURCE_FIELD
+  question: Яке source field або набір полів є джерелом зміни?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      source_field: $answer
+    next: N_VALUE_SEMANTICS
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_concrete_field_path
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: source field remains unclear
+- id: N_VALUE_SEMANTICS
+  question: Які old/new value semantics потрібно зафіксувати?
+  answer_type: list
+  on_answer:
+    update_state:
+      value_semantics: $answer
+    next: N_QA_SCOPE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: value semantics remain unclear
+- id: N_QA_SCOPE
+  question: Які QA перевірки обовʼязкові для цього History Event?
+  answer_type: list
+  on_answer:
+    update_state:
+      qa_scope: $answer
+    next: N_APPROVAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: QA scope remains unclear
+- id: N_APPROVAL
+  question: Підтверджуєте, що можна переходити до створення фінального History Event package тільки після цього approval?
+  answer_type: enum
+  allowed_answers:
+  - 'yes'
+  - 'no'
+  on_answer:
+    'yes':
+      update_state:
+        approval_received: true
+      next: G_APPROVAL_CONFIRMED
+    'no':
+      next: STOP_NEEDS_APPROVAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_and_narrow
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: approval answer not matched
+gates:
+- id: G_EVENT_GOAL_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.event_goal is not null
+  on_fail: block
+- id: G_PATH_SELECTED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.selected_path is not null
+  on_fail: block
+- id: G_ALIAS_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.event_alias is not null
+  on_fail: block
+- id: G_DISPLAY_NAME_UK_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.display_name_uk is not null
+  on_fail: block
+- id: G_DISPLAY_NAME_EN_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.display_name_en is not null
+  on_fail: block
+- id: G_SOURCE_FIELD_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.source_field is not null
+  on_fail: block
+- id: G_VALUE_SEMANTICS_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.value_semantics is not empty
+  on_fail: block
+- id: G_QA_SCOPE_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.qa_scope is not empty
+  on_fail: block
+- id: G_APPROVAL_CONFIRMED
+  method: human
+  trust_class: human_decision
+  condition: approval_received is confirmed by user
+  on_fail: block
+assertions:
+- id: A_NO_FINAL_HISTORY_EVENT_PACKAGE_WITHOUT_APPROVAL
+  polarity: not
+  condition: final_package_created_without_approval
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+outputs:
+- id: OUT_HISTORY_EVENT_PACKAGE
+  type: archive
+  allowed_after:
+  - G_EVENT_GOAL_PRESENT
+  - G_PATH_SELECTED
+  - G_ALIAS_PRESENT
+  - G_DISPLAY_NAME_UK_PRESENT
+  - G_DISPLAY_NAME_EN_PRESENT
+  - G_SOURCE_FIELD_PRESENT
+  - G_VALUE_SEMANTICS_PRESENT
+  - G_QA_SCOPE_PRESENT
+  - G_APPROVAL_CONFIRMED
+freeform:
+- id: FF_HISTORY_EVENT_DOMAIN_NOTES
+  role: domain_explanation
+  maturity: stable
+  incident_count: 0
+  incident_threshold: 3
+  content: Доменні пояснення History Event дозволені, але правила створення package мають бути формалізовані як gates, assertions або tests.
+- id: FF_PATH_EDGE_CASES
+  role: edge_case_notes
+  maturity: volatile
+  incident_count: 1
+  incident_threshold: 3
+  content: Path-specific edge cases допускаються як controlled FREEFORM до моменту формалізації в Domain Pack.

@@ -1,0 +1,7 @@
+name: history_event.guided_intake
+version: 0.1.0
+ordo_version: '0.12'
+source: source/program.ordo.yaml
+tests: tests/test_cases.yaml
+compiled: compiled/program.ir.json
+reports: reports

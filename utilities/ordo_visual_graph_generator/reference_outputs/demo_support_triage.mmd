@@ -1,0 +1,10 @@
+graph TD
+  ENTRY[ENTRY / Demo Support Triage] --> N1[N1_ISSUE_TYPE]
+  N1 -- "A — login problem" --> N2[N2_SEVERITY]
+  N1 -- "B — billing question" --> N2
+  N1 -- "C — product bug" --> N2
+  N2 -- "2 — medium" --> N3[N3_USER_CONTEXT]
+  N3 --> N4[N4_RESOLUTION_PLAN]
+  N4 --> N5[N5_APPROVAL]
+  N5 -- "yes" --> G1[G_FINAL_APPROVED]
+  G1 --> OUT[OUT_SUPPORT_TRIAGE_PACKAGE]

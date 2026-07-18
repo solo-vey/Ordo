@@ -1,0 +1,68 @@
+{
+  "manifest_id": "apf_prompt_manifest_v1",
+  "registry_id": "apf_prompt_registry",
+  "registry_version": "1.0",
+  "status": "package-local-manifest",
+  "prompts": [
+    {
+      "prompt_id": "apf.package.quick_start.v1",
+      "prompt_family": "apf.package.quick_start",
+      "version": 1,
+      "path": "prompts/QUICK_START_PROMPT.md",
+      "type": "package_bootstrap",
+      "required": true,
+      "sha256": "390682537633f39592d4659eb36a29f5a1110f74204a1a3bb05e1b4bc6233f3e",
+      "size_bytes": 573
+    },
+    {
+      "prompt_id": "apf.runtime.start.v1",
+      "prompt_family": "apf.runtime.start",
+      "version": 1,
+      "path": "prompts/runtime/apf.runtime_start.v1.md",
+      "type": "runtime_start",
+      "required": true,
+      "sha256": "31a6b8a402f743ea3bd95ffa9a4809875de2ccf37945671b486475be81aade1b",
+      "size_bytes": 577
+    },
+    {
+      "prompt_id": "apf.process.resume_after_deviation.v1",
+      "prompt_family": "apf.process.resume_after_deviation",
+      "version": 1,
+      "path": "prompts/repair/apf.process.resume_after_deviation.v1.md",
+      "type": "repair_helper",
+      "required": "conditional",
+      "sha256": "82bfc4368ab749c9ced285748f3bfbc550f107b7956097b2f5e9e0529e67019b",
+      "size_bytes": 348
+    },
+    {
+      "prompt_id": "apf.state.backtrack_invalidation.v1",
+      "prompt_family": "apf.state.backtrack_invalidation",
+      "version": 1,
+      "path": "prompts/repair/apf.state.backtrack_invalidation.v1.md",
+      "type": "repair_helper",
+      "required": "conditional",
+      "sha256": "d221d83a91cf956d4c1f6cb44589c360f10ada13546cdc4d68542db00adf0428",
+      "size_bytes": 320
+    },
+    {
+      "prompt_id": "apf.validation.gate_failure.v1",
+      "prompt_family": "apf.validation.gate_failure",
+      "version": 1,
+      "path": "prompts/repair/apf.validation.gate_failure.v1.md",
+      "type": "repair_helper",
+      "required": "conditional",
+      "sha256": "37b77a13710256957f1cae25786c9cbf1c258ab2c839c66e70f27bb70a689073",
+      "size_bytes": 322
+    },
+    {
+      "prompt_id": "apf.validation.report_interpretation.v1",
+      "prompt_family": "apf.validation.report_interpretation",
+      "version": 1,
+      "path": "prompts/validation/apf.validation.report_interpretation.v1.md",
+      "type": "validation_helper",
+      "required": "recommended",
+      "sha256": "356aa3c27ac8d209111698ce67b49ed758f35010ca9554d7f3de245625775112",
+      "size_bytes": 358
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "module_id": "ordo.applied_project_factory",
+  "candidate_version": "v0.1.0-rc.14-playbook-authored-mini-prompt-support-release-candidate",
+  "previous_confirmed_baseline": "v0.1.0-rc.13-ordo-v0.12-adaptation-confirmed-closure",
+  "status": "release-candidate-ready-for-human-confirmation",
+  "enhancement": "BL-APF-002A — Playbook-authored mini-prompt support",
+  "completed_milestones": [
+    "PMP-0",
+    "PMP-1",
+    "PMP-2",
+    "PMP-3",
+    "PMP-4",
+    "PMP-5",
+    "PMP-6",
+    "PMP-7",
+    "PMP-8"
+  ],
+  "regression": {
+    "checks_passed": 33,
+    "blockers": 0
+  },
+  "pilot": {
+    "target": "History Event Playbook v1.42",
+    "purpose": "mechanism evidence only",
+    "candidate_proposals_created": 2,
+    "prompts_activated": 0,
+    "downstream_approval_required_for_apf_release": false,
+    "target_playbook_mutated": false
+  },
+  "boundaries": {
+    "internal_apf_mini_prompts_started": false,
+    "bl_apf_002b_status": "deferred",
+    "bl_apf_001_status": "deferred",
+    "ordo_core_changed": false
+  },
+  "blocking_issues": []
+}

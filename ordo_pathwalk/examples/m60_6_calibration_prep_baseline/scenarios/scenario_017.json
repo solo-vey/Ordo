@@ -1,0 +1,56 @@
+{
+  "tree_seed": 606,
+  "script_seed": 1623,
+  "turns": [
+    {
+      "index": 0,
+      "type": "clarifying_question",
+      "text": "а що було на попередньому кроці?",
+      "state_changing": false,
+      "expected_node_after": "STEP_0_1bdb4e",
+      "meta": {}
+    },
+    {
+      "index": 1,
+      "type": "forward_natural_language",
+      "text": "наверх",
+      "state_changing": true,
+      "expected_node_after": "STEP_1_d025d3",
+      "meta": {
+        "maps_to": "up"
+      }
+    },
+    {
+      "index": 2,
+      "type": "correction_implicit",
+      "text": "ой, я помилився, там мало бути back, не up",
+      "state_changing": true,
+      "expected_node_after": "STEP_0_1bdb4e",
+      "meta": {
+        "node_id": "STEP_0_1bdb4e",
+        "old": "up",
+        "new": "back"
+      }
+    },
+    {
+      "index": 3,
+      "type": "forward_natural_language",
+      "text": "праворуч",
+      "state_changing": true,
+      "expected_node_after": "END",
+      "meta": {
+        "maps_to": "right"
+      }
+    }
+  ],
+  "ground_truth": [
+    {
+      "node_id": "STEP_0_1bdb4e",
+      "value": "back"
+    },
+    {
+      "node_id": "STEP_1_90ada3",
+      "value": "right"
+    }
+  ]
+}

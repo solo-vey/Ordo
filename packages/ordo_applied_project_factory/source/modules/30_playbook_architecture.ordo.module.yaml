@@ -1,0 +1,3502 @@
+nodes:
+- id: N_FACTORY_MODE_SELECTION
+  question: 'Оберіть режим роботи Project Factory: 1 — Доменна модель + дерево рішень; 2 — Ручне дерево рішень; 3 — Вільний
+    діалог; 4 — Коригування існуючого процесу; 5 — Міграція старої монолітної інструкції.'
+  answer_type: enum
+  allowed_answers:
+  - domain_model_plus_tree
+  - manual_tree_authoring
+  - free_dialogue
+  - existing_process_improvement
+  - legacy_instruction_migration
+  answer_options:
+    domain_model_plus_tree: Доменна модель + дерево рішень
+    manual_tree_authoring: Ручне дерево рішень
+    free_dialogue: Вільний діалог
+    existing_process_improvement: Коригування існуючого процесу
+    legacy_instruction_migration: Міграція старої монолітної інструкції
+  on_answer:
+    domain_model_plus_tree:
+      label: 1. Доменна модель + дерево рішень
+      update_state:
+        factory_authoring_mode: domain_model_plus_tree
+      next: N_APPLIED_PROJECT_GOAL
+    manual_tree_authoring:
+      label: 2. Ручне дерево рішень
+      update_state:
+        factory_authoring_mode: manual_tree_authoring
+      next: N_MANUAL_TREE_PROJECT_GOAL
+    free_dialogue:
+      label: 3. Вільний діалог
+      update_state:
+        factory_authoring_mode: free_dialogue
+      next: N_FREE_DIALOGUE_INTAKE
+    existing_process_improvement:
+      label: 4. Коригування існуючого процесу
+      update_state:
+        factory_authoring_mode: existing_process_improvement
+        existing_process_improvement_status: started
+        current_process_layer_label: tree_traversal
+      next: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
+    legacy_instruction_migration:
+      label: 5. Міграція старої монолітної інструкції
+      update_state:
+        factory_authoring_mode: legacy_instruction_migration
+        legacy_migration_status: started
+        current_process_layer_label: migration_intake
+      next: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_five_authoring_modes_in_plain_language
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: factory authoring mode remains unclear
+  description: 'Цей вузол обирає спосіб роботи Project Factory: створення з доменної моделі, ручне дерево, вільний діалог,
+    коригування вже існуючого Ordo-процесу або міграція старої монолітної інструкції у структурований Ordo-playbook.'
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-FACTORY-MODE-SELECTION
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: conversation
+    source_id: N_FACTORY_MODE_SELECTION
+    input:
+      state_projection:
+      - factory_authoring_mode
+      - runtime_context_shift_notice
+      - selected_control_action
+      - scope_confirmation_status
+      - implementation_authorization_status
+      - conversation.scope_confirmed
+      - repository.mutation_started
+      - authorization.repository_mutation
+      - node.decisions
+      - node.responsibilities
+      - node.execution_started
+      - node.route_explicit
+      - node.authorization_explicit
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_FACTORY_MODE_SELECTION
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION
+    - COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE
+- id: N_APPLIED_PROJECT_GOAL
+  question: Який прикладний Ordo-проєкт треба створити і яку проблему він має вирішувати?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      applied_project_goal: $answer
+    next: N_APPLIED_PROCESS_TYPE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_project_goal_in_plain_language
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: applied project goal remains unclear
+- id: N_APPLIED_PROCESS_TYPE
+  question: 'Який тип процесу має підтримувати проєкт? Обмежень немає: document-generating, QA, delivery, configuration, learning,
+    hybrid або інший.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      applied_process_type: $answer
+    next: N_RUNTIME_ROLES
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_process_type_examples
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: process type remains unclear
+- id: N_RUNTIME_ROLES
+  question: Хто буде користувачем runtime-процесу і яку роль має виконувати AI у цьому прикладному проєкті?
+  answer_type: free_text
+  on_answer:
+    update_state:
+      runtime_human_role: $answer.human_role
+      runtime_ai_role: $answer.ai_role
+    next: N_DOMAIN_MODEL_OVERVIEW
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_human_and_ai_roles_separately
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: runtime roles remain unclear
+  description: Після мети і типу процесу AI зʼясовує runtime-користувача та роль AI; runtime entry point визначається пізніше,
+    після доменної моделі, input/output policy та open questions.
+- id: N_RUNTIME_ENTRY_POINT
+  question: Після доменної моделі, input/output policy і open questions визначте, з чого має починатися runtime-сесія користувача.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      runtime_entry_point: $answer
+    next: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_first_user_message_or_first_input
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: entry point remains unclear
+  description: Runtime entry point визначається після доменного контексту, input policy, candidate outputs і open questions,
+    а не одразу після ролей.
+- id: N_MODULE_VERSIONING_POLICY
+  question: 'Підтвердьте versioning policy: Project Factory має власну версійність модуля, а мовний пакет лише включає конкретну
+    версію цього модуля.'
+  answer_type: enum
+  allowed_answers:
+  - module_local_versioning
+  - adjust_policy
+  on_answer:
+    module_local_versioning:
+      label: власна версійність модуля
+      update_state:
+        module_versioning_policy:
+          module_id: ordo.applied_project_factory
+          module_version: 0.1.0-alpha.17
+          language_package_version: 0.12.0-preview-rc1
+          numbering_rule: module_version_is_independent_from_language_package_milestones
+          inclusion_rule: language_package_includes_explicit_module_version
+          historical_mapping:
+            M61.1: 0.1.0-alpha.1
+            M61.2: 0.1.0-alpha.2
+            M61.3: 0.1.0-alpha.3
+            M61.4: 0.1.0-alpha.4
+            M61.5: 0.1.0-alpha.5
+            M61.6: 0.1.0-alpha.6
+            current: 0.1.0-alpha.17
+            0.1.0-alpha.8: user_facing_runtime_review
+            0.1.0-alpha.10: incremental_validation_gate
+            0.1.0-alpha.12: control_action_bookkeeping
+            0.1.0-alpha.15: branch_1_progressive_authoring
+            0.1.0-alpha.16: branch_3_free_dialogue_consistency_delta
+            0.1.0-alpha.17: branch_2_manual_tree_entry_adapter
+        module_versioning_policy_status: confirmed
+        language_package_inclusion_model: language_package_includes_module_at_explicit_module_version
+        parent_language_package_version: 0.12.0-preview-rc1
+      next: N_GRAPH_ANNOTATION_OVERLAY_POLICY
+    adjust_policy:
+      label: уточнити versioning policy
+      update_state:
+        module_versioning_policy: $answer
+        module_versioning_policy_status: custom_confirmed
+      next: N_GRAPH_ANNOTATION_OVERLAY_POLICY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_module_version_vs_language_package_version
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: module versioning policy remains unclear
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Retained as historical design note; module version is represented in module.version and package metadata.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
+- id: N_GRAPH_ANNOTATION_OVERLAY_POLICY
+  question: Коли потрібно, використовуємо graph generator v1.1 annotation overlay для підсвічування вузлів/гейтів і коротких
+    коментарів у SVG. Підтвердити?
+  answer_type: enum
+  allowed_answers:
+  - use_v1_1_preview_when_helpful
+  - context_only_without_annotations
+  on_answer:
+    use_v1_1_preview_when_helpful:
+      label: використовувати annotations за потреби
+      update_state:
+        graph_annotation_overlay_policy:
+          tool: ordo_visual_graph_generator
+          version: 1.1.0-preview
+          schema: ordo.graph.annotations.v1
+          use_for:
+          - highlight_current_node
+          - mark_changed_nodes
+          - comment_gate_or_state_review_points
+          default_rendering_remains: focused_context_svg
+          preview_limit: annotation demo renderer is optional review aid, not validation source of truth
+        graph_annotation_overlay_status: confirmed
+        graph_annotation_overlay_tool_version: ordo_visual_graph_generator 1.1.0-preview
+      next: N_DECISION_TREE_BLUEPRINT
+    context_only_without_annotations:
+      label: поки тільки context SVG
+      update_state:
+        graph_annotation_overlay_policy:
+          enabled: false
+          reason: $answer
+        graph_annotation_overlay_status: deferred
+      next: N_DECISION_TREE_BLUEPRINT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_annotations_as_optional_svg_review_layer
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_context_svg_only
+      reason: annotation overlay policy remains unclear
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Retained as historical graph policy note; graph generation is requested explicitly outside runtime path.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
+- id: N_DECISION_TREE_BLUEPRINT
+  question: Які головні питання, варіанти відповідей і terminal paths має мати дерево прийняття рішень цього проєкту?
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      decision_tree_blueprint: $answer
+    next: N_STATE_SCHEMA_BLUEPRINT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_questions_branches_and_terminal_paths
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: decision tree blueprint remains incomplete
+  description: 'Legacy static blueprint node kept for compatibility. Branch 1 uses progressive authoring: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
+    → N_USER_TREE_VISION_CAPTURE → N_DRAFT_SUBTREE_GENERATION. Alpha.20 integration note: deprecated legacy compatibility
+    node; not counted as unresolved orphan in active whole-tree runtime path.'
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by progressive tree authoring flow.
+- id: N_STATE_SCHEMA_BLUEPRINT
+  question: Перевірте state contract, виведений з approved decision tree, terminal output bindings, templates, gates, deferred
+    items і handoff mechanics.
+  answer_type: list
+  on_answer:
+    update_state:
+      state_schema_blueprint: $answer
+    next: N_VALIDATION_GATE_CATALOG
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_state_fields_decisions_and_flags
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: state schema blueprint remains incomplete
+  description: State schema має бути похідною від затвердженого дерева, output bindings/templates, gates, deferred/backtracking
+    mechanics і final handoff.
+- id: N_OUTPUT_ARTIFACT_CATALOG
+  question: Які результати може створювати процес? Зафіксуйте known, candidate, optional, deferred або no-document outputs;
+    AI може запропонувати перелік, якщо користувач не знає його наперед.
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      output_artifact_catalog_status: $answer.status
+      output_artifact_catalog: $answer.known_outputs
+      candidate_output_artifact_catalog: $answer.candidate_outputs
+      optional_output_artifacts: $answer.optional_outputs
+      deferred_output_artifacts: $answer.deferred_outputs
+      no_document_outputs_flag: $answer.no_document_outputs
+      ai_should_propose_outputs: $answer.ai_should_propose_outputs
+    next: N_TERMINAL_OUTPUT_BINDING_POLICY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_output_policy_known_partial_ai_proposed_deferred_or_none
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_candidate_outputs_to_be_proposed
+      reason: output catalog can start as candidate/deferred
+  description: Output artifact catalog is separate from input sources and separate from templates. It records possible results
+    before terminal paths decide which outputs are bound where.
+- id: N_OUTPUT_TEMPLATE_CATALOG
+  question: 'Для кожного output artifact одразу опишіть template contract: required sections, data source, validation checks
+    і owner review status.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      output_template_catalog: $answer
+    next: N_VALIDATION_GATE_CATALOG
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_template_contract_per_artifact
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: output template catalog remains incomplete
+  description: 'Legacy early template catalog node kept for compatibility. Alpha.15 uses terminal output binding and per-terminal
+    template/mock review. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan
+    in active whole-tree runtime path.'
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by terminal output binding and shared output/template subflow.
+- id: N_VALIDATION_GATE_CATALOG
+  question: 'Перевірте gate catalog, привʼязаний до конкретних моментів дерева: node review, branch review, terminal/continue,
+    output binding, template verification, source YAML approval і handoff.'
+  answer_type: list
+  on_answer:
+    update_state:
+      validation_gate_catalog: $answer
+    next: N_APPROVAL_TO_GENERATE_SOURCE_YAML
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_blocking_gates_and_validation_rules
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: validation gate catalog remains incomplete
+  description: Gate catalog має гарантувати, що процес не проходить далі без потрібних рішень, templates, state completeness
+    або validation.
+- id: N_BASIC_TEST_CASE_CATALOG
+  question: Після затвердження дерева рішень сформуйте 2–3 базові тест-кейси для стабільності дерева. Confusion/self-test
+    cases лишаються відкладеними.
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      basic_test_case_catalog: $answer
+    next: N_FIRST_RELEASE_SCOPE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_basic_happy_path_and_branch_test_cases
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_explicit_follow_up
+      reason: basic test case catalog not ready
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by downstream validation/test planning and full validation tail; not active in APF startup
+    flow.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
+- id: N_FIRST_RELEASE_SCOPE
+  question: 'Підтвердіть scope першої версії: AI створює тільки source/program.ordo.yaml, а інші packages/runtime/evidence
+    artifacts додаються пізніше після YAML validation.'
+  answer_type: enum
+  allowed_answers:
+  - source_yaml_only
+  - expand_now
+  on_answer:
+    source_yaml_only:
+      update_state:
+        first_release_output_scope: source/program.ordo.yaml only
+      next: N_APPROVAL_TO_GENERATE_SOURCE_YAML
+    expand_now:
+      next: STOP_SCOPE_EXPANSION_NOT_IN_M61_1
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_allowed_scope_answers
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: first release scope is not confirmed
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by source YAML approval plus shared validation/handoff tail.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
+- id: N_APPROVAL_TO_GENERATE_SOURCE_YAML
+  question: 'Перед генерацією source/program.ordo.yaml підтвердіть pre-generation summary: goal, process type, roles, entry
+    point, approved tree, state, gates, terminal outputs, template/mock status і deferred items.'
+  answer_type: enum
+  allowed_answers:
+  - 'yes'
+  - 'no'
+  on_answer:
+    'yes':
+      update_state:
+        approval_to_generate_source_yaml: true
+        source_yaml_generation_approval: approved
+        source_yaml_generation_scope:
+        - approved_decision_tree
+        - state_schema
+        - gates
+        - shared_output_template_subflow
+        - terminal_output_bindings
+        - unfinished_items_policy
+      next: N_SHARED_TAIL_SOURCE_YAML_GENERATION
+    'no':
+      next: STOP_NEEDS_APPROVAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: rephrase_source_yaml_generation_approval
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: source yaml approval remains unclear
+  description: Окремий approval gate перед генерацією source/program.ordo.yaml; PM не пише YAML сам, але підтверджує, що структура
+    достатньо зрозуміла.
+- id: N_DOMAIN_MODEL_OVERVIEW
+  question: 'Опишіть предметну область процесу: основні сутності, ролі, ключові рішення, типові сценарії, винятки, обмеження
+    та знання, які AI має враховувати.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      domain_model_notes: $answer
+    next: N_INPUT_ARTIFACTS_POLICY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_domain_who_what_why_entities_constraints
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: domain model remains unclear
+  description: Domain model overview збирає предметну область людською мовою після мети, типу процесу та runtime roles.
+- id: N_DOMAIN_INPUT_OUTPUT_SOURCES
+  question: 'Надайте або опишіть наявні input sources і бажані output documents/templates: файли, обʼєкти, записи БД, приклади
+    документів або усні шаблони.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      domain_input_sources: $answer.inputs
+      domain_output_template_sources: $answer.outputs
+    next: N_OPEN_QUESTIONS_REVIEW
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_separately_for_inputs_and_output_template_hints
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_explicit_open_questions
+      reason: input/output sources incomplete
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by split input policy and output artifact catalog nodes.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
+- id: N_OPEN_QUESTIONS_REVIEW
+  question: 'Зафіксуйте відкриті питання і класифікуйте їх: blocking, deferred, output-related, gate-related, terminal-path-related
+    або resolved.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      open_questions: $answer
+      open_question_gate_status: triaged
+    next: N_RUNTIME_ENTRY_POINT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_to_classify_open_questions_or_confirm_none
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: open question gate remains untriaged
+  description: Open questions не обовʼязково блокують рух далі; вони мають бути класифіковані й можуть бути привʼязані до
+    дерева, gates або terminal output/template review.
+- id: N_MANUAL_TREE_PROJECT_GOAL
+  question: 'Ручний режим: коротко назвіть мету проєкту й тип процесу, без доменного пояснення.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      applied_project_goal: $answer.goal
+      applied_process_type: $answer.process_type
+      manual_tree_authoring_notes: $answer
+    next: N_MANUAL_TREE_RUNTIME_CONTEXT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_goal_and_process_type_only
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: manual tree project goal remains unclear
+- id: N_MANUAL_TREE_RUNTIME_CONTEXT
+  question: 'Ручний режим: хто runtime-користувач, яка роль AI, і з якого input починається сесія?'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      runtime_human_role: $answer.human_role
+      runtime_ai_role: $answer.ai_role
+      runtime_entry_point: $answer.entry_point
+    next: N_MANUAL_TREE_ROOT_NODE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_human_ai_entry_point
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: manual tree runtime context remains unclear
+- id: N_MANUAL_TREE_ROOT_NODE
+  question: 'Ручний режим: надайте дерево рішень у будь-якому людському форматі — root node, список гілок, if/then логіку,
+    numbered outline, таблицю рішень, Mermaid-like sketch, псевдокод або фрагмент subtree. YAML не потрібен.'
+  answer_type: free_text_or_structured_list
+  on_answer:
+    update_state:
+      manual_tree_input: $answer
+      manual_tree_input_format: $answer.detected_format
+      manual_tree_authoring_notes: $answer
+      draft_tree_review_status: manual_tree_captured_not_approved
+      manual_tree_branch_2_adapter_status: captured
+    next: N_MANUAL_TREE_NORMALIZATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_any_manual_tree_shape_root_branches_if_then_table_mermaid_or_sketch
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_partial_manual_tree_input
+      reason: manual tree may be partial but can still be normalized into a draft
+  description: Branch 2 capture node. Manual input is not approved_decision_tree; it is only raw/manual_tree_input that must
+    be normalized and joined into the shared progressive review path.
+- id: N_MANUAL_TREE_NORMALIZATION
+  question: 'AI нормалізує manual_tree_input у normalized_tree_draft: node aliases, labels, branch labels, branch conditions,
+    terminal candidates, missing branches, ambiguous transitions, implied gates, possible outputs і open questions. Показати
+    normalized draft для review.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      normalized_tree_draft: $answer.normalized_tree_draft
+      decision_tree_blueprint: $answer.normalized_tree_draft
+      manual_tree_normalization_status: normalized_pending_completeness_check
+      manual_tree_input_completeness: $answer.completeness
+      manual_tree_missing_items: $answer.missing_items
+      manual_tree_implied_outputs: $answer.implied_outputs
+      manual_tree_ambiguous_transitions: $answer.ambiguous_transitions
+      candidate_output_artifact_catalog: $answer.implied_outputs
+      candidate_gates: $answer.implied_gates
+      candidate_open_questions: $answer.open_questions
+    next: N_MANUAL_TREE_COMPLETENESS_AND_JOIN
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_normalized_tree_draft_and_ask_for_confirm_or_correction
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_normalized_tree_draft_as_unapproved_draft
+      reason: manual tree normalization can proceed as draft but not as approved tree
+  description: Normalizes user-supplied manual tree into an internal draft. This node never approves the tree; it only prepares
+    the join into shared review.
+- id: N_MANUAL_TREE_COMPLETENESS_AND_JOIN
+  question: 'Перевірте повноту normalized_tree_draft: це повне дерево, часткове дерево, root+branches, subtree або sketch?
+    Оберіть join point: достатньо структуроване дерево → standard subtree review; часткове/sketch → draft subtree generation.'
+  answer_type: enum
+  allowed_answers:
+  - structured_enough_join_review
+  - partial_or_sketch_join_generation
+  - needs_manual_tree_correction
+  answer_options:
+    structured_enough_join_review: Дерево достатньо структуроване → перейти до draft_subtree_review_start
+    partial_or_sketch_join_generation: Дерево часткове/sketch → AI добудовує draft subtree
+    needs_manual_tree_correction: Повернутися до введення/корекції ручного дерева
+  on_answer:
+    structured_enough_join_review:
+      label: manual tree joins shared review path
+      update_state:
+        manual_tree_join_point: N_DRAFT_SUBTREE_REVIEW_START
+        manual_tree_branch_2_adapter_status: joined_shared_review_path
+        manual_tree_downstream_path_source: branch_1_confirmed_progressive_review_path
+        draft_subtree_status: generated_pending_review
+        draft_nodes: $answer.normalized_tree_draft.nodes
+        draft_branches: $answer.normalized_tree_draft.branches
+        terminal_candidates: $answer.normalized_tree_draft.terminal_candidates
+        terminal_output_binding_points: $answer.normalized_tree_draft.output_binding_candidates
+      next: N_DRAFT_SUBTREE_REVIEW_START
+    partial_or_sketch_join_generation:
+      label: manual tree joins shared draft generation path
+      update_state:
+        manual_tree_join_point: N_DRAFT_SUBTREE_GENERATION
+        manual_tree_branch_2_adapter_status: joined_shared_generation_path
+        manual_tree_downstream_path_source: branch_1_confirmed_progressive_review_path
+        user_tree_vision_depth: manual_partial_or_sketch
+        draft_subtree_candidate: $answer.normalized_tree_draft
+      next: N_DRAFT_SUBTREE_GENERATION
+    needs_manual_tree_correction:
+      label: correct manual tree input before join
+      update_state:
+        manual_tree_branch_2_adapter_status: needs_manual_input_correction
+        manual_tree_missing_items: $answer.missing_items
+        manual_tree_ambiguous_transitions: $answer.ambiguous_transitions
+      next: N_MANUAL_TREE_ROOT_NODE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_if_manual_tree_is_structured_enough_or_needs_ai_draft_completion
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_partial_or_sketch_join_generation
+      reason: when unsure, route manual tree sketches through draft subtree generation before review
+  description: Branch 2 join adapter. Complete/structured manual trees join N_DRAFT_SUBTREE_REVIEW_START; partial trees or
+    sketches join N_DRAFT_SUBTREE_GENERATION. All downstream mechanics are reused from branch 1.
+- id: N_FREE_DIALOGUE_INTAKE
+  question: 'Вільний діалог: розповідайте потреби, ідеї, приклади, бажані outputs або проблеми без структурування дерева.
+    AI накопичує raw notes і не вимагає YAML чи готової схеми.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      free_dialogue_notes: $answer
+      free_dialogue_raw_notes: $answer
+    next: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: encourage_plain_language_needs_examples_outputs
+    max_attempts: 2
+    on_exhausted:
+      action: continue_collecting_notes
+      reason: free dialogue remains broad but usable
+  description: Цей вузол дозволяє користувачу просто розповідати ідеї, потреби й приклади без вимоги знати YAML або будувати
+    дерево рішень.
+- id: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
+  question: 'AI показує людське резюме вільного діалогу: що ми почули, яке дерево починає вимальовуватись, які candidate nodes/gates/outputs/templates
+    зʼявились, які outputs неясні або deferred, і які питання лишаються відкритими.'
+  answer_type: plain_language_structured_review
+  on_answer:
+    update_state:
+      free_dialogue_structured_notes: $answer
+      extracted_domain_hints: $answer.domain_hints
+      candidate_decision_nodes: $answer.candidate_nodes
+      candidate_gates: $answer.candidate_gates
+      candidate_outputs: $answer.candidate_outputs
+      candidate_templates: $answer.candidate_templates
+      candidate_open_questions: $answer.open_questions
+      open_questions: $answer.open_questions
+      self_hosted_authoring_loop_status: free_dialogue_notes_structured
+      user_facing_extraction_policy:
+        format: plain_language_sections
+        confirmed_by_user: true
+        technical_projection_internal: true
+        avoid_yaml_style_alias_dump: true
+      candidate_output_artifact_catalog: $answer.candidate_outputs
+      candidate_template_hints: $answer.candidate_templates
+      output_related_open_questions: $answer.output_related_open_questions
+      free_dialogue_candidate_output_policy:
+        outputs_may_be_known: true
+        outputs_may_be_partial: true
+        outputs_may_be_ai_proposed: true
+        outputs_may_be_deferred: true
+        outputs_may_be_absent: true
+        extract_output_mentions_from_raw_notes: true
+      free_dialogue_branch_3_consistency_status: candidate_outputs_extracted
+    next: N_FREE_DIALOGUE_ACCUMULATION_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_plain_language_extraction_summary_and_ask_for_corrections_not_yaml_alias_dump
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_explicit_open_questions
+      reason: free dialogue notes extraction remains partial
+  description: Free-dialogue extraction must preserve not only candidate nodes and gates, but also candidate output artifacts,
+    candidate template hints, output-related open questions, and explicit known/partial/AI-proposed/deferred/no-output policy.
+    Technical aliases remain internal; the user sees a plain-language summary.
+- id: N_FREE_DIALOGUE_ACCUMULATION_CHECK
+  question: Чи достатньо вже накопиченого матеріалу, щоб чекати сигнал “що далі / сформулюй”, або треба ще продовжити вільний
+    діалог?
+  answer_type: enum
+  allowed_answers:
+  - continue_collecting
+  - ready_for_what_next_signal
+  answer_options:
+    continue_collecting: Ще збираємо raw notes
+    ready_for_what_next_signal: Матеріалу достатньо, чекаємо або приймаємо сигнал “що далі”
+  on_answer:
+    continue_collecting:
+      label: ще нотатки
+      update_state:
+        self_hosted_authoring_loop_status: collect_more_free_dialogue
+      next: N_FREE_DIALOGUE_INTAKE
+    ready_for_what_next_signal:
+      label: готово до “що далі”
+      update_state:
+        self_hosted_authoring_loop_status: ready_for_draft_trigger
+      next: N_FREE_DIALOGUE_NEXT_SIGNAL
+  on_unmatched_input:
+    action: CLASSIFY.INTENT
+    strategy: if_user_keeps_describing_route_to_intake_if_user_asks_next_route_to_signal
+    max_attempts: 2
+    on_exhausted:
+      action: continue_collecting_notes
+      reason: free dialogue accumulation readiness unclear
+  description: 'Цей вузол перевіряє, чи вже досить матеріалу для першого draft дерева. Достатність матеріалу не вимагає фінальних
+    outputs/templates: вони можуть бути candidate, AI-proposed або deferred, але output-related notes не мають губитися.'
+- id: N_FREE_DIALOGUE_NEXT_SIGNAL
+  question: Користувач питає “що далі / що у нас виходить / давай сформулюємо” або явно просить draft. AI має запропонувати
+    перший draft дерева, а не питати користувача з нуля.
+  answer_type: enum
+  allowed_answers:
+  - keep_talking
+  - formulate_draft_tree
+  answer_options:
+    keep_talking: Продовжити вільний діалог
+    formulate_draft_tree: Сформувати перший draft дерева
+  on_answer:
+    keep_talking:
+      label: продовжити діалог
+      update_state:
+        free_dialogue_readiness_signal: keep_talking
+      next: N_FREE_DIALOGUE_INTAKE
+    formulate_draft_tree:
+      label: а що далі / сформулюй
+      update_state:
+        free_dialogue_readiness_signal: formulate_draft_tree
+        self_hosted_authoring_loop_status: draft_requested_from_free_dialogue
+      next: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
+  on_unmatched_input:
+    action: CLASSIFY.INTENT
+    strategy: if_user_asks_what_next_then_route_to_formulate_draft_tree
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: free dialogue next signal unclear
+  description: Цей вузол ловить момент, коли користувач питає “що далі?” або “давай сформулюємо”, і переводить процес до першого
+    draft дерева.
+- id: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
+  question: 'AI показує перший draft дерева з structured notes: вузли, гілки, state, gates, terminal candidates, candidate
+    output artifacts, template hints, output-related open questions і місця майбутнього terminal output binding. Підтвердіть
+    старт standard node/branch review.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      draft_tree_prototype: $answer
+      draft_tree_review_status: draft_ready_for_review
+      free_dialogue_draft_tree_ready: true
+      self_hosted_authoring_loop_status: draft_tree_ready_for_node_review
+      terminal_output_binding_points: $answer.terminal_output_binding_points
+      terminal_output_bindings: $answer.terminal_output_bindings
+      free_dialogue_terminal_output_binding_policy:
+        terminal_points_use_shared_binding_loop: true
+        selected_outputs_require_template_or_creation_loop: true
+        mock_filled_examples_required: true
+        no_output_and_deferred_are_explicit_statuses: true
+      free_dialogue_branch_3_consistency_status: draft_tree_routes_to_shared_terminal_output_binding
+    next: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_start_draft_tree_review
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: draft tree review not confirmed
+  description: Free-dialogue draft tree is not final approval. After node/branch review, every terminal point uses the shared
+    Terminal output binding + template verification loop, including mock-filled examples, before tree consolidation and source
+    YAML approval.
+- id: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
+  description: Перед покроковим узгодженням дерева модель погоджує з користувачем, як саме буде виглядати показ кожного вузла.
+    Це захищає від технічного alias-first review і від прихованих state/gates/artifacts. For free-dialogue drafts, current-node
+    review must also preserve candidate outputs/templates and route terminal points to the shared output binding loop.
+  question: 'Підтвердіть формат review кожного вузла: показуємо людський опис, питання/дію, варіанти переходів, state, gates,
+    artifacts/outputs/templates, open questions і deferred sibling-гілки. Технічні alias лишаються вторинними.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_review_format
+  - adjust_review_format
+  on_answer:
+    confirm_review_format:
+      label: підтвердити формат показу вузла
+      update_state:
+        node_review_display_contract:
+          show_human_description: true
+          show_question_or_action: true
+          show_transition_options: true
+          show_state_updates: true
+          show_gates: true
+          show_artifacts_outputs_templates: true
+          show_open_questions_and_deferred_branches: true
+          hide_technical_aliases_by_default: true
+          details_expandable_on_request: true
+          show_control_action_bookkeeping: true
+          show_not_selected_control_actions: true
+          show_blocked_until_ready_actions: true
+        node_review_display_policy_status: confirmed
+        node_review_ordo_layer_visibility: short_always_detailed_on_request
+      next: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+    adjust_review_format:
+      label: уточнити формат показу вузла
+      update_state:
+        node_review_display_contract: $answer
+        node_review_display_policy_status: custom_confirmed
+      next: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_whether_state_gates_artifacts_should_be_short_or_detailed
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: node review display contract remains unclear
+- id: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+  description: 'Цей вузол фіксує економний режим зміни YAML під час обходу дерева: після підтвердженого кроку вносимо тільки
+    малий scoped patch, якщо він потрібен, і запускаємо мінімальну перевірку. Повна перевірка не виконується після кожного
+    вузла.'
+  question: 'Підтвердіть режим роботи під час обходу дерева: після кожного підтвердженого кроку, якщо YAML треба змінити,
+    робимо малий YAML patch і мінімальну перевірку; повний CLI validation запускаємо тільки на terminal/pre-handoff gate або
+    якщо мінімальна перевірка знаходить проблему.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_incremental_yaml_patch_policy
+  - adjust_incremental_yaml_patch_policy
+  answer_options:
+    confirm_incremental_yaml_patch_policy: підтвердити incremental YAML patch + minimal check
+    adjust_incremental_yaml_patch_policy: уточнити validation profile
+  on_answer:
+    confirm_incremental_yaml_patch_policy:
+      label: incremental YAML patch policy confirmed
+      update_state:
+        incremental_yaml_update_policy:
+          enabled: true
+          when: after_each_confirmed_tree_step_if_yaml_change_is_needed
+          write_mode: small_scoped_patch
+          avoid_full_regeneration_on_each_node: true
+        incremental_yaml_validation_profile:
+          name: minimal_yaml_patch_check
+          checks:
+          - yaml_parse
+          - cli_lint
+          - cli_compile_refresh_ir
+          full_validation_deferred_until:
+          - terminal_branch
+          - before_project_generation_or_handoff
+        incremental_yaml_validation_status: confirmed_profile
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    adjust_incremental_yaml_patch_policy:
+      label: custom incremental validation policy
+      update_state:
+        incremental_yaml_update_policy: $answer.policy
+        incremental_yaml_validation_profile: $answer.validation_profile
+        incremental_yaml_validation_status: custom_confirmed
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_minimal_patch_vs_full_validation_cadence
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: incremental YAML validation policy unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-INCREMENTAL-YAML-PATCH-AUTHORIZATION
+    phase: before_repository_mutation
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: repository_state
+    source_id: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+    input:
+      state_projection:
+      - pending_process_change
+      - last_incremental_yaml_patch_summary
+      - scope_confirmation_status
+      - implementation_authorization_status
+      - conversation.scope_confirmed
+      - repository.mutation_started
+      - authorization.repository_mutation
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-INCREMENTAL-YAML-PATCH-IMPLEMENTATION-EVIDENCE
+    phase: before_repository_mutation
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: process_trace
+    source_id: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+    input:
+      state_projection:
+      - pending_process_change
+      - last_incremental_yaml_patch_summary
+      - source_yaml_created
+      - semantic_ir_compiled
+      - incremental_yaml_validation_status
+      - artifacts.implementation_prompt
+      - artifacts.source_code
+      - artifacts.repository_patch
+      - artifacts.tests
+      - artifacts.implementation_artifacts
+      - claims.implementation_complete
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PROMPT_AS_IMPLEMENTATION
+- id: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+  question: 'Покажіть рівно один поточний вузол дерева для review у process-design rendering форматі: спочатку явно назвіть
+    runtime mode/context shift (tree traversal, branch selection, node-review decision або execution gate), потім покажіть
+    людський опис, питання/дію, варіанти переходів або control-дії, що запамʼятовується в state, які gates перевіряються,
+    які artifacts/outputs/templates повʼязані, які open questions або sibling-гілки лишаються. Після показу вузла НЕ питати
+    generic “підтверджуєш?”; перейти до control gate, де користувач обирає одну з дій: підтвердити, виправити або відкласти.
+    Також покажіть control-action bookkeeping: selected_control_action, not_selected_control_actions і blocked_until_ready_actions
+    окремо від unreviewed_sibling_branches/deferred_return_points.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      current_tree_review_node: $answer.node
+      approved_decision_tree: $answer.tree_snapshot
+      tree_review_depth_first_complete: $answer.depth_first_complete
+      draft_tree_review_status: in_review
+      self_hosted_authoring_loop_status: node_review_in_progress
+      confirmed_review_path: $answer.confirmed_path
+      current_review_branch: $answer.current_branch
+      unreviewed_sibling_branches: $answer.unreviewed_sibling_branches
+      deferred_return_points: $answer.deferred_return_points
+      current_node_review_record: $answer.current_node_review_record
+      node_review_ordo_layer_visibility: short_always_detailed_on_request
+      selected_control_action: $answer.selected_control_action
+      not_selected_control_actions: $answer.not_selected_control_actions
+      blocked_until_ready_actions: $answer.blocked_until_ready_actions
+      current_process_layer_label: $answer.current_process_layer_label
+      runtime_context_shift_notice: $answer.runtime_context_shift_notice
+      current_node_display_block: $answer.current_node_display_block
+    next: N_CURRENT_NODE_REVIEW_DECISION_GATE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_or_correct_current_node
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: current tree node review incomplete
+  description: 'Поточний вузол review показується користувачу в user-facing process-design rendering форматі з явним mode
+    label/context shift: tree traversal, branch selection, node-review decision або execution/validation gate. Runtime view
+    must show state, gates, artifacts, pending sibling/deferred branches, and must not mix real unreviewed sibling branches
+    with not-selected control actions.'
+- id: N_CURRENT_NODE_REVIEW_DECISION_GATE
+  description: 'Control/review gate для поточного вузла. Це не змістовий вузол дерева, який треба “підтвердити як частину
+    дерева”, а runtime-рішення користувача щодо вже показаного вузла. Before asking, runtime must explicitly say: “Зараз це
+    review-рішення по показаному вузлу, не вибір гілки дерева.” Після вибору action runtime фіксує selected_control_action
+    і not_selected_control_actions; ці not-selected actions не додаються до deferred return points.'
+  question: Що робимо з поточним показаним вузлом?
+  answer_type: enum
+  allowed_answers:
+  - approve_current_node
+  - correct_current_node
+  - defer_current_node
+  answer_options:
+    approve_current_node: Підтвердити поточний вузол як є
+    correct_current_node: Виправити поточний вузол і показати оновлену версію
+    defer_current_node: Відкласти поточний вузол / винести в open questions або deferred return points
+  on_answer:
+    approve_current_node:
+      label: вузол підтверджено
+      update_state:
+        current_node_review_decision: approved
+        current_node_review_record.status: approved
+        node_review_control_gate_status: passed
+        confirmed_review_path: $answer.confirmed_path
+        last_incremental_yaml_patch_summary: node approved; yaml patch only if current node definition changed
+        selected_control_action: approve_current_node
+        not_selected_control_actions:
+        - correct_current_node
+        - defer_current_node
+        blocked_until_ready_actions: []
+        control_action_decision_log: $append:selected=approve_current_node;not_selected=correct_current_node,defer_current_node
+        runtime_context_shift_notice: node_review_decision_completed_return_to_tree_traversal
+      next: N_BRANCH_REVIEW
+    correct_current_node:
+      label: вузол потребує правки
+      update_state:
+        current_node_review_decision: needs_correction
+        current_node_review_record.status: needs_correction
+        corrected_review_nodes: $answer.corrections
+        draft_tree_review_status: node_correction_in_progress
+        node_review_control_gate_status: correction_requested
+        last_incremental_yaml_patch_summary: correction requested; apply scoped YAML patch after corrected node is accepted
+        selected_control_action: correct_current_node
+        not_selected_control_actions:
+        - approve_current_node
+        - defer_current_node
+        blocked_until_ready_actions: []
+        control_action_decision_log: $append:selected=correct_current_node;not_selected=approve_current_node,defer_current_node
+        runtime_context_shift_notice: node_review_decision_requests_correction
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    defer_current_node:
+      label: вузол відкладено
+      update_state:
+        current_node_review_decision: deferred
+        current_node_review_record.status: deferred
+        deferred_review_nodes: $answer.deferred_nodes
+        deferred_return_points: $answer.deferred_return_points
+        open_questions: $answer.open_questions
+        node_review_control_gate_status: deferred
+        last_incremental_yaml_patch_summary: node deferred; update deferred return points/open questions only
+        selected_control_action: defer_current_node
+        not_selected_control_actions:
+        - approve_current_node
+        - correct_current_node
+        blocked_until_ready_actions: []
+        control_action_decision_log: $append:selected=defer_current_node;not_selected=approve_current_node,correct_current_node
+        runtime_context_shift_notice: node_review_decision_deferred_return_point_recorded
+      next: N_SUBTREE_REVIEW_COMPLETION_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_three_node_decision_options_approve_correct_defer
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: current node review decision unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-CURRENT-NODE-REVIEW-DECISION
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: runtime_state
+    source_id: N_CURRENT_NODE_REVIEW_DECISION_GATE
+    input:
+      state_projection:
+      - current_node_review_record
+      - current_node_review_decision
+      - unreviewed_sibling_branches
+      - deferred_return_points
+      - blocked_until_ready_actions
+      - selected_control_action
+      - process.required_stages
+      - process.completed_stages
+      - process.stage_order
+      - process.current_stage
+      - node.decisions
+      - node.responsibilities
+      - node.execution_started
+      - node.route_explicit
+      - node.authorization_explicit
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_CURRENT_NODE_REVIEW_DECISION_GATE
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - MANDATORY_BRANCH_SHORT_CIRCUIT
+    - COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE
+- id: N_TREE_REVIEW_CONTINUE_OR_APPROVE
+  question: Продовжити review наступної гілки/вузла чи затвердити дерево рішень?
+  answer_type: enum
+  allowed_answers:
+  - continue_depth_first
+  - approve_tree
+  answer_options:
+    continue_depth_first: Продовжити depth-first review
+    approve_tree: Затвердити дерево
+  on_answer:
+    continue_depth_first:
+      label: наступний вузол
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+      update_state:
+        selected_control_action: continue_depth_first
+        not_selected_control_actions:
+        - approve_tree
+        blocked_until_ready_actions:
+        - action: approve_tree
+          blocked_until: all_required_branches_reviewed
+          reason: unreviewed_sibling_branches_or_deferred_return_points_may_remain
+        control_action_decision_log: $append:selected=continue_depth_first;not_selected=approve_tree;blocked=approve_tree_until_all_required_branches_reviewed
+        current_process_layer_label: tree_traversal
+    approve_tree:
+      label: дерево затверджено
+      update_state:
+        draft_tree_review_status: approved
+        tree_review_depth_first_complete: true
+        self_hosted_authoring_loop_status: decision_tree_approved
+        selected_control_action: approve_tree
+        not_selected_control_actions:
+        - continue_depth_first
+        blocked_until_ready_actions: []
+        control_action_decision_log: $append:selected=approve_tree;not_selected=continue_depth_first
+        current_process_layer_label: tree_traversal
+      next: N_STABILIZED_TREE_BRANCH_HANDOFF
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_continue_or_approve_tree
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: tree review continuation unclear
+  description: 'Цей вузол вирішує, чи йдемо до наступного вузла дерева, чи все дерево вже пройдено й може бути затверджене.
+    approve_tree can be blocked/deferred while unreviewed sibling branches or deferred return points remain. Runtime must
+    label this as tree traversal / branch-selection level, not node-review correction. Alpha.15 note: for progressive tree
+    authoring, subtree completion should use N_SUBTREE_REVIEW_COMPLETION_CHECK and N_APPROVED_TREE_CONSOLIDATION; this node
+    remains for legacy/free-dialogue compatibility. Alpha.20 integration note: deprecated legacy compatibility node; not counted
+    as unresolved orphan in active whole-tree runtime path.'
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by subtree review completion and approved tree consolidation.
+- id: N_STABILIZED_TREE_BRANCH_HANDOFF
+  question: 'Зафіксуйте стабілізовану гілку authoring: який branch/subflow уже затверджений, як він буде використовуватись
+    як алгоритм для наступних гілок, і чи можна вмикати self-hosted reuse.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      stabilized_tree_branch: $answer.branch_id
+      self_hosted_reuse_enabled: $answer.reuse_enabled
+      self_hosted_authoring_loop_status: stabilized_branch_reusable
+    next: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_which_branch_is_stabilized_and_how_to_reuse_it
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: stabilized authoring branch handoff unclear
+  description: 'Цей вузол фіксує стабілізовану гілку як алгоритм, яким можна користуватись далі для побудови інших частин
+    factory. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active whole-tree
+    runtime path.'
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Superseded by approved tree consolidation and shared validation/handoff tail.
+- id: N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
+  description: 'Compatibility join point retained for older references. New APF runtime uses the explicit shared validation/handoff
+    tail nodes introduced in alpha.19. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved
+    orphan in active whole-tree runtime path.'
+  question: Continue into the shared validation/handoff tail.
+  answer_type: enum
+  allowed_answers:
+  - continue_to_shared_validation_tail
+  answer_options:
+    continue_to_shared_validation_tail: Перейти до shared validation / handoff tail
+  on_answer:
+    continue_to_shared_validation_tail:
+      label: join shared validation tail
+      update_state:
+        shared_validation_handoff_tail_join_status: joined
+      next: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_to_continue_to_shared_validation_tail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: shared validation tail join unclear
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Compatibility join point retained for older references; active flow uses explicit shared validation/handoff
+    tail.
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-TERMINAL-FULL-VALIDATION-PACKAGE
+    phase: before_package_finalization
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: package_state
+    source_id: N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
+    input:
+      state_projection:
+      - full_project_validation_status
+      - terminal_path_ready_records
+      - unfinished_output_templates
+      - open_questions
+      - accepted_deferred_for_alpha
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      - package.final_label
+      - evidence.supports_final_label
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+    - FINAL_LABEL_OVERCLAIM
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-TERMINAL-FULL-VALIDATION-PROCESS
+    phase: before_package_finalization
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: process_trace
+    source_id: N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
+    input:
+      state_projection:
+      - terminal_path_ready_records
+      - unreviewed_sibling_branches
+      - deferred_return_points
+      - full_project_validation_status
+      - process.required_stages
+      - process.completed_stages
+      - process.stage_order
+      - process.current_stage
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - MANDATORY_BRANCH_SHORT_CIRCUIT
+- id: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
+  question: Чи виникли під час authoring речі, яких мові бракує або які поки існують як provisional metadata? Зафіксуйте proposal
+    або підтвердіть, що нових пропозицій немає.
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      language_improvement_proposals: $answer.proposals
+      language_improvement_proposals_status: $answer.status
+    next: N_MODULE_VERSIONING_POLICY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_language_construct_or_none_detected
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: language improvement proposal status is unclear
+  description: 'Цей вузол збирає пропозиції щодо покращення мови, якщо під час роботи зʼявляються речі, яких мова ще офіційно
+    не підтримує. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Retained as historical improvement-capture note; language proposals are tracked in a separate context
+    package.
+- id: N_WORKING_CONTEXT_GRAPH_POLICY
+  question: 'Підтвердіть стандарт візуалізації: під час звичайної покрокової роботи SVG не генерується автоматично. Якщо користувач
+    прямо просить картинку, тоді генерується context-view: шлях від root до поточного вузла плюс піддерево нижче нього.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_on_request_context_svg_policy
+  - adjust_policy
+  on_answer:
+    confirm_on_request_context_svg_policy:
+      label: SVG on request only; context when requested
+      update_state:
+        focused_svg_policy:
+          default_mode: context
+          show: root_to_current_node_plus_current_subtree
+          full_tree_policy: overview_only
+          subtree_policy: downstream_debug_only
+          path_policy: navigation_only
+          generation_policy: only_when_user_explicitly_requests_svg
+        auto_svg_generation_policy:
+          default: 'off'
+          generate_only_when_user_explicitly_requests: true
+          when_requested_use: context_view_by_default
+        current_graph_rendering_mode: context
+        graph_rendering_policy_status: confirmed
+      next: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
+    adjust_policy:
+      label: уточнити policy
+      update_state:
+        focused_svg_policy: $answer
+        graph_rendering_policy_status: custom_confirmed
+      next: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_context_svg_vs_full_tree
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: graph rendering policy is not confirmed
+  description: 'Цей вузол визначає, коли показувати SVG: за замовчуванням не генеруємо картинку, а робимо її тільки на пряме
+    прохання користувача. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan
+    in active whole-tree runtime path.'
+  answer_options:
+    confirm_on_request_context_svg_policy: SVG тільки на пряме прохання; тоді context-view
+    adjust_policy: уточнити policy
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Retained as historical graph display policy; not an active startup branch node.
+- id: N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
+  description: 'Цей вузол спрацьовує, коли користувач коментує сам процес. AI приймає зауваження, показує як зміниться крок,
+    чекає підтвердження, вносить малий YAML patch, запускає мінімальну перевірку і продовжує вже з нової версії. Повна перевірка
+    не виконується після кожної дрібної правки. Alpha.20 integration note: deprecated legacy compatibility node; not counted
+    as unresolved orphan in active whole-tree runtime path.'
+  question: Користувач дав зауваження до самого процесу. AI приймає зауваження, показує нову форму кроку людською мовою, після
+    підтвердження оновлює YAML малим patch, запускає мінімальну перевірку YAML/lint/compile і продовжує з поточного місця.
+    Full validation відкладається до terminal/pre-handoff gate.
+  answer_type: structured_list
+  allowed_answers:
+  - approve_process_change
+  - revise_process_change
+  answer_options:
+    approve_process_change: прийняти зміну процесу й оновити YAML
+    revise_process_change: уточнити зміну перед оновленням YAML
+  on_answer:
+    update_state:
+      process_feedback_policy_status: confirmed
+      process_feedback_items: $answer.feedback_items
+      pending_process_change: $answer.process_change
+      yaml_reload_after_process_change: true
+    next: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_user_to_confirm_or_revise_process_change
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: process change confirmation unclear
+  lifecycle_status: deprecated_legacy_compatibility
+  active_runtime_node: false
+  deprecation_reason: Retained as process-change policy note; active correction mode is now shared validation/handoff correction
+    loop.
+- id: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
+  description: Вхід у п'ятий режим. Вузол запускає zero-silent-loss migration старої монолітної інструкції у структурований
+    Ordo-playbook.
+  question: 'Режим 5: мігруємо стару монолітну інструкцію у структурований Ordo-playbook. Підтвердьте, що завдання саме у
+    zero-silent-loss migration, а не у створенні нового процесу з нуля.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_legacy_instruction_migration
+  - route_to_new_process_creation
+  answer_options:
+    confirm_legacy_instruction_migration: Так, запускаємо zero-silent-loss migration
+    route_to_new_process_creation: Ні, треба створювати процес з нуля
+  on_answer:
+    confirm_legacy_instruction_migration:
+      label: zero-silent-loss migration підтверджено
+      update_state:
+        legacy_migration_status: confirmed_entry
+        runtime_context_shift_notice: legacy_instruction_migration_mode_started
+      next: N_LEGACY_MIGRATION_SOURCE_INTAKE
+    route_to_new_process_creation:
+      label: повернутися до створення нового процесу
+      update_state:
+        legacy_migration_status: rerouted_to_new_process_creation
+        factory_authoring_mode: null
+      next: N_FACTORY_MODE_SELECTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_legacy_migration_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY remains unclear
+- id: N_LEGACY_MIGRATION_SOURCE_INTAKE
+  description: Вузол приймає джерело старої інструкції, яку треба мігрувати.
+  question: 'Надайте джерело для міграції: 1 — вставлений текст старої інструкції; 2 — прикріплений файл або архів з інструкцією.'
+  answer_type: enum
+  allowed_answers:
+  - pasted_legacy_instruction_text
+  - attached_legacy_instruction_file
+  answer_options:
+    pasted_legacy_instruction_text: Вставлений текст старої інструкції
+    attached_legacy_instruction_file: Прикріплений файл або архів
+  on_answer:
+    pasted_legacy_instruction_text:
+      label: 'джерело: вставлений текст'
+      update_state:
+        migration_instruction_source: pasted_legacy_instruction_text
+        legacy_migration_status: source_captured
+      next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+    attached_legacy_instruction_file:
+      label: 'джерело: прикріплений файл або архів'
+      update_state:
+        migration_instruction_source: attached_legacy_instruction_file
+        legacy_migration_status: source_captured
+      next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_legacy_instruction_source
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_LEGACY_MIGRATION_SOURCE_INTAKE remains unclear
+- id: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+  description: Побудова clause inventory та первинне захоплення неоднозначностей є обов'язковим першим етапом міграції.
+  question: Побудуйте clause inventory, зафіксуйте ambiguity та missing context. Продовжуємо, коли інвентаризація готова.
+  answer_type: enum
+  allowed_answers:
+  - clause_inventory_ready
+  - need_source_clarification
+  answer_options:
+    clause_inventory_ready: Clause inventory і ambiguity capture готові
+    need_source_clarification: Потрібне уточнення джерела
+  on_answer:
+    clause_inventory_ready:
+      label: clause inventory готовий
+      update_state:
+        migration_clause_inventory_status: completed
+        migration_ambiguity_capture_status: completed
+        legacy_migration_status: clause_inventory_completed
+      next: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+    need_source_clarification:
+      label: повернутися до уточнення джерела
+      update_state:
+        migration_clause_inventory_status: blocked_by_source_clarification
+        migration_ambiguity_capture_status: pending
+      next: N_LEGACY_MIGRATION_SOURCE_INTAKE
+- id: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+  description: Після clause inventory будується dependency reconstruction для майбутнього Ordo-графа.
+  question: Відновіть залежності між clauses і підготуйте dependency graph. Коли dependency reconstruction готовий, продовжуємо.
+  answer_type: enum
+  allowed_answers:
+  - dependency_reconstruction_ready
+  - dependency_reconstruction_blocked
+  answer_options:
+    dependency_reconstruction_ready: Dependency reconstruction готовий
+    dependency_reconstruction_blocked: Потрібно повернутися до clause inventory
+  on_answer:
+    dependency_reconstruction_ready:
+      label: dependency reconstruction готовий
+      update_state:
+        migration_dependency_reconstruction_status: completed
+        legacy_migration_status: dependency_reconstruction_completed
+      next: N_LEGACY_MIGRATION_ORDO_MAPPING
+    dependency_reconstruction_blocked:
+      label: повернутися до clause inventory
+      update_state:
+        migration_dependency_reconstruction_status: blocked
+      next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+- id: N_LEGACY_MIGRATION_ORDO_MAPPING
+  description: На цьому кроці clauses і reconstructed dependencies мапляться у структурований Ordo-playbook із traceability.
+  question: Побудуйте Ordo mapping і traceability matrix. Продовжуємо тільки коли кожен clause має покриття або явний unresolved
+    status.
+  answer_type: enum
+  allowed_answers:
+  - ordo_mapping_ready
+  - ordo_mapping_needs_revision
+  answer_options:
+    ordo_mapping_ready: Ordo mapping і traceability готові
+    ordo_mapping_needs_revision: Потрібне доопрацювання mapping
+  on_answer:
+    ordo_mapping_ready:
+      label: Ordo mapping готовий
+      update_state:
+        migration_ordo_mapping_status: completed
+        migration_traceability_status: completed
+        legacy_migration_status: ordo_mapping_completed
+      next: N_LEGACY_MIGRATION_COMPLETENESS_GATE
+    ordo_mapping_needs_revision:
+      label: повернутися до dependency reconstruction
+      update_state:
+        migration_ordo_mapping_status: revision_required
+        migration_traceability_status: revision_required
+      next: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+- id: N_LEGACY_MIGRATION_COMPLETENESS_GATE
+  description: Zero-silent-loss completeness gate блокує перехід далі, якщо хоч один clause втрачений або не має явного статусу.
+  question: 'Перевірте completeness gate: чи всі clauses покриті або явно позначені як unresolved? Тільки після цього міграція
+    може перейти в спільний validation/handoff tail.'
+  answer_type: enum
+  allowed_answers:
+  - completeness_gate_passed
+  - completeness_gate_failed
+  answer_options:
+    completeness_gate_passed: Так, completeness gate пройдено
+    completeness_gate_failed: Ні, є пропуски або silent loss risk
+  on_answer:
+    completeness_gate_passed:
+      label: completeness gate пройдено
+      update_state:
+        migration_completeness_gate_status: passed
+        migration_package_status: ready_for_shared_tail
+        migration_shared_pipeline_join_status: shared_tail_ready
+        legacy_migration_status: ready_for_shared_tail
+      next: N_SHARED_TAIL_SOURCE_YAML_GENERATION
+    completeness_gate_failed:
+      label: повернутися до clause inventory
+      update_state:
+        migration_completeness_gate_status: failed
+        legacy_migration_status: rework_required
+      next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+- id: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
+  description: Вхід у четвертий режим. Вузол відрізняє коригування наявного процесу від реконструкції або створення нового
+    процесу.
+  question: 'Режим 4: коригуємо існуючий процес, а не створюємо новий з нуля. Підтвердьте, що завдання саме у зміні наявного
+    Ordo-процесу.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_existing_process_improvement
+  - route_to_new_process_creation
+  answer_options:
+    confirm_existing_process_improvement: Так, коригуємо існуючий процес
+    route_to_new_process_creation: Ні, треба створювати процес з нуля
+  on_answer:
+    confirm_existing_process_improvement:
+      label: коригування існуючого процесу підтверджено
+      update_state:
+        existing_process_improvement_status: confirmed_existing_process
+        runtime_context_shift_notice: existing_process_improvement_mode_started
+      next: N_EXISTING_PROCESS_BASELINE_DEFINITION
+    route_to_new_process_creation:
+      label: повернутися до створення нового процесу
+      update_state:
+        existing_process_improvement_status: rerouted_to_new_process_creation
+        factory_authoring_mode: null
+      next: N_FACTORY_MODE_SELECTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY remains unclear
+- id: N_EXISTING_PROCESS_BASELINE_DEFINITION
+  description: 'Baseline не може бути лише людським описом або нотатками: для коригування потрібен повний контекст процесу.'
+  question: 'Надайте baseline існуючого процесу. Допустимі тільки: 1 — повний workspace/dev package archive; 2 — self-contained
+    source/program.ordo.yaml.'
+  answer_type: enum
+  allowed_answers:
+  - workspace_dev_package_archive
+  - self_contained_source_yaml
+  answer_options:
+    workspace_dev_package_archive: Повний workspace / dev package archive
+    self_contained_source_yaml: Самодостатній source/program.ordo.yaml
+  on_answer:
+    workspace_dev_package_archive:
+      label: 'baseline: повний workspace/dev package archive'
+      update_state:
+        existing_process_baseline_source: workspace_dev_package_archive
+        existing_process_baseline_validation_status: pending_load
+      next: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+    self_contained_source_yaml:
+      label: 'baseline: self-contained source/program.ordo.yaml'
+      update_state:
+        existing_process_baseline_source: self_contained_source_yaml
+        existing_process_baseline_validation_status: pending_load
+      next: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_EXISTING_PROCESS_BASELINE_DEFINITION remains unclear
+- id: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
+  description: 'Вузол розділяє два режими зміни існуючого процесу: batch extraction із набору покращень або targeted dialogue
+    навколо одного елемента.'
+  question: 'Оберіть режим коригування: 1 — пакетний список покращень; 2 — точкове покращення через діалог.'
+  answer_type: enum
+  allowed_answers:
+  - batch_improvement_list
+  - targeted_dialogue_improvement
+  answer_options:
+    batch_improvement_list: Пакетний список покращень
+    targeted_dialogue_improvement: Точкове покращення через діалог
+  on_answer:
+    batch_improvement_list:
+      label: 1. Пакетний список покращень
+      update_state:
+        improvement_mode: batch_improvement_list
+        current_review_branch: batch_improvement_list_path
+        existing_process_improvement_status: batch_mode_started
+      next: N_BATCH_IMPROVEMENT_LIST_ENTRY
+    targeted_dialogue_improvement:
+      label: 2. Точкове покращення через діалог
+      update_state:
+        improvement_mode: targeted_dialogue_improvement
+        current_review_branch: targeted_dialogue_improvement_path
+        existing_process_improvement_status: targeted_mode_started
+      next: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION remains unclear
+- id: N_BATCH_IMPROVEMENT_LIST_ENTRY
+  description: 'Старт batch mode: користувач дає набір бажаних покращень одним пакетом.'
+  question: Надайте файл, текст або список покращень для існуючого процесу.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      batch_improvement_list: $answer
+      existing_process_improvement_status: batch_list_loaded
+    next: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_BATCH_IMPROVEMENT_LIST_ENTRY remains unclear
+- id: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
+  description: 'Extraction не змінює YAML: вона лише формує список можливих покращень.'
+  question: AI витягує з batch input candidate improvements і показує їх людською мовою для вибору.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      candidate_improvements: $answer.candidate_improvements
+      existing_process_improvement_status: candidate_improvements_extracted
+    next: N_CANDIDATE_IMPROVEMENTS_SELECTION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_CANDIDATE_IMPROVEMENTS_EXTRACTION remains unclear
+- id: N_CANDIDATE_IMPROVEMENTS_SELECTION
+  description: Користувач явно відділяє approved/rejected/deferred candidates перед mapping на процес.
+  question: Оберіть, які candidate improvements застосувати, які відхилити, а які відкласти.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      selected_candidate_improvements: $answer.selected
+      rejected_item_changes: $answer.rejected
+      deferred_item_changes: $answer.deferred
+    next: N_IMPROVEMENT_TO_PROCESS_MAPPING
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_CANDIDATE_IMPROVEMENTS_SELECTION remains unclear
+- id: N_IMPROVEMENT_TO_PROCESS_MAPPING
+  description: Mapping визначає, які частини існуючого процесу будуть зачеплені змінами.
+  question: AI мапить вибрані покращення на вузли, transitions, gates, state, artifacts, templates або runtime policy.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      improvement_to_process_mapping: $answer.mapping
+      affected_process_items: $answer.affected_items
+    next: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_IMPROVEMENT_TO_PROCESS_MAPPING remains unclear
+- id: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
+  description: Перед patch application кожна зміна має отримати статус і бути зрозумілою користувачу.
+  question: 'Для кожного affected item показати before/after card і отримати рішення: прийняти, скоригувати, відкласти або
+    відхилити.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      before_after_change_cards: $answer.before_after_cards
+      approved_item_changes: $answer.approved
+      rejected_item_changes: $answer.rejected
+      deferred_item_changes: $answer.deferred
+    next: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW remains unclear
+- id: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
+  description: 'Старт targeted mode: користувач може назвати вузол, gate, state, artifact або просто описати проблему.'
+  question: Опишіть точкову проблему або елемент процесу, який хочете покращити.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      targeted_improvement_description: $answer
+      targeted_improvement_loop_status: started
+    next: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY remains unclear
+- id: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+  description: Перед пропозицією зміни треба знайти конкретний предмет коригування.
+  question: 'AI визначає цільовий елемент процесу: node, transition, gate, state, artifact, policy або problem area.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      target_process_item: $answer.target_process_item
+    next: N_TARGETED_CHANGE_CLARIFICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGET_PROCESS_ITEM_IDENTIFICATION remains unclear
+- id: N_TARGETED_CHANGE_CLARIFICATION
+  description: Не можна формувати after proposal без достатньо описаної бажаної зміни.
+  question: 'Уточніть бажану зміну: що зараз неправильно, як має стати, що додати, що не змінювати, локальна це правка чи
+    rule-level зміна.'
+  answer_type: free_text
+  on_answer:
+    update_state:
+      targeted_improvement_description: $answer.description
+      affected_process_items: $answer.affected_items
+    next: N_TARGETED_BEFORE_AFTER_PROPOSAL
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_CHANGE_CLARIFICATION remains unclear
+- id: N_TARGETED_BEFORE_AFTER_PROPOSAL
+  description: Before/after proposal робить точкову зміну перевірною до внесення в YAML.
+  question: AI показує target item, before snapshot, proposed after version, rationale, affected state/gates/artifacts і open
+    risks.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      targeted_after_proposal: $answer.after_proposal
+      before_after_change_cards: $append:$answer.before_after_card
+    next: N_TARGETED_CHANGE_DECISION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_BEFORE_AFTER_PROPOSAL remains unclear
+- id: N_TARGETED_CHANGE_DECISION
+  description: Decision gate для конкретного targeted after proposal.
+  question: Що робимо з цією запропонованою зміною?
+  answer_type: enum
+  allowed_answers:
+  - accept_change
+  - correct_change
+  - defer_change
+  - reject_change
+  answer_options:
+    accept_change: Прийняти зміну
+    correct_change: Скоригувати зміну
+    defer_change: Відкласти зміну
+    reject_change: Відхилити зміну
+  on_answer:
+    accept_change:
+      label: зміна прийнята
+      update_state:
+        targeted_change_decision: approved
+        approved_item_changes: $append:$answer.change
+      next: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+    correct_change:
+      label: зміна потребує корекції
+      update_state:
+        targeted_change_decision: needs_correction
+      next: N_TARGETED_CHANGE_CLARIFICATION
+    defer_change:
+      label: зміна відкладена
+      update_state:
+        targeted_change_decision: deferred
+        deferred_item_changes: $append:$answer.change
+      next: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+    reject_change:
+      label: зміна відхилена
+      update_state:
+        targeted_change_decision: rejected
+        rejected_item_changes: $append:$answer.change
+      next: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_CHANGE_DECISION remains unclear
+- id: N_TARGETED_MORE_IMPROVEMENTS_CHECK
+  description: 'Loop-control вузол: або повертаємось до наступного target item, або виходимо до shared change pipeline.'
+  question: Чи є ще точкові покращення для цього процесу?
+  answer_type: enum
+  allowed_answers:
+  - more_targeted_improvements
+  - no_more_targeted_improvements
+  answer_options:
+    more_targeted_improvements: Так, хочу покращити ще один елемент
+    no_more_targeted_improvements: Ні, більше покращень немає
+  on_answer:
+    more_targeted_improvements:
+      label: ще одне точкове покращення
+      update_state:
+        targeted_improvement_loop_status: continue
+      next: N_TARGET_PROCESS_ITEM_IDENTIFICATION
+    no_more_targeted_improvements:
+      label: targeted loop завершено
+      update_state:
+        targeted_improvement_loop_status: closed
+      next: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_TARGETED_MORE_IMPROVEMENTS_CHECK remains unclear
+- id: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
+  description: Batch і targeted improvement modes сходяться тут; downstream validation/handoff не дублюється, а йде через
+    shared terminal pipeline.
+  question: Закрити активний режим коригування і перейти до спільного change pipeline для confirmed changes.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      existing_process_shared_pipeline_join_status: ready_to_build_change_set
+    next: N_CONFIRMED_CHANGE_SET_BUILDING
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE remains unclear
+- id: N_CONFIRMED_CHANGE_SET_BUILDING
+  description: Confirmed change set є єдиним дозволеним input для YAML patch application.
+  question: Сформувати confirmed change set з approved changes; rejected і deferred changes зберегти окремо.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      confirmed_change_set: $answer.confirmed_change_set
+      existing_process_improvement_status: confirmed_change_set_built
+    next: N_SCOPED_YAML_PATCH_APPLICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_CONFIRMED_CHANGE_SET_BUILDING remains unclear
+- id: N_SCOPED_YAML_PATCH_APPLICATION
+  description: 'Patch discipline: не перебудовувати весь процес, а змінювати лише підтверджені частини.'
+  question: Застосувати тільки scoped YAML patches, що відповідають confirmed change set.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      scoped_yaml_patch_queue: $answer.applied_patches
+      last_incremental_yaml_patch_summary: $answer.patch_summary
+      incremental_yaml_validation_status: pending
+    next: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_SCOPED_YAML_PATCH_APPLICATION remains unclear
+- id: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
+  description: Після мінімальної перевірки scoped patch joins the shared validation/handoff tail. Full validation/handoff
+    nodes are referenced, not duplicated.
+  question: 'Запустити мінімальну перевірку після patch: YAML parse, Ordo lint, compile/refresh IR.'
+  answer_type: enum
+  allowed_answers:
+  - minimal_validation_passed
+  - minimal_validation_failed
+  answer_options:
+    minimal_validation_passed: мінімальна перевірка пройдена
+    minimal_validation_failed: мінімальна перевірка знайшла проблему
+  on_answer:
+    minimal_validation_passed:
+      label: minimal validation passed; join shared full validation pipeline
+      update_state:
+        existing_process_minimal_validation_status: passed
+        existing_process_shared_pipeline_join_status: joined_shared_full_validation_pipeline
+        full_project_validation_status: pending
+      next: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+    minimal_validation_failed:
+      label: minimal validation failed; return to scoped correction
+      update_state:
+        existing_process_minimal_validation_status: failed
+        incremental_yaml_validation_status: failed
+      next: N_SCOPED_YAML_PATCH_APPLICATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_missing_existing_process_improvement_detail
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH remains unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-MINIMAL-PATCH-VALIDATION
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: evidence_state
+    source_id: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
+    input:
+      state_projection:
+      - incremental_yaml_validation_status
+      - syntax_checked
+      - semantic_ir_compiled
+      - validation_findings_requiring_tree_correction
+      - unfinished_output_templates
+      - artifacts.implementation_prompt
+      - artifacts.source_code
+      - artifacts.repository_patch
+      - artifacts.tests
+      - artifacts.implementation_artifacts
+      - claims.implementation_complete
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PROMPT_AS_IMPLEMENTATION
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+- id: N_INPUT_ARTIFACTS_POLICY
+  question: Які вхідні матеріали або джерела має використовувати цей процес? Якщо їх зараз немає або процес не регламентує
+    вхід — зафіксуйте відповідну input policy.
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      input_policy: $answer.policy
+      domain_input_sources: $answer.inputs
+      required_input_artifacts: $answer.required_inputs
+      optional_input_artifacts: $answer.optional_inputs
+      input_constraints: $answer.constraints
+      input_examples: $answer.examples
+    next: N_OUTPUT_ARTIFACT_CATALOG
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_input_policy_required_optional_none_unknown_or_later
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_explicit_input_policy_unknown
+      reason: input policy can be unknown or deferred but must be explicit
+  description: 'Atomic input-policy node. Input artifacts are not mandatory: user may have required inputs, optional inputs,
+    no predefined input, unknown/deferred input, or inputs produced later in the process.'
+- id: N_TERMINAL_OUTPUT_BINDING_POLICY
+  question: 'Підтвердьте policy: кожна terminal point має окремо вибрати outputs, перевірити templates/mock examples або явно
+    позначити no-output/deferred output.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_terminal_output_binding_policy
+  - adjust_terminal_output_binding_policy
+  answer_options:
+    confirm_terminal_output_binding_policy: Підтвердити terminal output binding policy
+    adjust_terminal_output_binding_policy: Уточнити policy
+  on_answer:
+    confirm_terminal_output_binding_policy:
+      label: terminal output binding + template verification confirmed
+      update_state:
+        terminal_output_binding_policy:
+          candidate_catalog_first: true
+          terminal_points_choose_outputs: true
+          new_outputs_can_be_added_at_terminal_points: true
+          selected_outputs_require_verified_templates_or_accepted_alpha_templates: true
+          mock_filled_examples_required_for_review: true
+          no_output_and_deferred_output_are_explicit_statuses: true
+        template_verification_status: policy_confirmed
+      next: N_OPEN_QUESTIONS_REVIEW
+    adjust_terminal_output_binding_policy:
+      label: custom terminal output binding policy
+      update_state:
+        terminal_output_binding_policy: $answer
+      next: N_OPEN_QUESTIONS_REVIEW
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_terminal_output_binding_with_mock_examples
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_default_terminal_output_binding_policy
+      reason: policy default is safe and explicit
+  description: 'Shared policy node: output templates are not a black box. Terminal points bind outputs, verify templates and
+    review mock-filled examples before package approval. This shared policy is used by branch 1, branch 2, branch 3 free-dialogue
+    draft trees, and branch 4 when outputs/templates are changed.'
+- id: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
+  question: 'Переходимо до progressive tree authoring: користувач може описати тільки root і перші гілки, глибший subtree,
+    повний draft або просто логіку словами.'
+  answer_type: enum
+  allowed_answers:
+  - start_progressive_tree_authoring
+  - adjust_tree_authoring_mode
+  answer_options:
+    start_progressive_tree_authoring: Почати progressive tree authoring
+    adjust_tree_authoring_mode: Уточнити режим побудови дерева
+  on_answer:
+    start_progressive_tree_authoring:
+      label: progressive tree authoring
+      update_state:
+        tree_authoring_mode: progressive
+      next: N_USER_TREE_VISION_CAPTURE
+    adjust_tree_authoring_mode:
+      label: custom tree authoring mode
+      update_state:
+        tree_authoring_mode: $answer
+      next: N_USER_TREE_VISION_CAPTURE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_shallow_or_deep_tree_vision_options
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_progressive_tree_authoring
+      reason: progressive mode is default
+  description: Replaces static decision_tree_blueprint for branch 1. The user does not need to describe the whole tree up
+    front.
+- id: N_USER_TREE_VISION_CAPTURE
+  question: Як ви зараз бачите старт дерева? Можна описати root + перші гілки, одну наступну гілку, subtree на 2–5 рівнів,
+    повний draft або free-form logic.
+  answer_type: free_text
+  on_answer:
+    update_state:
+      user_tree_vision_depth: $answer.depth
+      root_node_candidate: $answer.root_node
+      draft_subtree_candidate: $answer.subtree_or_logic
+    next: N_DRAFT_SUBTREE_GENERATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_root_node_first_branches_or_free_form_logic
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: no root node or usable tree logic
+  description: Captures shallow or deep user tree vision before AI drafts a subtree.
+- id: N_DRAFT_SUBTREE_GENERATION
+  question: 'AI формує draft-subtree з user tree vision: root/current node, питання/дії, branches, deeper nodes, terminal
+    candidates, output binding candidates і risks.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      draft_subtree_status: generated_pending_review
+      draft_nodes: $answer.nodes
+      draft_branches: $answer.branches
+      terminal_candidates: $answer.terminal_candidates
+      terminal_output_binding_points: $answer.output_binding_candidates
+      draft_open_questions: $answer.open_questions
+    next: N_DRAFT_SUBTREE_REVIEW_START
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_ai_to_show_draft_subtree_card
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: draft subtree was not generated
+  description: Draft subtree is not approved tree. It must enter node/branch/terminal verification.
+- id: N_DRAFT_SUBTREE_REVIEW_START
+  question: 'Починаємо standard verification draft-subtree: current node, branches, terminal/continue decisions, output binding,
+    sibling branches and deferred return points.'
+  answer_type: enum
+  allowed_answers:
+  - start_subtree_review
+  - revise_draft_subtree_first
+  answer_options:
+    start_subtree_review: Почати покроковий review
+    revise_draft_subtree_first: Спочатку переробити draft-subtree
+  on_answer:
+    start_subtree_review:
+      label: start node-by-node review
+      update_state:
+        draft_subtree_status: under_review
+        current_tree_review_node: $answer.first_node
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    revise_draft_subtree_first:
+      label: revise draft subtree
+      update_state:
+        draft_subtree_status: needs_revision
+      next: N_DRAFT_SUBTREE_GENERATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_start_review_or_revise_draft
+    max_attempts: 2
+    on_exhausted:
+      action: continue_with_start_subtree_review
+      reason: review is mandatory after draft generation
+  description: Turns generated draft subtree into a review queue.
+- id: N_BRANCH_REVIEW
+  question: 'Перевірте вихідні гілки поточного вузла: label, умова/відповідь, next node або terminal candidate, state updates,
+    gates, sibling/deferred status.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      current_branch_review_status: $answer.status
+      confirmed_branches: $answer.confirmed_branches
+      unreviewed_sibling_branches: $answer.unreviewed_sibling_branches
+      deferred_return_points: $answer.deferred_return_points
+    next: N_TERMINAL_OR_CONTINUE_DECISION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_review_outgoing_branches_one_by_one
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: branch review incomplete
+  description: A node can be correct while its outgoing branches are wrong; branch review is separate from node review.
+- id: N_TERMINAL_OR_CONTINUE_DECISION
+  question: Що відбувається далі по цій гілці?
+  answer_type: enum
+  allowed_answers:
+  - terminal_point
+  - continue_with_next_branching
+  - add_intermediate_node
+  - restructure_previous_logic
+  - defer_branch
+  answer_options:
+    terminal_point: Це terminal point — шлях тут завершується
+    continue_with_next_branching: Тут є наступне розгалуження
+    add_intermediate_node: Треба додати проміжний вузол
+    restructure_previous_logic: Треба перебудувати попередню логіку
+    defer_branch: Відкласти цю гілку
+  on_answer:
+    terminal_point:
+      label: terminal point
+      update_state:
+        next_step_decision: terminal_point
+        terminal_output_binding_required: true
+      next: N_TERMINAL_OUTPUT_BINDING_LOOP
+    continue_with_next_branching:
+      label: continue with next branching
+      update_state:
+        next_step_decision: continue_with_next_branching
+      next: N_USER_TREE_VISION_CAPTURE
+    add_intermediate_node:
+      label: add intermediate node
+      update_state:
+        next_step_decision: add_intermediate_node
+        intermediate_node_candidate: $answer
+      next: N_DRAFT_SUBTREE_GENERATION
+    restructure_previous_logic:
+      label: restructure previous logic
+      update_state:
+        next_step_decision: restructure_previous_logic
+        affected_previous_nodes: $answer.affected_nodes
+        before_after_subtree_proposal: $answer.before_after
+      next: N_DRAFT_SUBTREE_GENERATION
+    defer_branch:
+      label: defer branch
+      update_state:
+        next_step_decision: deferred
+        deferred_return_points: $answer.deferred_return_points
+      next: N_SUBTREE_REVIEW_COMPLETION_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_terminal_continue_intermediate_restructure_defer_options
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: terminal-or-continue decision unclear
+  description: 'Core progressive tree decision: each reviewed branch either ends, continues, gets an intermediate node, reopens
+    previous logic, or is deferred.'
+- id: N_TERMINAL_OUTPUT_BINDING_LOOP
+  question: 'Terminal point reached. Define output policy: use existing output, add a new artifact, confirm no output is needed,
+    or defer the output decision.'
+  answer_type: enum
+  allowed_answers:
+  - select_outputs_from_catalog
+  - add_new_output_artifact
+  - no_output_required
+  - defer_output_decision
+  answer_options:
+    select_outputs_from_catalog: Вибрати output із candidate catalog
+    add_new_output_artifact: Додати новий artifact/output
+    no_output_required: Output не потрібен
+    defer_output_decision: Відкласти рішення по output
+  user_facing_contract:
+    show_terminal_point_summary: true
+    explain_output_can_be_document_task_message_file_or_nothing: true
+    do_not_auto_create_output: true
+    do_not_mark_terminal_path_ready_while_policy_pending: true
+  on_answer:
+    select_outputs_from_catalog:
+      label: selected existing output artifacts from catalog
+      update_state:
+        terminal_output_policy: use_existing_output
+        selected_terminal_outputs: $answer.outputs
+      next: N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
+    add_new_output_artifact:
+      label: new artifact/output requested
+      update_state:
+        terminal_output_policy: create_new_output
+        available_terminal_state_fields: $runtime.terminal_path_state_fields
+      next: N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
+    no_output_required:
+      label: explicit no-output terminal point
+      update_state:
+        terminal_output_policy: no_output_required
+        terminal_output_bindings: $append:no_output_required
+        template_review_required: false
+        mock_example_required: false
+      next: N_TERMINAL_PATH_READY_CHECK
+    defer_output_decision:
+      label: output decision deferred
+      update_state:
+        terminal_output_policy: deferred
+        terminal_output_bindings: $append:deferred_output_decision
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_terminal_output_policy_options
+    max_attempts: 2
+    on_exhausted:
+      action: defer_output_decision
+      reason: terminal output selection unclear
+  description: 'Shared step 2: terminal output policy selection. This is a branching point; each branch is reviewed explicitly
+    and downstream template logic is shared.'
+- id: N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
+  question: 'Check template status for each active output artifact: existing, missing/new recipe needed, partial, accepted
+    for alpha, or unfinished/deferred.'
+  answer_type: structured_list
+  user_facing_contract:
+    do_not_show_large_templates_inline: true
+    document_like_artifacts_default_to_file_review_package: true
+    template_status_is_not_approval: true
+  on_answer:
+    update_state:
+      template_verification_status: $answer.status
+      approved_output_templates: $answer.approved_templates
+      deferred_output_templates: $answer.deferred_templates
+      unfinished_output_templates: $answer.unfinished_templates
+      template_required_state_fields: $answer.required_state_fields
+    next: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_template_exists_missing_partial_alpha_or_unfinished
+    max_attempts: 2
+    on_exhausted:
+      action: continue_to_template_creation_loop
+      reason: unknown template status is treated as missing
+  description: 'Shared step 3: status check before review package generation. It does not approve templates; it only routes
+    to review, creation, partial completion, alpha acceptance, or unfinished/deferred handling.'
+- id: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+  question: 'Route template handling for selected outputs: use existing, create new recipe/template, complete partial, accept
+    for alpha with risks, defer as unfinished, or remove output.'
+  answer_type: enum
+  allowed_answers:
+  - use_existing_template
+  - create_new_template_or_recipe
+  - improve_partial_template
+  - accept_template_for_alpha
+  - defer_template_decision
+  - remove_output_from_terminal_point
+  answer_options:
+    use_existing_template: Використати наявний template через review package
+    create_new_template_or_recipe: Створити новий template/recipe
+    improve_partial_template: Доробити partial template
+    accept_template_for_alpha: Прийняти template для alpha з ризиками
+    defer_template_decision: Відкласти template як unfinished
+    remove_output_from_terminal_point: Прибрати output з цієї terminal point
+  on_answer:
+    use_existing_template:
+      label: existing template review package
+      next: N_OUTPUT_REVIEW_PACKAGE_GENERATION
+    create_new_template_or_recipe:
+      label: new template/recipe creation
+      next: N_OUTPUT_TEMPLATE_CREATION_LOOP
+    improve_partial_template:
+      label: partial template completion
+      update_state:
+        partial_template_review_status: needs_completion
+      next: N_OUTPUT_TEMPLATE_CREATION_LOOP
+    accept_template_for_alpha:
+      label: alpha template accepted with known limitations
+      update_state:
+        approved_output_templates: $append:$answer.template
+        alpha_template_limitations: $append:$answer.known_limitations
+      next: N_OUTPUT_REVIEW_PACKAGE_GENERATION
+    defer_template_decision:
+      label: template unfinished/deferred
+      update_state:
+        unfinished_output_templates: $append:$answer.template
+        deferred_output_templates: $append:$answer.template
+      next: N_TERMINAL_PATH_READY_CHECK
+    remove_output_from_terminal_point:
+      label: output removed from terminal point
+      update_state:
+        removed_output_artifacts: $append:$answer.removed_outputs
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_template_route_existing_create_partial_alpha_defer_remove
+    max_attempts: 2
+    on_exhausted:
+      action: defer_template_decision
+      reason: template action unclear
+  description: Routes output artifacts to file-first review package, recipe authoring, partial completion, alpha risk acceptance,
+    unfinished/deferred handling, or removal.
+- id: N_OUTPUT_TEMPLATE_REVIEW_LOOP
+  question: 'After the user reviews the template/mock/mapping package, choose one simple action: confirm, revise, defer, or
+    remove artifact.'
+  answer_type: enum
+  allowed_answers:
+  - confirm
+  - revise
+  - defer
+  - remove_artifact
+  answer_options:
+    confirm: Підтвердити
+    revise: Доробити
+    defer: Відкласти
+    remove_artifact: Видалити artifact з terminal point
+  user_facing_contract:
+    keep_user_decisions_simple:
+    - confirm
+    - revise
+    - defer
+    - remove
+    revise_may_include:
+    - uploaded_modified_template
+    - mapping_change
+    - mock_regeneration
+    - style_change
+    - section_change
+    - assumption_fix
+    do_not_auto_approve_after_revision: true
+  on_answer:
+    confirm:
+      label: review package confirmed
+      update_state:
+        approved_output_templates: $append:$answer.template
+        artifact_review_decisions: $append:confirm
+        mock_example_status: reviewed
+        mapping_status: approved
+      next: N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
+    revise:
+      label: artifact/template needs revision
+      update_state:
+        artifact_review_decisions: $append:revise
+        corrected_output_templates: $append:$answer.revision
+      next: N_OUTPUT_REVIEW_PACKAGE_GENERATION
+    defer:
+      label: artifact/template unfinished
+      update_state:
+        artifact_review_decisions: $append:defer
+        unfinished_output_templates: $append:$answer.template
+        unfinished_artifacts: $append:$answer.artifact
+      next: N_TERMINAL_PATH_READY_CHECK
+    remove_artifact:
+      label: artifact removed from terminal point
+      update_state:
+        artifact_review_decisions: $append:remove_artifact
+        removed_output_artifacts: $append:$answer.artifact
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_revise_defer_or_remove_artifact
+    max_attempts: 2
+    on_exhausted:
+      action: defer
+      reason: review decision unclear
+  description: 'Shared step 5: user review result handling. The runtime intentionally avoids seven-option micro-menus; technical
+    sub-actions are inferred under revise.'
+- id: N_OUTPUT_TEMPLATE_CREATION_LOOP
+  question: Create or complete an output recipe/template. The user may use guided, free-form, uploaded-template, or AI-proposed
+    mode; no template-engine syntax knowledge is required.
+  answer_type: structured_list
+  user_facing_contract:
+    show_available_terminal_state_fields: true
+    support_authoring_modes:
+    - guided
+    - free_form
+    - uploaded_template
+    - ai_proposed
+    capture_direct_insert_vs_generated_sections: true
+    do_not_require_template_engine_syntax_from_user: true
+  on_answer:
+    update_state:
+      output_recipe_catalog: $append:$answer.output_recipe
+      output_template_catalog: $append:$answer.template
+      direct_insert_fields: $append:$answer.direct_insert_fields
+      generated_sections: $append:$answer.generated_sections
+      generation_instructions: $append:$answer.generation_instructions
+      template_required_state_fields: $append:$answer.required_state_fields
+    next: N_OUTPUT_REVIEW_PACKAGE_GENERATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_recipe_sections_fields_direct_vs_generated_or_upload_template
+    max_attempts: 2
+    on_exhausted:
+      action: defer_output_template
+      reason: template creation data incomplete
+  description: Creates or completes the output recipe/template and maps terminal state fields to direct inserts or generated
+    sections before review package generation.
+- id: N_TERMINAL_PATH_READY_CHECK
+  question: 'Show terminal path readiness: output policy, active artifacts, template/mock/mapping status, alpha limitations,
+    removed artifacts, unfinished blockers. Confirm ready only if there are no unfinished active artifacts/templates.'
+  answer_type: enum
+  allowed_answers:
+  - terminal_path_ready
+  - resolve_blockers
+  - remove_blocker_artifact
+  answer_options:
+    terminal_path_ready: Підтвердити terminal path ready
+    resolve_blockers: Доробити blocker
+    remove_blocker_artifact: Видалити blocker artifact
+  user_facing_contract:
+    show_readiness_card: true
+    if_blocked_show_only_resolve_or_remove: true
+    do_not_require_template_when_no_output_required: true
+    do_not_use_unfinished_active_artifacts: true
+  on_answer:
+    terminal_path_ready:
+      label: terminal path ready
+      update_state:
+        terminal_path_ready: true
+        terminal_path_ready_records: $append:$answer.ready_record
+      next: N_SUBTREE_REVIEW_COMPLETION_CHECK
+    resolve_blockers:
+      label: terminal path blockers need revision
+      update_state:
+        open_correction_items: $append:$answer.blockers
+      next: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+    remove_blocker_artifact:
+      label: blocker artifact removed
+      update_state:
+        removed_output_artifacts: $append:$answer.artifact
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: show_readiness_card_and_ask_ready_resolve_or_remove
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: terminal path readiness unclear
+  description: 'Shared step 7: terminal path ready check. Unfinished active templates/artifacts block output generation until
+    completed or removed.'
+- id: N_SUBTREE_REVIEW_COMPLETION_CHECK
+  question: 'Показати subtree review status: confirmed nodes/branches, unreviewed siblings, deferred return points, terminal
+    output binding, corrections, blocking open questions. Що робимо далі?'
+  answer_type: enum
+  allowed_answers:
+  - continue_sibling_review
+  - return_to_deferred_point
+  - fix_correction_items
+  - complete_subtree_review
+  - complete_with_accepted_deferred_items
+  answer_options:
+    continue_sibling_review: Продовжити review наступної sibling-гілки
+    return_to_deferred_point: Повернутися до deferred return point
+    fix_correction_items: Виправити відкриті correction items
+    complete_subtree_review: Завершити subtree review
+    complete_with_accepted_deferred_items: Завершити з accepted deferred items
+  on_answer:
+    continue_sibling_review:
+      label: next sibling branch
+      update_state:
+        subtree_review_completion_status: continue
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    return_to_deferred_point:
+      label: return to deferred
+      update_state:
+        subtree_review_completion_status: return_deferred
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    fix_correction_items:
+      label: fix corrections
+      update_state:
+        subtree_review_completion_status: needs_correction
+      next: N_DRAFT_SUBTREE_GENERATION
+    complete_subtree_review:
+      label: subtree complete
+      update_state:
+        subtree_review_completion_status: complete
+        tree_review_depth_first_complete: true
+      next: N_APPROVED_TREE_CONSOLIDATION
+    complete_with_accepted_deferred_items:
+      label: subtree complete with deferred alpha items
+      update_state:
+        subtree_review_completion_status: complete_with_deferred_alpha
+        approved_for_alpha_with_deferred_items: true
+      next: N_APPROVED_TREE_CONSOLIDATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_continue_deferred_fix_complete_or_complete_with_alpha_deferred
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: subtree completion status unclear
+  description: Prevents accidental tree closure while sibling branches, deferred return points, correction items or terminal
+    output bindings remain unresolved.
+- id: N_APPROVED_TREE_CONSOLIDATION
+  question: 'Зберіть approved tree summary: root, branches, terminal paths, output bindings, templates, deferred alpha items,
+    risks, implied state fields, gates і outputs/templates.'
+  answer_type: structured_list
+  on_answer:
+    update_state:
+      approved_decision_tree: $answer.approved_tree
+      terminal_output_bindings: $answer.terminal_output_bindings
+      accepted_deferred_for_alpha: $answer.accepted_deferred_for_alpha
+      tree_consolidation_status: $answer.status
+    next: N_STATE_SCHEMA_BLUEPRINT
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_for_approved_tree_summary_or_alpha_deferred_record
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: approved tree consolidation missing
+  description: Consolidates reviewed draft subtree into approved_decision_tree or approved_for_alpha_with_deferred_items before
+    state/gate/source YAML generation. Free-dialogue trees may enter here only after candidate outputs are either bound, marked
+    no-output, deferred/accepted for alpha, or removed.
+- id: N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
+  question: Describe freely what artifact should be created at this terminal point and why. The runtime shows available terminal
+    state fields first; examples are hints only, not a closed list.
+  answer_type: free_text_or_structured_list
+  user_facing_contract:
+    show_available_terminal_state_fields_first: true
+    artifact_examples_are_non_limiting_hints:
+    - Jira task
+    - GitHub issue
+    - document
+    - checklist
+    - JSON/YAML payload
+    - message
+    - handoff summary
+    - custom artifact
+    do_not_force_user_to_choose_from_fixed_type_list: true
+    infer_artifact_kind_but_confirm_with_user: true
+  on_answer:
+    update_state:
+      free_form_artifact_intent: $answer
+      inferred_artifact_kind: $ai.inferred_artifact_kind
+      candidate_output_artifact_catalog: $append:$ai.inferred_artifact_record
+      artifact_intent_confirmation_status: pending_user_confirmation
+    next: N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_user_to_describe_artifact_in_own_words_after_showing_available_state
+    max_attempts: 2
+    on_exhausted:
+      action: defer_output_decision
+      reason: new artifact intent unclear
+  description: Captures free-form artifact intent for a new terminal output. The runtime must show accumulated terminal path
+    state so the user can decide what to insert directly and what the model should generate.
+- id: N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
+  question: 'Confirm the interpreted artifact intent: purpose, audience, expected sections, and initial direct-vs-generated
+    fill logic.'
+  answer_type: enum
+  allowed_answers:
+  - confirm_artifact_intent
+  - revise_artifact_intent
+  - remove_artifact
+  - defer_artifact
+  answer_options:
+    confirm_artifact_intent: Підтвердити artifact intent
+    revise_artifact_intent: Доробити опис artifact
+    defer_artifact: Відкласти artifact
+    remove_artifact: Видалити artifact з terminal point
+  user_facing_contract:
+    show_interpreted_artifact_summary: true
+    show_initial_direct_vs_generated_logic: true
+    keep_actions_simple:
+    - confirm
+    - revise
+    - defer
+    - remove
+  on_answer:
+    confirm_artifact_intent:
+      label: artifact intent confirmed
+      update_state:
+        artifact_intent_confirmation_status: confirmed
+      next: N_OUTPUT_TEMPLATE_CREATION_LOOP
+    revise_artifact_intent:
+      label: artifact intent needs revision
+      update_state:
+        artifact_intent_confirmation_status: needs_revision
+      next: N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
+    defer_artifact:
+      label: artifact deferred
+      update_state:
+        unfinished_artifacts: $append:$answer.artifact
+      next: N_TERMINAL_PATH_READY_CHECK
+    remove_artifact:
+      label: artifact removed
+      update_state:
+        removed_output_artifacts: $append:$answer.artifact
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_revise_defer_or_remove_artifact_intent
+    max_attempts: 2
+    on_exhausted:
+      action: defer_artifact
+      reason: artifact intent confirmation unclear
+  description: Confirms AI interpretation of a free-form artifact request before recipe/template authoring begins.
+- id: N_OUTPUT_REVIEW_PACKAGE_GENERATION
+  question: 'Generate a review package for the artifact/template: template file, mock-filled example, mapping report, and
+    assumptions/risks summary. Use file-first mode for document-like artifacts.'
+  answer_type: enum
+  allowed_answers:
+  - review_package_generated
+  - review_package_generation_failed
+  answer_options:
+    review_package_generated: Review package generated
+    review_package_generation_failed: Review package generation failed / needs correction
+  user_facing_contract:
+    document_like_artifacts_default_review_mode: file_review_package
+    short_artifacts_may_use_inline_preview: true
+    file_review_package_contents:
+    - template_file
+    - mock_filled_example_file
+    - mapping_report
+    - assumptions_risks_summary
+    chat_shows_summary_not_full_large_documents: true
+  on_answer:
+    review_package_generated:
+      label: review package ready
+      update_state:
+        review_packages: $append:$answer.review_package
+        mock_filled_examples: $append:$answer.mock_example
+        mapping_reports: $append:$answer.mapping_report
+        assumptions_risks_summaries: $append:$answer.assumptions
+      next: N_OUTPUT_TEMPLATE_REVIEW_LOOP
+    review_package_generation_failed:
+      label: review package needs correction
+      update_state:
+        open_correction_items: $append:$answer.correction
+      next: N_OUTPUT_TEMPLATE_CREATION_LOOP
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: confirm_review_package_generated_or_fix_generation
+    max_attempts: 2
+    on_exhausted:
+      action: defer_output_template
+      reason: review package generation unclear
+  description: 'Shared step 4: review package/mock example generation. Large documents are delivered as downloadable files;
+    chat shows only a summary/mapping/risk card.'
+- id: N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
+  question: 'Confirm the final output binding for this terminal point: active artifacts, approved/alpha templates, reviewed
+    mock examples, state mapping, removed artifacts, and unfinished blockers.'
+  answer_type: enum
+  allowed_answers:
+  - confirm
+  - revise
+  - defer
+  - remove_output
+  answer_options:
+    confirm: Підтвердити
+    revise: Доробити
+    defer: Відкласти terminal point/output binding
+    remove_output: Видалити output з terminal point
+  user_facing_contract:
+    show_binding_summary_card: true
+    show_unfinished_artifacts_as_blockers: true
+    hide_large_documents: true
+    actions_simple:
+    - confirm
+    - revise
+    - defer
+    - remove_output
+  on_answer:
+    confirm:
+      label: terminal output binding confirmed
+      update_state:
+        terminal_output_binding_confirmations: $append:$answer.binding
+        terminal_output_binding_status: confirmed
+      next: N_TERMINAL_PATH_READY_CHECK
+    revise:
+      label: binding needs output/template revision
+      update_state:
+        open_correction_items: $append:$answer.revision
+      next: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+    defer:
+      label: terminal output binding deferred
+      update_state:
+        terminal_output_binding_status: deferred
+      next: N_TERMINAL_PATH_READY_CHECK
+    remove_output:
+      label: output removed from terminal point
+      update_state:
+        removed_output_artifacts: $append:$answer.output
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_revise_defer_or_remove_output_binding
+    max_attempts: 2
+    on_exhausted:
+      action: defer
+      reason: terminal output binding confirmation unclear
+  description: 'Shared step 6: confirms active output bindings after template/mock/mapping review and before terminal readiness.'
+- id: N_SHARED_TAIL_SOURCE_YAML_GENERATION
+  description: 'Shared tail step 1: generate or update source/program.ordo.yaml after explicit approval and a visible generation
+    scope summary.'
+  question: Процесна структура підтверджена. Згенерувати або оновити source/program.ordo.yaml на основі approved tree, state
+    schema, gates і output/template bindings?
+  answer_type: enum
+  allowed_answers:
+  - generate_or_update_yaml
+  - return_to_process_changes
+  - defer_generation
+  answer_options:
+    generate_or_update_yaml: Згенерувати / оновити YAML
+    return_to_process_changes: Повернутись до правок процесу
+    defer_generation: Відкласти генерацію
+  user_facing_contract:
+    show_pre_generation_scope_card: true
+    include_confirmed_startup_branches: true
+    include_shared_output_template_subflow_status: true
+    include_unfinished_items_policy: true
+    do_not_generate_without_explicit_approval: true
+  on_answer:
+    generate_or_update_yaml:
+      label: source yaml generated or updated
+      update_state:
+        source_yaml_generation_status: generated_or_updated
+      next: N_SHARED_TAIL_MINIMAL_VALIDATION
+    return_to_process_changes:
+      label: return to process changes
+      update_state:
+        source_yaml_generation_status: returned_for_revision
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    defer_generation:
+      label: source yaml generation deferred
+      update_state:
+        source_yaml_generation_status: deferred
+      next: STOP_SOURCE_YAML_GENERATION_DEFERRED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_generate_return_or_defer_source_yaml
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: source YAML generation action unclear
+- id: N_SHARED_TAIL_MINIMAL_VALIDATION
+  description: 'Shared tail step 2: minimal technical validation after YAML generation. Failed validation shows a short issue
+    list and routes to correction or blocked defer, not a separate show-details branch.'
+  question: 'Запустити minimal validation: YAML parse, Ordo lint, Ordo compile, structural next-reference check, and basic
+    orphan/dead-end check.'
+  answer_type: enum
+  allowed_answers:
+  - minimal_validation_passed
+  - minimal_validation_failed_start_correction
+  - minimal_validation_failed_defer_fix
+  answer_options:
+    minimal_validation_passed: Minimal validation passed
+    minimal_validation_failed_start_correction: Minimal validation failed → перейти до виправлення
+    minimal_validation_failed_defer_fix: Minimal validation failed → відкласти виправлення, handoff blocked
+  user_facing_contract:
+    show_short_issue_list_on_failure: true
+    details_are_inside_correction_mode: true
+    do_not_offer_separate_show_details_branch: true
+    handoff_blocked_if_failed: true
+  on_answer:
+    minimal_validation_passed:
+      label: minimal validation passed
+      update_state:
+        minimal_validation_status: passed
+      next: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+    minimal_validation_failed_start_correction:
+      label: minimal validation failed; correction mode
+      update_state:
+        minimal_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: correction_loop_started
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+    minimal_validation_failed_defer_fix:
+      label: minimal validation failed; fix deferred and handoff blocked
+      update_state:
+        minimal_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: deferred
+        handoff_blocked: true
+      next: STOP_VALIDATION_FIX_DEFERRED_HANDOFF_BLOCKED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_minimal_validation_passed_or_failed_correction_or_defer
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: minimal validation result unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-SHARED-TAIL-MINIMAL-VALIDATION
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: evidence_state
+    source_id: N_SHARED_TAIL_MINIMAL_VALIDATION
+    input:
+      state_projection:
+      - syntax_checked
+      - semantic_ir_compiled
+      - incremental_yaml_validation_status
+      - validation_findings_requiring_tree_correction
+      - unfinished_output_templates
+      - artifacts.implementation_prompt
+      - artifacts.source_code
+      - artifacts.repository_patch
+      - artifacts.tests
+      - artifacts.implementation_artifacts
+      - claims.implementation_complete
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PROMPT_AS_IMPLEMENTATION
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+- id: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+  description: 'Shared tail step 3: decide whether to run full validation now or explicitly skip it for alpha. Skipped is
+    recorded as a limitation and never as passed.'
+  question: Minimal validation passed. Запустити full validation зараз чи явно пропустити її для alpha?
+  answer_type: enum
+  allowed_answers:
+  - run_full_validation
+  - skip_full_validation_for_alpha
+  answer_options:
+    run_full_validation: Запустити full validation
+    skip_full_validation_for_alpha: Пропустити full validation для alpha
+  user_facing_contract:
+    explain_full_validation_scope:
+    - process_tests
+    - state_transition_validation
+    - next_step_validation
+    - output_template_validation
+    - factory_output_validation
+    - repo_release_integrity
+    do_not_silently_skip_full_validation: true
+    skipped_full_validation_is_limitation_not_passed: true
+  on_answer:
+    run_full_validation:
+      label: full validation requested
+      update_state:
+        full_validation_decision: run_now
+        full_validation_status: running_or_pending
+      next: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+    skip_full_validation_for_alpha:
+      label: full validation skipped for alpha
+      update_state:
+        full_validation_decision: skipped_for_alpha
+        full_validation_status: skipped
+        full_validation_limitation_recorded: true
+        accepted_alpha_limitations: $append:full_validation_skipped_for_alpha
+      next: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_run_full_validation_or_skip_for_alpha
+    max_attempts: 2
+    on_exhausted:
+      action: record_skipped_full_validation_for_alpha
+      reason: full validation decision unclear
+- id: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+  description: 'Shared tail step 4: review full validation result. Failed checks route to correction or blocked/deferred;
+    failed/skipped is never called passed.'
+  question: 'Full validation завершено. Review result: passed або failed. Якщо failed, показати короткий issue list і перейти
+    до correction або blocked defer.'
+  answer_type: enum
+  allowed_answers:
+  - full_validation_passed
+  - full_validation_failed_start_correction
+  - full_validation_failed_defer_fix
+  answer_options:
+    full_validation_passed: Full validation passed
+    full_validation_failed_start_correction: Full validation failed → перейти до виправлення
+    full_validation_failed_defer_fix: Full validation failed → відкласти виправлення
+  user_facing_contract:
+    show_check_result_summary: true
+    show_short_issue_list_on_failure: true
+    details_are_inside_correction_mode: true
+    do_not_call_failed_or_skipped_passed: true
+  on_answer:
+    full_validation_passed:
+      label: full validation passed
+      update_state:
+        full_validation_status: passed
+        validation_issues: []
+      next: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    full_validation_failed_start_correction:
+      label: full validation failed; correction mode
+      update_state:
+        full_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: correction_loop_started
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+    full_validation_failed_defer_fix:
+      label: full validation failed; fix deferred
+      update_state:
+        full_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: deferred
+        handoff_blocked_for_release: true
+      next: STOP_VALIDATION_FIX_DEFERRED_HANDOFF_BLOCKED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_full_validation_passed_failed_correction_or_defer
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: full validation result unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-SHARED-TAIL-RESULT-REVIEW
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: evidence_state
+    source_id: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+    input:
+      state_projection:
+      - full_project_validation_status
+      - validation_findings_requiring_tree_correction
+      - accepted_deferred_for_alpha
+      - unfinished_output_templates
+      - handoff_status
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      - package.final_label
+      - evidence.supports_final_label
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+    - FINAL_LABEL_OVERCLAIM
+- id: N_SHARED_TAIL_CORRECTION_LOOP
+  description: 'Shared tail step 5: scoped correction loop for validation issues. It shows what is broken, proposes minimal
+    scoped fixes, and distinguishes technical fixes from process-logic changes.'
+  question: Validation issues require correction. Review the short issue list and a scoped correction plan. Apply scoped corrections,
+    request/manual revision, or defer correction.
+  answer_type: enum
+  allowed_answers:
+  - apply_scoped_corrections
+  - manual_revision_requested
+  - defer_correction
+  answer_options:
+    apply_scoped_corrections: Застосувати scoped corrections
+    manual_revision_requested: Виправити вручну / уточнити
+    defer_correction: Відкласти correction
+  user_facing_contract:
+    show_what_is_broken: true
+    show_minimal_scoped_fix: true
+    label_if_process_logic_changes: true
+    do_not_apply_large_unexplained_patch: true
+  on_answer:
+    apply_scoped_corrections:
+      label: scoped corrections applied
+      update_state:
+        correction_loop:
+          user_decision: apply_scoped_corrections
+          correction_status: applied
+          proposed_corrections: $answer.corrections
+          correction_scope: $answer.scope
+      next: N_SHARED_TAIL_MINIMAL_VALIDATION
+    manual_revision_requested:
+      label: manual revision requested
+      update_state:
+        correction_loop:
+          user_decision: manual_revision_requested
+          correction_status: pending
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    defer_correction:
+      label: correction deferred
+      update_state:
+        correction_loop:
+          user_decision: deferred
+          correction_status: deferred
+        handoff_blocked: true
+      next: STOP_VALIDATION_FIX_DEFERRED_HANDOFF_BLOCKED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_apply_manual_or_defer_correction
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: correction decision unclear
+- id: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+  description: 'Shared tail step 6: final unfinished-items/readiness gate before handoff package generation.'
+  question: 'Final readiness check: unfinished artifacts/templates, deferred outputs, validation limitations, accepted alpha
+    limitations, removed artifacts, and blocking items.'
+  answer_type: enum
+  allowed_answers:
+  - ready_for_handoff
+  - resolve_blockers
+  - remove_blocking_artifacts
+  - defer_handoff
+  answer_options:
+    ready_for_handoff: Blocking items немає → перейти до handoff package generation
+    resolve_blockers: Доробити blockers
+    remove_blocking_artifacts: Видалити blocking artifacts
+    defer_handoff: Відкласти handoff
+  user_facing_contract:
+    show_final_readiness_card: true
+    show_alpha_limitations_separately: true
+    if_blocked_keep_options_simple:
+    - resolve_blockers
+    - remove_blocking_artifacts
+    - defer_handoff
+    do_not_use_removed_artifacts: true
+    do_not_use_unfinished_active_artifacts: true
+  on_answer:
+    ready_for_handoff:
+      label: ready for handoff
+      update_state:
+        final_readiness_status: ready_for_handoff
+      next: N_SHARED_TAIL_DELIVERY_TARGET_DECISION
+    resolve_blockers:
+      label: blockers need correction
+      update_state:
+        final_readiness_status: blocked
+        open_correction_items: $append:$answer.blockers
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+    remove_blocking_artifacts:
+      label: blocking artifacts removed
+      update_state:
+        removed_output_artifacts: $append:$answer.artifacts
+      next: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    defer_handoff:
+      label: handoff deferred
+      update_state:
+        final_readiness_status: deferred
+      next: STOP_HANDOFF_DEFERRED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_ready_resolve_remove_or_defer_handoff
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: final readiness decision unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-SHARED-TAIL-UNFINISHED-BRANCHES
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: runtime_state
+    source_id: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    input:
+      state_projection:
+      - unfinished_output_templates
+      - open_questions
+      - deferred_return_points
+      - unreviewed_sibling_branches
+      - terminal_path_ready_records
+      - process.required_stages
+      - process.completed_stages
+      - process.stage_order
+      - process.current_stage
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - MANDATORY_BRANCH_SHORT_CIRCUIT
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-SHARED-TAIL-UNFINISHED-COMPLETENESS
+    phase: after_state_update_before_transition
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: evidence_state
+    source_id: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+    input:
+      state_projection:
+      - unfinished_output_templates
+      - open_questions
+      - terminal_path_ready_records
+      - full_project_validation_status
+      - validation_findings_requiring_tree_correction
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+- id: N_SHARED_TAIL_DELIVERY_TARGET_DECISION
+  description: 'Shared tail delivery decision: after the canonical playbook contract and validation are stable, ARF recommends a delivery target and the analyst confirms engine runtime, prompt-only instructions, or both.'
+  question: 'The canonical playbook is validated. Review the ARF recommendation and choose the delivery target: engine_runtime, prompt_only, or both. Prompt-only does not retain mechanical gates, runtime state validation, enforced transitions, CSG protection, or default runtime evidence capture.'
+  answer_type: enum
+  allowed_answers:
+  - engine_runtime
+  - prompt_only
+  - both
+  answer_options:
+    engine_runtime: Full controlled ARF runtime package
+    prompt_only: Lightweight model-instruction package
+    both: Both packages from the same canonical Ordo source
+  preconditions:
+  - canonical_playbook_contract_stable
+  - full_project_validation_status_ready
+  recommendation_contract:
+    assessment_inputs:
+    - risk_level
+    - branch_count
+    - gate_count
+    - backtrack_point_count
+    - mechanical_enforcement_required
+    - regulated_or_high_consequence
+    - prompt_evidence
+    safe_default: engine_runtime
+    analyst_confirmation_required: true
+    prompt_only_requires_sufficient_evidence: true
+  user_facing_contract:
+    show_recommended_target: true
+    show_recommendation_reasons: true
+    show_prompt_only_guarantees_lost: true
+    do_not_ask_before_contract_stabilization: true
+    allow_both: true
+  on_answer:
+    engine_runtime:
+      label: full controlled runtime
+      update_state:
+        delivery_target: engine_runtime
+        delivery_target_decision_status: confirmed
+        engine_runtime_package_required: true
+        prompt_only_package_required: false
+      next: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+    prompt_only:
+      label: lightweight model instructions
+      update_state:
+        delivery_target: prompt_only
+        delivery_target_decision_status: confirmed_subject_to_evidence_gate
+        engine_runtime_package_required: false
+        prompt_only_package_required: true
+        prompt_only_guarantee_loss_acknowledged: true
+      next: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+    both:
+      label: both delivery targets
+      update_state:
+        delivery_target: both
+        delivery_target_decision_status: confirmed
+        engine_runtime_package_required: true
+        prompt_only_package_required: true
+        prompt_only_guarantee_loss_acknowledged: true
+      next: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: explain_three_delivery_targets_and_show_safe_default
+    max_attempts: 2
+    on_exhausted:
+      action: default_to_safe_target
+      target: engine_runtime
+      reason: delivery target remains unclear
+  allowed_from:
+  - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+- id: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+  description: 'Shared tail step 7: generate the analyst-confirmed delivery target package(s) after final readiness and delivery-target decision are complete.'
+  question: 'Процес готовий до handoff. Згенерувати handoff package: source YAML, compiled artifacts, validation report, output/template
+    catalog, terminal binding summary, alpha limitations, unfinished/removed items log, changelog/release notes, usage/start
+    prompt notes.'
+  answer_type: enum
+  allowed_answers:
+  - handoff_package_generated
+  - handoff_package_failed
+  answer_options:
+    handoff_package_generated: Handoff package generated
+    handoff_package_failed: Handoff package generation failed
+  user_facing_contract:
+    file_first_handoff_package: true
+    show_package_summary_card: true
+    include_download_link: true
+    show_alpha_limitations: true
+    do_not_generate_if_final_readiness_not_ready: true
+  on_answer:
+    handoff_package_generated:
+      label: handoff package ready
+      update_state:
+        handoff_package_status: ready
+        handoff_package:
+          package_status: generated
+          package_files: $answer.files
+          package_summary: $answer.summary
+      next: N_SHARED_TAIL_FINAL_HANDOFF
+    handoff_package_failed:
+      label: handoff package failed
+      update_state:
+        handoff_package_status: failed
+        open_correction_items: $append:$answer.issue
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_handoff_package_generated_or_failed
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: handoff package status unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-HANDOFF-PACKAGE-GENERATION
+    phase: before_package_finalization
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: package_state
+    source_id: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
+    input:
+      state_projection:
+      - process_package_status
+      - full_project_validation_status
+      - unfinished_output_templates
+      - terminal_path_ready_records
+      - artifact_review_mode_policy
+      - artifacts.implementation_prompt
+      - artifacts.source_code
+      - artifacts.repository_patch
+      - artifacts.tests
+      - artifacts.implementation_artifacts
+      - claims.implementation_complete
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      - package.final_label
+      - evidence.supports_final_label
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PROMPT_AS_IMPLEMENTATION
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+    - FINAL_LABEL_OVERCLAIM
+- id: N_SHARED_TAIL_FINAL_HANDOFF
+  description: 'Shared tail step 8: final handoff decision after package generation. User either accepts the package or returns
+    it for revision.'
+  question: Handoff package готовий. Прийняти package або повернутись до правок?
+  answer_type: enum
+  allowed_answers:
+  - accept_handoff_package
+  - return_to_revision
+  answer_options:
+    accept_handoff_package: Прийняти handoff package
+    return_to_revision: Повернутись до правок
+  user_facing_contract:
+    show_final_handoff_summary: true
+    show_package_link: true
+    show_validation_status_without_overclaiming: true
+    show_alpha_limitations_if_any: true
+    only_two_actions:
+    - accept_handoff_package
+    - return_to_revision
+  on_answer:
+    accept_handoff_package:
+      label: handoff accepted
+      update_state:
+        handoff_status: accepted
+        process_package_status: ready_for_use_or_next_review
+      next: END_HANDOFF_ACCEPTED
+    return_to_revision:
+      label: handoff returned for revision
+      update_state:
+        handoff_status: returned_for_revision
+        revision_loop_status: opened
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_accept_handoff_or_return_to_revision
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: final handoff decision unclear
+  antipattern_hooks:
+  - schema_version: ordo.antipattern_wiring_hook.v1
+    hook_id: APH-FINAL-HANDOFF
+    phase: before_final_status_claim
+    adapter:
+      module: language.integration.antipattern_gate_adapter
+      class: AntipatternGateAdapter
+      method: evaluate_gate
+      activation_profile: language/integration/antipattern_activation_profile.apf.v1.json
+    context_type: evidence_state
+    source_id: N_SHARED_TAIL_FINAL_HANDOFF
+    input:
+      state_projection:
+      - handoff_status
+      - process_package_status
+      - full_project_validation_status
+      - accepted_deferred_for_alpha
+      - antipattern_gate_status
+      - antipattern_findings
+      - package.structure_valid
+      - package.missing_mandatory_artifacts
+      - package.final_label
+      - evidence.supports_final_label
+      source_hash_ref: null
+      required_signals_policy: explicit_projection_must_cover_blocking_rules
+    output:
+      report_state_field: antipattern_gate_report
+      findings_state_field: antipattern_findings
+      gate_status_state_field: antipattern_gate_status
+      evidence_refs_state_field: antipattern_evidence_refs
+    decision_policy:
+      block: stop_transition_and_route_to_repair
+      allow_with_advisory: continue_and_persist_findings
+      allow: continue_and_persist_report
+      inconclusive: block_when_required_signals_missing_for_blocking_rule
+    routing:
+      on_block:
+        action: route_to_repair
+        repair_target: N_SHARED_TAIL_CORRECTION_LOOP
+      on_allow:
+        action: continue_transition
+      on_advisory:
+        action: continue_transition_with_evidence
+    enabled_antipattern_overrides:
+    - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
+    - FINAL_LABEL_OVERCLAIM
+- id: END_HANDOFF_ACCEPTED
+  description: 'Terminal marker: handoff package accepted and process package ready for use or next review.'
+  terminal: true
+  required_fields: []
+  on_enter:
+    update_state:
+      handoff_status: accepted
+      process_package_status: ready_for_use_or_next_review
+  on_unmatched_input:
+    action: IGNORE
+    reason: terminal node

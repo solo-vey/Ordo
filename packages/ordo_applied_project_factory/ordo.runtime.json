@@ -1,0 +1,68 @@
+{
+  "package_id": "ordo.applied_project_factory",
+  "package_version": "0.1.0-rc.1",
+  "profile": "runtime",
+  "runtime_source": "compiled/program.ir.json",
+  "templates": "output_templates/",
+  "source_yaml_included": false,
+  "embedded_cli_included": true,
+  "embedded_cli_path": "cli_embedded/ordo",
+  "trust_level": "level_1_cli_in_package_hard_stop",
+  "trust_level_detail": "level_1_cli_in_package_hard_stop_hash_chain_human_verify_m59_4_hardened_m60_4_restore_session",
+  "trust_level_capabilities": [
+    "embedded_cli",
+    "hard_stop",
+    "per_node_evidence",
+    "hash_chain",
+    "verify_session",
+    "restore_session",
+    "canary",
+    "multi_target_manifest",
+    "session_trace",
+    "runtime_view_modes",
+    "ordo_code_view"
+  ],
+  "runtime_view": "ordo-code",
+  "runtime_view_behavior": {
+    "runtime_view": "ordo-code",
+    "ai_facing_mode": "ordo_code_contract",
+    "default_next_step_format": "ordo-code",
+    "question_protocol": "AI shows CLI-rendered current_contract fragment plus question and report digest.",
+    "allowed_cli_formats": [
+      "ordo-code"
+    ]
+  },
+  "canonical_target": "json-ir",
+  "targets_manifest": "compiled/targets.manifest.json",
+  "compiled_targets": [
+    "json-ir",
+    "ordo-code-view",
+    "session-trace"
+  ],
+  "source_yaml_sha256": "7ac82a08fcda2245d540d894f7ae8febe27c08abc3bada72762de83ed15a46f1",
+  "compiled_ir_sha256": "d76cde286b0b649490a4d50750d0485cb78ae140af0eec7fab50d6f84dcb6d0e",
+  "compiler_version": "0.12",
+  "cli_validation_status": "executed_cli_passed",
+  "antipattern_enforcement": {
+    "status": "fundamental_taxonomy_bound_runtime_hooks_active",
+    "binding": "integration/antipattern_runtime_binding.apf.v1.json",
+    "bootstrap": "integration/antipattern_runtime_binding.py",
+    "activation_profile": "../../language/integration/antipattern_activation_profile.apf.v1.json",
+    "profile_id": "APF_ANTIPATTERN_CORE_V1",
+    "adapter": "../../language/integration/antipattern_gate_adapter.py",
+    "fail_closed": true,
+    "critical_node_hooks_connected": true,
+    "runtime_executor": "integration/antipattern_hook_runtime.py",
+    "behavior": {
+      "block": "stop_transition_and_route_to_repair",
+      "allow_with_advisory": "continue_and_persist_findings",
+      "allow": "continue_and_persist_report",
+      "inconclusive_or_runtime_error": "fail_closed_and_route_to_repair"
+    },
+    "fundamental_registry": "../../language/registries/fundamental_antipattern_registry.v1.json",
+    "taxonomy_governance": "../../language/registries/antipattern_taxonomy_governance.v1.json",
+    "runtime_detection_level": "subpattern",
+    "governance_level": "fundamental",
+    "new_fundamental_requires_owner_approval": true
+  }
+}

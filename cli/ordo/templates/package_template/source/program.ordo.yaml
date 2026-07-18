@@ -1,0 +1,122 @@
+ordo:
+  version: "0.12"
+  package: "simple.requirements_intake"
+  control_level: standard
+  execution_mode: chat_internal
+
+includes:
+  - library: "ordo.validation.contract_first"
+    version: "^0.2.0"
+    as: "contract_first"
+
+intent:
+  id: INTENT_CREATE_SIMPLE_PACKAGE
+  description: "Створити простий Ordo-пакет для керованого збору вимог."
+
+contract:
+  id: CONTRACT_PACKAGE_CREATION
+  required:
+    - package_goal
+    - expected_outputs
+    - approval_before_final
+
+state:
+  id: STATE_PACKAGE_CREATION
+  schema:
+    package_goal: null
+    expected_outputs: []
+    approval_received: false
+    output_allowed: false
+
+graph_contract:
+  entry_node: N_PACKAGE_GOAL
+  external_terminal_targets:
+    - G_APPROVAL_CONFIRMED
+    - STOP_NEEDS_APPROVAL
+
+nodes:
+  - id: N_PACKAGE_GOAL
+    question: "Яка головна мета пакета?"
+    answer_type: free_text
+    on_answer:
+      update_state:
+        package_goal: "$answer"
+      next: N_EXPECTED_OUTPUTS
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: rephrase_and_narrow
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: "user input does not match package goal question"
+
+  - id: N_EXPECTED_OUTPUTS
+    question: "Які результати має створити пакет?"
+    answer_type: list
+    on_answer:
+      update_state:
+        expected_outputs: "$answer"
+      next: N_APPROVAL
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: show_examples
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: "expected outputs remain unclear"
+
+  - id: N_APPROVAL
+    question: "Підтверджуєте, що фінальний пакет можна створювати тільки після явного approval?"
+    answer_type: enum
+    allowed_answers: ["yes", "no"]
+    on_answer:
+      "yes":
+        update_state:
+          approval_received: true
+        next: G_APPROVAL_CONFIRMED
+      "no":
+        next: STOP_NEEDS_APPROVAL
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: rephrase_and_narrow
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+        reason: "approval answer not matched"
+
+gates:
+  - id: G_GOAL_PRESENT
+    method: mechanical
+    trust_class: deterministic
+    condition: "state.package_goal is not null"
+    on_fail: block
+
+  - id: G_APPROVAL_CONFIRMED
+    method: human
+    trust_class: human_decision
+    condition: "approval_received is confirmed by user"
+    on_fail: block
+
+assertions:
+  - id: A_NO_FINAL_WITHOUT_APPROVAL
+    polarity: not
+    condition: "final_package_created_without_approval"
+    phase: [runtime, test]
+    severity: block
+    on_fail: STOP
+
+outputs:
+  - id: OUT_PACKAGE
+    type: archive
+    allowed_after:
+      - G_GOAL_PRESENT
+      - G_APPROVAL_CONFIRMED
+
+freeform:
+  - id: FF_PACKAGE_AUTHOR_NOTES
+    role: domain_explanation
+    maturity: stable
+    incident_count: 0
+    incident_threshold: 3
+    content: |
+      Автор пакета може додати короткі пояснення щодо домену, але обов'язкові правила мають бути винесені в gates або assertions.

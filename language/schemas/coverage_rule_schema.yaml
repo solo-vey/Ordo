@@ -1,0 +1,16 @@
+CoverageRule:
+  type: object
+  required: [kind, id, input, output, failure_policy]
+  properties:
+    kind:
+      const: coverage_rule
+    id:
+      type: string
+    input:
+      enum: [confirmed_contracts, all_contracts, rendered_artifacts]
+    output:
+      enum: [artifact_requirements, consistency_report, go_no_go]
+    failure_policy:
+      enum: [warn, fail, no_go]
+    description:
+      type: string

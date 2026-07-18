@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.current_state_selection_report.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_families"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.current_state_selection_report.v1"
+    },
+    "artifact_families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "logical_artifact_id",
+          "candidates_found",
+          "selected",
+          "selection_reason",
+          "sha256",
+          "excluded_alternatives"
+        ]
+      }
+    }
+  }
+}

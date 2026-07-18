@@ -1,0 +1,41 @@
+{
+  "schema_version": "pathwalk.model_transcript.v1",
+  "benchmark_protocol_version": "M60.6.4",
+  "job_id": "scenario_000_json_transcript-replay",
+  "scenario_id": "scenario_000",
+  "runtime_view": "json",
+  "cli_mode": "enforced",
+  "benchmark_mode": "transcript-replay",
+  "model": {
+    "provider": "offline",
+    "name": "synthetic-transcript-pilot",
+    "driver": "transcript-replay-pilot"
+  },
+  "started_at": "2026-07-07T22:37:33Z",
+  "completed_at": "2026-07-07T22:37:33Z",
+  "result_status": "completed",
+  "pilot_behavior": "perfect",
+  "turns": [
+    {
+      "turn_index": 1,
+      "turn_type": "forward_valid",
+      "user_prompt": "давай повернемось до кроку 5",
+      "model_response": "I used the runtime prompt and submitted the expected answer.",
+      "expected_node_after": "STEP_0_8ee1f0",
+      "asked_node_id": "STEP_0_8ee1f0",
+      "tool_calls": [
+        {
+          "command": "./cli_embedded/ordo next-step . --format auto",
+          "exit_code": 0,
+          "stdout_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "stderr_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "output_truncated": true
+        }
+      ]
+    }
+  ],
+  "redaction": {
+    "api_keys_removed": true,
+    "secrets_removed": true
+  }
+}

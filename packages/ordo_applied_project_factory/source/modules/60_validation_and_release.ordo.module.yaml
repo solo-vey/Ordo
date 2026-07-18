@@ -1,0 +1,21 @@
+coverage_rules:
+- kind: coverage_rule
+  id: COVERAGE_CONFIRMED_FACTORY_CONTRACTS_TO_ARTIFACTS
+  input: confirmed_contracts
+  output: artifact_requirements
+  failure_policy: no_go
+  description: Every confirmed factory contract must have artifact coverage.
+go_no_go:
+  kind: go_no_go
+  status: go
+  blocking_issues: []
+  warnings:
+  - M61.1 intentionally defers confusion/self-test generation until a later milestone.
+  - M61.5 stabilizes the free-dialogue branch as a self-hosted authoring loop; confusion/self-test generation remains deferred.
+  - M61.6 adds focused/context SVG-by-default policy and a language-improvement proposal artifact for provisional language
+    gaps.
+  - APF v0.1.0-alpha.8 makes SVG generation on-request only and requires user-facing node descriptions, plain-language extraction
+    summaries, and a process-feedback YAML reload loop.
+  - APF v0.1.0-alpha.11 uses incremental YAML patches with minimal checks during tree review; full CLI validation is deferred
+    to terminal/pre-handoff gate.
+  - APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected/blocked control actions during runtime review.

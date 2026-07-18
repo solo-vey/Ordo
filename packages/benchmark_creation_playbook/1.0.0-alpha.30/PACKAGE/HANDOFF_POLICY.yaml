@@ -1,0 +1,21 @@
+schema_version: ordo.benchmark.handoff-policy.v1
+policy_version: 1.0.0
+reading_order:
+- handoff/HANDOFF_README.md
+- handoff/CURRENT_STATE.md
+- BACKLOG.md
+- handoff/NEXT_ACTION.md
+receiver_preflight:
+- verify_checksums
+- confirm_no_downgrade
+- confirm_authority_order
+- preserve_ids_and_history
+- stop_on_integrity_failure
+statuses:
+- READY_FOR_TRANSFER
+- READY_WITH_OPEN_WORK
+- BLOCKED_INTEGRITY
+- BLOCKED_MISSING_AUTHORITY
+- HISTORICAL_ONLY
+current_status: READY_FOR_TRANSFER
+open_work: []

@@ -1,0 +1,16 @@
+atomic_step_review_validation_report:
+  package_id: null
+  validation_contract_version: '0.1'
+  status: not_run
+  executed_at: null
+  summary:
+    active_steps: 0
+    reviewed_steps: 0
+    blocking_failures: 0
+    advisories: 0
+    pending_human_decisions: 0
+  gates: {}
+  release_decision:
+    allowed: false
+    reason_codes:
+      - ASR_VALIDATION_NOT_RUN

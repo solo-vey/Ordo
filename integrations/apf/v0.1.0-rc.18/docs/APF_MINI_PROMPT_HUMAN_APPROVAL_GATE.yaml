@@ -1,0 +1,74 @@
+gate_id: apf.mini_prompt_human_approval.v1
+status: accepted-working-gate
+applies_to: downstream_playbook_mini_prompt_candidates
+milestone: PMP-2
+gate_type: blocking_human_confirmation
+purpose: Require a named human decision on necessity, wording, scope, use phase and
+  validation scenarios before a candidate can proceed to downstream registry and attachment
+  generation.
+required_review_dimensions:
+- prompt_necessity
+- prompt_text
+- target_scope
+- intended_use_phase
+- required_context
+- prohibited_authority
+- fallback_behavior
+- validation_scenarios
+- conflict_and_duplication_review
+decisions:
+- approved
+- needs_revision
+- rejected
+- deferred
+decision_effects:
+  approved:
+    candidate_status: approved
+    may_proceed_to: PMP-3 registry and attachment generation
+    automatically_activates_prompt: false
+    automatically_creates_prompt_ref: false
+  needs_revision:
+    candidate_status: needs_revision
+    may_proceed_to: candidate revision only
+  rejected:
+    candidate_status: rejected
+    may_proceed_to: none unless a new sufficiency review reopens the need
+  deferred:
+    candidate_status: deferred
+    may_proceed_to: none until explicit human reopening
+required_approval_record_fields:
+- review_record_id
+- candidate_id
+- playbook_id
+- reviewer
+- reviewer_role
+- decision
+- reviewed_at
+- necessity_decision
+- text_decision
+- scope_decision
+- use_phase_decision
+- validation_decision
+- requested_changes
+- decision_rationale
+- next_authorized_action
+approval_integrity_rules:
+- approval_must_reference_exact_candidate_id
+- approval_must_reference_exact_prompt_text_version_or_hash
+- material_prompt_text_change_invalidates_prior_approval
+- scope_or_use_phase_change_requires_reapproval
+- approval_cannot_be_inferred_from_general_playbook_approval
+- approval_cannot_be_self-issued_by_ai
+blocking_conditions:
+- candidate_record_missing
+- candidate_status_not_proposed_or_needs_revision
+- reviewer_not_human
+- required_review_dimension_missing
+- material_open_issue_exists
+- authority_violation_detected
+- candidate_text_changed_after_approval
+non_goals:
+- runtime_activation
+- registry_generation
+- prompt_attachment
+- internal_apf_prompt_approval

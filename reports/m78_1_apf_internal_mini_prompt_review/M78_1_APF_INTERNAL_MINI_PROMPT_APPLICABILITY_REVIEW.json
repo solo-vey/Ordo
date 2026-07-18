@@ -1,0 +1,77 @@
+{
+  "schema_version": "ordo.apf.internal_mini_prompt_applicability_review.v1",
+  "milestone": "M78.1",
+  "baseline": "APF v0.1.0-rc.18 confirmed baseline with M75-M77 improvements",
+  "review_scope": "representative internal APF nodes and gates",
+  "reviews": [
+    {
+      "review_id": "apf-impr-001",
+      "object_id": "PACKAGE_PROFILE_GATE",
+      "object_type": "blocking_gate",
+      "classification": "simple_instruction_sufficient",
+      "rationale": "Package profile selection and blocking conditions are deterministic and already enforced by explicit gate and confirmation policies.",
+      "mini_prompt_applicable": false,
+      "decision": "do_not_create"
+    },
+    {
+      "review_id": "apf-impr-002",
+      "object_id": "GATE_ORDER_CONFIRMATION_GATE",
+      "object_type": "confirmation_gate",
+      "classification": "prompt_prohibited",
+      "rationale": "Gate order changes require authoritative human confirmation; a mini-prompt must not influence or replace that decision.",
+      "mini_prompt_applicable": false,
+      "decision": "prohibit"
+    },
+    {
+      "review_id": "apf-impr-003",
+      "object_id": "ATOMICITY_GATE",
+      "object_type": "validation_gate",
+      "classification": "simple_instruction_sufficient",
+      "rationale": "Atomicity severity, decomposition and blocking behavior are fully specified and machine validated.",
+      "mini_prompt_applicable": false,
+      "decision": "do_not_create"
+    },
+    {
+      "review_id": "apf-impr-004",
+      "object_id": "VALIDATION_REPORT_INTERPRETATION",
+      "object_type": "validation_report_interpretation_step",
+      "classification": "simple_instruction_sufficient",
+      "rationale": "Current diagnostics expose severity, path and remediation; additional prompt guidance would duplicate structured evidence.",
+      "mini_prompt_applicable": false,
+      "decision": "do_not_create"
+    },
+    {
+      "review_id": "apf-impr-005",
+      "object_id": "PACKAGE_ASSEMBLY_AND_HANDOFF",
+      "object_type": "artifact_generation_step",
+      "classification": "simple_instruction_sufficient",
+      "rationale": "Assembly, checksum, clean-package and handoff requirements are deterministic and covered by release-hygiene gates.",
+      "mini_prompt_applicable": false,
+      "decision": "do_not_create"
+    },
+    {
+      "review_id": "apf-impr-006",
+      "object_id": "CSG_RUNTIME_CLASSIFICATION",
+      "object_type": "runtime_control_step",
+      "classification": "prompt_prohibited",
+      "rationale": "CSG classification and state protection are runtime policy decisions; an internal mini-prompt must not override enforcement.",
+      "mini_prompt_applicable": false,
+      "decision": "prohibit"
+    }
+  ],
+  "summary": {
+    "reviewed_objects": 6,
+    "new_prompt_candidates": 0,
+    "simple_instruction_sufficient": 4,
+    "prompt_prohibited": 2,
+    "internal_prompts_to_activate": 0,
+    "decision": "internal_mini_prompts_not_applicable_in_current_baseline"
+  },
+  "claim_boundary": "Decision applies to current APF baseline. Reopen only when replay evidence shows repeatable execution variance not solvable by contract, schema, diagnostics or runtime enforcement.",
+  "reopen_conditions": [
+    "same internal node fails in at least two independent replay runs",
+    "failure is guidance variance rather than missing contract or runtime defect",
+    "contract strengthening has been attempted and documented",
+    "process owner explicitly approves candidate review"
+  ]
+}

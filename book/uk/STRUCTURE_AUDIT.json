@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "manifest_entries": 79,
+  "chapter_files_present": 79,
+  "image_references_checked": 83,
+  "missing_assets": [],
+  "execution_trace_chapters": [
+    "chapter_74_execution_trace_core_language_element.md",
+    "chapter_75_execution_trace_tooling_testing_replay.md"
+  ]
+}

@@ -1,0 +1,89 @@
+execution_trace_authoring_flow_integration:
+  contract_id: apf.execution_trace.authoring_flow_integration.v1
+  ordo_alignment: v0.12-M72
+  status: active
+
+  boundary:
+    apf_generates_actual_trace: false
+    apf_internal_trace_enabled_by_default: false
+    generated_playbook_runtime_generates_trace: true
+
+  mandatory_authoring_steps:
+    - id: trace_design_decision
+      after: object_and_runtime_contracts
+      before: package_assembly
+      output: execution_trace_design_decision
+    - id: trace_event_coverage_mapping
+      condition: execution_trace.supported == true
+      output: runtime/trace_event_mapping.yaml
+    - id: trace_runtime_contracts
+      condition: execution_trace.supported == true
+      outputs:
+        - runtime/execution_trace_config.yaml
+        - runtime/execution_trace_schema.yaml
+        - runtime/trace_redaction_policy.yaml
+        - runtime/trace_replay_policy.yaml
+    - id: trace_adapter_contract
+      condition: execution_trace.runtime_mode == runtime_enforced
+      outputs:
+        - runtime/trace_adapter_contract.yaml
+        - runtime/trace_adapter_conformance_report.yaml
+    - id: trace_validation_gate
+      condition: execution_trace.supported == true
+      output: validation/execution_trace_validation_report.yaml
+
+  design_decision_required_fields:
+    - supported
+    - enabled_by_default
+    - capture_level
+    - replay.mode
+    - runtime_toggle.allowed
+    - runtime_mode
+    - trace_source
+    - storage.path
+    - retention.strategy
+    - redaction.policy_ref
+    - human_confirmation.status
+
+  defaults:
+    apf_internal:
+      supported: true
+      enabled_by_default: false
+    generated_playbook:
+      supported: true
+      enabled_by_default: true
+      capture_level: standard
+      replay_mode: deterministic
+      runtime_toggle_allowed: true
+
+  package_rules:
+    supported_false:
+      required_artifact: execution_trace_design_decision
+      runtime_trace_artifacts_generated: false
+      rationale_required: true
+    supported_true:
+      runtime_trace_artifacts_generated: true
+      validation_must_pass: true
+    enabled_by_default_false:
+      capability_artifacts_still_generated: true
+      rationale_required: true
+    runtime_enforced:
+      adapter_contract_required: true
+      conformance_report_required: true
+
+  release_blockers:
+    - missing_trace_design_decision
+    - missing_human_confirmation
+    - unsupported_event_type
+    - incomplete_gate_or_output_coverage
+    - missing_redaction_policy
+    - replay_claim_without_readiness_evidence
+    - runtime_enforced_without_adapter_conformance
+    - trace_artifacts_present_when_supported_false
+
+  transfer_requirements:
+    - declare_trace_support_and_defaults
+    - declare_runtime_toggle_policy
+    - declare_runtime_adapter_status
+    - declare_replay_readiness
+    - declare_known_trace_limitations

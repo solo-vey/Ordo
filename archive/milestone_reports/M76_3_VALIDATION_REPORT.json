@@ -1,0 +1,21 @@
+{
+  "milestone": "M76.3",
+  "status": "passed",
+  "backlog_item": "BL-ORDO-004",
+  "checks": {
+    "backlog_md_json_status_sync": "passed",
+    "current_csg_maturity_sync": "passed",
+    "historical_supersession_registry": "passed",
+    "closure_evidence_linkage": "passed",
+    "targeted_regression": "29/29 passed",
+    "m76_3_consistency_tests": "4/4 passed"
+  },
+  "artifacts": [
+    "CURRENT_MATURITY_STATE.md",
+    "manifests/CURRENT_MATURITY_STATE.json",
+    "manifests/STATUS_SUPERSESSION_REGISTRY.json",
+    "M76_3_BACKLOG_AND_MATURITY_STATE_SYNCHRONIZATION.md",
+    "cli/tests/test_m76_3_backlog_maturity_sync.py"
+  ],
+  "policy": "Historical milestone reports remain immutable; current status consumers must use CURRENT_MATURITY_STATE.json."
+}

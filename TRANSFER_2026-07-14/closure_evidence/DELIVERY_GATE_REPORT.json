@@ -1,0 +1,36 @@
+{
+  "report_id": "ORDO_DELIVERY_GATE_BL_ORDO_032_FINAL",
+  "generated_at": "2026-07-13T22:50:53.572327Z",
+  "generated_by": "BL-ORDO-032 closure assembly",
+  "status": "passed",
+  "tests": {
+    "test_files": 86,
+    "test_nodes": 477,
+    "passed": 477,
+    "failed": 0,
+    "collection_errors": 0,
+    "run_errors": 0,
+    "timeouts": 0,
+    "infrastructure_failures": 0,
+    "failing_files": [],
+    "checkpoint": "reports/bl_ordo_032/per_test_node_checkpoint.json",
+    "execution_mode": "sequential per-test-node hermetic checkpointed runner"
+  },
+  "package_lints": {
+    "history_event_guided_intake": "passed",
+    "ordo_applied_project_factory": "passed",
+    "ordo_hybrid_executor": "passed",
+    "ordo_project_builder": "passed"
+  },
+  "manifest_sync": "passed",
+  "root_hygiene": "passed",
+  "generated_artifact_isolation": "passed",
+  "blocking_issues": [],
+  "canonical_integrity": {
+    "pre_validation_sha256": "2f519c28f499b2203266562fe7ccf8dbe3aeb2263bb704121c7f1bc708c0d8ca",
+    "post_validation_sha256": "2f519c28f499b2203266562fe7ccf8dbe3aeb2263bb704121c7f1bc708c0d8ca",
+    "unchanged": true
+  },
+  "closure_evidence": "reports/bl_ordo_032/BL_ORDO_032_CLOSURE_REPORT.json",
+  "policy": "Archive generation is permitted only from this passed state."
+}

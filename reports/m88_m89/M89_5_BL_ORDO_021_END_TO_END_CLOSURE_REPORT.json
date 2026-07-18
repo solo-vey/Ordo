@@ -1,0 +1,67 @@
+{
+  "schema_version": "ordo.m89.bl_ordo_021_closure.v1",
+  "milestone": "M89.5",
+  "status": "passed",
+  "bl_ordo_021": "closed",
+  "closure_gate": {
+    "schema_version": "ordo.bl_ordo_021_closure_gate.v1",
+    "status": "passed",
+    "issues": [],
+    "requirements": {
+      "clause_inventory": true,
+      "dependency_graph": true,
+      "complete_ordo_mapping": true,
+      "full_traceability": true,
+      "zero_blocking_loss_findings": true,
+      "materialized_package": true,
+      "regression_passed": true
+    }
+  },
+  "representative_fixture": {
+    "source": "legacy_all_in_one_instruction.md",
+    "source_clause_count": 10,
+    "unit_count": 33,
+    "edge_count": 10,
+    "traceability_rows": 10,
+    "blocking_loss_findings": 0
+  },
+  "tests": {
+    "passed": 23,
+    "failed": 0
+  },
+  "backlog_updated": true,
+  "qualification": [
+    "Framework closure uses a representative all-in-one instruction fixture.",
+    "Each real migration must still resolve source-specific ambiguity and mapping review."
+  ],
+  "changed_files": [
+    {
+      "path": "language/schemas/process_instruction_migration_package.schema.json",
+      "sha256": "d934194be62c83b06a214795d19b3b100276c4518407fc162faa78146f7f9162"
+    },
+    {
+      "path": "language/migration/fixtures/legacy_all_in_one_instruction.md",
+      "sha256": "27dfeaebdea9766840ba7e6d180c8101640ea34c800b3a8033e4f17266b8bb6e"
+    },
+    {
+      "path": "language/migration/fixtures/legacy_all_in_one_instruction.fixture.json",
+      "sha256": "1ba973639f97ec4393a50e9b31281fbfad710bfdda9d22d6a1f39b92192a7380"
+    },
+    {
+      "path": "language/migration/end_to_end_migration.py",
+      "sha256": "28890b01ad7b07525a0018217d9bfe6151f366ca382331e3e42d48df0c02c551"
+    },
+    {
+      "path": "language/migration/bl_ordo_021_closure_gate.py",
+      "sha256": "97004f67147c2f93521f54bb551f2e203794557e7314a3a76e41d39aa250cd78"
+    },
+    {
+      "path": "cli/tests/test_m89_5_end_to_end_migration_closure.py",
+      "sha256": "269e4a772d827c6de3a43bf4feac8c5deec60854e6741c8dd04e9377df573fa1"
+    },
+    {
+      "path": "CONSOLIDATED_BACKLOG.md",
+      "sha256": "b6e088f15c5a459fa71210dc1ec00d2a4c6bab39a017ef89e990afd073b484c2"
+    }
+  ]
+}

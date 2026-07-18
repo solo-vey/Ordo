@@ -1,0 +1,7 @@
+{
+  "schema_version": "ordo.migration_dependency_reconstruction_protocol.v1",
+  "protocol_version": "M89.3",
+  "ordering_cycles_forbidden": true,
+  "recovery_cycles_allowed": true,
+  "mandatory_unresolved_mapping_blocks": true
+}

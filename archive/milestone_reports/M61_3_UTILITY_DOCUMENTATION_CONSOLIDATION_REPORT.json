@@ -1,0 +1,33 @@
+{
+  "milestone": "M61.3",
+  "title": "Utility Documentation Consolidation",
+  "status": "passed-docs-consolidation",
+  "base": "M61.2 Visual Graph Generator Package Import",
+  "scope": "docs-only companion utility workflow consolidation",
+  "workflow": [
+    "Visual Graph Generator",
+    "PathWalk graph summary",
+    "PathWalk terminal paths",
+    "PathWalk clean cases",
+    "PathWalk bounded noise cases",
+    "PathWalk review cards",
+    "Visual Graph annotation overlay optional"
+  ],
+  "sample_counts": {
+    "terminal_paths": 3,
+    "clean_cases": 3,
+    "bounded_noise_cases": 12,
+    "review_cards": 15
+  },
+  "non_scope": [
+    "runtime execution",
+    "scoring",
+    "calibration",
+    "model/API benchmark",
+    "watchdog/process-boundary hardening",
+    "utility merge",
+    "runtime-core changes"
+  ],
+  "validation_status": "passed-docs-consolidation",
+  "validation_checks_passed": 9
+}

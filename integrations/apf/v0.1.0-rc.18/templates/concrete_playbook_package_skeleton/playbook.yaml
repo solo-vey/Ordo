@@ -1,0 +1,29 @@
+playbook:
+  id: null
+  status: template_only
+  decision_tree: null
+  terminal_paths: []
+  outputs: []
+  validation_gates: []
+  object_contracts: []
+  prompt_sufficiency_review: required_for_relevant_objects
+  mini_prompt_package:
+    enabled: false
+    registry: null
+    attachment_map: null
+    validation_report: null
+    test_catalog: null
+
+  execution_trace:
+    design_decision_ref: runtime/execution_trace_design_decision.yaml
+    supported: true
+    enabled_by_default: true
+    capture_level: standard
+    runtime_mode: runtime_enforced
+    runtime_toggle_allowed: true
+    config_ref: runtime/execution_trace_config.yaml
+    schema_ref: runtime/execution_trace_schema.yaml
+    event_mapping_ref: runtime/trace_event_mapping.yaml
+    redaction_policy_ref: runtime/trace_redaction_policy.yaml
+    replay_policy_ref: runtime/trace_replay_policy.yaml
+    validation_report_ref: validation/execution_trace_validation_report.yaml

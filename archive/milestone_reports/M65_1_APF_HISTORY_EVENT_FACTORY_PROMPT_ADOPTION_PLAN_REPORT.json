@@ -1,0 +1,36 @@
+{
+  "milestone": "M65.1",
+  "package": "apf-history-event-factory-prompt-adoption-plan",
+  "status": "accepted-adoption-plan",
+  "scope": "concrete package adoption plan for prompt registry standard",
+  "added_files": [
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_PLAN.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_TARGET_STRUCTURE.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_MATRIX.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_ADOPTION_MATRIX.csv",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_VALIDATION_PROFILE.md",
+    "packages/history_event_guided_intake/PROMPT_REGISTRY_SMOKE_TEST_PLAN.md",
+    "docs/design_decisions/DD-ORDO-M65-002_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN.md",
+    "language/improvement_intake/m65_1/M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.md",
+    "language/improvement_intake/m65_1/M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.json",
+    "language/improvement_intake/m65_1/M65_1_VALIDATION_REPORT.json"
+  ],
+  "changed_files": [
+    "packages/history_event_guided_intake/README.md",
+    "CHANGELOG.md",
+    "FUTURE_BACKLOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "non_changes": [
+    "no source YAML rewrite",
+    "no final prompt files created",
+    "no runtime core changes",
+    "no compiler behavior changes",
+    "no CLI command changes",
+    "no opcode promotion",
+    "no APF branch logic rewrite"
+  ],
+  "next_recommended_milestone": "M65.2 — History Event Factory prompt files + registry skeleton implementation patch"
+}

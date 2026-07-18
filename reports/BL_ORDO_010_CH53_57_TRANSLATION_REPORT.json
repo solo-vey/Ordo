@@ -1,0 +1,40 @@
+{
+  "milestone": "BL-ORDO-010 translation continuation",
+  "chapters": [
+    53,
+    54,
+    55,
+    56,
+    57
+  ],
+  "source_locale": "uk",
+  "target_locale": "en",
+  "status": "passed",
+  "files": [
+    {
+      "path": "book/en/chapters/chapter_53_cli_enforced_runtime_package.md",
+      "sha256": "7dfe31c7369b7714ce2d9ada66f97a2bee8c2659a605f0b7c7ee248b4f6e606c",
+      "bytes": 3190
+    },
+    {
+      "path": "book/en/chapters/chapter_54_multi_target_runtime_compilation.md",
+      "sha256": "96305a1dc05f909ee2d3abaa7202f09bb9bd5c691a3858d552d0de8361360282",
+      "bytes": 2602
+    },
+    {
+      "path": "book/en/chapters/chapter_55_ordo_code_runtime_view.md",
+      "sha256": "26e193ba08a4334ae4c78fb038fc18b0a6ac955bef6148709c74aacb618dd5f8",
+      "bytes": 2506
+    },
+    {
+      "path": "book/en/chapters/chapter_56_session_trace_proof_program.md",
+      "sha256": "d427244b93cb4de742e43e85c073ec23e010e551eeb387c45ffb86a5cbde4a59",
+      "bytes": 2301
+    },
+    {
+      "path": "book/en/chapters/chapter_57_scenario_testing_and_pathwalk.md",
+      "sha256": "0f649f1d11e1a67d5da0627465ea5b278b07c7a12289ba0b94471215233b0dbf",
+      "bytes": 7486
+    }
+  ]
+}

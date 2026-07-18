@@ -1,0 +1,30 @@
+conversation_scope_guard_validation_report:
+  playbook_id: null
+  capability_declared: false
+  supported: false
+  enabled: false
+  mode: null
+  checks:
+    declaration: pending
+    taxonomy: pending
+    control_and_safety_exceptions: pending
+    state_protection: pending
+    escalation: pending
+    pause_resume_exit: pending
+    trace_hooks: pending
+    regression_suite: pending
+  scenarios:
+    valid_answer: pending
+    clarification: pending
+    correction: pending
+    backtracking: pending
+    requirement_change: pending
+    pause_resume_exit: pending
+    first_unrelated_message: pending
+    repeated_unrelated_messages: pending
+    unclassifiable_input: pending
+    safety_message: pending
+    state_path_confirmation_preservation: pending
+    counter_resets: pending
+  blocking_issues: []
+  overall_status: pending

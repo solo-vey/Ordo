@@ -1,0 +1,26 @@
+program_id: clean_check_fixture
+version: '0.1'
+nodes:
+  - id: N_START
+    type: question
+    question: Fixture start node.
+
+artifact_sync:
+  sync_id: fixture_artifact_sync
+  version: '0.1'
+  artifacts:
+    - role: compiled_runtime
+      path: compiled/program.ir.json
+      source_path: source/program.ordo.yaml
+      sync_status: current
+
+delta_backlog:
+  backlog_id: fixture_delta_backlog
+  items:
+    - id: D_FIXTURE_DERIVED
+      path: compiled/program.ir.json
+      status: open
+      severity: blocker
+      owner: ''
+      due: '2000-01-01'
+      reason: Fixture covers deferred derived artifact refresh.

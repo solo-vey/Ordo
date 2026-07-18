@@ -1,0 +1,60 @@
+{
+  "milestone": "M46.8",
+  "name": "External audit prompt and checklist",
+  "status": "passed",
+  "scope": "documentation and audit packaging only; no language semantics, CLI behavior, or business package logic changed",
+  "source_base": "M46.7 pre-release candidate",
+  "checks": {
+    "repo_check_clean_source": {
+      "status": "passed",
+      "command": "PYTHONDONTWRITEBYTECODE=1 ordo repo-check ..",
+      "note": "Run on clean source tree before install/tests or after generated metadata cleanup."
+    },
+    "cli_unit_tests": {
+      "status": "passed",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest tests.test_cli_workflow -v",
+      "result": "19/19 OK"
+    },
+    "active_package_checks": {
+      "status": "passed",
+      "packages": [
+        "packages/ordo_project_builder",
+        "packages/ordo_hybrid_executor",
+        "packages/history_event_guided_intake"
+      ],
+      "commands": ["lint", "compile", "test", "coverage"]
+    },
+    "helper_flow_checks": {
+      "status": "passed",
+      "commands": [
+        "validate-state/next-step for ordo_project_builder",
+        "validate-state/next-step for ordo_hybrid_executor",
+        "lock/validate-lock/intake/generate-output/validate-artifacts/consistency/go-no-go for history_event_guided_intake"
+      ],
+      "history_event_go_no_go": "go"
+    },
+    "book_update": {
+      "status": "passed",
+      "updated_markdown_only": true,
+      "pdf_regenerated": false,
+      "added_chapter": "book/source/chapters/chapter_42_external_audit_pre_release.md"
+    },
+    "source_archive_hygiene": {
+      "status": "passed",
+      "generated_package_artifacts_removed_before_packaging": true,
+      "allowed_placeholders": ".gitkeep"
+    }
+  },
+  "added_files": [
+    "docs/external_audit/EXTERNAL_AUDIT_PROMPT_M46_8.md",
+    "docs/external_audit/PRE_RELEASE_AUDIT_CHECKLIST_M46_8.md",
+    "docs/reports/M46_8_EXTERNAL_AUDIT_PACKAGE.md",
+    "docs/design_decisions/DD-ORDO-M46-008_EXTERNAL_AUDIT_PACKAGE.md",
+    "book/source/chapters/chapter_42_external_audit_pre_release.md"
+  ],
+  "known_limitations": [
+    "External audit package is a reviewer workflow, not a new runtime feature.",
+    "CLI remains a deterministic helper layer; it does not execute live AI, REST, Mongo, or production business code.",
+    "repo-check source-hygiene should be run on a clean tree before install/tests or with PYTHONDONTWRITEBYTECODE=1."
+  ]
+}

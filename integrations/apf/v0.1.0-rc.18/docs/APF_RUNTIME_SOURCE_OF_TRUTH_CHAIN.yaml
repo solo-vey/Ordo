@@ -1,0 +1,52 @@
+schema_version: apf-runtime-source-chain-v1
+module_id: ordo.applied_project_factory
+status: accepted-package-contract
+ordo_target: "0.12-pre-release"
+
+source_of_truth_chain:
+  package_manifest: ordo.yml
+  editable_source: source/program.ordo.yaml
+  compiled_runtime_ir: compiled/program.ir.json
+  runtime_state: run_state.json
+  generated_outputs: generated_outputs/
+
+ownership:
+  editable_source:
+    owner: APF authoring process
+    editable: true
+  compiled_runtime_ir:
+    owner: Ordo compiler
+    editable: false
+  runtime_state:
+    owner: runtime or controlled AI-guided execution
+    editable: only_through_controlled_state_transition
+  generated_outputs:
+    owner: renderer_or_generator
+    editable: false_as_source
+
+freshness_rules:
+  - id: APF-A4-FRESH-001
+    rule: compiled_ir_must_match_current_editable_source
+    enforcement_status: required_contract_pending_runtime_audit
+  - id: APF-A4-FRESH-002
+    rule: state_validation_requires_current_compiled_ir
+    enforcement_status: required_contract_pending_runtime_audit
+  - id: APF-A4-FRESH-003
+    rule: generated_outputs_must_be_regenerated_after_source_or_state_change
+    enforcement_status: required_contract_pending_runtime_audit
+
+navigation_authority:
+  source: compiled_ir_and_validated_state
+  prohibited_sources:
+    - markdown_narrative
+    - prompt_text
+    - chat_memory
+    - generated_output_content
+
+runtime_view_boundary:
+  ai_may_use: cli_rendered_current_contract_fragment_or_validated_reports
+  ai_must_not_treat_as_authority:
+    - uncompiled_editable_yaml
+    - stale_ir
+    - stale_state
+    - historical_reports

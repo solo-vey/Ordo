@@ -1,0 +1,18 @@
+ci_release_clean_gates:
+  policy_id: ordo_language_repo_ci_release_clean_gates
+  report_schema: ordo.repo_hygiene.report.v1
+  gates:
+    - gate_id: pr_clean_gate
+      gate_class: pull_request
+      profile: standard
+      fail_on_warning: false
+      report_path: reports/ci/repo_clean_check.json
+      retain_evidence: true
+      require_repo_policy: true
+    - gate_id: release_clean_gate
+      gate_class: release
+      profile: strict
+      fail_on_warning: true
+      report_path: reports/release/repo_clean_check.json
+      retain_evidence: true
+      require_repo_policy: true

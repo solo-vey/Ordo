@@ -1,0 +1,50 @@
+{
+  "milestone": "M71.4",
+  "title": "runtime application-order and trace evidence validation",
+  "status": "implemented-package-runtime-contract / passed-validation",
+  "tests": {
+    "focused_passed": 17,
+    "clean_check_status": "passed",
+    "clean_check_checks": 43,
+    "warnings": 0,
+    "errors": 0
+  },
+  "behavior": {
+    "selection_authority": "CLI / canonical JSON IR",
+    "attachment_authority": "selected executable object prompt_refs",
+    "same_phase_order": "source list order",
+    "manifest_resolution": true,
+    "checksum_required": true,
+    "trace_fields": [
+      "prompt_id",
+      "use",
+      "sha256",
+      "ordinal"
+    ],
+    "trace_forbidden": [
+      "prompt_text",
+      "prompt_body",
+      "hidden_reasoning",
+      "next_node"
+    ],
+    "prompt_navigation_authority": false
+  },
+  "boundary": {
+    "core_session_trace_writer_changed": false,
+    "embedded_cli_changed": false,
+    "compiler_changed": false,
+    "opcodes_changed": false,
+    "business_navigation_changed": false,
+    "compiled_ir_changed": false
+  },
+  "files_added": [
+    "packages/history_event_guided_intake/PROMPT_APPLICATION_TRACE_CONTRACT.md",
+    "packages/history_event_guided_intake/runtime/contracts/prompt_application_trace.schema.json",
+    "packages/history_event_guided_intake/runtime/contracts/prompt_application_trace.example.json",
+    "cli/docs/RUNTIME_PROMPT_APPLICATION_TRACE_VALIDATION.md",
+    "cli/tests/test_m71_4_runtime_prompt_trace_validation.py"
+  ],
+  "files_updated": [
+    "packages/history_event_guided_intake/START_HERE_RUNTIME_MODE.md"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.backlog_reconciliation.v1",
+  "status": "passed",
+  "backlog_path": "/mnt/data/m84_working/CONSOLIDATED_BACKLOG.md",
+  "duplicates_before": {
+    "BL-ORDO-020": 3,
+    "BL-ORDO-018": 2
+  },
+  "duplicates_after": {},
+  "restored": {
+    "BL-ORDO-015": "restored",
+    "BL-ORDO-021": "restored-and-linked-to-M89.0",
+    "BL-ORDO-022": "restored"
+  },
+  "required_present": {
+    "BL-ORDO-015": true,
+    "BL-ORDO-021": true,
+    "BL-ORDO-022": true
+  },
+  "m89_0_linked_to_bl_ordo_021": true,
+  "m89_artifacts_found": [
+    "/mnt/data/M89_0_MIGRATION_INTAKE_BASELINE_AUDIT.json",
+    "/mnt/data/M89_0_MIGRATION_INTAKE_BASELINE_AUDIT.md"
+  ],
+  "total_backlog_items": 23,
+  "sha256": "13b30963e2e4e235314f9e4079ce07660dee8b35a7c0f9f4ad90e7c38479336c"
+}

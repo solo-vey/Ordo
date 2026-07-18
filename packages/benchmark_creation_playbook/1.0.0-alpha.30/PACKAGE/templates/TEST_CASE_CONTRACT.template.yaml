@@ -1,0 +1,52 @@
+schema_version: benchmark.test_case_contract.v1
+identity:
+  suite_id: "<SUITE_ID>"
+  suite_version: "<SUITE_VERSION>"
+  test_case_id: "<TEST_CASE_ID>"
+  test_case_version: "<TEST_CASE_VERSION>"
+  title: "<TITLE>"
+  owner: "<OWNER>"
+classification:
+  primary: "<TC01|TC02|TC03>"
+  secondary: []
+  rationale: []
+semantic_target:
+  goal: "<CANONICAL_GOAL>"
+  invariant_across_variants: []
+  non_goals: []
+authority:
+  canonical_sources: []
+  supporting_sources: []
+  forbidden_or_stale_sources: []
+input_policy:
+  confirmed_public_facts: []
+  hidden_fact_domains: []
+  invention_policy: forbidden
+  hard_stop_fields: []
+artifact_contract:
+  routes: []
+process_contract:
+  required_behaviors: []
+  expected_terminal_classes: []
+scenario_coverage:
+  required_dimensions: []
+variant_comparability:
+  planned_variants: []
+  allowed_representation_differences: []
+  forbidden_semantic_differences: []
+evaluation:
+  process_contract_binding: ""
+  document_contract_bindings: []
+  aggregation:
+    process_weight: 0.5
+    document_weight: 0.5
+  failure_caps: []
+  excluded_dimensions: []
+reproducibility:
+  required_identity_fields: []
+  manifest_required: true
+approval:
+  status: draft
+  reviewed_contract_hash: ""
+  reviewer: ""
+  reference: ""

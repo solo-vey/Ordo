@@ -1,0 +1,8 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "Ordo Source v0.12 MVP schema"
+type: object
+required: [ordo]
+properties:
+  ordo:
+    type: object
+    required: [version, package, control_level, execution_mode]

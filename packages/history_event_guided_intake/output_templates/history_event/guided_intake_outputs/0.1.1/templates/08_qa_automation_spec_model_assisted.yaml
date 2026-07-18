@@ -1,0 +1,17 @@
+# Model-assisted YAML template. Do not render with ordo.simple.
+# The AI renderer may use loops/conditions, but must use confirmed state only.
+automation_spec:
+  alias: "{{ state.event_alias }}"
+  display_name_uk: "{{ state.display_name_uk }}"
+  display_name_en: "{{ state.display_name_en }}"
+  provider_class: "⚠️ TBD"
+  cases:
+{% for case in state.unit_test_coverage %}
+    - id: "UNIT_{{ loop.index }}"
+      description: "{{ case }}"
+      expected: "confirmed behavior only"
+{% endfor %}
+  traceability:
+{% for key, value in state.items() %}
+    {{ key }}: "{{ value | default('⚠️ TBD') }}"
+{% endfor %}

@@ -1,0 +1,23 @@
+{
+  "schema": "external.workflow_preparation.output.v1",
+  "outputs": [
+    "business_passport",
+    "business_work_tracker_epic_draft",
+    "lifecycle_checklist",
+    "event_playbook_handoff",
+    "gate_report",
+    "minimal_registry_row_after_real_knowledge_workspace_url",
+    "draft_review_record",
+    "external_link_registry",
+    "linked_package_revision"
+  ],
+  "terminal_statuses": [
+    "business_ready",
+    "blocked",
+    "not_relevant",
+    "undeliverable",
+    "cancelled"
+  ],
+  "package_revision_rule": "External URL synchronization increments package revision without changing playbook SemVer.",
+  "link_placement_rule": "external process record URL is stored in the work-tracking record document; Workflow Preparation work-tracking system URL is stored in README.md."
+}

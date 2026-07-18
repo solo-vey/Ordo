@@ -1,0 +1,28 @@
+{
+  "module": "ordo.applied_project_factory",
+  "version": "0.1.0-alpha.16",
+  "language_package_version": "0.12.0-preview-rc1",
+  "scope": "branch_3_free_dialogue_consistency_delta",
+  "created_at": "2026-07-08",
+  "summary": "Closed branch 3 by consistency delta after alpha.15; free-dialogue extraction now preserves candidate outputs/templates and routes terminal points into shared terminal output binding + template/mock-example verification.",
+  "changes": [
+    "Bumped APF module version to 0.1.0-alpha.16.",
+    "Confirmed prior free-dialogue mechanics without rewalking the branch from scratch.",
+    "Added candidate_output_artifact_catalog, candidate_template_hints, output_related_open_questions, free_dialogue_candidate_output_policy, and free_dialogue_terminal_output_binding_policy to contract/state.",
+    "Updated free-dialogue structured extraction to keep candidate outputs/templates and explicit known/partial/AI-proposed/deferred/absent output policy.",
+    "Updated free-dialogue draft tree summary to mark terminal_output_binding_points and use shared terminal output binding/template/mock review.",
+    "Added assertion A_FREE_DIALOGUE_OUTPUT_CANDIDATES_NOT_DROPPED.",
+    "Kept full validation / handoff as shared tail; no duplicated downstream nodes."
+  ],
+  "validation": {
+    "yaml_parse": "passed",
+    "ordo_lint": "passed",
+    "ordo_compile_force": "passed",
+    "structural_next_reference_check": "passed",
+    "full_validation": "deferred_by_design"
+  },
+  "notes": [
+    "This is a scoped consistency patch, not a full package redesign.",
+    "Full tests/coverage/validate-state/next-step/validate-factory-output/repo-check remain part of shared terminal/pre-handoff validation."
+  ]
+}

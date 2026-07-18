@@ -1,0 +1,42 @@
+{
+  "schema_version": "ordo.pre_release_run_evidence.v1",
+  "evidence_class": "PRE_RELEASE_SELF_VALIDATION",
+  "run_id": "RUN_03",
+  "expected_outcome": "EXPECTED_HARD_STOP",
+  "actual_terminal": "EXPECTED_HARD_STOP",
+  "status": "PASS",
+  "sealed_candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6",
+  "manual_mutation": false,
+  "driver_receipts_complete": true,
+  "approvals_complete": false,
+  "cross_artifact_fidelity": "PASS",
+  "correction_loop_used": false,
+  "events": [
+    {
+      "seq": 1,
+      "event": "candidate_opened",
+      "candidate_sha256": "60b7b05ebe9422a06e35e4a9f405bd7210a2c02ac2fee0c94dbcd015857389a6"
+    },
+    {
+      "seq": 2,
+      "event": "neutral_prompt_loaded"
+    },
+    {
+      "seq": 3,
+      "event": "authoritative_input_bound"
+    },
+    {
+      "seq": 4,
+      "event": "validators_submitted_to_driver"
+    },
+    {
+      "seq": 8,
+      "event": "terminal_recomputed",
+      "terminal": "EXPECTED_HARD_STOP"
+    },
+    {
+      "seq": 9,
+      "event": "final_zip_reopened_and_verified"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+prompt_registry:
+  registry_id: apf_prompt_registry
+  version: "1.0"
+  default_language: en
+  prompt_root: prompts/
+  status: package_level_convention
+  authority_rule: prompts_support_execution_but_do_not_own_execution
+  prompts:
+    - prompt_id: apf.package.quick_start.v1
+      prompt_family: apf.package.quick_start
+      version: 1
+      supersedes: null
+      type: package_bootstrap
+      audience: human_to_ai
+      path: prompts/QUICK_START_PROMPT.md
+      required: true
+      lifecycle: stable
+      visibility: visible_to_analyst
+      state_change_allowed: false
+      validation_policy:
+        - required_file_and_readme_reference
+        - manifest_checksum_required
+        - authority_safe_text_review
+    - prompt_id: apf.runtime.start.v1
+      prompt_family: apf.runtime.start
+      version: 1
+      supersedes: null
+      type: runtime_start
+      audience: ai_runtime
+      path: prompts/runtime/apf.runtime_start.v1.md
+      required: true
+      lifecycle: stable
+      visibility: expose_on_request
+      state_change_allowed: false
+      validation_policy:
+        - required_file_only
+        - manifest_checksum_required
+        - authority_safe_text_review
+    - prompt_id: apf.process.resume_after_deviation.v1
+      prompt_family: apf.process.resume_after_deviation
+      version: 1
+      supersedes: null
+      type: repair_helper
+      audience: ai_runtime
+      path: prompts/repair/apf.process.resume_after_deviation.v1.md
+      attached_to:
+        gate_id: APF_PROCESS_RAIL_RESUME_GATE
+      required: conditional
+      required_when: conversation_class_is_deviation
+      lifecycle: stable
+      visibility: expose_on_request
+      state_change_allowed: false
+      validation_policy:
+        - required_file_only
+        - manifest_checksum_required
+        - authority_safe_text_review
+    - prompt_id: apf.state.backtrack_invalidation.v1
+      prompt_family: apf.state.backtrack_invalidation
+      version: 1
+      supersedes: null
+      type: repair_helper
+      audience: ai_runtime
+      path: prompts/repair/apf.state.backtrack_invalidation.v1.md
+      attached_to:
+        gate_id: APF_BACKTRACK_IMPACT_REVIEW_GATE
+      required: conditional
+      required_when: prior_confirmed_decision_changes
+      lifecycle: stable
+      visibility: expose_on_request
+      state_change_allowed: false
+      validation_policy:
+        - required_file_only
+        - manifest_checksum_required
+        - authority_safe_text_review
+    - prompt_id: apf.validation.gate_failure.v1
+      prompt_family: apf.validation.gate_failure
+      version: 1
+      supersedes: null
+      type: repair_helper
+      audience: ai_runtime
+      path: prompts/repair/apf.validation.gate_failure.v1.md
+      attached_to:
+        gate_id: APF_VALIDATION_FAILURE_GATE
+      required: conditional
+      required_when: any_required_validation_gate_fails
+      lifecycle: stable
+      visibility: visible_to_analyst
+      state_change_allowed: false
+      validation_policy:
+        - required_file_only
+        - manifest_checksum_required
+        - authority_safe_text_review
+    - prompt_id: apf.validation.report_interpretation.v1
+      prompt_family: apf.validation.report_interpretation
+      version: 1
+      supersedes: null
+      type: validation_helper
+      audience: ai_runtime
+      path: prompts/validation/apf.validation.report_interpretation.v1.md
+      attached_to:
+        artifact_id: VALIDATION_REPORT.json
+      required: recommended
+      lifecycle: stable
+      visibility: expose_on_request
+      state_change_allowed: false
+      validation_policy:
+        - resolve_artifact_and_file
+        - manifest_checksum_required
+        - authority_safe_text_review

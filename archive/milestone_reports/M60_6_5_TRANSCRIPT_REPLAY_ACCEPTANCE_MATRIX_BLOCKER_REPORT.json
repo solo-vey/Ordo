@@ -1,0 +1,46 @@
+{
+  "milestone": "M60.6.5",
+  "title": "Transcript Replay Acceptance Matrix",
+  "status": "blocked-no-release",
+  "release_created": false,
+  "latest_stable_baseline": "M60.6.4 Transcript Replay / Model Benchmark Pilot",
+  "attempted_scope": [
+    "expand transcript replay pilot into multi-runtime acceptance matrix",
+    "cover json, ordo-code, and json,ordo-code runtime views",
+    "keep no-API transcript-replay mode",
+    "keep scorer weights locked"
+  ],
+  "blocker": {
+    "summary": "Python parent-loop can hang while waiting for embedded runtime CLI subprocess completion in transcript replay matrix expansion path.",
+    "observed_locations": [
+      "ordo_pathwalk/runner/model_benchmark.py::_drive_ground_truth_for_model_benchmark",
+      "ordo_pathwalk/runner/matrix_smoke.py::_drive_ground_truth"
+    ],
+    "manual_rerun_note": "Generated sandbox commands such as verify-targets and verify-session completed when re-run manually after the parent timeout, suggesting a process-boundary/parent-loop issue."
+  },
+  "experimental_patches_not_released": [
+    "balanced behavior bucket cycle",
+    "runtime-safe direction pool excluding back as generated branch label",
+    "model-benchmark-specific embedded CLI runner",
+    "OS timeout boundary with file-backed stdout/stderr"
+  ],
+  "validation": {
+    "clean_m60_6_4_py_compile": "passed",
+    "selected_pathwalk_tests": "11 passed",
+    "m60_6_5_release_validation": "not_run_blocked"
+  },
+  "calibration_decision": {
+    "weights_changed": false,
+    "weights_locked": true,
+    "reason": "No accepted M60.6.5 matrix evidence exists. M60.6.4 remains a pilot, not a calibration run."
+  },
+  "recommended_next_step": {
+    "milestone": "M60.6.4.1",
+    "title": "Transcript Replay Process Boundary Hardening",
+    "contract": "model-benchmark-plan -> independent transcript-replay-job invocations -> model-benchmark-collect"
+  },
+  "impact_classification": {
+    "blocker_report": "L0",
+    "future_fix": "L1 for PathWalk companion utility process-boundary orchestration; L0 for Ordo runtime core and scoring weights"
+  }
+}

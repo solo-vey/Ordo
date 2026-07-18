@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ordo Execution Progress Event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "run_id",
+    "step_id",
+    "step_sequence",
+    "attempt",
+    "short_summary",
+    "status",
+    "authoritative_evidence_refs",
+    "emitted_at",
+    "language",
+    "informational_only"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "step_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "step_sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "short_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "COMPLETED",
+        "BLOCKED",
+        "NO_CHANGE",
+        "CORRECTION_REQUIRED",
+        "INVALIDATED",
+        "REGENERATED",
+        "IMPROVED",
+        "IMPROVEMENT_PLATEAU_REACHED",
+        "SKIPPED_NOT_APPLICABLE",
+        "T_COMPLETED / GO",
+        "T_INPUT_BLOCKED / NO_GO",
+        "T_SCENARIO_EXHAUSTED / NO_GO"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 180
+    },
+    "authoritative_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "emitted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "informational_only": {
+      "const": true
+    },
+    "is_terminal": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Terminal Disposition",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "attempt_id",
+    "run_id",
+    "terminal_disposition",
+    "terminal_reason_codes",
+    "state_snapshot_reference",
+    "current_artifact_versions",
+    "invalidated_artifacts",
+    "open_requirements",
+    "driver_decision_reference",
+    "confirmed_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.benchmark.terminal_disposition.v1"
+    },
+    "attempt_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "terminal_disposition": {
+      "enum": [
+        "T_COMPLETED",
+        "T_INPUT_BLOCKED",
+        "T_SCENARIO_EXHAUSTED",
+        "T_NOT_READY",
+        "T_NO_GO"
+      ]
+    },
+    "terminal_reason_codes": {
+      "type": "array"
+    },
+    "state_snapshot_reference": {
+      "type": "string"
+    },
+    "current_artifact_versions": {
+      "type": "array"
+    },
+    "invalidated_artifacts": {
+      "type": "array"
+    },
+    "open_requirements": {
+      "type": "array"
+    },
+    "driver_decision_reference": {
+      "type": "string"
+    },
+    "confirmed_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

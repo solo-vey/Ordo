@@ -1,0 +1,72 @@
+{
+  "milestone": "M60.7.5",
+  "title": "Bounded Noise Testcase Artifacts",
+  "status": "passed-implementation-slice",
+  "date": "2026-07-08",
+  "base": "M60.7.4 noise testcase artifacts",
+  "scope": [
+    "Extend artifact-only real-module noise testcase generation with clarification_without_submit and skip_ahead.",
+    "Keep existing distraction and invalid_branch patterns.",
+    "Do not implement runtime execution, scoring, calibration, or benchmark orchestration.",
+    "Close current noise expansion line to avoid endless micro-improvements."
+  ],
+  "implemented": {
+    "cli": "real-module-noise-cases",
+    "patterns": [
+      "distraction",
+      "invalid_branch",
+      "clarification_without_submit",
+      "skip_ahead"
+    ],
+    "default_patterns": [
+      "distraction",
+      "invalid_branch",
+      "clarification_without_submit",
+      "skip_ahead"
+    ],
+    "artifacts": [
+      "cases/*.json",
+      "cases/*.md",
+      "RAW_NOISE_TESTCASE_MATRIX.csv",
+      "SUMMARY.json",
+      "SUMMARY.md",
+      "VALIDATION_REPORT.json"
+    ]
+  },
+  "sample_result": {
+    "package": "sample.support_triage",
+    "terminal_paths_input": 3,
+    "patterns": 4,
+    "noise_cases": 12,
+    "ready_cases": 12,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false
+  },
+  "boundary": {
+    "noise_expansion_status": "closed-for-now",
+    "future_improvements": [
+      "backtrack",
+      "correction_backtrack"
+    ],
+    "future_improvements_block_release": false,
+    "reason": "Avoid converting M60.7 into an endless sequence of low-value noise micro-variants."
+  },
+  "validation": {
+    "workspace_py_compile": "passed",
+    "selected_non_runtime_pytest": "20 passed",
+    "workspace_graph_paths_noise_smoke": "passed",
+    "default_noise_pattern_smoke": "passed",
+    "runtime_harness_matrix_tests": "not used as gate; known blocked branch from M60.6.5/M60.6.4.1",
+    "zip_extraction_check": "passed",
+    "pathwalk_rc_py_compile": "passed",
+    "pathwalk_rc_cli_smoke": "passed",
+    "pathwalk_rc_pytest": "not used as final gate; RC CLI smoke passed, full/selected pytest can be noisy in sandbox due known harness branch risk",
+    "book_source_manifest_sanity": "passed"
+  },
+  "unchanged": [
+    "Ordo runtime-core semantics",
+    "scoring weights",
+    "real model/API benchmark"
+  ]
+}

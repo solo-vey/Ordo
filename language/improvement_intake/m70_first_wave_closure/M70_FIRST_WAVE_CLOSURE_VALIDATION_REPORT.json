@@ -1,0 +1,39 @@
+{
+  "schema_version": "ordo.milestone.validation.v1",
+  "milestone": "M70 first-wave closure",
+  "status": "closed-first-wave / passed-validation",
+  "closed_milestones": [
+    "M70.0",
+    "M70.1",
+    "M70.2",
+    "M70.4"
+  ],
+  "m70_3": {
+    "status": "not_required",
+    "reason": "M70.2 production smoke found no blockers requiring bounded remediation"
+  },
+  "tests": {
+    "m70_4_full_regression": {
+      "count": 46,
+      "result": "OK"
+    },
+    "closure_bounded_regression": {
+      "count": 12,
+      "result": "OK"
+    }
+  },
+  "checks": [
+    "workflow YAML parse",
+    "production policy parse",
+    "standard smoke",
+    "strict smoke",
+    "language root contract",
+    "CLI root contract",
+    "packages delegation",
+    "scope guards",
+    "archive integrity"
+  ],
+  "notes": [
+    "A consolidated rerun timed out during a slow smoke after 33 tests passed; remaining M70-specific suites were rerun separately and passed."
+  ]
+}

@@ -1,0 +1,8 @@
+conversation_scope_guard:
+  supported: true
+  enabled: true
+  mode: guided_redirect
+  state_change_on_out_of_scope: false
+  escalation:
+    counter_scope: active_node
+    reset_on: [valid_process_answer, node_transition, process_resume]

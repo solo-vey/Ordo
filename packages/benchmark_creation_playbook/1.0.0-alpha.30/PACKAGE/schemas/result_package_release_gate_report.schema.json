@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"ordo.benchmark.result_package_release_gate.report.v1",
+  "type":"object",
+  "required":["schema_version","package_path","checks","release_disposition","releasable"],
+  "properties":{
+    "schema_version":{"const":"ordo.benchmark.result_package_release_gate.report.v1"},
+    "package_path":{"type":"string"},
+    "checks":{"type":"array","items":{"type":"object","required":["id","status","evidence"],"properties":{"id":{"type":"string"},"status":{"enum":["PASS","FAIL"]},"evidence":{}}}},
+    "release_disposition":{"enum":["PASS_RELEASE","BLOCKED_REGENERATE","NO_GO"]},
+    "releasable":{"type":"boolean"},
+    "validated_versions":{"type":"object"},
+    "report_sha256":{"type":"string"}
+  }
+}

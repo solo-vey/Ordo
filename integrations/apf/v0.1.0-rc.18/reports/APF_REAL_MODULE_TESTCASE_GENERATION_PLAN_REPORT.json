@@ -1,0 +1,48 @@
+{
+  "report_id": "APF_REAL_MODULE_TESTCASE_GENERATION_PLAN_REPORT",
+  "package_id": "ordo.applied_project_factory",
+  "version": "v0.1.0-rc.9-real-module-testcase-generation",
+  "testcase_generation_planning_status": "ready",
+  "target_manifest": {
+    "path": "tests/REAL_MODULE_TESTCASE_TARGET_MANIFEST.yaml",
+    "status": "present"
+  },
+  "scenario_catalog": {
+    "path": "tests/MODEL_CONFUSION_SCENARIO_CATALOG.yaml",
+    "status": "present",
+    "scenario_groups": [
+      "distraction",
+      "premature_jump",
+      "backtracking",
+      "gate_skip",
+      "false_green",
+      "missing_evidence",
+      "scope_boundary_confusion",
+      "deferred_item_loss",
+      "package_profile_confusion",
+      "silent_process_mutation"
+    ]
+  },
+  "expected_behavior_matrix": {
+    "path": "tests/EXPECTED_BEHAVIOR_MATRIX.yaml",
+    "status": "present"
+  },
+  "utility_packaging": {
+    "path": "utilities/apf_real_module_testcase_generator/",
+    "status": "present",
+    "manifest": "present",
+    "schemas": "present",
+    "examples": "present"
+  },
+  "unsupported_runtime_actions": [
+    "compile",
+    "execute_runtime",
+    "run_ordo_tests"
+  ],
+  "gates": {
+    "REAL_MODULE_TESTCASE_GENERATION_PLANNING_GATE": "passed",
+    "REAL_MODULE_TESTCASE_UTILITY_PACKAGING_GATE": "passed"
+  },
+  "deferred_items": [],
+  "blocking_issues": []
+}

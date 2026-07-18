@@ -1,0 +1,19 @@
+{
+  "milestone": "M71.2",
+  "status": "implemented-schema-profile-update / passed-validation",
+  "changes": {
+    "registry_schema_updated": true,
+    "validation_profile_schema_updated": true,
+    "validation_profile_doc_updated": true,
+    "example_updated": true,
+    "tests_added": true
+  },
+  "scope": {
+    "package_migration": false,
+    "runtime_change": false,
+    "compiler_change": false,
+    "opcode_change": false,
+    "archives_built": false,
+    "archives_deferred_until": "M71 closure"
+  }
+}

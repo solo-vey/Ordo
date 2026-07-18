@@ -1,0 +1,34 @@
+{
+  "milestone": "M60.3.1",
+  "name": "Scenario Testing Documentation Layer",
+  "status": "passed",
+  "scope": "documentation_only",
+  "pathwalk_utility_included": false,
+  "runtime_code_changed": false,
+  "compiled_book_regenerated": false,
+  "pdf_regenerated": false,
+  "added_files": [
+    "docs/testing/ORDO_PATHWALK_SCENARIO_TESTING.md",
+    "language/SCENARIO_TESTING_COMPATIBILITY.md",
+    "cli/docs/SCENARIO_TESTING_WITH_RUNTIME_CLI.md",
+    "book/source/chapters/chapter_57_scenario_testing_i_pathwalk.md",
+    "docs/reports/M60_3_1_SCENARIO_TESTING_DOCSYNC_REPORT.md"
+  ],
+  "updated_files": [
+    "README.md",
+    "CHANGELOG.md",
+    "language/README.md",
+    "language/CURRENT_VERSION.md",
+    "book/source/README.md",
+    "book/source/book_manifest.json",
+    "book/source/STRUCTURE_AUDIT.json",
+    "book/source/chapters/appendix_a_slovnyk_ordo.md"
+  ],
+  "self_check": {
+    "manifest_entries": 67,
+    "book_manifest_missing_files": [],
+    "new_docs_present": true,
+    "repo_check": "passed",
+    "full_cli_regression": "not rerun for this documentation-only patch"
+  }
+}

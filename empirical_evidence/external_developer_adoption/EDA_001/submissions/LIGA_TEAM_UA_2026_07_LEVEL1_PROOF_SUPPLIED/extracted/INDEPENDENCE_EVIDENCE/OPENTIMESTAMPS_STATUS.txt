@@ -1,0 +1,13 @@
+Timestamp method: OpenTimestamps
+Timestamped filename: INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip
+Timestamped ZIP SHA-256: 5327e261edea7f7f1e43a73c0c1dc1bd28a3ce6879e7f9af3335175ac52ed65c
+Proof filename: INDEPENDENT_DEVELOPER_ORDO_ARF_ADOPTION_EVIDENCE_PACKAGE.zip.ots
+Proof SHA-256: cfbc09a2c93c7046b142455145b2a49b58404efb55e67ce16c079a44fc63e488
+
+Observed submitter-side status:
+- OpenTimestamps calendars returned Bitcoin attestations.
+- Local verification could not complete because Bitcoin Core RPC was not configured.
+- The exact proof file is now included for recipient-side independent verification.
+
+Submission claim:
+Level 1 proof supplied — independent verification by Ordo required.

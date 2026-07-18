@@ -1,0 +1,25 @@
+requirements:
+  - id: REQ-001
+    statement: null
+    source: user_intake
+    source_ref: null
+    rationale: null
+    classification:
+      type: functional
+      priority: critical
+      status: proposed
+    affects:
+      decision_nodes: []
+      gates: []
+      terminal_paths: []
+      outputs: []
+      templates: []
+      tests: []
+    validation:
+      method: null
+      evidence_required: []
+      acceptance_criteria: []
+    traceability:
+      intake_field_ref: null
+      unresolved_dependencies: []
+      notes: []

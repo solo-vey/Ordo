@@ -1,0 +1,15 @@
+{
+  "schema_version": "ordo.benchmark.improvement_patch_record.v1",
+  "patch_id": "PATCH-0001",
+  "diagnostic_case_id": "DIAG-0001",
+  "root_cause_confidence": "confirmed",
+  "target_component": {},
+  "change_allowlist": [],
+  "expected_effects": [],
+  "prohibited_effects": [],
+  "baseline": {},
+  "diff_evidence": {},
+  "regression_selection_id": "REGSEL-0001",
+  "decision": "PATCH_BLOCKED_EVIDENCE",
+  "supersedes": null
+}

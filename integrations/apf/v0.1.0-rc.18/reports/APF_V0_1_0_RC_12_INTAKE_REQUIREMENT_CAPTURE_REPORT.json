@@ -1,0 +1,30 @@
+{
+  "report_id": "APF_V0_1_0_RC_12_INTAKE_REQUIREMENT_CAPTURE_REPORT",
+  "module_id": "ordo.applied_project_factory",
+  "current_version": "v0.1.0-rc.12-intake-requirement-capture",
+  "source_version": "v0.1.0-rc.11-confirmed-closure",
+  "status": "ready/go",
+  "confirmed_items": [
+    "APF-RC12-01",
+    "APF-RC12-02",
+    "APF-RC12-03",
+    "APF-RC12-04",
+    "APF-RC12-05",
+    "APF-RC12-06",
+    "APF-RC12-07"
+  ],
+  "gate": "CONCRETE_PLAYBOOK_INTAKE_GATE",
+  "artifacts": [
+    "templates/CONCRETE_PLAYBOOK_INTAKE_CONTRACT.template.yaml",
+    "templates/PLAYBOOK_REQUIREMENT_CAPTURE_MATRIX.template.yaml",
+    "templates/INTAKE_ASSUMPTION_AND_UNKNOWN_REGISTER.template.yaml",
+    "templates/PLAYBOOK_SCOPE_BOUNDARY_REGISTER.template.yaml",
+    "templates/APF_CONCRETE_PLAYBOOK_INTAKE_COMPLETENESS_REPORT.template.json"
+  ],
+  "scope_boundary": {
+    "real_intake_started": false,
+    "real_playbook_created": false,
+    "ordo_language_package_changed": false
+  },
+  "blocking_issues": []
+}

@@ -1,0 +1,13 @@
+{
+  "run_id": "RUN_02",
+  "representation": "yaml_playbook",
+  "playbook_version": "Alpha 1.17.1",
+  "package": "ORDO_RUN_02_EXECUTION_OUTPUT.zip",
+  "sha256": "92c9d3293a675f28483ced2c6ed9cf441c4d224dab2b0a5c00d982c2e34e32dc",
+  "process_score": 98,
+  "documents_score": 98,
+  "final_score": 98,
+  "terminal": "T_COMPLETED / GO",
+  "status": "accepted",
+  "supersedes": "Alpha 1.17.0 RUN_02"
+}

@@ -1,0 +1,40 @@
+schema_version: benchmark.test_case_intake.v1
+identity:
+  suite_id: ""
+  suite_version: ""
+  proposed_test_case_id: ""
+  proposed_test_case_version: ""
+  title: ""
+  owner: ""
+semantic_target:
+  goal: ""
+  invariant_across_variants: []
+  non_goals: []
+classification:
+  primary: "TC01|TC02|TC03"
+  secondary: []
+  rationale: []
+source_authority: []
+input_uncertainty:
+  confirmed_before_run: []
+  hidden_driver_facts: []
+  allowed_fact_statuses: [confirmed, tentative, corrected, withdrawn, unavailable, irrelevant]
+  assumption_policy: no_silent_invention
+artifact_model:
+  canonical_routes: []
+  terminal_routes: []
+process_claims: []
+scenario_dimensions: []
+planned_variants: []
+evaluation:
+  process_contract: ""
+  document_contracts: []
+  aggregation: ""
+  excluded_dimensions: []
+reproducibility:
+  integrity_required: true
+  required_run_identity_fields: []
+approval:
+  status: draft
+  reviewer: ""
+  reference: ""

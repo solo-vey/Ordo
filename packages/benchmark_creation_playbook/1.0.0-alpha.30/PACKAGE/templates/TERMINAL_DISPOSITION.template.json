@@ -1,0 +1,13 @@
+{
+  "schema_version": "ordo.benchmark.terminal_disposition.v1",
+  "attempt_id": "ATTEMPT-<unique>",
+  "run_id": "RUN_01",
+  "terminal_disposition": "T_COMPLETED|T_INPUT_BLOCKED|T_SCENARIO_EXHAUSTED|T_NOT_READY|T_NO_GO",
+  "terminal_reason_codes": [],
+  "state_snapshot_reference": "<ref>",
+  "current_artifact_versions": [],
+  "invalidated_artifacts": [],
+  "open_requirements": [],
+  "driver_decision_reference": "<event-ref>",
+  "confirmed_at": "<rfc3339>"
+}

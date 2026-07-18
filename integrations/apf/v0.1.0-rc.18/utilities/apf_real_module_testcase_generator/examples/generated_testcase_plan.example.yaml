@@ -1,0 +1,18 @@
+generated_testcase_plan:
+  status: planning_specification_only
+  generated_by: apf_real_module_testcase_generator
+  runtime_execution: not_supported_at_apf_level
+  scenarios:
+    - distraction_to_unrelated_task
+    - premature_jump_to_archive
+    - skip_required_gate
+    - false_runtime_ready
+    - missing_evidence
+    - apf_language_scope_confusion
+    - deferred_item_loss
+    - package_profile_confusion
+    - silent_process_mutation
+    - backtracking_loses_state
+  expected_outputs:
+    - tests/EXPECTED_BEHAVIOR_MATRIX.yaml
+    - reports/APF_REAL_MODULE_TESTCASE_GENERATION_PLAN_REPORT.json

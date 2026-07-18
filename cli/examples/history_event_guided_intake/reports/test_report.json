@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "mode": "static_behavior_validation",
+  "note": "M2 test runner validates Ordo test expectations statically; it does not execute an AI model.",
+  "summary": {
+    "test_cases": 11,
+    "passed": 11,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "results": [
+    {
+      "id": "TC_EVENT_GOAL_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_EVENT_GOAL_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_PATH_SELECTED_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_PATH_SELECTED_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_ALIAS_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_ALIAS_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_DISPLAY_NAME_UK_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_DISPLAY_NAME_UK_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_DISPLAY_NAME_EN_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_DISPLAY_NAME_EN_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_SOURCE_FIELD_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_SOURCE_FIELD_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_VALUE_SEMANTICS_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_VALUE_SEMANTICS_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_QA_SCOPE_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_QA_SCOPE_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_APPROVAL_GATE",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_APPROVAL_GATE",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_NO_FINAL_PACKAGE_WITHOUT_APPROVAL",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_NO_FINAL_PACKAGE_WITHOUT_APPROVAL",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    },
+    {
+      "id": "TC_UNMATCHED_PATH_CLARIFY",
+      "status": "passed",
+      "namespaced_id": "history_event.guided_intake.TC_UNMATCHED_PATH_CLARIFY",
+      "summary": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "issues": []
+    }
+  ]
+}

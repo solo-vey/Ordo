@@ -1,0 +1,44 @@
+schema_version: ordo.benchmark.result_package_release_gate.policy.v1
+policy_id: RESULT_PACKAGE_RELEASE_GATE_V1
+fail_closed: true
+release_dispositions:
+  pass: PASS_RELEASE
+  retry: BLOCKED_REGENERATE
+  terminal: NO_GO
+required_paths:
+  - selected_run.yaml
+  - artifact_inventory.json
+  - validator_receipts.json
+  - driver_state.json
+  - approvals.json
+  - artifacts
+mandatory_validators:
+  - passport
+  - jira
+  - manual_qa
+  - automation
+releasable_driver_statuses:
+  - approved
+  - completed
+required_artifact_types:
+  - passport
+  - jira
+  - manual_qa
+  - automation
+manual_qa:
+  required_steps: [0,1,2,3,4,5,6,7,8,9]
+  required_markers:
+    - rollback
+    - post-rollback
+    - assertion
+automation:
+  required_markers:
+    - cycle_1
+    - cycle_2
+    - exact_cardinality
+    - idempotency
+    - zero_forbidden_side_effects
+unsupported_claim_patterns:
+  - '(?i)live execution (passed|completed|verified)'
+  - '(?i)repository symbol (exists|verified)'
+  - '(?i)unavailable binding (resolved|executed)'

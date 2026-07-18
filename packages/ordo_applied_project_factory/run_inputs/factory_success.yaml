@@ -1,0 +1,409 @@
+answers:
+  N_FACTORY_MODE_SELECTION: free_dialogue
+  N_APPLIED_PROJECT_GOAL: створити guided Ordo-проєкт для будь-якого прикладного процесу
+  N_APPLIED_PROCESS_TYPE: 'будь-який Ordo-процес: документний, QA, delivery, configuration або hybrid'
+  N_RUNTIME_ROLES:
+    human_role: pm_or_analyst
+    ai_role: runtime_guide
+  N_RUNTIME_ENTRY_POINT: користувач починає з опису задачі або проблеми природною мовою
+  N_DOMAIN_MODEL_OVERVIEW: Project Factory створює будь-які Ordo-процеси для PM/аналітика без прямого
+    YAML; AI веде користувача, збирає дерево, gates, state і templates.
+  N_DOMAIN_INPUT_OUTPUT_SOURCES:
+    inputs:
+    - plain-language needs
+    - domain notes
+    - optional files/examples
+    - output document/template hints
+    outputs:
+    - source/program.ordo.yaml
+    - future runtime package
+    - future evidence package
+    - basic test cases after tree approval
+  N_OPEN_QUESTIONS_REVIEW:
+  - question: чи потрібні додаткові compilation targets
+    classification: defer_until_compile
+  - question: confusion/self-test generation
+    classification: defer_to_runtime_project
+  N_TREE_DEPTH_FIRST_REVIEW_LOOP:
+    node: Перевірка достатності матеріалу
+    confirmed_path:
+    - Вибір режиму
+    - Вільний діалог
+    - Вільний опис
+    - Осмислення опису
+    current_branch: Матеріалу достатньо → формуємо draft дерева
+    unreviewed_sibling_branches:
+    - Потрібні уточнення → ставимо додаткові питання
+    - Частину питань можна відкласти → фіксуємо open questions
+    deferred_return_points:
+    - Повернутися до sibling-гілок вузла “Перевірка достатності матеріалу” після проходження поточного
+      шляху
+    current_node_review_record:
+      human_description: Модель перевіряє, чи вже можна сформувати перший draft дерева, або треба уточнювати.
+      question_or_action: Чи достатньо матеріалу для першого draft дерева?
+      transition_options:
+      - матеріалу достатньо
+      - потрібні уточнення
+      - частину питань відкласти
+      state_updates:
+      - free_dialogue_draft_tree_ready
+      - open_questions
+      - current_review_branch
+      - unreviewed_sibling_branches
+      - deferred_return_points
+      gates:
+      - матеріалу достатньо або питання явно відкладені/уточнені
+      - sibling-гілки не загублені
+      artifacts_outputs_templates:
+      - draft tree summary
+      - open questions list
+      open_questions:
+      - формалізувати user-facing node review у мові
+    tree_snapshot:
+    - node: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
+    - node: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
+    - node: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    depth_first_complete: true
+  N_TREE_REVIEW_CONTINUE_OR_APPROVE: approve_tree
+  N_DECISION_TREE_BLUEPRINT:
+  - node: goal
+    question: що створюємо
+    branches:
+    - document_flow
+    - qa_flow
+    - delivery_flow
+    - custom_flow
+  - node: outputs
+    question: які artifacts потрібні
+    branches:
+    - source_yaml_only
+    - extended_package_later
+  N_STATE_SCHEMA_BLUEPRINT:
+  - project_goal
+  - process_type
+  - runtime_roles
+  - entry_point
+  - decision_tree
+  - state_fields
+  - outputs
+  - templates
+  - gates
+  - approval
+  - factory_authoring_mode
+  - domain_model_notes
+  - open_questions
+  - draft_tree_review_status
+  - basic_test_case_catalog
+  - free_dialogue_raw_notes
+  - free_dialogue_structured_notes
+  - candidate_decision_nodes
+  - candidate_gates
+  - candidate_outputs
+  - candidate_templates
+  - free_dialogue_draft_tree_ready
+  - stabilized_tree_branch
+  - self_hosted_authoring_loop_status
+  - focused_svg_policy
+  - current_graph_focus_node
+  - current_graph_rendering_mode
+  - graph_rendering_policy_status
+  - language_improvement_proposals
+  - language_improvement_proposals_status
+  - module_id
+  - module_version
+  - module_versioning_policy
+  - module_versioning_policy_status
+  - parent_language_package_version
+  - language_package_inclusion_model
+  - graph_annotation_overlay_policy
+  - graph_annotation_overlay_status
+  - graph_annotation_overlay_tool_version
+  - auto_svg_generation_policy
+  - user_facing_node_description_policy
+  - user_facing_extraction_policy
+  - process_feedback_policy
+  - process_feedback_policy_status
+  - process_feedback_items
+  - pending_process_change
+  - yaml_reload_after_process_change
+  - node_review_display_contract
+  - node_review_display_policy_status
+  - confirmed_review_path
+  - current_review_branch
+  - unreviewed_sibling_branches
+  - deferred_return_points
+  - current_node_review_record
+  - node_review_ordo_layer_visibility
+  - incremental_yaml_update_policy
+  - incremental_yaml_validation_profile
+  - incremental_yaml_validation_status
+  - last_incremental_yaml_patch_summary
+  - full_project_validation_policy
+  - full_project_validation_status
+  - full_project_validation_required_before_handoff
+  - validation_findings_requiring_tree_correction
+  N_OUTPUT_ARTIFACT_CATALOG:
+  - source/program.ordo.yaml
+  - future runtime package
+  - future evidence package
+  - basic test case catalog after tree approval
+  - docs/FOCUSED_GRAPH_RENDERING_POLICY.md
+  - docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md
+  - VERSION.md
+  - MODULE_CHANGELOG.md
+  - docs/MODULE_VERSIONING_POLICY.md
+  - docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md
+  - docs/USER_FACING_RUNTIME_REVIEW_POLICY.md
+  N_OUTPUT_TEMPLATE_CATALOG:
+  - artifact: source/program.ordo.yaml
+    required_sections:
+    - ordo
+    - interaction_model
+    - process_rail
+    - state
+    - nodes
+    - gates
+    - outputs
+    status: proposed-template
+  - artifact: docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md
+    required_sections:
+    - problem
+    - current_limitation
+    - proposed_construct
+    - temporary_workaround
+    - affected_packages
+    - status
+    status: proposed-template
+  - artifact: docs/MODULE_VERSIONING_POLICY.md
+    required_sections:
+    - module_version
+    - language_package_version
+    - inclusion_model
+    - historical_mapping
+    status: proposed-template
+  - artifact: docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md
+    required_sections:
+    - default_context_svg
+    - annotation_schema
+    - allowed_use
+    - non_goals
+    status: proposed-template
+  - artifact: docs/USER_FACING_RUNTIME_REVIEW_POLICY.md
+    required_sections:
+    - current node block
+    - free-dialogue extraction
+    - process feedback loop
+    - SVG
+    status: proposed-template
+  N_VALIDATION_GATE_CATALOG:
+  - lint
+  - compile
+  - test
+  - coverage
+  - tree_template_coverage
+  - approval_to_generate_source_yaml
+  - factory_authoring_mode_selected
+  - tree_review_depth_first_approved
+  - test_cases_after_tree_approval
+  - free_dialogue_notes_structured
+  - free_dialogue_draft_tree_ready
+  - self_hosted_branch_stabilized
+  - candidate_outputs_and_templates_captured
+  - focused_context_svg_policy_confirmed
+  - language_improvement_proposals_captured_or_empty
+  - module_versioning_policy_confirmed
+  - graph_annotation_overlay_policy_confirmed
+  - auto_svg_on_request_only_confirmed
+  - user_facing_node_descriptions_enabled
+  - user_facing_extraction_summary_enabled
+  - process_feedback_loop_confirmed
+  - node_review_display_contract_confirmed
+  - node_review_tracks_sibling_branches
+  - current_node_review_includes_ordo_layer
+  - incremental_yaml_patch_policy_confirmed
+  - minimal_yaml_patch_check_defined
+  - full_validation_deferred_to_terminal_gate
+  - full_project_validation_passed_before_handoff
+  N_FIRST_RELEASE_SCOPE: source_yaml_only
+  N_APPROVAL_TO_GENERATE_SOURCE_YAML: 'yes'
+  N_MANUAL_TREE_PROJECT_GOAL:
+    goal: ручний режим для перевірки гілки
+    process_type: manual_tree_authoring
+  N_MANUAL_TREE_RUNTIME_CONTEXT:
+    human_role: pm_or_analyst
+    ai_role: structure_checker
+    entry_point: користувач диктує вузли дерева
+  N_MANUAL_TREE_ROOT_NODE:
+  - node: root
+    question: який процес будуємо
+    branches:
+    - A
+    - B
+    state_fields:
+    - selected_branch
+    gates:
+    - root_node_present
+  N_FREE_DIALOGUE_INTAKE: 'Користувач описує сумбурно: потрібен Project Factory, який веде аналітика без
+    YAML, допомагає з дерева рішень, gates, state, outputs/templates і після питання “що далі” сам пропонує
+    draft дерева.'
+  N_FREE_DIALOGUE_NEXT_SIGNAL: formulate_draft_tree
+  N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY:
+  - node: Вибір режиму створення проєкту
+    branches:
+    - Доменна модель + дерево рішень
+    - Ручне дерево рішень
+    - Вільний діалог
+  - node: Вільний опис ідеї
+    branches:
+    - продовжити опис
+    - перейти до осмислення
+  - node: Осмислення опису
+    branches:
+    - підтвердити summary
+    - виправити summary
+  - node: Перевірка достатності матеріалу
+    branches:
+    - матеріалу достатньо
+    - потрібні уточнення
+    - частину питань відкласти
+  - node: Покрокове узгодження одного вузла
+    branches:
+    - підтвердити вузол
+    - виправити вузол
+    - повернутися до sibling-гілки
+  - node: Terminal full validation gate
+    branches:
+    - full validation passed
+    - findings require tree correction
+  N_BASIC_TEST_CASE_CATALOG:
+  - id: TC_MODE_1_DOMAIN_TO_TREE
+    path:
+    - domain_model_plus_tree
+    - domain_overview
+    - tree_review
+    - approve_tree
+    expected: source YAML readiness gates pass
+  - id: TC_MODE_2_MANUAL_TREE
+    path:
+    - manual_tree_authoring
+    - root_node
+    - approve_tree
+    expected: manual tree nodes are preserved
+  - id: TC_MODE_3_FREE_DIALOGUE_DRAFT
+    path:
+    - free_dialogue
+    - what_next_signal
+    - draft_tree_review
+    expected: draft tree is reviewed before approval
+  N_FREE_DIALOGUE_STRUCTURED_EXTRACTION:
+    what_i_heard:
+    - Користувач хоче Project Factory, який створює Ordo-проєкти без вимоги знати YAML.
+    - Старт може бути через вільний діалог, де користувач описує ідеї сумбурно.
+    - Після сигналу “що далі” AI має запропонувати draft дерева і пройти його вузол за вузлом.
+    what_it_means:
+    - Free-dialogue режим має накопичувати матеріал, а не одразу вимагати структуру.
+    - Технічні alias мають лишатися внутрішніми, а користувач бачить людське пояснення.
+    - SVG не треба генерувати автоматично, тільки за запитом.
+    emerging_tree:
+    - вибір режиму створення проєкту
+    - вільний діалог і накопичення нотаток
+    - людське резюме того, що почуто
+    - сигнал “що далі”
+    - перший draft дерева
+    - покрокове узгодження вузлів
+    - стабілізація гілки
+    open_questions_plain:
+    - як формально зберігати людський description вузла в мові
+    - як формалізувати process feedback → YAML reload
+    domain_hints:
+    - factory створює будь-які Ordo-процеси
+    - PM/аналітик не пише YAML
+    - free dialogue має перейти у draft tree review
+    - runtime review is user-facing and not alias-first
+    candidate_nodes:
+    - mode_selection
+    - free_dialogue_intake
+    - plain_language_structured_extraction
+    - draft_tree_summary
+    - depth_first_node_review
+    - process_feedback_change_confirmation
+    - stabilized_branch_handoff
+    candidate_gates:
+    - notes_structured
+    - draft_tree_ready
+    - tree_depth_first_approved
+    - branch_stabilized
+    - auto_svg_on_request_only_confirmed
+    - user_facing_node_descriptions_enabled
+    - process_feedback_loop_confirmed
+    candidate_outputs:
+    - source/program.ordo.yaml
+    - basic test case catalog after tree approval
+    - docs/USER_FACING_RUNTIME_REVIEW_POLICY.md
+    candidate_templates:
+    - generated source YAML template
+    - output template catalog
+    - user-facing runtime review policy template
+    open_questions:
+    - question: confusion/self-test generation
+      classification: defer_to_runtime_project
+    - question: formal nodes[].description support
+      classification: defer_until_language_package_update
+  N_FREE_DIALOGUE_ACCUMULATION_CHECK: ready_for_what_next_signal
+  N_STABILIZED_TREE_BRANCH_HANDOFF:
+    branch_id: free_dialogue_self_hosted_authoring_loop
+    reuse_enabled: true
+    reuse_rule: Use the stabilized free-dialogue branch as the working algorithm for designing and confirming
+      remaining factory branches; render branch work with focused/context SVG.
+  N_WORKING_CONTEXT_GRAPH_POLICY: confirm_on_request_context_svg_policy
+  N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW:
+    status: captured
+    proposals:
+    - id: LIP-M61-6-001
+      problem: Gate cards need human-readable descriptions in SVG review
+      proposed_construct: gates[].description
+      temporary_workaround: use provisional description and record this proposal
+    - id: LIP-M61-6-002
+      problem: Branch authoring needs formal graph rendering defaults
+      proposed_construct: graph_rendering_policy
+      temporary_workaround: store focused_svg_policy in state and docs/FOCUSED_GRAPH_RENDERING_POLICY.md
+    - id: LIP-APF-0-1-0-A7-001
+      problem: Annotation overlay is useful but currently preview/demo-level and not integrated with focused
+        context rendering
+      proposed_construct: canonical graph_annotation_overlay_policy and focused annotation rendering support
+      temporary_workaround: use context SVG as default and annotation overlay only as optional review
+        aid
+    - id: LIP-APF-0-1-0-A8-001
+      problem: Current-node review needs human-readable node descriptions
+      proposed_construct: nodes[].description
+      temporary_workaround: use provisional description field and display it in the current-node block
+    - id: LIP-APF-0-1-0-A8-002
+      problem: Free-dialogue extraction is too technical when shown as alias/YAML maps
+      proposed_construct: user_facing_extraction_summary
+      temporary_workaround: show what I heard / what it means / emerging tree / open questions
+    - id: LIP-APF-0-1-0-A8-003
+      problem: Self-hosted authoring needs process feedback to update and reload YAML
+      proposed_construct: PROCESS.FEEDBACK / PROCESS.RELOAD
+      temporary_workaround: record process_feedback_policy and follow APF runtime discipline
+  N_MODULE_VERSIONING_POLICY: module_local_versioning
+  N_GRAPH_ANNOTATION_OVERLAY_POLICY: use_v1_1_preview_when_helpful
+  N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION:
+    feedback_items:
+    - не генерувати SVG автоматично
+    - показувати description вузла людською мовою
+    - не показувати extraction як технічний alias/YAML-блок
+    - дозволити процес-фідбеку змінювати YAML після підтвердження
+    - під час depth-first review треба явно показувати state/gates/artifacts для поточного вузла
+    - під час проходження однієї гілки sibling-гілки мають зберігатися як unreviewed/deferred
+    - після підтверджених кроків дерева потрібен малий YAML patch, а не повна регенерація
+    - 'мінімальна перевірка після patch: YAML parse + CLI lint/compile'
+    - повна перевірка CLI запускається на terminal/pre-handoff gate або при findings
+    process_change:
+      version: 0.1.0-alpha.14
+      change: incremental YAML patch + minimal validation during tree review; full validation as terminal/pre-handoff
+        gate
+      trust_class: deterministic
+      status: minimal_check_profile_confirmed
+  N_TREE_NODE_REVIEW_DISPLAY_CONTRACT: confirm_review_format
+  N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY: confirm_incremental_yaml_patch_policy
+  N_TERMINAL_BRANCH_FULL_VALIDATION_GATE: full_validation_passed

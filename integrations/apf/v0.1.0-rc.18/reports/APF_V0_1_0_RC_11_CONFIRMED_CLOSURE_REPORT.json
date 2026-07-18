@@ -1,0 +1,35 @@
+{
+  "report_id": "APF_V0_1_0_RC_11_CONFIRMED_CLOSURE_REPORT",
+  "module_id": "ordo.applied_project_factory",
+  "current_version": "v0.1.0-rc.11-confirmed-closure",
+  "source_version": "v0.1.0-rc.11-concrete-playbook-startup-contract",
+  "source_archive": "APF_TRANSFER_PACKAGE_CURRENT_STATE_RC11_CONCRETE_PLAYBOOK_STARTUP_CONTRACT.zip",
+  "status": "accepted-baseline",
+  "ready_for_next_apf_patch": true,
+  "confirmed_decisions": [
+    "APF-RC11-01",
+    "APF-RC11-02",
+    "APF-RC11-03",
+    "APF-RC11-04",
+    "APF-RC11-05",
+    "APF-RC11-06",
+    "APF-RC11-07"
+  ],
+  "scope_boundary": {
+    "apf_package_process_only": true,
+    "real_playbook_authoring_started": false,
+    "real_playbook_package_created": false,
+    "ordo_language_package_changed": false
+  },
+  "preserved_artifacts": [
+    "docs/APF_RC11_CONCRETE_PLAYBOOK_STARTUP_GATE_POLICY.md",
+    "docs/APF_VS_PLAYBOOK_AUTHORING_BOUNDARY.md",
+    "templates/CONCRETE_PLAYBOOK_AUTHORING_PROTOCOL.template.md",
+    "templates/PLAYBOOK_PACKAGE_STARTUP_MANIFEST.template.yaml",
+    "templates/APF_CONCRETE_PLAYBOOK_AUTHORING_READINESS_REPORT.template.json",
+    "templates/concrete_playbook_package_skeleton/"
+  ],
+  "deferred_items": [],
+  "blocking_issues": [],
+  "next_recommended_patch": "APF rc.12 — Concrete playbook intake contract and requirement-capture standard"
+}

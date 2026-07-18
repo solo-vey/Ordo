@@ -1,0 +1,24 @@
+{
+  "schema_version": "ordo.evidence_integration_report.v1",
+  "integration_id": "BL-ORDO-059-EVIDENCE-REV2",
+  "source_archive": "ORDO_EVIDENCE_ALL_TEST_CASES_CURRENT_STATE_ONLY_TRANSFER_2026-07-18_REV2(1).zip",
+  "source_archive_sha256": "ae87cbf42e34aa6f19dac401ed34f6d35a787c2538fa1d6e0421c5728c91c0f4",
+  "integration_mode": "authoritative current-state-only replacement of test-case evidence; non-test-case evidence domains preserved",
+  "retained_test_cases": 4,
+  "authoritatively_excluded_test_cases": [
+    {
+      "test_case": "TC02_INTERRELATED_ARTIFACT_SET/EX02_DATABASE_CHANGE_ARTIFACT_SET",
+      "reason": "deprecated and migrated",
+      "replacement": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET"
+    }
+  ],
+  "accepted_run_count": 30,
+  "preserved_out_of_scope_evidence": [
+    "MIGRATION_V1_3.md",
+    "external_developer_adoption",
+    "governance",
+    "task_classes"
+  ],
+  "canonical_release_modified": false,
+  "status": "integrated_candidate"
+}

@@ -1,0 +1,13 @@
+case_id,path_id,noise_pattern,terminal_target,terminal_type,expected_outputs,scripted_step_count,clean_answer_step_count,case_artifact_ready,runtime_execution_ready,scoring_ready,calibration_ready
+NOISE_TP_001_DISTRACTION,TP_001,distraction,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_001_INVALID_BRANCH,TP_001,invalid_branch,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT,TP_001,clarification_without_submit,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_001_SKIP_AHEAD,TP_001,skip_ahead,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_002_DISTRACTION,TP_002,distraction,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_002_INVALID_BRANCH,TP_002,invalid_branch,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT,TP_002,clarification_without_submit,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_002_SKIP_AHEAD,TP_002,skip_ahead,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_003_DISTRACTION,TP_003,distraction,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_003_INVALID_BRANCH,TP_003,invalid_branch,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT,TP_003,clarification_without_submit,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False
+NOISE_TP_003_SKIP_AHEAD,TP_003,skip_ahead,G_TRIAGE_COMPLETE,gate,OUT_TRIAGE_NOTE,3,2,True,False,False,False

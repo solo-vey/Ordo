@@ -1,0 +1,14 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "id": "BL-ORDO-058",
+  "title": "Public Contribution Surface",
+  "status": "closed",
+  "result": {
+    "repository_language": "English",
+    "ukrainian_exception": "Ordo book translation only",
+    "issue_forms": 5,
+    "issue_config": true,
+    "pull_request_template": true,
+    "canonical_release_created": false
+  }
+}

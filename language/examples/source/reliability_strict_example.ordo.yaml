@@ -1,0 +1,62 @@
+program:
+  id: examples.strict_handoff
+  ordo_version: "0.12"
+  control_level: strict
+  execution_mode: chat_internal
+
+intent:
+  goal: "Підготувати фінальний handoff лише після перевірки contract і required gates."
+
+contract:
+  output_type: handoff_note
+  requires:
+    - contract_confirmed
+    - no_final_output_before_gate
+
+state:
+  schema:
+    contract_confirmed: boolean
+    final_output_created: boolean
+    output_allowed: boolean
+
+nodes:
+  - id: N_CONFIRM_CONTRACT
+    question: "Чи підтверджено contract?"
+    allowed_answers: [yes, no]
+    on_unmatched_input:
+      action: CLARIFY.REQUEST
+      strategy: rephrase_and_narrow
+      max_attempts: 2
+      on_exhausted:
+        action: escalate_to_human
+
+assertions:
+  - id: A_NO_FINAL_OUTPUT_BEFORE_GATE
+    polarity: not
+    condition: final_output_created_before_required_gates
+    phase: [runtime, test]
+    severity: block
+    on_fail: STOP
+
+gates:
+  - id: G_CONTRACT_CONFIRMED
+    method: human
+    trust_class: human_decision
+    assert: CONTRACT_CONFIRMED
+    source: state.contract_confirmed
+    on_fail: STOP
+
+  - id: G_NO_FINAL_OUTPUT_BEFORE_GATE
+    method: mechanical
+    trust_class: deterministic
+    assert: ASSERTION_HOLDS
+    source: assertion.A_NO_FINAL_OUTPUT_BEFORE_GATE
+    on_fail: STOP
+
+trace:
+  required: true
+  trace_source: hybrid
+
+tests:
+  required: true
+  suite: RS_STRICT_HANDOFF

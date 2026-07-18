@@ -1,0 +1,36 @@
+{
+  "milestone": "M60.5",
+  "title": "PathWalk Benchmark Readiness",
+  "status": "passed",
+  "type": "companion_utility_readiness",
+  "runtime_core_changed": false,
+  "pathwalk_changes": [
+    "added matrix-smoke CLI command",
+    "added no-API ground-truth matrix runner",
+    "added sample SUMMARY.json/SUMMARY.md and score artifacts",
+    "added matrix smoke pytest coverage"
+  ],
+  "tested_runtime_views": [
+    "json",
+    "ordo-code",
+    "json,ordo-code"
+  ],
+  "checks": {
+    "pathwalk_pytest": "18/18 passed",
+    "matrix_smoke": "passed across json, ordo-code, json,ordo-code",
+    "score_metadata": "present",
+    "aggregate_summary": "present",
+    "legacy_ordo_run_launcher": "not used in enforced mode",
+    "repo_check": "passed with PYTHONDONTWRITEBYTECODE=1",
+    "book_manifest": "69 entries, all files present",
+    "py_compile": "passed for matrix_smoke.py and cli.py"
+  },
+  "not_in_scope": [
+    "score weight calibration",
+    "real API model benchmark",
+    "MCP",
+    "sandbox isolation",
+    "Python target",
+    "Java target"
+  ]
+}

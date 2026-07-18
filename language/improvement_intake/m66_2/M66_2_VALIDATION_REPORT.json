@@ -1,0 +1,25 @@
+{
+  "milestone": "M66.2",
+  "name": "Startup Profile Validation / Lint Profile Design",
+  "status": "passed",
+  "result": "accepted-design / passed-docs-schema-validation",
+  "checks": {
+    "startup_profile_validation_doc_created": "passed",
+    "schema_yaml_parse": "passed",
+    "example_yaml_parse": "passed",
+    "json_reports_parse": "passed",
+    "m66_0_artifacts_present": "passed",
+    "m66_1_artifacts_present": "passed",
+    "runtime_core_changed": "none",
+    "compiler_changed": "none",
+    "cli_changed": "none",
+    "opcodes_added": "none",
+    "compiled_ir_regenerated": "not_claimed"
+  },
+  "change_level": "L0 — Documentation / schema / lint-profile design",
+  "source_yaml_impact": "none after M66.1",
+  "notes": [
+    "Defines validation/lint design only.",
+    "No CLI command is introduced."
+  ]
+}

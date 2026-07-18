@@ -1,0 +1,16 @@
+playbook_package_startup:
+  package_id: null
+  authoring_mode: concrete_playbook_package
+  source_apf_baseline: null
+  apf_baseline_mutation_allowed: false
+  prompt_support:
+    prompt_sufficiency_review_required: true
+    empty_prompt_package_forbidden: true
+    internal_apf_prompt_registry_reuse_forbidden: true
+  atomic_step_review:
+    required: true
+    review_contract_ref: docs/APF_ATOMIC_STEP_REVIEW_CONTRACT.yaml
+    package_manifest_ref: reviews/atomic_step/atomic_step_review_manifest.yaml
+    validation_report_ref: reviews/atomic_step/atomic_step_validation_report.yaml
+    package_assembly_blocked_by_unresolved_findings: true
+    human_decision_required_for_semantic_change: true

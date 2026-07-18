@@ -1,0 +1,38 @@
+{
+  "milestone": "M71.3",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "semantic_prompt_ids",
+      "status": "passed",
+      "count": 13
+    },
+    {
+      "id": "prompt_refs_resolve",
+      "status": "passed",
+      "count": 22
+    },
+    {
+      "id": "manifest_checksums",
+      "status": "passed",
+      "count": 13
+    },
+    {
+      "id": "controlled_application_phases",
+      "status": "passed"
+    },
+    {
+      "id": "legacy_compatibility_map",
+      "status": "passed",
+      "count": 13
+    },
+    {
+      "id": "business_contract_unchanged",
+      "status": "passed"
+    },
+    {
+      "id": "package_clean_check",
+      "status": "passed"
+    }
+  ]
+}

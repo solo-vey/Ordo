@@ -1,0 +1,163 @@
+{
+  "schema_version": "ordo.bl_ordo_002.closure.v1",
+  "backlog_id": "BL-ORDO-002",
+  "status": "closed",
+  "closed_at": "2026-07-14T12:00:00Z",
+  "title": "APF graph cycles and dead-end paths",
+  "implementation": {
+    "graph_contract_validation": "existing M76.1 mechanism revalidated on current R2 graph contract",
+    "pathwalk_semantics": [
+      "graph_contract.entry_node honored",
+      "declared intentional cycle regions pruned from canonical testcase enumeration",
+      "internal terminal nodes treated as terminal outcomes",
+      "canonical shortest terminal route per reachable terminal edge/outcome"
+    ],
+    "changed_files": [
+      "ordo_pathwalk/generator/real_module.py",
+      "ordo_pathwalk/tests/test_real_module_graph.py"
+    ]
+  },
+  "graph_validation": {
+    "status": "passed",
+    "summary": {
+      "nodes": 91,
+      "active_nodes": 78,
+      "reachable_active_nodes": 78,
+      "terminal_nodes": 1,
+      "external_terminal_targets": 5,
+      "cycles_detected": 7,
+      "errors": 0,
+      "warnings": 0
+    },
+    "issues": [],
+    "cycle_components": [
+      [
+        "N_APPROVAL_TO_GENERATE_SOURCE_YAML",
+        "N_APPROVED_TREE_CONSOLIDATION",
+        "N_BRANCH_REVIEW",
+        "N_CURRENT_NODE_REVIEW_DECISION_GATE",
+        "N_DRAFT_SUBTREE_GENERATION",
+        "N_DRAFT_SUBTREE_REVIEW_START",
+        "N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE",
+        "N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION",
+        "N_OUTPUT_REVIEW_PACKAGE_GENERATION",
+        "N_OUTPUT_TEMPLATE_CREATION_LOOP",
+        "N_OUTPUT_TEMPLATE_REVIEW_LOOP",
+        "N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION",
+        "N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK",
+        "N_SHARED_TAIL_CORRECTION_LOOP",
+        "N_SHARED_TAIL_FINAL_HANDOFF",
+        "N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE",
+        "N_SHARED_TAIL_FULL_VALIDATION_DECISION",
+        "N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION",
+        "N_SHARED_TAIL_MINIMAL_VALIDATION",
+        "N_SHARED_TAIL_SOURCE_YAML_GENERATION",
+        "N_SHARED_TAIL_VALIDATION_RESULT_REVIEW",
+        "N_STATE_SCHEMA_BLUEPRINT",
+        "N_SUBTREE_REVIEW_COMPLETION_CHECK",
+        "N_TERMINAL_OR_CONTINUE_DECISION",
+        "N_TERMINAL_OUTPUT_BINDING_CONFIRMATION",
+        "N_TERMINAL_OUTPUT_BINDING_LOOP",
+        "N_TERMINAL_PATH_READY_CHECK",
+        "N_TREE_DEPTH_FIRST_REVIEW_LOOP",
+        "N_USER_TREE_VISION_CAPTURE",
+        "N_VALIDATION_GATE_CATALOG"
+      ],
+      [
+        "N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH",
+        "N_SCOPED_YAML_PATCH_APPLICATION"
+      ],
+      [
+        "N_TARGETED_BEFORE_AFTER_PROPOSAL",
+        "N_TARGETED_CHANGE_CLARIFICATION",
+        "N_TARGETED_CHANGE_DECISION",
+        "N_TARGETED_MORE_IMPROVEMENTS_CHECK",
+        "N_TARGET_PROCESS_ITEM_IDENTIFICATION"
+      ],
+      [
+        "N_MANUAL_TREE_COMPLETENESS_AND_JOIN",
+        "N_MANUAL_TREE_NORMALIZATION",
+        "N_MANUAL_TREE_ROOT_NODE"
+      ],
+      [
+        "N_FREE_DIALOGUE_ACCUMULATION_CHECK",
+        "N_FREE_DIALOGUE_INTAKE",
+        "N_FREE_DIALOGUE_NEXT_SIGNAL",
+        "N_FREE_DIALOGUE_STRUCTURED_EXTRACTION"
+      ],
+      [
+        "N_LEGACY_MIGRATION_CLAUSE_INVENTORY",
+        "N_LEGACY_MIGRATION_COMPLETENESS_GATE",
+        "N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION",
+        "N_LEGACY_MIGRATION_ORDO_MAPPING",
+        "N_LEGACY_MIGRATION_SOURCE_INTAKE"
+      ],
+      [
+        "N_EXISTING_PROCESS_IMPROVEMENT_ENTRY",
+        "N_FACTORY_MODE_SELECTION",
+        "N_LEGACY_INSTRUCTION_MIGRATION_ENTRY"
+      ]
+    ]
+  },
+  "pathwalk_rerun": {
+    "graph": "passed",
+    "graph_counts": {
+      "nodes": 91,
+      "edges": 167,
+      "gates": 52,
+      "assertions": 47,
+      "outputs": 1,
+      "unmatched_handlers": 91,
+      "branching_nodes": 45,
+      "linear_nodes": 45,
+      "dead_end_nodes": 0
+    },
+    "paths": "passed",
+    "path_counts": {
+      "terminal_paths": 7,
+      "cycle_edges": 0,
+      "intentional_loop_edges_pruned": 66,
+      "dead_end_paths": 0,
+      "outputs_referenced": 0
+    },
+    "path_readiness": {
+      "terminal_path_enumeration_ready": true,
+      "clean_path_case_generation_ready": true,
+      "noise_case_generation_ready": false,
+      "testcase_generation_ready": false,
+      "reason": "M60.7.2 enumerates terminal paths and clean-path readiness metadata only; testcase/noise generation remains future work."
+    },
+    "clean": "passed",
+    "clean_counts": {
+      "clean_path_cases": 7,
+      "ready_cases": 7,
+      "terminal_paths_input": 7,
+      "noise_patterns": 0
+    },
+    "noise": "passed",
+    "noise_counts": {
+      "noise_cases": 28,
+      "ready_cases": 28,
+      "terminal_paths_input": 7,
+      "patterns": 4,
+      "clean_path_cases_included": 0
+    }
+  },
+  "acceptance": {
+    "active_nodes_reachable": true,
+    "undeclared_cycles": true,
+    "dead_end_active_nodes": true,
+    "terminal_path_enumeration_ready": true,
+    "clean_cases_ready": true,
+    "noise_cases_ready": true
+  },
+  "blocking_issues": [],
+  "validation_evidence": {
+    "affected_regression": "38/38 passed",
+    "graph_and_pathwalk_regression": "23/23 passed",
+    "package_lints": "4/4 passed",
+    "generated_report_isolation": "passed",
+    "root_hygiene": "passed",
+    "backlog_manifest_sync": "passed"
+  }
+}

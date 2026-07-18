@@ -1,0 +1,20 @@
+{
+  "milestone": "M73.3",
+  "internal_passes": [
+    {
+      "id": "M73.3-A",
+      "chapters": [
+        "07_output_shcho_model_maie_stvoryty",
+        "08_pyshemo_pershu_ordo_source_prohramu"
+      ]
+    },
+    {
+      "id": "M73.3-B",
+      "chapters": [
+        "06_1_atomic_steps_in_llm_processes",
+        "06_2_micro_prompts_modular_process_architecture"
+      ]
+    }
+  ],
+  "archive": false
+}

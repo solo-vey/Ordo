@@ -1,0 +1,33 @@
+{
+  "lockfile_version": "1.0",
+  "generated_by": "ordo-cli 0.6.0",
+  "generated_at": "2026-07-10T12:36:31.827698+00:00",
+  "package": {
+    "name": "history_event.guided_intake",
+    "version": "0.1.1",
+    "ordo_version": "0.12",
+    "root": "packages/history_event_guided_intake"
+  },
+  "dependencies": [
+    {
+      "kind": "output_template_set",
+      "id": "history_event.guided_intake_outputs",
+      "version": "0.1.1",
+      "source": "package_local",
+      "resolved_root": "packages/history_event_guided_intake/output_templates/history_event/guided_intake_outputs/0.1.1",
+      "catalog": "packages/history_event_guided_intake/output_templates/history_event/guided_intake_outputs/0.1.1/output_templates.yaml",
+      "hash": {
+        "algorithm": "sha256-tree",
+        "value": "65d882963e02e1476936a872f8709c6bc2a2429f4fa4e43ee8f19590084fef82"
+      }
+    }
+  ],
+  "summary": {
+    "dependencies_total": 1,
+    "warnings": 0,
+    "kinds": [
+      "output_template_set"
+    ]
+  },
+  "warnings": []
+}

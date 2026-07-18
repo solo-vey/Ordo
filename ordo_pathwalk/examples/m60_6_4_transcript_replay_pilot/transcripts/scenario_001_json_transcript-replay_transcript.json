@@ -1,0 +1,41 @@
+{
+  "schema_version": "pathwalk.model_transcript.v1",
+  "benchmark_protocol_version": "M60.6.4",
+  "job_id": "scenario_001_json_transcript-replay",
+  "scenario_id": "scenario_001",
+  "runtime_view": "json",
+  "cli_mode": "enforced",
+  "benchmark_mode": "transcript-replay",
+  "model": {
+    "provider": "offline",
+    "name": "synthetic-transcript-pilot",
+    "driver": "transcript-replay-pilot"
+  },
+  "started_at": "2026-07-07T22:37:38Z",
+  "completed_at": "2026-07-07T22:37:38Z",
+  "result_status": "completed",
+  "pilot_behavior": "distraction_failure",
+  "turns": [
+    {
+      "turn_index": 1,
+      "turn_type": "clarifying_question",
+      "user_prompt": "back",
+      "model_response": "I followed the distraction and answered as if the current node had changed.",
+      "expected_node_after": "END",
+      "asked_node_id": "WRONG_NODE_FOR_scenario_001",
+      "tool_calls": [
+        {
+          "command": "./cli_embedded/ordo next-step . --format auto",
+          "exit_code": 0,
+          "stdout_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "stderr_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "output_truncated": true
+        }
+      ]
+    }
+  ],
+  "redaction": {
+    "api_keys_removed": true,
+    "secrets_removed": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "ordo.benchmark.improvement_plateau_policy.v1",
+  "policy_version": "1.0.0",
+  "best_confirmed_retention": "mandatory",
+  "candidate_overwrite_before_acceptance": false,
+  "material_improvement_signals": [
+    "validator_failure_closed",
+    "registered_defect_closed",
+    "semantic_completeness_increased",
+    "contradiction_removed",
+    "executable_evidence_added",
+    "cross_artifact_consistency_improved",
+    "blocking_condition_removed",
+    "previously_failed_gate_passed"
+  ],
+  "non_material_changes": [
+    "formatting_only",
+    "editorial_rephrasing",
+    "timestamp_only",
+    "renaming_without_semantic_effect"
+  ],
+  "protected_dimensions": [
+    "semantic_correctness",
+    "contract_compliance",
+    "cross_artifact_consistency",
+    "executable_evidence",
+    "validator_pass_set",
+    "terminal_semantics"
+  ],
+  "plateau_marker": "IMPROVEMENT_PLATEAU_REACHED",
+  "retry_requires_any": [
+    "new_defect_evidence",
+    "new_facts",
+    "changed_correction_strategy"
+  ],
+  "required_records": [
+    "IMPROVEMENT_ATTEMPT_RECEIPT.json",
+    "IMPROVEMENT_DELTA_REPORT.json",
+    "BEST_CONFIRMED_VERSION_BINDING.json"
+  ]
+}

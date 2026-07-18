@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "checked": 62,
+  "schema_version": "ordo.evidence_storage_validation_report.v1",
+  "task_id": "BL-ORDO-059",
+  "return_code": 0,
+  "threshold_decision": "PASS: no current evidence artifact requires LFS or release-asset migration"
+}

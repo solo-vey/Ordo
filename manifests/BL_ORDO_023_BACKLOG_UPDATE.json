@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.backlog_change.v1",
+  "id": "BL-ORDO-023",
+  "previous_status": "open",
+  "new_status": "closed",
+  "previous_title": "Strict-Zero A/B Benchmark Revalidation",
+  "new_title": "99/100 Cross-Model CSG Benchmark Closure",
+  "closure_evidence": "reports/BL_ORDO_023_99_OF_100_RECALCULATION.json",
+  "canonical_integration_pending": true
+}

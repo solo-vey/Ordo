@@ -1,0 +1,41 @@
+{
+  "milestone": "M60.7 Real Module Testcase Generation Kickoff",
+  "generated_at": "2026-07-08T08:30:00+02:00",
+  "status": "kickoff-design-only",
+  "base": "M60.6.4 stable",
+  "implementation_status": "not_implemented",
+  "scope": [
+    "read source/program.ordo.yaml",
+    "extract decision graph summary",
+    "enumerate terminal paths",
+    "generate testcase artifacts",
+    "add controlled noise patterns"
+  ],
+  "out_of_scope": [
+    "runtime-core semantics changes",
+    "path_quality_score weight changes",
+    "real model/API benchmark",
+    "blocked transcript replay matrix expansion"
+  ],
+  "noise_patterns": [
+    "clean_path",
+    "distraction",
+    "backtrack",
+    "skip_ahead",
+    "invalid_branch",
+    "clarification_without_submit",
+    "correction_backtrack"
+  ],
+  "proposed_artifacts": [
+    "REAL_MODULE_TESTCASE_PLAN.json",
+    "REAL_MODULE_GRAPH_SUMMARY.json",
+    "cases/<case_id>.json",
+    "cases/<case_id>.md",
+    "RAW_TESTCASE_MATRIX.csv",
+    "SUMMARY.json",
+    "SUMMARY.md",
+    "VALIDATION_REPORT.json"
+  ],
+  "weights_changed": false,
+  "runtime_core_semantics_changed": false
+}

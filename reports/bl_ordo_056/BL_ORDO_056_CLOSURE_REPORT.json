@@ -1,0 +1,34 @@
+{
+  "schema_version": "ordo.evidence_integration_report.v1",
+  "status": "passed",
+  "backlog_item": "BL-ORDO-056",
+  "source_archive": "EX02_EVIDENCE_TRANSFER_CURRENT_ACCEPTED_RUNS_ONLY_2026-07-17(1).zip",
+  "source_archive_sha256": "e6dabb96d2712edc52ce2385223c7c4be12dbea83e8234bc836eb12e458d4945",
+  "payload_sha256": "227b81b62f14b18d5fdf6960004e2064ac9514e7adeb378c59b86f277249e825",
+  "integration_mode": "atomic_test_case_replacement_current_accepted_runs_only",
+  "accepted_run_count": 20,
+  "scoring_profile": "TC03-EX02-EVAL-v1.1",
+  "averages": {
+    "yaml_playbook": [
+      99.8,
+      98.4,
+      99.2
+    ],
+    "structured_instructions": [
+      99.6,
+      98.3,
+      99.2
+    ],
+    "mixed_accumulated_instructions": [
+      98.8,
+      98.0,
+      98.6
+    ],
+    "domain_adapted_all_in_one": [
+      99.2,
+      55.2,
+      77.2
+    ]
+  },
+  "language_audit": "empirical_evidence/manifests/TC03_EX02_LANGUAGE_AUDIT.json"
+}

@@ -1,0 +1,21 @@
+schema_version: ordo.apf.post_generation_review_trace.v1
+events:
+- POST_GENERATION_REVIEW_STARTED
+- UNSUPPORTED_INFERENCE_DETECTED
+- ARTIFACT_SECTION_INVALIDATED
+- TARGETED_REGENERATION_COMPLETED
+- POST_CORRECTION_REVIEW_PASSED
+- ARTIFACT_CONFIRMATION_ELIGIBLE
+privacy_boundary: Trace records evidence, decisions, statuses, and artifact effects
+  only. Hidden model reasoning is prohibited.
+resume_contract:
+  checkpoint_fields:
+  - review_id
+  - artifact_sha256
+  - open_defect_ids
+  - invalidated_sections
+  - last_completed_gate
+  resume_requires_same_artifact_sha256: true
+rollback_contract:
+  rollback_target: last confirmation-eligible artifact version
+  open critical or high defect: confirmation blocked

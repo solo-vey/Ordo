@@ -1,0 +1,34 @@
+{
+  "milestone": "M69.1",
+  "title": "CI workflow implementation",
+  "status": "implemented-ci-workflow / passed-validation",
+  "added_files": [
+    ".github/workflows/ordo-clean-gate.yml",
+    "cli/docs/CI_WORKFLOW_IMPLEMENTATION.md",
+    "cli/tests/test_ci_clean_gate_workflow.py",
+    "M69_1_CI_WORKFLOW_IMPLEMENTATION_REPORT.md",
+    "M69_1_CI_WORKFLOW_IMPLEMENTATION_REPORT.json",
+    "M69_1_VALIDATION_REPORT.json",
+    "language/improvement_intake/m69_1/M69_1_CI_WORKFLOW_IMPLEMENTATION_REPORT.md",
+    "language/improvement_intake/m69_1/M69_1_CI_WORKFLOW_IMPLEMENTATION_REPORT.json",
+    "language/improvement_intake/m69_1/M69_1_VALIDATION_REPORT.json"
+  ],
+  "changed_files": [
+    "README.md",
+    "CHANGELOG.md",
+    "STABLE_PACKAGE_INDEX.md",
+    "language/README.md",
+    "language/CHANGELOG.md",
+    "language/VALIDATION_REPORT.json"
+  ],
+  "scope_exclusions": [
+    "packages/*",
+    "cli/ordo/*.py",
+    "runtime",
+    "compiler",
+    "opcodes",
+    "compiled IR",
+    "lockfiles",
+    "release/tag integration"
+  ]
+}

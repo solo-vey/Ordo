@@ -1,0 +1,22 @@
+pilot_id: pmp7.history_event_v1_42
+status: review-complete-candidates-pending-human-approval
+target_playbook:
+  playbook_id: history_event_playbook
+  version: v1.42
+  source_artifact: history_event_playbook_current_v1_42_999_HISTORY_EVENT_PLAYBOOK_ALL_IN_ONE.md
+scope:
+  review_only: true
+  mutate_target_playbook: false
+  activate_prompts: false
+  max_candidates: 3
+object_selection:
+  - focused_documentation_loading_gate
+  - N1_PATH_SELECTION
+  - mandatory_contract_micro_check
+  - pre_archive_document_approval_gate
+  - QA_document_generation_step
+out_of_scope:
+  - internal_APF_nodes
+  - live_model_replay
+  - Ordo_core_changes
+  - prompt_activation_without_human_approval

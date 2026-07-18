@@ -1,0 +1,223 @@
+{
+  "milestone": "M58",
+  "name": "documentation_audit_and_full_book_pdf_rebuild",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "in_manifest:chapter_47_two_tier_rendering_model.md",
+      "status": "passed"
+    },
+    {
+      "check": "exists:chapter_47_two_tier_rendering_model.md",
+      "status": "passed"
+    },
+    {
+      "check": "in_manifest:chapter_48_runtime_source_of_truth.md",
+      "status": "passed"
+    },
+    {
+      "check": "exists:chapter_48_runtime_source_of_truth.md",
+      "status": "passed"
+    },
+    {
+      "check": "in_manifest:chapter_49_runtime_guided_intake_entry_protocol.md",
+      "status": "passed"
+    },
+    {
+      "check": "exists:chapter_49_runtime_guided_intake_entry_protocol.md",
+      "status": "passed"
+    },
+    {
+      "check": "in_manifest:chapter_50_runtime_mode_start_files_standard.md",
+      "status": "passed"
+    },
+    {
+      "check": "exists:chapter_50_runtime_mode_start_files_standard.md",
+      "status": "passed"
+    },
+    {
+      "check": "in_manifest:chapter_51_package_build_profiles.md",
+      "status": "passed"
+    },
+    {
+      "check": "exists:chapter_51_package_build_profiles.md",
+      "status": "passed"
+    },
+    {
+      "check": "in_manifest:chapter_52_runtime_checkpoint_discipline.md",
+      "status": "passed"
+    },
+    {
+      "check": "exists:chapter_52_runtime_checkpoint_discipline.md",
+      "status": "passed"
+    },
+    {
+      "check": "manifest_order:M47_to_M57_chapters_in_sequence",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/TWO_TIER_RENDERING.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/RUNTIME_MODEL.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/RUN_STATE.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/CLI_TRUTHFULNESS.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/RUNTIME_MODE.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/START_FILES_STANDARD.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/PACKAGE_PROFILES.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/RUNTIME_PACKAGE_STANDARD.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:language/RUNTIME_CHECKPOINTS.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:cli/docs/TWO_TIER_RENDERING.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:cli/docs/CLI_WORKFLOW.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:cli/docs/PACKAGE_PROFILES.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:cli/docs/VALIDATE_OUTPUT.md",
+      "status": "passed"
+    },
+    {
+      "check": "doc_exists:cli/RUNTIME_ENTRY.md",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:two-tier rendering model",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:runtime source of truth",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:runtime guided intake entry protocol",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:runtime mode start files standard",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:package build profiles",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:runtime checkpoint discipline",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:render_mode: deterministic",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:model_assisted",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:ordo-render-001",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:ordo-runtime-004",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:start_here_runtime_mode.md",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:start_prompt_runtime_mode.md",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:ordo.runtime.json",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:ordo-package-001",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:checkpoint_table",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:earliest_incomplete_node",
+      "status": "passed"
+    },
+    {
+      "check": "term_in_book:ordo-checkpoint-001",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_contains_source_marker:chapter_47_two_tier_rendering_model.md",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_contains_source_marker:chapter_48_runtime_source_of_truth.md",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_contains_source_marker:chapter_49_runtime_guided_intake_entry_protocol.md",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_contains_source_marker:chapter_50_runtime_mode_start_files_standard.md",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_contains_source_marker:chapter_51_package_build_profiles.md",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_contains_source_marker:chapter_52_runtime_checkpoint_discipline.md",
+      "status": "passed"
+    },
+    {
+      "check": "compiled_source_marker_count_matches_manifest",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "warnings": [],
+  "compiled_markdown": "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
+  "manifest_entries": 62,
+  "compiled_source_markers": 62,
+  "pdf_output": "book/compiled/ordo_for_beginners_v0_12_m58_full_book.pdf",
+  "pdf_pages": 355,
+  "pdf_render_verification": "selected_pages_rendered_with_pdfium: 1-5,50,120,250,350-355",
+  "cli_tests": "Ran 53 tests; OK",
+  "active_packages": "lint/compile/test/coverage passed for ordo_project_builder, ordo_hybrid_executor, history_event_guided_intake",
+  "history_event_pipeline": "intake/validate-state/generate-output/validate-artifacts/consistency/go-no-go passed",
+  "repo_check": "passed"
+}

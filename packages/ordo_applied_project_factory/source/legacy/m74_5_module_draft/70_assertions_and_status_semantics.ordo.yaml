@@ -1,0 +1,1023 @@
+contracts:
+- kind: contract
+  id: G_APPLIED_PROJECT_FACTORY_CONTRACT
+  status: confirmed
+  fields:
+    applied_project_goal:
+      value: state.applied_project_goal
+      status: confirmed
+      required: true
+    applied_process_type:
+      value: state.applied_process_type
+      status: confirmed
+      required: true
+    runtime_human_role:
+      value: state.runtime_human_role
+      status: confirmed
+      required: true
+    runtime_ai_role:
+      value: state.runtime_ai_role
+      status: confirmed
+      required: true
+    runtime_entry_point:
+      value: state.runtime_entry_point
+      status: confirmed
+      required: true
+    decision_tree_blueprint:
+      value: state.decision_tree_blueprint
+      status: confirmed
+      required: true
+    state_schema_blueprint:
+      value: state.state_schema_blueprint
+      status: confirmed
+      required: true
+    output_artifact_catalog:
+      value: state.output_artifact_catalog
+      status: confirmed
+      required: true
+    output_template_catalog:
+      value: state.output_template_catalog
+      status: confirmed
+      required: true
+    validation_gate_catalog:
+      value: state.validation_gate_catalog
+      status: confirmed
+      required: true
+    first_release_output_scope:
+      value: state.first_release_output_scope
+      status: confirmed
+      required: true
+    approval_to_generate_source_yaml:
+      value: state.approval_to_generate_source_yaml
+      status: confirmed
+      required: true
+    factory_authoring_mode:
+      value: state.factory_authoring_mode
+      status: confirmed
+      required: true
+    domain_model_notes:
+      value: state.domain_model_notes
+      status: confirmed
+      required: true
+    open_questions:
+      value: state.open_questions
+      status: confirmed
+      required: true
+    draft_tree_review_status:
+      value: state.draft_tree_review_status
+      status: confirmed
+      required: true
+    basic_test_case_catalog:
+      value: state.basic_test_case_catalog
+      status: confirmed
+      required: true
+    domain_input_sources:
+      value: state.domain_input_sources
+      status: confirmed
+      required: true
+    domain_output_template_sources:
+      value: state.domain_output_template_sources
+      status: confirmed
+      required: true
+    approved_decision_tree:
+      value: state.approved_decision_tree
+      status: confirmed
+      required: true
+    tree_review_depth_first_complete:
+      value: state.tree_review_depth_first_complete
+      status: confirmed
+      required: true
+    free_dialogue_raw_notes:
+      value: state.free_dialogue_raw_notes
+      status: confirmed
+      required: true
+    free_dialogue_structured_notes:
+      value: state.free_dialogue_structured_notes
+      status: confirmed
+      required: true
+    candidate_decision_nodes:
+      value: state.candidate_decision_nodes
+      status: confirmed
+      required: true
+    candidate_gates:
+      value: state.candidate_gates
+      status: confirmed
+      required: true
+    candidate_outputs:
+      value: state.candidate_outputs
+      status: confirmed
+      required: true
+    candidate_templates:
+      value: state.candidate_templates
+      status: confirmed
+      required: true
+    free_dialogue_draft_tree_ready:
+      value: state.free_dialogue_draft_tree_ready
+      status: confirmed
+      required: true
+    stabilized_tree_branch:
+      value: state.stabilized_tree_branch
+      status: confirmed
+      required: true
+    self_hosted_authoring_loop_status:
+      value: state.self_hosted_authoring_loop_status
+      status: confirmed
+      required: true
+    focused_svg_policy:
+      value: state.focused_svg_policy
+      status: confirmed
+      required: true
+    graph_rendering_policy_status:
+      value: state.graph_rendering_policy_status
+      status: confirmed
+      required: true
+    language_improvement_proposals:
+      value: state.language_improvement_proposals
+      status: confirmed
+      required: true
+    language_improvement_proposals_status:
+      value: state.language_improvement_proposals_status
+      status: confirmed
+      required: true
+    auto_svg_generation_policy:
+      value: state.auto_svg_generation_policy
+      status: confirmed
+      required: true
+    user_facing_node_description_policy:
+      value: state.user_facing_node_description_policy
+      status: confirmed
+      required: true
+    user_facing_extraction_policy:
+      value: state.user_facing_extraction_policy
+      status: confirmed
+      required: true
+    process_feedback_policy:
+      value: state.process_feedback_policy
+      status: confirmed
+      required: true
+    process_feedback_policy_status:
+      value: state.process_feedback_policy_status
+      status: confirmed
+      required: true
+    node_review_display_contract:
+      value: state.node_review_display_contract
+      status: confirmed
+      required: true
+    confirmed_review_path:
+      value: state.confirmed_review_path
+      status: confirmed
+      required: true
+    current_review_branch:
+      value: state.current_review_branch
+      status: confirmed
+      required: true
+    unreviewed_sibling_branches:
+      value: state.unreviewed_sibling_branches
+      status: confirmed
+      required: true
+    deferred_return_points:
+      value: state.deferred_return_points
+      status: confirmed
+      required: true
+    current_node_review_record:
+      value: state.current_node_review_record
+      status: confirmed
+      required: true
+    node_review_display_policy_status:
+      value: state.node_review_display_policy_status
+      status: confirmed
+      required: true
+    node_review_ordo_layer_visibility:
+      value: state.node_review_ordo_layer_visibility
+      status: confirmed
+      required: true
+    current_node_review_decision:
+      value: state.current_node_review_decision
+      status: confirmed
+      required: true
+    node_decision_gate_policy:
+      value: state.node_decision_gate_policy
+      status: confirmed
+      required: true
+    node_review_control_gate_status:
+      value: state.node_review_control_gate_status
+      status: confirmed
+      required: true
+    process_design_review_rendering_policy:
+      value: state.process_design_review_rendering_policy
+      status: confirmed
+      required: true
+    current_process_layer_label:
+      value: state.current_process_layer_label
+      status: confirmed
+      required: true
+    runtime_context_shift_notice:
+      value: state.runtime_context_shift_notice
+      status: confirmed
+      required: true
+    current_node_display_block:
+      value: state.current_node_display_block
+      status: confirmed
+      required: true
+    template_file:
+      value: state.template_file
+      status: confirmed
+      required: false
+    mock_filled_example_file:
+      value: state.mock_filled_example_file
+      status: confirmed
+      required: false
+    mapping_report:
+      value: state.mapping_report
+      status: confirmed
+      required: false
+    assumptions_risks_summary:
+      value: state.assumptions_risks_summary
+      status: confirmed
+      required: false
+    user_decisions_confirm_revise_defer_remove:
+      value: state.user_decisions_confirm_revise_defer_remove
+      status: confirmed
+      required: false
+    artifact_review_mode_policy:
+      value: state.artifact_review_mode_policy
+      status: confirmed
+      required: false
+    review_packages:
+      value: state.review_packages
+      status: confirmed
+      required: false
+    mapping_reports:
+      value: state.mapping_reports
+      status: confirmed
+      required: false
+    unfinished_output_templates:
+      value: state.unfinished_output_templates
+      status: confirmed
+      required: false
+    terminal_path_ready_records:
+      value: state.terminal_path_ready_records
+      status: confirmed
+      required: false
+    source_yaml:
+      value: source/program.ordo.yaml
+      status: confirmed
+      required: false
+    compiled_artifacts:
+      value: compiled/
+      status: confirmed
+      required: false
+    validation_report:
+      value: reports/validation_report.json
+      status: confirmed
+      required: false
+    terminal_binding_summary:
+      value: state.terminal_output_binding_confirmations
+      status: confirmed
+      required: false
+    alpha_limitations_log:
+      value: state.accepted_alpha_limitations
+      status: confirmed
+      required: false
+    changelog_or_release_notes:
+      value: MODULE_CHANGELOG.md
+      status: confirmed
+      required: false
+    usage_or_start_prompt_notes:
+      value: START_PROMPT_RUNTIME_MODE.md
+      status: confirmed
+      required: false
+    shared_validation_handoff_tail_status:
+      value: state.shared_validation_handoff_tail_status
+      status: confirmed
+      required: false
+    source_yaml_generation_status:
+      value: state.source_yaml_generation_status
+      status: confirmed
+      required: false
+    minimal_validation_status:
+      value: state.minimal_validation_status
+      status: confirmed
+      required: false
+    full_validation_decision:
+      value: state.full_validation_decision
+      status: confirmed
+      required: false
+    final_readiness_status:
+      value: state.final_readiness_status
+      status: confirmed
+      required: false
+    handoff_package_status:
+      value: state.handoff_package_status
+      status: confirmed
+      required: false
+    handoff_status:
+      value: state.handoff_status
+      status: confirmed
+      required: false
+  required:
+  - template_file
+  - mock_filled_example_file
+  - mapping_report
+  - assumptions_risks_summary
+  - user_decisions_confirm_revise_defer_remove
+  - artifact_review_mode_policy
+  - review_packages
+  - mapping_reports
+  - unfinished_output_templates
+  - terminal_path_ready_records
+- kind: contract
+  id: G_FACTORY_SCOPE_CONTRACT
+  status: confirmed
+  fields:
+    any_ordo_process_type_allowed:
+      value: 'true'
+      status: confirmed
+      required: true
+    pm_does_not_write_yaml:
+      value: 'true'
+      status: confirmed
+      required: true
+    first_output_source_yaml_only:
+      value: 'true'
+      status: confirmed
+      required: true
+    confusion_tests_deferred:
+      value: 'true'
+      status: confirmed
+      required: true
+    templates_generated_immediately:
+      value: 'true'
+      status: confirmed
+      required: true
+    separate_package_from_project_builder:
+      value: 'true'
+      status: confirmed
+      required: true
+    three_authoring_modes_supported:
+      value: 'true'
+      status: confirmed
+      required: true
+    free_dialogue_draft_review_loop:
+      value: 'true'
+      status: confirmed
+      required: true
+    test_cases_after_tree_approval:
+      value: 'true'
+      status: confirmed
+      required: true
+    self_hosted_authoring_loop:
+      value: 'true'
+      status: confirmed
+      required: true
+    free_dialogue_structured_extraction:
+      value: 'true'
+      status: confirmed
+      required: true
+    stabilized_branch_reuse:
+      value: 'true'
+      status: confirmed
+      required: true
+    focused_svg_context_by_default:
+      value: 'true'
+      status: confirmed
+      required: true
+    language_improvement_proposals_artifact:
+      value: docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md
+      status: confirmed
+      required: true
+    svg_generated_only_on_request:
+      value: 'true'
+      status: confirmed
+      required: true
+    current_node_description_required:
+      value: 'true'
+      status: confirmed
+      required: true
+    plain_language_extraction_summary_required:
+      value: 'true'
+      status: confirmed
+      required: true
+    process_feedback_can_update_yaml_after_approval:
+      value: 'true'
+      status: confirmed
+      required: true
+    current_node_review_includes_state_gates_artifacts:
+      value: 'true'
+      status: confirmed
+      required: true
+    sibling_branches_tracked_during_depth_first_review:
+      value: 'true'
+      status: confirmed
+      required: true
+- kind: contract
+  id: G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT
+  status: confirmed
+  fields:
+    focused_svg_context_by_default:
+      value: 'true'
+      status: confirmed
+      required: true
+    root_to_current_node_plus_subtree:
+      value: 'true'
+      status: confirmed
+      required: true
+    full_tree_overview_only:
+      value: 'true'
+      status: confirmed
+      required: true
+    language_improvement_proposals_artifact:
+      value: docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md
+      status: confirmed
+      required: true
+    provisional_metadata_allowed_with_proposal:
+      value: 'true'
+      status: confirmed
+      required: true
+    context_view_default:
+      value: documented
+      status: confirmed
+      required: true
+    root_to_current_node:
+      value: documented
+      status: confirmed
+      required: true
+    current_subtree:
+      value: documented
+      status: confirmed
+      required: true
+    future_project_instruction:
+      value: documented
+      status: confirmed
+      required: true
+    problem:
+      value: documented
+      status: confirmed
+      required: true
+    current_limitation:
+      value: documented
+      status: confirmed
+      required: true
+    proposed_construct:
+      value: documented
+      status: confirmed
+      required: true
+    temporary_workaround:
+      value: documented
+      status: confirmed
+      required: true
+    affected_packages:
+      value: documented
+      status: confirmed
+      required: true
+    status:
+      value: documented
+      status: confirmed
+      required: true
+    focused_svg_policy:
+      value: documented
+      status: confirmed
+      required: true
+    language_improvement_proposals:
+      value: documented
+      status: confirmed
+      required: true
+    G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED:
+      value: documented
+      status: confirmed
+      required: true
+    G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY:
+      value: documented
+      status: confirmed
+      required: true
+    auto_svg_generation_on_request_only:
+      value: documented
+      status: confirmed
+      required: true
+    current_node_human_description:
+      value: documented
+      status: confirmed
+      required: true
+    plain_language_extraction_summary:
+      value: documented
+      status: confirmed
+      required: true
+    process_feedback_loop:
+      value: documented
+      status: confirmed
+      required: true
+    node_review_display_contract:
+      value: state.node_review_display_contract
+      status: confirmed
+      required: true
+    unreviewed_sibling_branches:
+      value: state.unreviewed_sibling_branches
+      status: confirmed
+      required: true
+    deferred_return_points:
+      value: state.deferred_return_points
+      status: confirmed
+      required: true
+    current_node_review_record:
+      value: state.current_node_review_record
+      status: confirmed
+      required: true
+- kind: contract
+  id: G_FACTORY_MODULE_VERSIONING_CONTRACT
+  status: confirmed
+  fields:
+    module_id:
+      value: state.module_id
+      status: confirmed
+      required: true
+    module_version:
+      value: state.module_version
+      status: confirmed
+      required: true
+    module_versioning_policy:
+      value: state.module_versioning_policy
+      status: confirmed
+      required: true
+    parent_language_package_version:
+      value: state.parent_language_package_version
+      status: confirmed
+      required: true
+    language_package_inclusion_model:
+      value: state.language_package_inclusion_model
+      status: confirmed
+      required: true
+    graph_annotation_overlay_policy:
+      value: state.graph_annotation_overlay_policy
+      status: confirmed
+      required: true
+    previous_internal_labels:
+      value: module.previous_internal_labels
+      status: confirmed
+      required: false
+    compatibility:
+      value: module.language_compatibility
+      status: confirmed
+      required: true
+    annotation_schema:
+      value: state.graph_annotation_overlay_policy.schema
+      status: confirmed
+      required: true
+    focused_context_svg:
+      value: state.focused_svg_policy.default_mode
+      status: confirmed
+      required: true
+artifacts:
+- kind: artifact
+  id: APPLIED_PROJECT_FACTORY_README
+  path_pattern: README.md
+  format: markdown
+  required: true
+  description: Developer package README for the applied project factory prototype.
+- kind: artifact
+  id: APPLIED_PROJECT_FACTORY_SOURCE
+  path_pattern: source/program.ordo.yaml
+  format: yaml
+  required: true
+  description: Factory source program.
+- kind: artifact
+  id: APPLIED_PROJECT_SOURCE_YAML_TEMPLATE
+  path_pattern: output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md
+  format: markdown
+  required: true
+  description: Template contract for generated applied-project source/program.ordo.yaml.
+- kind: artifact
+  id: APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE
+  path_pattern: output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md
+  format: markdown
+  required: true
+  description: Template catalog contract for output artifacts in generated applied projects.
+- kind: artifact
+  id: APPLIED_PROJECT_FACTORY_COVERAGE_REPORT
+  path_pattern: reports/coverage_report.json
+  format: json
+  required: true
+  description: Coverage report with factory contract/artifact mapping.
+- kind: artifact
+  id: FOCUSED_GRAPH_RENDERING_POLICY
+  path_pattern: docs/FOCUSED_GRAPH_RENDERING_POLICY.md
+  format: markdown
+  required: true
+  description: Instruction artifact defining focused/context SVG rendering as the default during tree branch authoring.
+- kind: artifact
+  id: LANGUAGE_IMPROVEMENT_PROPOSALS
+  path_pattern: docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md
+  format: markdown
+  required: true
+  description: Running proposal log for missing Ordo language features discovered during project authoring.
+- kind: artifact
+  id: APPLIED_PROJECT_FACTORY_VERSION
+  path_pattern: VERSION.md
+  format: markdown
+  required: true
+  description: Current module version and compatibility declaration.
+- kind: artifact
+  id: APPLIED_PROJECT_FACTORY_MODULE_CHANGELOG
+  path_pattern: MODULE_CHANGELOG.md
+  format: markdown
+  required: true
+  description: Module-local changelog independent from the language package changelog.
+- kind: artifact
+  id: MODULE_VERSIONING_POLICY
+  path_pattern: docs/MODULE_VERSIONING_POLICY.md
+  format: markdown
+  required: true
+  description: Policy for module-local versioning and language package inclusion.
+- kind: artifact
+  id: GRAPH_ANNOTATION_OVERLAY_POLICY
+  path_pattern: docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md
+  format: markdown
+  required: true
+  description: Policy for using graph generator v1.1 annotation overlay as an optional SVG review aid.
+- kind: artifact
+  id: USER_FACING_RUNTIME_REVIEW_POLICY
+  path_pattern: docs/USER_FACING_RUNTIME_REVIEW_POLICY.md
+  format: markdown
+  required: true
+  description: Policy for user-facing node review, plain-language extraction, process feedback, and on-request SVG generation.
+- id: manual_tree_input_record
+  description: Raw user-provided manual decision tree in any human format.
+  kind: artifact
+  path_pattern: reports/manual_tree_input_record.json
+  format: json
+  required: false
+- id: normalized_tree_draft
+  description: AI-normalized draft tree produced from manual input before review.
+  kind: artifact
+  path_pattern: reports/normalized_tree_draft.json
+  format: json
+  required: false
+- id: manual_tree_join_decision_record
+  description: Records whether branch 2 joins shared review or shared draft-generation path.
+  kind: artifact
+  path_pattern: reports/manual_tree_join_decision_record.json
+  format: json
+  required: false
+- id: TERMINAL_OUTPUT_REVIEW_PACKAGE
+  description: 'File-first review package for terminal output artifacts: template file, mock-filled example, mapping report,
+    and assumptions/risks summary.'
+  kind: artifact
+  path_pattern: reports/terminal_output_review_package/manifest.md
+  format: markdown
+  required: false
+- kind: artifact
+  id: HANDOFF_PACKAGE
+  path_pattern: reports/handoff_package/manifest.md
+  format: markdown
+  required: false
+  description: File-first final handoff package manifest and summary pointing to downloadable package contents.
+- kind: artifact
+  id: WHOLE_TREE_INTEGRATION_REVIEW_REPORT
+  path_pattern: packages/ordo_applied_project_factory/docs/WHOLE_TREE_INTEGRATION_REVIEW_ALPHA20.md
+  format: markdown
+  purpose: Human-readable whole-tree integration review summary for alpha.20.
+artifact_requirements:
+- kind: artifact_requirement
+  id: REQ_FACTORY_CONTRACT_IN_SOURCE_AND_TEMPLATES
+  when:
+    contract: G_APPLIED_PROJECT_FACTORY_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: APPLIED_PROJECT_FACTORY_SOURCE
+    must_include_fields:
+    - applied_project_goal
+    - applied_process_type
+    - runtime_human_role
+    - runtime_ai_role
+    - runtime_entry_point
+    - decision_tree_blueprint
+    - state_schema_blueprint
+    - output_artifact_catalog
+    - output_template_catalog
+    - validation_gate_catalog
+    - first_release_output_scope
+    - approval_to_generate_source_yaml
+    - factory_authoring_mode
+    - open_questions
+    - draft_tree_review_status
+    - basic_test_case_catalog
+    - domain_model_notes
+    - domain_input_sources
+    - domain_output_template_sources
+    - approved_decision_tree
+    - tree_review_depth_first_complete
+    - free_dialogue_raw_notes
+    - free_dialogue_structured_notes
+    - candidate_decision_nodes
+    - candidate_gates
+    - candidate_outputs
+    - candidate_templates
+    - free_dialogue_draft_tree_ready
+    - stabilized_tree_branch
+    - self_hosted_authoring_loop_status
+    - focused_svg_policy
+    - graph_rendering_policy_status
+    - language_improvement_proposals
+    - language_improvement_proposals_status
+    - auto_svg_generation_policy
+    - user_facing_node_description_policy
+    - user_facing_extraction_policy
+    - process_feedback_policy
+    - process_feedback_policy_status
+    - node_review_display_contract
+    - node_review_display_policy_status
+    - confirmed_review_path
+    - current_review_branch
+    - unreviewed_sibling_branches
+    - deferred_return_points
+    - current_node_review_record
+    - node_review_ordo_layer_visibility
+    - current_node_review_decision
+    - node_decision_gate_policy
+    - node_review_control_gate_status
+    - process_design_review_rendering_policy
+    - current_process_layer_label
+    - runtime_context_shift_notice
+    - current_node_display_block
+  - artifact: APPLIED_PROJECT_SOURCE_YAML_TEMPLATE
+    must_include_fields:
+    - applied_project_goal
+    - applied_process_type
+    - runtime_human_role
+    - runtime_ai_role
+    - runtime_entry_point
+    - decision_tree_blueprint
+    - state_schema_blueprint
+    - output_artifact_catalog
+    - output_template_catalog
+    - validation_gate_catalog
+    - first_release_output_scope
+    - approval_to_generate_source_yaml
+    - factory_authoring_mode
+    - open_questions
+    - draft_tree_review_status
+    - basic_test_case_catalog
+    - domain_model_notes
+    - domain_input_sources
+    - domain_output_template_sources
+    - approved_decision_tree
+    - tree_review_depth_first_complete
+    - free_dialogue_raw_notes
+    - free_dialogue_structured_notes
+    - candidate_decision_nodes
+    - candidate_gates
+    - candidate_outputs
+    - candidate_templates
+    - free_dialogue_draft_tree_ready
+    - stabilized_tree_branch
+    - self_hosted_authoring_loop_status
+    - focused_svg_policy
+    - graph_rendering_policy_status
+    - language_improvement_proposals
+    - language_improvement_proposals_status
+    - auto_svg_generation_policy
+    - user_facing_node_description_policy
+    - user_facing_extraction_policy
+    - process_feedback_policy
+    - process_feedback_policy_status
+    - node_review_display_contract
+    - node_review_display_policy_status
+    - confirmed_review_path
+    - current_review_branch
+    - unreviewed_sibling_branches
+    - deferred_return_points
+    - current_node_review_record
+    - node_review_ordo_layer_visibility
+    - current_node_review_decision
+    - node_decision_gate_policy
+    - node_review_control_gate_status
+    - process_design_review_rendering_policy
+    - current_process_layer_label
+    - runtime_context_shift_notice
+    - current_node_display_block
+  - artifact: APPLIED_PROJECT_TEMPLATE_CATALOG_TEMPLATE
+    must_include_fields:
+    - output_artifact_catalog
+    - output_template_catalog
+    - validation_gate_catalog
+    - factory_authoring_mode
+    - open_questions
+    - draft_tree_review_status
+    - basic_test_case_catalog
+    - domain_model_notes
+    - domain_input_sources
+    - domain_output_template_sources
+    - approved_decision_tree
+    - tree_review_depth_first_complete
+    - free_dialogue_raw_notes
+    - free_dialogue_structured_notes
+    - candidate_decision_nodes
+    - candidate_gates
+    - candidate_outputs
+    - candidate_templates
+    - free_dialogue_draft_tree_ready
+    - stabilized_tree_branch
+    - self_hosted_authoring_loop_status
+    - focused_svg_policy
+    - graph_rendering_policy_status
+    - language_improvement_proposals
+    - language_improvement_proposals_status
+    - auto_svg_generation_policy
+    - user_facing_node_description_policy
+    - user_facing_extraction_policy
+    - process_feedback_policy
+    - process_feedback_policy_status
+    - node_review_display_contract
+    - node_review_display_policy_status
+    - confirmed_review_path
+    - current_review_branch
+    - unreviewed_sibling_branches
+    - deferred_return_points
+    - current_node_review_record
+    - node_review_ordo_layer_visibility
+    - current_node_review_decision
+    - node_decision_gate_policy
+    - node_review_control_gate_status
+    - process_design_review_rendering_policy
+    - current_process_layer_label
+    - runtime_context_shift_notice
+    - current_node_display_block
+- kind: artifact_requirement
+  id: REQ_FACTORY_SCOPE_CONTRACT_IN_README_AND_SOURCE
+  when:
+    contract: G_FACTORY_SCOPE_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: APPLIED_PROJECT_FACTORY_README
+    must_include_fields:
+    - any_ordo_process_type_allowed
+    - pm_does_not_write_yaml
+    - first_output_source_yaml_only
+    - confusion_tests_deferred
+    - templates_generated_immediately
+    - separate_package_from_project_builder
+    - three_authoring_modes_supported
+    - free_dialogue_draft_review_loop
+    - test_cases_after_tree_approval
+    - self_hosted_authoring_loop
+    - free_dialogue_structured_extraction
+    - stabilized_branch_reuse
+    - focused_svg_context_by_default
+    - language_improvement_proposals_artifact
+    - svg_generated_only_on_request
+    - current_node_description_required
+    - plain_language_extraction_summary_required
+    - process_feedback_can_update_yaml_after_approval
+    - current_node_review_includes_state_gates_artifacts
+    - sibling_branches_tracked_during_depth_first_review
+  - artifact: APPLIED_PROJECT_FACTORY_SOURCE
+    must_include_fields:
+    - any_ordo_process_type_allowed
+    - pm_does_not_write_yaml
+    - first_output_source_yaml_only
+    - confusion_tests_deferred
+    - templates_generated_immediately
+    - separate_package_from_project_builder
+    - three_authoring_modes_supported
+    - free_dialogue_draft_review_loop
+    - test_cases_after_tree_approval
+    - self_hosted_authoring_loop
+    - free_dialogue_structured_extraction
+    - stabilized_branch_reuse
+    - focused_svg_context_by_default
+    - language_improvement_proposals_artifact
+    - svg_generated_only_on_request
+    - current_node_description_required
+    - plain_language_extraction_summary_required
+    - process_feedback_can_update_yaml_after_approval
+    - current_node_review_includes_state_gates_artifacts
+    - sibling_branches_tracked_during_depth_first_review
+- kind: artifact_requirement
+  id: REQ_RENDERING_AND_LANGUAGE_IMPROVEMENT_POLICY_ARTIFACTS
+  when:
+    contract: G_FACTORY_RENDERING_AND_IMPROVEMENT_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: FOCUSED_GRAPH_RENDERING_POLICY
+    must_include_fields:
+    - context_view_default
+    - root_to_current_node
+    - current_subtree
+    - full_tree_overview_only
+    - future_project_instruction
+    - focused_svg_context_by_default
+    - root_to_current_node_plus_subtree
+    - auto_svg_generation_on_request_only
+    - current_node_human_description
+    - plain_language_extraction_summary
+    - process_feedback_loop
+    - node_review_display_contract
+    - unreviewed_sibling_branches
+    - deferred_return_points
+    - current_node_review_record
+  - artifact: LANGUAGE_IMPROVEMENT_PROPOSALS
+    must_include_fields:
+    - problem
+    - current_limitation
+    - proposed_construct
+    - temporary_workaround
+    - affected_packages
+    - status
+    - language_improvement_proposals_artifact
+    - provisional_metadata_allowed_with_proposal
+    - auto_svg_generation_on_request_only
+    - current_node_human_description
+    - plain_language_extraction_summary
+    - process_feedback_loop
+    - node_review_display_contract
+    - unreviewed_sibling_branches
+    - deferred_return_points
+    - current_node_review_record
+  - artifact: APPLIED_PROJECT_FACTORY_SOURCE
+    must_include_fields:
+    - focused_svg_policy
+    - language_improvement_proposals
+    - G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED
+    - G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
+    - auto_svg_generation_on_request_only
+    - current_node_human_description
+    - plain_language_extraction_summary
+    - process_feedback_loop
+    - node_review_display_contract
+    - unreviewed_sibling_branches
+    - deferred_return_points
+    - current_node_review_record
+- kind: artifact_requirement
+  id: REQ_FACTORY_MODULE_VERSIONING_POLICY_IN_DOCS
+  when:
+    contract: G_FACTORY_MODULE_VERSIONING_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: APPLIED_PROJECT_FACTORY_VERSION
+    must_include_fields:
+    - module_id
+    - module_version
+    - parent_language_package_version
+  - artifact: APPLIED_PROJECT_FACTORY_MODULE_CHANGELOG
+    must_include_fields:
+    - module_version
+    - previous_internal_labels
+    - compatibility
+  - artifact: MODULE_VERSIONING_POLICY
+    must_include_fields:
+    - module_versioning_policy
+    - language_package_inclusion_model
+    - parent_language_package_version
+  - artifact: GRAPH_ANNOTATION_OVERLAY_POLICY
+    must_include_fields:
+    - graph_annotation_overlay_policy
+    - annotation_schema
+    - focused_context_svg
+  - artifact: APPLIED_PROJECT_FACTORY_SOURCE
+    must_include_fields:
+    - module_versioning_policy
+    - graph_annotation_overlay_policy
+- kind: artifact_requirement
+  id: AR_OUTPUT_REVIEW_PACKAGE_FILE_FIRST
+  when:
+    contract: G_APPLIED_PROJECT_FACTORY_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: TERMINAL_OUTPUT_REVIEW_PACKAGE
+    must_include_fields:
+    - template_file
+    - mock_filled_example_file
+    - mapping_report
+    - assumptions_risks_summary
+    - user_decisions_confirm_revise_defer_remove
+  - artifact: APPLIED_PROJECT_FACTORY_SOURCE
+    must_include_fields:
+    - artifact_review_mode_policy
+    - review_packages
+    - mapping_reports
+    - unfinished_output_templates
+    - terminal_path_ready_records
+- kind: artifact_requirement
+  id: AR_SHARED_HANDOFF_PACKAGE_FILE_FIRST
+  when:
+    contract: G_APPLIED_PROJECT_FACTORY_CONTRACT
+    status: confirmed
+  requires:
+  - artifact: HANDOFF_PACKAGE
+    must_include_fields:
+    - source_yaml
+    - compiled_artifacts
+    - validation_report
+    - output_template_catalog
+    - terminal_binding_summary
+    - alpha_limitations_log
+    - changelog_or_release_notes
+    - usage_or_start_prompt_notes
+  - artifact: APPLIED_PROJECT_FACTORY_SOURCE
+    must_include_fields:
+    - shared_validation_handoff_tail_status
+    - source_yaml_generation_status
+    - minimal_validation_status
+    - full_validation_decision
+    - final_readiness_status
+    - handoff_package_status
+    - handoff_status

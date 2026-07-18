@@ -1,0 +1,18 @@
+prompt_human_review:
+  review_record_id: <review-id>
+  candidate_id: <candidate-id>
+  playbook_id: <playbook-id>
+  candidate_prompt_id: <semantic-prompt-id>
+  candidate_text_sha256: <sha256>
+  reviewer: <human-name-or-role>
+  reviewer_role: <process-owner|delegated-verifier>
+  decision: <approved|needs_revision|rejected|deferred>
+  reviewed_at: <yyyy-mm-dd>
+  necessity_decision: <accepted|rejected|needs-revision>
+  text_decision: <accepted|rejected|needs-revision>
+  scope_decision: <accepted|rejected|needs-revision>
+  use_phase_decision: <accepted|rejected|needs-revision>
+  validation_decision: <accepted|rejected|needs-revision>
+  requested_changes: []
+  decision_rationale: <why>
+  next_authorized_action: <PMP-3|revise|none|deferred>

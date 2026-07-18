@@ -1,0 +1,78 @@
+atomicity_gate_evaluation:
+  evaluation_id: asr.gates.<playbook>.<step>.001
+  review_ref: asr.review.<playbook>.<step>.001
+  evaluated_at: null
+  evaluator:
+    type: apf_model|human_reviewer
+    id: null
+  step_ref:
+    playbook_id: ''
+    process_id: ''
+    step_id: ''
+  gate_results:
+    - gate_id: SINGLE_RESPONSIBILITY_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: SINGLE_OUTPUT_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: EXPLICIT_INPUT_OUTPUT_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: NO_HIDDEN_RECONSTRUCTION_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: SEPARATE_GENERATION_VALIDATION_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: EXPLICIT_CONFIRMATION_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: NO_PARTIAL_SUCCESS_TRANSITION_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: FAILURE_LOCALIZATION_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: ARTIFACT_LEVEL_STATUS_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+    - gate_id: INDEPENDENT_POST_RENDER_REVIEW_GATE
+      result: passed|advisory|blocked|needs_human_decision
+      diagnostic_code: null
+      evidence_refs: []
+      observed_condition: ''
+      corrective_action: ''
+  aggregation:
+    review_status: passed|recommendation|blocking_issue|needs_human_decision
+    transition_allowed: false
+    blocking_gate_ids: []
+    advisory_gate_ids: []
+    human_decision_gate_ids: []

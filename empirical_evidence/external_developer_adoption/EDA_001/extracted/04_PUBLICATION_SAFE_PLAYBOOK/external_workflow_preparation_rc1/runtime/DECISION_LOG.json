@@ -1,0 +1,77 @@
+{
+  "schema": "ordo.decision_log.v1",
+  "decisions": [
+    {
+      "id": "D-001",
+      "decision": "Create a new playbook from scratch; exclude the supplied all-in-one source document."
+    },
+    {
+      "id": "D-002",
+      "decision": "Use the source only to derive independently authored process behavior and templates."
+    },
+    {
+      "id": "D-003",
+      "decision": "Alpha supports guided/manual/dry-run artifact generation and does not mutate external systems."
+    },
+    {
+      "id": "D-004",
+      "decision": "Use playbook ID external.workflow_preparation and version 0.1.0-alpha.1."
+    },
+    {
+      "id": "D-005",
+      "decision": "Unresolved non-blocking policy choices are recorded after alpha rather than interrupting creation."
+    },
+    {
+      "id": "D-006",
+      "decision": "Production creates copy-ready documents only; the analyst manually publishes them to external documentation system and work-tracking system."
+    },
+    {
+      "id": "D-007",
+      "decision": "Production execution is manual by an analyst; no sanctioned automatic runtime adapter is required for the first production scope."
+    },
+    {
+      "id": "D-008",
+      "decision": "Cancelled runs are terminal and non-resumable."
+    },
+    {
+      "id": "D-009",
+      "decision": "Use a two-stage package lifecycle: draft review first, then external publication and URL synchronization, then a linked package revision."
+    },
+    {
+      "id": "D-010",
+      "decision": "external documentation system URL is captured before work-tracking system creation so the work-tracking system draft can include the passport link."
+    },
+    {
+      "id": "D-011",
+      "decision": "External-link insertion increments the run package revision, not the playbook specification SemVer."
+    },
+    {
+      "id": "D-012",
+      "decision": "Only the Workflow Preparation work-tracking system URL is mandatory for final readiness; implementation work-tracking system URL is optional downstream metadata."
+    },
+    {
+      "id": "D-013",
+      "decision": "The analyst alone reviews the downloaded draft and must explicitly confirm it before external publication steps begin."
+    },
+    {
+      "id": "D-014",
+      "decision": "No second human approval is required after URL synchronization; deterministic validation is sufficient when business content is unchanged."
+    },
+    {
+      "id": "D-015",
+      "decision": "The playbook does not enforce work-tracking system or external documentation system host/domain allowlists and does not test remote accessibility."
+    },
+    {
+      "id": "D-016",
+      "decision": "The final package stores only the external process record URL and work-tracking record URL as lifecycle links."
+    },
+    {
+      "id": "D-017",
+      "decision": "Temporary runtime evidence and personal sign-off working data are retained only until process completion; the final package remains the durable output."
+    },
+    {
+      "id": "D-018",
+      "decision": "The model may propose a minimum approver set by data mode, but Product/PO must confirm or edit it; the model is never an approver and cannot record approval for a human."
+    }
+  ]
+}

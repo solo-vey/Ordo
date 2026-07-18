@@ -1,0 +1,137 @@
+template_id: apf.prompt_sufficiency_review_matrix.v1
+status: completed
+playbook_id: history_event_playbook
+playbook_version: v1.42
+review_owner: APF-guided-review
+reviewed_at: 2026-07-10
+summary:
+  relevant_objects_total: 5
+  reviewed_objects_total: 5
+  excluded_objects_total: 0
+  unresolved_human_decisions: 2
+  classifications:
+    simple_instruction_sufficient: 2
+    existing_prompt_reuse: 0
+    new_prompt_candidate: 2
+    prompt_prohibited: 1
+    needs_human_decision: 0
+reviews:
+  - review_id: he-psr-001
+    object_id: focused_documentation_loading_gate
+    object_type: blocking_gate
+    contract_reference: START_HERE.md / focused_documentation_loading_gate
+    review_status: completed
+    classification: new_prompt_candidate
+    rationale: The deterministic gate is complete, but runtime use requires concise step-local guidance for selecting only relevant virtual files and reporting them to the analyst.
+    ambiguity_risk: medium
+    execution_variance_risk: high
+    recovery_guidance_need: medium
+    artifact_generation_complexity: low
+    existing_prompt_search_performed: true
+    existing_prompt_matches: []
+    contract_strengthening_attempted: true
+    contract_strengthening_actions:
+      - verified split/catalog/selection steps are already explicit
+      - retained deterministic gate as authority
+    contract_strengthening_result: guidance_still_needed
+    reviewer: APF-guided-review
+    reviewed_at: 2026-07-10
+    blocking_findings: []
+    next_action: candidate_design_at_PMP_2
+  - review_id: he-psr-002
+    object_id: N1_PATH_SELECTION
+    object_type: decision_node
+    contract_reference: 19_GUIDED_INTAKE_DECISION_TREE.md / N1_PATH_SELECTION
+    review_status: completed
+    classification: simple_instruction_sufficient
+    rationale: The first A/B/C/D/E/F question and prohibited early questions are already deterministic and explicit.
+    ambiguity_risk: low
+    execution_variance_risk: low
+    recovery_guidance_need: none
+    artifact_generation_complexity: none
+    existing_prompt_search_performed: true
+    existing_prompt_matches: []
+    contract_strengthening_attempted: true
+    contract_strengthening_actions:
+      - verified one-question-first rule
+      - verified negative checks
+    contract_strengthening_result: resolved_without_prompt
+    reviewer: APF-guided-review
+    reviewed_at: 2026-07-10
+    blocking_findings: []
+    next_action: continue_without_prompt
+  - review_id: he-psr-003
+    object_id: mandatory_contract_micro_check
+    object_type: complex_question_node
+    contract_reference: 00_PLAYBOOK_OVERVIEW.md / Mandatory contract micro-check before every gate
+    review_status: completed
+    classification: prompt_prohibited
+    rationale: The check determines authoritative contract status. A prompt must not replace evidence resolution or promote proposed contracts.
+    ambiguity_risk: medium
+    execution_variance_risk: medium
+    recovery_guidance_need: low
+    artifact_generation_complexity: none
+    existing_prompt_search_performed: true
+    existing_prompt_matches: []
+    contract_strengthening_attempted: true
+    contract_strengthening_actions:
+      - retain evidence hierarchy
+      - retain hard-stop behavior
+    contract_strengthening_result: resolved_without_prompt
+    reviewer: APF-guided-review
+    reviewed_at: 2026-07-10
+    blocking_findings: []
+    next_action: fix_contract
+  - review_id: he-psr-004
+    object_id: pre_archive_document_approval_gate
+    object_type: complex_human_review_step
+    contract_reference: 18_ANALYSIS_PACKAGE_QUALITY_GATES.md / pre_archive_document_approval_gate
+    review_status: completed
+    classification: simple_instruction_sufficient
+    rationale: One-document-at-a-time approval, ledger requirements and archive blocking are already explicit.
+    ambiguity_risk: low
+    execution_variance_risk: low
+    recovery_guidance_need: low
+    artifact_generation_complexity: low
+    existing_prompt_search_performed: true
+    existing_prompt_matches: []
+    contract_strengthening_attempted: true
+    contract_strengthening_actions:
+      - verified approval order and blockers
+    contract_strengthening_result: resolved_without_prompt
+    reviewer: APF-guided-review
+    reviewed_at: 2026-07-10
+    blocking_findings: []
+    next_action: continue_without_prompt
+  - review_id: he-psr-005
+    object_id: QA_document_generation_step
+    object_type: artifact_generation_step
+    contract_reference: templates/TEMPLATE_QA_PACKAGE.md and qa_document_pre_approval_gate
+    review_status: completed
+    classification: new_prompt_candidate
+    rationale: The 14-section per-TC contract is authoritative, but generation is cognitively dense and benefits from local sequencing and anti-compression guidance.
+    ambiguity_risk: medium
+    execution_variance_risk: high
+    recovery_guidance_need: low
+    artifact_generation_complexity: high
+    existing_prompt_search_performed: true
+    existing_prompt_matches: []
+    contract_strengthening_attempted: true
+    contract_strengthening_actions:
+      - confirmed all 14 sections are already mandatory
+      - confirmed global context cannot replace TC-local steps
+      - retained template as source of truth
+    contract_strengthening_result: guidance_still_needed
+    reviewer: APF-guided-review
+    reviewed_at: 2026-07-10
+    blocking_findings: []
+    next_action: candidate_design_at_PMP_2
+validation:
+  all_required_objects_accounted_for: true
+  all_completed_reviews_have_valid_classification: true
+  all_new_candidates_pass_contract_strengthening_gate: true
+  prohibited_objects_have_no_prompt_artifacts: true
+  unresolved_human_decisions:
+    - he-prompt-candidate-001
+    - he-prompt-candidate-002
+  readiness: pending-human-approval

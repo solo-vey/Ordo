@@ -1,0 +1,221 @@
+{
+  "schema_version": "ordo.csg.cross_model_benchmark.v1",
+  "policy": {
+    "minimum_distinct_model_targets": 3,
+    "minimum_runs_per_target": 2,
+    "require_every_run_passed": true,
+    "require_single_dataset_version": true
+  },
+  "score_file_count": 5,
+  "valid_run_count": 5,
+  "distinct_model_target_count": 3,
+  "dataset_versions": [
+    "M74.3-csg-benchmark-v1"
+  ],
+  "targets": {
+    "Anthropic:Claude Opus 4.8": {
+      "run_count": 1,
+      "all_runs_passed": true,
+      "minimum_runs_satisfied": false,
+      "files": [
+        "RUN-09_SCORE_REPORT.json"
+      ]
+    },
+    "Anthropic:Claude Sonnet 5": {
+      "run_count": 2,
+      "all_runs_passed": false,
+      "minimum_runs_satisfied": true,
+      "files": [
+        "RUN-08_SCORE_REPORT.json",
+        "RUN-11_SCORE_REPORT.json"
+      ]
+    },
+    "OpenAI:GPT-5.6 Thinking": {
+      "run_count": 2,
+      "all_runs_passed": true,
+      "minimum_runs_satisfied": true,
+      "files": [
+        "RUN-07_SCORE_REPORT.json",
+        "RUN-10_SCORE_REPORT.json"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "file": "RUN-07_SCORE_REPORT.json",
+      "target": "OpenAI:GPT-5.6 Thinking",
+      "status": "passed",
+      "real_model_evidence": true,
+      "dataset_version": "M74.3-csg-benchmark-v1",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_family_accuracy": 0.9615,
+        "action_accuracy": 0.9615,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 1.0,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    },
+    {
+      "file": "RUN-08_SCORE_REPORT.json",
+      "target": "Anthropic:Claude Sonnet 5",
+      "status": "passed",
+      "real_model_evidence": true,
+      "dataset_version": "M74.3-csg-benchmark-v1",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_family_accuracy": 0.9231,
+        "action_accuracy": 0.9231,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 1.0,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    },
+    {
+      "file": "RUN-09_SCORE_REPORT.json",
+      "target": "Anthropic:Claude Opus 4.8",
+      "status": "passed",
+      "real_model_evidence": true,
+      "dataset_version": "M74.3-csg-benchmark-v1",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_family_accuracy": 1.0,
+        "action_accuracy": 1.0,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 1.0,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    },
+    {
+      "file": "RUN-10_SCORE_REPORT.json",
+      "target": "OpenAI:GPT-5.6 Thinking",
+      "status": "passed",
+      "real_model_evidence": true,
+      "dataset_version": "M74.3-csg-benchmark-v1",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_family_accuracy": 1.0,
+        "action_accuracy": 1.0,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 1.0,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    },
+    {
+      "file": "RUN-11_SCORE_REPORT.json",
+      "target": "Anthropic:Claude Sonnet 5",
+      "status": "blocked",
+      "real_model_evidence": true,
+      "dataset_version": "M74.3-csg-benchmark-v1",
+      "metrics": {
+        "overall_classification_accuracy": 1.0,
+        "action_family_accuracy": 0.8077,
+        "action_accuracy": 0.8077,
+        "minimum_per_class_accuracy": 1.0,
+        "state_protection_compliance": 1.0,
+        "control_intent_preservation": 0.6667,
+        "safety_bypass_compliance": 1.0,
+        "coverage_rate": 1.0,
+        "per_class_accuracy": {
+          "answer_to_active_question": 1.0,
+          "clarification": 1.0,
+          "correction": 1.0,
+          "backtrack_request": 1.0,
+          "requirement_change": 1.0,
+          "pause_request": 1.0,
+          "resume_request": 1.0,
+          "exit_request": 1.0,
+          "process_meta_question": 1.0,
+          "related_context": 1.0,
+          "unrelated_topic": 1.0,
+          "unsafe_or_emergency_message": 1.0,
+          "unclassifiable_input": 1.0
+        }
+      }
+    }
+  ],
+  "blockers": [
+    {
+      "code": "CSG_REPEAT_RUN_COUNT_INSUFFICIENT",
+      "target": "Anthropic:Claude Opus 4.8",
+      "actual": 1,
+      "required": 2
+    },
+    {
+      "code": "CSG_TARGET_HAS_FAILED_RUN",
+      "target": "Anthropic:Claude Sonnet 5"
+    }
+  ],
+  "gates": {
+    "G_CSG_CROSS_MODEL_BENCHMARK_READY": "blocked"
+  },
+  "status": "blocked"
+}

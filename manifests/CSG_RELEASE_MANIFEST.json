@@ -1,0 +1,166 @@
+{
+  "capability": "conversation_scope_guard",
+  "contract_id": "ORDO-CAP-CSG-001",
+  "integration_status": "language_integrated_optional_specification",
+  "integrity": "passed",
+  "files": [
+    {
+      "path": "language/CAPABILITY_MATURITY_MODEL.md",
+      "sha256": "3dfcf28f11d31c2a730c8661b17294116d0bafb530ad1c5e8f6331f0db49c5ac"
+    },
+    {
+      "path": "language/CONVERSATION_SCOPE_GUARD_CONTRACT.md",
+      "sha256": "ad1125b7b7112f515be2a35c666ff7cf8336775d6f5d9c767ed8be663919cfe3"
+    },
+    {
+      "path": "language/CSG_1_CLASSIFICATION_REGRESSION_FIXTURES.yaml",
+      "sha256": "1dedd9a20016e4776b069fdbbe56945db9ee69301f65330ad4718581b0dec6ad"
+    },
+    {
+      "path": "language/CSG_1_DEVIATION_CLASSIFICATION_CONTRACT.md",
+      "sha256": "1d7fdd5fdb27013821e83729956791df1505b8e4dd51d2fa703ff0902aab77f8"
+    },
+    {
+      "path": "language/CSG_2_ESCALATION_REGRESSION_FIXTURES.yaml",
+      "sha256": "988674347c2cdff5359a979ec282a00458e02ba3ef4efedf93c4d42179d1737e"
+    },
+    {
+      "path": "language/CSG_2_STRICTNESS_AND_ESCALATION_POLICY.md",
+      "sha256": "4aba1d79d3de7480ab8baf356c5480bb44fd18172cd7f95e49f0e5355201bde5"
+    },
+    {
+      "path": "language/CSG_3_RESPONSE_AND_STATE_PROTECTION_RULES.md",
+      "sha256": "75cca3d9b27d3c52c82766f1b6436e2963b5cb8368813c76825cf26afebbeea7"
+    },
+    {
+      "path": "language/CSG_3_STATE_PROTECTION_REGRESSION_FIXTURES.yaml",
+      "sha256": "a141a1d7cb92c93411e4ff5f97c84970bc84c9fc05f8b51628e3e2cb086fec28"
+    },
+    {
+      "path": "language/CSG_4_AUTHORING_FLOW_AND_PACKAGE_INTEGRATION.md",
+      "sha256": "e48f1884751d2159abff7f9f6ffd360231a18ff9e68a27c700e672690eced2e6"
+    },
+    {
+      "path": "language/CSG_4_PACKAGE_INTEGRATION_REGRESSION_FIXTURES.yaml",
+      "sha256": "83e234fbc243fa9372beb92fb6f7633bc380e5d1356c98d45446198e5bf29a09"
+    },
+    {
+      "path": "language/CSG_5_VALIDATION_REGRESSION_AND_RELEASE.md",
+      "sha256": "2dfaab0dcf75b5724ff7d8e40f9532213cc7d7d50227e26277645f918fd9cccc"
+    },
+    {
+      "path": "language/CSG_INTEGRATION_LINE.md",
+      "sha256": "5fc996d0d9530d284402e5e94f4dce2776d2fd281cbecd4eec80c89eb059b737"
+    },
+    {
+      "path": "language/conversation_scope_guard.contract.yaml",
+      "sha256": "0989b778b8b54a7ffd1798b11e9a6c64736cb85c96c70ba56dc045081557f0d7"
+    },
+    {
+      "path": "language/registry/CAPABILITY_CATALOG.md",
+      "sha256": "3a05d023689cd60c922ceee7015c4c24ab9d1e62bb2d9529ed0308cb737903bc"
+    },
+    {
+      "path": "language/registry/CAPABILITY_MATURITY_VALUES.md",
+      "sha256": "ac507fe559d87a0e89297198389bbc984fea07d4982430cfecd381cd48ef27a8"
+    },
+    {
+      "path": "language/registry/OPCODE_CATALOG.md",
+      "sha256": "4ebc7a550a982704529dac352abc31c9b36e4650e558c774363a19dbe4a1fc35"
+    },
+    {
+      "path": "language/registry/SOURCE_CONSTRUCT_CATALOG.md",
+      "sha256": "fbf00c6fcf648d15a3bc26b753dc4d152cdf9eabde96af874f40078beb4b2e19"
+    },
+    {
+      "path": "language/registry/TRACE_EVENT_CATALOG.md",
+      "sha256": "46c99b26eed04587c78a07484629bddc4b5bf24bcba2ce65ec6f8ea499631e7a"
+    },
+    {
+      "path": "language/registry/capability_catalog.yaml",
+      "sha256": "b647e70c2bc5669bca62c65434aeab500d42bafa10365756137949e44723a6ef"
+    },
+    {
+      "path": "language/registry/source_construct_catalog.yaml",
+      "sha256": "1b479a5561f84f81d5fa33115d75789bbab0df4bc477cc139d25dcbfd320fa31"
+    },
+    {
+      "path": "language/registry/trace_event_catalog.yaml",
+      "sha256": "e931b56b535ace8ad718bfe3022f4e605e381fdae75286ac23669efde54830b8"
+    },
+    {
+      "path": "language/schemas/capability_maturity.schema.json",
+      "sha256": "8a82a99ff936df5b17d6935d74ba8d1d93049f26b6298992ce15690837af3034"
+    },
+    {
+      "path": "language/schemas/conversation_scope_guard_source.schema.json",
+      "sha256": "9514616a58cc9aea624d5e086368404bb2aaa7df2530a5f7179f8e0af4decbc8"
+    },
+    {
+      "path": "language/schemas/csg_package_binding.schema.json",
+      "sha256": "71721fd4c9b2e8dd64395ac38dcd37889992a2153bc2c8967df9e6f2fd95c5aa"
+    },
+    {
+      "path": "language/schemas/deviation_classification.schema.json",
+      "sha256": "4ff2fe4aec2ee659918976742d9bd8d24619832d3e8138329844f149e858b87f"
+    },
+    {
+      "path": "language/schemas/scope_guard_policy.schema.json",
+      "sha256": "fd92356670d18e3497a048b104c048278da10fcdf4fc8eb71206ca011020b8a2"
+    },
+    {
+      "path": "language/schemas/semantic_json_ir_schema.yaml",
+      "sha256": "78ee3f800b034a969a812da38e70f97d6d7e800787b264b63b69a1e5272df86a"
+    },
+    {
+      "path": "language/schemas/state_protection.schema.json",
+      "sha256": "5f82294b36d1da68ea8bf016c6952bfb2ced933b87a00c0e57774abf2a1c505d"
+    }
+  ],
+  "maturity": {
+    "specification": {
+      "status": "language_integrated",
+      "evidence": [
+        "reports/CSG_FULL_REGRESSION_REPORT.json",
+        "reports/CSG_5_VALIDATION_REPORT.json"
+      ]
+    },
+    "schema_support": {
+      "status": "integrated",
+      "evidence": [
+        "language/schemas/conversation_scope_guard_source.schema.json",
+        "language/schemas/semantic_json_ir_schema.yaml"
+      ]
+    },
+    "toolchain_support": {
+      "status": "partial",
+      "evidence": [
+        "cli/ordo/linter.py",
+        "cli/ordo/compiler.py",
+        "cli/ordo/registry_checks.py",
+        "cli/tests/test_m74_1_registry_completeness.py"
+      ],
+      "limitations": [
+        "no semantic classification execution",
+        "no runtime enforcement"
+      ]
+    },
+    "runtime_enforcement": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "model_benchmark": {
+      "status": "not_run",
+      "evidence": [],
+      "acceptance_gate": "G_CSG_MODEL_BENCHMARK_READY"
+    },
+    "production_recommendation": {
+      "status": "not_ready",
+      "evidence": [],
+      "acceptance_gate": "G_CSG_PRODUCTION_READY"
+    }
+  },
+  "validation_scope": "specification_and_cross_artifact_consistency",
+  "spec_release_gate": "G_CSG_SPEC_RELEASE_READY",
+  "legacy_gate_alias": "G_CSG_RELEASE_READY"
+}

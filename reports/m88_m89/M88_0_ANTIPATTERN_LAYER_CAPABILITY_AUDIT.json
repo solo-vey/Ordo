@@ -1,0 +1,188 @@
+{
+  "schema_version": "ordo.m88.antipattern_capability_audit.v1",
+  "milestone": "M88.0",
+  "backlog_id": "BL-ORDO-020",
+  "status": "completed",
+  "files_scanned": 3146,
+  "existing_capabilities": {
+    "gate_reporting": true,
+    "path_explanation": true,
+    "state_diff": true,
+    "state_snapshot": true,
+    "decision_logging": true,
+    "generic_recovery_concepts": true,
+    "generic_severity_concepts": true,
+    "generic_advisory_concepts": true,
+    "generic_blocking_concepts": true
+  },
+  "missing_canonical_language_primitives": {
+    "ANTIPATTERN.DEF": false,
+    "DETECT.RULE": true,
+    "REMEDIATION.ACTION": true,
+    "EVIDENCE.REQUIREMENT": false
+  },
+  "recommended_language_design": {
+    "new_core_primitive": "ANTIPATTERN.DEF",
+    "new_rule_object": "DETECT.RULE",
+    "reuse_existing_gate_model": true,
+    "gate_extension": {
+      "severity": [
+        "info",
+        "warning",
+        "error",
+        "critical"
+      ],
+      "enforcement": [
+        "advisory",
+        "blocking"
+      ]
+    },
+    "finding_output": "ANTIPATTERN.FINDING",
+    "reuse_existing_outputs": [
+      "GATE.REPORT",
+      "PATH.EXPLAIN",
+      "STATE.DIFF"
+    ],
+    "recovery_representation": "fields on ANTIPATTERN.DEF first; dedicated RECOVERY.ROUTE deferred",
+    "remediation_representation": "fields on ANTIPATTERN.DEF first; dedicated REMEDIATION.ACTION deferred",
+    "evidence_representation": "references/requirements fields first; dedicated EVIDENCE.REQUIREMENT deferred"
+  },
+  "architecture_decision": {
+    "language_layer": "canonical declarations and validation schemas",
+    "runtime_layer": "detectors, matching, severity/enforcement and findings",
+    "apf_layer": "domain registry and activation profile"
+  },
+  "initial_registry_scope": [
+    "PROMPT_AS_IMPLEMENTATION",
+    "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION",
+    "MANDATORY_BRANCH_SHORT_CIRCUIT",
+    "FINAL_LABEL_OVERCLAIM",
+    "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION",
+    "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE"
+  ],
+  "next_milestones": [
+    "M88.1 canonical ANTIPATTERN.DEF schema and registry",
+    "M88.2 DETECT.RULE schema and detector contract",
+    "M88.3 severity/enforcement and finding model",
+    "M88.4 runtime detectors for initial anti-pattern set",
+    "M88.5 integration, regression tests and closure gate"
+  ],
+  "inventory_samples": {
+    "gate_report": [
+      "benchmarks/taxonomy/csg_aliases.v1.json",
+      "packages/ordo_applied_project_factory/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "packages/history_event_guided_intake/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "language/registry/OPCODE_CATALOG.md",
+      "cli/tests/test_m87_2_shared_dataset_contamination.py",
+      "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
+      "book/uk/chapters/appendix_a_slovnyk_ordo.md",
+      "book/uk/chapters/appendix_b_kataloh_op_kodiv.md",
+      "book/uk/chapters/appendix_e_antypaterny.md"
+    ],
+    "path_explain": [
+      "benchmarks/taxonomy/csg_aliases.v1.json",
+      "packages/ordo_applied_project_factory/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "packages/history_event_guided_intake/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "language/registry/OPCODE_CATALOG.md",
+      "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
+      "book/uk/chapters/appendix_b_kataloh_op_kodiv.md",
+      "book/uk/chapters/appendix_e_antypaterny.md",
+      "book/uk/chapters/appendix_f_praktychnyi_dovidnyk_opkodiv_i_yaml_atrybutiv.md",
+      "book/uk/chapters/chapter_14_chomu_ordo_prohramy_potribno_debazhyty.md"
+    ],
+    "state_diff": [
+      "benchmarks/taxonomy/csg_aliases.v1.json",
+      "packages/ordo_applied_project_factory/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "packages/history_event_guided_intake/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "language/registry/OPCODE_CATALOG.md",
+      "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
+      "book/uk/chapters/appendix_b_kataloh_op_kodiv.md",
+      "book/uk/chapters/appendix_e_antypaterny.md",
+      "book/uk/chapters/appendix_f_praktychnyi_dovidnyk_opkodiv_i_yaml_atrybutiv.md",
+      "book/uk/chapters/chapter_14_chomu_ordo_prohramy_potribno_debazhyty.md"
+    ],
+    "state_snapshot": [
+      "benchmarks/datasets/csg_adversarial_v2.json",
+      "benchmarks/taxonomy/csg_aliases.v1.json",
+      "packages/ordo_applied_project_factory/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "packages/history_event_guided_intake/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "language/registry/OPCODE_CATALOG.md",
+      "cli/tests/test_m86_4_alias_normalization_taxonomy.py",
+      "cli/tests/test_m87_2_shared_dataset_contamination.py",
+      "cli/tests/test_m87_3_plain_prompt_baseline_runner.py",
+      "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md"
+    ],
+    "decision_log": [
+      "benchmarks/datasets/csg_adversarial_v2.json",
+      "benchmarks/datasets/ordo_vs_plain_prompt_shared_tasks.v1.json",
+      "benchmarks/taxonomy/csg_aliases.v1.json",
+      "packages/ordo_applied_project_factory/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "packages/history_event_guided_intake/cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "language/registry/OPCODE_CATALOG.md",
+      "cli/tests/test_m86_4_alias_normalization_taxonomy.py",
+      "cli/tests/test_m87_2_shared_dataset_contamination.py",
+      "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md"
+    ],
+    "recovery": [
+      "CONSOLIDATED_BACKLOG.md",
+      "M60_7_LINE_CLOSURE_REPORT.md",
+      "README.md",
+      "STABLE_DEVELOPER_HANDOFF.md",
+      "language/PROMPT_REGISTRY.md",
+      "ordo_pathwalk/CHANGELOG.md",
+      "ordo_pathwalk/README.md",
+      "ordo_pathwalk/REAL_MODULE_TESTCASE_GENERATION.md",
+      "benchmarks/datasets/ordo_vs_plain_prompt_shared_tasks.v1.json",
+      "benchmarks/ab/ordo_vs_plain_prompt_scoring_rubric.v1.json"
+    ],
+    "severity": [
+      "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md",
+      "CHANGELOG.md",
+      "CONSOLIDATED_BACKLOG.md",
+      "FINAL_PACKAGE_SELF_CHECK_REPORT.md",
+      "FUTURE_BACKLOG.md",
+      "M60_6_1_RELEASE_INTEGRITY_REPORT.json",
+      "M60_6_1_VALIDATION_REPORT.json",
+      "M60_6_2_VALIDATION_REPORT.json",
+      "M64_3_PROGRAM_LEVEL_APPROVAL_GATE_LINT_PROFILE_REPORT.md",
+      "M65_FIRST_WAVE_CLOSURE_REPORT.md"
+    ],
+    "advisory": [
+      "CONSOLIDATED_BACKLOG.md",
+      "M75_4_CSG_PRODUCTION_THRESHOLDS_FALLBACK_ROLLBACK.md",
+      "M77_4_VALIDATION_DIAGNOSTICS_CLI_ADVISORY_REUSE.md",
+      "language/CONVERSATION_SCOPE_GUARD_CONTRACT.md",
+      "language/CSG_2_STRICTNESS_AND_ESCALATION_POLICY.md",
+      "language/DERIVED_ARTIFACT_SYNC_STANDARD.md",
+      "language/PROGRAM_LEVEL_APPROVAL_PROFILE.md",
+      "language/STARTUP_PROFILE_VALIDATION_PROFILE.md",
+      "language/conversation_scope_guard.contract.yaml",
+      "reports/BL_ORDO_010_BOOK_CURRENT_ORDO_APF_RECONCILIATION.json"
+    ],
+    "blocking": [
+      "APF_PACKAGE_IMPORT.md",
+      "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md",
+      "APF_RC_STANDARD_MODULE_STATUS.md",
+      "APF_STANDARD_MODULE_GUIDE.md",
+      "CHANGELOG.md",
+      "CONSOLIDATED_BACKLOG.md",
+      "FUTURE_BACKLOG.md",
+      "M60_6_4_TRANSCRIPT_REPLAY_PILOT_REPORT.json",
+      "M63_0_APF_RC_DELTA_REVIEW.md",
+      "M63_0_APF_RC_INTEGRATION_PLAN.md"
+    ],
+    "evidence_requirement": [
+      "M79_3_VALIDATION_REPORT.json"
+    ],
+    "antipattern_def": [
+      "CONSOLIDATED_BACKLOG.md"
+    ],
+    "detect_rule": [],
+    "remediation_action": []
+  }
+}

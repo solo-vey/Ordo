@@ -1,0 +1,22 @@
+{
+  "milestone": "M73.3-A",
+  "files": [
+    {
+      "file": "chapter_07_output_shcho_model_maie_stvoryty.md",
+      "headings_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    },
+    {
+      "file": "chapter_08_pyshemo_pershu_ordo_source_prohramu.md",
+      "headings_preserved": true,
+      "code_fences_balanced": true,
+      "image_targets_preserved": true,
+      "ukrainian_specific_chars_remaining": 0,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

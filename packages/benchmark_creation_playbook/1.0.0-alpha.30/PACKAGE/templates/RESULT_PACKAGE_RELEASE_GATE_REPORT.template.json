@@ -1,0 +1,9 @@
+{
+  "schema_version":"ordo.benchmark.result_package_release_gate.report.v1",
+  "package_path":"<path>",
+  "checks":[],
+  "validated_versions":{},
+  "release_disposition":"BLOCKED_REGENERATE",
+  "releasable":false,
+  "report_sha256":"<sha256>"
+}

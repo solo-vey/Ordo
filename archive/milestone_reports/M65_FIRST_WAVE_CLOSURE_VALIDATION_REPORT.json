@@ -1,0 +1,122 @@
+{
+  "milestone": "M65 first-wave closure",
+  "line": "M65.0 -> M65.1 -> M65.2 -> M65.3",
+  "status": "closed-first-wave / passed",
+  "date": "2026-07-09",
+  "runtime_core_changed": false,
+  "compiler_changed": false,
+  "cli_changed": false,
+  "new_opcodes_added": false,
+  "compiled_ir_regenerated": false,
+  "checks": [
+    {
+      "name": "M65.0 report present",
+      "status": "passed",
+      "detail": "M65_0_PROMPT_REGISTRY_STANDARD_REPORT.md, language/improvement_intake/m65_0/M65_0_PROMPT_REGISTRY_STANDARD_REPORT.md"
+    },
+    {
+      "name": "M65.0 validation present",
+      "status": "passed",
+      "detail": "M65_0_VALIDATION_REPORT.json, language/improvement_intake/m65_0/M65_0_VALIDATION_REPORT.json"
+    },
+    {
+      "name": "M65.1 report present",
+      "status": "passed",
+      "detail": "M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.md, language/improvement_intake/m65_1/M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.md"
+    },
+    {
+      "name": "M65.1 validation present",
+      "status": "passed",
+      "detail": "M65_1_VALIDATION_REPORT.json, language/improvement_intake/m65_1/M65_1_VALIDATION_REPORT.json"
+    },
+    {
+      "name": "M65.2 report present",
+      "status": "passed",
+      "detail": "M65_2_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_IMPLEMENTATION_PATCH_REPORT.md, language/improvement_intake/m65_2/M65_2_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_IMPLEMENTATION_PATCH_REPORT.md"
+    },
+    {
+      "name": "M65.2 validation present",
+      "status": "passed",
+      "detail": "language/improvement_intake/m65_2/M65_2_VALIDATION_REPORT.json"
+    },
+    {
+      "name": "M65.3 report present",
+      "status": "passed",
+      "detail": "language/improvement_intake/m65_3/M65_3_PROMPT_REGISTRY_VALIDATION_LINT_PROFILE_REPORT.md"
+    },
+    {
+      "name": "M65.3 validation present",
+      "status": "passed",
+      "detail": "language/improvement_intake/m65_3/M65_3_VALIDATION_REPORT.json"
+    },
+    {
+      "name": "M65 JSON reports parse",
+      "status": "passed",
+      "detail": "18 parsed; failures=[]"
+    },
+    {
+      "name": "M65 prompt YAML schemas/examples/source parse",
+      "status": "passed",
+      "detail": "6 parsed; failures=[]"
+    },
+    {
+      "name": "History Event Factory PROMPT_MANIFEST prompt files exist",
+      "status": "passed",
+      "detail": "13 manifest prompts checked; missing=[]"
+    },
+    {
+      "name": "runtime/core/CLI/opcode changes in closure",
+      "status": "passed",
+      "detail": "closure adds reports/index text only; M65.0-M65.3 boundaries preserved"
+    },
+    {
+      "name": "zip integrity ordo_github_workspace_v0_12_m65_first_wave_closure.zip",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "name": "zip integrity ordo_developer_bundle_from_m65_first_wave_closure.zip",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "name": "zip integrity m65_first_wave_closure_evidence.zip",
+      "status": "passed",
+      "detail": ""
+    }
+  ],
+  "accepted_milestones": [
+    {
+      "id": "M65.0",
+      "title": "Prompt Registry Standard",
+      "status": "passed-docs-schema-convention",
+      "summary": "Introduced prompt_registry and prompt_refs as top-level/source package conventions with schema, registry values, examples, spec chapter, and design decision.",
+      "report": "M65_0_PROMPT_REGISTRY_STANDARD_REPORT.md",
+      "validation": "M65_0_VALIDATION_REPORT.json"
+    },
+    {
+      "id": "M65.1",
+      "title": "APF / History Event Factory concrete prompt adoption plan",
+      "status": "passed-adoption-plan-validation",
+      "summary": "Defined a concrete adoption plan, folder layout, adoption matrix, validation profile, smoke test plan, and package-local rollout strategy for History Event Factory prompts.",
+      "report": "M65_1_APF_HISTORY_EVENT_FACTORY_PROMPT_ADOPTION_PLAN_REPORT.md",
+      "validation": "M65_1_VALIDATION_REPORT.json"
+    },
+    {
+      "id": "M65.2",
+      "title": "History Event Factory prompt files + registry skeleton implementation patch",
+      "status": "passed-prompt-registry-validation",
+      "summary": "Created prompt files, prompt_registry skeleton, prompt_refs, prompt manifest/checksums, and discoverability updates inside the History Event Factory package.",
+      "report": "M65_2_HISTORY_EVENT_FACTORY_PROMPT_REGISTRY_IMPLEMENTATION_PATCH_REPORT.md",
+      "validation": "M65_2_VALIDATION_REPORT.json"
+    },
+    {
+      "id": "M65.3",
+      "title": "Prompt registry validation / lint profile design",
+      "status": "passed-docs-schema-validation",
+      "summary": "Formalized validation/lint profile design for prompt registries, including profiles, severities, decisions, required checks, warnings, and authority-safety review boundaries.",
+      "report": "M65_3_PROMPT_REGISTRY_VALIDATION_LINT_PROFILE_REPORT.md",
+      "validation": "M65_3_VALIDATION_REPORT.json"
+    }
+  ]
+}

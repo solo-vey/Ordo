@@ -1,0 +1,84 @@
+{
+  "status": "PASSED",
+  "operation": "release",
+  "stages": [
+    {
+      "id": "ARF_STAGE_01",
+      "name": "package_startup",
+      "status": "PASSED"
+    },
+    {
+      "id": "ARF_STAGE_02",
+      "name": "program_contract",
+      "status": "PASSED"
+    },
+    {
+      "id": "ARF_STAGE_03",
+      "name": "process_rail",
+      "status": "PASSED"
+    },
+    {
+      "id": "ARF_STAGE_04",
+      "name": "derived_sync",
+      "status": "PASSED"
+    },
+    {
+      "id": "ARF_STAGE_05",
+      "name": "generated_validation",
+      "status": "PASSED"
+    },
+    {
+      "id": "ARF_STAGE_06",
+      "name": "clean_package_gate",
+      "status": "PASSED"
+    },
+    {
+      "id": "ARF_STAGE_07",
+      "name": "go_no_go",
+      "status": "PASSED"
+    }
+  ],
+  "checks": [
+    {
+      "name": "target_exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "ordo_program_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "scoped_yaml_verifier_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "arf_meta_runtime_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "arf_integration_contract_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "backlog_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "all_in_one_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "local_validation_present",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "mutation_allowed": true
+}

@@ -1,0 +1,23 @@
+{
+  "milestone": "M60.6 line closure",
+  "generated_at": "2026-07-08T08:30:00+02:00",
+  "status": "closed-at-m60.6.4",
+  "stable_base": "M60.6.4 Transcript Replay / Model Benchmark Pilot",
+  "blocked_experiments": [
+    {
+      "milestone": "M60.6.5",
+      "status": "blocked-no-release",
+      "reason": "transcript replay acceptance matrix hang"
+    },
+    {
+      "milestone": "M60.6.4.1",
+      "status": "blocked-no-release",
+      "reason": "per-job embedded runtime verify-session boundary hang"
+    }
+  ],
+  "weights_changed": false,
+  "runtime_core_semantics_changed": false,
+  "real_model_benchmark_run": false,
+  "next_milestone": "M60.7 Real Module Testcase Generation",
+  "decision": "Stop M60.6 micro-iteration and move to real module testcase generation from the stable M60.6.4 base."
+}

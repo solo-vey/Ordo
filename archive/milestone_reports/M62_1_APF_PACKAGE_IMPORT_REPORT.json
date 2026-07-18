@@ -1,0 +1,87 @@
+{
+  "milestone": "M62.1",
+  "title": "APF Package Import into Current Language Package",
+  "status": "passed-package-import",
+  "date": "2026-07-08",
+  "scope": {
+    "apf_imported": true,
+    "location": "packages/ordo_applied_project_factory/",
+    "module_version": "0.1.0-alpha.14",
+    "runtime_core_changed": false,
+    "ir_opcode_added": false,
+    "apf_branch_logic_rewritten": false,
+    "full_validation_claimed": false
+  },
+  "apf_snapshot": {
+    "source_sha256": "dbeb51f58b19a1048146f9714a523213b0b61c99cbbc1ba1aed75c85b366e14a",
+    "alpha14_validation_status": "passed_minimal_validation",
+    "current_cli_lint_status": "passed",
+    "current_cli_compile_status": "passed",
+    "current_cli_test_status": "passed",
+    "nodes": 54,
+    "edges": 78,
+    "gates": 38,
+    "assertions": 28,
+    "outputs": 1
+  },
+  "checks": [
+    {
+      "name": "workspace py_compile cli/ordo_pathwalk/utilities",
+      "status": "passed"
+    },
+    {
+      "name": "workspace selected pytest PathWalk + Visual Graph",
+      "status": "passed",
+      "result": "33 passed"
+    },
+    {
+      "name": "workspace APF lint",
+      "status": "passed"
+    },
+    {
+      "name": "workspace APF compile",
+      "status": "passed"
+    },
+    {
+      "name": "workspace APF static test",
+      "status": "passed"
+    },
+    {
+      "name": "workspace Visual Graph APF .mmd smoke",
+      "status": "passed"
+    },
+    {
+      "name": "workspace Visual Graph APF context .svg smoke",
+      "status": "passed"
+    },
+    {
+      "name": "workspace PathWalk APF real-module-graph smoke",
+      "status": "passed",
+      "nodes": 54
+    },
+    {
+      "name": "developer bundle py_compile + APF lint/compile/test",
+      "status": "passed"
+    },
+    {
+      "name": "PathWalk RC selected pytest",
+      "status": "passed",
+      "result": "27 passed"
+    },
+    {
+      "name": "book manifest sanity",
+      "status": "passed",
+      "manifest_entries": 77,
+      "chapter_count": 67
+    }
+  ],
+  "non_goals_confirmed": [
+    "no runtime-core changes",
+    "no APF branch 1/2 rewrite",
+    "no terminal output binding patch",
+    "no formal IR/opcode additions",
+    "no runtime execution/scoring/calibration",
+    "no full validation claim"
+  ],
+  "next_recommended": "M62.2 — APF Documentation and Book Section"
+}

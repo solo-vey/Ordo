@@ -1,0 +1,48 @@
+{
+  "schema_version": "ordo.milestone.validation.v1",
+  "milestone": "M60.7.3",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "base_m60_7_2_used",
+      "status": "passed"
+    },
+    {
+      "check": "real_module_clean_cases_cli_present",
+      "status": "passed"
+    },
+    {
+      "check": "one_clean_case_per_terminal_path",
+      "status": "passed"
+    },
+    {
+      "check": "raw_testcase_matrix_written",
+      "status": "passed"
+    },
+    {
+      "check": "runtime_execution_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "noise_generation_not_claimed",
+      "status": "passed"
+    },
+    {
+      "check": "py_compile",
+      "status": "passed"
+    },
+    {
+      "check": "selected_non_runtime_pytest",
+      "status": "passed",
+      "evidence": "17 passed"
+    },
+    {
+      "check": "book_source_updated_without_pdf_generation",
+      "status": "passed"
+    }
+  ],
+  "blockers": [],
+  "known_exclusions": [
+    "runtime-harness/transcript-replay matrix remains known blocked branch from M60.6.5/M60.6.4.1 and is not a gate for M60.7.3."
+  ]
+}

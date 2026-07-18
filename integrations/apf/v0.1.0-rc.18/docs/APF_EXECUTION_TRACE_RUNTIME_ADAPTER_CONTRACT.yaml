@@ -1,0 +1,224 @@
+contract_id: apf.execution_trace.runtime_adapter
+version: '1.0'
+ordo_alignment: v0.12-M72
+scope: generated_playbook_runtime_adapters
+purpose: define the runtime boundary that turns APF-authored execution-trace contracts
+  into actual append-only EXECUTION_TRACE artifacts
+applies_when: execution_trace.supported == true and runtime_mode == runtime_enforced
+ownership:
+  apf: generates configuration, schema, event mapping, security, replay and adapter
+    contracts
+  runtime_adapter: creates and persists actual EXECUTION_TRACE instances
+  playbook_runtime: invokes adapter operations at mapped lifecycle and semantic events
+  human_or_admin: controls runtime toggle within declared policy
+required_operations:
+- operation: initialize_trace
+  inputs:
+  - run_context
+  - execution_trace_config
+  - actor_context
+  - source_context
+  outputs:
+  - trace_id
+  - initial_trace_header
+  effects:
+  - create status=created or running trace
+  - write run_started as first event when capture is enabled
+  must_not:
+  - start capture when supported=false
+  - persist prohibited sensitive values
+- operation: append_event
+  inputs:
+  - trace_id
+  - event_type
+  - location
+  - actor
+  - payload
+  - state_effect
+  - correlation
+  - outcome
+  outputs:
+  - event_id
+  - sequence
+  effects:
+  - append exactly one immutable event
+  - advance monotonic sequence
+  - update event_count
+  must_not:
+  - mutate prior events
+  - use event types outside pinned catalog
+- operation: record_state_reference
+  inputs:
+  - trace_id
+  - before_ref
+  - after_ref
+  - diff_ref
+  outputs:
+  - state_effect_reference
+  effects:
+  - link recoverable state evidence without embedding large snapshots
+  must_not:
+  - claim recoverability when referenced evidence is unavailable
+- operation: pause_trace
+  inputs:
+  - trace_id
+  - reason_code
+  outputs:
+  - status
+  effects:
+  - append run_paused
+  - set status=paused
+- operation: resume_trace
+  inputs:
+  - trace_id
+  - actor_context
+  outputs:
+  - status
+  effects:
+  - append run_resumed
+  - set status=running
+- operation: finalize_trace
+  inputs:
+  - trace_id
+  - terminal_status
+  - final_state_ref
+  - output_refs
+  outputs:
+  - finalized_trace
+  effects:
+  - append matching terminal event
+  - set finished_at
+  - reconcile event_count
+  - set sequence_complete
+  must_not:
+  - mark completed without terminal event
+- operation: fail_trace
+  inputs:
+  - trace_id
+  - error_summary
+  - recoverability
+  outputs:
+  - failed_trace
+  effects:
+  - append run_failed
+  - set status=failed
+  - preserve prior events
+- operation: cancel_trace
+  inputs:
+  - trace_id
+  - reason_code
+  - actor_context
+  outputs:
+  - cancelled_trace
+  effects:
+  - append run_cancelled
+  - set status=cancelled
+- operation: compute_integrity
+  inputs:
+  - trace_id
+  outputs:
+  - checksum
+  - event_count
+  - sequence_complete
+  effects:
+  - calculate integrity over canonical serialized form
+- operation: store_trace
+  inputs:
+  - trace_id
+  - storage_config
+  outputs:
+  - storage_ref
+  effects:
+  - persist append-only trace or event stream according to storage policy
+- operation: load_trace
+  inputs:
+  - trace_id_or_ref
+  outputs:
+  - execution_trace
+  effects:
+  - return schema-valid trace for audit or replay preparation
+- operation: prepare_replay_input
+  inputs:
+  - trace_id
+  - requested_replay_mode
+  outputs:
+  - replay_input_bundle
+  - readiness_result
+  effects:
+  - verify required inputs, dependencies and side-effect strategy
+  must_not:
+  - set replayable=true without readiness evidence
+- operation: toggle_capture
+  inputs:
+  - enabled
+  - actor_context
+  - reason_code
+  outputs:
+  - effective_capture_state
+  effects:
+  - change future event capture only
+  - preserve already stored traces
+  must_not:
+  - delete or rewrite prior trace data
+behavioral_invariants:
+- capture disabled means no new trace events are emitted except optional non-trace
+  operational telemetry outside this contract
+- sequence is unique and monotonically increasing per trace
+- events are immutable after append
+- corrections are new events
+- event_count equals persisted event count
+- every completed, failed, cancelled or interrupted trace has a matching terminal
+  event
+- all mapped gates and generated outputs emit required events when capture is enabled
+- sensitive values follow redaction policy before persistence
+- hidden chain of thought is never accepted as payload
+- runtime adapter does not infer business approval or gate outcomes; it records outcomes
+  produced by the playbook runtime
+- runtime adapter does not change playbook state except through explicitly delegated
+  storage bookkeeping
+error_contract:
+  adapter_error_codes:
+  - TRACE_DISABLED
+  - TRACE_NOT_FOUND
+  - INVALID_EVENT_TYPE
+  - SEQUENCE_CONFLICT
+  - SCHEMA_VIOLATION
+  - REDACTION_REQUIRED
+  - STORAGE_FAILURE
+  - INTEGRITY_FAILURE
+  - REPLAY_NOT_READY
+  failure_behavior:
+  - do not silently drop required events in runtime_enforced mode
+  - surface blocking error to playbook runtime
+  - preserve last valid persisted state
+  - record error_raised when possible without recursion
+idempotency_and_concurrency:
+  initialize_trace: idempotent by run_id when configured
+  append_event: requires idempotency_key or event_id deduplication support
+  finalize_trace: idempotent for same terminal state
+  concurrency_rule: adapter must serialize sequence assignment per trace
+security:
+  pre_persistence_redaction_required: true
+  prohibited_payloads:
+  - passwords
+  - access tokens
+  - secrets
+  - full confidential documents by default
+  - hidden chain of thought
+  allowed_decision_explanation: short verifiable decision_summary with reason_code
+    and evidence_refs
+  actor_data: minimum necessary attribution only
+conformance_evidence:
+- adapter operation coverage matrix
+- event catalog compatibility result
+- append-only and sequence test evidence
+- redaction test evidence
+- terminal lifecycle test evidence
+- toggle behavior test evidence
+- integrity calculation test evidence
+- replay-readiness boundary test evidence
+non_goals:
+- prescribing programming language
+- prescribing storage vendor
+- executing replay inside APF
+- enabling APF internal tracing

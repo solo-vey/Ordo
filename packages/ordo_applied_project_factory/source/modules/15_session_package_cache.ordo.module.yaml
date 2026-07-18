@@ -1,0 +1,37 @@
+runtime_capabilities:
+  SESSION_PACKAGE_LOAD_AND_CACHE:
+    status: integrated
+    state_schema: ordo.apf.package_cache_state.v1
+    implementation: cli/ordo/package_cache.py
+    entrypoint: ensure_package_cache
+    policy:
+      load_once: true
+      reuse_validated_cache: true
+      repeat_unpack_or_full_read_when_unchanged: forbidden
+      reload_conditions:
+      - package_version_changed
+      - package_fingerprint_changed
+      - cache_state_missing_or_invalid
+      - unpacked_location_unavailable
+      - required_cached_file_missing
+      - manifest_validation_failed
+      - explicit_reload_requested
+      process_state_preservation: required
+      active_node_preservation: required
+    gate:
+      id: PACKAGE_RELOAD_NECESSITY_GATE
+      mode: fail_closed
+      cache_hit_requires:
+      - matching_package_version
+      - matching_sha256_fingerprint
+      - cache_valid
+      - manifest_validated
+      - source_of_truth_loaded
+      - unpacked_location_available
+      - required_files_available
+    trace_events:
+    - PACKAGE_CACHE_HIT
+    - PACKAGE_CACHE_MISS
+    - PACKAGE_RELOAD_REQUIRED
+    - PACKAGE_RELOAD_COMPLETED
+    - PACKAGE_CACHE_INVALIDATED

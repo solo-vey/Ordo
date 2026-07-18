@@ -1,0 +1,27 @@
+{
+  "schema_version": "ordo.backlog_closure.v1",
+  "backlog_id": "BL-ORDO-008",
+  "title": "APF real-case replay and analyst-experience validation",
+  "status": "closed",
+  "closure_reason": "Owner approved closure after successful real-case replay and analyst-experience validation.",
+  "owner_decision": "approved_in_conversation_2026-07-18",
+  "closure_evidence": "reports/m78_0_apf_real_case_replay/M78_0_APF_REAL_CASE_REPLAY_REPORT.json",
+  "metrics": {
+    "case_count": 4,
+    "passed": 4,
+    "failed": 0,
+    "mean_analyst_experience": 0.975
+  },
+  "claim_boundary": {
+    "validated": [
+      "deterministic replay contract",
+      "state continuity",
+      "analyst-facing rendering against minimized real-case transcripts"
+    ],
+    "not_claimed": [
+      "live analyst usability study",
+      "statistical generalization"
+    ]
+  },
+  "remaining": []
+}

@@ -1,0 +1,41 @@
+schema_version: benchmark.result_registry_policy.v1
+registry_mode: append_only_event_ledger
+record_statuses:
+- active
+- superseded
+- invalidated
+- quarantined
+comparability_statuses:
+- comparable
+- conditional
+- excluded
+- pending
+missing_artifact_states:
+- not_applicable
+- not_produced
+- pending_evaluation
+- missing_blocking
+identity_fields:
+- benchmark_suite_id
+- test_case_id
+- test_case_version
+- run_id
+- run_contract_version
+- package_variant_id
+- package_version
+- driver_id
+- driver_version
+- attempt_id
+- evaluation_id
+supersession:
+  overwrite_forbidden: true
+  single_active_successor_per_cohort: true
+  reason_required: true
+  recalculation_impact_required: true
+overall_score:
+  allowed_only_with_formula_id_and_version: true
+  process_document_separation_required: true
+matrix:
+  active_records_only_by_default: true
+  comparability_required_for_ranking: true
+  high_water_mark_required: true

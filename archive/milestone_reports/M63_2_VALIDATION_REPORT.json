@@ -1,0 +1,32 @@
+{
+  "milestone": "M63.2_APF_RC_VALIDATION_PROFILE_KNOWN_LIMITATIONS",
+  "status": "passed-validation-profile-documentation",
+  "generated_at": "2026-07-08T18:15:31.239861+00:00",
+  "apf": {
+    "module_id": "ordo.applied_project_factory",
+    "version": "0.1.0-rc.1",
+    "lifecycle": "release-candidate"
+  },
+  "checks": {
+    "lint": "passed",
+    "compile": "passed",
+    "test": "passed",
+    "coverage": "passed",
+    "validate-state": "passed",
+    "next-step": "ready_for_ai_next_move",
+    "validate-output": "passed",
+    "validate-artifacts": "passed",
+    "consistency": "passed_with_warnings",
+    "go/no-go": "go",
+    "repo-check clean source": "passed"
+  },
+  "optional_apf_local": {
+    "validate_factory_output": "optional_apf_local_not_parent_cli_blocker"
+  },
+  "warnings_policy": {
+    "consistency": "passed_with_warnings_visible_non_blocking",
+    "warning_class": "contract/default-value coverage"
+  },
+  "blocking_issues": [],
+  "decision": "APF v0.1.0-rc.1 remains release-candidate / go."
+}

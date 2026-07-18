@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "package": {
+    "name": "ordo.applied_project_factory",
+    "version": "0.1.0-rc.4-post-svg"
+  },
+  "summary": {
+    "expected_outputs": 0,
+    "generated_outputs": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "generation_report": null,
+  "output_manifest": null,
+  "manifest_artifacts": 0,
+  "files": [],
+  "issues": [],
+  "warnings": []
+}

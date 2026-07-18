@@ -1,0 +1,41 @@
+{
+  "milestone": "M60.3",
+  "title": "Runtime Packaging Modes",
+  "status": "passed",
+  "date": "2026-07-07",
+  "scope": {
+    "included": [
+      "--runtime-view json packaging mode",
+      "--runtime-view ordo-code packaging mode",
+      "--runtime-view json,ordo-code mixed packaging mode",
+      "runtime_view_behavior metadata in ordo.runtime.json/build/package reports",
+      "next-step --format auto follows runtime_view in packaged runtime profiles",
+      "JSON-only runtime excludes stale compiled/program.ordo.view",
+      "render-runtime-view blocked in JSON-only runtime packages"
+    ],
+    "excluded": [
+      "Python target",
+      "Java target",
+      "MCP",
+      "sandbox",
+      "new runtime engine"
+    ]
+  },
+  "validation": {
+    "focused_m60_3_tests": "3/3 passed",
+    "m60_target_trace_regression": "11/11 passed",
+    "class_split_cli_regression": "76/76 passed across 18 unittest classes",
+    "repo_check": "passed after source cleanup with PYTHONDONTWRITEBYTECODE=1",
+    "runtime_smoke": [
+      "runtime_view=json: next-step auto => format=json; no program.ordo.view packaged; render-runtime-view blocked",
+      "runtime_view=ordo-code: next-step auto => format=ordo-code with current_contract",
+      "runtime_view=json,ordo-code: explicit json and ordo-code next-step formats both pass"
+    ]
+  },
+  "trust_model": "JSON IR decides; Ordo-code explains; Session-trace proves.",
+  "known_limits": [
+    "runtime_view modes change AI-facing projection policy, not the canonical runtime engine",
+    "json-ir remains mandatory in every runtime package",
+    "ordo-code-view is not a second source of truth"
+  ]
+}

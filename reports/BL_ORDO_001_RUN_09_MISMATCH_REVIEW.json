@@ -1,0 +1,42 @@
+{
+  "backlog_id": "BL-ORDO-001",
+  "run_id": "RUN-09",
+  "operation": "action_family_mismatch_review",
+  "mismatch_count": 5,
+  "classification_errors": 0,
+  "real_control_intent_errors": 0,
+  "alias_normalization_gaps": [
+    {
+      "case_id": "CSG-CLARIFY-01",
+      "action": "define 'source field'; keep active question open",
+      "expected_family": "clarify_active_step",
+      "verdict": "alias_gap"
+    },
+    {
+      "case_id": "CSG-CORRECT-01",
+      "action": "update stored field from status to stateCode",
+      "expected_family": "apply_correction",
+      "verdict": "alias_gap"
+    },
+    {
+      "case_id": "CSG-RESUME-02",
+      "action": "continue workflow from paused node",
+      "expected_family": "resume_process",
+      "verdict": "alias_gap"
+    },
+    {
+      "case_id": "CSG-EXIT-02",
+      "action": "cancel workflow, close as incomplete",
+      "expected_family": "exit_process",
+      "verdict": "alias_gap"
+    },
+    {
+      "case_id": "CSG-META-02",
+      "action": "explain next step; keep question open",
+      "expected_family": "answer_process_meta",
+      "verdict": "alias_gap"
+    }
+  ],
+  "decision": "RUN-09 has no substantive control-intent failure",
+  "next_step": "extend canonical action aliases and rescore RUN-09"
+}

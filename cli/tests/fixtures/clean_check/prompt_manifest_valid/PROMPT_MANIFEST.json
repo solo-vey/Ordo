@@ -1,0 +1,9 @@
+{
+  "prompts": [
+    {
+      "prompt_id": "helper_prompt",
+      "path": "prompts/helper.md",
+      "sha256": "5a010d8c49bdbd928e0e94ed78c602648d5d483190347eccbee72efef0f0c35f"
+    }
+  ]
+}

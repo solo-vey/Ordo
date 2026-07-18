@@ -1,0 +1,44 @@
+{
+  "release": "1.0.0-alpha.2",
+  "scope": "backlog registration for language package and ARF runtime integration",
+  "checks": [
+    {
+      "name": "task_document_exists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "backlog_has_042",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "backlog_counts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "readme_release",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "summary_counts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "non_claim",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "fail_closed",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 7,
+  "failed": 0,
+  "status": "PASS"
+}

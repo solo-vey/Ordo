@@ -1,0 +1,124 @@
+contract_id: APF-CSG-001
+title: Generated-playbook deviation classification contract
+status: aligned-with-ordo-csg-baseline-v0.1
+source_contract: ORDO-CAP-CSG-001
+scope:
+  apf_internal:
+    enabled: false
+  generated_playbooks:
+    applies_when: conversation_scope_guard.supported == true
+classification_required_before_state_mutation: true
+canonical_types:
+- answer_to_active_question
+- clarification
+- correction
+- backtrack_request
+- requirement_change
+- pause_request
+- resume_request
+- exit_request
+- process_meta_question
+- related_context
+- unrelated_topic
+- unsafe_or_emergency_message
+- unclassifiable_input
+priority_order:
+- unsafe_or_emergency_message
+- exit_request
+- pause_request
+- resume_request
+- correction
+- backtrack_request
+- requirement_change
+- process_meta_question
+- clarification
+- answer_to_active_question
+- related_context
+- unrelated_topic
+- unclassifiable_input
+rules:
+- id: CSG-CLS-001
+  rule: A message that does not directly answer the active question must still be
+    classified before redirect.
+- id: CSG-CLS-002
+  rule: Safety and emergency messages bypass normal scope restriction.
+- id: CSG-CLS-003
+  rule: Pause, resume, exit, correction, backtracking, requirement change, and process-meta
+    questions are valid process-control intents.
+- id: CSG-CLS-004
+  rule: Unclassifiable input must trigger clarification and must not complete the
+    active question.
+- id: CSG-CLS-005
+  rule: Unrelated topic classification must not mutate state, path, confirmation,
+    or active-node completion.
+classification_context_required:
+- process_id
+- active_node_id
+- active_question
+- accepted_context
+- current_state_refs
+- recent_process_messages
+classification_record_required_fields:
+- op
+- message_ref
+- active_node_ref
+- active_question_ref
+- classification
+- confidence
+- matched_scope_evidence
+- classification_reason
+- state_mutation_allowed
+- action
+- trace_required
+confidence_policy:
+  values:
+  - confirmed
+  - high
+  - medium
+  - low
+  - unknown
+  low_or_unknown_action: classify as unclassifiable_input and request classification
+    clarification
+allowed_state_effects:
+  answer_to_active_question: defined by node contract
+  clarification: no business-state mutation
+  correction: explicit correction route only
+  backtrack_request: declared backtracking route only
+  requirement_change: human-confirmed contract-change route
+  pause_request: pause control state only
+  resume_request: resume control state only
+  exit_request: controlled incomplete terminal transition
+  process_meta_question: no business-state mutation
+  related_context: store only if accepted by active/downstream contract
+  unrelated_topic: none
+  unsafe_or_emergency_message: safety handling may supersede normal flow
+  unclassifiable_input: none
+blocking_invariants:
+- unrelated_topic must not complete node
+- unrelated_topic must not change selected path
+- unrelated_topic must not confirm state
+- unclassifiable_input must not be accepted as answer
+- valid process-control intents must not be blocked
+- safety messages must not be suppressed
+next_stage: CSG-2 strictness, response, and escalation policy
+canonical_operation: DEVIATION.CLASSIFY
+canonical_actions:
+- accept_answer
+- clarify_active_step
+- apply_correction
+- backtrack
+- reopen_contract
+- pause_process
+- resume_process
+- exit_process
+- answer_process_meta
+- register_related_context
+- redirect
+- bypass_for_safety
+- request_classification_clarification
+field_mapping:
+  active_node_id: active_node_ref
+  evidence_summary: matched_scope_evidence
+  allowed_state_effect: state_mutation_allowed
+  required_action: action
+  trace_event_required: trace_required

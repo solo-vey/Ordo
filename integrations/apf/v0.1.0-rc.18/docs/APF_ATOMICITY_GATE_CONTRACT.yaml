@@ -1,0 +1,154 @@
+contract_id: apf.atomicity_gate.contract
+version: '0.1'
+status: active
+purpose: Define deterministic atomicity gates and their pass, advisory, blocking, and human-resolution behavior for generated playbook steps.
+applies_to:
+  - generated_playbook_steps
+  - generated_playbook_nodes
+  - artifact_generation_steps
+  - validation_steps
+  - approval_steps
+  - state_transition_steps
+execution_order:
+  - SINGLE_RESPONSIBILITY_GATE
+  - SINGLE_OUTPUT_GATE
+  - EXPLICIT_INPUT_OUTPUT_GATE
+  - NO_HIDDEN_RECONSTRUCTION_GATE
+  - SEPARATE_GENERATION_VALIDATION_GATE
+  - EXPLICIT_CONFIRMATION_GATE
+  - NO_PARTIAL_SUCCESS_TRANSITION_GATE
+  - FAILURE_LOCALIZATION_GATE
+  - ARTIFACT_LEVEL_STATUS_GATE
+  - INDEPENDENT_POST_RENDER_REVIEW_GATE
+gate_result_enum:
+  - passed
+  - advisory
+  - blocked
+  - needs_human_decision
+gates:
+  SINGLE_RESPONSIBILITY_GATE:
+    checks:
+      - one_primary_responsibility
+      - no_mixed_cognitive_or_operational_classes
+    pass_when:
+      - step_has_one_primary_responsibility
+      - supporting_mechanical_actions_share_one_completion_criterion
+    advisory_when:
+      - decomposition_would_improve_readability_but_not_safety
+    block_when:
+      - collection_reconstruction_decision_generation_validation_or_approval_are_combined_and_can_fail_independently
+    diagnostic_codes:
+      - ASR-SR-001
+      - ASR-SR-002
+  SINGLE_OUTPUT_GATE:
+    checks:
+      - one_primary_observable_output
+      - independent_artifacts_have_independent_lifecycle
+    pass_when:
+      - outputs_form_one_indivisible_result_with_one_status
+    advisory_when:
+      - multiple_mechanical_files_are_one_release_artifact
+    block_when:
+      - independent_artifacts_can_have_different_quality_or_approval_status
+    diagnostic_codes:
+      - ASR-SO-001
+  EXPLICIT_INPUT_OUTPUT_GATE:
+    checks:
+      - inputs_are_declared
+      - outputs_are_declared
+      - completion_criteria_reference_outputs
+    block_when:
+      - semantic_placeholders_hide_required_inputs_or_expected_results
+      - output_is_only_described_as_generic_action
+    diagnostic_codes:
+      - ASR-IO-001
+      - ASR-IO-002
+  NO_HIDDEN_RECONSTRUCTION_GATE:
+    checks:
+      - missing_data_is_not_silently_invented
+      - reconstruction_uses_separate_branch
+      - reconstruction_evidence_is_preserved
+    block_when:
+      - reconstructed_value_is_used_as_confirmed_fact_without explicit_confirmation
+    diagnostic_codes:
+      - ASR-HR-001
+      - ASR-HR-002
+  SEPARATE_GENERATION_VALIDATION_GATE:
+    checks:
+      - generation_creates_result
+      - validation_inspects_materialized_result
+      - validation_does_not_silently_regenerate
+    block_when:
+      - same_step_generates_and_self_validates_without independent_evidence
+      - validation_checks_plan_or_presence_only
+    diagnostic_codes:
+      - ASR-GV-001
+      - ASR-GV-002
+      - ASR-GV-003
+  EXPLICIT_CONFIRMATION_GATE:
+    checks:
+      - approval_is_separate_when_required
+      - confirmed_state_change_has_explicit_preconditions
+    block_when:
+      - generation_or_validation_implicitly_sets_approved_or_confirmed_state
+      - required_human_confirmation_is_assumed
+    needs_human_decision_when:
+      - ownership_or_approval_boundary_is_ambiguous
+    diagnostic_codes:
+      - ASR-CF-001
+      - ASR-CF-002
+  NO_PARTIAL_SUCCESS_TRANSITION_GATE:
+    checks:
+      - transition_depends_on_full_completion_criteria
+      - independent_substatuses_are evaluated
+    block_when:
+      - one_positive_substatus_triggers_next_step_while another_required_substatus_failed_or_pending
+    diagnostic_codes:
+      - ASR-PT-001
+  FAILURE_LOCALIZATION_GATE:
+    checks:
+      - nearest_corrective_step_defined
+      - failure_route_preserves_unaffected_confirmed_work
+    advisory_when:
+      - route_is_safe_but_broader_than_needed
+    block_when:
+      - failure_can_only_restart_whole_process_and_would_discard_or_reopen_confirmed_results
+    diagnostic_codes:
+      - ASR-FL-001
+      - ASR-FL-002
+  ARTIFACT_LEVEL_STATUS_GATE:
+    checks:
+      - each_independent_artifact_has_own_generation_validation_and_approval_status
+      - overall_status_does_not_mask_component_failure
+    block_when:
+      - package_level_success_can_hide_failed_or_unreviewed_artifact
+    diagnostic_codes:
+      - ASR-AS-001
+  INDEPENDENT_POST_RENDER_REVIEW_GATE:
+    checks:
+      - materialized_artifact_is_opened_or_parsed_after_generation
+      - review_checks_semantic_usability_not_only_presence
+    block_when:
+      - validation_uses_intent_plan_or_template_presence_as evidence_of_final_quality
+    diagnostic_codes:
+      - ASR-PR-001
+aggregation:
+  overall_result_rules:
+    - if_any_gate_blocked_then_review_status_blocking_issue
+    - if_no_blocked_and_any_needs_human_decision_then_review_status_needs_human_decision
+    - if_only_advisory_findings_then_review_status_recommendation
+    - if_all_passed_then_review_status_passed
+  transition_rules:
+    passed: allowed
+    recommendation: allowed_with_recorded_advice
+    blocking_issue: blocked
+    needs_human_decision: paused
+invariants:
+  - gate_evaluation_must_reference_evidence
+  - no_blocking_result_may_be_downgraded_without_recorded_human_decision_or_corrective_change
+  - human_decision_cannot_convert_missing_required_evidence_into_passed
+  - confirmed_business_logic_must_not_be_silently_rewritten
+non_goals:
+  - ordo_core_change
+  - automatic_rewrite_of_confirmed_playbook_logic
+  - runtime_enforcement_inside_apf_itself

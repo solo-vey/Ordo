@@ -1,0 +1,76 @@
+{
+  "milestone": "M46.7",
+  "title": "Pre-release candidate consolidation and source archive hygiene",
+  "status": "passed",
+  "base": "M46.6 pre-release consistency audit",
+  "changes": [
+    "Consolidated M46.1-M46.6 as a cleaner pre-release candidate.",
+    "Extended ordo repo-check with package-generated artifact hygiene checks.",
+    "Removed generated package artifacts from compiled/, reports/, runtime/, and generated_outputs/ in the source archive, leaving .gitkeep placeholders.",
+    "Added source archive hygiene documentation.",
+    "Updated README, CHANGELOG, docs/reports and book source Markdown only; PDF not regenerated."
+  ],
+  "self_checks": {
+    "cli_unit_tests": {
+      "status": "passed",
+      "tests": 19
+    },
+    "active_packages": {
+      "packages/ordo_project_builder": [
+        "lint",
+        "compile",
+        "test",
+        "coverage"
+      ],
+      "packages/ordo_hybrid_executor": [
+        "lint",
+        "compile",
+        "test",
+        "coverage"
+      ],
+      "packages/history_event_guided_intake": [
+        "lint",
+        "compile",
+        "test",
+        "coverage"
+      ]
+    },
+    "helper_flows": {
+      "ordo_project_builder": [
+        "validate-state",
+        "next-step"
+      ],
+      "ordo_hybrid_executor": [
+        "validate-state",
+        "next-step"
+      ],
+      "history_event_guided_intake": [
+        "lock",
+        "validate-lock",
+        "intake",
+        "generate-output",
+        "validate-output",
+        "validate-artifacts",
+        "consistency",
+        "go-no-go"
+      ]
+    },
+    "history_event_go_no_go": "go",
+    "repo_check_clean_source": "passed"
+  },
+  "source_archive_hygiene": {
+    "forbidden_package_generated_dirs": [
+      "compiled",
+      "reports",
+      "runtime",
+      "generated_outputs"
+    ],
+    "allowed_placeholder": ".gitkeep",
+    "rationale": "generated evidence must be produced by the current CLI run, not carried from stale local executions"
+  },
+  "known_limitations": [
+    "go-no-go is a deterministic helper and does not execute an AI model.",
+    "Rendered artifact validation checks declared contract values and mappings, not arbitrary business semantics.",
+    "Generated artifacts are excluded from the source archive but can be regenerated from package inputs."
+  ]
+}

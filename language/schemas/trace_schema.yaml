@@ -1,0 +1,26 @@
+Trace:
+  type: object
+  required: [run_id, execution_mode, trace_source]
+  properties:
+    run_id:
+      type: string
+    execution_mode:
+      enum: [full_runtime, chat_internal, freeform_only]
+    trace_source:
+      enum: [model_self_report, runtime_enforced, hybrid]
+    selected_path:
+      type: object
+    rejected_paths:
+      type: array
+    decision_log:
+      type: array
+    state_snapshots:
+      type: array
+    state_diffs:
+      type: array
+    gate_report:
+      type: array
+    warnings:
+      type: array
+    violations:
+      type: array

@@ -1,0 +1,148 @@
+{
+  "schema_version": "ordo.github_publication_hygiene_report.v1",
+  "task_id": "BL-ORDO-057",
+  "status": "passed",
+  "source_baseline": {
+    "release_id": "ordo-2026.07.17-rc.10",
+    "archive_sha256": "307bc2196e8ccacccb36296818c7d581040d8d77fd0e251d36bdf276c8345258"
+  },
+  "changes": {
+    "root_readme_replaced_with_english_project_front_door": true,
+    "ukrainian_readme_created": "README_UK.md",
+    "generated_directory_added_to_gitignore": true,
+    "generated_directory_removed_from_candidate": true,
+    "removed_generated_files": 653,
+    "removed_generated_bytes": 3662196
+  },
+  "checks": {
+    "readme_links": {
+      "checked": 18,
+      "failed": 0,
+      "details": [
+        {
+          "source": "README.md",
+          "target": "README_UK.md",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "DELIVERY_GATE_REPORT.json",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "FINAL_PACKAGE_SELF_CHECK_REPORT.json",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "manifests/RELEASE_IDENTITY.json",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "DELIVERY_POLICY.md",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "tools/build_release_archive.py",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "LICENSE.md",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "COMMERCIAL_LICENSE.md",
+          "exists": true
+        },
+        {
+          "source": "README.md",
+          "target": "NOTICE.md",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "README.md",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "DELIVERY_GATE_REPORT.json",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "FINAL_PACKAGE_SELF_CHECK_REPORT.json",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "manifests/RELEASE_IDENTITY.json",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "DELIVERY_POLICY.md",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "tools/build_release_archive.py",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "LICENSE.md",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "COMMERCIAL_LICENSE.md",
+          "exists": true
+        },
+        {
+          "source": "README_UK.md",
+          "target": "NOTICE.md",
+          "exists": true
+        }
+      ]
+    },
+    "stale_front_door_terms": {
+      "BL-ORDO-055 Change Bundle": false,
+      "No canonical package was built": false,
+      "against canonical RC9": false
+    },
+    "text_files_scanned": 3832,
+    "likely_secret_hits": [],
+    "non_example_email_hits": [],
+    "gitignore_contains_ordo_generated": true,
+    "ordo_generated_absent_from_candidate": true,
+    "license_files_present": true,
+    "github_workflows_present": 4,
+    "privacy_risk_raw_evidence_excluded": {
+      "count": 2,
+      "manifest": "empirical_evidence/manifests/PUBLICATION_EXCLUSIONS.json",
+      "items": [
+        {
+          "path": "empirical_evidence/raw_evidence/test_cases/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET/01_problem_inputs/reference_examples/01_REFERENCE_PASSPORT_LU_CHANGE_EMAIL.md",
+          "sha256_in_canonical_rc10": "7205e7676d3548636aa22bb6298d096d1fa5ea70f80fc6b02e56cb9b7d838520",
+          "reason": "Contains a real-domain email address that cannot be proven synthetic; omitted from the public GitHub candidate without modifying canonical RC10."
+        },
+        {
+          "path": "empirical_evidence/raw_evidence/test_cases/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET/01_problem_inputs/reference_examples/02_REFERENCE_JIRA_LU_CHANGE_EMAIL.md",
+          "sha256_in_canonical_rc10": "d52156e603bd4ef704dc791e2de166b0943e5b6759a0ae4b40e26ba8621baa97",
+          "reason": "Contains a real-domain email address that cannot be proven synthetic; omitted from the public GitHub candidate without modifying canonical RC10."
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "This is a non-canonical publication candidate. Canonical integration requires a new sanctioned release gate and versioned archive.",
+    "CONTRIBUTING.md, CODE_OF_CONDUCT.md, issue templates, and PR templates are tracked separately by BL-ORDO-058.",
+    "Evidence storage/LFS strategy is tracked separately by BL-ORDO-059."
+  ]
+}

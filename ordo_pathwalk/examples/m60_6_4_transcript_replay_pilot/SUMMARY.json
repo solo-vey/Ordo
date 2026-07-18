@@ -1,0 +1,81 @@
+{
+  "schema_version": "ordo.pathwalk.model_benchmark_summary.v1",
+  "milestone": "M60.6.4",
+  "benchmark_mode": "transcript-replay",
+  "status": "passed-pilot",
+  "weights_locked": true,
+  "calibration_eligible": false,
+  "expected_cases": 3,
+  "completed_cases": 3,
+  "runtime_views": {
+    "json": {
+      "cases": 3,
+      "passed": 1,
+      "non_perfect": 2,
+      "score_min": 0.75,
+      "score_max": 1.0,
+      "score_mean": 0.8667
+    }
+  },
+  "failure_buckets": {
+    "none": 1,
+    "distraction_followed": 1,
+    "protocol_violation": 1
+  },
+  "calibration_gates": {
+    "same_scenario_matrix": {
+      "passed": true,
+      "detail": "same scenario IDs are present for each runtime view"
+    },
+    "sufficient_cases": {
+      "passed": false,
+      "detail": "pilot has 3 cases per runtime view; protocol requires >=30 for calibration"
+    },
+    "nonzero_variance": {
+      "passed": true,
+      "detail": "pilot includes perfect and non-perfect transcript evidence"
+    },
+    "non_saturated_scores": {
+      "passed": true,
+      "detail": "not all path_quality_score values are 1.0"
+    },
+    "failure_buckets_present": {
+      "passed": true,
+      "detail": {
+        "none": 1,
+        "distraction_followed": 1,
+        "protocol_violation": 1
+      }
+    },
+    "protocol_vs_quality_separated": {
+      "passed": true,
+      "detail": {
+        "none": 1,
+        "distraction_followed": 1,
+        "protocol_violation": 1
+      }
+    },
+    "metadata_hashes_captured": {
+      "passed": true,
+      "detail": "IR, targets manifest, session trace, transcript hashes checked"
+    },
+    "repeatability_checked": {
+      "passed": false,
+      "detail": "not checked in M60.6.4 pilot"
+    },
+    "confidence_summary_present": {
+      "passed": false,
+      "detail": "pilot reports descriptive statistics only"
+    },
+    "manual_failure_review_done": {
+      "passed": false,
+      "detail": "synthetic pilot failures were not manually reviewed as real model failures"
+    },
+    "calibration_decision_recorded": {
+      "passed": true,
+      "detail": "CALIBRATION_DECISION.md/.json generated"
+    }
+  },
+  "raw_model_metrics_csv": "RAW_MODEL_METRICS.csv",
+  "calibration_decision": "CALIBRATION_DECISION.md"
+}

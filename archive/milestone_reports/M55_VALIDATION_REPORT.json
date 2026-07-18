@@ -1,0 +1,76 @@
+{
+  "milestone": "M55",
+  "title": "Runtime Mode Start Files Standard / Minimal Prompt Standard",
+  "status": "passed",
+  "cli_status": "executed_cli_passed",
+  "changed_files_summary": [
+    "language/RUNTIME_MODE.md",
+    "language/START_FILES_STANDARD.md",
+    "language/CLI_TRUTHFULNESS.md",
+    "cli/docs/CLI_WORKFLOW.md",
+    "cli/ordo/runtime.py",
+    "cli/ordo/cli.py",
+    "cli/ordo/release.py",
+    "cli/ordo/go_no_go.py",
+    "cli/ordo/repo_checks.py",
+    "cli/ordo/templates/package_template/START_HERE_RUNTIME_MODE.md",
+    "cli/ordo/templates/package_template/START_PROMPT_RUNTIME_MODE.md",
+    "cli/ordo/templates/package_template/reports/CLI_VALIDATION_SUMMARY.md",
+    "packages/*/START_HERE_RUNTIME_MODE.md",
+    "packages/*/START_PROMPT_RUNTIME_MODE.md",
+    "packages/*/reports/CLI_VALIDATION_SUMMARY.md",
+    "docs/design_decisions/DD-ORDO-M55-001_RUNTIME_MODE_START_FILES_STANDARD.md",
+    "docs/reports/M55_RUNTIME_MODE_START_FILES_STANDARD_REPORT.md",
+    "book/source/chapters/chapter_50_runtime_mode_start_files_standard.md"
+  ],
+  "new_or_updated_runtime_rules": [
+    "Detailed Runtime Mode rules live inside START_HERE_RUNTIME_MODE.md.",
+    "START_PROMPT_RUNTIME_MODE.md is minimal and must not duplicate runtime protocol.",
+    "All runtime-ready subject packages include reports/CLI_VALIDATION_SUMMARY.md.",
+    "ordo lint validates runtime start files standard.",
+    "runtime-entry can auto-compile missing or stale IR when CLI is available.",
+    "CLI truthfulness missing status is a validation failure."
+  ],
+  "cli_command_behavior": {
+    "lint": "now includes runtime_start_files_check",
+    "runtime-entry": "auto-compiles missing/stale IR then loads runtime",
+    "validate-cli-status": "fails when cli_status is missing or false executed_cli_passed has no evidence",
+    "validate-release": "writes cli_status and reports/CLI_VALIDATION_SUMMARY.md",
+    "go-no-go": "writes cli_status and executed_commands for truthfulness validation",
+    "repo-check": "allows reports/CLI_VALIDATION_SUMMARY.md as source template, still blocks generated reports"
+  },
+  "new_validation_errors": [
+    "ORDO-RUNTIME-010 START_HERE_RUNTIME_MODE.md missing",
+    "ORDO-RUNTIME-011 START_HERE_RUNTIME_MODE.md missing required runtime rule",
+    "ORDO-RUNTIME-012 START_PROMPT_RUNTIME_MODE.md missing",
+    "ORDO-RUNTIME-013 minimal prompt does not point to START_HERE_RUNTIME_MODE.md",
+    "ORDO-RUNTIME-014 minimal prompt duplicates detailed runtime protocol",
+    "ORDO-RUNTIME-016 CLI_VALIDATION_SUMMARY.md missing or lacks CLI status",
+    "ORDO-RUNTIME-TRUTH-001 report does not declare CLI status"
+  ],
+  "regression_tests_added": [
+    "minimal prompt exists and does not duplicate protocol",
+    "runtime rules live inside START_HERE_RUNTIME_MODE.md",
+    "no memory mode explicit",
+    "lint requires runtime start files standard",
+    "release report has cli_status and CLI_VALIDATION_SUMMARY.md",
+    "cli_status required",
+    "init template includes runtime start files",
+    "runtime-entry auto-compiles missing/stale IR"
+  ],
+  "commands_executed": [
+    "python -m pip install -e .",
+    "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v -> 42/42 OK",
+    "ordo lint/compile/test/coverage/runtime-entry for active packages",
+    "History Event lock/validate-lock/intake/validate-state/generate-output/validate-output/validate-artifacts/consistency/go-no-go",
+    "validate-cli-status GO_NO_GO_REPORT.json -> passed",
+    "repo-check after cleanup -> passed"
+  ],
+  "known_limitations": [
+    "No live REST/Mongo/runner execution added.",
+    "No subject business logic changed.",
+    "Source archives keep compiled IR out of package compiled/ by hygiene policy; runtime-entry can compile it when CLI is available.",
+    "PDF book was not regenerated."
+  ],
+  "generated_at_epoch": 1783365691.5194745
+}

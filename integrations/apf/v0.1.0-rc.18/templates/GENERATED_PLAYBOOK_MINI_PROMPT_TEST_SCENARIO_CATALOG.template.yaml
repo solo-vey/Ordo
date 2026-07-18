@@ -1,0 +1,15 @@
+playbook_id: <playbook_id>
+prompt_id: <semantic_prompt_id>
+scenarios:
+  - scenario_id: <prompt_id>.intended_use
+    type: intended_use
+    target_object_id: <object_id>
+    use_phase: <allowed_use_phase>
+    initial_state: {}
+    provided_context: {}
+    action: <apply_prompt>
+    expected_guidance: <expected>
+    prohibited_outcomes: []
+    expected_state_effect: none
+    pass_fail_criteria: []
+    evidence_type: package_validation

@@ -1,0 +1,22 @@
+{
+  "schema": "ordo.arf.independence_declaration.v1",
+  "team_id": "liga-team-ua",
+  "relationship_to_ordo_arf_authors": "external_team",
+  "ordo_arf_author_participation": "none_recorded",
+  "author_assistance": "none_recorded",
+  "access_declaration": {
+    "internal_repositories": true,
+    "unpublished_documentation_beyond_supplied_archive": true,
+    "private_development_discussions_about_implementation_details": false,
+    "unreleased_language_or_framework_versions_beyond_consumed_release": true
+  },
+  "claim_restrictions": [
+    "No public-release-only claim is made.",
+    "No organizational separation claim is made.",
+    "No claim is made that internal or unpublished materials were unavailable.",
+    "No direct author participation in the task was recorded."
+  ],
+  "selected_level_requested": 1,
+  "strongest_currently_validated_level": 0,
+  "reason_level_1_not_final": "The OpenTimestamps proof file was not supplied to this packaging environment and final local Bitcoin Core verification was not completed."
+}

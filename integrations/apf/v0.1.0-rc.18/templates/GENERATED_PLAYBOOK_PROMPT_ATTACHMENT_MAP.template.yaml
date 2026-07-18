@@ -1,0 +1,10 @@
+playbook_id: <playbook_id>
+attachment_map_version: 1
+attachments:
+  - target_object_id: <object_id>
+    target_object_type: <node|gate|recovery_handler|artifact_generation_step|human_review_step>
+    prompt_refs:
+      - prompt_id: <namespace>.<semantic_role>.v1
+        use: <allowed_use_phase>
+        required: <true|false>
+        ordinal: 1

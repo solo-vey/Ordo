@@ -1,0 +1,110 @@
+{
+  "schema_version": "ordo.bl_ordo_014.final_verification.v1",
+  "status": "PASS",
+  "review_records": [
+    {
+      "artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_RUNTIME_CHECKPOINT_CONTRACT.yaml",
+      "review_record": "integrations/apf/v0.1.0-rc.18/reports/post_generation_reviews/runtime_checkpoint_contract.review.json",
+      "status": "PASS",
+      "validator": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_ATOMICITY_GATE_CONTRACT.yaml",
+      "review_record": "integrations/apf/v0.1.0-rc.18/reports/post_generation_reviews/atomicity_gate_contract.review.json",
+      "status": "PASS",
+      "validator": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_EXECUTION_TRACE_RUNTIME_ADAPTER_CONTRACT.yaml",
+      "review_record": "integrations/apf/v0.1.0-rc.18/reports/post_generation_reviews/execution_trace_adapter.review.json",
+      "status": "PASS",
+      "validator": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_RELEASE_HYGIENE_AND_DERIVED_ARTIFACT_SYNC.yaml",
+      "review_record": "integrations/apf/v0.1.0-rc.18/reports/post_generation_reviews/release_hygiene_contract.review.json",
+      "status": "PASS",
+      "validator": {
+        "status": "PASS",
+        "errors": []
+      }
+    },
+    {
+      "artifact": "integrations/apf/v0.1.0-rc.18/docs/APF_CONVERSATION_SCOPE_GUARD_PACKAGE_AND_VALIDATION_CONTRACT.yaml",
+      "review_record": "integrations/apf/v0.1.0-rc.18/reports/post_generation_reviews/scope_guard_package_contract.review.json",
+      "status": "PASS",
+      "validator": {
+        "status": "PASS",
+        "errors": []
+      }
+    }
+  ],
+  "regression": {
+    "status": "PASS",
+    "results": [
+      {
+        "case": "valid_review.json",
+        "expected": 0,
+        "actual": 0,
+        "passed": true,
+        "output": {
+          "status": "PASS",
+          "errors": []
+        }
+      },
+      {
+        "case": "invalid_unsupported_claim.json",
+        "expected": 1,
+        "actual": 1,
+        "passed": true,
+        "output": {
+          "status": "FAIL",
+          "errors": [
+            "unsupported materialized claim: BAD001",
+            "unverified claim source: BAD001"
+          ]
+        }
+      },
+      {
+        "case": "invalid_open_critical.json",
+        "expected": 1,
+        "actual": 1,
+        "passed": true,
+        "output": {
+          "status": "FAIL",
+          "errors": [
+            "eligible with open critical/high defects"
+          ]
+        }
+      }
+    ]
+  },
+  "closure_gate": {
+    "schema_version": "ordo.m83.4.closure_gate.v1",
+    "milestone": "M83.4",
+    "status": "passed",
+    "backlog_id": "BL-ORDO-014",
+    "checks": {
+      "m83_1_passed": true,
+      "m83_2_passed": true,
+      "m83_3_passed": true,
+      "review_records_passed": true,
+      "negative_regression_passed": true,
+      "critical_high_open_defects_zero": true,
+      "backlog_synchronized": true
+    },
+    "decision": "close"
+  },
+  "backlog_status": "closed",
+  "open_critical": 0,
+  "open_high": 0
+}

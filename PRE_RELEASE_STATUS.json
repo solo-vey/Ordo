@@ -1,0 +1,28 @@
+{
+  "product": "Ordo",
+  "version": "v0.12",
+  "release_status": "pre-release",
+  "prepared_on": "2026-07-11",
+  "basis": [
+    "M71 first-wave closure",
+    "full package self-check",
+    "SELF_CHECK-001 through SELF_CHECK-005 repairs",
+    "final repeated self-check",
+    "M75.4 CSG production readiness closure",
+    "M76.1 APF graph validation closure",
+    "M76.2 safe generated testcase execution closure",
+    "M76.3 backlog and maturity-state synchronization"
+  ],
+  "quality_gate": {
+    "status": "passed",
+    "strict_repository_gate": "passed",
+    "history_event_strict_clean_check": "passed",
+    "tests_passed": 148,
+    "subtests_passed": 10,
+    "tests_failed": 0,
+    "full_cli_suite": "182/182 passed via partitioned execution",
+    "latest_targeted_tests": "33/33 passed (M75.1, M75.2, M75.4, M76.1, M76.2, M76.3 selected gates)"
+  },
+  "semantic_version_changed": false,
+  "current_maturity_ref": "manifests/CURRENT_MATURITY_STATE.json"
+}

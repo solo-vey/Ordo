@@ -1,0 +1,66 @@
+{
+  "milestone": "M46.6",
+  "title": "Pre-release consistency audit",
+  "status": "passed",
+  "base": "M46.5 go-no-go pipeline",
+  "changes": [
+    "Added pre-release audit report under docs/reports/.",
+    "Updated go-no-go to reuse latest reports/intake_report.json when --state and --answers are omitted.",
+    "Updated validate-state state loading to accept helper reports with embedded state.",
+    "Added regression test for go-no-go reusing latest intake state.",
+    "Updated README, CHANGELOG, CLI docs and book Markdown only; PDF not regenerated."
+  ],
+  "self_checks": {
+    "repo_check_clean_source": "passed",
+    "cli_unit_tests": {
+      "status": "passed",
+      "tests": 18
+    },
+    "active_packages": {
+      "packages/ordo_project_builder": [
+        "lint",
+        "compile",
+        "test",
+        "coverage"
+      ],
+      "packages/ordo_hybrid_executor": [
+        "lint",
+        "compile",
+        "test",
+        "coverage"
+      ],
+      "packages/history_event_guided_intake": [
+        "lint",
+        "compile",
+        "test",
+        "coverage"
+      ]
+    },
+    "helper_flows": {
+      "ordo_project_builder": [
+        "validate-state",
+        "next-step"
+      ],
+      "ordo_hybrid_executor": [
+        "validate-state",
+        "next-step"
+      ],
+      "history_event_guided_intake": [
+        "lock",
+        "validate-lock",
+        "intake",
+        "generate-output",
+        "validate-output",
+        "validate-artifacts",
+        "consistency",
+        "go-no-go"
+      ]
+    },
+    "history_event_go_no_go_without_answers_after_intake": "go"
+  },
+  "known_limitations": [
+    "go-no-go is a deterministic helper and does not execute an AI model.",
+    "Rendered artifact validation checks declared contract values and mappings, not arbitrary business semantics.",
+    "Project-specific production tests remain outside the Ordo helper layer."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "tree_seed": 606,
+  "script_seed": 1612,
+  "turns": [
+    {
+      "index": 0,
+      "type": "forward_valid",
+      "text": "up",
+      "state_changing": true,
+      "expected_node_after": "STEP_1_d025d3",
+      "meta": {
+        "maps_to": "up"
+      }
+    },
+    {
+      "index": 1,
+      "type": "forward_valid",
+      "text": "down",
+      "state_changing": true,
+      "expected_node_after": "END",
+      "meta": {
+        "maps_to": "down"
+      }
+    }
+  ],
+  "ground_truth": [
+    {
+      "node_id": "STEP_0_1bdb4e",
+      "value": "up"
+    },
+    {
+      "node_id": "STEP_1_d025d3",
+      "value": "down"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+schema_version: ordo.benchmark.package_variant_registry.v1
+registry_version: 0.4.0
+variants:
+- id: PV-YAML
+  name: YAML Playbook
+  source_type: canonical_ordo_yaml
+  driver_family: step_bound
+  compiler_contract: 009_YAML_PACKAGE_COMPILER.md
+  contamination_policy: must_not_consume_other_variant_outputs
+- id: PV-STRUCTURED
+  name: Structured Instructions from YAML
+  source_type: immutable_pv_yaml_release
+  driver_family: step_bound
+  compiler_contract: 010_STRUCTURED_INSTRUCTIONS_COMPILER.md
+  contamination_policy: yaml_source_and_compiler_profile_only
+- id: PV-HISTORICAL
+  name: Historically Accumulated All-in-One
+  source_type: immutable_pv_yaml_plus_historical_style_profile
+  driver_family: semantic_adaptive
+  compiler_contract: 011_HISTORICALLY_ACCUMULATED_COMPILER.md
+  contamination_policy: no_direct_variant_or_run_result_inputs
+- id: PV-DIRECT
+  name: Direct Domain-Adapted Original All-in-One
+  source_type: selected_original_domain_corpus
+  driver_family: semantic_adaptive
+  compiler_contract: 012_DIRECT_DOMAIN_ADAPTATION_CONTRACT.md
+  contamination_policy: strict_no_yaml_derived_inputs
+identity_tuple:
+- test_case_id
+- run_id
+- variant_id
+- variant_version
+- source_revision
+- compiler_profile_version

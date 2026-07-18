@@ -1,0 +1,35 @@
+{
+  "milestone": "M60.2",
+  "title": "Session Trace Proof Program",
+  "status": "passed",
+  "scope": {
+    "included": [
+      "session-trace target in compiled/targets.manifest.json",
+      "runtime/session.ordo.trace initialized at compile/package time",
+      "intake --submit appends one trace step per node transition",
+      "per-node evidence links to session trace metadata and trace digest",
+      "verify-session validates target-set + session-chain + session-trace + canary scan",
+      "runtime profile includes mutable session trace and embedded verify-session checks it"
+    ],
+    "excluded": [
+      "Python target",
+      "Java target",
+      "MCP server-side state",
+      "sandbox filesystem isolation"
+    ]
+  },
+  "validation": {
+    "legacy_regression_split": "69/69 passed",
+    "m60_2_focused_tests": "4/4 passed",
+    "effective_cli_suite": "73/73 passed",
+    "verify_targets": "target-set: consistent",
+    "embedded_runtime_smoke": "passed",
+    "embedded_verify_session": "session-chain: intact; session-trace: intact",
+    "embedded_authoring_block": "package blocked as expected",
+    "repo_check": "passed"
+  },
+  "notes": [
+    "JSON IR remains canonical; ordo-code explains; session-trace proves.",
+    "To avoid cyclic digest dependencies, snapshots keep the tamper-evident chain and evidence/submit reports record the post-append trace digest."
+  ]
+}

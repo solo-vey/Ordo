@@ -1,0 +1,322 @@
+outputs:
+- id: OUT_APPLIED_PROJECT_SOURCE_YAML
+  type: ordo_source_yaml
+  allowed_after:
+  - G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED
+  - G_SELF_HOSTED_BRANCH_STABILIZED
+  - G_FREE_DIALOGUE_DRAFT_TREE_READY
+  - G_FREE_DIALOGUE_NOTES_STRUCTURED
+  - G_BASIC_TEST_CASES_AFTER_TREE_APPROVAL
+  - G_TREE_REVIEW_DEPTH_FIRST_APPROVED
+  - G_FACTORY_AUTHORING_MODE_SELECTED
+  - G_APPLIED_PROJECT_GOAL_PRESENT
+  - G_APPLIED_PROCESS_TYPE_PRESENT
+  - G_RUNTIME_ROLES_PRESENT
+  - G_RUNTIME_ENTRY_POINT_PRESENT
+  - G_DECISION_TREE_BLUEPRINT_PRESENT
+  - G_STATE_SCHEMA_BLUEPRINT_PRESENT
+  - G_OUTPUT_ARTIFACT_CATALOG_PRESENT
+  - G_OUTPUT_TEMPLATE_CATALOG_PRESENT
+  - G_VALIDATION_GATE_CATALOG_PRESENT
+  - G_FIRST_RELEASE_SOURCE_YAML_ONLY_CONFIRMED
+  - G_APPROVAL_TO_GENERATE_SOURCE_YAML
+  - G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED
+  - G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
+  - G_MODULE_VERSIONING_POLICY_CONFIRMED
+  - G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED
+  - G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED
+  - G_USER_FACING_NODE_DESCRIPTIONS_ENABLED
+  - G_USER_FACING_EXTRACTION_SUMMARY_ENABLED
+  - G_PROCESS_FEEDBACK_LOOP_CONFIRMED
+  - G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED
+  - G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES
+  - G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER
+  - G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT
+  - G_CONTROL_ACTION_BOOKKEEPING_SEPARATED
+  - G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED
+  - G_MINIMAL_YAML_PATCH_CHECK_DEFINED
+  - G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE
+  - G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF
+  - G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED
+  - G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL
+freeform:
+- id: FF_APPLIED_PROJECT_FACTORY_BEHAVIOR
+  role: ai_behavior_guidance
+  maturity: candidate_for_formalization
+  incident_count: 3
+  incident_threshold: 3
+  content: 'AI Ordo Project Factory Developer підтримує self-hosted authoring: у free-dialogue режимі він накопичує raw notes,
+    структурує їх у candidate tree/gates/outputs/templates, на “що далі” пропонує draft tree, проводить depth-first correction
+    loop і після стабілізації використовує затверджену гілку як алгоритм для наступних гілок. APF v0.1.0-alpha.8 requires
+    current-node descriptions in user language, plain-language extraction summaries instead of technical alias dumps, SVG
+    only on explicit request, and process feedback that can update/reload YAML after user approval. APF v0.1.0-alpha.11 requires
+    incremental YAML patches after confirmed tree steps when YAML changes are needed, with minimal yaml_parse/lint/compile
+    checks; full validation is a terminal/pre-handoff gate rather than a per-node cost. APF v0.1.0-alpha.12 separates control-action
+    bookkeeping from tree branch bookkeeping: not-selected control actions are recorded but are not treated as sibling branches
+    or deferred return points. APF v0.1.0-alpha.13 makes the process-design review display format part of the YAML contract:
+    each current-node rendering must show the active mode/context shift, current node, state, gates, artifacts, pending branches,
+    and a mode-labeled decision prompt.'
+- id: FF_MODULE_VERSIONING_DECISION
+  role: module_release_guidance
+  maturity: stable
+  incident_count: 1
+  incident_threshold: 2
+  content: ordo.applied_project_factory uses module-local semantic alpha versioning; the parent Ordo language package may
+    include a specific module version without renumbering the whole language package.
+nodes:
+- id: N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
+  question: 'Confirm the final output binding for this terminal point: active artifacts, approved/alpha templates, reviewed
+    mock examples, state mapping, removed artifacts, and unfinished blockers.'
+  answer_type: enum
+  allowed_answers:
+  - confirm
+  - revise
+  - defer
+  - remove_output
+  answer_options:
+    confirm: Підтвердити
+    revise: Доробити
+    defer: Відкласти terminal point/output binding
+    remove_output: Видалити output з terminal point
+  user_facing_contract:
+    show_binding_summary_card: true
+    show_unfinished_artifacts_as_blockers: true
+    hide_large_documents: true
+    actions_simple:
+    - confirm
+    - revise
+    - defer
+    - remove_output
+  on_answer:
+    confirm:
+      label: terminal output binding confirmed
+      update_state:
+        terminal_output_binding_confirmations: $append:$answer.binding
+        terminal_output_binding_status: confirmed
+      next: N_TERMINAL_PATH_READY_CHECK
+    revise:
+      label: binding needs output/template revision
+      update_state:
+        open_correction_items: $append:$answer.revision
+      next: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+    defer:
+      label: terminal output binding deferred
+      update_state:
+        terminal_output_binding_status: deferred
+      next: N_TERMINAL_PATH_READY_CHECK
+    remove_output:
+      label: output removed from terminal point
+      update_state:
+        removed_output_artifacts: $append:$answer.output
+      next: N_TERMINAL_PATH_READY_CHECK
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_confirm_revise_defer_or_remove_output_binding
+    max_attempts: 2
+    on_exhausted:
+      action: defer
+      reason: terminal output binding confirmation unclear
+  description: 'Shared step 6: confirms active output bindings after template/mock/mapping review and before terminal readiness.'
+- id: N_SHARED_TAIL_SOURCE_YAML_GENERATION
+  description: 'Shared tail step 1: generate or update source/program.ordo.yaml after explicit approval and a visible generation
+    scope summary.'
+  question: Процесна структура підтверджена. Згенерувати або оновити source/program.ordo.yaml на основі approved tree, state
+    schema, gates і output/template bindings?
+  answer_type: enum
+  allowed_answers:
+  - generate_or_update_yaml
+  - return_to_process_changes
+  - defer_generation
+  answer_options:
+    generate_or_update_yaml: Згенерувати / оновити YAML
+    return_to_process_changes: Повернутись до правок процесу
+    defer_generation: Відкласти генерацію
+  user_facing_contract:
+    show_pre_generation_scope_card: true
+    include_confirmed_startup_branches: true
+    include_shared_output_template_subflow_status: true
+    include_unfinished_items_policy: true
+    do_not_generate_without_explicit_approval: true
+  on_answer:
+    generate_or_update_yaml:
+      label: source yaml generated or updated
+      update_state:
+        source_yaml_generation_status: generated_or_updated
+      next: N_SHARED_TAIL_MINIMAL_VALIDATION
+    return_to_process_changes:
+      label: return to process changes
+      update_state:
+        source_yaml_generation_status: returned_for_revision
+      next: N_TREE_DEPTH_FIRST_REVIEW_LOOP
+    defer_generation:
+      label: source yaml generation deferred
+      update_state:
+        source_yaml_generation_status: deferred
+      next: STOP_SOURCE_YAML_GENERATION_DEFERRED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_generate_return_or_defer_source_yaml
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: source YAML generation action unclear
+- id: N_SHARED_TAIL_MINIMAL_VALIDATION
+  description: 'Shared tail step 2: minimal technical validation after YAML generation. Failed validation shows a short issue
+    list and routes to correction or blocked defer, not a separate show-details branch.'
+  question: 'Запустити minimal validation: YAML parse, Ordo lint, Ordo compile, structural next-reference check, and basic
+    orphan/dead-end check.'
+  answer_type: enum
+  allowed_answers:
+  - minimal_validation_passed
+  - minimal_validation_failed_start_correction
+  - minimal_validation_failed_defer_fix
+  answer_options:
+    minimal_validation_passed: Minimal validation passed
+    minimal_validation_failed_start_correction: Minimal validation failed → перейти до виправлення
+    minimal_validation_failed_defer_fix: Minimal validation failed → відкласти виправлення, handoff blocked
+  user_facing_contract:
+    show_short_issue_list_on_failure: true
+    details_are_inside_correction_mode: true
+    do_not_offer_separate_show_details_branch: true
+    handoff_blocked_if_failed: true
+  on_answer:
+    minimal_validation_passed:
+      label: minimal validation passed
+      update_state:
+        minimal_validation_status: passed
+      next: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+    minimal_validation_failed_start_correction:
+      label: minimal validation failed; correction mode
+      update_state:
+        minimal_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: correction_loop_started
+      next: N_SHARED_TAIL_CORRECTION_LOOP
+    minimal_validation_failed_defer_fix:
+      label: minimal validation failed; fix deferred and handoff blocked
+      update_state:
+        minimal_validation_status: failed
+        validation_issues: $answer.issues
+        validation_fix_status: deferred
+        handoff_blocked: true
+      next: STOP_VALIDATION_FIX_DEFERRED_HANDOFF_BLOCKED
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_minimal_validation_passed_or_failed_correction_or_defer
+    max_attempts: 2
+    on_exhausted:
+      action: escalate_to_human
+      reason: minimal validation result unclear
+- id: N_SHARED_TAIL_FULL_VALIDATION_DECISION
+  description: 'Shared tail step 3: decide whether to run full validation now or explicitly skip it for alpha. Skipped is
+    recorded as a limitation and never as passed.'
+  question: Minimal validation passed. Запустити full validation зараз чи явно пропустити її для alpha?
+  answer_type: enum
+  allowed_answers:
+  - run_full_validation
+  - skip_full_validation_for_alpha
+  answer_options:
+    run_full_validation: Запустити full validation
+    skip_full_validation_for_alpha: Пропустити full validation для alpha
+  user_facing_contract:
+    explain_full_validation_scope:
+    - process_tests
+    - state_transition_validation
+    - next_step_validation
+    - output_template_validation
+    - factory_output_validation
+    - repo_release_integrity
+    do_not_silently_skip_full_validation: true
+    skipped_full_validation_is_limitation_not_passed: true
+  on_answer:
+    run_full_validation:
+      label: full validation requested
+      update_state:
+        full_validation_decision: run_now
+        full_validation_status: running_or_pending
+      next: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
+    skip_full_validation_for_alpha:
+      label: full validation skipped for alpha
+      update_state:
+        full_validation_decision: skipped_for_alpha
+        full_validation_status: skipped
+        full_validation_limitation_recorded: true
+        accepted_alpha_limitations: $append:full_validation_skipped_for_alpha
+      next: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
+  on_unmatched_input:
+    action: CLARIFY.REQUEST
+    strategy: ask_run_full_validation_or_skip_for_alpha
+    max_attempts: 2
+    on_exhausted:
+      action: record_skipped_full_validation_for_alpha
+      reason: full validation decision unclear
+gates:
+- id: G_OUTPUT_TEMPLATE_CATALOG_PRESENT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.output_template_catalog is not empty
+  on_fail: block
+- id: G_SHARED_OUTPUT_TEMPLATE_SUBFLOW_CLOSED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.shared_output_template_subflow_status is one of closed
+  on_fail: block
+  description: The shared output/template subflow has completed human review and is available to all startup branches.
+- id: G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW
+  method: mechanical
+  trust_class: deterministic
+  condition: state.document_artifacts_file_first_review_verified is true
+  on_fail: block
+  description: Document-like artifacts must be reviewed through a downloadable file package unless explicitly short enough
+    for inline preview.
+- id: G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING
+  method: mechanical
+  trust_class: deterministic
+  condition: state.review_package_template_mock_mapping_verified is true
+  on_fail: block
+  description: A review package is incomplete without template, mock-filled example, and state-field mapping report.
+assertions:
+- id: A_OUTPUT_TEMPLATES_DEFINED_IMMEDIATELY
+  polarity: must
+  condition: output_template_catalog_is_collected_before_source_yaml_generation
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NEW_ARTIFACT_INTENT_IS_FREE_FORM_NOT_FIXED_TYPE_LIST
+  polarity: must
+  condition: new_output_artifact_intent_capture_accepts_free_form_description_and_uses_examples_only_as_hints
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Users describe what artifact they need; the runtime must not force a fixed artifact type list.
+- id: A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST
+  polarity: must
+  condition: document_like_artifact_review_uses_downloadable_template_mock_mapping_package_by_default
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Large/document-like artifacts are reviewed as files, not dumped into chat.
+- id: A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT
+  polarity: must
+  condition: terminal_output_binding_confirmed_only_after_review_package_or_explicit_no_output_required
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Terminal outputs require review package confirmation unless no-output was explicitly confirmed.
+- id: A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON
+  polarity: must
+  condition: terminal_output_template_logic_is_shared_not_duplicated
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+  description: Output/template review must use the shared reusable subflow.

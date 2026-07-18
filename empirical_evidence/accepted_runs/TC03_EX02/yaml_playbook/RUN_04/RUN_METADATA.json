@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.benchmark.run_metadata.v2",
+  "test_case": "TC03_RECURRING_REGULATED_HIGH_COST_OMISSION/EX02_DATABASE_CHANGE_DOCUMENT_CRITICAL_ARTIFACT_SET",
+  "implementation": "yaml_playbook",
+  "playbook_version": "Alpha 1.17.0",
+  "run_id": "RUN_04",
+  "status": "accepted",
+  "source_archive": "ORDO_RUN_04_RETURN.zip",
+  "source_sha256": "0d1c64aa37789e5e846ddf62d8f9172faaf4f8b064d04559e9f08dacb5c97636",
+  "scores": {
+    "process": 95,
+    "documents": 95,
+    "final": 95,
+    "passport": 96,
+    "jira": 86,
+    "manual_qa": 99,
+    "automation": 99,
+    "terminal": "T_COMPLETED / go",
+    "interpretation": "Correction/backtrack route completed; dependent artifacts regenerated and fresh gates passed."
+  },
+  "accepted_by_user": true,
+  "note": "Accepted external execution result; scores fixed in the implementation scorecard."
+}

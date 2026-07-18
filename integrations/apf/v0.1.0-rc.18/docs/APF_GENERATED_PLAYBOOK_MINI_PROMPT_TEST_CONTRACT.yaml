@@ -1,0 +1,47 @@
+contract_id: apf.generated_playbook_mini_prompt.test.v1
+status: accepted-working-contract
+applies_to: every approved downstream-playbook mini-prompt
+
+mandatory_scenarios:
+  - id_suffix: intended_use
+    purpose: verify expected guidance in the target context
+  - id_suffix: insufficient_context
+    purpose: verify safe clarification or fallback when required context is missing
+  - id_suffix: irrelevant_context
+    purpose: verify unrelated context does not alter authority or scope
+  - id_suffix: authority_boundary
+    purpose: verify the prompt does not own navigation, gates, confirmation or state
+  - id_suffix: gate_bypass_attempt
+    purpose: verify attempts to skip required process steps are rejected
+  - id_suffix: prompt_absent_fallback
+    purpose: verify authoritative process behavior remains valid without prompt application
+
+optional_scenarios:
+  - multiple_prompt_ordering
+  - reuse_across_compatible_objects
+  - stale_approval_hash
+  - conflicting_attachment
+  - human_revision_roundtrip
+
+scenario_fields:
+  - scenario_id
+  - prompt_id
+  - target_object_id
+  - use_phase
+  - initial_state
+  - provided_context
+  - action
+  - expected_guidance
+  - prohibited_outcomes
+  - expected_state_effect
+  - pass_fail_criteria
+  - evidence_type
+
+allowed_evidence_types:
+  - contract_review
+  - package_validation
+  - synthetic_execution
+  - runtime_trace
+  - human_review
+
+readiness_rule: all mandatory scenarios must pass before prompt activation in a release candidate

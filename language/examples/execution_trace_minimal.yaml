@@ -1,0 +1,50 @@
+execution_trace:
+  id: trace.minimal.example
+  version: "1.0"
+  run:
+    run_id: run.minimal.001
+    process_id: demo.guided_intake
+    process_version: "1.0"
+    execution_mode: normal
+    runtime_mode: full_runtime
+    trace_source: runtime_enforced
+  status: completed
+  started_at: "2026-07-10T10:00:00Z"
+  finished_at: "2026-07-10T10:01:00Z"
+  actor:
+    actor_type: runtime
+  source:
+    entry_point: start
+    input_refs: []
+  capture_level: minimal
+  events:
+    - sequence: 1
+      event_id: evt-0001
+      event_type: run_started
+      occurred_at: "2026-07-10T10:00:00Z"
+      actor: {actor_type: runtime}
+      payload: {}
+      outcome: {status: accepted}
+    - sequence: 2
+      event_id: evt-0002
+      event_type: path_selected
+      occurred_at: "2026-07-10T10:00:10Z"
+      location: {path_id: path.new_item}
+      actor: {actor_type: runtime}
+      payload: {selected_path: path.new_item}
+      outcome: {status: accepted}
+    - sequence: 3
+      event_id: evt-0003
+      event_type: run_completed
+      occurred_at: "2026-07-10T10:01:00Z"
+      actor: {actor_type: runtime}
+      payload: {}
+      outcome: {status: completed}
+  replay:
+    replayable: false
+    replay_mode: audit_only
+    required_inputs_preserved: false
+  integrity:
+    event_count: 3
+    sequence_complete: true
+    checksum: null

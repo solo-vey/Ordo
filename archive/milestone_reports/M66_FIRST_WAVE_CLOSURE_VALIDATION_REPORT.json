@@ -1,0 +1,38 @@
+{
+  "milestone": "M66 first-wave closure",
+  "line": [
+    "M66.0",
+    "M66.1",
+    "M66.2"
+  ],
+  "status": "passed",
+  "date": "2026-07-09",
+  "closed_items": {
+    "M66.0": "Package Startup Standard / Startup Package Profile",
+    "M66.1": "Apply startup_package_profile to History Event Factory package",
+    "M66.2": "Startup Profile Validation / Lint Profile Design"
+  },
+  "runtime_core_changed": false,
+  "compiler_changed": false,
+  "cli_changed": false,
+  "new_opcodes_added": false,
+  "compiled_ir_regenerated": false,
+  "authority_boundary": "startup materials are supportive entry/discovery/readiness artifacts and do not override gates, routing, state, validation, runtime, compiler, or program_contract authority",
+  "checks": {
+    "M66_0_PACKAGE_STARTUP_STANDARD_REPORT.md_present": "passed",
+    "M66_1_HISTORY_EVENT_FACTORY_STARTUP_PROFILE_APPLICATION_REPORT.md_present": "passed",
+    "M66_2_STARTUP_PROFILE_VALIDATION_LINT_PROFILE_REPORT.md_present": "passed",
+    "M66_0_VALIDATION_REPORT.json_json_parse": "passed",
+    "M66_1_VALIDATION_REPORT.json_json_parse": "passed",
+    "M66_2_VALIDATION_REPORT.json_json_parse": "passed",
+    "language/schemas/startup_package_profile_schema.yaml_yaml_parse": "passed",
+    "language/examples/source/startup_package_profile_example.ordo.yaml_yaml_parse": "passed",
+    "language/schemas/startup_profile_validation_profile_schema.yaml_yaml_parse": "passed",
+    "language/examples/source/startup_profile_validation_profile_example.ordo.yaml_yaml_parse": "passed",
+    "packages/history_event_guided_intake/source/program.ordo.yaml_yaml_parse": "passed",
+    "packages/history_event_guided_intake/STARTUP_PACKAGE_PROFILE.md_exists": "passed",
+    "packages/history_event_guided_intake/STARTUP_PROFILE_VALIDATION_SUMMARY.md_exists": "passed",
+    "packages/history_event_guided_intake/prompts/QUICK_START_PROMPT.md_exists": "passed",
+    "packages/history_event_guided_intake/PROMPT_MANIFEST.json_exists": "passed"
+  }
+}

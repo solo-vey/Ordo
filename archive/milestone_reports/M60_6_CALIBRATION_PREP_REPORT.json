@@ -1,0 +1,120 @@
+{
+  "milestone": "M60.6",
+  "title": "Benchmark Dry Run / Calibration Preparation",
+  "status": "passed",
+  "release_decision": "release-candidate-ready",
+  "date": "2026-07-07",
+  "base": "M60.5.4 Artifact-only Dry-run Executor",
+  "scope": [
+    "no-API dry-run baseline",
+    "artifact-only plan/job/collect execution path",
+    "runtime_view comparison: json, ordo-code, json,ordo-code",
+    "raw metrics collection for future calibration"
+  ],
+  "not_in_scope": [
+    "real model/API benchmark",
+    "score weight calibration",
+    "runtime-core semantic changes",
+    "legacy PathWalk fork CLI",
+    "MCP/sandbox runtime dependency",
+    "PDF/book regeneration"
+  ],
+  "execution": {
+    "scenario_count": 20,
+    "runtime_views": [
+      "json",
+      "ordo-code",
+      "json,ordo-code"
+    ],
+    "expected_cases": 60,
+    "completed_cases": 60,
+    "passed_cases": 60,
+    "tree_seed": 606,
+    "script_seed_start": 1606,
+    "depth": 2,
+    "branching": [
+      2,
+      3
+    ],
+    "execution_contract": "artifact-only-external-job",
+    "runtime_protocol_versions": [
+      "M60.4"
+    ],
+    "ordo_cli_versions": [
+      "0.12"
+    ]
+  },
+  "metrics": {
+    "gate_pass_rate": 1.0,
+    "path_quality_score": {
+      "mean": 1.0,
+      "median": 1.0,
+      "stdev": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "breakdown_by_runtime_view": {
+      "json": {
+        "cases": 20,
+        "path_quality_mean": 1.0,
+        "path_quality_min": 1.0,
+        "path_quality_max": 1.0,
+        "protocol_compliance_mean": 1.0
+      },
+      "json,ordo-code": {
+        "cases": 20,
+        "path_quality_mean": 1.0,
+        "path_quality_min": 1.0,
+        "path_quality_max": 1.0,
+        "protocol_compliance_mean": 1.0
+      },
+      "ordo-code": {
+        "cases": 20,
+        "path_quality_mean": 1.0,
+        "path_quality_min": 1.0,
+        "path_quality_max": 1.0,
+        "protocol_compliance_mean": 1.0
+      }
+    }
+  },
+  "checks": {
+    "py_compile_workspace_cli_and_pathwalk": "passed",
+    "pathwalk_pytest_workspace_context": "22/22 passed",
+    "pathwalk_pytest_standalone_with_workspace_cli_pythonpath": "22/22 passed",
+    "dry_run_plan": "passed",
+    "independent_job_scripts": "60/60 passed",
+    "dry_run_collect": "passed",
+    "raw_metrics_rows": 60,
+    "score_artifacts": 60,
+    "runtime_view_counts": {
+      "json,ordo-code": 20,
+      "json": 20,
+      "ordo-code": 20
+    },
+    "gate_failed": 0,
+    "protocol_not_1": 0,
+    "path_quality_not_1": 0,
+    "missing_canonical_ir_hash": 0,
+    "missing_targets_manifest_hash": 0,
+    "missing_session_trace_hash": 0
+  },
+  "artifacts": {
+    "workspace_report_dir": "reports/m60_6_calibration_prep_baseline",
+    "pathwalk_example_dir": "ordo_pathwalk/examples/m60_6_calibration_prep_baseline",
+    "dry_run_plan": "DRY_RUN_PLAN.json",
+    "raw_metrics": "RAW_METRICS.csv",
+    "summary_json": "SUMMARY.json",
+    "summary_md": "SUMMARY.md",
+    "score_files": "scores/*_score.json",
+    "job_descriptors": "jobs/*.json",
+    "job_scripts": "job_scripts/*.sh"
+  },
+  "weights_changed": false,
+  "notes": [
+    "Default scoring weights were not changed; M60.6 only prepares calibration evidence.",
+    "Dry-run uses deterministic ground-truth driver, not a real model/API benchmark.",
+    "Standalone PathWalk RC tests require an Ordo workspace/developer-bundle CLI on PYTHONPATH for CLI-building tests; this was validated explicitly.",
+    "Large parent-loop execution in this ChatGPT sandbox hit tool lifecycle limits, so the final acceptance used generated independent job scripts in small batches. This matches the M60.5.4 artifact-only contract."
+  ],
+  "next_recommended_step": "M60.7/M61.0 real-module testcase generation should remain deferred until a real model/API benchmark design is explicitly accepted; no weight calibration should happen without additional raw metrics."
+}

@@ -1,0 +1,47 @@
+contract_id: apf.generated_playbook.execution_trace_artifacts
+version: "1.0"
+ordo_alignment: v0.12-M72
+scope: generated_playbook_packages
+condition:
+  generate_when: execution_trace.supported == true
+  omit_when: execution_trace.supported == false
+required_artifacts:
+  - path: runtime/execution_trace_config.yaml
+    purpose: runtime capture and toggle configuration
+    source: execution_trace design decision
+  - path: runtime/execution_trace_schema.yaml
+    purpose: pinned canonical schema reference or packaged compatible schema
+    source: Ordo M72 EXECUTION_TRACE schema
+  - path: runtime/trace_event_mapping.yaml
+    purpose: mapping of playbook elements to closed trace event catalog
+    source: APF event coverage mapping
+  - path: runtime/trace_redaction_policy.yaml
+    purpose: sensitive-value handling and chain-of-thought exclusion
+    source: playbook security decisions
+  - path: runtime/trace_replay_policy.yaml
+    purpose: replay modes, readiness conditions, and side-effect strategy
+    source: playbook replay design
+conditional_artifacts:
+  - path: runtime/trace_adapter_contract.yaml
+    when: execution_trace.runtime_mode == runtime_enforced
+  - path: tests/execution_trace/
+    when: execution_trace.supported == true
+  - path: reports/execution_trace_validation_report.json
+    when: package_validation == true
+assembly_rules:
+  - all generated artifacts MUST share the same execution_trace.version
+  - event mapping MUST reference only event types allowed by the pinned schema version
+  - runtime configuration MUST NOT claim replayable=true without replay-readiness evidence
+  - disabled capture MUST preserve prior trace data according to retention policy
+  - generated artifacts MUST NOT contain secrets, access tokens, full confidential documents, or hidden chain of thought
+  - runtime trace output MUST remain outside source-of-truth playbook definitions
+package_gate:
+  blocking:
+    - supported=true and any required artifact is missing
+    - runtime_mode=runtime_enforced and trace_adapter_contract is missing
+    - schema version mismatch across artifacts
+    - missing redaction policy
+    - missing event coverage for gates, outputs, or terminal lifecycle
+non_goals:
+  - APF does not generate an actual execution trace during authoring
+  - APF internal trace remains disabled by default
