@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.empirical_evidence.external_developer_submission.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "submission_id",
+    "team_declaration",
+    "consumed_release",
+    "development_timeline",
+    "source_package_identity",
+    "testing_summary",
+    "author_assistance",
+    "declared_independence_level"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.external_developer_submission.v1"
+    },
+    "submission_id": {
+      "type": "string"
+    },
+    "team_declaration": {
+      "type": "object",
+      "required": [
+        "team_identifier",
+        "external_to_ordo_authors",
+        "internal_repository_access",
+        "unpublished_material_access"
+      ],
+      "properties": {
+        "team_identifier": {
+          "type": "string"
+        },
+        "external_to_ordo_authors": {
+          "type": "boolean"
+        },
+        "internal_repository_access": {
+          "enum": [
+            "no",
+            "yes",
+            "not_recorded"
+          ]
+        },
+        "unpublished_material_access": {
+          "enum": [
+            "no",
+            "yes",
+            "not_recorded"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "consumed_release": {
+      "type": "object",
+      "required": [
+        "release_id",
+        "archive_sha256",
+        "distribution_channel",
+        "public_release_use_claim"
+      ],
+      "properties": {
+        "release_id": {
+          "type": "string"
+        },
+        "archive_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "distribution_channel": {
+          "type": "string"
+        },
+        "obtained_at": {
+          "type": "string"
+        },
+        "public_release_use_claim": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "development_timeline": {
+      "type": "object",
+      "required": [
+        "start",
+        "end",
+        "active_work_time"
+      ],
+      "properties": {
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "active_work_time": {
+          "type": "string"
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_package_identity": {
+      "type": "object",
+      "required": [
+        "filename",
+        "sha256",
+        "hash_recorded_at"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash_recorded_at": {
+          "type": "string"
+        },
+        "timestamp_proof": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "testing_summary": {
+      "type": "object",
+      "required": [
+        "tests_executed",
+        "passed",
+        "failed",
+        "final_package_sha256",
+        "post_unpack_verification"
+      ],
+      "properties": {
+        "tests_executed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "final_package_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "post_unpack_verification": {
+          "enum": [
+            "passed",
+            "failed",
+            "not_recorded"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "author_assistance": {
+      "enum": [
+        "none_recorded",
+        "general_public_documentation_only",
+        "limited_clarification",
+        "direct_author_assistance",
+        "joint_development",
+        "not_recorded"
+      ]
+    },
+    "declared_independence_level": {
+      "enum": [
+        "self_declared_independence_unverified",
+        "timestamp_verified",
+        "public_release_bound_verified",
+        "organizationally_separated",
+        "third_party_verified"
+      ]
+    },
+    "evidence_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "evidence_type",
+          "status"
+        ],
+        "properties": {
+          "evidence_type": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "present",
+              "not_present",
+              "not_recorded",
+              "not_applicable"
+            ]
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

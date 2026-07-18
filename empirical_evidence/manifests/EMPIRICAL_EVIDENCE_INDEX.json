@@ -1,0 +1,71 @@
+{
+  "schema_version": "ordo.empirical_evidence.index.v1",
+  "subsystem_version": "0.3.0",
+  "status": "external_developer_adoption_evidence_added",
+  "task_classes": [
+    "task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS.json",
+    "task_classes/TC02_INTERRELATED_ARTIFACT_SET.json",
+    "task_classes/TC03_RECURRING_REGULATED_HIGH_COST_OMISSION.json"
+  ],
+  "cases": [
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/case.json"
+  ],
+  "runs": [
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/instruction_only/S01_CLEAN_CONTROL.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/instruction_only/S02_BRANCH_HEAVY.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/instruction_only/S03_INVALID_AND_IRRELEVANT.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/instruction_only/S04_BACKTRACK_AND_CORRECT.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/instruction_only/S05_INCOMPLETE_HARD_STOP.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/ordo/S01_CLEAN_CONTROL.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/ordo/S02_BRANCH_HEAVY.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/ordo/S03_INVALID_AND_IRRELEVANT.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/ordo/S04_BACKTRACK_AND_CORRECT.run.json",
+    "cases/TC01_EX01_NEW_OFFICE_OPENING/runs/ordo/S05_INCOMPLETE_HARD_STOP.run.json"
+  ],
+  "scorecards": [
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S01_CLEAN_CONTROL.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S02_BRANCH_HEAVY.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S03_INVALID_AND_IRRELEVANT.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S04_BACKTRACK_AND_CORRECT.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S05_INCOMPLETE_HARD_STOP.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/ordo/S01_CLEAN_CONTROL.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/ordo/S02_BRANCH_HEAVY.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/ordo/S03_INVALID_AND_IRRELEVANT.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/ordo/S04_BACKTRACK_AND_CORRECT.scorecard.json",
+    "derived_measurements/TC01_EX01_NEW_OFFICE_OPENING/ordo/S05_INCOMPLETE_HARD_STOP.scorecard.json"
+  ],
+  "findings": [
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S01_CLEAN_CONTROL.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S02_BRANCH_HEAVY.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S03_INVALID_AND_IRRELEVANT.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S04_BACKTRACK_AND_CORRECT.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S05_INCOMPLETE_HARD_STOP.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/ordo/S01_CLEAN_CONTROL.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/ordo/S02_BRANCH_HEAVY.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/ordo/S03_INVALID_AND_IRRELEVANT.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/ordo/S04_BACKTRACK_AND_CORRECT.finding.json",
+    "findings/TC01_EX01_NEW_OFFICE_OPENING/ordo/S05_INCOMPLETE_HARD_STOP.finding.json"
+  ],
+  "claims": [
+    "claims/TC01_EX01_NEW_OFFICE_OPENING_BOUNDED_CLAIM.json"
+  ],
+  "admissions": [
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S01_CLEAN_CONTROL.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S02_BRANCH_HEAVY.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S03_INVALID_AND_IRRELEVANT.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S04_BACKTRACK_AND_CORRECT.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/instruction_only/S05_INCOMPLETE_HARD_STOP.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/ordo/S01_CLEAN_CONTROL.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/ordo/S02_BRANCH_HEAVY.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/ordo/S03_INVALID_AND_IRRELEVANT.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/ordo/S04_BACKTRACK_AND_CORRECT.admission.json",
+    "admissions/TC01_EX01_NEW_OFFICE_OPENING/ordo/S05_INCOMPLETE_HARD_STOP.admission.json"
+  ],
+  "raw_evidence_policy": "immutable",
+  "existing_evaluation_relationship": "independent_parallel",
+  "migration_source": "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3",
+  "migration_report": "manifests/MIGRATION_REPORT_V1_3.json",
+  "external_adoption_cases": [
+    "external_developer_adoption/EDA_001/case.json"
+  ]
+}

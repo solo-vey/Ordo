@@ -8,7 +8,7 @@ Canonical integration remains pending; no canonical release was created.
 
 ### BL-ORDO-001 — CSG production recommendation closure
 
-Status: `in-progress-evidence-reconciliation`
+Status: `closed`
 
 ### BL-ORDO-002 — APF graph cycles and dead-end paths
 
@@ -24,7 +24,7 @@ Status: `closed`
 
 ### BL-ORDO-005 — Cross-model and repeated-run CSG benchmark
 
-Status: `open`
+Status: `closed`
 
 ### BL-ORDO-006 — PathWalk score calibration and benchmark purpose
 
@@ -36,7 +36,7 @@ Status: `closed`
 
 ### BL-ORDO-008 — APF real-case replay and analyst-experience validation
 
-Status: `deferred-owner-decision`
+Status: `closed`
 
 ### BL-ORDO-009 — APF internal mini-prompt applicability review
 
@@ -60,7 +60,7 @@ Status: `merged_superseded`
 
 ### BL-ORDO-014 — APF post-generation defect review for critical artifacts
 
-Status: `in-progress`
+Status: `closed`
 
 ### BL-ORDO-015 — Release and CI Closure
 
@@ -92,7 +92,7 @@ Status: `merged_superseded`
 
 ### BL-ORDO-023 — Strict-Zero A/B Benchmark Revalidation
 
-Status: `open`
+Status: `closed`
 
 ### BL-ORDO-024 — Process Pattern, Template and Review Engineering
 
@@ -221,3 +221,7 @@ Earlier blocked or deferred records are retained as historical reports but no lo
 ## BL-ORDO-014 Closure — M83.4
 
 BL-ORDO-014 is closed. The package now contains a claim-level provenance schema, blocking confirmation gate, adversarial review taxonomy, independent post-correction validator, trace/resume/rollback contract, five representative critical/high-impact review records, and negative regression fixtures. Unresolved critical/high defects: 0.
+
+### BL-ORDO-057 — GitHub Publication Hygiene and Repository Front Door
+
+Status: `closed`

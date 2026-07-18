@@ -1,0 +1,60 @@
+{
+  "schema_version": "ordo.empirical_evidence.schema_registry.v1",
+  "schemas": [
+    {
+      "kind": "evidence_envelope",
+      "path": "schemas/evidence_envelope.schema.json",
+      "schema_id": "ordo.empirical_evidence.envelope.v1"
+    },
+    {
+      "kind": "task_class",
+      "path": "schemas/task_class.schema.json",
+      "schema_id": "ordo.empirical_evidence.task_class.v1"
+    },
+    {
+      "kind": "case",
+      "path": "schemas/case.schema.json",
+      "schema_id": "ordo.empirical_evidence.case.v1"
+    },
+    {
+      "kind": "run",
+      "path": "schemas/run.schema.json",
+      "schema_id": "ordo.empirical_evidence.run.v1"
+    },
+    {
+      "kind": "scorecard",
+      "path": "schemas/scorecard.schema.json",
+      "schema_id": "ordo.empirical_evidence.scorecard.v1"
+    },
+    {
+      "kind": "finding",
+      "path": "schemas/finding.schema.json",
+      "schema_id": "ordo.empirical_evidence.finding.v1"
+    },
+    {
+      "kind": "claim",
+      "path": "schemas/claim.schema.json",
+      "schema_id": "ordo.empirical_evidence.claim.v1"
+    },
+    {
+      "kind": "admission",
+      "path": "schemas/admission.schema.json",
+      "schema_id": "ordo.empirical_evidence.admission.v1"
+    },
+    {
+      "kind": "external_adoption_case_legacy_identity",
+      "path": "schemas/external_adoption_case.schema.json",
+      "schema_id": "ordo.empirical_evidence.external_adoption_case.v1"
+    },
+    {
+      "kind": "external_adoption_case",
+      "path": "schemas/external_adoption_case.schema.json",
+      "schema_id": "ordo.empirical_evidence.external_adoption_case.v2"
+    },
+    {
+      "kind": "external_developer_submission",
+      "path": "schemas/external_developer_submission.schema.json",
+      "schema_id": "ordo.empirical_evidence.external_developer_submission.v1"
+    }
+  ]
+}

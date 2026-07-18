@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.empirical_evidence.external_adoption_case.v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "title",
+    "status",
+    "developer_relationship",
+    "author_assistance",
+    "independence_verification",
+    "playbook_identity",
+    "source_handling",
+    "bounded_claim",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.external_adoption_case.v2"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^EDA-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string"
+    },
+    "developer_relationship": {
+      "type": "string"
+    },
+    "author_assistance": {
+      "enum": [
+        "none_recorded",
+        "general_public_documentation_only",
+        "limited_clarification",
+        "direct_author_assistance",
+        "joint_development",
+        "not_recorded"
+      ]
+    },
+    "independence_verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declared_level",
+        "verification_method",
+        "evidence_records",
+        "internal_access",
+        "claim_status"
+      ],
+      "properties": {
+        "declared_level": {
+          "enum": [
+            "self_declared_independence_unverified",
+            "timestamp_verified",
+            "public_release_bound_verified",
+            "organizationally_separated",
+            "third_party_verified"
+          ]
+        },
+        "verification_method": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "evidence_type",
+              "status"
+            ],
+            "properties": {
+              "evidence_type": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "present",
+                  "not_present",
+                  "not_recorded",
+                  "not_applicable",
+                  "present_verification_pending"
+                ]
+              },
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "internal_access": {
+          "type": "object",
+          "required": [
+            "internal_repository_access",
+            "unpublished_material_access",
+            "private_author_assistance"
+          ],
+          "properties": {
+            "internal_repository_access": {
+              "enum": [
+                "no",
+                "yes",
+                "not_recorded"
+              ]
+            },
+            "unpublished_material_access": {
+              "enum": [
+                "no",
+                "yes",
+                "not_recorded"
+              ]
+            },
+            "private_author_assistance": {
+              "enum": [
+                "no",
+                "yes",
+                "not_recorded"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "claim_status": {
+          "enum": [
+            "unverified_self_declaration",
+            "evidence_supported",
+            "contradicted",
+            "insufficient_evidence",
+            "level_1_proof_supplied_independent_verification_pending"
+          ]
+        }
+      }
+    },
+    "consumed_release": {
+      "type": "object",
+      "required": [
+        "release_id",
+        "archive_sha256",
+        "distribution_channel",
+        "public_release_use_claim"
+      ],
+      "properties": {
+        "release_id": {
+          "type": "string"
+        },
+        "archive_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "distribution_channel": {
+          "type": "string"
+        },
+        "obtained_at": {
+          "type": "string"
+        },
+        "public_release_use_claim": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "playbook_identity": {
+      "type": "object"
+    },
+    "evidence_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_handling": {
+      "type": "object",
+      "required": [
+        "original_specific_source_included",
+        "publication_safe_package",
+        "publication_safe_package_sha256",
+        "readable_extraction",
+        "original_package_identity"
+      ],
+      "properties": {
+        "original_specific_source_included": {
+          "const": false
+        },
+        "publication_safe_package": {
+          "type": "string"
+        },
+        "publication_safe_package_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "readable_extraction": {
+          "type": "string"
+        },
+        "transformation_provenance": {
+          "type": "string"
+        },
+        "sanitization_report": {
+          "type": "string"
+        },
+        "original_package_identity": {
+          "type": "object",
+          "required": [
+            "sha256",
+            "hash_recorded_at",
+            "confidential_source_publicly_included"
+          ],
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "hash_recorded_at": {
+              "type": "string"
+            },
+            "trusted_timestamp_status": {
+              "enum": [
+                "present",
+                "not_present",
+                "not_recorded"
+              ]
+            },
+            "confidential_source_publicly_included": {
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "bounded_claim": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "admitted_at": {
+      "type": "string"
+    },
+    "latest_submission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record",
+        "archive",
+        "archive_sha256",
+        "validated_level",
+        "requested_next_level",
+        "status"
+      ],
+      "properties": {
+        "record": {
+          "type": "string"
+        },
+        "archive": {
+          "type": "string"
+        },
+        "archive_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "validated_level": {
+          "enum": [
+            "self_declared_independence_unverified",
+            "timestamp_verified",
+            "public_release_bound_verified",
+            "organizationally_separated",
+            "third_party_verified"
+          ]
+        },
+        "requested_next_level": {
+          "enum": [
+            "timestamp_verified",
+            "public_release_bound_verified",
+            "organizationally_separated",
+            "third_party_verified"
+          ]
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

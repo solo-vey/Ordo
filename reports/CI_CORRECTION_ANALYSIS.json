@@ -1,0 +1,26 @@
+{
+  "canonical_internal_checksum_entries": 4698,
+  "canonical_internal_checksum_result": "PASS",
+  "canonical_source_archive": "ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10(1).zip",
+  "canonical_source_archive_sha256": "307bc2196e8ccacccb36296818c7d581040d8d77fd0e251d36bdf276c8345258",
+  "closure_permitted": false,
+  "files_to_apply": [
+    "CONSOLIDATED_BACKLOG.md",
+    "tools/build_release_archive.py",
+    "empirical_evidence/manifests/EMPIRICAL_EVIDENCE_INDEX.json",
+    "empirical_evidence/manifests/SCHEMA_REGISTRY.json",
+    "empirical_evidence/schemas/external_adoption_case.schema.json",
+    "empirical_evidence/schemas/external_developer_submission.schema.json",
+    "empirical_evidence/tools/validate_external_independence.py"
+  ],
+  "fixes_included": [
+    "Synchronize CONSOLIDATED_BACKLOG.md with the current publication-candidate backlog manifest.",
+    "Exclude non-Ordo package directories without ordo.yml from direct package lint discovery.",
+    "Restore five canonical empirical-evidence files from the verified RC10 source archive."
+  ],
+  "next_gate_required": true,
+  "schema_version": "ordo.ci_correction_bundle.v2",
+  "source_revision": "ef6ab62351d5477fed4623d26f19fc7afed60298",
+  "source_run_id": 29651078149,
+  "status": "complete_correction_ready"
+}

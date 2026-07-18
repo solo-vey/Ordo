@@ -168,6 +168,11 @@ def run_package_lints(skip_heavy: bool, timeout_seconds: int = 3600) -> dict:
     for pkg in sorted((ROOT / "packages").iterdir()):
         if not pkg.is_dir():
             continue
+        # Only direct Ordo package roots are lint targets. Some directories
+        # under packages/ are publication bundles or versioned source archives
+        # and intentionally do not contain an ordo.yml package manifest.
+        if not (pkg / "ordo.yml").is_file():
+            continue
         with tempfile.TemporaryDirectory() as tmp:
             tmp_pkg = Path(tmp) / pkg.name
             shutil.copytree(pkg, tmp_pkg, ignore=shutil.ignore_patterns("__pycache__"))
