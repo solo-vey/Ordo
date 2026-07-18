@@ -118,6 +118,12 @@ jobs:
             --test-timeout-seconds 3600 \
             --lint-timeout-seconds 900 \
             | tee reports/ci/release_build.stdout.log
+
+          # The release build creates a fresh gate/self-check pair. Replace the
+          # check-only copies so the uploaded evidence matches the archive.
+          cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json
+          cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json
+
           sha256sum dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip > dist/ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10.zip.sha256
           python - <<'PY'
           import hashlib, json, os

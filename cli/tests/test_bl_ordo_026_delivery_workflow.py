@@ -47,6 +47,14 @@ class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
         self.assertIn("GITHUB_SHA", self.text)
         self.assertIn("GITHUB_RUN_ID", self.text)
         self.assertIn("if-no-files-found: error", self.text)
+        self.assertIn(
+            "cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json",
+            self.text,
+        )
+        self.assertIn(
+            "cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json",
+            self.text,
+        )
 
     def test_existing_check_workflow_includes_apf(self) -> None:
         check = CHECK_WORKFLOW.read_text(encoding="utf-8")
