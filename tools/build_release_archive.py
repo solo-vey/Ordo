@@ -28,6 +28,8 @@ import re
 import subprocess
 import sys
 import zipfile
+import shutil
+import tempfile
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -87,11 +89,30 @@ def run_partitioned_tests(
                         skipped.append(h)
         effective_timeout = None if timeout_seconds == 0 else timeout_seconds
         try:
-            proc = subprocess.run(
-                [sys.executable, "-m", "pytest", *rels, "-q", "-p", "no:cacheprovider", *deselect],
-                cwd=ROOT, capture_output=True, text=True, timeout=effective_timeout,
-                env={"PYTHONDONTWRITEBYTECODE": "1", "PATH": "/usr/bin:/bin:/usr/local/bin"},
-            )
+            # Every deterministic group receives a fresh repository snapshot.
+            # Tests intentionally mutate reports, fixtures, and generated paths;
+            # sharing one workspace makes later groups observe earlier side effects.
+            with tempfile.TemporaryDirectory(prefix=f"ordo-test-group-{batch_index:02d}-") as tmp:
+                isolated_root = Path(tmp) / "repo"
+                shutil.copytree(
+                    ROOT,
+                    isolated_root,
+                    ignore=shutil.ignore_patterns(
+                        ".git", "__pycache__", ".pytest_cache", "node_modules", "dist"
+                    ),
+                )
+                isolated_rels = [
+                    (isolated_root / rel).relative_to(isolated_root).as_posix()
+                    for rel in rels
+                ]
+                proc = subprocess.run(
+                    [sys.executable, "-m", "pytest", *isolated_rels, "-q", "-p", "no:cacheprovider", *deselect],
+                    cwd=isolated_root,
+                    capture_output=True,
+                    text=True,
+                    timeout=effective_timeout,
+                    env={"PYTHONDONTWRITEBYTECODE": "1", "PATH": "/usr/bin:/bin:/usr/local/bin"},
+                )
             combined_output = (proc.stdout or "") + (proc.stderr or "")
             tail = combined_output.strip().splitlines()[-1] if combined_output.strip() else ""
             log_name = f"test_group_{batch_index:02d}_{label}.log"
