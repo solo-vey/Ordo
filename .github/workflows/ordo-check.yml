@@ -1,0 +1,105 @@
+name: Ordo checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ordo-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run repository self-check before generated install metadata exists
+        run: |
+          mkdir -p reports
+          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli python -m ordo.cli repo-check .
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+          python -m pip install -e ./cli
+      - name: Run CLI unit tests
+        run: |
+          cd cli
+          python -m unittest discover -s tests
+      - name: Validate active reference Ordo packages
+        run: |
+          for package in \
+            packages/ordo_project_builder \
+            packages/ordo_hybrid_executor \
+            packages/history_event_guided_intake \
+            packages/ordo_applied_project_factory
+          do
+            ordo lint "$package"
+            ordo compile "$package"
+            ordo test "$package"
+            ordo coverage "$package"
+          done
+      - name: Validate Process Rail helper commands
+        run: |
+          ordo validate-state packages/ordo_project_builder --answers packages/ordo_project_builder/run_inputs/authoring_success.yaml
+          ordo next-step packages/ordo_project_builder --answers packages/ordo_project_builder/run_inputs/authoring_success.yaml
+          ordo validate-state packages/ordo_hybrid_executor --answers packages/ordo_hybrid_executor/run_inputs/execution_success.yaml
+          ordo next-step packages/ordo_hybrid_executor --answers packages/ordo_hybrid_executor/run_inputs/execution_success.yaml
+          ordo explain-validation packages/ordo_hybrid_executor
+      - name: Validate history event output flow
+        run: |
+          ordo runtime-status packages/history_event_guided_intake
+          ordo lock packages/history_event_guided_intake
+          ordo validate-lock packages/history_event_guided_intake
+          ordo intake packages/history_event_guided_intake --answers packages/history_event_guided_intake/run_inputs/intake_success.yaml --non-interactive
+          ordo validate-state packages/history_event_guided_intake --answers packages/history_event_guided_intake/run_inputs/intake_success.yaml
+          ordo generate-output packages/history_event_guided_intake
+          ordo validate-output packages/history_event_guided_intake
+          ordo validate-artifacts packages/history_event_guided_intake
+          ordo consistency packages/history_event_guided_intake
+          ordo go-no-go packages/history_event_guided_intake --answers packages/history_event_guided_intake/run_inputs/intake_success.yaml
+
+      - name: Create CI-bound release evidence
+        if: success()
+        env:
+          PYTHONPATH: cli
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          from datetime import datetime, timezone
+          from ordo.ci_release_evidence import source_tree_sha256
+          packages = [
+              "packages/ordo_project_builder",
+              "packages/ordo_hybrid_executor",
+              "packages/history_event_guided_intake",
+          ]
+          matrix = [
+              {"id": "cli-unit-tests", "status": "passed"},
+              {"id": "reference-package-lint-compile-test-coverage", "status": "passed"},
+              {"id": "process-rail-helper-checks", "status": "passed"},
+              {"id": "history-event-output-flow", "status": "passed"},
+          ]
+          for package in packages:
+              root = Path(package)
+              out = root / "reports" / "ci_release_evidence.json"
+              out.parent.mkdir(parents=True, exist_ok=True)
+              payload = {
+                  "schema_version": "ordo.ci_release_evidence.v1",
+                  "status": "passed",
+                  "repository": os.environ.get("GITHUB_REPOSITORY", ""),
+                  "revision": os.environ.get("GITHUB_SHA", ""),
+                  "run_id": os.environ.get("GITHUB_RUN_ID", ""),
+                  "issued_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                  "source_tree_sha256": source_tree_sha256(root),
+                  "test_matrix": matrix,
+              }
+              out.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+      - name: Upload CI-bound release evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ordo-ci-release-evidence-${{ github.run_id }}
+          path: packages/*/reports/ci_release_evidence.json
+          if-no-files-found: error
+          retention-days: 90

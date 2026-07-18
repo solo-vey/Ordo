@@ -1,0 +1,113 @@
+name: Ordo release clean gate
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  release-clean-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Ordo CLI
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ./cli
+
+      - name: Create isolated release candidate tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .ordo-release-candidate
+          mkdir -p .ordo-release-candidate
+          git archive --format=tar HEAD | tar -xf - -C .ordo-release-candidate
+
+      - name: Run strict release clean gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/release
+          ordo repo-check .ordo-release-candidate \
+            --clean \
+            --profile strict \
+            --hygiene-scope release \
+            --fail-on-warning \
+            --json \
+            --out reports/release/repo_clean_check.json \
+            | tee reports/release/repo_clean_check.stdout.json
+
+      - name: Record release gate provenance
+        if: always()
+        shell: bash
+        env:
+          ORDO_GATE_ID: release-clean-gate
+          ORDO_GATE_CLASS: release
+          ORDO_PROFILE: strict
+          ORDO_FAIL_ON_WARNING: 'true'
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          output = Path("reports/release/release_clean_gate_provenance.json")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          report_path = Path("reports/release/repo_clean_check.json")
+          report = None
+          report_sha256 = None
+          report_size_bytes = None
+          linkage_status = "report_missing"
+          if report_path.is_file():
+              report_bytes = report_path.read_bytes()
+              report_sha256 = __import__("hashlib").sha256(report_bytes).hexdigest()
+              report_size_bytes = len(report_bytes)
+              report = json.loads(report_bytes.decode("utf-8"))
+              linkage_status = "linked"
+
+          payload = {
+              "schema_version": "ordo.release_clean_gate.provenance.v2",
+              "gate_id": os.environ["ORDO_GATE_ID"],
+              "gate_class": os.environ["ORDO_GATE_CLASS"],
+              "repository": os.environ.get("GITHUB_REPOSITORY", ""),
+              "revision": os.environ.get("GITHUB_SHA", ""),
+              "ref": os.environ.get("GITHUB_REF", ""),
+              "run_id": os.environ.get("GITHUB_RUN_ID", ""),
+              "profile": os.environ["ORDO_PROFILE"],
+              "fail_on_warning": os.environ["ORDO_FAIL_ON_WARNING"] == "true",
+              "linkage": {
+                  "status": linkage_status,
+                  "report_path": report_path.as_posix(),
+                  "report_schema_version": report.get("schema_version") if report else None,
+                  "report_status": report.get("status") if report else None,
+                  "report_exit_code": report.get("exit_code") if report else None,
+                  "report_profile": report.get("profile") if report else None,
+                  "report_sha256": report_sha256,
+                  "report_size_bytes": report_size_bytes,
+              },
+          }
+          output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+
+      - name: Upload release clean-gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ordo-release-clean-gate-${{ github.run_id }}
+          path: |
+            reports/release/repo_clean_check.json
+            reports/release/repo_clean_check.stdout.json
+            reports/release/release_clean_gate_provenance.json
+          if-no-files-found: error
+          retention-days: 90
