@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.empirical_evidence.scorecard.v1",
+  "scorecard_id": "SC-TC01.EX01.ordo.S01_CLEAN_CONTROL",
+  "run_id": "TC01.EX01.ordo.S01_CLEAN_CONTROL",
+  "method_version": "composite_quality_scoring_method.v1",
+  "dimensions": {},
+  "composite_score": 98,
+  "source_run_sha256": "c5b6887690b8d0daa6749dec835885acfdaf8901d3ecafd79e0324e790819292",
+  "status": "admitted"
+}

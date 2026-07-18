@@ -1,0 +1,12 @@
+{
+  "schema_version": "ordo.empirical_evidence.finding.v1",
+  "finding_id": "F-TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT",
+  "run_id": "TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT",
+  "finding_type": "factual",
+  "statement": "Historical ordo run for S03_INVALID_AND_IRRELEVANT recorded outcome: scenario_passed.",
+  "evidence_refs": [
+    "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC22_S03_RESULT.zip",
+    "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S03_INVALID_AND_IRRELEVANT/RUN_METADATA.json"
+  ],
+  "status": "admitted"
+}

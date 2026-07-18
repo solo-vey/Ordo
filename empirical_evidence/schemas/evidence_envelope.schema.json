@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.envelope.v1",
+  "title": "Empirical Evidence Envelope",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "evidence_type",
+    "source_system",
+    "provenance",
+    "integrity"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.envelope.v1"
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_type": {
+      "enum": [
+        "case",
+        "run",
+        "finding",
+        "scorecard",
+        "claim",
+        "admission",
+        "task_class"
+      ]
+    },
+    "source_system": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "created_at_utc",
+        "created_by",
+        "source_refs"
+      ],
+      "properties": {
+        "created_at_utc": {
+          "type": "string"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "sha256"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

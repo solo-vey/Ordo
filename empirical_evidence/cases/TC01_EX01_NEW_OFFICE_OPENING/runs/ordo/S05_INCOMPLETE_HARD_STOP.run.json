@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.empirical_evidence.run.v1",
+  "run_id": "TC01.EX01.ordo.S05_INCOMPLETE_HARD_STOP",
+  "case_id": "TC01.EX01.NEW_OFFICE_OPENING",
+  "scenario_id": "S05_INCOMPLETE_HARD_STOP",
+  "implementation": "ordo",
+  "model": {
+    "provider": "OpenAI",
+    "identifier": "GPT-5.6 Thinking",
+    "configuration": {
+      "provenance_status": "partially_resolved",
+      "source_metadata": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip.metadata.json"
+    }
+  },
+  "versions": {
+    "language": "historical_not_declared",
+    "framework": "historical_not_declared",
+    "playbook": null,
+    "evaluator": "composite_quality_scoring_method.v1"
+  },
+  "raw_evidence": {
+    "path": "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip",
+    "sha256": "a1be68d5ce39a3515efc9ef32ffb485279d34210e0d7b569c2681440aa53f33b"
+  },
+  "contamination_status": "clean",
+  "admission_status": "admitted",
+  "scorecard_id": "SC-TC01.EX01.ordo.S05_INCOMPLETE_HARD_STOP"
+}

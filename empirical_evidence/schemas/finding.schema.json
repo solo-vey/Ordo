@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.finding.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "finding_id",
+    "run_id",
+    "finding_type",
+    "statement",
+    "evidence_refs",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.finding.v1"
+    },
+    "finding_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "finding_type": {
+      "enum": [
+        "factual",
+        "measurement",
+        "failure",
+        "limitation"
+      ]
+    },
+    "statement": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "admitted",
+        "rejected",
+        "superseded"
+      ]
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.admission.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "admission_id",
+    "subject_id",
+    "decision",
+    "decided_at_utc",
+    "decided_by",
+    "reasons",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.admission.v1"
+    },
+    "admission_id": {
+      "type": "string"
+    },
+    "subject_id": {
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "admit",
+        "exclude",
+        "quarantine",
+        "revoke"
+      ]
+    },
+    "decided_at_utc": {
+      "type": "string"
+    },
+    "decided_by": {
+      "type": "string"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checks": {
+      "type": "object",
+      "required": [
+        "integrity",
+        "provenance",
+        "contamination",
+        "method"
+      ],
+      "properties": {
+        "integrity": {
+          "type": "boolean"
+        },
+        "provenance": {
+          "type": "boolean"
+        },
+        "contamination": {
+          "type": "boolean"
+        },
+        "method": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.empirical_evidence.scorecard.v1",
+  "scorecard_id": "SC-TC01.EX01.instruction_only.S04_BACKTRACK_AND_CORRECT",
+  "run_id": "TC01.EX01.instruction_only.S04_BACKTRACK_AND_CORRECT",
+  "method_version": "composite_quality_scoring_method.v1",
+  "dimensions": {},
+  "composite_score": 73,
+  "source_run_sha256": "d0dc59fefa44ebd5bdac0688aad559d6776e097a5a1c98f83a0e795a98ed46fd",
+  "status": "admitted"
+}

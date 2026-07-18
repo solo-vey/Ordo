@@ -1,0 +1,12 @@
+{
+  "schema_version": "ordo.empirical_evidence.finding.v1",
+  "finding_id": "F-TC01.EX01.ordo.S01_CLEAN_CONTROL",
+  "run_id": "TC01.EX01.ordo.S01_CLEAN_CONTROL",
+  "finding_type": "factual",
+  "statement": "Historical ordo run for S01_CLEAN_CONTROL recorded outcome: T_COMPLETED / GO.",
+  "evidence_refs": [
+    "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip",
+    "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S01_CLEAN_CONTROL_RESULT.zip.metadata.json"
+  ],
+  "status": "admitted"
+}

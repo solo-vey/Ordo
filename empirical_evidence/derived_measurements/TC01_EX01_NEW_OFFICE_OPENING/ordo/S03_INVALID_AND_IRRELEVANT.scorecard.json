@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.empirical_evidence.scorecard.v1",
+  "scorecard_id": "SC-TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT",
+  "run_id": "TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT",
+  "method_version": "composite_quality_scoring_method.v1",
+  "dimensions": {},
+  "composite_score": 100,
+  "source_run_sha256": "4eadf7fc61d556bac1c4a835f9121252b5cdcfb3d3dc8a879a52dfe340051eb6",
+  "status": "admitted"
+}

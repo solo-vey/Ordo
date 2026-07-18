@@ -1,0 +1,22 @@
+{
+  "schema_version": "ordo.composite_scorecard.v1",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "implementation": "ordo",
+  "scenario_id": "S02_BRANCH_HEAVY",
+  "run_id": "S02_BRANCH_HEAVY_COMPLETED_PACKAGE",
+  "evidence_status": "positive",
+  "components": {
+    "scenario_completion": {"weight": 0.15, "score": 100, "applicable": true, "evidence": ["T_COMPLETED", "GO"]},
+    "control_flow_correctness": {"weight": 0.25, "score": 100, "applicable": true, "evidence": ["legal registration skip passed", "supplier replacement loop passed", "readiness remediation loop passed"]},
+    "state_and_evidence_integrity": {"weight": 0.20, "score": 95, "applicable": true, "evidence": ["session chain intact", "46 trace steps", "47 snapshots"]},
+    "artifact_quality_and_completeness": {"weight": 0.15, "score": 100, "applicable": true, "evidence": ["7/7 outputs", "artifact validation passed", "consistency passed"]},
+    "validation_reliability": {"weight": 0.15, "score": 95, "applicable": true, "evidence": ["deterministic validators passed", "zero blocking issues"]},
+    "safe_error_handling": {"weight": 0.10, "score": 100, "applicable": true, "evidence": ["branch and remediation handled without bypass"]}
+  },
+  "critical_caps": [],
+  "composite_score_raw": 98.25,
+  "composite_score": 98,
+  "scoring_notes": "Rounded to nearest whole point.",
+  "user_admission_confirmed": true
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.composite_scorecard.v1",
+  "task_class_id": "",
+  "example_id": "",
+  "implementation": "ordo|instruction_only",
+  "scenario_id": "",
+  "run_id": "",
+  "evidence_status": "positive|negative|intermediate|contaminated",
+  "components": {
+    "scenario_completion": {"weight": 0.15, "score": null, "applicable": true, "evidence": []},
+    "control_flow_correctness": {"weight": 0.25, "score": null, "applicable": true, "evidence": []},
+    "state_and_evidence_integrity": {"weight": 0.20, "score": null, "applicable": true, "evidence": []},
+    "artifact_quality_and_completeness": {"weight": 0.15, "score": null, "applicable": true, "evidence": []},
+    "validation_reliability": {"weight": 0.15, "score": null, "applicable": true, "evidence": []},
+    "safe_error_handling": {"weight": 0.10, "score": null, "applicable": true, "evidence": []}
+  },
+  "critical_caps": [],
+  "composite_score": null,
+  "scoring_notes": "",
+  "user_admission_confirmed": false
+}

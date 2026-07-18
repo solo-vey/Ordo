@@ -1,0 +1,12 @@
+{
+  "schema_version": "ordo.empirical_evidence.finding.v1",
+  "finding_id": "F-TC01.EX01.ordo.S02_BRANCH_HEAVY",
+  "run_id": "TC01.EX01.ordo.S02_BRANCH_HEAVY",
+  "finding_type": "factual",
+  "statement": "Historical ordo run for S02_BRANCH_HEAVY recorded outcome: T_COMPLETED / GO.",
+  "evidence_refs": [
+    "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip",
+    "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip.metadata.json"
+  ],
+  "status": "admitted"
+}

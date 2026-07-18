@@ -1,0 +1,26 @@
+schema: ordo.benchmark.disturbance_scenarios.v1
+suite_id: office_opening_disturbance_suite
+scenarios:
+  - id: S01_CLEAN_CONTROL
+    purpose: Stable baseline path with approved legal entity and no remediation.
+    expected: reaches N20V/T_COMPLETED when document fixtures are supplied
+  - id: S02_BRANCH_HEAVY
+    purpose: Skip legal registration, replace a supplier, fail readiness once, remediate, then continue.
+    expected_branches:
+      - N07 -> N08
+      - N15 -> N12 -> N15 -> N16
+      - N18 -> N18B -> N12 -> N18 -> N19
+  - id: S03_INVALID_AND_IRRELEVANT
+    purpose: Partial answer, answer for a future node, irrelevant prose, then corrected current-node answer.
+    invariants:
+      - rejected answers do not mutate canonical state
+      - current node does not advance on rejected input
+  - id: S04_BACKTRACK_AND_CORRECT
+    purpose: Reach location selection, restore to an earlier accepted snapshot, change space and location decisions, and continue.
+    invariants:
+      - append-only restore evidence
+      - downstream state is recomputed from restored point
+      - old and new decisions remain auditable
+  - id: S05_INCOMPLETE_HARD_STOP
+    purpose: User refuses or cannot provide a mandatory value.
+    expected: no fabricated value, no forward transition, diagnostic/incomplete status

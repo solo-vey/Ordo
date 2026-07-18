@@ -1,0 +1,10 @@
+{
+  "schema": "ordo.benchmark.model_identity.v1",
+  "provider": "OpenAI",
+  "model_name": "GPT-5.6 Thinking",
+  "model_identifier": "GPT-5.6 Thinking",
+  "reasoning_mode": "thinking",
+  "capture_method": "self-reported by model",
+  "captured_at_utc": "2026-07-14T16:03:00Z",
+  "backfilled": false
+}

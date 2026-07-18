@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.empirical_evidence.run.v1",
+  "run_id": "TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT",
+  "case_id": "TC01.EX01.NEW_OFFICE_OPENING",
+  "scenario_id": "S04_BACKTRACK_AND_CORRECT",
+  "implementation": "ordo",
+  "model": {
+    "provider": "OpenAI",
+    "identifier": "GPT-5.6 Thinking",
+    "configuration": {
+      "provenance_status": "partially_resolved",
+      "source_metadata": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip.metadata.json"
+    }
+  },
+  "versions": {
+    "language": "historical_not_declared",
+    "framework": "historical_not_declared",
+    "playbook": null,
+    "evaluator": "composite_quality_scoring_method.v1"
+  },
+  "raw_evidence": {
+    "path": "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/OFFICE_OPENING_ORDO_RC20_S04_COMPLETED.zip",
+    "sha256": "820f6a55a716fd7f4d59f887e65f81ad286cf549f531067bd08b471963c501e5"
+  },
+  "contamination_status": "clean",
+  "admission_status": "admitted",
+  "scorecard_id": "SC-TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT"
+}

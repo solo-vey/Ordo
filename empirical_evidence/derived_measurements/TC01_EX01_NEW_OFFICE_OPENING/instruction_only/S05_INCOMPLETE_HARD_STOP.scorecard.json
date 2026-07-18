@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.empirical_evidence.scorecard.v1",
+  "scorecard_id": "SC-TC01.EX01.instruction_only.S05_INCOMPLETE_HARD_STOP",
+  "run_id": "TC01.EX01.instruction_only.S05_INCOMPLETE_HARD_STOP",
+  "method_version": "composite_quality_scoring_method.v1",
+  "dimensions": {},
+  "composite_score": 95,
+  "source_run_sha256": "edb8d0c42c8ea4daaf41668f4da3bab2d7fde236c094d5f03a843d07562dd6a9",
+  "status": "admitted"
+}

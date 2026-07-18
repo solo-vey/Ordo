@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.claim.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "claim_id",
+    "statement",
+    "scope",
+    "supporting_evidence",
+    "contradicting_evidence",
+    "limitations",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.claim.v1"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "statement": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "supporting_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contradicting_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "enum": [
+        "insufficient",
+        "low",
+        "moderate",
+        "high"
+      ]
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "supported",
+        "contradicted",
+        "retired"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "ordo.empirical_evidence.scorecard.v1",
+  "scorecard_id": "SC-TC01.EX01.ordo.S02_BRANCH_HEAVY",
+  "run_id": "TC01.EX01.ordo.S02_BRANCH_HEAVY",
+  "method_version": "composite_quality_scoring_method.v1",
+  "dimensions": {},
+  "composite_score": 98,
+  "source_run_sha256": "6a559078df34a25197a9fd152566e85f5957e00f350bb15e6f8e8bc40a08b6c1",
+  "status": "admitted"
+}

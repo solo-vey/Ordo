@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.run.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "case_id",
+    "scenario_id",
+    "implementation",
+    "model",
+    "versions",
+    "raw_evidence",
+    "contamination_status",
+    "admission_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.run.v1"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "scenario_id": {
+      "type": "string"
+    },
+    "implementation": {
+      "type": "string"
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "provider",
+        "identifier",
+        "configuration"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "configuration": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "versions": {
+      "type": "object",
+      "required": [
+        "language",
+        "framework",
+        "evaluator"
+      ],
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "framework": {
+          "type": "string"
+        },
+        "playbook": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evaluator": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "raw_evidence": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^raw_evidence/"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "contamination_status": {
+      "enum": [
+        "clean",
+        "suspected",
+        "contaminated",
+        "unknown"
+      ]
+    },
+    "admission_status": {
+      "enum": [
+        "pending",
+        "admitted",
+        "excluded",
+        "quarantined"
+      ]
+    },
+    "scorecard_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "evidence_id": "EV-TC01-OO-ORDO-S02-001",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "condition": "ordo",
+  "scenario_id": "S02_BRANCH_HEAVY",
+  "outcome": "T_COMPLETED / GO",
+  "admission_status": "accepted_positive_evidence",
+  "source_archive": "S02_BRANCH_HEAVY_COMPLETED_PACKAGE.zip",
+  "sha256": "6a559078df34a25197a9fd152566e85f5957e00f350bb15e6f8e8bc40a08b6c1",
+  "admission_decision": "Included by explicit user instruction on 2026-07-14",
+  "notes": "Model identity and detailed validators remain inside the immutable source archive.",
+  "task_class_name": "Complex Multi-Step Process",
+  "example_name": "New Office Opening"
+}

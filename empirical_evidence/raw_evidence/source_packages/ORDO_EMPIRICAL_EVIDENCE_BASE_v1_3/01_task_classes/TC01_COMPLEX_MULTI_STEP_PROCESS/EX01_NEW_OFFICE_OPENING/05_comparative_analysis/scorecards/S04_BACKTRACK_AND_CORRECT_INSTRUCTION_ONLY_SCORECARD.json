@@ -1,0 +1,11 @@
+{
+  "schema_version": "ordo.composite_scorecard.v1",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "example_id": "EX01_NEW_OFFICE_OPENING",
+  "scenario_id": "S04_BACKTRACK_AND_CORRECT",
+  "implementation": "instruction_only",
+  "composite_score": 73,
+  "verdict": "failed_behavior",
+  "admission_status": "canonical_evidence",
+  "language": "en"
+}

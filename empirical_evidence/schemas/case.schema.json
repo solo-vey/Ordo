@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.case.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "case_id",
+    "task_class_id",
+    "implementations",
+    "scenario_ids",
+    "run_ids",
+    "claim_ids",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.case.v1"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "task_class_id": {
+      "type": "string"
+    },
+    "implementations": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "scenario_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "run_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "active",
+        "closed",
+        "retired"
+      ]
+    }
+  }
+}

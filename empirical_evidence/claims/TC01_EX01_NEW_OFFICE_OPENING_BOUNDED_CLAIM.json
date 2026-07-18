@@ -1,0 +1,37 @@
+{
+  "schema_version": "ordo.empirical_evidence.claim.v1",
+  "claim_id": "CL-TC01-EX01-ORDO-ADVANTAGE-BOUNDED",
+  "statement": "Under the tested TC01/EX01 setup, the Ordo implementation achieved higher admitted composite scores than the instruction-only implementation, with the clearest advantage in branch-heavy and restore/backtrack scenarios.",
+  "scope": "TC01 Complex Multi-Step Process / EX01 New Office Opening / five paired historical scenarios in Evidence Base v1.3 only.",
+  "supporting_evidence": [
+    "SC-TC01.EX01.instruction_only.S01_CLEAN_CONTROL",
+    "SC-TC01.EX01.instruction_only.S02_BRANCH_HEAVY",
+    "SC-TC01.EX01.instruction_only.S03_INVALID_AND_IRRELEVANT",
+    "SC-TC01.EX01.instruction_only.S04_BACKTRACK_AND_CORRECT",
+    "SC-TC01.EX01.instruction_only.S05_INCOMPLETE_HARD_STOP",
+    "SC-TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT",
+    "SC-TC01.EX01.ordo.S01_CLEAN_CONTROL",
+    "SC-TC01.EX01.ordo.S02_BRANCH_HEAVY",
+    "SC-TC01.EX01.ordo.S05_INCOMPLETE_HARD_STOP",
+    "F-TC01.EX01.instruction_only.S01_CLEAN_CONTROL",
+    "F-TC01.EX01.instruction_only.S02_BRANCH_HEAVY",
+    "F-TC01.EX01.instruction_only.S03_INVALID_AND_IRRELEVANT",
+    "F-TC01.EX01.instruction_only.S04_BACKTRACK_AND_CORRECT",
+    "F-TC01.EX01.instruction_only.S05_INCOMPLETE_HARD_STOP",
+    "F-TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT",
+    "F-TC01.EX01.ordo.S01_CLEAN_CONTROL",
+    "F-TC01.EX01.ordo.S02_BRANCH_HEAVY",
+    "F-TC01.EX01.ordo.S05_INCOMPLETE_HARD_STOP",
+    "SC-TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT",
+    "F-TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT"
+  ],
+  "contradicting_evidence": [],
+  "limitations": [
+    "Single completed comparative case.",
+    "Historical model and runtime configuration provenance is incomplete for some runs.",
+    "Composite scoring weights are method version 1 and are not universal.",
+    "The claim must not be generalized to other task classes or production readiness."
+  ],
+  "confidence": "moderate",
+  "status": "supported"
+}

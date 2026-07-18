@@ -1,0 +1,12 @@
+{
+  "schema_version": "ordo.empirical_evidence.finding.v1",
+  "finding_id": "F-TC01.EX01.instruction_only.S02_BRANCH_HEAVY",
+  "run_id": "TC01.EX01.instruction_only.S02_BRANCH_HEAVY",
+  "finding_type": "factual",
+  "statement": "Historical instruction_only run for S02_BRANCH_HEAVY recorded outcome: failed_behavior.",
+  "evidence_refs": [
+    "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_02.zip",
+    "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_02/RUN_METADATA.json"
+  ],
+  "status": "admitted"
+}

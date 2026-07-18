@@ -1,0 +1,38 @@
+{
+  "schema_version": "ordo.empirical_evidence.case.v1",
+  "case_id": "TC01.EX01.NEW_OFFICE_OPENING",
+  "task_class_id": "TC01_COMPLEX_MULTI_STEP_PROCESS",
+  "implementations": [
+    "ordo",
+    "instruction_only"
+  ],
+  "scenario_ids": [
+    "S01_CLEAN_CONTROL",
+    "S02_BRANCH_HEAVY",
+    "S03_INVALID_AND_IRRELEVANT",
+    "S04_BACKTRACK_AND_CORRECT",
+    "S05_INCOMPLETE_HARD_STOP"
+  ],
+  "run_ids": [
+    "TC01.EX01.instruction_only.S01_CLEAN_CONTROL",
+    "TC01.EX01.instruction_only.S02_BRANCH_HEAVY",
+    "TC01.EX01.instruction_only.S03_INVALID_AND_IRRELEVANT",
+    "TC01.EX01.instruction_only.S04_BACKTRACK_AND_CORRECT",
+    "TC01.EX01.instruction_only.S05_INCOMPLETE_HARD_STOP",
+    "TC01.EX01.ordo.S01_CLEAN_CONTROL",
+    "TC01.EX01.ordo.S02_BRANCH_HEAVY",
+    "TC01.EX01.ordo.S03_INVALID_AND_IRRELEVANT",
+    "TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT",
+    "TC01.EX01.ordo.S05_INCOMPLETE_HARD_STOP"
+  ],
+  "claim_ids": [
+    "CL-TC01-EX01-ORDO-ADVANTAGE-BOUNDED"
+  ],
+  "limitations": [
+    "Single completed comparative case.",
+    "Historical model and runtime configuration provenance is incomplete for some runs.",
+    "Composite scoring weights are method version 1 and are not universal.",
+    "The claim must not be generalized to other task classes or production readiness."
+  ],
+  "status": "closed"
+}

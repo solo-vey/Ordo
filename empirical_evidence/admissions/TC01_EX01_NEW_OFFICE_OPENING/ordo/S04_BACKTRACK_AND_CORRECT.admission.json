@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.empirical_evidence.admission.v1",
+  "admission_id": "ADM-TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT",
+  "subject_id": "TC01.EX01.ordo.S04_BACKTRACK_AND_CORRECT",
+  "decision": "admit",
+  "decided_at_utc": "2026-07-15",
+  "decided_by": "historical explicit user admission preserved from v1.3",
+  "reasons": [
+    "Source package checksum verified.",
+    "Historical admission status preserved without reinterpretation."
+  ],
+  "checks": {
+    "integrity": true,
+    "provenance": true,
+    "contamination": true,
+    "method": true
+  }
+}

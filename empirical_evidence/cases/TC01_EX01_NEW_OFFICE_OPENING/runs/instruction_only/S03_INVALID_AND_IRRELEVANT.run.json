@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.empirical_evidence.run.v1",
+  "run_id": "TC01.EX01.instruction_only.S03_INVALID_AND_IRRELEVANT",
+  "case_id": "TC01.EX01.NEW_OFFICE_OPENING",
+  "scenario_id": "S03_INVALID_AND_IRRELEVANT",
+  "implementation": "instruction_only",
+  "model": {
+    "provider": "historical_instruction_only_environment",
+    "identifier": "Memory Driver V8.0",
+    "configuration": {
+      "provenance_status": "partially_resolved",
+      "source_metadata": "01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/RUN_METADATA.json"
+    }
+  },
+  "versions": {
+    "language": "historical_not_declared",
+    "framework": "historical_not_declared",
+    "playbook": null,
+    "evaluator": "composite_quality_scoring_method.v1"
+  },
+  "raw_evidence": {
+    "path": "raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/instruction_only/RUN_03/OFFICE_OPENING_INSTRUCTION_ONLY_RESULT_RUN_03(2).zip",
+    "sha256": "eab17b058c3eacb6a7349055b2291029661db1b7f0800c1425770241456a0245"
+  },
+  "contamination_status": "clean",
+  "admission_status": "admitted",
+  "scorecard_id": "SC-TC01.EX01.instruction_only.S03_INVALID_AND_IRRELEVANT"
+}

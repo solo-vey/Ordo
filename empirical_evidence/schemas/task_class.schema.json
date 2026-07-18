@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "$id": "ordo.empirical_evidence.task_class.v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "task_class_id",
+    "title",
+    "scope",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.empirical_evidence.task_class.v1"
+    },
+    "task_class_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "candidate",
+        "active",
+        "retired"
+      ]
+    },
+    "scoring_profile": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
