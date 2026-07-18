@@ -1,0 +1,137 @@
+name: Ordo full delivery gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ordo-delivery-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  full-delivery-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            cli/pyproject.toml
+            ordo_pathwalk/requirements.txt
+
+      - name: Install validation dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install pytest pyyaml
+          python -m pip install -e ./cli
+          if [ -f ordo_pathwalk/requirements.txt ]; then
+            python -m pip install -r ordo_pathwalk/requirements.txt
+          fi
+
+      - name: Validate workflow contracts
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=cli \
+            python -m pytest \
+              cli/tests/test_ci_clean_gate_workflow.py \
+              cli/tests/test_release_clean_gate_workflow.py \
+              cli/tests/test_release_clean_gate_provenance_linkage.py \
+              cli/tests/test_bl_ordo_026_delivery_workflow.py \
+              -q -p no:cacheprovider
+
+      - name: Run canonical package lints
+        shell: bash
+        run: |
+          set -euo pipefail
+          for package in \
+            packages/history_event_guided_intake \
+            packages/ordo_applied_project_factory \
+            packages/ordo_hybrid_executor \
+            packages/ordo_project_builder
+          do
+            work="$(mktemp -d)"
+            cp -a "$package" "$work/package"
+            ordo lint "$work/package"
+            rm -rf "$work"
+          done
+
+      - name: Run full non-destructive delivery gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/ci
+          python tools/build_release_archive.py \
+            --check-only \
+            --workers 4 \
+            --test-timeout-seconds 3600 \
+            --lint-timeout-seconds 900 \
+            | tee reports/ci/full_delivery_gate.stdout.log
+          cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json
+          cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json
+
+      - name: Build reproducible release candidate
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist reports/ci
+          python tools/build_release_archive.py \
+            --out dist/ordo-release-candidate.zip \
+            --workers 4 \
+            --test-timeout-seconds 3600 \
+            --lint-timeout-seconds 900 \
+            | tee reports/ci/release_build.stdout.log
+          sha256sum dist/ordo-release-candidate.zip > dist/ordo-release-candidate.zip.sha256
+          python - <<'PY'
+          import hashlib, json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          archive = Path('dist/ordo-release-candidate.zip')
+          payload = {
+              'schema_version': 'ordo.independent_delivery_ci_evidence.v1',
+              'status': 'passed',
+              'repository': os.environ.get('GITHUB_REPOSITORY', ''),
+              'revision': os.environ.get('GITHUB_SHA', ''),
+              'ref': os.environ.get('GITHUB_REF', ''),
+              'run_id': os.environ.get('GITHUB_RUN_ID', ''),
+              'run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT', ''),
+              'issued_at': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
+              'archive_path': archive.as_posix(),
+              'archive_sha256': hashlib.sha256(archive.read_bytes()).hexdigest(),
+              'delivery_gate_report': 'reports/ci/DELIVERY_GATE_REPORT.json',
+              'self_check_report': 'reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json',
+          }
+          Path('reports/ci/independent_delivery_ci_evidence.json').write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + '\n', encoding='utf-8'
+          )
+          PY
+
+      - name: Upload delivery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ordo-full-delivery-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            reports/ci/
+            dist/ordo-release-candidate.zip
+            dist/ordo-release-candidate.zip.sha256
+          if-no-files-found: error
+          retention-days: 90
