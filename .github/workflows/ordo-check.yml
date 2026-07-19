@@ -21,6 +21,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyyaml pytest
           python -m pip install -e ./cli
+      - name: Enforce English-only repository policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/ci
+          python tools/check_english_only_policy.py . \
+            --out reports/ci/english_only_policy_report.json
+
       - name: Run CLI unit tests
         env:
           PYTHONPATH: ${{ github.workspace }}
