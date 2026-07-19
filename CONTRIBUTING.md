@@ -4,6 +4,8 @@ Thank you for considering a contribution to Ordo.
 
 Ordo is a language, framework, runtime, evidence, and documentation project for auditable AI-assisted processes. Contributions must preserve explicit human authority, evidence provenance, deterministic behavior where required, and release integrity.
 
+Read [`GOVERNANCE.md`](GOVERNANCE.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), [`SUPPORT.md`](SUPPORT.md), and [`SECURITY.md`](SECURITY.md) before contributing.
+
 ## Repository Language Policy
 
 All repository files must be written in English.
@@ -19,6 +21,7 @@ Immutable raw evidence may preserve source-language content when translation wou
 3. Keep the change narrowly scoped.
 4. Do not mix unrelated cleanup with functional work.
 5. Never describe a candidate, partial gate, inherited gate, or stale report as canonical.
+6. Never put suspected vulnerabilities or sensitive conduct reports in public issues or pull requests.
 
 ## Contribution Categories
 
@@ -93,7 +96,11 @@ For release-bound work:
 
 Do not submit credentials, private keys, unauthorized personal information, private repository URLs, confidential customer data, or unredacted conversations containing personal information.
 
+Report vulnerabilities only through the private process in [`SECURITY.md`](SECURITY.md).
+
 ## Pull Requests
+
+Use the repository pull-request template.
 
 A pull request must reference related work, explain behavior changes, identify affected artifacts, list tests, declare version impact, disclose evidence/privacy impact, and describe migration or rollback behavior.
 

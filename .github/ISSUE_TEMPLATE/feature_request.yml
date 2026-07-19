@@ -1,0 +1,42 @@
+name: Feature proposal
+description: Propose a scoped improvement without implying roadmap commitment
+title: "[Proposal]: "
+labels:
+  - enhancement
+body:
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and backlog references.
+          required: true
+        - label: This proposal contains no security vulnerability details or sensitive data.
+          required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user or process problem, not only a desired implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Affected users or workflows
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and migration impact
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or examples
