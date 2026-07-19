@@ -65,6 +65,12 @@ jobs:
               cli/tests/test_bl_ordo_026_delivery_workflow.py \
               -q -p no:cacheprovider
 
+      - name: Run CI-backed golden examples
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/run_golden_examples.py --all
+
       - name: Run canonical package lints
         shell: bash
         run: |

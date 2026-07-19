@@ -7,7 +7,7 @@ It validates and compiles package structure, checks state/gates, generates helpe
 ## Install
 
 ```bash
-python -m pip install -e .
+python -m pip install -e ./cli
 ```
 
 ## Core commands
@@ -50,12 +50,12 @@ Removed in M43 lean cleanup: registry-site, dashboard, global publication catalo
 ## Example
 
 ```bash
-ordo lint ../packages/ordo_project_builder
-ordo compile ../packages/ordo_project_builder
-ordo test ../packages/ordo_project_builder
-ordo coverage ../packages/ordo_project_builder
-ordo validate-state ../packages/ordo_project_builder --answers ../packages/ordo_project_builder/run_inputs/authoring_success.yaml
-ordo next-step ../packages/ordo_project_builder --answers ../packages/ordo_project_builder/run_inputs/authoring_success.yaml
+ordo lint packages/ordo_project_builder
+ordo compile packages/ordo_project_builder
+ordo test packages/ordo_project_builder
+ordo coverage packages/ordo_project_builder
+ordo validate-state packages/ordo_project_builder --answers packages/ordo_project_builder/run_inputs/authoring_success.yaml
+ordo next-step packages/ordo_project_builder --answers packages/ordo_project_builder/run_inputs/authoring_success.yaml
 ```
 
 ### `ordo validate-artifacts`
@@ -104,7 +104,7 @@ Runtime Mode now enforces a checkpoint layer: one node, one contract, and one de
 Use one-node submit mode when the runtime is collecting answers interactively:
 
 ```bash
-ordo intake ../packages/history_event_guided_intake --submit N_EVENT_GOAL --answer "Зміна капіталу"
+ordo intake ../packages/history_event_guided_intake --submit N_EVENT_GOAL --answer "Capital change"
 ordo intake ../packages/history_event_guided_intake --submit N_PATH_SELECT --answer A --state ../packages/history_event_guided_intake/reports/intake_submit_report.json
 ```
 

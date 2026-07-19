@@ -29,6 +29,12 @@ jobs:
           python tools/check_english_only_policy.py . \
             --out reports/ci/english_only_policy_report.json
 
+      - name: Run CI-backed golden examples
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/run_golden_examples.py --all
+
       - name: Run CLI unit tests
         env:
           PYTHONPATH: ${{ github.workspace }}

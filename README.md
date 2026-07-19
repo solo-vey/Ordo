@@ -48,6 +48,20 @@ cd ORDO_ARF_CANONICAL_ORDO_2026_07_17_RC10
 sha256sum -c SHA256SUMS.txt
 ```
 
+## Quickstart
+
+From the repository root, create an isolated environment, install the CLI, and run the canonical package-validation example:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ./cli
+python tools/run_golden_examples.py --example package-validation
+```
+
+The command runs the same documented example enforced by CI. See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the Process Rail and end-to-end examples.
+
 ## Development and validation
 
 The release gate is defined by [`DELIVERY_POLICY.md`](DELIVERY_POLICY.md). The sanctioned archive builder is [`tools/build_release_archive.py`](tools/build_release_archive.py). Local generated outputs belong under `.ordo-generated/` and must not be committed.
