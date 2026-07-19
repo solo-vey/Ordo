@@ -1,5 +1,7 @@
-schema_version: ordo.english_only_policy.v1
+schema_version: ordo.english_only_policy.v2
+mode: migration
 default_action: block
+baseline_file: policies/english_only_migration_baseline.json
 scan_extensions:
 - .md
 - .txt
@@ -29,7 +31,7 @@ path_exemptions:
   reason: Language-behavior fixtures.
 - id: validator_test_fixtures
   glob: cli/tests/fixtures/english_only_policy/**
-  reason: Positive and negative validator fixtures.
+  reason: Validator fixtures.
 file_exemptions:
 - id: legal_name_commercial
   path: COMMERCIAL_LICENSE.md

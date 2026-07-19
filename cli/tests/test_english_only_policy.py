@@ -1,18 +1,21 @@
 from __future__ import annotations
-import json, subprocess, sys, tempfile, unittest
+import importlib.util, json, tempfile, unittest
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[2]; SCRIPT=ROOT/"tools/check_english_only_policy.py"; FIX=ROOT/"cli/tests/fixtures/english_only_policy"
-class T(unittest.TestCase):
-    def runv(self,repo):
-        with tempfile.TemporaryDirectory() as d:
-            rp=Path(d)/"r.json"; p=subprocess.run([sys.executable,str(SCRIPT),str(repo),"--out",str(rp),"--json"],cwd=ROOT,capture_output=True,text=True)
-            return p,json.loads(rp.read_text())
-    def test_pass(self):
-        p,r=self.runv(FIX/"pass_repo"); self.assertEqual(p.returncode,0,p.stdout+p.stderr); self.assertEqual(r["status"],"passed")
-    def test_fail_closed(self):
-        p,r=self.runv(FIX/"fail_repo"); self.assertEqual(p.returncode,1); self.assertEqual(r["violation_count"],1)
-    def test_repo(self):
-        p,r=self.runv(ROOT); self.assertEqual(p.returncode,0,p.stdout+p.stderr); self.assertEqual(r["status"],"passed")
-    def test_no_separate_workflow(self):
-        names={p.name for p in (ROOT/".github/workflows").glob("*.yml")}; self.assertNotIn("english-only-policy.yml",names)
-if __name__=="__main__": unittest.main()
+ROOT=Path(__file__).resolve().parents[2]; SCRIPT=ROOT/'tools/check_english_only_policy.py'; POLICY=ROOT/'policies/english_only_policy.yaml'
+spec=importlib.util.spec_from_file_location('validator',SCRIPT); v=importlib.util.module_from_spec(spec); spec.loader.exec_module(v)
+class EnglishOnlyPolicyTests(unittest.TestCase):
+ def test_current_repository_matches_migration_baseline(self):
+  r=v.validate(ROOT,POLICY); self.assertEqual(r['status'],'passed'); self.assertEqual(r['new_violation_count'],0)
+ def test_new_violation_blocks(self):
+  with tempfile.TemporaryDirectory() as t:
+   root=Path(t); (root/'policies').mkdir(); (root/'docs').mkdir();
+   (root/'policies/english_only_policy.yaml').write_text(POLICY.read_text());
+   (root/'policies/english_only_migration_baseline.json').write_text(json.dumps({'baseline_revision':'x','violation_ids':[]}));
+   (root/'docs/new.md').write_text('Український текст'); r=v.validate(root,root/'policies/english_only_policy.yaml'); self.assertEqual(r['status'],'blocked'); self.assertEqual(r['new_violation_count'],1)
+ def test_removed_baseline_violation_is_allowed(self):
+  with tempfile.TemporaryDirectory() as t:
+   root=Path(t); (root/'policies').mkdir();
+   (root/'policies/english_only_policy.yaml').write_text(POLICY.read_text());
+   (root/'policies/english_only_migration_baseline.json').write_text(json.dumps({'baseline_revision':'x','violation_ids':['missing-id']}));
+   r=v.validate(root,root/'policies/english_only_policy.yaml'); self.assertEqual(r['status'],'passed'); self.assertEqual(r['baseline_removed_count'],1)
+if __name__=='__main__': unittest.main()

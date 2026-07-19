@@ -1,14 +1,29 @@
-schema_version: ordo.english_only_policy.v1
+schema_version: ordo.english_only_policy.v2
+mode: migration
 default_action: block
+baseline_file: policies/english_only_migration_baseline.json
 scan_extensions:
 - .md
+- .txt
+- .rst
 - .yaml
+- .yml
+- .json
 ukrainian_character_pattern: '[\u0410-\u044F\u0406\u0456\u0407\u0457\u0404\u0454\u0490\u0491]'
 path_exemptions: []
 file_exemptions: []
 structured_value_exemptions:
-- id: localized
+- id: localized_uk_field
   path_suffix: display_name_uk
-language_fixture_globs: []
-expected_non_plain_yaml: []
-expected_invalid_yaml_globs: []
+  reason: Explicit localized payload.
+- id: uk_locale_map
+  path_segment: uk-UA
+  reason: Explicit locale map.
+language_fixture_globs:
+- fixtures/apf_real_case_replay/**
+- ordo_pathwalk/examples/**
+expected_non_plain_yaml:
+- packages/history_event_guided_intake/output_templates/history_event/guided_intake_outputs/0.1.1/templates/08_qa_automation_spec_model_assisted.yaml
+expected_invalid_yaml_globs:
+- cli/tests/fixtures/clean_check/broken_manifest_yaml/**
+- cli/tests/fixtures/clean_check/broken_source_yaml/**

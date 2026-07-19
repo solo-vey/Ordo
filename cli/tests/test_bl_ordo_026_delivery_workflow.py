@@ -70,7 +70,7 @@ class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
         self.assertIn("packages/ordo_applied_project_factory", check)
 
 
-    def test_english_only_policy_is_integrated_without_separate_workflow(self) -> None:
+    def test_migration_aware_english_only_policy_is_integrated(self) -> None:
         command = "python tools/check_english_only_policy.py"
         self.assertIn(command, self.text)
         self.assertIn(command, CHECK_WORKFLOW.read_text(encoding="utf-8"))

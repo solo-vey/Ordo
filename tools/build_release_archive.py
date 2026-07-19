@@ -277,7 +277,7 @@ def check_english_only_policy() -> dict:
     result = validate_english_only_policy(ROOT, ROOT / "policies" / "english_only_policy.yaml")
     path = ROOT / "reports" / "english_only_policy_report.json"
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
 
 def build_zip(out: Path, report: dict, self_check: dict, md_text: str) -> dict:
@@ -336,7 +336,7 @@ def main(argv: list[str] | None = None) -> int:
             blocking.append(f"package lint timed out: {name} ({status})")
     blocking += sync_issues + root_issues
     if english_only["status"] != "passed":
-        blocking.append(f"English-only policy failed: {english_only['violation_count']} violation(s), {english_only['parse_failure_count']} parse failure(s)")
+        blocking.append(f"English-only policy failed: {english_only['new_violation_count']} new violation(s), {english_only['parse_failure_count']} parse failure(s)")
 
     identity = load_identity(ROOT)
     run_id = f"{identity['release_id']}:{uuid.uuid4().hex}"
