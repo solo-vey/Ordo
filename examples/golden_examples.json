@@ -1,0 +1,128 @@
+{
+  "schema_version": "ordo.golden_examples.v1",
+  "working_directory": "repository-root",
+  "examples": [
+    {
+      "id": "package-validation",
+      "description": "Validate the canonical project-builder package.",
+      "package": "packages/ordo_project_builder",
+      "commands": [
+        [
+          "ordo",
+          "lint",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "compile",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "test",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "coverage",
+          "{package}"
+        ]
+      ]
+    },
+    {
+      "id": "process-rail-next-step",
+      "description": "Validate canonical answers and request the next step.",
+      "package": "packages/ordo_project_builder",
+      "commands": [
+        [
+          "ordo",
+          "compile",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "validate-state",
+          "{package}",
+          "--answers",
+          "{package}/run_inputs/authoring_success.yaml"
+        ],
+        [
+          "ordo",
+          "next-step",
+          "{package}",
+          "--answers",
+          "{package}/run_inputs/authoring_success.yaml"
+        ]
+      ]
+    },
+    {
+      "id": "history-event-output-gate",
+      "description": "Run the canonical history-event output gate.",
+      "package": "packages/history_event_guided_intake",
+      "commands": [
+        [
+          "ordo",
+          "compile",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "runtime-status",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "lock",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "validate-lock",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "intake",
+          "{package}",
+          "--answers",
+          "{package}/run_inputs/intake_success.yaml",
+          "--non-interactive"
+        ],
+        [
+          "ordo",
+          "validate-state",
+          "{package}",
+          "--answers",
+          "{package}/run_inputs/intake_success.yaml"
+        ],
+        [
+          "ordo",
+          "generate-output",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "validate-output",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "validate-artifacts",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "consistency",
+          "{package}"
+        ],
+        [
+          "ordo",
+          "go-no-go",
+          "{package}",
+          "--answers",
+          "{package}/run_inputs/intake_success.yaml"
+        ]
+      ]
+    }
+  ]
+}
