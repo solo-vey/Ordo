@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a reproducible non-security defect
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include vulnerabilities, credentials, private evidence, confidential data, or unredacted personal information. Use private vulnerability reporting for security issues.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true
+        - label: I removed secrets and sensitive data.
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Identify the current main commit or packaged release.
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reproducible case.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant sanitized logs
+      render: shell

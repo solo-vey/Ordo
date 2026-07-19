@@ -6,7 +6,16 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 - [`QUICKSTART.md`](QUICKSTART.md) — install Ordo and run the three CI-backed golden examples.
 - [`../README.md`](../README.md) — repository overview, release distinction, and top-level entry points.
+- [`../SUPPORT.md`](../SUPPORT.md) — choose the correct route for bugs, questions, proposals, security reports, and conduct concerns.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution workflow and repository expectations.
+
+## Security, support, and governance
+
+- [`../SECURITY.md`](../SECURITY.md) — supported versions, private vulnerability reporting, scope, and disclosure process.
+- [`../SUPPORT.md`](../SUPPORT.md) — public and private support routes.
+- [`../GOVERNANCE.md`](../GOVERNANCE.md) — decision authority, review expectations, and governance changes.
+- [`../CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md) — behavior expectations and private conduct reporting route.
+- [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution requirements and pull-request expectations.
 
 ## Language and runtime
 

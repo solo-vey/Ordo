@@ -36,12 +36,16 @@ This Code applies in official project spaces and when representing the project p
 
 ## Reporting
 
-Report conduct concerns through the project's approved private reporting channel.
+Do not report sensitive conduct concerns in public issues, discussions, pull requests, review comments, or social media.
 
-Before publication, replace this draft instruction with the actual private reporting mechanism. Do not place sensitive personal information in public issues.
+Use GitHub private vulnerability reporting as the currently approved private repository channel and begin the report title with `Conduct concern:`. See [`SUPPORT.md`](SUPPORT.md#conduct-concerns).
+
+Include only the information needed to assess the concern. Do not disclose unrelated personal information.
 
 ## Enforcement
 
 Maintainers may request correction, remove content, close or lock discussions, reject contributions, issue warnings, or restrict participation.
 
-Retaliation against good-faith reporters is prohibited.
+Enforcement decisions should consider context, severity, impact, prior behavior, good-faith correction, and the safety of affected participants.
+
+Retaliation against good-faith reporters is prohibited. Knowingly false reports, evidence fabrication, or use of the reporting process for harassment may result in enforcement action.

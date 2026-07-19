@@ -35,7 +35,17 @@ The main routes are:
 - [Packages and authoring](docs/README.md#packages-and-authoring)
 - [CLI and validation](docs/README.md#cli-and-validation)
 - [Evidence and releases](docs/README.md#evidence-and-releases)
+- [Security](SECURITY.md)
+- [Support](SUPPORT.md)
+- [Governance](GOVERNANCE.md)
 - [Contributing](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## Community and security
+
+Use public issues for reproducible bugs, documentation problems, and feature proposals. See [`SUPPORT.md`](SUPPORT.md) for the correct route.
+
+Do not disclose suspected vulnerabilities in public issues, discussions, pull requests, or social media. Use GitHub private vulnerability reporting as described in [`SECURITY.md`](SECURITY.md).
 
 ## What is included
 
