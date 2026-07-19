@@ -56,3 +56,13 @@ def test_generated_artifact_isolation_gate_passes():
     assert proc.returncode == 0, proc.stdout + proc.stderr
     report = json.loads(proc.stdout)
     assert report['status'] == 'passed'
+
+
+def test_english_only_policy_report_is_not_materialized_in_canonical_reports():
+    builder = (ROOT / "tools" / "build_release_archive.py").read_text(encoding="utf-8")
+    policy_doc = (ROOT / "language" / "ENGLISH_ONLY_REPOSITORY_POLICY_GATE.md").read_text(encoding="utf-8")
+
+    assert 'reports/english_only_policy_report.json' not in builder
+    assert 'ROOT / "reports" / "english_only_policy_report.json"' not in builder
+    assert '.ordo-generated/workspace-reports/english_only_policy_report.json' in policy_doc
+    assert not (ROOT / "reports" / "english_only_policy_report.json").exists()
