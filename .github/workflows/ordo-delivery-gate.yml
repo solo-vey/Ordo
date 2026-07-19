@@ -45,6 +45,14 @@ jobs:
             python -m pip install -r ordo_pathwalk/requirements.txt
           fi
 
+      - name: Enforce English-only repository policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/ci
+          python tools/check_english_only_policy.py . \
+            --out reports/ci/english_only_policy_report.json
+
       - name: Validate workflow contracts
         shell: bash
         run: |

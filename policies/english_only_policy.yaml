@@ -1,0 +1,57 @@
+schema_version: ordo.english_only_policy.v1
+default_action: block
+scan_extensions:
+- .md
+- .txt
+- .rst
+- .yaml
+- .yml
+- .json
+ukrainian_character_pattern: '[\u0410-\u044F\u0406\u0456\u0407\u0457\u0404\u0454\u0490\u0491]'
+path_exemptions:
+- id: ukrainian_book
+  glob: book/**
+  reason: Intentional Ukrainian book.
+- id: archived_provenance
+  glob: archive/**
+  reason: Preserved provenance.
+- id: historical_reports
+  glob: reports/historical/**
+  reason: Immutable historical reports.
+- id: immutable_empirical_evidence
+  glob: empirical_evidence/**
+  reason: Preserved empirical evidence.
+- id: pathwalk_language_fixtures
+  glob: ordo_pathwalk/examples/**
+  reason: Language-behavior fixtures.
+- id: apf_language_fixtures
+  glob: fixtures/apf_real_case_replay/**
+  reason: Language-behavior fixtures.
+- id: validator_test_fixtures
+  glob: cli/tests/fixtures/english_only_policy/**
+  reason: Positive and negative validator fixtures.
+file_exemptions:
+- id: legal_name_commercial
+  path: COMMERCIAL_LICENSE.md
+  reason: Legal proper name.
+- id: legal_name_notice
+  path: NOTICE.md
+  reason: Legal proper name.
+- id: policy_examples
+  path: language/BILINGUAL_FIELD_POLICY.md
+  reason: Localized policy examples.
+structured_value_exemptions:
+- id: localized_uk_field
+  path_suffix: display_name_uk
+  reason: Explicit localized payload.
+- id: uk_locale_map
+  path_segment: uk-UA
+  reason: Explicit locale map.
+language_fixture_globs:
+- fixtures/apf_real_case_replay/**
+- ordo_pathwalk/examples/**
+expected_non_plain_yaml:
+- packages/history_event_guided_intake/output_templates/history_event/guided_intake_outputs/0.1.1/templates/08_qa_automation_spec_model_assisted.yaml
+expected_invalid_yaml_globs:
+- cli/tests/fixtures/clean_check/broken_manifest_yaml/**
+- cli/tests/fixtures/clean_check/broken_source_yaml/**

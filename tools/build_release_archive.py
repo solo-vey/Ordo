@@ -37,6 +37,7 @@ TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 from release_integrity import build_verified_archive, load_identity, source_tree_hash
+from check_english_only_policy import validate as validate_english_only_policy
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_PARTS = {".git", "__pycache__", ".pytest_cache", "node_modules"}
@@ -272,6 +273,13 @@ def check_root_hygiene() -> list[str]:
     return []
 
 
+def check_english_only_policy() -> dict:
+    result = validate_english_only_policy(ROOT, ROOT / "policies" / "english_only_policy.yaml")
+    path = ROOT / "reports" / "english_only_policy_report.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return result
+
 def build_zip(out: Path, report: dict, self_check: dict, md_text: str) -> dict:
     reports = {
         "DELIVERY_GATE_REPORT.json": json.dumps(report, indent=2) + "\n",
@@ -316,6 +324,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     sync_issues = check_manifest_sync()
     root_issues = check_root_hygiene()
+    english_only = check_english_only_policy()
 
     blocking: list[str] = []
     if tests["failed"] or tests["collection_or_run_errors"] or tests["failing_files"]:
@@ -326,6 +335,8 @@ def main(argv: list[str] | None = None) -> int:
         elif status.startswith("timed_out_after_"):
             blocking.append(f"package lint timed out: {name} ({status})")
     blocking += sync_issues + root_issues
+    if english_only["status"] != "passed":
+        blocking.append(f"English-only policy failed: {english_only['violation_count']} violation(s), {english_only['parse_failure_count']} parse failure(s)")
 
     identity = load_identity(ROOT)
     run_id = f"{identity['release_id']}:{uuid.uuid4().hex}"
@@ -344,6 +355,7 @@ def main(argv: list[str] | None = None) -> int:
         "package_lints": lints,
         "manifest_sync": "passed" if not sync_issues else "failed",
         "root_hygiene": "passed" if not root_issues else "failed",
+        "english_only_policy": english_only,
         "blocking_issues": blocking,
         "timeouts": {
             "test_partition_seconds": args.test_timeout_seconds,
@@ -372,6 +384,7 @@ def main(argv: list[str] | None = None) -> int:
         "source_tree_hash": report["source_tree_hash"],
         "tests": tests,
         "package_lints": lints,
+        "english_only_policy": english_only,
         "note": "Generated automatically at delivery time from the current tree; never hand-written.",
     }
     (ROOT / "FINAL_PACKAGE_SELF_CHECK_REPORT.json").write_text(

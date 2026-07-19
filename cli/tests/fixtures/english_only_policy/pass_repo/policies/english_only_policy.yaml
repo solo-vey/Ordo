@@ -1,0 +1,14 @@
+schema_version: ordo.english_only_policy.v1
+default_action: block
+scan_extensions:
+- .md
+- .yaml
+ukrainian_character_pattern: '[\u0410-\u044F\u0406\u0456\u0407\u0457\u0404\u0454\u0490\u0491]'
+path_exemptions: []
+file_exemptions: []
+structured_value_exemptions:
+- id: localized
+  path_suffix: display_name_uk
+language_fixture_globs: []
+expected_non_plain_yaml: []
+expected_invalid_yaml_globs: []
