@@ -274,11 +274,13 @@ def check_root_hygiene() -> list[str]:
 
 
 def check_english_only_policy() -> dict:
-    result = validate_english_only_policy(ROOT, ROOT / "policies" / "english_only_policy.yaml")
-    path = ROOT / "reports" / "english_only_policy_report.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    return result
+    # The result is embedded in DELIVERY_GATE_REPORT.json and the final self-check.
+    # Do not materialize a standalone report under reports/: that directory is
+    # reserved for canonical, manifest-declared evidence.
+    return validate_english_only_policy(
+        ROOT,
+        ROOT / "policies" / "english_only_policy.yaml",
+    )
 
 def build_zip(out: Path, report: dict, self_check: dict, md_text: str) -> dict:
     reports = {
