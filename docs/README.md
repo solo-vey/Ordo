@@ -34,6 +34,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 ## CLI and validation
 
 - [`../cli/README.md`](../cli/README.md) — CLI command reference and root-relative usage.
+- [`REPOSITORY_HYGIENE.md`](REPOSITORY_HYGIENE.md) — development and release hygiene scopes, forbidden paths, and duplicate-nesting rules.
 - [`../DELIVERY_POLICY.md`](../DELIVERY_POLICY.md) — release and delivery gate policy.
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.

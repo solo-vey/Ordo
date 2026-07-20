@@ -19,7 +19,8 @@ class ProductionRepoHygienePolicyTests(unittest.TestCase):
         policy = data["repo_hygiene"]
         roots = {item["root_id"]: item for item in policy["roots"]}
 
-        self.assertEqual(data["schema_version"], "ordo.repo_hygiene.policy.v1")
+        self.assertEqual(data["schema_version"], "ordo.repo_hygiene.policy.v2")
+        self.assertEqual(policy["policy_status"], "unified_development_release_contract")
         self.assertEqual(roots["language_core"]["clean_check"], "root_contract")
         self.assertEqual(roots["cli_core"]["clean_check"], "root_contract")
         self.assertEqual(roots["applied_packages"]["clean_check"], "delegated")
@@ -27,6 +28,8 @@ class ProductionRepoHygienePolicyTests(unittest.TestCase):
         self.assertFalse(any(item["clean_check"] == "required" for item in roots.values()))
         self.assertTrue(roots["language_core"]["release_blocking"])
         self.assertTrue(roots["cli_core"]["release_blocking"])
+        self.assertIn(".DS_Store", policy["forbidden_paths"]["file_names"])
+        self.assertIn(".ordo-generated", policy["forbidden_paths"]["directory_names"])
 
     def test_production_policy_runs_without_false_enforcement(self) -> None:
         report = run_repo_package_hygiene(REPO_ROOT, profile="standard")
@@ -45,6 +48,8 @@ class ProductionRepoHygienePolicyTests(unittest.TestCase):
         self.assertEqual(report["status"], "passed")
         self.assertEqual(hygiene["status"], "passed")
         self.assertEqual(hygiene["policy_path"], "repo_hygiene.yml")
+        self.assertIn("repository_forbidden_paths", report["reports"])
+        self.assertIn("duplicate_repository_nesting", report["reports"])
 
     def test_delegated_packages_are_not_individually_checked(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

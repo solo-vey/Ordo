@@ -38,6 +38,14 @@ def validate_workflow_paths(repo_root: str | Path) -> dict[str, Any]:
     }
 
 
+DEFAULT_FORBIDDEN_PATH_POLICY = {
+    "directory_names": ["__pycache__", ".pytest_cache", ".venv", "venv", "env", "htmlcov", "__MACOSX", ".ordo-generated", ".ordo-release-candidate"],
+    "directory_suffixes": [".egg-info"],
+    "file_names": [".DS_Store", ".coverage"],
+    "file_prefixes": ["._"],
+    "file_suffixes": [".pyc", ".pyo", ".swp", ".swo", ".tmp", ".temp"],
+    "path_globs": [".coverage.*", "reports/ci/**", "reports/release/**", "packages/*/reports/ci_release_evidence.json"],
+}
 FORBIDDEN_METADATA_DIR_NAMES = {"__pycache__"}
 FORBIDDEN_METADATA_SUFFIXES = {".pyc"}
 FORBIDDEN_METADATA_DIR_SUFFIXES = {".egg-info"}
@@ -117,6 +125,198 @@ def validate_generated_metadata_absent(
     }
 
 
+
+def _load_unified_hygiene_policy(root: Path) -> dict[str, Any]:
+    path = root / "repo_hygiene.yml"
+    if not path.is_file():
+        return {}
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    policy = data.get("repo_hygiene", data)
+    return policy if isinstance(policy, dict) else {}
+
+
+def _forbidden_path_policy(root: Path) -> dict[str, list[str]]:
+    policy = _load_unified_hygiene_policy(root).get("forbidden_paths", {})
+    if not isinstance(policy, dict):
+        policy = {}
+    return {
+        key: [str(item) for item in policy.get(key, DEFAULT_FORBIDDEN_PATH_POLICY[key]) or []]
+        for key in DEFAULT_FORBIDDEN_PATH_POLICY
+    }
+
+
+def _matches_forbidden_path(rel: Path, policy: dict[str, list[str]]) -> bool:
+    parts = rel.parts
+    name = rel.name
+    text = rel.as_posix()
+    return (
+        any(part in policy["directory_names"] for part in parts)
+        or any(any(part.endswith(suffix) for suffix in policy["directory_suffixes"]) for part in parts)
+        or name in policy["file_names"]
+        or any(name.startswith(prefix) for prefix in policy["file_prefixes"])
+        or any(name.endswith(suffix) for suffix in policy["file_suffixes"])
+        or any(rel.match(pattern) or Path(text).match(pattern) for pattern in policy["path_globs"])
+    )
+
+
+def _scan_repository_forbidden_paths(root: Path) -> list[str]:
+    policy = _forbidden_path_policy(root)
+    forbidden: list[str] = []
+    for path in root.rglob("*"):
+        rel = path.relative_to(root)
+        if _matches_forbidden_path(rel, policy):
+            forbidden.append(rel.as_posix())
+    return sorted(set(forbidden))
+
+
+def _git_tracked_forbidden_paths(root: Path) -> tuple[list[str], str]:
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "-z"],
+            text=False,
+            capture_output=True,
+            check=False,
+        )
+    except OSError:
+        return [], "git_unavailable"
+    if proc.returncode != 0:
+        return [], "git_metadata_unavailable"
+    policy = _forbidden_path_policy(root)
+    tracked = []
+    for raw in proc.stdout.split(b"\0"):
+        if not raw:
+            continue
+        rel = Path(raw.decode("utf-8", errors="surrogateescape"))
+        if _matches_forbidden_path(rel, policy):
+            tracked.append(rel.as_posix())
+    return sorted(set(tracked)), "git_tracked_files"
+
+
+def validate_repository_forbidden_paths(
+    repo_root: str | Path,
+    scope: str = "development",
+) -> dict[str, Any]:
+    root = Path(repo_root).resolve()
+    if scope not in HYGIENE_SCOPES:
+        raise ValueError(f"unsupported hygiene scope: {scope}")
+    observed = _scan_repository_forbidden_paths(root)
+    if scope == "release":
+        forbidden = observed
+        evidence_mode = "release_tree_filesystem"
+    else:
+        forbidden, evidence_mode = _git_tracked_forbidden_paths(root)
+    return {
+        "status": "passed" if not forbidden else "failed",
+        "scope": scope,
+        "evidence_mode": evidence_mode,
+        "forbidden_paths": forbidden,
+        "observed_transient_paths": observed,
+        "note": (
+            "Development scope blocks only Git-tracked forbidden paths; untracked local artifacts are reported. "
+            "Release scope blocks every forbidden path in the isolated candidate tree."
+        ),
+    }
+
+
+def _git_tracked_paths(root: Path) -> tuple[list[Path], str]:
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "-z"],
+            text=False,
+            capture_output=True,
+            check=False,
+        )
+    except OSError:
+        return [], "git_unavailable"
+    if proc.returncode != 0:
+        return [], "git_metadata_unavailable"
+    paths = [
+        Path(raw.decode("utf-8", errors="surrogateescape"))
+        for raw in proc.stdout.split(b"\0")
+        if raw
+    ]
+    return paths, "git_tracked_files"
+
+
+def _duplicate_nesting_findings(
+    paths: list[Path],
+    repo_name: str,
+    settings: dict[str, Any],
+    exempt: tuple[str, ...],
+) -> list[str]:
+    forbidden: list[str] = []
+    for rel in paths:
+        text = rel.as_posix()
+        if any(text == prefix.rstrip("/") or text.startswith(prefix) for prefix in exempt):
+            continue
+        parts = rel.parts[:-1] if rel.suffix else rel.parts
+        if not parts:
+            continue
+        adjacent_index = next(
+            (
+                index
+                for index in range(1, len(parts))
+                if settings.get("adjacent_segment_repetition", True)
+                and parts[index].casefold() == parts[index - 1].casefold()
+            ),
+            None,
+        )
+        repository_repeat = (
+            settings.get("repository_name_repetition", True)
+            and parts[0].casefold() == repo_name
+        )
+        if repository_repeat:
+            forbidden.append(parts[0])
+        elif adjacent_index is not None:
+            forbidden.append("/".join(parts[: adjacent_index + 1]))
+    return sorted(set(forbidden))
+
+
+def validate_duplicate_repository_nesting(
+    repo_root: str | Path,
+    scope: str = "development",
+) -> dict[str, Any]:
+    root = Path(repo_root).resolve()
+    if scope not in HYGIENE_SCOPES:
+        raise ValueError(f"unsupported hygiene scope: {scope}")
+    settings = _load_unified_hygiene_policy(root).get("duplicate_nesting", {})
+    if not isinstance(settings, dict) or not settings.get("enabled", False):
+        return {
+            "status": "passed",
+            "scope": scope,
+            "forbidden_paths": [],
+            "observed_transient_paths": [],
+            "note": "duplicate nesting check disabled",
+        }
+
+    exempt = tuple(str(item) for item in settings.get("exempt_prefixes", []) or [])
+    repo_name = root.name.casefold()
+    observed_paths = [
+        path.relative_to(root)
+        for path in root.rglob("*")
+        if path.is_file()
+    ]
+    observed = _duplicate_nesting_findings(observed_paths, repo_name, settings, exempt)
+
+    if scope == "release":
+        forbidden = observed
+        evidence_mode = "release_tree_filesystem"
+    else:
+        tracked_paths, evidence_mode = _git_tracked_paths(root)
+        forbidden = _duplicate_nesting_findings(tracked_paths, repo_name, settings, exempt)
+
+    return {
+        "status": "passed" if not forbidden else "failed",
+        "scope": scope,
+        "evidence_mode": evidence_mode,
+        "forbidden_paths": forbidden,
+        "observed_transient_paths": observed,
+        "exempt_prefixes": list(exempt),
+        "note": (
+            "Development scope blocks duplicate nesting only in Git-tracked paths. "
+            "Release scope blocks duplicate nesting anywhere in the isolated candidate tree."
+        ),
+    }
 
 def validate_package_generated_artifacts_absent(repo_root: str | Path) -> dict[str, Any]:
     root = Path(repo_root).resolve()
@@ -431,10 +631,14 @@ def run_repo_checks(
         raise ValueError(f"unsupported hygiene scope: {hygiene_scope}")
     workflow = validate_workflow_paths(repo_root)
     generated = validate_generated_metadata_absent(repo_root, scope=hygiene_scope)
+    repository_forbidden = validate_repository_forbidden_paths(repo_root, scope=hygiene_scope)
+    duplicate_nesting = validate_duplicate_repository_nesting(repo_root, scope=hygiene_scope)
     package_generated = validate_package_generated_artifacts_absent(repo_root)
     reports = {
         "workflow_paths": workflow,
         "generated_metadata_absent": generated,
+        "repository_forbidden_paths": repository_forbidden,
+        "duplicate_repository_nesting": duplicate_nesting,
         "package_generated_artifacts_absent": package_generated,
     }
     failed = [name for name, report in reports.items() if report.get("status") != "passed"]

@@ -1,9 +1,10 @@
-schema_version: ordo.repo_hygiene.policy.v1
+schema_version: ordo.repo_hygiene.policy.v2
 repo_hygiene:
   policy_id: ordo-language-repository-production-hygiene
-  policy_status: phase_c_development_release_scope_isolation
+  policy_status: unified_development_release_contract
   default_profile: standard
   fail_on_warning: false
+
   metadata_scopes:
     development:
       enforcement: git_tracked_only
@@ -11,6 +12,45 @@ repo_hygiene:
     release:
       enforcement: strict_candidate_tree_scan
       candidate_source: isolated_clean_export
+
+  forbidden_paths:
+    directory_names:
+      - __pycache__
+      - .pytest_cache
+      - .venv
+      - venv
+      - env
+      - htmlcov
+      - __MACOSX
+      - .ordo-generated
+      - .ordo-release-candidate
+    directory_suffixes:
+      - .egg-info
+    file_names:
+      - .DS_Store
+      - .coverage
+    file_prefixes:
+      - ._
+    file_suffixes:
+      - .pyc
+      - .pyo
+      - .swp
+      - .swo
+      - .tmp
+      - .temp
+    path_globs:
+      - .coverage.*
+      - reports/ci/**
+      - reports/release/**
+      - packages/*/reports/ci_release_evidence.json
+
+  duplicate_nesting:
+    enabled: true
+    adjacent_segment_repetition: true
+    repository_name_repetition: true
+    exempt_prefixes:
+      - TRANSFER_2026-07-14/
+
   roots:
     - root_id: language_core
       path: language
@@ -41,6 +81,7 @@ repo_hygiene:
           - ordo/cli.py
           - ordo/repo_checks.py
           - tests/test_production_repo_hygiene_policy.py
+          - tests/test_repository_hygiene_contract.py
         python_globs:
           - ordo/*.py
           - tests/test_*.py
@@ -97,11 +138,11 @@ repo_hygiene:
       role: workflow_area
       clean_check: ignored
       release_blocking: false
-      rationale: Covered by existing repository workflow validation.
+      rationale: Covered by repository workflow and community-health validation.
 
     - root_id: reports_area
       path: reports
       role: generated_artifact_area
       clean_check: ignored
       release_blocking: false
-      rationale: Historical and generated evidence must not become a package root.
+      rationale: Historical evidence is retained; new transient CI output is isolated by forbidden-path policy.

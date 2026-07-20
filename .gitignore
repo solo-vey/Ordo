@@ -1,0 +1,37 @@
+# Python bytecode and install metadata
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.coverage-reports/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Ordo local/generated workspaces
+.ordo-generated/
+.ordo-release-candidate/
+reports/ci/
+reports/release/
+packages/*/reports/ci_release_evidence.json
+
+# Editor and operating-system metadata
+.DS_Store
+._*
+__MACOSX/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
