@@ -7,6 +7,7 @@ from pathlib import Path
 
 from ordo.repo_checks import (
     validate_duplicate_repository_nesting,
+    validate_generated_metadata_absent,
     validate_package_generated_artifacts_absent,
     validate_repository_forbidden_paths,
 )
@@ -270,6 +271,97 @@ class RepositoryHygieneContractTests(unittest.TestCase):
             self.assertEqual(report["forbidden_paths"], [])
             self.assertEqual(report["observed_transient_paths"], [])
 
+
+    def test_development_generated_metadata_untracked_is_reported_without_blocking(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "repo"
+            root.mkdir()
+            subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
+            generated = root / "pkg" / "__pycache__" / "module.cpython-311.pyc"
+            generated.parent.mkdir(parents=True)
+            generated.write_bytes(b"pyc")
+
+            report = validate_generated_metadata_absent(root, scope="development")
+
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["forbidden_paths"], [])
+            self.assertIn("pkg/__pycache__", report["observed_transient_paths"])
+            self.assertIn("pkg/__pycache__/module.cpython-311.pyc", report["observed_transient_paths"])
+
+    def test_development_generated_metadata_tracked_is_blocking(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "repo"
+            root.mkdir()
+            subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
+            generated = root / "pkg" / "module.pyc"
+            generated.parent.mkdir(parents=True)
+            generated.write_bytes(b"pyc")
+            subprocess.run(["git", "add", "-f", "pkg/module.pyc"], cwd=root, check=True, capture_output=True)
+
+            report = validate_generated_metadata_absent(root, scope="development")
+
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["forbidden_paths"], ["pkg/module.pyc"])
+            self.assertEqual(report["evidence_mode"], "git_tracked_files")
+
+    def test_release_generated_metadata_is_blocking(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "candidate"
+            generated = root / "pkg" / "demo.egg-info" / "PKG-INFO"
+            generated.parent.mkdir(parents=True)
+            generated.write_text("metadata", encoding="utf-8")
+
+            report = validate_generated_metadata_absent(root, scope="release")
+
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["evidence_mode"], "release_tree_filesystem")
+            self.assertIn("pkg/demo.egg-info", report["forbidden_paths"])
+            self.assertIn("pkg/demo.egg-info/PKG-INFO", report["forbidden_paths"])
+
+    def test_release_generated_metadata_clean_tree_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "candidate"
+            root.mkdir()
+            (root / "README.md").write_text("clean", encoding="utf-8")
+
+            report = validate_generated_metadata_absent(root, scope="release")
+
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["forbidden_paths"], [])
+            self.assertEqual(report["evidence_mode"], "release_tree_filesystem")
+
+    def test_release_forbidden_paths_clean_tree_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "candidate"
+            root.mkdir()
+            (root / "repo_hygiene.yml").write_text(
+                "repo_hygiene:\n"
+                "  forbidden_paths:\n"
+                "    directory_names: [.venv]\n",
+                encoding="utf-8",
+            )
+            (root / "README.md").write_text("clean", encoding="utf-8")
+
+            report = validate_repository_forbidden_paths(root, scope="release")
+
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["forbidden_paths"], [])
+            self.assertEqual(report["evidence_mode"], "release_tree_filesystem")
+
+    def test_scope_aware_validators_reject_unsupported_scope(self) -> None:
+        validators = (
+            validate_generated_metadata_absent,
+            validate_repository_forbidden_paths,
+            validate_duplicate_repository_nesting,
+            validate_package_generated_artifacts_absent,
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "repo"
+            root.mkdir()
+            for validator in validators:
+                with self.subTest(validator=validator.__name__):
+                    with self.assertRaisesRegex(ValueError, "unsupported hygiene scope"):
+                        validator(root, scope="invalid")
 
 if __name__ == "__main__":
     unittest.main()
