@@ -44,8 +44,8 @@ M62.3 keeps all APF language candidates outside runtime core. The detailed class
 
 - `APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md`
 - `APF_PATTERN_CLASSIFICATION_MATRIX.md`
-- `APF_PATTERN_CLASSIFICATION_MATRIX.csv`
-- `APF_PATTERN_CLASSIFICATION_MATRIX.json`
+- `reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.csv`
+- `reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json`
 
 Summary:
 

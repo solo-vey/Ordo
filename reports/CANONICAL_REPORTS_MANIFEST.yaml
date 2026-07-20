@@ -267,6 +267,18 @@ entries:
 - path: M83_4_BL_ORDO_014_CLOSURE_GATE.json
   classification: canonical_current_or_historical_record
   sha256: a4893ae1dd18410ad717119a7b6cadc910831c9af76eb3d13bd3ed0efb1635bf
+- path: apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.csv
+  classification: canonical_current_or_historical_record
+  sha256: e2967f8f21967503d043335cbd626033ef3164f3cd4960713e0c5b54f43cbe77
+- path: apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json
+  classification: canonical_current_or_historical_record
+  sha256: 6e439f4cfdde6bab90aee93c7e8a0c630b5032c7544e5fca6ffa538c67edd24f
+- path: apf/legacy-root/APF_RC_PATTERN_CLASSIFICATION.csv
+  classification: canonical_current_or_historical_record
+  sha256: ac574991f1a3297082af4d0234f078d916d8324c53788e1a215730a44825c069
+- path: apf/legacy-root/README.md
+  classification: canonical_current_or_historical_record
+  sha256: f08892f1bd4bd3c18919ce135642abba57129c8a00b4da656cbfdf319822edcd
 - path: bl_ordo_002/BL_ORDO_002_CLOSURE_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: a8b5b4d0741e3e002f234e54adfb197fc3adb05927d3732d6a08b9492db14dfe
