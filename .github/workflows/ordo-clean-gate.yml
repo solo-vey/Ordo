@@ -31,13 +31,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p reports/ci
-          ordo repo-check . \
-            --clean \
-            --profile standard \
-            --hygiene-scope development \
-            --json \
-            --out reports/ci/repo_clean_check.json \
-            | tee reports/ci/repo_clean_check.stdout.json
+          ordo repo-check .             --clean             --profile standard             --hygiene-scope development             --fail-on-warning             --json             --out reports/ci/repo_clean_check.json             | tee reports/ci/repo_clean_check.stdout.json
 
       - name: Run main-branch clean gate
         if: github.event_name == 'push'
@@ -45,14 +39,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p reports/ci
-          ordo repo-check . \
-            --clean \
-            --profile standard \
-            --hygiene-scope development \
-            --fail-on-warning \
-            --json \
-            --out reports/ci/repo_clean_check.json \
-            | tee reports/ci/repo_clean_check.stdout.json
+          ordo repo-check .             --clean             --profile standard             --hygiene-scope development             --fail-on-warning             --json             --out reports/ci/repo_clean_check.json             | tee reports/ci/repo_clean_check.stdout.json
 
       - name: Upload clean-gate evidence
         if: always()

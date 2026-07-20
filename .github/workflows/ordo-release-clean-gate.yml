@@ -1,6 +1,7 @@
 name: Ordo release clean gate
 
 on:
+  pull_request:
   workflow_dispatch:
   push:
     tags:
@@ -39,14 +40,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p reports/release
-          ordo repo-check .ordo-release-candidate \
-            --clean \
-            --profile strict \
-            --hygiene-scope release \
-            --fail-on-warning \
-            --json \
-            --out reports/release/repo_clean_check.json \
-            | tee reports/release/repo_clean_check.stdout.json
+          ordo repo-check .ordo-release-candidate             --clean             --profile strict             --hygiene-scope release             --fail-on-warning             --json             --out reports/release/repo_clean_check.json             | tee reports/release/repo_clean_check.stdout.json
 
       - name: Record release gate provenance
         if: always()

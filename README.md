@@ -34,6 +34,7 @@ The main routes are:
 - [Language and runtime](docs/README.md#language-and-runtime)
 - [Packages and authoring](docs/README.md#packages-and-authoring)
 - [CLI and validation](docs/README.md#cli-and-validation)
+- [Repository hygiene](docs/REPOSITORY_HYGIENE.md)
 - [Evidence and releases](docs/README.md#evidence-and-releases)
 - [Security](SECURITY.md)
 - [Support](SUPPORT.md)
@@ -46,6 +47,10 @@ The main routes are:
 Use public issues for reproducible bugs, documentation problems, and feature proposals. See [`SUPPORT.md`](SUPPORT.md) for the correct route.
 
 Do not disclose suspected vulnerabilities in public issues, discussions, pull requests, or social media. Use GitHub private vulnerability reporting as described in [`SECURITY.md`](SECURITY.md).
+
+## Repository hygiene
+
+The unified development/release contract is documented in [`docs/REPOSITORY_HYGIENE.md`](docs/REPOSITORY_HYGIENE.md). Local generated outputs belong under `.ordo-generated/`; tracked forbidden metadata and polluted release exports fail closed.
 
 ## What is included
 
