@@ -7,6 +7,7 @@ from pathlib import Path
 
 from ordo.repo_checks import (
     validate_duplicate_repository_nesting,
+    validate_package_generated_artifacts_absent,
     validate_repository_forbidden_paths,
 )
 
@@ -210,6 +211,64 @@ class RepositoryHygieneContractTests(unittest.TestCase):
             )
             report = validate_duplicate_repository_nesting(root, scope="release")
             self.assertEqual(report["status"], "passed")
+
+
+    def test_development_package_generated_untracked_is_reported_without_blocking(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "repo"
+            generated = root / "packages" / "demo" / "compiled" / "result.json"
+            generated.parent.mkdir(parents=True)
+            generated.write_text("{}", encoding="utf-8")
+            subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
+
+            report = validate_package_generated_artifacts_absent(root, scope="development")
+
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["forbidden_paths"], [])
+            self.assertEqual(report["observed_transient_paths"], ["packages/demo/compiled/result.json"])
+
+    def test_development_package_generated_tracked_is_blocking(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "repo"
+            generated = root / "packages" / "demo" / "runtime" / "state.json"
+            generated.parent.mkdir(parents=True)
+            generated.write_text("{}", encoding="utf-8")
+            subprocess.run(["git", "init"], cwd=root, check=True, capture_output=True)
+            subprocess.run(["git", "add", "packages/demo/runtime/state.json"], cwd=root, check=True, capture_output=True)
+
+            report = validate_package_generated_artifacts_absent(root, scope="development")
+
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["forbidden_paths"], ["packages/demo/runtime/state.json"])
+
+    def test_release_package_generated_untracked_is_blocking(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "candidate"
+            generated = root / "packages" / "demo" / "generated_outputs" / "answer.txt"
+            generated.parent.mkdir(parents=True)
+            generated.write_text("generated", encoding="utf-8")
+
+            report = validate_package_generated_artifacts_absent(root, scope="release")
+
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["forbidden_paths"], ["packages/demo/generated_outputs/answer.txt"])
+
+    def test_package_generated_allowed_templates_remain_allowed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "candidate"
+            reports = root / "packages" / "demo" / "reports"
+            compiled = root / "packages" / "demo" / "compiled"
+            reports.mkdir(parents=True)
+            compiled.mkdir(parents=True)
+            (reports / "CLI_VALIDATION_SUMMARY.md").write_text("template", encoding="utf-8")
+            (reports / "PACKAGE_PROFILE_SUMMARY.md").write_text("template", encoding="utf-8")
+            (compiled / ".gitkeep").write_text("", encoding="utf-8")
+
+            report = validate_package_generated_artifacts_absent(root, scope="release")
+
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["forbidden_paths"], [])
+            self.assertEqual(report["observed_transient_paths"], [])
 
 
 if __name__ == "__main__":

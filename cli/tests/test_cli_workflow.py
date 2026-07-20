@@ -139,7 +139,10 @@ class ReleaseQualityChecksTest(unittest.TestCase):
         stale.parent.mkdir(parents=True, exist_ok=True)
         stale.write_text("{}\n", encoding="utf-8")
         try:
-            self.assertEqual(main(["repo-check", str(WORKSPACE)]), 1)
+            self.assertEqual(
+                main(["repo-check", str(WORKSPACE), "--hygiene-scope", "release"]),
+                1,
+            )
             report = WORKSPACE / "reports" / "repo_check_report.json"
             self.assertIn("package_generated_artifacts_absent", report.read_text(encoding="utf-8"))
             self.assertIn("stale_report.json", report.read_text(encoding="utf-8"))

@@ -318,35 +318,64 @@ def validate_duplicate_repository_nesting(
         ),
     }
 
-def validate_package_generated_artifacts_absent(repo_root: str | Path) -> dict[str, Any]:
-    root = Path(repo_root).resolve()
+PACKAGE_GENERATED_ROOTS = {"compiled", "reports", "runtime", "generated_outputs"}
+PACKAGE_GENERATED_ALLOWED_REPORT_TEMPLATES = {
+    "CLI_VALIDATION_SUMMARY.md",
+    "PACKAGE_PROFILE_SUMMARY.md",
+}
+
+
+def _package_generated_artifact_findings(paths: list[Path]) -> list[str]:
     forbidden: list[str] = []
-    generated_roots = [
-        "compiled",
-        "reports",
-        "runtime",
-        "generated_outputs",
-    ]
+    for rel in paths:
+        if len(rel.parts) < 4 or rel.parts[0] != "packages":
+            continue
+        generated_name = rel.parts[2]
+        if generated_name not in PACKAGE_GENERATED_ROOTS:
+            continue
+        if rel.name == ".gitkeep":
+            continue
+        if generated_name == "reports" and rel.name in PACKAGE_GENERATED_ALLOWED_REPORT_TEMPLATES:
+            continue
+        forbidden.append(rel.as_posix())
+    return sorted(set(forbidden))
+
+
+def validate_package_generated_artifacts_absent(
+    repo_root: str | Path,
+    scope: str = "development",
+) -> dict[str, Any]:
+    root = Path(repo_root).resolve()
+    if scope not in HYGIENE_SCOPES:
+        raise ValueError(f"unsupported hygiene scope: {scope}")
+
     packages_dir = root / "packages"
-    if packages_dir.exists():
-        for package in sorted(p for p in packages_dir.iterdir() if p.is_dir()):
-            for generated_name in generated_roots:
-                generated_dir = package / generated_name
-                if not generated_dir.exists():
-                    continue
-                for path in generated_dir.rglob("*"):
-                    if path.is_dir():
-                        continue
-                    rel = str(path.relative_to(root))
-                    if path.name == ".gitkeep":
-                        continue
-                    if generated_name == "reports" and path.name in {"CLI_VALIDATION_SUMMARY.md", "PACKAGE_PROFILE_SUMMARY.md"}:
-                        continue
-                    forbidden.append(rel)
+    observed_paths = [
+        path.relative_to(root)
+        for path in packages_dir.rglob("*")
+        if path.is_file()
+    ] if packages_dir.exists() else []
+    observed = _package_generated_artifact_findings(observed_paths)
+
+    if scope == "release":
+        forbidden = observed
+        evidence_mode = "release_tree_filesystem"
+    else:
+        tracked_paths, evidence_mode = _git_tracked_paths(root)
+        forbidden = _package_generated_artifact_findings(tracked_paths)
+
     return {
         "status": "passed" if not forbidden else "failed",
-        "forbidden_paths": sorted(set(forbidden)),
-        "note": "Source archive should keep generated package artifacts out of compiled/, reports/, runtime/, and generated_outputs/ except .gitkeep placeholders and reports/CLI_VALIDATION_SUMMARY.md and reports/PACKAGE_PROFILE_SUMMARY.md templates.",
+        "scope": scope,
+        "evidence_mode": evidence_mode,
+        "forbidden_paths": forbidden,
+        "observed_transient_paths": observed,
+        "note": (
+            "Development scope blocks package-generated artifacts only when Git-tracked; "
+            "release scope blocks them anywhere in the isolated candidate tree. "
+            "Allowed exceptions remain .gitkeep placeholders and reports/CLI_VALIDATION_SUMMARY.md "
+            "and reports/PACKAGE_PROFILE_SUMMARY.md templates."
+        ),
     }
 
 
@@ -633,7 +662,7 @@ def run_repo_checks(
     generated = validate_generated_metadata_absent(repo_root, scope=hygiene_scope)
     repository_forbidden = validate_repository_forbidden_paths(repo_root, scope=hygiene_scope)
     duplicate_nesting = validate_duplicate_repository_nesting(repo_root, scope=hygiene_scope)
-    package_generated = validate_package_generated_artifacts_absent(repo_root)
+    package_generated = validate_package_generated_artifacts_absent(repo_root, scope=hygiene_scope)
     reports = {
         "workflow_paths": workflow,
         "generated_metadata_absent": generated,
