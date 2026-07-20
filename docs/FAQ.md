@@ -26,7 +26,7 @@ The repository does not define one model provider as a universal requirement. In
 
 The Applied Process Factory (APF) is the framework layer used to assemble and improve Ordo processes and playbooks from reusable modules and contracts.
 
-See the [APF integration directory](../integrations/apf/) and the [standard module guide](../APF_STANDARD_MODULE_GUIDE.md).
+See the [APF integration directory](../integrations/apf) and the [standard module guide](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md).
 
 ## What is the difference between `main` and the packaged release?
 

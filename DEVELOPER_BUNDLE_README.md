@@ -4,9 +4,9 @@ M62.2 documents `ordo.applied_project_factory` as a standard applied module and 
 
 Start here:
 
-- `APF_STANDARD_MODULE_GUIDE.md`
-- `APF_COMPANION_WORKFLOW.md`
-- `STANDARD_APPLIED_MODULES.md`
+- `docs/apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`
+- `docs/apf/legacy-root/APF_COMPANION_WORKFLOW.md`
+- `docs/apf/legacy-root/STANDARD_APPLIED_MODULES.md`
 - `packages/ordo_applied_project_factory/docs/APF_STANDARD_MODULE_GUIDE.md`
 - `M62_2_APF_DOCUMENTATION_AND_BOOK_SECTION_REPORT.md`
 
@@ -26,8 +26,8 @@ APF is the self-hosted authoring package for creating or improving Ordo playbook
 
 Start here:
 
-- `APF_PACKAGE_IMPORT.md`
-- `STANDARD_APPLIED_MODULES.md`
+- `docs/apf/legacy-root/APF_PACKAGE_IMPORT.md`
+- `docs/apf/legacy-root/STANDARD_APPLIED_MODULES.md`
 - `packages/ordo_applied_project_factory/README.md`
 - `packages/ordo_applied_project_factory/ORDO_PARENT_PACKAGE_IMPORT.md`
 
@@ -41,9 +41,9 @@ M62.0 starts the Applied Project Factory integration line after M61 Companion Ut
 
 Start here:
 
-- `APF_INTEGRATION_CORRELATION_PLAN.md`
-- `STANDARD_APPLIED_MODULES.md`
-- `APF_LANGUAGE_PATTERN_CANDIDATES.md`
+- `docs/apf/legacy-root/APF_INTEGRATION_CORRELATION_PLAN.md`
+- `docs/apf/legacy-root/STANDARD_APPLIED_MODULES.md`
+- `docs/apf/legacy-root/APF_LANGUAGE_PATTERN_CANDIDATES.md`
 - `M62_0_APF_INTEGRATION_CORRELATION_PLAN_REPORT.md`
 
 Next planned milestone: `M62.1 — APF Package Import into Current Language Package`.
@@ -60,7 +60,7 @@ See `M61_LINE_CLOSURE_REPORT.md` and `M61_COMPANION_UTILITIES_LINE_CLOSURE.md`.
 
 # Ordo Workspace — M61.3 Utility Documentation Consolidation
 
-M61.3 consolidates the included companion utilities into one stable author/reviewer route. It adds `COMPANION_UTILITY_WORKFLOW.md` and mirrors it under `utilities/` and `docs/`.
+M61.3 consolidates the included companion utilities into one stable author/reviewer route. It adds `docs/apf/legacy-root/COMPANION_UTILITY_WORKFLOW.md` and mirrors it under `utilities/` and `docs/`.
 
 Primary workflow:
 
@@ -75,8 +75,8 @@ M61.3 is docs-only. Runtime execution of generated testcases, scoring, calibrati
 
 Start here:
 
-- `COMPANION_UTILITY_WORKFLOW.md`
-- `COMPANION_UTILITIES.md`
+- `docs/apf/legacy-root/COMPANION_UTILITY_WORKFLOW.md`
+- `docs/apf/legacy-root/COMPANION_UTILITIES.md`
 - `utilities/README.md`
 - `utilities/ordo_visual_graph_generator/README.md`
 - `ordo_pathwalk/REAL_MODULE_TESTCASE_GENERATION.md`
@@ -267,12 +267,12 @@ Runtime execution, scoring, calibration, model/API benchmark orchestration, and 
 
 ## M62.3 developer handoff note
 
-APF language/process-model candidates are classified but not implemented as runtime-core features. Use `APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md` before starting any APF branch patch or IR promotion work.
+APF language/process-model candidates are classified but not implemented as runtime-core features. Use `docs/apf/legacy-root/APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md` before starting any APF branch patch or IR promotion work.
 
 
 ## M62 Line Closure
 
-APF is included as a standard applied module. Use `M62_APF_INTEGRATION_LINE_CLOSURE.md` and `STANDARD_APPLIED_MODULES.md` for handoff.
+APF is included as a standard applied module. Use `M62_APF_INTEGRATION_LINE_CLOSURE.md` and `docs/apf/legacy-root/STANDARD_APPLIED_MODULES.md` for handoff.
 
 ## M63.0 APF rc.1 integration planning
 

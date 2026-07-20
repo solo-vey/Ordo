@@ -2,7 +2,7 @@
 
 Status: `classification-only`
 
-This matrix is the machine-readable/human-readable companion to `APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md`.
+This matrix is the machine-readable/human-readable companion to `docs/apf/legacy-root/APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md`.
 
 | candidate | source_theme | classification | priority | current_home | future_home | m62_3_decision | rationale |
 | --- | --- | --- | --- | --- | --- | --- | --- |
