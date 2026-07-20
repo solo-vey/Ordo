@@ -79,9 +79,9 @@ M62.0 starts the Applied Project Factory integration line after M61 Companion Ut
 
 Start here:
 
-- `APF_INTEGRATION_CORRELATION_PLAN.md`
-- `STANDARD_APPLIED_MODULES.md`
-- `APF_LANGUAGE_PATTERN_CANDIDATES.md`
+- `docs/apf/legacy-root/APF_INTEGRATION_CORRELATION_PLAN.md`
+- `docs/apf/legacy-root/STANDARD_APPLIED_MODULES.md`
+- `docs/apf/legacy-root/APF_LANGUAGE_PATTERN_CANDIDATES.md`
 - `M62_0_APF_INTEGRATION_CORRELATION_PLAN_REPORT.md`
 
 Next planned milestone: `M62.1 — APF Package Import into Current Language Package`.

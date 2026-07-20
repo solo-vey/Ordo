@@ -58,6 +58,6 @@ source/program.ordo.yaml
   → Visual Graph annotation overlay: optional reviewer notes/highlights
 ```
 
-See `COMPANION_UTILITY_WORKFLOW.md` and `utilities/COMPANION_UTILITY_WORKFLOW.md`.
+See `docs/apf/legacy-root/COMPANION_UTILITY_WORKFLOW.md` and `utilities/COMPANION_UTILITY_WORKFLOW.md`.
 
 M61.3 is docs-only. It does not execute generated testcases, score model behavior, calibrate weights, or merge utilities.

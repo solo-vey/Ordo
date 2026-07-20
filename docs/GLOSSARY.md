@@ -4,7 +4,7 @@ This glossary provides short navigation-oriented definitions. Normative schemas,
 
 ## APF
 
-**Applied Process Factory.** The framework layer for assembling and improving Ordo processes and playbooks from reusable modules and contracts. See [`integrations/apf/`](../integrations/apf/).
+**Applied Process Factory.** The framework layer for assembling and improving Ordo processes and playbooks from reusable modules and contracts. See [`integrations/apf/`](../integrations/apf).
 
 ## Canonical packaged baseline
 

@@ -22,17 +22,17 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 ## Language and runtime
 
-- [`../language/`](../language/) — canonical language schemas, registries, runtime semantics, and migration layers.
+- [`../language/`](../language) — canonical language schemas, registries, runtime semantics, and migration layers.
 - [`../language/RUNTIME_CHECKPOINTS.md`](../language/RUNTIME_CHECKPOINTS.md) — one-node, one-contract runtime checkpoint discipline.
 - [`../LANGUAGE_POLICY.md`](../LANGUAGE_POLICY.md) — repository language policy.
 - [`../language/ENGLISH_ONLY_REPOSITORY_POLICY_GATE.md`](../language/ENGLISH_ONLY_REPOSITORY_POLICY_GATE.md) — English-only policy gate and migration-aware enforcement.
 
 ## Packages and authoring
 
-- [`../packages/`](../packages/) — reference process and playbook packages.
-- [`../integrations/apf/`](../integrations/apf/) — Applied Process Factory modules and assembly definitions.
+- [`../packages/`](../packages) — reference process and playbook packages.
+- [`../integrations/apf/`](../integrations/apf) — Applied Process Factory modules and assembly definitions.
 - [`../STABLE_PACKAGE_INDEX.md`](../STABLE_PACKAGE_INDEX.md) — stable package index.
-- [`../APF_STANDARD_MODULE_GUIDE.md`](../APF_STANDARD_MODULE_GUIDE.md) — standard APF module guidance.
+- [`../APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — standard APF module guidance.
 
 ## CLI and validation
 
@@ -48,12 +48,12 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../manifests/VERSION_STATE.json`](../manifests/VERSION_STATE.json) — current version state.
 - [`../DELIVERY_GATE_REPORT.json`](../DELIVERY_GATE_REPORT.json) — delivery gate evidence.
 - [`../FINAL_PACKAGE_SELF_CHECK_REPORT.json`](../FINAL_PACKAGE_SELF_CHECK_REPORT.json) — packaged self-check evidence.
-- [`../empirical_evidence/`](../empirical_evidence/) — normalized and immutable empirical evidence.
-- [`../benchmarks/`](../benchmarks/) — benchmark datasets, schemas, and evaluation artifacts.
+- [`../empirical_evidence/`](../empirical_evidence) — normalized and immutable empirical evidence.
+- [`../benchmarks/`](../benchmarks) — benchmark datasets, schemas, and evaluation artifacts.
 
 ## Books
 
-- [`../book/`](../book/) — English and Ukrainian source and compiled book materials.
+- [`../book/`](../book) — English and Ukrainian source and compiled book materials.
 
 ## Documentation status rules
 
