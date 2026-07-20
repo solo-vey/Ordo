@@ -27,14 +27,14 @@ class CiCleanGateWorkflowContractTest(unittest.TestCase):
         self.assertEqual(self.text.count("--hygiene-scope development"), 2)
         self.assertNotIn("clean_check.py", self.text)
 
-    def test_warning_policy_matches_m69_0_matrix(self) -> None:
+    def test_warning_policy_is_fail_closed_for_pr_and_main(self) -> None:
         pull_request_block = self.text.split("Run pull-request clean gate", 1)[1].split(
             "Run main-branch clean gate", 1
         )[0]
         main_block = self.text.split("Run main-branch clean gate", 1)[1].split(
             "Upload clean-gate evidence", 1
         )[0]
-        self.assertNotIn("--fail-on-warning", pull_request_block)
+        self.assertIn("--fail-on-warning", pull_request_block)
         self.assertIn("--fail-on-warning", main_block)
 
     def test_report_and_artifact_contract(self) -> None:
