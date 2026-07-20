@@ -19,7 +19,7 @@ python -m pip install --upgrade pip
 python -m pip install -e ./cli
 ```
 
-## Golden example 1: package validation
+## Validate an Ordo package
 
 ```bash
 python tools/run_golden_examples.py --example package-validation
@@ -27,7 +27,7 @@ python tools/run_golden_examples.py --example package-validation
 
 This runs `lint`, `compile`, `test`, and `coverage` against a temporary copy of `packages/ordo_project_builder`.
 
-## Golden example 2: Process Rail next step
+## Find the next Process Rail step
 
 ```bash
 python tools/run_golden_examples.py --example process-rail-next-step
@@ -35,7 +35,7 @@ python tools/run_golden_examples.py --example process-rail-next-step
 
 This validates the canonical authoring answers and asks Ordo for the next deterministic step.
 
-## Golden example 3: end-to-end output gate
+## Validate an end-to-end output gate
 
 ```bash
 python tools/run_golden_examples.py --example history-event-output-gate
@@ -43,7 +43,7 @@ python tools/run_golden_examples.py --example history-event-output-gate
 
 This runs the non-interactive intake and output-validation flow against a temporary package copy.
 
-## Run all CI-backed examples
+## Run every CI-backed example
 
 ```bash
 python tools/run_golden_examples.py --all

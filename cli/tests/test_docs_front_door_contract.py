@@ -27,7 +27,14 @@ def assert_relative_links_exist(document: str) -> None:
 
 
 def test_front_door_files_and_links_exist() -> None:
-    for document in ("README.md", "docs/README.md", "docs/QUICKSTART.md", "cli/README.md"):
+    for document in (
+        "README.md",
+        "docs/README.md",
+        "docs/QUICKSTART.md",
+        "docs/FAQ.md",
+        "docs/GLOSSARY.md",
+        "cli/README.md",
+    ):
         assert (ROOT / document).is_file()
         assert_relative_links_exist(document)
 
@@ -63,3 +70,65 @@ def test_user_facing_cli_headings_do_not_use_milestone_ids() -> None:
         if line.startswith("#")
     ]
     assert not any(re.search(r"\bM\d+(?:\.\d+)*\b", heading) for heading in headings)
+
+def test_discoverability_entry_points_are_canonical_and_linked() -> None:
+    root_readme = read("README.md")
+    docs_readme = read("docs/README.md")
+    for target in ("docs/FAQ.md", "docs/GLOSSARY.md", "CITATION.cff"):
+        assert target in root_readme
+    for target in ("FAQ.md", "GLOSSARY.md", "../CITATION.cff"):
+        assert target in docs_readme
+
+
+def test_faq_covers_project_identity_license_and_support_routes() -> None:
+    text = read("docs/FAQ.md")
+    required_headings = (
+        "## What is Ordo?",
+        "## Is Ordo a programming language, workflow format, or prompt framework?",
+        "## Is Ordo open source?",
+        "## Where should I report a bug or propose a change?",
+    )
+    for heading in required_headings:
+        assert heading in text
+    assert "PolyForm Noncommercial License 1.0.0" in text
+    assert "../SUPPORT.md" in text
+    assert "../SECURITY.md" in text
+
+
+def test_glossary_contains_controlled_core_terms() -> None:
+    text = read("docs/GLOSSARY.md")
+    for term in (
+        "## APF",
+        "## Evidence",
+        "## Execution graph",
+        "## Gate",
+        "## Ordo language",
+        "## Package",
+        "## Playbook",
+        "## Replay",
+        "## Runtime framework",
+    ):
+        assert term in text
+
+
+def test_citation_metadata_has_required_repository_fields() -> None:
+    text = read("CITATION.cff")
+    for marker in (
+        "cff-version: 1.2.0",
+        'title: "Ordo: AI Process Language and Applied Runtime Framework"',
+        "type: software",
+        'repository-code: "https://github.com/solo-vey/Ordo"',
+        'license: "PolyForm-Noncommercial-1.0.0"',
+    ):
+        assert marker in text
+
+
+def test_quickstart_uses_search_oriented_scenario_headings() -> None:
+    text = read("docs/QUICKSTART.md")
+    for heading in (
+        "## Validate an Ordo package",
+        "## Find the next Process Rail step",
+        "## Validate an end-to-end output gate",
+        "## Run every CI-backed example",
+    ):
+        assert heading in text

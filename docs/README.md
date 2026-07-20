@@ -5,6 +5,9 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 ## Start here
 
 - [`QUICKSTART.md`](QUICKSTART.md) — install Ordo and run the three CI-backed golden examples.
+- [`FAQ.md`](FAQ.md) — answers to common project, licensing, package, and support questions.
+- [`GLOSSARY.md`](GLOSSARY.md) — short definitions and links for core Ordo terminology.
+- [`../CITATION.cff`](../CITATION.cff) — canonical repository citation metadata.
 - [`../README.md`](../README.md) — repository overview, release distinction, and top-level entry points.
 - [`../SUPPORT.md`](../SUPPORT.md) — choose the correct route for bugs, questions, proposals, security reports, and conduct concerns.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution workflow and repository expectations.

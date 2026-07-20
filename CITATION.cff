@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Ordo, cite this repository and the canonical packaged baseline identified below."
+title: "Ordo: AI Process Language and Applied Runtime Framework"
+type: software
+authors:
+  - name: "solo-vey"
+version: "ordo-2026.07.17-rc.10"
+date-released: 2026-07-17
+repository-code: "https://github.com/solo-vey/Ordo"
+url: "https://github.com/solo-vey/Ordo"
+license: "PolyForm-Noncommercial-1.0.0"
+keywords:
+  - artificial intelligence
+  - process language
+  - runtime framework
+  - workflow validation
+  - structured AI-assisted processes
+  - reproducibility
