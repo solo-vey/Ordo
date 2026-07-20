@@ -31,6 +31,9 @@ Use [`docs/README.md`](docs/README.md) as the canonical documentation map.
 The main routes are:
 
 - [Quickstart](docs/QUICKSTART.md)
+- [Frequently asked questions](docs/FAQ.md)
+- [Glossary](docs/GLOSSARY.md)
+- [Citation metadata](CITATION.cff)
 - [Language and runtime](docs/README.md#language-and-runtime)
 - [Packages and authoring](docs/README.md#packages-and-authoring)
 - [CLI and validation](docs/README.md#cli-and-validation)
