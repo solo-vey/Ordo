@@ -95,8 +95,20 @@ class TestDependencyLock(unittest.TestCase):
 class ReleaseQualityChecksTest(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = Path(tempfile.mkdtemp(prefix="ordo_release_quality_test_"))
+        self.repo_check_report = WORKSPACE / "reports" / "repo_check_report.json"
+        self.repo_check_report_existed = self.repo_check_report.is_file()
+        self.repo_check_report_bytes = (
+            self.repo_check_report.read_bytes()
+            if self.repo_check_report_existed
+            else None
+        )
 
     def tearDown(self) -> None:
+        if self.repo_check_report_existed:
+            self.repo_check_report.parent.mkdir(parents=True, exist_ok=True)
+            self.repo_check_report.write_bytes(self.repo_check_report_bytes or b"")
+        else:
+            self.repo_check_report.unlink(missing_ok=True)
         shutil.rmtree(self.tmp, ignore_errors=True)
     def _clean_transient_workspace_artifacts(self) -> None:
         # The source archive must not contain generated metadata or package helper outputs.

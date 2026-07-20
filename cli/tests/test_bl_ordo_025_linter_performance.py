@@ -47,7 +47,7 @@ def test_large_cyclic_reuse_scan_is_bounded_and_deterministic():
 
 
 def test_real_apf_lint_fits_standard_ci_budget_without_skip():
-    code = '''
+    code = """
 import json, resource, sys, time, yaml
 sys.path.insert(0, "cli")
 from ordo.linter import lint_source
@@ -56,9 +56,16 @@ started = time.perf_counter()
 report = lint_source(source, {"test_cases": [{}]}, repo_root=".")
 elapsed = time.perf_counter() - started
 rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-print(json.dumps({"status": report["status"], "seconds": elapsed, "rss_mib": rss / 1024.0}))
-'''
-    proc = subprocess.run([sys.executable, "-c", code], cwd=ROOT, capture_output=True, text=True, timeout=APF_LINT_MAX_SECONDS + 10)
+rss_mib = rss / (1024.0 * 1024.0) if sys.platform == "darwin" else rss / 1024.0
+print(json.dumps({"status": report["status"], "seconds": elapsed, "rss_mib": rss_mib}))
+"""
+    proc = subprocess.run(
+        [sys.executable, "-c", code],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        timeout=APF_LINT_MAX_SECONDS + 10,
+    )
     assert proc.returncode == 0, proc.stderr
     result = json.loads(proc.stdout.strip().splitlines()[-1])
     assert result["status"] == "passed"
