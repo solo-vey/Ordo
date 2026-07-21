@@ -227,8 +227,8 @@ The root inventory, APF documentation and evidence relocation, delivery and rele
 
 Next documentation work:
 
-- `L.1` — read-only documentation quality-gate audit;
-- `L.2` — chat-first onboarding and first-playbook quickstart.
+- `L.1` — read-only documentation quality-gate audit — `closed`;
+- `L.2` — chat-first onboarding, current-state synchronization, and documentation quality gates — `in_progress`.
 
 
 ## BL-ORDO-014 Closure — M83.4

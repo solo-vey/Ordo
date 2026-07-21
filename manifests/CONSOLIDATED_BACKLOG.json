@@ -939,12 +939,12 @@
     {
       "id": "L.1",
       "title": "Read-only documentation quality-gate audit",
-      "status": "open"
+      "status": "closed"
     },
     {
       "id": "L.2",
-      "title": "Chat-first onboarding and first playbook",
-      "status": "open"
+      "title": "Chat-first onboarding, current-state synchronization, and documentation quality gates",
+      "status": "in_progress"
     }
   ]
 }

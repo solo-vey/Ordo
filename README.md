@@ -9,20 +9,17 @@ Ordo is a language and framework for designing, validating, executing, testing, 
 
 ## Quickstart
 
-Run commands from the repository root. Ordo requires Python 3.10 or newer.
+The primary first-use path is a language-model chat. Python is optional.
 
-```bash
-python3 --version
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e ./cli
-python tools/run_golden_examples.py --example package-validation
-```
+1. Download the [`chat-first starter ZIP`](examples/chat_first_playbook_starter/ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip).
+2. Upload the ZIP to a new language-model chat.
+3. Paste the [`starter prompt`](examples/chat_first_playbook_starter/source/START_PROMPT.md).
+4. Answer the model's short clarification sequence and approve the first playbook draft.
+5. Ask the model to test the playbook, explain any failures, and improve it before returning the final package.
 
-A successful run exits with code `0` and reports the selected golden scenario as passed. The same runner is enforced by CI.
+No local installation is required for this route. The starter uses a small weekly-status process to demonstrate `create → validate → dry-run → improve → package` in one chat.
 
-See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for all three CI-backed examples.
+See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the complete chat walkthrough and the optional CLI validation path.
 
 ## Documentation
 

@@ -5,10 +5,10 @@
   "latest_closed_milestone": "M89.5",
   "release": {
     "product": "Ordo",
-    "version": "0.13.0-rc.1",
+    "version": "0.14.0-rc.1",
     "release_status": "release-candidate",
     "quality_gate": "passed",
-    "full_cli_suite": "476/476 aggregated node evidence; final affected-scope gate passed",
+    "full_cli_suite": "694 passed, 17 subtests passed at J.6d closure",
     "latest_targeted_gates": [
       "M87.7 delivery-gate patch integrated without downgrade",
       "M88/M89 combined regression 53/53 passed before integration",
@@ -21,8 +21,8 @@
       "BL-ORDO-024 process pattern engineering focused regression 9/9 passed",
       "BL-ORDO-035 test fixture and parallel execution safety: 34/34 regression, 4/4 lints"
     ],
-    "framework_version": "0.5.0-rc.1",
-    "release_id": "ordo-2026.07.14-rc.7"
+    "framework_version": "0.6.0-rc.1",
+    "release_id": "ordo-2026.07.17-rc.10"
   },
   "capabilities": {
     "conversation_scope_guard": {
@@ -202,7 +202,12 @@
     }
   },
   "next_documentation_tasks": [
-    "L.1 — Read-only documentation quality-gate audit",
     "L.2 — Chat-first onboarding and first playbook"
-  ]
+  ],
+  "documentation_quality": {
+    "L.1": "closed",
+    "L.2": "in_progress",
+    "primary_onboarding": "chat_first",
+    "optional_mechanical_validation": "python_cli"
+  }
 }

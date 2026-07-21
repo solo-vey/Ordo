@@ -1,0 +1,50 @@
+{
+  "schema_version": "ordo.documentation_quality_gate.v1",
+  "active_documents": [
+    "README.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "GOVERNANCE.md",
+    "SECURITY.md",
+    "SUPPORT.md",
+    "cli/README.md",
+    "docs/CHAT_FIRST_ONBOARDING.md",
+    "docs/DOCUMENTATION_QUALITY_GATE.md",
+    "docs/FAQ.md",
+    "docs/GLOSSARY.md",
+    "docs/QUICKSTART.md",
+    "docs/README.md",
+    "examples/chat_first_playbook_starter/README.md",
+    "examples/chat_first_playbook_starter/source/EXPECTED_DELIVERABLES.md",
+    "examples/chat_first_playbook_starter/source/PLAYBOOK_BRIEF.md",
+    "examples/chat_first_playbook_starter/source/START_PROMPT.md",
+    "examples/chat_first_playbook_starter/source/TEST_AND_IMPROVE.md"
+  ],
+  "release_claim_sources": [
+    "README.md",
+    "CITATION.cff",
+    "backlog/CURRENT_MATURITY_STATE.md",
+    "manifests/CURRENT_MATURITY_STATE.json",
+    "manifests/RELEASE_IDENTITY.json",
+    "manifests/VERSION_STATE.json"
+  ],
+  "offline_link_policy": {
+    "relative_files": "required",
+    "local_heading_anchors": "required",
+    "external_urls": "not_dereferenced"
+  },
+  "bounded_historical_link_exceptions": [
+    {
+      "path": "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
+      "reason": "Preserved compiled legacy book with source-relative mascot links."
+    },
+    {
+      "path": "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
+      "reason": "Preserved compiled legacy book with source-relative mascot links."
+    },
+    {
+      "path": "empirical_evidence/external_developer_adoption/EDA_001/extracted/04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/templates/REFERENCE_ROW_TEMPLATE.md",
+      "reason": "Immutable evidence template containing an intentional URL placeholder."
+    }
+  ]
+}

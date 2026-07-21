@@ -1,63 +1,61 @@
 # Ordo Quickstart
 
-Run every command from the repository root. Python 3.10 or newer is required.
+Create your first Ordo playbook in a language-model chat. You do not need Python, a terminal, or prior knowledge of Ordo.
 
-## Check Python
+## 1. Download the chat-first starter
+
+Download [`ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip`](../examples/chat_first_playbook_starter/ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip). Keep the archive intact.
+
+The starter contains a ready prompt, a small weekly-status process brief, a test-and-improvement prompt, and expected deliverables.
+
+## 2. Upload the starter to a language-model chat
+
+Open a new chat that accepts file uploads and attach the ZIP. Ask the model to read every file before beginning.
+
+If the chat cannot open ZIP files, extract the archive and upload its four Markdown files together.
+
+## 3. Paste the starter prompt
+
+Open [`START_PROMPT.md`](../examples/chat_first_playbook_starter/source/START_PROMPT.md), copy its contents, and send it in the same chat.
+
+The model should act as an AI Ordo Developer, ask only the clarification questions needed for the example, and keep Python or CLI work optional.
+
+## 4. Create and dry-run the first playbook
+
+Answer the model's questions about the weekly-status process. Ask it to produce a first draft, validate every required section, and perform a dry-run with the example notes from `PLAYBOOK_BRIEF.md`.
+
+Do not accept the package if required inputs, gates, outputs, or failure behavior are missing.
+
+## 5. Test, improve, and package
+
+Send the prompt from [`TEST_AND_IMPROVE.md`](../examples/chat_first_playbook_starter/source/TEST_AND_IMPROVE.md). Review the model's test matrix, failures, corrections, and final package inventory.
+
+The completed chat should return the artifacts listed in [`EXPECTED_DELIVERABLES.md`](../examples/chat_first_playbook_starter/source/EXPECTED_DELIVERABLES.md), preferably as a ZIP.
+
+## Expected result
+
+The user can complete the full learning loop in one chat:
+
+```text
+create → validate → dry-run → improve → package
+```
+
+The model must not claim that a conversational dry-run is equivalent to the deterministic CLI or release gate. It should state which checks were conversational and which remain optional mechanical validation.
+
+## Optional: validate with Python and the CLI
+
+Use this path when you need automation, reproducibility, CI, or release-grade mechanical checks. Python 3.10 or newer is required.
 
 ```bash
 python3 --version
-```
-
-Continue only when the reported version is `3.10` or newer. On macOS, the Xcode-provided `python3` may be older. Use an installed interpreter such as `python3.11` consistently for both venv creation and later commands when needed.
-
-## Install
-
-```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e ./cli
-```
-
-## Validate an Ordo package
-
-```bash
 python tools/run_golden_examples.py --example package-validation
-```
-
-This runs `lint`, `compile`, `test`, and `coverage` against a temporary copy of `packages/ordo_project_builder`.
-
-## Find the next Process Rail step
-
-```bash
 python tools/run_golden_examples.py --example process-rail-next-step
-```
-
-This validates the canonical authoring answers and asks Ordo for the next deterministic step.
-
-## Validate an end-to-end output gate
-
-```bash
 python tools/run_golden_examples.py --example history-event-output-gate
-```
-
-This runs the non-interactive intake and output-validation flow against a temporary package copy.
-
-## Run every CI-backed example
-
-```bash
 python tools/run_golden_examples.py --all
 ```
 
-## Expected result
-
-A successful command:
-
-- exits with status code `0`;
-- reports the selected golden scenario as passed;
-- leaves generated package outputs only in temporary directories;
-- cleans those temporary directories after the run.
-
-The manifest at [`../examples/golden_examples.json`](../examples/golden_examples.json) is the source of truth for the commands. CI executes the same runner and fails when documentation, manifest, or behavior diverge.
-
-Continue with the [`documentation map`](README.md).
+The manifest at [`../examples/golden_examples.json`](../examples/golden_examples.json) is the source of truth for these CI-backed commands. Continue with the [`documentation map`](README.md) or the [`CLI reference`](../cli/README.md).

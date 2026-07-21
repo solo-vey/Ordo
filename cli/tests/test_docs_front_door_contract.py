@@ -31,6 +31,8 @@ def test_front_door_files_and_links_exist() -> None:
         "README.md",
         "docs/README.md",
         "docs/QUICKSTART.md",
+        "docs/CHAT_FIRST_ONBOARDING.md",
+        "docs/DOCUMENTATION_QUALITY_GATE.md",
         "docs/FAQ.md",
         "docs/GLOSSARY.md",
         "cli/README.md",
@@ -47,11 +49,13 @@ def test_root_readme_prioritizes_quickstart_and_docs() -> None:
     assert "The `main` branch may contain" in text
 
 
-def test_quickstart_has_python_preflight_and_expected_result() -> None:
+def test_quickstart_is_chat_first_with_optional_cli_validation() -> None:
     text = read("docs/QUICKSTART.md")
-    assert "python3 --version" in text
-    assert "Python 3.10 or newer is required" in text
+    assert "You do not need Python" in text
+    assert "## 1. Download the chat-first starter" in text
+    assert "## 5. Test, improve, and package" in text
     assert "## Expected result" in text
+    assert "## Optional: validate with Python and the CLI" in text
     assert "python tools/run_golden_examples.py --all" in text
 
 
@@ -74,7 +78,7 @@ def test_user_facing_cli_headings_do_not_use_milestone_ids() -> None:
 def test_discoverability_entry_points_are_canonical_and_linked() -> None:
     root_readme = read("README.md")
     docs_readme = read("docs/README.md")
-    for target in ("docs/FAQ.md", "docs/GLOSSARY.md", "CITATION.cff"):
+    for target in ("docs/FAQ.md", "docs/GLOSSARY.md", "docs/QUICKSTART.md", "CITATION.cff"):
         assert target in root_readme
     for target in ("FAQ.md", "GLOSSARY.md", "../CITATION.cff"):
         assert target in docs_readme
@@ -126,9 +130,17 @@ def test_citation_metadata_has_required_repository_fields() -> None:
 def test_quickstart_uses_search_oriented_scenario_headings() -> None:
     text = read("docs/QUICKSTART.md")
     for heading in (
-        "## Validate an Ordo package",
-        "## Find the next Process Rail step",
-        "## Validate an end-to-end output gate",
-        "## Run every CI-backed example",
+        "## 1. Download the chat-first starter",
+        "## 2. Upload the starter to a language-model chat",
+        "## 3. Paste the starter prompt",
+        "## 4. Create and dry-run the first playbook",
+        "## 5. Test, improve, and package",
     ):
         assert heading in text
+
+
+def test_root_readme_quickstart_is_chat_first() -> None:
+    section = read("README.md").split("## Quickstart", 1)[1].split("## Documentation", 1)[0]
+    assert "chat-first starter ZIP" in section
+    assert "python3" not in section
+    assert "pip install" not in section
