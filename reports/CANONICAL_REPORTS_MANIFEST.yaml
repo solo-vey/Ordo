@@ -465,6 +465,15 @@ entries:
 - path: m60_7_2_terminal_path_enumeration/VALIDATION_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: 8ceefbeda63219d9566b402ca214576d8ecfd8f2ec2f86acf1c6770a109b60b1
+- path: m65_2/README.md
+  classification: canonical_current_or_historical_record
+  sha256: 57659224f6f808a7c4332e8b7221c7cf64670902506439c8bb6adb303506d5f2
+- path: m65_2/legacy-root/README.md
+  classification: canonical_current_or_historical_record
+  sha256: c4091ed1563d94737286004544f558233885b56406fbb21890051848a51471c8
+- path: m65_2/legacy-root/m65_2_diff_report.json
+  classification: canonical_current_or_historical_record
+  sha256: 87ff373278f63b678ba309ee5dfdaea3d7d025a3c59eeac6e0e04b4bfa2259f0
 - path: m71_3_business_contract_diff.json
   classification: canonical_current_or_historical_record
   sha256: 11962a225a06110f245c65bb7b593449cf93400ce61b55207a32e6f980abc59f

@@ -31,7 +31,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 - [`../packages/`](../packages) — reference process and playbook packages.
 - [`../integrations/apf/`](../integrations/apf) — Applied Process Factory modules and assembly definitions.
-- [`../STABLE_PACKAGE_INDEX.md`](../STABLE_PACKAGE_INDEX.md) — stable package index.
+- [`status/legacy-root/STABLE_PACKAGE_INDEX.md`](status/legacy-root/STABLE_PACKAGE_INDEX.md) — preserved historical stable package index.
 - [`apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — preserved standard APF module guidance.
 
 ## CLI and validation

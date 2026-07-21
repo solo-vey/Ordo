@@ -13,6 +13,23 @@ CONTRACT_PATH = ROOT / "manifests/ROOT_RELOCATION_CONTRACT.json"
 CHECKSUM_PATH = ROOT / "SHA256SUMS.txt"
 REPORT_MANIFEST_PATH = ROOT / "reports/CANONICAL_REPORTS_MANIFEST.yaml"
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^]]*]\(([^)]+)\)")
+ROOT_FILES = {
+    ".gitignore",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CODE_OF_CONDUCT.md",
+    "COMMERCIAL_LICENSE.md",
+    "CONTRIBUTING.md",
+    "GOVERNANCE.md",
+    "LICENSE.md",
+    "NOTICE.md",
+    "README.md",
+    "SECURITY.md",
+    "SHA256SUMS.txt",
+    "SUPPORT.md",
+    "generated_artifacts_policy.yaml",
+    "repo_hygiene.yml",
+}
 
 
 def load_contract() -> dict:
@@ -38,10 +55,15 @@ def test_relocation_contract_is_complete_and_unique() -> None:
     destinations = [entry["canonical_path"] for entry in entries]
 
     assert contract["schema_version"] == "ordo.root_relocation_contract.v1"
-    assert contract["entry_count"] == len(entries) == 53
+    assert contract["entry_count"] == len(entries) == 56
     assert len(sources) == len(set(sources))
     assert len(destinations) == len(set(destinations))
     assert all(Path(source).parent == Path(".") for source in sources)
+
+
+def test_repository_root_contains_only_canonical_front_door_files() -> None:
+    actual = {path.name for path in ROOT.iterdir() if path.is_file()}
+    assert actual == ROOT_FILES
 
 
 def test_relocated_sources_are_absent_and_destinations_exist() -> None:

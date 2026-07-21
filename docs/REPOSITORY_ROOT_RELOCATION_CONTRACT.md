@@ -10,5 +10,6 @@ The contract records every former root path and its canonical destination. Autom
 - navigation links in relocation indexes resolve;
 - `SHA256SUMS.txt` contains the relocated destination and its current digest, not the former root path;
 - relocated report artifacts remain declared and correctly hashed in `reports/CANONICAL_REPORTS_MANIFEST.yaml`.
+- the repository root contains only the public front door, legal and community files, checksum index, and root-level policy configuration.
 
 Historical reports, transfer packages, frozen manifests, and immutable evidence may retain old path mentions as provenance. They are not rewritten merely to reflect the current repository layout.

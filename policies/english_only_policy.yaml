@@ -45,6 +45,9 @@ file_exemptions:
 - id: policy_examples
   path: language/BILINGUAL_FIELD_POLICY.md
   reason: Localized policy examples.
+- id: localized_apf_defect_review_rationale
+  path: docs/apf/legacy-root/uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md
+  reason: Preserved Ukrainian APF rationale.
 structured_value_exemptions:
 - id: localized_uk_field
   path_suffix: display_name_uk

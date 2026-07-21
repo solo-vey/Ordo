@@ -193,7 +193,7 @@
       "priority": "P1",
       "title": "APF post-generation defect review for critical artifacts",
       "status": "closed",
-      "source": "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md",
+      "source": "docs/apf/legacy-root/uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md",
       "current_milestone": "M83.0",
       "planned_milestones": [
         "M83.0",
