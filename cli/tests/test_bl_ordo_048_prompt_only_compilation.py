@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import shutil
 from ordo.prompt_compiler import compile_prompt_only, validate_prompt_compilation, assess_runtime_route
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -35,7 +36,8 @@ def test_routing_escalates_on_branch_or_backtrack_failure():
 
 def test_prompt_only_package_profile(tmp_path):
     from ordo.package_profiles import build_package_profile
-    package=ROOT/'packages/history_event_guided_intake'
+    package=tmp_path/'history_event_guided_intake'
+    shutil.copytree(ROOT/'packages/history_event_guided_intake',package)
     out=tmp_path/'prompt-only.zip'
     report=build_package_profile(package,profile='prompt_only',out=out)
     assert report['status']=='passed'
