@@ -118,7 +118,7 @@ M61.0 — Human Review Scenario Cards
 M62.0 — Runtime Execution of Generated Testcases
 ```
 
-See `FUTURE_BACKLOG.md`.
+See `backlog/FUTURE_BACKLOG.md`.
 
 ## M61.0 addendum — review cards
 

@@ -51,4 +51,3 @@ python3 tools/build_release_archive.py --check-only   --test-timeout-seconds 0  
 
 A value of `0` disables only the gate's internal subprocess timeout. Operating-system,
 CI-job, shell, container, or hosting-platform time limits can still terminate the run.
-

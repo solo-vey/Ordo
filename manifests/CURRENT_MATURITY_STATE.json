@@ -133,7 +133,7 @@
     }
   },
   "backlog": {
-    "canonical_md": "CONSOLIDATED_BACKLOG.md",
+    "canonical_md": "backlog/CONSOLIDATED_BACKLOG.md",
     "canonical_json": "manifests/CONSOLIDATED_BACKLOG.json",
     "closed_through": [
       "BL-ORDO-002",

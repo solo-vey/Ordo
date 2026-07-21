@@ -257,12 +257,12 @@ def run_package_lints(skip_heavy: bool, timeout_seconds: int = 3600) -> dict:
 
 def check_manifest_sync() -> list[str]:
     issues = []
-    md = (ROOT / "CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8")
+    md = (ROOT / "backlog/CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8")
     md_statuses = dict(re.findall(r"### (BL-ORDO-\d+) — .*?\n\nStatus: `([^`]+)`", md, re.S))
     data = json.loads((ROOT / "manifests/CONSOLIDATED_BACKLOG.json").read_text(encoding="utf-8"))
     js = {i["id"]: i["status"] for i in data["items"]}
     if md_statuses != js:
-        issues.append("CONSOLIDATED_BACKLOG.md and manifests/CONSOLIDATED_BACKLOG.json are desynchronized")
+        issues.append("backlog/CONSOLIDATED_BACKLOG.md and manifests/CONSOLIDATED_BACKLOG.json are desynchronized")
     return issues
 
 
