@@ -7,3 +7,5 @@
 - Empirical Evidence subsystem foundation: `ready` and independent from CSG.
 - BL-ORDO-041–043 remain open.
 - BL-ORDO-026 remains pending independent external delivery verification.
+- Repository maintenance contour J.6: `closed`; the repository root is constrained to 15 canonical front-door and configuration files.
+- Next documentation contour: `L.1` read-only quality-gate audit, followed by `L.2` chat-first onboarding.

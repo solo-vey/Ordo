@@ -217,6 +217,19 @@ The following items are authoritatively closed:
 
 Earlier blocked or deferred records are retained as historical reports but no longer define current backlog status.
 
+## Repository maintenance contours
+
+### J.6 — Repository root structure audit and cleanup
+
+Status: `closed`
+
+The root inventory, APF documentation and evidence relocation, delivery and release evidence relocation, governance consolidation, relocation integrity contract, and final root allowlist validation are complete. The canonical closure record is [`../manifests/J6_ROOT_CLEANUP_CLOSURE.json`](../manifests/J6_ROOT_CLEANUP_CLOSURE.json).
+
+Next documentation work:
+
+- `L.1` — read-only documentation quality-gate audit;
+- `L.2` — chat-first onboarding and first-playbook quickstart.
+
 
 ## BL-ORDO-014 Closure — M83.4
 

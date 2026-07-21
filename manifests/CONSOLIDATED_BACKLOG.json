@@ -1,6 +1,6 @@
 {
   "schema_version": "ordo.consolidated_backlog.v1",
-  "updated_at": "2026-07-18",
+  "updated_at": "2026-07-21",
   "canonical_document": "backlog/CONSOLIDATED_BACKLOG.md",
   "items": [
     {
@@ -923,6 +923,28 @@
       "title": "GitHub Publication Hygiene and Repository Front Door",
       "status": "closed",
       "priority": "P2"
+    }
+  ],
+  "maintenance_contours": [
+    {
+      "id": "J.6",
+      "title": "Repository root structure audit and cleanup",
+      "status": "closed",
+      "closed_at": "2026-07-21",
+      "closure_evidence": "manifests/J6_ROOT_CLEANUP_CLOSURE.json",
+      "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"
+    }
+  ],
+  "next_documentation_tasks": [
+    {
+      "id": "L.1",
+      "title": "Read-only documentation quality-gate audit",
+      "status": "open"
+    },
+    {
+      "id": "L.2",
+      "title": "Chat-first onboarding and first playbook",
+      "status": "open"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "ordo.current_maturity_state.v1",
-  "updated_at": "2026-07-15T00:00:00Z",
+  "updated_at": "2026-07-21T00:00:00Z",
   "source_of_truth": true,
   "latest_closed_milestone": "M89.5",
   "release": {
@@ -190,5 +190,19 @@
       "BL-ORDO-023"
     ],
     "status": "completed"
-  }
+  },
+  "repository_maintenance": {
+    "J.6": {
+      "title": "Repository root structure audit and cleanup",
+      "status": "closed",
+      "closed_at": "2026-07-21",
+      "root_file_count": 15,
+      "closure_evidence": "manifests/J6_ROOT_CLEANUP_CLOSURE.json",
+      "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"
+    }
+  },
+  "next_documentation_tasks": [
+    "L.1 — Read-only documentation quality-gate audit",
+    "L.2 — Chat-first onboarding and first playbook"
+  ]
 }
