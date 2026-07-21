@@ -79,14 +79,14 @@ The RC10 packaged baseline was produced by the sanctioned release builder and pa
 
 These figures describe the packaged RC10 baseline, not every later commit on `main`.
 
-See [`DELIVERY_GATE_REPORT.json`](DELIVERY_GATE_REPORT.json), [`FINAL_PACKAGE_SELF_CHECK_REPORT.json`](FINAL_PACKAGE_SELF_CHECK_REPORT.json), and [`manifests/RELEASE_IDENTITY.json`](manifests/RELEASE_IDENTITY.json).
+See [`reports/delivery/current/DELIVERY_GATE_REPORT.json`](reports/delivery/current/DELIVERY_GATE_REPORT.json), [`reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json`](reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json), and [`manifests/RELEASE_IDENTITY.json`](manifests/RELEASE_IDENTITY.json).
 
 To verify a downloaded package:
 
 1. Verify the external SHA-256 file supplied with the archive.
 2. Extract the archive into a clean directory.
 3. Verify every entry in `SHA256SUMS.txt`.
-4. Review `DELIVERY_GATE_REPORT.json` and `FINAL_PACKAGE_SELF_CHECK_REPORT.json`.
+4. Review `reports/delivery/current/DELIVERY_GATE_REPORT.json` and `reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json`.
 5. Confirm release versions in `manifests/VERSION_STATE.json` and `manifests/RELEASE_IDENTITY.json`.
 
 ```bash

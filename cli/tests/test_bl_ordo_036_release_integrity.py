@@ -17,7 +17,7 @@ def make_root(base:Path):
 def reports(run='run-1',source='abc',stamp='2026-07-14T00:00:00Z'):
     gate={'run_id':run,'release_id':'r1','source_tree_hash':source,'generated_at':stamp}
     selfcheck={'run_id':run,'release_id':'r1','source_tree_hash':source,'generated_at':stamp}
-    return {'DELIVERY_GATE_REPORT.json':json.dumps(gate),'FINAL_PACKAGE_SELF_CHECK_REPORT.json':json.dumps(selfcheck),'FINAL_PACKAGE_SELF_CHECK_REPORT.md':'# current\n'}
+    return {'reports/delivery/current/DELIVERY_GATE_REPORT.json':json.dumps(gate),'reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json':json.dumps(selfcheck),'reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md':'# current\n'}
 
 def test_identity_controls_filename_and_internal_root():
     with tempfile.TemporaryDirectory() as td:
@@ -46,7 +46,7 @@ def test_post_checksum_mutation_is_detected():
 def test_stale_or_mismatched_evidence_is_rejected():
     with tempfile.TemporaryDirectory() as td:
         root,identity=make_root(Path(td)); parent=Path(td)/'stage'; parent.mkdir()
-        bad=reports(); bad['FINAL_PACKAGE_SELF_CHECK_REPORT.json']=json.dumps({'run_id':'old','release_id':'r1','source_tree_hash':'old','generated_at':'old'})
+        bad=reports(); bad['reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json']=json.dumps({'run_id':'old','release_id':'r1','source_tree_hash':'old','generated_at':'old'})
         staged=ri.stage_candidate(root,parent,bad)
         result=ri.verify_extracted(staged,identity,'run-1')
         assert result['status']=='failed'

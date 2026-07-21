@@ -46,8 +46,8 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 - [`../manifests/RELEASE_IDENTITY.json`](../manifests/RELEASE_IDENTITY.json) — packaged release identity.
 - [`../manifests/VERSION_STATE.json`](../manifests/VERSION_STATE.json) — current version state.
-- [`../DELIVERY_GATE_REPORT.json`](../DELIVERY_GATE_REPORT.json) — delivery gate evidence.
-- [`../FINAL_PACKAGE_SELF_CHECK_REPORT.json`](../FINAL_PACKAGE_SELF_CHECK_REPORT.json) — packaged self-check evidence.
+- [`../reports/delivery/current/DELIVERY_GATE_REPORT.json`](../reports/delivery/current/DELIVERY_GATE_REPORT.json) — delivery gate evidence.
+- [`../reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json`](../reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json) — packaged self-check evidence.
 - [`../empirical_evidence/`](../empirical_evidence) — normalized and immutable empirical evidence.
 - [`../benchmarks/`](../benchmarks) — benchmark datasets, schemas, and evaluation artifacts.
 
