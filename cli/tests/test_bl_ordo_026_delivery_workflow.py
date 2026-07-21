@@ -66,6 +66,23 @@ class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
         self.assertIn("self_check_report_path.write_text(", builder)
         self.assertIn("json.dumps(self_check, indent=2)", builder)
 
+    def test_check_only_reports_are_restored_before_release_build(self) -> None:
+        check_only_step = self.text.split("- name: Run full non-destructive delivery gate", 1)[1]
+        check_only_step = check_only_step.split("- name: Build reproducible release candidate", 1)[0]
+        self.assertIn("git restore --", check_only_step)
+        self.assertIn(
+            "reports/delivery/current/DELIVERY_GATE_REPORT.json",
+            check_only_step,
+        )
+        self.assertIn(
+            "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json",
+            check_only_step,
+        )
+        self.assertLess(
+            check_only_step.index("git restore --"),
+            check_only_step.index('exit "$gate_status"'),
+        )
+
     def test_existing_check_workflow_includes_apf(self) -> None:
         check = CHECK_WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("packages/ordo_applied_project_factory", check)

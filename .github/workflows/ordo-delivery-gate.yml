@@ -116,6 +116,13 @@ jobs:
           if [ -f reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json ]; then
             cp reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json
           fi
+
+          # The check-only run refreshes tracked current reports. Restore their
+          # canonical repository copies before the release builder runs the
+          # isolation gate again.
+          git restore -- \
+            reports/delivery/current/DELIVERY_GATE_REPORT.json \
+            reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json
           exit "$gate_status"
 
       - name: Build reproducible release candidate
