@@ -13,3 +13,5 @@ The contract records every former root path and its canonical destination. Autom
 - the repository root contains only the public front door, legal and community files, checksum index, and root-level policy configuration.
 
 Historical reports, transfer packages, frozen manifests, and immutable evidence may retain old path mentions as provenance. They are not rewritten merely to reflect the current repository layout.
+
+J.6 is closed. Its final machine-readable evidence is [`../manifests/J6_ROOT_CLEANUP_CLOSURE.json`](../manifests/J6_ROOT_CLEANUP_CLOSURE.json), with the human-readable summary in [`status/J6_REPOSITORY_ROOT_CLEANUP_CLOSURE.md`](status/J6_REPOSITORY_ROOT_CLEANUP_CLOSURE.md).

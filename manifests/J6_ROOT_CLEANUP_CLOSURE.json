@@ -1,0 +1,50 @@
+{
+  "schema_version": "ordo.repository_root_cleanup_closure.v1",
+  "contour_id": "J.6",
+  "status": "closed",
+  "closed_at": "2026-07-21",
+  "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663",
+  "root_file_count": 15,
+  "root_allowed_files": [
+    ".gitignore",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CODE_OF_CONDUCT.md",
+    "COMMERCIAL_LICENSE.md",
+    "CONTRIBUTING.md",
+    "GOVERNANCE.md",
+    "LICENSE.md",
+    "NOTICE.md",
+    "README.md",
+    "SECURITY.md",
+    "SHA256SUMS.txt",
+    "SUPPORT.md",
+    "generated_artifacts_policy.yaml",
+    "repo_hygiene.yml"
+  ],
+  "phases": [
+    {"id": "J.6a", "status": "closed", "result": "read_only_root_inventory_and_classification"},
+    {"id": "J.6b-1", "status": "closed", "pull_request": 10, "merge_commit": "5258e47909a11e9685fa39a8531f0b34e52967f1"},
+    {"id": "J.6b-2a", "status": "closed", "pull_request": 11, "merge_commit": "6b840db5a2127cafe7e7d1283a7b9feb1ce9ab9f"},
+    {"id": "J.6b-2b", "status": "closed", "pull_request": 12, "merge_commit": "5b0f6d438241f4fb720807d29c181c124ac1c96b"},
+    {"id": "J.6b-2c", "status": "closed", "pull_request": 13, "merge_commit": "9049ae5695a24115179def5dab1742795185f618"},
+    {"id": "J.6b-2d", "status": "closed", "pull_request": 14, "merge_commit": "8922d0fe81fffcc9f2d95c71e2ea41df94b9104a"},
+    {"id": "J.6b-2e", "status": "closed", "pull_request": 15, "merge_commit": "f9ec1945017b682107a33e8507537985cb176655"},
+    {"id": "J.6b-3", "status": "closed", "pull_request": 16, "merge_commit": "eafca0c2c7de8b9b2e36aeaff138c1428263148b"},
+    {"id": "J.6b-4", "status": "closed", "pull_request": 17, "merge_commit": "837db02a9cd335934ee22493326c314fd64960f4"},
+    {"id": "J.6c", "status": "closed", "pull_request": 18, "merge_commit": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"}
+  ],
+  "validation": {
+    "focused_tests": "28 passed",
+    "full_cli_suite": "690 passed, 17 subtests passed",
+    "delivery_gate": "passed",
+    "canonical_package_lints": "4/4 passed",
+    "isolated_release_tree_strict_check": "passed",
+    "pull_request_18_checks": "6/6 passed"
+  },
+  "historical_contours_rewritten": false,
+  "next_tasks": [
+    {"id": "L.1", "title": "Read-only documentation quality-gate audit"},
+    {"id": "L.2", "title": "Chat-first onboarding and first playbook"}
+  ]
+}
