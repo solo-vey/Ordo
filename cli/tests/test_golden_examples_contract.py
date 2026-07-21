@@ -16,7 +16,7 @@ class GoldenExamplesContractTests(unittest.TestCase):
         for example_id in ids:
             self.assertIn(f"--example {example_id}", quickstart)
         self.assertIn("docs/QUICKSTART.md", readme)
-        self.assertIn("python -m pip install -e ./cli", readme)
+        self.assertIn("python -m pip install -e ./cli", quickstart)
 
     def test_commands_are_repository_root_relative(self):
         manifest = json.loads((ROOT / "examples/golden_examples.json").read_text(encoding="utf-8"))

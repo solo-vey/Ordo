@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.chat_first_starter_manifest.v1",
+  "archive": "ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip",
+  "archive_sha256": "c17956809bca814b4cf3c5725b9d4bcfcf2306a8a0f4ee313fc3e070d694781a",
+  "members": [
+    {
+      "path": "EXPECTED_DELIVERABLES.md",
+      "sha256": "f480c1df4f38477a2c65c0d947d665aeb833303df2e79b04e63b61f544f585bf"
+    },
+    {
+      "path": "PLAYBOOK_BRIEF.md",
+      "sha256": "649f30620301ba1c23243e424b8b5b2db4f91e613a685d78478930627fb7943c"
+    },
+    {
+      "path": "START_PROMPT.md",
+      "sha256": "ff1ed114aff1a56c6f1c789e69ce1c7bcebbfb6c942d95af56bda833f6d4a773"
+    },
+    {
+      "path": "TEST_AND_IMPROVE.md",
+      "sha256": "e823f0a9a081256653ce371ad50156334faeb60604ce3fafdb906cd0dc92b2cd"
+    }
+  ]
+}

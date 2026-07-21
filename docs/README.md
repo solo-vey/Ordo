@@ -4,7 +4,8 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 ## Start here
 
-- [`QUICKSTART.md`](QUICKSTART.md) — install Ordo and run the three CI-backed golden examples.
+- [`QUICKSTART.md`](QUICKSTART.md) — create, test, and improve a first playbook in a language-model chat; CLI validation is optional.
+- [`CHAT_FIRST_ONBOARDING.md`](CHAT_FIRST_ONBOARDING.md) — canonical chat-first contract, starter artifacts, and completion criteria.
 - [`FAQ.md`](FAQ.md) — answers to common project, licensing, package, and support questions.
 - [`GLOSSARY.md`](GLOSSARY.md) — short definitions and links for core Ordo terminology.
 - [`../CITATION.cff`](../CITATION.cff) — canonical repository citation metadata.
@@ -43,6 +44,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`policies/DELIVERY_POLICY.md`](policies/DELIVERY_POLICY.md) — release and delivery gate policy.
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
+- [`DOCUMENTATION_QUALITY_GATE.md`](DOCUMENTATION_QUALITY_GATE.md) — active-document scope, link rules, release-claim consistency, and bounded historical exclusions.
 
 ## Evidence and releases
 
