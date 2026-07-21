@@ -32,12 +32,13 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../packages/`](../packages) — reference process and playbook packages.
 - [`../integrations/apf/`](../integrations/apf) — Applied Process Factory modules and assembly definitions.
 - [`../STABLE_PACKAGE_INDEX.md`](../STABLE_PACKAGE_INDEX.md) — stable package index.
-- [`../APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — standard APF module guidance.
+- [`apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — preserved standard APF module guidance.
 
 ## CLI and validation
 
 - [`../cli/README.md`](../cli/README.md) — CLI command reference and root-relative usage.
 - [`REPOSITORY_HYGIENE.md`](REPOSITORY_HYGIENE.md) — development and release hygiene scopes, forbidden paths, and duplicate-nesting rules.
+- [`REPOSITORY_ROOT_RELOCATION_CONTRACT.md`](REPOSITORY_ROOT_RELOCATION_CONTRACT.md) — canonical mappings and integrity checks for files removed from the repository root.
 - [`policies/README.md`](policies/README.md) — canonical policy index.
 - [`policies/DELIVERY_POLICY.md`](policies/DELIVERY_POLICY.md) — release and delivery gate policy.
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
