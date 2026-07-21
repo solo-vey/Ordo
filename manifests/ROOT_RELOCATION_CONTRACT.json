@@ -1,0 +1,119 @@
+{
+  "schema_version": "ordo.root_relocation_contract.v1",
+  "baseline_before_cleanup": "be91782f5ffc29e182d5077ce604e7279381b498",
+  "entry_count": 53,
+  "groups": [
+    {
+      "group_id": "apf_documentation",
+      "lifecycle": "legacy_documentation",
+      "relocations": [
+        {"source_path": "APF_COMPANION_WORKFLOW.md", "canonical_path": "docs/apf/legacy-root/APF_COMPANION_WORKFLOW.md"},
+        {"source_path": "APF_DOCUMENTATION_AND_BOOK_SECTION.md", "canonical_path": "docs/apf/legacy-root/APF_DOCUMENTATION_AND_BOOK_SECTION.md"},
+        {"source_path": "APF_INTEGRATION_CORRELATION_PLAN.md", "canonical_path": "docs/apf/legacy-root/APF_INTEGRATION_CORRELATION_PLAN.md"},
+        {"source_path": "APF_LANGUAGE_PATTERN_CANDIDATES.md", "canonical_path": "docs/apf/legacy-root/APF_LANGUAGE_PATTERN_CANDIDATES.md"},
+        {"source_path": "APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md", "canonical_path": "docs/apf/legacy-root/APF_LANGUAGE_PATTERN_EXTRACTION_PLAN.md"},
+        {"source_path": "APF_PACKAGE_IMPORT.md", "canonical_path": "docs/apf/legacy-root/APF_PACKAGE_IMPORT.md"},
+        {"source_path": "APF_PATTERN_CLASSIFICATION_MATRIX.md", "canonical_path": "docs/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.md"},
+        {"source_path": "APF_RC_PATTERN_CLASSIFICATION.md", "canonical_path": "docs/apf/legacy-root/APF_RC_PATTERN_CLASSIFICATION.md"},
+        {"source_path": "APF_RC_STANDARD_MODULE_STATUS.md", "canonical_path": "docs/apf/legacy-root/APF_RC_STANDARD_MODULE_STATUS.md"},
+        {"source_path": "APF_SESSION_PACKAGE_LOAD_AND_CACHE_BACKLOG.md", "canonical_path": "docs/apf/legacy-root/APF_SESSION_PACKAGE_LOAD_AND_CACHE_BACKLOG.md"},
+        {"source_path": "APF_STANDARD_MODULE_GUIDE.md", "canonical_path": "docs/apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md"},
+        {"source_path": "COMPANION_UTILITIES.md", "canonical_path": "docs/apf/legacy-root/COMPANION_UTILITIES.md"},
+        {"source_path": "COMPANION_UTILITY_WORKFLOW.md", "canonical_path": "docs/apf/legacy-root/COMPANION_UTILITY_WORKFLOW.md"},
+        {"source_path": "STANDARD_APPLIED_MODULES.md", "canonical_path": "docs/apf/legacy-root/STANDARD_APPLIED_MODULES.md"}
+      ]
+    },
+    {
+      "group_id": "apf_evidence",
+      "lifecycle": "legacy_evidence",
+      "relocations": [
+        {"source_path": "APF_PATTERN_CLASSIFICATION_MATRIX.csv", "canonical_path": "reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.csv"},
+        {"source_path": "APF_PATTERN_CLASSIFICATION_MATRIX.json", "canonical_path": "reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json"},
+        {"source_path": "APF_RC_PATTERN_CLASSIFICATION.csv", "canonical_path": "reports/apf/legacy-root/APF_RC_PATTERN_CLASSIFICATION.csv"}
+      ]
+    },
+    {
+      "group_id": "delivery_and_self_check_reports",
+      "lifecycle": "mixed_current_and_legacy_evidence",
+      "relocations": [
+        {"source_path": "DELIVERY_GATE_REPORT.json", "canonical_path": "reports/delivery/current/DELIVERY_GATE_REPORT.json"},
+        {"source_path": "FINAL_PACKAGE_SELF_CHECK_REPORT.json", "canonical_path": "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"},
+        {"source_path": "FINAL_PACKAGE_SELF_CHECK_REPORT.md", "canonical_path": "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md"},
+        {"source_path": "SELF_CHECK_REPAIR_1_RUNTIME_CONTRACT_HYGIENE_REPORT.json", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_1_RUNTIME_CONTRACT_HYGIENE_REPORT.json"},
+        {"source_path": "SELF_CHECK_REPAIR_1_RUNTIME_CONTRACT_HYGIENE_REPORT.md", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_1_RUNTIME_CONTRACT_HYGIENE_REPORT.md"},
+        {"source_path": "SELF_CHECK_REPAIR_2_PROMPT_REGISTRY_DOCS_ALIGNMENT_REPORT.json", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_2_PROMPT_REGISTRY_DOCS_ALIGNMENT_REPORT.json"},
+        {"source_path": "SELF_CHECK_REPAIR_2_PROMPT_REGISTRY_DOCS_ALIGNMENT_REPORT.md", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_2_PROMPT_REGISTRY_DOCS_ALIGNMENT_REPORT.md"},
+        {"source_path": "SELF_CHECK_REPAIR_4_RUNTIME_PROMPT_LIMIT_TEST_ISOLATION_REPORT.json", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_4_RUNTIME_PROMPT_LIMIT_TEST_ISOLATION_REPORT.json"},
+        {"source_path": "SELF_CHECK_REPAIR_4_RUNTIME_PROMPT_LIMIT_TEST_ISOLATION_REPORT.md", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_4_RUNTIME_PROMPT_LIMIT_TEST_ISOLATION_REPORT.md"},
+        {"source_path": "SELF_CHECK_REPAIR_5_BOOK_ASSET_LINKS_REPORT.json", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_5_BOOK_ASSET_LINKS_REPORT.json"},
+        {"source_path": "SELF_CHECK_REPAIR_5_BOOK_ASSET_LINKS_REPORT.md", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_REPAIR_5_BOOK_ASSET_LINKS_REPORT.md"},
+        {"source_path": "SELF_CHECK_STEP_3_FULL_TEST_SUITE_DURATION_REPORT.json", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_STEP_3_FULL_TEST_SUITE_DURATION_REPORT.json"},
+        {"source_path": "SELF_CHECK_STEP_3_FULL_TEST_SUITE_DURATION_REPORT.md", "canonical_path": "reports/self-check/legacy-root/SELF_CHECK_STEP_3_FULL_TEST_SUITE_DURATION_REPORT.md"}
+      ]
+    },
+    {
+      "group_id": "pre_release_reports",
+      "lifecycle": "legacy_evidence",
+      "relocations": [
+        {"source_path": "PRE_RELEASE_HISTORY_EVENT_CLEAN_CHECK.json", "canonical_path": "reports/pre-release/legacy-root/PRE_RELEASE_HISTORY_EVENT_CLEAN_CHECK.json"},
+        {"source_path": "PRE_RELEASE_REPO_CHECK.json", "canonical_path": "reports/pre-release/legacy-root/PRE_RELEASE_REPO_CHECK.json"},
+        {"source_path": "PRE_RELEASE_STATUS.json", "canonical_path": "reports/pre-release/legacy-root/PRE_RELEASE_STATUS.json"},
+        {"source_path": "PRE_RELEASE_STATUS.md", "canonical_path": "reports/pre-release/legacy-root/PRE_RELEASE_STATUS.md"}
+      ]
+    },
+    {
+      "group_id": "release_manifests",
+      "lifecycle": "legacy_release_metadata",
+      "relocations": [
+        {"source_path": "CHANGE_BUNDLE_MANIFEST.json", "canonical_path": "manifests/releases/legacy-root/CHANGE_BUNDLE_MANIFEST.json"},
+        {"source_path": "RELEASE_MANIFEST_M83_0.json", "canonical_path": "manifests/releases/legacy-root/RELEASE_MANIFEST_M83_0.json"}
+      ]
+    },
+    {
+      "group_id": "release_notes",
+      "lifecycle": "legacy_release_documentation",
+      "relocations": [
+        {"source_path": "RELEASE_NOTES_ORDO_2026_07_14_RC1.md", "canonical_path": "docs/releases/legacy-root/RELEASE_NOTES_ORDO_2026_07_14_RC1.md"},
+        {"source_path": "RELEASE_NOTES_ORDO_2026_07_14_RC3.md", "canonical_path": "docs/releases/legacy-root/RELEASE_NOTES_ORDO_2026_07_14_RC3.md"}
+      ]
+    },
+    {
+      "group_id": "governance_and_handoffs",
+      "lifecycle": "mixed_current_and_legacy_documentation",
+      "relocations": [
+        {"source_path": "CONSOLIDATED_BACKLOG.md", "canonical_path": "backlog/CONSOLIDATED_BACKLOG.md"},
+        {"source_path": "CURRENT_MATURITY_STATE.md", "canonical_path": "backlog/CURRENT_MATURITY_STATE.md"},
+        {"source_path": "FUTURE_BACKLOG.md", "canonical_path": "backlog/FUTURE_BACKLOG.md"},
+        {"source_path": "DELIVERY_POLICY.md", "canonical_path": "docs/policies/DELIVERY_POLICY.md"},
+        {"source_path": "LANGUAGE_POLICY.md", "canonical_path": "docs/policies/LANGUAGE_POLICY.md"},
+        {"source_path": "PLAYBOOK_VERSIONING_POLICY.md", "canonical_path": "docs/policies/PLAYBOOK_VERSIONING_POLICY.md"},
+        {"source_path": "README_LICENSE_SECTION.md", "canonical_path": "docs/policies/README_LICENSE_SECTION.md"},
+        {"source_path": "RELEASE_INTEGRITY_POLICY.md", "canonical_path": "docs/policies/RELEASE_INTEGRITY_POLICY.md"},
+        {"source_path": "TEST_FIXTURE_AND_PARALLEL_SAFETY_POLICY.md", "canonical_path": "docs/policies/TEST_FIXTURE_AND_PARALLEL_SAFETY_POLICY.md"},
+        {"source_path": "VERSIONING_POLICY.md", "canonical_path": "docs/policies/VERSIONING_POLICY.md"},
+        {"source_path": "DEVELOPER_BUNDLE_README.md", "canonical_path": "docs/handoff/DEVELOPER_BUNDLE_README.md"},
+        {"source_path": "START_PROMPT_DEVELOPER_MODE.md", "canonical_path": "docs/handoff/START_PROMPT_DEVELOPER_MODE.md"},
+        {"source_path": "STABLE_DEVELOPER_HANDOFF.md", "canonical_path": "docs/handoff/legacy-root/STABLE_DEVELOPER_HANDOFF.md"},
+        {"source_path": "README_CURRENT_HANDOFF_UK.md", "canonical_path": "archive/handoffs/legacy-root/README_CURRENT_HANDOFF_UK.md"},
+        {"source_path": "README_CURRENT_PACKAGE_UK.md", "canonical_path": "archive/handoffs/legacy-root/README_CURRENT_PACKAGE_UK.md"}
+      ]
+    }
+  ],
+  "active_consumers": [
+    {"path": "tools/build_release_archive.py", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md", "reports/delivery/current/DELIVERY_GATE_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md"]},
+    {"path": ".github/workflows/ordo-delivery-gate.yml", "required_paths": ["reports/delivery/current/DELIVERY_GATE_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"]},
+    {"path": "language/STARTUP_PACKAGE_PROFILE.md", "required_paths": ["docs/handoff/START_PROMPT_DEVELOPER_MODE.md"]},
+    {"path": "manifests/CONSOLIDATED_BACKLOG.json", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md"]},
+    {"path": "manifests/CURRENT_MATURITY_STATE.json", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md"]},
+    {"path": "manifests/M74_4_RELEASE_PRODUCT_SPLIT.json", "required_paths": ["backlog/FUTURE_BACKLOG.md", "docs/handoff/DEVELOPER_BUNDLE_README.md", "reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"]}
+  ],
+  "link_indexes": [
+    "backlog/README.md",
+    "docs/apf/legacy-root/README.md",
+    "docs/handoff/README.md",
+    "docs/handoff/legacy-root/README.md",
+    "docs/policies/README.md",
+    "docs/releases/legacy-root/README.md",
+    "reports/apf/legacy-root/README.md"
+  ]
+}
