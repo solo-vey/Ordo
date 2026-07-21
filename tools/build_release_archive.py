@@ -18,7 +18,7 @@ Blocking checks (all must pass):
 
 On success writes FINAL_PACKAGE_SELF_CHECK_REPORT.{json,md} reflecting THIS
 run, then zips the tree (excluding caches). On failure exits non-zero and
-writes DELIVERY_GATE_REPORT.json with the blocking issues.
+writes reports/delivery/current/DELIVERY_GATE_REPORT.json with the blocking issues.
 """
 from __future__ import annotations
 
@@ -274,7 +274,7 @@ def check_root_hygiene() -> list[str]:
 
 
 def check_english_only_policy() -> dict:
-    # The result is embedded in DELIVERY_GATE_REPORT.json and the final self-check.
+    # The result is embedded in reports/delivery/current/DELIVERY_GATE_REPORT.json and the final self-check.
     # Do not materialize a standalone report under reports/: that directory is
     # reserved for canonical, manifest-declared evidence.
     return validate_english_only_policy(
@@ -284,9 +284,9 @@ def check_english_only_policy() -> dict:
 
 def build_zip(out: Path, report: dict, self_check: dict, md_text: str) -> dict:
     reports = {
-        "DELIVERY_GATE_REPORT.json": json.dumps(report, indent=2) + "\n",
-        "FINAL_PACKAGE_SELF_CHECK_REPORT.json": json.dumps(self_check, indent=2) + "\n",
-        "FINAL_PACKAGE_SELF_CHECK_REPORT.md": md_text,
+        "reports/delivery/current/DELIVERY_GATE_REPORT.json": json.dumps(report, indent=2) + "\n",
+        "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json": json.dumps(self_check, indent=2) + "\n",
+        "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md": md_text,
     }
     return build_verified_archive(ROOT, out, reports, report["run_id"])
 
@@ -367,7 +367,9 @@ def main(argv: list[str] | None = None) -> int:
         "policy": "The project archive may only be produced by this script while status is passed.",
     }
 
-    (ROOT / "DELIVERY_GATE_REPORT.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    delivery_report_path = ROOT / "reports/delivery/current/DELIVERY_GATE_REPORT.json"
+    delivery_report_path.parent.mkdir(parents=True, exist_ok=True)
+    delivery_report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
     if blocking:
         print("delivery gate: BLOCKED")
@@ -389,7 +391,9 @@ def main(argv: list[str] | None = None) -> int:
         "english_only_policy": english_only,
         "note": "Generated automatically at delivery time from the current tree; never hand-written.",
     }
-    (ROOT / "FINAL_PACKAGE_SELF_CHECK_REPORT.json").write_text(
+    self_check_report_path = ROOT / "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"
+    self_check_report_path.parent.mkdir(parents=True, exist_ok=True)
+    self_check_report_path.write_text(
         json.dumps(self_check, indent=2) + "\n",
         encoding="utf-8",
     )

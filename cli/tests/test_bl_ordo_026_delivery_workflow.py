@@ -49,21 +49,39 @@ class BlOrdo026DeliveryWorkflowTests(unittest.TestCase):
         self.assertIn("GITHUB_RUN_ID", self.text)
         self.assertIn("if-no-files-found: error", self.text)
         self.assertIn(
-            "cp DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json",
+            "cp reports/delivery/current/DELIVERY_GATE_REPORT.json reports/ci/DELIVERY_GATE_REPORT.json",
             self.text,
         )
         self.assertIn(
-            "cp FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json",
+            "cp reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json reports/ci/FINAL_PACKAGE_SELF_CHECK_REPORT.json",
             self.text,
         )
 
     def test_release_builder_materializes_fresh_self_check_for_ci_copy(self) -> None:
         builder = BUILDER.read_text(encoding="utf-8")
         self.assertIn(
-            '(ROOT / "FINAL_PACKAGE_SELF_CHECK_REPORT.json").write_text(',
+            'self_check_report_path = ROOT / "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"',
             builder,
         )
+        self.assertIn("self_check_report_path.write_text(", builder)
         self.assertIn("json.dumps(self_check, indent=2)", builder)
+
+    def test_check_only_reports_are_restored_before_release_build(self) -> None:
+        check_only_step = self.text.split("- name: Run full non-destructive delivery gate", 1)[1]
+        check_only_step = check_only_step.split("- name: Build reproducible release candidate", 1)[0]
+        self.assertIn("git restore --", check_only_step)
+        self.assertIn(
+            "reports/delivery/current/DELIVERY_GATE_REPORT.json",
+            check_only_step,
+        )
+        self.assertIn(
+            "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json",
+            check_only_step,
+        )
+        self.assertLess(
+            check_only_step.index("git restore --"),
+            check_only_step.index('exit "$gate_status"'),
+        )
 
     def test_existing_check_workflow_includes_apf(self) -> None:
         check = CHECK_WORKFLOW.read_text(encoding="utf-8")

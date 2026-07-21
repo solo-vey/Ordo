@@ -16,7 +16,7 @@ Manual zipping of the working tree is forbidden. The script:
 2. lints every package under `packages/`;
 3. verifies backlog/maturity manifest synchronization (`.md` == `.json`);
 4. verifies root hygiene (no milestone reports in root);
-5. **refuses to build** while any check is red (`DELIVERY_GATE_REPORT.json` records why);
+5. **refuses to build** while any check is red (`reports/delivery/current/DELIVERY_GATE_REPORT.json` records why);
 6. on green, regenerates `FINAL_PACKAGE_SELF_CHECK_REPORT.{json,md}` from the
    actual current tree — the self-check can therefore never be stale by
    construction.

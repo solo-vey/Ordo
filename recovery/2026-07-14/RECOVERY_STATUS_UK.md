@@ -16,7 +16,7 @@ Baseline містив 3583 файли та повне дерево `cli/`, `pack
 
 1. Повний стан BL-ORDO-027 із post-closure book sync — уже був у baseline.
 2. Closure evidence BL-ORDO-032:
-   - root `DELIVERY_GATE_REPORT.json`;
+   - root `reports/delivery/current/DELIVERY_GATE_REPORT.json`;
    - JSON/Markdown closure reports у `reports/bl_ordo_032/`.
 3. Відновлений backlog-контракт BL-ORDO-029:
    - inbound predecessor allowlist;

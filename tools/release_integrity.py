@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 EXCLUDE_NAMES = {'.git','__pycache__','.pytest_cache','node_modules'}
-GENERATED_REPORTS = {'DELIVERY_GATE_REPORT.json','FINAL_PACKAGE_SELF_CHECK_REPORT.json','FINAL_PACKAGE_SELF_CHECK_REPORT.md','SHA256SUMS.txt'}
+GENERATED_REPORTS = {'reports/delivery/current/DELIVERY_GATE_REPORT.json','reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json','reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md','SHA256SUMS.txt'}
 
 def now_utc() -> str:
     return datetime.now(timezone.utc).isoformat().replace('+00:00','Z')
@@ -77,8 +77,8 @@ def verify_extracted(root: Path, expected_identity: dict, expected_run_id: str|N
     for k in ('release_id','internal_root','archive_filename','language_version','framework_version'):
         if identity.get(k)!=expected_identity.get(k): failures.append(f'identity mismatch: {k}')
     if root.name!=identity['internal_root']: failures.append('internal root does not match RELEASE_IDENTITY')
-    gate=json.loads((root/'DELIVERY_GATE_REPORT.json').read_text())
-    selfcheck=json.loads((root/'FINAL_PACKAGE_SELF_CHECK_REPORT.json').read_text())
+    gate=json.loads((root/'reports/delivery/current/DELIVERY_GATE_REPORT.json').read_text())
+    selfcheck=json.loads((root/'reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json').read_text())
     if gate.get('run_id')!=selfcheck.get('run_id'): failures.append('gate/self-check run_id mismatch')
     if gate.get('generated_at')!=selfcheck.get('generated_at'): failures.append('gate/self-check timestamp mismatch')
     if expected_run_id and gate.get('run_id')!=expected_run_id: failures.append('unexpected run_id')

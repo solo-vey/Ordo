@@ -22,7 +22,7 @@ The builder copies eligible source files into an isolated staging directory. Del
 
 ## Evidence freshness
 
-`DELIVERY_GATE_REPORT.json` and `FINAL_PACKAGE_SELF_CHECK_REPORT.json` must share:
+`reports/delivery/current/DELIVERY_GATE_REPORT.json` and `reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json` must share:
 
 - the same unique run ID;
 - the same generation timestamp;
