@@ -8,5 +8,6 @@ class TestRepair(unittest.TestCase):
  def test_backlog_unique(self):
   ids=re.findall(r'^### (BL-ORDO-\d+) —', (R/'CONSOLIDATED_BACKLOG.md').read_text(), re.M); self.assertEqual(len(ids),len(set(ids)))
  def test_pre_release_json(self):
-  json.loads((R/'PRE_RELEASE_HISTORY_EVENT_CLEAN_CHECK.json').read_text()); json.loads((R/'PRE_RELEASE_REPO_CHECK.json').read_text())
+  base=R/'reports/pre-release/legacy-root'
+  json.loads((base/'PRE_RELEASE_HISTORY_EVENT_CLEAN_CHECK.json').read_text()); json.loads((base/'PRE_RELEASE_REPO_CHECK.json').read_text())
 if __name__=='__main__': unittest.main()
