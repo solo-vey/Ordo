@@ -40,5 +40,7 @@ def test_apf_legacy_index_links_every_relocated_document() -> None:
         assert f"]({name})" in text
 
 
-def test_localized_apf_rationale_is_deferred() -> None:
-    assert (ROOT / "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md").is_file()
+def test_localized_apf_rationale_is_preserved_outside_repository_root() -> None:
+    name = "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md"
+    assert not (ROOT / name).exists()
+    assert (ROOT / "docs/apf/legacy-root/uk" / name).is_file()

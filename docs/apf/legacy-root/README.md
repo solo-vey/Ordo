@@ -27,6 +27,6 @@ Relocated files:
 - [`COMPANION_UTILITY_WORKFLOW.md`](COMPANION_UTILITY_WORKFLOW.md)
 - [`STANDARD_APPLIED_MODULES.md`](STANDARD_APPLIED_MODULES.md)
 
-The localized Ukrainian rationale file remains at repository root in this patch and is deferred to the later localized/handoff consolidation stage:
+Localized APF rationale preserved during the final root cleanup:
 
-- `APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md`
+- [`uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md`](uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md)
