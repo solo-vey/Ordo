@@ -888,6 +888,24 @@ entries:
 - path: publication_readiness/BL_ORDO_057_GITHUB_PUBLICATION_HYGIENE_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: 66a0a61c9e345a3b7b8423a9079ff5c5954ae5f87273ee82df39e9dddf3400da
+- path: pre-release/README.md
+  classification: canonical_current_or_historical_record
+  sha256: 2a05f83e1f3bd344d979a40d64dd4dc9cbbd57847ee992955855f1a74bf5ccf1
+- path: pre-release/legacy-root/PRE_RELEASE_HISTORY_EVENT_CLEAN_CHECK.json
+  classification: canonical_current_or_historical_record
+  sha256: f4c8f63a30efbdb75bf10b26460e57a3537d15cebe6e60c102771d7efe40c868
+- path: pre-release/legacy-root/PRE_RELEASE_REPO_CHECK.json
+  classification: canonical_current_or_historical_record
+  sha256: 1bba3bc2182fab2226bf1c807ce3761e8ca35522e154e680697919fc0da48b53
+- path: pre-release/legacy-root/PRE_RELEASE_STATUS.json
+  classification: canonical_current_or_historical_record
+  sha256: c88a9c0b5137ee0c2d3d5a89c9a711e386870090a76d6b37211433e44e0c5132
+- path: pre-release/legacy-root/PRE_RELEASE_STATUS.md
+  classification: canonical_current_or_historical_record
+  sha256: 8a03bbdfdb3bbd3669b69bff0010395db9e88ad4c561491359a58a4b0f0a44ca
+- path: pre-release/legacy-root/README.md
+  classification: canonical_current_or_historical_record
+  sha256: 9e05f6d5f26c6b5e2963d84f6e35e948f3d53bcb886f8a9c8bbfada91dfe6dbe
 - path: publication_readiness/BL_ORDO_057_GITHUB_PUBLICATION_HYGIENE_REPORT.md
   classification: canonical_current_or_historical_record
   sha256: 551a8c4526619459f32286e486e1f55bee3d9c2f362a9f51a381ae398c87595e
