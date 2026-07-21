@@ -24,7 +24,7 @@
     {
       "path": "docs/future_backlog_m74_sync_snapshot.md",
       "historical_as_of": "M74 snapshot",
-      "superseded_by": "CONSOLIDATED_BACKLOG.md",
+      "superseded_by": "backlog/CONSOLIDATED_BACKLOG.md",
       "preserve_unchanged": true
     },
     {

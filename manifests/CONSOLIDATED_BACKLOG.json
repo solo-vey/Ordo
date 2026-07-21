@@ -1,7 +1,7 @@
 {
   "schema_version": "ordo.consolidated_backlog.v1",
   "updated_at": "2026-07-18",
-  "canonical_document": "CONSOLIDATED_BACKLOG.md",
+  "canonical_document": "backlog/CONSOLIDATED_BACKLOG.md",
   "items": [
     {
       "id": "BL-ORDO-001",

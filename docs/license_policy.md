@@ -11,7 +11,7 @@ Commercial use is not granted by this license. Commercial use requires a separat
 - `LICENSE.md` — full repository license text and SPDX identifier.
 - `NOTICE.md` — required notice and project-name/commercial-use notice.
 - `COMMERCIAL_LICENSE.md` — commercial licensing requirement summary.
-- `README_LICENSE_SECTION.md` — reusable README license text.
+- [`policies/README_LICENSE_SECTION.md`](policies/README_LICENSE_SECTION.md) — reusable README license text.
 
 ## Author
 

@@ -38,7 +38,8 @@ def main():
   # bind package/version from actual APF integration manifest
   mf=root/'manifests/APF_RC18_INTEGRATION_MANIFEST.json'
   data=json.loads(mf.read_text()) if mf.exists() else {}
-  text=' '.join([json.dumps(data), (root/'CURRENT_MATURITY_STATE.md').read_text(errors='ignore') if (root/'CURRENT_MATURITY_STATE.md').exists() else ''])
+  maturity = root / 'backlog/CURRENT_MATURITY_STATE.md'
+  text=' '.join([json.dumps(data), maturity.read_text(errors='ignore') if maturity.exists() else ''])
   if a.expected_arf_version not in text: return fail(out,'ARF004_INCOMPATIBLE_ARF_VERSION',a.expected_arf_version)
   binding={'status':'BOUND','language_package':lp.name,'language_package_sha256':sha(lp),'ordo_baseline':'0.13.0-rc.1','arf_baseline':a.expected_arf_version,'aef_baseline':'2.0','selected_manifest':'manifests/APF_RC18_INTEGRATION_MANIFEST.json','required_contracts':[{ 'path':x,'sha256':sha(root/x)} for x in REQUIRED_CONTRACTS]}
   write(out/'LANGUAGE_PACKAGE_BINDING.json',binding)

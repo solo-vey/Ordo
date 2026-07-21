@@ -39,6 +39,9 @@ file_exemptions:
 - id: legal_name_notice
   path: NOTICE.md
   reason: Legal proper name.
+- id: legal_name_readme_section
+  path: docs/policies/README_LICENSE_SECTION.md
+  reason: Legal proper name in reusable license text.
 - id: policy_examples
   path: language/BILINGUAL_FIELD_POLICY.md
   reason: Localized policy examples.

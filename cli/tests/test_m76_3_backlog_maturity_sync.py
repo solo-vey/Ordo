@@ -10,7 +10,7 @@ def _md_statuses(text: str):
 
 
 def test_consolidated_backlog_md_json_statuses_match():
-    md = _md_statuses((ROOT / "CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8"))
+    md = _md_statuses((ROOT / "backlog/CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8"))
     data = json.loads((ROOT / "manifests/CONSOLIDATED_BACKLOG.json").read_text(encoding="utf-8"))
     js = {item["id"]: item["status"] for item in data["items"]}
     assert md == js

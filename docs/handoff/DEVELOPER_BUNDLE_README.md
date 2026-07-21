@@ -95,9 +95,9 @@ M60.8 is the current stable developer bundle handoff. It adds package-selection 
 
 Start with:
 
-- `STABLE_DEVELOPER_HANDOFF.md`
+- `docs/handoff/legacy-root/STABLE_DEVELOPER_HANDOFF.md`
 - `STABLE_PACKAGE_INDEX.md`
-- `FUTURE_BACKLOG.md`
+- `backlog/FUTURE_BACKLOG.md`
 
 ## M60.6.2 Calibration Report Refinement
 

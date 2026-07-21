@@ -36,5 +36,5 @@ def test_backlog_14_closed():
     item=next(x for x in backlog['items'] if x['id']=='BL-ORDO-014')
     assert item['status'] in {'closed', 'in-progress'}
     assert (ROOT/'archive/milestone_reports/M82_4_REGRESSION_MATRIX_AND_BL_ORDO_003_CLOSURE_REPORT.md').exists() or True
-    md=(ROOT/'CONSOLIDATED_BACKLOG.md').read_text(encoding='utf-8')
+    md=(ROOT/'backlog/CONSOLIDATED_BACKLOG.md').read_text(encoding='utf-8')
     assert '### BL-ORDO-014' in md

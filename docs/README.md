@@ -24,7 +24,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 - [`../language/`](../language) — canonical language schemas, registries, runtime semantics, and migration layers.
 - [`../language/RUNTIME_CHECKPOINTS.md`](../language/RUNTIME_CHECKPOINTS.md) — one-node, one-contract runtime checkpoint discipline.
-- [`../LANGUAGE_POLICY.md`](../LANGUAGE_POLICY.md) — repository language policy.
+- [`policies/LANGUAGE_POLICY.md`](policies/LANGUAGE_POLICY.md) — repository language policy.
 - [`../language/ENGLISH_ONLY_REPOSITORY_POLICY_GATE.md`](../language/ENGLISH_ONLY_REPOSITORY_POLICY_GATE.md) — English-only policy gate and migration-aware enforcement.
 
 ## Packages and authoring
@@ -38,12 +38,15 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 - [`../cli/README.md`](../cli/README.md) — CLI command reference and root-relative usage.
 - [`REPOSITORY_HYGIENE.md`](REPOSITORY_HYGIENE.md) — development and release hygiene scopes, forbidden paths, and duplicate-nesting rules.
-- [`../DELIVERY_POLICY.md`](../DELIVERY_POLICY.md) — release and delivery gate policy.
+- [`policies/README.md`](policies/README.md) — canonical policy index.
+- [`policies/DELIVERY_POLICY.md`](policies/DELIVERY_POLICY.md) — release and delivery gate policy.
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
 
 ## Evidence and releases
 
+- [`../backlog/`](../backlog) — current canonical backlog and maturity-state documents.
+- [`handoff/`](handoff) — current and historical developer handoff documents.
 - [`../manifests/RELEASE_IDENTITY.json`](../manifests/RELEASE_IDENTITY.json) — packaged release identity.
 - [`../manifests/VERSION_STATE.json`](../manifests/VERSION_STATE.json) — current version state.
 - [`../reports/delivery/current/DELIVERY_GATE_REPORT.json`](../reports/delivery/current/DELIVERY_GATE_REPORT.json) — delivery gate evidence.

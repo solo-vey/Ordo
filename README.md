@@ -98,7 +98,7 @@ sha256sum -c SHA256SUMS.txt
 
 ## Development and validation
 
-The release gate is defined by [`DELIVERY_POLICY.md`](DELIVERY_POLICY.md). The sanctioned archive builder is [`tools/build_release_archive.py`](tools/build_release_archive.py). Local generated outputs belong under `.ordo-generated/` and must not be committed.
+The release gate is defined by [`docs/policies/DELIVERY_POLICY.md`](docs/policies/DELIVERY_POLICY.md). The sanctioned archive builder is [`tools/build_release_archive.py`](tools/build_release_archive.py). Local generated outputs belong under `.ordo-generated/` and must not be committed.
 
 ## Evidence integrity
 

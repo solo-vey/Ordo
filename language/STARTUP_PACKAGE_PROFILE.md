@@ -38,7 +38,7 @@ startup_package_profile:
 
     - mode: developer_maintenance
       audience: developer
-      entry_file: START_PROMPT_DEVELOPER_MODE.md
+      entry_file: docs/handoff/START_PROMPT_DEVELOPER_MODE.md
       required: recommended
       visibility: developer
 
