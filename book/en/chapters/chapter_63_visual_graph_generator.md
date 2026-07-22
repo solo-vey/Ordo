@@ -15,7 +15,7 @@ utilities/ordo_visual_graph_generator/
 PathWalk remains alongside it:
 
 ```text
-ordo_pathwalk/
+utilities/ordo_pathwalk/
 ```
 
 These two utilities should not be merged. PathWalk is responsible for test and review artifacts. Visual Graph Generator is responsible for visually explaining the tree.

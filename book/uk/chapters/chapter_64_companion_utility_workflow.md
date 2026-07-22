@@ -48,13 +48,13 @@ python3 utilities/ordo_visual_graph_generator/ordo_graph.py   source/program.ord
 Після візуального огляду можна створювати структурні review artifacts:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph   --source source/program.ordo.yaml   --out runs/companion_review/graph   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-graph   --source source/program.ordo.yaml   --out runs/companion_review/graph   --force
 ```
 
 Потім terminal paths:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-paths   --summary runs/companion_review/graph/REAL_MODULE_GRAPH_SUMMARY.json   --out runs/companion_review/paths   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-paths   --summary runs/companion_review/graph/REAL_MODULE_GRAPH_SUMMARY.json   --out runs/companion_review/paths   --force
 ```
 
 Потім clean/noise cases і human review cards.

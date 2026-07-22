@@ -36,7 +36,7 @@ Current status: **included and stable as a companion utility**.
 Package location today:
 
 ```text
-ordo_pathwalk/
+utilities/ordo_pathwalk/
 ```
 
 Primary M60.7/M61.0 artifact-only workflow:
@@ -53,15 +53,15 @@ source/program.ordo.yaml
 Representative CLI:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph   --source source/program.ordo.yaml   --out runs/real_module_graph   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-graph   --source source/program.ordo.yaml   --out runs/real_module_graph   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-paths   --summary runs/real_module_graph/REAL_MODULE_GRAPH_SUMMARY.json   --out runs/real_module_paths   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-paths   --summary runs/real_module_graph/REAL_MODULE_GRAPH_SUMMARY.json   --out runs/real_module_paths   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-clean-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_clean_cases   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-clean-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_clean_cases   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-noise-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_noise_cases   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-noise-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_noise_cases   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-review-cards   --clean-summary runs/real_module_clean_cases/SUMMARY.json   --noise-summary runs/real_module_noise_cases/SUMMARY.json   --out runs/real_module_review_cards   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-review-cards   --clean-summary runs/real_module_clean_cases/SUMMARY.json   --noise-summary runs/real_module_noise_cases/SUMMARY.json   --out runs/real_module_review_cards   --force
 ```
 
 PathWalk is a testcase/review artifact generator. It must not be treated as Ordo runtime core.

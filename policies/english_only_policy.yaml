@@ -24,7 +24,7 @@ path_exemptions:
   glob: empirical_evidence/**
   reason: Preserved empirical evidence.
 - id: pathwalk_language_fixtures
-  glob: ordo_pathwalk/examples/**
+  glob: utilities/ordo_pathwalk/examples/**
   reason: Language-behavior fixtures.
 - id: apf_language_fixtures
   glob: fixtures/apf_real_case_replay/**
@@ -57,7 +57,7 @@ structured_value_exemptions:
   reason: Explicit locale map.
 language_fixture_globs:
 - fixtures/apf_real_case_replay/**
-- ordo_pathwalk/examples/**
+- utilities/ordo_pathwalk/examples/**
 expected_non_plain_yaml:
 - packages/history_event_guided_intake/output_templates/history_event/guided_intake_outputs/0.1.1/templates/08_qa_automation_spec_model_assisted.yaml
 expected_invalid_yaml_globs:

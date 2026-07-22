@@ -23,7 +23,7 @@ They are classified as `not_applicable` for the current package-level engine, wi
 | `cli/examples/history_event_guided_intake/` | canonical example package | `optional` | no | clean-check compatible example root |
 | `packages/` | applied packages | `delegated` | no | ownership remains package-local and opt-in |
 | `utilities/` | companion utilities | `not_applicable` | scope-dependent | mixed utility layout; no common package contract |
-| `ordo_pathwalk/` | companion utility | `not_applicable` | scope-dependent | Python utility, not an Ordo package root |
+| `utilities/ordo_pathwalk/` | companion utility | `not_applicable` | scope-dependent | Python utility, not an Ordo package root |
 | `book/` | book source and compiled publication | `not_applicable` | scope-dependent | governed by publication checks, not package clean-check |
 | `docs/` | repository documentation | `not_applicable` | yes for release docs | governed by docs/link/schema checks, not package clean-check |
 | `.github/` | CI workflow definitions | `ignored` by clean-check | yes | already covered by repo workflow validation |

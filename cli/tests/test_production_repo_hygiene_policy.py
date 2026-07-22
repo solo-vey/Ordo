@@ -37,7 +37,7 @@ class ProductionRepoHygienePolicyTests(unittest.TestCase):
         self.assertEqual(report["policy_path"], "repo_hygiene.yml")
         self.assertEqual(report["summary"]["checked_count"], 3)
         self.assertEqual(report["summary"]["delegated_count"], 1)
-        self.assertEqual(report["summary"]["not_applicable_count"], 6)
+        self.assertEqual(report["summary"]["not_applicable_count"], 5)
         self.assertEqual({item["root_id"] for item in report["roots"]}, {"language_core", "cli_core", "canonical_cli_example"})
         self.assertTrue(all(item["status"] == "passed" for item in report["roots"]))
         self.assertEqual(report["delegated_roots"][0]["root_id"], "applied_packages")

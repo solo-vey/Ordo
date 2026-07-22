@@ -1,0 +1,171 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_graph_summary.v1",
+  "milestone": "M60.7.1",
+  "source_kind": "source/program.ordo.yaml",
+  "source_path": "utilities/ordo_pathwalk/examples/m60_7_1_real_module_graph_summary/source/program.ordo.yaml",
+  "package": "sample.support_triage",
+  "ordo_version": "0.12",
+  "control_level": "standard",
+  "execution_mode": "chat_internal",
+  "start_node": "N_ISSUE_SUMMARY",
+  "start_candidates": [
+    "N_ISSUE_SUMMARY"
+  ],
+  "counts": {
+    "nodes": 2,
+    "edges": 4,
+    "gates": 1,
+    "assertions": 0,
+    "outputs": 1,
+    "unmatched_handlers": 2,
+    "branching_nodes": 1,
+    "linear_nodes": 1,
+    "dead_end_nodes": 0
+  },
+  "edge_target_counts": {
+    "node": 1,
+    "gate": 3
+  },
+  "nodes": [
+    {
+      "id": "N_ISSUE_SUMMARY",
+      "question": "What issue should be triaged?",
+      "answer_type": "free_text",
+      "allowed_answers": [],
+      "outgoing_edge_count": 1,
+      "branch_answers": [
+        "*"
+      ],
+      "has_unmatched_handler": true,
+      "allow_unmatched_input": false
+    },
+    {
+      "id": "N_SEVERITY",
+      "question": "What is the severity?",
+      "answer_type": "enum",
+      "allowed_answers": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "outgoing_edge_count": 3,
+      "branch_answers": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "has_unmatched_handler": true,
+      "allow_unmatched_input": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "N_ISSUE_SUMMARY",
+      "answer": "*",
+      "to": "N_SEVERITY",
+      "edge_type": "on_answer.default",
+      "target_type": "node",
+      "state_updates": [
+        "issue_summary"
+      ]
+    },
+    {
+      "from": "N_SEVERITY",
+      "answer": "low",
+      "to": "G_TRIAGE_COMPLETE",
+      "edge_type": "on_answer.branch",
+      "target_type": "gate",
+      "state_updates": [
+        "owner_team",
+        "severity"
+      ]
+    },
+    {
+      "from": "N_SEVERITY",
+      "answer": "medium",
+      "to": "G_TRIAGE_COMPLETE",
+      "edge_type": "on_answer.branch",
+      "target_type": "gate",
+      "state_updates": [
+        "owner_team",
+        "severity"
+      ]
+    },
+    {
+      "from": "N_SEVERITY",
+      "answer": "high",
+      "to": "G_TRIAGE_COMPLETE",
+      "edge_type": "on_answer.branch",
+      "target_type": "gate",
+      "state_updates": [
+        "owner_team",
+        "severity"
+      ]
+    }
+  ],
+  "unmatched_edges": [
+    {
+      "from": "N_ISSUE_SUMMARY",
+      "edge_type": "on_unmatched_input",
+      "action": "CLARIFY.REQUEST",
+      "strategy": "ask_for_concrete_issue",
+      "max_attempts": 2,
+      "on_exhausted_action": "escalate_to_human",
+      "on_exhausted_reason": "issue summary remains unclear"
+    },
+    {
+      "from": "N_SEVERITY",
+      "edge_type": "on_unmatched_input",
+      "action": "CLARIFY.REQUEST",
+      "strategy": "show_allowed_answers",
+      "max_attempts": 2,
+      "on_exhausted_action": "escalate_to_human",
+      "on_exhausted_reason": "severity did not match allowed answers"
+    }
+  ],
+  "terminal_targets": [
+    {
+      "from": "N_SEVERITY",
+      "answer": "low",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate"
+    },
+    {
+      "from": "N_SEVERITY",
+      "answer": "medium",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate"
+    },
+    {
+      "from": "N_SEVERITY",
+      "answer": "high",
+      "to": "G_TRIAGE_COMPLETE",
+      "target_type": "gate"
+    }
+  ],
+  "unresolved_targets": [],
+  "duplicate_node_ids": [],
+  "gates": [
+    {
+      "id": "G_TRIAGE_COMPLETE",
+      "method": "mechanical",
+      "trust_class": "deterministic",
+      "on_fail": "block"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "OUT_TRIAGE_NOTE",
+      "type": "document",
+      "allowed_after": [
+        "G_TRIAGE_COMPLETE"
+      ]
+    }
+  ],
+  "readiness": {
+    "graph_summary_ready": true,
+    "path_enumeration_ready": true,
+    "testcase_generation_ready": false,
+    "reason": "M60.7.1 implements loader and graph summary only; terminal-path and testcase generation remain future steps."
+  }
+}

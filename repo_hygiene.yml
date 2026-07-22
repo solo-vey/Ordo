@@ -108,14 +108,7 @@ repo_hygiene:
       role: companion_utility
       clean_check: not_applicable
       release_blocking: false
-      rationale: Mixed utility layout without a shared Ordo package contract.
-
-    - root_id: pathwalk_utility
-      path: ordo_pathwalk
-      role: companion_utility
-      clean_check: not_applicable
-      release_blocking: false
-      rationale: Python utility governed by utility-specific checks.
+      rationale: Consolidated optional utility layout, including PathWalk, without a shared Ordo package contract.
 
     - root_id: book_area
       path: book

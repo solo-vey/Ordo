@@ -26,7 +26,7 @@ PathWalk не є частиною runtime core. Це companion-утиліта д
 Команда:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli matrix-smoke \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli matrix-smoke \
   --out /tmp/pathwalk_matrix_smoke \
   --depth 2 \
   --branching 2 2 \
@@ -123,7 +123,7 @@ PathWalk readiness smoke перевіряє, що сама тестова інф
 Для цього додано:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli benchmark-dry-run \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli benchmark-dry-run \
   --out /tmp/pathwalk_dry_run \
   --scenario-count 20 \
   --runtime-view json \
@@ -261,7 +261,7 @@ export ORDO_PATHWALK_ROOT=<workspace-or-pathwalk-rc-root>
 export ORDO_CLI_ROOT=<developer-bundle-root>/cli  # only needed when PathWalk root has no cli/ordo
 ```
 
-The script must fail fast if it cannot find `ordo_pathwalk/` or `cli/ordo/`. This keeps artifact-only execution deterministic without hiding environment assumptions.
+The script must fail fast if it cannot find `utilities/ordo_pathwalk/` or `cli/ordo/`. This keeps artifact-only execution deterministic without hiding environment assumptions.
 
 This is a handoff/integrity fix only. It does not change M60.6 dry-run metrics, scoring weights, or runtime semantics.
 

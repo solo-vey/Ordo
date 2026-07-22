@@ -26,7 +26,7 @@ This is done with a cheap no-API smoke test.
 Example:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli matrix-smoke \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli matrix-smoke \
   --out /tmp/pathwalk_matrix_smoke \
   --depth 2 \
   --branching 2 2 \

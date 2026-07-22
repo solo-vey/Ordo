@@ -47,13 +47,13 @@ Session-trace proves.
 Run these from a workspace or from PathWalk RC with developer bundle CLI on `PYTHONPATH`.
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph   --source ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml   --out runs/real_module_graph   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-graph   --source utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml   --out runs/real_module_graph   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-paths   --summary runs/real_module_graph/REAL_MODULE_GRAPH_SUMMARY.json   --out runs/real_module_paths   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-paths   --summary runs/real_module_graph/REAL_MODULE_GRAPH_SUMMARY.json   --out runs/real_module_paths   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-clean-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_clean_cases   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-clean-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_clean_cases   --force
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-noise-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_noise_cases   --pattern distraction   --pattern invalid_branch   --pattern clarification_without_submit   --pattern skip_ahead   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-noise-cases   --paths runs/real_module_paths/REAL_MODULE_TERMINAL_PATHS.json   --out runs/real_module_noise_cases   --pattern distraction   --pattern invalid_branch   --pattern clarification_without_submit   --pattern skip_ahead   --force
 ```
 
 Generated artifacts are intended for review, QA planning, and future benchmark preparation. They are not proof of model quality by themselves.

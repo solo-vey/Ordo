@@ -224,7 +224,7 @@ The old approach of truncating local state, rewriting history, or using a fork-o
 Before running a model provider benchmark, run the PathWalk matrix smoke:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli matrix-smoke \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli matrix-smoke \
   --out /tmp/pathwalk_matrix_smoke \
   --depth 2 \
   --branching 2 2 \

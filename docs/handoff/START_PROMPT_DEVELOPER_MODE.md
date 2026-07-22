@@ -51,7 +51,7 @@ M60.6.2 is a report/evidence refinement milestone. Do not change PathWalk scorin
 
 Latest stable protocol milestone: `M60.6.3 — Model Benchmark Protocol Design`.
 
-Before any real PathWalk model/API benchmark or transcript-replay benchmark, follow `ordo_pathwalk/MODEL_BENCHMARK_PROTOCOL.md`. Do not change `path_quality_score` weights from dry-run-only data.
+Before any real PathWalk model/API benchmark or transcript-replay benchmark, follow `utilities/ordo_pathwalk/MODEL_BENCHMARK_PROTOCOL.md`. Do not change `path_quality_score` weights from dry-run-only data.
 
 ## M60.6.4 transcript replay pilot
 
@@ -69,7 +69,7 @@ M60.7.1 adds the first implemented slice of Real Module Testcase Generation: Pat
 Command:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph --source path/to/source/program.ordo.yaml --out runs/real_module_graph --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-graph --source path/to/source/program.ordo.yaml --out runs/real_module_graph --force
 ```
 
 ## M60.7.2 Terminal Path Enumeration
@@ -77,7 +77,7 @@ PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph --source path/to
 M60.7.2 extends the Real Module Testcase Generation line with terminal path enumeration from `REAL_MODULE_GRAPH_SUMMARY.json`. PathWalk now writes `REAL_MODULE_TERMINAL_PATHS.json/.md` plus a validation report. This is still source-analysis/testcase-preparation work: it does not emit testcase/noise artifacts, does not read `compiled/*`, and does not change Ordo runtime-core semantics or scoring weights.
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-paths \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-paths \
   --summary runs/real_module_graph/REAL_MODULE_GRAPH_SUMMARY.json \
   --out runs/real_module_paths \
   --force
