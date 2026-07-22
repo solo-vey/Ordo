@@ -940,7 +940,9 @@
         "Keep the Ukrainian book contour intentional and separately governed.",
         "Re-run the archive-aware audit and record the remaining justified localization boundaries."
       ],
-      "scope_note": "Inventory and backlog registration only. Remediation is deliberately deferred."
+      "scope_note": "Inventory and backlog registration only. Remediation is deliberately deferred.",
+      "classification_plan": "backlog/BL-ORDO-058_CLASSIFICATION_PLAN.md",
+      "classification_baseline": "42d5a161a00842afff5886bf03c2a64b0fcd8e90"
     },
     {
       "id": "BL-ORDO-059",
@@ -979,7 +981,7 @@
     {
       "id": "BL-ORDO-061",
       "title": "APF Module Source Reconciliation",
-      "status": "open",
+      "status": "closed",
       "priority": "P2",
       "type": "package_source_integrity",
       "goal": "Restore semantic equivalence between the APF modular source assembly and the canonical source/program.ordo.yaml without changing the canonical program's runtime semantics.",
