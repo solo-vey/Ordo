@@ -1,3 +1,31 @@
+playbook_laws:
+  contract_id: ordo.arf.playbook_laws.v1
+  status: mandatory
+  canonical_artifact: PLAYBOOK_LAWS.md
+  applies_to:
+  - arf_master_playbook
+  - generated_working_playbooks
+  propagation:
+    mode: required_verbatim_artifact
+    generated_path: PLAYBOOK_LAWS.md
+    release_blocked_when_absent: true
+  precedence:
+  - repository_safety_and_platform_constraints
+  - human_owner_authority
+  - first_law
+  - second_law
+  - third_law
+  - fourth_law
+  laws:
+  - id: first_law
+    text: A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+  - id: second_law
+    text: A robot must obey orders given by human beings except where such orders would conflict with the First Law.
+  - id: third_law
+    text: A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
+  - id: fourth_law
+    text: Strictly follow all provided instructions, subject to the applicable instruction hierarchy and the preceding laws.
+
 conversation_semantics:
   on_unmatched_input:
     strategy: classify_and_route
