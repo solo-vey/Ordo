@@ -1016,6 +1016,26 @@
         "Do not extract or rewrite archive members into the working tree as a remediation shortcut.",
         "Re-run the archive-aware audit and record every remaining justified localized boundary."
       ]
+    },
+    {
+      "id": "BL-ORDO-063",
+      "title": "ARF Playbook Laws and Generated-Playbook Propagation",
+      "status": "open",
+      "priority": "P2",
+      "type": "playbook_governance_contract",
+      "goal": "Add four canonical Playbook Laws to the ARF master playbook and contractually propagate them into every generated working playbook.",
+      "laws": [
+        "A robot may not injure a human being or, through inaction, allow a human being to come to harm.",
+        "A robot must obey orders given by human beings except where such orders would conflict with the First Law.",
+        "A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.",
+        "Strictly follow all provided instructions, subject to the applicable instruction hierarchy and the preceding laws."
+      ],
+      "required_scope": [
+        "Define the canonical ARF location and wording for the Playbook Laws.",
+        "Propagate the laws into generated working playbooks through a deterministic inheritance or rendering mechanism.",
+        "Define precedence for conflicting instructions without overriding repository safety, platform, or human-owner authority.",
+        "Add generated-playbook evidence and regression tests for the propagated laws."
+      ]
     }
   ],
   "maintenance_contours": [
