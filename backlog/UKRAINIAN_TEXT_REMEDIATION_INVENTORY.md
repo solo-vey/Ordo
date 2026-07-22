@@ -1675,9 +1675,9 @@ The linked backlog item is `BL-ORDO-058`. Historical, provenance, fixture, packa
 - `empirical_evidence/raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip :: OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC20/runtime/state_snapshots/SESSION-001_N01_BUSINESS_INITIATION.json` — 6 matching line(s)
 - `empirical_evidence/raw_evidence/source_packages/ORDO_EMPIRICAL_EVIDENCE_BASE_v1_3/01_task_classes/TC01_COMPLEX_MULTI_STEP_PROCESS/EX01_NEW_OFFICE_OPENING/04_runs/ordo/S05_INCOMPLETE_HARD_STOP_execution_evidence.zip :: OFFICE_OPENING_ORDO_PLAYBOOK_V1_1_0_RC20/tools/run_disturbance_suite.py` — 1 matching line(s)
 
-## `fixtures`
+## `cli/tests/fixtures`
 
-- `fixtures/apf_real_case_replay/history_event_replay_cases.json` — 12 matching line(s)
+- `cli/tests/fixtures/apf_real_case_replay/history_event_replay_cases.json` — 12 matching line(s)
 
 ## `integrations`
 
