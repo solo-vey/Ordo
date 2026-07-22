@@ -957,6 +957,35 @@
         "Do not rewrite Git history or alter archive bytes in place."
       ],
       "scope_note": "Read-only lifecycle audit complete. Archive migration or deletion is deliberately deferred."
+    },
+    {
+      "id": "BL-ORDO-060",
+      "title": "Historical Payload Externalization and Current-State Cleanup",
+      "status": "open",
+      "priority": "P1",
+      "type": "repository_current_state_cleanup",
+      "goal": "Externalize as much non-active historical provenance as safely possible while retaining checksum-bound locator manifests, retrieval proof, and a clean current-state repository tree.",
+      "audit": "backlog/HISTORICAL_PAYLOAD_EXTERNALIZATION_AUDIT.md",
+      "depends_on": ["BL-ORDO-059"],
+      "candidate_contours": [
+        "TRANSFER_2026-07-14/",
+        "recovery/2026-07-14/",
+        "archive/handoffs/",
+        "docs/handoff/legacy-root/",
+        "docs/releases/legacy-root/",
+        "docs/status/legacy-root/",
+        "manifests/releases/legacy-root/"
+      ],
+      "blocked_contours": [
+        "docs/apf/legacy-root/ until active references are migrated"
+      ],
+      "required_scope": [
+        "Classify each candidate as retain inline, external immutable archive, compact manifest, or remove candidate.",
+        "Create English checksum-bound locator manifests and clean retrieval verification before removing inline bytes.",
+        "Update all active references, builders, tests, manifests, and root checksums atomically.",
+        "Preserve Git history and do not mutate immutable payloads in place."
+      ],
+      "scope_note": "Planning and evidence only until an external immutable storage location is approved."
     }
   ],
   "maintenance_contours": [

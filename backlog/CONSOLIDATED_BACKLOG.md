@@ -227,6 +227,18 @@ verified historical recovery evidence with no direct active consumers; do not
 delete them until an approved retention or external-archive migration has
 checksum-bound retrieval and restore proof.
 
+### BL-ORDO-060 — Historical Payload Externalization and Current-State Cleanup
+
+Status: `open`
+
+Move as much non-active historical provenance as safely possible out of the
+current repository tree into external immutable storage, retaining concise
+checksum-bound locator manifests and provenance indexes. The full candidate and
+guardrail matrix is [HISTORICAL_PAYLOAD_EXTERNALIZATION_AUDIT.md](HISTORICAL_PAYLOAD_EXTERNALIZATION_AUDIT.md).
+`docs/apf/legacy-root/` remains in place until its active references are
+migrated; cleanup must improve the current front door without breaking history,
+retrieval, reproducibility, or legal evidence.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
