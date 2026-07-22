@@ -266,7 +266,7 @@ It is deliberately deferred until physical-file remediation is complete.
 
 ### BL-ORDO-063 — ARF Playbook Laws and Generated-Playbook Propagation
 
-Status: `open`
+Status: `closed`
 
 Add a canonical Playbook Laws section to the ARF master playbook and make its
 propagation into every generated working playbook contractual. The initial
@@ -286,6 +286,8 @@ rendering mechanism, precedence for conflicting instructions, generated
 playbook evidence, and regression tests. The laws are a playbook-governance
 contract; they must not override repository safety, platform, or human-owner
 authority.
+
+Closed by PR #37, merged as `c843394462c863b4a165526d29b1c5927ec3a9ed`.
 
 ## Backlog Reconciliation — 2026-07-18
 
