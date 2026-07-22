@@ -120,7 +120,7 @@
       "backlog": "BL-ORDO-033",
       "language_version": "0.13.0-rc.1",
       "framework_version": "0.1.0-rc.1",
-      "upgrade_resolver": "tools/resolve_upgrade_impact.py",
+      "upgrade_resolver": "utilities/playbook_lifecycle/resolve_upgrade_impact.py",
       "automatic_rewrite": false
     },
     "empirical_evidence_subsystem": {

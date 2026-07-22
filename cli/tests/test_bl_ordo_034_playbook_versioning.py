@@ -17,7 +17,7 @@ def test_release_index_covers_all_packages():
  assert {x['playbook_id'] for x in idx['playbooks']}=={'history_event.guided_intake','ordo.applied_project_factory','ordo.benchmark_creation_playbook','ordo.hybrid_executor','ordo.project_builder'}
 def run(active,new,tmp_path):
  a=tmp_path/'a.json'; n=tmp_path/'n.json'; a.write_text(json.dumps(active)); n.write_text(json.dumps(new))
- return json.loads(subprocess.check_output([sys.executable,str(ROOT/'tools/resolve_playbook_upgrade.py'),str(a),str(n)],text=True))
+ return json.loads(subprocess.check_output([sys.executable,str(ROOT/'utilities/playbook_lifecycle/resolve_playbook_upgrade.py'),str(a),str(n)],text=True))
 def base(v='1.0.0',mode='compatible'):
  return {'playbook_id':'x','playbook_version':v,'compatibility':{'previous_playbook':mode},'changes':{},'automatic_runtime_mutation':False}
 def test_same_version_no_action(tmp_path): assert run(base(),base(),tmp_path)['decision']=='no_action'

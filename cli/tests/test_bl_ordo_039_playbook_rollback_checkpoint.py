@@ -1,7 +1,7 @@
 import json,subprocess,sys,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-TOOL=ROOT/'tools/manage_playbook_checkpoint.py'
+TOOL=ROOT/'utilities/playbook_lifecycle/manage_playbook_checkpoint.py'
 def pkg(tmp):
  p=tmp/'p'; p.mkdir(); (p/'playbook_release.json').write_text(json.dumps({'playbook_id':'x','playbook_version':'1.0.0'})); (p/'ordo.yml').write_text('id: x\n'); return p
 def test_create_and_verify_round_trip(tmp_path):
