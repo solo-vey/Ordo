@@ -1,6 +1,6 @@
 {
   "schema_version": "ordo.consolidated_backlog.v1",
-  "updated_at": "2026-07-21",
+  "updated_at": "2026-07-22",
   "canonical_document": "backlog/CONSOLIDATED_BACKLOG.md",
   "items": [
     {
@@ -512,7 +512,7 @@
     {
       "id": "BL-ORDO-038",
       "title": "Journey Replay, Cross-Version Migration and Automated Comparison",
-      "status": "open",
+      "status": "closed",
       "priority": "P2",
       "affects": [
         "framework",
@@ -990,7 +990,10 @@
         "Make the M74.6 modular-assembly tests pass without xfail.",
         "Preserve canonical program behavior and run package plus repository validation."
       ],
-      "required_gate": "cli/tests/test_m74_6_apf_modular_assembly.py must pass before this task closes."
+      "required_gate": "cli/tests/test_m74_6_apf_modular_assembly.py must pass before this task closes.",
+      "pull_request": "https://github.com/solo-vey/Ordo/pull/31",
+      "merge_commit": "0ba5db05ac0b3dd56ae24561656154573d202fc2",
+      "completed_in": "BL-ORDO-061 module-source reconciliation"
     }
   ],
   "maintenance_contours": [
