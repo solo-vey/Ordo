@@ -144,7 +144,7 @@ Status: `closed`
 
 ### BL-ORDO-038 — Journey Replay, Cross-Version Migration and Automated Comparison
 
-Status: `open`
+Status: `closed`
 
 ### BL-ORDO-039 — Playbook Version Rollback Checkpoint Governance
 
@@ -245,7 +245,9 @@ Reconcile the modular APF source with
 `packages/ordo_applied_project_factory/source/program.ordo.yaml` so that
 assembly from `module_manifest.yaml` is semantically identical to the
 canonical program. The M74.6 assembly test is a required passing condition;
-do not weaken or remove it.
+do not weaken or remove it. Closed by PR #31, merged as
+`0ba5db05ac0b3dd56ae24561656154573d202fc2`, after exact assembly and full
+repository validation passed.
 
 ## Backlog Reconciliation — 2026-07-18
 
