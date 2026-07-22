@@ -11,6 +11,14 @@ Cases without accepted runs remain included as current definitions/reference evi
 This archive is a current-state-only evidence snapshot.
 Historical development packages and superseded runs are intentionally excluded.
 
+## Curated benchmark evidence
+
+`benchmarks/bl_ordo_018/` retains the immutable raw inputs and blind-scoring
+results for the closed BL-ORDO-018 model-comparison benchmark. These archives
+are a bounded benchmark record, not a current task-case run. See its local
+[`README.md`](benchmarks/bl_ordo_018/README.md) for the three retained assets
+and their purpose.
+
 
 ## Authoritative lifecycle update
 
