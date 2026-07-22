@@ -19,6 +19,9 @@ constructs:
 - key: conversation_semantics
   level: top_level
   status: supported
+- key: playbook_laws
+  level: top_level
+  status: supported
 - key: conversation_scope_guard
   level: top_level
   status: supported

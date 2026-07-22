@@ -59,8 +59,7 @@ module:
     - preserve APF alpha.21 process logic
     - sync module packaging/docs to standard applied module layer
     - validate with M62 parent CLI available commands
-    - keep future IR candidates FLOW.JOIN and SHARED.TAIL.REFERENCE as documented
-      candidates, not runtime core changes
+    - keep future IR candidates FLOW.JOIN and SHARED.TAIL.REFERENCE as documented candidates, not runtime core changes
     process_logic_changed: false
 includes:
 - library: ordo.process_rail.core
@@ -80,44 +79,32 @@ interaction_model:
   yaml_visibility_policy: hidden_from_pm_by_default
 intent:
   id: INTENT_APPLIED_PROJECT_FACTORY
-  description: 'Допомогти PM/аналітику створити новий прикладний Ordo-проєкт будь-якого
-    типу без написання YAML напряму; AI обирає режим, у free-dialogue накопичує raw
-    notes, структурує їх у candidate nodes/gates/outputs/templates, формує draft tree,
-    проводить depth-first review і генерує source/program.ordo.yaml. APF v0.1.0-alpha.13
-    фіксує user-facing формат показу процесу під час design/review, щоб режим traversal,
-    branch selection, node review decision і validation gate не змішувалися. APF v0.1.0-alpha.14
-    додає четвертий режим старту — коригування існуючого процесу — з batch та targeted
-    improvement subflows. APF v0.1.0-alpha.16 adds progressive branch-1 authoring,
-    input policy, terminal output binding, and template/mock-example verification
-    before YAML generation. APF v0.1.0-alpha.17 treats manual-tree authoring as an
-    adapter into the progressive review path rather than a separate downstream process.
-    APF v0.1.0-alpha.18 closes the shared terminal output/template subflow as a reusable
-    block across all startup branches: terminal points explicitly choose an output
-    policy; new artifacts are described by free-form artifact intent rather than fixed
-    type lists; the runtime shows available terminal state fields, derives an output
-    recipe with direct-insert vs generated sections, and uses file-first review packages
-    for document-like artifacts. Template/mock/mapping review is simplified to four
-    user decisions: confirm, revise, defer, or remove artifact. Deferred templates
-    are recorded as unfinished and cannot be used by final gates until completed or
-    removed. APF v0.1.0-alpha.19 closes the shared validation/handoff tail as the
-    reusable final path for all startup branches and shared subflows: source YAML
-    generation approval, minimal validation, full-validation decision, validation
-    result review, scoped correction loop, final unfinished-items gate, handoff package
-    generation, and final handoff. Validation failure UX is simplified: failed checks
-    show a short issue list and route either into correction mode or a blocked/deferred
-    state; details live inside correction mode. Skipped full validation for alpha
-    is recorded as a limitation, never as passed. Handoff package generation is file-first
-    and blocked by failed minimal validation or active unfinished artifacts/templates.
-    APF v0.1.0-alpha.20 closes the whole-tree integration review after the branch
-    and shared-tail closures: all four startup branches join the shared output/template
-    subflow and shared validation/handoff tail; terminal/deferred/unfinished gates
-    are aligned; legacy unreachable nodes are explicitly marked as deprecated compatibility
-    nodes rather than active orphans; structural scan results are recorded in the
-    alpha.20 validation report.'
-  purpose: ' APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected
-    control actions and blocked control actions; review state must show which alternatives
-    were intentionally not selected and which actions are blocked until readiness
-    conditions are met.'
+  description: 'Допомогти PM/аналітику створити новий прикладний Ordo-проєкт будь-якого типу без написання YAML напряму; AI
+    обирає режим, у free-dialogue накопичує raw notes, структурує їх у candidate nodes/gates/outputs/templates, формує draft
+    tree, проводить depth-first review і генерує source/program.ordo.yaml. APF v0.1.0-alpha.13 фіксує user-facing формат показу
+    процесу під час design/review, щоб режим traversal, branch selection, node review decision і validation gate не змішувалися.
+    APF v0.1.0-alpha.14 додає четвертий режим старту — коригування існуючого процесу — з batch та targeted improvement subflows.
+    APF v0.1.0-alpha.16 adds progressive branch-1 authoring, input policy, terminal output binding, and template/mock-example
+    verification before YAML generation. APF v0.1.0-alpha.17 treats manual-tree authoring as an adapter into the progressive
+    review path rather than a separate downstream process. APF v0.1.0-alpha.18 closes the shared terminal output/template
+    subflow as a reusable block across all startup branches: terminal points explicitly choose an output policy; new artifacts
+    are described by free-form artifact intent rather than fixed type lists; the runtime shows available terminal state fields,
+    derives an output recipe with direct-insert vs generated sections, and uses file-first review packages for document-like
+    artifacts. Template/mock/mapping review is simplified to four user decisions: confirm, revise, defer, or remove artifact.
+    Deferred templates are recorded as unfinished and cannot be used by final gates until completed or removed. APF v0.1.0-alpha.19
+    closes the shared validation/handoff tail as the reusable final path for all startup branches and shared subflows: source
+    YAML generation approval, minimal validation, full-validation decision, validation result review, scoped correction loop,
+    final unfinished-items gate, handoff package generation, and final handoff. Validation failure UX is simplified: failed
+    checks show a short issue list and route either into correction mode or a blocked/deferred state; details live inside
+    correction mode. Skipped full validation for alpha is recorded as a limitation, never as passed. Handoff package generation
+    is file-first and blocked by failed minimal validation or active unfinished artifacts/templates. APF v0.1.0-alpha.20 closes
+    the whole-tree integration review after the branch and shared-tail closures: all four startup branches join the shared
+    output/template subflow and shared validation/handoff tail; terminal/deferred/unfinished gates are aligned; legacy unreachable
+    nodes are explicitly marked as deprecated compatibility nodes rather than active orphans; structural scan results are
+    recorded in the alpha.20 validation report.'
+  purpose: ' APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected control actions and blocked control
+    actions; review state must show which alternatives were intentionally not selected and which actions are blocked until
+    readiness conditions are met.'
 contract:
   id: CONTRACT_APPLIED_PROJECT_FACTORY
   required:
@@ -364,8 +351,7 @@ state:
       when: after_each_confirmed_tree_step_if_yaml_change_is_needed
       write_mode: small_scoped_patch
       avoid_full_regeneration_on_each_node: true
-      reason: keep confirmed decisions durable without paying full validation cost
-        after every small step
+      reason: keep confirmed decisions durable without paying full validation cost after every small step
     incremental_yaml_validation_profile:
       name: minimal_yaml_patch_check
       checks:
@@ -399,9 +385,8 @@ state:
       - consistency
       - go-no-go
       purpose: final integrity gate before declaring the project coherent and ready
-      m62_parent_cli_note: M62 parent CLI validates APF RC with validate-output, validate-artifacts,
-        consistency and go-no-go; APF factory-output fixture remains a module report
-        artifact, not a parent core command.
+      m62_parent_cli_note: M62 parent CLI validates APF RC with validate-output, validate-artifacts, consistency and go-no-go;
+        APF factory-output fixture remains a module report artifact, not a parent core command.
     full_project_validation_status: passed_with_non_blocking_warnings
     full_project_validation_required_before_handoff: true
     validation_findings_requiring_tree_correction:
@@ -424,19 +409,16 @@ state:
     control_action_decision_log: []
     control_action_bookkeeping_policy:
       separate_from_tree_branches: true
-      unreviewed_sibling_branches_mean: real tree branches that still require future
-        traversal
-      not_selected_control_actions_mean: available runtime actions intentionally not
-        chosen for the current node decision
-      blocked_until_ready_actions_mean: runtime actions visible to the user but not
-        currently allowed until readiness conditions pass
+      unreviewed_sibling_branches_mean: real tree branches that still require future traversal
+      not_selected_control_actions_mean: available runtime actions intentionally not chosen for the current node decision
+      blocked_until_ready_actions_mean: runtime actions visible to the user but not currently allowed until readiness conditions
+        pass
       display_in_current_node_state: true
       do_not_add_not_selected_control_actions_to_deferred_return_points: true
     process_design_review_rendering_policy:
       enabled: true
       applies_when: designing_or_reviewing_process_tree_with_user
-      purpose: Make the user-facing process-design review state explicit, durable,
-        and not dependent on assistant memory.
+      purpose: Make the user-facing process-design review state explicit, durable, and not dependent on assistant memory.
       required_sections_for_current_node_rendering:
       - runtime_context_shift_notice
       - current_node_title
@@ -449,12 +431,9 @@ state:
       - open_questions_deferred_or_unreviewed_sibling_branches
       - decision_prompt_with_mode_label
       context_shift_notices:
-        tree_traversal: Зараз ми рухаємось по дереву / traversal, а не приймаємо review-рішення
-          по вузлу.
-        node_review_decision: Зараз це review-рішення по показаному вузлу, не вибір
-          гілки дерева.
-        tree_branch_selection: Зараз це вибір гілки дерева / traversal-рішення, не
-          виправлення показаного вузла.
+        tree_traversal: Зараз ми рухаємось по дереву / traversal, а не приймаємо review-рішення по вузлу.
+        node_review_decision: Зараз це review-рішення по показаному вузлу, не вибір гілки дерева.
+        tree_branch_selection: Зараз це вибір гілки дерева / traversal-рішення, не виправлення показаного вузла.
         execution_gate: Зараз це execution/validation gate, не conceptual review вузла.
       must_distinguish:
       - tree_branch_options
@@ -757,77 +736,54 @@ runtime_capabilities:
     - PACKAGE_CACHE_INVALIDATED
 process_rail:
   rail_id: ORDO_APPLIED_PROJECT_FACTORY_RAIL
-  purpose: 'Створити прикладний Ordo-проєкт будь-якого типу через guided dialogue.
-    Factory підтримує три режими authoring: доменна модель + дерево рішень, ручне
-    дерево рішень, та вільний діалог із подальшим draft-tree review. AI приховує YAML
-    від PM/аналітика і видає перший output як source/program.ordo.yaml після погодження
-    blueprint. M61.5 стабілізує free-dialogue гілку як self-hosted authoring loop:
-    raw notes → structured extraction → draft tree → node-by-node review → reusable
-    stabilized branch. APF v0.1.0-alpha.8 додає user-facing node descriptions, human-readable
-    extraction summaries, on-request-only SVG generation, and a confirmed process-feedback
-    loop: feedback → proposed process change → user approval → YAML update/reload
-    → continue from the updated flow. APF v0.1.0-alpha.10 adds strict node-by-node
-    user-facing review: each current-node block must show human description, question/action,
-    transitions, state, gates, artifacts/templates, and open/deferred branches; the
-    runtime must track confirmed path, current branch, unreviewed sibling branches,
-    and deferred return points. APF v0.1.0-alpha.11 adds incremental YAML patch discipline:
-    after each confirmed tree step, runtime writes only a scoped YAML patch when needed
-    and runs a minimal YAML/lint/compile check; full CLI validation is deferred to
-    terminal branch gates, before project generation/handoff, or when consistency
-    findings require it. APF v0.1.0-alpha.11 adds decision/control gate discipline:
-    when a current node has explicit transition options, runtime must ask the user
-    to choose an allowed action instead of asking only for generic confirmation; node
-    approval/correction/deferment is represented as a reusable control gate. APF v0.1.0-alpha.13
-    adds a process-design review rendering contract: when reviewing or designing the
-    process tree, the runtime must explicitly show whether it is in tree traversal,
-    branch selection, node-review decision, or execution/validation gate mode; each
-    current-node block must include state, gates, artifacts, pending sibling/deferred
-    branches, and a mode-labeled decision prompt. APF v0.1.0-alpha.14 commits the
-    fourth startup mode: existing-process improvement. This branch accepts only a
-    full workspace/dev package archive or a self-contained source/program.ordo.yaml
-    as baseline, supports batch improvement lists and targeted dialogue improvements,
-    reviews before/after changes, builds a confirmed change set, applies scoped YAML
-    patches, runs minimal validation, then joins the existing shared full-validation/handoff
-    pipeline without duplicating it. APF v0.1.0-alpha.16 closes branch 1 human review:
-    runtime_entry_point is moved after domain/input/output/open-question intake; input
-    artifacts are policy-based and optional; output artifacts are separated from templates;
-    terminal points bind outputs and verify templates with mock-filled examples; static
-    tree blueprint is replaced with progressive tree authoring and explicit terminal-or-continue
-    decisions. APF v0.1.0-alpha.16 closes the free-dialogue branch consistency delta
-    after alpha.15: structured extraction must preserve candidate output artifacts,
-    template hints, output-related open questions, and unknown/deferred/no-output
-    policies; terminal points from free-dialogue draft review use the shared terminal
-    output binding + template/mock-example verification loop and join the shared full-validation/handoff
-    tail without duplication. APF v0.1.0-alpha.17 closes the manual-tree branch as
-    an entry adapter: user-supplied manual trees in human formats are captured as
-    manual_tree_input, normalized into normalized_tree_draft, checked for completeness,
-    then joined into the already-confirmed branch-1 shared path at N_DRAFT_SUBTREE_REVIEW_START
-    when structurally sufficient or N_DRAFT_SUBTREE_GENERATION when partial/sketch-like;
-    downstream review, terminal output binding, template/mock-example verification,
-    YAML approval, and full validation/handoff remain shared and non-duplicated. APF
-    v0.1.0-alpha.18 closes the shared terminal output/template subflow as a reusable
-    block across all startup branches: terminal points explicitly choose an output
-    policy; new artifacts are described by free-form artifact intent rather than fixed
-    type lists; the runtime shows available terminal state fields, derives an output
-    recipe with direct-insert vs generated sections, and uses file-first review packages
-    for document-like artifacts. Template/mock/mapping review is simplified to four
-    user decisions: confirm, revise, defer, or remove artifact. Deferred templates
-    are recorded as unfinished and cannot be used by final gates until completed or
-    removed. APF v0.1.0-alpha.19 closes the shared validation/handoff tail as the
-    reusable final path for all startup branches and shared subflows: source YAML
-    generation approval, minimal validation, full-validation decision, validation
-    result review, scoped correction loop, final unfinished-items gate, handoff package
-    generation, and final handoff. Validation failure UX is simplified: failed checks
-    show a short issue list and route either into correction mode or a blocked/deferred
-    state; details live inside correction mode. Skipped full validation for alpha
-    is recorded as a limitation, never as passed. Handoff package generation is file-first
-    and blocked by failed minimal validation or active unfinished artifacts/templates.
-    APF v0.1.0-alpha.20 closes the whole-tree integration review after the branch
-    and shared-tail closures: all four startup branches join the shared output/template
-    subflow and shared validation/handoff tail; terminal/deferred/unfinished gates
-    are aligned; legacy unreachable nodes are explicitly marked as deprecated compatibility
-    nodes rather than active orphans; structural scan results are recorded in the
-    alpha.20 validation report.'
+  purpose: 'Створити прикладний Ordo-проєкт будь-якого типу через guided dialogue. Factory підтримує три режими authoring:
+    доменна модель + дерево рішень, ручне дерево рішень, та вільний діалог із подальшим draft-tree review. AI приховує YAML
+    від PM/аналітика і видає перший output як source/program.ordo.yaml після погодження blueprint. M61.5 стабілізує free-dialogue
+    гілку як self-hosted authoring loop: raw notes → structured extraction → draft tree → node-by-node review → reusable stabilized
+    branch. APF v0.1.0-alpha.8 додає user-facing node descriptions, human-readable extraction summaries, on-request-only SVG
+    generation, and a confirmed process-feedback loop: feedback → proposed process change → user approval → YAML update/reload
+    → continue from the updated flow. APF v0.1.0-alpha.10 adds strict node-by-node user-facing review: each current-node block
+    must show human description, question/action, transitions, state, gates, artifacts/templates, and open/deferred branches;
+    the runtime must track confirmed path, current branch, unreviewed sibling branches, and deferred return points. APF v0.1.0-alpha.11
+    adds incremental YAML patch discipline: after each confirmed tree step, runtime writes only a scoped YAML patch when needed
+    and runs a minimal YAML/lint/compile check; full CLI validation is deferred to terminal branch gates, before project generation/handoff,
+    or when consistency findings require it. APF v0.1.0-alpha.11 adds decision/control gate discipline: when a current node
+    has explicit transition options, runtime must ask the user to choose an allowed action instead of asking only for generic
+    confirmation; node approval/correction/deferment is represented as a reusable control gate. APF v0.1.0-alpha.13 adds a
+    process-design review rendering contract: when reviewing or designing the process tree, the runtime must explicitly show
+    whether it is in tree traversal, branch selection, node-review decision, or execution/validation gate mode; each current-node
+    block must include state, gates, artifacts, pending sibling/deferred branches, and a mode-labeled decision prompt. APF
+    v0.1.0-alpha.14 commits the fourth startup mode: existing-process improvement. This branch accepts only a full workspace/dev
+    package archive or a self-contained source/program.ordo.yaml as baseline, supports batch improvement lists and targeted
+    dialogue improvements, reviews before/after changes, builds a confirmed change set, applies scoped YAML patches, runs
+    minimal validation, then joins the existing shared full-validation/handoff pipeline without duplicating it. APF v0.1.0-alpha.16
+    closes branch 1 human review: runtime_entry_point is moved after domain/input/output/open-question intake; input artifacts
+    are policy-based and optional; output artifacts are separated from templates; terminal points bind outputs and verify
+    templates with mock-filled examples; static tree blueprint is replaced with progressive tree authoring and explicit terminal-or-continue
+    decisions. APF v0.1.0-alpha.16 closes the free-dialogue branch consistency delta after alpha.15: structured extraction
+    must preserve candidate output artifacts, template hints, output-related open questions, and unknown/deferred/no-output
+    policies; terminal points from free-dialogue draft review use the shared terminal output binding + template/mock-example
+    verification loop and join the shared full-validation/handoff tail without duplication. APF v0.1.0-alpha.17 closes the
+    manual-tree branch as an entry adapter: user-supplied manual trees in human formats are captured as manual_tree_input,
+    normalized into normalized_tree_draft, checked for completeness, then joined into the already-confirmed branch-1 shared
+    path at N_DRAFT_SUBTREE_REVIEW_START when structurally sufficient or N_DRAFT_SUBTREE_GENERATION when partial/sketch-like;
+    downstream review, terminal output binding, template/mock-example verification, YAML approval, and full validation/handoff
+    remain shared and non-duplicated. APF v0.1.0-alpha.18 closes the shared terminal output/template subflow as a reusable
+    block across all startup branches: terminal points explicitly choose an output policy; new artifacts are described by
+    free-form artifact intent rather than fixed type lists; the runtime shows available terminal state fields, derives an
+    output recipe with direct-insert vs generated sections, and uses file-first review packages for document-like artifacts.
+    Template/mock/mapping review is simplified to four user decisions: confirm, revise, defer, or remove artifact. Deferred
+    templates are recorded as unfinished and cannot be used by final gates until completed or removed. APF v0.1.0-alpha.19
+    closes the shared validation/handoff tail as the reusable final path for all startup branches and shared subflows: source
+    YAML generation approval, minimal validation, full-validation decision, validation result review, scoped correction loop,
+    final unfinished-items gate, handoff package generation, and final handoff. Validation failure UX is simplified: failed
+    checks show a short issue list and route either into correction mode or a blocked/deferred state; details live inside
+    correction mode. Skipped full validation for alpha is recorded as a limitation, never as passed. Handoff package generation
+    is file-first and blocked by failed minimal validation or active unfinished artifacts/templates. APF v0.1.0-alpha.20 closes
+    the whole-tree integration review after the branch and shared-tail closures: all four startup branches join the shared
+    output/template subflow and shared validation/handoff tail; terminal/deferred/unfinished gates are aligned; legacy unreachable
+    nodes are explicitly marked as deprecated compatibility nodes rather than active orphans; structural scan results are
+    recorded in the alpha.20 validation report.'
   state_tracking: required
   allow_deviation: true
   require_resume_after_deviation: true
@@ -876,14 +832,12 @@ graph_contract:
     - N_TREE_DEPTH_FIRST_REVIEW_LOOP
     - N_USER_TREE_VISION_CAPTURE
     - N_VALIDATION_GATE_CATALOG
-    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail
-      retry loop.
+    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
   - id: APF_LOOP_02
     nodes:
     - N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
     - N_SCOPED_YAML_PATCH_APPLICATION
-    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail
-      retry loop.
+    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
   - id: APF_LOOP_03
     nodes:
     - N_TARGETED_BEFORE_AFTER_PROPOSAL
@@ -891,30 +845,26 @@ graph_contract:
     - N_TARGETED_CHANGE_DECISION
     - N_TARGETED_MORE_IMPROVEMENTS_CHECK
     - N_TARGET_PROCESS_ITEM_IDENTIFICATION
-    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail
-      retry loop.
+    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
   - id: APF_LOOP_04
     nodes:
     - N_MANUAL_TREE_COMPLETENESS_AND_JOIN
     - N_MANUAL_TREE_NORMALIZATION
     - N_MANUAL_TREE_ROOT_NODE
-    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail
-      retry loop.
+    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
   - id: APF_LOOP_05
     nodes:
     - N_FREE_DIALOGUE_ACCUMULATION_CHECK
     - N_FREE_DIALOGUE_INTAKE
     - N_FREE_DIALOGUE_NEXT_SIGNAL
     - N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
-    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail
-      retry loop.
+    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
   - id: APF_LOOP_06
     nodes:
     - N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
     - N_FACTORY_MODE_SELECTION
     - N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
-    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail
-      retry loop.
+    rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
   - id: APF_LOOP_07
     nodes:
     - N_LEGACY_MIGRATION_SOURCE_INTAKE
@@ -922,8 +872,7 @@ graph_contract:
     - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
     - N_LEGACY_MIGRATION_ORDO_MAPPING
     - N_LEGACY_MIGRATION_COMPLETENESS_GATE
-    rationale: Intentional legacy-instruction migration reconstruction and correction
-      loop.
+    rationale: Intentional legacy-instruction migration reconstruction and correction loop.
   unreachable_node_policy: active_nodes_forbidden; deprecated_legacy_compatibility_allowed
   dead_end_policy: every_reachable_active_node_must_reach_terminal_or_external_terminal
   transition_provenance:
@@ -933,9 +882,8 @@ graph_contract:
     invalid_entry_behavior: block_and_recover
 nodes:
 - id: N_FACTORY_MODE_SELECTION
-  question: 'Оберіть режим роботи Project Factory: 1 — Доменна модель + дерево рішень;
-    2 — Ручне дерево рішень; 3 — Вільний діалог; 4 — Коригування існуючого процесу;
-    5 — Міграція старої монолітної інструкції.'
+  question: 'Оберіть режим роботи Project Factory: 1 — Доменна модель + дерево рішень; 2 — Ручне дерево рішень; 3 — Вільний
+    діалог; 4 — Коригування існуючого процесу; 5 — Міграція старої монолітної інструкції.'
   answer_type: enum
   allowed_answers:
   - domain_model_plus_tree
@@ -986,9 +934,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: factory authoring mode remains unclear
-  description: 'Цей вузол обирає спосіб роботи Project Factory: створення з доменної
-    моделі, ручне дерево, вільний діалог, коригування вже існуючого Ordo-процесу або
-    міграція старої монолітної інструкції у структурований Ordo-playbook.'
+  description: 'Цей вузол обирає спосіб роботи Project Factory: створення з доменної моделі, ручне дерево, вільний діалог,
+    коригування вже існуючого Ordo-процесу або міграція старої монолітної інструкції у структурований Ordo-playbook.'
   antipattern_hooks:
   - schema_version: ordo.antipattern_wiring_hook.v1
     hook_id: APH-FACTORY-MODE-SELECTION
@@ -1081,8 +1028,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_APPLIED_PROCESS_TYPE
-  question: 'Який тип процесу має підтримувати проєкт? Обмежень немає: document-generating,
-    QA, delivery, configuration, learning, hybrid або інший.'
+  question: 'Який тип процесу має підтримувати проєкт? Обмежень немає: document-generating, QA, delivery, configuration, learning,
+    hybrid або інший.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -1107,8 +1054,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_RUNTIME_ROLES
-  question: Хто буде користувачем runtime-процесу і яку роль має виконувати AI у цьому
-    прикладному проєкті?
+  question: Хто буде користувачем runtime-процесу і яку роль має виконувати AI у цьому прикладному проєкті?
   answer_type: free_text
   on_answer:
     update_state:
@@ -1122,9 +1068,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: runtime roles remain unclear
-  description: Після мети і типу процесу AI зʼясовує runtime-користувача та роль AI;
-    runtime entry point визначається пізніше, після доменної моделі, input/output
-    policy та open questions.
+  description: Після мети і типу процесу AI зʼясовує runtime-користувача та роль AI; runtime entry point визначається пізніше,
+    після доменної моделі, input/output policy та open questions.
   allowed_from:
   - N_APPLIED_PROCESS_TYPE
   node_context:
@@ -1137,8 +1082,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_RUNTIME_ENTRY_POINT
-  question: Після доменної моделі, input/output policy і open questions визначте,
-    з чого має починатися runtime-сесія користувача.
+  question: Після доменної моделі, input/output policy і open questions визначте, з чого має починатися runtime-сесія користувача.
   answer_type: free_text
   on_answer:
     update_state:
@@ -1151,8 +1095,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: entry point remains unclear
-  description: Runtime entry point визначається після доменного контексту, input policy,
-    candidate outputs і open questions, а не одразу після ролей.
+  description: Runtime entry point визначається після доменного контексту, input policy, candidate outputs і open questions,
+    а не одразу після ролей.
   allowed_from:
   - N_OPEN_QUESTIONS_REVIEW
   node_context:
@@ -1165,8 +1109,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MODULE_VERSIONING_POLICY
-  question: 'Підтвердьте versioning policy: Project Factory має власну версійність
-    модуля, а мовний пакет лише включає конкретну версію цього модуля.'
+  question: 'Підтвердьте versioning policy: Project Factory має власну версійність модуля, а мовний пакет лише включає конкретну
+    версію цього модуля.'
   answer_type: enum
   allowed_answers:
   - module_local_versioning
@@ -1214,10 +1158,9 @@ nodes:
       reason: module versioning policy remains unclear
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Retained as historical design note; module version is represented
-    in module.version and package metadata.
-  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not
-    counted as unresolved orphan in active whole-tree runtime path.'
+  deprecation_reason: Retained as historical design note; module version is represented in module.version and package metadata.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
   allowed_from:
   - N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
   node_context:
@@ -1230,8 +1173,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_GRAPH_ANNOTATION_OVERLAY_POLICY
-  question: Коли потрібно, використовуємо graph generator v1.1 annotation overlay
-    для підсвічування вузлів/гейтів і коротких коментарів у SVG. Підтвердити?
+  question: Коли потрібно, використовуємо graph generator v1.1 annotation overlay для підсвічування вузлів/гейтів і коротких
+    коментарів у SVG. Підтвердити?
   answer_type: enum
   allowed_answers:
   - use_v1_1_preview_when_helpful
@@ -1249,8 +1192,7 @@ nodes:
           - mark_changed_nodes
           - comment_gate_or_state_review_points
           default_rendering_remains: focused_context_svg
-          preview_limit: annotation demo renderer is optional review aid, not validation
-            source of truth
+          preview_limit: annotation demo renderer is optional review aid, not validation source of truth
         graph_annotation_overlay_status: confirmed
         graph_annotation_overlay_tool_version: ordo_visual_graph_generator 1.1.0-preview
       next: N_DECISION_TREE_BLUEPRINT
@@ -1271,10 +1213,9 @@ nodes:
       reason: annotation overlay policy remains unclear
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Retained as historical graph policy note; graph generation is
-    requested explicitly outside runtime path.
-  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not
-    counted as unresolved orphan in active whole-tree runtime path.'
+  deprecation_reason: Retained as historical graph policy note; graph generation is requested explicitly outside runtime path.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
   allowed_from:
   - N_MODULE_VERSIONING_POLICY
   node_context:
@@ -1287,8 +1228,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_DECISION_TREE_BLUEPRINT
-  question: Які головні питання, варіанти відповідей і terminal paths має мати дерево
-    прийняття рішень цього проєкту?
+  question: Які головні питання, варіанти відповідей і terminal paths має мати дерево прийняття рішень цього проєкту?
   answer_type: structured_list
   on_answer:
     update_state:
@@ -1301,9 +1241,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: decision tree blueprint remains incomplete
-  description: 'Legacy static blueprint node kept for compatibility. Branch 1 uses
-    progressive authoring: N_PROGRESSIVE_TREE_AUTHORING_ENTRY → N_USER_TREE_VISION_CAPTURE
-    → N_DRAFT_SUBTREE_GENERATION. Alpha.20 integration note: deprecated legacy compatibility
+  description: 'Legacy static blueprint node kept for compatibility. Branch 1 uses progressive authoring: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
+    → N_USER_TREE_VISION_CAPTURE → N_DRAFT_SUBTREE_GENERATION. Alpha.20 integration note: deprecated legacy compatibility
     node; not counted as unresolved orphan in active whole-tree runtime path.'
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
@@ -1320,8 +1259,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_STATE_SCHEMA_BLUEPRINT
-  question: Перевірте state contract, виведений з approved decision tree, terminal
-    output bindings, templates, gates, deferred items і handoff mechanics.
+  question: Перевірте state contract, виведений з approved decision tree, terminal output bindings, templates, gates, deferred
+    items і handoff mechanics.
   answer_type: list
   on_answer:
     update_state:
@@ -1334,8 +1273,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: state schema blueprint remains incomplete
-  description: State schema має бути похідною від затвердженого дерева, output bindings/templates,
-    gates, deferred/backtracking mechanics і final handoff.
+  description: State schema має бути похідною від затвердженого дерева, output bindings/templates, gates, deferred/backtracking
+    mechanics і final handoff.
   allowed_from:
   - N_APPROVED_TREE_CONSOLIDATION
   - N_DECISION_TREE_BLUEPRINT
@@ -1349,9 +1288,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_OUTPUT_ARTIFACT_CATALOG
-  question: Які результати може створювати процес? Зафіксуйте known, candidate, optional,
-    deferred або no-document outputs; AI може запропонувати перелік, якщо користувач
-    не знає його наперед.
+  question: Які результати може створювати процес? Зафіксуйте known, candidate, optional, deferred або no-document outputs;
+    AI може запропонувати перелік, якщо користувач не знає його наперед.
   answer_type: structured_list
   on_answer:
     update_state:
@@ -1370,9 +1308,8 @@ nodes:
     on_exhausted:
       action: continue_with_candidate_outputs_to_be_proposed
       reason: output catalog can start as candidate/deferred
-  description: Output artifact catalog is separate from input sources and separate
-    from templates. It records possible results before terminal paths decide which
-    outputs are bound where.
+  description: Output artifact catalog is separate from input sources and separate from templates. It records possible results
+    before terminal paths decide which outputs are bound where.
   allowed_from:
   - N_INPUT_ARTIFACTS_POLICY
   node_context:
@@ -1385,8 +1322,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_OUTPUT_TEMPLATE_CATALOG
-  question: 'Для кожного output artifact одразу опишіть template contract: required
-    sections, data source, validation checks і owner review status.'
+  question: 'Для кожного output artifact одразу опишіть template contract: required sections, data source, validation checks
+    і owner review status.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -1399,14 +1336,12 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: output template catalog remains incomplete
-  description: 'Legacy early template catalog node kept for compatibility. Alpha.15
-    uses terminal output binding and per-terminal template/mock review. Alpha.20 integration
-    note: deprecated legacy compatibility node; not counted as unresolved orphan in
-    active whole-tree runtime path.'
+  description: 'Legacy early template catalog node kept for compatibility. Alpha.15 uses terminal output binding and per-terminal
+    template/mock review. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan
+    in active whole-tree runtime path.'
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Superseded by terminal output binding and shared output/template
-    subflow.
+  deprecation_reason: Superseded by terminal output binding and shared output/template subflow.
   allowed_from: []
   node_context:
     version: '1.0'
@@ -1420,9 +1355,8 @@ nodes:
   entry_modes:
   - migration
 - id: N_VALIDATION_GATE_CATALOG
-  question: 'Перевірте gate catalog, привʼязаний до конкретних моментів дерева: node
-    review, branch review, terminal/continue, output binding, template verification,
-    source YAML approval і handoff.'
+  question: 'Перевірте gate catalog, привʼязаний до конкретних моментів дерева: node review, branch review, terminal/continue,
+    output binding, template verification, source YAML approval і handoff.'
   answer_type: list
   on_answer:
     update_state:
@@ -1435,8 +1369,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: validation gate catalog remains incomplete
-  description: Gate catalog має гарантувати, що процес не проходить далі без потрібних
-    рішень, templates, state completeness або validation.
+  description: Gate catalog має гарантувати, що процес не проходить далі без потрібних рішень, templates, state completeness
+    або validation.
   allowed_from:
   - N_OUTPUT_TEMPLATE_CATALOG
   - N_STATE_SCHEMA_BLUEPRINT
@@ -1450,8 +1384,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_BASIC_TEST_CASE_CATALOG
-  question: Після затвердження дерева рішень сформуйте 2–3 базові тест-кейси для стабільності
-    дерева. Confusion/self-test cases лишаються відкладеними.
+  question: Після затвердження дерева рішень сформуйте 2–3 базові тест-кейси для стабільності дерева. Confusion/self-test
+    cases лишаються відкладеними.
   answer_type: structured_list
   on_answer:
     update_state:
@@ -1466,10 +1400,10 @@ nodes:
       reason: basic test case catalog not ready
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Superseded by downstream validation/test planning and full validation
-    tail; not active in APF startup flow.
-  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not
-    counted as unresolved orphan in active whole-tree runtime path.'
+  deprecation_reason: Superseded by downstream validation/test planning and full validation tail; not active in APF startup
+    flow.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
   allowed_from: []
   node_context:
     version: '1.0'
@@ -1483,8 +1417,8 @@ nodes:
   entry_modes:
   - migration
 - id: N_FIRST_RELEASE_SCOPE
-  question: 'Підтвердіть scope першої версії: AI створює тільки source/program.ordo.yaml,
-    а інші packages/runtime/evidence artifacts додаються пізніше після YAML validation.'
+  question: 'Підтвердіть scope першої версії: AI створює тільки source/program.ordo.yaml, а інші packages/runtime/evidence
+    artifacts додаються пізніше після YAML validation.'
   answer_type: enum
   allowed_answers:
   - source_yaml_only
@@ -1505,10 +1439,9 @@ nodes:
       reason: first release scope is not confirmed
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Superseded by source YAML approval plus shared validation/handoff
-    tail.
-  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not
-    counted as unresolved orphan in active whole-tree runtime path.'
+  deprecation_reason: Superseded by source YAML approval plus shared validation/handoff tail.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
   allowed_from:
   - N_BASIC_TEST_CASE_CATALOG
   node_context:
@@ -1521,9 +1454,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_APPROVAL_TO_GENERATE_SOURCE_YAML
-  question: 'Перед генерацією source/program.ordo.yaml підтвердіть pre-generation
-    summary: goal, process type, roles, entry point, approved tree, state, gates,
-    terminal outputs, template/mock status і deferred items.'
+  question: 'Перед генерацією source/program.ordo.yaml підтвердіть pre-generation summary: goal, process type, roles, entry
+    point, approved tree, state, gates, terminal outputs, template/mock status і deferred items.'
   answer_type: enum
   allowed_answers:
   - 'yes'
@@ -1550,8 +1482,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: source yaml approval remains unclear
-  description: Окремий approval gate перед генерацією source/program.ordo.yaml; PM
-    не пише YAML сам, але підтверджує, що структура достатньо зрозуміла.
+  description: Окремий approval gate перед генерацією source/program.ordo.yaml; PM не пише YAML сам, але підтверджує, що структура
+    достатньо зрозуміла.
   allowed_from:
   - N_FIRST_RELEASE_SCOPE
   - N_VALIDATION_GATE_CATALOG
@@ -1565,8 +1497,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_DOMAIN_MODEL_OVERVIEW
-  question: 'Опишіть предметну область процесу: основні сутності, ролі, ключові рішення,
-    типові сценарії, винятки, обмеження та знання, які AI має враховувати.'
+  question: 'Опишіть предметну область процесу: основні сутності, ролі, ключові рішення, типові сценарії, винятки, обмеження
+    та знання, які AI має враховувати.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -1579,8 +1511,7 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: domain model remains unclear
-  description: Domain model overview збирає предметну область людською мовою після
-    мети, типу процесу та runtime roles.
+  description: Domain model overview збирає предметну область людською мовою після мети, типу процесу та runtime roles.
   allowed_from:
   - N_RUNTIME_ROLES
   node_context:
@@ -1593,8 +1524,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_DOMAIN_INPUT_OUTPUT_SOURCES
-  question: 'Надайте або опишіть наявні input sources і бажані output documents/templates:
-    файли, обʼєкти, записи БД, приклади документів або усні шаблони.'
+  question: 'Надайте або опишіть наявні input sources і бажані output documents/templates: файли, обʼєкти, записи БД, приклади
+    документів або усні шаблони.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -1610,10 +1541,9 @@ nodes:
       reason: input/output sources incomplete
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Superseded by split input policy and output artifact catalog
-    nodes.
-  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not
-    counted as unresolved orphan in active whole-tree runtime path.'
+  deprecation_reason: Superseded by split input policy and output artifact catalog nodes.
+  description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
+    whole-tree runtime path.'
   allowed_from: []
   node_context:
     version: '1.0'
@@ -1627,8 +1557,8 @@ nodes:
   entry_modes:
   - migration
 - id: N_OPEN_QUESTIONS_REVIEW
-  question: 'Зафіксуйте відкриті питання і класифікуйте їх: blocking, deferred, output-related,
-    gate-related, terminal-path-related або resolved.'
+  question: 'Зафіксуйте відкриті питання і класифікуйте їх: blocking, deferred, output-related, gate-related, terminal-path-related
+    або resolved.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -1642,8 +1572,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: open question gate remains untriaged
-  description: Open questions не обовʼязково блокують рух далі; вони мають бути класифіковані
-    й можуть бути привʼязані до дерева, gates або terminal output/template review.
+  description: Open questions не обовʼязково блокують рух далі; вони мають бути класифіковані й можуть бути привʼязані до
+    дерева, gates або terminal output/template review.
   allowed_from:
   - N_DOMAIN_INPUT_OUTPUT_SOURCES
   - N_TERMINAL_OUTPUT_BINDING_POLICY
@@ -1657,8 +1587,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MANUAL_TREE_PROJECT_GOAL
-  question: 'Ручний режим: коротко назвіть мету проєкту й тип процесу, без доменного
-    пояснення.'
+  question: 'Ручний режим: коротко назвіть мету проєкту й тип процесу, без доменного пояснення.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -1685,8 +1614,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MANUAL_TREE_RUNTIME_CONTEXT
-  question: 'Ручний режим: хто runtime-користувач, яка роль AI, і з якого input починається
-    сесія?'
+  question: 'Ручний режим: хто runtime-користувач, яка роль AI, і з якого input починається сесія?'
   answer_type: free_text
   on_answer:
     update_state:
@@ -1713,9 +1641,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MANUAL_TREE_ROOT_NODE
-  question: 'Ручний режим: надайте дерево рішень у будь-якому людському форматі —
-    root node, список гілок, if/then логіку, numbered outline, таблицю рішень, Mermaid-like
-    sketch, псевдокод або фрагмент subtree. YAML не потрібен.'
+  question: 'Ручний режим: надайте дерево рішень у будь-якому людському форматі — root node, список гілок, if/then логіку,
+    numbered outline, таблицю рішень, Mermaid-like sketch, псевдокод або фрагмент subtree. YAML не потрібен.'
   answer_type: free_text_or_structured_list
   on_answer:
     update_state:
@@ -1732,9 +1659,8 @@ nodes:
     on_exhausted:
       action: continue_with_partial_manual_tree_input
       reason: manual tree may be partial but can still be normalized into a draft
-  description: Branch 2 capture node. Manual input is not approved_decision_tree;
-    it is only raw/manual_tree_input that must be normalized and joined into the shared
-    progressive review path.
+  description: Branch 2 capture node. Manual input is not approved_decision_tree; it is only raw/manual_tree_input that must
+    be normalized and joined into the shared progressive review path.
   allowed_from:
   - N_MANUAL_TREE_COMPLETENESS_AND_JOIN
   - N_MANUAL_TREE_RUNTIME_CONTEXT
@@ -1748,9 +1674,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MANUAL_TREE_NORMALIZATION
-  question: 'AI нормалізує manual_tree_input у normalized_tree_draft: node aliases,
-    labels, branch labels, branch conditions, terminal candidates, missing branches,
-    ambiguous transitions, implied gates, possible outputs і open questions. Показати
+  question: 'AI нормалізує manual_tree_input у normalized_tree_draft: node aliases, labels, branch labels, branch conditions,
+    terminal candidates, missing branches, ambiguous transitions, implied gates, possible outputs і open questions. Показати
     normalized draft для review.'
   answer_type: structured_list
   on_answer:
@@ -1773,8 +1698,8 @@ nodes:
     on_exhausted:
       action: continue_with_normalized_tree_draft_as_unapproved_draft
       reason: manual tree normalization can proceed as draft but not as approved tree
-  description: Normalizes user-supplied manual tree into an internal draft. This node
-    never approves the tree; it only prepares the join into shared review.
+  description: Normalizes user-supplied manual tree into an internal draft. This node never approves the tree; it only prepares
+    the join into shared review.
   allowed_from:
   - N_MANUAL_TREE_ROOT_NODE
   node_context:
@@ -1787,9 +1712,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MANUAL_TREE_COMPLETENESS_AND_JOIN
-  question: 'Перевірте повноту normalized_tree_draft: це повне дерево, часткове дерево,
-    root+branches, subtree або sketch? Оберіть join point: достатньо структуроване
-    дерево → standard subtree review; часткове/sketch → draft subtree generation.'
+  question: 'Перевірте повноту normalized_tree_draft: це повне дерево, часткове дерево, root+branches, subtree або sketch?
+    Оберіть join point: достатньо структуроване дерево → standard subtree review; часткове/sketch → draft subtree generation.'
   answer_type: enum
   allowed_answers:
   - structured_enough_join_review
@@ -1797,8 +1721,7 @@ nodes:
   - needs_manual_tree_correction
   answer_options:
     structured_enough_join_review: Дерево достатньо структуроване → перейти до draft_subtree_review_start
-    partial_or_sketch_join_generation: Дерево часткове/sketch → AI добудовує draft
-      subtree
+    partial_or_sketch_join_generation: Дерево часткове/sketch → AI добудовує draft subtree
     needs_manual_tree_correction: Повернутися до введення/корекції ручного дерева
   on_answer:
     structured_enough_join_review:
@@ -1835,11 +1758,9 @@ nodes:
     max_attempts: 2
     on_exhausted:
       action: continue_with_partial_or_sketch_join_generation
-      reason: when unsure, route manual tree sketches through draft subtree generation
-        before review
-  description: Branch 2 join adapter. Complete/structured manual trees join N_DRAFT_SUBTREE_REVIEW_START;
-    partial trees or sketches join N_DRAFT_SUBTREE_GENERATION. All downstream mechanics
-    are reused from branch 1.
+      reason: when unsure, route manual tree sketches through draft subtree generation before review
+  description: Branch 2 join adapter. Complete/structured manual trees join N_DRAFT_SUBTREE_REVIEW_START; partial trees or
+    sketches join N_DRAFT_SUBTREE_GENERATION. All downstream mechanics are reused from branch 1.
   allowed_from:
   - N_MANUAL_TREE_NORMALIZATION
   node_context:
@@ -1852,9 +1773,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_FREE_DIALOGUE_INTAKE
-  question: 'Вільний діалог: розповідайте потреби, ідеї, приклади, бажані outputs
-    або проблеми без структурування дерева. AI накопичує raw notes і не вимагає YAML
-    чи готової схеми.'
+  question: 'Вільний діалог: розповідайте потреби, ідеї, приклади, бажані outputs або проблеми без структурування дерева.
+    AI накопичує raw notes і не вимагає YAML чи готової схеми.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -1868,8 +1788,8 @@ nodes:
     on_exhausted:
       action: continue_collecting_notes
       reason: free dialogue remains broad but usable
-  description: Цей вузол дозволяє користувачу просто розповідати ідеї, потреби й приклади
-    без вимоги знати YAML або будувати дерево рішень.
+  description: Цей вузол дозволяє користувачу просто розповідати ідеї, потреби й приклади без вимоги знати YAML або будувати
+    дерево рішень.
   allowed_from:
   - N_FACTORY_MODE_SELECTION
   - N_FREE_DIALOGUE_ACCUMULATION_CHECK
@@ -1884,9 +1804,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
-  question: 'AI показує людське резюме вільного діалогу: що ми почули, яке дерево
-    починає вимальовуватись, які candidate nodes/gates/outputs/templates зʼявились,
-    які outputs неясні або deferred, і які питання лишаються відкритими.'
+  question: 'AI показує людське резюме вільного діалогу: що ми почули, яке дерево починає вимальовуватись, які candidate nodes/gates/outputs/templates
+    зʼявились, які outputs неясні або deferred, і які питання лишаються відкритими.'
   answer_type: plain_language_structured_review
   on_answer:
     update_state:
@@ -1923,9 +1842,8 @@ nodes:
     on_exhausted:
       action: continue_with_explicit_open_questions
       reason: free dialogue notes extraction remains partial
-  description: Free-dialogue extraction must preserve not only candidate nodes and
-    gates, but also candidate output artifacts, candidate template hints, output-related
-    open questions, and explicit known/partial/AI-proposed/deferred/no-output policy.
+  description: Free-dialogue extraction must preserve not only candidate nodes and gates, but also candidate output artifacts,
+    candidate template hints, output-related open questions, and explicit known/partial/AI-proposed/deferred/no-output policy.
     Technical aliases remain internal; the user sees a plain-language summary.
   allowed_from:
   - N_FREE_DIALOGUE_INTAKE
@@ -1939,16 +1857,15 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_FREE_DIALOGUE_ACCUMULATION_CHECK
-  question: Чи достатньо вже накопиченого матеріалу, щоб чекати сигнал “що далі /
-    сформулюй”, або треба ще продовжити вільний діалог?
+  question: Чи достатньо вже накопиченого матеріалу, щоб чекати сигнал “що далі / сформулюй”, або треба ще продовжити вільний
+    діалог?
   answer_type: enum
   allowed_answers:
   - continue_collecting
   - ready_for_what_next_signal
   answer_options:
     continue_collecting: Ще збираємо raw notes
-    ready_for_what_next_signal: Матеріалу достатньо, чекаємо або приймаємо сигнал
-      “що далі”
+    ready_for_what_next_signal: Матеріалу достатньо, чекаємо або приймаємо сигнал “що далі”
   on_answer:
     continue_collecting:
       label: ще нотатки
@@ -1967,9 +1884,8 @@ nodes:
     on_exhausted:
       action: continue_collecting_notes
       reason: free dialogue accumulation readiness unclear
-  description: 'Цей вузол перевіряє, чи вже досить матеріалу для першого draft дерева.
-    Достатність матеріалу не вимагає фінальних outputs/templates: вони можуть бути
-    candidate, AI-proposed або deferred, але output-related notes не мають губитися.'
+  description: 'Цей вузол перевіряє, чи вже досить матеріалу для першого draft дерева. Достатність матеріалу не вимагає фінальних
+    outputs/templates: вони можуть бути candidate, AI-proposed або deferred, але output-related notes не мають губитися.'
   allowed_from:
   - N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
   node_context:
@@ -1982,9 +1898,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_FREE_DIALOGUE_NEXT_SIGNAL
-  question: Користувач питає “що далі / що у нас виходить / давай сформулюємо” або
-    явно просить draft. AI має запропонувати перший draft дерева, а не питати користувача
-    з нуля.
+  question: Користувач питає “що далі / що у нас виходить / давай сформулюємо” або явно просить draft. AI має запропонувати
+    перший draft дерева, а не питати користувача з нуля.
   answer_type: enum
   allowed_answers:
   - keep_talking
@@ -2011,8 +1926,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: free dialogue next signal unclear
-  description: Цей вузол ловить момент, коли користувач питає “що далі?” або “давай
-    сформулюємо”, і переводить процес до першого draft дерева.
+  description: Цей вузол ловить момент, коли користувач питає “що далі?” або “давай сформулюємо”, і переводить процес до першого
+    draft дерева.
   allowed_from:
   - N_FREE_DIALOGUE_ACCUMULATION_CHECK
   node_context:
@@ -2025,10 +1940,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
-  question: 'AI показує перший draft дерева з structured notes: вузли, гілки, state,
-    gates, terminal candidates, candidate output artifacts, template hints, output-related
-    open questions і місця майбутнього terminal output binding. Підтвердіть старт
-    standard node/branch review.'
+  question: 'AI показує перший draft дерева з structured notes: вузли, гілки, state, gates, terminal candidates, candidate
+    output artifacts, template hints, output-related open questions і місця майбутнього terminal output binding. Підтвердіть
+    старт standard node/branch review.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -2052,10 +1966,9 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: draft tree review not confirmed
-  description: Free-dialogue draft tree is not final approval. After node/branch review,
-    every terminal point uses the shared Terminal output binding + template verification
-    loop, including mock-filled examples, before tree consolidation and source YAML
-    approval.
+  description: Free-dialogue draft tree is not final approval. After node/branch review, every terminal point uses the shared
+    Terminal output binding + template verification loop, including mock-filled examples, before tree consolidation and source
+    YAML approval.
   allowed_from:
   - N_FREE_DIALOGUE_NEXT_SIGNAL
   node_context:
@@ -2068,14 +1981,11 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
-  description: Перед покроковим узгодженням дерева модель погоджує з користувачем,
-    як саме буде виглядати показ кожного вузла. Це захищає від технічного alias-first
-    review і від прихованих state/gates/artifacts. For free-dialogue drafts, current-node
-    review must also preserve candidate outputs/templates and route terminal points
-    to the shared output binding loop.
-  question: 'Підтвердіть формат review кожного вузла: показуємо людський опис, питання/дію,
-    варіанти переходів, state, gates, artifacts/outputs/templates, open questions
-    і deferred sibling-гілки. Технічні alias лишаються вторинними.'
+  description: Перед покроковим узгодженням дерева модель погоджує з користувачем, як саме буде виглядати показ кожного вузла.
+    Це захищає від технічного alias-first review і від прихованих state/gates/artifacts. For free-dialogue drafts, current-node
+    review must also preserve candidate outputs/templates and route terminal points to the shared output binding loop.
+  question: 'Підтвердіть формат review кожного вузла: показуємо людський опис, питання/дію, варіанти переходів, state, gates,
+    artifacts/outputs/templates, open questions і deferred sibling-гілки. Технічні alias лишаються вторинними.'
   answer_type: enum
   allowed_answers:
   - confirm_review_format
@@ -2125,21 +2035,18 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
-  description: 'Цей вузол фіксує економний режим зміни YAML під час обходу дерева:
-    після підтвердженого кроку вносимо тільки малий scoped patch, якщо він потрібен,
-    і запускаємо мінімальну перевірку. Повна перевірка не виконується після кожного
+  description: 'Цей вузол фіксує економний режим зміни YAML під час обходу дерева: після підтвердженого кроку вносимо тільки
+    малий scoped patch, якщо він потрібен, і запускаємо мінімальну перевірку. Повна перевірка не виконується після кожного
     вузла.'
-  question: 'Підтвердіть режим роботи під час обходу дерева: після кожного підтвердженого
-    кроку, якщо YAML треба змінити, робимо малий YAML patch і мінімальну перевірку;
-    повний CLI validation запускаємо тільки на terminal/pre-handoff gate або якщо
-    мінімальна перевірка знаходить проблему.'
+  question: 'Підтвердіть режим роботи під час обходу дерева: після кожного підтвердженого кроку, якщо YAML треба змінити,
+    робимо малий YAML patch і мінімальну перевірку; повний CLI validation запускаємо тільки на terminal/pre-handoff gate або
+    якщо мінімальна перевірка знаходить проблему.'
   answer_type: enum
   allowed_answers:
   - confirm_incremental_yaml_patch_policy
   - adjust_incremental_yaml_patch_policy
   answer_options:
-    confirm_incremental_yaml_patch_policy: підтвердити incremental YAML patch + minimal
-      check
+    confirm_incremental_yaml_patch_policy: підтвердити incremental YAML patch + minimal check
     adjust_incremental_yaml_patch_policy: уточнити validation profile
   on_answer:
     confirm_incremental_yaml_patch_policy:
@@ -2275,15 +2182,13 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TREE_DEPTH_FIRST_REVIEW_LOOP
-  question: 'Покажіть рівно один поточний вузол дерева для review у process-design
-    rendering форматі: спочатку явно назвіть runtime mode/context shift (tree traversal,
-    branch selection, node-review decision або execution gate), потім покажіть людський
-    опис, питання/дію, варіанти переходів або control-дії, що запамʼятовується в state,
-    які gates перевіряються, які artifacts/outputs/templates повʼязані, які open questions
-    або sibling-гілки лишаються. Після показу вузла НЕ питати generic “підтверджуєш?”;
-    перейти до control gate, де користувач обирає одну з дій: підтвердити, виправити
-    або відкласти. Також покажіть control-action bookkeeping: selected_control_action,
-    not_selected_control_actions і blocked_until_ready_actions окремо від unreviewed_sibling_branches/deferred_return_points.'
+  question: 'Покажіть рівно один поточний вузол дерева для review у process-design rendering форматі: спочатку явно назвіть
+    runtime mode/context shift (tree traversal, branch selection, node-review decision або execution gate), потім покажіть
+    людський опис, питання/дію, варіанти переходів або control-дії, що запамʼятовується в state, які gates перевіряються,
+    які artifacts/outputs/templates повʼязані, які open questions або sibling-гілки лишаються. Після показу вузла НЕ питати
+    generic “підтверджуєш?”; перейти до control gate, де користувач обирає одну з дій: підтвердити, виправити або відкласти.
+    Також покажіть control-action bookkeeping: selected_control_action, not_selected_control_actions і blocked_until_ready_actions
+    окремо від unreviewed_sibling_branches/deferred_return_points.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -2312,11 +2217,10 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: current tree node review incomplete
-  description: 'Поточний вузол review показується користувачу в user-facing process-design
-    rendering форматі з явним mode label/context shift: tree traversal, branch selection,
-    node-review decision або execution/validation gate. Runtime view must show state,
-    gates, artifacts, pending sibling/deferred branches, and must not mix real unreviewed
-    sibling branches with not-selected control actions.'
+  description: 'Поточний вузол review показується користувачу в user-facing process-design rendering форматі з явним mode
+    label/context shift: tree traversal, branch selection, node-review decision або execution/validation gate. Runtime view
+    must show state, gates, artifacts, pending sibling/deferred branches, and must not mix real unreviewed sibling branches
+    with not-selected control actions.'
   allowed_from:
   - N_CURRENT_NODE_REVIEW_DECISION_GATE
   - N_DRAFT_SUBTREE_REVIEW_START
@@ -2335,12 +2239,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_CURRENT_NODE_REVIEW_DECISION_GATE
-  description: 'Control/review gate для поточного вузла. Це не змістовий вузол дерева,
-    який треба “підтвердити як частину дерева”, а runtime-рішення користувача щодо
-    вже показаного вузла. Before asking, runtime must explicitly say: “Зараз це review-рішення
-    по показаному вузлу, не вибір гілки дерева.” Після вибору action runtime фіксує
-    selected_control_action і not_selected_control_actions; ці not-selected actions
-    не додаються до deferred return points.'
+  description: 'Control/review gate для поточного вузла. Це не змістовий вузол дерева, який треба “підтвердити як частину
+    дерева”, а runtime-рішення користувача щодо вже показаного вузла. Before asking, runtime must explicitly say: “Зараз це
+    review-рішення по показаному вузлу, не вибір гілки дерева.” Після вибору action runtime фіксує selected_control_action
+    і not_selected_control_actions; ці not-selected actions не додаються до deferred return points.'
   question: Що робимо з поточним показаним вузлом?
   answer_type: enum
   allowed_answers:
@@ -2350,8 +2252,7 @@ nodes:
   answer_options:
     approve_current_node: Підтвердити поточний вузол як є
     correct_current_node: Виправити поточний вузол і показати оновлену версію
-    defer_current_node: Відкласти поточний вузол / винести в open questions або deferred
-      return points
+    defer_current_node: Відкласти поточний вузол / винести в open questions або deferred return points
   on_answer:
     approve_current_node:
       label: вузол підтверджено
@@ -2360,8 +2261,7 @@ nodes:
         current_node_review_record.status: approved
         node_review_control_gate_status: passed
         confirmed_review_path: $answer.confirmed_path
-        last_incremental_yaml_patch_summary: node approved; yaml patch only if current
-          node definition changed
+        last_incremental_yaml_patch_summary: node approved; yaml patch only if current node definition changed
         selected_control_action: approve_current_node
         not_selected_control_actions:
         - correct_current_node
@@ -2378,8 +2278,7 @@ nodes:
         corrected_review_nodes: $answer.corrections
         draft_tree_review_status: node_correction_in_progress
         node_review_control_gate_status: correction_requested
-        last_incremental_yaml_patch_summary: correction requested; apply scoped YAML
-          patch after corrected node is accepted
+        last_incremental_yaml_patch_summary: correction requested; apply scoped YAML patch after corrected node is accepted
         selected_control_action: correct_current_node
         not_selected_control_actions:
         - approve_current_node
@@ -2397,8 +2296,7 @@ nodes:
         deferred_return_points: $answer.deferred_return_points
         open_questions: $answer.open_questions
         node_review_control_gate_status: deferred
-        last_incremental_yaml_patch_summary: node deferred; update deferred return
-          points/open questions only
+        last_incremental_yaml_patch_summary: node deferred; update deferred return points/open questions only
         selected_control_action: defer_current_node
         not_selected_control_actions:
         - approve_current_node
@@ -2519,14 +2417,12 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: tree review continuation unclear
-  description: 'Цей вузол вирішує, чи йдемо до наступного вузла дерева, чи все дерево
-    вже пройдено й може бути затверджене. approve_tree can be blocked/deferred while
-    unreviewed sibling branches or deferred return points remain. Runtime must label
-    this as tree traversal / branch-selection level, not node-review correction. Alpha.15
-    note: for progressive tree authoring, subtree completion should use N_SUBTREE_REVIEW_COMPLETION_CHECK
-    and N_APPROVED_TREE_CONSOLIDATION; this node remains for legacy/free-dialogue
-    compatibility. Alpha.20 integration note: deprecated legacy compatibility node;
-    not counted as unresolved orphan in active whole-tree runtime path.'
+  description: 'Цей вузол вирішує, чи йдемо до наступного вузла дерева, чи все дерево вже пройдено й може бути затверджене.
+    approve_tree can be blocked/deferred while unreviewed sibling branches or deferred return points remain. Runtime must
+    label this as tree traversal / branch-selection level, not node-review correction. Alpha.15 note: for progressive tree
+    authoring, subtree completion should use N_SUBTREE_REVIEW_COMPLETION_CHECK and N_APPROVED_TREE_CONSOLIDATION; this node
+    remains for legacy/free-dialogue compatibility. Alpha.20 integration note: deprecated legacy compatibility node; not counted
+    as unresolved orphan in active whole-tree runtime path.'
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
   deprecation_reason: Superseded by subtree review completion and approved tree consolidation.
@@ -2543,9 +2439,8 @@ nodes:
   entry_modes:
   - migration
 - id: N_STABILIZED_TREE_BRANCH_HANDOFF
-  question: 'Зафіксуйте стабілізовану гілку authoring: який branch/subflow уже затверджений,
-    як він буде використовуватись як алгоритм для наступних гілок, і чи можна вмикати
-    self-hosted reuse.'
+  question: 'Зафіксуйте стабілізовану гілку authoring: який branch/subflow уже затверджений, як він буде використовуватись
+    як алгоритм для наступних гілок, і чи можна вмикати self-hosted reuse.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -2560,14 +2455,12 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: stabilized authoring branch handoff unclear
-  description: 'Цей вузол фіксує стабілізовану гілку як алгоритм, яким можна користуватись
-    далі для побудови інших частин factory. Alpha.20 integration note: deprecated
-    legacy compatibility node; not counted as unresolved orphan in active whole-tree
+  description: 'Цей вузол фіксує стабілізовану гілку як алгоритм, яким можна користуватись далі для побудови інших частин
+    factory. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active whole-tree
     runtime path.'
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Superseded by approved tree consolidation and shared validation/handoff
-    tail.
+  deprecation_reason: Superseded by approved tree consolidation and shared validation/handoff tail.
   allowed_from:
   - N_TREE_REVIEW_CONTINUE_OR_APPROVE
   node_context:
@@ -2580,10 +2473,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
-  description: 'Compatibility join point retained for older references. New APF runtime
-    uses the explicit shared validation/handoff tail nodes introduced in alpha.19.
-    Alpha.20 integration note: deprecated legacy compatibility node; not counted as
-    unresolved orphan in active whole-tree runtime path.'
+  description: 'Compatibility join point retained for older references. New APF runtime uses the explicit shared validation/handoff
+    tail nodes introduced in alpha.19. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved
+    orphan in active whole-tree runtime path.'
   question: Continue into the shared validation/handoff tail.
   answer_type: enum
   allowed_answers:
@@ -2605,8 +2497,8 @@ nodes:
       reason: shared validation tail join unclear
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Compatibility join point retained for older references; active
-    flow uses explicit shared validation/handoff tail.
+  deprecation_reason: Compatibility join point retained for older references; active flow uses explicit shared validation/handoff
+    tail.
   antipattern_hooks:
   - schema_version: ordo.antipattern_wiring_hook.v1
     hook_id: APH-TERMINAL-FULL-VALIDATION-PACKAGE
@@ -2707,9 +2599,8 @@ nodes:
   entry_modes:
   - migration
 - id: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
-  question: Чи виникли під час authoring речі, яких мові бракує або які поки існують
-    як provisional metadata? Зафіксуйте proposal або підтвердіть, що нових пропозицій
-    немає.
+  question: Чи виникли під час authoring речі, яких мові бракує або які поки існують як provisional metadata? Зафіксуйте proposal
+    або підтвердіть, що нових пропозицій немає.
   answer_type: structured_list
   on_answer:
     update_state:
@@ -2723,14 +2614,13 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: language improvement proposal status is unclear
-  description: 'Цей вузол збирає пропозиції щодо покращення мови, якщо під час роботи
-    зʼявляються речі, яких мова ще офіційно не підтримує. Alpha.20 integration note:
-    deprecated legacy compatibility node; not counted as unresolved orphan in active
+  description: 'Цей вузол збирає пропозиції щодо покращення мови, якщо під час роботи зʼявляються речі, яких мова ще офіційно
+    не підтримує. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
     whole-tree runtime path.'
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Retained as historical improvement-capture note; language proposals
-    are tracked in a separate context package.
+  deprecation_reason: Retained as historical improvement-capture note; language proposals are tracked in a separate context
+    package.
   allowed_from:
   - N_WORKING_CONTEXT_GRAPH_POLICY
   node_context:
@@ -2743,9 +2633,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_WORKING_CONTEXT_GRAPH_POLICY
-  question: 'Підтвердіть стандарт візуалізації: під час звичайної покрокової роботи
-    SVG не генерується автоматично. Якщо користувач прямо просить картинку, тоді генерується
-    context-view: шлях від root до поточного вузла плюс піддерево нижче нього.'
+  question: 'Підтвердіть стандарт візуалізації: під час звичайної покрокової роботи SVG не генерується автоматично. Якщо користувач
+    прямо просить картинку, тоді генерується context-view: шлях від root до поточного вузла плюс піддерево нижче нього.'
   answer_type: enum
   allowed_answers:
   - confirm_on_request_context_svg_policy
@@ -2781,17 +2670,15 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: graph rendering policy is not confirmed
-  description: 'Цей вузол визначає, коли показувати SVG: за замовчуванням не генеруємо
-    картинку, а робимо її тільки на пряме прохання користувача. Alpha.20 integration
-    note: deprecated legacy compatibility node; not counted as unresolved orphan in
-    active whole-tree runtime path.'
+  description: 'Цей вузол визначає, коли показувати SVG: за замовчуванням не генеруємо картинку, а робимо її тільки на пряме
+    прохання користувача. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan
+    in active whole-tree runtime path.'
   answer_options:
     confirm_on_request_context_svg_policy: SVG тільки на пряме прохання; тоді context-view
     adjust_policy: уточнити policy
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Retained as historical graph display policy; not an active startup
-    branch node.
+  deprecation_reason: Retained as historical graph display policy; not an active startup branch node.
   allowed_from: []
   node_context:
     version: '1.0'
@@ -2805,15 +2692,12 @@ nodes:
   entry_modes:
   - migration
 - id: N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
-  description: 'Цей вузол спрацьовує, коли користувач коментує сам процес. AI приймає
-    зауваження, показує як зміниться крок, чекає підтвердження, вносить малий YAML
-    patch, запускає мінімальну перевірку і продовжує вже з нової версії. Повна перевірка
-    не виконується після кожної дрібної правки. Alpha.20 integration note: deprecated
-    legacy compatibility node; not counted as unresolved orphan in active whole-tree
-    runtime path.'
-  question: Користувач дав зауваження до самого процесу. AI приймає зауваження, показує
-    нову форму кроку людською мовою, після підтвердження оновлює YAML малим patch,
-    запускає мінімальну перевірку YAML/lint/compile і продовжує з поточного місця.
+  description: 'Цей вузол спрацьовує, коли користувач коментує сам процес. AI приймає зауваження, показує як зміниться крок,
+    чекає підтвердження, вносить малий YAML patch, запускає мінімальну перевірку і продовжує вже з нової версії. Повна перевірка
+    не виконується після кожної дрібної правки. Alpha.20 integration note: deprecated legacy compatibility node; not counted
+    as unresolved orphan in active whole-tree runtime path.'
+  question: Користувач дав зауваження до самого процесу. AI приймає зауваження, показує нову форму кроку людською мовою, після
+    підтвердження оновлює YAML малим patch, запускає мінімальну перевірку YAML/lint/compile і продовжує з поточного місця.
     Full validation відкладається до terminal/pre-handoff gate.
   answer_type: structured_list
   allowed_answers:
@@ -2838,8 +2722,8 @@ nodes:
       reason: process change confirmation unclear
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
-  deprecation_reason: Retained as process-change policy note; active correction mode
-    is now shared validation/handoff correction loop.
+  deprecation_reason: Retained as process-change policy note; active correction mode is now shared validation/handoff correction
+    loop.
   allowed_from: []
   node_context:
     version: '1.0'
@@ -2853,11 +2737,10 @@ nodes:
   entry_modes:
   - migration
 - id: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
-  description: Вхід у п'ятий режим. Вузол запускає zero-silent-loss migration старої
-    монолітної інструкції у структурований Ordo-playbook.
-  question: 'Режим 5: мігруємо стару монолітну інструкцію у структурований Ordo-playbook.
-    Підтвердьте, що завдання саме у zero-silent-loss migration, а не у створенні нового
-    процесу з нуля.'
+  description: Вхід у п'ятий режим. Вузол запускає zero-silent-loss migration старої монолітної інструкції у структурований
+    Ordo-playbook.
+  question: 'Режим 5: мігруємо стару монолітну інструкцію у структурований Ordo-playbook. Підтвердьте, що завдання саме у
+    zero-silent-loss migration, а не у створенні нового процесу з нуля.'
   answer_type: enum
   allowed_answers:
   - confirm_legacy_instruction_migration
@@ -2898,8 +2781,7 @@ nodes:
       next_node: explicit
 - id: N_LEGACY_MIGRATION_SOURCE_INTAKE
   description: Вузол приймає джерело старої інструкції, яку треба мігрувати.
-  question: 'Надайте джерело для міграції: 1 — вставлений текст старої інструкції;
-    2 — прикріплений файл або архів з інструкцією.'
+  question: 'Надайте джерело для міграції: 1 — вставлений текст старої інструкції; 2 — прикріплений файл або архів з інструкцією.'
   answer_type: enum
   allowed_answers:
   - pasted_legacy_instruction_text
@@ -2940,10 +2822,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
-  description: Побудова clause inventory та первинне захоплення неоднозначностей є
-    обов'язковим першим етапом міграції.
-  question: Побудуйте clause inventory, зафіксуйте ambiguity та missing context. Продовжуємо,
-    коли інвентаризація готова.
+  description: Побудова clause inventory та первинне захоплення неоднозначностей є обов'язковим першим етапом міграції.
+  question: Побудуйте clause inventory, зафіксуйте ambiguity та missing context. Продовжуємо, коли інвентаризація готова.
   answer_type: enum
   allowed_answers:
   - clause_inventory_ready
@@ -2986,10 +2866,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
-  description: Після clause inventory будується dependency reconstruction для майбутнього
-    Ordo-графа.
-  question: Відновіть залежності між clauses і підготуйте dependency graph. Коли dependency
-    reconstruction готовий, продовжуємо.
+  description: Після clause inventory будується dependency reconstruction для майбутнього Ordo-графа.
+  question: Відновіть залежності між clauses і підготуйте dependency graph. Коли dependency reconstruction готовий, продовжуємо.
   answer_type: enum
   allowed_answers:
   - dependency_reconstruction_ready
@@ -3029,10 +2907,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_LEGACY_MIGRATION_ORDO_MAPPING
-  description: На цьому кроці clauses і reconstructed dependencies мапляться у структурований
-    Ordo-playbook із traceability.
-  question: Побудуйте Ordo mapping і traceability matrix. Продовжуємо тільки коли
-    кожен clause має покриття або явний unresolved status.
+  description: На цьому кроці clauses і reconstructed dependencies мапляться у структурований Ordo-playbook із traceability.
+  question: Побудуйте Ordo mapping і traceability matrix. Продовжуємо тільки коли кожен clause має покриття або явний unresolved
+    status.
   answer_type: enum
   allowed_answers:
   - ordo_mapping_ready
@@ -3073,11 +2950,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_LEGACY_MIGRATION_COMPLETENESS_GATE
-  description: Zero-silent-loss completeness gate блокує перехід далі, якщо хоч один
-    clause втрачений або не має явного статусу.
-  question: 'Перевірте completeness gate: чи всі clauses покриті або явно позначені
-    як unresolved? Тільки після цього міграція може перейти в спільний validation/handoff
-    tail.'
+  description: Zero-silent-loss completeness gate блокує перехід далі, якщо хоч один clause втрачений або не має явного статусу.
+  question: 'Перевірте completeness gate: чи всі clauses покриті або явно позначені як unresolved? Тільки після цього міграція
+    може перейти в спільний validation/handoff tail.'
   answer_type: enum
   allowed_answers:
   - completeness_gate_passed
@@ -3119,10 +2994,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
-  description: Вхід у четвертий режим. Вузол відрізняє коригування наявного процесу
-    від реконструкції або створення нового процесу.
-  question: 'Режим 4: коригуємо існуючий процес, а не створюємо новий з нуля. Підтвердьте,
-    що завдання саме у зміні наявного Ordo-процесу.'
+  description: Вхід у четвертий режим. Вузол відрізняє коригування наявного процесу від реконструкції або створення нового
+    процесу.
+  question: 'Режим 4: коригуємо існуючий процес, а не створюємо новий з нуля. Підтвердьте, що завдання саме у зміні наявного
+    Ordo-процесу.'
   answer_type: enum
   allowed_answers:
   - confirm_existing_process_improvement
@@ -3162,10 +3037,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_EXISTING_PROCESS_BASELINE_DEFINITION
-  description: 'Baseline не може бути лише людським описом або нотатками: для коригування
-    потрібен повний контекст процесу.'
-  question: 'Надайте baseline існуючого процесу. Допустимі тільки: 1 — повний workspace/dev
-    package archive; 2 — self-contained source/program.ordo.yaml.'
+  description: 'Baseline не може бути лише людським описом або нотатками: для коригування потрібен повний контекст процесу.'
+  question: 'Надайте baseline існуючого процесу. Допустимі тільки: 1 — повний workspace/dev package archive; 2 — self-contained
+    source/program.ordo.yaml.'
   answer_type: enum
   allowed_answers:
   - workspace_dev_package_archive
@@ -3205,10 +3079,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
-  description: 'Вузол розділяє два режими зміни існуючого процесу: batch extraction
-    із набору покращень або targeted dialogue навколо одного елемента.'
-  question: 'Оберіть режим коригування: 1 — пакетний список покращень; 2 — точкове
-    покращення через діалог.'
+  description: 'Вузол розділяє два режими зміни існуючого процесу: batch extraction із набору покращень або targeted dialogue
+    навколо одного елемента.'
+  question: 'Оберіть режим коригування: 1 — пакетний список покращень; 2 — точкове покращення через діалог.'
   answer_type: enum
   allowed_answers:
   - batch_improvement_list
@@ -3278,8 +3151,7 @@ nodes:
       next_node: explicit
 - id: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
   description: 'Extraction не змінює YAML: вона лише формує список можливих покращень.'
-  question: AI витягує з batch input candidate improvements і показує їх людською
-    мовою для вибору.
+  question: AI витягує з batch input candidate improvements і показує їх людською мовою для вибору.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3305,10 +3177,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_CANDIDATE_IMPROVEMENTS_SELECTION
-  description: Користувач явно відділяє approved/rejected/deferred candidates перед
-    mapping на процес.
-  question: Оберіть, які candidate improvements застосувати, які відхилити, а які
-    відкласти.
+  description: Користувач явно відділяє approved/rejected/deferred candidates перед mapping на процес.
+  question: Оберіть, які candidate improvements застосувати, які відхилити, а які відкласти.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3336,8 +3206,7 @@ nodes:
       next_node: explicit
 - id: N_IMPROVEMENT_TO_PROCESS_MAPPING
   description: Mapping визначає, які частини існуючого процесу будуть зачеплені змінами.
-  question: AI мапить вибрані покращення на вузли, transitions, gates, state, artifacts,
-    templates або runtime policy.
+  question: AI мапить вибрані покращення на вузли, transitions, gates, state, artifacts, templates або runtime policy.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3363,10 +3232,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
-  description: Перед patch application кожна зміна має отримати статус і бути зрозумілою
-    користувачу.
-  question: 'Для кожного affected item показати before/after card і отримати рішення:
-    прийняти, скоригувати, відкласти або відхилити.'
+  description: Перед patch application кожна зміна має отримати статус і бути зрозумілою користувачу.
+  question: 'Для кожного affected item показати before/after card і отримати рішення: прийняти, скоригувати, відкласти або
+    відхилити.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -3394,8 +3262,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
-  description: 'Старт targeted mode: користувач може назвати вузол, gate, state, artifact
-    або просто описати проблему.'
+  description: 'Старт targeted mode: користувач може назвати вузол, gate, state, artifact або просто описати проблему.'
   question: Опишіть точкову проблему або елемент процесу, який хочете покращити.
   answer_type: free_text
   on_answer:
@@ -3423,8 +3290,7 @@ nodes:
       next_node: explicit
 - id: N_TARGET_PROCESS_ITEM_IDENTIFICATION
   description: Перед пропозицією зміни треба знайти конкретний предмет коригування.
-  question: 'AI визначає цільовий елемент процесу: node, transition, gate, state,
-    artifact, policy або problem area.'
+  question: 'AI визначає цільовий елемент процесу: node, transition, gate, state, artifact, policy або problem area.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -3451,8 +3317,8 @@ nodes:
       next_node: explicit
 - id: N_TARGETED_CHANGE_CLARIFICATION
   description: Не можна формувати after proposal без достатньо описаної бажаної зміни.
-  question: 'Уточніть бажану зміну: що зараз неправильно, як має стати, що додати,
-    що не змінювати, локальна це правка чи rule-level зміна.'
+  question: 'Уточніть бажану зміну: що зараз неправильно, як має стати, що додати, що не змінювати, локальна це правка чи
+    rule-level зміна.'
   answer_type: free_text
   on_answer:
     update_state:
@@ -3479,10 +3345,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TARGETED_BEFORE_AFTER_PROPOSAL
-  description: Before/after proposal робить точкову зміну перевірною до внесення в
-    YAML.
-  question: AI показує target item, before snapshot, proposed after version, rationale,
-    affected state/gates/artifacts і open risks.
+  description: Before/after proposal робить точкову зміну перевірною до внесення в YAML.
+  question: AI показує target item, before snapshot, proposed after version, rationale, affected state/gates/artifacts і open
+    risks.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3564,8 +3429,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TARGETED_MORE_IMPROVEMENTS_CHECK
-  description: 'Loop-control вузол: або повертаємось до наступного target item, або
-    виходимо до shared change pipeline.'
+  description: 'Loop-control вузол: або повертаємось до наступного target item, або виходимо до shared change pipeline.'
   question: Чи є ще точкові покращення для цього процесу?
   answer_type: enum
   allowed_answers:
@@ -3604,10 +3468,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
-  description: Batch і targeted improvement modes сходяться тут; downstream validation/handoff
-    не дублюється, а йде через shared terminal pipeline.
-  question: Закрити активний режим коригування і перейти до спільного change pipeline
-    для confirmed changes.
+  description: Batch і targeted improvement modes сходяться тут; downstream validation/handoff не дублюється, а йде через
+    shared terminal pipeline.
+  question: Закрити активний режим коригування і перейти до спільного change pipeline для confirmed changes.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3634,8 +3497,7 @@ nodes:
       next_node: explicit
 - id: N_CONFIRMED_CHANGE_SET_BUILDING
   description: Confirmed change set є єдиним дозволеним input для YAML patch application.
-  question: Сформувати confirmed change set з approved changes; rejected і deferred
-    changes зберегти окремо.
+  question: Сформувати confirmed change set з approved changes; rejected і deferred changes зберегти окремо.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3661,10 +3523,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SCOPED_YAML_PATCH_APPLICATION
-  description: 'Patch discipline: не перебудовувати весь процес, а змінювати лише
-    підтверджені частини.'
-  question: Застосувати тільки scoped YAML patches, що відповідають confirmed change
-    set.
+  description: 'Patch discipline: не перебудовувати весь процес, а змінювати лише підтверджені частини.'
+  question: Застосувати тільки scoped YAML patches, що відповідають confirmed change set.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3692,10 +3552,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
-  description: Після мінімальної перевірки scoped patch joins the shared validation/handoff
-    tail. Full validation/handoff nodes are referenced, not duplicated.
-  question: 'Запустити мінімальну перевірку після patch: YAML parse, Ordo lint, compile/refresh
-    IR.'
+  description: Після мінімальної перевірки scoped patch joins the shared validation/handoff tail. Full validation/handoff
+    nodes are referenced, not duplicated.
+  question: 'Запустити мінімальну перевірку після patch: YAML parse, Ordo lint, compile/refresh IR.'
   answer_type: enum
   allowed_answers:
   - minimal_validation_passed
@@ -3785,8 +3644,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_INPUT_ARTIFACTS_POLICY
-  question: Які вхідні матеріали або джерела має використовувати цей процес? Якщо
-    їх зараз немає або процес не регламентує вхід — зафіксуйте відповідну input policy.
+  question: Які вхідні матеріали або джерела має використовувати цей процес? Якщо їх зараз немає або процес не регламентує
+    вхід — зафіксуйте відповідну input policy.
   answer_type: structured_list
   on_answer:
     update_state:
@@ -3804,9 +3663,8 @@ nodes:
     on_exhausted:
       action: continue_with_explicit_input_policy_unknown
       reason: input policy can be unknown or deferred but must be explicit
-  description: 'Atomic input-policy node. Input artifacts are not mandatory: user
-    may have required inputs, optional inputs, no predefined input, unknown/deferred
-    input, or inputs produced later in the process.'
+  description: 'Atomic input-policy node. Input artifacts are not mandatory: user may have required inputs, optional inputs,
+    no predefined input, unknown/deferred input, or inputs produced later in the process.'
   allowed_from:
   - N_DOMAIN_MODEL_OVERVIEW
   node_context:
@@ -3819,8 +3677,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TERMINAL_OUTPUT_BINDING_POLICY
-  question: 'Підтвердьте policy: кожна terminal point має окремо вибрати outputs,
-    перевірити templates/mock examples або явно позначити no-output/deferred output.'
+  question: 'Підтвердьте policy: кожна terminal point має окремо вибрати outputs, перевірити templates/mock examples або явно
+    позначити no-output/deferred output.'
   answer_type: enum
   allowed_answers:
   - confirm_terminal_output_binding_policy
@@ -3853,9 +3711,8 @@ nodes:
     on_exhausted:
       action: continue_with_default_terminal_output_binding_policy
       reason: policy default is safe and explicit
-  description: 'Shared policy node: output templates are not a black box. Terminal
-    points bind outputs, verify templates and review mock-filled examples before package
-    approval. This shared policy is used by branch 1, branch 2, branch 3 free-dialogue
+  description: 'Shared policy node: output templates are not a black box. Terminal points bind outputs, verify templates and
+    review mock-filled examples before package approval. This shared policy is used by branch 1, branch 2, branch 3 free-dialogue
     draft trees, and branch 4 when outputs/templates are changed.'
   allowed_from:
   - N_OUTPUT_ARTIFACT_CATALOG
@@ -3869,8 +3726,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
-  question: 'Переходимо до progressive tree authoring: користувач може описати тільки
-    root і перші гілки, глибший subtree, повний draft або просто логіку словами.'
+  question: 'Переходимо до progressive tree authoring: користувач може описати тільки root і перші гілки, глибший subtree,
+    повний draft або просто логіку словами.'
   answer_type: enum
   allowed_answers:
   - start_progressive_tree_authoring
@@ -3896,8 +3753,8 @@ nodes:
     on_exhausted:
       action: continue_with_progressive_tree_authoring
       reason: progressive mode is default
-  description: Replaces static decision_tree_blueprint for branch 1. The user does
-    not need to describe the whole tree up front.
+  description: Replaces static decision_tree_blueprint for branch 1. The user does not need to describe the whole tree up
+    front.
   allowed_from:
   - N_RUNTIME_ENTRY_POINT
   node_context:
@@ -3910,8 +3767,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_USER_TREE_VISION_CAPTURE
-  question: Як ви зараз бачите старт дерева? Можна описати root + перші гілки, одну
-    наступну гілку, subtree на 2–5 рівнів, повний draft або free-form logic.
+  question: Як ви зараз бачите старт дерева? Можна описати root + перші гілки, одну наступну гілку, subtree на 2–5 рівнів,
+    повний draft або free-form logic.
   answer_type: free_text
   on_answer:
     update_state:
@@ -3940,8 +3797,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_DRAFT_SUBTREE_GENERATION
-  question: 'AI формує draft-subtree з user tree vision: root/current node, питання/дії,
-    branches, deeper nodes, terminal candidates, output binding candidates і risks.'
+  question: 'AI формує draft-subtree з user tree vision: root/current node, питання/дії, branches, deeper nodes, terminal
+    candidates, output binding candidates і risks.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -3959,8 +3816,7 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: draft subtree was not generated
-  description: Draft subtree is not approved tree. It must enter node/branch/terminal
-    verification.
+  description: Draft subtree is not approved tree. It must enter node/branch/terminal verification.
   allowed_from:
   - N_DRAFT_SUBTREE_REVIEW_START
   - N_MANUAL_TREE_COMPLETENESS_AND_JOIN
@@ -3977,9 +3833,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_DRAFT_SUBTREE_REVIEW_START
-  question: 'Починаємо standard verification draft-subtree: current node, branches,
-    terminal/continue decisions, output binding, sibling branches and deferred return
-    points.'
+  question: 'Починаємо standard verification draft-subtree: current node, branches, terminal/continue decisions, output binding,
+    sibling branches and deferred return points.'
   answer_type: enum
   allowed_answers:
   - start_subtree_review
@@ -4020,8 +3875,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_BRANCH_REVIEW
-  question: 'Перевірте вихідні гілки поточного вузла: label, умова/відповідь, next
-    node або terminal candidate, state updates, gates, sibling/deferred status.'
+  question: 'Перевірте вихідні гілки поточного вузла: label, умова/відповідь, next node або terminal candidate, state updates,
+    gates, sibling/deferred status.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -4037,8 +3892,7 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: branch review incomplete
-  description: A node can be correct while its outgoing branches are wrong; branch
-    review is separate from node review.
+  description: A node can be correct while its outgoing branches are wrong; branch review is separate from node review.
   allowed_from:
   - N_CURRENT_NODE_REVIEW_DECISION_GATE
   node_context:
@@ -4103,8 +3957,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: terminal-or-continue decision unclear
-  description: 'Core progressive tree decision: each reviewed branch either ends,
-    continues, gets an intermediate node, reopens previous logic, or is deferred.'
+  description: 'Core progressive tree decision: each reviewed branch either ends, continues, gets an intermediate node, reopens
+    previous logic, or is deferred.'
   allowed_from:
   - N_BRANCH_REVIEW
   node_context:
@@ -4117,8 +3971,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TERMINAL_OUTPUT_BINDING_LOOP
-  question: 'Terminal point reached. Define output policy: use existing output, add
-    a new artifact, confirm no output is needed, or defer the output decision.'
+  question: 'Terminal point reached. Define output policy: use existing output, add a new artifact, confirm no output is needed,
+    or defer the output decision.'
   answer_type: enum
   allowed_answers:
   - select_outputs_from_catalog
@@ -4169,8 +4023,8 @@ nodes:
     on_exhausted:
       action: defer_output_decision
       reason: terminal output selection unclear
-  description: 'Shared step 2: terminal output policy selection. This is a branching
-    point; each branch is reviewed explicitly and downstream template logic is shared.'
+  description: 'Shared step 2: terminal output policy selection. This is a branching point; each branch is reviewed explicitly
+    and downstream template logic is shared.'
   allowed_from:
   - N_TERMINAL_OR_CONTINUE_DECISION
   node_context:
@@ -4183,8 +4037,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
-  question: 'Check template status for each active output artifact: existing, missing/new
-    recipe needed, partial, accepted for alpha, or unfinished/deferred.'
+  question: 'Check template status for each active output artifact: existing, missing/new recipe needed, partial, accepted
+    for alpha, or unfinished/deferred.'
   answer_type: structured_list
   user_facing_contract:
     do_not_show_large_templates_inline: true
@@ -4205,9 +4059,8 @@ nodes:
     on_exhausted:
       action: continue_to_template_creation_loop
       reason: unknown template status is treated as missing
-  description: 'Shared step 3: status check before review package generation. It does
-    not approve templates; it only routes to review, creation, partial completion,
-    alpha acceptance, or unfinished/deferred handling.'
+  description: 'Shared step 3: status check before review package generation. It does not approve templates; it only routes
+    to review, creation, partial completion, alpha acceptance, or unfinished/deferred handling.'
   allowed_from:
   - N_TERMINAL_OUTPUT_BINDING_LOOP
   node_context:
@@ -4220,9 +4073,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
-  question: 'Route template handling for selected outputs: use existing, create new
-    recipe/template, complete partial, accept for alpha with risks, defer as unfinished,
-    or remove output.'
+  question: 'Route template handling for selected outputs: use existing, create new recipe/template, complete partial, accept
+    for alpha with risks, defer as unfinished, or remove output.'
   answer_type: enum
   allowed_answers:
   - use_existing_template
@@ -4274,8 +4126,8 @@ nodes:
     on_exhausted:
       action: defer_template_decision
       reason: template action unclear
-  description: Routes output artifacts to file-first review package, recipe authoring,
-    partial completion, alpha risk acceptance, unfinished/deferred handling, or removal.
+  description: Routes output artifacts to file-first review package, recipe authoring, partial completion, alpha risk acceptance,
+    unfinished/deferred handling, or removal.
   allowed_from:
   - N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
   - N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
@@ -4290,8 +4142,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_OUTPUT_TEMPLATE_REVIEW_LOOP
-  question: 'After the user reviews the template/mock/mapping package, choose one
-    simple action: confirm, revise, defer, or remove artifact.'
+  question: 'After the user reviews the template/mock/mapping package, choose one simple action: confirm, revise, defer, or
+    remove artifact.'
   answer_type: enum
   allowed_answers:
   - confirm
@@ -4352,8 +4204,8 @@ nodes:
     on_exhausted:
       action: defer
       reason: review decision unclear
-  description: 'Shared step 5: user review result handling. The runtime intentionally
-    avoids seven-option micro-menus; technical sub-actions are inferred under revise.'
+  description: 'Shared step 5: user review result handling. The runtime intentionally avoids seven-option micro-menus; technical
+    sub-actions are inferred under revise.'
   allowed_from:
   - N_OUTPUT_REVIEW_PACKAGE_GENERATION
   node_context:
@@ -4366,9 +4218,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_OUTPUT_TEMPLATE_CREATION_LOOP
-  question: Create or complete an output recipe/template. The user may use guided,
-    free-form, uploaded-template, or AI-proposed mode; no template-engine syntax knowledge
-    is required.
+  question: Create or complete an output recipe/template. The user may use guided, free-form, uploaded-template, or AI-proposed
+    mode; no template-engine syntax knowledge is required.
   answer_type: structured_list
   user_facing_contract:
     show_available_terminal_state_fields: true
@@ -4395,8 +4246,8 @@ nodes:
     on_exhausted:
       action: defer_output_template
       reason: template creation data incomplete
-  description: Creates or completes the output recipe/template and maps terminal state
-    fields to direct inserts or generated sections before review package generation.
+  description: Creates or completes the output recipe/template and maps terminal state fields to direct inserts or generated
+    sections before review package generation.
   allowed_from:
   - N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
   - N_OUTPUT_REVIEW_PACKAGE_GENERATION
@@ -4411,9 +4262,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TERMINAL_PATH_READY_CHECK
-  question: 'Show terminal path readiness: output policy, active artifacts, template/mock/mapping
-    status, alpha limitations, removed artifacts, unfinished blockers. Confirm ready
-    only if there are no unfinished active artifacts/templates.'
+  question: 'Show terminal path readiness: output policy, active artifacts, template/mock/mapping status, alpha limitations,
+    removed artifacts, unfinished blockers. Confirm ready only if there are no unfinished active artifacts/templates.'
   answer_type: enum
   allowed_answers:
   - terminal_path_ready
@@ -4452,8 +4302,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: terminal path readiness unclear
-  description: 'Shared step 7: terminal path ready check. Unfinished active templates/artifacts
-    block output generation until completed or removed.'
+  description: 'Shared step 7: terminal path ready check. Unfinished active templates/artifacts block output generation until
+    completed or removed.'
   allowed_from:
   - N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
   - N_OUTPUT_TEMPLATE_REVIEW_LOOP
@@ -4471,9 +4321,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SUBTREE_REVIEW_COMPLETION_CHECK
-  question: 'Показати subtree review status: confirmed nodes/branches, unreviewed
-    siblings, deferred return points, terminal output binding, corrections, blocking
-    open questions. Що робимо далі?'
+  question: 'Показати subtree review status: confirmed nodes/branches, unreviewed siblings, deferred return points, terminal
+    output binding, corrections, blocking open questions. Що робимо далі?'
   answer_type: enum
   allowed_answers:
   - continue_sibling_review
@@ -4522,8 +4371,8 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: subtree completion status unclear
-  description: Prevents accidental tree closure while sibling branches, deferred return
-    points, correction items or terminal output bindings remain unresolved.
+  description: Prevents accidental tree closure while sibling branches, deferred return points, correction items or terminal
+    output bindings remain unresolved.
   allowed_from:
   - N_CURRENT_NODE_REVIEW_DECISION_GATE
   - N_TERMINAL_OR_CONTINUE_DECISION
@@ -4538,9 +4387,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_APPROVED_TREE_CONSOLIDATION
-  question: 'Зберіть approved tree summary: root, branches, terminal paths, output
-    bindings, templates, deferred alpha items, risks, implied state fields, gates
-    і outputs/templates.'
+  question: 'Зберіть approved tree summary: root, branches, terminal paths, output bindings, templates, deferred alpha items,
+    risks, implied state fields, gates і outputs/templates.'
   answer_type: structured_list
   on_answer:
     update_state:
@@ -4556,10 +4404,9 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: approved tree consolidation missing
-  description: Consolidates reviewed draft subtree into approved_decision_tree or
-    approved_for_alpha_with_deferred_items before state/gate/source YAML generation.
-    Free-dialogue trees may enter here only after candidate outputs are either bound,
-    marked no-output, deferred/accepted for alpha, or removed.
+  description: Consolidates reviewed draft subtree into approved_decision_tree or approved_for_alpha_with_deferred_items before
+    state/gate/source YAML generation. Free-dialogue trees may enter here only after candidate outputs are either bound, marked
+    no-output, deferred/accepted for alpha, or removed.
   allowed_from:
   - N_SUBTREE_REVIEW_COMPLETION_CHECK
   node_context:
@@ -4572,9 +4419,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
-  question: Describe freely what artifact should be created at this terminal point
-    and why. The runtime shows available terminal state fields first; examples are
-    hints only, not a closed list.
+  question: Describe freely what artifact should be created at this terminal point and why. The runtime shows available terminal
+    state fields first; examples are hints only, not a closed list.
   answer_type: free_text_or_structured_list
   user_facing_contract:
     show_available_terminal_state_fields_first: true
@@ -4603,9 +4449,8 @@ nodes:
     on_exhausted:
       action: defer_output_decision
       reason: new artifact intent unclear
-  description: Captures free-form artifact intent for a new terminal output. The runtime
-    must show accumulated terminal path state so the user can decide what to insert
-    directly and what the model should generate.
+  description: Captures free-form artifact intent for a new terminal output. The runtime must show accumulated terminal path
+    state so the user can decide what to insert directly and what the model should generate.
   allowed_from:
   - N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
   - N_TERMINAL_OUTPUT_BINDING_LOOP
@@ -4619,8 +4464,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
-  question: 'Confirm the interpreted artifact intent: purpose, audience, expected
-    sections, and initial direct-vs-generated fill logic.'
+  question: 'Confirm the interpreted artifact intent: purpose, audience, expected sections, and initial direct-vs-generated
+    fill logic.'
   answer_type: enum
   allowed_answers:
   - confirm_artifact_intent
@@ -4668,8 +4513,7 @@ nodes:
     on_exhausted:
       action: defer_artifact
       reason: artifact intent confirmation unclear
-  description: Confirms AI interpretation of a free-form artifact request before recipe/template
-    authoring begins.
+  description: Confirms AI interpretation of a free-form artifact request before recipe/template authoring begins.
   allowed_from:
   - N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
   node_context:
@@ -4682,9 +4526,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_OUTPUT_REVIEW_PACKAGE_GENERATION
-  question: 'Generate a review package for the artifact/template: template file, mock-filled
-    example, mapping report, and assumptions/risks summary. Use file-first mode for
-    document-like artifacts.'
+  question: 'Generate a review package for the artifact/template: template file, mock-filled example, mapping report, and
+    assumptions/risks summary. Use file-first mode for document-like artifacts.'
   answer_type: enum
   allowed_answers:
   - review_package_generated
@@ -4722,8 +4565,8 @@ nodes:
     on_exhausted:
       action: defer_output_template
       reason: review package generation unclear
-  description: 'Shared step 4: review package/mock example generation. Large documents
-    are delivered as downloadable files; chat shows only a summary/mapping/risk card.'
+  description: 'Shared step 4: review package/mock example generation. Large documents are delivered as downloadable files;
+    chat shows only a summary/mapping/risk card.'
   allowed_from:
   - N_OUTPUT_TEMPLATE_CREATION_LOOP
   - N_OUTPUT_TEMPLATE_REVIEW_LOOP
@@ -4738,9 +4581,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
-  question: 'Confirm the final output binding for this terminal point: active artifacts,
-    approved/alpha templates, reviewed mock examples, state mapping, removed artifacts,
-    and unfinished blockers.'
+  question: 'Confirm the final output binding for this terminal point: active artifacts, approved/alpha templates, reviewed
+    mock examples, state mapping, removed artifacts, and unfinished blockers.'
   answer_type: enum
   allowed_answers:
   - confirm
@@ -4790,8 +4632,7 @@ nodes:
     on_exhausted:
       action: defer
       reason: terminal output binding confirmation unclear
-  description: 'Shared step 6: confirms active output bindings after template/mock/mapping
-    review and before terminal readiness.'
+  description: 'Shared step 6: confirms active output bindings after template/mock/mapping review and before terminal readiness.'
   allowed_from:
   - N_OUTPUT_TEMPLATE_REVIEW_LOOP
   node_context:
@@ -4804,10 +4645,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_SOURCE_YAML_GENERATION
-  description: 'Shared tail step 1: generate or update source/program.ordo.yaml after
-    explicit approval and a visible generation scope summary.'
-  question: Процесна структура підтверджена. Згенерувати або оновити source/program.ordo.yaml
-    на основі approved tree, state schema, gates і output/template bindings?
+  description: 'Shared tail step 1: generate or update source/program.ordo.yaml after explicit approval and a visible generation
+    scope summary.'
+  question: Процесна структура підтверджена. Згенерувати або оновити source/program.ordo.yaml на основі approved tree, state
+    schema, gates і output/template bindings?
   answer_type: enum
   allowed_answers:
   - generate_or_update_yaml
@@ -4859,11 +4700,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_MINIMAL_VALIDATION
-  description: 'Shared tail step 2: minimal technical validation after YAML generation.
-    Failed validation shows a short issue list and routes to correction or blocked
-    defer, not a separate show-details branch.'
-  question: 'Запустити minimal validation: YAML parse, Ordo lint, Ordo compile, structural
-    next-reference check, and basic orphan/dead-end check.'
+  description: 'Shared tail step 2: minimal technical validation after YAML generation. Failed validation shows a short issue
+    list and routes to correction or blocked defer, not a separate show-details branch.'
+  question: 'Запустити minimal validation: YAML parse, Ordo lint, Ordo compile, structural next-reference check, and basic
+    orphan/dead-end check.'
   answer_type: enum
   allowed_answers:
   - minimal_validation_passed
@@ -4871,10 +4711,8 @@ nodes:
   - minimal_validation_failed_defer_fix
   answer_options:
     minimal_validation_passed: Minimal validation passed
-    minimal_validation_failed_start_correction: Minimal validation failed → перейти
-      до виправлення
-    minimal_validation_failed_defer_fix: Minimal validation failed → відкласти виправлення,
-      handoff blocked
+    minimal_validation_failed_start_correction: Minimal validation failed → перейти до виправлення
+    minimal_validation_failed_defer_fix: Minimal validation failed → відкласти виправлення, handoff blocked
   user_facing_contract:
     show_short_issue_list_on_failure: true
     details_are_inside_correction_mode: true
@@ -4970,10 +4808,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_FULL_VALIDATION_DECISION
-  description: 'Shared tail step 3: decide whether to run full validation now or explicitly
-    skip it for alpha. Skipped is recorded as a limitation and never as passed.'
-  question: Minimal validation passed. Запустити full validation зараз чи явно пропустити
-    її для alpha?
+  description: 'Shared tail step 3: decide whether to run full validation now or explicitly skip it for alpha. Skipped is
+    recorded as a limitation and never as passed.'
+  question: Minimal validation passed. Запустити full validation зараз чи явно пропустити її для alpha?
   answer_type: enum
   allowed_answers:
   - run_full_validation
@@ -5028,10 +4865,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
-  description: 'Shared tail step 4: review full validation result. Failed checks route
-    to correction or blocked/deferred; failed/skipped is never called passed.'
-  question: 'Full validation завершено. Review result: passed або failed. Якщо failed,
-    показати короткий issue list і перейти до correction або blocked defer.'
+  description: 'Shared tail step 4: review full validation result. Failed checks route to correction or blocked/deferred;
+    failed/skipped is never called passed.'
+  question: 'Full validation завершено. Review result: passed або failed. Якщо failed, показати короткий issue list і перейти
+    до correction або blocked defer.'
   answer_type: enum
   allowed_answers:
   - full_validation_passed
@@ -5132,12 +4969,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_CORRECTION_LOOP
-  description: 'Shared tail step 5: scoped correction loop for validation issues.
-    It shows what is broken, proposes minimal scoped fixes, and distinguishes technical
-    fixes from process-logic changes.'
-  question: Validation issues require correction. Review the short issue list and
-    a scoped correction plan. Apply scoped corrections, request/manual revision, or
-    defer correction.
+  description: 'Shared tail step 5: scoped correction loop for validation issues. It shows what is broken, proposes minimal
+    scoped fixes, and distinguishes technical fixes from process-logic changes.'
+  question: Validation issues require correction. Review the short issue list and a scoped correction plan. Apply scoped corrections,
+    request/manual revision, or defer correction.
   answer_type: enum
   allowed_answers:
   - apply_scoped_corrections
@@ -5200,11 +5035,9 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
-  description: 'Shared tail step 6: final unfinished-items/readiness gate before handoff
-    package generation.'
-  question: 'Final readiness check: unfinished artifacts/templates, deferred outputs,
-    validation limitations, accepted alpha limitations, removed artifacts, and blocking
-    items.'
+  description: 'Shared tail step 6: final unfinished-items/readiness gate before handoff package generation.'
+  question: 'Final readiness check: unfinished artifacts/templates, deferred outputs, validation limitations, accepted alpha
+    limitations, removed artifacts, and blocking items.'
   answer_type: enum
   allowed_answers:
   - ready_for_handoff
@@ -5343,7 +5176,6 @@ nodes:
   - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
   - N_SHARED_TAIL_FULL_VALIDATION_DECISION
   - N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
-
   node_context:
     version: '1.0'
     required_state:
@@ -5354,8 +5186,11 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_DELIVERY_TARGET_DECISION
-  description: 'Shared tail delivery decision: after the canonical playbook contract and validation are stable, ARF recommends a delivery target and the analyst confirms engine runtime, prompt-only instructions, or both.'
-  question: 'The canonical playbook is validated. Review the ARF recommendation and choose the delivery target: engine_runtime, prompt_only, or both. Prompt-only does not retain mechanical gates, runtime state validation, enforced transitions, CSG protection, or default runtime evidence capture.'
+  description: 'Shared tail delivery decision: after the canonical playbook contract and validation are stable, ARF recommends
+    a delivery target and the analyst confirms engine runtime, prompt-only instructions, or both.'
+  question: 'The canonical playbook is validated. Review the ARF recommendation and choose the delivery target: engine_runtime,
+    prompt_only, or both. Prompt-only does not retain mechanical gates, runtime state validation, enforced transitions, CSG
+    protection, or default runtime evidence capture.'
   answer_type: enum
   allowed_answers:
   - engine_runtime
@@ -5423,7 +5258,6 @@ nodes:
       reason: delivery target remains unclear
   allowed_from:
   - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
-
   node_context:
     version: '1.0'
     required_state:
@@ -5434,12 +5268,10 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
-  description: 'Shared tail step 7: generate a file-first handoff package after final
-    readiness is ready_for_handoff.'
-  question: 'Процес готовий до handoff. Згенерувати handoff package: source YAML,
-    compiled artifacts, validation report, output/template catalog, terminal binding
-    summary, alpha limitations, unfinished/removed items log, changelog/release notes,
-    usage/start prompt notes.'
+  description: 'Shared tail step 7: generate a file-first handoff package after final readiness is ready_for_handoff.'
+  question: 'Процес готовий до handoff. Згенерувати handoff package: source YAML, compiled artifacts, validation report, output/template
+    catalog, terminal binding summary, alpha limitations, unfinished/removed items log, changelog/release notes, usage/start
+    prompt notes.'
   answer_type: enum
   allowed_answers:
   - handoff_package_generated
@@ -5530,7 +5362,6 @@ nodes:
     - FINAL_LABEL_OVERCLAIM
   allowed_from:
   - N_SHARED_TAIL_DELIVERY_TARGET_DECISION
-
   node_context:
     version: '1.0'
     required_state:
@@ -5541,8 +5372,8 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_SHARED_TAIL_FINAL_HANDOFF
-  description: 'Shared tail step 8: final handoff decision after package generation.
-    User either accepts the package or returns it for revision.'
+  description: 'Shared tail step 8: final handoff decision after package generation. User either accepts the package or returns
+    it for revision.'
   question: Handoff package готовий. Прийняти package або повернутись до правок?
   answer_type: enum
   allowed_answers:
@@ -5637,8 +5468,7 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: END_HANDOFF_ACCEPTED
-  description: 'Terminal marker: handoff package accepted and process package ready
-    for use or next review.'
+  description: 'Terminal marker: handoff package accepted and process package ready for use or next review.'
   terminal: true
   required_fields: []
   on_enter:
@@ -5659,6 +5489,33 @@ nodes:
     output_contract:
       state_diff: required
       next_node: explicit
+playbook_laws:
+  contract_id: ordo.arf.playbook_laws.v1
+  status: mandatory
+  canonical_artifact: PLAYBOOK_LAWS.md
+  applies_to:
+  - arf_master_playbook
+  - generated_working_playbooks
+  propagation:
+    mode: required_verbatim_artifact
+    generated_path: PLAYBOOK_LAWS.md
+    release_blocked_when_absent: true
+  precedence:
+  - repository_safety_and_platform_constraints
+  - human_owner_authority
+  - first_law
+  - second_law
+  - third_law
+  - fourth_law
+  laws:
+  - id: first_law
+    text: A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+  - id: second_law
+    text: A robot must obey orders given by human beings except where such orders would conflict with the First Law.
+  - id: third_law
+    text: A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.
+  - id: fourth_law
+    text: Strictly follow all provided instructions, subject to the applicable instruction hierarchy and the preceding laws.
 conversation_semantics:
   on_unmatched_input:
     strategy: classify_and_route
@@ -5737,30 +5594,24 @@ freeform:
   maturity: candidate_for_formalization
   incident_count: 3
   incident_threshold: 3
-  content: 'AI Ordo Project Factory Developer підтримує self-hosted authoring: у free-dialogue
-    режимі він накопичує raw notes, структурує їх у candidate tree/gates/outputs/templates,
-    на “що далі” пропонує draft tree, проводить depth-first correction loop і після
-    стабілізації використовує затверджену гілку як алгоритм для наступних гілок. APF
-    v0.1.0-alpha.8 requires current-node descriptions in user language, plain-language
-    extraction summaries instead of technical alias dumps, SVG only on explicit request,
-    and process feedback that can update/reload YAML after user approval. APF v0.1.0-alpha.11
-    requires incremental YAML patches after confirmed tree steps when YAML changes
-    are needed, with minimal yaml_parse/lint/compile checks; full validation is a
-    terminal/pre-handoff gate rather than a per-node cost. APF v0.1.0-alpha.12 separates
-    control-action bookkeeping from tree branch bookkeeping: not-selected control
-    actions are recorded but are not treated as sibling branches or deferred return
-    points. APF v0.1.0-alpha.13 makes the process-design review display format part
-    of the YAML contract: each current-node rendering must show the active mode/context
-    shift, current node, state, gates, artifacts, pending branches, and a mode-labeled
-    decision prompt.'
+  content: 'AI Ordo Project Factory Developer підтримує self-hosted authoring: у free-dialogue режимі він накопичує raw notes,
+    структурує їх у candidate tree/gates/outputs/templates, на “що далі” пропонує draft tree, проводить depth-first correction
+    loop і після стабілізації використовує затверджену гілку як алгоритм для наступних гілок. APF v0.1.0-alpha.8 requires
+    current-node descriptions in user language, plain-language extraction summaries instead of technical alias dumps, SVG
+    only on explicit request, and process feedback that can update/reload YAML after user approval. APF v0.1.0-alpha.11 requires
+    incremental YAML patches after confirmed tree steps when YAML changes are needed, with minimal yaml_parse/lint/compile
+    checks; full validation is a terminal/pre-handoff gate rather than a per-node cost. APF v0.1.0-alpha.12 separates control-action
+    bookkeeping from tree branch bookkeeping: not-selected control actions are recorded but are not treated as sibling branches
+    or deferred return points. APF v0.1.0-alpha.13 makes the process-design review display format part of the YAML contract:
+    each current-node rendering must show the active mode/context shift, current node, state, gates, artifacts, pending branches,
+    and a mode-labeled decision prompt.'
 - id: FF_MODULE_VERSIONING_DECISION
   role: module_release_guidance
   maturity: stable
   incident_count: 1
   incident_threshold: 2
-  content: ordo.applied_project_factory uses module-local semantic alpha versioning;
-    the parent Ordo language package may include a specific module version without
-    renumbering the whole language package.
+  content: ordo.applied_project_factory uses module-local semantic alpha versioning; the parent Ordo language package may
+    include a specific module version without renumbering the whole language package.
 contracts:
 - kind: contract
   id: G_APPLIED_PROJECT_FACTORY_CONTRACT
@@ -6331,6 +6182,12 @@ contracts:
       required: true
 artifacts:
 - kind: artifact
+  id: PLAYBOOK_LAWS
+  path_pattern: PLAYBOOK_LAWS.md
+  format: markdown
+  required: true
+  description: Canonical Playbook Laws artifact. Every generated working playbook must receive an exact copy at its root.
+- kind: artifact
   id: APPLIED_PROJECT_FACTORY_README
   path_pattern: README.md
   format: markdown
@@ -6353,8 +6210,7 @@ artifacts:
   path_pattern: output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md
   format: markdown
   required: true
-  description: Template catalog contract for output artifacts in generated applied
-    projects.
+  description: Template catalog contract for output artifacts in generated applied projects.
 - kind: artifact
   id: APPLIED_PROJECT_FACTORY_COVERAGE_REPORT
   path_pattern: reports/coverage_report.json
@@ -6366,15 +6222,13 @@ artifacts:
   path_pattern: docs/FOCUSED_GRAPH_RENDERING_POLICY.md
   format: markdown
   required: true
-  description: Instruction artifact defining focused/context SVG rendering as the
-    default during tree branch authoring.
+  description: Instruction artifact defining focused/context SVG rendering as the default during tree branch authoring.
 - kind: artifact
   id: LANGUAGE_IMPROVEMENT_PROPOSALS
   path_pattern: docs/LANGUAGE_IMPROVEMENT_PROPOSALS.md
   format: markdown
   required: true
-  description: Running proposal log for missing Ordo language features discovered
-    during project authoring.
+  description: Running proposal log for missing Ordo language features discovered during project authoring.
 - kind: artifact
   id: APPLIED_PROJECT_FACTORY_VERSION
   path_pattern: VERSION.md
@@ -6398,15 +6252,13 @@ artifacts:
   path_pattern: docs/GRAPH_ANNOTATION_OVERLAY_POLICY.md
   format: markdown
   required: true
-  description: Policy for using graph generator v1.1 annotation overlay as an optional
-    SVG review aid.
+  description: Policy for using graph generator v1.1 annotation overlay as an optional SVG review aid.
 - kind: artifact
   id: USER_FACING_RUNTIME_REVIEW_POLICY
   path_pattern: docs/USER_FACING_RUNTIME_REVIEW_POLICY.md
   format: markdown
   required: true
-  description: Policy for user-facing node review, plain-language extraction, process
-    feedback, and on-request SVG generation.
+  description: Policy for user-facing node review, plain-language extraction, process feedback, and on-request SVG generation.
 - id: manual_tree_input_record
   description: Raw user-provided manual decision tree in any human format.
   kind: artifact
@@ -6420,15 +6272,14 @@ artifacts:
   format: json
   required: false
 - id: manual_tree_join_decision_record
-  description: Records whether branch 2 joins shared review or shared draft-generation
-    path.
+  description: Records whether branch 2 joins shared review or shared draft-generation path.
   kind: artifact
   path_pattern: reports/manual_tree_join_decision_record.json
   format: json
   required: false
 - id: TERMINAL_OUTPUT_REVIEW_PACKAGE
-  description: 'File-first review package for terminal output artifacts: template
-    file, mock-filled example, mapping report, and assumptions/risks summary.'
+  description: 'File-first review package for terminal output artifacts: template file, mock-filled example, mapping report,
+    and assumptions/risks summary.'
   kind: artifact
   path_pattern: reports/terminal_output_review_package/manifest.md
   format: markdown
@@ -6438,8 +6289,7 @@ artifacts:
   path_pattern: reports/handoff_package/manifest.md
   format: markdown
   required: false
-  description: File-first final handoff package manifest and summary pointing to downloadable
-    package contents.
+  description: File-first final handoff package manifest and summary pointing to downloadable package contents.
 - kind: artifact
   id: WHOLE_TREE_INTEGRATION_REVIEW_REPORT
   path_pattern: packages/ordo_applied_project_factory/docs/WHOLE_TREE_INTEGRATION_REVIEW_ALPHA20.md
@@ -6804,17 +6654,14 @@ go_no_go:
   blocking_issues: []
   warnings:
   - M61.1 intentionally defers confusion/self-test generation until a later milestone.
-  - M61.5 stabilizes the free-dialogue branch as a self-hosted authoring loop; confusion/self-test
-    generation remains deferred.
-  - M61.6 adds focused/context SVG-by-default policy and a language-improvement proposal
-    artifact for provisional language gaps.
-  - APF v0.1.0-alpha.8 makes SVG generation on-request only and requires user-facing
-    node descriptions, plain-language extraction summaries, and a process-feedback
-    YAML reload loop.
-  - APF v0.1.0-alpha.11 uses incremental YAML patches with minimal checks during tree
-    review; full CLI validation is deferred to terminal/pre-handoff gate.
-  - APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected/blocked
-    control actions during runtime review.
+  - M61.5 stabilizes the free-dialogue branch as a self-hosted authoring loop; confusion/self-test generation remains deferred.
+  - M61.6 adds focused/context SVG-by-default policy and a language-improvement proposal artifact for provisional language
+    gaps.
+  - APF v0.1.0-alpha.8 makes SVG generation on-request only and requires user-facing node descriptions, plain-language extraction
+    summaries, and a process-feedback YAML reload loop.
+  - APF v0.1.0-alpha.11 uses incremental YAML patches with minimal checks during tree review; full CLI validation is deferred
+    to terminal/pre-handoff gate.
+  - APF v0.1.0-alpha.12 separates unreviewed sibling branches from not-selected/blocked control actions during runtime review.
 gates:
 - id: G_FACTORY_AUTHORING_MODE_SELECTED
   method: mechanical
@@ -6834,8 +6681,7 @@ gates:
 - id: G_RUNTIME_ROLES_PRESENT
   method: mechanical
   trust_class: deterministic
-  condition: state.runtime_human_role is not null and state.runtime_ai_role is not
-    null
+  condition: state.runtime_human_role is not null and state.runtime_ai_role is not null
   on_fail: block
 - id: G_RUNTIME_ENTRY_POINT_PRESENT
   method: mechanical
@@ -6860,25 +6706,20 @@ gates:
 - id: G_DOMAIN_OPEN_QUESTIONS_TRIAGED
   method: human
   trust_class: human_decision
-  condition: open questions are classified as blocking_now, defer_until_tree, defer_until_compile,
-    or defer_to_runtime_project
+  condition: open questions are classified as blocking_now, defer_until_tree, defer_until_compile, or defer_to_runtime_project
   on_fail: block
 - id: G_MODULE_VERSIONING_POLICY_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  condition: state.module_versioning_policy is not null and state.module_versioning_policy_status
-    is not null
+  condition: state.module_versioning_policy is not null and state.module_versioning_policy_status is not null
   on_fail: block
-  description: Confirms Project Factory has its own module-local versioning independent
-    from the parent language package version.
+  description: Confirms Project Factory has its own module-local versioning independent from the parent language package version.
 - id: G_SOURCE_YAML_GENERATION_REQUIRES_APPROVAL
   method: mechanical
   trust_class: deterministic
-  condition: state.source_yaml_generation_approval == approved or state.approval_to_generate_source_yaml
-    is true
+  condition: state.source_yaml_generation_approval == approved or state.approval_to_generate_source_yaml is true
   on_fail: block
-  description: source/program.ordo.yaml generation/update requires explicit user approval
-    and visible scope.
+  description: source/program.ordo.yaml generation/update requires explicit user approval and visible scope.
 - id: G_OUTPUT_ARTIFACT_CATALOG_PRESENT
   method: mechanical
   trust_class: deterministic
@@ -6887,68 +6728,60 @@ gates:
 - id: G_CANDIDATE_OUTPUTS_AND_TEMPLATES_CAPTURED
   method: mechanical
   trust_class: deterministic
-  condition: state.candidate_outputs is not empty and state.candidate_templates is
-    not empty
+  condition: state.candidate_outputs is not empty and state.candidate_templates is not empty
   on_fail: block
 - id: G_AUTO_SVG_ON_REQUEST_ONLY_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  description: Confirms SVG is not generated automatically during runtime review;
-    context SVG is produced only when explicitly requested.
-  condition: state.auto_svg_generation_policy.generate_only_when_user_explicitly_requests
-    is true
+  description: Confirms SVG is not generated automatically during runtime review; context SVG is produced only when explicitly
+    requested.
+  condition: state.auto_svg_generation_policy.generate_only_when_user_explicitly_requests is true
   on_fail: block
 - id: G_USER_FACING_NODE_DESCRIPTIONS_ENABLED
   method: mechanical
   trust_class: deterministic
-  description: Confirms every current-node review should include a human-readable
-    node description in the user language.
-  condition: state.user_facing_node_description_policy.include_in_current_node_block
-    is true
+  description: Confirms every current-node review should include a human-readable node description in the user language.
+  condition: state.user_facing_node_description_policy.include_in_current_node_block is true
   on_fail: block
 - id: G_USER_FACING_EXTRACTION_SUMMARY_ENABLED
   method: mechanical
   trust_class: deterministic
-  description: Confirms free-dialogue extraction is presented as a plain-language
-    summary before any technical projection.
+  description: Confirms free-dialogue extraction is presented as a plain-language summary before any technical projection.
   condition: state.user_facing_extraction_policy.avoid_yaml_style_alias_dump is true
   on_fail: block
 - id: G_CONTROL_ACTION_BOOKKEEPING_SEPARATED
   method: mechanical
   trust_class: deterministic
-  description: Ensures runtime review separates real unreviewed sibling branches from
-    not-selected or blocked control actions.
-  condition: state.control_action_bookkeeping_policy.separate_from_tree_branches is
-    true and state.not_selected_control_actions is not null and state.blocked_until_ready_actions
-    is not null
+  description: Ensures runtime review separates real unreviewed sibling branches from not-selected or blocked control actions.
+  condition: state.control_action_bookkeeping_policy.separate_from_tree_branches is true and state.not_selected_control_actions
+    is not null and state.blocked_until_ready_actions is not null
   on_fail: block
 - id: G_INCREMENTAL_YAML_PATCH_POLICY_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  description: Confirms tree review uses small scoped YAML patches and minimal checks
-    after confirmed steps instead of full regeneration/validation after every node.
-  condition: state.incremental_yaml_update_policy.enabled is true and state.incremental_yaml_validation_profile.name
-    is not null
+  description: Confirms tree review uses small scoped YAML patches and minimal checks after confirmed steps instead of full
+    regeneration/validation after every node.
+  condition: state.incremental_yaml_update_policy.enabled is true and state.incremental_yaml_validation_profile.name is not
+    null
   on_fail: block
 - id: G_MINIMAL_YAML_PATCH_CHECK_DEFINED
   method: mechanical
   trust_class: deterministic
-  description: Confirms the minimal per-step validation profile is defined as YAML
-    parse plus minimal CLI checks.
+  description: Confirms the minimal per-step validation profile is defined as YAML parse plus minimal CLI checks.
   condition: state.minimal_yaml_patch_check_defined is true
   on_fail: block
 - id: G_LANGUAGE_IMPROVEMENT_PROPOSALS_CAPTURED_OR_EMPTY
   method: mechanical
   trust_class: deterministic
-  description: Blocks readiness until missing-language-feature proposals are either
-    captured in the proposal artifact or explicitly marked as none detected.
+  description: Blocks readiness until missing-language-feature proposals are either captured in the proposal artifact or explicitly
+    marked as none detected.
   condition: state.language_improvement_proposals_status is not null
   on_fail: block
 - id: G_PROCESS_FEEDBACK_LOOP_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  description: Confirms process feedback can update the APF YAML after user approval,
-    then reload and continue from the updated process.
+  description: Confirms process feedback can update the APF YAML after user approval, then reload and continue from the updated
+    process.
   condition: state.process_feedback_policy_status is not null
   on_fail: block
 - id: G_DECISION_TREE_BLUEPRINT_PRESENT
@@ -6979,25 +6812,21 @@ gates:
 - id: G_SELF_HOSTED_BRANCH_STABILIZED
   method: mechanical
   trust_class: deterministic
-  condition: state.stabilized_tree_branch is not null and state.self_hosted_reuse_enabled
-    is true
+  condition: state.stabilized_tree_branch is not null and state.self_hosted_reuse_enabled is true
   on_fail: block
 - id: G_FOCUSED_CONTEXT_SVG_POLICY_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  description: Blocks readiness until the factory confirms that focused/context SVG
-    is the default visualization while working on a specific tree branch.
-  condition: state.graph_rendering_policy_status is not null and state.current_graph_rendering_mode
-    is not null
+  description: Blocks readiness until the factory confirms that focused/context SVG is the default visualization while working
+    on a specific tree branch.
+  condition: state.graph_rendering_policy_status is not null and state.current_graph_rendering_mode is not null
   on_fail: block
 - id: G_GRAPH_ANNOTATION_OVERLAY_POLICY_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  condition: state.graph_annotation_overlay_policy is not null and state.graph_annotation_overlay_status
-    is not null
+  condition: state.graph_annotation_overlay_policy is not null and state.graph_annotation_overlay_status is not null
   on_fail: warn
-  description: Confirms how graph generator v1.1 annotation overlay is used as an
-    optional review layer.
+  description: Confirms how graph generator v1.1 annotation overlay is used as an optional review layer.
 - id: G_NODE_REVIEW_DISPLAY_CONTRACT_CONFIRMED
   method: mechanical
   trust_class: deterministic
@@ -7006,9 +6835,8 @@ gates:
 - id: G_NODE_REVIEW_TRACKS_SIBLING_BRANCHES
   method: mechanical
   trust_class: deterministic
-  condition: state.confirmed_review_path is not empty and state.current_review_branch
-    is not null and state.unreviewed_sibling_branches is not empty and state.deferred_return_points
-    is not empty
+  condition: state.confirmed_review_path is not empty and state.current_review_branch is not null and state.unreviewed_sibling_branches
+    is not empty and state.deferred_return_points is not empty
   on_fail: block
 - id: G_CURRENT_NODE_REVIEW_INCLUDES_ORDO_LAYER
   method: mechanical
@@ -7018,38 +6846,33 @@ gates:
 - id: G_CURRENT_NODE_REVIEW_DECISION_EXPLICIT
   method: human
   trust_class: human_decision
-  description: Blocks forward progress until the user chooses approve/correct/defer
-    for the currently displayed node; generic confirmation is not enough when options
-    exist.
-  condition: state.current_node_review_decision in [approved, needs_correction, deferred]
-    and state.node_review_control_gate_status is not null
+  description: Blocks forward progress until the user chooses approve/correct/defer for the currently displayed node; generic
+    confirmation is not enough when options exist.
+  condition: state.current_node_review_decision in [approved, needs_correction, deferred] and state.node_review_control_gate_status
+    is not null
   on_fail: block
 - id: G_PROCESS_DESIGN_REVIEW_RENDERING_POLICY_CONFIRMED
   method: mechanical
   trust_class: deterministic
-  description: Confirms APF has a durable user-facing rendering contract for process-design
-    review, including mode labels/context-shift notices and current-node state/gates/artifacts
-    sections.
+  description: Confirms APF has a durable user-facing rendering contract for process-design review, including mode labels/context-shift
+    notices and current-node state/gates/artifacts sections.
   condition: state.process_design_review_rendering_policy.enabled is true and state.process_design_review_rendering_policy.required_sections_for_current_node_rendering
     is not empty
   on_fail: block
 - id: G_CURRENT_NODE_RENDERING_HAS_CONTEXT_SHIFT_LABEL
   method: human
   trust_class: human_decision
-  description: 'Blocks ambiguous user-facing process review prompts: every current-node
-    display must indicate whether the user is choosing a tree branch, reviewing a
-    node, or passing an execution/validation gate.'
-  condition: state.runtime_context_shift_notice is not null or state.current_process_layer_label
-    is not null
+  description: 'Blocks ambiguous user-facing process review prompts: every current-node display must indicate whether the
+    user is choosing a tree branch, reviewing a node, or passing an execution/validation gate.'
+  condition: state.runtime_context_shift_notice is not null or state.current_process_layer_label is not null
   on_fail: block
 - id: G_ALL_STARTUP_BRANCHES_JOIN_SHARED_PATHS
   method: mechanical
   trust_class: deterministic
   condition: state.all_startup_branches_join_shared_paths is true
   on_fail: block
-  description: All four startup modes must join the shared output/template subflow
-    where terminal outputs are involved and the shared validation/handoff tail before
-    handoff.
+  description: All four startup modes must join the shared output/template subflow where terminal outputs are involved and
+    the shared validation/handoff tail before handoff.
 - id: G_OUTPUT_TEMPLATE_CATALOG_PRESENT
   method: mechanical
   trust_class: deterministic
@@ -7060,22 +6883,20 @@ gates:
   trust_class: deterministic
   condition: state.shared_output_template_subflow_status is one of closed
   on_fail: block
-  description: The shared output/template subflow has completed human review and is
-    available to all startup branches.
+  description: The shared output/template subflow has completed human review and is available to all startup branches.
 - id: G_DOCUMENT_ARTIFACTS_USE_FILE_FIRST_REVIEW
   method: mechanical
   trust_class: deterministic
   condition: state.document_artifacts_file_first_review_verified is true
   on_fail: block
-  description: Document-like artifacts must be reviewed through a downloadable file
-    package unless explicitly short enough for inline preview.
+  description: Document-like artifacts must be reviewed through a downloadable file package unless explicitly short enough
+    for inline preview.
 - id: G_REVIEW_PACKAGE_HAS_TEMPLATE_MOCK_MAPPING
   method: mechanical
   trust_class: deterministic
   condition: state.review_package_template_mock_mapping_verified is true
   on_fail: block
-  description: A review package is incomplete without template, mock-filled example,
-    and state-field mapping report.
+  description: A review package is incomplete without template, mock-filled example, and state-field mapping report.
 - id: G_VALIDATION_GATE_CATALOG_PRESENT
   method: mechanical
   trust_class: deterministic
@@ -7084,17 +6905,15 @@ gates:
 - id: G_FULL_VALIDATION_DEFERRED_TO_TERMINAL_GATE
   method: mechanical
   trust_class: deterministic
-  description: Confirms full CLI validation is a terminal/pre-handoff gate, not a
-    per-node operation during tree review.
+  description: Confirms full CLI validation is a terminal/pre-handoff gate, not a per-node operation during tree review.
   condition: state.full_project_validation_policy.run_when is not empty and state.full_project_validation_required_before_handoff
     is true
   on_fail: block
 - id: G_FULL_PROJECT_VALIDATION_PASSED_BEFORE_HANDOFF
   method: mechanical
   trust_class: deterministic
-  description: Blocks final/release handoff until full validation passed; for alpha,
-    explicit skipped_for_alpha limitation may continue only through the shared tail
-    readiness gate.
+  description: Blocks final/release handoff until full validation passed; for alpha, explicit skipped_for_alpha limitation
+    may continue only through the shared tail readiness gate.
   condition: state.full_project_validation_passed_or_alpha_exception is true
   on_fail: block
 - id: G_UNFINISHED_TEMPLATE_BLOCKS_ARTIFACT_USE
@@ -7102,8 +6921,7 @@ gates:
   trust_class: deterministic
   condition: state.no_active_output_artifact_has_template_status_unfinished is true
   on_fail: block
-  description: Unfinished templates cannot be used for artifact generation; user must
-    complete or remove the artifact.
+  description: Unfinished templates cannot be used for artifact generation; user must complete or remove the artifact.
 - id: G_TERMINAL_PATH_HAS_NO_UNFINISHED_ACTIVE_ARTIFACTS
   method: mechanical
   trust_class: deterministic
@@ -7115,8 +6933,8 @@ gates:
   trust_class: deterministic
   condition: state.shared_validation_handoff_tail_status is one of closed
   on_fail: block
-  description: The shared validation/handoff tail has completed human review and is
-    the reusable final path for all startup branches.
+  description: The shared validation/handoff tail has completed human review and is the reusable final path for all startup
+    branches.
 - id: G_MINIMAL_VALIDATION_PASSED_BEFORE_HANDOFF
   method: mechanical
   trust_class: deterministic
@@ -7128,8 +6946,7 @@ gates:
   trust_class: deterministic
   condition: state.skipped_full_validation_recorded_or_not_skipped is true
   on_fail: block
-  description: Skipped full validation is allowed for alpha only as an explicit limitation,
-    never as passed.
+  description: Skipped full validation is allowed for alpha only as an explicit limitation, never as passed.
 - id: G_FINAL_READINESS_HAS_NO_ACTIVE_BLOCKERS
   method: mechanical
   trust_class: deterministic
@@ -7147,15 +6964,14 @@ gates:
   trust_class: deterministic
   condition: state.whole_tree_integration_review_status is one of closed_human_review
   on_fail: block
-  description: Whole-tree integration review must be closed before alpha.20 handoff/integration
-    package is treated as integrated.
+  description: Whole-tree integration review must be closed before alpha.20 handoff/integration package is treated as integrated.
 - id: G_NO_UNRESOLVED_ACTIVE_ORPHANS_AFTER_STRUCTURAL_SCAN
   method: mechanical
   trust_class: deterministic
   condition: state.no_unresolved_active_orphans_after_structural_scan is true
   on_fail: block
-  description: Real structural scan must not contain active unresolved orphan nodes.
-    Deprecated legacy compatibility nodes are allowed only when explicitly marked.
+  description: Real structural scan must not contain active unresolved orphan nodes. Deprecated legacy compatibility nodes
+    are allowed only when explicitly marked.
 assertions:
 - id: A_FACTORY_HAS_NO_DOMAIN_LIMIT
   polarity: not
@@ -7269,8 +7085,8 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Artifact/template review should not expose excessive micro-decisions;
-    detailed changes are interpreted under revise.
+  description: Artifact/template review should not expose excessive micro-decisions; detailed changes are interpreted under
+    revise.
 - id: A_LANGUAGE_IMPROVEMENT_PROPOSALS_ARE_CAPTURED
   polarity: must
   condition: missing_language_capabilities_are_recorded_in_language_improvement_proposals_artifact
@@ -7371,8 +7187,8 @@ assertions:
   condition: free_dialogue_notes_mention_outputs_but_candidate_output_artifact_catalog_empty_without_no_output_policy
   severity: block
   on_fail: STOP
-  description: Free-dialogue extraction must not drop output/document/template mentions;
-    if outputs are absent, deferred, or unknown, that policy must be explicit.
+  description: Free-dialogue extraction must not drop output/document/template mentions; if outputs are absent, deferred,
+    or unknown, that policy must be explicit.
   polarity: not
   phase:
   - runtime
@@ -7385,8 +7201,7 @@ assertions:
   - runtime
   - test
   on_fail: STOP
-  description: Branch 2 manual_tree_input must be normalized and reviewed; it cannot
-    become approved_decision_tree directly.
+  description: Branch 2 manual_tree_input must be normalized and reviewed; it cannot become approved_decision_tree directly.
 - id: A_MANUAL_TREE_BRANCH_REUSES_BRANCH_1_SHARED_PATH
   condition: manual_tree_join_point_routes_to_shared_branch_1_downstream_path
   severity: block
@@ -7395,8 +7210,7 @@ assertions:
   - runtime
   - test
   on_fail: STOP
-  description: Branch 2 must remain an entry adapter and reuse branch 1 downstream
-    review/output/template/validation mechanics.
+  description: Branch 2 must remain an entry adapter and reuse branch 1 downstream review/output/template/validation mechanics.
 - id: A_ALPHA20_STARTUP_BRANCHES_INTEGRATED
   polarity: must
   condition: branch_1_branch_2_branch_3_branch_4_have_valid_join_paths
@@ -7422,8 +7236,7 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Users describe what artifact they need; the runtime must not force
-    a fixed artifact type list.
+  description: Users describe what artifact they need; the runtime must not force a fixed artifact type list.
 - id: A_DOCUMENT_ARTIFACT_REVIEW_IS_FILE_FIRST
   polarity: must
   condition: document_like_artifact_review_uses_downloadable_template_mock_mapping_package_by_default
@@ -7432,8 +7245,7 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Large/document-like artifacts are reviewed as files, not dumped into
-    chat.
+  description: Large/document-like artifacts are reviewed as files, not dumped into chat.
 - id: A_TERMINAL_OUTPUT_BINDING_REQUIRES_REVIEW_PACKAGE_OR_NO_OUTPUT
   polarity: must
   condition: terminal_output_binding_confirmed_only_after_review_package_or_explicit_no_output_required
@@ -7442,8 +7254,7 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Terminal outputs require review package confirmation unless no-output
-    was explicitly confirmed.
+  description: Terminal outputs require review package confirmation unless no-output was explicitly confirmed.
 - id: A_ALPHA20_SHARED_OUTPUT_TEMPLATE_JOIN_IS_SINGLETON
   polarity: must
   condition: terminal_output_template_logic_is_shared_not_duplicated
@@ -7477,8 +7288,7 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Deferred/unfinished templates are not alpha-approved and cannot generate
-    outputs until resolved.
+  description: Deferred/unfinished templates are not alpha-approved and cannot generate outputs until resolved.
 - id: A_SHARED_VALIDATION_TAIL_IS_NOT_DUPLICATED_IN_BRANCHES
   polarity: must
   condition: all_startup_branches_join_shared_validation_handoff_tail_instead_of_defining_duplicate_handoff_nodes
@@ -7487,8 +7297,7 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Validation/handoff tail is a shared reusable block, not duplicated
-    in each branch.
+  description: Validation/handoff tail is a shared reusable block, not duplicated in each branch.
 - id: A_MINIMAL_VALIDATION_FAILURE_BLOCKS_HANDOFF
   polarity: must
   condition: minimal_validation_failed_routes_to_correction_or_blocked_deferred_state_and_never_to_handoff
@@ -7506,8 +7315,7 @@ assertions:
   - test
   severity: warn
   on_fail: WARN
-  description: Validation failure UX avoids micro-branching; details are shown inside
-    correction mode.
+  description: Validation failure UX avoids micro-branching; details are shown inside correction mode.
 - id: A_SKIPPED_FULL_VALIDATION_NOT_REPORTED_AS_PASSED
   polarity: must
   condition: full_validation_status_skipped_is_recorded_as_alpha_limitation_not_passed
@@ -7525,8 +7333,7 @@ assertions:
   - test
   severity: block
   on_fail: STOP
-  description: Active unfinished output/template items must be completed or removed
-    before handoff.
+  description: Active unfinished output/template items must be completed or removed before handoff.
 - id: A_HANDOFF_PACKAGE_IS_FILE_FIRST_WITH_SUMMARY
   polarity: must
   condition: handoff_package_provides_downloadable_package_and_short_summary_not_chat_only
@@ -7562,8 +7369,7 @@ assertions:
   - test
   severity: warn
   on_fail: WARN
-  description: Legacy unreachable nodes are kept only as deprecated compatibility
-    nodes, not unresolved active orphans.
+  description: Legacy unreachable nodes are kept only as deprecated compatibility nodes, not unresolved active orphans.
 flow_reuse:
   maturity: stable_optional
   joins:

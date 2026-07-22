@@ -26,6 +26,7 @@ modules:
   - nodes
 - path: modules/40_conversation_policy.ordo.module.yaml
   owns_top_level_keys:
+  - playbook_laws
   - conversation_semantics
 - path: modules/50_package_generation.ordo.module.yaml
   owns_top_level_keys:

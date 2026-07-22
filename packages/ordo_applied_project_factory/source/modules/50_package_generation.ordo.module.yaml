@@ -633,6 +633,12 @@ contracts:
       required: true
 artifacts:
 - kind: artifact
+  id: PLAYBOOK_LAWS
+  path_pattern: PLAYBOOK_LAWS.md
+  format: markdown
+  required: true
+  description: Canonical Playbook Laws artifact. Every generated working playbook must receive an exact copy at its root.
+- kind: artifact
   id: APPLIED_PROJECT_FACTORY_README
   path_pattern: README.md
   format: markdown
