@@ -38,7 +38,7 @@ def resolve(root: Path, playbook: dict) -> dict:
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("playbook",type=Path)
-    p.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[1])
+    p.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[2])
     p.add_argument("--output",type=Path)
     a=p.parse_args()
     result=resolve(a.root,_load(a.playbook))

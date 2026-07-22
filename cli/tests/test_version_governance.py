@@ -26,14 +26,14 @@ def test_packages_declare_compatibility():
         assert "version_state:" in t
 
 def test_upgrade_resolver_is_fail_review_not_auto_rewrite(tmp_path):
-    spec=importlib.util.spec_from_file_location("upgrade",ROOT/"tools/resolve_upgrade_impact.py")
+    spec=importlib.util.spec_from_file_location("upgrade",ROOT/"utilities/playbook_lifecycle/resolve_upgrade_impact.py")
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     report=mod.resolve(ROOT,{"playbook_id":"p","versions":{"language":"0.12"},"constructs":["startup_package_profile"]})
     assert report["overall_decision"]=="migration_required"
     assert report["automatic_rewrite"] is False
 
 def test_upgrade_resolver_ignores_unrelated_constructs():
-    spec=importlib.util.spec_from_file_location("upgrade2",ROOT/"tools/resolve_upgrade_impact.py")
+    spec=importlib.util.spec_from_file_location("upgrade2",ROOT/"utilities/playbook_lifecycle/resolve_upgrade_impact.py")
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
     report=mod.resolve(ROOT,{"playbook_id":"p","constructs":["UNRELATED"]})
     assert all(not a["applies"] for a in report["actions"] if a["change_id"]!="CHG-010")
