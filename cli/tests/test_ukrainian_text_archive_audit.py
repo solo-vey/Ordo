@@ -74,6 +74,25 @@ class UkrainianTextArchiveAuditTests(unittest.TestCase):
         self.assertEqual(result["warning_count"], 1)
         self.assertIn("member too large", result["warnings"][0]["warning"])
 
+    def test_physical_files_only_does_not_inspect_archive_members(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            with zipfile.ZipFile(root / "payload.zip", "w") as archive:
+                archive.writestr("inner.md", "Український текст\n")
+
+            result = audit_module.audit(
+                root,
+                filesystem=True,
+                exclusions=(),
+                limits=self.limits(),
+                sample_limit=2,
+                scan_archive_members=False,
+            )
+
+        self.assertEqual(result["status"], "clear")
+        self.assertEqual(result["archive_source_count"], 1)
+        self.assertFalse(result["archive_member_scan_enabled"])
+
 
 if __name__ == "__main__":
     unittest.main()

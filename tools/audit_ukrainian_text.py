@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Read-only, archive-aware audit for Ukrainian text in repository payloads.
+"""Read-only Ukrainian-text audit for repository payloads.
 
 The scanner reads Git-tracked files by default, treats ``book/**`` as the only
 intentional localization contour, and recursively inspects ZIP, TAR, and GZIP
-members.  It never extracts archives to the working tree.
+members unless ``--physical-files-only`` is selected. It never extracts
+archives to the working tree.
 """
 from __future__ import annotations
 
@@ -154,6 +155,7 @@ def scan_payload(
     sample_limit: int,
     findings: list[dict],
     warnings: list[dict],
+    scan_archive_members: bool,
 ) -> None:
     occurrence_count, samples = text_occurrences(payload, sample_limit)
     if occurrence_count:
@@ -166,7 +168,7 @@ def scan_payload(
             }
         )
 
-    if not is_archive(member_path or source_path, payload):
+    if not scan_archive_members or not is_archive(member_path or source_path, payload):
         return
     if depth >= limits.max_archive_depth:
         warnings.append({"source_path": source_path, "member_path": member_path or None, "warning": "archive depth limit exceeded"})
@@ -176,10 +178,28 @@ def scan_payload(
         warnings.append({"source_path": source_path, "member_path": member_path or None, "warning": warning})
     for name, member in members:
         nested_path = f"{member_path}!/{name}" if member_path else name
-        scan_payload(source_path, nested_path, member, depth + 1, limits, sample_limit, findings, warnings)
+        scan_payload(
+            source_path,
+            nested_path,
+            member,
+            depth + 1,
+            limits,
+            sample_limit,
+            findings,
+            warnings,
+            scan_archive_members,
+        )
 
 
-def audit(root: Path, *, filesystem: bool, exclusions: tuple[str, ...], limits: Limits, sample_limit: int) -> dict:
+def audit(
+    root: Path,
+    *,
+    filesystem: bool,
+    exclusions: tuple[str, ...],
+    limits: Limits,
+    sample_limit: int,
+    scan_archive_members: bool = True,
+) -> dict:
     root = root.resolve()
     files = list(filesystem_files(root)) if filesystem else tracked_files(root)
     source_mode = "filesystem" if filesystem else "git_tracked"
@@ -207,7 +227,17 @@ def audit(root: Path, *, filesystem: bool, exclusions: tuple[str, ...], limits: 
         scanned_files += 1
         if is_archive(relative, payload):
             archive_sources += 1
-        scan_payload(relative, "", payload, 0, limits, sample_limit, findings, warnings)
+        scan_payload(
+            relative,
+            "",
+            payload,
+            0,
+            limits,
+            sample_limit,
+            findings,
+            warnings,
+            scan_archive_members,
+        )
 
     return {
         "schema_version": "ordo.ukrainian_text_audit.v1",
@@ -218,6 +248,7 @@ def audit(root: Path, *, filesystem: bool, exclusions: tuple[str, ...], limits: 
         "scanned_file_count": scanned_files,
         "excluded_file_count": len(excluded),
         "archive_source_count": archive_sources,
+        "archive_member_scan_enabled": scan_archive_members,
         "finding_count": len(findings),
         "warning_count": len(warnings),
         "findings": findings,
@@ -230,6 +261,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("root", nargs="?", type=Path, default=Path("."))
     parser.add_argument("--filesystem", action="store_true", help="scan all physical files instead of Git-tracked payload")
     parser.add_argument("--include-book", action="store_true", help="include the intentionally localized book contour")
+    parser.add_argument(
+        "--physical-files-only",
+        action="store_true",
+        help="scan only physical files; do not inspect archive members",
+    )
     parser.add_argument("--exclude-glob", action="append", default=[], help="additional repository-relative exclusion glob")
     parser.add_argument("--max-archive-depth", type=int, default=4)
     parser.add_argument("--max-members-per-archive", type=int, default=10_000)
@@ -249,6 +285,7 @@ def main(argv: list[str] | None = None) -> int:
         exclusions=exclusions,
         limits=Limits(args.max_archive_depth, args.max_members_per_archive, args.max_member_bytes, args.max_total_archive_bytes),
         sample_limit=args.sample_limit,
+        scan_archive_members=not args.physical_files_only,
     )
     payload = json.dumps(result, ensure_ascii=False, indent=2) + "\n"
     if args.out:

@@ -1,7 +1,11 @@
 # History Event Guided Intake Package
 
-`packages/history_event_guided_intake` — перший більший практичний Ordo-пакет у workspace.
+`packages/history_event_guided_intake` is the first larger practical Ordo
+package in the workspace.
 
-Він демонструє, як Ordo v0.12 використовується для guided intake нового History Event package: збір контракту, path selection, gates, assertion, FREEFORM maturity, runtime trace і release validation.
+It demonstrates how Ordo v0.12 is used for guided intake of a new History
+Event package: contract collection, path selection, gates, assertions,
+FREEFORM maturity, runtime trace, and release validation.
 
-Це ще не повна автоматизація старого History Event Playbook. Це перший контрольований пакет, який проходить через `ordo validate-release`.
+This is not yet full automation of the earlier History Event Playbook. It is
+the first controlled package that passes through `ordo validate-release`.

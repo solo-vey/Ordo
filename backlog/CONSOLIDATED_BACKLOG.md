@@ -208,7 +208,7 @@ Status: `closed`
 
 ### BL-ORDO-058 — Ukrainian Text Remediation and Localization Boundary
 
-Status: `open`
+Status: `in_progress`
 
 Classify the 1,889 non-book Ukrainian-text document locations recorded in
 [UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md](UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md),
@@ -219,6 +219,8 @@ classification and reference/checksum impact are explicit.
 
 The classification plan is
 [BL-ORDO-058_CLASSIFICATION_PLAN.md](BL-ORDO-058_CLASSIFICATION_PLAN.md).
+The active scope contains 248 physical files; the 1,557 locations inside
+archive members were split into BL-ORDO-062 and are deliberately deferred.
 
 ### BL-ORDO-059 — Legacy Checkpoint Lifecycle and Archive Disposition
 
@@ -251,6 +253,16 @@ canonical program. The M74.6 assembly test is a required passing condition;
 do not weaken or remove it. Closed by PR #31, merged as
 `0ba5db05ac0b3dd56ae24561656154573d202fc2`, after exact assembly and full
 repository validation passed.
+
+### BL-ORDO-062 — Archived Ukrainian Payload Remediation
+
+Status: `open`
+
+Own the 1,557 Ukrainian-text locations found inside ZIP, TAR, and GZIP
+members. This task must not rewrite an archive member in place. Each later
+change requires an explicit archive migration plan, replacement artifact,
+checksum update, provenance treatment, and reference validation.
+It is deliberately deferred until physical-file remediation is complete.
 
 ## Backlog Reconciliation — 2026-07-18
 

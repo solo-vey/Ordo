@@ -1,12 +1,15 @@
 # Ordo dependency lockfile
 
-`ordo.lock.json` фіксує resolved залежності Ordo-пакета: template sets, а надалі також libraries, profiles і domain packs.
+`ordo.lock.json` records the resolved dependencies of an Ordo package:
+template sets and, later, libraries, profiles, and domain packs.
 
-## Навіщо це потрібно
+## Why this is needed
 
-Без lock-файлу пакет може згенерувати інші outputs після зміни registry або версії template set. M10 робить package output відтворюваним: release має знати, які саме шаблони, джерела й hash були використані.
+Without a lockfile, a package can generate different outputs after a registry
+or template-set version changes. M10 makes package output reproducible: a
+release must identify the exact templates, sources, and hashes used.
 
-## Команди
+## Commands
 
 ```bash
 ordo lock packages/history_event_guided_intake
@@ -14,7 +17,7 @@ ordo validate-lock packages/history_event_guided_intake
 ordo validate-release packages/history_event_guided_intake
 ```
 
-## Формат
+## Format
 
 ```json
 {
@@ -39,6 +42,8 @@ ordo validate-release packages/history_event_guided_intake
 }
 ```
 
-## Правило release
+## Release rule
 
-`validate-release` автоматично генерує й перевіряє lock-файл. Якщо resolved залежності не збігаються з `ordo.lock.json`, release має бути заблокований.
+`validate-release` generates and validates the lockfile automatically. If the
+resolved dependencies do not match `ordo.lock.json`, the release must be
+blocked.

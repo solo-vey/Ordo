@@ -27,6 +27,14 @@ The earlier inventory records 1,889 locations. The lower current total is an
 expected consequence of historical-payload externalization; it is not a
 claim that remaining active text was already remediated.
 
+## Scope split
+
+BL-ORDO-058 now owns the 248 findings in physical Git-tracked files. Its
+remediation can be reviewed, tested, and reverted as ordinary source changes.
+The remaining 1,557 findings are archive members and now belong to
+BL-ORDO-062. They are deferred because an archive-member change is an
+artifact migration, not an ordinary text edit.
+
 ## Treatment rules
 
 | Contour | Current audit footprint | Canonical treatment |
@@ -50,6 +58,13 @@ claim that remaining active text was already remediated.
    their canonical builders to regenerate derived artifacts.
 4. Re-run the archive-aware audit, compare the remaining findings with the
    explicit exemptions, and record the justified localization boundary.
+
+### Wave 1 record
+
+The first physical-file wave translates seven short active documentation and
+CLI guidance files. It reduces the physical-file audit from 248 to 241
+findings without changing archives, evidence, fixtures, legal text, or
+localized content.
 
 ## Safety conditions
 
