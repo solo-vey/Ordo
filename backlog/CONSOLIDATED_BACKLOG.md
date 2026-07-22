@@ -264,6 +264,29 @@ change requires an explicit archive migration plan, replacement artifact,
 checksum update, provenance treatment, and reference validation.
 It is deliberately deferred until physical-file remediation is complete.
 
+### BL-ORDO-063 — ARF Playbook Laws and Generated-Playbook Propagation
+
+Status: `open`
+
+Add a canonical Playbook Laws section to the ARF master playbook and make its
+propagation into every generated working playbook contractual. The initial
+four laws are:
+
+1. A robot may not injure a human being or, through inaction, allow a human
+   being to come to harm.
+2. A robot must obey orders given by human beings except where such orders
+   would conflict with the First Law.
+3. A robot must protect its own existence as long as such protection does not
+   conflict with the First or Second Law.
+4. Strictly follow all provided instructions, subject to the applicable
+   instruction hierarchy and the preceding laws.
+
+Implementation must define the canonical ARF location, the inheritance or
+rendering mechanism, precedence for conflicting instructions, generated
+playbook evidence, and regression tests. The laws are a playbook-governance
+contract; they must not override repository safety, platform, or human-owner
+authority.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
