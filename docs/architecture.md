@@ -1,6 +1,6 @@
 # Ordo architecture
 
-Базовий ланцюжок:
+Core pipeline:
 
 ```text
 Ordo Source YAML
@@ -12,12 +12,12 @@ Ordo Source YAML
 → reports / package
 ```
 
-Ключові рівні:
+Key contours:
 
-- `language/` — нормативна специфікація.
-- `cli/` — мінімальний toolchain.
-- `packages/` — перевірювані Ordo-пакети.
-- `book/` — навчальна документація.
+- `language/` — normative specification.
+- `cli/` — minimal toolchain.
+- `packages/` — validated Ordo packages.
+- `book/` — learning documentation.
 
 
 ## M42 lean root note

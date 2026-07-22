@@ -1,16 +1,18 @@
 # CLI as Deterministic Helper
 
-У M26 CLI перепозиціонується як deterministic helper layer.
+In M26, the CLI is positioned as a deterministic helper layer.
 
-CLI не є головним діалоговим runtime. Головний активний виконавець — ШІ.
+The CLI is not the primary conversational runtime. AI is the primary active
+actor.
 
-CLI допомагає ШІ:
+The CLI helps AI to:
 
-- перевіряти синтаксис Ordo package;
-- компілювати source YAML у Semantic JSON IR;
-- запускати tests і coverage;
-- перевіряти deterministic gates;
-- виявляти missing fields або inconsistency;
-- формувати machine-readable diagnostics.
+- validate Ordo package syntax;
+- compile source YAML into Semantic JSON IR;
+- run tests and coverage;
+- check deterministic gates;
+- identify missing fields or inconsistencies;
+- produce machine-readable diagnostics.
 
-Raw CLI output за замовчуванням призначений для AI/developer interpretation. Human-facing response має формувати ШІ людською мовою.
+Raw CLI output is intended for AI/developer interpretation by default. AI must
+produce the human-facing response in plain language.

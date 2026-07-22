@@ -22,7 +22,8 @@ Raw CLI output is helper evidence. AI Ordo Developer / AI Ordo Executor must int
 
 ```text
 CLI says: missing_required_fields=[project_domain]
-AI says: Нам ще потрібно визначити домен проєкту. Без цього я не можу стабільно зібрати Ordo-проєкт.
+AI says: We still need to define the project domain. Without it, I cannot
+reliably assemble an Ordo project.
 ```
 
 ## Scope

@@ -927,7 +927,7 @@
     {
       "id": "BL-ORDO-058",
       "title": "Ukrainian Text Remediation and Localization Boundary",
-      "status": "open",
+      "status": "in_progress",
       "priority": "P2",
       "type": "repository_content_hygiene",
       "goal": "Classify every non-book Ukrainian-text document location and apply an explicit canonical treatment without rewriting immutable, legal, archive, fixture, or provenance content by default.",
@@ -940,9 +940,12 @@
         "Keep the Ukrainian book contour intentional and separately governed.",
         "Re-run the archive-aware audit and record the remaining justified localization boundaries."
       ],
-      "scope_note": "Inventory and backlog registration only. Remediation is deliberately deferred.",
+      "scope_note": "Physical-file remediation is active. Archive-member remediation is deferred to BL-ORDO-062.",
       "classification_plan": "backlog/BL-ORDO-058_CLASSIFICATION_PLAN.md",
-      "classification_baseline": "42d5a161a00842afff5886bf03c2a64b0fcd8e90"
+      "classification_baseline": "42d5a161a00842afff5886bf03c2a64b0fcd8e90",
+      "physical_file_locations": 248,
+      "archive_member_locations": 1557,
+      "deferred_archive_member_backlog": "BL-ORDO-062"
     },
     {
       "id": "BL-ORDO-059",
@@ -996,6 +999,23 @@
       "pull_request": "https://github.com/solo-vey/Ordo/pull/31",
       "merge_commit": "0ba5db05ac0b3dd56ae24561656154573d202fc2",
       "completed_in": "BL-ORDO-061 module-source reconciliation"
+    },
+    {
+      "id": "BL-ORDO-062",
+      "title": "Archived Ukrainian Payload Remediation",
+      "status": "open",
+      "priority": "P3",
+      "type": "archive_provenance_migration",
+      "goal": "Classify and remediate Ukrainian text inside archive members without rewriting immutable or provenance payloads in place.",
+      "discovered_by": "tools/audit_ukrainian_text.py",
+      "archive_member_locations": 1557,
+      "scope_note": "Deliberately deferred until BL-ORDO-058 physical-file remediation is complete.",
+      "required_scope": [
+        "Treat every archive-member change as an explicit artifact migration.",
+        "Preserve or replace checksums, provenance, external-archive locators, and references together.",
+        "Do not extract or rewrite archive members into the working tree as a remediation shortcut.",
+        "Re-run the archive-aware audit and record every remaining justified localized boundary."
+      ]
     }
   ],
   "maintenance_contours": [

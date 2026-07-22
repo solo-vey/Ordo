@@ -1,9 +1,9 @@
-# Getting started з Ordo
+# Getting started with Ordo
 
-1. Встановіть CLI у editable-режимі з каталогу `cli/`.
-2. Перевірте один із актуальних reference packages у `packages/`.
-3. Для authoring-сценарію використовуйте `packages/ordo_project_builder`.
-4. Для execution-сценарію використовуйте `packages/ordo_hybrid_executor`.
+1. Install the CLI in editable mode from the `cli/` directory.
+2. Validate one of the current reference packages in `packages/`.
+3. For an authoring scenario, use `packages/ordo_project_builder`.
+4. For an execution scenario, use `packages/ordo_hybrid_executor`.
 
 ```bash
 cd cli
@@ -16,4 +16,6 @@ ordo validate-state ../packages/ordo_project_builder --answers ../packages/ordo_
 ordo next-step ../packages/ordo_project_builder --answers ../packages/ordo_project_builder/run_inputs/authoring_success.yaml
 ```
 
-CLI у цьому workspace є helper layer: він перевіряє, компілює й пояснює стан Process Rail, але не замінює AI Ordo Developer / AI Ordo Executor.
+The CLI in this workspace is a helper layer: it validates, compiles, and
+explains Process Rail state, but does not replace an AI Ordo Developer or AI
+Ordo Executor.
