@@ -1,5 +1,8 @@
 schema_version: ordo.canonical_reports_manifest.v1
 entries:
+- path: README.md
+  classification: canonical_current_or_historical_record
+  sha256: e977486f4f9ee3c660fb04d89a3e7f629851ee24e8d482c382c129feeec0e927
 - path: ANTIPATTERN_FUNDAMENTAL_TAXONOMY_MIGRATION_REPORT.json
   classification: canonical_current_or_historical_record
   sha256: 47110dfdfcf085dae8af8ac089d0f474c5a91f55d5076317a6863efccb20604d
