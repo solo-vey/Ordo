@@ -1,26 +1,35 @@
 # DD-ORDO-M30-001 — Book and Specification Alignment for Process Rail
 
-## Статус
+## Status
 
 Accepted
 
 ## Milestone
 
-M30 — Book/spec alignment під Process Rail модель
+M30 — Book/spec alignment with the Process Rail model
 
 ## Context
 
-Після M26–M29 Process Rail, Project Builder, Hybrid Execution і CLI helper commands були описані в окремих концептуальних і language documents. Проте книга, entry-point специфікації і compiled book artifacts ще могли виглядати як попередня CLI/runtime-first модель.
+After M26–M29, the Process Rail, Project Builder, Hybrid Execution, and CLI
+helper commands were described in separate conceptual and language documents.
+However, the book, entry-point specifications, and compiled book artifacts
+could still appear to follow the earlier CLI/runtime-first model.
 
 ## Decision
 
-M30 фіксує Process Rail як наскрізну модель у книзі та специфікації:
+M30 establishes the Process Rail as a cross-cutting model in the book and
+specification:
 
-- книга має містити Process Rail у manifest і compiled all-in-one;
-- вступ і базові пояснювальні розділи мають пояснювати Ordo як AI-first / Process-Rail-centered мову;
-- language overview, Semantic JSON IR і execution model мають явно показувати AI-led authoring/execution;
-- CLI описується як deterministic helper layer, а не як головний conversational runtime.
+- the book must contain the Process Rail in its manifest and compiled all-in-one;
+- the introduction and basic explanatory sections must describe Ordo as an
+  AI-first, Process-Rail-centred language;
+- the language overview, Semantic JSON IR, and execution model must explicitly
+  show AI-led authoring/execution;
+- the CLI is described as a deterministic helper layer, not the main
+  conversational runtime.
 
 ## Consequences
 
-Після M30 майбутній GitHub cleanup має спиратися на нову модель як на canonical direction. Старі CLI-first формулювання потрібно вважати legacy wording і виправляти під час cleanup.
+After M30, future GitHub cleanup must use the new model as the canonical
+direction. Earlier CLI-first wording must be treated as legacy wording and
+corrected during cleanup.
