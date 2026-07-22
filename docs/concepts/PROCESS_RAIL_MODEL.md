@@ -1,10 +1,12 @@
 # Process Rail Model
 
-## Коротко
+## In brief
 
-**Process Rail** — це опорна структура процесу для ШІ. Вона дозволяє ШІ вести гнучкий діалог із людиною, але тримає стан, маршрут, gates, обов'язкові рішення, повернення назад і правила результату.
+**Process Rail** is a supporting process structure for AI. It lets AI conduct a
+flexible conversation with a person while retaining state, route, gates,
+required decisions, backtracking, and output rules.
 
-Ordo не замінює ШІ детермінованим wizard-ом. Ordo дає ШІ рейки.
+Ordo does not replace AI with a deterministic wizard. Ordo gives AI rails.
 
 ```text
 AI thinks and speaks.
@@ -12,62 +14,69 @@ Process Rail keeps the process aligned.
 Deterministic helper tools validate what can be validated.
 ```
 
-## Проблема
+## Problem
 
-- Prompt-only підхід гнучкий, але модель може пропустити крок, забути попереднє рішення або загубитися після повернення назад.
-- Hardcoded wizard стабільний, але погано працює з відкритими відповідями, уточненнями, зміною думки й доменним мисленням.
-- Ordo має дати проміжний варіант: живий ШІ-діалог, стабілізований формальною Process Rail.
+- A prompt-only approach is flexible, but the model can skip a step, forget a
+  previous decision, or lose its place after backtracking.
+- A hardcoded wizard is stable, but handles open answers, clarification,
+  changed decisions, and domain reasoning poorly.
+- Ordo provides an intermediate option: a live AI conversation stabilised by a
+  formal Process Rail.
 
-## Основні частини Process Rail
+## Main Process Rail components
 
-- `rail_state` — поточний стан проходження.
-- `rail_node` — поточний або доступний вузол процесу.
-- `required_checkpoints` — обов'язкові точки, які не можна пропустити.
-- `gates` — формальні перевірки дозволу рухатися далі або генерувати output.
-- `deviation_policy` — що робити, якщо людина відійшла від поточного питання.
-- `backtracking_policy` — як повертатися до попереднього рішення.
-- `resume_policy` — як повернутися на основний маршрут після відхилення.
+- `rail_state` — current traversal state.
+- `rail_node` — current or available process node.
+- `required_checkpoints` — required points that cannot be skipped.
+- `gates` — formal checks allowing further movement or output generation.
+- `deviation_policy` — what to do if a person leaves the current question.
+- `backtracking_policy` — how to return to a previous decision.
+- `resume_policy` — how to return to the main route after a deviation.
 
-## Роль ШІ
+## AI role
 
-ШІ залишається головним активним елементом. Він:
+AI remains the main active element. It:
 
-- інтерпретує природну мову;
-- ставить уточнюючі питання;
-- радить і попереджає про ризики;
-- пропонує рішення;
-- пояснює стан процесу;
-- перетворює технічні результати інструментів у людське пояснення.
+- interprets natural language;
+- asks clarifying questions;
+- advises and warns about risks;
+- proposes decisions;
+- explains process state;
+- turns technical tool results into a human explanation.
 
-## Роль CLI
+## CLI role
 
-CLI не веде діалог із людиною. CLI допомагає ШІ:
+The CLI does not conduct a conversation with a person. It helps AI to:
 
-- перевіряти синтаксис;
-- компілювати Ordo source у Semantic JSON IR;
-- перевіряти state/gates;
-- знаходити missing fields;
-- порівнювати state/IR;
-- виконувати deterministic checks.
+- validate syntax;
+- compile Ordo source into Semantic JSON IR;
+- validate state/gates;
+- find missing fields;
+- compare state/IR;
+- run deterministic checks.
 
-Raw CLI output не показується людині без потреби. ШІ інтерпретує його.
+Raw CLI output is not shown to a person unnecessarily. AI interprets it.
 
-## Два сценарії
+## Two scenarios
 
 ### AI-guided authoring
 
-PM описує задачу природною мовою. AI Ordo Developer проектує Ordo-проєкт, створює YAML, запускає lint/compile і пояснює PM-у стан.
+A PM describes a task in natural language. The AI Ordo Developer designs an
+Ordo project, creates YAML, runs lint/compile, and explains its state to the
+PM.
 
 ### Hybrid execution
 
-Користувач проходить готовий Ordo-проєкт. AI Ordo Executor читає Semantic JSON IR, веде діалог, обробляє відхилення і використовує CLI як deterministic helper.
+A user traverses a completed Ordo project. The AI Ordo Executor reads Semantic
+JSON IR, conducts the conversation, handles deviations, and uses the CLI as a
+deterministic helper.
 
 ## Definition of Done
 
-Process Rail model вважається зафіксованою, якщо:
+The Process Rail model is considered established when:
 
-- Ordo не описаний як CLI-first runtime;
-- AI явно залишається активним cognitive executor;
-- CLI позиціонується як helper/checker;
-- Semantic JSON IR містить process rail semantics;
-- backtracking/deviation/resume описані як частина мови.
+- Ordo is not described as a CLI-first runtime;
+- AI explicitly remains the active cognitive executor;
+- the CLI is positioned as a helper/checker;
+- Semantic JSON IR contains Process Rail semantics;
+- backtracking/deviation/resume are described as parts of the language.

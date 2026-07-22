@@ -1,45 +1,49 @@
 # Ordo Project Builder
 
-`Ordo Project Builder` — це authoring-механізм для створення нових Ordo-проєктів через діалог PM з AI Ordo Developer.
+`Ordo Project Builder` is an authoring mechanism for creating new Ordo
+projects through a conversation between a PM and an AI Ordo Developer.
 
-## Головна ідея
+## Core idea
 
-PM не пише Ordo-код напряму. PM пояснює, який процес, домен або аналітичний продукт потрібен. AI Ordo Developer перетворює ці пояснення в Ordo YAML, перевіряє їх через CLI і компілює в Semantic JSON IR.
+A PM does not write Ordo code directly. The PM explains the required process,
+domain, or analytical product. The AI Ordo Developer turns these explanations
+into Ordo YAML, validates it through the CLI, and compiles it into Semantic
+JSON IR.
 
 ## Loop
 
 ```text
-PM пояснює задум
+PM explains the intent
   ↓
-AI Ordo Developer уточнює і пропонує рішення
+AI Ordo Developer clarifies and proposes a solution
   ↓
-AI оновлює Ordo YAML
+AI updates Ordo YAML
   ↓
-CLI helper перевіряє syntax / gates / compile
+CLI helper checks syntax / gates / compilation
   ↓
-AI пояснює PM-у стан людською мовою
+AI explains the state to the PM in plain language
   ↓
-PM підтверджує, змінює або додає інформацію
+PM confirms, changes, or adds information
 ```
 
-## Роль AI Ordo Developer
+## AI Ordo Developer role
 
-AI Ordo Developer не є пасивним кодувачем. Він має:
+An AI Ordo Developer is not a passive coder. It must:
 
-- виявляти прогалини;
-- пропонувати структуру Process Rail;
-- радити щодо gates і state;
-- пояснювати наслідки рішень PM;
-- підтримувати YAML і Semantic JSON IR у валідному стані;
-- не показувати raw CLI output без інтерпретації.
+- identify gaps;
+- propose a Process Rail structure;
+- advise on gates and state;
+- explain the consequences of PM decisions;
+- keep YAML and Semantic JSON IR valid;
+- not show raw CLI output without interpretation.
 
-## Результат
+## Result
 
-Результатом authoring session є Ordo project, який має:
+An authoring session results in an Ordo project with:
 
 - `ordo.yml`;
 - `source/program.ordo.yaml`;
 - tests;
-- output templates, якщо потрібні;
+- output templates, if needed;
 - compiled Semantic JSON IR;
-- зрозуміле PM-facing summary.
+- an understandable PM-facing summary.

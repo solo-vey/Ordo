@@ -1,25 +1,33 @@
-# DD-ORDO-M26-001 — Process Rail як центральна модель Ordo
+# DD-ORDO-M26-001 — Process Rail as Ordo's Core Model
 
-**Статус:** accepted  
-**Milestone:** M26 — Process Rail Reframing  
-**Дата:** 2026-07-06
+**Status:** accepted
+**Milestone:** M26 — Process Rail Reframing
+**Date:** 2026-07-06
 
-## Рішення
+## Decision
 
-Ordo трактується як **AI-guided process language**, а не як CLI-first runtime і не як повністю детермінований wizard.
+Ordo is treated as an **AI-guided process language**, not as a CLI-first
+runtime or a fully deterministic wizard.
 
-Центральна модель Ordo — **Process Rail**: формалізована опорна структура процесу, яка допомагає ШІ вести живий діалог із людиною, але не втрачати маршрут, стан, gates, повернення назад, перевірки й правила генерації результату.
+Ordo's core model is the **Process Rail**: a formalised supporting process
+structure that helps AI conduct a live conversation with a person without
+losing route, state, gates, backtracking, checks, or output-generation rules.
 
-## Причина
+## Rationale
 
-Основна ціль Ordo — поєднати гнучкість ШІ з детермінованими частинами процесу.
+Ordo's main goal is to combine AI flexibility with deterministic parts of a
+process.
 
-ШІ має залишатися активним мислячим виконавцем: аналізувати, ставити питання, радити, інтерпретувати відповіді й пояснювати рішення. Process Rail не замінює це мислення, а стабілізує його.
+AI must remain an active reasoning executor: it analyses, asks questions,
+advises, interprets answers, and explains decisions. The Process Rail does
+not replace this reasoning; it stabilises it.
 
-## Наслідки
+## Consequences
 
-- CLI є deterministic helper layer, а не головний діалоговий runtime.
-- Semantic JSON IR є машинозчитуваною формою Process Rail.
-- Ordo має два ключові режими: AI-guided authoring і hybrid execution.
-- Raw tool output не є human-facing output за замовчуванням; ШІ має інтерпретувати його людською мовою.
-- Backtracking, correction handling і deviation/resume semantics є first-class concerns мови.
+- The CLI is a deterministic helper layer, not the main conversational runtime.
+- Semantic JSON IR is the machine-readable form of the Process Rail.
+- Ordo has two key modes: AI-guided authoring and hybrid execution.
+- Raw tool output is not human-facing output by default; AI must interpret it
+  in plain language.
+- Backtracking, correction handling, and deviation/resume semantics are
+  first-class language concerns.

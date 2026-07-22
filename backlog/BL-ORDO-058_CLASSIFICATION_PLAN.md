@@ -66,6 +66,13 @@ CLI guidance files. It reduces the physical-file audit from 248 to 241
 findings without changing archives, evidence, fixtures, legal text, or
 localized content.
 
+### Wave 2 record
+
+The second physical-file wave translates the active conceptual documentation
+and the three Process Rail design decisions. It reduces the physical-file
+audit from 241 to 235 findings without changing archives, evidence, fixtures,
+legal text, or localized content.
+
 ## Safety conditions
 
 - No archive member, checkpoint, empirical-evidence payload, or historical

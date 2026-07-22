@@ -1,23 +1,30 @@
 # DD-ORDO-M27-001 — Ordo Project Builder
 
-## Статус
+## Status
 
 Accepted
 
-## Контекст
+## Context
 
-Після M26 Process Rail став центральною моделлю Ordo. Наступний практичний крок — описати механізм, через який PM або аналітик створює нові Ordo-проєкти не через ручне написання YAML, а через діалог із AI Ordo Developer.
+After M26, the Process Rail became Ordo's central model. The next practical
+step was to describe a mechanism through which a PM or analyst creates new
+Ordo projects through a conversation with an AI Ordo Developer rather than by
+writing YAML manually.
 
-## Рішення
+## Decision
 
-Додати `ordo.project_builder` як перший Ordo package для AI-guided authoring.
+Add `ordo.project_builder` as the first Ordo package for AI-guided authoring.
 
-PM описує задум людською мовою. AI Ordo Developer ставить питання, проектує Process Rail, створює або оновлює YAML-файли, запускає deterministic helper checks і компілює Semantic JSON IR. CLI не спілкується з PM напряму; AI інтерпретує результати перевірок.
+A PM describes their intent in plain language. The AI Ordo Developer asks
+questions, designs the Process Rail, creates or updates YAML files, runs
+deterministic helper checks, and compiles Semantic JSON IR. The CLI does not
+communicate with the PM directly; AI interprets validation results.
 
-## Наслідки
+## Consequences
 
-- Authoring стає first-class сценарієм Ordo.
-- PM не зобов'язаний писати Ordo YAML.
-- AI Ordo Developer стає окремою роллю мови.
-- CLI лишається deterministic helper layer.
-- Semantic JSON IR є результатом authoring loop, а не тільки внутрішнім build artifact.
+- Authoring becomes a first-class Ordo scenario.
+- A PM is not required to write Ordo YAML.
+- The AI Ordo Developer becomes a distinct language role.
+- The CLI remains a deterministic helper layer.
+- Semantic JSON IR is the result of the authoring loop, not only an internal
+  build artifact.
