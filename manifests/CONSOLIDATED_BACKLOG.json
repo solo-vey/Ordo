@@ -990,7 +990,7 @@
         "Make the M74.6 modular-assembly tests pass without xfail.",
         "Preserve canonical program behavior and run package plus repository validation."
       ],
-      "interim_guard": "cli/tests/test_m74_6_apf_modular_assembly.py is strict-expected-failing until this task closes."
+      "required_gate": "cli/tests/test_m74_6_apf_modular_assembly.py must pass before this task closes."
     }
   ],
   "maintenance_contours": [

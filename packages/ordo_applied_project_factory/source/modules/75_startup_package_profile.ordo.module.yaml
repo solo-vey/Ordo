@@ -1,0 +1,63 @@
+startup_package_profile:
+  profile_id: ordo_applied_project_factory_startup_profile
+  version: '1.0'
+  package_id: ordo_applied_project_factory
+  default_startup_mode: runtime_start
+  default_language: uk
+  startup_root: ./
+  startup_modes:
+  - mode: runtime_start
+    audience: analyst
+    entry_file: START_PROMPT_RUNTIME_MODE.md
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: operator_start
+    audience: cli_operator
+    entry_file: START_HERE_RUNTIME_MODE.md
+    required: 'true'
+    visibility: visible_to_analyst
+    state_change_allowed: false
+    resume_supported: true
+  - mode: developer_maintenance
+    audience: developer
+    entry_file: README.md
+    required: recommended
+    visibility: developer
+    state_change_allowed: false
+    resume_supported: true
+  entry_files:
+  - path: README.md
+    role: readme
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_HERE_RUNTIME_MODE.md
+    role: start_here
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: START_PROMPT_RUNTIME_MODE.md
+    role: runtime_start_prompt
+    required: 'true'
+    visibility: visible_to_analyst
+  - path: ordo.yml
+    role: manifest
+    required: 'true'
+    visibility: developer
+  readiness_gates:
+  - check_id: startup_package_profile_present
+    severity: error
+    profile: strict
+  - check_id: startup_entry_files_exist
+    severity: error
+    profile: strict
+  - check_id: startup_default_mode_exists
+    severity: error
+    profile: strict
+  - check_id: startup_authority_boundary_safe
+    severity: error
+    profile: strict
+  authority_boundary:
+    startup_files_may_override_gates: false
+    startup_files_may_confirm_state: false
+    startup_files_may_claim_validation_success: false

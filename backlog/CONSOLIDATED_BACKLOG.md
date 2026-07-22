@@ -244,8 +244,8 @@ Status: `open`
 Reconcile the modular APF source with
 `packages/ordo_applied_project_factory/source/program.ordo.yaml` so that
 assembly from `module_manifest.yaml` is semantically identical to the
-canonical program. The M74.6 assembly test remains strict-expected-failing
-until the reconciliation is complete; do not weaken or remove it.
+canonical program. The M74.6 assembly test is a required passing condition;
+do not weaken or remove it.
 
 ## Backlog Reconciliation — 2026-07-18
 
