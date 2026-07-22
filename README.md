@@ -55,14 +55,15 @@ The unified development/release contract is documented in [`docs/REPOSITORY_HYGI
 ## What is included
 
 - `language/` — language schemas, registries, runtime semantics, migration and integration layers.
-- `integrations/apf/` — Applied Process Factory modules and assembly definitions.
-- `packages/` — reference process and playbook packages.
+- [`integrations/`](integrations/README.md) — versioned external and aligned integrations.
+- [`packages/`](packages/README.md) — reference process and playbook packages.
 - `cli/` — command-line implementation, examples, scripts, and regression tests.
 - `book/` — English and Ukrainian source and compiled book materials.
 - `empirical_evidence/` — normalized evidence records plus immutable raw evidence.
-- `benchmarks/` — benchmark datasets, schemas, taxonomy, and evaluation artifacts.
+- [`benchmarks/`](benchmarks/README.md) — benchmark datasets, schemas, taxonomy, and evaluation artifacts.
 - `docs/` — canonical documentation map, quickstart, concepts, design decisions, testing, publication, handoff, and audit documentation.
-- `manifests/` and `reports/` — release identity, backlog, checksums, validation, and closure evidence.
+- [`manifests/`](manifests/README.md) and [`reports/`](reports/README.md) — release identity, backlog, checksums, validation, and closure evidence.
+- [`examples/`](examples/README.md), [`policies/`](policies/README.md), and [`tools/`](tools/README.md) — guided examples, machine-readable policy, and internal maintenance tooling.
 
 ## Packaged release verification
 

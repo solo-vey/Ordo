@@ -30,8 +30,8 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 ## Packages and authoring
 
-- [`../packages/`](../packages) — reference process and playbook packages.
-- [`../integrations/apf/`](../integrations/apf) — Applied Process Factory modules and assembly definitions.
+- [`../packages/README.md`](../packages/README.md) — reference process and playbook packages.
+- [`../integrations/README.md`](../integrations/README.md) — versioned external and aligned integrations.
 - [`apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — preserved standard APF module guidance.
 
 ## CLI and validation
@@ -55,7 +55,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../reports/delivery/current/DELIVERY_GATE_REPORT.json`](../reports/delivery/current/DELIVERY_GATE_REPORT.json) — delivery gate evidence.
 - [`../reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json`](../reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json) — packaged self-check evidence.
 - [`../empirical_evidence/`](../empirical_evidence) — normalized and immutable empirical evidence.
-- [`../benchmarks/`](../benchmarks) — benchmark datasets, schemas, and evaluation artifacts.
+- [`../benchmarks/README.md`](../benchmarks/README.md) — benchmark datasets, schemas, and evaluation artifacts.
 - [`EXTERNAL_ARCHIVES.md`](EXTERNAL_ARCHIVES.md) — checksum-bound retrieval for historical provenance kept outside the active tree.
 
 ## Books
