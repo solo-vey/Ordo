@@ -27,7 +27,7 @@ path_exemptions:
   glob: utilities/ordo_pathwalk/examples/**
   reason: Language-behavior fixtures.
 - id: apf_language_fixtures
-  glob: fixtures/apf_real_case_replay/**
+  glob: cli/tests/fixtures/apf_real_case_replay/**
   reason: Language-behavior fixtures.
 - id: validator_test_fixtures
   glob: cli/tests/fixtures/english_only_policy/**
@@ -56,7 +56,7 @@ structured_value_exemptions:
   path_segment: uk-UA
   reason: Explicit locale map.
 language_fixture_globs:
-- fixtures/apf_real_case_replay/**
+- cli/tests/fixtures/apf_real_case_replay/**
 - utilities/ordo_pathwalk/examples/**
 expected_non_plain_yaml:
 - packages/history_event_guided_intake/output_templates/history_event/guided_intake_outputs/0.1.1/templates/08_qa_automation_spec_model_assisted.yaml

@@ -237,6 +237,16 @@ The active tree retains only a compact locator manifest and current
 documentation. `docs/apf/legacy-root/` remains in-repository until its active
 references are separately migrated.
 
+### BL-ORDO-061 — APF Module Source Reconciliation
+
+Status: `open`
+
+Reconcile the modular APF source with
+`packages/ordo_applied_project_factory/source/program.ordo.yaml` so that
+assembly from `module_manifest.yaml` is semantically identical to the
+canonical program. The M74.6 assembly test remains strict-expected-failing
+until the reconciliation is complete; do not weaken or remove it.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:

@@ -3,7 +3,7 @@ from pathlib import Path
 from cli.ordo.apf_replay import evaluate_replay
 
 ROOT = Path(__file__).resolve().parents[2]
-FIXTURE = ROOT / "fixtures/apf_real_case_replay/history_event_replay_cases.json"
+FIXTURE = ROOT / "cli/tests/fixtures/apf_real_case_replay/history_event_replay_cases.json"
 
 
 def test_all_real_case_replays_pass():

@@ -3,7 +3,7 @@ import yaml
 
 from cli.ordo.compiler import lower_flow_reuse
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 PROGRAM = ROOT / 'packages/ordo_applied_project_factory/source/program.ordo.yaml'
 MODULE = ROOT / 'packages/ordo_applied_project_factory/source/modules/35_optional_flow_reuse.ordo.module.yaml'
 
