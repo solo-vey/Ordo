@@ -199,14 +199,25 @@
       "root_file_count": 15,
       "closure_evidence": "manifests/J6_ROOT_CLEANUP_CLOSURE.json",
       "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"
+    },
+    "L": {
+      "title": "Documentation quality and chat-first onboarding",
+      "status": "closed",
+      "closed_at": "2026-07-22",
+      "closure_evidence": "manifests/L_DOCUMENTATION_CONTOUR_CLOSURE.json",
+      "validated_main_baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74"
     }
   },
   "next_documentation_tasks": [],
   "documentation_quality": {
     "L.1": "closed",
     "L.2": "closed",
+    "L.3": "closed",
+    "L.4": "closed",
+    "status": "closed",
     "primary_onboarding": "chat_first",
     "optional_mechanical_validation": "python_cli",
-    "closure_manifest": "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json"
+    "closure_evidence": "manifests/L_DOCUMENTATION_CONTOUR_CLOSURE.json",
+    "phase_closure_evidence": "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json"
   }
 }

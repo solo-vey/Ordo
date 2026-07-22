@@ -1,0 +1,86 @@
+{
+  "schema_version": "ordo.documentation_contour_closure.v1",
+  "contour_id": "L",
+  "status": "closed",
+  "closed_at": "2026-07-22",
+  "validated_main_baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74",
+  "release_identity": {
+    "release_id": "ordo-2026.07.17-rc.10",
+    "language_version": "0.14.0-rc.1",
+    "framework_version": "0.6.0-rc.1"
+  },
+  "phases": [
+    {
+      "id": "L.1",
+      "status": "closed",
+      "result": "read_only_documentation_quality_gate_audit",
+      "validated_main_baseline": "4d759955dde6d05e4c6cf58d15ddb86b1ca0cc68"
+    },
+    {
+      "id": "L.2",
+      "status": "closed",
+      "pull_request": 20,
+      "merge_commit": "49a79719216674a305675c0037cf751cab6b61b0"
+    },
+    {
+      "id": "L.3",
+      "status": "closed",
+      "pull_request": 21,
+      "merge_commit": "542dd56a885d35c44a7b9ac00e3cbf5c84d2aa21"
+    },
+    {
+      "id": "L.4",
+      "status": "closed",
+      "pull_request": 22,
+      "merge_commit": "f42a89112610ec22defc35d3a20c88fa087c0c74"
+    }
+  ],
+  "validation": {
+    "active_document_links_and_anchors": "passed",
+    "release_claim_synchronization": "passed",
+    "chat_first_starter_integrity_and_reproducibility": "passed",
+    "root_checksum_manifest": "passed",
+    "full_cli_suite": "705 passed, 17 subtests passed, 1 skipped",
+    "delivery_gate": "700 passed, 0 failed",
+    "canonical_package_lints": "4/4 passed",
+    "strict_development_check": "passed",
+    "isolated_release_tree_strict_check": "passed",
+    "pull_request_20_checks": "6/6 passed",
+    "pull_request_21_checks": "6/6 passed",
+    "pull_request_22_checks": "6/6 passed"
+  },
+  "post_merge_ci": [
+    {"baseline": "49a79719216674a305675c0037cf751cab6b61b0", "workflow": "clean-gate", "run_id": 29847290219, "status": "success"},
+    {"baseline": "49a79719216674a305675c0037cf751cab6b61b0", "workflow": "ordo-checks", "run_id": 29847290411, "status": "success"},
+    {"baseline": "49a79719216674a305675c0037cf751cab6b61b0", "workflow": "full-delivery-gate", "run_id": 29847290131, "status": "success"},
+    {"baseline": "542dd56a885d35c44a7b9ac00e3cbf5c84d2aa21", "workflow": "clean-gate", "run_id": 29849458893, "status": "success"},
+    {"baseline": "542dd56a885d35c44a7b9ac00e3cbf5c84d2aa21", "workflow": "ordo-checks", "run_id": 29849458895, "status": "success"},
+    {"baseline": "542dd56a885d35c44a7b9ac00e3cbf5c84d2aa21", "workflow": "full-delivery-gate", "run_id": 29849459013, "status": "success"},
+    {"baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74", "workflow": "clean-gate", "run_id": 29907623359, "status": "success"},
+    {"baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74", "workflow": "ordo-checks", "run_id": 29907623390, "status": "success"},
+    {"baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74", "workflow": "full-delivery-gate", "run_id": 29907623583, "status": "success"}
+  ],
+  "final_archive": {
+    "type": "reproducible_release_candidate",
+    "builder": "tools/build_release_archive.py",
+    "validated_from_main_baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74",
+    "status": "passed",
+    "repository_copy": "not_persisted_generated_output"
+  },
+  "canonical_deliverables": [
+    "docs/CHAT_FIRST_ONBOARDING.md",
+    "docs/DOCUMENTATION_QUALITY_GATE.md",
+    "docs/status/L_DOCUMENTATION_CONTOUR_CLOSURE.md",
+    "examples/chat_first_playbook_starter/ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip",
+    "manifests/DOCUMENTATION_QUALITY_GATE.json",
+    "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json",
+    "cli/tests/test_documentation_quality_gate.py",
+    "cli/tests/test_repository_checksum_manifest.py"
+  ],
+  "out_of_scope_preserved_debt": [
+    "docs/first_package_tutorial.md",
+    "docs/getting_started.md"
+  ],
+  "historical_contours_rewritten": false,
+  "next_documentation_tasks": []
+}

@@ -225,12 +225,13 @@ Status: `closed`
 
 The root inventory, APF documentation and evidence relocation, delivery and release evidence relocation, governance consolidation, relocation integrity contract, and final root allowlist validation are complete. The canonical closure record is [`../manifests/J6_ROOT_CLEANUP_CLOSURE.json`](../manifests/J6_ROOT_CLEANUP_CLOSURE.json).
 
-Next documentation work:
+### L — Documentation quality and chat-first onboarding
 
-- `L.1` — read-only documentation quality-gate audit — `closed`;
-- `L.2` — chat-first onboarding, current-state synchronization, and documentation quality gates — `closed`.
+Status: `closed`
 
-Canonical closure: [`../manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json`](../manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json).
+The L.1 audit, L.2 chat-first onboarding implementation, L.3 final validation, and L.4 contour closure are complete. The canonical record is [`../manifests/L_DOCUMENTATION_CONTOUR_CLOSURE.json`](../manifests/L_DOCUMENTATION_CONTOUR_CLOSURE.json).
+
+The earlier L.2 closure remains preserved as phase-level evidence: [`../manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json`](../manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json).
 
 
 ## BL-ORDO-014 Closure — M83.4

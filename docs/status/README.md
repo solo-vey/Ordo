@@ -7,3 +7,4 @@ Historical status documents relocated from the repository root are preserved und
 Completed repository-maintenance contours:
 
 - [`J6_REPOSITORY_ROOT_CLEANUP_CLOSURE.md`](J6_REPOSITORY_ROOT_CLEANUP_CLOSURE.md) — final closure summary for the repository-root cleanup.
+- [`L_DOCUMENTATION_CONTOUR_CLOSURE.md`](L_DOCUMENTATION_CONTOUR_CLOSURE.md) — final closure summary for the chat-first documentation contour.
