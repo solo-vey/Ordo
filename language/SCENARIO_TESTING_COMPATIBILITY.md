@@ -259,7 +259,7 @@ The smoke must produce per-view score files and an aggregate summary, and every 
 Recommended command shape for PathWalk-compatible tools:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli matrix-smoke \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli matrix-smoke \
   --out /tmp/pathwalk_matrix_smoke \
   --depth 2 \
   --branching 2 2 \

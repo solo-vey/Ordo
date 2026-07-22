@@ -28,7 +28,7 @@ clean path cases + bounded noise cases
 ## Команда
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-review-cards \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-review-cards \
   --summary runs/real_module_clean_cases/SUMMARY.json \
   --summary runs/real_module_noise_cases/SUMMARY.json \
   --out runs/real_module_review_cards \

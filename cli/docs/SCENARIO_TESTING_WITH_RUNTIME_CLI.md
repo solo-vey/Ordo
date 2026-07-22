@@ -231,5 +231,5 @@ Testing utilities should provide a no-API matrix smoke before using real model d
 For PathWalk this gate is:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli matrix-smoke --out /tmp/pathwalk_matrix_smoke --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli matrix-smoke --out /tmp/pathwalk_matrix_smoke --force
 ```

@@ -54,7 +54,7 @@ python utilities/ordo_visual_graph_generator/ordo_graph.py \
   packages/ordo_applied_project_factory/source/program.ordo.yaml \
   --out runs/apf_visual/graph.mmd
 
-PYTHONPATH=cli:. python -m ordo_pathwalk.cli real-module-graph \
+PYTHONPATH=cli:. python -m utilities.ordo_pathwalk.cli real-module-graph \
   --source packages/ordo_applied_project_factory/source/program.ordo.yaml \
   --out runs/apf_pathwalk/graph \
   --force

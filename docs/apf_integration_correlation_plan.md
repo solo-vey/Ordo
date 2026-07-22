@@ -49,7 +49,7 @@ Ordo language core
 
 Companion utilities
   → utilities/ordo_visual_graph_generator/
-  → ordo_pathwalk/
+  → utilities/ordo_pathwalk/
 
 Standard applied modules
   → packages/ordo_applied_project_factory/   # planned M62.1 import

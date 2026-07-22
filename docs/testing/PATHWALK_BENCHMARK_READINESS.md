@@ -48,7 +48,7 @@ A PathWalk release is benchmark-ready when:
 Use this before expensive API/model runs:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli matrix-smoke \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli matrix-smoke \
   --out /tmp/pathwalk_matrix_smoke \
   --depth 2 \
   --branching 2 2 \
@@ -95,7 +95,7 @@ M60.5 introduced `matrix-smoke`, which proves that one generated scenario can be
 Command:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli benchmark-dry-run \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli benchmark-dry-run \
   --out /tmp/pathwalk_dry_run \
   --scenario-count 20 \
   --runtime-view json \
@@ -170,7 +170,7 @@ job_scripts/<job_id>.sh
 Recommended execution:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli dry-run-plan \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli dry-run-plan \
   --out runs/pathwalk_dry_run \
   --scenario-count 20 \
   --runtime-view json \
@@ -183,7 +183,7 @@ bash runs/pathwalk_dry_run/job_scripts/scenario_000_json.sh
 bash runs/pathwalk_dry_run/job_scripts/scenario_000_ordo-code.sh
 bash runs/pathwalk_dry_run/job_scripts/scenario_000_json_ordo-code.sh
 
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli dry-run-collect \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli dry-run-collect \
   --plan runs/pathwalk_dry_run/DRY_RUN_PLAN.json
 ```
 

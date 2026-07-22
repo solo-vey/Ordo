@@ -54,7 +54,7 @@ python3 utilities/ordo_visual_graph_generator/ordo_graph.py \
 After visual review, structural review artifacts can be created:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-graph \
   --source source/program.ordo.yaml \
   --out runs/companion_review/graph \
   --force
@@ -63,7 +63,7 @@ PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph \
 Then terminal paths:
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-paths \
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-paths \
   --summary runs/companion_review/graph/REAL_MODULE_GRAPH_SUMMARY.json \
   --out runs/companion_review/paths \
   --force

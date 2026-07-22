@@ -1,0 +1,202 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_clean_path_cases.v1",
+  "milestone": "M60.7.3",
+  "source_terminal_paths_schema_version": "ordo.pathwalk.real_module_terminal_paths.v1",
+  "package": "sample.support_triage",
+  "source_path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+  "start_node": "N_ISSUE_SUMMARY",
+  "counts": {
+    "clean_path_cases": 3,
+    "ready_cases": 3,
+    "terminal_paths_input": 3,
+    "noise_patterns": 0
+  },
+  "cases": [
+    {
+      "schema_version": "ordo.pathwalk.real_module_clean_path_case.v1",
+      "milestone": "M60.7.3",
+      "case_id": "CLEAN_TP_001",
+      "case_type": "clean_path",
+      "noise_pattern": "none",
+      "path_id": "TP_001",
+      "package": "sample.support_triage",
+      "source_path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+      "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=high -> G_TRIAGE_COMPLETE",
+      "start_node": "N_ISSUE_SUMMARY",
+      "node_sequence": [
+        "N_ISSUE_SUMMARY",
+        "N_SEVERITY"
+      ],
+      "answer_steps": [
+        {
+          "step": 1,
+          "node": "N_ISSUE_SUMMARY",
+          "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+          "source_answer": "*",
+          "to": "N_SEVERITY",
+          "target_type": "node",
+          "edge_type": "on_answer.default",
+          "noise": "none"
+        },
+        {
+          "step": 2,
+          "node": "N_SEVERITY",
+          "answer": "high",
+          "source_answer": "high",
+          "to": "G_TRIAGE_COMPLETE",
+          "target_type": "gate",
+          "edge_type": "on_answer.branch",
+          "noise": "none"
+        }
+      ],
+      "expected_terminal": {
+        "target": "G_TRIAGE_COMPLETE",
+        "type": "gate"
+      },
+      "expected_outputs": [
+        "OUT_TRIAGE_NOTE"
+      ],
+      "expected_state_updates": [
+        "issue_summary",
+        "owner_team",
+        "severity"
+      ],
+      "encountered_unmatched_handlers": [
+        "N_ISSUE_SUMMARY",
+        "N_SEVERITY"
+      ],
+      "readiness": {
+        "case_artifact_ready": true,
+        "runtime_execution_ready": false,
+        "noise_generation_ready": false,
+        "reason": "M60.7.3 emits clean-path testcase artifacts only; runtime execution and noise variants remain future milestones."
+      }
+    },
+    {
+      "schema_version": "ordo.pathwalk.real_module_clean_path_case.v1",
+      "milestone": "M60.7.3",
+      "case_id": "CLEAN_TP_002",
+      "case_type": "clean_path",
+      "noise_pattern": "none",
+      "path_id": "TP_002",
+      "package": "sample.support_triage",
+      "source_path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+      "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=low -> G_TRIAGE_COMPLETE",
+      "start_node": "N_ISSUE_SUMMARY",
+      "node_sequence": [
+        "N_ISSUE_SUMMARY",
+        "N_SEVERITY"
+      ],
+      "answer_steps": [
+        {
+          "step": 1,
+          "node": "N_ISSUE_SUMMARY",
+          "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+          "source_answer": "*",
+          "to": "N_SEVERITY",
+          "target_type": "node",
+          "edge_type": "on_answer.default",
+          "noise": "none"
+        },
+        {
+          "step": 2,
+          "node": "N_SEVERITY",
+          "answer": "low",
+          "source_answer": "low",
+          "to": "G_TRIAGE_COMPLETE",
+          "target_type": "gate",
+          "edge_type": "on_answer.branch",
+          "noise": "none"
+        }
+      ],
+      "expected_terminal": {
+        "target": "G_TRIAGE_COMPLETE",
+        "type": "gate"
+      },
+      "expected_outputs": [
+        "OUT_TRIAGE_NOTE"
+      ],
+      "expected_state_updates": [
+        "issue_summary",
+        "owner_team",
+        "severity"
+      ],
+      "encountered_unmatched_handlers": [
+        "N_ISSUE_SUMMARY",
+        "N_SEVERITY"
+      ],
+      "readiness": {
+        "case_artifact_ready": true,
+        "runtime_execution_ready": false,
+        "noise_generation_ready": false,
+        "reason": "M60.7.3 emits clean-path testcase artifacts only; runtime execution and noise variants remain future milestones."
+      }
+    },
+    {
+      "schema_version": "ordo.pathwalk.real_module_clean_path_case.v1",
+      "milestone": "M60.7.3",
+      "case_id": "CLEAN_TP_003",
+      "case_type": "clean_path",
+      "noise_pattern": "none",
+      "path_id": "TP_003",
+      "package": "sample.support_triage",
+      "source_path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+      "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=medium -> G_TRIAGE_COMPLETE",
+      "start_node": "N_ISSUE_SUMMARY",
+      "node_sequence": [
+        "N_ISSUE_SUMMARY",
+        "N_SEVERITY"
+      ],
+      "answer_steps": [
+        {
+          "step": 1,
+          "node": "N_ISSUE_SUMMARY",
+          "answer": "sample_answer_for_N_ISSUE_SUMMARY",
+          "source_answer": "*",
+          "to": "N_SEVERITY",
+          "target_type": "node",
+          "edge_type": "on_answer.default",
+          "noise": "none"
+        },
+        {
+          "step": 2,
+          "node": "N_SEVERITY",
+          "answer": "medium",
+          "source_answer": "medium",
+          "to": "G_TRIAGE_COMPLETE",
+          "target_type": "gate",
+          "edge_type": "on_answer.branch",
+          "noise": "none"
+        }
+      ],
+      "expected_terminal": {
+        "target": "G_TRIAGE_COMPLETE",
+        "type": "gate"
+      },
+      "expected_outputs": [
+        "OUT_TRIAGE_NOTE"
+      ],
+      "expected_state_updates": [
+        "issue_summary",
+        "owner_team",
+        "severity"
+      ],
+      "encountered_unmatched_handlers": [
+        "N_ISSUE_SUMMARY",
+        "N_SEVERITY"
+      ],
+      "readiness": {
+        "case_artifact_ready": true,
+        "runtime_execution_ready": false,
+        "noise_generation_ready": false,
+        "reason": "M60.7.3 emits clean-path testcase artifacts only; runtime execution and noise variants remain future milestones."
+      }
+    }
+  ],
+  "readiness": {
+    "clean_path_cases_ready": true,
+    "runtime_execution_ready": false,
+    "noise_case_generation_ready": false,
+    "reason": "Clean path testcase artifacts were generated from terminal paths; no runtime execution or noise generation is claimed."
+  }
+}

@@ -472,7 +472,7 @@
       "chapter_id": "chapter_59_pathwalk_benchmark_readiness",
       "file": "chapters/chapter_59_pathwalk_benchmark_readiness.md",
       "version": "1.0.0",
-      "sha256": "1a9eda7f2572cdbce6dce23ae78b6100a8663bd26d5df818c27e73c85f5cf3cf",
+      "sha256": "239cb11b4b86c9836606aef31346428a642dab29c93665ad2b1428c4171d1175",
       "status": "canonical_ready"
     },
     {
@@ -493,21 +493,21 @@
       "chapter_id": "chapter_62_human_review_scenario_cards",
       "file": "chapters/chapter_62_human_review_scenario_cards.md",
       "version": "1.0.0",
-      "sha256": "8aaee80aa4f85c3f38428f44a525bbf7f687b91ba8a67fda70b8cf38a047ddbd",
+      "sha256": "5545605be5c45afba0f80a7054c4373c6b8a25b527224be2a3a57c39c31df964",
       "status": "canonical_ready"
     },
     {
       "chapter_id": "chapter_63_visual_graph_generator",
       "file": "chapters/chapter_63_visual_graph_generator.md",
       "version": "1.0.0",
-      "sha256": "91af484dfab17291f46b2b3d07fbf5b2ec49757a805a9826a3f99308ca6dd033",
+      "sha256": "3ab5052655145cb0724dff59a120017d976837f9edf0e70dc4b0831816551610",
       "status": "canonical_ready"
     },
     {
       "chapter_id": "chapter_64_companion_utility_workflow",
       "file": "chapters/chapter_64_companion_utility_workflow.md",
       "version": "1.0.0",
-      "sha256": "14d59bbd6e126780cf121f2cb2a4683d82994a2f2719f725286a125611402b6c",
+      "sha256": "9dced9296bf720501612e2efc188ab770eafb3c5b4932a95b8170ce77e0a1eb3",
       "status": "canonical_ready"
     },
     {

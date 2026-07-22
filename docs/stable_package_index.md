@@ -118,7 +118,7 @@ For review-oriented QA handoff, use the newest M61.0 archives. They preserve the
 Current companion utilities:
 
 ```text
-ordo_pathwalk/
+utilities/ordo_pathwalk/
 utilities/ordo_visual_graph_generator/
 ```
 

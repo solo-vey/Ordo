@@ -71,7 +71,7 @@ Use this before generating cases when the author/reviewer needs a fast visual sa
 ### 2. Summarize the real module graph
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-graph   --source "$SRC"   --out "$RUN/graph"   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-graph   --source "$SRC"   --out "$RUN/graph"   --force
 ```
 
 Important artifacts:
@@ -85,7 +85,7 @@ $RUN/graph/VALIDATION_REPORT.json
 ### 3. Enumerate terminal paths
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-paths   --summary "$RUN/graph/REAL_MODULE_GRAPH_SUMMARY.json"   --out "$RUN/paths"   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-paths   --summary "$RUN/graph/REAL_MODULE_GRAPH_SUMMARY.json"   --out "$RUN/paths"   --force
 ```
 
 Important artifacts:
@@ -98,7 +98,7 @@ $RUN/paths/REAL_MODULE_TERMINAL_PATHS.md
 ### 4. Generate clean-path testcase artifacts
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-clean-cases   --paths "$RUN/paths/REAL_MODULE_TERMINAL_PATHS.json"   --out "$RUN/clean_cases"   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-clean-cases   --paths "$RUN/paths/REAL_MODULE_TERMINAL_PATHS.json"   --out "$RUN/clean_cases"   --force
 ```
 
 Important artifacts:
@@ -114,7 +114,7 @@ $RUN/clean_cases/SUMMARY.md
 ### 5. Generate bounded-noise testcase artifacts
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-noise-cases   --paths "$RUN/paths/REAL_MODULE_TERMINAL_PATHS.json"   --out "$RUN/noise_cases"   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-noise-cases   --paths "$RUN/paths/REAL_MODULE_TERMINAL_PATHS.json"   --out "$RUN/noise_cases"   --force
 ```
 
 M61.3 keeps the M60.7 line closure boundary: default bounded noise patterns are:
@@ -131,7 +131,7 @@ skip_ahead
 ### 6. Generate human review scenario cards
 
 ```bash
-PYTHONPATH=cli:. python3 -m ordo_pathwalk.cli real-module-review-cards   --summary "$RUN/clean_cases/SUMMARY.json"   --summary "$RUN/noise_cases/SUMMARY.json"   --out "$RUN/review_cards"   --force
+PYTHONPATH=cli:. python3 -m utilities.ordo_pathwalk.cli real-module-review-cards   --summary "$RUN/clean_cases/SUMMARY.json"   --summary "$RUN/noise_cases/SUMMARY.json"   --out "$RUN/review_cards"   --force
 ```
 
 Important artifacts:

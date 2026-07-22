@@ -32,7 +32,7 @@ jobs:
           cache: pip
           cache-dependency-path: |
             cli/pyproject.toml
-            ordo_pathwalk/requirements.txt
+            utilities/ordo_pathwalk/requirements.txt
 
       - name: Install validation dependencies
         shell: bash
@@ -41,8 +41,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest pyyaml
           python -m pip install -e ./cli
-          if [ -f ordo_pathwalk/requirements.txt ]; then
-            python -m pip install -r ordo_pathwalk/requirements.txt
+          if [ -f utilities/ordo_pathwalk/requirements.txt ]; then
+            python -m pip install -r utilities/ordo_pathwalk/requirements.txt
           fi
 
       - name: Enforce English-only repository policy

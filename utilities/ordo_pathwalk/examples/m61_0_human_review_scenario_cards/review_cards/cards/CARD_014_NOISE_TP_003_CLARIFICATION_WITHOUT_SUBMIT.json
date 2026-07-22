@@ -1,0 +1,88 @@
+{
+  "schema_version": "ordo.pathwalk.real_module_review_card.v1",
+  "milestone": "M61.0",
+  "card_id": "CARD_014_NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT",
+  "case_id": "NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT",
+  "case_type": "noise_path",
+  "noise_pattern": "clarification_without_submit",
+  "path_id": "TP_003",
+  "package": "sample.support_triage",
+  "source_path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+  "branch_signature": "N_ISSUE_SUMMARY=* -> N_SEVERITY=medium -> G_TRIAGE_COMPLETE",
+  "review_goal": "Human QA/developer review of expected model behavior for a generated real-module testcase.",
+  "review_focus": [
+    "Answer or acknowledge clarification without submitting a node answer.",
+    "Do not advance on steps where submit_expected is false.",
+    "Recover to the current required node after the noisy turn.",
+    "Complete the same terminal path after recovery."
+  ],
+  "scripted_steps": [
+    {
+      "step": 0,
+      "node": "N_ISSUE_SUMMARY",
+      "input_kind": "clarification_without_submit",
+      "input": "The user asks for clarification before giving an answer.",
+      "expected_behavior": "answer_or_acknowledge_clarification_without_submitting_or_advancing",
+      "submit_expected": false,
+      "target": null,
+      "target_type": null
+    },
+    {
+      "step": 2,
+      "node": "N_ISSUE_SUMMARY",
+      "input_kind": "clean_answer",
+      "input": "sample_answer_for_N_ISSUE_SUMMARY",
+      "expected_behavior": "accept_answer_and_advance_along_terminal_path",
+      "submit_expected": true,
+      "target": "N_SEVERITY",
+      "target_type": "node"
+    },
+    {
+      "step": 3,
+      "node": "N_SEVERITY",
+      "input_kind": "clean_answer",
+      "input": "medium",
+      "expected_behavior": "accept_answer_and_advance_along_terminal_path",
+      "submit_expected": true,
+      "target": "G_TRIAGE_COMPLETE",
+      "target_type": "gate"
+    }
+  ],
+  "expected_terminal": {
+    "target": "G_TRIAGE_COMPLETE",
+    "type": "gate"
+  },
+  "expected_outputs": [
+    "OUT_TRIAGE_NOTE"
+  ],
+  "expected_state_updates": [
+    "issue_summary",
+    "owner_team",
+    "severity"
+  ],
+  "checklist": [
+    {
+      "item": "Current-node state remains coherent through the card.",
+      "required": true
+    },
+    {
+      "item": "No step with submit_expected=false advances the path.",
+      "required": true
+    },
+    {
+      "item": "Expected terminal target is reached after all valid submits.",
+      "required": true
+    },
+    {
+      "item": "No runtime execution, model scoring, or calibration is implied by this card.",
+      "required": true
+    }
+  ],
+  "readiness": {
+    "review_card_ready": true,
+    "runtime_execution_ready": false,
+    "scoring_ready": false,
+    "calibration_ready": false,
+    "reason": "M61.0 emits human-review cards only; runtime execution, scoring, and calibration remain future milestones."
+  }
+}
