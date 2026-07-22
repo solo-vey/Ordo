@@ -48,8 +48,6 @@ repo_hygiene:
     enabled: true
     adjacent_segment_repetition: true
     repository_name_repetition: true
-    exempt_prefixes:
-      - TRANSFER_2026-07-14/
 
   roots:
     - root_id: language_core

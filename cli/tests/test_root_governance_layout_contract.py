@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
 
 
@@ -17,14 +16,7 @@ RELOCATIONS = {
     "TEST_FIXTURE_AND_PARALLEL_SAFETY_POLICY.md": "docs/policies/TEST_FIXTURE_AND_PARALLEL_SAFETY_POLICY.md",
     "VERSIONING_POLICY.md": "docs/policies/VERSIONING_POLICY.md",
     "DEVELOPER_BUNDLE_README.md": "docs/handoff/DEVELOPER_BUNDLE_README.md",
-    "STABLE_DEVELOPER_HANDOFF.md": "docs/handoff/legacy-root/STABLE_DEVELOPER_HANDOFF.md",
     "START_PROMPT_DEVELOPER_MODE.md": "docs/handoff/START_PROMPT_DEVELOPER_MODE.md",
-    "README_CURRENT_HANDOFF_UK.md": "archive/handoffs/legacy-root/README_CURRENT_HANDOFF_UK.md",
-    "README_CURRENT_PACKAGE_UK.md": "archive/handoffs/legacy-root/README_CURRENT_PACKAGE_UK.md",
-}
-LOCALIZED_HASHES = {
-    "README_CURRENT_HANDOFF_UK.md": "44a87b981c2f5b81cdb1e013ccce0ccf681560634be38cb2c348f77f4f692403",
-    "README_CURRENT_PACKAGE_UK.md": "6892a864d31d7f05ac5ccaced36eeb1c2a78ea45b768f0b7a552d64342ecd457",
 }
 
 
@@ -36,21 +28,15 @@ def test_governance_documents_exist_in_canonical_contours() -> None:
     assert not [target for target in RELOCATIONS.values() if not (ROOT / target).is_file()]
 
 
-def test_localized_handoffs_are_preserved_byte_for_byte() -> None:
-    for name, expected_sha256 in LOCALIZED_HASHES.items():
-        target = ROOT / RELOCATIONS[name]
-        assert hashlib.sha256(target.read_bytes()).hexdigest() == expected_sha256
-
-
 def test_indexes_explain_current_and_historical_ownership() -> None:
     backlog = (ROOT / "backlog/README.md").read_text(encoding="utf-8")
     policies = (ROOT / "docs/policies/README.md").read_text(encoding="utf-8")
     handoffs = (ROOT / "docs/handoff/README.md").read_text(encoding="utf-8")
-    archive = (ROOT / "archive/handoffs/legacy-root/README.md").read_text(encoding="utf-8")
+    archive = (ROOT / "docs/EXTERNAL_ARCHIVES.md").read_text(encoding="utf-8")
     assert "canonical Markdown backlog" in backlog
     assert "normative and reusable repository policy" in policies
     assert "developer-mode start prompt" in handoffs
-    assert "not the present repository state" in archive
+    assert "historical-provenance-2026-07-22" in archive
 
 
 def test_tooling_uses_relocated_canonical_paths() -> None:

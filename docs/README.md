@@ -32,7 +32,6 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 - [`../packages/`](../packages) — reference process and playbook packages.
 - [`../integrations/apf/`](../integrations/apf) — Applied Process Factory modules and assembly definitions.
-- [`status/legacy-root/STABLE_PACKAGE_INDEX.md`](status/legacy-root/STABLE_PACKAGE_INDEX.md) — preserved historical stable package index.
 - [`apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — preserved standard APF module guidance.
 
 ## CLI and validation
@@ -57,6 +56,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json`](../reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json) — packaged self-check evidence.
 - [`../empirical_evidence/`](../empirical_evidence) — normalized and immutable empirical evidence.
 - [`../benchmarks/`](../benchmarks) — benchmark datasets, schemas, and evaluation artifacts.
+- [`EXTERNAL_ARCHIVES.md`](EXTERNAL_ARCHIVES.md) — checksum-bound retrieval for historical provenance kept outside the active tree.
 
 ## Books
 

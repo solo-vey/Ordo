@@ -2,7 +2,7 @@
 
 Current backlog and maturity state live in [`../../backlog/`](../../backlog/).
 
-Historical status documents relocated from the repository root are preserved under [`legacy-root/`](legacy-root/).
+Historical status documents are retained outside the active tree; see [`../EXTERNAL_ARCHIVES.md`](../EXTERNAL_ARCHIVES.md).
 
 Completed repository-maintenance contours:
 

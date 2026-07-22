@@ -5,7 +5,7 @@ The J.6 cleanup moves non-front-door material out of the repository root without
 The contract records every former root path and its canonical destination. Automated tests require that:
 
 - every former root path stays absent;
-- every canonical destination exists;
+- every in-repository canonical destination exists;
 - active builders, workflows, package profiles, and manifests reference canonical paths;
 - navigation links in relocation indexes resolve;
 - `SHA256SUMS.txt` contains the relocated destination and its current digest, not the former root path;
@@ -13,5 +13,7 @@ The contract records every former root path and its canonical destination. Autom
 - the repository root contains only the public front door, legal and community files, checksum index, and root-level policy configuration.
 
 Historical reports, transfer packages, frozen manifests, and immutable evidence may retain old path mentions as provenance. They are not rewritten merely to reflect the current repository layout.
+
+Historical contours that no longer need to occupy every clone are recorded as external archives in the same contract. Their checksum-bound retrieval instructions live in [`EXTERNAL_ARCHIVES.md`](EXTERNAL_ARCHIVES.md); `docs/apf/legacy-root/` remains an in-repository contour because active documentation and tests still use it.
 
 J.6 is closed. Its final machine-readable evidence is [`../manifests/J6_ROOT_CLEANUP_CLOSURE.json`](../manifests/J6_ROOT_CLEANUP_CLOSURE.json), with the human-readable summary in [`status/J6_REPOSITORY_ROOT_CLEANUP_CLOSURE.md`](status/J6_REPOSITORY_ROOT_CLEANUP_CLOSURE.md).
