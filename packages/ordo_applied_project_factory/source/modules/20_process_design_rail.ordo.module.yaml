@@ -127,20 +127,6 @@ graph_contract:
     nodes:
     - N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
     - N_FACTORY_MODE_SELECTION
-    - N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
     rationale: Intentional guided-authoring correction, review, backtracking, or shared-tail retry loop.
-  - id: APF_LOOP_07
-    nodes:
-    - N_LEGACY_MIGRATION_SOURCE_INTAKE
-    - N_LEGACY_MIGRATION_CLAUSE_INVENTORY
-    - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
-    - N_LEGACY_MIGRATION_ORDO_MAPPING
-    - N_LEGACY_MIGRATION_COMPLETENESS_GATE
-    rationale: Intentional legacy-instruction migration reconstruction and correction loop.
   unreachable_node_policy: active_nodes_forbidden; deprecated_legacy_compatibility_allowed
   dead_end_policy: every_reachable_active_node_must_reach_terminal_or_external_terminal
-  transition_provenance:
-    enabled: true
-    mode: strict
-    direct_edges_only: true
-    invalid_entry_behavior: block_and_recover

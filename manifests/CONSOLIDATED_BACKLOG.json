@@ -975,6 +975,22 @@
         "docs/apf/legacy-root/"
       ],
       "completed_in": "historical-provenance-2026-07-22"
+    },
+    {
+      "id": "BL-ORDO-061",
+      "title": "APF Module Source Reconciliation",
+      "status": "open",
+      "priority": "P2",
+      "type": "package_source_integrity",
+      "goal": "Restore semantic equivalence between the APF modular source assembly and the canonical source/program.ordo.yaml without changing the canonical program's runtime semantics.",
+      "discovered_in": "J.8d APF test asset consolidation",
+      "required_scope": [
+        "Reconcile every canonical top-level section and node-level field with its declared module source.",
+        "Keep module_manifest.yaml ownership complete and unique.",
+        "Make the M74.6 modular-assembly tests pass without xfail.",
+        "Preserve canonical program behavior and run package plus repository validation."
+      ],
+      "interim_guard": "cli/tests/test_m74_6_apf_modular_assembly.py is strict-expected-failing until this task closes."
     }
   ],
   "maintenance_contours": [

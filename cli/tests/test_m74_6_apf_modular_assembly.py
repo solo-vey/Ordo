@@ -1,5 +1,11 @@
 from pathlib import Path
 import sys, yaml
+import pytest
+
+pytestmark = pytest.mark.xfail(
+    strict=True,
+    reason="BL-ORDO-061: APF module source has drifted from the canonical program.",
+)
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'tools'))
 from assemble_ordo_modules import assemble

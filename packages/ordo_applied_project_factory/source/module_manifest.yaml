@@ -46,13 +46,5 @@ modules:
   path: modules/35_optional_flow_reuse.ordo.module.yaml
   owns_top_level_keys:
   - flow_reuse
-- id: 75_startup_package_profile
-  path: modules/75_startup_package_profile.ordo.module.yaml
-  owns_top_level_keys:
-  - startup_package_profile
-- id: 80_artifact_sync
-  path: modules/80_artifact_sync.ordo.module.yaml
-  owns_top_level_keys:
-  - artifact_sync
 duplicate_key_policy: blocking
 semantic_equivalence_required: true

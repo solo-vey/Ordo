@@ -103,23 +103,6 @@ nodes:
     enabled_antipattern_overrides:
     - SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION
     - COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE
-  allowed_from:
-  - N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
-  - N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
-  entry_modes:
-  - root
-  - resume
-  - recovery
-  - migration
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_APPLIED_PROJECT_GOAL
   question: Який прикладний Ordo-проєкт треба створити і яку проблему він має вирішувати?
   answer_type: free_text
@@ -134,17 +117,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: applied project goal remains unclear
-  allowed_from:
-  - N_FACTORY_MODE_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_APPLIED_PROCESS_TYPE
   question: 'Який тип процесу має підтримувати проєкт? Обмежень немає: document-generating, QA, delivery, configuration, learning,
     hybrid або інший.'
@@ -160,17 +132,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: process type remains unclear
-  allowed_from:
-  - N_APPLIED_PROJECT_GOAL
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_RUNTIME_ROLES
   question: Хто буде користувачем runtime-процесу і яку роль має виконувати AI у цьому прикладному проєкті?
   answer_type: free_text
@@ -188,17 +149,6 @@ nodes:
       reason: runtime roles remain unclear
   description: Після мети і типу процесу AI зʼясовує runtime-користувача та роль AI; runtime entry point визначається пізніше,
     після доменної моделі, input/output policy та open questions.
-  allowed_from:
-  - N_APPLIED_PROCESS_TYPE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_RUNTIME_ENTRY_POINT
   question: Після доменної моделі, input/output policy і open questions визначте, з чого має починатися runtime-сесія користувача.
   answer_type: free_text
@@ -215,17 +165,6 @@ nodes:
       reason: entry point remains unclear
   description: Runtime entry point визначається після доменного контексту, input policy, candidate outputs і open questions,
     а не одразу після ролей.
-  allowed_from:
-  - N_OPEN_QUESTIONS_REVIEW
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MODULE_VERSIONING_POLICY
   question: 'Підтвердьте versioning policy: Project Factory має власну версійність модуля, а мовний пакет лише включає конкретну
     версію цього модуля.'
@@ -279,17 +218,6 @@ nodes:
   deprecation_reason: Retained as historical design note; module version is represented in module.version and package metadata.
   description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
     whole-tree runtime path.'
-  allowed_from:
-  - N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_GRAPH_ANNOTATION_OVERLAY_POLICY
   question: Коли потрібно, використовуємо graph generator v1.1 annotation overlay для підсвічування вузлів/гейтів і коротких
     коментарів у SVG. Підтвердити?
@@ -334,17 +262,6 @@ nodes:
   deprecation_reason: Retained as historical graph policy note; graph generation is requested explicitly outside runtime path.
   description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
     whole-tree runtime path.'
-  allowed_from:
-  - N_MODULE_VERSIONING_POLICY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_DECISION_TREE_BLUEPRINT
   question: Які головні питання, варіанти відповідей і terminal paths має мати дерево прийняття рішень цього проєкту?
   answer_type: structured_list
@@ -365,17 +282,6 @@ nodes:
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
   deprecation_reason: Superseded by progressive tree authoring flow.
-  allowed_from:
-  - N_GRAPH_ANNOTATION_OVERLAY_POLICY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_STATE_SCHEMA_BLUEPRINT
   question: Перевірте state contract, виведений з approved decision tree, terminal output bindings, templates, gates, deferred
     items і handoff mechanics.
@@ -393,18 +299,6 @@ nodes:
       reason: state schema blueprint remains incomplete
   description: State schema має бути похідною від затвердженого дерева, output bindings/templates, gates, deferred/backtracking
     mechanics і final handoff.
-  allowed_from:
-  - N_APPROVED_TREE_CONSOLIDATION
-  - N_DECISION_TREE_BLUEPRINT
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_OUTPUT_ARTIFACT_CATALOG
   question: Які результати може створювати процес? Зафіксуйте known, candidate, optional, deferred або no-document outputs;
     AI може запропонувати перелік, якщо користувач не знає його наперед.
@@ -428,17 +322,6 @@ nodes:
       reason: output catalog can start as candidate/deferred
   description: Output artifact catalog is separate from input sources and separate from templates. It records possible results
     before terminal paths decide which outputs are bound where.
-  allowed_from:
-  - N_INPUT_ARTIFACTS_POLICY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_OUTPUT_TEMPLATE_CATALOG
   question: 'Для кожного output artifact одразу опишіть template contract: required sections, data source, validation checks
     і owner review status.'
@@ -460,18 +343,6 @@ nodes:
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
   deprecation_reason: Superseded by terminal output binding and shared output/template subflow.
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_VALIDATION_GATE_CATALOG
   question: 'Перевірте gate catalog, привʼязаний до конкретних моментів дерева: node review, branch review, terminal/continue,
     output binding, template verification, source YAML approval і handoff.'
@@ -489,18 +360,6 @@ nodes:
       reason: validation gate catalog remains incomplete
   description: Gate catalog має гарантувати, що процес не проходить далі без потрібних рішень, templates, state completeness
     або validation.
-  allowed_from:
-  - N_OUTPUT_TEMPLATE_CATALOG
-  - N_STATE_SCHEMA_BLUEPRINT
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_BASIC_TEST_CASE_CATALOG
   question: Після затвердження дерева рішень сформуйте 2–3 базові тест-кейси для стабільності дерева. Confusion/self-test
     cases лишаються відкладеними.
@@ -522,18 +381,6 @@ nodes:
     flow.
   description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
     whole-tree runtime path.'
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_FIRST_RELEASE_SCOPE
   question: 'Підтвердіть scope першої версії: AI створює тільки source/program.ordo.yaml, а інші packages/runtime/evidence
     artifacts додаються пізніше після YAML validation.'
@@ -560,17 +407,6 @@ nodes:
   deprecation_reason: Superseded by source YAML approval plus shared validation/handoff tail.
   description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
     whole-tree runtime path.'
-  allowed_from:
-  - N_BASIC_TEST_CASE_CATALOG
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_APPROVAL_TO_GENERATE_SOURCE_YAML
   question: 'Перед генерацією source/program.ordo.yaml підтвердіть pre-generation summary: goal, process type, roles, entry
     point, approved tree, state, gates, terminal outputs, template/mock status і deferred items.'
@@ -602,18 +438,6 @@ nodes:
       reason: source yaml approval remains unclear
   description: Окремий approval gate перед генерацією source/program.ordo.yaml; PM не пише YAML сам, але підтверджує, що структура
     достатньо зрозуміла.
-  allowed_from:
-  - N_FIRST_RELEASE_SCOPE
-  - N_VALIDATION_GATE_CATALOG
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_DOMAIN_MODEL_OVERVIEW
   question: 'Опишіть предметну область процесу: основні сутності, ролі, ключові рішення, типові сценарії, винятки, обмеження
     та знання, які AI має враховувати.'
@@ -630,17 +454,6 @@ nodes:
       action: escalate_to_human
       reason: domain model remains unclear
   description: Domain model overview збирає предметну область людською мовою після мети, типу процесу та runtime roles.
-  allowed_from:
-  - N_RUNTIME_ROLES
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_DOMAIN_INPUT_OUTPUT_SOURCES
   question: 'Надайте або опишіть наявні input sources і бажані output documents/templates: файли, обʼєкти, записи БД, приклади
     документів або усні шаблони.'
@@ -662,18 +475,6 @@ nodes:
   deprecation_reason: Superseded by split input policy and output artifact catalog nodes.
   description: 'Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved orphan in active
     whole-tree runtime path.'
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_OPEN_QUESTIONS_REVIEW
   question: 'Зафіксуйте відкриті питання і класифікуйте їх: blocking, deferred, output-related, gate-related, terminal-path-related
     або resolved.'
@@ -692,18 +493,6 @@ nodes:
       reason: open question gate remains untriaged
   description: Open questions не обовʼязково блокують рух далі; вони мають бути класифіковані й можуть бути привʼязані до
     дерева, gates або terminal output/template review.
-  allowed_from:
-  - N_DOMAIN_INPUT_OUTPUT_SOURCES
-  - N_TERMINAL_OUTPUT_BINDING_POLICY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MANUAL_TREE_PROJECT_GOAL
   question: 'Ручний режим: коротко назвіть мету проєкту й тип процесу, без доменного пояснення.'
   answer_type: free_text
@@ -720,17 +509,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: manual tree project goal remains unclear
-  allowed_from:
-  - N_FACTORY_MODE_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MANUAL_TREE_RUNTIME_CONTEXT
   question: 'Ручний режим: хто runtime-користувач, яка роль AI, і з якого input починається сесія?'
   answer_type: free_text
@@ -747,17 +525,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: manual tree runtime context remains unclear
-  allowed_from:
-  - N_MANUAL_TREE_PROJECT_GOAL
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MANUAL_TREE_ROOT_NODE
   question: 'Ручний режим: надайте дерево рішень у будь-якому людському форматі — root node, список гілок, if/then логіку,
     numbered outline, таблицю рішень, Mermaid-like sketch, псевдокод або фрагмент subtree. YAML не потрібен.'
@@ -779,18 +546,6 @@ nodes:
       reason: manual tree may be partial but can still be normalized into a draft
   description: Branch 2 capture node. Manual input is not approved_decision_tree; it is only raw/manual_tree_input that must
     be normalized and joined into the shared progressive review path.
-  allowed_from:
-  - N_MANUAL_TREE_COMPLETENESS_AND_JOIN
-  - N_MANUAL_TREE_RUNTIME_CONTEXT
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MANUAL_TREE_NORMALIZATION
   question: 'AI нормалізує manual_tree_input у normalized_tree_draft: node aliases, labels, branch labels, branch conditions,
     terminal candidates, missing branches, ambiguous transitions, implied gates, possible outputs і open questions. Показати
@@ -818,17 +573,6 @@ nodes:
       reason: manual tree normalization can proceed as draft but not as approved tree
   description: Normalizes user-supplied manual tree into an internal draft. This node never approves the tree; it only prepares
     the join into shared review.
-  allowed_from:
-  - N_MANUAL_TREE_ROOT_NODE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MANUAL_TREE_COMPLETENESS_AND_JOIN
   question: 'Перевірте повноту normalized_tree_draft: це повне дерево, часткове дерево, root+branches, subtree або sketch?
     Оберіть join point: достатньо структуроване дерево → standard subtree review; часткове/sketch → draft subtree generation.'
@@ -879,17 +623,6 @@ nodes:
       reason: when unsure, route manual tree sketches through draft subtree generation before review
   description: Branch 2 join adapter. Complete/structured manual trees join N_DRAFT_SUBTREE_REVIEW_START; partial trees or
     sketches join N_DRAFT_SUBTREE_GENERATION. All downstream mechanics are reused from branch 1.
-  allowed_from:
-  - N_MANUAL_TREE_NORMALIZATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_FREE_DIALOGUE_INTAKE
   question: 'Вільний діалог: розповідайте потреби, ідеї, приклади, бажані outputs або проблеми без структурування дерева.
     AI накопичує raw notes і не вимагає YAML чи готової схеми.'
@@ -908,19 +641,6 @@ nodes:
       reason: free dialogue remains broad but usable
   description: Цей вузол дозволяє користувачу просто розповідати ідеї, потреби й приклади без вимоги знати YAML або будувати
     дерево рішень.
-  allowed_from:
-  - N_FACTORY_MODE_SELECTION
-  - N_FREE_DIALOGUE_ACCUMULATION_CHECK
-  - N_FREE_DIALOGUE_NEXT_SIGNAL
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
   question: 'AI показує людське резюме вільного діалогу: що ми почули, яке дерево починає вимальовуватись, які candidate nodes/gates/outputs/templates
     зʼявились, які outputs неясні або deferred, і які питання лишаються відкритими.'
@@ -963,17 +683,6 @@ nodes:
   description: Free-dialogue extraction must preserve not only candidate nodes and gates, but also candidate output artifacts,
     candidate template hints, output-related open questions, and explicit known/partial/AI-proposed/deferred/no-output policy.
     Technical aliases remain internal; the user sees a plain-language summary.
-  allowed_from:
-  - N_FREE_DIALOGUE_INTAKE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_FREE_DIALOGUE_ACCUMULATION_CHECK
   question: Чи достатньо вже накопиченого матеріалу, щоб чекати сигнал “що далі / сформулюй”, або треба ще продовжити вільний
     діалог?
@@ -1004,17 +713,6 @@ nodes:
       reason: free dialogue accumulation readiness unclear
   description: 'Цей вузол перевіряє, чи вже досить матеріалу для першого draft дерева. Достатність матеріалу не вимагає фінальних
     outputs/templates: вони можуть бути candidate, AI-proposed або deferred, але output-related notes не мають губитися.'
-  allowed_from:
-  - N_FREE_DIALOGUE_STRUCTURED_EXTRACTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_FREE_DIALOGUE_NEXT_SIGNAL
   question: Користувач питає “що далі / що у нас виходить / давай сформулюємо” або явно просить draft. AI має запропонувати
     перший draft дерева, а не питати користувача з нуля.
@@ -1046,17 +744,6 @@ nodes:
       reason: free dialogue next signal unclear
   description: Цей вузол ловить момент, коли користувач питає “що далі?” або “давай сформулюємо”, і переводить процес до першого
     draft дерева.
-  allowed_from:
-  - N_FREE_DIALOGUE_ACCUMULATION_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
   question: 'AI показує перший draft дерева з structured notes: вузли, гілки, state, gates, terminal candidates, candidate
     output artifacts, template hints, output-related open questions і місця майбутнього terminal output binding. Підтвердіть
@@ -1087,17 +774,6 @@ nodes:
   description: Free-dialogue draft tree is not final approval. After node/branch review, every terminal point uses the shared
     Terminal output binding + template verification loop, including mock-filled examples, before tree consolidation and source
     YAML approval.
-  allowed_from:
-  - N_FREE_DIALOGUE_NEXT_SIGNAL
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
   description: Перед покроковим узгодженням дерева модель погоджує з користувачем, як саме буде виглядати показ кожного вузла.
     Це захищає від технічного alias-first review і від прихованих state/gates/artifacts. For free-dialogue drafts, current-node
@@ -1141,17 +817,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: node review display contract remains unclear
-  allowed_from:
-  - N_FREE_DIALOGUE_DRAFT_TREE_SUMMARY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
   description: 'Цей вузол фіксує економний режим зміни YAML під час обходу дерева: після підтвердженого кроку вносимо тільки
     малий scoped patch, якщо він потрібен, і запускаємо мінімальну перевірку. Повна перевірка не виконується після кожного
@@ -1287,18 +952,6 @@ nodes:
         action: continue_transition_with_evidence
     enabled_antipattern_overrides:
     - PROMPT_AS_IMPLEMENTATION
-  allowed_from:
-  - N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
-  - N_TREE_NODE_REVIEW_DISPLAY_CONTRACT
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TREE_DEPTH_FIRST_REVIEW_LOOP
   question: 'Покажіть рівно один поточний вузол дерева для review у process-design rendering форматі: спочатку явно назвіть
     runtime mode/context shift (tree traversal, branch selection, node-review decision або execution gate), потім покажіть
@@ -1339,23 +992,6 @@ nodes:
     label/context shift: tree traversal, branch selection, node-review decision або execution/validation gate. Runtime view
     must show state, gates, artifacts, pending sibling/deferred branches, and must not mix real unreviewed sibling branches
     with not-selected control actions.'
-  allowed_from:
-  - N_CURRENT_NODE_REVIEW_DECISION_GATE
-  - N_DRAFT_SUBTREE_REVIEW_START
-  - N_INCREMENTAL_YAML_PATCH_VALIDATION_POLICY
-  - N_SHARED_TAIL_CORRECTION_LOOP
-  - N_SHARED_TAIL_SOURCE_YAML_GENERATION
-  - N_SUBTREE_REVIEW_COMPLETION_CHECK
-  - N_TREE_REVIEW_CONTINUE_OR_APPROVE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_CURRENT_NODE_REVIEW_DECISION_GATE
   description: 'Control/review gate для поточного вузла. Це не змістовий вузол дерева, який треба “підтвердити як частину
     дерева”, а runtime-рішення користувача щодо вже показаного вузла. Before asking, runtime must explicitly say: “Зараз це
@@ -1481,17 +1117,6 @@ nodes:
     enabled_antipattern_overrides:
     - MANDATORY_BRANCH_SHORT_CIRCUIT
     - COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE
-  allowed_from:
-  - N_TREE_DEPTH_FIRST_REVIEW_LOOP
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TREE_REVIEW_CONTINUE_OR_APPROVE
   question: Продовжити review наступної гілки/вузла чи затвердити дерево рішень?
   answer_type: enum
@@ -1544,18 +1169,6 @@ nodes:
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
   deprecation_reason: Superseded by subtree review completion and approved tree consolidation.
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_STABILIZED_TREE_BRANCH_HANDOFF
   question: 'Зафіксуйте стабілізовану гілку authoring: який branch/subflow уже затверджений, як він буде використовуватись
     як алгоритм для наступних гілок, і чи можна вмикати self-hosted reuse.'
@@ -1579,17 +1192,6 @@ nodes:
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
   deprecation_reason: Superseded by approved tree consolidation and shared validation/handoff tail.
-  allowed_from:
-  - N_TREE_REVIEW_CONTINUE_OR_APPROVE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
   description: 'Compatibility join point retained for older references. New APF runtime uses the explicit shared validation/handoff
     tail nodes introduced in alpha.19. Alpha.20 integration note: deprecated legacy compatibility node; not counted as unresolved
@@ -1704,18 +1306,6 @@ nodes:
         action: continue_transition_with_evidence
     enabled_antipattern_overrides:
     - MANDATORY_BRANCH_SHORT_CIRCUIT
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_LANGUAGE_IMPROVEMENT_PROPOSALS_REVIEW
   question: Чи виникли під час authoring речі, яких мові бракує або які поки існують як provisional metadata? Зафіксуйте proposal
     або підтвердіть, що нових пропозицій немає.
@@ -1739,17 +1329,6 @@ nodes:
   active_runtime_node: false
   deprecation_reason: Retained as historical improvement-capture note; language proposals are tracked in a separate context
     package.
-  allowed_from:
-  - N_WORKING_CONTEXT_GRAPH_POLICY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_WORKING_CONTEXT_GRAPH_POLICY
   question: 'Підтвердіть стандарт візуалізації: під час звичайної покрокової роботи SVG не генерується автоматично. Якщо користувач
     прямо просить картинку, тоді генерується context-view: шлях від root до поточного вузла плюс піддерево нижче нього.'
@@ -1797,18 +1376,6 @@ nodes:
   lifecycle_status: deprecated_legacy_compatibility
   active_runtime_node: false
   deprecation_reason: Retained as historical graph display policy; not an active startup branch node.
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_PROCESS_FEEDBACK_CHANGE_CONFIRMATION
   description: 'Цей вузол спрацьовує, коли користувач коментує сам процес. AI приймає зауваження, показує як зміниться крок,
     чекає підтвердження, вносить малий YAML patch, запускає мінімальну перевірку і продовжує вже з нової версії. Повна перевірка
@@ -1842,18 +1409,6 @@ nodes:
   active_runtime_node: false
   deprecation_reason: Retained as process-change policy note; active correction mode is now shared validation/handoff correction
     loop.
-  allowed_from: []
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
-  entry_modes:
-  - migration
 - id: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
   description: Вхід у п'ятий режим. Вузол запускає zero-silent-loss migration старої монолітної інструкції у структурований
     Ordo-playbook.
@@ -1886,17 +1441,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY remains unclear
-  allowed_from:
-  - N_FACTORY_MODE_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_LEGACY_MIGRATION_SOURCE_INTAKE
   description: Вузол приймає джерело старої інструкції, яку треба мігрувати.
   question: 'Надайте джерело для міграції: 1 — вставлений текст старої інструкції; 2 — прикріплений файл або архів з інструкцією.'
@@ -1927,18 +1471,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_LEGACY_MIGRATION_SOURCE_INTAKE remains unclear
-  allowed_from:
-  - N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
-  - N_LEGACY_MIGRATION_CLAUSE_INVENTORY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
   description: Побудова clause inventory та первинне захоплення неоднозначностей є обов'язковим першим етапом міграції.
   question: Побудуйте clause inventory, зафіксуйте ambiguity та missing context. Продовжуємо, коли інвентаризація готова.
@@ -1963,26 +1495,6 @@ nodes:
         migration_clause_inventory_status: blocked_by_source_clarification
         migration_ambiguity_capture_status: pending
       next: N_LEGACY_MIGRATION_SOURCE_INTAKE
-  on_unmatched_input:
-    action: CLARIFY.REQUEST
-    strategy: ask_for_missing_n_legacy_migration_clause_inventory_detail
-    max_attempts: 2
-    on_exhausted:
-      action: escalate_to_human
-      reason: N_LEGACY_MIGRATION_CLAUSE_INVENTORY remains unclear
-  allowed_from:
-  - N_LEGACY_MIGRATION_COMPLETENESS_GATE
-  - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
-  - N_LEGACY_MIGRATION_SOURCE_INTAKE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
   description: Після clause inventory будується dependency reconstruction для майбутнього Ordo-графа.
   question: Відновіть залежності між clauses і підготуйте dependency graph. Коли dependency reconstruction готовий, продовжуємо.
@@ -2005,25 +1517,6 @@ nodes:
       update_state:
         migration_dependency_reconstruction_status: blocked
       next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
-  on_unmatched_input:
-    action: CLARIFY.REQUEST
-    strategy: ask_for_missing_n_legacy_migration_dependency_reconstruction_detail
-    max_attempts: 2
-    on_exhausted:
-      action: escalate_to_human
-      reason: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION remains unclear
-  allowed_from:
-  - N_LEGACY_MIGRATION_CLAUSE_INVENTORY
-  - N_LEGACY_MIGRATION_ORDO_MAPPING
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_LEGACY_MIGRATION_ORDO_MAPPING
   description: На цьому кроці clauses і reconstructed dependencies мапляться у структурований Ordo-playbook із traceability.
   question: Побудуйте Ordo mapping і traceability matrix. Продовжуємо тільки коли кожен clause має покриття або явний unresolved
@@ -2049,24 +1542,6 @@ nodes:
         migration_ordo_mapping_status: revision_required
         migration_traceability_status: revision_required
       next: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
-  on_unmatched_input:
-    action: CLARIFY.REQUEST
-    strategy: ask_for_missing_n_legacy_migration_ordo_mapping_detail
-    max_attempts: 2
-    on_exhausted:
-      action: escalate_to_human
-      reason: N_LEGACY_MIGRATION_ORDO_MAPPING remains unclear
-  allowed_from:
-  - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_LEGACY_MIGRATION_COMPLETENESS_GATE
   description: Zero-silent-loss completeness gate блокує перехід далі, якщо хоч один clause втрачений або не має явного статусу.
   question: 'Перевірте completeness gate: чи всі clauses покриті або явно позначені як unresolved? Тільки після цього міграція
@@ -2093,24 +1568,6 @@ nodes:
         migration_completeness_gate_status: failed
         legacy_migration_status: rework_required
       next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
-  on_unmatched_input:
-    action: CLARIFY.REQUEST
-    strategy: ask_for_missing_n_legacy_migration_completeness_gate_detail
-    max_attempts: 2
-    on_exhausted:
-      action: escalate_to_human
-      reason: N_LEGACY_MIGRATION_COMPLETENESS_GATE remains unclear
-  allowed_from:
-  - N_LEGACY_MIGRATION_ORDO_MAPPING
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
   description: Вхід у четвертий режим. Вузол відрізняє коригування наявного процесу від реконструкції або створення нового
     процесу.
@@ -2143,17 +1600,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_EXISTING_PROCESS_IMPROVEMENT_ENTRY remains unclear
-  allowed_from:
-  - N_FACTORY_MODE_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_EXISTING_PROCESS_BASELINE_DEFINITION
   description: 'Baseline не може бути лише людським описом або нотатками: для коригування потрібен повний контекст процесу.'
   question: 'Надайте baseline існуючого процесу. Допустимі тільки: 1 — повний workspace/dev package archive; 2 — self-contained
@@ -2185,17 +1631,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_EXISTING_PROCESS_BASELINE_DEFINITION remains unclear
-  allowed_from:
-  - N_EXISTING_PROCESS_IMPROVEMENT_ENTRY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
   description: 'Вузол розділяє два режими зміни існуючого процесу: batch extraction із набору покращень або targeted dialogue
     навколо одного елемента.'
@@ -2229,17 +1664,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION remains unclear
-  allowed_from:
-  - N_EXISTING_PROCESS_BASELINE_DEFINITION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_BATCH_IMPROVEMENT_LIST_ENTRY
   description: 'Старт batch mode: користувач дає набір бажаних покращень одним пакетом.'
   question: Надайте файл, текст або список покращень для існуючого процесу.
@@ -2256,17 +1680,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_BATCH_IMPROVEMENT_LIST_ENTRY remains unclear
-  allowed_from:
-  - N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_CANDIDATE_IMPROVEMENTS_EXTRACTION
   description: 'Extraction не змінює YAML: вона лише формує список можливих покращень.'
   question: AI витягує з batch input candidate improvements і показує їх людською мовою для вибору.
@@ -2283,17 +1696,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_CANDIDATE_IMPROVEMENTS_EXTRACTION remains unclear
-  allowed_from:
-  - N_BATCH_IMPROVEMENT_LIST_ENTRY
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_CANDIDATE_IMPROVEMENTS_SELECTION
   description: Користувач явно відділяє approved/rejected/deferred candidates перед mapping на процес.
   question: Оберіть, які candidate improvements застосувати, які відхилити, а які відкласти.
@@ -2311,17 +1713,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_CANDIDATE_IMPROVEMENTS_SELECTION remains unclear
-  allowed_from:
-  - N_CANDIDATE_IMPROVEMENTS_EXTRACTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_IMPROVEMENT_TO_PROCESS_MAPPING
   description: Mapping визначає, які частини існуючого процесу будуть зачеплені змінами.
   question: AI мапить вибрані покращення на вузли, transitions, gates, state, artifacts, templates або runtime policy.
@@ -2338,17 +1729,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_IMPROVEMENT_TO_PROCESS_MAPPING remains unclear
-  allowed_from:
-  - N_CANDIDATE_IMPROVEMENTS_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
   description: Перед patch application кожна зміна має отримати статус і бути зрозумілою користувачу.
   question: 'Для кожного affected item показати before/after card і отримати рішення: прийняти, скоригувати, відкласти або
@@ -2368,17 +1748,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_BEFORE_AFTER_AFFECTED_NODES_REVIEW remains unclear
-  allowed_from:
-  - N_IMPROVEMENT_TO_PROCESS_MAPPING
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
   description: 'Старт targeted mode: користувач може назвати вузол, gate, state, artifact або просто описати проблему.'
   question: Опишіть точкову проблему або елемент процесу, який хочете покращити.
@@ -2395,17 +1764,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY remains unclear
-  allowed_from:
-  - N_EXISTING_PROCESS_IMPROVEMENT_MODE_SELECTION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TARGET_PROCESS_ITEM_IDENTIFICATION
   description: Перед пропозицією зміни треба знайти конкретний предмет коригування.
   question: 'AI визначає цільовий елемент процесу: node, transition, gate, state, artifact, policy або problem area.'
@@ -2421,18 +1779,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_TARGET_PROCESS_ITEM_IDENTIFICATION remains unclear
-  allowed_from:
-  - N_TARGETED_DIALOGUE_IMPROVEMENT_ENTRY
-  - N_TARGETED_MORE_IMPROVEMENTS_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TARGETED_CHANGE_CLARIFICATION
   description: Не можна формувати after proposal без достатньо описаної бажаної зміни.
   question: 'Уточніть бажану зміну: що зараз неправильно, як має стати, що додати, що не змінювати, локальна це правка чи
@@ -2450,18 +1796,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_TARGETED_CHANGE_CLARIFICATION remains unclear
-  allowed_from:
-  - N_TARGETED_CHANGE_DECISION
-  - N_TARGET_PROCESS_ITEM_IDENTIFICATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TARGETED_BEFORE_AFTER_PROPOSAL
   description: Before/after proposal робить точкову зміну перевірною до внесення в YAML.
   question: AI показує target item, before snapshot, proposed after version, rationale, affected state/gates/artifacts і open
@@ -2479,17 +1813,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_TARGETED_BEFORE_AFTER_PROPOSAL remains unclear
-  allowed_from:
-  - N_TARGETED_CHANGE_CLARIFICATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TARGETED_CHANGE_DECISION
   description: Decision gate для конкретного targeted after proposal.
   question: Що робимо з цією запропонованою зміною?
@@ -2535,17 +1858,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_TARGETED_CHANGE_DECISION remains unclear
-  allowed_from:
-  - N_TARGETED_BEFORE_AFTER_PROPOSAL
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TARGETED_MORE_IMPROVEMENTS_CHECK
   description: 'Loop-control вузол: або повертаємось до наступного target item, або виходимо до shared change pipeline.'
   question: Чи є ще точкові покращення для цього процесу?
@@ -2574,17 +1886,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_TARGETED_MORE_IMPROVEMENTS_CHECK remains unclear
-  allowed_from:
-  - N_TARGETED_CHANGE_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
   description: Batch і targeted improvement modes сходяться тут; downstream validation/handoff не дублюється, а йде через
     shared terminal pipeline.
@@ -2601,18 +1902,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE remains unclear
-  allowed_from:
-  - N_BEFORE_AFTER_AFFECTED_NODES_REVIEW
-  - N_TARGETED_MORE_IMPROVEMENTS_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_CONFIRMED_CHANGE_SET_BUILDING
   description: Confirmed change set є єдиним дозволеним input для YAML patch application.
   question: Сформувати confirmed change set з approved changes; rejected і deferred changes зберегти окремо.
@@ -2629,17 +1918,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_CONFIRMED_CHANGE_SET_BUILDING remains unclear
-  allowed_from:
-  - N_IMPROVEMENT_MODES_CLOSURE_TO_SHARED_CHANGE_PIPELINE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SCOPED_YAML_PATCH_APPLICATION
   description: 'Patch discipline: не перебудовувати весь процес, а змінювати лише підтверджені частини.'
   question: Застосувати тільки scoped YAML patches, що відповідають confirmed change set.
@@ -2657,18 +1935,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: N_SCOPED_YAML_PATCH_APPLICATION remains unclear
-  allowed_from:
-  - N_CONFIRMED_CHANGE_SET_BUILDING
-  - N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
   description: Після мінімальної перевірки scoped patch joins the shared validation/handoff tail. Full validation/handoff
     nodes are referenced, not duplicated.
@@ -2750,17 +2016,6 @@ nodes:
     enabled_antipattern_overrides:
     - PROMPT_AS_IMPLEMENTATION
     - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
-  allowed_from:
-  - N_SCOPED_YAML_PATCH_APPLICATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_INPUT_ARTIFACTS_POLICY
   question: Які вхідні матеріали або джерела має використовувати цей процес? Якщо їх зараз немає або процес не регламентує
     вхід — зафіксуйте відповідну input policy.
@@ -2783,17 +2038,6 @@ nodes:
       reason: input policy can be unknown or deferred but must be explicit
   description: 'Atomic input-policy node. Input artifacts are not mandatory: user may have required inputs, optional inputs,
     no predefined input, unknown/deferred input, or inputs produced later in the process.'
-  allowed_from:
-  - N_DOMAIN_MODEL_OVERVIEW
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TERMINAL_OUTPUT_BINDING_POLICY
   question: 'Підтвердьте policy: кожна terminal point має окремо вибрати outputs, перевірити templates/mock examples або явно
     позначити no-output/deferred output.'
@@ -2832,17 +2076,6 @@ nodes:
   description: 'Shared policy node: output templates are not a black box. Terminal points bind outputs, verify templates and
     review mock-filled examples before package approval. This shared policy is used by branch 1, branch 2, branch 3 free-dialogue
     draft trees, and branch 4 when outputs/templates are changed.'
-  allowed_from:
-  - N_OUTPUT_ARTIFACT_CATALOG
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_PROGRESSIVE_TREE_AUTHORING_ENTRY
   question: 'Переходимо до progressive tree authoring: користувач може описати тільки root і перші гілки, глибший subtree,
     повний draft або просто логіку словами.'
@@ -2873,17 +2106,6 @@ nodes:
       reason: progressive mode is default
   description: Replaces static decision_tree_blueprint for branch 1. The user does not need to describe the whole tree up
     front.
-  allowed_from:
-  - N_RUNTIME_ENTRY_POINT
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_USER_TREE_VISION_CAPTURE
   question: Як ви зараз бачите старт дерева? Можна описати root + перші гілки, одну наступну гілку, subtree на 2–5 рівнів,
     повний draft або free-form logic.
@@ -2902,18 +2124,6 @@ nodes:
       action: escalate_to_human
       reason: no root node or usable tree logic
   description: Captures shallow or deep user tree vision before AI drafts a subtree.
-  allowed_from:
-  - N_PROGRESSIVE_TREE_AUTHORING_ENTRY
-  - N_TERMINAL_OR_CONTINUE_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_DRAFT_SUBTREE_GENERATION
   question: 'AI формує draft-subtree з user tree vision: root/current node, питання/дії, branches, deeper nodes, terminal
     candidates, output binding candidates і risks.'
@@ -2935,21 +2145,6 @@ nodes:
       action: escalate_to_human
       reason: draft subtree was not generated
   description: Draft subtree is not approved tree. It must enter node/branch/terminal verification.
-  allowed_from:
-  - N_DRAFT_SUBTREE_REVIEW_START
-  - N_MANUAL_TREE_COMPLETENESS_AND_JOIN
-  - N_SUBTREE_REVIEW_COMPLETION_CHECK
-  - N_TERMINAL_OR_CONTINUE_DECISION
-  - N_USER_TREE_VISION_CAPTURE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_DRAFT_SUBTREE_REVIEW_START
   question: 'Починаємо standard verification draft-subtree: current node, branches, terminal/continue decisions, output binding,
     sibling branches and deferred return points.'
@@ -2980,18 +2175,6 @@ nodes:
       action: continue_with_start_subtree_review
       reason: review is mandatory after draft generation
   description: Turns generated draft subtree into a review queue.
-  allowed_from:
-  - N_DRAFT_SUBTREE_GENERATION
-  - N_MANUAL_TREE_COMPLETENESS_AND_JOIN
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_BRANCH_REVIEW
   question: 'Перевірте вихідні гілки поточного вузла: label, умова/відповідь, next node або terminal candidate, state updates,
     gates, sibling/deferred status.'
@@ -3011,17 +2194,6 @@ nodes:
       action: escalate_to_human
       reason: branch review incomplete
   description: A node can be correct while its outgoing branches are wrong; branch review is separate from node review.
-  allowed_from:
-  - N_CURRENT_NODE_REVIEW_DECISION_GATE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TERMINAL_OR_CONTINUE_DECISION
   question: Що відбувається далі по цій гілці?
   answer_type: enum
@@ -3077,17 +2249,6 @@ nodes:
       reason: terminal-or-continue decision unclear
   description: 'Core progressive tree decision: each reviewed branch either ends, continues, gets an intermediate node, reopens
     previous logic, or is deferred.'
-  allowed_from:
-  - N_BRANCH_REVIEW
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TERMINAL_OUTPUT_BINDING_LOOP
   question: 'Terminal point reached. Define output policy: use existing output, add a new artifact, confirm no output is needed,
     or defer the output decision.'
@@ -3143,17 +2304,6 @@ nodes:
       reason: terminal output selection unclear
   description: 'Shared step 2: terminal output policy selection. This is a branching point; each branch is reviewed explicitly
     and downstream template logic is shared.'
-  allowed_from:
-  - N_TERMINAL_OR_CONTINUE_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
   question: 'Check template status for each active output artifact: existing, missing/new recipe needed, partial, accepted
     for alpha, or unfinished/deferred.'
@@ -3179,17 +2329,6 @@ nodes:
       reason: unknown template status is treated as missing
   description: 'Shared step 3: status check before review package generation. It does not approve templates; it only routes
     to review, creation, partial completion, alpha acceptance, or unfinished/deferred handling.'
-  allowed_from:
-  - N_TERMINAL_OUTPUT_BINDING_LOOP
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
   question: 'Route template handling for selected outputs: use existing, create new recipe/template, complete partial, accept
     for alpha with risks, defer as unfinished, or remove output.'
@@ -3246,19 +2385,6 @@ nodes:
       reason: template action unclear
   description: Routes output artifacts to file-first review package, recipe authoring, partial completion, alpha risk acceptance,
     unfinished/deferred handling, or removal.
-  allowed_from:
-  - N_SELECTED_OUTPUT_TEMPLATE_STATUS_CHECK
-  - N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
-  - N_TERMINAL_PATH_READY_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_OUTPUT_TEMPLATE_REVIEW_LOOP
   question: 'After the user reviews the template/mock/mapping package, choose one simple action: confirm, revise, defer, or
     remove artifact.'
@@ -3324,17 +2450,6 @@ nodes:
       reason: review decision unclear
   description: 'Shared step 5: user review result handling. The runtime intentionally avoids seven-option micro-menus; technical
     sub-actions are inferred under revise.'
-  allowed_from:
-  - N_OUTPUT_REVIEW_PACKAGE_GENERATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_OUTPUT_TEMPLATE_CREATION_LOOP
   question: Create or complete an output recipe/template. The user may use guided, free-form, uploaded-template, or AI-proposed
     mode; no template-engine syntax knowledge is required.
@@ -3366,19 +2481,6 @@ nodes:
       reason: template creation data incomplete
   description: Creates or completes the output recipe/template and maps terminal state fields to direct inserts or generated
     sections before review package generation.
-  allowed_from:
-  - N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
-  - N_OUTPUT_REVIEW_PACKAGE_GENERATION
-  - N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TERMINAL_PATH_READY_CHECK
   question: 'Show terminal path readiness: output policy, active artifacts, template/mock/mapping status, alpha limitations,
     removed artifacts, unfinished blockers. Confirm ready only if there are no unfinished active artifacts/templates.'
@@ -3422,22 +2524,6 @@ nodes:
       reason: terminal path readiness unclear
   description: 'Shared step 7: terminal path ready check. Unfinished active templates/artifacts block output generation until
     completed or removed.'
-  allowed_from:
-  - N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
-  - N_OUTPUT_TEMPLATE_REVIEW_LOOP
-  - N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
-  - N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
-  - N_TERMINAL_OUTPUT_BINDING_LOOP
-  - N_TERMINAL_PATH_READY_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SUBTREE_REVIEW_COMPLETION_CHECK
   question: 'Показати subtree review status: confirmed nodes/branches, unreviewed siblings, deferred return points, terminal
     output binding, corrections, blocking open questions. Що робимо далі?'
@@ -3491,19 +2577,6 @@ nodes:
       reason: subtree completion status unclear
   description: Prevents accidental tree closure while sibling branches, deferred return points, correction items or terminal
     output bindings remain unresolved.
-  allowed_from:
-  - N_CURRENT_NODE_REVIEW_DECISION_GATE
-  - N_TERMINAL_OR_CONTINUE_DECISION
-  - N_TERMINAL_PATH_READY_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_APPROVED_TREE_CONSOLIDATION
   question: 'Зберіть approved tree summary: root, branches, terminal paths, output bindings, templates, deferred alpha items,
     risks, implied state fields, gates і outputs/templates.'
@@ -3525,17 +2598,6 @@ nodes:
   description: Consolidates reviewed draft subtree into approved_decision_tree or approved_for_alpha_with_deferred_items before
     state/gate/source YAML generation. Free-dialogue trees may enter here only after candidate outputs are either bound, marked
     no-output, deferred/accepted for alpha, or removed.
-  allowed_from:
-  - N_SUBTREE_REVIEW_COMPLETION_CHECK
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
   question: Describe freely what artifact should be created at this terminal point and why. The runtime shows available terminal
     state fields first; examples are hints only, not a closed list.
@@ -3569,18 +2631,6 @@ nodes:
       reason: new artifact intent unclear
   description: Captures free-form artifact intent for a new terminal output. The runtime must show accumulated terminal path
     state so the user can decide what to insert directly and what the model should generate.
-  allowed_from:
-  - N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
-  - N_TERMINAL_OUTPUT_BINDING_LOOP
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_NEW_OUTPUT_ARTIFACT_INTENT_CONFIRMATION
   question: 'Confirm the interpreted artifact intent: purpose, audience, expected sections, and initial direct-vs-generated
     fill logic.'
@@ -3632,17 +2682,6 @@ nodes:
       action: defer_artifact
       reason: artifact intent confirmation unclear
   description: Confirms AI interpretation of a free-form artifact request before recipe/template authoring begins.
-  allowed_from:
-  - N_NEW_OUTPUT_ARTIFACT_INTENT_CAPTURE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_OUTPUT_REVIEW_PACKAGE_GENERATION
   question: 'Generate a review package for the artifact/template: template file, mock-filled example, mapping report, and
     assumptions/risks summary. Use file-first mode for document-like artifacts.'
@@ -3685,19 +2724,6 @@ nodes:
       reason: review package generation unclear
   description: 'Shared step 4: review package/mock example generation. Large documents are delivered as downloadable files;
     chat shows only a summary/mapping/risk card.'
-  allowed_from:
-  - N_OUTPUT_TEMPLATE_CREATION_LOOP
-  - N_OUTPUT_TEMPLATE_REVIEW_LOOP
-  - N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_TERMINAL_OUTPUT_BINDING_CONFIRMATION
   question: 'Confirm the final output binding for this terminal point: active artifacts, approved/alpha templates, reviewed
     mock examples, state mapping, removed artifacts, and unfinished blockers.'
@@ -3751,17 +2777,6 @@ nodes:
       action: defer
       reason: terminal output binding confirmation unclear
   description: 'Shared step 6: confirms active output bindings after template/mock/mapping review and before terminal readiness.'
-  allowed_from:
-  - N_OUTPUT_TEMPLATE_REVIEW_LOOP
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_SOURCE_YAML_GENERATION
   description: 'Shared tail step 1: generate or update source/program.ordo.yaml after explicit approval and a visible generation
     scope summary.'
@@ -3805,18 +2820,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: source YAML generation action unclear
-  allowed_from:
-  - N_APPROVAL_TO_GENERATE_SOURCE_YAML
-  - N_LEGACY_MIGRATION_COMPLETENESS_GATE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_MINIMAL_VALIDATION
   description: 'Shared tail step 2: minimal technical validation after YAML generation. Failed validation shows a short issue
     list and routes to correction or blocked defer, not a separate show-details branch.'
@@ -3913,18 +2916,6 @@ nodes:
     enabled_antipattern_overrides:
     - PROMPT_AS_IMPLEMENTATION
     - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
-  allowed_from:
-  - N_SHARED_TAIL_CORRECTION_LOOP
-  - N_SHARED_TAIL_SOURCE_YAML_GENERATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_FULL_VALIDATION_DECISION
   description: 'Shared tail step 3: decide whether to run full validation now or explicitly skip it for alpha. Skipped is
     recorded as a limitation and never as passed.'
@@ -3968,20 +2959,6 @@ nodes:
     on_exhausted:
       action: record_skipped_full_validation_for_alpha
       reason: full validation decision unclear
-  allowed_from:
-  - N_MINIMAL_VALIDATION_AFTER_SCOPED_PATCH
-  - N_SHARED_TAIL_MINIMAL_VALIDATION
-  - N_STABILIZED_TREE_BRANCH_HANDOFF
-  - N_TERMINAL_BRANCH_FULL_VALIDATION_GATE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
   description: 'Shared tail step 4: review full validation result. Failed checks route to correction or blocked/deferred;
     failed/skipped is never called passed.'
@@ -4075,17 +3052,6 @@ nodes:
     enabled_antipattern_overrides:
     - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
     - FINAL_LABEL_OVERCLAIM
-  allowed_from:
-  - N_SHARED_TAIL_FULL_VALIDATION_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_CORRECTION_LOOP
   description: 'Shared tail step 5: scoped correction loop for validation issues. It shows what is broken, proposes minimal
     scoped fixes, and distinguishes technical fixes from process-logic changes.'
@@ -4137,21 +3103,6 @@ nodes:
     on_exhausted:
       action: escalate_to_human
       reason: correction decision unclear
-  allowed_from:
-  - N_SHARED_TAIL_FINAL_HANDOFF
-  - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
-  - N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
-  - N_SHARED_TAIL_MINIMAL_VALIDATION
-  - N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
   description: 'Shared tail step 6: final unfinished-items/readiness gate before handoff package generation.'
   question: 'Final readiness check: unfinished artifacts/templates, deferred outputs, validation limitations, accepted alpha
@@ -4290,25 +3241,9 @@ nodes:
         action: continue_transition_with_evidence
     enabled_antipattern_overrides:
     - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
-  allowed_from:
-  - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
-  - N_SHARED_TAIL_FULL_VALIDATION_DECISION
-  - N_SHARED_TAIL_VALIDATION_RESULT_REVIEW
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_DELIVERY_TARGET_DECISION
-  description: 'Shared tail delivery decision: after the canonical playbook contract and validation are stable, ARF recommends
-    a delivery target and the analyst confirms engine runtime, prompt-only instructions, or both.'
-  question: 'The canonical playbook is validated. Review the ARF recommendation and choose the delivery target: engine_runtime,
-    prompt_only, or both. Prompt-only does not retain mechanical gates, runtime state validation, enforced transitions, CSG
-    protection, or default runtime evidence capture.'
+  description: 'Shared tail delivery decision: after the canonical playbook contract and validation are stable, ARF recommends a delivery target and the analyst confirms engine runtime, prompt-only instructions, or both.'
+  question: 'The canonical playbook is validated. Review the ARF recommendation and choose the delivery target: engine_runtime, prompt_only, or both. Prompt-only does not retain mechanical gates, runtime state validation, enforced transitions, CSG protection, or default runtime evidence capture.'
   answer_type: enum
   allowed_answers:
   - engine_runtime
@@ -4376,17 +3311,8 @@ nodes:
       reason: delivery target remains unclear
   allowed_from:
   - N_SHARED_TAIL_FINAL_UNFINISHED_ITEMS_GATE
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
-  description: 'Shared tail step 7: generate a file-first handoff package after final readiness is ready_for_handoff.'
+  description: 'Shared tail step 7: generate the analyst-confirmed delivery target package(s) after final readiness and delivery-target decision are complete.'
   question: 'Процес готовий до handoff. Згенерувати handoff package: source YAML, compiled artifacts, validation report, output/template
     catalog, terminal binding summary, alpha limitations, unfinished/removed items log, changelog/release notes, usage/start
     prompt notes.'
@@ -4478,17 +3404,6 @@ nodes:
     - PROMPT_AS_IMPLEMENTATION
     - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
     - FINAL_LABEL_OVERCLAIM
-  allowed_from:
-  - N_SHARED_TAIL_DELIVERY_TARGET_DECISION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: N_SHARED_TAIL_FINAL_HANDOFF
   description: 'Shared tail step 8: final handoff decision after package generation. User either accepts the package or returns
     it for revision.'
@@ -4574,17 +3489,6 @@ nodes:
     enabled_antipattern_overrides:
     - PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION
     - FINAL_LABEL_OVERCLAIM
-  allowed_from:
-  - N_SHARED_TAIL_HANDOFF_PACKAGE_GENERATION
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
 - id: END_HANDOFF_ACCEPTED
   description: 'Terminal marker: handoff package accepted and process package ready for use or next review.'
   terminal: true
@@ -4596,14 +3500,3 @@ nodes:
   on_unmatched_input:
     action: IGNORE
     reason: terminal node
-  allowed_from:
-  - N_SHARED_TAIL_FINAL_HANDOFF
-  node_context:
-    version: '1.0'
-    required_state:
-    - current_node
-    knowledge_refs: []
-    allowed_tools: []
-    output_contract:
-      state_diff: required
-      next_node: explicit
