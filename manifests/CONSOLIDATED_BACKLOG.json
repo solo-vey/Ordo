@@ -1020,7 +1020,7 @@
     {
       "id": "BL-ORDO-063",
       "title": "ARF Playbook Laws and Generated-Playbook Propagation",
-      "status": "open",
+      "status": "closed",
       "priority": "P2",
       "type": "playbook_governance_contract",
       "goal": "Add four canonical Playbook Laws to the ARF master playbook and contractually propagate them into every generated working playbook.",
@@ -1035,7 +1035,10 @@
         "Propagate the laws into generated working playbooks through a deterministic inheritance or rendering mechanism.",
         "Define precedence for conflicting instructions without overriding repository safety, platform, or human-owner authority.",
         "Add generated-playbook evidence and regression tests for the propagated laws."
-      ]
+      ],
+      "pull_request": "https://github.com/solo-vey/Ordo/pull/37",
+      "merge_commit": "c843394462c863b4a165526d29b1c5927ec3a9ed",
+      "completed_in": "ARF Playbook Laws contract"
     }
   ],
   "maintenance_contours": [
