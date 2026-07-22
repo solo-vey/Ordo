@@ -945,18 +945,36 @@
     {
       "id": "BL-ORDO-059",
       "title": "Legacy Checkpoint Lifecycle and Archive Disposition",
-      "status": "open",
+      "status": "closed",
       "priority": "P2",
       "type": "evidence_lifecycle_governance",
-      "goal": "Determine the canonical retention, external immutable archival, or removal treatment for pre-RC6 rollback checkpoint archives without breaking reproducibility or provenance.",
+      "goal": "Externalize the four pre-RC6 rollback checkpoint archives without breaking reproducibility or provenance.",
       "audit": "backlog/CHECKPOINT_LIFECYCLE_AUDIT.md",
-      "required_scope": [
-        "Classify all four checkpoint archives by retention need and consumer impact.",
-        "If externalized, create checksum-bound locator manifests and verify clean retrieval plus restore round trips.",
-        "Update references, release/archive builders, and checksums before removing inline bytes.",
-        "Do not rewrite Git history or alter archive bytes in place."
+      "external_archive_locator": "manifests/external_archives/HISTORICAL_PROVENANCE_2026_07_22.json",
+      "completed_in": "historical-provenance-2026-07-22"
+    },
+    {
+      "id": "BL-ORDO-060",
+      "title": "Historical Payload Externalization and Current-State Cleanup",
+      "status": "closed",
+      "priority": "P1",
+      "type": "repository_provenance_lifecycle",
+      "goal": "Move agreed historical payloads outside the active repository tree while retaining checksum-bound retrieval and without rewriting Git history.",
+      "external_archive_locator": "manifests/external_archives/HISTORICAL_PROVENANCE_2026_07_22.json",
+      "included_contours": [
+        "TRANSFER_2026-07-14/",
+        "recovery/2026-07-14/",
+        "archive/handoffs/",
+        "docs/handoff/legacy-root/",
+        "docs/releases/legacy-root/",
+        "docs/status/legacy-root/",
+        "manifests/releases/legacy-root/",
+        "checkpoints/"
       ],
-      "scope_note": "Read-only lifecycle audit complete. Archive migration or deletion is deliberately deferred."
+      "excluded_contours": [
+        "docs/apf/legacy-root/"
+      ],
+      "completed_in": "historical-provenance-2026-07-22"
     }
   ],
   "maintenance_contours": [

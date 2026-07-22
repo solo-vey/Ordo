@@ -1,0 +1,34 @@
+{
+  "schema_version": "ordo.external_archive_locator.v1",
+  "archive_id": "historical-provenance-2026-07-22",
+  "provider": "github_release_asset",
+  "repository": "solo-vey/Ordo",
+  "release_url": "https://github.com/solo-vey/Ordo/releases/tag/historical-provenance-2026-07-22",
+  "source_commit": "e6c96224d8a4bf10642f1f3949ada1981c74549c",
+  "archive": {
+    "asset_url": "https://github.com/solo-vey/Ordo/releases/download/historical-provenance-2026-07-22/ordo-historical-provenance-2026-07-22.tar.gz",
+    "sha256": "265ce7ad9bca1ca285615a7c434bc0689ee87ff37b3cb77852fd7f4b43affc0d"
+  },
+  "content_manifest": {
+    "asset_url": "https://github.com/solo-vey/Ordo/releases/download/historical-provenance-2026-07-22/ordo-historical-provenance-2026-07-22.manifest.json",
+    "sha256": "47e0ad5559330a8e8d85a453ed374d528a405b429ed08c3778556e7c0ecf64c6"
+  },
+  "content_checksums": {
+    "asset_url": "https://github.com/solo-vey/Ordo/releases/download/historical-provenance-2026-07-22/ordo-historical-provenance-2026-07-22.SHA256SUMS.txt",
+    "sha256": "66becb48087c8213109d0236074d4e53a99dbeba80c065bb6f71f9e4318dd2ce"
+  },
+  "included_contours": [
+    "TRANSFER_2026-07-14/",
+    "recovery/2026-07-14/",
+    "archive/handoffs/",
+    "docs/handoff/legacy-root/",
+    "docs/releases/legacy-root/",
+    "docs/status/legacy-root/",
+    "manifests/releases/legacy-root/",
+    "checkpoints/"
+  ],
+  "excluded_contours": [
+    "docs/apf/legacy-root/"
+  ],
+  "retrieval_verification": "Download the archive and attached SHA256SUMS file, verify the archive SHA-256, extract it, then run shasum -a 256 -c metadata/SHA256SUMS.txt from the extracted payload directory."
+}

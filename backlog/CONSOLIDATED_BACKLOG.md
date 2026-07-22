@@ -219,13 +219,23 @@ classification and reference/checksum impact are explicit.
 
 ### BL-ORDO-059 — Legacy Checkpoint Lifecycle and Archive Disposition
 
-Status: `open`
+Status: `closed`
 
 Use [CHECKPOINT_LIFECYCLE_AUDIT.md](CHECKPOINT_LIFECYCLE_AUDIT.md) to decide
-the canonical treatment for the four pre-RC6 rollback archives. They are
-verified historical recovery evidence with no direct active consumers; do not
-delete them until an approved retention or external-archive migration has
-checksum-bound retrieval and restore proof.
+the canonical treatment for the four pre-RC6 rollback archives. They were
+externalized to the checksum-bound historical provenance release after clean
+retrieval and restore verification.
+
+### BL-ORDO-060 — Historical Payload Externalization and Current-State Cleanup
+
+Status: `closed`
+
+Historical transfer, recovery, handoff, release/status, manifest, and
+checkpoint payloads that were not current runtime inputs now live in the
+checksum-bound [external historical archive](../docs/EXTERNAL_ARCHIVES.md).
+The active tree retains only a compact locator manifest and current
+documentation. `docs/apf/legacy-root/` remains in-repository until its active
+references are separately migrated.
 
 ## Backlog Reconciliation — 2026-07-18
 

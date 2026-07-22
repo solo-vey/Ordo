@@ -41,7 +41,7 @@ The canonical categories are declared in [`../repo_hygiene.yml`](../repo_hygiene
 
 ## Duplicate nesting
 
-Development scope blocks duplicate nesting only when the affected path is Git-tracked. Release scope scans the complete isolated export. The gate detects adjacent repeated directory segments and repository-name nesting such as `Ordo/Ordo/`. Historical transfer provenance under `TRANSFER_2026-07-14/` is explicitly exempt and must not be rewritten merely to satisfy cleanup preferences.
+Development scope blocks duplicate nesting only when the affected path is Git-tracked. Release scope scans the complete isolated export. The gate detects adjacent repeated directory segments and repository-name nesting such as `Ordo/Ordo/`. Historical provenance removed from the active tree is retained through the checksum-bound external archive locator in [`EXTERNAL_ARCHIVES.md`](EXTERNAL_ARCHIVES.md).
 
 ## Generated outputs
 

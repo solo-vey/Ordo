@@ -93,11 +93,7 @@ This bundle includes the companion utilities packaging plan. PathWalk remains th
 
 M60.8 is the current stable developer bundle handoff. It adds package-selection guidance, a stable quickstart, and a future backlog. It does not change runtime semantics, scoring weights, or PathWalk generator behavior.
 
-Start with:
-
-- `docs/handoff/legacy-root/STABLE_DEVELOPER_HANDOFF.md`
-- `docs/status/legacy-root/STABLE_PACKAGE_INDEX.md`
-- `backlog/FUTURE_BACKLOG.md`
+Start with [`backlog/FUTURE_BACKLOG.md`](../../backlog/FUTURE_BACKLOG.md). The M60.8 handoff and historical stable package index are available from the external provenance archive documented in [`../EXTERNAL_ARCHIVES.md`](../EXTERNAL_ARCHIVES.md).
 
 ## M60.6.2 Calibration Report Refinement
 

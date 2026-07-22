@@ -2,7 +2,7 @@
 
 M60.8 is a documentation/package consolidation milestone. PathWalk behavior remains at the M60.7.5 artifact-only boundary: `real-module-graph`, `real-module-paths`, `real-module-clean-cases`, and bounded `real-module-noise-cases` for `distraction`, `invalid_branch`, `clarification_without_submit`, and `skip_ahead`.
 
-See `docs/handoff/legacy-root/STABLE_DEVELOPER_HANDOFF.md` and `backlog/FUTURE_BACKLOG.md` for the historical stable path and deferred future work.
+See `docs/EXTERNAL_ARCHIVES.md` and `backlog/FUTURE_BACKLOG.md` for the historical stable path and deferred future work.
 
 
 ## M61.0 human review scenario cards

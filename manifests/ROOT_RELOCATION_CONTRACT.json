@@ -1,7 +1,7 @@
 {
   "schema_version": "ordo.root_relocation_contract.v1",
   "baseline_before_cleanup": "be91782f5ffc29e182d5077ce604e7279381b498",
-  "entry_count": 56,
+  "entry_count": 48,
   "groups": [
     {
       "group_id": "apf_documentation",
@@ -62,22 +62,6 @@
       ]
     },
     {
-      "group_id": "release_manifests",
-      "lifecycle": "legacy_release_metadata",
-      "relocations": [
-        {"source_path": "CHANGE_BUNDLE_MANIFEST.json", "canonical_path": "manifests/releases/legacy-root/CHANGE_BUNDLE_MANIFEST.json"},
-        {"source_path": "RELEASE_MANIFEST_M83_0.json", "canonical_path": "manifests/releases/legacy-root/RELEASE_MANIFEST_M83_0.json"}
-      ]
-    },
-    {
-      "group_id": "release_notes",
-      "lifecycle": "legacy_release_documentation",
-      "relocations": [
-        {"source_path": "RELEASE_NOTES_ORDO_2026_07_14_RC1.md", "canonical_path": "docs/releases/legacy-root/RELEASE_NOTES_ORDO_2026_07_14_RC1.md"},
-        {"source_path": "RELEASE_NOTES_ORDO_2026_07_14_RC3.md", "canonical_path": "docs/releases/legacy-root/RELEASE_NOTES_ORDO_2026_07_14_RC3.md"}
-      ]
-    },
-    {
       "group_id": "governance_and_handoffs",
       "lifecycle": "mixed_current_and_legacy_documentation",
       "relocations": [
@@ -92,10 +76,7 @@
         {"source_path": "TEST_FIXTURE_AND_PARALLEL_SAFETY_POLICY.md", "canonical_path": "docs/policies/TEST_FIXTURE_AND_PARALLEL_SAFETY_POLICY.md"},
         {"source_path": "VERSIONING_POLICY.md", "canonical_path": "docs/policies/VERSIONING_POLICY.md"},
         {"source_path": "DEVELOPER_BUNDLE_README.md", "canonical_path": "docs/handoff/DEVELOPER_BUNDLE_README.md"},
-        {"source_path": "START_PROMPT_DEVELOPER_MODE.md", "canonical_path": "docs/handoff/START_PROMPT_DEVELOPER_MODE.md"},
-        {"source_path": "STABLE_DEVELOPER_HANDOFF.md", "canonical_path": "docs/handoff/legacy-root/STABLE_DEVELOPER_HANDOFF.md"},
-        {"source_path": "README_CURRENT_HANDOFF_UK.md", "canonical_path": "archive/handoffs/legacy-root/README_CURRENT_HANDOFF_UK.md"},
-        {"source_path": "README_CURRENT_PACKAGE_UK.md", "canonical_path": "archive/handoffs/legacy-root/README_CURRENT_PACKAGE_UK.md"}
+        {"source_path": "START_PROMPT_DEVELOPER_MODE.md", "canonical_path": "docs/handoff/START_PROMPT_DEVELOPER_MODE.md"}
       ]
     },
     {
@@ -103,8 +84,23 @@
       "lifecycle": "mixed_localized_documentation_and_historical_records",
       "relocations": [
         {"source_path": "APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md", "canonical_path": "docs/apf/legacy-root/uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md"},
-        {"source_path": "STABLE_PACKAGE_INDEX.md", "canonical_path": "docs/status/legacy-root/STABLE_PACKAGE_INDEX.md"},
         {"source_path": "m65_2_diff_report.json", "canonical_path": "reports/m65_2/legacy-root/m65_2_diff_report.json"}
+      ]
+    }
+  ],
+  "external_archives": [
+    {
+      "archive_id": "historical-provenance-2026-07-22",
+      "locator_path": "manifests/external_archives/HISTORICAL_PROVENANCE_2026_07_22.json",
+      "former_canonical_paths": [
+        "TRANSFER_2026-07-14/",
+        "recovery/2026-07-14/",
+        "archive/handoffs/",
+        "docs/handoff/legacy-root/",
+        "docs/releases/legacy-root/",
+        "docs/status/legacy-root/",
+        "manifests/releases/legacy-root/",
+        "checkpoints/"
       ]
     }
   ],
@@ -115,18 +111,15 @@
     {"path": "manifests/CONSOLIDATED_BACKLOG.json", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md", "docs/apf/legacy-root/uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md"]},
     {"path": "manifests/CURRENT_MATURITY_STATE.json", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md"]},
     {"path": "manifests/M74_4_RELEASE_PRODUCT_SPLIT.json", "required_paths": ["backlog/FUTURE_BACKLOG.md", "docs/handoff/DEVELOPER_BUNDLE_README.md", "reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"]},
-    {"path": "docs/README.md", "required_paths": ["status/legacy-root/STABLE_PACKAGE_INDEX.md"]},
-    {"path": "docs/handoff/DEVELOPER_BUNDLE_README.md", "required_paths": ["docs/status/legacy-root/STABLE_PACKAGE_INDEX.md"]}
+    {"path": "docs/README.md", "required_paths": ["EXTERNAL_ARCHIVES.md"]},
+    {"path": "docs/handoff/DEVELOPER_BUNDLE_README.md", "required_paths": ["../EXTERNAL_ARCHIVES.md"]}
   ],
   "link_indexes": [
     "backlog/README.md",
     "docs/apf/legacy-root/README.md",
     "docs/handoff/README.md",
-    "docs/handoff/legacy-root/README.md",
     "docs/policies/README.md",
-    "docs/releases/legacy-root/README.md",
     "docs/status/README.md",
-    "docs/status/legacy-root/README.md",
     "reports/apf/legacy-root/README.md",
     "reports/m65_2/README.md",
     "reports/m65_2/legacy-root/README.md"

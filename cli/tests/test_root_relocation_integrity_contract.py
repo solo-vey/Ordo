@@ -55,7 +55,7 @@ def test_relocation_contract_is_complete_and_unique() -> None:
     destinations = [entry["canonical_path"] for entry in entries]
 
     assert contract["schema_version"] == "ordo.root_relocation_contract.v1"
-    assert contract["entry_count"] == len(entries) == 56
+    assert contract["entry_count"] == len(entries) == 48
     assert len(sources) == len(set(sources))
     assert len(destinations) == len(set(destinations))
     assert all(Path(source).parent == Path(".") for source in sources)
@@ -112,3 +112,21 @@ def test_canonical_report_manifest_hashes_relocated_reports() -> None:
         report_path = Path(repository_path).relative_to("reports").as_posix()
         assert report_path in declared
         assert hashlib.sha256((ROOT / repository_path).read_bytes()).hexdigest() == declared[report_path]
+
+
+def test_external_historical_archive_is_explicitly_outside_the_relocation_set() -> None:
+    archive = load_contract()["external_archives"]
+    assert archive == [{
+        "archive_id": "historical-provenance-2026-07-22",
+        "locator_path": "manifests/external_archives/HISTORICAL_PROVENANCE_2026_07_22.json",
+        "former_canonical_paths": [
+            "TRANSFER_2026-07-14/",
+            "recovery/2026-07-14/",
+            "archive/handoffs/",
+            "docs/handoff/legacy-root/",
+            "docs/releases/legacy-root/",
+            "docs/status/legacy-root/",
+            "manifests/releases/legacy-root/",
+            "checkpoints/",
+        ],
+    }]

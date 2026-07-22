@@ -1,9 +1,9 @@
 # Checkpoint Lifecycle Audit
 
-Status: `open — audit complete; disposition deferred`
+Status: `closed — external archive verified`
 
-This audit covers the four pre-RC6 rollback archives under `checkpoints/playbooks/`.
-They are historical recovery artifacts, not current runtime inputs.
+This audit covers the four pre-RC6 rollback archives formerly stored under `checkpoints/playbooks/`.
+They are historical recovery artifacts, not current runtime inputs, and are retained in the checksum-bound external provenance archive.
 
 | Checkpoint ID | Archive | Size | Verification | Direct active references |
 | --- | --- | ---: | --- | ---: |
@@ -12,16 +12,16 @@ They are historical recovery artifacts, not current runtime inputs.
 | `ordo.hybrid_executor@0.1.1` | `ordo_hybrid_executor_pre_rc6.rollback.zip` | 14 KB | checksum, ZIP integrity, identity, and restore round-trip passed | 0 |
 | `ordo.project_builder@0.1.1` | `ordo_project_builder_pre_rc6.rollback.zip` | 16 KB | checksum, ZIP integrity, identity, and restore round-trip passed | 0 |
 
-The archives remain checksum-bound through `SHA256SUMS.txt` and each paired
-verification record. Their total current payload is approximately 1.1 MB.
+The archives remain checksum-bound through the external archive manifest and its
+attached checksums. Their total payload is approximately 1.1 MB.
 
 ## Required disposition work
 
-Do not delete or rewrite these archives in place. First decide whether each
-checkpoint must remain in every clone, move to an approved external immutable
-store, or be retained as a local historical archive. Any move requires a
-checksum-bound locator manifest, clean retrieval and restore verification,
-consumer/reference updates, and only then removal of inline bytes.
+The approved disposition is external archival. The GitHub Release asset,
+checksum-bound locator, clean retrieval check, and restore evidence are listed
+in [`../docs/EXTERNAL_ARCHIVES.md`](../docs/EXTERNAL_ARCHIVES.md). The inline
+bytes may be removed only with the same change that updates active references
+and repository checksums.
 
 This is a lifecycle and storage decision, not a runtime or language-semantics
 change.
