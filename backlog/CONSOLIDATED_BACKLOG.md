@@ -217,6 +217,9 @@ localized content, archive, relocate, regenerate, or remove. No remediation
 may rewrite immutable evidence, archives, fixtures, or legal text before its
 classification and reference/checksum impact are explicit.
 
+The classification plan is
+[BL-ORDO-058_CLASSIFICATION_PLAN.md](BL-ORDO-058_CLASSIFICATION_PLAN.md).
+
 ### BL-ORDO-059 — Legacy Checkpoint Lifecycle and Archive Disposition
 
 Status: `closed`
@@ -239,7 +242,7 @@ references are separately migrated.
 
 ### BL-ORDO-061 — APF Module Source Reconciliation
 
-Status: `open`
+Status: `closed`
 
 Reconcile the modular APF source with
 `packages/ordo_applied_project_factory/source/program.ordo.yaml` so that
