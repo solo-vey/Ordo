@@ -941,6 +941,22 @@
         "Re-run the archive-aware audit and record the remaining justified localization boundaries."
       ],
       "scope_note": "Inventory and backlog registration only. Remediation is deliberately deferred."
+    },
+    {
+      "id": "BL-ORDO-059",
+      "title": "Legacy Checkpoint Lifecycle and Archive Disposition",
+      "status": "open",
+      "priority": "P2",
+      "type": "evidence_lifecycle_governance",
+      "goal": "Determine the canonical retention, external immutable archival, or removal treatment for pre-RC6 rollback checkpoint archives without breaking reproducibility or provenance.",
+      "audit": "backlog/CHECKPOINT_LIFECYCLE_AUDIT.md",
+      "required_scope": [
+        "Classify all four checkpoint archives by retention need and consumer impact.",
+        "If externalized, create checksum-bound locator manifests and verify clean retrieval plus restore round trips.",
+        "Update references, release/archive builders, and checksums before removing inline bytes.",
+        "Do not rewrite Git history or alter archive bytes in place."
+      ],
+      "scope_note": "Read-only lifecycle audit complete. Archive migration or deletion is deliberately deferred."
     }
   ],
   "maintenance_contours": [

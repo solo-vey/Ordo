@@ -217,6 +217,16 @@ localized content, archive, relocate, regenerate, or remove. No remediation
 may rewrite immutable evidence, archives, fixtures, or legal text before its
 classification and reference/checksum impact are explicit.
 
+### BL-ORDO-059 — Legacy Checkpoint Lifecycle and Archive Disposition
+
+Status: `open`
+
+Use [CHECKPOINT_LIFECYCLE_AUDIT.md](CHECKPOINT_LIFECYCLE_AUDIT.md) to decide
+the canonical treatment for the four pre-RC6 rollback archives. They are
+verified historical recovery evidence with no direct active consumers; do not
+delete them until an approved retention or external-archive migration has
+checksum-bound retrieval and restore proof.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
