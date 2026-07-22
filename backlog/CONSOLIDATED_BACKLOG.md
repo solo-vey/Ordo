@@ -206,6 +206,17 @@ Status: `closed`
 
 Status: `closed`
 
+### BL-ORDO-058 — Ukrainian Text Remediation and Localization Boundary
+
+Status: `open`
+
+Classify the 1,889 non-book Ukrainian-text document locations recorded in
+[UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md](UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md),
+then decide each location's canonical treatment: translate, preserve as
+localized content, archive, relocate, regenerate, or remove. No remediation
+may rewrite immutable evidence, archives, fixtures, or legal text before its
+classification and reference/checksum impact are explicit.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:

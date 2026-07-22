@@ -923,6 +923,24 @@
       "title": "GitHub Publication Hygiene and Repository Front Door",
       "status": "closed",
       "priority": "P2"
+    },
+    {
+      "id": "BL-ORDO-058",
+      "title": "Ukrainian Text Remediation and Localization Boundary",
+      "status": "open",
+      "priority": "P2",
+      "type": "repository_content_hygiene",
+      "goal": "Classify every non-book Ukrainian-text document location and apply an explicit canonical treatment without rewriting immutable, legal, archive, fixture, or provenance content by default.",
+      "inventory": "backlog/UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md",
+      "discovered_by": "tools/audit_ukrainian_text.py",
+      "required_scope": [
+        "Classify each finding as translate, preserve localized, archive, relocate, regenerate, or remove.",
+        "Review active source, package, integration, checkpoint, fixture, historical, legal, and archive contours separately.",
+        "Preserve provenance and immutability unless a separately approved migration updates references, manifests, and checksums.",
+        "Keep the Ukrainian book contour intentional and separately governed.",
+        "Re-run the archive-aware audit and record the remaining justified localization boundaries."
+      ],
+      "scope_note": "Inventory and backlog registration only. Remediation is deliberately deferred."
     }
   ],
   "maintenance_contours": [
