@@ -944,7 +944,9 @@
     {
       "id": "L.2",
       "title": "Chat-first onboarding, current-state synchronization, and documentation quality gates",
-      "status": "in_progress"
+      "status": "closed",
+      "closure_manifest": "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json",
+      "closure_report": "docs/status/L2_DOCUMENTATION_CONTOUR_CLOSURE.md"
     }
   ]
 }

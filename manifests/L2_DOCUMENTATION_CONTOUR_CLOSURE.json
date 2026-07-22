@@ -1,0 +1,20 @@
+{
+  "schema_version": "ordo.documentation_contour_closure.v1",
+  "contour_id": "L.2",
+  "status": "closed",
+  "baseline_before_closure": "542dd56a885d35c44a7b9ac00e3cbf5c84d2aa21",
+  "primary_onboarding": "chat_first",
+  "optional_mechanical_validation": "python_cli",
+  "validated_results": {
+    "starter_archive_integrity": "passed",
+    "documentation_quality_gate": "4 passed"
+  },
+  "evidence": [
+    "docs/CHAT_FIRST_ONBOARDING.md",
+    "docs/QUICKSTART.md",
+    "docs/DOCUMENTATION_QUALITY_GATE.md",
+    "examples/chat_first_playbook_starter/ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip",
+    "manifests/DOCUMENTATION_QUALITY_GATE.json",
+    "cli/tests/test_documentation_quality_gate.py"
+  ]
+}

@@ -201,13 +201,12 @@
       "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"
     }
   },
-  "next_documentation_tasks": [
-    "L.2 — Chat-first onboarding and first playbook"
-  ],
+  "next_documentation_tasks": [],
   "documentation_quality": {
     "L.1": "closed",
-    "L.2": "in_progress",
+    "L.2": "closed",
     "primary_onboarding": "chat_first",
-    "optional_mechanical_validation": "python_cli"
+    "optional_mechanical_validation": "python_cli",
+    "closure_manifest": "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json"
   }
 }
