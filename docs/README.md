@@ -45,6 +45,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
 - [`DOCUMENTATION_QUALITY_GATE.md`](DOCUMENTATION_QUALITY_GATE.md) — active-document scope, link rules, release-claim consistency, and bounded historical exclusions.
+- [`status/L_DOCUMENTATION_CONTOUR_CLOSURE.md`](status/L_DOCUMENTATION_CONTOUR_CLOSURE.md) — final evidence and closure of the chat-first documentation contour.
 
 ## Evidence and releases
 

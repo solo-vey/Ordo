@@ -927,26 +927,29 @@
   ],
   "maintenance_contours": [
     {
+      "id": "L.2",
+      "title": "Chat-first onboarding implementation",
+      "status": "closed",
+      "closed_at": "2026-07-22",
+      "closure_evidence": "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json",
+      "superseded_by_contour": "L"
+    },
+    {
       "id": "J.6",
       "title": "Repository root structure audit and cleanup",
       "status": "closed",
       "closed_at": "2026-07-21",
       "closure_evidence": "manifests/J6_ROOT_CLEANUP_CLOSURE.json",
       "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"
-    }
-  ],
-  "next_documentation_tasks": [
-    {
-      "id": "L.1",
-      "title": "Read-only documentation quality-gate audit",
-      "status": "closed"
     },
     {
-      "id": "L.2",
-      "title": "Chat-first onboarding, current-state synchronization, and documentation quality gates",
+      "id": "L",
+      "title": "Documentation quality and chat-first onboarding",
       "status": "closed",
-      "closure_manifest": "manifests/L2_DOCUMENTATION_CONTOUR_CLOSURE.json",
-      "closure_report": "docs/status/L2_DOCUMENTATION_CONTOUR_CLOSURE.md"
+      "closed_at": "2026-07-22",
+      "closure_evidence": "manifests/L_DOCUMENTATION_CONTOUR_CLOSURE.json",
+      "validated_main_baseline": "f42a89112610ec22defc35d3a20c88fa087c0c74"
     }
-  ]
+  ],
+  "next_documentation_tasks": []
 }
