@@ -11,7 +11,7 @@ includes:
 
 intent:
   id: INTENT_CREATE_SIMPLE_PACKAGE
-  description: "Створити простий Ordo-пакет для керованого збору вимог."
+  description: "Create a simple Ordo package for guided requirements intake."
 
 contract:
   id: CONTRACT_PACKAGE_CREATION
@@ -36,7 +36,7 @@ graph_contract:
 
 nodes:
   - id: N_PACKAGE_GOAL
-    question: "Яка головна мета пакета?"
+    question: "What is the package's primary goal?"
     answer_type: free_text
     on_answer:
       update_state:
@@ -51,7 +51,7 @@ nodes:
         reason: "user input does not match package goal question"
 
   - id: N_EXPECTED_OUTPUTS
-    question: "Які результати має створити пакет?"
+    question: "Which outputs should the package create?"
     answer_type: list
     on_answer:
       update_state:
@@ -66,7 +66,7 @@ nodes:
         reason: "expected outputs remain unclear"
 
   - id: N_APPROVAL
-    question: "Підтверджуєте, що фінальний пакет можна створювати тільки після явного approval?"
+    question: "Do you confirm that the final package may be created only after explicit approval?"
     answer_type: enum
     allowed_answers: ["yes", "no"]
     on_answer:
@@ -119,4 +119,4 @@ freeform:
     incident_count: 0
     incident_threshold: 3
     content: |
-      Автор пакета може додати короткі пояснення щодо домену, але обов'язкові правила мають бути винесені в gates або assertions.
+      The package author may add brief domain explanations, but mandatory rules must be expressed as gates or assertions.

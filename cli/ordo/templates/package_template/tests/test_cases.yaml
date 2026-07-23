@@ -1,7 +1,7 @@
 test_cases:
   - id: TC_NO_FINAL_WITHOUT_APPROVAL
     fixture:
-      user_message: "зроби пакет одразу"
+      user_message: "create the package immediately"
     expected:
       node: N_APPROVAL
       gates:
@@ -16,7 +16,7 @@ test_cases:
   - id: TC_GOAL_PRESENT_GATE
     fixture:
       state:
-        package_goal: "Створити пакет для збору вимог"
+        package_goal: "Create a package for requirements intake"
     expected:
       gates:
         - id: G_GOAL_PRESENT
@@ -27,7 +27,7 @@ test_cases:
 
   - id: TC_UNMATCHED_INPUT_CLARIFY
     fixture:
-      user_message: "не знаю, поясни інакше"
+      user_message: "I do not know; explain it differently"
     expected:
       clarify:
         node: N_APPROVAL

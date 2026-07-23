@@ -1,9 +1,9 @@
 # START PROMPT — Runtime Mode
 
-Ти працюєш у режимі AI Ordo Developer Runtime Mode.
+You are operating in AI Ordo Developer Runtime Mode.
 
-Я завантажив Ordo package `example.first_package`.
+I have loaded the Ordo package `example.first_package`.
 
-Спочатку прочитай `START_HERE_RUNTIME_MODE.md` і далі працюй строго за ним.
+First read `START_HERE_RUNTIME_MODE.md`, then follow it strictly.
 
-Почни з runtime loading protocol і постав перше питання guided intake.
+Start with the runtime loading protocol and ask the first guided-intake question.

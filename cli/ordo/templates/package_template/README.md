@@ -1,6 +1,6 @@
 # First Ordo Package
 
-Перший мінімальний Ordo v0.12 package.
+The first minimal Ordo v0.12 package.
 
 ## Runtime Mode
 
@@ -8,7 +8,7 @@ Use `START_PROMPT_RUNTIME_MODE.md` as the minimal prompt. It points to `START_HE
 
 Guided execution order comes from `compiled/program.ir.json` after `ordo compile`; `source/program.ordo.yaml` remains the editable source of truth.
 
-## Команди
+## Commands
 
 ```bash
 ordo lint .
@@ -21,18 +21,18 @@ ordo package .
 
 ## M2 — Static Test Runner
 
-Додано команду `ordo test`, яка перевіряє `tests/test_cases.yaml` без запуску AI-моделі.
+The `ordo test` command validates `tests/test_cases.yaml` without running an AI model.
 
-Поточний test runner перевіряє:
+The current test runner verifies:
 
-- чи expected `node` існує у Source;
-- чи expected `gates` посилаються на реальні gates;
-- чи expected `method` / `trust_class` збігаються з gate definition;
-- чи expected `assertions` мають правильну `EXPECT.NOT` / `EXPECT.MUST` projection;
-- чи assertion з expected test projection має `phase: test`;
-- чи expected clarify behavior має `on_unmatched_input` у відповідному node.
+- the expected `node` exists in the Source;
+- expected `gates` refer to actual gates;
+- expected `method` and `trust_class` match the gate definition;
+- expected `assertions` have the correct `EXPECT.NOT` or `EXPECT.MUST` projection;
+- an assertion with an expected test projection has `phase: test`;
+- expected clarify behavior has `on_unmatched_input` in the relevant node.
 
-Це ще не runtime і не модельний executor. Це M2-рівень: static behavior validation.
+This is not yet a runtime or a model executor. It is M2-level static behavior validation.
 
 
 ## M3 — Run
@@ -42,7 +42,7 @@ ordo run . --answers run_inputs/answers_success.yaml
 ordo run . --answers run_inputs/answers_blocked.yaml
 ```
 
-Runner створює `runtime/trace_log.json`, `runtime/state_snapshots/` і `reports/run_report.json`.
+The runner creates `runtime/trace_log.json`, `runtime/state_snapshots/`, and `reports/run_report.json`.
 
 
 ## M4 guided intake
