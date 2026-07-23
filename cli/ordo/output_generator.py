@@ -82,7 +82,7 @@ def _outputs_status(root: Path) -> list[dict[str, Any]]:
 
 def _format_list(value: Any) -> str:
     if value in (None, "", []):
-        return "- не вказано"
+        return "- not specified"
     if isinstance(value, list):
         return "\n".join(f"- {item}" for item in value)
     return f"- {value}"
@@ -112,7 +112,7 @@ def _apply_filter(value: Any, filter_name: str) -> str:
     if filter_name == "json":
         return json.dumps(value, ensure_ascii=False, indent=2)
     if value in (None, ""):
-        return "не вказано"
+        return "not specified"
     if isinstance(value, list):
         return ", ".join(str(v) for v in value)
     return str(value)
@@ -127,7 +127,7 @@ def _render_expr(expr: str, context: dict[str, Any]) -> str:
         value = _get_path(context, key)
     if len(parts) == 1:
         if value is None:
-            return "не вказано"
+            return "not specified"
         if isinstance(value, list):
             return ", ".join(str(v) for v in value)
         return str(value)

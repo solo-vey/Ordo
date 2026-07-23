@@ -22,7 +22,7 @@ def _section_summary(name: str, section: dict[str, Any]) -> str:
     changed = s.get("changed", 0)
     unchanged = s.get("unchanged", 0)
     if not (added or removed or changed):
-        return f"- `{name}`: без змін ({unchanged} unchanged)."
+        return f"- `{name}`: no changes ({unchanged} unchanged)."
     parts = []
     if added:
         parts.append(f"{added} added")
@@ -45,7 +45,7 @@ def _list_changes(section: dict[str, Any], *, max_items: int = 20) -> list[str]:
         lines.append(f"  - changed: `{item.get('path')}`")
     total = len(section.get("added", [])) + len(section.get("removed", [])) + len(section.get("changed", []))
     if total > max_items:
-        lines.append(f"  - ... ще {total - max_items} змін не показано в короткому звіті")
+        lines.append(f"  - ... {total - max_items} more changes omitted from the short report")
     return lines
 
 
