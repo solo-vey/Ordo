@@ -4,7 +4,7 @@ Create your first Ordo playbook in a language-model chat. You do not need Python
 
 ## 1. Download the ARF Playbook Kit
 
-Download [ARF Playbook Kit 0.2.0](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.2.0/ORDO_ARF_PLAYBOOK_KIT_0.2.0.zip). Keep the archive intact.
+Download [ARF Playbook Kit 0.2.1](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.2.1/ORDO_ARF_PLAYBOOK_KIT_0.2.1.zip). Keep the archive intact.
 
 The Kit contains ARF Playbook Laws, a ready prompt, a template, a small weekly-status process brief, a test-and-improvement prompt, and expected deliverables. You do not need to clone the repository, install Python, or build anything.
 

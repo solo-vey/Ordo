@@ -18,6 +18,7 @@ POLICY_PATH = ROOT / "manifests/DOCUMENTATION_QUALITY_GATE.json"
 STARTER = ROOT / "examples/chat_first_playbook_starter"
 ARF_KIT = ROOT / "packages/arf_playbook_kit"
 LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+UKRAINIAN = re.compile(r"[\u0400-\u052f]")
 
 
 def load_json(path: Path) -> dict:
@@ -126,6 +127,15 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
                 "guides/START_PROMPT.md",
             ):
                 assert required in archive.namelist()
+            user_entry_documents = (
+                "START_HERE_RUNTIME_MODE.md",
+                "START_PROMPT_RUNTIME_MODE.md",
+                "PLAYBOOK_LAWS.md",
+                "workspace/README.md",
+                *tuple(name for name in archive.namelist() if name.startswith("guides/") and name.endswith(".md")),
+            )
+            for name in user_entry_documents:
+                assert not UKRAINIAN.search(archive.read(name).decode("utf-8")), name
             assert not any(name.startswith("reports/") for name in archive.namelist())
             runtime_root = Path(temp_dir) / "runtime-package"
             archive.extractall(runtime_root)

@@ -1,10 +1,10 @@
 {
   "schema_version": "ordo.arf_playbook_kit.release_metadata.v1",
   "kit": "ARF Playbook Kit",
-  "version": "0.2.0",
-  "release_tag": "arf-playbook-kit-v0.2.0",
-  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.2.0.zip",
-  "archive_sha256": "f43258aa233a8bc64c59acbc8c51f9da02640f7e3e2eb6d048b9ad7161b718d9",
+  "version": "0.2.1",
+  "release_tag": "arf-playbook-kit-v0.2.1",
+  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.2.1.zip",
+  "archive_sha256": "f0866eae597ebb0e0b66a4c45e33e417d23baf5dcf0e3b9e02a88955d724fcf7",
   "member_count": 101,
-  "release_manifest_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.2.0/ORDO_ARF_PLAYBOOK_KIT_0.2.0.manifest.json"
+  "release_manifest_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.2.1/ORDO_ARF_PLAYBOOK_KIT_0.2.1.manifest.json"
 }
