@@ -5,6 +5,8 @@ owns its source, inputs, tests, and package-local documentation.
 
 - [`benchmark_creation_playbook/README.md`](benchmark_creation_playbook/README.md) —
   versioned benchmark-creation playbook package.
+- [`arf_playbook_kit/README.md`](arf_playbook_kit/README.md) — canonical source for the
+  release-backed chat-first ARF Playbook Kit.
 - [`history_event_guided_intake/README.md`](history_event_guided_intake/README.md) —
   guided intake for a historical event contract.
 - [`ordo_applied_project_factory/README.md`](ordo_applied_project_factory/README.md) —

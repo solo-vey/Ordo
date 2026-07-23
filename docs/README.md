@@ -4,8 +4,8 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 ## Start here
 
-- [`QUICKSTART.md`](QUICKSTART.md) — create, test, and improve a first playbook in a language-model chat; CLI validation is optional.
-- [`CHAT_FIRST_ONBOARDING.md`](CHAT_FIRST_ONBOARDING.md) — canonical chat-first contract, starter artifacts, and completion criteria.
+- [`QUICKSTART.md`](QUICKSTART.md) — download the ARF Playbook Kit, then create, test, and improve a first playbook in a language-model chat.
+- [`CHAT_FIRST_ONBOARDING.md`](CHAT_FIRST_ONBOARDING.md) — canonical chat-first contract, ARF Kit artifact, and completion criteria.
 - [`FAQ.md`](FAQ.md) — answers to common project, licensing, package, and support questions.
 - [`GLOSSARY.md`](GLOSSARY.md) — short definitions and links for core Ordo terminology.
 - [`../CITATION.cff`](../CITATION.cff) — canonical repository citation metadata.

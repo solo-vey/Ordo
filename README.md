@@ -11,13 +11,13 @@ Ordo is a language and framework for designing, validating, executing, testing, 
 
 The primary first-use path is a language-model chat. Python is optional.
 
-1. Download the [`chat-first starter ZIP`](examples/chat_first_playbook_starter/ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip).
+1. [Download the ARF Playbook Kit 0.1.0](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.1.0/ORDO_ARF_PLAYBOOK_KIT_0.1.0.zip).
 2. Upload the ZIP to a new language-model chat.
-3. Paste the [`starter prompt`](examples/chat_first_playbook_starter/source/START_PROMPT.md).
+3. Open and paste `START_PROMPT.md` from the attached Kit.
 4. Answer the model's short clarification sequence and approve the first playbook draft.
 5. Ask the model to test the playbook, explain any failures, and improve it before returning the final package.
 
-No local installation is required for this route. The starter uses a small weekly-status process to demonstrate `create → validate → dry-run → improve → package` in one chat.
+No local installation is required for this route. The Kit contains the ARF rules, prompts, template, weekly-status example, test-and-improve prompt, and delivery contract. Its [checksum](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.1.0/ORDO_ARF_PLAYBOOK_KIT_0.1.0.zip.sha256) is published beside the ZIP.
 
 See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the complete chat walkthrough and the optional CLI validation path.
 

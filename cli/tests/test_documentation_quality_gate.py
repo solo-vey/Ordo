@@ -14,6 +14,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 POLICY_PATH = ROOT / "manifests/DOCUMENTATION_QUALITY_GATE.json"
 STARTER = ROOT / "examples/chat_first_playbook_starter"
+ARF_KIT = ROOT / "packages/arf_playbook_kit"
 LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
@@ -70,6 +71,36 @@ def test_chat_first_starter_archive_is_safe_and_reproducible() -> None:
         rebuilt_manifest = module.build(rebuilt)
         assert rebuilt.read_bytes() == archive_path.read_bytes()
         assert rebuilt_manifest == manifest
+
+
+def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
+    current = load_json(ROOT / "manifests/ARF_PLAYBOOK_KIT_CURRENT.json")
+    manifest = load_json(ARF_KIT / "manifest.json")
+    assert current["version"] == (ARF_KIT / "VERSION").read_text(encoding="utf-8").strip()
+    assert current["archive_filename"] == manifest["archive"]
+    assert current["release_tag"] == f"arf-playbook-kit-v{current['version']}"
+    assert current["download_url"].endswith(f"/{manifest['archive']}")
+    assert current["sha256_url"].endswith(f"/{manifest['archive']}.sha256")
+    assert current["archive_sha256"] == manifest["archive_sha256"]
+
+    spec = importlib.util.spec_from_file_location("arf_kit_builder", ROOT / "tools/build_arf_playbook_kit.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    with TemporaryDirectory() as temp_dir:
+        first = Path(temp_dir) / manifest["archive"]
+        second = Path(temp_dir) / "second.zip"
+        first_manifest = module.build(first)
+        second_manifest = module.build(second)
+        assert first.read_bytes() == second.read_bytes()
+        assert first_manifest == manifest
+        assert second_manifest["archive_sha256"] == manifest["archive_sha256"]
+        with ZipFile(first) as archive:
+            expected = [*module.MEMBERS, "KIT_MANIFEST.json"]
+            assert archive.namelist() == expected
+            assert all(not Path(name).is_absolute() and ".." not in Path(name).parts for name in expected)
+            internal_manifest = json.loads(archive.read("KIT_MANIFEST.json"))
+            assert internal_manifest["version"] == manifest["version"]
 
 
 def test_packaged_release_claims_are_synchronized() -> None:
