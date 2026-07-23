@@ -88,6 +88,15 @@ source, test cases, and input fixtures. It reduces the physical-file audit
 from 234 to 225 findings without changing archives, evidence, fixtures outside
 the template, legal text, or localized content.
 
+### Wave 5 record
+
+The fifth physical-file wave translates the active
+`cli/examples/history_event_guided_intake/` package as one coherent contour:
+README, domain notes, source, input fixtures, tests, compiled IR, reports,
+runtime traces, and existing state snapshots. It reduces the physical-file
+audit from 225 to 180 findings. The package's pre-existing graph-lint defect
+remains unchanged and is explicitly outside this translation wave.
+
 ## Safety conditions
 
 - No archive member, checkpoint, empirical-evidence payload, or historical

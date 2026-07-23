@@ -1,13 +1,14 @@
 {
-  "run_id": "RUN-20260705T203734Z",
+  "run_id": "RUN-20260723T110414Z",
   "mode": "run",
   "execution_mode": "chat_internal",
   "trace_source": "runtime_enforced",
-  "started_at": "2026-07-05T20:37:34.683487+00:00",
-  "finished_at": "2026-07-05T20:37:34.683935+00:00",
+  "started_at": "2026-07-23T11:04:14.787719+00:00",
+  "finished_at": "2026-07-23T11:04:14.788716+00:00",
   "input": {
-    "answers_file": "/mnt/data/ordo_github_workspace/packages/history_event_guided_intake/run_inputs/answers_success.yaml",
-    "state_file": null
+    "answers_file": "cli/examples/history_event_guided_intake/run_inputs/answers_success.yaml",
+    "state_file": null,
+    "csg_events_file": null
   },
   "state": {
     "initial": {
@@ -24,10 +25,10 @@
       "final_package_created": false
     },
     "final": {
-      "event_goal": "створити історичну подію зміни статусу компанії",
+      "event_goal": "create a historical event for a company status change",
       "selected_path": "A1",
       "event_alias": "LU_CHANGE_STATUS",
-      "display_name_uk": "Зміна статусу компанії",
+      "display_name_uk": "Company status change",
       "display_name_en": "Company status changed",
       "source_field": "item.status",
       "value_semantics": [
@@ -55,7 +56,7 @@
       },
       "display_name_uk": {
         "before": null,
-        "after": "Зміна статусу компанії"
+        "after": "Company status change"
       },
       "event_alias": {
         "before": null,
@@ -63,7 +64,7 @@
       },
       "event_goal": {
         "before": null,
-        "after": "створити історичну подію зміни статусу компанії"
+        "after": "create a historical event for a company status change"
       },
       "qa_scope": {
         "before": [],
@@ -95,12 +96,12 @@
     {
       "type": "state_update",
       "node": "N_EVENT_GOAL",
-      "answer": "створити історичну подію зміни статусу компанії",
+      "answer": "create a historical event for a company status change",
       "next": "N_PATH_SELECT",
       "state_diff": {
         "event_goal": {
           "before": null,
-          "after": "створити історичну подію зміни статусу компанії"
+          "after": "create a historical event for a company status change"
         }
       }
     },
@@ -131,12 +132,12 @@
     {
       "type": "state_update",
       "node": "N_DISPLAY_NAME_UK",
-      "answer": "Зміна статусу компанії",
+      "answer": "Company status change",
       "next": "N_DISPLAY_NAME_EN",
       "state_diff": {
         "display_name_uk": {
           "before": null,
-          "after": "Зміна статусу компанії"
+          "after": "Company status change"
         }
       }
     },
@@ -217,6 +218,7 @@
       }
     }
   ],
+  "csg_report": [],
   "gate_report": [
     {
       "id": "G_EVENT_GOAL_PRESENT",
@@ -224,7 +226,7 @@
       "trust_class": "deterministic",
       "status": "passed",
       "condition": "state.event_goal is not null",
-      "reason": "mechanical condition evaluated: state.event_goal is not null; state.event_goal='створити історичну подію зміни статусу компанії'"
+      "reason": "mechanical condition evaluated: state.event_goal is not null; state.event_goal='create a historical event for a company status change'"
     },
     {
       "id": "G_PATH_SELECTED",
@@ -248,7 +250,7 @@
       "trust_class": "deterministic",
       "status": "passed",
       "condition": "state.display_name_uk is not null",
-      "reason": "mechanical condition evaluated: state.display_name_uk is not null; state.display_name_uk='Зміна статусу компанії'"
+      "reason": "mechanical condition evaluated: state.display_name_uk is not null; state.display_name_uk='Company status change'"
     },
     {
       "id": "G_DISPLAY_NAME_EN_PRESENT",
@@ -301,7 +303,9 @@
         "test"
       ],
       "status": "passed",
+      "evaluation_mode": "behavioral",
       "condition": "final_package_created_without_approval",
+      "condition_truth": false,
       "reason": "checked final_package_created without approval_received/G_APPROVAL_CONFIRMED"
     }
   ],

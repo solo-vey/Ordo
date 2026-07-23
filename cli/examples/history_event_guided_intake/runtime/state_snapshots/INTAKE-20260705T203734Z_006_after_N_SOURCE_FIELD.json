@@ -1,8 +1,8 @@
 {
-  "event_goal": "створити історичну подію зміни статусу компанії",
+  "event_goal": "create a historical event for a company status change",
   "selected_path": "A1",
   "event_alias": "LU_CHANGE_STATUS",
-  "display_name_uk": "Зміна статусу компанії",
+  "display_name_uk": "Company status change",
   "display_name_en": "Company status changed",
   "source_field": "item.status",
   "value_semantics": [],

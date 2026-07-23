@@ -28,7 +28,7 @@
     {
       "op": "INTENT.DEF",
       "id": "history_event.guided_intake.INTENT_HISTORY_EVENT_GUIDED_INTAKE",
-      "description": "Керовано зібрати мінімальний контракт для створення нового History Event package без передчасної генерації фінального архіву."
+      "description": "Collect a minimal contract for creating a new History Event package without prematurely generating the final archive."
     },
     {
       "op": "CONTRACT.DEF",
@@ -66,7 +66,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_EVENT_GOAL",
       "source_local_id": "N_EVENT_GOAL",
-      "question": "Яку бізнесову зміну має відображати нова історична подія?",
+      "question": "What business change should the new historical event represent?",
       "answer_type": "free_text",
       "on_answer": {
         "update_state": {
@@ -101,7 +101,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_PATH_SELECT",
       "source_local_id": "N_PATH_SELECT",
-      "question": "Який Ordo path підходить для цієї події?",
+      "question": "Which Ordo path fits this event?",
       "answer_type": "enum",
       "on_answer": {
         "A1": {
@@ -162,7 +162,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_EVENT_ALIAS",
       "source_local_id": "N_EVENT_ALIAS",
-      "question": "Який технічний alias події?",
+      "question": "What is the event's technical alias?",
       "answer_type": "free_text",
       "on_answer": {
         "update_state": {
@@ -197,7 +197,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_DISPLAY_NAME_UK",
       "source_local_id": "N_DISPLAY_NAME_UK",
-      "question": "Яка українська назва події для користувача?",
+      "question": "What Ukrainian display name should users see for this event?",
       "answer_type": "free_text",
       "on_answer": {
         "update_state": {
@@ -232,7 +232,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_DISPLAY_NAME_EN",
       "source_local_id": "N_DISPLAY_NAME_EN",
-      "question": "Яка англійська назва події для технічної документації?",
+      "question": "What English display name should technical documentation use for this event?",
       "answer_type": "free_text",
       "on_answer": {
         "update_state": {
@@ -267,7 +267,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_SOURCE_FIELD",
       "source_local_id": "N_SOURCE_FIELD",
-      "question": "Яке source field або набір полів є джерелом зміни?",
+      "question": "Which source field or set of fields is the source of the change?",
       "answer_type": "free_text",
       "on_answer": {
         "update_state": {
@@ -302,7 +302,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_VALUE_SEMANTICS",
       "source_local_id": "N_VALUE_SEMANTICS",
-      "question": "Які old/new value semantics потрібно зафіксувати?",
+      "question": "Which old/new value semantics must be recorded?",
       "answer_type": "list",
       "on_answer": {
         "update_state": {
@@ -337,7 +337,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_QA_SCOPE",
       "source_local_id": "N_QA_SCOPE",
-      "question": "Які QA перевірки обовʼязкові для цього History Event?",
+      "question": "Which QA checks are mandatory for this History Event?",
       "answer_type": "list",
       "on_answer": {
         "update_state": {
@@ -372,7 +372,7 @@
       "op": "NODE.DEF",
       "id": "history_event.guided_intake.N_APPROVAL",
       "source_local_id": "N_APPROVAL",
-      "question": "Підтверджуєте, що можна переходити до створення фінального History Event package тільки після цього approval?",
+      "question": "Do you confirm that final History Event package creation may begin only after this approval?",
       "answer_type": "enum",
       "on_answer": {
         "yes": {

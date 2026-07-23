@@ -1,11 +1,11 @@
 {
-  "run_id": "INTAKE-20260705T203734Z",
+  "run_id": "INTAKE-20260723T110414Z",
   "mode": "guided_intake",
   "execution_mode": "chat_internal",
   "trace_source": "runtime_enforced",
-  "started_at": "2026-07-05T20:37:34.700257+00:00",
+  "started_at": "2026-07-23T11:04:14.968748+00:00",
   "input": {
-    "answers_file": "/mnt/data/ordo_github_workspace/packages/history_event_guided_intake/run_inputs/intake_success.yaml",
+    "answers_file": "cli/examples/history_event_guided_intake/run_inputs/intake_success.yaml",
     "start_node": "N_EVENT_GOAL",
     "non_interactive": true
   },
@@ -13,13 +13,33 @@
     {
       "type": "node_answered",
       "node": "N_EVENT_GOAL",
-      "answer": "створити історичну подію зміни статусу компанії",
+      "answer": "create a historical event for a company status change",
       "next": "N_PATH_SELECT",
       "state_diff": {
         "event_goal": {
           "before": null,
-          "after": "створити історичну подію зміни статусу компанії"
+          "after": "create a historical event for a company status change"
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_001_N_EVENT_GOAL_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "02ef34dd22c9722f577f90b7ecd5278c214670d078fac1d9866477ed34beef10"
+      },
+      "session_chain": {
+        "seq": 1,
+        "node": "N_EVENT_GOAL",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:511205f83da206352a8e5741a8a2f7c39d8ed1efe60654f55df0e9f042316dfd",
+        "prev_snapshot_hash": "sha256:4d415d91abf6bf7dee91b5d33525a9053e7385639f00e4ac2c28fbbdcbb0cc8d",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:14.977491+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:94607d417e0d4da83f662c56cb60eff54c72c09a678e4fd67165341c0a3033d4"
       }
     },
     {
@@ -32,6 +52,26 @@
           "before": null,
           "after": "A1"
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_002_N_PATH_SELECT_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "a69d2b36b0b9ac79cde19bbc561d1c4046ddf2d11d408c726b816cac4e5ccfa4"
+      },
+      "session_chain": {
+        "seq": 2,
+        "node": "N_PATH_SELECT",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:961ea6171fe18f8c510fc30a17ba90b2dc0cca62fd36a1b8749aad14fe357483",
+        "prev_snapshot_hash": "sha256:94607d417e0d4da83f662c56cb60eff54c72c09a678e4fd67165341c0a3033d4",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:14.982670+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:b3bbfa3b881c5a8a68ceb7efe5b1af7fd16353f784e1bd8e2c1f74b50ba01daa"
       }
     },
     {
@@ -44,18 +84,58 @@
           "before": null,
           "after": "LU_CHANGE_STATUS"
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_003_N_EVENT_ALIAS_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "4a09cd4ad650cd035e0352488239a312284b2fc6790e3d0dca3b5ab45db7d0fa"
+      },
+      "session_chain": {
+        "seq": 3,
+        "node": "N_EVENT_ALIAS",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:75d05f2a441f9fe8fbcc7bb634641562aeddaf99ad6089f9353b7dc502f32719",
+        "prev_snapshot_hash": "sha256:b3bbfa3b881c5a8a68ceb7efe5b1af7fd16353f784e1bd8e2c1f74b50ba01daa",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:14.986578+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:1815149c786889bf05aa6493034f287db3197207503b5ea5392923136970425f"
       }
     },
     {
       "type": "node_answered",
       "node": "N_DISPLAY_NAME_UK",
-      "answer": "Зміна статусу компанії",
+      "answer": "Company status change",
       "next": "N_DISPLAY_NAME_EN",
       "state_diff": {
         "display_name_uk": {
           "before": null,
-          "after": "Зміна статусу компанії"
+          "after": "Company status change"
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_004_N_DISPLAY_NAME_UK_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "fbaf9f8e47599129460fa88142b7a7031d380f68f328a1889b8ccc25c5ab0d55"
+      },
+      "session_chain": {
+        "seq": 4,
+        "node": "N_DISPLAY_NAME_UK",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:4b0d129e969cf9b4f0c7b0875de2209c0219279536db7a7e334bf3acf3d62236",
+        "prev_snapshot_hash": "sha256:1815149c786889bf05aa6493034f287db3197207503b5ea5392923136970425f",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:14.990600+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:6319ac93918bc087e6db02bdf9cb8ca959df3ee87761b3469412ecf3b581129e"
       }
     },
     {
@@ -68,6 +148,26 @@
           "before": null,
           "after": "Company status changed"
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_005_N_DISPLAY_NAME_EN_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "a2a71981d8c43045ae3020dcff821341e0000ebc7af916de1bdcc37fb9c05975"
+      },
+      "session_chain": {
+        "seq": 5,
+        "node": "N_DISPLAY_NAME_EN",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:0eae6b85d2869d39a14fada2b194f822f303f0679604bbcddcd8c27bf5c3b2ec",
+        "prev_snapshot_hash": "sha256:6319ac93918bc087e6db02bdf9cb8ca959df3ee87761b3469412ecf3b581129e",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:14.994962+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:848fd98b04fc4cd7b27b271fdbf08a9c8067fe936a30c9acd4250236ecd55fd8"
       }
     },
     {
@@ -80,6 +180,26 @@
           "before": null,
           "after": "item.status"
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_006_N_SOURCE_FIELD_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "9113cffb0e31af630e877636b3239dafbc808ad6fab97eb2a5be7a3acf0d3f86"
+      },
+      "session_chain": {
+        "seq": 6,
+        "node": "N_SOURCE_FIELD",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:e7305e9efdaa5ce7045d3fb330b70d5c9c66987e33f1b36cf7ff16f6b7a18b64",
+        "prev_snapshot_hash": "sha256:848fd98b04fc4cd7b27b271fdbf08a9c8067fe936a30c9acd4250236ecd55fd8",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:15.000910+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:d05724be615e75d5d801eee27fb8429e0da74ab89c65ef10cb921c374897393a"
       }
     },
     {
@@ -100,6 +220,26 @@
             "status normalization"
           ]
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_007_N_VALUE_SEMANTICS_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "f8b309392c0c13a7c2c646c821631c3452261a2d37cb4b0d800fb2668c451ee4"
+      },
+      "session_chain": {
+        "seq": 7,
+        "node": "N_VALUE_SEMANTICS",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:972f0beb7e7ff92dca1ff5a190a185dd514706fba86f91c6e7a7376d59dfd50b",
+        "prev_snapshot_hash": "sha256:d05724be615e75d5d801eee27fb8429e0da74ab89c65ef10cb921c374897393a",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:15.006837+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:8f855b9ab77073f941bf91e56494ba57fee581427a27348b0fa9bea2e4aa5ab2"
       }
     },
     {
@@ -120,6 +260,26 @@
             "regression suite"
           ]
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_008_N_QA_SCOPE_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "48b5cffeff144b1dc5f5c65d241f32c9eee312248f97f08e070fa8929f83840b"
+      },
+      "session_chain": {
+        "seq": 8,
+        "node": "N_QA_SCOPE",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:7bbe72d6a895cc6ca4953e90e0f4f3b6a3cba3f0adb79f7dcc4ec833cdfbaaf9",
+        "prev_snapshot_hash": "sha256:8f855b9ab77073f941bf91e56494ba57fee581427a27348b0fa9bea2e4aa5ab2",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:15.013835+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:d9922fcae7e26ece4f9719a749806fb75a6b5c529d575589a81af5a8aaafb50f"
       }
     },
     {
@@ -132,6 +292,26 @@
           "before": false,
           "after": true
         }
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_009_N_APPROVAL_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "851892b26bc4f648b8ba9133119f1650c15f776b0490d5f6bcc97f68bfc61fcf"
+      },
+      "session_chain": {
+        "seq": 9,
+        "node": "N_APPROVAL",
+        "action": "node_answered",
+        "status": "passed",
+        "answer_digest": "sha256:6c76a9331e7f5ff9db2754d119a61395717be0c0877d0d8bd462197dff961e4c",
+        "prev_snapshot_hash": "sha256:d9922fcae7e26ece4f9719a749806fb75a6b5c529d575589a81af5a8aaafb50f",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:15.023062+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:786e8477dd8f723b255259f0430361f8e145097d73af7ded0f28c532b7f88989"
       }
     },
     {
@@ -144,28 +324,62 @@
         "status": "passed",
         "condition": "approval_received is confirmed by user",
         "reason": "approval_received=True in state; treated as explicit user-confirmed state for MVP run"
+      },
+      "evidence_report": "runtime/evidence/INTAKE-20260723T110414Z_010_G_APPROVAL_CONFIRMED_evidence.json",
+      "evidence_digest": {
+        "algorithm": "sha256",
+        "scope": "canonical_json_without_evidence_digest",
+        "value": "9ff03aec6c08ad1471b6f097dcf04bec46a2010e070e2476b9748fd007b59aeb"
+      },
+      "session_chain": {
+        "seq": 10,
+        "node": "G_APPROVAL_CONFIRMED",
+        "action": "gate_evaluated",
+        "status": "passed",
+        "answer_digest": "",
+        "prev_snapshot_hash": "sha256:786e8477dd8f723b255259f0430361f8e145097d73af7ded0f28c532b7f88989",
+        "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+        "cli_version": "0.37.0",
+        "timestamp_utc": "2026-07-23T11:04:15.034644+00:00",
+        "protocol": "m59_4_tamper_evident_session_chain_envelope",
+        "run_id": "INTAKE-20260723T110414Z",
+        "snapshot_hash": "sha256:d6840b439d6925a11d96abc5182a25cd0de74e2cadf0df87a98b8dc49630e55d"
       }
     }
   ],
   "state_snapshots": [
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_000_initial.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_001_after_N_EVENT_GOAL.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_002_after_N_PATH_SELECT.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_003_after_N_EVENT_ALIAS.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_004_after_N_DISPLAY_NAME_UK.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_005_after_N_DISPLAY_NAME_EN.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_006_after_N_SOURCE_FIELD.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_007_after_N_VALUE_SEMANTICS.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_008_after_N_QA_SCOPE.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_009_after_N_APPROVAL.json",
-    "runtime/state_snapshots/INTAKE-20260705T203734Z_010_after_G_APPROVAL_CONFIRMED.json"
+    "runtime/state_snapshots/SESSION-000_000_initial.json",
+    "runtime/state_snapshots/SESSION-001_N_EVENT_GOAL.json",
+    "runtime/state_snapshots/SESSION-002_N_PATH_SELECT.json",
+    "runtime/state_snapshots/SESSION-003_N_EVENT_ALIAS.json",
+    "runtime/state_snapshots/SESSION-004_N_DISPLAY_NAME_UK.json",
+    "runtime/state_snapshots/SESSION-005_N_DISPLAY_NAME_EN.json",
+    "runtime/state_snapshots/SESSION-006_N_SOURCE_FIELD.json",
+    "runtime/state_snapshots/SESSION-007_N_VALUE_SEMANTICS.json",
+    "runtime/state_snapshots/SESSION-008_N_QA_SCOPE.json",
+    "runtime/state_snapshots/SESSION-009_N_APPROVAL.json",
+    "runtime/state_snapshots/SESSION-010_G_APPROVAL_CONFIRMED.json"
   ],
-  "finished_at": "2026-07-05T20:37:34.702179+00:00",
+  "session_chain_start": {
+    "seq": 0,
+    "node": "000_initial",
+    "action": "initial_state",
+    "status": "passed",
+    "answer_digest": "",
+    "prev_snapshot_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "ir_hash": "sha256:46ac6e383747bfe9f8bb4b2ebf50e718a0c6d9ca4a44eeaadaabd791d44207e2",
+    "cli_version": "0.37.0",
+    "timestamp_utc": "2026-07-23T11:04:14.973504+00:00",
+    "protocol": "m59_4_tamper_evident_session_chain_envelope",
+    "run_id": "INTAKE-20260723T110414Z",
+    "snapshot_hash": "sha256:4d415d91abf6bf7dee91b5d33525a9053e7385639f00e4ac2c28fbbdcbb0cc8d"
+  },
+  "finished_at": "2026-07-23T11:04:15.036450+00:00",
   "state": {
-    "event_goal": "створити історичну подію зміни статусу компанії",
+    "event_goal": "create a historical event for a company status change",
     "selected_path": "A1",
     "event_alias": "LU_CHANGE_STATUS",
-    "display_name_uk": "Зміна статусу компанії",
+    "display_name_uk": "Company status change",
     "display_name_en": "Company status changed",
     "source_field": "item.status",
     "value_semantics": [
@@ -180,7 +394,64 @@
     ],
     "approval_received": true,
     "output_allowed": false,
-    "final_package_created": false
+    "final_package_created": false,
+    "answered_questions": [
+      {
+        "node": "N_EVENT_GOAL",
+        "answer": "create a historical event for a company status change",
+        "closed_at": "2026-07-23T11:04:14.974027+00:00"
+      },
+      {
+        "node": "N_PATH_SELECT",
+        "answer": "A1",
+        "closed_at": "2026-07-23T11:04:14.979077+00:00"
+      },
+      {
+        "node": "N_EVENT_ALIAS",
+        "answer": "LU_CHANGE_STATUS",
+        "closed_at": "2026-07-23T11:04:14.983761+00:00"
+      },
+      {
+        "node": "N_DISPLAY_NAME_UK",
+        "answer": "Company status change",
+        "closed_at": "2026-07-23T11:04:14.987585+00:00"
+      },
+      {
+        "node": "N_DISPLAY_NAME_EN",
+        "answer": "Company status changed",
+        "closed_at": "2026-07-23T11:04:14.991830+00:00"
+      },
+      {
+        "node": "N_SOURCE_FIELD",
+        "answer": "item.status",
+        "closed_at": "2026-07-23T11:04:14.996315+00:00"
+      },
+      {
+        "node": "N_VALUE_SEMANTICS",
+        "answer": [
+          "old status",
+          "new status",
+          "status normalization"
+        ],
+        "closed_at": "2026-07-23T11:04:15.003462+00:00"
+      },
+      {
+        "node": "N_QA_SCOPE",
+        "answer": [
+          "unit tests",
+          "manual QA",
+          "regression suite"
+        ],
+        "closed_at": "2026-07-23T11:04:15.008372+00:00"
+      },
+      {
+        "node": "N_APPROVAL",
+        "answer": "yes",
+        "closed_at": "2026-07-23T11:04:15.016173+00:00"
+      }
+    ],
+    "last_closed_node": "N_APPROVAL",
+    "current_node": "G_APPROVAL_CONFIRMED"
   },
   "gate_report": [
     {
@@ -189,7 +460,7 @@
       "trust_class": "deterministic",
       "status": "passed",
       "condition": "state.event_goal is not null",
-      "reason": "mechanical condition evaluated: state.event_goal is not null; state.event_goal='створити історичну подію зміни статусу компанії'"
+      "reason": "mechanical condition evaluated: state.event_goal is not null; state.event_goal='create a historical event for a company status change'"
     },
     {
       "id": "G_PATH_SELECTED",
@@ -213,7 +484,7 @@
       "trust_class": "deterministic",
       "status": "passed",
       "condition": "state.display_name_uk is not null",
-      "reason": "mechanical condition evaluated: state.display_name_uk is not null; state.display_name_uk='Зміна статусу компанії'"
+      "reason": "mechanical condition evaluated: state.display_name_uk is not null; state.display_name_uk='Company status change'"
     },
     {
       "id": "G_DISPLAY_NAME_EN_PRESENT",
@@ -266,7 +537,9 @@
         "test"
       ],
       "status": "passed",
+      "evaluation_mode": "behavioral",
       "condition": "final_package_created_without_approval",
+      "condition_truth": false,
       "reason": "checked final_package_created without approval_received/G_APPROVAL_CONFIRMED"
     }
   ],
@@ -291,5 +564,10 @@
   ],
   "violations": [],
   "blocked_outputs": [],
-  "status": "passed"
+  "status": "passed",
+  "report_digest": {
+    "algorithm": "sha256",
+    "scope": "canonical_json_without_report_digest",
+    "value": "f4450251364c445a3c76c9fe8053a6af49f5ebf3797830b5a052611d5f6cef61"
+  }
 }

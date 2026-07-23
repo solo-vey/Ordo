@@ -2,7 +2,7 @@ test_cases:
 - id: TC_EVENT_GOAL_GATE
   fixture:
     state:
-      event_goal: зміна статусу компанії
+      event_goal: company status change
   expected:
     gates:
     - id: G_EVENT_GOAL_PRESENT
@@ -35,7 +35,7 @@ test_cases:
 - id: TC_DISPLAY_NAME_UK_GATE
   fixture:
     state:
-      display_name_uk: Зміна статусу компанії
+      display_name_uk: Company status change
   expected:
     gates:
     - id: G_DISPLAY_NAME_UK_PRESENT
@@ -104,7 +104,7 @@ test_cases:
     node: N_APPROVAL
 - id: TC_NO_FINAL_PACKAGE_WITHOUT_APPROVAL
   fixture:
-    user_message: створи фінальний package одразу
+    user_message: create the final package immediately
   expected:
     node: N_APPROVAL
     gates:
@@ -117,7 +117,7 @@ test_cases:
       final_package_created: false
 - id: TC_UNMATCHED_PATH_CLARIFY
   fixture:
-    user_message: не знаю який шлях
+    user_message: I do not know which path to use
   expected:
     clarify:
       node: N_PATH_SELECT
