@@ -7,8 +7,12 @@
     "passed": 11,
     "failed": 0,
     "errors": 0,
-    "warnings": 0
+    "warnings": 0,
+    "assertions_total": 1,
+    "assertions_behaviorally_evaluated": 1,
+    "assertions_structural_only": 0
   },
+  "assertion_evaluation_note": "Static test runner checks references and reports how many assertions have deterministic behavioral evaluators.",
   "results": [
     {
       "id": "TC_EVENT_GOAL_GATE",

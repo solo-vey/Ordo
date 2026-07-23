@@ -1,23 +1,23 @@
 # History Event Guided Intake Ordo Package
 
-Перший великий практичний Ordo-пакет для керованого збору контракту нової історичної події.
+The first substantial practical Ordo package for guided intake of a new historical-event contract.
 
-## Призначення
+## Purpose
 
-Пакет проводить аналітика через guided intake:
+The package guides an analyst through guided intake:
 
-1. бізнесова мета події;
-2. вибір path;
+1. business goal of the event;
+2. path selection;
 3. alias;
-4. українська та англійська назва;
+4. Ukrainian and English display names;
 5. source field;
 6. value semantics;
 7. QA scope;
-8. explicit approval перед фінальним package output.
+8. explicit approval before final package output.
 
 ## Ordo v0.12
 
-Пакет використовує:
+The package uses:
 
 - `gate.method`;
 - `trust_class`;
@@ -25,9 +25,9 @@
 - `ASSERTION`;
 - `CLARIFY.REQUEST`;
 - `FREEFORM.maturity`;
-- release validation через `ordo validate-release`.
+- release validation through `ordo validate-release`.
 
-## Команди
+## Commands
 
 ```bash
 ordo lint packages/history_event_guided_intake
@@ -39,6 +39,6 @@ ordo intake packages/history_event_guided_intake --answers packages/history_even
 ordo validate-release packages/history_event_guided_intake
 ```
 
-## Межі MVP
+## MVP Boundaries
 
-Цей пакет ще не генерує повний final History Event analytical package. Він перевіряє першу контрольовану частину процесу: збір і валідацію контракту.
+This package does not yet generate a complete final History Event analytical package. It validates the first controlled part of the process: contract intake and validation.

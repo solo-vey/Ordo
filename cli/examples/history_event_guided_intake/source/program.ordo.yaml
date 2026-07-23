@@ -12,7 +12,7 @@ includes:
   as: qa_release
 intent:
   id: INTENT_HISTORY_EVENT_GUIDED_INTAKE
-  description: Керовано зібрати мінімальний контракт для створення нового History Event package без передчасної генерації фінального архіву.
+  description: Collect a minimal contract for creating a new History Event package without prematurely generating the final archive.
 contract:
   id: CONTRACT_HISTORY_EVENT_GUIDED_INTAKE
   required:
@@ -41,7 +41,7 @@ state:
     final_package_created: false
 nodes:
 - id: N_EVENT_GOAL
-  question: Яку бізнесову зміну має відображати нова історична подія?
+  question: What business change should the new historical event represent?
   answer_type: free_text
   on_answer:
     update_state:
@@ -55,7 +55,7 @@ nodes:
       action: escalate_to_human
       reason: event goal remains unclear
 - id: N_PATH_SELECT
-  question: Який Ordo path підходить для цієї події?
+  question: Which Ordo path fits this event?
   answer_type: enum
   allowed_answers:
   - A1
@@ -92,7 +92,7 @@ nodes:
       action: escalate_to_human
       reason: path selection did not match allowed paths
 - id: N_EVENT_ALIAS
-  question: Який технічний alias події?
+  question: What is the event's technical alias?
   answer_type: free_text
   on_answer:
     update_state:
@@ -106,7 +106,7 @@ nodes:
       action: escalate_to_human
       reason: event alias remains unclear
 - id: N_DISPLAY_NAME_UK
-  question: Яка українська назва події для користувача?
+  question: What Ukrainian display name should users see for this event?
   answer_type: free_text
   on_answer:
     update_state:
@@ -120,7 +120,7 @@ nodes:
       action: escalate_to_human
       reason: Ukrainian display name remains unclear
 - id: N_DISPLAY_NAME_EN
-  question: Яка англійська назва події для технічної документації?
+  question: What English display name should technical documentation use for this event?
   answer_type: free_text
   on_answer:
     update_state:
@@ -134,7 +134,7 @@ nodes:
       action: escalate_to_human
       reason: English display name remains unclear
 - id: N_SOURCE_FIELD
-  question: Яке source field або набір полів є джерелом зміни?
+  question: Which source field or set of fields is the source of the change?
   answer_type: free_text
   on_answer:
     update_state:
@@ -148,7 +148,7 @@ nodes:
       action: escalate_to_human
       reason: source field remains unclear
 - id: N_VALUE_SEMANTICS
-  question: Які old/new value semantics потрібно зафіксувати?
+  question: Which old/new value semantics must be recorded?
   answer_type: list
   on_answer:
     update_state:
@@ -162,7 +162,7 @@ nodes:
       action: escalate_to_human
       reason: value semantics remain unclear
 - id: N_QA_SCOPE
-  question: Які QA перевірки обовʼязкові для цього History Event?
+  question: Which QA checks are mandatory for this History Event?
   answer_type: list
   on_answer:
     update_state:
@@ -176,7 +176,7 @@ nodes:
       action: escalate_to_human
       reason: QA scope remains unclear
 - id: N_APPROVAL
-  question: Підтверджуєте, що можна переходити до створення фінального History Event package тільки після цього approval?
+  question: Do you confirm that final History Event package creation may begin only after this approval?
   answer_type: enum
   allowed_answers:
   - 'yes'
@@ -269,10 +269,10 @@ freeform:
   maturity: stable
   incident_count: 0
   incident_threshold: 3
-  content: Доменні пояснення History Event дозволені, але правила створення package мають бути формалізовані як gates, assertions або tests.
+  content: Domain explanations for a History Event are allowed, but package-creation rules must be formalized as gates, assertions, or tests.
 - id: FF_PATH_EDGE_CASES
   role: edge_case_notes
   maturity: volatile
   incident_count: 1
   incident_threshold: 3
-  content: Path-specific edge cases допускаються як controlled FREEFORM до моменту формалізації в Domain Pack.
+  content: Path-specific edge cases are allowed as controlled FREEFORM until they are formalized in a Domain Pack.

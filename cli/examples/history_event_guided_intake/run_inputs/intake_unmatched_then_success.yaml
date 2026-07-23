@@ -1,10 +1,10 @@
-N_EVENT_GOAL: створити історичну подію зміни статусу компанії
+N_EVENT_GOAL: create a historical event for a company status change
 N_PATH_SELECT:
   attempts:
   - wrong path
   - A1
 N_EVENT_ALIAS: LU_CHANGE_STATUS
-N_DISPLAY_NAME_UK: Зміна статусу компанії
+N_DISPLAY_NAME_UK: Company status change
 N_DISPLAY_NAME_EN: Company status changed
 N_SOURCE_FIELD: item.status
 N_VALUE_SEMANTICS:
