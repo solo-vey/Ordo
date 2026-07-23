@@ -4,6 +4,8 @@ import hashlib
 import importlib.util
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
@@ -76,7 +78,6 @@ def test_chat_first_starter_archive_is_safe_and_reproducible() -> None:
 def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
     current = load_json(ROOT / "manifests/ARF_PLAYBOOK_KIT_CURRENT.json")
     manifest = load_json(ARF_KIT / "manifest.json")
-    assert current["version"] == (ARF_KIT / "VERSION").read_text(encoding="utf-8").strip()
     assert current["archive_filename"] == manifest["archive"]
     assert current["release_tag"] == f"arf-playbook-kit-v{current['version']}"
     assert current["download_url"].endswith(f"/{manifest['archive']}")
@@ -93,14 +94,54 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
         first_manifest = module.build(first)
         second_manifest = module.build(second)
         assert first.read_bytes() == second.read_bytes()
-        assert first_manifest == manifest
-        assert second_manifest["archive_sha256"] == manifest["archive_sha256"]
+        assert first_manifest["archive_sha256"] == second_manifest["archive_sha256"]
+        assert {
+            key: value
+            for key, value in first_manifest.items()
+            if key != "archive"
+        } == {
+            key: value
+            for key, value in second_manifest.items()
+            if key != "archive"
+        }
+        assert first_manifest["version"] == (ARF_KIT / "VERSION").read_text(encoding="utf-8").strip()
+        assert first_manifest["schema_version"] == "ordo.arf_playbook_kit.v2"
+        assert first_manifest["package_kind"] == "standalone_arf_playbook_factory"
         with ZipFile(first) as archive:
-            expected = [*module.MEMBERS, "KIT_MANIFEST.json"]
+            expected = [*[entry["path"] for entry in first_manifest["members"]], "KIT_MANIFEST.json"]
             assert archive.namelist() == expected
             assert all(not Path(name).is_absolute() and ".." not in Path(name).parts for name in expected)
             internal_manifest = json.loads(archive.read("KIT_MANIFEST.json"))
-            assert internal_manifest["version"] == manifest["version"]
+            assert internal_manifest["version"] == first_manifest["version"]
+            for required in (
+                "START_HERE_RUNTIME_MODE.md",
+                "START_PROMPT_RUNTIME_MODE.md",
+                "compiled/program.ir.json",
+                "compiled/targets.manifest.json",
+                "cli_embedded/ordo",
+                "source/program.ordo.yaml",
+                "source/module_manifest.yaml",
+                "tests/test_cases.yaml",
+                "workspace/README.md",
+                "guides/START_PROMPT.md",
+            ):
+                assert required in archive.namelist()
+            assert not any(name.startswith("reports/") for name in archive.namelist())
+            runtime_root = Path(temp_dir) / "runtime-package"
+            archive.extractall(runtime_root)
+
+        for command in ("runtime-status", "verify-targets"):
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(runtime_root / "cli_embedded" / "ordo"),
+                    command,
+                    str(runtime_root),
+                ],
+                text=True,
+                capture_output=True,
+            )
+            assert result.returncode == 0, result.stdout + result.stderr
 
 
 def test_packaged_release_claims_are_synchronized() -> None:
