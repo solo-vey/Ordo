@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install builder and test dependencies
+        run: python -m pip install pytest pyyaml
+
       - name: Validate source and build deterministic assets
         shell: bash
         run: |
@@ -37,7 +40,6 @@ jobs:
           python tools/build_arf_playbook_kit.py --out "dist/second/$archive" --manifest dist/second/manifest.json
           cmp "dist/first/$archive" "dist/second/$archive"
           cmp dist/first/manifest.json dist/second/manifest.json
-          python -m pip install pytest pyyaml
           python -m pytest -q cli/tests/test_documentation_quality_gate.py -k arf_playbook_kit
           mv "dist/first/$archive" "dist/$archive"
           manifest="ORDO_ARF_PLAYBOOK_KIT_$(cat packages/arf_playbook_kit/VERSION).manifest.json"
