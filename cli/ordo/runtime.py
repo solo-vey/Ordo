@@ -548,7 +548,7 @@ def runtime_entry_protocol(package_path: str | Path, *, state_path: str | Path |
             "must_not_generate_draft_before_validate_state": True,
             "must_not_generate_final_before_validate_output_and_consistency": True,
             "after_A_path_use_runtime_A_flow_without_A1_A5_subquestions": True,
-            "human_protocol_fields": ["Крок", "Дія", "Результат", "Рішення", "One question"],
+            "human_protocol_fields": ["Step", "Action", "Result", "Decision", "One question"],
             "checkpoint_discipline": "one node at a time; earliest incomplete node wins",
         },
         "next_step": {

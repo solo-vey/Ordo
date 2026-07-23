@@ -97,6 +97,13 @@ runtime traces, and existing state snapshots. It reduces the physical-file
 audit from 225 to 180 findings. The package's pre-existing graph-lint defect
 remains unchanged and is explicitly outside this translation wave.
 
+### Wave 6 record
+
+The sixth physical-file wave translates the remaining user-facing Ukrainian
+strings in `cli/ordo/output_generator.py`, `cli/ordo/release_notes.py`, and
+`cli/ordo/runtime.py`. It reduces the physical-file audit from 180 to 177
+findings without changing CLI control flow or runtime semantics.
+
 ## Safety conditions
 
 - No archive member, checkpoint, empirical-evidence payload, or historical
