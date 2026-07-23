@@ -1,5 +1,5 @@
 {
-  "status": "generated",
+  "status": "passed",
   "summary": {
     "test_cases": 11,
     "gates_total": 9,
@@ -19,6 +19,20 @@
     "gates": [],
     "assertions": [],
     "nodes": []
+  },
+  "contract_artifact_coverage": {
+    "status": "passed",
+    "mode": "contract_artifact_mapping",
+    "summary": {
+      "contracts_total": 0,
+      "confirmed_contracts": 0,
+      "artifact_requirements_total": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "issues": [],
+    "checked_contracts": [],
+    "known_limitation": "M46.2 validates declared mappings only; rendered artifact content validation is planned for a later M46 step."
   },
   "freeform_maturity": [
     {

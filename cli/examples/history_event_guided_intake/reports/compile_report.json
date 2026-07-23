@@ -1,7 +1,53 @@
 {
-  "status": "passed",
+  "status": "passed_with_lint_errors_forced",
   "source": "source/program.ordo.yaml",
   "output": "compiled/program.ir.json",
-  "ops_count": 39,
-  "lint_status": "passed"
+  "targets_manifest": "compiled/targets.manifest.json",
+  "targets": [
+    "json-ir",
+    "ordo-code-view",
+    "session-trace"
+  ],
+  "ops_count": 40,
+  "lint_status": "failed",
+  "contract_artifact_reference_check": {
+    "status": "passed",
+    "summary": {
+      "contracts": 0,
+      "artifacts": 0,
+      "artifact_requirements": 0,
+      "coverage_rules": 0,
+      "rendered_artifact_assertions": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "issues": []
+  },
+  "opcode_registry_check": {
+    "status": "passed",
+    "catalog": "/Users/test/Desktop/work/Ordo/language/registry/OPCODE_CATALOG.md",
+    "ops": [
+      "ASSERTION.DEF",
+      "ASSERTION.PROJECT",
+      "CLARIFY.REQUEST",
+      "CONTRACT.DEF",
+      "FREEFORM.DEF",
+      "GATE.DEF",
+      "INTENT.DEF",
+      "LIB.INCLUDE",
+      "NODE.DEF",
+      "OUTPUT.DEF",
+      "PROGRAM.DEF",
+      "STATE.SCHEMA"
+    ],
+    "missing_ops": []
+  },
+  "capability_registry_check": {
+    "status": "passed",
+    "catalog": "/Users/test/Desktop/work/Ordo/language/registry/capability_catalog.yaml",
+    "capabilities": [
+      "conversation_scope_guard"
+    ],
+    "issues": []
+  }
 }

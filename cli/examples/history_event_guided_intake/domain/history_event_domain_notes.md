@@ -1,5 +1,5 @@
 # History Event Domain Notes
 
-Цей пакет є першим практичним Ordo-guided intake для створення History Event package з нуля.
+This package is the first practical Ordo-guided intake for creating a History Event package from scratch.
 
-Він не замінює повний History Event Playbook. Його задача — перевірити, що Ordo toolchain може керовано зібрати базовий контракт нової історичної події, пройти gates/assertions, сформувати IR і release validation report.
+It does not replace the complete History Event Playbook. Its purpose is to verify that the Ordo toolchain can collect a basic new historical-event contract in a controlled way, pass gates and assertions, produce IR, and generate a release validation report.
