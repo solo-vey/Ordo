@@ -181,12 +181,12 @@ If a gap is discovered, stop forward progress, return to the earliest incomplete
 After each user answer, respond with exactly this short protocol and one focused question unless the current node explicitly allows batch confirmation:
 
 ```text
-Крок: <runtime node/gate>
-Дія: <CLI/helper/action actually used>
-Результат: <passed/blocked/next>
-Звіт: <report path>
+Step: <runtime node/gate>
+Action: <CLI/helper/action actually used>
+Result: <passed/blocked/next>
+Report: <report path>
 Digest: <first 12 chars of SHA-256>
-Рішення: <ask next runtime question / clarify / stop>
+Decision: <ask next runtime question / clarify / stop>
 One question: <single focused runtime question>
 ```
 
