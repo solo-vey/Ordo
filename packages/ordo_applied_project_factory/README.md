@@ -22,10 +22,10 @@ Versioning scope: `module_local`
 ## Authoring modes
 
 ```text
-1. Доменна модель + дерево рішень
-2. Ручне дерево рішень
-3. Вільний діалог
-4. Коригування існуючого процесу
+1. Domain model + decision tree
+2. Manual decision tree
+3. Free dialogue
+4. Improve an existing process
 ```
 
 ## Developer validation pipeline for this RC
@@ -82,15 +82,15 @@ Versioning scope: `module_local`
 ## Authoring modes
 
 ```text
-1. Доменна модель + дерево рішень
-2. Ручне дерево рішень
-3. Вільний діалог
+1. Domain model + decision tree
+2. Manual decision tree
+3. Free dialogue
 ```
 
 Mode 3 is now stabilized as a self-hosted loop:
 
 ```text
-raw notes → structured extraction → “що далі?” trigger → draft tree → depth-first review/correction → stabilized branch handoff
+raw notes → structured extraction → “what next?” trigger → draft tree → depth-first review/correction → stabilized branch handoff
 ```
 
 ## Versioning decision
@@ -200,7 +200,7 @@ During process-design review, APF must explicitly show the current interaction m
 
 ## Branch 1 progressive authoring v0.1.0-alpha.15
 
-Alpha.15 closes the human review of the **Доменна модель + дерево рішень** branch. The branch now uses progressive tree authoring instead of a one-shot static blueprint, treats input artifacts as policy-based rather than mandatory, separates output artifact candidates from output templates, and requires terminal output binding plus template/mock-filled-example review before a terminal path is considered ready.
+Alpha.15 closes the human review of the **Domain model + decision tree** branch. The branch now uses progressive tree authoring instead of a one-shot static blueprint, treats input artifacts as policy-based rather than mandatory, separates output artifact candidates from output templates, and requires terminal output binding plus template/mock-filled-example review before a terminal path is considered ready.
 
 The shared full-validation / handoff tail remains shared and is not duplicated in branch 1.
 
