@@ -73,6 +73,13 @@ and the three Process Rail design decisions. It reduces the physical-file
 audit from 241 to 235 findings without changing archives, evidence, fixtures,
 legal text, or localized content.
 
+### Wave 3 record
+
+The third physical-file wave translates `docs/first_package_tutorial.md` in
+full, including its explanatory text and illustrative user-facing YAML values.
+It reduces the physical-file audit from 235 to 234 findings without changing
+archives, evidence, fixtures, legal text, or localized content.
+
 ## Safety conditions
 
 - No archive member, checkpoint, empirical-evidence payload, or historical
