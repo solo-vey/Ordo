@@ -2,21 +2,21 @@
 
 Create your first Ordo playbook in a language-model chat. You do not need Python, a terminal, or prior knowledge of Ordo.
 
-## 1. Download the chat-first starter
+## 1. Download the ARF Playbook Kit
 
-Download [`ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip`](../examples/chat_first_playbook_starter/ORDO_CHAT_FIRST_PLAYBOOK_STARTER.zip). Keep the archive intact.
+Download [ARF Playbook Kit 0.1.0](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.1.0/ORDO_ARF_PLAYBOOK_KIT_0.1.0.zip). Keep the archive intact.
 
-The starter contains a ready prompt, a small weekly-status process brief, a test-and-improvement prompt, and expected deliverables.
+The Kit contains ARF Playbook Laws, a ready prompt, a template, a small weekly-status process brief, a test-and-improvement prompt, and expected deliverables. You do not need to clone the repository, install Python, or build anything.
 
-## 2. Upload the starter to a language-model chat
+## 2. Upload the Kit to a language-model chat
 
 Open a new chat that accepts file uploads and attach the ZIP. Ask the model to read every file before beginning.
 
 If the chat cannot open ZIP files, extract the archive and upload its four Markdown files together.
 
-## 3. Paste the starter prompt
+## 3. Paste the Kit start prompt
 
-Open [`START_PROMPT.md`](../examples/chat_first_playbook_starter/source/START_PROMPT.md), copy its contents, and send it in the same chat.
+Open `START_PROMPT.md` from the uploaded Kit, copy its contents, and send it in the same chat.
 
 The model should act as an AI Ordo Developer, ask only the clarification questions needed for the example, and keep Python or CLI work optional.
 
@@ -28,9 +28,9 @@ Do not accept the package if required inputs, gates, outputs, or failure behavio
 
 ## 5. Test, improve, and package
 
-Send the prompt from [`TEST_AND_IMPROVE.md`](../examples/chat_first_playbook_starter/source/TEST_AND_IMPROVE.md). Review the model's test matrix, failures, corrections, and final package inventory.
+Send the prompt from `TEST_AND_IMPROVE.md` in the Kit. Review the model's test matrix, failures, corrections, and final package inventory.
 
-The completed chat should return the artifacts listed in [`EXPECTED_DELIVERABLES.md`](../examples/chat_first_playbook_starter/source/EXPECTED_DELIVERABLES.md), preferably as a ZIP.
+The completed chat should return the artifacts listed in `EXPECTED_DELIVERABLES.md`, preferably as a ZIP.
 
 ## Expected result
 

@@ -1039,6 +1039,22 @@
       "pull_request": "https://github.com/solo-vey/Ordo/pull/37",
       "merge_commit": "c843394462c863b4a165526d29b1c5927ec3a9ed",
       "completed_in": "ARF Playbook Laws contract"
+    },
+    {
+      "id": "BL-ORDO-064",
+      "title": "ARF Playbook Kit Release Distribution",
+      "status": "in_progress",
+      "priority": "P1",
+      "type": "release_distribution",
+      "goal": "Publish one canonical, versioned ARF Playbook Kit as a ready-to-download GitHub Release asset for chat-first users.",
+      "primary_user_route": "main README -> current ARF Playbook Kit ZIP -> upload to chat -> START_PROMPT.md",
+      "required_scope": [
+        "Keep canonical Kit source and a deterministic builder in the repository.",
+        "Publish immutable ZIP, SHA-256, and manifest assets in a versioned GitHub Release.",
+        "Maintain a machine-readable current-release pointer and a direct README download link.",
+        "Validate archive contents, checksum, reproducibility, and release tag before publication.",
+        "Keep clone-and-build instructions secondary and contributor-only."
+      ]
     }
   ],
   "maintenance_contours": [

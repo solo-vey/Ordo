@@ -52,7 +52,7 @@ def test_root_readme_prioritizes_quickstart_and_docs() -> None:
 def test_quickstart_is_chat_first_with_optional_cli_validation() -> None:
     text = read("docs/QUICKSTART.md")
     assert "You do not need Python" in text
-    assert "## 1. Download the chat-first starter" in text
+    assert "## 1. Download the ARF Playbook Kit" in text
     assert "## 5. Test, improve, and package" in text
     assert "## Expected result" in text
     assert "## Optional: validate with Python and the CLI" in text
@@ -130,9 +130,9 @@ def test_citation_metadata_has_required_repository_fields() -> None:
 def test_quickstart_uses_search_oriented_scenario_headings() -> None:
     text = read("docs/QUICKSTART.md")
     for heading in (
-        "## 1. Download the chat-first starter",
-        "## 2. Upload the starter to a language-model chat",
-        "## 3. Paste the starter prompt",
+        "## 1. Download the ARF Playbook Kit",
+        "## 2. Upload the Kit to a language-model chat",
+        "## 3. Paste the Kit start prompt",
         "## 4. Create and dry-run the first playbook",
         "## 5. Test, improve, and package",
     ):
@@ -141,6 +141,6 @@ def test_quickstart_uses_search_oriented_scenario_headings() -> None:
 
 def test_root_readme_quickstart_is_chat_first() -> None:
     section = read("README.md").split("## Quickstart", 1)[1].split("## Documentation", 1)[0]
-    assert "chat-first starter ZIP" in section
+    assert "ARF Playbook Kit" in section
     assert "python3" not in section
     assert "pip install" not in section

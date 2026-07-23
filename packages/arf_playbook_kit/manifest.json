@@ -1,0 +1,37 @@
+{
+  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.1.0.zip",
+  "archive_sha256": "1b8200de5cd21f450850e875b69f9a0c46163f89502cfc840e36e9525d277646",
+  "kit": "ARF Playbook Kit",
+  "members": [
+    {
+      "path": "START_HERE.md",
+      "sha256": "042efb74af4cbf29a300d68aadcb99c7191788dd5400e029fc935f1e034f8314"
+    },
+    {
+      "path": "START_PROMPT.md",
+      "sha256": "9f6d8e60f29c4897175a7e614a4dd6317577ea4749cf0d73bf0f310472da4c1c"
+    },
+    {
+      "path": "PLAYBOOK_LAWS.md",
+      "sha256": "364ae6bef32051abeebba3977d9a05563de76a9b5e098e01fc1f8605ea533183"
+    },
+    {
+      "path": "PLAYBOOK_TEMPLATE.md",
+      "sha256": "a723489cbaea9fad3402aeaa4b95e7db364e6f3d52f0f63db4a877cd7770ecee"
+    },
+    {
+      "path": "PLAYBOOK_BRIEF.md",
+      "sha256": "86aa07ce0cf1679825b8fbfa79bd93f7dbd6f9c6dc82a2057a6f5ad627e35096"
+    },
+    {
+      "path": "TEST_AND_IMPROVE.md",
+      "sha256": "651d454b861b840cd3cc465a81b0f777dd3b5b9d1a74485c4a2e78981489b782"
+    },
+    {
+      "path": "EXPECTED_DELIVERABLES.md",
+      "sha256": "0da0802f4f3dd9eaf7109f3f39df8d462476aa37e6a3fe9dbe188ddeae0a9653"
+    }
+  ],
+  "schema_version": "ordo.arf_playbook_kit.v1",
+  "version": "0.1.0"
+}

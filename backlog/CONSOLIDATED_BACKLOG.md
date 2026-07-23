@@ -289,6 +289,28 @@ authority.
 
 Closed by PR #37, merged as `c843394462c863b4a165526d29b1c5927ec3a9ed`.
 
+### BL-ORDO-064 — ARF Playbook Kit Release Distribution
+
+Status: `in_progress`
+
+Create one canonical, versioned ARF Playbook Kit for ordinary chat users. The
+primary route is a ready-to-download GitHub Release asset, not a repository
+clone, Python installation, or local build. The repository retains the
+canonical source, deterministic builder, current-release pointer, and
+validation contracts; immutable ZIP versions, SHA-256 files, and release
+manifests are published as GitHub Release assets.
+
+The user-facing route must be:
+
+```text
+main README → download current ARF Playbook Kit ZIP → upload to chat → paste START_PROMPT.md
+```
+
+The first implementation phase establishes `ARF Playbook Kit 0.1.0`, its
+release workflow, and the direct README download route. Subsequent releases
+must update the current pointer and documentation only after reproducible
+archive, contents, checksum, and release-asset checks pass.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
