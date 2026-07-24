@@ -1055,6 +1055,21 @@
         "Validate archive contents, checksum, reproducibility, and release tag before publication.",
         "Keep clone-and-build instructions secondary and contributor-only."
       ]
+    },
+    {
+      "id": "BL-ORDO-065",
+      "title": "Bidirectional Playbook Graph Transition Contract",
+      "status": "open",
+      "priority": "P2",
+      "type": "graph_validation_and_build_gate",
+      "goal": "Add blocking validation that every playbook graph edge is explicitly declared in both directions and that the graph is reachable and structurally legal before package build.",
+      "required_scope": [
+        "Require an explicit incoming-edge field such as allowed_from on applicable nodes.",
+        "Require A.next_transitions -> B to be mirrored by B.allowed_from <- A.",
+        "Reject unknown sources or targets, asymmetric edges, duplicate transitions, illegal terminal outgoing edges, unreachable nodes, and non-entry nodes without allowed incoming edges.",
+        "Enforce the contract in the CLI compiler or graph validator and make package build fail closed when it fails.",
+        "Add focused positive and negative contract tests and require the incoming-edge field in graph coverage checks."
+      ]
     }
   ],
   "maintenance_contours": [
