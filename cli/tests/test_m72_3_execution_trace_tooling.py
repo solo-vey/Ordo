@@ -8,6 +8,7 @@ import pytest
 import yaml
 
 from ordo.execution_trace import (
+    append_decision_interaction_event,
     append_execution_trace_event,
     canonical_checksum,
     finalize_execution_trace,
@@ -162,3 +163,53 @@ def test_persisted_trace_never_contains_plain_sensitive_values(tmp_path: Path) -
     assert "hidden" not in raw
     data = json.loads(raw)
     assert data["events"][1]["payload"]["token"] == {"value_redacted": True}
+
+
+def test_decision_interaction_preserves_question_response_and_summary(tmp_path: Path) -> None:
+    policy = _policy("full")
+    initialize_execution_trace(tmp_path, policy=policy, run_id="decision", process_id="demo", process_version="1", execution_mode="normal", entry_point="start")
+    result = append_decision_interaction_event(
+        tmp_path,
+        policy=policy,
+        actor={"actor_type": "runtime"},
+        node_id="N_CLASSIFY",
+        question_text="Has the database schema changed?",
+        question_ref="question.schema.v3",
+        question_context_digest="sha256:context",
+        analyst_response="No schema changes.",
+        selected_transition="N_APPROVE",
+        decision_summary="The required schema fields are unchanged, so the approval path was selected.",
+        applicable_rules=["schema_unchanged"],
+        evidence_refs=["input.schema", "artifact.schema"],
+        state_before_ref="snapshot.16",
+        state_after_ref="snapshot.17",
+        state_diff={"status": ["pending", "approved"]},
+        replay_anchor="decision.1",
+        reason_code="required_fields_complete",
+    )
+    assert result["captured"] is True
+    record = result["event"]["payload"]["decision_record"]
+    assert record["question_text"] == "Has the database schema changed?"
+    assert record["analyst_response"] == "No schema changes."
+    assert record["decision_summary"].startswith("The required schema fields")
+    assert record["hidden_chain_of_thought_persisted"] is False
+    trace = finalize_execution_trace(tmp_path, policy=policy, status="completed")
+    assert validate_execution_trace(trace)["valid"] is True
+
+
+def test_decision_interaction_rejects_hidden_reasoning_and_unbounded_summary(tmp_path: Path) -> None:
+    policy = _policy("full")
+    initialize_execution_trace(tmp_path, policy=policy, run_id="decision-policy", process_id="demo", process_version="1", execution_mode="normal", entry_point="start")
+    base = {
+        "root": tmp_path,
+        "policy": policy,
+        "actor": {"actor_type": "runtime"},
+        "node_id": "N1",
+        "question_text": "Continue?",
+        "analyst_response": "yes",
+        "selected_transition": "N2",
+    }
+    with pytest.raises(ValueError, match="non-empty"):
+        append_decision_interaction_event(**base, decision_summary=" ")
+    with pytest.raises(ValueError, match="maximum length"):
+        append_decision_interaction_event(**base, decision_summary="x" * 4001)

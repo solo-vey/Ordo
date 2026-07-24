@@ -1070,6 +1070,21 @@
         "Enforce the contract in the CLI compiler or graph validator and make package build fail closed when it fails.",
         "Add focused positive and negative contract tests and require the incoming-edge field in graph coverage checks."
       ]
+    },
+    {
+      "id": "BL-ORDO-067",
+      "title": "Full Per-Node AI Interaction and Decision Debug Trace",
+      "status": "open",
+      "priority": "P2",
+      "type": "execution_trace_and_debug_observability",
+      "goal": "Extend execution traces so each decision-bearing node preserves the exact rendered question or model message, analyst response, decision summary, evidence, rules, state changes, and replay anchors without persisting hidden chain-of-thought.",
+      "required_scope": [
+        "Capture the exact user-facing question or model message and a reference/version/context digest.",
+        "Capture the analyst response, selected transition, applicable rules, evidence references, state-before/state-after references, and state diff.",
+        "Store a bounded, redacted decision summary as an explanatory hypothesis, never as hidden chain-of-thought.",
+        "Define capture levels, privacy and secret-redaction requirements, deterministic replay anchors, and separation of observable facts from model-reported rationale.",
+        "Add focused positive and negative contract tests; defer runtime behavior changes to a separately approved implementation patch."
+      ]
     }
   ],
   "maintenance_contours": [

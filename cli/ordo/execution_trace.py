@@ -38,6 +38,11 @@ EVENT_CLASS = {
     "approval_rejected": "approval", "checkpoint_created": "checkpoint",
 }
 SENSITIVE_KEYS = {"password", "secret", "token", "access_token", "api_key", "authorization", "credential"}
+DECISION_TRACE_FORBIDDEN_KEYS = {
+    "chain_of_thought", "hidden_chain_of_thought", "private_reasoning",
+    "internal_monologue", "scratchpad", "raw_model_reasoning",
+}
+DECISION_SUMMARY_MAX_LENGTH = 4000
 
 
 def utc_now() -> str:
@@ -225,6 +230,74 @@ def append_execution_trace_event(
             })
     _write_trace(path, trace)
     return {"captured": True, "event": event, "path": str(path)}
+
+
+def append_decision_interaction_event(
+    root: str | Path,
+    *,
+    policy: dict[str, Any] | None,
+    actor: dict[str, Any],
+    node_id: str,
+    question_text: str,
+    analyst_response: Any,
+    selected_transition: str | None,
+    decision_summary: str,
+    question_ref: str | None = None,
+    question_context_digest: str | None = None,
+    applicable_rules: list[str] | None = None,
+    evidence_refs: list[str] | None = None,
+    state_before_ref: str | None = None,
+    state_after_ref: str | None = None,
+    state_diff: dict[str, Any] | None = None,
+    replay_anchor: str | None = None,
+    reason_code: str | None = None,
+    occurred_at: str | None = None,
+) -> dict[str, Any]:
+    """Record an auditable node interaction without persisting hidden reasoning."""
+    if not node_id or not question_text:
+        raise ValueError("decision interaction requires node_id and question_text")
+    if not isinstance(decision_summary, str) or not decision_summary.strip():
+        raise ValueError("decision interaction requires a non-empty decision_summary")
+    if len(decision_summary) > DECISION_SUMMARY_MAX_LENGTH:
+        raise ValueError("decision_summary exceeds the safe maximum length")
+    record = {
+        "node_id": node_id,
+        "question_text": question_text,
+        "question_ref": question_ref,
+        "question_context_digest": question_context_digest,
+        "analyst_response": analyst_response,
+        "selected_transition": selected_transition,
+        "applicable_rules": list(applicable_rules or []),
+        "evidence_refs": list(evidence_refs or []),
+        "state_before_ref": state_before_ref,
+        "state_after_ref": state_after_ref,
+        "state_diff": state_diff or {},
+        "replay_anchor": replay_anchor,
+        "reason_code": reason_code,
+        "decision_summary": decision_summary.strip(),
+        "summary_kind": "bounded_redacted_model_report",
+        "hidden_chain_of_thought_persisted": False,
+    }
+    forbidden = DECISION_TRACE_FORBIDDEN_KEYS.intersection(record)
+    if forbidden:
+        raise ValueError(f"decision interaction contains forbidden reasoning fields: {sorted(forbidden)}")
+    return append_execution_trace_event(
+        root,
+        policy=policy,
+        event_type="decision_selected",
+        actor=actor,
+        location={"node_id": node_id, "path_id": None, "phase_id": None},
+        payload={"decision_record": record},
+        state_effect={
+            "changed": bool(state_diff),
+            "before_ref": state_before_ref,
+            "after_ref": state_after_ref,
+            "diff_ref": None,
+        },
+        correlation={"parent_event_id": None, "decision_id": replay_anchor, "gate_id": None, "output_id": None},
+        outcome={"status": "selected", "reason_code": reason_code, "summary": decision_summary.strip()},
+        occurred_at=occurred_at,
+    )
 
 
 def finalize_execution_trace(

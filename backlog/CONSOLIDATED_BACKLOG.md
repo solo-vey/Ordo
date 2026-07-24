@@ -329,6 +329,26 @@ canonical node schema should expose the incoming-edge field (for example
 must require it where the graph contract applies. This is a future
 improvement; no current package semantics are changed by recording it here.
 
+### BL-ORDO-067 — Full Per-Node AI Interaction and Decision Debug Trace
+
+Status: `open`
+
+Extend the execution trace so every decision-bearing node records the actual
+user-facing question or model message, its generation context/version digest,
+the analyst response, the selected transition, and a sufficiently detailed
+decision summary explaining why that transition was chosen. The trace must
+also retain state-before/state-after references, state diffs, applicable rules,
+evidence references, and replay anchors so later analysis can distinguish
+observed execution facts from the model's explanatory report.
+
+This is not a request to persist hidden chain-of-thought. The decision summary
+is a bounded, redacted explanation treated as a hypothesis; authoritative
+debug facts remain the rendered question/message, analyst response, rules,
+evidence, transition, and state changes. The design must define capture levels,
+privacy/redaction requirements, deterministic replay behavior, and focused
+positive/negative contract tests. No current runtime semantics change until a
+separate implementation patch is approved.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
