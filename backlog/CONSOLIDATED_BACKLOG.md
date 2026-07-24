@@ -311,6 +311,24 @@ release workflow, and the direct README download route. Subsequent releases
 must update the current pointer and documentation only after reproducible
 archive, contents, checksum, and release-asset checks pass.
 
+### BL-ORDO-065 — Bidirectional Playbook Graph Transition Contract
+
+Status: `open`
+
+Add a blocking graph-validation contract for every Ordo package build. Each
+declared edge must be explicit and symmetric: if node `A` declares a
+transition to node `B`, node `B` must declare `A` as an allowed incoming
+source. The validator must also reject unknown targets or sources,
+asymmetric edges, duplicate transitions, illegal terminal outgoing edges,
+unreachable nodes, and non-entry nodes without an allowed incoming edge.
+
+The contract must be enforced by the CLI compiler/graph validator and by the
+package build pipeline, with focused positive and negative tests. The
+canonical node schema should expose the incoming-edge field (for example
+`allowed_from` or an equivalent explicitly named field), and coverage checks
+must require it where the graph contract applies. This is a future
+improvement; no current package semantics are changed by recording it here.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
