@@ -22,6 +22,7 @@ The archive intentionally excludes repository history, previous validation repor
 - Do not edit files under `compiled/` directly.
 - Put all new user work under `workspace/`.
 - The embedded CLI is an optional deterministic verification route; it is not required for the initial chat-first creation route.
+- For every decision-bearing node, preserve the exact rendered interaction and analyst response, then write a bounded decision summary as described in `guides/DECISION_DEBUG_TRACE.md`.
 
 ## Build provenance
 

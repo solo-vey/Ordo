@@ -20,6 +20,10 @@ Read the files in this order:
 5. `TEST_AND_IMPROVE.md`
 6. `EXPECTED_DELIVERABLES.md`
 
+For debugging and later analysis, record the exact question or model message,
+the analyst response, the selected transition, the evidence used, and the
+bounded decision summary described in `guides/DECISION_DEBUG_TRACE.md`.
+
 Conversational review is useful for drafting and learning. If deterministic
 validation is unavailable, the final result must say
 `conversational_validation_only` and must not claim release-grade evidence.
