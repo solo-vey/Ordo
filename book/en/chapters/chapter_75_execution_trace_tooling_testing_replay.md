@@ -24,6 +24,44 @@ A human reads the trace from top to bottom as an execution chronology. For each 
 - which gate, decision, or output it is connected to (`correlation`);
 - how it ended (`outcome`).
 
+## Per-node interaction and decision debug records
+
+A node identifier and an analyst answer are not enough to reconstruct a
+conversation. The model may generate a different question at the same node
+after the preceding dialogue changes. Therefore, every decision-bearing node
+should preserve the complete interaction:
+
+```yaml
+decision_record:
+  node_id: N_CLASSIFY
+  question_text: "Has the database schema changed?"
+  question_ref: question.schema.v3
+  question_context_digest: sha256:...
+  analyst_response: "No schema changes."
+  selected_transition: N_APPROVE
+  applicable_rules: [schema_unchanged]
+  evidence_refs: [input.schema, artifact.schema]
+  state_before_ref: snapshot.16
+  state_after_ref: snapshot.17
+  state_diff:
+    status: [pending, approved]
+  replay_anchor: decision.1
+  reason_code: required_fields_complete
+  decision_summary: "The required schema fields are unchanged, so the approval path was selected."
+```
+
+The exact rendered `question_text` or model message is an observable fact, as
+is the analyst response. The context digest and question reference identify the
+prompt/version context that produced a dynamic question. Rules, evidence,
+transition, and state changes provide the auditable basis for the decision.
+
+`decision_summary` may contain several sentences when that is necessary for
+useful debugging. It is a bounded, redacted model report and an explanatory
+hypothesis, not authoritative proof. Ordo must never persist hidden
+chain-of-thought, private reasoning, scratchpads, system prompts, credentials,
+or tokens. A reviewer must be able to distinguish the recorded facts from the
+model-reported explanation and from any later reconstruction.
+
 ## Four replay modes
 
 `deterministic` repeats preserved inputs and decisions. `re_evaluate` keeps the inputs but recalculates decisions and gates. `simulation` forbids external side effects. `audit_only` executes nothing and only reconstructs the history for inspection.
