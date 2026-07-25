@@ -160,7 +160,7 @@ Status: `closed`
 
 ### BL-ORDO-042 — Empirical Evidence and Existing Evaluation Interoperability
 
-Status: `open`
+Status: `closed`
 
 ### BL-ORDO-043 — Multi-Task-Class Evidence Expansion and Scoring Calibration
 
@@ -361,6 +361,8 @@ whose producer exists but is not marked required at collection time must emit a
 warning so the playbook author can add an upstream gate or explicitly accept a
 gap. A required document field with no producer anywhere on the path is an
 error.
+
+Implementation: merged in PR #55; ARF Playbook Kit v0.4.0 includes the authoring guidance and example contract.
 
 The validator must read the source tree, document/template field bindings,
 state schema, node update/requiredness metadata, gates, and transitions. It
