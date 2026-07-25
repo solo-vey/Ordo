@@ -605,7 +605,7 @@
       "id": "BL-ORDO-042",
       "priority": "P1",
       "title": "Empirical Evidence and Existing Evaluation Interoperability",
-      "status": "closed",
+      "status": "open",
       "target_release": "after-BL-ORDO-040",
       "depends_on": [
         "BL-ORDO-040"
@@ -617,7 +617,6 @@
         "provenance"
       ],
       "goal": "Add a non-merging interoperability bridge between the empirical-evidence subsystem and the existing CSG/evaluation mechanisms.",
-      "completion": "Implemented in PR #55; ARF Playbook Kit v0.4.0 published at arf-playbook-kit-v0.4.0.",
       "required_scope": [
         "Define a shared evidence envelope and stable cross-system identifiers.",
         "Link playbook, model, scenario, run, language, framework, evaluator, and raw-archive identities.",
@@ -1090,10 +1089,11 @@
     {
       "id": "BL-ORDO-068",
       "title": "Document Field Provenance and Path Binding Validation",
-      "status": "open",
+      "status": "closed",
       "priority": "P1",
       "type": "document_field_provenance_and_path_validation",
       "goal": "Validate that every required document/template field has a reachable producer and sufficient upstream requiredness before its materialization node on every applicable tree path.",
+      "completion": "Implemented in PR #55; ARF Playbook Kit v0.4.0 published at arf-playbook-kit-v0.4.0.",
       "required_scope": [
         "Read the source tree, document/template field bindings, state schema, node update and requiredness metadata, gates, and transitions.",
         "Emit an error when a required materialized document field has no declared state field or no reachable producer on an applicable path.",
