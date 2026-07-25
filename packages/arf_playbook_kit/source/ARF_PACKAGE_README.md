@@ -23,6 +23,7 @@ The archive intentionally excludes repository history, previous validation repor
 - Put all new user work under `workspace/`.
 - The embedded CLI is an optional deterministic verification route; it is not required for the initial chat-first creation route.
 - For every decision-bearing node, preserve the exact rendered interaction and analyst response, then write a bounded decision summary as described in `guides/DECISION_DEBUG_TRACE.md`.
+- For every document materialization, define the required document fields and validate their state declarations, producers, path coverage, and collection requiredness as described in `guides/DOCUMENT_FIELD_PROVENANCE.md`.
 
 ## Build provenance
 

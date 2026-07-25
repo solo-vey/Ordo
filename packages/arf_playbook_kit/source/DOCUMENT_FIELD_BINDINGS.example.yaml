@@ -1,0 +1,10 @@
+documents:
+  - document_id: event_passport
+    materialization_node: N_MATERIALIZE_EVENT_PASSPORT
+    required_fields:
+      - field: display_name_uk
+        required: true
+        collection_mode: analyst_answer
+      - field: display_name_en
+        required: true
+        collection_mode: analyst_answer
