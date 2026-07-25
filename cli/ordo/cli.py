@@ -24,6 +24,7 @@ from .dependency_lock import write_lock, validate_lock
 from .dependency_conflicts import check_conflicts
 from .output_validator import validate_output
 from .artifact_validator import validate_artifacts
+from .document_field_bindings import validate_document_field_bindings
 from .consistency import consistency as build_consistency_report
 from .go_no_go import go_no_go
 from .rendering_policy import validate_rendering_policy
@@ -405,6 +406,14 @@ def cmd_validate_artifacts(args: argparse.Namespace) -> int:
     out = Path(args.out).resolve() if args.out else Path(args.package).resolve() / "reports" / "artifact_validation_report.json"
     print(f"validate-artifacts: {report['status']} ({out})")
     return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_document_fields(args: argparse.Namespace) -> int:
+    report = validate_document_field_bindings(args.package, args.bindings)
+    out = Path(args.out).resolve() if args.out else Path(args.package).resolve() / "reports" / "document_field_binding_report.json"
+    write_json(out, report)
+    print(f"validate-document-fields: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "passed_with_warnings"} else 1
 
 
 def cmd_consistency(args: argparse.Namespace) -> int:
@@ -842,6 +851,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--state", help="YAML/JSON state file; defaults to latest intake/run report")
     p.add_argument("--out", help="Optional output path; defaults to reports/artifact_validation_report.json")
     p.set_defaults(func=cmd_validate_artifacts)
+
+    p = sub.add_parser("validate-document-fields", help="Validate document field producers and path bindings")
+    p.add_argument("package")
+    p.add_argument("--bindings", required=True, help="YAML/JSON document field binding contract")
+    p.add_argument("--out", help="Optional output path; defaults to reports/document_field_binding_report.json")
+    p.set_defaults(func=cmd_validate_document_fields)
 
 
     p = sub.add_parser("consistency", help="Generate CONSISTENCY_CHECK_REPORT.json for cross-artifact consistency")

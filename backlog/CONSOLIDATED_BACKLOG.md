@@ -349,6 +349,28 @@ privacy/redaction requirements, deterministic replay behavior, and focused
 positive/negative contract tests. No current runtime semantics change until a
 separate implementation patch is approved.
 
+### BL-ORDO-068 — Document Field Provenance and Path Binding Validation
+
+Status: `open`
+
+Add a blocking CLI validator that checks every document/template field at its
+materialization node against the decision-tree paths that lead there. A field
+required by a document must have a declared state field and at least one
+reachable producer node on every applicable path. A required document field
+whose producer exists but is not marked required at collection time must emit a
+warning so the playbook author can add an upstream gate or explicitly accept a
+gap. A required document field with no producer anywhere on the path is an
+error.
+
+The validator must read the source tree, document/template field bindings,
+state schema, node update/requiredness metadata, gates, and transitions. It
+must report the field, document, materialization node, producer nodes, path,
+collection mode (analyst answer, AI-derived, or automatic), and severity. The
+contract must include focused positive, warning, missing-producer, and
+branch-path tests, expose a deterministic CLI command, and be included in ARF
+authoring/build guidance. No document may be claimed ready when a required
+field has an error.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:

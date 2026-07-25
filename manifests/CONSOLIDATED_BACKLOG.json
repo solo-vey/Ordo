@@ -1085,6 +1085,22 @@
         "Define capture levels, privacy and secret-redaction requirements, deterministic replay anchors, and separation of observable facts from model-reported rationale.",
         "Add focused positive and negative contract tests; defer runtime behavior changes to a separately approved implementation patch."
       ]
+    },
+    {
+      "id": "BL-ORDO-068",
+      "title": "Document Field Provenance and Path Binding Validation",
+      "status": "open",
+      "priority": "P1",
+      "type": "document_field_provenance_and_path_validation",
+      "goal": "Validate that every required document/template field has a reachable producer and sufficient upstream requiredness before its materialization node on every applicable tree path.",
+      "required_scope": [
+        "Read the source tree, document/template field bindings, state schema, node update and requiredness metadata, gates, and transitions.",
+        "Emit an error when a required materialized document field has no declared state field or no reachable producer on an applicable path.",
+        "Emit a warning when a producer exists but the collection step is not marked required or lacks an upstream gate.",
+        "Report document, field, materialization node, producer nodes, path, collection mode, severity, and actionable location.",
+        "Add deterministic CLI support and focused positive, warning, missing-producer, and branching-path tests.",
+        "Include the contract in ARF authoring and build guidance; do not allow document readiness with blocking field errors."
+      ]
     }
   ],
   "maintenance_contours": [
