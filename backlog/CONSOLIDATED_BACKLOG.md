@@ -160,7 +160,7 @@ Status: `closed`
 
 ### BL-ORDO-042 — Empirical Evidence and Existing Evaluation Interoperability
 
-Status: `closed`
+Status: `open`
 
 ### BL-ORDO-043 — Multi-Task-Class Evidence Expansion and Scoring Calibration
 
@@ -351,7 +351,7 @@ separate implementation patch is approved.
 
 ### BL-ORDO-068 — Document Field Provenance and Path Binding Validation
 
-Status: `open`
+Status: `closed`
 
 Add a blocking CLI validator that checks every document/template field at its
 materialization node against the decision-tree paths that lead there. A field
@@ -362,7 +362,7 @@ warning so the playbook author can add an upstream gate or explicitly accept a
 gap. A required document field with no producer anywhere on the path is an
 error.
 
-Implementation: merged in PR #55; ARF Playbook Kit v0.4.0 includes the authoring guidance and example contract.
+Implementation: merged in PR #55; ARF Playbook Kit v0.4.0 includes the authoring guidance and example contract. Closed after PR #57 backlog reconciliation.
 
 The validator must read the source tree, document/template field bindings,
 state schema, node update/requiredness metadata, gates, and transitions. It
