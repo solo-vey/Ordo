@@ -160,7 +160,7 @@ Status: `closed`
 
 ### BL-ORDO-042 — Empirical Evidence and Existing Evaluation Interoperability
 
-Status: `open`
+Status: `design_complete_implementation_open`
 
 ### BL-ORDO-043 — Multi-Task-Class Evidence Expansion and Scoring Calibration
 
@@ -334,7 +334,7 @@ improvement; no current package semantics are changed by recording it here.
 
 ### BL-ORDO-067 — Full Per-Node AI Interaction and Decision Debug Trace
 
-Status: `open`
+Status: `design_complete_implementation_open`
 
 Extend the execution trace so every decision-bearing node records the actual
 user-facing question or model message, its generation context/version digest,
@@ -351,6 +351,8 @@ evidence, transition, and state changes. The design must define capture levels,
 privacy/redaction requirements, deterministic replay behavior, and focused
 positive/negative contract tests. No current runtime semantics change until a
 separate implementation patch is approved.
+
+Design artifact: [`docs/design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md`](../docs/design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md).
 
 ### BL-ORDO-068 — Document Field Provenance and Path Binding Validation
 
