@@ -114,6 +114,7 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     contract = source.get("graph_contract") or {}
     entry = contract.get("entry_node") or (nodes_list[0].get("id") if nodes_list else None)
     external_terminals = set(contract.get("external_terminal_targets", []) or [])
+    dynamic_terminal_sources = set(contract.get("dynamic_terminal_sources", []) or [])
     allowed_regions = contract.get("allowed_cycle_regions", []) or []
     allowed_sets = [set(r.get("nodes", []) or []) for r in allowed_regions if isinstance(r, dict)]
 
@@ -170,6 +171,9 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     if not entry or entry not in ids:
         issues.append(GraphIssue("error", "GRAPH_ENTRY_INVALID", "graph_contract.entry_node must reference an existing node.", "graph_contract.entry_node"))
 
+    for node_id in sorted(dynamic_terminal_sources - ids):
+        issues.append(GraphIssue("error", "GRAPH_DYNAMIC_TERMINAL_SOURCE_MISSING", f"Dynamic terminal source {node_id!r} does not reference an existing node.", "graph_contract.dynamic_terminal_sources", [node_id]))
+
     for node_id, targets in adj.items():
         for target in targets:
             if target not in ids and target not in external_terminals:
@@ -199,7 +203,11 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
             issues.append(GraphIssue("error", "GRAPH_DEAD_END_NODE", f"Active node {node_id} has no outgoing transition and is not terminal.", f"nodes[{node_id}]", [node_id]))
 
     terminal_nodes = {node_id for node_id, node in by_id.items() if node.get("terminal") is True}
-    can_terminate = set(terminal_nodes)
+    # A dynamic decision node may terminate through a runtime-selected outcome
+    # that cannot be represented as one static `next` edge.  Such nodes must
+    # be declared explicitly in the contract; this does not permit terminal
+    # nodes to have outgoing edges.
+    can_terminate = set(terminal_nodes) | (dynamic_terminal_sources & ids)
     changed = True
     while changed:
         changed = False
@@ -240,6 +248,7 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
             "reachable_active_nodes": len(active_ids & reachable),
             "terminal_nodes": len(terminal_nodes),
             "external_terminal_targets": len(external_terminals),
+            "dynamic_terminal_sources": len(dynamic_terminal_sources & ids),
             "cycles_detected": len(cycle_components),
             "errors": len(errors),
             "warnings": len(warnings),

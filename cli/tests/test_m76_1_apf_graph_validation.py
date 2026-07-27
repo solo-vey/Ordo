@@ -106,6 +106,27 @@ def test_terminal_outgoing_edge_fails():
     assert "GRAPH_TERMINAL_OUTGOING" in codes(report)
 
 
+def test_declared_dynamic_terminal_source_satisfies_terminal_path():
+    source = {
+        "nodes": [
+            {"id": "A", "on_answer": {"loop": {"next": "A"}}},
+        ],
+        "graph_contract": {
+            "entry_node": "A",
+            "allowed_cycle_regions": [{"id": "LOOP", "nodes": ["A"]}],
+            "dynamic_terminal_sources": ["A"],
+        },
+    }
+    report = validate_process_graph(source)
+    assert report["status"] == "passed"
+
+
+def test_unknown_dynamic_terminal_source_fails():
+    source = {"nodes": [{"id": "A", "terminal": True}], "graph_contract": {"entry_node": "A", "dynamic_terminal_sources": ["MISSING"]}}
+    report = validate_process_graph(source)
+    assert "GRAPH_DYNAMIC_TERMINAL_SOURCE_MISSING" in codes(report)
+
+
 def test_duplicate_transition_in_one_list_scope_fails():
     source = {
         "nodes": [
