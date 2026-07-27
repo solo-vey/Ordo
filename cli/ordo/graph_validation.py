@@ -27,6 +27,27 @@ def _targets(value: Any) -> list[str]:
     return out
 
 
+def _target_declarations(value: Any, path: str = "root", scope: str = "root") -> list[tuple[str, str, str]]:
+    """Return target, location, and declaration-scope triples.
+
+    A target repeated in one list/scope is a duplicate declaration. Targets
+    converging from different answer branches intentionally remain distinct
+    declarations and are valid graph edges.
+    """
+    out: list[tuple[str, str, str]] = []
+    if isinstance(value, dict):
+        for key, child in value.items():
+            child_path = f"{path}.{key}"
+            if key == "next" and isinstance(child, str):
+                out.append((child, child_path, scope))
+            else:
+                out.extend(_target_declarations(child, child_path, child_path))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            out.extend(_target_declarations(child, f"{path}[{index}]", scope))
+    return out
+
+
 def _deprecated(node: dict[str, Any]) -> bool:
     return str(node.get("lifecycle_status", "")).startswith("deprecated") or node.get("active_runtime_node") is False
 
@@ -93,20 +114,77 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     contract = source.get("graph_contract") or {}
     entry = contract.get("entry_node") or (nodes_list[0].get("id") if nodes_list else None)
     external_terminals = set(contract.get("external_terminal_targets", []) or [])
+    dynamic_terminal_sources = set(contract.get("dynamic_terminal_sources", []) or [])
     allowed_regions = contract.get("allowed_cycle_regions", []) or []
     allowed_sets = [set(r.get("nodes", []) or []) for r in allowed_regions if isinstance(r, dict)]
 
     adj = {node_id: _targets(node) for node_id, node in by_id.items()}
 
+    # BL-ORDO-065: validate the explicit incoming-edge contract before
+    # topology checks. The source tree is authoritative; compiler lowering
+    # must not silently infer or repair asymmetric declarations.
+    incoming_contract_enabled = (
+        contract.get("bidirectional_transition_policy") == "explicit_source_and_target"
+        or any(isinstance(node, dict) and ("allowed_from" in node or "incoming_from" in node) for node in nodes_list)
+    )
+    incoming_by_target: dict[str, list[str]] = {node_id: [] for node_id in ids}
+    for node_id, node in by_id.items():
+        if not incoming_contract_enabled:
+            continue
+        raw_incoming = node.get("allowed_from")
+        if raw_incoming is None:
+            raw_incoming = node.get("incoming_from")
+        if raw_incoming is None:
+            if not _deprecated(node):
+                issues.append(GraphIssue("error", "GRAPH_INCOMING_REQUIRED", "Active node must declare allowed_from.", f"nodes[{node_id}].allowed_from", [node_id]))
+            raw_incoming = []
+        if not isinstance(raw_incoming, list) or not all(isinstance(incoming_source, str) for incoming_source in raw_incoming):
+            issues.append(GraphIssue("error", "GRAPH_INCOMING_INVALID", "allowed_from must be a list of node IDs.", f"nodes[{node_id}].allowed_from", [node_id]))
+            raw_incoming = []
+        if len(raw_incoming) != len(set(raw_incoming)):
+            issues.append(GraphIssue("error", "GRAPH_INCOMING_DUPLICATE", "allowed_from must not contain duplicate source IDs.", f"nodes[{node_id}].allowed_from", [node_id]))
+        for incoming_source in raw_incoming:
+            if incoming_source not in ids:
+                issues.append(GraphIssue("error", "GRAPH_SOURCE_MISSING", f"Incoming source {incoming_source!r} does not exist.", f"nodes[{node_id}].allowed_from", [incoming_source, node_id]))
+            else:
+                incoming_by_target[node_id].append(incoming_source)
+                if node_id not in adj.get(incoming_source, []):
+                    issues.append(GraphIssue("error", "GRAPH_EDGE_ASYMMETRIC", f"Node {incoming_source} allows no transition to {node_id}, but {node_id}.allowed_from declares it.", f"nodes[{node_id}].allowed_from", [incoming_source, node_id]))
+
+    for source_id, node in by_id.items():
+        if not incoming_contract_enabled:
+            continue
+        declarations = _target_declarations(node.get("on_answer", {}), f"nodes[{source_id}].on_answer")
+        seen_by_scope: dict[tuple[str, str], str] = {}
+        for target, location, scope in declarations:
+            key = (scope, target)
+            if key in seen_by_scope:
+                issues.append(GraphIssue("error", "GRAPH_TRANSITION_DUPLICATE", f"Transition to {target!r} is declared more than once in the same transition scope.", location, [source_id, target]))
+            seen_by_scope[key] = location
+            if target in ids:
+                if source_id not in incoming_by_target.get(target, []):
+                    issues.append(GraphIssue("error", "GRAPH_EDGE_ASYMMETRIC", f"Transition {source_id} -> {target} is not mirrored by {target}.allowed_from.", location, [source_id, target]))
+            elif target not in external_terminals:
+                # GRAPH_TARGET_MISSING is emitted by the existing target pass.
+                continue
+
     if not entry or entry not in ids:
         issues.append(GraphIssue("error", "GRAPH_ENTRY_INVALID", "graph_contract.entry_node must reference an existing node.", "graph_contract.entry_node"))
+
+    for node_id in sorted(dynamic_terminal_sources - ids):
+        issues.append(GraphIssue("error", "GRAPH_DYNAMIC_TERMINAL_SOURCE_MISSING", f"Dynamic terminal source {node_id!r} does not reference an existing node.", "graph_contract.dynamic_terminal_sources", [node_id]))
 
     for node_id, targets in adj.items():
         for target in targets:
             if target not in ids and target not in external_terminals:
                 issues.append(GraphIssue("error", "GRAPH_TARGET_MISSING", f"Transition target {target!r} does not exist and is not declared as an external terminal target.", f"nodes[{node_id}].transition", [node_id, target]))
+        if by_id[node_id].get("terminal") is True and targets:
+            issues.append(GraphIssue("error", "GRAPH_TERMINAL_OUTGOING", f"Terminal node {node_id} must not declare outgoing transitions.", f"nodes[{node_id}].transition", [node_id, *targets]))
 
     active_ids = {node_id for node_id, node in by_id.items() if not _deprecated(node)}
+    for node_id in sorted(active_ids):
+        if incoming_contract_enabled and node_id != entry and not incoming_by_target.get(node_id):
+            issues.append(GraphIssue("error", "GRAPH_NODE_NO_INCOMING", f"Active non-entry node {node_id} has no declared incoming edge.", f"nodes[{node_id}].allowed_from", [node_id]))
     reachable: set[str] = set()
     if entry in ids:
         stack = [entry]
@@ -125,7 +203,11 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
             issues.append(GraphIssue("error", "GRAPH_DEAD_END_NODE", f"Active node {node_id} has no outgoing transition and is not terminal.", f"nodes[{node_id}]", [node_id]))
 
     terminal_nodes = {node_id for node_id, node in by_id.items() if node.get("terminal") is True}
-    can_terminate = set(terminal_nodes)
+    # A dynamic decision node may terminate through a runtime-selected outcome
+    # that cannot be represented as one static `next` edge.  Such nodes must
+    # be declared explicitly in the contract; this does not permit terminal
+    # nodes to have outgoing edges.
+    can_terminate = set(terminal_nodes) | (dynamic_terminal_sources & ids)
     changed = True
     while changed:
         changed = False
@@ -166,6 +248,7 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
             "reachable_active_nodes": len(active_ids & reachable),
             "terminal_nodes": len(terminal_nodes),
             "external_terminal_targets": len(external_terminals),
+            "dynamic_terminal_sources": len(dynamic_terminal_sources & ids),
             "cycles_detected": len(cycle_components),
             "errors": len(errors),
             "warnings": len(warnings),

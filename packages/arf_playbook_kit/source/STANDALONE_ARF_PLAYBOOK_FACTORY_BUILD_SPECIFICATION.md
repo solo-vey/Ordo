@@ -294,6 +294,8 @@ Validation must cover at least the following.
 - manifest hashes verify;
 - compiled output matches the selected source;
 - no duplicate or conflicting runtime entries exist.
+- the bidirectional graph transition contract passes, including explicit
+  `allowed_from` symmetry and terminal/incoming-edge checks.
 
 ### Path and dependency validation
 

@@ -39,6 +39,8 @@ properties:
 
 # BL-ORDO-029 conventions (validated semantically by graph_validation.py)
 # graph_contract.transition_provenance: {enabled: boolean, mode: strict|advisory}
+# graph_contract.bidirectional_transition_policy: explicit_source_and_target
+# graph_contract.incoming_edge_field: allowed_from
 # nodes[].allowed_from: direct predecessor node IDs only
 # nodes[].entry_modes: explicit root/resume/retry/recovery/migration entry modes
 # nodes[].node_context: bounded node-local context declaration

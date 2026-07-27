@@ -74,6 +74,8 @@ state:
     human_visible_summary: null
 graph_contract:
   entry_node: N_LOAD_IR
+  dynamic_terminal_sources:
+  - N_NEXT_MOVE
   allowed_cycle_regions:
   - id: CR_EXECUTION_LOOP
     nodes:
@@ -171,7 +173,6 @@ nodes:
       action: block_output
       reason: output gate unresolved
 - id: N_NEXT_MOVE
-  terminal: true
   question: 'Обрати наступний conversational move: питання, пояснення, повернення
     назад або output.'
   answer_type: ai_decision

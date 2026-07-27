@@ -160,7 +160,7 @@ Status: `closed`
 
 ### BL-ORDO-042 — Empirical Evidence and Existing Evaluation Interoperability
 
-Status: `design_complete_implementation_open`
+Status: `closed`
 
 ### BL-ORDO-043 — Multi-Task-Class Evidence Expansion and Scoring Calibration
 
@@ -316,7 +316,7 @@ archive, contents, checksum, and release-asset checks pass.
 
 ### BL-ORDO-065 — Bidirectional Playbook Graph Transition Contract
 
-Status: `open`
+Status: `closed`
 
 Add a blocking graph-validation contract for every Ordo package build. Each
 declared edge must be explicit and symmetric: if node `A` declares a
@@ -329,8 +329,10 @@ The contract must be enforced by the CLI compiler/graph validator and by the
 package build pipeline, with focused positive and negative tests. The
 canonical node schema should expose the incoming-edge field (for example
 `allowed_from` or an equivalent explicitly named field), and coverage checks
-must require it where the graph contract applies. This is a future
-improvement; no current package semantics are changed by recording it here.
+must require it where the graph contract applies. No runtime transition
+semantics change; the compiler/build gate now rejects inconsistent source
+graphs. Closed by the BL-ORDO-065 implementation and ARF Playbook Kit v0.4.2
+publication.
 
 ### BL-ORDO-067 — Full Per-Node AI Interaction and Decision Debug Trace
 

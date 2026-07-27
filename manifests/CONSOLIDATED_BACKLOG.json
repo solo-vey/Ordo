@@ -605,7 +605,7 @@
       "id": "BL-ORDO-042",
       "priority": "P1",
       "title": "Empirical Evidence and Existing Evaluation Interoperability",
-      "status": "design_complete_implementation_open",
+      "status": "closed",
       "target_release": "after-BL-ORDO-040",
       "depends_on": [
         "BL-ORDO-040"
@@ -617,6 +617,7 @@
         "provenance"
       ],
       "goal": "Add a non-merging interoperability bridge between the empirical-evidence subsystem and the existing CSG/evaluation mechanisms.",
+      "completion": "Closed by the BL-ORDO-065 implementation and ARF Playbook Kit v0.4.2 publication.",
       "required_scope": [
         "Define a shared evidence envelope and stable cross-system identifiers.",
         "Link playbook, model, scenario, run, language, framework, evaluator, and raw-archive identities.",
@@ -1060,10 +1061,11 @@
     {
       "id": "BL-ORDO-065",
       "title": "Bidirectional Playbook Graph Transition Contract",
-      "status": "open",
+      "status": "closed",
       "priority": "P2",
       "type": "graph_validation_and_build_gate",
       "goal": "Add blocking validation that every playbook graph edge is explicitly declared in both directions and that the graph is reachable and structurally legal before package build.",
+      "completion": "Closed by the BL-ORDO-065 implementation and ARF Playbook Kit v0.4.2 publication.",
       "required_scope": [
         "Require an explicit incoming-edge field such as allowed_from on applicable nodes.",
         "Require A.next_transitions -> B to be mirrored by B.allowed_from <- A.",
