@@ -54,6 +54,9 @@ process_rail:
   backtracking: enabled
 graph_contract:
   entry_node: N_FACTORY_MODE_SELECTION
+  bidirectional_transition_policy: explicit_source_and_target
+  incoming_edge_field: allowed_from
+  duplicate_transition_policy: reject_same_scope_duplicates
   terminal_node_ids:
   - END_HANDOFF_ACCEPTED
   external_terminal_targets:
