@@ -1106,10 +1106,11 @@
     {
       "id": "BL-ORDO-069",
       "title": "Publish ARF Playbook Authoring Recommendations",
-      "status": "open",
+      "status": "closed",
       "priority": "P1",
       "type": "authoring_documentation",
       "goal": "Publish the complete English v0.6 recommendations as canonical authoring guidance and expose it from the repository front door and quickstart.",
+      "completion": "Implemented in PR #58; canonical document published at docs/PLAYBOOK_AUTHORING_RECOMMENDATIONS.md.",
       "required_scope": [
         "Translate and preserve the supplied v0.6 recommendations as repository documentation.",
         "Link the guidance from README, documentation map, and quickstart.",
