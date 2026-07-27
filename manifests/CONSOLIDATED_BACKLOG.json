@@ -928,12 +928,13 @@
     {
       "id": "BL-ORDO-058",
       "title": "Ukrainian Text Remediation and Localization Boundary",
-      "status": "in_progress",
+      "status": "closed",
       "priority": "P2",
       "type": "repository_content_hygiene",
       "goal": "Classify every non-book Ukrainian-text document location and apply an explicit canonical treatment without rewriting immutable, legal, archive, fixture, or provenance content by default.",
       "inventory": "backlog/UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md",
       "discovered_by": "tools/audit_ukrainian_text.py",
+      "completion": "Closed by ARF Playbook Kit v0.4.1 publication and current-pointer/documentation reconciliation.",
       "required_scope": [
         "Classify each finding as translate, preserve localized, archive, relocate, regenerate, or remove.",
         "Review active source, package, integration, checkpoint, fixture, historical, legal, and archive contours separately.",
