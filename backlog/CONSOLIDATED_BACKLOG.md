@@ -375,7 +375,10 @@ field has an error.
 
 ### BL-ORDO-069 — Publish ARF Playbook Authoring Recommendations
 
-Status: `open`
+Status: `closed`
+
+Implementation: merged in PR #58; canonical document is
+[`../docs/PLAYBOOK_AUTHORING_RECOMMENDATIONS.md`](../docs/PLAYBOOK_AUTHORING_RECOMMENDATIONS.md).
 
 Translate and publish the complete v0.6 playbook-building recommendations as
 canonical English repository guidance. Link it from the root README,
