@@ -28,6 +28,7 @@ Use [`docs/README.md`](docs/README.md) as the canonical documentation map.
 The main routes are:
 
 - [Quickstart](docs/QUICKSTART.md)
+- [Playbook authoring recommendations](docs/PLAYBOOK_AUTHORING_RECOMMENDATIONS.md)
 - [Frequently asked questions](docs/FAQ.md)
 - [Glossary](docs/GLOSSARY.md)
 - [Citation metadata](CITATION.cff)

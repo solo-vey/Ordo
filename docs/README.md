@@ -31,6 +31,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 ## Packages and authoring
 
 - [`../packages/README.md`](../packages/README.md) — reference process and playbook packages.
+- [`PLAYBOOK_AUTHORING_RECOMMENDATIONS.md`](PLAYBOOK_AUTHORING_RECOMMENDATIONS.md) — complete v0.6 guidance for designing a new playbook on ARF.
 - [`../integrations/README.md`](../integrations/README.md) — versioned external and aligned integrations.
 - [`apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — preserved standard APF module guidance.
 
