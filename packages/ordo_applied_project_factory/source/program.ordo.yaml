@@ -59,7 +59,7 @@ module:
     - preserve APF alpha.21 process logic
     - sync module packaging/docs to standard applied module layer
     - validate with M62 parent CLI available commands
-    - keep future IR candidates FLOW.JOIN and SHARED.TAIL.REFERENCE as documented candidates, not runtime core changes
+    - treat FLOW.JOIN.DEF, FLOW.EDGE, SHARED.TAIL.DEF, and SHARED.TAIL.REFERENCE.RESOLVED as registered compiler-lowering operations, not new authoring-language constructs
     process_logic_changed: false
 includes:
 - library: ordo.process_rail.core

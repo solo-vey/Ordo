@@ -87,6 +87,15 @@
 | `LAYER.CONFLICT.CHECK` | op | Checks unresolved layer conflicts. |
 | `OVERRIDE.DEF` | op | Defines explicit override. |
 
+## Shared-tail and flow-reuse lowering
+
+| Construct | Type | Description |
+|---|---|---|
+| `SHARED.TAIL.DEF` | op | Defines a reusable shared process tail emitted by compiler lowering. |
+| `SHARED.TAIL.REFERENCE.RESOLVED` | op | Records a source shared-tail reference resolved to its canonical lowered target. |
+| `FLOW.JOIN.DEF` | op | Defines a synthetic join node that merges incoming branches before a shared tail. |
+| `FLOW.EDGE` | op | Defines an explicit lowered control-flow edge between canonical IR nodes. |
+
 ## FREEFORM
 
 | Construct | Type | Description |

@@ -809,9 +809,10 @@
       "id": "BL-ORDO-050",
       "priority": "P2",
       "title": "APF Legacy IR Opcode Registry Reconciliation",
-      "status": "open",
+      "status": "closed",
       "type": "compiler_registry_maintenance",
       "goal": "Reconcile the APF compiler output opcodes FLOW.EDGE, FLOW.JOIN.DEF, SHARED.TAIL.DEF, and SHARED.TAIL.REFERENCE.RESOLVED with the canonical opcode registry without weakening registry enforcement.",
+      "completion": "Implemented with root/embedded registry reconciliation and blocking contract tests.",
       "discovered_during": "BL-ORDO-049",
       "scope_note": "Separate from the delivery-target decision gate; no silent scope expansion."
     },

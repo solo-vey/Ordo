@@ -184,7 +184,10 @@ Status: `closed`
 
 ### BL-ORDO-050 — APF Legacy IR Opcode Registry Reconciliation
 
-Status: `open`
+Status: `closed`
+
+Implementation: compiler-lowering opcode reconciliation completed; root and
+embedded catalogs now agree and contract tests enforce the boundary.
 
 ### BL-ORDO-051 — External Developer Independence Verification Framework
 
