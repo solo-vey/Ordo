@@ -16,7 +16,7 @@ Versioning scope: `module_local`
 - shared validation/handoff tail is closed
 - whole-tree integration review is closed
 - real validation has no blocking issues under the M62 parent CLI profile
-- FLOW.JOIN / SHARED.TAIL.REFERENCE remain future language candidates, not RC runtime-core changes
+- FLOW.JOIN.DEF, FLOW.EDGE, SHARED.TAIL.DEF, and SHARED.TAIL.REFERENCE.RESOLVED are registered compiler-lowering operations; they are not new authoring-language constructs
 ```
 
 ## Authoring modes

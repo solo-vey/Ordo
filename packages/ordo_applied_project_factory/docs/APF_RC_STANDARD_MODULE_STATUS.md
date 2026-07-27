@@ -38,8 +38,8 @@ Optional / APF-local:
 
 ## Known limitations
 
-- `FLOW.JOIN` remains a future IR candidate.
-- `SHARED.TAIL.REFERENCE` remains a future IR candidate.
+- `FLOW.JOIN.DEF` and `FLOW.EDGE` are emitted compiler-lowering operations covered by the canonical opcode registry.
+- `SHARED.TAIL.DEF` and `SHARED.TAIL.REFERENCE.RESOLVED` are emitted compiler-lowering operations covered by the canonical opcode registry.
 - `validate-factory-output` remains APF-local / optional.
 - `consistency: passed_with_warnings` remains visible and non-blocking.
 

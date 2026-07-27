@@ -30,5 +30,5 @@ PYTHONPATH=cli:. python -m cli.ordo.cli go-no-go packages/ordo_applied_project_f
 ## Known limitations
 
 - `consistency` may return `passed_with_warnings`; warnings are non-blocking but must remain visible.
-- `FLOW.JOIN` and `SHARED.TAIL.REFERENCE` remain future IR candidates.
+- `FLOW.JOIN.DEF`, `FLOW.EDGE`, `SHARED.TAIL.DEF`, and `SHARED.TAIL.REFERENCE.RESOLVED` are registered compiler-lowering operations; they are not new source-language constructs.
 - APF patterns are documented as applied-module patterns, not mandatory core opcodes.
