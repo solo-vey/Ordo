@@ -1102,6 +1102,32 @@
         "Add deterministic CLI support and focused positive, warning, missing-producer, and branching-path tests.",
         "Include the contract in ARF authoring and build guidance; do not allow document readiness with blocking field errors."
       ]
+    },
+    {
+      "id": "BL-ORDO-069",
+      "title": "Publish ARF Playbook Authoring Recommendations",
+      "status": "open",
+      "priority": "P1",
+      "type": "authoring_documentation",
+      "goal": "Publish the complete English v0.6 recommendations as canonical authoring guidance and expose it from the repository front door and quickstart.",
+      "required_scope": [
+        "Translate and preserve the supplied v0.6 recommendations as repository documentation.",
+        "Link the guidance from README, documentation map, and quickstart.",
+        "Keep the document as authoring guidance distinct from runtime enforcement."
+      ]
+    },
+    {
+      "id": "BL-ORDO-070",
+      "title": "Add Structured Playbook Authoring Route to ARF",
+      "status": "deferred",
+      "priority": "P2",
+      "type": "arf_authoring_route",
+      "goal": "Create a separate alternative ARF branch implementing the v0.6 structured playbook-authoring sequence without duplicating existing runtime contracts.",
+      "required_scope": [
+        "Guide domain model, deliverables, templates, parameter registry, primary/derived values, input extraction, and dependencies.",
+        "Guide tree prototyping, gates, materialization, validation, realistic testing, antipattern review, and readiness.",
+        "Reuse existing ARF contracts and defer implementation until BL-ORDO-069 is complete."
+      ]
     }
   ],
   "maintenance_contours": [

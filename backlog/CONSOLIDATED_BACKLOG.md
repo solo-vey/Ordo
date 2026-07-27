@@ -373,6 +373,30 @@ branch-path tests, expose a deterministic CLI command, and be included in ARF
 authoring/build guidance. No document may be claimed ready when a required
 field has an error.
 
+### BL-ORDO-069 — Publish ARF Playbook Authoring Recommendations
+
+Status: `open`
+
+Translate and publish the complete v0.6 playbook-building recommendations as
+canonical English repository guidance. Link it from the root README,
+documentation map, and quickstart so a new author sees the recommended
+domain-model, artifact, template, parameter, dependency, tree, gate,
+validation, testing, checkpoint, and readiness workflow before creating a
+playbook. Preserve the document as general authoring guidance and keep its
+scope distinct from runtime enforcement.
+
+### BL-ORDO-070 — Add Structured Playbook Authoring Route to ARF
+
+Status: `deferred`
+
+Create a separate alternative ARF authoring branch that guides a playbook
+builder through the v0.6 sequence: domain model, deliverables, templates,
+parameter registry, primary/derived classification, input extraction,
+dependencies, tree prototype, gates, materialization, validation, realistic
+test execution, antipattern review, and readiness decision. Reuse existing ARF
+contracts where possible, avoid duplicating runtime behavior, and implement it
+as a future separately reviewed feature after BL-ORDO-069.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
