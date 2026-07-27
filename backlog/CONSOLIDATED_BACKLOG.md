@@ -306,8 +306,8 @@ The user-facing route must be:
 main README → download current ARF Playbook Kit ZIP → upload to chat → paste START_PROMPT.md
 ```
 
-The first implementation phase establishes `ARF Playbook Kit 0.1.0`, its
-release workflow, and the direct README download route. Subsequent releases
+The first implementation phase established the initial ARF Playbook Kit,
+its release workflow, and the direct README download route. Subsequent releases
 must update the current pointer and documentation only after reproducible
 archive, contents, checksum, and release-asset checks pass.
 
