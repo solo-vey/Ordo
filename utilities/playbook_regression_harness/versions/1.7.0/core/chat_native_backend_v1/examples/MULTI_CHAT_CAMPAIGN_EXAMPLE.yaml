@@ -1,0 +1,18 @@
+schema: ordo.prh.chat_native_campaign.v1
+campaign_id: monitoring-event-multichat-001
+playbooks:
+  baseline: MONITORING_EVENT_PLAYBOOK_V0.3.40_20260727T074431Z.zip
+  candidate: MONITORING_EVENT_PLAYBOOK_V0.4.0_FINAL.zip
+scenarios:
+- PRH-DYN-001
+- PRH-DYN-002
+- PRH-DYN-003
+- PRH-DYN-004
+- PRH-DYN-005
+chat_assignments:
+- chat_id: chat-model-a
+  declared_model_label: MODEL_A_AS_SELECTED_IN_UI
+  repetitions: 3
+- chat_id: chat-model-b
+  declared_model_label: MODEL_B_AS_SELECTED_IN_UI
+  repetitions: 1

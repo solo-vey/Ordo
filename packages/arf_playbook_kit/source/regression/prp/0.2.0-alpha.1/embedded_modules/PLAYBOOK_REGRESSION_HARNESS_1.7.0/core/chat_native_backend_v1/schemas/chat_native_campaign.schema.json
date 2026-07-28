@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRH Chat-Native Campaign",
+  "type": "object",
+  "required": [
+    "schema",
+    "campaign_id",
+    "playbooks",
+    "scenarios",
+    "chat_assignments"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ordo.prh.chat_native_campaign.v1"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "playbooks": {
+      "type": "object",
+      "required": [
+        "baseline",
+        "candidate"
+      ],
+      "properties": {
+        "baseline": {
+          "type": "string"
+        },
+        "candidate": {
+          "type": "string"
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "chat_assignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "chat_id",
+          "declared_model_label",
+          "repetitions"
+        ],
+        "properties": {
+          "chat_id": {
+            "type": "string"
+          },
+          "declared_model_label": {
+            "type": "string"
+          },
+          "repetitions": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "scenario_filter": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+schema: ordo.prh.chat_native_campaign.v1
+campaign_id: monitoring-event-chat-native-001
+playbooks:
+  baseline: MONITORING_EVENT_PLAYBOOK_V0.3.40_20260727T074431Z.zip
+  candidate: MONITORING_EVENT_PLAYBOOK_V0.4.0_FINAL.zip
+scenarios:
+- PRH-DYN-001
+chat_assignments:
+- chat_id: third-chat-model-a
+  declared_model_label: USER_SELECTED_MODEL_NAME
+  repetitions: 1
+  scenario_filter:
+  - PRH-DYN-001

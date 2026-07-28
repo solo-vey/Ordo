@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRH Semantic Projection",
+  "type": "object",
+  "required": [
+    "schema",
+    "package_identity",
+    "projection_type",
+    "propositions"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ordo.prh.semantic_projection.v1"
+    },
+    "package_identity": {
+      "type": "object"
+    },
+    "projection_type": {
+      "enum": [
+        "behavioral_specification",
+        "decision_table",
+        "invariant_catalogue"
+      ]
+    },
+    "propositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "subject",
+          "predicate",
+          "strength",
+          "evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "condition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "effect": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "route": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "strength": {
+            "enum": [
+              "must",
+              "must_not",
+              "should",
+              "may",
+              "unknown"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "file",
+                "locator"
+              ],
+              "properties": {
+                "file": {
+                  "type": "string"
+                },
+                "object_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "field": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "locator": {
+                  "type": "string"
+                },
+                "excerpt": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

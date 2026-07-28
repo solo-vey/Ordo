@@ -1,0 +1,9 @@
+schema: ordo.playbook_package_manifest.v1
+playbook_id: PB_PLAYBOOK_REGRESSION
+version: 0.2.0-alpha.1
+status: candidate
+embedded_modules:
+- name: PLAYBOOK_REGRESSION_HARNESS_1.7.0
+  path: embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/
+  version: 1.7.0
+  source_of_truth: utilities/playbook_regression_harness/versions/1.7.0/

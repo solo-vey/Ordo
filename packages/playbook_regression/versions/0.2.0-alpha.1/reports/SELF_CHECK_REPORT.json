@@ -1,0 +1,14 @@
+{
+  "schema": "ordo.prp.self_check.v1.1",
+  "result": "passed_with_candidate_limitations",
+  "checks": {
+    "six_steps_present": true,
+    "embedded_prh_1_7_0_present": true,
+    "expected_violation_rules_present": true,
+    "unexpected_success_blocking": true,
+    "release_metadata_gate_present": true,
+    "checksum_domain_gate_present": true,
+    "specific_package_auto_rewrite_forbidden": true,
+    "canonical_claim": false
+  }
+}

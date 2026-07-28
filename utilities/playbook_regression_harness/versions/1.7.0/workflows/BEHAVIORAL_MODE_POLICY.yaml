@@ -1,0 +1,32 @@
+schema: ordo.prh.behavioral_mode_policy.v1
+modes:
+  provider_api:
+    description: Real provider API execution with provider provenance.
+    output_package: PRH_PROVIDER_API_TEST_PACKAGE.zip
+    must_include:
+    - baseline_playbook
+    - candidate_playbook
+    - scenario_fixtures
+    - provider_adapter
+    - runbook
+    - config_template
+    - result_schemas
+    production_go_eligible: true
+  chat_native:
+    description: Execution inside one or more chats.
+    output_package: PRH_CHAT_NATIVE_TEST_PACKAGE.zip
+    must_include:
+    - baseline_playbook
+    - candidate_playbook
+    - scenario_fixtures
+    - chat_execution_prompt
+    - campaign_config
+    - result_schemas
+    - merge_prompt
+    - evidence_policy
+    production_go_eligible: false
+    promotion_ceiling: REVIEW_REQUIRED
+  skip_behavioral:
+    description: Stop after deterministic regression.
+    production_go_eligible: false
+    promotion_ceiling: REVIEW_REQUIRED

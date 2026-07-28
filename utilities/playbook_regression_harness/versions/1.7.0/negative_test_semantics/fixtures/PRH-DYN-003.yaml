@@ -1,0 +1,10 @@
+schema: ordo.prh.scenario_fixture.v1.1
+scenario_id: PRH-DYN-003
+scenario_kind: negative_test
+expected_violations:
+- violation_id: MISSING_MANDATORY_ARTIFACT
+  expectation: must_observe
+  min_occurrences: 1
+forbidden_outcomes:
+- SUCCESS_TERMINAL
+- UNEXPECTED_SUCCESS

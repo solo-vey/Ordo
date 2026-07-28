@@ -1,0 +1,29 @@
+schema: ordo.prh.hardening_test_matrix.v1
+tests:
+- id: HT-001
+  name: Expected violation observed in all repeats
+  expected:
+    stable: true
+- id: HT-002
+  name: Expected violation missing
+  expected:
+    verdict: FAIL
+    stable: false
+- id: HT-003
+  name: Unexpected additional violation
+  expected:
+    verdict: FAIL
+    stable: false
+- id: HT-004
+  name: Unexpected success in negative test
+  expected:
+    verdict: FAIL
+    stable: false
+- id: HT-005
+  name: Candidate/canonical metadata conflict
+  expected:
+    verdict: FAIL
+- id: HT-006
+  name: Checksum target digest drift
+  expected:
+    verdict: FAIL
