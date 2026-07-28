@@ -1,0 +1,8 @@
+{
+  "playbook_id": "PB_PLAYBOOK_REGRESSION",
+  "version": "0.2.0-alpha.1",
+  "release_status": "candidate",
+  "canonical_claim": false,
+  "reason": "Negative-test and package-provenance hardening integrated as expanded source; full pilot pending.",
+  "created_utc": "2026-07-27T18:05:55.625475+00:00"
+}

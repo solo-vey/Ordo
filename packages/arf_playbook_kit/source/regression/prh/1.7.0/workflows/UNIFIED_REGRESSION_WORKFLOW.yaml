@@ -1,0 +1,49 @@
+schema: ordo.prh.unified_regression_workflow.v1.2
+stages:
+- id: LOAD_INPUTS
+  required: true
+- id: CANONICALIZE
+  required: true
+- id: STATIC_EVALUATE
+  required: true
+- id: RELEASE_METADATA_CONSISTENCY
+  required: true
+- id: CHECKSUM_DOMAIN_VALIDATION
+  required: true
+- id: SEMANTIC_PROJECTION_EXTRACT
+  required: true
+- id: SEMANTIC_SPECIFICATION_DIFF
+  required: true
+- id: DETERMINISTIC_REPORT
+  required: true
+- id: SELECT_BEHAVIORAL_MODE
+  required: true
+  options:
+  - provider_api
+  - chat_native
+  - skip_behavioral
+- id: GENERATE_EXECUTION_PACKAGE
+  required: false
+  when:
+  - provider_api
+  - chat_native
+- id: EXECUTE_EXTERNAL_OR_CHAT_PILOT
+  required: false
+- id: IMPORT_RESULTS
+  required: false
+- id: DIFFERENTIAL_COMPARE
+  required: false
+- id: STABILITY_ANALYZE
+  required: false
+- id: SEMANTIC_JUDGE
+  required: false
+- id: PROMOTION_DECISION
+  required: true
+rules:
+  static_fail_blocks_behavioral_package: false
+  static_fail_must_be_reported: true
+  provider_api_can_support_production_go: true
+  chat_native_promotion_ceiling: REVIEW_REQUIRED
+  skip_behavioral_promotion_ceiling: REVIEW_REQUIRED
+  negative_test_fixtures_must_declare_expected_violations: true
+  unexpected_success_is_blocking: true

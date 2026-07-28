@@ -1,0 +1,19 @@
+schema: ordo.prh.chat_native_policy.v1
+evidence_mode: chat_native
+production_go_allowed: false
+requirements:
+  declared_model_label_required: true
+  model_label_is_user_declared_not_provider_verified: true
+  unique_chat_id_required: true
+  unique_run_id_required: true
+  baseline_candidate_isolation_required: true
+  raw_response_required: true
+  normalized_trace_required: true
+  no_fabricated_usage: true
+  no_fabricated_provider_provenance: true
+minimum_repetitions_for_stability: 3
+allowed_results:
+- PASS
+- FAIL
+- REVIEW_REQUIRED
+promotion_ceiling: REVIEW_REQUIRED

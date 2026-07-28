@@ -22,3 +22,9 @@ contracts, templates, integration material, and an empty user workspace. It
 helps a user create, review, test, and improve a playbook. It does not claim
 that conversational validation is equivalent to deterministic CLI or
 release-grade validation.
+
+The next kit build also includes the expanded, English-language candidate
+Playbook Regression Harness (PRH) 1.7.0 and Playbook Regression Playbook (PRP)
+0.2.0-alpha.1 under `regression/`. PRH is the technical regression utility;
+PRP orchestrates baseline-versus-candidate comparison. Their full pilot and
+promotion remain candidate-stage work.

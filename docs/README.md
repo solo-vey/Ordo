@@ -12,6 +12,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../README.md`](../README.md) — repository overview, release distinction, and top-level entry points.
 - [`../SUPPORT.md`](../SUPPORT.md) — choose the correct route for bugs, questions, proposals, security reports, and conduct concerns.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution workflow and repository expectations.
+- [`regression/README.md`](regression/README.md) — candidate PRP/PRH playbook regression contour and ARF authoring use.
 
 ## Security, support, and governance
 

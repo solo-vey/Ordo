@@ -15,5 +15,7 @@ owns its source, inputs, tests, and package-local documentation.
   execution contract.
 - [`ordo_project_builder/README.md`](ordo_project_builder/README.md) — reference
   project-building process.
+- [`playbook_regression/README.md`](playbook_regression/README.md) — candidate
+  regression orchestration playbook that controls PRH.
 
 Accepted external baselines belong in [`../integrations/README.md`](../integrations/README.md).
