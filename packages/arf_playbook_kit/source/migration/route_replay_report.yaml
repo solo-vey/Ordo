@@ -1,0 +1,8 @@
+schema_version: ordo.migration.route_replay_report.v1
+artifact_id: route-replay-report
+status: draft
+source_node: N5_ROUTE_REPLAY
+producer_node: N5_ROUTE_REPLAY
+review: {status: pending, notes: []}
+routes: []
+failures: []

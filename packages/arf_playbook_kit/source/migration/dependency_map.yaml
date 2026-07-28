@@ -1,0 +1,9 @@
+schema_version: ordo.migration.dependency_map.v1
+artifact_id: dependency-map
+status: draft
+source_node: N5_DEPENDENCY_MAP
+producer_node: N5_DEPENDENCY_MAP
+review: {status: pending, notes: []}
+dependencies: []
+cycles: []
+late_producers: []

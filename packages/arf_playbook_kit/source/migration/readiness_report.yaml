@@ -1,0 +1,11 @@
+schema_version: ordo.migration.readiness_report.v1
+artifact_id: readiness-report
+status: draft
+source_node: N5_READINESS
+producer_node: N5_READINESS
+review: {status: pending, notes: []}
+readiness: blocked
+required_artifacts: []
+open_blockers: []
+deferred_items: []
+handoff_ready: false

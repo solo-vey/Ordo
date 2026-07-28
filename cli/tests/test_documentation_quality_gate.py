@@ -126,6 +126,13 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
                 "workspace/README.md",
                 "guides/START_PROMPT.md",
                 "guides/ARF_PACKAGE_README.md",
+                "migration/README.md",
+                "migration/scope_confirmation.yaml",
+                "migration/domain_model.md",
+                "migration/parameter_registry.yaml",
+                "migration/traceability_matrix.yaml",
+                "migration/materialization_gate_catalog.yaml",
+                "migration/readiness_report.yaml",
                 "utilities/README.md",
                 "utilities/ordo_pathwalk/README.md",
                 "utilities/ordo_pathwalk/cli.py",
@@ -142,6 +149,8 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
             package_readme = archive.read("guides/ARF_PACKAGE_README.md").decode("utf-8")
             assert "## Included capabilities" in package_readme
             assert "## Not included" in package_readme
+            migration_readme = archive.read("migration/README.md").decode("utf-8")
+            assert "collect -> save -> review -> gate -> checkpoint -> next" in migration_readme
             user_entry_documents = (
                 "START_HERE_RUNTIME_MODE.md",
                 "START_PROMPT_RUNTIME_MODE.md",

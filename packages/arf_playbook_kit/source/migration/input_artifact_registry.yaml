@@ -1,0 +1,7 @@
+schema_version: ordo.migration.input_artifact_registry.v1
+artifact_id: input-artifact-registry
+status: draft
+source_node: N5_INPUT_ARTIFACT_REGISTRY
+producer_node: N5_INPUT_ARTIFACT_REGISTRY
+review: {status: pending, notes: []}
+inputs: []

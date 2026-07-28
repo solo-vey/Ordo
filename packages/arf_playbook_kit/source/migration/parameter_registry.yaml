@@ -1,0 +1,7 @@
+schema_version: ordo.migration.parameter_registry.v1
+artifact_id: parameter-registry
+status: draft
+source_node: N5_PARAMETER_REGISTRY
+producer_node: N5_PARAMETER_REGISTRY
+review: {status: pending, notes: []}
+parameters: []

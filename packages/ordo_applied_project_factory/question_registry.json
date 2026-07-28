@@ -5,7 +5,7 @@
     {
       "question_id": "Q_N_FACTORY_MODE_SELECTION",
       "node_id": "N_FACTORY_MODE_SELECTION",
-      "question_text": "Оберіть режим роботи Project Factory: 1 — Доменна модель + дерево рішень; 2 — Ручне дерево рішень; 3 — Вільний діалог; 4 — Коригування існуючого процесу.",
+      "question_text": "Choose the Project Factory mode: 1 — Domain model plus decision tree; 2 — Manual decision tree; 3 — Free dialogue; 4 — Improve an existing process; 5 — Migrate a legacy monolithic instruction.",
       "answer_type": "enum",
       "capture_for_journey": true
     },

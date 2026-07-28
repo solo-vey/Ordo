@@ -1,0 +1,7 @@
+schema_version: ordo.migration.artifact_catalog.v1
+artifact_id: artifact-catalog
+status: draft
+source_node: N5_ARTIFACT_CATALOG
+producer_node: N5_ARTIFACT_CATALOG
+review: {status: pending, notes: []}
+artifacts: []

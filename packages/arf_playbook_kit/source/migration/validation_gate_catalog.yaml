@@ -1,0 +1,7 @@
+schema_version: ordo.migration.validation_gate_catalog.v1
+artifact_id: validation-gates
+status: draft
+source_node: N5_VALIDATION_DESIGN
+producer_node: N5_VALIDATION_DESIGN
+review: {status: pending, notes: []}
+gates: []

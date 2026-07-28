@@ -29,7 +29,8 @@ Playbook Regression Harness (PRH) 1.7.0 and Playbook Regression Playbook (PRP)
 PRP orchestrates baseline-versus-candidate comparison. Their full pilot and
 promotion remain candidate-stage work.
 
-ARF Kit 0.4.4 also packages the companion utility set and the release-build
+ARF Kit 0.4.5 also packages the companion utility set, guided Mode 5 migration
+working-artifact templates, and the release-build
 tooling described in `source/ARF_PACKAGE_README.md`, so the downloadable
 artifact documents both its included capabilities and its deliberate
 repository-level exclusions.

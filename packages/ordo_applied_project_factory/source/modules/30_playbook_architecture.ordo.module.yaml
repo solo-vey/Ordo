@@ -44,7 +44,7 @@ nodes:
         factory_authoring_mode: legacy_instruction_migration
         legacy_migration_status: started
         current_process_layer_label: migration_intake
-      next: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
+      next: N5_SCOPE_CONFIRMATION
   on_unmatched_input:
     action: CLARIFY.REQUEST
     strategy: show_five_authoring_modes_in_plain_language
@@ -1887,7 +1887,7 @@ nodes:
       action: escalate_to_human
       reason: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY remains unclear
   allowed_from:
-  - N_FACTORY_MODE_SELECTION
+  - N5_SCOPE_CONFIRMATION
   node_context:
     version: '1.0'
     required_state:
@@ -1913,13 +1913,13 @@ nodes:
       update_state:
         migration_instruction_source: pasted_legacy_instruction_text
         legacy_migration_status: source_captured
-      next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+      next: N5_DOMAIN_MODEL
     attached_legacy_instruction_file:
       label: 'джерело: прикріплений файл або архів'
       update_state:
         migration_instruction_source: attached_legacy_instruction_file
         legacy_migration_status: source_captured
-      next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+      next: N5_DOMAIN_MODEL
   on_unmatched_input:
     action: CLARIFY.REQUEST
     strategy: ask_for_legacy_instruction_source
@@ -1956,7 +1956,7 @@ nodes:
         migration_clause_inventory_status: completed
         migration_ambiguity_capture_status: completed
         legacy_migration_status: clause_inventory_completed
-      next: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+      next: N5_ARTIFACT_CATALOG
     need_source_clarification:
       label: повернутися до уточнення джерела
       update_state:
@@ -1971,9 +1971,9 @@ nodes:
       action: escalate_to_human
       reason: N_LEGACY_MIGRATION_CLAUSE_INVENTORY remains unclear
   allowed_from:
-  - N_LEGACY_MIGRATION_COMPLETENESS_GATE
+  - N5_DOMAIN_MODEL
   - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
-  - N_LEGACY_MIGRATION_SOURCE_INTAKE
+  - N_LEGACY_MIGRATION_COMPLETENESS_GATE
   node_context:
     version: '1.0'
     required_state:
@@ -1999,7 +1999,7 @@ nodes:
       update_state:
         migration_dependency_reconstruction_status: completed
         legacy_migration_status: dependency_reconstruction_completed
-      next: N_LEGACY_MIGRATION_ORDO_MAPPING
+      next: N5_DEPENDENCY_MAP
     dependency_reconstruction_blocked:
       label: повернутися до clause inventory
       update_state:
@@ -2013,7 +2013,7 @@ nodes:
       action: escalate_to_human
       reason: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION remains unclear
   allowed_from:
-  - N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+  - N5_ANALYST_REQUIRED_INPUTS
   - N_LEGACY_MIGRATION_ORDO_MAPPING
   node_context:
     version: '1.0'
@@ -2042,7 +2042,7 @@ nodes:
         migration_ordo_mapping_status: completed
         migration_traceability_status: completed
         legacy_migration_status: ordo_mapping_completed
-      next: N_LEGACY_MIGRATION_COMPLETENESS_GATE
+      next: N5_TREE_PROTOTYPE
     ordo_mapping_needs_revision:
       label: повернутися до dependency reconstruction
       update_state:
@@ -2057,7 +2057,7 @@ nodes:
       action: escalate_to_human
       reason: N_LEGACY_MIGRATION_ORDO_MAPPING remains unclear
   allowed_from:
-  - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+  - N5_TRACEABILITY_MAPPING
   node_context:
     version: '1.0'
     required_state:
@@ -2101,7 +2101,7 @@ nodes:
       action: escalate_to_human
       reason: N_LEGACY_MIGRATION_COMPLETENESS_GATE remains unclear
   allowed_from:
-  - N_LEGACY_MIGRATION_ORDO_MAPPING
+  - N5_READINESS
   node_context:
     version: '1.0'
     required_state:
@@ -4604,6 +4604,496 @@ nodes:
     - current_node
     knowledge_refs: []
     allowed_tools: []
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_SCOPE_CONFIRMATION
+  description: Mode 5 begins as a guided, zero-silent-loss authoring and migration route; the analyst confirms scope before source interpretation.
+  question: Confirm the legacy source, intended new playbook, zero-silent-loss requirement, and final delivery boundary.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  artifact_contract:
+    path: workspace/migration/00_scope_confirmation.yaml
+    template: migration/scope_confirmation.yaml
+    status_after_answer: confirmed
+  on_answer:
+    update_state:
+      migration_scope_confirmation: $answer
+      migration_authoring_profile: guided_twenty_step
+      legacy_migration_status: scope_confirmed
+    next: N_LEGACY_INSTRUCTION_MIGRATION_ENTRY
+  allowed_from:
+  - N_FACTORY_MODE_SELECTION
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_DOMAIN_MODEL
+  description: Extract the domain model before converting legacy clauses into nodes or templates.
+  question: 'Create and save the domain model: entities, roles, events, terms, boundaries, constraints, and unresolved contradictions.'
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_DOMAIN_MODEL_REVIEW
+    blocking_when: domain_model_status is not confirmed
+  artifact_contract:
+    path: workspace/migration/01_domain_model.md
+    template: migration/domain_model.md
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      domain_model_notes: $answer
+      domain_model_status: confirmed
+    next: N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+  allowed_from:
+  - N_LEGACY_MIGRATION_SOURCE_INTAKE
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_ARTIFACT_CATALOG
+  description: Define every result artifact before templates or tree nodes are authored.
+  question: Record each output artifact, format, requiredness, creation condition, owner, and deferred or optional status.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_ARTIFACT_CATALOG_READY
+    blocking_when: output_artifact_catalog_status is not confirmed
+  artifact_contract:
+    path: workspace/migration/02_artifact_catalog.yaml
+    template: migration/artifact_catalog.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      output_artifact_catalog: $answer
+      output_artifact_catalog_status: confirmed
+    next: N5_TEMPLATE_CATALOG
+  allowed_from:
+  - N_LEGACY_MIGRATION_CLAUSE_INVENTORY
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_TEMPLATE_CATALOG
+  description: Create a separate reusable template contract for every confirmed output artifact.
+  question: Create or import each template, then show required sections, placeholders, examples, and review status.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_TEMPLATE_REVIEW
+    blocking_when: any active template status is unfinished
+  artifact_contract:
+    path: workspace/migration/03_template_catalog.yaml
+    template: migration/template_catalog.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      output_template_catalog: $answer
+      template_catalog_status: confirmed
+    next: N5_TEMPLATE_PARAMETERS
+  allowed_from:
+  - N5_ARTIFACT_CATALOG
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_TEMPLATE_PARAMETERS
+  description: Analyze every template and capture the fields needed to materialize it.
+  question: For each template, list parameter name, type, meaning, source, requiredness, and unresolved source gaps.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_TEMPLATE_PARAMETER_COVERAGE
+    blocking_when: any required template field has no declared parameter
+  artifact_contract:
+    path: workspace/migration/04_template_parameters.yaml
+    template: migration/template_parameters.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      template_parameter_specs: $answer
+      template_parameter_status: confirmed
+    next: N5_PARAMETER_REGISTRY
+  allowed_from:
+  - N5_TEMPLATE_CATALOG
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_PARAMETER_REGISTRY
+  description: Merge template parameters into one canonical playbook registry.
+  question: Merge duplicate parameter names, resolve naming conflicts, and record collection method and artifact usage.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_PARAMETER_REGISTRY_CLEAN
+    blocking_when: duplicate canonical names or source-less required parameters remain
+  artifact_contract:
+    path: workspace/migration/05_parameter_registry.yaml
+    template: migration/parameter_registry.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      parameter_registry: $answer
+      parameter_registry_status: confirmed
+    next: N5_PRIMARY_DERIVED_CLASSIFICATION
+  allowed_from:
+  - N5_TEMPLATE_PARAMETERS
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_PRIMARY_DERIVED_CLASSIFICATION
+  description: Separate facts collected from inputs or the analyst from values derived after decisions are confirmed.
+  question: Classify every parameter as primary or derived and record each derived parameter's dependencies.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_PARAMETER_CLASSIFICATION
+    blocking_when: a derived parameter has no dependency list or a primary parameter has no source
+  artifact_contract:
+    path: workspace/migration/06_parameter_classification.yaml
+    template: migration/parameter_classification.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      parameter_classification: $answer
+      parameter_classification_status: confirmed
+    next: N5_INPUT_ARTIFACT_REGISTRY
+  allowed_from:
+  - N5_PARAMETER_REGISTRY
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_INPUT_ARTIFACT_REGISTRY
+  description: Record every source document, archive, module, example, or link and what can be extracted reliably from it.
+  question: Build the input-artifact registry and distinguish extracted facts from assumptions or contextual inferences.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_INPUT_EXTRACTION_COVERAGE
+    blocking_when: a required primary parameter has neither a reliable input source nor an analyst question
+  artifact_contract:
+    path: workspace/migration/07_input_artifact_registry.yaml
+    template: migration/input_artifact_registry.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      input_artifact_registry: $answer
+      input_artifact_registry_status: confirmed
+    next: N5_ANALYST_REQUIRED_INPUTS
+  allowed_from:
+  - N5_PRIMARY_DERIVED_CLASSIFICATION
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_ANALYST_REQUIRED_INPUTS
+  description: Identify only analyst answers needed to close material gaps, build derived values, pass gates, or materialize required artifacts.
+  question: Present required analyst questions with context and proposed answers for confirmation or correction.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_ANALYST_GAPS_CLOSED
+    blocking_when: required parameters remain without a confirmed source or explicit analyst question
+  artifact_contract:
+    path: workspace/migration/08_analyst_required_inputs.yaml
+    template: migration/analyst_required_inputs.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      analyst_required_inputs: $answer
+      analyst_required_inputs_status: confirmed
+    next: N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+  allowed_from:
+  - N5_INPUT_ARTIFACT_REGISTRY
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_DEPENDENCY_MAP
+  description: Build the dependency order used to place collection, decision, gate, and materialization nodes.
+  question: Save the parameter dependency map and resolve cycles, late producers, and values used before they are confirmed.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_DEPENDENCY_CLOSURE
+    blocking_when: a cycle or late producer remains unresolved
+  artifact_contract:
+    path: workspace/migration/09_dependency_map.yaml
+    template: migration/dependency_map.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      parameter_dependency_map: $answer
+      parameter_dependency_status: confirmed
+    next: N5_TRACEABILITY_MAPPING
+  allowed_from:
+  - N_LEGACY_MIGRATION_DEPENDENCY_RECONSTRUCTION
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_TRACEABILITY_MAPPING
+  description: Map every legacy clause and reconstructed dependency to a parameter, node, gate, artifact, or explicit unresolved status.
+  question: Build and review the clause-to-Ordo traceability matrix; no clause may disappear silently.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_TRACEABILITY_COMPLETE
+    blocking_when: any clause lacks coverage or an explicit unresolved disposition
+  artifact_contract:
+    path: workspace/migration/10_traceability_matrix.yaml
+    template: migration/traceability_matrix.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      migration_traceability_matrix: $answer
+      migration_traceability_status: confirmed
+    next: N_LEGACY_MIGRATION_ORDO_MAPPING
+  allowed_from:
+  - N5_DEPENDENCY_MAP
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_TREE_PROTOTYPE
+  description: Create the first structured decision-tree prototype from the approved registry, dependencies, and traceability map.
+  question: Review nodes, inputs, outputs, transitions, terminal candidates, and source nodes before detailed wording is added.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_TREE_COVERAGE
+    blocking_when: a required parameter has no producer or a required artifact has no reachable materialization path
+  artifact_contract:
+    path: workspace/migration/11_decision_tree_blueprint.yaml
+    template: migration/decision_tree_blueprint.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      decision_tree_blueprint: $answer
+      decision_tree_blueprint_status: confirmed
+    next: N5_MATERIALIZATION_GATES
+  allowed_from:
+  - N_LEGACY_MIGRATION_ORDO_MAPPING
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_MATERIALIZATION_GATES
+  description: Define readiness gates for every document materialization point and bind each required field to a producer node.
+  question: Review required fields, allowed gaps, producer nodes, repair targets, and requiredness at each materialization point.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_MATERIALIZATION_READINESS
+    blocking_when: any required document field lacks a producer, path coverage, or requiredness declaration
+  artifact_contract:
+    path: workspace/migration/12_materialization_gate_catalog.yaml
+    template: migration/materialization_gate_catalog.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      materialization_gate_catalog: $answer
+      materialization_gate_status: confirmed
+    next: N5_DOCUMENT_REVIEW
+  allowed_from:
+  - N5_TREE_PROTOTYPE
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_DOCUMENT_REVIEW
+  description: Materialize draft documents from confirmed parameters and review template, mock example, and state-field mapping together.
+  question: Review the file-first document package, identify missing or invented values, and confirm or revise each document.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_DOCUMENT_REVIEW
+    blocking_when: an active document has unfinished template status or unconfirmed required fields
+  artifact_contract:
+    path: workspace/migration/13_document_review_report.yaml
+    template: migration/document_review_report.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      document_review_report: $answer
+      document_review_status: confirmed
+    next: N5_VALIDATION_DESIGN
+  allowed_from:
+  - N5_MATERIALIZATION_GATES
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_VALIDATION_DESIGN
+  description: Define semantic, mechanical, and negative validation for the playbook and every resulting artifact.
+  question: Record semantic checks, CLI checks, required sections, identifiers, placeholders, allowed values, and negative tests.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_VALIDATION_COVERAGE
+    blocking_when: any required artifact has neither a semantic review nor a mechanical check
+  artifact_contract:
+    path: workspace/migration/14_validation_gate_catalog.yaml
+    template: migration/validation_gate_catalog.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      validation_gate_catalog: $answer
+      validation_design_status: confirmed
+    next: N5_PACKAGE_CONSISTENCY
+  allowed_from:
+  - N5_DOCUMENT_REVIEW
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_PACKAGE_CONSISTENCY
+  description: Compare canonical parameters, identifiers, paths, templates, and artifacts across the complete working package.
+  question: Review the package-level consistency report and resolve every cross-artifact contradiction.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_PACKAGE_CONSISTENCY
+    blocking_when: canonical values, identifiers, paths, or checksums disagree across artifacts
+  artifact_contract:
+    path: workspace/migration/15_package_consistency_report.yaml
+    template: migration/package_consistency_report.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      package_consistency_report: $answer
+      package_consistency_status: confirmed
+    next: N5_ROUTE_REPLAY
+  allowed_from:
+  - N5_VALIDATION_DESIGN
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_ROUTE_REPLAY
+  description: Replay the main route, allowed omissions, alternate routes, and negative cases against the current artifacts and tree draft.
+  question: Review replay results, questions, captured state, gates, outputs, and failure behavior for each tested route.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_ROUTE_REPLAY_READY
+    blocking_when: a supported route terminates early, loops unexpectedly, or loses required evidence
+  artifact_contract:
+    path: workspace/migration/16_route_replay_report.yaml
+    template: migration/route_replay_report.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      route_replay_report: $answer
+      route_replay_status: confirmed
+    next: N5_IMPROVEMENT_LOG
+  allowed_from:
+  - N5_PACKAGE_CONSISTENCY
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_IMPROVEMENT_LOG
+  description: Generalize defects, causes, and improvements without mixing case-specific data into the reusable playbook contract.
+  question: Record antipatterns and improvement rules, then confirm which changes are applied, deferred, or rejected.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  artifact_contract:
+    path: workspace/migration/17_improvement_log.md
+    template: migration/improvement_log.md
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      improvement_log: $answer
+      improvement_log_status: confirmed
+    next: N5_READINESS
+  allowed_from:
+  - N5_ROUTE_REPLAY
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N5_READINESS
+  description: Confirm that all required parameters, artifacts, routes, validations, checkpoints, and unresolved items have explicit status.
+  question: Review the final mode-5 readiness report and approve entry into source YAML generation and the shared package tail.
+  answer_type: structured_record
+  allow_unmatched_input: true
+  gate_contract:
+    id: G5_N5_READY_FOR_PACKAGE
+    blocking_when: required artifacts, parameters, gates, routes, or validation reports remain unfinished without explicit disposition
+  artifact_contract:
+    path: workspace/migration/18_readiness_report.yaml
+    template: migration/readiness_report.yaml
+    status_after_answer: review_required
+  on_answer:
+    update_state:
+      migration_readiness_report: $answer
+      migration_readiness_status: ready_for_shared_tail
+      legacy_migration_status: ready_for_shared_tail
+    next: N_LEGACY_MIGRATION_COMPLETENESS_GATE
+  allowed_from:
+  - N5_IMPROVEMENT_LOG
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
     output_contract:
       state_diff: required
       next_node: explicit

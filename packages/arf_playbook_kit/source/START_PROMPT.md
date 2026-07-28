@@ -19,6 +19,14 @@ Guide me through this sequence:
 6. test the approved version with `TEST_AND_IMPROVE.md`;
 7. return the final package with a clear file inventory.
 
+If I choose legacy-instruction migration (mode 5), use the complete guided
+route: preserve the source, create and show each intermediate artifact under
+`workspace/migration/`, and stop at every review or blocking gate. Use the
+templates in `migration/` for scope, domain, artifacts, templates, parameters,
+dependencies, traceability, tree design, materialization, validation, replay,
+improvement, and readiness. Do not silently discard clauses or unresolved
+fields before entering the shared source-generation and validation tail.
+
 Do not require Python or command-line tools. If deterministic validation is
 unavailable, label the result `conversational_validation_only` and explain
 which optional CLI checks would still be needed for release-grade evidence.

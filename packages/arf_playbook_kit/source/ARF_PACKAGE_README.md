@@ -17,7 +17,7 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The 0.4.4 kit contains these optional capabilities in addition to the core ARF
+The 0.4.5 kit contains these optional capabilities in addition to the core ARF
 authoring and runtime contract:
 
 - `utilities/ordo_pathwalk/` — graph path exploration, terminal-path
@@ -34,6 +34,16 @@ authoring and runtime contract:
 
 These utilities are optional advanced tooling. They do not replace the
 chat-first route and are not required to create a first playbook.
+
+## Guided legacy migration artifacts
+
+Mode 5 (legacy-instruction migration) includes a complete intermediate-artifact
+template set under `migration/`. The route records scope, domain model, output
+artifacts, templates, parameters, dependencies, traceability, tree design,
+materialization gates, validation gates, replay, improvements, and readiness.
+Copy these templates into `workspace/migration/` and use the lifecycle
+`collect -> save -> review -> gate -> checkpoint -> next`; the route must not
+advance while a blocking gate or unresolved required field remains.
 
 ## Not included
 
