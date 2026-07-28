@@ -15,6 +15,33 @@ The archive contains the active Applied Project Factory source, a freshly compil
 
 The archive intentionally excludes repository history, previous validation reports, release evidence, generated examples, and unrelated developer material. The package is a standalone ARF product artifact, not a repository snapshot.
 
+## Included capabilities
+
+The 0.4.4 kit contains these optional capabilities in addition to the core ARF
+authoring and runtime contract:
+
+- `utilities/ordo_pathwalk/` — graph path exploration, terminal-path
+  enumeration, clean/noise testcase generation, review cards, and benchmark
+  helpers.
+- `utilities/ordo_visual_graph_generator/` — Mermaid/SVG/PNG graph rendering,
+  subtree and path views, and annotation overlays.
+- `utilities/playbook_lifecycle/` — checkpoint management, upgrade-impact
+  review, and verified rollback helpers.
+- `utilities/playbook_regression_harness/` — the versioned regression-harness
+  companion utility.
+- `release_tools/` — the ARF Kit builder, project release-archive builder,
+  release-integrity verifier, and English-only policy validator.
+
+These utilities are optional advanced tooling. They do not replace the
+chat-first route and are not required to create a first playbook.
+
+## Not included
+
+The kit does not include the full Ordo repository, Git history, CI workflows,
+repository evidence archives, or unrelated maintenance/audit tools. The
+release tools are included for inspection and reproducible-build guidance;
+their repository-level commands may require a full Ordo checkout.
+
 ## Authoring and runtime rules
 
 - Use `guides/START_HERE.md` and `guides/START_PROMPT.md` as the chat-facing entry route.
