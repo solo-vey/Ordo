@@ -1,0 +1,12 @@
+schema_version: ordo.migration.scope_confirmation.v1
+artifact_id: scope-confirmation
+status: draft
+source_node: N5_SCOPE_CONFIRMATION
+producer_node: N5_SCOPE_CONFIRMATION
+review: {reviewer: null, status: pending, notes: []}
+gate: {status: pending, blockers: []}
+source_reference: null
+target_playbook: null
+zero_silent_loss_required: true
+delivery_boundary: null
+unresolved_items: []

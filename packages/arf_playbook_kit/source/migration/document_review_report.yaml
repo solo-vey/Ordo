@@ -1,0 +1,9 @@
+schema_version: ordo.migration.document_review_report.v1
+artifact_id: document-review-report
+status: draft
+source_node: N5_DOCUMENT_REVIEW
+producer_node: N5_DOCUMENT_REVIEW
+review: {status: pending, notes: []}
+documents: []
+missing_fields: []
+unresolved_fields: []

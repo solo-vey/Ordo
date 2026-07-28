@@ -120,6 +120,10 @@ def assemble(stage: Path) -> None:
     for name in GUIDE_FILES:
         copy_file(GUIDES / name, stage / "guides" / name)
 
+    # Mode 5 uses explicit working artifacts so every intermediate decision,
+    # parameter, template, and gate remains reviewable in the extracted kit.
+    copy_tree_without_caches(GUIDES / "migration", stage / "migration")
+
     # Companion utilities and release builders are shipped as optional,
     # inspectable capabilities. They are not required for the chat-first
     # authoring route, but let advanced users inspect, visualize, test, and

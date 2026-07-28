@@ -1,0 +1,7 @@
+schema_version: ordo.migration.parameter_classification.v1
+artifact_id: parameter-classification
+status: draft
+source_node: N5_PRIMARY_DERIVED_CLASSIFICATION
+producer_node: N5_PRIMARY_DERIVED_CLASSIFICATION
+review: {status: pending, notes: []}
+classifications: []

@@ -1,0 +1,7 @@
+schema_version: ordo.migration.template_catalog.v1
+artifact_id: template-catalog
+status: draft
+source_node: N5_TEMPLATE_CATALOG
+producer_node: N5_TEMPLATE_CATALOG
+review: {status: pending, notes: []}
+templates: []

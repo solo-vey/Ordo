@@ -1,0 +1,7 @@
+schema_version: ordo.migration.analyst_required_inputs.v1
+artifact_id: analyst-required-inputs
+status: draft
+source_node: N5_ANALYST_REQUIRED_INPUTS
+producer_node: N5_ANALYST_REQUIRED_INPUTS
+review: {status: pending, notes: []}
+questions: []

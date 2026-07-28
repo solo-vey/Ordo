@@ -1,10 +1,3124 @@
 {
-  "schema_version": "ordo.arf_playbook_kit.release_metadata.v1",
+  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.5.zip",
+  "archive_sha256": "59990784417a90572c963c2a486ae3850222fab260e927dabde04a4cbb4aea9e",
   "kit": "ARF Playbook Kit",
-  "version": "0.4.4",
-  "release_tag": "arf-playbook-kit-v0.4.4",
-  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.4.zip",
-  "archive_sha256": "2c3f76e4de66373fc24aa5d5a36799ac09825a9c55c8b0573be56c010a30dee1",
-  "member_count": 757,
-  "release_manifest_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.4/ORDO_ARF_PLAYBOOK_KIT_0.4.4.manifest.json"
+  "members": [
+    {
+      "path": "source/assemble_modular_source.py",
+      "sha256": "6767e1deaf15cb2d809db3f60405c93a7c5a7b1dbaec0983e2e5b10ea1c6d429"
+    },
+    {
+      "path": "source/module_manifest.yaml",
+      "sha256": "79c5d2c84fc5e1e7a02964db686bf9894282a4265d8535207d41c4f3fbe95af4"
+    },
+    {
+      "path": "source/modules/00_program_metadata.ordo.module.yaml",
+      "sha256": "c7350dd04924fdecc88b848da11feba20f005b809f07c94f01c3df0032f674a0"
+    },
+    {
+      "path": "source/modules/10_entry_and_project_contract.ordo.module.yaml",
+      "sha256": "cbd87eb038f9a1ba4dc9aa29242a843356b4156b758706b7663c1c83cf7a4db1"
+    },
+    {
+      "path": "source/modules/15_session_package_cache.ordo.module.yaml",
+      "sha256": "e823da82ef02c69ed73f42207a82d91775268fa4a88274d8444e9c6250c532ff"
+    },
+    {
+      "path": "source/modules/20_process_design_rail.ordo.module.yaml",
+      "sha256": "eed3e0971a9b687f996025e96333551ccb7383093ea2376f8f49021574b711ed"
+    },
+    {
+      "path": "source/modules/30_playbook_architecture.ordo.module.yaml",
+      "sha256": "894766d7d8901b41b839ff9c183c09627c833937e6484ef0c1c4c091730c441b"
+    },
+    {
+      "path": "source/modules/35_optional_flow_reuse.ordo.module.yaml",
+      "sha256": "1af3c3411a3f605fa1d4fe8d76b193a0d05326ab82fb86c65317a2f77051b961"
+    },
+    {
+      "path": "source/modules/40_conversation_policy.ordo.module.yaml",
+      "sha256": "bd97522f0f5eeaec61b9b6505c21c39c385ae4aa258b01322796ea6ae3a4768d"
+    },
+    {
+      "path": "source/modules/45_blind_automation_design.ordo.module.yaml",
+      "sha256": "d8786950f07ad366781624528c82eebfdd8e59b2488b48085b0e470e58d1a0ae"
+    },
+    {
+      "path": "source/modules/50_package_generation.ordo.module.yaml",
+      "sha256": "3584303361536a19d622ea40e55eaf1366f3f58d9d06a5fcda043e7678f02bc8"
+    },
+    {
+      "path": "source/modules/60_validation_and_release.ordo.module.yaml",
+      "sha256": "8fd5345e073f6bbdf8c14da3955fbfb2a0c67d648093d5eebb6015f73ba92fc9"
+    },
+    {
+      "path": "source/modules/70_assertions_and_status_semantics.ordo.module.yaml",
+      "sha256": "0994d79b313bde7a7507cdb873066908ea62da84cd42ac304a79f4e81932ca3e"
+    },
+    {
+      "path": "source/modules/75_startup_package_profile.ordo.module.yaml",
+      "sha256": "e81dd027e234699adaac7b874d4f200c592b017799797867340abe2e4da7b985"
+    },
+    {
+      "path": "source/modules/80_artifact_sync.ordo.module.yaml",
+      "sha256": "c3a5d4a650a4aeb0a92372f3e53952200f9915b28615ade1af2c0ad7af2fbcb7"
+    },
+    {
+      "path": "source/program.ordo.yaml",
+      "sha256": "0e486952d325427f5ed4d863186a71a2be93c129e5f2ac62637290991576607b"
+    },
+    {
+      "path": "compiled/program.ir.json",
+      "sha256": "5afbad818dc0d66de9e4358d35bfb8f4c4335ff19668fec844cd2c9999d187c4"
+    },
+    {
+      "path": "compiled/program.ordo.view",
+      "sha256": "9be48340663b13f12d9905229f36aede09f00f7e2a0a6d064f92250caa5b2982"
+    },
+    {
+      "path": "compiled/targets.manifest.json",
+      "sha256": "03d19060f4c6a70d8335062b640c4ca0f0ecbe0bf3d13e19e4d1d9bc71207152"
+    },
+    {
+      "path": "PLAYBOOK_LAWS.md",
+      "sha256": "cd4f2c7ec849b3de89b08a57086207c19f0ccfe867a54f2c24536e13fa14b88b"
+    },
+    {
+      "path": "START_HERE_RUNTIME_MODE.md",
+      "sha256": "542d4e347972edd3804a54993b178d8a2175f1a92ac76d7b0dce3d76a00b5271"
+    },
+    {
+      "path": "START_PROMPT_RUNTIME_MODE.md",
+      "sha256": "f4406a125a0dca78be7302d52fa03bfcbe946ee32001ff5a1e51613373b559dc"
+    },
+    {
+      "path": "cli_embedded/README.md",
+      "sha256": "ee236a24a41742851dc12e5379028a9b1ebcd91d763a4429cfcd2c5f7779025b"
+    },
+    {
+      "path": "cli_embedded/language/registry/CAPABILITY_CATALOG.md",
+      "sha256": "3a05d023689cd60c922ceee7015c4c24ab9d1e62bb2d9529ed0308cb737903bc"
+    },
+    {
+      "path": "cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "sha256": "d5d88af03666bb896a9d4540e0386f0a0e63c04575757485ad93f27f26231d95"
+    },
+    {
+      "path": "cli_embedded/language/registry/SOURCE_CONSTRUCT_CATALOG.md",
+      "sha256": "fbf00c6fcf648d15a3bc26b753dc4d152cdf9eabde96af874f40078beb4b2e19"
+    },
+    {
+      "path": "cli_embedded/language/registry/TRACE_EVENT_CATALOG.md",
+      "sha256": "46c99b26eed04587c78a07484629bddc4b5bf24bcba2ce65ec6f8ea499631e7a"
+    },
+    {
+      "path": "cli_embedded/language/registry/capability_catalog.yaml",
+      "sha256": "b647e70c2bc5669bca62c65434aeab500d42bafa10365756137949e44723a6ef"
+    },
+    {
+      "path": "cli_embedded/language/registry/source_construct_catalog.yaml",
+      "sha256": "1b479a5561f84f81d5fa33115d75789bbab0df4bc477cc139d25dcbfd320fa31"
+    },
+    {
+      "path": "cli_embedded/language/registry/trace_event_catalog.yaml",
+      "sha256": "e931b56b535ace8ad718bfe3022f4e605e381fdae75286ac23669efde54830b8"
+    },
+    {
+      "path": "cli_embedded/ordo",
+      "sha256": "5dcd5ebe2f461f5c70c39e333608900e7d104a3aca7fe666855ef071e043dde6"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/__init__.py",
+      "sha256": "189c32adc1f5789397fe9ffd1fe2d220c3b6003c6dc65edeb2d06e43b3e0cc23"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/artifact_validator.py",
+      "sha256": "dcf11b9858acaeba216e6226034e14f117f64ccc14ea7002da8f67f84fcc34ee"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/checkpoints.py",
+      "sha256": "84f07423b1e3b6f55e24c46e4e52bdf64a94167dc3ec1c3646b8000843c93b7f"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/clean_check.py",
+      "sha256": "8481cbbf04a13a4f9c93229c2fe49dad09ae67615aa51024af4aad24b4c2bc36"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/cli.py",
+      "sha256": "11e53ed7f50a62835f8f2a048b61a1cb0d7ceb3a0c53958b4e57fc4da263d59e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/compiler.py",
+      "sha256": "45b0e1651cb0941d3f3e1f998f77fe0c6faaa18bb01b9a9973455c925df2942f"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/consistency.py",
+      "sha256": "4e6e4f7cbd7a2a9a2c91e7592f78b516f5350560b54a7d2006c1b8de6fc68363"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/contract_coverage.py",
+      "sha256": "0fbdba2f993b4a6b1b0c0596189299048dbd0342eb23dbe5a4b3e75a88fc7393"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/coverage.py",
+      "sha256": "392d78522cac167398001f4703d1196e744baebc1dcc742565e14da5bd11722e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/csg_runtime.py",
+      "sha256": "d659199b50648fe1bd44fdb7fd5318bc10d8465aef112b8664d40ab36acbfcee"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/dependency_conflicts.py",
+      "sha256": "93a502fb378e7f43d34ea303cf27411861f4e11bfd9dc52c05d56d1e6d58ee6a"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/dependency_lock.py",
+      "sha256": "0340666f185340a93c7bf01323750a5f71cc7c8fd00dc51dc2a807cc6db4e7e5"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/document_field_bindings.py",
+      "sha256": "8338e4c9a584aff4df2b76c456af79ccc14c14e10e7eb1e93b92b8ac54c1fb1a"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/errors.py",
+      "sha256": "4b19b416590cccaad1517e7809dcc0aecdab4c108a6bca2a4e7bd68c3b4bd53e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/execution_trace.py",
+      "sha256": "fd8b0c2369a58712dea71cd592ed6ec3aa146b2f5b4bb2566541e92159c65453"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/go_no_go.py",
+      "sha256": "b72fd437459522278470d1f326f60d914a2baaa2eb38181bb0f3f99d670bdf6f"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/helpers.py",
+      "sha256": "43841e6ad104fc72b27dbfc3f9033830b877a7a34ef5af6fac49e289dc2155d9"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/intake.py",
+      "sha256": "388656a04c29f0c0553404968a26dfabf0c9ca7f06a32443f251972f68494e49"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/linter.py",
+      "sha256": "5addc5a6583f10928c41e4593c90c288f03d2b8c5452d19f8641dc61ad8b5d8c"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/loader.py",
+      "sha256": "757cf31bbfa160a7af2c414c1b3811f7d1a27bbaf5886cc763e00d4ba7b3f25a"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/output_generator.py",
+      "sha256": "3f9e6a86a91289ad78ee04f05753ad2a317cca5b82c57c7e79b0657be726dc6b"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/output_registry.py",
+      "sha256": "089b661d22a2bc779b15c9df0070be7791cf29bb92040d419ec40b0217633db5"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/output_validator.py",
+      "sha256": "07a3e5688e74478dbfe464b804b8faf5a8c3fe8a4685a44a62d3ce3f9a307dce"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/package_profiles.py",
+      "sha256": "6a08ec7cec5fc36cc3cf048ebec6156528f3a4191a56c81435bd8d2a3e95c4dc"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/provenance.py",
+      "sha256": "d0f23cb30d52bf08f1642d07192e7268293d7b2bd99cd335a01556610a6a7354"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/registry_checks.py",
+      "sha256": "5aa388f08f71f2380d0c47a5e6b745eeacb8fc86ec16e7b6b35bb834a913c3cc"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/release.py",
+      "sha256": "47bb2522d9c6256a40a7ca5ee0981f0e98732fd342413b0f8043473ed9403995"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/release_diff.py",
+      "sha256": "16627086880f88af39aa3de8fb9b971928c8ed55cf45f411624eef066688c9c9"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/release_notes.py",
+      "sha256": "d4a680fca791985dc5ff3fce6c56ac087853e243dfa30affd8f42439a87f44b4"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/rendering_policy.py",
+      "sha256": "0c17a1add2b8c7ca399de98a0216700bca2c9fe4a44cc64ad3f445721ba2f6c8"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/repo_checks.py",
+      "sha256": "cde68f947f75ca87db212ea590fdb2c3443b1608505dada562384f11fdcce9b9"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/reporter.py",
+      "sha256": "1c94ecc4b7c832da6a4b051578259a0ec80f0743e84c8b496838a73c1bec86d4"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runner.py",
+      "sha256": "dd4ee7722cc27fb98947bd47dbde5d78afd119656f89f559fccabc3f5f5d2b71"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runtime.py",
+      "sha256": "f4c282dc6057256af121084bbb3b3aa443e887345bdde6e343604db0b2c3149d"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runtime_evidence.py",
+      "sha256": "26b58b1054c2d5096977fac672619492b620bb6863170a5687b495abf407e066"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runtime_restore.py",
+      "sha256": "763b8d5cb7dcf0f59116231e66a4d72099bd652002b68bad75abcfc6d66300aa"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/ir_schema.yaml",
+      "sha256": "8fe308693073f8558fa792cc469d37f3a613f3449358aa192eb90e34c70d1aba"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/source_schema.yaml",
+      "sha256": "3f0f1c0e3eca7cf3631c974f53b83d4a3abd8fa961f7cf675805b837b3f4b5eb"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/session_chain.py",
+      "sha256": "b75dc9f9a8b5dea9bfd9d2d83b831995fcc2296f0d22ccd13a07a711522dae13"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/session_trace.py",
+      "sha256": "73a0e05d1ae5b542a835db49c4f94b57621b5069aa6febea362f9b7f031de3ea"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/targets.py",
+      "sha256": "b4e189a2d5f24379b22dd9c1c4736e043475581e4618523708225e26af6c5a4e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/tester.py",
+      "sha256": "4eae6341cb702ed6ec2e6d55ed3a83a7db4e838c92d964160a5ceacee9e0d745"
+    },
+    {
+      "path": "guides/ARF_PACKAGE_README.md",
+      "sha256": "9bb817c81d39ee0aca0e2f9cda5d1baa45bc8b51919e80c27b794654ce3f4dc6"
+    },
+    {
+      "path": "guides/DECISION_DEBUG_TRACE.md",
+      "sha256": "f0782f7b24ee1a3595fe09a91e46bd788fc1d1356d2afeafd0ff14467b0231b7"
+    },
+    {
+      "path": "guides/DOCUMENT_FIELD_BINDINGS.example.yaml",
+      "sha256": "bdd151040d271f0802d7ee6b1b353053fe0e980ae2ccfbaae0d22d4631dc2d77"
+    },
+    {
+      "path": "guides/DOCUMENT_FIELD_PROVENANCE.md",
+      "sha256": "4ba4718b2845ce081a1b6a3b3040732511d29b571a483c9f9d50f77bad5a834e"
+    },
+    {
+      "path": "guides/EXPECTED_DELIVERABLES.md",
+      "sha256": "0da0802f4f3dd9eaf7109f3f39df8d462476aa37e6a3fe9dbe188ddeae0a9653"
+    },
+    {
+      "path": "guides/GRAPH_TRANSITION_CONTRACT.md",
+      "sha256": "6e6b0834e67170f3042ed881925311bad3f8bacd5b75f670cfe87dd89c13468a"
+    },
+    {
+      "path": "guides/PLAYBOOK_BRIEF.md",
+      "sha256": "86aa07ce0cf1679825b8fbfa79bd93f7dbd6f9c6dc82a2057a6f5ad627e35096"
+    },
+    {
+      "path": "guides/PLAYBOOK_LAWS.md",
+      "sha256": "364ae6bef32051abeebba3977d9a05563de76a9b5e098e01fc1f8605ea533183"
+    },
+    {
+      "path": "guides/PLAYBOOK_TEMPLATE.md",
+      "sha256": "a723489cbaea9fad3402aeaa4b95e7db364e6f3d52f0f63db4a877cd7770ecee"
+    },
+    {
+      "path": "guides/START_HERE.md",
+      "sha256": "c6c13c220133760df51c12db2e2c3d475acd01c392065d506065c2c70fa15093"
+    },
+    {
+      "path": "guides/START_PROMPT.md",
+      "sha256": "dcae65368826594cb0722e7570c0ac327ee6355abc76b33eb9dec00192d357dc"
+    },
+    {
+      "path": "guides/TEST_AND_IMPROVE.md",
+      "sha256": "651d454b861b840cd3cc465a81b0f777dd3b5b9d1a74485c4a2e78981489b782"
+    },
+    {
+      "path": "integration/antipattern_hook_inventory.apf.v1.json",
+      "sha256": "0e2a33432e61352092f070e3daed1a05e17af5d6142627b3b0f97677699ea4bf"
+    },
+    {
+      "path": "integration/antipattern_hook_runtime.py",
+      "sha256": "5f11439a34a352db82764efadc2c9936f64b63b0f127549ed978b15f133dfc92"
+    },
+    {
+      "path": "integration/antipattern_runtime_binding.apf.v1.json",
+      "sha256": "12a27dc879dc2ed190ddc1b308ec85f40b2d29c0ef7b754a4cdb57cc4dfecf0f"
+    },
+    {
+      "path": "integration/antipattern_runtime_binding.py",
+      "sha256": "995d7e00467a3cb6782ffa0c9e6a1d30485bf12f562993c02590608621574e09"
+    },
+    {
+      "path": "integration/antipattern_state_contract.apf.v1.json",
+      "sha256": "804304757e5deacd8c03dcb7a2fdcefe15a97f8280498292b7926729e5fcee4e"
+    },
+    {
+      "path": "integration/fixtures_antipattern_e2e.apf.v1.json",
+      "sha256": "11d963b6ce45be32c98fc25acf6da6f3d04472d46d652bc5f28265de85dcf42a"
+    },
+    {
+      "path": "integration/test_antipattern_all_rules_e2e.py",
+      "sha256": "39a89c72273f1518223cd38ab091e3e626b0c0667a537dbcbf802955e00f54a3"
+    },
+    {
+      "path": "integration/test_antipattern_fundamental_taxonomy_binding.py",
+      "sha256": "1571dd4ea209725a99b5895724671e28e0fae6f8bd4a1e1fe0de20900dce37d3"
+    },
+    {
+      "path": "integration/test_antipattern_hook_runtime.py",
+      "sha256": "ef3b51dd8a523199a6c352e2be42a0d22e6b1a1910854887e04747d7e49caeab"
+    },
+    {
+      "path": "integration/test_antipattern_state_evidence_contract.py",
+      "sha256": "62c6c6df6ed198bacae78dbae47476bd903f64af8f650057293d022e4cf81f68"
+    },
+    {
+      "path": "integration/validate_antipattern_rule_coverage.py",
+      "sha256": "8f8300200d47f86071d9b9d39b5962a3591492e413ece5eaa821995ca9b8d160"
+    },
+    {
+      "path": "migration/README.md",
+      "sha256": "604f5d9a64e5d9d285972018d76e8912d49f8ba191496755d73e0bcacd2f4900"
+    },
+    {
+      "path": "migration/analyst_required_inputs.yaml",
+      "sha256": "be4c94b5b16bd455fcb7d1a52f591a26f3ca951e64a0e6dd8c24fa3bb33f48b5"
+    },
+    {
+      "path": "migration/artifact_catalog.yaml",
+      "sha256": "38c19d76639bf149633dfd97fee62735ddc165670edf50fd6bdcda255ccd08d7"
+    },
+    {
+      "path": "migration/decision_tree_blueprint.yaml",
+      "sha256": "c4015e769275896318aa4318522e9f89d7e056bfa8a6023f5b74e006c571e5af"
+    },
+    {
+      "path": "migration/dependency_map.yaml",
+      "sha256": "cdfd005312d5e87d3b992184b2c745d3289d7f448d03ab114b874478043ffdd3"
+    },
+    {
+      "path": "migration/document_review_report.yaml",
+      "sha256": "7eb9e06101bc8fe0cde65de6b9c0764558927429e0f8bd1d4a3b3730a89d8841"
+    },
+    {
+      "path": "migration/domain_model.md",
+      "sha256": "f3b7a0cb3808ccf7ae1c9dc10d3cd9503c93f7d075bd4b5afc1f8854f0c1ba5c"
+    },
+    {
+      "path": "migration/improvement_log.md",
+      "sha256": "5f416dcc036d9e4427ecd02d89513fdd3f8d8b4947b9e11117de862688a3a735"
+    },
+    {
+      "path": "migration/input_artifact_registry.yaml",
+      "sha256": "a0050622cf40ad74349de3065a54f54f991af84d24e4376072e6e8e6ed83773a"
+    },
+    {
+      "path": "migration/materialization_gate_catalog.yaml",
+      "sha256": "0633335a549d383a7f3a8fa94faef04a15fc33a468edee3525b095a90f4b4608"
+    },
+    {
+      "path": "migration/package_consistency_report.yaml",
+      "sha256": "321b777162e2346354435d56acf1a17e9467e13ef032c08c25c3e1eb15beeea0"
+    },
+    {
+      "path": "migration/parameter_classification.yaml",
+      "sha256": "18e8b96f359f305bb0e0534ea303162e56e4d855c25e9d14a43ab2079f33777c"
+    },
+    {
+      "path": "migration/parameter_registry.yaml",
+      "sha256": "deef2ecc0589bfcab88eb021ac14a7d00142432ef0735f75225a9228cbb246c5"
+    },
+    {
+      "path": "migration/readiness_report.yaml",
+      "sha256": "205cee5de667fa7e849db9e8bf58d1c39cceb08036fc1f4b045d44165c05d9aa"
+    },
+    {
+      "path": "migration/route_replay_report.yaml",
+      "sha256": "49d65b33a2f7e3e0cc5a0a955921647cc47732497d300f2438620d205bca3190"
+    },
+    {
+      "path": "migration/scope_confirmation.yaml",
+      "sha256": "9db44a5a5638a78052047b68da086279053eb954a6e157a6a7f7fa1440a73533"
+    },
+    {
+      "path": "migration/template_catalog.yaml",
+      "sha256": "ab24c051addb3e44137f84fd44436a0ea18716324f6db21ea75e62ea16549645"
+    },
+    {
+      "path": "migration/template_parameters.yaml",
+      "sha256": "71b8f1af97a0740bb6bfb022c2b5858f104b5933011fb31950a390128c642dfb"
+    },
+    {
+      "path": "migration/traceability_matrix.yaml",
+      "sha256": "6e4cb697fb968925a7ef09518714359097b61fc3931117ded097cd155d40b12f"
+    },
+    {
+      "path": "migration/validation_gate_catalog.yaml",
+      "sha256": "9f307bec4f3742511423aee326269ffad2801973f4483e2aa978f753d5c6856c"
+    },
+    {
+      "path": "ordo.runtime.json",
+      "sha256": "511a380cb645b2dac6ab77293cbaed5d736fb79bc724f45b13d46957233d5dc5"
+    },
+    {
+      "path": "ordo.yml",
+      "sha256": "e9cea36956d390c6791e52282c954c50a24adb98958ec7c070882ad8af209aea"
+    },
+    {
+      "path": "output_templates/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "sha256": "ef9dbbf7808ee2618073cb0d097d5f1ff2cc20f2acab70ea20c0985b5eda85a2"
+    },
+    {
+      "path": "output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "sha256": "01d78c5f6894e377fd4734de7321e72b0177476f05a5f42568b17cb851f4d0f7"
+    },
+    {
+      "path": "playbook_release.json",
+      "sha256": "9f4e64311b29e46d05e1c31f9d761187e6ebc1514960fb53846a30fa167ba823"
+    },
+    {
+      "path": "question_registry.json",
+      "sha256": "b61afed5b0ee0785c6b92631a89289e1fe3268a42abb9be4c429cc831926b362"
+    },
+    {
+      "path": "regression/README.md",
+      "sha256": "f65b08ec0e05f7c12a2f04d0fd18a5c3b4c2b3abc5b3ceb2c3fc0aa9715be822"
+    },
+    {
+      "path": "regression/prh/1.7.0/CHANGELOG_1.7.0.md",
+      "sha256": "f09337e1ceb768db8549ad74fd1da486c16bf44dec795e59479318f87fb2ffaa"
+    },
+    {
+      "path": "regression/prh/1.7.0/PACKAGE_INVENTORY.md",
+      "sha256": "655a90d2bb020df0f65b4e6e31f70ed3752381b4b276852ff33dc82215c49b54"
+    },
+    {
+      "path": "regression/prh/1.7.0/README.md",
+      "sha256": "6289d5cec30a352f6531c90774c34737884a9ec39a328bfc50d0908d349090c7"
+    },
+    {
+      "path": "regression/prh/1.7.0/SCOPE_AND_STATUS.md",
+      "sha256": "2ba0c1492c32ba7dfc495a68b8565ed19a9d88906150abfad2ac78c80ac19c68"
+    },
+    {
+      "path": "regression/prh/1.7.0/SHA256SUMS.txt",
+      "sha256": "a93622f0716b759ba442c21a347594e42330312b0eab3a626f8b24028d654aac"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/CHAT_NATIVE_POLICY.yaml",
+      "sha256": "7df4399f4b1d4324a928226e97797381b0b8e145f95ec5a4e0df932f8718924e"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/PACKAGE_INVENTORY.md",
+      "sha256": "54f28d9e4da951cb525a0c12ee2eabc0d4a36d7cdf35f50982629d4a041c97fd"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/README.md",
+      "sha256": "de9c56af8004f4b43998ca65a7f7988ca6f4647d7237dd5fdc0fa3f0a3342d91"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/SCOPE_AND_STATUS.md",
+      "sha256": "87726eb4fb6f96e662639361b9517968ee224b1ca7b48f904fb531ef1bc45996"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/SHA256SUMS.txt",
+      "sha256": "1ae5592fb0149bb3fe954520629769f4fa5f62abcbec22466e0cdbf376fd4bc4"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/docs/MULTI_CHAT_EXECUTION_MODEL.md",
+      "sha256": "116deffc362cca6078f5df833750d6b7345023ba949f9b5201c6fc4429ace1f5"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/examples/MULTI_CHAT_CAMPAIGN_EXAMPLE.yaml",
+      "sha256": "04401e4137b2502eb583e9af2f8748a302946879a1f4be3592fcbbdc19799cec"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_EXECUTE_ASSIGNED_CHAT.md",
+      "sha256": "3d45cc3021ad039dce83f2642ca945ee3c78d0aaa3f917e6cccd41e7901c56cc"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_MERGE_MULTI_CHAT_RESULTS.md",
+      "sha256": "a6f82b413acb3e83fde0442e8af0880d591d5e8772263bc86667b266f9c07d23"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/schemas/chat_native_campaign.schema.json",
+      "sha256": "922b623f2b3be2182ee118227358fcb5fa2f2f3399950df4993a4bc6f1ee887f"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/schemas/chat_native_run_manifest.schema.json",
+      "sha256": "4e5706130ef5137453069b0662a7da14794a7a8e1272e8f3e3ebb6850f961a4c"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/chat_native_backend_v1/tools/validate_partial_results.py",
+      "sha256": "daea91fbdcaba9866facc9de45e5dc6c46672e8fa96e0b05686815243cbe7b9b"
+    },
+    {
+      "path": "regression/prh/1.7.0/core/generate_execution_package.py",
+      "sha256": "5a69417a6407b795546da491c53bd209d170a305b1f7a37bcca05ade087ae2bb"
+    },
+    {
+      "path": "regression/prh/1.7.0/deterministic_evaluators/checksum_domains/POLICY.yaml",
+      "sha256": "082de52417636faf02f1838de5e78d1b0cb89ae21dc39a5dedf5186bc97d3a07"
+    },
+    {
+      "path": "regression/prh/1.7.0/deterministic_evaluators/checksum_domains/evaluate_checksum_domains.py",
+      "sha256": "cdf274bad59175e824ad2cbfeedcecd17722e9e8608e568d9a94ff2355b21ef7"
+    },
+    {
+      "path": "regression/prh/1.7.0/deterministic_evaluators/release_metadata/POLICY.yaml",
+      "sha256": "fcf36d42d80aa5c78cd4c493262cbd8f64c9287c54b0090af2f79b46dd24a3dc"
+    },
+    {
+      "path": "regression/prh/1.7.0/deterministic_evaluators/release_metadata/evaluate_release_metadata.py",
+      "sha256": "1936c88b1a4d801e2e6800c8a4a244898203d6bc694588742f332568894b4710"
+    },
+    {
+      "path": "regression/prh/1.7.0/docs/BEHAVIORAL_MODE_SELECTION.md",
+      "sha256": "f88aa614ee4e7aa545398660ae63c17f635e91858997a27cddaf50ebab3b062f"
+    },
+    {
+      "path": "regression/prh/1.7.0/docs/EXECUTION_PACKAGE_GENERATOR.md",
+      "sha256": "d26fd35e37a73e1deb6c6687c2ac0fa5acdf7585b5b7de79947a08d20591ce9e"
+    },
+    {
+      "path": "regression/prh/1.7.0/examples/CHAT_NATIVE_CAMPAIGN_MINIMAL.yaml",
+      "sha256": "6c4f05a12e1b81dac519da0910d6f71efe223c664cfef17837acf0e236596444"
+    },
+    {
+      "path": "regression/prh/1.7.0/negative_test_semantics/fixtures/PRH-DYN-002.yaml",
+      "sha256": "a4239636518dc43283dcee58e1a808d900ab252addf360320b91190c436e2abe"
+    },
+    {
+      "path": "regression/prh/1.7.0/negative_test_semantics/fixtures/PRH-DYN-003.yaml",
+      "sha256": "97f07c2f893ca8990d5e3c256329bef8bbfe9be50956ca5c8d1e276d6679f97e"
+    },
+    {
+      "path": "regression/prh/1.7.0/negative_test_semantics/fixtures/PRH-DYN-005.yaml",
+      "sha256": "b5780690e0e75f293b1a007d557a4de7e5e2d14c2f50052d4a9e03667c55f35e"
+    },
+    {
+      "path": "regression/prh/1.7.0/negative_test_semantics/schemas/negative_test_evaluation.schema.json",
+      "sha256": "e4983c68a6619f64482af4debf06c50767e1d457a4dfe18c3280c963e240fcaa"
+    },
+    {
+      "path": "regression/prh/1.7.0/negative_test_semantics/tests/HARDENING_TEST_MATRIX.yaml",
+      "sha256": "b30b9405c3aef6bea955a14b93845301eaa938b5f3df7d31c624d633948cd01b"
+    },
+    {
+      "path": "regression/prh/1.7.0/negative_test_semantics/tools/stability_analyzer_v1_2.py",
+      "sha256": "9369d2895e12d7870fde04c2261c10b009dc79e159efffec66bd4886952babe7"
+    },
+    {
+      "path": "regression/prh/1.7.0/prompts/PROMPT_EXECUTE_CHAT_NATIVE_TEST_PACKAGE.md",
+      "sha256": "9b46e4bb511c8e454740a664cbe5affd99f5aa40d7944ad49f1b2579f51e99d9"
+    },
+    {
+      "path": "regression/prh/1.7.0/prompts/PROMPT_RUN_UNIFIED_PRH_FROM_START.md",
+      "sha256": "6fd1362b5d5c8a14a4cacf47f6001ef5392a9d6c904b92f56a2e0321eacad217"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/SEMANTIC_PROJECTION_POLICY.yaml",
+      "sha256": "325f26b6208cdc509d4e279ad407936be8091a8c9f94957411ddb3763499ff99"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/docs/SEMANTIC_PROJECTION_MODEL.md",
+      "sha256": "d14c98fe65d7fdfe41e44d5e8d004b6bf656c0af33cf3316d8cdc5aa8b9a787a"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/prompts/PROMPT_COMPARE_PROJECTIONS.md",
+      "sha256": "d5541238c8684fa8df93674e66580c2cfc5122d3666173fe15fa6d7f13bea33b"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/prompts/PROMPT_EXTRACT_SINGLE_PLAYBOOK_PROJECTIONS.md",
+      "sha256": "d85ab42ca034cc9e2379e13edfce08f80542f68309575478410161eef2604946"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/schemas/semantic_projection.schema.json",
+      "sha256": "dc6a865aa63a8cdc2c23f5c98dcb49cb0eb7cc213876c281d29c151fcc1d535c"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/schemas/semantic_projection_diff.schema.json",
+      "sha256": "329f8a0d5545e5a023fd3bfc43aeaaee95359fe1c335cad22521fb62fbe147fa"
+    },
+    {
+      "path": "regression/prh/1.7.0/semantic_projection/tools/compare_projections.py",
+      "sha256": "94c194d31c52fe95a63b8c5492cb90a9971a6ebd39ba7224b5c3c9550d70da6c"
+    },
+    {
+      "path": "regression/prh/1.7.0/workflows/BEHAVIORAL_MODE_POLICY.yaml",
+      "sha256": "271248b79131c68ec961fc73e0a5f29eec74734f24ffbb4df0996f8c069ce64d"
+    },
+    {
+      "path": "regression/prh/1.7.0/workflows/UNIFIED_REGRESSION_WORKFLOW.yaml",
+      "sha256": "a9871e77c2609af2246f63547d26d051a03f0dab31df4a306314a841e38d4d78"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/BACKLOG.md",
+      "sha256": "beec3993f2f4496bdd7baf8f131de6e697c823f673cf78a2e2a130247ae18381"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/CHANGELOG.md",
+      "sha256": "57170e7a12132864554f2a026cf912f75b0593867517a7108e43865db69b4902"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/PACKAGE_INVENTORY.md",
+      "sha256": "7116d0168c6d89bacbc479e565b352c05596b43b0293242b6931ad10ad04cea2"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/SHA256SUMS.txt",
+      "sha256": "451d6f7f33cbeb75931bf2df46a77cb39b688d1161459b97cca0cb43f9589228"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/contracts/PLAYBOOK_CONTRACT.md",
+      "sha256": "7c655692b5b8292d23121dcd7c1e96918c5d7610c97412ae52deb4e10d408171"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/docs/ARCHITECTURE.md",
+      "sha256": "39668680f6450eb984483c76fdcfa62ffa3bae96a10a06e25ab4dda635d2c61e"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/docs/MANUAL_RUN_JOURNEY.md",
+      "sha256": "fee2892484c82f53e53b41c02dfd327ac877950934f1904739c15da807d37e5d"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/docs/QUICKSTART.md",
+      "sha256": "2f381e4f1814ec5fe91a3797e231ced7c290eb0270ced4870af0ea56c6d7291e"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/CHANGELOG_1.7.0.md",
+      "sha256": "f09337e1ceb768db8549ad74fd1da486c16bf44dec795e59479318f87fb2ffaa"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/PACKAGE_INVENTORY.md",
+      "sha256": "66ddc47e73e23599b611aec29ec6303c44cfd6265ba2be676ec5e2485eaf043f"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/README.md",
+      "sha256": "6289d5cec30a352f6531c90774c34737884a9ec39a328bfc50d0908d349090c7"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/SCOPE_AND_STATUS.md",
+      "sha256": "2ba0c1492c32ba7dfc495a68b8565ed19a9d88906150abfad2ac78c80ac19c68"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/SHA256SUMS.txt",
+      "sha256": "c5b84e787ceacf6ec9d73e2945a59fe4c439d4ca29060f7bc7eb44058716d15f"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/CHAT_NATIVE_POLICY.yaml",
+      "sha256": "7df4399f4b1d4324a928226e97797381b0b8e145f95ec5a4e0df932f8718924e"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/PACKAGE_INVENTORY.md",
+      "sha256": "54f28d9e4da951cb525a0c12ee2eabc0d4a36d7cdf35f50982629d4a041c97fd"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/README.md",
+      "sha256": "de9c56af8004f4b43998ca65a7f7988ca6f4647d7237dd5fdc0fa3f0a3342d91"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/SCOPE_AND_STATUS.md",
+      "sha256": "87726eb4fb6f96e662639361b9517968ee224b1ca7b48f904fb531ef1bc45996"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/SHA256SUMS.txt",
+      "sha256": "1ae5592fb0149bb3fe954520629769f4fa5f62abcbec22466e0cdbf376fd4bc4"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/docs/MULTI_CHAT_EXECUTION_MODEL.md",
+      "sha256": "116deffc362cca6078f5df833750d6b7345023ba949f9b5201c6fc4429ace1f5"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/examples/MULTI_CHAT_CAMPAIGN_EXAMPLE.yaml",
+      "sha256": "04401e4137b2502eb583e9af2f8748a302946879a1f4be3592fcbbdc19799cec"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/prompts/PROMPT_EXECUTE_ASSIGNED_CHAT.md",
+      "sha256": "3d45cc3021ad039dce83f2642ca945ee3c78d0aaa3f917e6cccd41e7901c56cc"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/prompts/PROMPT_MERGE_MULTI_CHAT_RESULTS.md",
+      "sha256": "a6f82b413acb3e83fde0442e8af0880d591d5e8772263bc86667b266f9c07d23"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/schemas/chat_native_campaign.schema.json",
+      "sha256": "922b623f2b3be2182ee118227358fcb5fa2f2f3399950df4993a4bc6f1ee887f"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/schemas/chat_native_run_manifest.schema.json",
+      "sha256": "4e5706130ef5137453069b0662a7da14794a7a8e1272e8f3e3ebb6850f961a4c"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/chat_native_backend_v1/tools/validate_partial_results.py",
+      "sha256": "daea91fbdcaba9866facc9de45e5dc6c46672e8fa96e0b05686815243cbe7b9b"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/core/generate_execution_package.py",
+      "sha256": "5a69417a6407b795546da491c53bd209d170a305b1f7a37bcca05ade087ae2bb"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/deterministic_evaluators/checksum_domains/POLICY.yaml",
+      "sha256": "082de52417636faf02f1838de5e78d1b0cb89ae21dc39a5dedf5186bc97d3a07"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/deterministic_evaluators/checksum_domains/evaluate_checksum_domains.py",
+      "sha256": "cdf274bad59175e824ad2cbfeedcecd17722e9e8608e568d9a94ff2355b21ef7"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/deterministic_evaluators/release_metadata/POLICY.yaml",
+      "sha256": "fcf36d42d80aa5c78cd4c493262cbd8f64c9287c54b0090af2f79b46dd24a3dc"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/deterministic_evaluators/release_metadata/evaluate_release_metadata.py",
+      "sha256": "1936c88b1a4d801e2e6800c8a4a244898203d6bc694588742f332568894b4710"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/docs/BEHAVIORAL_MODE_SELECTION.md",
+      "sha256": "f88aa614ee4e7aa545398660ae63c17f635e91858997a27cddaf50ebab3b062f"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/docs/EXECUTION_PACKAGE_GENERATOR.md",
+      "sha256": "d26fd35e37a73e1deb6c6687c2ac0fa5acdf7585b5b7de79947a08d20591ce9e"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/examples/CHAT_NATIVE_CAMPAIGN_MINIMAL.yaml",
+      "sha256": "6c4f05a12e1b81dac519da0910d6f71efe223c664cfef17837acf0e236596444"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/negative_test_semantics/fixtures/PRH-DYN-002.yaml",
+      "sha256": "a4239636518dc43283dcee58e1a808d900ab252addf360320b91190c436e2abe"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/negative_test_semantics/fixtures/PRH-DYN-003.yaml",
+      "sha256": "97f07c2f893ca8990d5e3c256329bef8bbfe9be50956ca5c8d1e276d6679f97e"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/negative_test_semantics/fixtures/PRH-DYN-005.yaml",
+      "sha256": "b5780690e0e75f293b1a007d557a4de7e5e2d14c2f50052d4a9e03667c55f35e"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/negative_test_semantics/schemas/negative_test_evaluation.schema.json",
+      "sha256": "e4983c68a6619f64482af4debf06c50767e1d457a4dfe18c3280c963e240fcaa"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/negative_test_semantics/tests/HARDENING_TEST_MATRIX.yaml",
+      "sha256": "b30b9405c3aef6bea955a14b93845301eaa938b5f3df7d31c624d633948cd01b"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/negative_test_semantics/tools/stability_analyzer_v1_2.py",
+      "sha256": "9369d2895e12d7870fde04c2261c10b009dc79e159efffec66bd4886952babe7"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/prompts/PROMPT_EXECUTE_CHAT_NATIVE_TEST_PACKAGE.md",
+      "sha256": "9b46e4bb511c8e454740a664cbe5affd99f5aa40d7944ad49f1b2579f51e99d9"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/prompts/PROMPT_RUN_UNIFIED_PRH_FROM_START.md",
+      "sha256": "6fd1362b5d5c8a14a4cacf47f6001ef5392a9d6c904b92f56a2e0321eacad217"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/SEMANTIC_PROJECTION_POLICY.yaml",
+      "sha256": "325f26b6208cdc509d4e279ad407936be8091a8c9f94957411ddb3763499ff99"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/docs/SEMANTIC_PROJECTION_MODEL.md",
+      "sha256": "d14c98fe65d7fdfe41e44d5e8d004b6bf656c0af33cf3316d8cdc5aa8b9a787a"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/prompts/PROMPT_COMPARE_PROJECTIONS.md",
+      "sha256": "d5541238c8684fa8df93674e66580c2cfc5122d3666173fe15fa6d7f13bea33b"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/prompts/PROMPT_EXTRACT_SINGLE_PLAYBOOK_PROJECTIONS.md",
+      "sha256": "d85ab42ca034cc9e2379e13edfce08f80542f68309575478410161eef2604946"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/schemas/semantic_projection.schema.json",
+      "sha256": "dc6a865aa63a8cdc2c23f5c98dcb49cb0eb7cc213876c281d29c151fcc1d535c"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/schemas/semantic_projection_diff.schema.json",
+      "sha256": "329f8a0d5545e5a023fd3bfc43aeaaee95359fe1c335cad22521fb62fbe147fa"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/semantic_projection/tools/compare_projections.py",
+      "sha256": "94c194d31c52fe95a63b8c5492cb90a9971a6ebd39ba7224b5c3c9550d70da6c"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/workflows/BEHAVIORAL_MODE_POLICY.yaml",
+      "sha256": "271248b79131c68ec961fc73e0a5f29eec74734f24ffbb4df0996f8c069ce64d"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/embedded_modules/PLAYBOOK_REGRESSION_HARNESS_1.7.0/workflows/UNIFIED_REGRESSION_WORKFLOW.yaml",
+      "sha256": "a9871e77c2609af2246f63547d26d051a03f0dab31df4a306314a841e38d4d78"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/playbook_manifest.yaml",
+      "sha256": "9ed0b08e7bccdb076d794fa6f5ff31417ff28828f4db8f8619781ace11a756ed"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/playbook_release.json",
+      "sha256": "d2c1c0c2e72f48ebe149388e11f9474bd81e1a375da8e425dc4d46be15e604bd"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/prompts/CHAT_NATIVE_WORKER.md",
+      "sha256": "f919c42e754b27090c996130b70f0158178f6b88fd7c623b6b3c8aeb477c6586"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/prompts/START_PRP.md",
+      "sha256": "9d6d7027533cc88e612cc9aaa23d6630f50fbab19e265ad1e18d2e5bf5931fed"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/reports/SELF_CHECK_REPORT.json",
+      "sha256": "ec44640d52e57dce8eedbbb925890168a9051dc0e16cf26a2c983fd3a304f717"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/source/program.ordo.yaml",
+      "sha256": "5f92e3a80ab370b05d013dcb6b9bbbd368bccdf630f73f4778057fd1ee4bb864"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/tests/TEST_MATRIX.yaml",
+      "sha256": "dd99b6a12ec3e7829c066b4ad586e4a9738cc924f4f0b6a0bde52cd9dc3a8d21"
+    },
+    {
+      "path": "regression/prp/0.2.0-alpha.1/tests/fixtures/mandatory_invariant_weakening.yaml",
+      "sha256": "877419670a91e4ebd84322af758c196bb12dd07b7ebd74869d5dcb78f65a0f62"
+    },
+    {
+      "path": "release_tools/README.md",
+      "sha256": "761c9c31d734f4c99d75625236e23281671db252ee69c354aaf4b11f3518b9e9"
+    },
+    {
+      "path": "release_tools/build_arf_playbook_kit.py",
+      "sha256": "ce7d5f41894e2b5fc254c271df360374f92387ac8c9d5540039c49f8edb60773"
+    },
+    {
+      "path": "release_tools/build_release_archive.py",
+      "sha256": "67df74b8703f3cd9803510a664d3526aa694e7b224b4f5dafc65db2e291992ac"
+    },
+    {
+      "path": "release_tools/check_english_only_policy.py",
+      "sha256": "c9a0b37a8cb60203f49c9d78a9730b4409624771af5ac271fd0696bb8a6a54ff"
+    },
+    {
+      "path": "release_tools/release_integrity.py",
+      "sha256": "1959f252d9d840c0060dc648774311d583fd4319185161ca81bd9dfc5f4b21f4"
+    },
+    {
+      "path": "runtime/session.ordo.trace",
+      "sha256": "c5b4da9715950d5dd35adb9b5c5564f2ca94ca50aa924588fd758c8dffdfe73e"
+    },
+    {
+      "path": "tests/test_cases.yaml",
+      "sha256": "6bf479b437c6b37f098c44861d7c82b9e400f34c68f1e175ffdb4451e1fc46e4"
+    },
+    {
+      "path": "utilities/README.md",
+      "sha256": "392a3d62150668c9a6476b4b1f943ff0ca399bf2d4e93f1b05daa77eecbcd29c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/BENCHMARK_PURPOSE_AND_CALIBRATION.md",
+      "sha256": "d27ea76970dd4ea46dfc4464b41ec2e1a51c195f75a399f63775fb6ceec9cf69"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/CHANGELOG.md",
+      "sha256": "b7a590697461ffb42b713039a2917dc2dd35e8f14e38bcda8053145e6a2de90e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/CONCEPT.md",
+      "sha256": "8860b629cec2b459dda3775867458c74e72bf5443eb39774eb459fdcd32d9fc7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/MODEL_BENCHMARK_PROTOCOL.md",
+      "sha256": "922727c34763f2e78925c303f7e9ce8f792e41b4b2c3a650619a56fcc3642cf6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/OPEN_QUESTIONS.md",
+      "sha256": "6294cf0c04b3a7814f5a767e02b990f132b7b6f6f8c04de20ca628b0940d47b4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/README.md",
+      "sha256": "0fb006c22c7816920bd97e26f361068deff087f6809e89ea107318cd36500320"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/REAL_MODULE_TESTCASE_GENERATION.md",
+      "sha256": "d7dbdec05efd30a907a983b7ed622f383088ade98ed7a28abed4e985b66632c4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/calibration_profile.json",
+      "sha256": "d791a3b7fe405d84625f047acf24430988af638639fb85f4eeec4b12493b086d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/cli.py",
+      "sha256": "8edace80f01dba434ef27ec9d7db55669bf5dbd6f8dfd560ce687977fab45722"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_1_benchmark_dry_run/RAW_METRICS.csv",
+      "sha256": "01c9ec56724be5038524d11ecb98284fa212cca59a7f9ac7d167147a9119cba9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_1_benchmark_dry_run/SUMMARY.json",
+      "sha256": "282a2d33060dc4578c731f5ea18a12f5b608381df380730fdcecf8f4d65c03ac"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_1_benchmark_dry_run/SUMMARY.md",
+      "sha256": "87d3e813a05f55bb066d74dc20da0231c2fe3af92658e7b26428d0efc0cac5cd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_1_benchmark_dry_run/scores/scenario_000_json_score.json",
+      "sha256": "49fadbd020de691c571db15115c94b9dc79090dc922c34bbae6970f443a89110"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_1_benchmark_dry_run/scores/scenario_001_json_score.json",
+      "sha256": "82faff21a4160b8ce1e8a4f211a4e18dd43c613095a1a66acb15df2cfdf7f1f2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_2b_external_job_dry_run/DRY_RUN_PLAN.json",
+      "sha256": "b0226d6c229182998e88cce5a5446936ba9e4848326996da13ec3004d1e0d603"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_2b_external_job_dry_run/RAW_METRICS.csv",
+      "sha256": "51a74c38bee2691bfdd33770f2ea038db67c58ec9b2bf9b07ad266309203c170"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_2b_external_job_dry_run/SUMMARY.json",
+      "sha256": "368d1a781c243a4d3b0310eb1437ad19c8b645d90197688454434b5ebab5a9aa"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_2b_external_job_dry_run/SUMMARY.md",
+      "sha256": "eb8cd76efc33f293b02f19701db3858c9f4507e8f0d92ec9a510d73931f80260"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/DRY_RUN_PLAN.json",
+      "sha256": "5dde1e3f8c7ee0e5ad6da2ad790b76b8a9414817c57ad5e671369a5419e01b8b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/JOB_EXECUTION.md",
+      "sha256": "297d61d3ba22562fa6e1f08cd44606ca956682b7298a38bc2aec9cc20472d062"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/RAW_METRICS.csv",
+      "sha256": "6f0456ae65d2b962ab42bb0e2b67f290b2cb7878f6f563873a6fd67de93fcf84"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/SUMMARY.json",
+      "sha256": "5678080ccfed413cbf87da30a3f2c2f86a327b5096532f37a1d1d8d74ee8220a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/SUMMARY.md",
+      "sha256": "56c636594a9a1eef94feeab7b2f1094e4b034f4b08703ee9a584e43b5c0962c0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/job_scripts/scenario_000_json.sh",
+      "sha256": "5359db2201b7bfbd79b1e5099177f86c92618717bc661973e642d9b98d98b2cd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/job_scripts/scenario_000_json_ordo-code.sh",
+      "sha256": "9f1d92a8cfdf39583e91a345a67de1f27aaeb4ee4b40fe0ba8facc3ae2a404f3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/job_scripts/scenario_000_ordo-code.sh",
+      "sha256": "6edb2e077fbfe94d62a7f628706aac500eb60b1d2bc89b4214ea9886a9918d99"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/jobs/scenario_000_json.json",
+      "sha256": "c96eb1a4d636da26024d060aa19e8be78c7df75d5c15fbbd50946ac65e612c48"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/jobs/scenario_000_json_ordo-code.json",
+      "sha256": "b9be701059c4d339cd4b6db7d119e068d60b32d6113d3534033677d8164ded6e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_4_artifact_only_dry_run/jobs/scenario_000_ordo-code.json",
+      "sha256": "e768dc07f0a8cad47cf4f92c52dd38aff8d609979cb0e7a325ad57ec05609a9f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_matrix_smoke/SUMMARY.json",
+      "sha256": "bfa0706784ac48c3e2f0a29a5658490efcbefa230cc5d03e851c3c4adac2bda8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_matrix_smoke/SUMMARY.md",
+      "sha256": "be7a02bf257cbdf19f82e3b15d3e6f65c2a8aa98b750b41676817f5c2e008ca1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_matrix_smoke/scenario_000_json_ordo-code_score.json",
+      "sha256": "353f2e640e014fd53f878cf939c07e5a06f8f8d76f9f2cb6fee2432ce2ece29c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_matrix_smoke/scenario_000_json_score.json",
+      "sha256": "96535e90b7a8487aa9a9e889c668a57c14f3e0e79c76c57b63c8f135af632236"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_5_matrix_smoke/scenario_000_ordo-code_score.json",
+      "sha256": "ef7fbf04f77540f9e4b677485dad707a5e8a5e628455d1e702ad9eaefd524109"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/CALIBRATION_DECISION.json",
+      "sha256": "4da9474f6742df4ddc02e62b1b88f7e0d7de1ca4832fe6ffd38e9068dd458b2f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/CALIBRATION_DECISION.md",
+      "sha256": "8a0edf0c0f88e17c0d337dd3506d5946eb16a6e4bb1457984bde443beb7dee04"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/MODEL_BENCHMARK_PLAN.json",
+      "sha256": "58eb884e1d44df061e68f414c87c7f3b7c9c8d65499b7fb2767ed85165b901c4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/MODEL_RUN_MANIFEST.json",
+      "sha256": "9c8e669076b78be54499b83b0212a71e2a531538fc3043a71416afd87ca889cd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/RAW_MODEL_METRICS.csv",
+      "sha256": "52bcab41133479ffd122c6dc9b979b3e263374c40f08adc1f8bbe3fe65e58fb8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/SUMMARY.json",
+      "sha256": "c9c922a01894c106dbc5aac6bb4fa91584490dc3b03c2653723c066e871bf252"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/SUMMARY.md",
+      "sha256": "175b3fbb961fa73f690a391cd3be0773eb35670a06efb0d34eb16d3f35fd04f6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/jobs/scenario_000_json_transcript-replay.json",
+      "sha256": "9125e44599d3c1503c08a9766713a387a24ed5a3c34c17053733e3f0da5c91fa"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/jobs/scenario_001_json_transcript-replay.json",
+      "sha256": "aa7350e19980a55497049946ae0fef33e91d92271317c04ecddec37048c2bf14"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/jobs/scenario_002_json_transcript-replay.json",
+      "sha256": "0486d3af64c02bd69e4298344622624cd6894c70c4e9db1073010ecc696aa4ec"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/reports/failure_bucket_summary.csv",
+      "sha256": "2eda79a2d640b23b4c2ac460f8b804058714211d9936fa1553c7f0f24b89eec2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/scores/scenario_000_json_transcript-replay_score.json",
+      "sha256": "dc35c2c87768e5972fe021452c5839fa9df172a2006cc3d69daf5e9ac30140e5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/scores/scenario_001_json_transcript-replay_score.json",
+      "sha256": "9182ca6fcf56c892a5374584f15f79463a2b4b8ee0c7e90eb617df6d2a87b28d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/scores/scenario_002_json_transcript-replay_score.json",
+      "sha256": "14cef17c4b97c47be4354df77915fa4619cb653b887fc5acbdf537c382cf917f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/transcripts/scenario_000_json_transcript-replay_transcript.json",
+      "sha256": "c9507bc818287c8af2a9a205cc01ca2cb7e251403dcdf2c5432f3a5f2196d199"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/transcripts/scenario_001_json_transcript-replay_transcript.json",
+      "sha256": "c22f86079e64fe543ca3cdf65f38cb38dca77d17b2b7ecf710098c09656e5c0c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_4_transcript_replay_pilot/transcripts/scenario_002_json_transcript-replay_transcript.json",
+      "sha256": "7677029dcc111319812ab56cdfccbc1d3f3783b69a728cfcf15c8873dc8cdee8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/DRY_RUN_PLAN.json",
+      "sha256": "bb5e4182181cf96fcb15121e3c8eae1d40983072a3b89b5be2c9c61a85114716"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/JOB_EXECUTION.md",
+      "sha256": "297d61d3ba22562fa6e1f08cd44606ca956682b7298a38bc2aec9cc20472d062"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/RAW_METRICS.csv",
+      "sha256": "65d4a8a3c661bf29764e4948d6c0c549686645fbe211308791095e263f81dd27"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/SUMMARY.json",
+      "sha256": "f057180d4ae1ae4d86baa7189ad47ee201d02ab1ef702c38ef76b437ebc58359"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/SUMMARY.md",
+      "sha256": "d22fc00026690e1e0d9f9cf23bbc99afae3a6fdab5ca23596b7b9a27d92bb3c3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_logs/_batch_status.txt",
+      "sha256": "7d539999496415131697bbda8a9a99044198133958fb2bc0dfd638495791e46c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_logs/_batch_status_2.txt",
+      "sha256": "aa1e6b6fc788ba7fad8bba949db8028b2d3a870da49a7331503780b5f2b75315"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_000_json.sh",
+      "sha256": "5359db2201b7bfbd79b1e5099177f86c92618717bc661973e642d9b98d98b2cd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_000_json_ordo-code.sh",
+      "sha256": "9f1d92a8cfdf39583e91a345a67de1f27aaeb4ee4b40fe0ba8facc3ae2a404f3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_000_ordo-code.sh",
+      "sha256": "6edb2e077fbfe94d62a7f628706aac500eb60b1d2bc89b4214ea9886a9918d99"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_001_json.sh",
+      "sha256": "a4afdcf4ec921a69c9be348f0f233b505611205d2744f9182b7afdb7fbc25d3f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_001_json_ordo-code.sh",
+      "sha256": "9e6d58e33c39f0265a5b9e11ef611694ec0cd6ac25f90e0d9db75cd6f88d26f2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_001_ordo-code.sh",
+      "sha256": "d8b7b55becfffaf55c8790cf967a44e558887fd12e04f14db8ae553646fa0014"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_002_json.sh",
+      "sha256": "20b1e354f53b27d0d3cdbc7a5ea8e587949e13a617d640656283989e1c39c7a0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_002_json_ordo-code.sh",
+      "sha256": "952a0003b60e3eddd931290f9fe4602d0a075047452d9cfa21155075a4228945"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_002_ordo-code.sh",
+      "sha256": "6e89b5075a21593ff3b7ec0a1259441ed397b3d06426dbf5a1ec4732b01183f6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_003_json.sh",
+      "sha256": "2bfceedffc06c6acebd39b8f3cbb60b3c5d87c6fd7f7770637ed14a39f4d5899"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_003_json_ordo-code.sh",
+      "sha256": "d99da9334d02d7c300542b181a591b3a61ab5f2beaadf84b3d6f4d970ad1847e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_003_ordo-code.sh",
+      "sha256": "a8a65b888711426d550c4a0cbd1d774cd39d735f6331cd42528000958c5fba18"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_004_json.sh",
+      "sha256": "6f0c41b3b078c31c5240408d013a20c4d4b71e22fb28f538c7a5150a10e37bbb"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_004_json_ordo-code.sh",
+      "sha256": "53d1b2ee3ad1ed0139636488837541b5e4a2d311f258acb13edda908f09bf998"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_004_ordo-code.sh",
+      "sha256": "9f8f5202b5dafb6f8c7e12a61f51b7d7127bf48e701712eb155203fa97700ea7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_005_json.sh",
+      "sha256": "446d4778262faf429e7f60dab1159b17fa4c58ce9cf8dd62cec7c5cc15b3e542"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_005_json_ordo-code.sh",
+      "sha256": "0b32d05fc9f51ca999c85d6158837537b0958ee1782d64882f2ef47470beadef"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_005_ordo-code.sh",
+      "sha256": "84e232da1df5b3e85354081a85fe009dad579b65018b795b443cd1cea0aec44a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_006_json.sh",
+      "sha256": "7815a32e4e1095c44fde9d0dd39a81d8ab32e7cc34bf90bb674a3a90ea7934e7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_006_json_ordo-code.sh",
+      "sha256": "95feb3223330d414eefffce9f6f4b382d8e29d9c448231fb83d9585cfac3a11a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_006_ordo-code.sh",
+      "sha256": "79d8102984f0dd4a56071e1ad6a2bc8d69788f2818d9b1f3a1b471dbc1e7017f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_007_json.sh",
+      "sha256": "5878a745865b0c899df480ec80e79350a1c1d5b0c2d01050f5b6ed7b91f2aacf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_007_json_ordo-code.sh",
+      "sha256": "838f199563779cc5a511deb98a927bd7cba252960cb2cdf2471904c3735b74f4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_007_ordo-code.sh",
+      "sha256": "3c624e1a6ec5df022a4dc684842455e58e76874f8fb093ef4de7a2a583afddfa"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_008_json.sh",
+      "sha256": "1c39f39eae5f6a087d5ea58140f30d3845486ac706770104fe98e83961a4d26b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_008_json_ordo-code.sh",
+      "sha256": "82dc0cc3cdc28d63f402d7e177cb27adba54b434c64432a5f3ae2b142b637ae5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_008_ordo-code.sh",
+      "sha256": "dfa9e3f0ad8fc3f50c8783298caf80ceeb8e577b2318f06cf96e622bc837f876"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_009_json.sh",
+      "sha256": "adcaa120fe8eee3461d91beb2e2238fae67c0176fbe892102997cb6ff4e9b960"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_009_json_ordo-code.sh",
+      "sha256": "736efb221c0577d48093f19b190d1a883f5a46eb55f5677a4dd87fb65bfde880"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_009_ordo-code.sh",
+      "sha256": "43a6ff12a73922705a4a99ac9d8b04db21d9ea14a1f613376afe0656349a7ec0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_010_json.sh",
+      "sha256": "ddb9b4910ec89729dc104e025f9d9d4cd21b876e527f8753f50fe52d442a61ce"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_010_json_ordo-code.sh",
+      "sha256": "423a7d918d05e1a4ba3c8abbca25bc05cd1f1fcbef50058116aa478683ffb067"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_010_ordo-code.sh",
+      "sha256": "cabbdfb5ed67267a2e0dc92fe88e786e4f665bbf0e46ff43c620f77038e589cf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_011_json.sh",
+      "sha256": "b604bebbbe70b1ba84129cc243edea41002c86846020fafd60c207d4f5a8fc4f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_011_json_ordo-code.sh",
+      "sha256": "f2f7a71b7e45822bf8a7f36a81530dc776653416e3bb54a5c87009fd8c24204e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_011_ordo-code.sh",
+      "sha256": "66d0026b470b7bb843468a8714d0ce59fff060d95bd420790c77d682e28f5af7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_012_json.sh",
+      "sha256": "61d934ed100531b6a265b28d01ecfe2d8ce8fa8b1f373662c571f4b85131bac5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_012_json_ordo-code.sh",
+      "sha256": "615a7deb530f81c915ccaea544b490bd5898675b0d03e54aef9dda776098b283"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_012_ordo-code.sh",
+      "sha256": "866ec686588dcfaf95236e95d1e5bcdb55c92e81481900dd50882438cdf758e3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_013_json.sh",
+      "sha256": "c2ae0e520b25255fe6f5abdd828274f701b2742f4b77da10a8d51bb8534a64e5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_013_json_ordo-code.sh",
+      "sha256": "7312b27ca12df4747fe35465d0efd41e799f7361a5325a102e8dc212b0fc5e4a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_013_ordo-code.sh",
+      "sha256": "ade4c57d3d4923e5d8c741ad0f8cc15d4f09f053c408299a01375f1497043985"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_014_json.sh",
+      "sha256": "4f00aec34a293941a4a58023202796ec3ecb95c5060f5176346c06a8eeccb139"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_014_json_ordo-code.sh",
+      "sha256": "81f32605eaed4a85ec808ef07e17089d6d8e768b9622ecf111ff4c48c00ab1d2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_014_ordo-code.sh",
+      "sha256": "1093b7cdbf593003ebadca2f4791fb79d9809dcc0d1cb4505e1c6333a7a0463c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_015_json.sh",
+      "sha256": "d19669c2f8fe5188885583fba5133be3fc6ddf298a7b74576547bf469ddc78f8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_015_json_ordo-code.sh",
+      "sha256": "a2b69519e9cd9f0a09f4b53465ab338c5112206db2f841499098976e0394d842"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_015_ordo-code.sh",
+      "sha256": "3bad9726e33567728732a16c53a7865eabc5a392aca54e8723168b9c2bbbc6d8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_016_json.sh",
+      "sha256": "52180b1552a628344e66c50fb1062ffaa5747a1e8811311774a6e481a65b2ee9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_016_json_ordo-code.sh",
+      "sha256": "28f5519bb9884288c06b5877831a96539292cb79d05059796d1f6d00a43185ad"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_016_ordo-code.sh",
+      "sha256": "70febb16768086b684ca188a9b5536fdef90c50a66df5caa7fc9661ddd2a4eda"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_017_json.sh",
+      "sha256": "ab98b6a72bed1dce72a548482126865ad7a0731c7d6870ee4e12504226f0c207"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_017_json_ordo-code.sh",
+      "sha256": "dbf123c8b11eb58fb8dc0ab46b3a56fd933b0087820c0ad08b1e511b6ad8674d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_017_ordo-code.sh",
+      "sha256": "108a17efb7cda984dd2abd094f675eb62b6a23e852fd4d1c0d587a61ad39331c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_018_json.sh",
+      "sha256": "fe57ad41e76c8021f8eb0676f45a4db9676cb21c55be57b72f5228c78cd891a6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_018_json_ordo-code.sh",
+      "sha256": "d01c76adf5f99f9493fd243de978f5e3bfba1eb91cb2406b06878169e9031d38"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_018_ordo-code.sh",
+      "sha256": "0baba6ac09f19fd76dbfe9249075d6e3d893778b151e7efd33ae0bf8931ea1af"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_019_json.sh",
+      "sha256": "ad3d0addc19cdd1f7acba49e75a1c38ce9f36b0d304561b34889e093ea85ef31"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_019_json_ordo-code.sh",
+      "sha256": "03f7f75dc170d7245b63f5a0be6fd10f93513947f3b614a1d5f366e9278dde76"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/job_scripts/scenario_019_ordo-code.sh",
+      "sha256": "52f050d706bd2c4f6c9325fa55ae826f493dc261fe4853d1b0de9e3ad8c52aac"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_000_json.json",
+      "sha256": "c96eb1a4d636da26024d060aa19e8be78c7df75d5c15fbbd50946ac65e612c48"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_000_json_ordo-code.json",
+      "sha256": "b9be701059c4d339cd4b6db7d119e068d60b32d6113d3534033677d8164ded6e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_000_ordo-code.json",
+      "sha256": "e768dc07f0a8cad47cf4f92c52dd38aff8d609979cb0e7a325ad57ec05609a9f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_001_json.json",
+      "sha256": "895a58fa7be5ce19cde488b05e4c5a4f332f098ba2705a1319659ee44803910b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_001_json_ordo-code.json",
+      "sha256": "95c433e6ac8470f18da3dcdcf5d7db56cef61b0576f608e128e1f90eebdee870"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_001_ordo-code.json",
+      "sha256": "19264c42cb646dae63a81801a4b185277f9cec61827891d7c4c605cd61c653c0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_002_json.json",
+      "sha256": "eab1bf7d689405924459a3d713b27007c1cdab986700596ba7635f3462376faf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_002_json_ordo-code.json",
+      "sha256": "ba8e113e060ff9591265f5558f3ed4a440cf49e8545eb0cd8478cf5466f8d0c5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_002_ordo-code.json",
+      "sha256": "2af71bd24d51f7db68ab99f245aed4c408f5e6209eb68ffc1a09d488033547e6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_003_json.json",
+      "sha256": "dca880f4db8517500ba8d14ef9d151b014541aea60a3ddb0823a830361e6a24f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_003_json_ordo-code.json",
+      "sha256": "00b1632d13472be8b0db6b395f11c0047313c7980fa7cca3f5246c4ccc9ac448"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_003_ordo-code.json",
+      "sha256": "fb937b4cd7019e5dae59d40564009c05c2430c9b665863d3817b92537b0a802f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_004_json.json",
+      "sha256": "bf8cd1a6d9793907b2ec5013bc8a140df221735521afaf3b3f9d3175c02fb9fb"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_004_json_ordo-code.json",
+      "sha256": "b8df24bd12cd9c36631af6e8ca4ce50aca3424004e32fee251a00bd6093d630d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_004_ordo-code.json",
+      "sha256": "690dff4cc7cdf1aee205d43db27d510e33ef489bbf7a167492f8b1b50f594005"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_005_json.json",
+      "sha256": "7a4ae67c03dd5f264c8e77b55338cba0cf7e7d5b4c5fed07a92c11ce9256b62d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_005_json_ordo-code.json",
+      "sha256": "071dce416d89a71c2e8c7a3a86f2de7d034a4fe03c97fb404d5887f4e01c4930"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_005_ordo-code.json",
+      "sha256": "dc41421246381356aba4abfe6578cfcc421f4c7713f53cab1d7719c99e31b07e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_006_json.json",
+      "sha256": "a49fb92c862991ad21570e3a68670df433274cf70e8477cc49dc155b7ac02f6e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_006_json_ordo-code.json",
+      "sha256": "35926b18d215109ea9f7a2d82f6d8e44299ac6b55fd8eca522e2c22fb9a5d82e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_006_ordo-code.json",
+      "sha256": "5d9b219b15b7e45d6eb8017b03d6e9822aa81c2959661729fd189584ffe6133b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_007_json.json",
+      "sha256": "d38a13eee5d4fd97ace3bcde1980f3137c82057058d99ff6553169c31a409f30"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_007_json_ordo-code.json",
+      "sha256": "632340ac115eb4119b07014f1db5c467e25531f8cad96d14895684c820669b80"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_007_ordo-code.json",
+      "sha256": "63a39a4742fe38808317a74e382c0a5ebb9208ed54142ed3c330c93b0d774d9b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_008_json.json",
+      "sha256": "76756b4add6f78946590423c91cbca9099c4a49bc2af855df2e96ccd8b432254"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_008_json_ordo-code.json",
+      "sha256": "d80ab52b3c8e0fd769796b9c9709c6a5b674bbeb0bd4bffd9cc2666cba7b8c26"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_008_ordo-code.json",
+      "sha256": "76cc1a7ca326a97d75a7e034eeca55818dad60649a47d9336b52ce334c3e9f89"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_009_json.json",
+      "sha256": "0188158b5cc4a99bbc38f3d18258c9e649e4648dc6f99ddfb9ae10920acd778a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_009_json_ordo-code.json",
+      "sha256": "1f560f24514fdccf3a3a48263ec4e8b9f51c86cdec7080f51feedfe6085831b5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_009_ordo-code.json",
+      "sha256": "ca2f255e981179f0b5ad78a72a63333d38398059ad5238d7ffe9445d8873186c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_010_json.json",
+      "sha256": "9fbd829f0e026aaffdfcbfb85e726787a5a548eedde83fb23582fbf069a642ed"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_010_json_ordo-code.json",
+      "sha256": "c5585f4dc6ca4821430984d804a15e8dd366c5a893b1c08455d61aa99d81d966"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_010_ordo-code.json",
+      "sha256": "c21bebbae564b6434994fceb2feb6ebecf43879632169078f152420825167c66"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_011_json.json",
+      "sha256": "0d5626a6290ad640922f65e50c2102fb14dd86c3bb8e3dd221f9012703646510"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_011_json_ordo-code.json",
+      "sha256": "35ae9130bb25dd4cb85f19716162b8ed7e68ad8658b68c4ed0fda629e7312a1d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_011_ordo-code.json",
+      "sha256": "9d8a6a4300fcb870caafe3f435628b666724d77b75cf177be63b0867344ba6c0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_012_json.json",
+      "sha256": "14e2ff251a9352a6b8e269d04876941128460e38ef555d13756e567e50139e8c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_012_json_ordo-code.json",
+      "sha256": "560e3ba4dd2a4817cdc98e7f9011fb38cb664711fd19aa3db834de069252aa3a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_012_ordo-code.json",
+      "sha256": "0904fbcce54f008af0b82c80765db3dffee3ce46128a3a174154685a8ce8c6b6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_013_json.json",
+      "sha256": "d2fe6e71f2238fbc798792e94437650890b088d27fe0423f4207786c806d4af7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_013_json_ordo-code.json",
+      "sha256": "d7547823e5e166a307e5df1595a707e24550bec4423ce2b7166cb41e1cb1532b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_013_ordo-code.json",
+      "sha256": "66b0b5f35f816cd45da92763c6abc12fcd4a30ccbd60e0537898b5c8e18f6314"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_014_json.json",
+      "sha256": "9828f937a549ce35b1ef14a9cd5d95a94e457ee7ebc657c6815b8433e0d6761b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_014_json_ordo-code.json",
+      "sha256": "481a466ececdf4b117fb542c8caf238d5a46847e0373ff238328fcaf5685af3c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_014_ordo-code.json",
+      "sha256": "db318a89026d789efd62884731ce82bedde8567c6d9255ab2ddbd243e8557bcd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_015_json.json",
+      "sha256": "dc16620029f2cb0ce960c3591bd4b74ad4970b02580c00f2316c973652fae090"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_015_json_ordo-code.json",
+      "sha256": "d7b388ccb20e9515326b21219721142a9bd8b8b2a017fdd226bdbcdea3481534"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_015_ordo-code.json",
+      "sha256": "0094196ff9e4c6ef0c5bf04bde51a143bf1d1d9e0b4c19392a2fdbd8d48918f5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_016_json.json",
+      "sha256": "1ae118003acd220974fab479def5c54e7d9066ff0d54039283adaccfb32c5333"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_016_json_ordo-code.json",
+      "sha256": "1e35605a88a82cd6cc27011063e76994ded4afd932d4d1fead8dbaaf6f8665bd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_016_ordo-code.json",
+      "sha256": "f9b1c83be9dd0260ce5d355e3f7351d4df524aadf4f31bf8eadce32a4a018817"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_017_json.json",
+      "sha256": "ae6eb1640927a8b776c6a2e2d4115f4ecb9ec7377021df0b1d28c479dc877f0a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_017_json_ordo-code.json",
+      "sha256": "0f35429e3544f50db6034b65b930c662b068c8cf2ebce2a429bc3e04dc778bb9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_017_ordo-code.json",
+      "sha256": "00535a94c96c3adfda3a7c8b07ea96a61dbb29ea3bc68de0047748efdfa11e33"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_018_json.json",
+      "sha256": "e4a6b6ac8c2b7161755ef1d3e203d158ecd0186b82ff0e58c1d0714514883336"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_018_json_ordo-code.json",
+      "sha256": "c9e282a700f06806e6b4ab83574ba7b7fde3112ee0a689fa357aeb55c7c65900"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_018_ordo-code.json",
+      "sha256": "065d7be96f67076a3de08560a78ae177531ff88e815988d2811ca0324caae534"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_019_json.json",
+      "sha256": "6466dd414566d7ff6629bc800981103ac3c8936872b735af1bcdac596774cd05"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_019_json_ordo-code.json",
+      "sha256": "5ff3b7cf2c00db84eaf3e1961690ba2337dcff096969114df919582649d65958"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/jobs/scenario_019_ordo-code.json",
+      "sha256": "ea332a18ff5bbcd096431d14b404cbfbf16c977209aad16f3c206593659ac64b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_000.json",
+      "sha256": "e242cc98e65ae35b906d4fa9d6b1da1b905b54a517d44429983cd27a774ee589"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_001.json",
+      "sha256": "39d9bec4fb14fc437733f7924f0656d8d158bb7070442947a005b6f205dcd93e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_002.json",
+      "sha256": "adae24e7c8da60f8f678af7b1be1de68e0f52a333a8c42482347a73ea345ddbd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_003.json",
+      "sha256": "a968f570ff7680787d3bdc96bc0a9f59172d2b696b1ddeeab1e1df95af7ced0a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_004.json",
+      "sha256": "191cd42bf11374064894d477cb7f8f8aeed71a45883c76cbd7a955c3667667c9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_005.json",
+      "sha256": "bc6bd4e359187922b486d42c378a9c10ab69c98a89ca430ba49b60044ca1986d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_006.json",
+      "sha256": "e5c75ce9c9c24b9a3e9408741f4b09cd0977674f3c737b489ad0fc823950a7e5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_007.json",
+      "sha256": "415a796503d641996eef47ca42b5885ed93fc7bad8c515bfd08ec88223f88141"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_008.json",
+      "sha256": "4d2c5124ded3fdb14faefb7c3bfaf4c68de2d65f669ea66ecf7e4185fe22a6fe"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_009.json",
+      "sha256": "d9b35eb031c3a40fbaa39e325de4e2746f757c55611953dc0d8095d3f8e1e90d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_010.json",
+      "sha256": "07e215698613b1f707d4d360227491b8ed4efeeaa300b2d4dd3ba03acd4cfe68"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_011.json",
+      "sha256": "6e96084ea3b737b2a1e570dfb48bb099bcea2458fe9a1c212b18bf7b3f5bbbbc"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_012.json",
+      "sha256": "f3d14c87ed3d365c905225524850ea2cf566d42aeebbd74f459fdb2296fab50a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_013.json",
+      "sha256": "6d3a4625bdcf7f253cbd2759164089321d185f3217c0a1eac1730164bcbca555"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_014.json",
+      "sha256": "638b5f2f13ee8000d9778288148abe7ed1d0913912c93416bc37fe32095db9d3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_015.json",
+      "sha256": "b9ed55fe52e2edbc33ab9e962e57304c9f1c89dec2dc158ea7713ec1e931816e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_016.json",
+      "sha256": "c6eb401ff303dc8caa3af2f10f24fed9d771dc13f20d32039b2bd73c1223fede"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_017.json",
+      "sha256": "7040635e1fb942d243f8d4739608fedacd44e292c57f3edcf027969c91324881"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_018.json",
+      "sha256": "3a1770e8c00dd3fa534d1341868ab2095800ca1aa40a24dbae2d9462d9bc0ef0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scenarios/scenario_019.json",
+      "sha256": "e1273a66b3ddea30bacda64a145d3c61651e395e022b25523b71f9d770bd3e1c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_000_json_ordo-code_score.json",
+      "sha256": "aae52f6301a2ab475abb5a079fc84390c32012a6b354aeee5eeb14ef794224a5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_000_json_score.json",
+      "sha256": "03964f02b9e7a7e17460a1593de5e8992978da5e622de5157a97c6fd1e93521d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_000_ordo-code_score.json",
+      "sha256": "aae572959d7135cb0537b6270aac28627561002d5a45dd62011a50e6dc27bb83"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_001_json_ordo-code_score.json",
+      "sha256": "48d778b758cb5b2cdb659574451b1df1bca27ef5eed7c832244186711b728735"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_001_json_score.json",
+      "sha256": "9ecb66308440d3173d51c1b988437c8b5c0bf656e7693c3f84f01d40cb345871"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_001_ordo-code_score.json",
+      "sha256": "464c40c2162720e92aaef7c7156cb2909f07868db8aacc71d7e3eb6dbe429411"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_002_json_ordo-code_score.json",
+      "sha256": "f9cfd83a4b1915ed7a88c469e28e136187c80bc878e597a04450a499f0855920"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_002_json_score.json",
+      "sha256": "e32ad27de95fa0c935a74199d9c6d696a8b8a18e94d16d623aa36adeaf561263"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_002_ordo-code_score.json",
+      "sha256": "3c393e6a6c3d4f608303e670f4424d4b07a859836f0d382c38de294f4a087aff"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_003_json_ordo-code_score.json",
+      "sha256": "25416376032512a4858662f38d6eb3f933c5efe55fbeea0f6a7b5cf5e097755c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_003_json_score.json",
+      "sha256": "3250a3397070b346cd5e893e0ce6ab8b46af786a0fc897718b7c82d1fa357c3b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_003_ordo-code_score.json",
+      "sha256": "be180853ec51c63fead2345732cd5894b5da972feb417cfb90c73fa5acb12506"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_004_json_ordo-code_score.json",
+      "sha256": "7381fe23153ba9c7553d0ae26592a24f3751d5db2df844becdd3689a8f49912b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_004_json_score.json",
+      "sha256": "efacba2c9827f1a3bc119d14fc23bdd282222e759491564e55a83dc571092ab1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_004_ordo-code_score.json",
+      "sha256": "bf48002be510efcef071efbcc5df11500921780d3056ab9f0c0eb4abc81c4886"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_005_json_ordo-code_score.json",
+      "sha256": "073741517576c64f36866a3bf2df7eece4e1b59f491641978effdf4eec72587c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_005_json_score.json",
+      "sha256": "9c244933a091a1ec7651c9f8c071781253d8c0153696c27c590d10b218e94f74"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_005_ordo-code_score.json",
+      "sha256": "db4ef328728e8425e1c21fc3be0b496810e59b1af8835203c7deed001c90d196"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_006_json_ordo-code_score.json",
+      "sha256": "401e56525483dc719c4b62366297a535ab127eeff0b5a6e83153e339de250e42"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_006_json_score.json",
+      "sha256": "42d9d3a4c14fc9fae8a08b906f98468ab0393a0108cbc2b6668ec53b7f140a98"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_006_ordo-code_score.json",
+      "sha256": "d533c08b14eb9ff6d45bafd591d3799f45472f14596026d5b283a3ae24fbe524"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_007_json_ordo-code_score.json",
+      "sha256": "4cc1fe8f2f5a74b7af4380542ad58196311878586c661e8c15f2e4c8669eaafd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_007_json_score.json",
+      "sha256": "59fce56be22db0c45ff827a2494dc5751a289ac616359f3c404d7be8b6af36ef"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_007_ordo-code_score.json",
+      "sha256": "0514ec81edd06374c4ef23fa1fe2d1a8afde88931a3eb980f138b3baf3fcb6e0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_008_json_ordo-code_score.json",
+      "sha256": "a4704b69d7aeff22b579e2c711fc6a1e422ffff04541f10ad6ff28fbf4894ba9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_008_json_score.json",
+      "sha256": "5c3de46dcfd44a9e3021a88a8272d129c043b863067aa14900b069cf86277335"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_008_ordo-code_score.json",
+      "sha256": "5ec58c632164c5ffd3c154e42bfa45e35bdafae08498a5a87d3bea420e2e5162"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_009_json_ordo-code_score.json",
+      "sha256": "f83a7fbff9199f0e962ef90efca873d024a73cf0c81c4d1dbe779b74e3e0bf41"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_009_json_score.json",
+      "sha256": "5f0823357805a1a05bc1bf50bd928e5f46a2209f1157f025f09a1756d03ab305"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_009_ordo-code_score.json",
+      "sha256": "10770d2358dd1c935c27a3579b2fed70c16fea76eceff7308a295efb0d6ff10a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_010_json_ordo-code_score.json",
+      "sha256": "2786055d4302e0963ffb0d8033566f73d5a46a6b7465b6d72d8688ddd45e9fb2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_010_json_score.json",
+      "sha256": "bc525e006a0a36566ff19172fac68a51a8a89006263333c2168a0e1bf6c1d474"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_010_ordo-code_score.json",
+      "sha256": "e76183b03dd13b68501ddead17764d937ba8a3f234f9980df2623ef0a98d31e4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_011_json_ordo-code_score.json",
+      "sha256": "86b77df5da6e32edd7e5ee858816271c94c605705462430fb7880522b9801d34"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_011_json_score.json",
+      "sha256": "d878434f36402de55fb77dac8a701a9d7895d4ed723139612e003ac1716ca5bd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_011_ordo-code_score.json",
+      "sha256": "a933c56157fc8e3fd358e9d043d27e0926c864eac17dd56560f7f52beb8b7b18"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_012_json_ordo-code_score.json",
+      "sha256": "fcac02e2e9df3661e886c5ff7935766a340d2c3a68f2c2cdbf5f74e82384b9da"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_012_json_score.json",
+      "sha256": "4bf2346f654fd0af0a9110c185a14230718adb64c838480923271ca31c482268"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_012_ordo-code_score.json",
+      "sha256": "b7241a1a12517c37b2e2e812597a41641648a991e0eecf9b958a9ac767e740a7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_013_json_ordo-code_score.json",
+      "sha256": "a0764534d8dd8d4fce62318614286e6649fffdc857509983725ed108c063d475"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_013_json_score.json",
+      "sha256": "9e45231c52f3ac639717bf4a0e603581c2ad5c0bcb05815f90902820e6ed5c64"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_013_ordo-code_score.json",
+      "sha256": "840b03a0e7938363f7686903c18034229f9060069d8dbffd49416b164cbead48"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_014_json_ordo-code_score.json",
+      "sha256": "72bd8cc90cba814ae54cfd36311c7e7f320e7ff0ad46856814ce6e2f923a5d79"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_014_json_score.json",
+      "sha256": "053705b6dc8893ea809fdf49c9147580e417e0190c38c5518d7e4cf6097a3325"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_014_ordo-code_score.json",
+      "sha256": "3727d8ee2be97973ab668627278ebf19c1adf58034d06e28a1ba9b2465e5912b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_015_json_ordo-code_score.json",
+      "sha256": "056547b36e9f37d1976548be36d54c1b6744201c84bc6eb80f3fc8ffe66ac9bb"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_015_json_score.json",
+      "sha256": "a59a9cd2f857d8365e653ee76b197ba4e95d1d5891ba7f25f5015f9fea5ddf47"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_015_ordo-code_score.json",
+      "sha256": "4f852420d43cb40c58c1c01a66154493a7cf936e2b3091540777debfca199e56"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_016_json_ordo-code_score.json",
+      "sha256": "3e826cc50f5e258871fcd499172a006200560b59680f4a8639530ef39ec40b32"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_016_json_score.json",
+      "sha256": "e82451717bec494f541f99d97044fbb7ecc884c22329168711ddc465c41ab557"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_016_ordo-code_score.json",
+      "sha256": "470e1bea19683fc82bc7f27eba50c67d346335ce1ab900eb6ec71a0fbeb0f6c8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_017_json_ordo-code_score.json",
+      "sha256": "19de9bf220170dfb972631fbb0af6df053ea2aee7d1d4f6b41225b83518c1985"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_017_json_score.json",
+      "sha256": "f9d9da4d631ab2fd659bb9eb1d6f41f32f402f49f8a33a94ff76f64722090b41"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_017_ordo-code_score.json",
+      "sha256": "fb76428aaa22b774b05b888d70763dc62d00ca4ab5c2efea3df2886f358649ec"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_018_json_ordo-code_score.json",
+      "sha256": "28c6d9a693df496dd8cb1f7dea5d52784cff4059b6642e7dd98717656e98246c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_018_json_score.json",
+      "sha256": "92c9175c5ae312949dddbdc94651c94620a93e5b28b6005acaa66da638f3ee4b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_018_ordo-code_score.json",
+      "sha256": "db245e1405d2b67b568726ada3be46c01131d9584c06f292b3ea1233dc413a02"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_019_json_ordo-code_score.json",
+      "sha256": "aaf29dac322c6d42a7aacbd91a3c8070ea3f4d665668e47275af5f2198433493"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_019_json_score.json",
+      "sha256": "c8c493db524d0dfec06a5433466c683b67fc3e3151037293a28a63b077f69321"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_6_calibration_prep_baseline/scores/scenario_019_ordo-code_score.json",
+      "sha256": "9989c907420d2eda05d6014ea211c9a020c0ef31bd711563e402c49d450fca1b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_1_real_module_graph_summary/REAL_MODULE_GRAPH_SUMMARY.json",
+      "sha256": "95b1089dee0ce438085b24b76143d1135d03b11ff658fb3fa7750244c37347f9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_1_real_module_graph_summary/REAL_MODULE_GRAPH_SUMMARY.md",
+      "sha256": "42b1af5f9ad5a4533224813cfc6d0db518b353c2f16fca2226b3375ae18e6480"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_1_real_module_graph_summary/VALIDATION_REPORT.json",
+      "sha256": "f6955af1433d3b2edeb22074b0871d5a376cf2a417da3678ba34af70b459747d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_1_real_module_graph_summary/source/program.ordo.yaml",
+      "sha256": "1bbd87717b0295213e093a480c63566e194d2b89f27cd4204f0a307bafe53458"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/REAL_MODULE_GRAPH_SUMMARY.json",
+      "sha256": "1f6d84a4e99cacd286e8c898e58f608f5053806831357a6b953f792156253ab5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/REAL_MODULE_GRAPH_SUMMARY.md",
+      "sha256": "a4bb22792508508e4f5d18f8070e4e4e7b99ddfac824503a2167ea77a5dd3255"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/REAL_MODULE_TERMINAL_PATHS.json",
+      "sha256": "7595d210ec05b49682452f7f1d57533d77b1efd03eab3e3ee03682abb44cd126"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/REAL_MODULE_TERMINAL_PATHS.md",
+      "sha256": "24fa89e945c8ad98e049b22f85acd468e3b01ebf49b4c5d886cb9a9987d68943"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/TERMINAL_PATHS_VALIDATION_REPORT.json",
+      "sha256": "befbcb532479213f06a13476cf5dd8f4fe74fd16d20db352f162789027ddcdcd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/VALIDATION_REPORT.json",
+      "sha256": "8ceefbeda63219d9566b402ca214576d8ecfd8f2ec2f86acf1c6770a109b60b1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_2_terminal_path_enumeration/source/program.ordo.yaml",
+      "sha256": "1bbd87717b0295213e093a480c63566e194d2b89f27cd4204f0a307bafe53458"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/RAW_TESTCASE_MATRIX.csv",
+      "sha256": "441d2ad52a94577cd81fe577dd10fd3001df0635e14de81e21115ebef13e78ba"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/REAL_MODULE_GRAPH_SUMMARY.json",
+      "sha256": "1f6d84a4e99cacd286e8c898e58f608f5053806831357a6b953f792156253ab5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/REAL_MODULE_GRAPH_SUMMARY.md",
+      "sha256": "a4bb22792508508e4f5d18f8070e4e4e7b99ddfac824503a2167ea77a5dd3255"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/REAL_MODULE_TERMINAL_PATHS.json",
+      "sha256": "7595d210ec05b49682452f7f1d57533d77b1efd03eab3e3ee03682abb44cd126"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/REAL_MODULE_TERMINAL_PATHS.md",
+      "sha256": "24fa89e945c8ad98e049b22f85acd468e3b01ebf49b4c5d886cb9a9987d68943"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/SUMMARY.json",
+      "sha256": "963a18f32b3847880751caa6e32f8e15c02cc078fc9e8f93ef374e2d325a3e04"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/SUMMARY.md",
+      "sha256": "79df5c31020d5bbed5bd00515f7705c4a3903ba874c3fe78d9daac88424d2df1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/VALIDATION_REPORT.json",
+      "sha256": "d4f8e40bd436cade27cda0ef3bcffe40d46c43e34bf15b851125295d72a85674"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/cases/CLEAN_TP_001.json",
+      "sha256": "c9f8dc1cb971c45f55d21524d85dfa948e1ae1c916d4a4e7ade4e68235a98037"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/cases/CLEAN_TP_001.md",
+      "sha256": "01de2072a681d6b94245c7e047906f14db92b5c73ba01f37d8d4e80130c4ad8c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/cases/CLEAN_TP_002.json",
+      "sha256": "7f6b098f8d864579b3696145a62b99bab5ee10a581edc9226ac7e028c1a7d9e9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/cases/CLEAN_TP_002.md",
+      "sha256": "521a8e0307031e59f884a1c96e14dbbcd700bfbf98d56b3abaf33b0bf2b808bc"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/cases/CLEAN_TP_003.json",
+      "sha256": "9fd7989d2e9af7912abe211e589c81be8732249d5ba6b8d7a7c2ec3432a2ec99"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/cases/CLEAN_TP_003.md",
+      "sha256": "3c0a2b448c6202f80a8c1c19c404552d1147cfaf019c20cc8ecd6db0e26b0d87"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_3_clean_path_testcases/source/program.ordo.yaml",
+      "sha256": "1bbd87717b0295213e093a480c63566e194d2b89f27cd4204f0a307bafe53458"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/REAL_MODULE_GRAPH_SUMMARY.json",
+      "sha256": "53d8b39702b19573fde55125e0b7d1959882d52ca79f68b7476b82bf8d0b4e13"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/REAL_MODULE_GRAPH_SUMMARY.md",
+      "sha256": "129d0d1443dea4c82c89af62db0ac74a09cef33302e1b6eacec3311250f15435"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/REAL_MODULE_TERMINAL_PATHS.json",
+      "sha256": "e7a6080e2a9846699cd221896e566e7d30a549f55af2fa12e69dd8d570706c1f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/REAL_MODULE_TERMINAL_PATHS.md",
+      "sha256": "45b4d6210f3929e82996467c1611b77eb4de26d8e21d27c4ca908e0493535ca0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/VALIDATION_REPORT.json",
+      "sha256": "befbcb532479213f06a13476cf5dd8f4fe74fd16d20db352f162789027ddcdcd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/RAW_NOISE_TESTCASE_MATRIX.csv",
+      "sha256": "cb9748bfc00ef6453cf0ddadb268c21465d126432d66672bdcbc37fbea2c20b2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/SUMMARY.json",
+      "sha256": "dd9416c11c5df0f8430e1f6b41a6f79c1114d6932925fd45491072e5face354f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/SUMMARY.md",
+      "sha256": "3536782df578e056801fa00b6437868013b970444e3d6024a731a6f2dbd8f987"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/VALIDATION_REPORT.json",
+      "sha256": "af6ed35134ec7ffe9f8f8a0e07caa70208e77f870bc9020c43c354375d8fec7e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_001_DISTRACTION.json",
+      "sha256": "95a7f25998e4688572e737916a368a6d5172a3b5edf839ed3fe21d68ded6452b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_001_DISTRACTION.md",
+      "sha256": "d756d61e3ea9ff1b82d0f16768d4fa53bc995d551dd02cb2e3f675c305c0ff0c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_001_INVALID_BRANCH.json",
+      "sha256": "4edd97adb36e70410b0cd012eb505638ca2838f126456a75bbae31c22a5465c0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_001_INVALID_BRANCH.md",
+      "sha256": "61af271e9ccdd59bbfa76646765b8d2332ca4409254b9556e731b2aa06a3ffbd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_002_DISTRACTION.json",
+      "sha256": "5f1aa4c5fd849771a9bf3ed63f52dda0294a141ce7af28d63ba20db15b087998"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_002_DISTRACTION.md",
+      "sha256": "66d40b48a64cb9834c6daf2f976195bf53b87e478ba38d6c001e0a7880b55d5a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_002_INVALID_BRANCH.json",
+      "sha256": "49ee013023fa886f77a18c0afdded93d283dc29564e1d93216af9df0c7f0796a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_002_INVALID_BRANCH.md",
+      "sha256": "77e65ea21428c820d9f278c22f84eb5cb73091ed3b9304edd1063b0f2667e59b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_003_DISTRACTION.json",
+      "sha256": "799cc2ca5e8b4b6c870e67400a53c342f6a2a945b5463c9ed08432ad3c9b395d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_003_DISTRACTION.md",
+      "sha256": "d7361ced9cf4c0c1eb56644bf6481222119e29ab5065730853592ab71c3e2b48"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_003_INVALID_BRANCH.json",
+      "sha256": "165e6f71120fb38bf4fcb75bea7a7ba1b07c40c023e8a4c886871040b7d24abf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/noise_cases/cases/NOISE_TP_003_INVALID_BRANCH.md",
+      "sha256": "78fb529179ae5c0358ec8b80b8593afb62ed38ac857d4fcdfdee5556d5bea1ba"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_4_noise_testcases/source/program.ordo.yaml",
+      "sha256": "1bbd87717b0295213e093a480c63566e194d2b89f27cd4204f0a307bafe53458"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/REAL_MODULE_GRAPH_SUMMARY.json",
+      "sha256": "36e6e2332342a39dbe9d6f2685ba4194a3ecac97fd23d181834e1ac87eef0151"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/REAL_MODULE_GRAPH_SUMMARY.md",
+      "sha256": "cbcd811a7187e26498676c5dfa0e9eac06f5ba28b8d7cb19a3d33d67001955f9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/REAL_MODULE_TERMINAL_PATHS.json",
+      "sha256": "7fc432859a7f2135c5120ac86b295817729033bbc97aa0d40d8f5dc8977a3485"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/REAL_MODULE_TERMINAL_PATHS.md",
+      "sha256": "4ee638251ab186dc0d55c9e61a5ef7a8941415518ac198012e9be89fa5fa6ff6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/VALIDATION_REPORT.json",
+      "sha256": "befbcb532479213f06a13476cf5dd8f4fe74fd16d20db352f162789027ddcdcd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/RAW_NOISE_TESTCASE_MATRIX.csv",
+      "sha256": "62eeb8f7eae7c1b03b3aee1f0f59bfbf92237def3e5e38f7c549147eb3950979"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/SUMMARY.json",
+      "sha256": "f1869a408b8588f1ec7da800d6a5225ad1711429cf39aec49766aaeddcdd9176"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/SUMMARY.md",
+      "sha256": "0dbef881aa4a5d097b04f036b68237a4871ded67c5d5ebb860bcf6011b7ddbac"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/VALIDATION_REPORT.json",
+      "sha256": "eab61655ba2f72042c62a5f509eddb8079310acd79668491e45a32d0107b42b2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "41f53539c85482dccabbc126fa6a182f1149b9409826ebdad44e806f6ebd8677"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "1550e191f10c62f322beed7004b1416c3f7db12fef5b20b2aa6842be93ae64c6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_DISTRACTION.json",
+      "sha256": "e1f5e0e26578ee99dca17de96ace70634a92ac38bdca501aa795933c849fc8d8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_DISTRACTION.md",
+      "sha256": "6b6abeac13ec7c38f3a2ed60b1a2ab411d58507b398f7c694fae6ebdfc80b1de"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_INVALID_BRANCH.json",
+      "sha256": "c12c677a8ff5e24feb9f219072cd93f36396d9d584c60d047bfc2552494d6b10"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_INVALID_BRANCH.md",
+      "sha256": "0ddfe9332e15ef13cb51f696a090f69ff752c34af89d6b915a52e25ceb1454a8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_SKIP_AHEAD.json",
+      "sha256": "292b4c6fe83c4ac6dfcf72ada34185cdc10528eeef731e511166bd63052bb258"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_001_SKIP_AHEAD.md",
+      "sha256": "3fd6c23ebbe0b0d72bc8b7989526b4e73af5143fa080fb2ee1b34e52d02b84ee"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "541dd6da08c5cf92a02bd822789ad0b7e645081ca2a6747dae141fdfaa443ac4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "8415d44f1e1643da449540171b3be424245d8ba06edbf0ba3a473e6456c693bf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_DISTRACTION.json",
+      "sha256": "5d58928f982c71af6c1def18d5577155787fac8f24bd3304522d4569e21c217d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_DISTRACTION.md",
+      "sha256": "98a99c6a6a2ba76061afe3f8da754b6abe337fe66758ad3bc591cfad3ffb9510"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_INVALID_BRANCH.json",
+      "sha256": "106a45a15d73eafc5cc19c9de539e191ae4dd8b97ffb017a2d924f82befe431d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_INVALID_BRANCH.md",
+      "sha256": "2413a7beb09ebb590f383947a11e2e4b5b50fab2e0052f5c92971b5230a85f22"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_SKIP_AHEAD.json",
+      "sha256": "0e9ef809cafdd4614cbd54f282a1debd523909855ab1568359e39871fb7193aa"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_002_SKIP_AHEAD.md",
+      "sha256": "31210eb278d16c5273462f5ced8c365ca9e055034dacf1b1682e47b5378fd83e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "d273e51428d75eaa07a8f50bbf842186aed1f1a804575c56bcce6332210b95fc"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "a9d521863ac4fce9dfc0678cc7bfb7625e5a79f6068fb7075082203a0c6e1cbd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_DISTRACTION.json",
+      "sha256": "5abed5a96f5b51096bb1af168a82b6b367918edde54cd47ffe5a1a55ee7e1d83"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_DISTRACTION.md",
+      "sha256": "b0c92fb577532a23b9a6a7ba0ee4ca69862a040d672f0ad0bb5ab3b3e2de5b4f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_INVALID_BRANCH.json",
+      "sha256": "0c16039830e836c9874a0e0027447fbe1024aa7a5890b1de1252b52f0d9bfc83"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_INVALID_BRANCH.md",
+      "sha256": "3b415307d50cb1a0cc996f375c7296827a5aa3bd80721892ec6324c2e548f26f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_SKIP_AHEAD.json",
+      "sha256": "4de9d41368184ec6a5c19ebef4cf8a4ad9863dfbeb43eec7b4932ff401b6d304"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/noise_cases/cases/NOISE_TP_003_SKIP_AHEAD.md",
+      "sha256": "648f4d6498a75d7367943a2adf9325341ac018c2fd57d82cfe76a4b8214010c1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m60_7_5_remaining_noise_testcases/source/program.ordo.yaml",
+      "sha256": "1bbd87717b0295213e093a480c63566e194d2b89f27cd4204f0a307bafe53458"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/REAL_MODULE_GRAPH_SUMMARY.json",
+      "sha256": "36e6e2332342a39dbe9d6f2685ba4194a3ecac97fd23d181834e1ac87eef0151"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/REAL_MODULE_GRAPH_SUMMARY.md",
+      "sha256": "cbcd811a7187e26498676c5dfa0e9eac06f5ba28b8d7cb19a3d33d67001955f9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/REAL_MODULE_TERMINAL_PATHS.json",
+      "sha256": "7fc432859a7f2135c5120ac86b295817729033bbc97aa0d40d8f5dc8977a3485"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/REAL_MODULE_TERMINAL_PATHS.md",
+      "sha256": "4ee638251ab186dc0d55c9e61a5ef7a8941415518ac198012e9be89fa5fa6ff6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/VALIDATION_REPORT.json",
+      "sha256": "befbcb532479213f06a13476cf5dd8f4fe74fd16d20db352f162789027ddcdcd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/RAW_TESTCASE_MATRIX.csv",
+      "sha256": "441d2ad52a94577cd81fe577dd10fd3001df0635e14de81e21115ebef13e78ba"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/SUMMARY.json",
+      "sha256": "9fec419e7a3e0f2db6117e41f988a4076cda792a89e06fb69c68aebe443f307a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/SUMMARY.md",
+      "sha256": "cb443e416b5d165058c2ccbf25928533fabedf20a22769c251d0654c397e64bf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/VALIDATION_REPORT.json",
+      "sha256": "d4f8e40bd436cade27cda0ef3bcffe40d46c43e34bf15b851125295d72a85674"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/cases/CLEAN_TP_001.json",
+      "sha256": "63387d8d24dcaa840d9452ddfcc68bbd29c4ca47cad4e96ac664d8c8b2cddba3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/cases/CLEAN_TP_001.md",
+      "sha256": "01de2072a681d6b94245c7e047906f14db92b5c73ba01f37d8d4e80130c4ad8c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/cases/CLEAN_TP_002.json",
+      "sha256": "e446e914d2385945d46ee6cc36b6215413c935b4d637086af3193d3b376bf3e9"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/cases/CLEAN_TP_002.md",
+      "sha256": "521a8e0307031e59f884a1c96e14dbbcd700bfbf98d56b3abaf33b0bf2b808bc"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/cases/CLEAN_TP_003.json",
+      "sha256": "413e81285e0ac8847e2fe9d742128f57ad72dcaec16565359df70281da573420"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/clean_cases/cases/CLEAN_TP_003.md",
+      "sha256": "3c0a2b448c6202f80a8c1c19c404552d1147cfaf019c20cc8ecd6db0e26b0d87"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/RAW_NOISE_TESTCASE_MATRIX.csv",
+      "sha256": "62eeb8f7eae7c1b03b3aee1f0f59bfbf92237def3e5e38f7c549147eb3950979"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/SUMMARY.json",
+      "sha256": "f1869a408b8588f1ec7da800d6a5225ad1711429cf39aec49766aaeddcdd9176"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/SUMMARY.md",
+      "sha256": "0dbef881aa4a5d097b04f036b68237a4871ded67c5d5ebb860bcf6011b7ddbac"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/VALIDATION_REPORT.json",
+      "sha256": "eab61655ba2f72042c62a5f509eddb8079310acd79668491e45a32d0107b42b2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "41f53539c85482dccabbc126fa6a182f1149b9409826ebdad44e806f6ebd8677"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "1550e191f10c62f322beed7004b1416c3f7db12fef5b20b2aa6842be93ae64c6"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_DISTRACTION.json",
+      "sha256": "e1f5e0e26578ee99dca17de96ace70634a92ac38bdca501aa795933c849fc8d8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_DISTRACTION.md",
+      "sha256": "6b6abeac13ec7c38f3a2ed60b1a2ab411d58507b398f7c694fae6ebdfc80b1de"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_INVALID_BRANCH.json",
+      "sha256": "c12c677a8ff5e24feb9f219072cd93f36396d9d584c60d047bfc2552494d6b10"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_INVALID_BRANCH.md",
+      "sha256": "0ddfe9332e15ef13cb51f696a090f69ff752c34af89d6b915a52e25ceb1454a8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_SKIP_AHEAD.json",
+      "sha256": "292b4c6fe83c4ac6dfcf72ada34185cdc10528eeef731e511166bd63052bb258"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_001_SKIP_AHEAD.md",
+      "sha256": "3fd6c23ebbe0b0d72bc8b7989526b4e73af5143fa080fb2ee1b34e52d02b84ee"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "541dd6da08c5cf92a02bd822789ad0b7e645081ca2a6747dae141fdfaa443ac4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "8415d44f1e1643da449540171b3be424245d8ba06edbf0ba3a473e6456c693bf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_DISTRACTION.json",
+      "sha256": "5d58928f982c71af6c1def18d5577155787fac8f24bd3304522d4569e21c217d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_DISTRACTION.md",
+      "sha256": "98a99c6a6a2ba76061afe3f8da754b6abe337fe66758ad3bc591cfad3ffb9510"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_INVALID_BRANCH.json",
+      "sha256": "106a45a15d73eafc5cc19c9de539e191ae4dd8b97ffb017a2d924f82befe431d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_INVALID_BRANCH.md",
+      "sha256": "2413a7beb09ebb590f383947a11e2e4b5b50fab2e0052f5c92971b5230a85f22"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_SKIP_AHEAD.json",
+      "sha256": "0e9ef809cafdd4614cbd54f282a1debd523909855ab1568359e39871fb7193aa"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_002_SKIP_AHEAD.md",
+      "sha256": "31210eb278d16c5273462f5ced8c365ca9e055034dacf1b1682e47b5378fd83e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "d273e51428d75eaa07a8f50bbf842186aed1f1a804575c56bcce6332210b95fc"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "a9d521863ac4fce9dfc0678cc7bfb7625e5a79f6068fb7075082203a0c6e1cbd"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_DISTRACTION.json",
+      "sha256": "5abed5a96f5b51096bb1af168a82b6b367918edde54cd47ffe5a1a55ee7e1d83"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_DISTRACTION.md",
+      "sha256": "b0c92fb577532a23b9a6a7ba0ee4ca69862a040d672f0ad0bb5ab3b3e2de5b4f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_INVALID_BRANCH.json",
+      "sha256": "0c16039830e836c9874a0e0027447fbe1024aa7a5890b1de1252b52f0d9bfc83"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_INVALID_BRANCH.md",
+      "sha256": "3b415307d50cb1a0cc996f375c7296827a5aa3bd80721892ec6324c2e548f26f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_SKIP_AHEAD.json",
+      "sha256": "4de9d41368184ec6a5c19ebef4cf8a4ad9863dfbeb43eec7b4932ff401b6d304"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/noise_cases/cases/NOISE_TP_003_SKIP_AHEAD.md",
+      "sha256": "648f4d6498a75d7367943a2adf9325341ac018c2fd57d82cfe76a4b8214010c1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/RAW_REVIEW_CARD_MATRIX.csv",
+      "sha256": "c1bfd8f4b3d94f81953a2f09afcd0011015d9de896540b2d23d79ab44f664edc"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/REVIEW_CARDS.json",
+      "sha256": "cd822bce3d092d1e763699b6e2cade54b026766b02929abaf59c63fc3242bbec"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/REVIEW_CARDS.md",
+      "sha256": "3e2090d6ac66a89879bba76d81ad9c73a628ab721684eae4b805e07beb9a7128"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/VALIDATION_REPORT.json",
+      "sha256": "3e02abeec032283b7843fc6ce655b1d640b142ca52058a0818412a70e87ba1b4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_001_CLEAN_TP_001.json",
+      "sha256": "b7ad9d1eb332838a0481234ea97cc6a3dae9f7ce3626bf3fc9d30a734e460a8b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_001_CLEAN_TP_001.md",
+      "sha256": "42f21b128fbdfb28e5f4cdc24b9d8d6d3c50280adf3fa1b5906ba9339d64f92d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_002_CLEAN_TP_002.json",
+      "sha256": "231062b1cd5bcb4adbe8a3d1034994c05088940034cc2a32b074df6c26263c42"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_002_CLEAN_TP_002.md",
+      "sha256": "25b93196d321e52002e1902a3ef5e4fced19fc2a2f684ca9a9bed5efe591bd4c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_003_CLEAN_TP_003.json",
+      "sha256": "4cf37e4ece4a05c326eb311e87a1bb88ea6bc16318f6ab7abbffa5c24f8498f1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_003_CLEAN_TP_003.md",
+      "sha256": "d1eba6b61574f13c499f162da385bc2ba7267f8ce3b4a752f0780db0a4408009"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_004_NOISE_TP_001_DISTRACTION.json",
+      "sha256": "d6ef30ed2fa31f087e77d40fd33589fec77e69da7fb393b7409ed4af9e6df5c5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_004_NOISE_TP_001_DISTRACTION.md",
+      "sha256": "8c8630b42f5ecd3a645a5b4f0bd096b44586c537d8ad787346d6891cea791434"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_005_NOISE_TP_001_INVALID_BRANCH.json",
+      "sha256": "7079b59ca8d80f5d65c764179142e5fc652d00e644851c2bd6ee71e3ed531f08"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_005_NOISE_TP_001_INVALID_BRANCH.md",
+      "sha256": "31da10371d84f720f15df09edbd41dc810b4ca5a573e4808d9a6d7f13c59979f"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_006_NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "4a3594892ce50399fa885d434f054dcb955626b7587acbdab1950ff1b6e49074"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_006_NOISE_TP_001_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "14d987aabd058b87116fa44b7cb09ef0ba4b72736df8227b80e3c03ebbcf5508"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_007_NOISE_TP_001_SKIP_AHEAD.json",
+      "sha256": "5bdaf5ffc99c3235d463b59b01426a857dde5c59b38d5c888df6272f46930cd5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_007_NOISE_TP_001_SKIP_AHEAD.md",
+      "sha256": "f3824b0f74dd92df9d1afdcdebd95a08dd42fe2ca170c2aea91910d53a67a840"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_008_NOISE_TP_002_DISTRACTION.json",
+      "sha256": "d93470804195f0632e8dbe1e734805ba15ae412d5b5973109dc3f813719d6a73"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_008_NOISE_TP_002_DISTRACTION.md",
+      "sha256": "b29bd5e4846535d2c0513aa094a61fee2cf0ffc3892474700505881bdc6774de"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_009_NOISE_TP_002_INVALID_BRANCH.json",
+      "sha256": "70d8c89fedd5f1278b2e8224052eb6cce00590583f59ed9eb74561645c799141"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_009_NOISE_TP_002_INVALID_BRANCH.md",
+      "sha256": "17feda491c92f8ba6f54f21a0044a4f7c072b2692d45f9c4fe9d79e6ebb33f93"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_010_NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "871243278ef6fa87853f0fb9cf6d82bde9aeeb144e55b6a446d9c98036352840"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_010_NOISE_TP_002_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "02efa94b488370c52dd23feea88aef8c83ee2a8a7de6c7015306042be7219da7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_011_NOISE_TP_002_SKIP_AHEAD.json",
+      "sha256": "735b8ff8a6e5d555b72d09b4480b71dbdeef493d2a4017396067aeaa26a32f67"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_011_NOISE_TP_002_SKIP_AHEAD.md",
+      "sha256": "63bc927f857dcf5653390f6994d8f2a3e6db225ad2466fc6a303848400c90869"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_012_NOISE_TP_003_DISTRACTION.json",
+      "sha256": "7a8fda2c5dc3e1175e6a0a9d2290d490e50c39a6da54dcba04afb0684f430581"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_012_NOISE_TP_003_DISTRACTION.md",
+      "sha256": "422ab9aa8b1d38ccd6fae2caf46c45d3d33b37e0a32e9608bd1979802b790719"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_013_NOISE_TP_003_INVALID_BRANCH.json",
+      "sha256": "9e12fac78a05a584698d5d0ba73752266e1cbe28e97ce6b9f9b65558826db2ac"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_013_NOISE_TP_003_INVALID_BRANCH.md",
+      "sha256": "827708c67d979ca11f54c8f476928b64f61b40492db7855adfa42a49fb1bf8aa"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_014_NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT.json",
+      "sha256": "6a90a582c5fbab7475c73eb706a23b26a314dbc5793e144874846311ffc4cc90"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_014_NOISE_TP_003_CLARIFICATION_WITHOUT_SUBMIT.md",
+      "sha256": "ffe25c619c552aeaf88ed8c98e503ca77fca6f10256734d735d3e084990bf392"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_015_NOISE_TP_003_SKIP_AHEAD.json",
+      "sha256": "c5594dc6313a53fa3d080914d67dba5608be606f70cdb72c1d3f1dc8ec349f68"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/review_cards/cards/CARD_015_NOISE_TP_003_SKIP_AHEAD.md",
+      "sha256": "3a935d95a33c5f9103334ea48d60b26423416f9c1d77ed5d7de2facaabb6e6d8"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/examples/m61_0_human_review_scenario_cards/source/program.ordo.yaml",
+      "sha256": "1bbd87717b0295213e093a480c63566e194d2b89f27cd4204f0a307bafe53458"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/generator/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/generator/emit_ordo_package.py",
+      "sha256": "29d4450ade799ae51687fbcaa50b0a798be3493a6349063825a3ff32ed95de05"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/generator/maze_gen.py",
+      "sha256": "e9a7b17c44b51189390dfa210b7ecae8dd47bb19acb075b32baf1f82c325aca4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/generator/noise_gen.py",
+      "sha256": "b0cf7bb5de2b9647645fe76c58891316d846012bd77c2758cfa3639b617b368a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/generator/real_module.py",
+      "sha256": "3df7f0a5fa74f9645b410f4a0a47a274bd18d98f7fb8d2a1d24d6e723d569deb"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/requirements.txt",
+      "sha256": "62a17607534f6dbeb642393eab81ef13614e2cca1aa6bee79ba0855143e6c9d7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/aggregate.py",
+      "sha256": "b68a1911fadab83b97b2234474479e4a6e54376b5826fa71e48f3546e91e58a4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/calibration.py",
+      "sha256": "7bb0724d71da8cc81d7bdf69d035869e04b85505713ea37397c4dff4557e8c15"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/csg_benchmark.py",
+      "sha256": "f9281e5e42d7e1e37ff5cbf86ffd3fd46f788f1f63cb8d5dcf0a433bda155056"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/dry_run.py",
+      "sha256": "18b5def53048d55c250f699088fa4371eb92a232e8fa3ddd7923745c7af06a0e"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/harness.py",
+      "sha256": "23e4dd93108c9ad8daaba447f6a049fdb5d2edc49ce22b1d67e5bfe410d671cf"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/matrix_smoke.py",
+      "sha256": "72ae4343b497bfcae3f7a5ce5c8c8bdc6c262c636683b27af4c96f18533b2d97"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/model_benchmark.py",
+      "sha256": "5f1865613524c43043fc8f2a01a31d1240f56b171575af02d6db7a4e911aa24c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/model_drivers.py",
+      "sha256": "50c2671d84283b99a8d3a985325fbefa4fd9e1a4c8539d03213695eb6e158ba4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/real_module_execution.py",
+      "sha256": "0566f3ed07b69261309f3c27802678af781240c50812cb6f753bf5db721cbb7c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/real_module_pipeline.py",
+      "sha256": "b51497efd72b6d0937239292bf40c3fed4085ad9a0b0b63fc0e5df5e4ce31f51"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/scorer.py",
+      "sha256": "920c6bf0f0ba30d8d3ddd5f1c50ead44bcb31d59bc89b89e9b7bdd0ecde9629d"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/runner/self_session.py",
+      "sha256": "e26e693b2849d13c8e27c9cae6de399c2a8e887f9d9445031ad806f662909419"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/schemas/execution_evidence.v1.schema.json",
+      "sha256": "0bbeed9ba17e2805be5963c3c4773423b1ddbf7978b073afc0696873ce6d35a4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_aggregate.py",
+      "sha256": "f910309460a4349069715797dbbbf4b667c8ecdad264c7e090d4f1263d080825"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_benchmark_dry_run.py",
+      "sha256": "111e61fc7978eed69699f78afaf991a4e5d5a9e4ad1391abf4e3f6544d736dc1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_calibration_policy.py",
+      "sha256": "177a65b8704443e27709c007fc624314e16869d47a7fca197644e3909d0f53a0"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_csg_benchmark.py",
+      "sha256": "02766bd22244c54984efb21197718a857a64521e9874312e811fd61b020647a3"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_csg_cross_model_benchmark.py",
+      "sha256": "99408bf4a0698613afad808d114be031c8b8c29ae2359c08fc10f98a757d595b"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_dry_run_artifact_only_executor.py",
+      "sha256": "4a30d97105be9ecae5529fe558a64723a0ec900302d4eecc60b0ef1bfab63003"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_dry_run_external_jobs.py",
+      "sha256": "cee8ec2c030998bf4b59f917760a48826fc46b1ffffc1b3c04612c70c5819be7"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m60_harness.py",
+      "sha256": "23083d8c5487d464fa1f3650c463e85701726badd5cf1e6eaeb6560aa6d7f434"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m75_3_1_csg_protocol_normalization.py",
+      "sha256": "249f9b63a7d174e36bf916c496e118ddd0010a58882035e651d18a011a315b31"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m75_4_csg_production_readiness.py",
+      "sha256": "c2a878204aae1a8f79a28e39683860a72eca5bf62514d74ba5bc0e62d72cfe69"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m76_2_safe_real_module_execution.py",
+      "sha256": "fdb0756f70c5f3e1c7e5b18cd9cc5d4f52e8dabb4aaf9ef638b6719349843203"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m82_1_hardened_child_runner.py",
+      "sha256": "cc1d3e37cfe960c805e4a433e1b4adeb99be7a3baff36a1c45e6b5df493cc6ab"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m82_2_execution_evidence.py",
+      "sha256": "f8702d7553b7ae85439fc9d830693850d90283ecdd1ac2bd608b401b938d5df4"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m82_3_real_module_pipeline.py",
+      "sha256": "088e7b4928e552ad1d5841babc9c52f28accb40e3ddbfa2bec5a33e063a7cb5c"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_m82_4_regression_closure.py",
+      "sha256": "840d55bebc0bc301077456015bceef1705a7667d0977f98102719a4b298a26f1"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_matrix_smoke.py",
+      "sha256": "e9b3f20592147497d2e138cd1ebc4b511c7614cf804b44f4a046bbe4a7040842"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_maze_gen.py",
+      "sha256": "45eda101bf4daee745055802de0d0cea8cb2360826f1038893c1842888396274"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_model_benchmark_pilot.py",
+      "sha256": "6c535981f63eaf5157a969983ccfb4b52ff437810daad24062a1f6639e28ca3a"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_model_drivers_retry.py",
+      "sha256": "5e9e1ae72afbfd0f2baf99ce32d93a3e733187289b62cba09f0ef4c57df728f2"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_noise_gen.py",
+      "sha256": "99f6a4d804eb863e3588bc06b9612e1445e9cf4a3d3d838d2cd1f555a1263373"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_real_module_graph.py",
+      "sha256": "59a3a60840a8d07149aaae55fbaa9e1adc4a951b613f98d5912560b3be7c08e5"
+    },
+    {
+      "path": "utilities/ordo_pathwalk/tests/test_scorer_m60.py",
+      "sha256": "16e20ea75a5644b03e8cedd30c084e6d87e15b9d821ee41ce6653ad7a5632165"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md",
+      "sha256": "93c543681c456952707fa3939f73b50a080ca86e0ee7ff207186f47a2c08cff3"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_STEP_REPORT.json",
+      "sha256": "d7cb21b961e32d6f4dd215f9be2132c2f7915fa91b2172cfeda367c29a65358b"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/GRAPH_OUTPUT_LAYERS.md",
+      "sha256": "78b55ba34c83c74754b508ed993cd0cb5e2e317fe1cc06dd951d1a5a932a3a8f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ORDO_GRAPH_INPUT_CONTRACT.md",
+      "sha256": "c184a4453bc5a2a96be63e359672f723d8586d544eb9485db969052fca1eca5f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ORDO_INTEGRATION_NOTES.md",
+      "sha256": "0df197b955dc5c09b35c936fde195bb5aaaa04d95c1db116099bdb784d700712"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/README.md",
+      "sha256": "08369737a11da8a25b1f2d58e75802f5cac5c59f884a118aefb7473509fb3fde"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/RELEASE_NOTES_V1.md",
+      "sha256": "868a30d6a245fc17129001cfceb1dd3bb55eaa760919f4613fadcada142ae2e5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/TESTING.md",
+      "sha256": "5443244d0e5b401f816c2e5bc1b1755e9b23cd390c87b4b5e35bc0ecbe7faf8d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/TRACE_OVERLAY_SCHEMA.md",
+      "sha256": "c0d29f3e0b8b6012f058f4f1073a92c783f21dc2cdf09663d9b4032f9bc7453d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_1_PREVIEW_MANIFEST.json",
+      "sha256": "0b88d4e2736065eec48b98cff7ffbf6e1db808d4780ad45b6f27df2a5622e239"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_PACKAGE_MANIFEST.json",
+      "sha256": "939d1c5ec5f05ff90f9c920eb6b160340f4df64edf9adb9c34c820b223979ec5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_VERIFICATION_REPORT.json",
+      "sha256": "18b51c6a0de358693d366600e2f7bdebfed830c2c48d33418be91438c5612938"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/VALIDATION_REPORT.json",
+      "sha256": "576a2cda9c00d4572a7aa9bac11f20ad50563f6cb1bbcf3e26bcd63df05dd0df"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/__init__.py",
+      "sha256": "aad6f7a69563ed249cd4b3195c0f150bb094000971b06d72229e345c5d9bff17"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.annotations.v1.json",
+      "sha256": "40678845e2974bf624c9a007bb60643d0a707d8bc1919dbd8915339e25e8f14a"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.ordo.yaml",
+      "sha256": "51684ccbb1ad8b4fab63e35d7fd026b5456f30e646502299f2eaba925514e463"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.trace.v2.json",
+      "sha256": "c9f05c5a4751db43af7597ecfc2972406e550ab6ba185aa466f059ed363ff461"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/p0_test_subtree_startup.svg",
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/program_error_user_survey_with_artifacts.ordo.yaml",
+      "sha256": "86cb8fcbb59596df471756c0c004529231a4782673d2ca4b8b475d65778298dc"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph.py",
+      "sha256": "fed4d935ec54af2bf401fd5edf1ac2f6ba81ef2f590d8a62016c8214b73db47d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph_annotation_demo.py",
+      "sha256": "6a3ea50dd9e6969ffd415a027599f63ca46a9ca718faef760c9f02cb0f0f3f92"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph_with_attached_gates.py",
+      "sha256": "5fe8e25f04bf2e565ab638e6863e11f3b26db690e5ac18fccb4a37afb9d207d5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage.mmd",
+      "sha256": "9a07ab43b4a2b3ddb0d7df371b7a3dcc51c438586183a5f809d2472a56bc8b87"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.dot",
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.report.json",
+      "sha256": "9aa73ce806d9604896e929abbda1b7db5f6bafcd93981baaf4e1a81fc59f20d2"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.svg",
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.dot",
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.report.json",
+      "sha256": "1bd5a2b6feef501f25b9ff96d229008b3cbdc7fa2239a51d4438f9b29bac9788"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.svg",
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.dot",
+      "sha256": "d1e198a1d422b5a3461f60d446649d9db5218f86b330fd338ec2e80f62492a23"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.svg",
+      "sha256": "9a9c91c0b619e687cf437ac25628cfffff54dc86d52a48d75eae71b9b676d169"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/requirements-dev.txt",
+      "sha256": "ed68ea16ad8aab76f809478c881995e191c8762d8f6d76edee8ae047c7defe3d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/test_survey_startup_subtree.svg",
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/tests/test_ordo_graph.py",
+      "sha256": "f7cc03fccf326e4010cd075caf533b31aff7112539dcaa4a5d71264a1f4d006f"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/README.md",
+      "sha256": "1336e512723d8c9a4c8d0df8e56c6334e6931743030bf3d3fa30d5903a68da6b"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/__init__.py",
+      "sha256": "f415d5afa65ef4bdf2dbd15be61f293b62a1e58b2d6044e60f5d93210daafd9b"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/manage_playbook_checkpoint.py",
+      "sha256": "cf79a2aaea9e79dec72dc5dcdb140d695a88baf6b36db146cb48463e9ea2dac5"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/resolve_playbook_upgrade.py",
+      "sha256": "cfbb44371909f7fd50d3ab9395decb20a1ca631b693734749933bf15f6badb9b"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/resolve_upgrade_impact.py",
+      "sha256": "37fe55c1a905b472f1370d4ee07d5643bceb7adf2cbe249fefc925c123e3ff7e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/README.md",
+      "sha256": "d422259261cc85044b1e709dfc947db7cd9a6cb7062ac0bd1c77d6036d137859"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/CHANGELOG_1.7.0.md",
+      "sha256": "f09337e1ceb768db8549ad74fd1da486c16bf44dec795e59479318f87fb2ffaa"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/PACKAGE_INVENTORY.md",
+      "sha256": "655a90d2bb020df0f65b4e6e31f70ed3752381b4b276852ff33dc82215c49b54"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/README.md",
+      "sha256": "6289d5cec30a352f6531c90774c34737884a9ec39a328bfc50d0908d349090c7"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/SCOPE_AND_STATUS.md",
+      "sha256": "2ba0c1492c32ba7dfc495a68b8565ed19a9d88906150abfad2ac78c80ac19c68"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/SHA256SUMS.txt",
+      "sha256": "ab6a47ddfc8581c8392771565eba0da3969bbbe87ccdccb96b9fdf6d8e77698c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/CHAT_NATIVE_POLICY.yaml",
+      "sha256": "7df4399f4b1d4324a928226e97797381b0b8e145f95ec5a4e0df932f8718924e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/PACKAGE_INVENTORY.md",
+      "sha256": "54f28d9e4da951cb525a0c12ee2eabc0d4a36d7cdf35f50982629d4a041c97fd"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/README.md",
+      "sha256": "de9c56af8004f4b43998ca65a7f7988ca6f4647d7237dd5fdc0fa3f0a3342d91"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/SCOPE_AND_STATUS.md",
+      "sha256": "87726eb4fb6f96e662639361b9517968ee224b1ca7b48f904fb531ef1bc45996"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/SHA256SUMS.txt",
+      "sha256": "b54539a0e3fe7372ad4e0547186b0bee347ca776efa386f244384119833608ff"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/docs/MULTI_CHAT_EXECUTION_MODEL.md",
+      "sha256": "116deffc362cca6078f5df833750d6b7345023ba949f9b5201c6fc4429ace1f5"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/examples/MULTI_CHAT_CAMPAIGN_EXAMPLE.yaml",
+      "sha256": "04401e4137b2502eb583e9af2f8748a302946879a1f4be3592fcbbdc19799cec"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_EXECUTE_ASSIGNED_CHAT.md",
+      "sha256": "3d45cc3021ad039dce83f2642ca945ee3c78d0aaa3f917e6cccd41e7901c56cc"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_MERGE_MULTI_CHAT_RESULTS.md",
+      "sha256": "a6f82b413acb3e83fde0442e8af0880d591d5e8772263bc86667b266f9c07d23"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/schemas/chat_native_campaign.schema.json",
+      "sha256": "922b623f2b3be2182ee118227358fcb5fa2f2f3399950df4993a4bc6f1ee887f"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/schemas/chat_native_run_manifest.schema.json",
+      "sha256": "4e5706130ef5137453069b0662a7da14794a7a8e1272e8f3e3ebb6850f961a4c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/tools/validate_partial_results.py",
+      "sha256": "daea91fbdcaba9866facc9de45e5dc6c46672e8fa96e0b05686815243cbe7b9b"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/generate_execution_package.py",
+      "sha256": "5a69417a6407b795546da491c53bd209d170a305b1f7a37bcca05ade087ae2bb"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/checksum_domains/POLICY.yaml",
+      "sha256": "082de52417636faf02f1838de5e78d1b0cb89ae21dc39a5dedf5186bc97d3a07"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/checksum_domains/evaluate_checksum_domains.py",
+      "sha256": "cdf274bad59175e824ad2cbfeedcecd17722e9e8608e568d9a94ff2355b21ef7"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/release_metadata/POLICY.yaml",
+      "sha256": "fcf36d42d80aa5c78cd4c493262cbd8f64c9287c54b0090af2f79b46dd24a3dc"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/release_metadata/evaluate_release_metadata.py",
+      "sha256": "1936c88b1a4d801e2e6800c8a4a244898203d6bc694588742f332568894b4710"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/docs/BEHAVIORAL_MODE_SELECTION.md",
+      "sha256": "f88aa614ee4e7aa545398660ae63c17f635e91858997a27cddaf50ebab3b062f"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/docs/EXECUTION_PACKAGE_GENERATOR.md",
+      "sha256": "d26fd35e37a73e1deb6c6687c2ac0fa5acdf7585b5b7de79947a08d20591ce9e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/examples/CHAT_NATIVE_CAMPAIGN_MINIMAL.yaml",
+      "sha256": "6c4f05a12e1b81dac519da0910d6f71efe223c664cfef17837acf0e236596444"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-002.yaml",
+      "sha256": "a4239636518dc43283dcee58e1a808d900ab252addf360320b91190c436e2abe"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-003.yaml",
+      "sha256": "97f07c2f893ca8990d5e3c256329bef8bbfe9be50956ca5c8d1e276d6679f97e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-005.yaml",
+      "sha256": "b5780690e0e75f293b1a007d557a4de7e5e2d14c2f50052d4a9e03667c55f35e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/schemas/negative_test_evaluation.schema.json",
+      "sha256": "e4983c68a6619f64482af4debf06c50767e1d457a4dfe18c3280c963e240fcaa"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/tests/HARDENING_TEST_MATRIX.yaml",
+      "sha256": "b30b9405c3aef6bea955a14b93845301eaa938b5f3df7d31c624d633948cd01b"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/tools/stability_analyzer_v1_2.py",
+      "sha256": "9369d2895e12d7870fde04c2261c10b009dc79e159efffec66bd4886952babe7"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/prompts/PROMPT_EXECUTE_CHAT_NATIVE_TEST_PACKAGE.md",
+      "sha256": "9b46e4bb511c8e454740a664cbe5affd99f5aa40d7944ad49f1b2579f51e99d9"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/prompts/PROMPT_RUN_UNIFIED_PRH_FROM_START.md",
+      "sha256": "6fd1362b5d5c8a14a4cacf47f6001ef5392a9d6c904b92f56a2e0321eacad217"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/SEMANTIC_PROJECTION_POLICY.yaml",
+      "sha256": "325f26b6208cdc509d4e279ad407936be8091a8c9f94957411ddb3763499ff99"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/docs/SEMANTIC_PROJECTION_MODEL.md",
+      "sha256": "d14c98fe65d7fdfe41e44d5e8d004b6bf656c0af33cf3316d8cdc5aa8b9a787a"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/prompts/PROMPT_COMPARE_PROJECTIONS.md",
+      "sha256": "d5541238c8684fa8df93674e66580c2cfc5122d3666173fe15fa6d7f13bea33b"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/prompts/PROMPT_EXTRACT_SINGLE_PLAYBOOK_PROJECTIONS.md",
+      "sha256": "d85ab42ca034cc9e2379e13edfce08f80542f68309575478410161eef2604946"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/schemas/semantic_projection.schema.json",
+      "sha256": "dc6a865aa63a8cdc2c23f5c98dcb49cb0eb7cc213876c281d29c151fcc1d535c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/schemas/semantic_projection_diff.schema.json",
+      "sha256": "329f8a0d5545e5a023fd3bfc43aeaaee95359fe1c335cad22521fb62fbe147fa"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/tools/compare_projections.py",
+      "sha256": "94c194d31c52fe95a63b8c5492cb90a9971a6ebd39ba7224b5c3c9550d70da6c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/workflows/BEHAVIORAL_MODE_POLICY.yaml",
+      "sha256": "271248b79131c68ec961fc73e0a5f29eec74734f24ffbb4df0996f8c069ce64d"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/workflows/UNIFIED_REGRESSION_WORKFLOW.yaml",
+      "sha256": "a9871e77c2609af2246f63547d26d051a03f0dab31df4a306314a841e38d4d78"
+    },
+    {
+      "path": "workspace/README.md",
+      "sha256": "4ef8f233844a51fe2bdd74c96f970c69c4b520be8def58b4bd7aedc6a18cb461"
+    }
+  ],
+  "package_kind": "standalone_arf_playbook_factory",
+  "schema_version": "ordo.arf_playbook_kit.v2",
+  "source_package": {
+    "name": "ordo.applied_project_factory",
+    "path": "packages/ordo_applied_project_factory",
+    "version": "0.1.0-rc.1"
+  },
+  "version": "0.4.5",
+  "workspace": "workspace/"
 }

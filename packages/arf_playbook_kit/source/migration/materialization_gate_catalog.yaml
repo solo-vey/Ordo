@@ -1,0 +1,7 @@
+schema_version: ordo.migration.materialization_gate_catalog.v1
+artifact_id: materialization-gates
+status: draft
+source_node: N5_MATERIALIZATION_GATES
+producer_node: N5_MATERIALIZATION_GATES
+review: {status: pending, notes: []}
+gates: []

@@ -1,12 +1,12 @@
 {
   "schema_version": "ordo.arf_playbook_kit.current.v1",
   "kit": "ARF Playbook Kit",
-  "version": "0.4.4",
-  "release_tag": "arf-playbook-kit-v0.4.4",
-  "archive_filename": "ORDO_ARF_PLAYBOOK_KIT_0.4.4.zip",
-  "archive_sha256": "2c3f76e4de66373fc24aa5d5a36799ac09825a9c55c8b0573be56c010a30dee1",
-  "download_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.4/ORDO_ARF_PLAYBOOK_KIT_0.4.4.zip",
-  "sha256_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.4/ORDO_ARF_PLAYBOOK_KIT_0.4.4.zip.sha256",
-  "manifest_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.4/ORDO_ARF_PLAYBOOK_KIT_0.4.4.manifest.json",
+  "version": "0.4.5",
+  "release_tag": "arf-playbook-kit-v0.4.5",
+  "archive_filename": "ORDO_ARF_PLAYBOOK_KIT_0.4.5.zip",
+  "archive_sha256": "59990784417a90572c963c2a486ae3850222fab260e927dabde04a4cbb4aea9e",
+  "download_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.5/ORDO_ARF_PLAYBOOK_KIT_0.4.5.zip",
+  "sha256_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.5/ORDO_ARF_PLAYBOOK_KIT_0.4.5.zip.sha256",
+  "manifest_url": "https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.5/ORDO_ARF_PLAYBOOK_KIT_0.4.5.manifest.json",
   "source_directory": "packages/arf_playbook_kit"
 }

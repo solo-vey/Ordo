@@ -1,0 +1,7 @@
+schema_version: ordo.migration.template_parameters.v1
+artifact_id: template-parameters
+status: draft
+source_node: N5_TEMPLATE_PARAMETERS
+producer_node: N5_TEMPLATE_PARAMETERS
+review: {status: pending, notes: []}
+parameters: []

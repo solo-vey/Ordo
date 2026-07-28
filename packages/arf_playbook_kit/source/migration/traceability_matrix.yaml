@@ -1,0 +1,8 @@
+schema_version: ordo.migration.traceability_matrix.v1
+artifact_id: traceability-matrix
+status: draft
+source_node: N5_TRACEABILITY_MAPPING
+producer_node: N5_TRACEABILITY_MAPPING
+review: {status: pending, notes: []}
+entries: []
+unresolved_clauses: []

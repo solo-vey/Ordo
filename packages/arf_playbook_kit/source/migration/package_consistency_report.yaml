@@ -1,0 +1,8 @@
+schema_version: ordo.migration.package_consistency_report.v1
+artifact_id: package-consistency-report
+status: draft
+source_node: N5_PACKAGE_CONSISTENCY
+producer_node: N5_PACKAGE_CONSISTENCY
+review: {status: pending, notes: []}
+checks: []
+blockers: []
