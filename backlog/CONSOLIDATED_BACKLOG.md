@@ -211,7 +211,7 @@ Status: `closed`
 
 ### BL-ORDO-058 — Ukrainian Text Remediation and Localization Boundary
 
-Status: `in_progress`
+Status: `closed`
 
 Classify the 1,889 non-book Ukrainian-text document locations recorded in
 [UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md](UKRAINIAN_TEXT_REMEDIATION_INVENTORY.md),
@@ -294,7 +294,7 @@ Closed by PR #37, merged as `c843394462c863b4a165526d29b1c5927ec3a9ed`.
 
 ### BL-ORDO-064 — ARF Playbook Kit Release Distribution
 
-Status: `in_progress`
+Status: `closed`
 
 Create one canonical, versioned ARF Playbook Kit for ordinary chat users. The
 primary route is a ready-to-download GitHub Release asset, not a repository
@@ -313,6 +313,10 @@ The first implementation phase established the initial ARF Playbook Kit,
 its release workflow, and the direct README download route. Subsequent releases
 must update the current pointer and documentation only after reproducible
 archive, contents, checksum, and release-asset checks pass.
+
+Closed by ARF Playbook Kit v0.4.3 publication and current-pointer/documentation
+reconciliation. The release asset, checksum, manifest, README route, and
+chat-first onboarding route now resolve to the same canonical version.
 
 ### BL-ORDO-065 — Bidirectional Playbook Graph Transition Contract
 
