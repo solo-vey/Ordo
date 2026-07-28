@@ -1077,7 +1077,7 @@
     {
       "id": "BL-ORDO-067",
       "title": "Full Per-Node AI Interaction and Decision Debug Trace",
-      "status": "open",
+      "status": "design_complete_implementation_open",
       "priority": "P2",
       "type": "execution_trace_and_debug_observability",
       "goal": "Extend execution traces so each decision-bearing node preserves the exact rendered question or model message, analyst response, decision summary, evidence, rules, state changes, and replay anchors without persisting hidden chain-of-thought.",
