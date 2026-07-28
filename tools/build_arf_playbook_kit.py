@@ -17,6 +17,8 @@ KIT = ROOT / "packages" / "arf_playbook_kit"
 APF = ROOT / "packages" / "ordo_applied_project_factory"
 GUIDES = KIT / "source"
 REGRESSION_SOURCE = KIT / "source" / "regression"
+UTILITIES = ROOT / "utilities"
+RELEASE_TOOLS = ROOT / "tools"
 VERSION = (KIT / "VERSION").read_text(encoding="utf-8").strip()
 ARCHIVE_NAME = f"ORDO_ARF_PLAYBOOK_KIT_{VERSION}.zip"
 ZIP_TIMESTAMP = (2026, 7, 23, 0, 0, 0)
@@ -56,6 +58,20 @@ GUIDE_FILES = (
     "GRAPH_TRANSITION_CONTRACT.md",
 )
 
+UTILITY_TREES = (
+    "ordo_pathwalk",
+    "ordo_visual_graph_generator",
+    "playbook_lifecycle",
+    "playbook_regression_harness",
+)
+
+RELEASE_TOOL_FILES = (
+    "build_arf_playbook_kit.py",
+    "build_release_archive.py",
+    "release_integrity.py",
+    "check_english_only_policy.py",
+)
+
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -64,6 +80,14 @@ def sha256(path: Path) -> str:
 def copy_file(source: Path, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(source, destination)
+
+
+def copy_tree_without_caches(source: Path, destination: Path) -> None:
+    shutil.copytree(
+        source,
+        destination,
+        ignore=shutil.ignore_patterns("__pycache__", ".pytest_cache", ".DS_Store"),
+    )
 
 
 def create_runtime_manifest(destination: Path) -> None:
@@ -89,12 +113,23 @@ def assemble(stage: Path) -> None:
 
     for relative in COPY_TREES:
         shutil.copytree(APF / relative, stage / relative)
-    shutil.copytree(REGRESSION_SOURCE, stage / "regression")
+    copy_tree_without_caches(REGRESSION_SOURCE, stage / "regression")
     for relative in COPY_FILES:
         copy_file(APF / relative, stage / relative)
 
     for name in GUIDE_FILES:
         copy_file(GUIDES / name, stage / "guides" / name)
+
+    # Companion utilities and release builders are shipped as optional,
+    # inspectable capabilities. They are not required for the chat-first
+    # authoring route, but let advanced users inspect, visualize, test, and
+    # reproduce package/release behavior from the same kit.
+    copy_file(UTILITIES / "README.md", stage / "utilities" / "README.md")
+    for name in UTILITY_TREES:
+        copy_tree_without_caches(UTILITIES / name, stage / "utilities" / name)
+    copy_file(RELEASE_TOOLS / "README.md", stage / "release_tools" / "README.md")
+    for name in RELEASE_TOOL_FILES:
+        copy_file(RELEASE_TOOLS / name, stage / "release_tools" / name)
 
     (stage / "workspace").mkdir()
     copy_file(GUIDES / "WORKSPACE_README.md", stage / "workspace" / "README.md")

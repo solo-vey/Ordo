@@ -125,8 +125,23 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
                 "tests/test_cases.yaml",
                 "workspace/README.md",
                 "guides/START_PROMPT.md",
+                "guides/ARF_PACKAGE_README.md",
+                "utilities/README.md",
+                "utilities/ordo_pathwalk/README.md",
+                "utilities/ordo_pathwalk/cli.py",
+                "utilities/ordo_visual_graph_generator/README.md",
+                "utilities/ordo_visual_graph_generator/ordo_graph.py",
+                "utilities/playbook_lifecycle/README.md",
+                "utilities/playbook_regression_harness/README.md",
+                "release_tools/build_arf_playbook_kit.py",
+                "release_tools/build_release_archive.py",
+                "release_tools/release_integrity.py",
+                "release_tools/check_english_only_policy.py",
             ):
                 assert required in archive.namelist()
+            package_readme = archive.read("guides/ARF_PACKAGE_README.md").decode("utf-8")
+            assert "## Included capabilities" in package_readme
+            assert "## Not included" in package_readme
             user_entry_documents = (
                 "START_HERE_RUNTIME_MODE.md",
                 "START_PROMPT_RUNTIME_MODE.md",
