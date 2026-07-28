@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRH Semantic Projection Diff",
+  "type": "object",
+  "required": [
+    "schema",
+    "baseline",
+    "candidate",
+    "changes",
+    "verdict"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ordo.prh.semantic_projection_diff.v1"
+    },
+    "baseline": {
+      "type": "object"
+    },
+    "candidate": {
+      "type": "object"
+    },
+    "changes": {
+      "type": "array"
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "REVIEW_REQUIRED"
+      ]
+    }
+  }
+}

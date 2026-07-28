@@ -160,7 +160,7 @@ Status: `closed`
 
 ### BL-ORDO-042 — Empirical Evidence and Existing Evaluation Interoperability
 
-Status: `open`
+Status: `closed`
 
 ### BL-ORDO-043 — Multi-Task-Class Evidence Expansion and Scoring Calibration
 
@@ -294,7 +294,7 @@ Closed by PR #37, merged as `c843394462c863b4a165526d29b1c5927ec3a9ed`.
 
 ### BL-ORDO-064 — ARF Playbook Kit Release Distribution
 
-Status: `in_progress`
+Status: `closed`
 
 Create one canonical, versioned ARF Playbook Kit for ordinary chat users. The
 primary route is a ready-to-download GitHub Release asset, not a repository
@@ -314,13 +314,13 @@ its release workflow, and the direct README download route. Subsequent releases
 must update the current pointer and documentation only after reproducible
 archive, contents, checksum, and release-asset checks pass.
 
-Closed by ARF Playbook Kit v0.4.1 publication and current-pointer/documentation
+Closed by ARF Playbook Kit v0.4.3 publication and current-pointer/documentation
 reconciliation. The release asset, checksum, manifest, README route, and
 chat-first onboarding route now resolve to the same canonical version.
 
 ### BL-ORDO-065 — Bidirectional Playbook Graph Transition Contract
 
-Status: `open`
+Status: `closed`
 
 Add a blocking graph-validation contract for every Ordo package build. Each
 declared edge must be explicit and symmetric: if node `A` declares a
@@ -333,12 +333,14 @@ The contract must be enforced by the CLI compiler/graph validator and by the
 package build pipeline, with focused positive and negative tests. The
 canonical node schema should expose the incoming-edge field (for example
 `allowed_from` or an equivalent explicitly named field), and coverage checks
-must require it where the graph contract applies. This is a future
-improvement; no current package semantics are changed by recording it here.
+must require it where the graph contract applies. No runtime transition
+semantics change; the compiler/build gate now rejects inconsistent source
+graphs. Closed by the BL-ORDO-065 implementation and ARF Playbook Kit v0.4.2
+publication.
 
 ### BL-ORDO-067 — Full Per-Node AI Interaction and Decision Debug Trace
 
-Status: `open`
+Status: `design_complete_implementation_open`
 
 Extend the execution trace so every decision-bearing node records the actual
 user-facing question or model message, its generation context/version digest,
@@ -355,6 +357,8 @@ evidence, transition, and state changes. The design must define capture levels,
 privacy/redaction requirements, deterministic replay behavior, and focused
 positive/negative contract tests. No current runtime semantics change until a
 separate implementation patch is approved.
+
+Design artifact: [`docs/design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md`](../docs/design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md).
 
 ### BL-ORDO-068 — Document Field Provenance and Path Binding Validation
 

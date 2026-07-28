@@ -12,6 +12,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../README.md`](../README.md) — repository overview, release distinction, and top-level entry points.
 - [`../SUPPORT.md`](../SUPPORT.md) — choose the correct route for bugs, questions, proposals, security reports, and conduct concerns.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution workflow and repository expectations.
+- [`regression/README.md`](regression/README.md) — candidate PRP/PRH playbook regression contour and ARF authoring use.
 
 ## Security, support, and governance
 
@@ -45,6 +46,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
 - [`DOCUMENTATION_QUALITY_GATE.md`](DOCUMENTATION_QUALITY_GATE.md) — active-document scope, link rules, release-claim consistency, and bounded historical exclusions.
+- [`design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md`](design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md) — design-only contract for observable per-node AI interaction and decision debugging without hidden chain-of-thought.
 - [`status/L_DOCUMENTATION_CONTOUR_CLOSURE.md`](status/L_DOCUMENTATION_CONTOUR_CLOSURE.md) — final evidence and closure of the chat-first documentation contour.
 
 ## Evidence and releases

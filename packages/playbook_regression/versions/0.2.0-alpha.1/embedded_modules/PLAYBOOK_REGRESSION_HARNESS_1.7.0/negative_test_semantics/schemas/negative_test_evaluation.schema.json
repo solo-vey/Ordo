@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRH Negative Test Evaluation",
+  "type": "object",
+  "required": [
+    "schema",
+    "scenario_id",
+    "expected_violation_status",
+    "unexpected_violations",
+    "unexpected_success",
+    "verdict"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ordo.prh.negative_test_evaluation.v1"
+    },
+    "scenario_id": {
+      "type": "string"
+    },
+    "expected_violation_status": {
+      "enum": [
+        "expected_violation_observed",
+        "expected_violation_missing",
+        "not_applicable"
+      ]
+    },
+    "unexpected_violations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unexpected_success": {
+      "type": "boolean"
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "REVIEW_REQUIRED"
+      ]
+    }
+  }
+}

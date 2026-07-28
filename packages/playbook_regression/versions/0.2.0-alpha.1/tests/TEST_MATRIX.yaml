@@ -1,0 +1,44 @@
+schema: ordo.prp.test_matrix.v1
+tests:
+- id: TC01
+  name: Comparable clean pair
+  expected: S1_PASS
+- id: TC02
+  name: Corrupt baseline ZIP
+  expected: T_INSUFFICIENT_EVIDENCE
+- id: TC03
+  name: Mandatory invariant weakened
+  expected: T_NO_GO
+- id: TC04
+  name: Chat-native evidence only
+  expected: T_REVIEW_REQUIRED
+- id: TC05
+  name: Provider evidence all pass
+  expected: T_GO
+- id: TC06
+  name: Expected violation observed
+  expected: STABLE
+- id: TC07
+  name: Unexpected violation
+  expected: T_NO_GO
+- id: TC08
+  name: Resume with unchanged digests
+  expected: REUSE_CHECKPOINT
+- id: TC09
+  name: Resume with changed candidate digest
+  expected: INVALIDATE_DOWNSTREAM
+- id: TC10
+  name: Attempt to skip deterministic phase
+  expected: BLOCKED
+- id: TC11
+  name: Expected violation missing in negative test
+  expected: T_NO_GO
+- id: TC12
+  name: Unexpected success in negative test
+  expected: T_NO_GO
+- id: TC13
+  name: Candidate release metadata conflict
+  expected: T_NO_GO
+- id: TC14
+  name: Checksum-domain drift
+  expected: T_INSUFFICIENT_EVIDENCE

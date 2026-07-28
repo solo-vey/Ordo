@@ -605,7 +605,7 @@
       "id": "BL-ORDO-042",
       "priority": "P1",
       "title": "Empirical Evidence and Existing Evaluation Interoperability",
-      "status": "open",
+      "status": "closed",
       "target_release": "after-BL-ORDO-040",
       "depends_on": [
         "BL-ORDO-040"
@@ -617,6 +617,7 @@
         "provenance"
       ],
       "goal": "Add a non-merging interoperability bridge between the empirical-evidence subsystem and the existing CSG/evaluation mechanisms.",
+      "completion": "Closed by the BL-ORDO-065 implementation and ARF Playbook Kit v0.4.2 publication.",
       "required_scope": [
         "Define a shared evidence envelope and stable cross-system identifiers.",
         "Link playbook, model, scenario, run, language, framework, evaluator, and raw-archive identities.",
@@ -1045,7 +1046,7 @@
     {
       "id": "BL-ORDO-064",
       "title": "ARF Playbook Kit Release Distribution",
-      "status": "in_progress",
+      "status": "closed",
       "priority": "P1",
       "type": "release_distribution",
       "goal": "Publish one canonical, versioned ARF Playbook Kit as a ready-to-download GitHub Release asset for chat-first users.",
@@ -1056,15 +1057,17 @@
         "Maintain a machine-readable current-release pointer and a direct README download link.",
         "Validate archive contents, checksum, reproducibility, and release tag before publication.",
         "Keep clone-and-build instructions secondary and contributor-only."
-      ]
+      ],
+      "completion": "Closed by ARF Playbook Kit v0.4.3 publication and current-pointer/documentation reconciliation."
     },
     {
       "id": "BL-ORDO-065",
       "title": "Bidirectional Playbook Graph Transition Contract",
-      "status": "open",
+      "status": "closed",
       "priority": "P2",
       "type": "graph_validation_and_build_gate",
       "goal": "Add blocking validation that every playbook graph edge is explicitly declared in both directions and that the graph is reachable and structurally legal before package build.",
+      "completion": "Closed by the BL-ORDO-065 implementation and ARF Playbook Kit v0.4.2 publication.",
       "required_scope": [
         "Require an explicit incoming-edge field such as allowed_from on applicable nodes.",
         "Require A.next_transitions -> B to be mirrored by B.allowed_from <- A.",
@@ -1076,7 +1079,7 @@
     {
       "id": "BL-ORDO-067",
       "title": "Full Per-Node AI Interaction and Decision Debug Trace",
-      "status": "open",
+      "status": "design_complete_implementation_open",
       "priority": "P2",
       "type": "execution_trace_and_debug_observability",
       "goal": "Extend execution traces so each decision-bearing node preserves the exact rendered question or model message, analyst response, decision summary, evidence, rules, state changes, and replay anchors without persisting hidden chain-of-thought.",

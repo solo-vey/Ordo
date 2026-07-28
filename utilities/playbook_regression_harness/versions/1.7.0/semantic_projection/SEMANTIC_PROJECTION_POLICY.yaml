@@ -1,0 +1,22 @@
+schema: ordo.prh.semantic_projection_policy.v1
+projections:
+- behavioral_specification
+- decision_table
+- invariant_catalogue
+independent_extraction_required: true
+cross_version_visibility_during_extraction: false
+evidence_required: true
+minimum_confidence: 0.7
+classifications:
+- semantic_preserved
+- semantic_strengthened
+- semantic_weakened
+- semantic_changed
+- semantic_missing
+- semantic_added
+- incomparable
+- review_required
+blocking_rules:
+- mandatory semantic weakening
+- mandatory semantic removal
+can_override_deterministic_failure: false

@@ -1,0 +1,22 @@
+schema: ordo.prh.release_metadata_consistency_policy.v1
+identity_fields:
+- archive_filename_version
+- manifest.version
+- release.version
+- readme.version
+status_fields:
+- manifest.status
+- release.release_status
+- canonical_claim
+blocking:
+- version_identity_mismatch
+- candidate_canonical_status_conflict
+- release_manifest_identity_conflict
+warning:
+- missing_optional_producer_version
+- missing_descriptive_timestamp
+output_classes:
+- PASS
+- FAIL
+- REVIEW_REQUIRED
+- WARNING

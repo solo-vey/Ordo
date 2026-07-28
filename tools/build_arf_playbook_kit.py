@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 KIT = ROOT / "packages" / "arf_playbook_kit"
 APF = ROOT / "packages" / "ordo_applied_project_factory"
 GUIDES = KIT / "source"
+REGRESSION_SOURCE = KIT / "source" / "regression"
 VERSION = (KIT / "VERSION").read_text(encoding="utf-8").strip()
 ARCHIVE_NAME = f"ORDO_ARF_PLAYBOOK_KIT_{VERSION}.zip"
 ZIP_TIMESTAMP = (2026, 7, 23, 0, 0, 0)
@@ -52,6 +53,7 @@ GUIDE_FILES = (
     "DECISION_DEBUG_TRACE.md",
     "DOCUMENT_FIELD_PROVENANCE.md",
     "DOCUMENT_FIELD_BINDINGS.example.yaml",
+    "GRAPH_TRANSITION_CONTRACT.md",
 )
 
 
@@ -87,6 +89,7 @@ def assemble(stage: Path) -> None:
 
     for relative in COPY_TREES:
         shutil.copytree(APF / relative, stage / relative)
+    shutil.copytree(REGRESSION_SOURCE, stage / "regression")
     for relative in COPY_FILES:
         copy_file(APF / relative, stage / relative)
 

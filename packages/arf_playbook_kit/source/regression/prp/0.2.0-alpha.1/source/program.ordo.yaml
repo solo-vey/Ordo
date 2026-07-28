@@ -1,0 +1,165 @@
+schema_version: ordo.playbook.v1
+playbook:
+  id: PB_PLAYBOOK_REGRESSION
+  name: Playbook Regression Playbook
+  short_name: PRP
+  version: 0.2.0-alpha.1
+  status: candidate
+  purpose: Compare a baseline and candidate playbook using deterministic, semantic,
+    behavioral, stability and promotion evidence.
+  built_with:
+    authoring_route: Ordo ARF playbook creation process
+    embedded_prh: 1.7.0
+execution_modes:
+- deterministic_only
+- chat_native
+- provider_api
+- combined
+inputs:
+  required:
+  - baseline_playbook_package
+  - candidate_playbook_package
+  optional:
+  - migration_intent
+  - scenario_suite
+  - declared_model_assignments
+  - provider_configuration
+  - prior_regression_results
+state:
+  fields:
+  - pair_verified
+  - canonical_models_ready
+  - semantic_projections_ready
+  - deterministic_verdict
+  - behavioral_mode
+  - behavioral_evidence_ready
+  - comparison_verdict
+  - production_readiness
+  - improvement_backlog_ready
+steps:
+- id: S1_PREPARE_REGRESSION_PAIR
+  name: Prepare Regression Pair
+  purpose: Verify identity, integrity, compatibility and comparison intent.
+  requires:
+  - baseline_playbook_package
+  - candidate_playbook_package
+  outputs:
+  - REGRESSION_PAIR_MANIFEST.yaml
+  - MIGRATION_INTENT.yaml
+  gate: G_PAIR_COMPARABLE
+  on_fail: T_INSUFFICIENT_EVIDENCE
+- id: S2_BUILD_COMPARABLE_SPECIFICATIONS
+  name: Build Comparable Specifications
+  purpose: Canonicalize both versions and extract evidence-backed semantic projections
+    independently.
+  requires:
+  - pair_verified
+  outputs:
+  - BASELINE_CANONICAL_MODEL.yaml
+  - CANDIDATE_CANONICAL_MODEL.yaml
+  - BASELINE_BEHAVIORAL_SPECIFICATION.yaml
+  - CANDIDATE_BEHAVIORAL_SPECIFICATION.yaml
+  - BASELINE_DECISION_TABLE.yaml
+  - CANDIDATE_DECISION_TABLE.yaml
+  - BASELINE_INVARIANT_CATALOGUE.yaml
+  - CANDIDATE_INVARIANT_CATALOGUE.yaml
+  gate: G_SPECIFICATIONS_COMPARABLE
+  on_fail: T_REVIEW_REQUIRED
+- id: S3_RUN_DETERMINISTIC_REGRESSION
+  name: Run Deterministic Regression
+  purpose: Run package, schema, graph, reference, artifact, gate, semantic, release-metadata
+    and checksum-domain checks.
+  requires:
+  - canonical_models_ready
+  - semantic_projections_ready
+  outputs:
+  - DETERMINISTIC_REGRESSION_REPORT.yaml
+  - SEMANTIC_SPECIFICATION_DIFF_REPORT.yaml
+  - RELEASE_METADATA_CONSISTENCY_REPORT.yaml
+  - CHECKSUM_DOMAIN_REPORT.yaml
+  gate: G_NO_BLOCKING_DETERMINISTIC_REGRESSION
+  on_fail: T_NO_GO
+  allow_diagnostic_continuation: true
+- id: S4_SELECT_AND_EXECUTE_BEHAVIORAL_TESTING
+  name: Select and Execute Behavioral Testing
+  purpose: Select skip, chat-native, provider API or combined behavioral evidence
+    route.
+  requires:
+  - deterministic_verdict
+  branches:
+    skip: S5_COMPARE_BEHAVIOR_AND_STABILITY
+    chat_native: R_CHAT_NATIVE
+    provider_api: R_PROVIDER_API
+    combined: R_COMBINED
+  outputs:
+  - BEHAVIORAL_MODE_SELECTION.yaml
+  - MODE_SPECIFIC_EXECUTION_PACKAGE.zip
+  gate: G_BEHAVIORAL_MODE_RESOLVED
+- id: S5_COMPARE_BEHAVIOR_AND_STABILITY
+  name: Compare Behavior and Stability
+  purpose: Aggregate dynamic, differential, fixture-aware expected-violation, unexpected-success,
+    stability, semantic and portability evidence.
+  requires:
+  - behavioral_mode
+  outputs:
+  - BEHAVIORAL_DIFFERENTIAL_REPORT.yaml
+  - STABILITY_REPORT.yaml
+  - SEMANTIC_JUDGE_REPORT.yaml
+  - CROSS_CHAT_MODEL_REPORT.yaml
+  gate: G_NO_BLOCKING_BEHAVIORAL_REGRESSION
+  on_fail: T_NO_GO
+- id: S6_DECIDE_PACKAGE_AND_IMPROVE
+  name: Decide, Package and Improve
+  purpose: Issue separated verdicts, package evidence and route improvements to the
+    correct backlog.
+  requires:
+  - comparison_verdict
+  outputs:
+  - PROMOTION_DECISION.yaml
+  - PRODUCTION_READINESS.yaml
+  - REGRESSION_EVIDENCE_PACKAGE.zip
+  - IMPROVEMENT_BACKLOG.yaml
+  gate: G_FINAL_EVIDENCE_COMPLETE
+  terminals:
+  - T_GO
+  - T_NO_GO
+  - T_REVIEW_REQUIRED
+  - T_INSUFFICIENT_EVIDENCE
+gates:
+- id: G_PAIR_COMPARABLE
+  blocking: true
+- id: G_SPECIFICATIONS_COMPARABLE
+  blocking: true
+- id: G_NO_BLOCKING_DETERMINISTIC_REGRESSION
+  blocking: true
+- id: G_BEHAVIORAL_MODE_RESOLVED
+  blocking: true
+- id: G_NO_BLOCKING_BEHAVIORAL_REGRESSION
+  blocking: true
+- id: G_FINAL_EVIDENCE_COMPLETE
+  blocking: true
+terminal_policy:
+  T_GO: All required deterministic and provider-level evidence passed.
+  T_NO_GO: A blocking deterministic or behavioral regression exists.
+  T_REVIEW_REQUIRED: Evidence exists but is ambiguous, chat-native only, or requires
+    human judgment.
+  T_INSUFFICIENT_EVIDENCE: Required evidence was not produced or inputs are not comparable.
+promotion_rules:
+  chat_native_maximum: T_REVIEW_REQUIRED
+  deterministic_only_maximum: T_REVIEW_REQUIRED
+  provider_api_go_eligible: true
+  blocking_regression_precedence:
+  - deterministic
+  - behavioral
+  - stability
+  - semantic
+  - efficiency
+  negative_test_rules:
+    expected_violation_observed: positive_evidence
+    expected_violation_missing: blocking_failure
+    unexpected_violation: blocking_failure
+    unexpected_success: blocking_failure
+  package_provenance_rules:
+    release_metadata_conflict: blocking_deterministic_failure
+    checksum_domain_drift: blocking_deterministic_failure
+    specific_package_correction_owner: tested_playbook_package

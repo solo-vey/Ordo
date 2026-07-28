@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRH Chat-Native Run Manifest",
+  "type": "object",
+  "required": [
+    "schema",
+    "campaign_id",
+    "chat_id",
+    "declared_model_label",
+    "scenario_id",
+    "package_role",
+    "package_version",
+    "run_number",
+    "run_id",
+    "evidence_mode"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ordo.prh.chat_native_run.v1"
+    },
+    "campaign_id": {
+      "type": "string"
+    },
+    "chat_id": {
+      "type": "string"
+    },
+    "declared_model_label": {
+      "type": "string"
+    },
+    "model_label_verified_by_provider": {
+      "const": false
+    },
+    "scenario_id": {
+      "type": "string"
+    },
+    "package_role": {
+      "enum": [
+        "baseline",
+        "candidate"
+      ]
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "run_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "evidence_mode": {
+      "const": "chat_native"
+    },
+    "context_contamination_risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "unknown"
+      ]
+    },
+    "raw_response_path": {
+      "type": "string"
+    },
+    "normalized_trace_path": {
+      "type": "string"
+    }
+  }
+}

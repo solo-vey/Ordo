@@ -1,0 +1,20 @@
+schema: ordo.prh.checksum_domain_policy.v1
+supported_domains:
+- archive_digest
+- content_tree_digest
+- source_digest
+- embedded_file_digest
+requirements:
+- every declared checksum must name its domain
+- every checksum must name its target
+- actual digest must match declared digest
+- repackaging must not overwrite source_digest semantics
+blocking:
+- declared_actual_digest_mismatch
+- unknown_checksum_domain
+- target_missing
+- ambiguous_digest_target
+output_classes:
+- PASS
+- FAIL
+- REVIEW_REQUIRED
