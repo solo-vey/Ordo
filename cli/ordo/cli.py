@@ -42,6 +42,7 @@ from .runtime_restore import restore_session
 from .targets import emit_compiled_targets, render_runtime_view, verify_targets, normalize_runtime_view
 from .package_profiles import build_package_profile
 from .template_tooling import validate_template_contract, validate_template_registry, render_template, review_template_artifact, diff_template_versions
+from .tree_modules import diff_instance, inspect_template, instantiate_template, list_templates, validate_instance
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -722,6 +723,54 @@ def cmd_template_diff(args: argparse.Namespace) -> int:
         print(f"{finding.get('code')}: {finding.get('message')}", file=sys.stderr)
     return 0 if report["status"] == "passed" else 1
 
+
+def _tree_module_host_source(root: Path, value: str | None) -> Path | None:
+    if not value:
+        return None
+    candidate = Path(value)
+    if not candidate.is_absolute():
+        candidate = root / candidate
+    return candidate.resolve()
+
+
+def cmd_tree_module_list(args: argparse.Namespace) -> int:
+    root, _, _, _ = load_package(args.package)
+    report = list_templates(root)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0
+
+
+def cmd_tree_module_inspect(args: argparse.Namespace) -> int:
+    root, _, _, _ = load_package(args.package)
+    report = inspect_template(root, args.template)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0
+
+
+def cmd_tree_module_instantiate(args: argparse.Namespace) -> int:
+    root, manifest, _, _ = load_package(args.package)
+    params = Path(args.params).resolve()
+    output = Path(args.out).resolve()
+    host = _tree_module_host_source(root, args.host_source or manifest.get("source"))
+    report = instantiate_template(root, args.template, params, output, host)
+    print(json.dumps({key: value for key, value in report.items() if key != "instance"}, indent=2, ensure_ascii=False))
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_tree_module_validate_instance(args: argparse.Namespace) -> int:
+    root, manifest, _, _ = load_package(args.package)
+    host = _tree_module_host_source(root, args.host_source or manifest.get("source"))
+    report = validate_instance(Path(args.instance).resolve(), host)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_tree_module_diff_instance(args: argparse.Namespace) -> int:
+    root, _, _, _ = load_package(args.package)
+    report = diff_instance(root, Path(args.instance).resolve())
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0 if report["status"] == "passed" else 1
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="ordo", description="Ordo v0.12 CLI v0.38.0")
     parser.add_argument("--version", action="version", version=f"ordo {__version__}")
@@ -1032,6 +1081,32 @@ def build_parser() -> argparse.ArgumentParser:
     tdiff.add_argument("new_contract", help="Candidate template contract")
     tdiff.add_argument("--out", help="Optional version diff report path")
     tdiff.set_defaults(func=cmd_template_diff)
+
+    p = sub.add_parser("tree-module", help="Inspect and materialize reusable tree-module templates")
+    tree_module_sub = p.add_subparsers(dest="tree_module_command", required=True)
+    tm = tree_module_sub.add_parser("list", help="List templates available in a package library")
+    tm.add_argument("package")
+    tm.set_defaults(func=cmd_tree_module_list)
+    tm = tree_module_sub.add_parser("inspect", help="Inspect one template without changing a playbook")
+    tm.add_argument("package")
+    tm.add_argument("--template", required=True)
+    tm.set_defaults(func=cmd_tree_module_inspect)
+    tm = tree_module_sub.add_parser("instantiate", help="Materialize one template as ordinary YAML")
+    tm.add_argument("package")
+    tm.add_argument("--template", required=True)
+    tm.add_argument("--params", required=True)
+    tm.add_argument("--out", required=True)
+    tm.add_argument("--host-source", help="Host source YAML; defaults to the package source")
+    tm.set_defaults(func=cmd_tree_module_instantiate)
+    tm = tree_module_sub.add_parser("validate-instance", help="Validate a generated tree-module instance")
+    tm.add_argument("package")
+    tm.add_argument("--instance", required=True)
+    tm.add_argument("--host-source", help="Host source YAML; defaults to the package source")
+    tm.set_defaults(func=cmd_tree_module_validate_instance)
+    tm = tree_module_sub.add_parser("diff-instance", help="Report whether an instance diverges from its template")
+    tm.add_argument("package")
+    tm.add_argument("--instance", required=True)
+    tm.set_defaults(func=cmd_tree_module_diff_instance)
 
     p = sub.add_parser("package", help="Zip an Ordo package")
     p.add_argument("package")

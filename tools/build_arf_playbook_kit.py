@@ -33,6 +33,7 @@ ROOT_FILES = (
 )
 COPY_TREES = (
     "source/modules",
+    "source/tree_module_library",
     "cli_embedded",
     "integration",
     "output_templates",
@@ -56,6 +57,7 @@ GUIDE_FILES = (
     "DOCUMENT_FIELD_PROVENANCE.md",
     "DOCUMENT_FIELD_BINDINGS.example.yaml",
     "GRAPH_TRANSITION_CONTRACT.md",
+    "TREE_MODULE_LIBRARY.md",
 )
 
 UTILITY_TREES = (
@@ -113,6 +115,12 @@ def assemble(stage: Path) -> None:
 
     for relative in COPY_TREES:
         shutil.copytree(APF / relative, stage / relative)
+    # The embedded runtime is a release snapshot of the canonical CLI.  Overlay
+    # it during kit assembly so new build-time capabilities, including the
+    # tree-module library, are available in the downloadable kit.
+    embedded_cli = stage / "cli_embedded" / "ordo_pkg" / "ordo"
+    shutil.rmtree(embedded_cli)
+    copy_tree_without_caches(ROOT / "cli" / "ordo", embedded_cli)
     copy_tree_without_caches(REGRESSION_SOURCE, stage / "regression")
     for relative in COPY_FILES:
         copy_file(APF / relative, stage / relative)

@@ -47,6 +47,7 @@ modules:
   path: modules/35_optional_flow_reuse.ordo.module.yaml
   owns_top_level_keys:
   - flow_reuse
+  - tree_module_library
 - id: 75_startup_package_profile
   path: modules/75_startup_package_profile.ordo.module.yaml
   owns_top_level_keys:

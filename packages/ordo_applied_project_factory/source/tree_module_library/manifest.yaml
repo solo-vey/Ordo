@@ -1,0 +1,13 @@
+kind: ordo_tree_module_library
+version: '1.0'
+library_id: ARF_STANDARD_TREE_MODULES
+maturity: stable_optional
+templates:
+  - id: DOCUMENT_MATERIALIZATION_LIFECYCLE
+    version: '1.0'
+    path: templates/DOCUMENT_MATERIALIZATION_LIFECYCLE.tree-template.yaml
+    purpose: Reusable lifecycle for one output document.
+  - id: PACKAGE_HANDOFF_LIFECYCLE
+    version: '1.0'
+    path: templates/PACKAGE_HANDOFF_LIFECYCLE.tree-template.yaml
+    purpose: Reusable final validation, archive, and handoff lifecycle.
