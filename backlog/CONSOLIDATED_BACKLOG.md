@@ -455,6 +455,21 @@ after the normal language-package and full regression gates pass.
 Completed by the reusable tree-module library implementation and ARF Playbook
 Kit 0.4.6 release preparation.
 
+### BL-ORDO-072 — Local Visual Ordo Tree Editor
+
+Status: `closed`
+
+Provide a companion utility that opens an Ordo YAML graph in a local browser
+editor, supports basic node and transition editing, displays reusable module
+options, runs the canonical graph and lint validators, and exports ordinary
+YAML. The first version must run locally without Docker, Node, cloud hosting,
+or model API access; it may require Python and the standard Ordo CLI
+dependencies. Ship a deterministic source-distribution ZIP and keep bundled
+desktop Python runtimes as a future packaging concern.
+
+Completed by the initial local editor implementation and Tree Editor v0.1.0
+release preparation.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:

@@ -1,6 +1,6 @@
 {
-  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.6.zip",
-  "archive_sha256": "e5d4dc9ee47a0eab28319d2b08763384e647a55d64f2c312d5e2dacc4b28f2d9",
+  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.7.zip",
+  "archive_sha256": "d9f0e5f8c33e0999de1aec4e3f6893350ac4965f2ca4e676151e9b6720767f32",
   "kit": "ARF Playbook Kit",
   "members": [
     {
@@ -477,7 +477,7 @@
     },
     {
       "path": "guides/ARF_PACKAGE_README.md",
-      "sha256": "14d9cb2864ebcebc867cfc7978b10289024f731503d511dba6b59b1f013d2ea3"
+      "sha256": "777269152d39030a9b0b9722c732e0a1b88ae39d65c5cc7b348777c6403ad230"
     },
     {
       "path": "guides/DECISION_DEBUG_TRACE.md",
@@ -1089,7 +1089,7 @@
     },
     {
       "path": "release_tools/build_arf_playbook_kit.py",
-      "sha256": "33036d665a70f00ca67437f6b2c6c28dde401a81b5ba76fc5c7921d54002087d"
+      "sha256": "242577402ee94c6b8db8da33d3d34aac3e1762466378244ea88ec7cc9958a297"
     },
     {
       "path": "release_tools/build_release_archive.py",
@@ -1113,7 +1113,7 @@
     },
     {
       "path": "utilities/README.md",
-      "sha256": "392a3d62150668c9a6476b4b1f943ff0ca399bf2d4e93f1b05daa77eecbcd29c"
+      "sha256": "47695bc149151182703cf3159519c002138f5d0fa03e8ad9eafac594e3d23bae"
     },
     {
       "path": "utilities/ordo_pathwalk/BENCHMARK_PURPOSE_AND_CALIBRATION.md",
@@ -2964,6 +2964,42 @@
       "sha256": "16e20ea75a5644b03e8cedd30c084e6d87e15b9d821ee41ce6653ad7a5632165"
     },
     {
+      "path": "utilities/ordo_tree_editor/README.md",
+      "sha256": "5ea1800cb9edcac291835f9f21d8fb8ec26332399a443c7cff5edbb142f83b21"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/VERSION",
+      "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/__init__.py",
+      "sha256": "28354787a7121f65d89be0406cc3bc5abf9d39f962db01a341aaaaf74e653227"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/build_distribution.py",
+      "sha256": "3938ed362d4aa4138c88e658ce03b4623e64408d95a57786aedda763f83a55bd"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/editor_service.py",
+      "sha256": "7fe9b19ebef955ddd97817a82dddf7f77c833773fa352b87e309ea250f6efa93"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/start_ordo_tree_editor.command",
+      "sha256": "038696b147897d57310d13458d3ce5d612a5ee41d73f8dd44b4181d11ae39ea0"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/app.js",
+      "sha256": "8e9e2a8293c4883b74a12c61a5d58214ca2b9389d06b8c42754c2eb0a211160d"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/index.html",
+      "sha256": "a2ad1cf38522bf3014c78b9e9ddcb2f31e819da763ec974d9cb68b0dd06dd412"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/styles.css",
+      "sha256": "e7ae5ad0419624dce17b95e70704d0b333f0006827d5f75c4b20feb86eeb6bbc"
+    },
+    {
       "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md",
       "sha256": "93c543681c456952707fa3939f73b50a080ca86e0ee7ff207186f47a2c08cff3"
     },
@@ -3303,6 +3339,6 @@
     "path": "packages/ordo_applied_project_factory",
     "version": "0.1.0-rc.1"
   },
-  "version": "0.4.6",
+  "version": "0.4.7",
   "workspace": "workspace/"
 }
