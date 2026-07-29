@@ -88,6 +88,9 @@ constructs:
 - key: flow_reuse
   level: top_level
   status: supported
+- key: tree_module_library
+  level: top_level
+  status: supported
 - key: runtime_capabilities
   level: top_level
   status: supported

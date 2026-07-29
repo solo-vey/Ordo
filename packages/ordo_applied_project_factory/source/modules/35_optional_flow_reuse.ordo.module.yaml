@@ -135,3 +135,25 @@ flow_reuse:
     maturity: stable_optional
     max_call_depth: 16
     return_to: __CALLER_CONTINUATION__
+tree_module_library:
+  maturity: stable_optional
+  source: source/tree_module_library/manifest.yaml
+  runtime_dependency: none
+  materialization_mode: build_time_cli
+  capabilities: [list, inspect, instantiate, validate_instance, diff_instance]
+  factory_adapter:
+    enabled: true
+    trigger_policy:
+      output_artifact: DOCUMENT_MATERIALIZATION_LIFECYCLE
+      final_package: PACKAGE_HANDOFF_LIFECYCLE
+      release_package: PACKAGE_HANDOFF_LIFECYCLE
+      handoff: PACKAGE_HANDOFF_LIFECYCLE
+    route: [N_TREE_MODULE_TEMPLATE_RECOMMENDATION, N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW, N_TREE_MODULE_INSTANCE_PREVIEW, N_TREE_MODULE_INSTANCE_CONFIRMATION]
+    manual_design_exit: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+    insertion_policy: explicit_confirmation_required
+    preview_contract: [generated_node_ids, generated_state_fields, generated_gates, entry_binding, success_exit_binding, unresolved_parameters, host_conflicts]
+  provenance_contract:
+    required: [template_id, template_version, library_id, library_version, instance_id, parameters_sha256, generated_fragment_sha256, local_overrides]
+  compatibility:
+    playbooks_without_library_instances: unchanged
+    generated_instance_runtime_requirement: none

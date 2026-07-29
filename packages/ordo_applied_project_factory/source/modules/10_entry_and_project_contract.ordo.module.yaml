@@ -379,6 +379,14 @@ state:
     current_node_display_block: null
     existing_process_improvement_status: not_started
     legacy_migration_status: not_started
+    tree_module_library_catalog: ARF_STANDARD_TREE_MODULES
+    selected_tree_module_template: null
+    tree_module_instance_parameters: {}
+    tree_module_preview: null
+    tree_module_instantiation_status: not_started
+    tree_module_generated_fragment_path: null
+    tree_module_instance_provenance: null
+    tree_module_local_overrides: []
     migration_instruction_source: null
     migration_clause_inventory_status: not_started
     migration_ambiguity_capture_status: not_started

@@ -22,8 +22,8 @@ def codes(report):
 def test_real_apf_graph_passes():
     report = validate_process_graph(load_apf())
     assert report["status"] == "passed"
-    assert report["summary"]["reachable_active_nodes"] == 98
-    assert report["summary"]["cycles_detected"] == 7
+    assert report["summary"]["reachable_active_nodes"] == 102
+    assert report["summary"]["cycles_detected"] == 8
 
 
 def test_missing_transition_target_fails():

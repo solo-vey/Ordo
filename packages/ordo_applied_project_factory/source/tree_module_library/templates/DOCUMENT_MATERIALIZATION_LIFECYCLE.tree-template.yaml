@@ -1,0 +1,55 @@
+kind: ordo_tree_module_template
+template:
+  id: DOCUMENT_MATERIALIZATION_LIFECYCLE
+  version: '1.0'
+  title: Document materialization lifecycle
+parameters:
+  required:
+    instance_id: {type: identifier}
+    id_prefix: {type: identifier}
+    document_title: {type: string}
+    required_fields: {type: list}
+    entry_node: {type: node_id}
+    success_exit_node: {type: node_id}
+  optional:
+    max_revision_cycles: {type: integer, default: 5}
+generated:
+  state_schema:
+    '{{instance_id}}_readiness_status': null
+    '{{instance_id}}_artifact_path': null
+    '{{instance_id}}_validation_status': null
+    '{{instance_id}}_review_status': null
+    '{{instance_id}}_revision_cycle_count': 0
+  nodes:
+    - id: G_{{id_prefix}}_PARAMETERS_READY
+      type: gate
+      title: Parameters ready for {{document_title}}
+      reads: '{{required_fields}}'
+      pass_to: N_{{id_prefix}}_MATERIALIZE
+      fail_to: '{{entry_node}}'
+    - id: N_{{id_prefix}}_MATERIALIZE
+      type: automatic
+      title: Materialize {{document_title}}
+      writes: ['{{instance_id}}_artifact_path']
+      next: G_{{id_prefix}}_VALIDATE
+    - id: G_{{id_prefix}}_VALIDATE
+      type: gate
+      title: Validate {{document_title}}
+      writes: ['{{instance_id}}_validation_status']
+      pass_to: N_{{id_prefix}}_REVIEW
+      fail_to: N_{{id_prefix}}_REVISE
+    - id: N_{{id_prefix}}_REVIEW
+      type: human_decision
+      title: Review {{document_title}}
+      choices:
+        confirm: '{{success_exit_node}}'
+        revise: N_{{id_prefix}}_REVISE
+    - id: N_{{id_prefix}}_REVISE
+      type: human_decision
+      title: Revise {{document_title}}
+      writes: ['{{instance_id}}_revision_cycle_count']
+      next: N_{{id_prefix}}_MATERIALIZE
+  gates:
+    - id: G_{{id_prefix}}_REQUIRED_FIELDS
+      condition: all required fields are confirmed before materialization
+      on_fail: block

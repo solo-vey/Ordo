@@ -159,6 +159,11 @@ graph_contract:
     - N_LEGACY_MIGRATION_ORDO_MAPPING
     - N_LEGACY_MIGRATION_COMPLETENESS_GATE
     rationale: Intentional legacy-instruction migration reconstruction and correction loop.
+  - id: APF_LOOP_08
+    nodes:
+    - N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    - N_TREE_MODULE_INSTANCE_PREVIEW
+    rationale: Optional reusable-module parameter and preview correction loop.
   unreachable_node_policy: active_nodes_forbidden; deprecated_legacy_compatibility_allowed
   dead_end_policy: every_reachable_active_node_must_reach_terminal_or_external_terminal
   transition_provenance:

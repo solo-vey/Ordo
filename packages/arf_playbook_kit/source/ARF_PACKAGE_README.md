@@ -17,8 +17,11 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The 0.4.5 kit contains these optional capabilities in addition to the core ARF
+The 0.4.6 kit contains these optional capabilities in addition to the core ARF
 authoring and runtime contract:
+
+- `source/tree_module_library/` — build-time reusable document-materialization
+  and package-handoff tree templates, with provenance-preserving CLI support.
 
 - `utilities/ordo_pathwalk/` — graph path exploration, terminal-path
   enumeration, clean/noise testcase generation, review cards, and benchmark
@@ -62,6 +65,7 @@ their repository-level commands may require a full Ordo checkout.
 - For every decision-bearing node, preserve the exact rendered interaction and analyst response, then write a bounded decision summary as described in `guides/DECISION_DEBUG_TRACE.md`.
 - For every document materialization, define the required document fields and validate their state declarations, producers, path coverage, and collection requiredness as described in `guides/DOCUMENT_FIELD_PROVENANCE.md`.
 - For every active graph edge, keep the source transition and target `allowed_from` declaration symmetric; the package compiler rejects asymmetric, dangling, duplicate, unreachable, and illegal terminal transitions as described in `guides/GRAPH_TRANSITION_CONTRACT.md`.
+- Reuse the optional document-materialization and package-handoff modules through the build-time library in `source/tree_module_library/`; inspect `guides/TREE_MODULE_LIBRARY.md` before generating an instance. Factory recommendation is optional and requires an explicit preview and confirmation.
 
 ## Build provenance
 

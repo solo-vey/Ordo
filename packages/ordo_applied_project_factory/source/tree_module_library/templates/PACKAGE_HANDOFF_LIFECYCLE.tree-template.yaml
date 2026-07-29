@@ -1,0 +1,58 @@
+kind: ordo_tree_module_template
+template:
+  id: PACKAGE_HANDOFF_LIFECYCLE
+  version: '1.0'
+  title: Package handoff lifecycle
+parameters:
+  required:
+    instance_id: {type: identifier}
+    id_prefix: {type: identifier}
+    package_title: {type: string}
+    required_artifact_ids: {type: list}
+    entry_node: {type: node_id}
+    success_exit_node: {type: node_id}
+  optional:
+    include_debug_evidence: {type: boolean, default: true}
+generated:
+  state_schema:
+    '{{instance_id}}_completeness_status': null
+    '{{instance_id}}_validation_status': null
+    '{{instance_id}}_archive_path': null
+    '{{instance_id}}_archive_sha256': null
+    '{{instance_id}}_handoff_status': null
+  nodes:
+    - id: G_{{id_prefix}}_ARTIFACTS_COMPLETE
+      type: gate
+      title: Required artifacts complete for {{package_title}}
+      reads: '{{required_artifact_ids}}'
+      pass_to: G_{{id_prefix}}_CROSS_VALIDATE
+      fail_to: '{{entry_node}}'
+    - id: G_{{id_prefix}}_CROSS_VALIDATE
+      type: gate
+      title: Cross-document validation for {{package_title}}
+      writes: ['{{instance_id}}_validation_status']
+      pass_to: N_{{id_prefix}}_EXPORT_EVIDENCE
+      fail_to: '{{entry_node}}'
+    - id: N_{{id_prefix}}_EXPORT_EVIDENCE
+      type: automatic
+      title: Export evidence for {{package_title}}
+      next: N_{{id_prefix}}_ARCHIVE
+    - id: N_{{id_prefix}}_ARCHIVE
+      type: automatic
+      title: Archive {{package_title}}
+      writes: ['{{instance_id}}_archive_path', '{{instance_id}}_archive_sha256']
+      next: G_{{id_prefix}}_ARCHIVE_INTEGRITY
+    - id: G_{{id_prefix}}_ARCHIVE_INTEGRITY
+      type: gate
+      title: Archive integrity for {{package_title}}
+      pass_to: N_{{id_prefix}}_HANDOFF
+      fail_to: N_{{id_prefix}}_ARCHIVE
+    - id: N_{{id_prefix}}_HANDOFF
+      type: automatic
+      title: Handoff {{package_title}}
+      writes: ['{{instance_id}}_handoff_status']
+      next: '{{success_exit_node}}'
+  gates:
+    - id: G_{{id_prefix}}_PACKAGE_CONTENTS
+      condition: all required artifacts exist before handoff
+      on_fail: block

@@ -453,6 +453,14 @@ state:
     current_node_display_block: null
     existing_process_improvement_status: not_started
     legacy_migration_status: not_started
+    tree_module_library_catalog: ARF_STANDARD_TREE_MODULES
+    selected_tree_module_template: null
+    tree_module_instance_parameters: {}
+    tree_module_preview: null
+    tree_module_instantiation_status: not_started
+    tree_module_generated_fragment_path: null
+    tree_module_instance_provenance: null
+    tree_module_local_overrides: []
     migration_instruction_source: null
     migration_clause_inventory_status: not_started
     migration_ambiguity_capture_status: not_started
@@ -896,6 +904,11 @@ graph_contract:
     - N_LEGACY_MIGRATION_ORDO_MAPPING
     - N_LEGACY_MIGRATION_COMPLETENESS_GATE
     rationale: Intentional legacy-instruction migration reconstruction and correction loop.
+  - id: APF_LOOP_08
+    nodes:
+    - N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    - N_TREE_MODULE_INSTANCE_PREVIEW
+    rationale: Optional reusable-module parameter and preview correction loop.
   unreachable_node_policy: active_nodes_forbidden; deprecated_legacy_compatibility_allowed
   dead_end_policy: every_reachable_active_node_must_reach_terminal_or_external_terminal
   transition_provenance:
@@ -1323,7 +1336,7 @@ nodes:
       deferred_output_artifacts: $answer.deferred_outputs
       no_document_outputs_flag: $answer.no_document_outputs
       ai_should_propose_outputs: $answer.ai_should_propose_outputs
-    next: N_TERMINAL_OUTPUT_BINDING_POLICY
+    next: N_TREE_MODULE_TEMPLATE_RECOMMENDATION
   on_unmatched_input:
     action: CLARIFY.REQUEST
     strategy: ask_for_output_policy_known_partial_ai_proposed_deferred_or_none
@@ -1341,6 +1354,139 @@ nodes:
     - current_node
     knowledge_refs: []
     allowed_tools: []
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N_TREE_MODULE_TEMPLATE_RECOMMENDATION
+  question: 'ARF can reuse a standard tree module here. Choose: document lifecycle, package handoff lifecycle, inspect another
+    template, or continue manual design.'
+  answer_type: enum
+  allow_unmatched_input: true
+  allowed_answers:
+  - use_document_lifecycle
+  - use_package_handoff_lifecycle
+  - inspect_other_template
+  - continue_manual_design
+  on_answer:
+    use_document_lifecycle:
+      update_state:
+        selected_tree_module_template: DOCUMENT_MATERIALIZATION_LIFECYCLE
+      next: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    use_package_handoff_lifecycle:
+      update_state:
+        selected_tree_module_template: PACKAGE_HANDOFF_LIFECYCLE
+      next: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    inspect_other_template:
+      update_state:
+        selected_tree_module_template: $answer.template_id
+      next: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    continue_manual_design:
+      update_state:
+        tree_module_instantiation_status: declined_manual_design
+      next: N_TERMINAL_OUTPUT_BINDING_POLICY
+  allowed_from:
+  - N_OUTPUT_ARTIFACT_CATALOG
+  description: Optional recommendation only; no reusable fragment is inserted without preview and explicit confirmation.
+  node_context:
+    version: '1.0'
+    required_state:
+    - current_node
+    - output_artifact_catalog
+    knowledge_refs:
+    - source/tree_module_library/manifest.yaml
+    allowed_tools:
+    - ordo tree-module list
+    - ordo tree-module inspect
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+  question: Provide or confirm only the missing instance parameters, entry node, success exit node, and unique ID prefix for
+    the selected reusable module.
+  answer_type: structured_object
+  allow_unmatched_input: true
+  on_answer:
+    update_state:
+      tree_module_instance_parameters: $answer
+    next: N_TREE_MODULE_INSTANCE_PREVIEW
+  allowed_from:
+  - N_TREE_MODULE_TEMPLATE_RECOMMENDATION
+  - N_TREE_MODULE_INSTANCE_PREVIEW
+  node_context:
+    version: '1.0'
+    required_state:
+    - selected_tree_module_template
+    knowledge_refs:
+    - source/tree_module_library/manifest.yaml
+    allowed_tools:
+    - ordo tree-module inspect
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N_TREE_MODULE_INSTANCE_PREVIEW
+  question: Review the generated node IDs, state fields, gates, entry/exit bindings, unresolved parameters, and any host conflicts
+    before insertion.
+  answer_type: enum
+  allow_unmatched_input: true
+  allowed_answers:
+  - confirm_preview
+  - revise_parameters
+  - continue_manual_design
+  on_answer:
+    confirm_preview:
+      update_state:
+        tree_module_preview: confirmed
+      next: N_TREE_MODULE_INSTANCE_CONFIRMATION
+    revise_parameters:
+      next: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    continue_manual_design:
+      update_state:
+        tree_module_instantiation_status: declined_after_preview
+      next: N_TERMINAL_OUTPUT_BINDING_POLICY
+  allowed_from:
+  - N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+  node_context:
+    version: '1.0'
+    required_state:
+    - selected_tree_module_template
+    - tree_module_instance_parameters
+    knowledge_refs:
+    - source/tree_module_library/manifest.yaml
+    allowed_tools:
+    - ordo tree-module instantiate
+    - ordo tree-module validate-instance
+    output_contract:
+      state_diff: required
+      next_node: explicit
+- id: N_TREE_MODULE_INSTANCE_CONFIRMATION
+  question: Confirm materialization of the reviewed reusable module into ordinary YAML, or return to manual design.
+  answer_type: enum
+  allow_unmatched_input: true
+  allowed_answers:
+  - confirm_materialization
+  - decline_materialization
+  on_answer:
+    confirm_materialization:
+      update_state:
+        tree_module_instantiation_status: confirmed_for_build_time_materialization
+        tree_module_generated_fragment_path: workspace/tree_modules/$answer.instance_id.nodes.yaml
+        tree_module_instance_provenance: pending_build_time_record
+      next: N_TERMINAL_OUTPUT_BINDING_POLICY
+    decline_materialization:
+      update_state:
+        tree_module_instantiation_status: declined_before_materialization
+      next: N_TERMINAL_OUTPUT_BINDING_POLICY
+  allowed_from:
+  - N_TREE_MODULE_INSTANCE_PREVIEW
+  node_context:
+    version: '1.0'
+    required_state:
+    - tree_module_preview
+    knowledge_refs:
+    - source/tree_module_library/manifest.yaml
+    allowed_tools:
+    - ordo tree-module instantiate
+    - ordo tree-module validate-instance
     output_contract:
       state_diff: required
       next_node: explicit
@@ -3738,7 +3884,9 @@ nodes:
     review mock-filled examples before package approval. This shared policy is used by branch 1, branch 2, branch 3 free-dialogue
     draft trees, and branch 4 when outputs/templates are changed.'
   allowed_from:
-  - N_OUTPUT_ARTIFACT_CATALOG
+  - N_TREE_MODULE_TEMPLATE_RECOMMENDATION
+  - N_TREE_MODULE_INSTANCE_PREVIEW
+  - N_TREE_MODULE_INSTANCE_CONFIRMATION
   node_context:
     version: '1.0'
     required_state:
@@ -8032,6 +8180,52 @@ flow_reuse:
     maturity: stable_optional
     max_call_depth: 16
     return_to: __CALLER_CONTINUATION__
+tree_module_library:
+  maturity: stable_optional
+  source: source/tree_module_library/manifest.yaml
+  runtime_dependency: none
+  materialization_mode: build_time_cli
+  capabilities:
+  - list
+  - inspect
+  - instantiate
+  - validate_instance
+  - diff_instance
+  factory_adapter:
+    enabled: true
+    trigger_policy:
+      output_artifact: DOCUMENT_MATERIALIZATION_LIFECYCLE
+      final_package: PACKAGE_HANDOFF_LIFECYCLE
+      release_package: PACKAGE_HANDOFF_LIFECYCLE
+      handoff: PACKAGE_HANDOFF_LIFECYCLE
+    route:
+    - N_TREE_MODULE_TEMPLATE_RECOMMENDATION
+    - N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    - N_TREE_MODULE_INSTANCE_PREVIEW
+    - N_TREE_MODULE_INSTANCE_CONFIRMATION
+    manual_design_exit: N_OUTPUT_TEMPLATE_REVIEW_OR_CREATION_DECISION
+    insertion_policy: explicit_confirmation_required
+    preview_contract:
+    - generated_node_ids
+    - generated_state_fields
+    - generated_gates
+    - entry_binding
+    - success_exit_binding
+    - unresolved_parameters
+    - host_conflicts
+  provenance_contract:
+    required:
+    - template_id
+    - template_version
+    - library_id
+    - library_version
+    - instance_id
+    - parameters_sha256
+    - generated_fragment_sha256
+    - local_overrides
+  compatibility:
+    playbooks_without_library_instances: unchanged
+    generated_instance_runtime_requirement: none
 startup_package_profile:
   profile_id: ordo_applied_project_factory_startup_profile
   version: '1.0'
