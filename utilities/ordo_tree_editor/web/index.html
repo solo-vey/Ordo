@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <section id="launch-warning" hidden>
+      <h1>Start the local editor first</h1>
+      <p>This page needs its local Python validation service. Do not open <code>index.html</code> directly.</p>
+      <ol>
+        <li>Open Terminal in the extracted <code>ORDO_TREE_EDITOR</code> folder.</li>
+        <li>Run <code>./utilities/ordo_tree_editor/start_ordo_tree_editor.command</code>.</li>
+        <li>Use the <code>http://127.0.0.1:8765</code> page that opens automatically.</li>
+      </ol>
+    </section>
     <header>
       <div><strong>Ordo Tree Editor</strong><span>Local visual editor and validator</span></div>
       <div class="actions">
@@ -29,27 +38,52 @@
         <p class="hint">Modules are suggested building blocks. Their build-time instantiation remains explicit.</p>
       </aside>
       <section id="workspace">
+        <div id="transition-mode" hidden><span id="transition-mode-text"></span><button id="cancel-transition-mode" type="button">Cancel</button></div>
         <div id="empty-state">Open an Ordo YAML file to start editing its decision tree.</div>
         <svg id="edges" aria-hidden="true"></svg>
         <div id="canvas"></div>
       </section>
+      <div id="inspector-resizer" role="separator" aria-label="Resize inspector" aria-orientation="vertical"></div>
       <aside id="inspector">
         <h2>Inspector</h2>
-        <p id="selection-help">Select a node to edit its basic properties.</p>
+        <section id="transition-inspector" hidden>
+          <h3>Selected transition</h3>
+          <p id="transition-summary" class="hint"></p>
+          <button id="delete-transition" type="button" class="danger">Delete transition</button>
+          <p id="transition-note" class="hint"></p>
+          <hr>
+        </section>
+        <p id="selection-help">Select a node to inspect its complete definition.</p>
         <form id="node-form" hidden>
-          <label>ID<input id="node-id" required></label>
-          <label>Question<textarea id="node-question" rows="5"></textarea></label>
-          <label>Answer type<input id="node-answer-type"></label>
-          <label>Allowed from (one ID per line)<textarea id="node-incoming" rows="4"></textarea></label>
-          <label class="check"><input id="node-terminal" type="checkbox"> Terminal node</label>
-          <button type="submit">Apply changes</button>
-          <button id="delete-node" type="button" class="danger">Delete node</button>
+          <p id="node-summary" class="hint"></p>
+          <div class="inspector-tabs" role="tablist" aria-label="Node inspector views">
+            <button type="button" class="inspector-tab active" data-inspector-tab="fields">Edit fields</button>
+            <button type="button" class="inspector-tab" data-inspector-tab="yaml">Full YAML</button>
+          </div>
+          <section id="node-fields-view">
+            <section id="node-transition-manager" hidden>
+              <h3>Transitions</h3>
+              <button id="add-selected-transition" type="button">Add transition from this node</button>
+              <div id="outgoing-transition-list"></div>
+              <p class="hint">Click an arrow or use this list to inspect and manage direct transitions.</p>
+              <hr>
+            </section>
+            <div id="node-sections"></div>
+            <p class="hint">Edit each top-level block independently. Lists and nested contracts remain YAML; all other node fields are preserved as separate sections.</p>
+            <button type="submit">Apply node changes</button>
+            <button id="delete-node" type="button" class="danger">Delete node</button>
+          </section>
+          <section id="node-yaml-view" hidden>
+            <p class="hint">This is the current node definition assembled from the edits above. Highlighted blocks have unsaved changes.</p>
+            <pre id="node-yaml-preview" aria-label="Current full node YAML"></pre>
+          </section>
         </form>
         <hr>
         <h2>Validation</h2>
         <div id="validation">Not run.</div>
       </aside>
     </main>
+    <div id="edge-context-menu" hidden><button id="edge-delete-action" type="button" class="danger">Delete transition</button></div>
     <script src="app.js"></script>
   </body>
 </html>

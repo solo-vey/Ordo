@@ -75,6 +75,64 @@ def dump_yaml(source: dict[str, Any]) -> str:
     return yaml.safe_dump(source, allow_unicode=True, sort_keys=False)
 
 
+def dump_value_yaml(value: Any) -> str:
+    rendered = yaml.safe_dump(value, allow_unicode=True, sort_keys=False)
+    if rendered.endswith("\n...\n"):
+        rendered = rendered[:-5]
+    return rendered.strip()
+
+
+def node_sections(node: dict[str, Any]) -> list[dict[str, str]]:
+    return [{"key": str(key), "value_yaml": dump_value_yaml(value)} for key, value in node.items()]
+
+
+def replace_node(source: dict[str, Any], old_id: str, replacement: dict[str, Any]) -> dict[str, Any]:
+    """Replace one node while preserving the rest of the loaded playbook."""
+    new_id = replacement.get("id")
+    if not isinstance(new_id, str) or not new_id.strip():
+        raise ValueError("The replacement node must declare a non-empty id.")
+    nodes = source.get("nodes")
+    if not isinstance(nodes, list):
+        raise ValueError("The loaded source does not contain a nodes list.")
+    matches = [index for index, node in enumerate(nodes) if isinstance(node, dict) and node.get("id") == old_id]
+    if len(matches) != 1:
+        raise ValueError(f"Cannot identify exactly one node with id {old_id!r}.")
+    if new_id != old_id and any(isinstance(node, dict) and node.get("id") == new_id for node in nodes):
+        raise ValueError(f"A node with id {new_id!r} already exists.")
+    nodes[matches[0]] = replacement
+    if new_id != old_id:
+        def replace_next_targets(value: Any) -> Any:
+            if isinstance(value, dict):
+                return {key: (new_id if key == "next" and child == old_id else replace_next_targets(child)) for key, child in value.items()}
+            if isinstance(value, list):
+                return [replace_next_targets(child) for child in value]
+            return value
+
+        for node in nodes:
+            if not isinstance(node, dict):
+                continue
+            if isinstance(node.get("allowed_from"), list):
+                node["allowed_from"] = [new_id if value == old_id else value for value in node["allowed_from"]]
+            if isinstance(node.get("transitions"), dict):
+                node["transitions"] = {key: new_id if value == old_id else value for key, value in node["transitions"].items()}
+            if "on_answer" in node:
+                node["on_answer"] = replace_next_targets(node["on_answer"])
+        for container_key in ("graph_contract", "playbook"):
+            container = source.get(container_key)
+            if isinstance(container, dict) and container.get("entry_node") == old_id:
+                container["entry_node"] = new_id
+    return source
+
+
+def replace_node_sections(source: dict[str, Any], old_id: str, sections: dict[str, str]) -> dict[str, Any]:
+    replacement: dict[str, Any] = {}
+    for key, value_yaml in sections.items():
+        if not isinstance(key, str) or not key.strip() or not isinstance(value_yaml, str):
+            raise ValueError("Each node section must have a non-empty key and YAML value.")
+        replacement[key] = yaml.safe_load(value_yaml)
+    return replace_node(source, old_id, replacement)
+
+
 def _targets(value: Any) -> list[str]:
     targets: list[str] = []
     if isinstance(value, dict):
@@ -89,23 +147,52 @@ def _targets(value: Any) -> list[str]:
     return targets
 
 
+def _node_targets(node: dict[str, Any]) -> list[str]:
+    """Return graph targets from the canonical and ARF prototype forms."""
+    targets = _targets(node.get("on_answer", {}))
+    transitions = node.get("transitions", {})
+    if isinstance(transitions, dict):
+        targets.extend(
+            target
+            for target in transitions.values()
+            if isinstance(target, str) and not target.startswith("$")
+        )
+    return targets
+
+
+def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
+    edges: list[dict[str, str]] = []
+    transitions = node.get("transitions", {})
+    if isinstance(transitions, dict):
+        edges.extend(
+            {"target": target, "storage": "transitions", "key": str(key)}
+            for key, target in transitions.items()
+            if isinstance(target, str) and not target.startswith("$")
+        )
+    for target in _targets(node.get("on_answer", {})):
+        edges.append({"target": target, "storage": "on_answer", "key": "nested next"})
+    return edges
+
+
 def graph_view(source: dict[str, Any]) -> dict[str, Any]:
     nodes = [node for node in source.get("nodes", []) if isinstance(node, dict) and node.get("id")]
     return {
         "nodes": [
             {
                 "id": str(node["id"]),
-                "label": str(node.get("question") or node["id"]),
-                "answer_type": node.get("answer_type", "unspecified"),
+                "label": str(node.get("question") or node.get("purpose") or node["id"]),
+                "answer_type": node.get("answer_type") or node.get("kind", "unspecified"),
                 "terminal": node.get("terminal") is True,
                 "allowed_from": node.get("allowed_from", []),
+                "record_yaml": dump_yaml(node),
+                "sections": node_sections(node),
             }
             for node in nodes
         ],
         "edges": [
-            {"source": str(node["id"]), "target": target}
+            {"source": str(node["id"]), **edge}
             for node in nodes
-            for target in _targets(node.get("on_answer", {}))
+            for edge in _node_edges(node)
         ],
     }
 
@@ -155,8 +242,13 @@ class EditorHandler(SimpleHTTPRequestHandler):
     def log_message(self, format: str, *args: Any) -> None:
         return
 
+    def end_headers(self) -> None:
+        """Keep local editor assets fresh while an extracted package is iterated."""
+        self.send_header("Cache-Control", "no-store, max-age=0")
+        super().end_headers()
+
     def do_POST(self) -> None:  # noqa: N802
-        if self.path not in {"/api/parse", "/api/validate", "/api/export"}:
+        if self.path not in {"/api/parse", "/api/validate", "/api/export", "/api/update-node", "/api/update-node-sections"}:
             _json_response(self, {"status": "failed", "error": "Unknown API endpoint."}, HTTPStatus.NOT_FOUND)
             return
         try:
@@ -167,6 +259,13 @@ class EditorHandler(SimpleHTTPRequestHandler):
                 raise ValueError("source must be a mapping.")
             if self.path == "/api/export":
                 _json_response(self, {"status": "passed", "yaml": dump_yaml(source)})
+            elif self.path == "/api/update-node":
+                replacement = parse_yaml(payload["node_yaml"])
+                replace_node(source, str(payload["old_id"]), replacement)
+                _json_response(self, {"status": "passed", "node_id": replacement["id"], "source": source, "graph": graph_view(source)})
+            elif self.path == "/api/update-node-sections":
+                replace_node_sections(source, str(payload["old_id"]), payload["sections"])
+                _json_response(self, {"status": "passed", "node_id": yaml.safe_load(payload["sections"]["id"]), "source": source, "graph": graph_view(source)})
             else:
                 response = {"status": "passed", "source": source, "graph": graph_view(source)}
                 if self.path == "/api/validate":

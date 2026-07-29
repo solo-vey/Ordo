@@ -10,6 +10,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[2]
 EDITOR = ROOT / "utilities" / "ordo_tree_editor"
+TREE_MODULE_LIBRARY = ROOT / "packages" / "ordo_applied_project_factory" / "source" / "tree_module_library"
 VERSION = (EDITOR / "VERSION").read_text(encoding="utf-8").strip()
 ARCHIVE_NAME = f"ORDO_TREE_EDITOR_{VERSION}.zip"
 ZIP_TIMESTAMP = (2026, 7, 29, 0, 0, 0)
@@ -24,6 +25,10 @@ def build(output: Path) -> dict[str, str | int]:
         stage = Path(temporary_directory) / "ORDO_TREE_EDITOR"
         _copy_tree(EDITOR, stage / "utilities" / "ordo_tree_editor")
         _copy_tree(ROOT / "cli" / "ordo", stage / "cli" / "ordo")
+        _copy_tree(
+            TREE_MODULE_LIBRARY,
+            stage / "packages" / "ordo_applied_project_factory" / "source" / "tree_module_library",
+        )
         members = sorted(path for path in stage.rglob("*") if path.is_file())
         output.parent.mkdir(parents=True, exist_ok=True)
         with ZipFile(output, "w", compression=ZIP_DEFLATED, compresslevel=9) as archive:
