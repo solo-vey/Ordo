@@ -411,6 +411,47 @@ test execution, antipattern review, and readiness decision. Reuse existing ARF
 contracts where possible, avoid duplicating runtime behavior, and implement it
 as a future separately reviewed feature after BL-ORDO-069.
 
+### BL-ORDO-071 — Reusable Tree Module Library for ARF Playbooks
+
+Status: `open`
+
+Add an opt-in library of parameterized, reusable decision-tree fragments for
+recurring playbook process patterns. The first release must provide the
+following templates:
+
+- `DOCUMENT_MATERIALIZATION_LIFECYCLE` — readiness, materialization,
+  validation, analyst review, bounded revision, and completion for one output
+  document;
+- `PACKAGE_HANDOFF_LIFECYCLE` — package-completeness validation,
+  cross-document validation, debug/evidence export, manifest creation,
+  archive-integrity validation, and handoff.
+
+Implement the first release as a deterministic build-time/CLI capability, not
+as a required new runtime syntax. The CLI must list, inspect, instantiate,
+validate, and compare an instance against its template. Instantiation must
+produce ordinary YAML nodes, state fields, gates, and transitions that remain
+valid when the library is absent at runtime.
+
+Before materialization, validate required parameters, unresolved placeholders,
+entry and exit bindings, duplicate node IDs, state-field and gate conflicts,
+protected-field conflicts, and template invariants. Repeated instantiation with
+the same template and parameters must produce identical content and digest.
+Each instance must preserve template ID and version, library version, instance
+ID, parameter digest, generated-fragment digest, and explicit local overrides.
+
+Extend the ARF factory only with an optional recommendation → parameter review
+→ generated-preview → explicit-confirmation route. It may recommend the
+document template for an output-artifact subtree and the package template for
+a final-package, release-package, or handoff subtree, but must never insert a
+module automatically or prevent manual tree design.
+
+The implementation requires focused positive and negative tests for both
+templates, ID and state conflicts, invalid bindings, unresolved placeholders,
+determinism, declined recommendations, preserved local overrides, and backward
+compatibility of playbooks that do not use the library. Publish authoring
+guidance and include the capability in the next versioned ARF Playbook Kit only
+after the normal language-package and full regression gates pass.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
