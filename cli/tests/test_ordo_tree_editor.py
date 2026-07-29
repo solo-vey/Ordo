@@ -4,7 +4,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from utilities.ordo_tree_editor.build_distribution import build
-from utilities.ordo_tree_editor.editor_service import dump_yaml, graph_view, parse_yaml, tree_module_manifest_path, validate_source
+from utilities.ordo_tree_editor.editor_service import dump_value_yaml, dump_yaml, graph_view, parse_yaml, replace_node, replace_node_sections, tree_module_manifest_path, validate_source
 
 
 def _source() -> dict:
@@ -23,7 +23,55 @@ def test_editor_yaml_round_trip_and_graph_projection():
     parsed = parse_yaml(dump_yaml(source))
     view = graph_view(parsed)
     assert [node["id"] for node in view["nodes"]] == ["N_START", "N_DONE"]
-    assert view["edges"] == [{"source": "N_START", "target": "N_DONE"}]
+    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "on_answer", "key": "nested next"}]
+
+
+def test_editor_projects_arf_prototype_purpose_and_transitions():
+    source = {
+        "nodes": [
+            {"id": "N_START", "purpose": "Collect the initial context.", "kind": "analyst_question", "transitions": {"continue": "N_DONE"}},
+            {"id": "N_DONE", "purpose": "Finish the route.", "kind": "terminal", "transitions": {"blocked": "$stay"}},
+        ]
+    }
+    view = graph_view(source)
+    assert view["nodes"][0]["label"] == "Collect the initial context."
+    assert view["nodes"][0]["answer_type"] == "analyst_question"
+    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "transitions", "key": "continue"}]
+
+
+def test_editor_replaces_full_node_record_without_dropping_unknown_fields():
+    source = _source()
+    replacement = {
+        "id": "N_RENAMED",
+        "kind": "blocking_gate",
+        "purpose": "Keep this complete ARF-style node record.",
+        "inputs": ["context"],
+        "outputs": ["decision"],
+        "transitions": {"pass": "N_DONE"},
+        "custom_contract": {"preserved": True},
+    }
+    updated = replace_node(source, "N_START", replacement)
+    assert updated["nodes"][0] == replacement
+    assert updated["nodes"][1]["allowed_from"] == ["N_RENAMED"]
+    assert updated["graph_contract"]["entry_node"] == "N_RENAMED"
+
+
+def test_editor_replaces_structured_node_sections():
+    source = _source()
+    updated = replace_node_sections(source, "N_START", {
+        "id": "N_START",
+        "kind": "question",
+        "purpose": "Collect the decision context.",
+        "inputs": "- context",
+        "transitions": "continue: N_DONE",
+    })
+    assert updated["nodes"][0]["purpose"] == "Collect the decision context."
+    assert updated["nodes"][0]["inputs"] == ["context"]
+    assert updated["nodes"][0]["transitions"] == {"continue": "N_DONE"}
+
+
+def test_editor_scalar_section_values_do_not_show_yaml_document_markers():
+    assert dump_value_yaml("N_START") == "N_START"
 
 
 def test_editor_returns_canonical_graph_finding_for_invalid_transition():

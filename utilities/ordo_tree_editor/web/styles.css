@@ -1,20 +1,30 @@
 :root { color-scheme: light; font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #182235; background: #f5f7fb; }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 980px; }
+#launch-warning { max-width: 720px; margin: 48px auto; padding: 28px; border: 1px solid #d69a36; border-radius: 10px; background: #fff8e9; color: #342403; }
+#launch-warning h1 { margin-top: 0; } #launch-warning code { background: #f0e5cc; padding: 2px 4px; border-radius: 3px; }
 header { height: 64px; padding: 12px 20px; background: #17233a; color: white; display: flex; justify-content: space-between; align-items: center; }
 header strong { display: block; font-size: 18px; } header span { color: #c9d3e6; font-size: 12px; }
 button, .button { cursor: pointer; border: 1px solid #97a7c2; border-radius: 6px; padding: 7px 10px; background: white; color: #182235; font: inherit; }
 header button, header .button { border-color: #5870a2; background: #26467f; color: white; margin-left: 8px; }
-main { display: grid; grid-template-columns: 210px 1fr 300px; height: calc(100vh - 64px); }
-aside { overflow: auto; padding: 16px; background: #fff; border-right: 1px solid #d7dfec; } #inspector { border-right: 0; border-left: 1px solid #d7dfec; }
+main { --inspector-width: 440px; display: grid; grid-template-columns: 255px minmax(620px, 1fr) 10px var(--inspector-width); height: calc(100vh - 64px); }
+aside { overflow: auto; padding: 16px; background: #fff; border-right: 1px solid #d7dfec; } #inspector { min-width: 320px; border-right: 0; border-left: 1px solid #d7dfec; }
+#inspector-resizer { cursor: col-resize; background: #e7edf7; border-left: 1px solid #d7dfec; border-right: 1px solid #d7dfec; } #inspector-resizer:hover { background: #a9c3ec; }
 h2 { margin: 0 0 10px; font-size: 14px; } #palette button { width: 100%; text-align: left; margin-bottom: 7px; }
+h3 { margin: 0 0 8px; font-size: 13px; }
+.transition-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 7px 0; padding: 7px; border: 1px solid #d7dfec; border-radius: 5px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; } .transition-row button { padding: 4px 7px; font-family: inherit; }
+#edge-context-menu { position: fixed; z-index: 10; padding: 5px; border: 1px solid #d7dfec; border-radius: 6px; background: white; box-shadow: 0 4px 14px #15244a30; } #edge-context-menu button { padding: 5px 8px; }
 #workspace { position: relative; overflow: auto; background-image: radial-gradient(#d8e0ef 1px, transparent 1px); background-size: 20px 20px; }
-#canvas { position: relative; min-width: 1050px; min-height: 700px; } #edges { position: absolute; inset: 0; min-width: 1050px; min-height: 700px; pointer-events: none; }
-.node { position: absolute; width: 205px; min-height: 88px; padding: 10px; border: 2px solid #7e92b8; border-radius: 9px; background: white; box-shadow: 0 3px 10px #15244a20; cursor: grab; user-select: none; }
+#transition-mode { position: sticky; top: 10px; z-index: 4; width: max-content; max-width: calc(100% - 24px); margin: 10px auto -42px; padding: 7px 9px; border: 1px solid #3b6eb7; border-radius: 6px; background: #eaf2ff; color: #173e78; font-weight: 600; } #transition-mode button { margin-left: 10px; padding: 4px 7px; }
+#canvas { position: relative; z-index: 1; min-width: 1050px; min-height: 700px; pointer-events: none; } #edges { position: absolute; z-index: 0; top: 0; left: 0; pointer-events: none; }
+.node { position: absolute; width: 205px; min-height: 88px; padding: 10px; border: 2px solid #7e92b8; border-radius: 9px; background: white; box-shadow: 0 3px 10px #15244a20; cursor: grab; user-select: none; pointer-events: auto; } .node.transition-source { border-color: #135ed7; box-shadow: 0 0 0 3px #bcd4ff; }
+.node-toolbar { position: absolute; right: 6px; bottom: 6px; opacity: 0; transition: opacity .12s ease; } .node:hover .node-toolbar, .node.transition-source .node-toolbar { opacity: 1; } .node-toolbar button { padding: 3px 6px; font-size: 11px; background: #eaf2ff; }
 .node.selected { border-color: #135ed7; box-shadow: 0 0 0 3px #bcd4ff; } .node.terminal { border-color: #2b8859; }
 .node-id { color: #315484; font-weight: 700; font-size: 12px; } .node-label { margin-top: 5px; font-size: 12px; max-height: 38px; overflow: hidden; } .node-type { margin-top: 6px; color: #69778e; font-size: 11px; }
 #empty-state { display: grid; place-items: center; min-height: 100%; color: #56667d; font-size: 16px; }
-label { display: block; margin: 9px 0; font-weight: 600; } input, textarea { width: 100%; margin-top: 4px; padding: 7px; border: 1px solid #aebbd1; border-radius: 5px; font: inherit; font-weight: 400; }
+#empty-state[hidden] { display: none; }
+label { display: block; margin: 9px 0; font-weight: 600; } input, textarea { width: 100%; margin-top: 4px; padding: 7px; border: 1px solid #aebbd1; border-radius: 5px; font: inherit; font-weight: 400; } .node-section { border-top: 1px solid #d7dfec; padding-top: 10px; margin-top: 12px; } .node-section:first-child { border-top: 0; padding-top: 0; margin-top: 0; } .node-section textarea { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.4; }
+.inspector-tabs { display: flex; gap: 6px; border-bottom: 1px solid #d7dfec; margin: 12px 0; padding-bottom: 8px; } .inspector-tab { padding: 6px 9px; } .inspector-tab.active { border-color: #315fa8; background: #eaf2ff; color: #173e78; font-weight: 700; } #node-yaml-preview { margin: 0; padding: 12px; overflow: auto; border: 1px solid #aebbd1; border-radius: 5px; background: #f8fafc; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre; } .yaml-change { display: block; background: #fff1b8; font-weight: 700; }
 label.check { display: flex; gap: 7px; align-items: center; } label.check input { width: auto; margin: 0; } #node-form button { margin-top: 4px; }
 .danger { color: #a32323; border-color: #d8a4a4; margin-left: 6px; } .hint { color: #65728a; font-size: 12px; } .issue { border-left: 3px solid #d68a1b; padding: 6px 8px; margin: 6px 0; background: #fff7e8; font-size: 12px; } .issue.error { border-color: #c63232; background: #fff0f0; } .ok { color: #257247; font-weight: 600; }
-line { stroke: #6680ae; stroke-width: 2; marker-end: url(#arrow); }
+line.edge-line { stroke: #6680ae; stroke-width: 2; marker-end: url(#arrow); pointer-events: none; } line.edge-hit { stroke: #000; stroke-opacity: 0; stroke-width: 18; pointer-events: stroke; cursor: pointer; }
