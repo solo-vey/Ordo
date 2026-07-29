@@ -413,7 +413,7 @@ as a future separately reviewed feature after BL-ORDO-069.
 
 ### BL-ORDO-071 — Reusable Tree Module Library for ARF Playbooks
 
-Status: `open`
+Status: `closed`
 
 Add an opt-in library of parameterized, reusable decision-tree fragments for
 recurring playbook process patterns. The first release must provide the
@@ -451,6 +451,9 @@ determinism, declined recommendations, preserved local overrides, and backward
 compatibility of playbooks that do not use the library. Publish authoring
 guidance and include the capability in the next versioned ARF Playbook Kit only
 after the normal language-package and full regression gates pass.
+
+Completed by the reusable tree-module library implementation and ARF Playbook
+Kit 0.4.6 release preparation.
 
 ## Backlog Reconciliation — 2026-07-18
 

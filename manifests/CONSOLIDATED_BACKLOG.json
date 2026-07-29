@@ -1134,6 +1134,22 @@
         "Guide tree prototyping, gates, materialization, validation, realistic testing, antipattern review, and readiness.",
         "Reuse existing ARF contracts and defer implementation until BL-ORDO-069 is complete."
       ]
+    },
+    {
+      "id": "BL-ORDO-071",
+      "title": "Reusable Tree Module Library for ARF Playbooks",
+      "status": "closed",
+      "priority": "P1",
+      "type": "reusable_tree_module_library",
+      "goal": "Provide deterministic build-time reusable tree fragments for common ARF playbook patterns without adding a runtime dependency.",
+      "completion": "Implemented by the reusable tree-module library and included in ARF Playbook Kit 0.4.6 release preparation.",
+      "required_scope": [
+        "Provide document-materialization and package-handoff lifecycle templates.",
+        "Expose list, inspect, instantiate, validate-instance, and diff-instance CLI operations.",
+        "Validate parameters, bindings, unresolved placeholders, conflicts, invariants, deterministic content, and provenance.",
+        "Offer only an optional Factory recommendation, parameter review, preview, and explicit-confirmation route.",
+        "Publish the library guide and include the capability in the versioned ARF Playbook Kit."
+      ]
     }
   ],
   "maintenance_contours": [
