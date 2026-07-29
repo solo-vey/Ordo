@@ -1150,6 +1150,22 @@
         "Offer only an optional Factory recommendation, parameter review, preview, and explicit-confirmation route.",
         "Publish the library guide and include the capability in the versioned ARF Playbook Kit."
       ]
+    },
+    {
+      "id": "BL-ORDO-072",
+      "title": "Local Visual Ordo Tree Editor",
+      "status": "closed",
+      "priority": "P2",
+      "type": "local_visual_companion_utility",
+      "goal": "Provide a local browser-based visual editor for Ordo YAML graphs that reuses canonical validation.",
+      "completion": "Implemented as Ordo Tree Editor v0.1.0 release preparation.",
+      "required_scope": [
+        "Open, edit, and export ordinary Ordo YAML locally.",
+        "Provide basic node and transition editing with symmetric incoming transition support.",
+        "Call canonical graph and lint validators through a local Python bridge.",
+        "Provide a deterministic source-distribution ZIP without Docker, Node, cloud hosting, or model API access.",
+        "Keep bundled desktop Python runtimes as a future packaging concern."
+      ]
     }
   ],
   "maintenance_contours": [

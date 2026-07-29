@@ -65,6 +65,7 @@ UTILITY_TREES = (
     "ordo_visual_graph_generator",
     "playbook_lifecycle",
     "playbook_regression_harness",
+    "ordo_tree_editor",
 )
 
 RELEASE_TOOL_FILES = (

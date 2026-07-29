@@ -17,7 +17,7 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The 0.4.6 kit contains these optional capabilities in addition to the core ARF
+The 0.4.7 kit contains these optional capabilities in addition to the core ARF
 authoring and runtime contract:
 
 - `source/tree_module_library/` — build-time reusable document-materialization
@@ -32,6 +32,8 @@ authoring and runtime contract:
   review, and verified rollback helpers.
 - `utilities/playbook_regression_harness/` — the versioned regression-harness
   companion utility.
+- `utilities/ordo_tree_editor/` — a local browser-based Ordo YAML graph editor
+  with canonical Python graph and lint validation.
 - `release_tools/` — the ARF Kit builder, project release-archive builder,
   release-integrity verifier, and English-only policy validator.
 

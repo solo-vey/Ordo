@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ordo Tree Editor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div><strong>Ordo Tree Editor</strong><span>Local visual editor and validator</span></div>
+      <div class="actions">
+        <label class="button">Open YAML<input id="file-input" type="file" accept=".yaml,.yml" hidden></label>
+        <button id="validate">Validate</button>
+        <button id="download">Download YAML</button>
+      </div>
+    </header>
+    <main>
+      <aside id="palette">
+        <h2>Node palette</h2>
+        <button data-template="question">Question</button>
+        <button data-template="gate">Gate</button>
+        <button data-template="materialization">Materialization</button>
+        <button data-template="terminal">Terminal</button>
+        <button id="add-transition">Add transition</button>
+        <hr>
+        <h2>Reusable modules</h2>
+        <div id="module-list">Loading…</div>
+        <p class="hint">Modules are suggested building blocks. Their build-time instantiation remains explicit.</p>
+      </aside>
+      <section id="workspace">
+        <div id="empty-state">Open an Ordo YAML file to start editing its decision tree.</div>
+        <svg id="edges" aria-hidden="true"></svg>
+        <div id="canvas"></div>
+      </section>
+      <aside id="inspector">
+        <h2>Inspector</h2>
+        <p id="selection-help">Select a node to edit its basic properties.</p>
+        <form id="node-form" hidden>
+          <label>ID<input id="node-id" required></label>
+          <label>Question<textarea id="node-question" rows="5"></textarea></label>
+          <label>Answer type<input id="node-answer-type"></label>
+          <label>Allowed from (one ID per line)<textarea id="node-incoming" rows="4"></textarea></label>
+          <label class="check"><input id="node-terminal" type="checkbox"> Terminal node</label>
+          <button type="submit">Apply changes</button>
+          <button id="delete-node" type="button" class="danger">Delete node</button>
+        </form>
+        <hr>
+        <h2>Validation</h2>
+        <div id="validation">Not run.</div>
+      </aside>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
