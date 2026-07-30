@@ -4,7 +4,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from utilities.ordo_tree_editor.build_distribution import build
-from utilities.ordo_tree_editor.editor_service import dump_value_yaml, dump_yaml, graph_view, parse_yaml, replace_node, replace_node_sections, tree_module_manifest_path, validate_source
+from utilities.ordo_tree_editor.editor_service import dump_value_yaml, dump_yaml, graph_view, parse_yaml, replace_node, replace_node_sections, replace_record_sections, tree_module_manifest_path, validate_source
 
 
 def _source() -> dict:
@@ -23,7 +23,7 @@ def test_editor_yaml_round_trip_and_graph_projection():
     parsed = parse_yaml(dump_yaml(source))
     view = graph_view(parsed)
     assert [node["id"] for node in view["nodes"]] == ["N_START", "N_DONE"]
-    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "on_answer", "key": "nested next"}]
+    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "on_answer", "key": "go"}]
 
 
 def test_editor_projects_arf_prototype_purpose_and_transitions():
@@ -37,6 +37,51 @@ def test_editor_projects_arf_prototype_purpose_and_transitions():
     assert view["nodes"][0]["label"] == "Collect the initial context."
     assert view["nodes"][0]["answer_type"] == "analyst_question"
     assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "transitions", "key": "continue"}]
+
+
+def test_editor_projects_separate_executable_gates_and_external_terminals():
+    source = {
+        "graph_contract": {"entry_node": "N_INPUT", "external_terminal_targets": ["STOP_INPUTS_INCOMPLETE"]},
+        "nodes": [{"id": "N_INPUT", "question": "Collect inputs.", "on_answer": {"continue": {"next": "G_INPUTS_PRESERVED"}}}],
+        "gates": [{"id": "G_INPUTS_PRESERVED", "method": "mechanical", "condition": "Inputs are preserved.", "on_pass": "N_DONE", "on_fail": "STOP_INPUTS_INCOMPLETE"}],
+        "outputs": [{"id": "OUT_FINAL"}],
+    }
+    view = graph_view(source)
+    by_id = {item["id"]: item for item in view["nodes"]}
+    assert by_id["G_INPUTS_PRESERVED"]["element_type"] == "gate"
+    assert by_id["G_INPUTS_PRESERVED"]["collection"] == "gates"
+    assert by_id["STOP_INPUTS_INCOMPLETE"]["element_type"] == "terminal"
+    assert by_id["OUT_FINAL"]["element_type"] == "terminal"
+    assert {tuple(edge[key] for key in ("source", "target", "storage", "key")) for edge in view["edges"]} == {
+        ("N_INPUT", "G_INPUTS_PRESERVED", "on_answer", "continue"),
+        ("G_INPUTS_PRESERVED", "N_DONE", "gate_route", "on_pass"),
+        ("G_INPUTS_PRESERVED", "STOP_INPUTS_INCOMPLETE", "gate_route", "on_fail"),
+    }
+
+
+def test_editor_projects_top_level_and_on_answer_shorthand_next_routes():
+    source = {
+        "nodes": [
+            {"id": "N_ANSWER", "on_answer": {"update_state": {"answer": "$answer"}, "next": "G_CHECK"}},
+            {"id": "N_ACTION", "action": "AI.DERIVE", "next": "G_CHECK"},
+        ],
+        "gates": [{"id": "G_CHECK", "on_pass": "N_DONE", "on_fail": "STOP"}],
+    }
+    view = graph_view(source)
+    assert {tuple(edge[key] for key in ("source", "target", "storage", "key")) for edge in view["edges"]} >= {
+        ("N_ANSWER", "G_CHECK", "on_answer_next", "next"),
+        ("N_ACTION", "G_CHECK", "next", "next"),
+    }
+
+
+def test_editor_replaces_separate_gate_sections_and_preserves_node_routes():
+    source = {
+        "nodes": [{"id": "N_INPUT", "on_answer": {"continue": {"next": "G_OLD"}}}],
+        "gates": [{"id": "G_OLD", "on_pass": "N_DONE", "on_fail": "STOP"}],
+    }
+    updated = replace_record_sections(source, "gates", "G_OLD", {"id": "G_NEW", "on_pass": "N_DONE", "on_fail": "STOP"})
+    assert updated["gates"][0]["id"] == "G_NEW"
+    assert updated["nodes"][0]["on_answer"]["continue"]["next"] == "G_NEW"
 
 
 def test_editor_replaces_full_node_record_without_dropping_unknown_fields():

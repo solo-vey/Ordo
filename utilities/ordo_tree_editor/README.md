@@ -6,15 +6,19 @@ send YAML or process data to a hosted service.
 
 ## What the 0.2.0 alpha provides
 
-- open an Ordo YAML file and display its nodes and transitions;
-- select, move, add, edit, and delete complete node records without dropping
-  their unknown top-level blocks;
+- open an Ordo YAML file and display its nodes, executable gates, terminal
+  outcomes, and transitions;
+- distinguish interactive nodes, separate top-level gates, and external
+  terminal/output targets in the graph;
+- select, move, add, edit, and delete complete node and gate records without
+  dropping their unknown top-level blocks;
 - inspect each node as structured YAML fields or as one live full-YAML view;
 - create a transition by hovering a source node, choosing **Add transition**,
   then clicking its target node;
-- remove a direct transition by hovering its line and choosing **Delete
+- remove a node or gate route by hovering its line and choosing **Delete
   transition**;
 - show both canonical `on_answer` and ARF-style `transitions` routes;
+- show gate `on_pass` and `on_fail` routes with explicit edge labels;
 - use question, gate, materialization, and terminal-node starters;
 - inspect the reusable ARF tree-module catalog;
 - run the existing Ordo graph and lint validators locally;
