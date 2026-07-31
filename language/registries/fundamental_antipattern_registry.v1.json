@@ -92,7 +92,8 @@
         "contract"
       ],
       "subpattern_ids": [
-        "PROMPT_AS_IMPLEMENTATION"
+        "PROMPT_AS_IMPLEMENTATION",
+        "SILENT_FIXTURE_NOOP"
       ],
       "reference_case_ids": [
         "AP-01",

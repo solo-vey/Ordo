@@ -144,6 +144,13 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
                 "release_tools/build_release_archive.py",
                 "release_tools/release_integrity.py",
                 "release_tools/check_english_only_policy.py",
+                "language/registries/antipattern_registry.v1.json",
+                "language/registries/fundamental_antipattern_registry.v1.json",
+                "language/integration/antipattern_gate_adapter.py",
+                "language/runtime/antipattern_runtime.py",
+                "language/runtime/fixtures/antipattern_integration_cases.v1.json",
+                "integration/test_antipattern_all_rules_e2e.py",
+                "integration/validate_antipattern_rule_coverage.py",
             ):
                 assert required in archive.namelist()
             package_readme = archive.read("guides/ARF_PACKAGE_README.md").decode("utf-8")
@@ -172,6 +179,22 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
                     command,
                     str(runtime_root),
                 ],
+                text=True,
+                capture_output=True,
+            )
+            assert result.returncode == 0, result.stdout + result.stderr
+
+        for command in (
+            "integration/validate_antipattern_rule_coverage.py",
+            "integration/test_antipattern_fundamental_taxonomy_binding.py",
+            "integration/test_antipattern_hook_runtime.py",
+            "integration/test_antipattern_state_evidence_contract.py",
+            "integration/test_antipattern_all_rules_e2e.py",
+        ):
+            result = subprocess.run(
+                [sys.executable, str(runtime_root / command), str(runtime_root)]
+                if command.endswith("validate_antipattern_rule_coverage.py")
+                else [sys.executable, str(runtime_root / command)],
                 text=True,
                 capture_output=True,
             )

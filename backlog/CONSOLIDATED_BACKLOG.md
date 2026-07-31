@@ -503,6 +503,19 @@ Source handoff reviewed locally: `ARF_GATE_AWARE_VALIDATORS_HANDOFF_20260730T200
 The handoff's Risk Factor Passport evidence must remain a diagnostic example:
 its seven undeclared cycles are source-contract findings, not validator defects.
 
+### BL-ORDO-074 — Self-Contained ARF Anti-Pattern Integration Contour
+
+Status: `closed`
+
+The downloadable ARF Playbook Kit must run its anti-pattern integration tests
+without requiring a separate checkout of the Ordo language repository. Include
+the versioned `language/` contour needed by the active anti-pattern runtime:
+registries, schemas, runtime implementation, integration adapter, and fixtures.
+Make the APF binding resolve `package_root/language` in a released Kit while
+retaining the repository-relative fallback for source development. Validate the
+localized coverage validator and all anti-pattern integration tests from an
+extracted Kit. Completed by ARF Playbook Kit 0.4.9 publication.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:

@@ -17,7 +17,7 @@
     "hook_schema": "language/schemas/antipattern_wiring_hook.schema.json"
   },
   "loader": {
-    "language_root_resolution": "package_root/../..",
+    "language_root_resolution": "package_root/language when localized; otherwise package_root/../../language",
     "adapter_factory": "AntipatternGateAdapter.from_language_root",
     "profile_id": "APF_ANTIPATTERN_CORE_V1",
     "required_profile_status": "active",
@@ -69,7 +69,7 @@
     "governance_level": "fundamental",
     "fundamental_registry_id": "FAP-1.0",
     "fundamental_rule_count": 12,
-    "detector_subpattern_count": 6,
+    "detector_subpattern_count": 7,
     "require_every_runtime_rule_to_map_to_active_fundamental": true,
     "new_fundamental_requires_owner_approval": true,
     "process_specific_cases_must_be_examples_or_subpatterns": true

@@ -10,7 +10,9 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 INTEGRATION = ROOT / 'integration'
-LANGUAGE = ROOT.parents[1] / 'language'
+LANGUAGE = ROOT / 'language'
+if not LANGUAGE.is_dir():
+    LANGUAGE = ROOT.parents[1] / 'language'
 if str(INTEGRATION) not in sys.path:
     sys.path.insert(0, str(INTEGRATION))
 
