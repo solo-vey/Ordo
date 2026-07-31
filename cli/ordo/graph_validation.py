@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass, asdict
 from typing import Any
 
+from .graph_topology import graph_topology
+
 
 @dataclass
 class GraphIssue:
@@ -11,20 +13,6 @@ class GraphIssue:
     message: str
     location: str
     path: list[str] | None = None
-
-
-def _targets(value: Any) -> list[str]:
-    out: list[str] = []
-    if isinstance(value, dict):
-        for key, child in value.items():
-            if key == "next" and isinstance(child, str):
-                out.append(child)
-            else:
-                out.extend(_targets(child))
-    elif isinstance(value, list):
-        for child in value:
-            out.extend(_targets(child))
-    return out
 
 
 def _target_declarations(value: Any, path: str = "root", scope: str = "root") -> list[tuple[str, str, str]]:
@@ -108,83 +96,99 @@ def _tarjan(nodes: set[str], adj: dict[str, list[str]]) -> list[list[str]]:
 
 def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     issues: list[GraphIssue] = []
-    nodes_list = source.get("nodes", []) or []
-    by_id = {n.get("id"): n for n in nodes_list if isinstance(n, dict) and n.get("id")}
+    topology = graph_topology(source)
+    node_by_id: dict[str, dict[str, Any]] = topology["nodes"]
+    gate_by_id: dict[str, dict[str, Any]] = topology["gates"]
+    by_id: dict[str, dict[str, Any]] = topology["by_id"]
+    adj: dict[str, list[str]] = topology["adjacency"]
+    gate_ids: set[str] = set(topology["executable_gate_ids"])
+    node_ids = set(node_by_id)
     ids = set(by_id)
     contract = source.get("graph_contract") or {}
-    entry = contract.get("entry_node") or (nodes_list[0].get("id") if nodes_list else None)
+    entry = topology["entry"]
     external_terminals = set(contract.get("external_terminal_targets", []) or [])
     dynamic_terminal_sources = set(contract.get("dynamic_terminal_sources", []) or [])
     allowed_regions = contract.get("allowed_cycle_regions", []) or []
     allowed_sets = [set(r.get("nodes", []) or []) for r in allowed_regions if isinstance(r, dict)]
 
-    adj = {node_id: _targets(node) for node_id, node in by_id.items()}
+    for duplicate_id in sorted(topology["duplicate_ids"]):
+        issues.append(GraphIssue(
+            "error",
+            "GRAPH_ID_DUPLICATE",
+            f"Graph ID {duplicate_id!r} is declared as both node and gate.",
+            "nodes/gates",
+            [duplicate_id],
+        ))
 
     # BL-ORDO-065: validate the explicit incoming-edge contract before
     # topology checks. The source tree is authoritative; compiler lowering
     # must not silently infer or repair asymmetric declarations.
     incoming_contract_enabled = (
         contract.get("bidirectional_transition_policy") == "explicit_source_and_target"
-        or any(isinstance(node, dict) and ("allowed_from" in node or "incoming_from" in node) for node in nodes_list)
+        or any("allowed_from" in vertex or "incoming_from" in vertex for vertex in by_id.values())
     )
-    incoming_by_target: dict[str, list[str]] = {node_id: [] for node_id in ids}
-    for node_id, node in by_id.items():
+    incoming_by_target: dict[str, list[str]] = {vertex_id: [] for vertex_id in ids}
+    for vertex_id, vertex in by_id.items():
         if not incoming_contract_enabled:
             continue
-        raw_incoming = node.get("allowed_from")
+        kind = "gate" if vertex_id in gate_ids else "node"
+        raw_incoming = vertex.get("allowed_from")
         if raw_incoming is None:
-            raw_incoming = node.get("incoming_from")
+            raw_incoming = vertex.get("incoming_from")
         if raw_incoming is None:
-            if not _deprecated(node):
-                issues.append(GraphIssue("error", "GRAPH_INCOMING_REQUIRED", "Active node must declare allowed_from.", f"nodes[{node_id}].allowed_from", [node_id]))
+            if not _deprecated(vertex):
+                issues.append(GraphIssue("error", "GRAPH_INCOMING_REQUIRED", f"Active {kind} must declare allowed_from.", f"{kind}s[{vertex_id}].allowed_from", [vertex_id]))
             raw_incoming = []
         if not isinstance(raw_incoming, list) or not all(isinstance(incoming_source, str) for incoming_source in raw_incoming):
-            issues.append(GraphIssue("error", "GRAPH_INCOMING_INVALID", "allowed_from must be a list of node IDs.", f"nodes[{node_id}].allowed_from", [node_id]))
+            issues.append(GraphIssue("error", "GRAPH_INCOMING_INVALID", "allowed_from must be a list of graph vertex IDs.", f"{kind}s[{vertex_id}].allowed_from", [vertex_id]))
             raw_incoming = []
         if len(raw_incoming) != len(set(raw_incoming)):
-            issues.append(GraphIssue("error", "GRAPH_INCOMING_DUPLICATE", "allowed_from must not contain duplicate source IDs.", f"nodes[{node_id}].allowed_from", [node_id]))
+            issues.append(GraphIssue("error", "GRAPH_INCOMING_DUPLICATE", "allowed_from must not contain duplicate source IDs.", f"{kind}s[{vertex_id}].allowed_from", [vertex_id]))
         for incoming_source in raw_incoming:
             if incoming_source not in ids:
-                issues.append(GraphIssue("error", "GRAPH_SOURCE_MISSING", f"Incoming source {incoming_source!r} does not exist.", f"nodes[{node_id}].allowed_from", [incoming_source, node_id]))
+                issues.append(GraphIssue("error", "GRAPH_SOURCE_MISSING", f"Incoming source {incoming_source!r} does not exist.", f"{kind}s[{vertex_id}].allowed_from", [incoming_source, vertex_id]))
             else:
-                incoming_by_target[node_id].append(incoming_source)
-                if node_id not in adj.get(incoming_source, []):
-                    issues.append(GraphIssue("error", "GRAPH_EDGE_ASYMMETRIC", f"Node {incoming_source} allows no transition to {node_id}, but {node_id}.allowed_from declares it.", f"nodes[{node_id}].allowed_from", [incoming_source, node_id]))
+                incoming_by_target[vertex_id].append(incoming_source)
+                if vertex_id not in adj.get(incoming_source, []):
+                    issues.append(GraphIssue("error", "GRAPH_EDGE_ASYMMETRIC", f"Vertex {incoming_source} allows no transition to {vertex_id}, but {vertex_id}.allowed_from declares it.", f"{kind}s[{vertex_id}].allowed_from", [incoming_source, vertex_id]))
 
-    for source_id, node in by_id.items():
-        if not incoming_contract_enabled:
-            continue
-        declarations = _target_declarations(node.get("on_answer", {}), f"nodes[{source_id}].on_answer")
-        seen_by_scope: dict[tuple[str, str], str] = {}
-        for target, location, scope in declarations:
-            key = (scope, target)
-            if key in seen_by_scope:
-                issues.append(GraphIssue("error", "GRAPH_TRANSITION_DUPLICATE", f"Transition to {target!r} is declared more than once in the same transition scope.", location, [source_id, target]))
-            seen_by_scope[key] = location
-            if target in ids:
-                if source_id not in incoming_by_target.get(target, []):
+    if incoming_contract_enabled:
+        for source_id, targets in adj.items():
+            source_kind = "gate" if source_id in gate_ids else "node"
+            declarations = (
+                _target_declarations(node_by_id[source_id].get("on_answer", {}), f"nodes[{source_id}].on_answer")
+                if source_id in node_ids
+                else [(target, f"gates[{source_id}].transition", target) for target in targets]
+            )
+            seen_by_scope: dict[tuple[str, str], str] = {}
+            for target, location, scope in declarations:
+                key = (scope, target)
+                if key in seen_by_scope:
+                    issues.append(GraphIssue("error", "GRAPH_TRANSITION_DUPLICATE", f"Transition to {target!r} is declared more than once in the same transition scope.", location, [source_id, target]))
+                seen_by_scope[key] = location
+                if target in ids and source_id not in incoming_by_target.get(target, []):
                     issues.append(GraphIssue("error", "GRAPH_EDGE_ASYMMETRIC", f"Transition {source_id} -> {target} is not mirrored by {target}.allowed_from.", location, [source_id, target]))
-            elif target not in external_terminals:
-                # GRAPH_TARGET_MISSING is emitted by the existing target pass.
-                continue
 
     if not entry or entry not in ids:
-        issues.append(GraphIssue("error", "GRAPH_ENTRY_INVALID", "graph_contract.entry_node must reference an existing node.", "graph_contract.entry_node"))
+        issues.append(GraphIssue("error", "GRAPH_ENTRY_INVALID", "graph_contract.entry_node must reference an existing node or executable gate.", "graph_contract.entry_node"))
 
-    for node_id in sorted(dynamic_terminal_sources - ids):
-        issues.append(GraphIssue("error", "GRAPH_DYNAMIC_TERMINAL_SOURCE_MISSING", f"Dynamic terminal source {node_id!r} does not reference an existing node.", "graph_contract.dynamic_terminal_sources", [node_id]))
+    for vertex_id in sorted(dynamic_terminal_sources - ids):
+        issues.append(GraphIssue("error", "GRAPH_DYNAMIC_TERMINAL_SOURCE_MISSING", f"Dynamic terminal source {vertex_id!r} does not reference an existing graph vertex.", "graph_contract.dynamic_terminal_sources", [vertex_id]))
 
-    for node_id, targets in adj.items():
+    for vertex_id, targets in adj.items():
+        kind = "gate" if vertex_id in gate_ids else "node"
         for target in targets:
             if target not in ids and target not in external_terminals:
-                issues.append(GraphIssue("error", "GRAPH_TARGET_MISSING", f"Transition target {target!r} does not exist and is not declared as an external terminal target.", f"nodes[{node_id}].transition", [node_id, target]))
-        if by_id[node_id].get("terminal") is True and targets:
-            issues.append(GraphIssue("error", "GRAPH_TERMINAL_OUTGOING", f"Terminal node {node_id} must not declare outgoing transitions.", f"nodes[{node_id}].transition", [node_id, *targets]))
+                issues.append(GraphIssue("error", "GRAPH_TARGET_MISSING", f"Transition target {target!r} does not exist and is not declared as an external terminal target.", f"{kind}s[{vertex_id}].transition", [vertex_id, target]))
+        if by_id[vertex_id].get("terminal") is True and targets:
+            issues.append(GraphIssue("error", "GRAPH_TERMINAL_OUTGOING", f"Terminal {kind} {vertex_id} must not declare outgoing transitions.", f"{kind}s[{vertex_id}].transition", [vertex_id, *targets]))
 
-    active_ids = {node_id for node_id, node in by_id.items() if not _deprecated(node)}
-    for node_id in sorted(active_ids):
-        if incoming_contract_enabled and node_id != entry and not incoming_by_target.get(node_id):
-            issues.append(GraphIssue("error", "GRAPH_NODE_NO_INCOMING", f"Active non-entry node {node_id} has no declared incoming edge.", f"nodes[{node_id}].allowed_from", [node_id]))
+    active_ids = {vertex_id for vertex_id, vertex in by_id.items() if not _deprecated(vertex)}
+    for vertex_id in sorted(active_ids):
+        if incoming_contract_enabled and vertex_id != entry and not incoming_by_target.get(vertex_id):
+            kind = "gate" if vertex_id in gate_ids else "node"
+            code = "GRAPH_VERTEX_NO_INCOMING" if kind == "gate" else "GRAPH_NODE_NO_INCOMING"
+            issues.append(GraphIssue("error", code, f"Active non-entry {kind} {vertex_id} has no declared incoming edge.", f"{kind}s[{vertex_id}].allowed_from", [vertex_id]))
     reachable: set[str] = set()
     if entry in ids:
         stack = [entry]
@@ -194,30 +198,35 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
                 continue
             reachable.add(current)
             stack.extend(t for t in adj.get(current, []) if t in ids)
-    for node_id in sorted(active_ids - reachable):
-        issues.append(GraphIssue("error", "GRAPH_NODE_UNREACHABLE", f"Active node {node_id} is unreachable from entry node {entry}.", f"nodes[{node_id}]", [entry, node_id] if entry else [node_id]))
+    for vertex_id in sorted(active_ids - reachable):
+        kind = "gate" if vertex_id in gate_ids else "node"
+        code = "GRAPH_VERTEX_UNREACHABLE" if kind == "gate" else "GRAPH_NODE_UNREACHABLE"
+        issues.append(GraphIssue("error", code, f"Active {kind} {vertex_id} is unreachable from entry vertex {entry}.", f"{kind}s[{vertex_id}]", [entry, vertex_id] if entry else [vertex_id]))
 
-    for node_id in sorted(active_ids):
-        node = by_id[node_id]
-        if not adj.get(node_id) and node.get("terminal") is not True:
-            issues.append(GraphIssue("error", "GRAPH_DEAD_END_NODE", f"Active node {node_id} has no outgoing transition and is not terminal.", f"nodes[{node_id}]", [node_id]))
+    for vertex_id in sorted(active_ids):
+        vertex = by_id[vertex_id]
+        if not adj.get(vertex_id) and vertex.get("terminal") is not True:
+            kind = "gate" if vertex_id in gate_ids else "node"
+            code = "GRAPH_DEAD_END_VERTEX" if kind == "gate" else "GRAPH_DEAD_END_NODE"
+            issues.append(GraphIssue("error", code, f"Active {kind} {vertex_id} has no outgoing transition and is not terminal.", f"{kind}s[{vertex_id}]", [vertex_id]))
 
-    terminal_nodes = {node_id for node_id, node in by_id.items() if node.get("terminal") is True}
+    terminal_vertices = {vertex_id for vertex_id, vertex in by_id.items() if vertex.get("terminal") is True}
     # A dynamic decision node may terminate through a runtime-selected outcome
     # that cannot be represented as one static `next` edge.  Such nodes must
     # be declared explicitly in the contract; this does not permit terminal
     # nodes to have outgoing edges.
-    can_terminate = set(terminal_nodes) | (dynamic_terminal_sources & ids)
+    can_terminate = set(terminal_vertices) | (dynamic_terminal_sources & ids)
     changed = True
     while changed:
         changed = False
-        for node_id in active_ids:
-            targets = adj.get(node_id, [])
-            if node_id not in can_terminate and any(t in can_terminate or t in external_terminals for t in targets):
-                can_terminate.add(node_id)
+        for vertex_id in active_ids:
+            targets = adj.get(vertex_id, [])
+            if vertex_id not in can_terminate and any(t in can_terminate or t in external_terminals for t in targets):
+                can_terminate.add(vertex_id)
                 changed = True
-    for node_id in sorted((active_ids & reachable) - can_terminate):
-        issues.append(GraphIssue("error", "GRAPH_NO_TERMINAL_PATH", f"Reachable active node {node_id} cannot reach a terminal outcome.", f"nodes[{node_id}]", [node_id]))
+    for vertex_id in sorted((active_ids & reachable) - can_terminate):
+        kind = "gate" if vertex_id in gate_ids else "node"
+        issues.append(GraphIssue("error", "GRAPH_NO_TERMINAL_PATH", f"Reachable active {kind} {vertex_id} cannot reach a terminal outcome.", f"{kind}s[{vertex_id}]", [vertex_id]))
 
     components = _tarjan(active_ids, adj)
     cycle_components = [c for c in components if len(c) > 1 or (len(c) == 1 and c[0] in adj.get(c[0], []))]
@@ -243,10 +252,15 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     return {
         "status": "passed" if not errors else "failed",
         "summary": {
-            "nodes": len(ids),
-            "active_nodes": len(active_ids),
-            "reachable_active_nodes": len(active_ids & reachable),
-            "terminal_nodes": len(terminal_nodes),
+            "nodes": len(node_ids),
+            "gates": len(gate_by_id),
+            "graph_vertices": len(ids),
+            "active_vertices": len(active_ids),
+            "reachable_active_vertices": len(active_ids & reachable),
+            "terminal_vertices": len(terminal_vertices),
+            "active_nodes": len(active_ids & node_ids),
+            "reachable_active_nodes": len(active_ids & reachable & node_ids),
+            "terminal_nodes": len(terminal_vertices & node_ids),
             "external_terminal_targets": len(external_terminals),
             "dynamic_terminal_sources": len(dynamic_terminal_sources & ids),
             "cycles_detected": len(cycle_components),

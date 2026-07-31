@@ -289,7 +289,10 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
                 "method": op.get("method"),
                 "trust_class": op.get("trust_class"),
                 "condition": op.get("condition"),
+                "on_pass": op.get("on_pass"),
                 "on_fail": op.get("on_fail"),
+                "allowed_from": op.get("allowed_from") or [],
+                "entry_modes": op.get("entry_modes") or [],
             })
         elif op_name == "ASSERTION.DEF":
             source["assertions"].append({
