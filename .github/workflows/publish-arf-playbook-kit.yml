@@ -28,7 +28,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install builder and test dependencies
-        run: python -m pip install pytest pyyaml
+        run: python -m pip install pytest pyyaml jsonschema
 
       - name: Validate source and build deterministic assets
         shell: bash
