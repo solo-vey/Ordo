@@ -18,7 +18,11 @@ send YAML or process data to a hosted service.
 - remove a node or gate route by hovering its line and choosing **Delete
   transition**;
 - show both canonical `on_answer` and ARF-style `transitions` routes;
-- show gate `on_pass` and `on_fail` routes with explicit edge labels;
+- show canonical list-based `transitions` entries (`to:`) and
+  `navigation_contract.allowed_to` routes without duplicating edges;
+- show gate `on_pass`/`on_fail` and canonical `pass_to`/`fail_to` routes with
+  explicit edge labels;
+- show top-level `terminals:` records as terminal targets;
 - use question, gate, materialization, and terminal-node starters;
 - inspect the reusable ARF tree-module catalog;
 - run the existing Ordo graph and lint validators locally;
@@ -59,7 +63,7 @@ tree-module instantiation.
 ## Distribution model
 
 The source utility is shipped in the repository and can be packed into a
-versioned ZIP release. Version `0.2.0-alpha.1` is an alpha test build: use it
+versioned ZIP release. Version `0.2.0-alpha.2` is an alpha test build: use it
 to review and edit local copies, then validate the exported YAML through the
 normal Ordo controls before relying on it. It requires an installed Python
 runtime. A later desktop-distribution phase may bundle Python into a macOS
