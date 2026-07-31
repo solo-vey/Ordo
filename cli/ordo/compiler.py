@@ -397,7 +397,10 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "method": gate.get("method"),
             "trust_class": gate.get("trust_class"),
             "condition": gate.get("condition"),
+            "on_pass": gate.get("on_pass"),
             "on_fail": gate.get("on_fail"),
+            "allowed_from": gate.get("allowed_from") or gate.get("incoming_from") or [],
+            "entry_modes": gate.get("entry_modes") or [],
         })
 
     for assertion in source.get("assertions", []) or []:

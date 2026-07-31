@@ -470,6 +470,39 @@ desktop Python runtimes as a future packaging concern.
 Completed by the initial local editor implementation and Tree Editor v0.1.0
 release preparation.
 
+### BL-ORDO-073 — Gate-Aware ARF Graph Validation Consistency
+
+Status: `open`
+
+Make top-level `gates[]` first-class vertices throughout the canonical ARF
+validation contour. The language, compiler, runtime, and Tree Editor already
+recognize gates, but the graph validator and transition-provenance validator
+currently build their registries from `nodes[]` only. This produces false
+`GRAPH_TARGET_MISSING` findings for legal `node → gate` routes and omits gates
+from reachability, terminal-path, cycle, and explicit incoming-edge analysis.
+
+The implementation must use one combined node-and-gate vertex registry;
+extract node edges only from `next` and gate edges only from `on_pass` and
+`on_fail`; preserve strict unknown-target checks; and apply entry, reachability,
+dead-end, terminal-path, cycle, allowed-cycle-region, duplicate-ID, and optional
+`allowed_from`/`incoming_from` checks consistently to both vertex types. The
+transition-provenance validator and its runtime entry guard must use the same
+combined topology, so a gate cannot be accepted by one validation path and
+rejected by another.
+
+Update the summary to report nodes, gates, and total graph vertices separately.
+Add focused regression coverage for valid node → gate → node/terminal routes,
+missing gate targets, node/gate duplicate IDs, mixed reachability and cycles,
+allowed mixed cycle regions, and bidirectional incoming contracts involving
+gates. Verify graph validation, lint, compile, package build, and the embedded
+ARF CLI stay semantically aligned. Do not move gates into `nodes[]`, weaken
+unknown-target validation, mandate incoming declarations where no explicit
+contract enables them, or silently allow undeclared cycles in source examples.
+
+Source handoff reviewed locally: `ARF_GATE_AWARE_VALIDATORS_HANDOFF_20260730T200601Z`.
+The handoff's Risk Factor Passport evidence must remain a diagnostic example:
+its seven undeclared cycles are source-contract findings, not validator defects.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:

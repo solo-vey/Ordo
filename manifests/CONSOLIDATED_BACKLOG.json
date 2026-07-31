@@ -1,6 +1,6 @@
 {
   "schema_version": "ordo.consolidated_backlog.v1",
-  "updated_at": "2026-07-22",
+  "updated_at": "2026-07-31",
   "canonical_document": "backlog/CONSOLIDATED_BACKLOG.md",
   "items": [
     {
@@ -1165,6 +1165,21 @@
         "Call canonical graph and lint validators through a local Python bridge.",
         "Provide a deterministic source-distribution ZIP without Docker, Node, cloud hosting, or model API access.",
         "Keep bundled desktop Python runtimes as a future packaging concern."
+      ]
+    },
+    {
+      "id": "BL-ORDO-073",
+      "title": "Gate-Aware ARF Graph Validation Consistency",
+      "status": "open",
+      "priority": "P1",
+      "type": "language_toolchain_consistency",
+      "goal": "Treat executable top-level gates as first-class process vertices consistently across graph validation, transition provenance, compilation, runtime reconstruction, and ARF kit builds.",
+      "required_scope": [
+        "Use a combined node-and-executable-gate graph registry while preserving declarative gate catalogues.",
+        "Validate node next routes and gate on_pass/on_fail routes against graph vertices and declared external terminal targets.",
+        "Apply optional bidirectional incoming contracts, reachability, terminal-path, and cycle analysis to executable gates.",
+        "Preserve strict unknown-target checks and do not automatically allow undeclared source cycles.",
+        "Add regression coverage for gate routes, mixed cycles, duplicate IDs, provenance, compilation, and lint integration."
       ]
     }
   ],
