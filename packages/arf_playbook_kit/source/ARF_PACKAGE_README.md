@@ -17,7 +17,7 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The 0.4.7 kit contains these optional capabilities in addition to the core ARF
+The 0.4.8 kit contains these optional capabilities in addition to the core ARF
 authoring and runtime contract:
 
 - `source/tree_module_library/` — build-time reusable document-materialization
