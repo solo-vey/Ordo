@@ -1,6 +1,6 @@
 {
   "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.9.zip",
-  "archive_sha256": "b545106694b6e4f784bf49e83851a9a3d0614e1881cdc3426344fc6e70e3dfa3",
+  "archive_sha256": "36916b984115ed4e3c2231eeea59093f62e11779622f04152eb469de15c477d6",
   "kit": "ARF Playbook Kit",
   "members": [
     {
@@ -481,7 +481,7 @@
     },
     {
       "path": "guides/ARF_PACKAGE_README.md",
-      "sha256": "1647b09c288765e9015cb78d9254c108fc405348ed8a985c7bdc276132be359b"
+      "sha256": "1f5b6984cd005d4463ff0b64304ed547af637a56df0842ef9fef9b48d321a37f"
     },
     {
       "path": "guides/DECISION_DEBUG_TRACE.md",
