@@ -98,7 +98,7 @@ def _replace_target_references(value: Any, old_id: str, new_id: str) -> Any:
         if set(value) and all(isinstance(child, str) for child in value.values()):
             return {key: new_id if child == old_id else child for key, child in value.items()}
         return {
-            key: new_id if key in {"next", "on_pass", "on_fail"} and child == old_id else _replace_target_references(child, old_id, new_id)
+            key: new_id if key in {"next", "to", "on_pass", "on_fail", "pass_to", "fail_to"} and child == old_id else _replace_target_references(child, old_id, new_id)
             for key, child in value.items()
         }
     if isinstance(value, list):
@@ -130,8 +130,14 @@ def replace_record(source: dict[str, Any], collection: str, old_id: str, replace
     records[matches[0]] = replacement
     if new_id != old_id:
         for record in all_records:
-            if isinstance(record.get("allowed_from"), list):
-                record["allowed_from"] = [new_id if value == old_id else value for value in record["allowed_from"]]
+            for contract_key in ("allowed_from", "allowed_to"):
+                if isinstance(record.get(contract_key), list):
+                    record[contract_key] = [new_id if value == old_id else value for value in record[contract_key]]
+            navigation = record.get("navigation_contract")
+            if isinstance(navigation, dict):
+                for contract_key in ("allowed_from", "allowed_to"):
+                    if isinstance(navigation.get(contract_key), list):
+                        navigation[contract_key] = [new_id if value == old_id else value for value in navigation[contract_key]]
             for key, value in list(record.items()):
                 record[key] = _replace_target_references(value, old_id, new_id)
         for container_key in ("graph_contract", "playbook"):
@@ -182,11 +188,20 @@ def _node_targets(node: dict[str, Any]) -> list[str]:
             for target in transitions.values()
             if isinstance(target, str) and not target.startswith("$")
         )
+    elif isinstance(transitions, list):
+        targets.extend(
+            item["to"] for item in transitions
+            if isinstance(item, dict) and isinstance(item.get("to"), str) and not item["to"].startswith("$")
+        )
+    navigation = node.get("navigation_contract", {})
+    if isinstance(navigation, dict) and isinstance(navigation.get("allowed_to"), list):
+        targets.extend(target for target in navigation["allowed_to"] if isinstance(target, str) and not target.startswith("$"))
     return targets
 
 
 def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
     edges: list[dict[str, str]] = []
+    explicit_targets: set[str] = set()
     if isinstance(node.get("next"), str) and not node["next"].startswith("$"):
         edges.append({"target": node["next"], "storage": "next", "key": "next"})
     transitions = node.get("transitions", {})
@@ -196,6 +211,23 @@ def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
             for key, target in transitions.items()
             if isinstance(target, str) and not target.startswith("$")
         )
+        explicit_targets.update(edge["target"] for edge in edges)
+    elif isinstance(transitions, list):
+        explicit_targets = set()
+        for index, transition in enumerate(transitions):
+            if not isinstance(transition, dict) or not isinstance(transition.get("to"), str):
+                continue
+            target = transition["to"]
+            if target.startswith("$"):
+                continue
+            explicit_targets.add(target)
+            label = transition.get("id") or transition.get("when") or transition.get("outcome") or f"transition_{index + 1}"
+            edges.append({"target": target, "storage": "transitions_list", "key": str(label), "index": str(index)})
+    navigation = node.get("navigation_contract", {})
+    if isinstance(navigation, dict) and isinstance(navigation.get("allowed_to"), list):
+        for target in navigation["allowed_to"]:
+            if isinstance(target, str) and not target.startswith("$") and target not in explicit_targets:
+                edges.append({"target": target, "storage": "navigation_allowed_to", "key": target})
     on_answer = node.get("on_answer", {})
     if isinstance(on_answer, dict):
         if isinstance(on_answer.get("next"), str) and not on_answer["next"].startswith("$"):
@@ -217,9 +249,22 @@ def _route_targets(value: Any) -> list[str]:
 def _gate_edges(gate: dict[str, Any]) -> list[dict[str, str]]:
     return [
         {"target": target, "storage": "gate_route", "key": key}
-        for key in ("on_pass", "on_fail")
+        for key in ("on_pass", "on_fail", "pass_to", "fail_to")
         for target in _route_targets(gate.get(key))
     ]
+
+
+def _terminal_records(source: dict[str, Any]) -> list[dict[str, Any]]:
+    records = source.get("terminals", [])
+    if not isinstance(records, list):
+        return []
+    result = []
+    for item in records:
+        if isinstance(item, str) and item.strip():
+            result.append({"id": item})
+        elif isinstance(item, dict) and isinstance(item.get("id"), str) and item["id"].strip():
+            result.append(item)
+    return result
 
 
 def _external_terminal_ids(source: dict[str, Any], edges: list[dict[str, str]], known_ids: set[str]) -> list[str]:
@@ -244,7 +289,8 @@ def graph_view(source: dict[str, Any]) -> dict[str, Any]:
         for gate in gates
         for edge in _gate_edges(gate)
     ]
-    known_ids = {str(record["id"]) for record in [*nodes, *gates]}
+    terminal_records = _terminal_records(source)
+    known_ids = {str(record["id"]) for record in [*nodes, *gates, *terminal_records]}
     terminals = _external_terminal_ids(source, edges, known_ids)
     return {
         "nodes": [
@@ -260,6 +306,19 @@ def graph_view(source: dict[str, Any]) -> dict[str, Any]:
                 "sections": node_sections(node),
             }
             for node in nodes
+        ] + [
+            {
+                "id": str(terminal["id"]),
+                "element_type": "terminal",
+                "collection": None,
+                "label": str(terminal.get("title") or terminal.get("purpose") or terminal["id"]),
+                "answer_type": "terminal",
+                "terminal": True,
+                "allowed_from": terminal.get("allowed_from", []),
+                "record_yaml": dump_yaml(terminal),
+                "sections": [],
+            }
+            for terminal in terminal_records
         ] + [
             {
                 "id": str(gate["id"]),

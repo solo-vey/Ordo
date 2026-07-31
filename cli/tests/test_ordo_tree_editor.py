@@ -74,6 +74,40 @@ def test_editor_projects_top_level_and_on_answer_shorthand_next_routes():
     }
 
 
+def test_editor_projects_canonical_navigation_contract_and_list_transitions():
+    source = {
+        "nodes": [
+            {
+                "id": "N_REQUEST",
+                "title": "Request current state",
+                "navigation_contract": {"allowed_from": [], "allowed_to": ["G_READY", "N_DONE"]},
+                "transitions": [
+                    {"id": "T_TO_GATE", "when": "state supplied", "to": "G_READY"},
+                    {"id": "T_TO_DONE", "when": "already ready", "to": "N_DONE"},
+                ],
+            },
+            {"id": "N_DONE", "title": "Done", "navigation_contract": {"allowed_from": ["N_REQUEST"]}},
+        ],
+        "gates": [{"id": "G_READY", "condition": "Ready", "pass_to": "N_DONE", "fail_to": "STOP_NOT_READY"}],
+        "terminals": [{"id": "STOP_NOT_READY", "title": "Not ready"}],
+    }
+    view = graph_view(source)
+    assert {tuple(edge[key] for key in ("source", "target", "storage", "key")) for edge in view["edges"]} == {
+        ("N_REQUEST", "G_READY", "transitions_list", "T_TO_GATE"),
+        ("N_REQUEST", "N_DONE", "transitions_list", "T_TO_DONE"),
+        ("G_READY", "N_DONE", "gate_route", "pass_to"),
+        ("G_READY", "STOP_NOT_READY", "gate_route", "fail_to"),
+    }
+    by_id = {item["id"]: item for item in view["nodes"]}
+    assert by_id["STOP_NOT_READY"]["element_type"] == "terminal"
+
+
+def test_editor_projects_allowed_to_when_transition_list_is_absent_without_duplicate_edges():
+    source = {"nodes": [{"id": "N_START", "navigation_contract": {"allowed_to": ["N_DONE"]}}, {"id": "N_DONE"}]}
+    view = graph_view(source)
+    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "navigation_allowed_to", "key": "N_DONE"}]
+
+
 def test_editor_replaces_separate_gate_sections_and_preserves_node_routes():
     source = {
         "nodes": [{"id": "N_INPUT", "on_answer": {"continue": {"next": "G_OLD"}}}],
@@ -82,6 +116,21 @@ def test_editor_replaces_separate_gate_sections_and_preserves_node_routes():
     updated = replace_record_sections(source, "gates", "G_OLD", {"id": "G_NEW", "on_pass": "N_DONE", "on_fail": "STOP"})
     assert updated["gates"][0]["id"] == "G_NEW"
     assert updated["nodes"][0]["on_answer"]["continue"]["next"] == "G_NEW"
+
+
+def test_editor_renames_canonical_targets_and_navigation_contracts():
+    source = {
+        "graph_contract": {"entry_node": "N_START"},
+        "nodes": [
+            {"id": "N_START", "navigation_contract": {"allowed_to": ["G_OLD"]}, "transitions": [{"id": "T", "to": "G_OLD"}]},
+            {"id": "N_DONE", "navigation_contract": {"allowed_from": ["G_OLD"]}},
+        ],
+        "gates": [{"id": "G_OLD", "pass_to": "N_DONE", "fail_to": "STOP"}],
+    }
+    updated = replace_record_sections(source, "gates", "G_OLD", {"id": "G_NEW", "pass_to": "N_DONE", "fail_to": "STOP"})
+    assert updated["nodes"][0]["navigation_contract"]["allowed_to"] == ["G_NEW"]
+    assert updated["nodes"][0]["transitions"][0]["to"] == "G_NEW"
+    assert updated["nodes"][1]["navigation_contract"]["allowed_from"] == ["G_NEW"]
 
 
 def test_editor_replaces_full_node_record_without_dropping_unknown_fields():
