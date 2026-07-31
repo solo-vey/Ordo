@@ -29,7 +29,7 @@ Playbook Regression Harness (PRH) 1.7.0 and Playbook Regression Playbook (PRP)
 PRP orchestrates baseline-versus-candidate comparison. Their full pilot and
 promotion remain candidate-stage work.
 
-ARF Kit 0.4.7 also packages the reusable tree-module library, companion utility set including the local Ordo Tree Editor, guided Mode 5 migration
+ARF Kit 0.4.8 also packages the gate-aware graph validation contour, reusable tree-module library, companion utility set including the local Ordo Tree Editor, guided Mode 5 migration
 working-artifact templates, and the release-build
 tooling described in `source/ARF_PACKAGE_README.md`, so the downloadable
 artifact documents both its included capabilities and its deliberate
