@@ -13,11 +13,16 @@ This is the standalone ARF package for creating a new Ordo playbook in a languag
 
 The archive contains the active Applied Project Factory source, a freshly compiled runtime representation, the embedded runtime CLI, local integration contracts, output templates, tests, and chat-facing guides.
 
+It also contains `language/`, the package-local anti-pattern language contour:
+the active registries, schemas, runtime, integration adapter, fixtures, and
+test dependencies. The included anti-pattern integration suite therefore runs
+from the extracted Kit without a separate Ordo repository checkout.
+
 The archive intentionally excludes repository history, previous validation reports, release evidence, generated examples, and unrelated developer material. The package is a standalone ARF product artifact, not a repository snapshot.
 
 ## Included capabilities
 
-The 0.4.8 kit contains these optional capabilities in addition to the core ARF
+The 0.4.9 kit contains these optional capabilities in addition to the core ARF
 authoring and runtime contract:
 
 - `source/tree_module_library/` — build-time reusable document-materialization

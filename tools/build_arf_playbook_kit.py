@@ -19,6 +19,7 @@ GUIDES = KIT / "source"
 REGRESSION_SOURCE = KIT / "source" / "regression"
 UTILITIES = ROOT / "utilities"
 RELEASE_TOOLS = ROOT / "tools"
+LANGUAGE = ROOT / "language"
 VERSION = (KIT / "VERSION").read_text(encoding="utf-8").strip()
 ARCHIVE_NAME = f"ORDO_ARF_PLAYBOOK_KIT_{VERSION}.zip"
 ZIP_TIMESTAMP = (2026, 7, 23, 0, 0, 0)
@@ -116,6 +117,11 @@ def assemble(stage: Path) -> None:
 
     for relative in COPY_TREES:
         shutil.copytree(APF / relative, stage / relative)
+    # Anti-pattern integration is a blocking runtime contour.  Ship the
+    # complete, versioned language directory with the kit so its registry,
+    # schemas, runtime, fixtures, and integration tests do not depend on a
+    # parent repository checkout.
+    copy_tree_without_caches(LANGUAGE, stage / "language")
     # The embedded runtime is a release snapshot of the canonical CLI.  Overlay
     # it during kit assembly so new build-time capabilities, including the
     # tree-module library, are available in the downloadable kit.

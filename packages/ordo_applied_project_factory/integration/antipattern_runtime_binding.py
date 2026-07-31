@@ -77,8 +77,11 @@ def load_antipattern_binding(package_root: str | Path) -> tuple[dict[str, Any], 
     components = binding["canonical_components"]
     resolved: dict[str, Path] = {}
     missing = []
+    # A released ARF Kit localizes the language contour at package_root/language.
+    # Keep the repository-relative fallback for the canonical source package.
+    dependency_root = package_root if (package_root / "language").is_dir() else (package_root / "../..").resolve()
     for name, relative in components.items():
-        path = (package_root / "../.." / relative).resolve()
+        path = (dependency_root / relative).resolve()
         resolved[name] = path
         if not path.exists():
             missing.append(f"{name}:{relative}")
@@ -109,7 +112,9 @@ def load_antipattern_binding(package_root: str | Path) -> tuple[dict[str, Any], 
 
 def build_adapter(package_root: str | Path):
     package_root = Path(package_root).resolve()
-    language_root = (package_root / "../..").resolve() / "language"
+    language_root = package_root / "language"
+    if not language_root.is_dir():
+        language_root = (package_root / "../..").resolve() / "language"
     import sys
     for path in (language_root, language_root / "runtime", language_root / "integration"):
         if str(path) not in sys.path:

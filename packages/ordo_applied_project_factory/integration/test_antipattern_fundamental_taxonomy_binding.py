@@ -17,7 +17,7 @@ class FundamentalTaxonomyBindingTests(unittest.TestCase):
     def test_all_runtime_rules_map_to_active_fundamentals(self):
         binding, _ = load_antipattern_binding(ROOT)
         mapping = binding["resolved_taxonomy_map"]
-        self.assertEqual(len(mapping), 6)
+        self.assertEqual(len(mapping), 7)
         self.assertEqual(len(set(mapping.values())), 6)
 
     def test_owner_approval_gate_is_enabled(self):

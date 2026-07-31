@@ -15,8 +15,9 @@ CANONICAL = {
 }
 
 def validate(package_root: Path) -> dict:
-    repo_root = package_root.parents[1]
-    language_root = repo_root / 'language'
+    language_root = package_root / 'language'
+    if not language_root.is_dir():
+        language_root = package_root.parents[1] / 'language'
     source = yaml.safe_load((package_root/'source/program.ordo.yaml').read_text(encoding='utf-8'))
     inventory = json.loads((package_root/'integration/antipattern_hook_inventory.apf.v1.json').read_text(encoding='utf-8'))
     profile = json.loads((language_root/'integration/antipattern_activation_profile.apf.v1.json').read_text(encoding='utf-8'))

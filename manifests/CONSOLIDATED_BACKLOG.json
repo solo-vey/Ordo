@@ -1181,6 +1181,22 @@
         "Preserve strict unknown-target checks and do not automatically allow undeclared source cycles.",
         "Add regression coverage for gate routes, mixed cycles, duplicate IDs, provenance, compilation, and lint integration."
       ]
+    },
+    {
+      "id": "BL-ORDO-074",
+      "title": "Self-Contained ARF Anti-Pattern Integration Contour",
+      "status": "closed",
+      "priority": "P1",
+      "type": "arf_kit_packaging",
+      "goal": "Make the downloadable ARF Playbook Kit run its anti-pattern integration suite without an external language-repository checkout.",
+      "required_scope": [
+        "Include the versioned language registries, schemas, runtime, integration adapter, and fixtures in the ARF Kit.",
+        "Resolve package-local language dependencies from package_root/language with a repository-relative development fallback.",
+        "Run taxonomy, hook, state-evidence, coverage, and all-rules integration tests from an extracted Kit.",
+        "Publish the capability and its deliberate repository-level exclusions in the ARF Kit documentation.",
+        "Publish the updated ARF Playbook Kit release and synchronize the current download pointer."
+      ],
+      "completion": "Implemented and published in ARF Playbook Kit 0.4.9."
     }
   ],
   "maintenance_contours": [
