@@ -87,7 +87,34 @@ function showEdgeMenu(edge, event) {
   const menu = document.querySelector("#edge-context-menu");
   menu.hidden = false; menu.style.left = `${event.clientX + 10}px`; menu.style.top = `${event.clientY + 10}px`;
 }
-function drawEdges() { state.graph.edges.forEach(edge => { const a = state.positions[edge.source], b = state.positions[edge.target]; if (!a || !b) return; const attributes = { x1: a.x + NODE_WIDTH / 2, y1: a.y + NODE_HEIGHT, x2: b.x + NODE_WIDTH / 2, y2: b.y }; const hit = document.createElementNS("http://www.w3.org/2000/svg", "line"); hit.classList.add("edge-hit"); Object.entries(attributes).forEach(([key, value]) => hit.setAttribute(key, String(value))); hit.addEventListener("pointerenter", event => showEdgeMenu(edge, event)); hit.addEventListener("pointermove", event => showEdgeMenu(edge, event)); hit.addEventListener("pointerleave", scheduleEdgeMenuHide); hit.addEventListener("click", event => { event.stopPropagation(); selectTransition(edge); }); edges.append(hit); const line = document.createElementNS("http://www.w3.org/2000/svg", "line"); line.classList.add("edge-line"); if (edge.storage === "gate_route") line.classList.add("gate-route"); Object.entries(attributes).forEach(([key, value]) => line.setAttribute(key, String(value))); edges.append(line); const label = document.createElementNS("http://www.w3.org/2000/svg", "text"); label.classList.add("edge-label"); label.setAttribute("x", String((attributes.x1 + attributes.x2) / 2 + 5)); label.setAttribute("y", String((attributes.y1 + attributes.y2) / 2 - 5)); label.textContent = edge.key; edges.append(label); }); }
+function edgeGeometry(source, target) {
+  const sourceCenter = { x: source.x + NODE_WIDTH / 2, y: source.y + NODE_HEIGHT / 2 };
+  const targetCenter = { x: target.x + NODE_WIDTH / 2, y: target.y + NODE_HEIGHT / 2 };
+  const dx = targetCenter.x - sourceCenter.x, dy = targetCenter.y - sourceCenter.y;
+  if (dx === 0 && dy === 0) {
+    const start = { x: source.x + NODE_WIDTH, y: source.y + NODE_HEIGHT / 2 - 12 };
+    const end = { x: source.x + NODE_WIDTH, y: source.y + NODE_HEIGHT / 2 + 12 };
+    return { path: `M ${start.x} ${start.y} C ${start.x + 72} ${start.y - 48}, ${end.x + 72} ${end.y + 48}, ${end.x} ${end.y}`, label: { x: start.x + 78, y: source.y + NODE_HEIGHT / 2 } };
+  }
+  let start, end, controlOne, controlTwo;
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    const direction = Math.sign(dx) || 1;
+    start = { x: direction > 0 ? source.x + NODE_WIDTH : source.x, y: sourceCenter.y };
+    end = { x: direction > 0 ? target.x : target.x + NODE_WIDTH, y: targetCenter.y };
+    const bend = Math.max(48, Math.abs(dx) * 0.45);
+    controlOne = { x: start.x + direction * bend, y: start.y };
+    controlTwo = { x: end.x - direction * bend, y: end.y };
+  } else {
+    const direction = Math.sign(dy) || 1;
+    start = { x: sourceCenter.x, y: direction > 0 ? source.y + NODE_HEIGHT : source.y };
+    end = { x: targetCenter.x, y: direction > 0 ? target.y : target.y + NODE_HEIGHT };
+    const bend = Math.max(48, Math.abs(dy) * 0.45);
+    controlOne = { x: start.x, y: start.y + direction * bend };
+    controlTwo = { x: end.x, y: end.y - direction * bend };
+  }
+  return { path: `M ${start.x} ${start.y} C ${controlOne.x} ${controlOne.y}, ${controlTwo.x} ${controlTwo.y}, ${end.x} ${end.y}`, label: { x: (start.x + end.x) / 2 + 6, y: (start.y + end.y) / 2 - 6 } };
+}
+function drawEdges() { state.graph.edges.forEach(edge => { const source = state.positions[edge.source], target = state.positions[edge.target]; if (!source || !target) return; const geometry = edgeGeometry(source, target); const hit = document.createElementNS("http://www.w3.org/2000/svg", "path"); hit.classList.add("edge-hit"); hit.setAttribute("d", geometry.path); hit.addEventListener("pointerenter", event => showEdgeMenu(edge, event)); hit.addEventListener("pointermove", event => showEdgeMenu(edge, event)); hit.addEventListener("pointerleave", scheduleEdgeMenuHide); hit.addEventListener("click", event => { event.stopPropagation(); selectTransition(edge); }); edges.append(hit); const line = document.createElementNS("http://www.w3.org/2000/svg", "path"); line.classList.add("edge-line"); if (edge.storage === "gate_route") line.classList.add("gate-route"); line.setAttribute("d", geometry.path); edges.append(line); const label = document.createElementNS("http://www.w3.org/2000/svg", "text"); label.classList.add("edge-label"); label.setAttribute("x", String(geometry.label.x)); label.setAttribute("y", String(geometry.label.y)); label.textContent = edge.key; edges.append(label); }); }
 function makeDraggable(element) { let start; element.addEventListener("pointerdown", event => { if (event.button !== 0 || state.pendingTransitionSource) return; const current = state.positions[element.dataset.id]; start = { pointerX: event.clientX, pointerY: event.clientY, nodeX: current.x, nodeY: current.y }; element.setPointerCapture(event.pointerId); }); element.addEventListener("pointermove", event => { if (!start) return; state.manualPositions.add(element.dataset.id); state.positions[element.dataset.id] = { x: Math.max(0, start.nodeX + event.clientX - start.pointerX), y: Math.max(0, start.nodeY + event.clientY - start.pointerY) }; element.style.left = `${state.positions[element.dataset.id].x}px`; element.style.top = `${state.positions[element.dataset.id].y}px`; resizeCanvas(); edges.innerHTML = '<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#6680ae"/></marker></defs>'; drawEdges(); }); element.addEventListener("pointerup", () => { start = null; }); }
 function selectNode(id) { state.selected = id; state.selectedEdge = null; hideEdgeMenu(); render(); }
 function selectTransition(edge) { state.selectedEdge = edge; renderInspector(); }
