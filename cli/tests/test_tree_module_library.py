@@ -34,12 +34,32 @@ def _params(path: Path, prefix: str = "DOC") -> Path:
     return path
 
 
-def test_library_catalog_exposes_two_reusable_templates():
+def test_library_catalog_exposes_three_reusable_templates():
     report = list_templates(PACKAGE)
     assert report["status"] == "passed"
     assert {entry["id"] for entry in report["templates"]} == {
-        "DOCUMENT_MATERIALIZATION_LIFECYCLE", "PACKAGE_HANDOFF_LIFECYCLE"
+        "DOCUMENT_MATERIALIZATION_LIFECYCLE", "PACKAGE_HANDOFF_LIFECYCLE",
+        "IMPLEMENTATION_CHANGE_LIFECYCLE",
     }
+
+
+def test_implementation_change_instance_is_domain_neutral_and_validates():
+    with tempfile.TemporaryDirectory() as tmp:
+        work = Path(tmp)
+        host = _host(work / "host.yaml")
+        params = work / "params.yaml"
+        params.write_text(yaml.safe_dump({"params": {
+            "instance_id": "application_implementation",
+            "id_prefix": "APPIMPL",
+            "module_title": "application capability implementation module",
+            "implementation_prompt_field": "implementation_prompt_path",
+            "confirmed_requirements_fields": ["approved_requirements_path"],
+            "entry_node": "N_ENTRY",
+            "success_exit_node": "N_EXIT",
+        }}), encoding="utf-8")
+        report = instantiate_template(PACKAGE, "IMPLEMENTATION_CHANGE_LIFECYCLE", params, work / "instance.yaml", host)
+        assert report["status"] == "passed"
+        assert validate_instance(work / "instance.yaml", host)["status"] == "passed"
 
 
 def test_document_instance_is_deterministic_and_validates_against_host():

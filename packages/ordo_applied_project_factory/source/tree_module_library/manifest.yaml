@@ -11,3 +11,7 @@ templates:
     version: '1.0'
     path: templates/PACKAGE_HANDOFF_LIFECYCLE.tree-template.yaml
     purpose: Reusable final validation, archive, and handoff lifecycle.
+  - id: IMPLEMENTATION_CHANGE_LIFECYCLE
+    version: '1.0'
+    path: templates/IMPLEMENTATION_CHANGE_LIFECYCLE.tree-template.yaml
+    purpose: Optional application-code implementation lifecycle from approved prompt to verified change or developer handoff.

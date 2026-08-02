@@ -1,0 +1,366 @@
+kind: ordo_tree_module_instance.v1
+template_id: IMPLEMENTATION_CHANGE_LIFECYCLE
+template_version: '1.0'
+instance_id: application_implementation
+bindings:
+  entry_node: N_IMPLEMENTATION_PROMPT_READY
+  success_exit_node: N_HOST_PLAYBOOK_CONTINUATION
+state_schema:
+  '{{instance_id}}_evidence_type': null
+  '{{instance_id}}_evidence_location': null
+  '{{instance_id}}_baseline_reference': null
+  '{{instance_id}}_evidence_status': null
+  '{{instance_id}}_readiness_status': null
+  '{{instance_id}}_scope_classification': null
+  '{{instance_id}}_affected_components': null
+  '{{instance_id}}_baseline_impact': null
+  '{{instance_id}}_recommended_execution_mode': null
+  '{{instance_id}}_allowed_execution_modes': []
+  '{{instance_id}}_prompt_sync_status': null
+  '{{instance_id}}_execution_mode': null
+  '{{instance_id}}_candidate_location': null
+  '{{instance_id}}_changed_files': []
+  '{{instance_id}}_test_evidence': null
+  '{{instance_id}}_documentation_evidence': null
+  '{{instance_id}}_direct_change_validation_status': null
+  '{{instance_id}}_candidate_readiness_status': null
+  '{{instance_id}}_verification_status': null
+  '{{instance_id}}_verification_report_path': null
+  '{{instance_id}}_verification_findings': []
+  '{{instance_id}}_analyst_review_status': null
+  '{{instance_id}}_revision_notes': null
+  '{{instance_id}}_revision_cycle_count': 0
+  '{{instance_id}}_handoff_artifact_path': null
+  '{{instance_id}}_final_status': null
+nodes:
+- id: N_APPIMPL_EVIDENCE_INTAKE
+  type: human_decision
+  title: Provide current application capability implementation module baseline
+  reads:
+  - implementation_prompt_path
+  - - approved_requirements_path
+    - functional_test_matrix_approved
+    - unit_test_matrix_approved
+    - edge_case_matrix_approved
+  writes:
+  - application_implementation_evidence_type
+  - application_implementation_evidence_location
+  - application_implementation_baseline_reference
+  - application_implementation_evidence_status
+  navigation_contract:
+    allowed_from:
+    - N_IMPLEMENTATION_PROMPT_READY
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+    allowed_to:
+    - G_APPIMPL_EVIDENCE_READY
+    - N_APPIMPL_DEVELOPER_HANDOFF
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+  transitions:
+  - id: T_APPIMPL_BASELINE_SUBMITTED
+    when: application_implementation_evidence_status == submitted
+    to: G_APPIMPL_EVIDENCE_READY
+  - id: T_APPIMPL_BASELINE_UNAVAILABLE
+    when: application_implementation_evidence_status == unavailable
+    to: N_APPIMPL_DEVELOPER_HANDOFF
+  - id: T_APPIMPL_BASELINE_INCOMPLETE
+    when: application_implementation_evidence_status == incomplete
+    to: N_APPIMPL_EVIDENCE_CLARIFICATION
+- id: N_APPIMPL_SCOPE_ASSESSMENT
+  type: automatic
+  title: Assess change scope for application capability implementation module
+  reads:
+  - application_implementation_evidence_location
+  - application_implementation_baseline_reference
+  - implementation_prompt_path
+  - - approved_requirements_path
+    - functional_test_matrix_approved
+    - unit_test_matrix_approved
+    - edge_case_matrix_approved
+  writes:
+  - application_implementation_scope_classification
+  - application_implementation_affected_components
+  - application_implementation_baseline_impact
+  - application_implementation_recommended_execution_mode
+  - application_implementation_allowed_execution_modes
+  navigation_contract:
+    allowed_from:
+    - G_APPIMPL_EVIDENCE_READY
+    allowed_to:
+    - G_APPIMPL_SCOPE_READY
+  transitions:
+  - id: T_APPIMPL_SCOPE_ASSESSED
+    to: G_APPIMPL_SCOPE_READY
+- id: N_APPIMPL_PROMPT_SYNC
+  type: automatic
+  title: Synchronize implementation prompt with application capability implementation
+    module
+  reads:
+  - implementation_prompt_path
+  - application_implementation_scope_classification
+  - application_implementation_affected_components
+  - application_implementation_baseline_impact
+  writes:
+  - application_implementation_prompt_sync_status
+  - implementation_prompt_path
+  navigation_contract:
+    allowed_from:
+    - G_APPIMPL_SCOPE_READY
+    allowed_to:
+    - N_APPIMPL_EXECUTION_MODE
+  transitions:
+  - id: T_APPIMPL_PROMPT_SYNC_COMPLETE
+    to: N_APPIMPL_EXECUTION_MODE
+- id: N_APPIMPL_EXECUTION_MODE
+  type: human_decision
+  title: Choose implementation mode for application capability implementation module
+  reads:
+  - application_implementation_scope_classification
+  - application_implementation_baseline_impact
+  - application_implementation_recommended_execution_mode
+  - application_implementation_allowed_execution_modes
+  - application_implementation_prompt_sync_status
+  writes:
+  - application_implementation_execution_mode
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_PROMPT_SYNC
+    allowed_to:
+    - N_APPIMPL_DIRECT_CHANGE
+    - N_APPIMPL_DEVELOPER_HANDOFF
+  transitions:
+  - id: T_APPIMPL_DIRECT_CHANGE_SELECTED
+    when: application_implementation_execution_mode == model_direct
+    to: N_APPIMPL_DIRECT_CHANGE
+  - id: T_APPIMPL_DEVELOPER_HANDOFF_SELECTED
+    when: application_implementation_execution_mode == developer_handoff
+    to: N_APPIMPL_DEVELOPER_HANDOFF
+- id: N_APPIMPL_DIRECT_CHANGE
+  type: automatic
+  title: Apply targeted changes to a copy of application capability implementation
+    module
+  reads:
+  - application_implementation_evidence_location
+  - application_implementation_baseline_reference
+  - implementation_prompt_path
+  - application_implementation_affected_components
+  writes:
+  - application_implementation_candidate_location
+  - application_implementation_changed_files
+  - application_implementation_test_evidence
+  - application_implementation_documentation_evidence
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_EXECUTION_MODE
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+    allowed_to:
+    - N_APPIMPL_DIRECT_CHANGE_VALIDATE
+  transitions:
+  - id: T_APPIMPL_DIRECT_CHANGE_APPLIED
+    to: N_APPIMPL_DIRECT_CHANGE_VALIDATE
+- id: N_APPIMPL_DIRECT_CHANGE_VALIDATE
+  type: automatic
+  title: Validate direct changes to application capability implementation module
+  reads:
+  - application_implementation_candidate_location
+  - application_implementation_changed_files
+  - application_implementation_test_evidence
+  - application_implementation_documentation_evidence
+  writes:
+  - application_implementation_direct_change_validation_status
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_DIRECT_CHANGE
+    allowed_to:
+    - G_APPIMPL_CANDIDATE_READY
+  transitions:
+  - id: T_APPIMPL_DIRECT_CHANGE_VALIDATED
+    to: G_APPIMPL_CANDIDATE_READY
+- id: N_APPIMPL_VERIFY
+  type: automatic
+  title: Verify updated application capability implementation module against prompt
+    and baseline
+  reads:
+  - application_implementation_candidate_location
+  - application_implementation_baseline_reference
+  - implementation_prompt_path
+  - application_implementation_changed_files
+  - application_implementation_test_evidence
+  - application_implementation_documentation_evidence
+  writes:
+  - application_implementation_verification_status
+  - application_implementation_verification_report_path
+  - application_implementation_verification_findings
+  navigation_contract:
+    allowed_from:
+    - G_APPIMPL_CANDIDATE_READY
+    allowed_to:
+    - G_APPIMPL_VERIFICATION
+  transitions:
+  - id: T_APPIMPL_VERIFICATION_COMPLETE
+    to: G_APPIMPL_VERIFICATION
+- id: N_APPIMPL_VERIFICATION_REVIEW
+  type: human_decision
+  title: Review implementation verification for application capability implementation
+    module
+  reads:
+  - application_implementation_verification_status
+  - application_implementation_verification_report_path
+  - application_implementation_verification_findings
+  - application_implementation_handoff_artifact_path
+  writes:
+  - application_implementation_analyst_review_status
+  - application_implementation_final_status
+  navigation_contract:
+    allowed_from:
+    - G_APPIMPL_VERIFICATION
+    - N_APPIMPL_DEVELOPER_HANDOFF
+    allowed_to:
+    - N_HOST_PLAYBOOK_CONTINUATION
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+  transitions:
+  - id: T_APPIMPL_IMPLEMENTATION_ACCEPTED
+    when: application_implementation_analyst_review_status == accepted
+    to: N_HOST_PLAYBOOK_CONTINUATION
+  - id: T_APPIMPL_IMPLEMENTATION_REVISE
+    when: application_implementation_analyst_review_status == corrections_required
+    to: N_APPIMPL_EVIDENCE_CLARIFICATION
+  - id: T_APPIMPL_HANDOFF_ACCEPTED
+    when: application_implementation_analyst_review_status == developer_handoff_ready
+    to: N_HOST_PLAYBOOK_CONTINUATION
+- id: N_APPIMPL_EVIDENCE_CLARIFICATION
+  type: human_decision
+  title: Clarify evidence or verification inputs for application capability implementation
+    module
+  reads:
+  - application_implementation_verification_findings
+  - application_implementation_direct_change_validation_status
+  - application_implementation_readiness_status
+  writes:
+  - application_implementation_revision_notes
+  - application_implementation_revision_cycle_count
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_EVIDENCE_INTAKE
+    - G_APPIMPL_SCOPE_READY
+    - G_APPIMPL_CANDIDATE_READY
+    - N_APPIMPL_VERIFICATION_REVIEW
+    allowed_to:
+    - N_APPIMPL_EVIDENCE_INTAKE
+    - N_APPIMPL_DIRECT_CHANGE
+  transitions:
+  - id: T_APPIMPL_BASELINE_CORRECTIONS_READY
+    when: application_implementation_revision_notes != null
+    to: N_APPIMPL_EVIDENCE_INTAKE
+  - id: T_APPIMPL_CANDIDATE_CORRECTIONS_READY
+    when: application_implementation_revision_cycle_count <= 5
+    to: N_APPIMPL_DIRECT_CHANGE
+- id: N_APPIMPL_DEVELOPER_HANDOFF
+  type: automatic
+  title: Prepare developer handoff for application capability implementation module
+  reads:
+  - implementation_prompt_path
+  - application_implementation_scope_classification
+  - application_implementation_affected_components
+  - application_implementation_baseline_impact
+  - application_implementation_prompt_sync_status
+  writes:
+  - application_implementation_handoff_artifact_path
+  - application_implementation_verification_status
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_EVIDENCE_INTAKE
+    - N_APPIMPL_EXECUTION_MODE
+    allowed_to:
+    - N_APPIMPL_VERIFICATION_REVIEW
+  transitions:
+  - id: T_APPIMPL_HANDOFF_READY
+    to: N_APPIMPL_VERIFICATION_REVIEW
+gates:
+- id: G_APPIMPL_EVIDENCE_READY
+  title: Baseline evidence ready for application capability implementation module
+  reads:
+  - application_implementation_evidence_type
+  - application_implementation_evidence_location
+  - application_implementation_baseline_reference
+  - implementation_prompt_path
+  writes:
+  - application_implementation_readiness_status
+  pass_to: N_APPIMPL_SCOPE_ASSESSMENT
+  fail_to: N_APPIMPL_EVIDENCE_CLARIFICATION
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_EVIDENCE_INTAKE
+    allowed_to:
+    - N_APPIMPL_SCOPE_ASSESSMENT
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+- id: G_APPIMPL_SCOPE_READY
+  title: Change scope ready for application capability implementation module
+  reads:
+  - application_implementation_scope_classification
+  - application_implementation_affected_components
+  - application_implementation_baseline_impact
+  - application_implementation_recommended_execution_mode
+  - application_implementation_allowed_execution_modes
+  pass_to: N_APPIMPL_PROMPT_SYNC
+  fail_to: N_APPIMPL_EVIDENCE_CLARIFICATION
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_SCOPE_ASSESSMENT
+    allowed_to:
+    - N_APPIMPL_PROMPT_SYNC
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+- id: G_APPIMPL_CANDIDATE_READY
+  title: Updated candidate ready for application capability implementation module
+  reads:
+  - application_implementation_candidate_location
+  - application_implementation_changed_files
+  - application_implementation_test_evidence
+  - application_implementation_documentation_evidence
+  - application_implementation_direct_change_validation_status
+  writes:
+  - application_implementation_candidate_readiness_status
+  pass_to: N_APPIMPL_VERIFY
+  fail_to: N_APPIMPL_EVIDENCE_CLARIFICATION
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_DIRECT_CHANGE_VALIDATE
+    allowed_to:
+    - N_APPIMPL_VERIFY
+    - N_APPIMPL_EVIDENCE_CLARIFICATION
+- id: G_APPIMPL_VERIFICATION
+  title: Implementation verification for application capability implementation module
+  reads:
+  - application_implementation_verification_status
+  - application_implementation_verification_report_path
+  - application_implementation_verification_findings
+  pass_to: N_APPIMPL_VERIFICATION_REVIEW
+  fail_to: N_APPIMPL_VERIFICATION_REVIEW
+  navigation_contract:
+    allowed_from:
+    - N_APPIMPL_VERIFY
+    allowed_to:
+    - N_APPIMPL_VERIFICATION_REVIEW
+provenance:
+  template_id: IMPLEMENTATION_CHANGE_LIFECYCLE
+  template_version: '1.0'
+  library_id: ARF_STANDARD_TREE_MODULES
+  library_version: '1.0'
+  instance_id: application_implementation
+  parameters:
+    instance_id: application_implementation
+    id_prefix: APPIMPL
+    module_title: application capability implementation module
+    implementation_prompt_field: implementation_prompt_path
+    confirmed_requirements_fields:
+    - approved_requirements_path
+    - functional_test_matrix_approved
+    - unit_test_matrix_approved
+    - edge_case_matrix_approved
+    entry_node: N_IMPLEMENTATION_PROMPT_READY
+    success_exit_node: N_HOST_PLAYBOOK_CONTINUATION
+    allow_direct_change: true
+    allow_developer_handoff: true
+    max_revision_cycles: 5
+  parameters_sha256: 5f0d02e30997410d5e65965db8071aee82a0004bcf373de0d5deff5c4f804441
+  local_overrides: []
+  generated_fragment_sha256: f078b056fd308dbd4ad8b1957502a7121dddff3a306eb9c42c3e92711103516a

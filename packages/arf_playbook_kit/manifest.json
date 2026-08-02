@@ -1,6 +1,6 @@
 {
-  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.9.zip",
-  "archive_sha256": "36916b984115ed4e3c2231eeea59093f62e11779622f04152eb469de15c477d6",
+  "archive": "ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip",
+  "archive_sha256": "5e469faa8e83137d9c5599a1c68b9856fb2d533e4acf6a4f999f2cde064fd493",
   "kit": "ARF Playbook Kit",
   "members": [
     {
@@ -29,7 +29,7 @@
     },
     {
       "path": "source/modules/30_playbook_architecture.ordo.module.yaml",
-      "sha256": "c26a9c90c3a45734a8017b9ce9921827f1d7a420df180fe5c00c2f84b691119f"
+      "sha256": "9c3619ea9dd359ebbabc721b6af8c983313dc951653b4a964328d01e886b9037"
     },
     {
       "path": "source/modules/35_optional_flow_reuse.ordo.module.yaml",
@@ -65,19 +65,43 @@
     },
     {
       "path": "source/program.ordo.yaml",
-      "sha256": "b54d4d862c600f247a999bc00bbd303e12325d9a83bf32e22757cc20404a8d3f"
+      "sha256": "d3eca24c3c6ac04ceb01a1a212a06097e75f7dec2a301fd509fa186d1e8936af"
     },
     {
       "path": "source/tree_module_library/README.md",
-      "sha256": "6b8216d95f29de096ec5488ca4564cefaac3a390bf8f412f1fe1a0e1a406241f"
+      "sha256": "660a641846a7f1e63682010fb4e327003c479366c93df79dbba5c4bac72500ed"
+    },
+    {
+      "path": "source/tree_module_library/docs/IMPLEMENTATION_CHANGE_LIFECYCLE_INTEGRATION.md",
+      "sha256": "9f860bb6d2ace1861ae1958e44c3d551d578c5816261185d205eee807b5a0d62"
+    },
+    {
+      "path": "source/tree_module_library/docs/IMPLEMENTATION_CHANGE_LIFECYCLE_MAPPING.md",
+      "sha256": "3ec74ff43e4bd83fd45cd881534808311366a83c45e2e01162eb6a8eced2807e"
+    },
+    {
+      "path": "source/tree_module_library/docs/IMPLEMENTATION_CHANGE_LIFECYCLE_USAGE.md",
+      "sha256": "3fc0f4833e2ecfac6732c0d0a4060c479413a4ea9dd96311a957aff1ca5cea89"
+    },
+    {
+      "path": "source/tree_module_library/examples/IMPLEMENTATION_CHANGE_LIFECYCLE.generated.example.yaml",
+      "sha256": "0ccb7351533b859e79e23bf1bafd0aa494ee7802bfd21ec44036ee221b71ceca"
+    },
+    {
+      "path": "source/tree_module_library/examples/IMPLEMENTATION_CHANGE_LIFECYCLE.instance.example.yaml",
+      "sha256": "632dc38439f98942ead493680a23a64c4ae1999887939b63fdb2d5c7ffb4d7cf"
     },
     {
       "path": "source/tree_module_library/manifest.yaml",
-      "sha256": "91fbf21a934f7a221515de04bada2ed2fa3c6225afafe55967390d74661f2f5b"
+      "sha256": "9e72d40b3e266b0bde0f33360eacfcbe94411af106bec4b4a27f0c2cc658d7d5"
     },
     {
       "path": "source/tree_module_library/templates/DOCUMENT_MATERIALIZATION_LIFECYCLE.tree-template.yaml",
       "sha256": "5e35364a9f786ba63ef81cff675742e5a66f5f0bc1b4a7f993469ad6473be98c"
+    },
+    {
+      "path": "source/tree_module_library/templates/IMPLEMENTATION_CHANGE_LIFECYCLE.tree-template.yaml",
+      "sha256": "344686a1b3f72dfce97625e80efbd2fcdbf719990902927e5c08cca806bfdf9e"
     },
     {
       "path": "source/tree_module_library/templates/PACKAGE_HANDOFF_LIFECYCLE.tree-template.yaml",
@@ -85,15 +109,15 @@
     },
     {
       "path": "compiled/program.ir.json",
-      "sha256": "bfa9fdf544f97591b45b9e8b36fd787844f45d17ccfdcf90363060abb2ed12e8"
+      "sha256": "04bcb61166659f233db13952c9c79dcdc4337ed11ffa4bb694856ad55fea4625"
     },
     {
       "path": "compiled/program.ordo.view",
-      "sha256": "3a1e729fab5aa782ae7489220d3696a956600f14dceaa1334edadcc5294c615f"
+      "sha256": "ea25366482ff3a79f9a9f803d78a9f5e948968f304e916b9ca1533d664f84a9b"
     },
     {
       "path": "compiled/targets.manifest.json",
-      "sha256": "7690b1d3ff1fb94ae0e1162f49896a8a0b996f8bcf42f2edd33b8688ab1986db"
+      "sha256": "0d7a57fc2642bc45e28cb6e41d17325f73e23e1ef4650b4f07b23c16967eee66"
     },
     {
       "path": "PLAYBOOK_LAWS.md",
@@ -481,7 +505,7 @@
     },
     {
       "path": "guides/ARF_PACKAGE_README.md",
-      "sha256": "1f5b6984cd005d4463ff0b64304ed547af637a56df0842ef9fef9b48d321a37f"
+      "sha256": "a25f9914c90670b21410ff695730bff7b1cff8deeb28d1a96d41fee350a04bac"
     },
     {
       "path": "guides/DECISION_DEBUG_TRACE.md",
@@ -529,7 +553,7 @@
     },
     {
       "path": "guides/TREE_MODULE_LIBRARY.md",
-      "sha256": "120bf949211f735336a1750584f78790b2d609cf3efcd2ad41accdc25b943ad5"
+      "sha256": "bf0832ba4fd4d11a7d707bac3f0f6ca85e0a8d20dd8aa6f99a6a0216a8fcab87"
     },
     {
       "path": "integration/antipattern_hook_inventory.apf.v1.json",
@@ -2565,7 +2589,7 @@
     },
     {
       "path": "runtime/session.ordo.trace",
-      "sha256": "f454fe80266bd1547d08a40df1a6a56e6e684db27c1b2bbda3e7b4befb6cf35b"
+      "sha256": "583ed08e58e5a164e9716359c8265866e0abbc4574e26566d04639373c7d0277"
     },
     {
       "path": "tests/test_cases.yaml",
@@ -4425,11 +4449,11 @@
     },
     {
       "path": "utilities/ordo_tree_editor/README.md",
-      "sha256": "684c59a332f0f80721c327d0da8ee46f9838bfc831be96bfd635bc07cae84a70"
+      "sha256": "598e54acd525a2fbdf0b25569622ebffc58c907cc374121354a3abcc10521506"
     },
     {
       "path": "utilities/ordo_tree_editor/VERSION",
-      "sha256": "09f385c2dd4a2ddaf98ffd057eb3738b3bf007e293dd6e21ce06006cc75c82ca"
+      "sha256": "f77cccdd10d79797508947f77adeb8181bf2bf86afbac7fa09d91aae585378a7"
     },
     {
       "path": "utilities/ordo_tree_editor/__init__.py",
@@ -4441,7 +4465,7 @@
     },
     {
       "path": "utilities/ordo_tree_editor/editor_service.py",
-      "sha256": "bf857dbb953612cda7326b65a962e8948537e617d088552b94fb7c902e796f0b"
+      "sha256": "48faf2b31812b11820f1c1910773aff6407cd0ff599c1586d4769cb592204cd3"
     },
     {
       "path": "utilities/ordo_tree_editor/start_ordo_tree_editor.command",
@@ -4449,7 +4473,7 @@
     },
     {
       "path": "utilities/ordo_tree_editor/web/app.js",
-      "sha256": "5e4bc8026e6c6f4ead04230436ba877770a2657e137d030a5697a06659ee5f59"
+      "sha256": "a9bd1f77f2cfdbf6ea71dbaff821b8692cc86924bad3cc6daaabec89c85f514b"
     },
     {
       "path": "utilities/ordo_tree_editor/web/index.html",
@@ -4457,7 +4481,7 @@
     },
     {
       "path": "utilities/ordo_tree_editor/web/styles.css",
-      "sha256": "72beae6fcd6dbf9dc664b5a5ebb626adec9ef1ed9c014bc0efd6e457791c58c1"
+      "sha256": "56ae15301ba67bde811c3678ca5dbc45a8181eef4b23e24ef0d8342a4de0f24f"
     },
     {
       "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md",
@@ -4799,6 +4823,6 @@
     "path": "packages/ordo_applied_project_factory",
     "version": "0.1.0-rc.1"
   },
-  "version": "0.4.9",
+  "version": "0.4.10",
   "workspace": "workspace/"
 }

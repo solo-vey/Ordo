@@ -1,0 +1,17 @@
+# Domain-neutral example: continue a host playbook into application-code implementation.
+# The approved analytical requirements and implementation prompt exist before entry.
+params:
+  instance_id: application_implementation
+  id_prefix: APPIMPL
+  module_title: application capability implementation module
+  implementation_prompt_field: implementation_prompt_path
+  confirmed_requirements_fields:
+  - approved_requirements_path
+  - functional_test_matrix_approved
+  - unit_test_matrix_approved
+  - edge_case_matrix_approved
+  entry_node: N_IMPLEMENTATION_PROMPT_READY
+  success_exit_node: N_HOST_PLAYBOOK_CONTINUATION
+  allow_direct_change: true
+  allow_developer_handoff: true
+  max_revision_cycles: 5
