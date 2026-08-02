@@ -1197,6 +1197,22 @@
         "Publish the updated ARF Playbook Kit release and synchronize the current download pointer."
       ],
       "completion": "Implemented and published in ARF Playbook Kit 0.4.9."
+    },
+    {
+      "id": "BL-ORDO-075",
+      "title": "Canonical YAML Route Support in Local Tree Editor",
+      "status": "closed",
+      "priority": "P1",
+      "type": "local_visual_companion_utility",
+      "goal": "Make the local Tree Editor render and edit canonical Ordo graph routes without requiring a playbook-specific transition rewrite.",
+      "required_scope": [
+        "Project navigation_contract.allowed_to and list-based transitions entries with to targets.",
+        "Project and edit gate pass_to/fail_to routes alongside on_pass/on_fail routes.",
+        "Project top-level terminals records as terminal targets.",
+        "Preserve canonical route and navigation references when elements are renamed.",
+        "Validate canonical node, gate, terminal, fallback-route, and reference-rewrite behavior through focused tests."
+      ],
+      "completion": "Implemented in Tree Editor 0.2.0-alpha.2; GitHub release publication is tracked with the versioned utility artifact."
     }
   ],
   "maintenance_contours": [
