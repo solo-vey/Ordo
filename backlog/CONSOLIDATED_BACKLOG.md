@@ -516,6 +516,20 @@ retaining the repository-relative fallback for source development. Validate the
 localized coverage validator and all anti-pattern integration tests from an
 extracted Kit. Completed by ARF Playbook Kit 0.4.9 publication.
 
+### BL-ORDO-075 — Canonical YAML Route Support in Local Tree Editor
+
+Status: `closed`
+
+Extend the local Ordo Tree Editor so it projects and edits canonical playbook
+graph routes without requiring a source YAML to be rewritten into an older
+editor-only shape. Support `navigation_contract.allowed_to`, list-based
+`transitions` entries with `to`, gate `pass_to` / `fail_to`, and top-level
+`terminals` records. Preserve canonical references when an element is renamed,
+and allow created and deleted routes to retain the selected canonical form.
+
+Completed by Tree Editor `0.2.0-alpha.2`; focused editor tests cover canonical
+nodes, gates, terminals, fallback allowed routes, and reference rewrites.
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
