@@ -4,8 +4,8 @@ Chat-first is the primary creation and learning route for Ordo. A language model
 
 ## Canonical ARF Playbook Kit
 
-- [Download ARF Playbook Kit 0.4.9](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.9/ORDO_ARF_PLAYBOOK_KIT_0.4.9.zip)
-- [Download SHA-256](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.9/ORDO_ARF_PLAYBOOK_KIT_0.4.9.zip.sha256)
+- [Download ARF Playbook Kit 0.4.10](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip)
+- [Download SHA-256](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip.sha256)
 - [`current Kit manifest`](../manifests/ARF_PLAYBOOK_KIT_CURRENT.json)
 - [`Kit source`](../packages/arf_playbook_kit/)
 - [`five-step quickstart`](QUICKSTART.md)

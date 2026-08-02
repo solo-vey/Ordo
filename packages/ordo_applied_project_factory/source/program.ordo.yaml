@@ -1358,13 +1358,14 @@ nodes:
       state_diff: required
       next_node: explicit
 - id: N_TREE_MODULE_TEMPLATE_RECOMMENDATION
-  question: 'ARF can reuse a standard tree module here. Choose: document lifecycle, package handoff lifecycle, inspect another
-    template, or continue manual design.'
+  question: 'ARF can reuse a standard tree module here. Choose: document lifecycle, package handoff lifecycle, application
+    implementation lifecycle, inspect another template, or continue manual design.'
   answer_type: enum
   allow_unmatched_input: true
   allowed_answers:
   - use_document_lifecycle
   - use_package_handoff_lifecycle
+  - use_implementation_change_lifecycle
   - inspect_other_template
   - continue_manual_design
   on_answer:
@@ -1375,6 +1376,10 @@ nodes:
     use_package_handoff_lifecycle:
       update_state:
         selected_tree_module_template: PACKAGE_HANDOFF_LIFECYCLE
+      next: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
+    use_implementation_change_lifecycle:
+      update_state:
+        selected_tree_module_template: IMPLEMENTATION_CHANGE_LIFECYCLE
       next: N_TREE_MODULE_INSTANCE_PARAMETER_REVIEW
     inspect_other_template:
       update_state:

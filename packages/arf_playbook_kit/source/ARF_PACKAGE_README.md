@@ -22,11 +22,12 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The 0.4.9 kit contains these optional capabilities in addition to the core ARF
+The 0.4.10 kit contains these optional capabilities in addition to the core ARF
 authoring and runtime contract:
 
-- `source/tree_module_library/` — build-time reusable document-materialization
-  and package-handoff tree templates, with provenance-preserving CLI support.
+- `source/tree_module_library/` — build-time reusable document-materialization,
+  package-handoff, and application-implementation tree templates, with
+  provenance-preserving CLI support.
 
 - `utilities/ordo_pathwalk/` — graph path exploration, terminal-path
   enumeration, clean/noise testcase generation, review cards, and benchmark

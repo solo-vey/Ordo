@@ -1,0 +1,356 @@
+kind: ordo_tree_module_template
+template:
+  id: IMPLEMENTATION_CHANGE_LIFECYCLE
+  version: '1.0'
+  title: Implementation change lifecycle
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    id_prefix:
+      type: identifier
+    module_title:
+      type: string
+    implementation_prompt_field:
+      type: state_field
+    confirmed_requirements_fields:
+      type: list
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional:
+    allow_direct_change:
+      type: boolean
+      default: true
+    allow_developer_handoff:
+      type: boolean
+      default: true
+    max_revision_cycles:
+      type: integer
+      default: 5
+generated:
+  state_schema:
+    '{{instance_id}}_evidence_type': null
+    '{{instance_id}}_evidence_location': null
+    '{{instance_id}}_baseline_reference': null
+    '{{instance_id}}_evidence_status': null
+    '{{instance_id}}_readiness_status': null
+    '{{instance_id}}_scope_classification': null
+    '{{instance_id}}_affected_components': null
+    '{{instance_id}}_baseline_impact': null
+    '{{instance_id}}_recommended_execution_mode': null
+    '{{instance_id}}_allowed_execution_modes': []
+    '{{instance_id}}_prompt_sync_status': null
+    '{{instance_id}}_execution_mode': null
+    '{{instance_id}}_candidate_location': null
+    '{{instance_id}}_changed_files': []
+    '{{instance_id}}_test_evidence': null
+    '{{instance_id}}_documentation_evidence': null
+    '{{instance_id}}_direct_change_validation_status': null
+    '{{instance_id}}_candidate_readiness_status': null
+    '{{instance_id}}_verification_status': null
+    '{{instance_id}}_verification_report_path': null
+    '{{instance_id}}_verification_findings': []
+    '{{instance_id}}_analyst_review_status': null
+    '{{instance_id}}_revision_notes': null
+    '{{instance_id}}_revision_cycle_count': 0
+    '{{instance_id}}_handoff_artifact_path': null
+    '{{instance_id}}_final_status': null
+  nodes:
+  - id: N_{{id_prefix}}_EVIDENCE_INTAKE
+    type: human_decision
+    title: Provide current {{module_title}} baseline
+    reads:
+    - '{{implementation_prompt_field}}'
+    - '{{confirmed_requirements_fields}}'
+    writes:
+    - '{{instance_id}}_evidence_type'
+    - '{{instance_id}}_evidence_location'
+    - '{{instance_id}}_baseline_reference'
+    - '{{instance_id}}_evidence_status'
+    navigation_contract:
+      allowed_from:
+      - '{{entry_node}}'
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+      allowed_to:
+      - G_{{id_prefix}}_EVIDENCE_READY
+      - N_{{id_prefix}}_DEVELOPER_HANDOFF
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    transitions:
+    - id: T_{{id_prefix}}_BASELINE_SUBMITTED
+      when: '{{instance_id}}_evidence_status == submitted'
+      to: G_{{id_prefix}}_EVIDENCE_READY
+    - id: T_{{id_prefix}}_BASELINE_UNAVAILABLE
+      when: '{{instance_id}}_evidence_status == unavailable'
+      to: N_{{id_prefix}}_DEVELOPER_HANDOFF
+    - id: T_{{id_prefix}}_BASELINE_INCOMPLETE
+      when: '{{instance_id}}_evidence_status == incomplete'
+      to: N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+  - id: N_{{id_prefix}}_SCOPE_ASSESSMENT
+    type: automatic
+    title: Assess change scope for {{module_title}}
+    reads:
+    - '{{instance_id}}_evidence_location'
+    - '{{instance_id}}_baseline_reference'
+    - '{{implementation_prompt_field}}'
+    - '{{confirmed_requirements_fields}}'
+    writes:
+    - '{{instance_id}}_scope_classification'
+    - '{{instance_id}}_affected_components'
+    - '{{instance_id}}_baseline_impact'
+    - '{{instance_id}}_recommended_execution_mode'
+    - '{{instance_id}}_allowed_execution_modes'
+    navigation_contract:
+      allowed_from:
+      - G_{{id_prefix}}_EVIDENCE_READY
+      allowed_to:
+      - G_{{id_prefix}}_SCOPE_READY
+    transitions:
+    - id: T_{{id_prefix}}_SCOPE_ASSESSED
+      to: G_{{id_prefix}}_SCOPE_READY
+  - id: N_{{id_prefix}}_PROMPT_SYNC
+    type: automatic
+    title: Synchronize implementation prompt with {{module_title}}
+    reads:
+    - '{{implementation_prompt_field}}'
+    - '{{instance_id}}_scope_classification'
+    - '{{instance_id}}_affected_components'
+    - '{{instance_id}}_baseline_impact'
+    writes:
+    - '{{instance_id}}_prompt_sync_status'
+    - '{{implementation_prompt_field}}'
+    navigation_contract:
+      allowed_from:
+      - G_{{id_prefix}}_SCOPE_READY
+      allowed_to:
+      - N_{{id_prefix}}_EXECUTION_MODE
+    transitions:
+    - id: T_{{id_prefix}}_PROMPT_SYNC_COMPLETE
+      to: N_{{id_prefix}}_EXECUTION_MODE
+  - id: N_{{id_prefix}}_EXECUTION_MODE
+    type: human_decision
+    title: Choose implementation mode for {{module_title}}
+    reads:
+    - '{{instance_id}}_scope_classification'
+    - '{{instance_id}}_baseline_impact'
+    - '{{instance_id}}_recommended_execution_mode'
+    - '{{instance_id}}_allowed_execution_modes'
+    - '{{instance_id}}_prompt_sync_status'
+    writes:
+    - '{{instance_id}}_execution_mode'
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_PROMPT_SYNC
+      allowed_to:
+      - N_{{id_prefix}}_DIRECT_CHANGE
+      - N_{{id_prefix}}_DEVELOPER_HANDOFF
+    transitions:
+    - id: T_{{id_prefix}}_DIRECT_CHANGE_SELECTED
+      when: '{{instance_id}}_execution_mode == model_direct'
+      to: N_{{id_prefix}}_DIRECT_CHANGE
+    - id: T_{{id_prefix}}_DEVELOPER_HANDOFF_SELECTED
+      when: '{{instance_id}}_execution_mode == developer_handoff'
+      to: N_{{id_prefix}}_DEVELOPER_HANDOFF
+  - id: N_{{id_prefix}}_DIRECT_CHANGE
+    type: automatic
+    title: Apply targeted changes to a copy of {{module_title}}
+    reads:
+    - '{{instance_id}}_evidence_location'
+    - '{{instance_id}}_baseline_reference'
+    - '{{implementation_prompt_field}}'
+    - '{{instance_id}}_affected_components'
+    writes:
+    - '{{instance_id}}_candidate_location'
+    - '{{instance_id}}_changed_files'
+    - '{{instance_id}}_test_evidence'
+    - '{{instance_id}}_documentation_evidence'
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_EXECUTION_MODE
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+      allowed_to:
+      - N_{{id_prefix}}_DIRECT_CHANGE_VALIDATE
+    transitions:
+    - id: T_{{id_prefix}}_DIRECT_CHANGE_APPLIED
+      to: N_{{id_prefix}}_DIRECT_CHANGE_VALIDATE
+  - id: N_{{id_prefix}}_DIRECT_CHANGE_VALIDATE
+    type: automatic
+    title: Validate direct changes to {{module_title}}
+    reads:
+    - '{{instance_id}}_candidate_location'
+    - '{{instance_id}}_changed_files'
+    - '{{instance_id}}_test_evidence'
+    - '{{instance_id}}_documentation_evidence'
+    writes:
+    - '{{instance_id}}_direct_change_validation_status'
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_DIRECT_CHANGE
+      allowed_to:
+      - G_{{id_prefix}}_CANDIDATE_READY
+    transitions:
+    - id: T_{{id_prefix}}_DIRECT_CHANGE_VALIDATED
+      to: G_{{id_prefix}}_CANDIDATE_READY
+  - id: N_{{id_prefix}}_VERIFY
+    type: automatic
+    title: Verify updated {{module_title}} against prompt and baseline
+    reads:
+    - '{{instance_id}}_candidate_location'
+    - '{{instance_id}}_baseline_reference'
+    - '{{implementation_prompt_field}}'
+    - '{{instance_id}}_changed_files'
+    - '{{instance_id}}_test_evidence'
+    - '{{instance_id}}_documentation_evidence'
+    writes:
+    - '{{instance_id}}_verification_status'
+    - '{{instance_id}}_verification_report_path'
+    - '{{instance_id}}_verification_findings'
+    navigation_contract:
+      allowed_from:
+      - G_{{id_prefix}}_CANDIDATE_READY
+      allowed_to:
+      - G_{{id_prefix}}_VERIFICATION
+    transitions:
+    - id: T_{{id_prefix}}_VERIFICATION_COMPLETE
+      to: G_{{id_prefix}}_VERIFICATION
+  - id: N_{{id_prefix}}_VERIFICATION_REVIEW
+    type: human_decision
+    title: Review implementation verification for {{module_title}}
+    reads:
+    - '{{instance_id}}_verification_status'
+    - '{{instance_id}}_verification_report_path'
+    - '{{instance_id}}_verification_findings'
+    - '{{instance_id}}_handoff_artifact_path'
+    writes:
+    - '{{instance_id}}_analyst_review_status'
+    - '{{instance_id}}_final_status'
+    navigation_contract:
+      allowed_from:
+      - G_{{id_prefix}}_VERIFICATION
+      - N_{{id_prefix}}_DEVELOPER_HANDOFF
+      allowed_to:
+      - '{{success_exit_node}}'
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    transitions:
+    - id: T_{{id_prefix}}_IMPLEMENTATION_ACCEPTED
+      when: '{{instance_id}}_analyst_review_status == accepted'
+      to: '{{success_exit_node}}'
+    - id: T_{{id_prefix}}_IMPLEMENTATION_REVISE
+      when: '{{instance_id}}_analyst_review_status == corrections_required'
+      to: N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    - id: T_{{id_prefix}}_HANDOFF_ACCEPTED
+      when: '{{instance_id}}_analyst_review_status == developer_handoff_ready'
+      to: '{{success_exit_node}}'
+  - id: N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    type: human_decision
+    title: Clarify evidence or verification inputs for {{module_title}}
+    reads:
+    - '{{instance_id}}_verification_findings'
+    - '{{instance_id}}_direct_change_validation_status'
+    - '{{instance_id}}_readiness_status'
+    writes:
+    - '{{instance_id}}_revision_notes'
+    - '{{instance_id}}_revision_cycle_count'
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_EVIDENCE_INTAKE
+      - G_{{id_prefix}}_SCOPE_READY
+      - G_{{id_prefix}}_CANDIDATE_READY
+      - N_{{id_prefix}}_VERIFICATION_REVIEW
+      allowed_to:
+      - N_{{id_prefix}}_EVIDENCE_INTAKE
+      - N_{{id_prefix}}_DIRECT_CHANGE
+    transitions:
+    - id: T_{{id_prefix}}_BASELINE_CORRECTIONS_READY
+      when: '{{instance_id}}_revision_notes != null'
+      to: N_{{id_prefix}}_EVIDENCE_INTAKE
+    - id: T_{{id_prefix}}_CANDIDATE_CORRECTIONS_READY
+      when: '{{instance_id}}_revision_cycle_count <= {{max_revision_cycles}}'
+      to: N_{{id_prefix}}_DIRECT_CHANGE
+  - id: N_{{id_prefix}}_DEVELOPER_HANDOFF
+    type: automatic
+    title: Prepare developer handoff for {{module_title}}
+    reads:
+    - '{{implementation_prompt_field}}'
+    - '{{instance_id}}_scope_classification'
+    - '{{instance_id}}_affected_components'
+    - '{{instance_id}}_baseline_impact'
+    - '{{instance_id}}_prompt_sync_status'
+    writes:
+    - '{{instance_id}}_handoff_artifact_path'
+    - '{{instance_id}}_verification_status'
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_EVIDENCE_INTAKE
+      - N_{{id_prefix}}_EXECUTION_MODE
+      allowed_to:
+      - N_{{id_prefix}}_VERIFICATION_REVIEW
+    transitions:
+    - id: T_{{id_prefix}}_HANDOFF_READY
+      to: N_{{id_prefix}}_VERIFICATION_REVIEW
+  gates:
+  - id: G_{{id_prefix}}_EVIDENCE_READY
+    title: Baseline evidence ready for {{module_title}}
+    reads:
+    - '{{instance_id}}_evidence_type'
+    - '{{instance_id}}_evidence_location'
+    - '{{instance_id}}_baseline_reference'
+    - '{{implementation_prompt_field}}'
+    writes:
+    - '{{instance_id}}_readiness_status'
+    pass_to: N_{{id_prefix}}_SCOPE_ASSESSMENT
+    fail_to: N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_EVIDENCE_INTAKE
+      allowed_to:
+      - N_{{id_prefix}}_SCOPE_ASSESSMENT
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+  - id: G_{{id_prefix}}_SCOPE_READY
+    title: Change scope ready for {{module_title}}
+    reads:
+    - '{{instance_id}}_scope_classification'
+    - '{{instance_id}}_affected_components'
+    - '{{instance_id}}_baseline_impact'
+    - '{{instance_id}}_recommended_execution_mode'
+    - '{{instance_id}}_allowed_execution_modes'
+    pass_to: N_{{id_prefix}}_PROMPT_SYNC
+    fail_to: N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_SCOPE_ASSESSMENT
+      allowed_to:
+      - N_{{id_prefix}}_PROMPT_SYNC
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+  - id: G_{{id_prefix}}_CANDIDATE_READY
+    title: Updated candidate ready for {{module_title}}
+    reads:
+    - '{{instance_id}}_candidate_location'
+    - '{{instance_id}}_changed_files'
+    - '{{instance_id}}_test_evidence'
+    - '{{instance_id}}_documentation_evidence'
+    - '{{instance_id}}_direct_change_validation_status'
+    writes:
+    - '{{instance_id}}_candidate_readiness_status'
+    pass_to: N_{{id_prefix}}_VERIFY
+    fail_to: N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_DIRECT_CHANGE_VALIDATE
+      allowed_to:
+      - N_{{id_prefix}}_VERIFY
+      - N_{{id_prefix}}_EVIDENCE_CLARIFICATION
+  - id: G_{{id_prefix}}_VERIFICATION
+    title: Implementation verification for {{module_title}}
+    reads:
+    - '{{instance_id}}_verification_status'
+    - '{{instance_id}}_verification_report_path'
+    - '{{instance_id}}_verification_findings'
+    pass_to: N_{{id_prefix}}_VERIFICATION_REVIEW
+    fail_to: N_{{id_prefix}}_VERIFICATION_REVIEW
+    navigation_contract:
+      allowed_from:
+      - N_{{id_prefix}}_VERIFY
+      allowed_to:
+      - N_{{id_prefix}}_VERIFICATION_REVIEW
