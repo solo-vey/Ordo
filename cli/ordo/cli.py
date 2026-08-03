@@ -36,6 +36,9 @@ from .reporter import write_json
 from .registry_checks import find_repo_root, validate_ir_opcodes, validate_capability_registry
 from .repo_checks import run_repo_checks
 from .clean_check import run_clean_check
+from .canonical_source import validate_canonical_source
+from .package_integrity import validate_package_integrity, compare_reproducible_archives
+from .evidence_identity import validate_evidence_report
 from .runtime import runtime_status, runtime_entry_protocol, validate_cli_truthfulness, validate_runtime_start_files_standard
 from .session_chain import verify_session, PROTOCOL_LINE
 from .runtime_restore import restore_session
@@ -85,6 +88,8 @@ def cmd_lint(args: argparse.Namespace) -> int:
 
     merge_subreport("rendering_policy_check", rendering_report)
     merge_subreport("runtime_start_files_check", runtime_start_report)
+    canonical_source_report = validate_canonical_source(root)
+    merge_subreport("canonical_source_identity", canonical_source_report)
     out = root / "reports" / "lint_report.json"
     write_json(out, report)
     print(f"lint: {report['status']} ({out})")
@@ -406,6 +411,40 @@ def cmd_validate_artifacts(args: argparse.Namespace) -> int:
     report = validate_artifacts(args.package, artifacts=args.artifacts, state_path=args.state, out=args.out)
     out = Path(args.out).resolve() if args.out else Path(args.package).resolve() / "reports" / "artifact_validation_report.json"
     print(f"validate-artifacts: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_canonical_source(args: argparse.Namespace) -> int:
+    report = validate_canonical_source(args.package, expected_sha256=args.expected_sha256, expected_version=args.expected_version, supplied_source=args.source)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_package_integrity(args: argparse.Namespace) -> int:
+    report = validate_package_integrity(args.package, expected_version=args.expected_version)
+    if args.out:
+        write_json(Path(args.out), report)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_evidence(args: argparse.Namespace) -> int:
+    try:
+        report = json.loads(Path(args.report).read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(json.dumps({"status": "blocked", "errors": [{"code": "EVIDENCE_REPORT_INVALID", "message": str(exc)}]}, indent=2))
+        return 1
+    layers = [item.strip() for item in (args.required_layers or "").split(",") if item.strip()]
+    result = validate_evidence_report(report, args.package, required_layers=layers)
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+    return 0 if result["status"] == "passed" else 1
+
+
+def cmd_verify_reproducible_build(args: argparse.Namespace) -> int:
+    report = compare_reproducible_archives(args.first, args.second)
+    if args.out:
+        write_json(Path(args.out), report)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0 if report["status"] == "passed" else 1
 
 
@@ -900,6 +939,31 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--state", help="YAML/JSON state file; defaults to latest intake/run report")
     p.add_argument("--out", help="Optional output path; defaults to reports/artifact_validation_report.json")
     p.set_defaults(func=cmd_validate_artifacts)
+
+    p = sub.add_parser("validate-canonical-source", help="Verify canonical source path, version and physical-file identity")
+    p.add_argument("package")
+    p.add_argument("--expected-sha256")
+    p.add_argument("--expected-version")
+    p.add_argument("--source", help="Caller-supplied source path; must equal the manifest source")
+    p.set_defaults(func=cmd_validate_canonical_source)
+
+    p = sub.add_parser("validate-package-integrity", help="Verify one coherent package version snapshot")
+    p.add_argument("package")
+    p.add_argument("--expected-version")
+    p.add_argument("--out", help="Optional machine-readable integrity report path")
+    p.set_defaults(func=cmd_validate_package_integrity)
+
+    p = sub.add_parser("validate-evidence", help="Verify a validation report belongs to the current canonical source and run")
+    p.add_argument("package")
+    p.add_argument("report")
+    p.add_argument("--required-layers", help="Comma-separated validation layers required in the report")
+    p.set_defaults(func=cmd_validate_evidence)
+
+    p = sub.add_parser("verify-reproducible-build", help="Compare two package archives by deterministic payload identity")
+    p.add_argument("first", help="First independently built archive")
+    p.add_argument("second", help="Second independently built archive")
+    p.add_argument("--out", help="Optional machine-readable comparison report path")
+    p.set_defaults(func=cmd_verify_reproducible_build)
 
     p = sub.add_parser("validate-document-fields", help="Validate document field producers and path bindings")
     p.add_argument("package")
