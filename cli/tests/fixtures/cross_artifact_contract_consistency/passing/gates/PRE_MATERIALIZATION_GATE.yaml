@@ -1,0 +1,7 @@
+checks:
+  - id: X-001
+    name: required_state_objects_present
+    required_state_objects:
+      - current_contract
+      - removed_contract
+    assertion: current_contract, removed_contract are present and non-empty.

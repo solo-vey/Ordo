@@ -1,0 +1,10 @@
+checks:
+  - id: X-001
+    name: required_state_objects_present
+    assertion: current_contract, removed_contract are present and non-empty.
+  - id: X-002
+    name: obsoletecontract consistency
+    assertion: obsoletecontract is present.
+  - id: X-003
+    name: obsoletecontract readiness
+    assertion: obsoletecontract is present.

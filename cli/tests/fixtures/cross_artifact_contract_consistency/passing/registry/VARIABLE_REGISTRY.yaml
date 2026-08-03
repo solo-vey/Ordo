@@ -1,0 +1,3 @@
+variables:
+  - path: current_contract
+  - path: removed_contract
