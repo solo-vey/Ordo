@@ -6,6 +6,7 @@ import json
 import time
 
 from .loader import load_yaml, resolve_package_root
+from .canonical_source import validate_canonical_source
 from .compiler import compile_source
 from .reporter import write_json
 
@@ -65,6 +66,14 @@ def resolve_runtime_paths(package_path: str | Path) -> dict[str, Any]:
                 "root": str(root),
                 "manifest_path": _rel(root, manifest_path),
                 "issues": [_issue("ORDO-RUNTIME-001", "ordo.yml must parse to a mapping", location=_rel(root, manifest_path))],
+            }
+        canonical = validate_canonical_source(root)
+        if canonical.get("status") != "passed":
+            return {
+                "status": "invalid_canonical_source",
+                "root": str(root),
+                "manifest_path": _rel(root, manifest_path),
+                "issues": [_issue("ORDO-RUNTIME-012", item.get("message", "canonical source validation failed"), location=item.get("code")) for item in canonical.get("errors", [])],
             }
         source_path = root / manifest.get("source", "source/program.ordo.yaml")
         compiled_path = root / manifest.get("compiled", "compiled/program.ir.json")

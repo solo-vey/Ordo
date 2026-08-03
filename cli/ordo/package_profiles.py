@@ -16,6 +16,7 @@ from .targets import emit_compiled_targets, verify_targets, normalize_runtime_vi
 from .ci_release_evidence import validate_ci_release_evidence
 from .build_identity import write_build_identity, new_build_identity, bind_report, validate_report_binding
 from .package_reconciliation import pre_zip_reconciliation
+from .package_integrity import validate_package_integrity
 from .prompt_compiler import compile_prompt_only, validate_prompt_compilation
 
 PACKAGE_PROFILES = {"dev", "runtime", "evidence", "prompt_only"}
@@ -528,6 +529,19 @@ def build_package_profile(package_path: str | Path, *, profile: str = "dev", out
         write_json(reports_dir / "package_report.json", report)
         return report
 
+    integrity = validate_package_integrity(root, expected_version=str(manifest.get("version") or ""))
+    if integrity.get("status") != "passed":
+        report = {
+            "status": "failed",
+            "profile": profile,
+            "cli_status": cli_status,
+            "output": str(out_path),
+            "issues": integrity.get("errors", []),
+            "package_integrity": integrity,
+        }
+        write_json(reports_dir / "package_report.json", report)
+        return report
+
     out_path.parent.mkdir(parents=True, exist_ok=True)
     reconciliation_report = pre_zip_reconciliation(
         root,
@@ -537,7 +551,7 @@ def build_package_profile(package_path: str | Path, *, profile: str = "dev", out
         build_manifest=(root / "BUILD_MANIFEST.json") if (root / "BUILD_MANIFEST.json").exists() else None,
     )
     reconciliation_path = reports_dir / "pre_zip_reconciliation_report.json"
-    reconciliation_path.write_text(json.dumps(reconciliation_report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_json(reconciliation_path, reconciliation_report)
     if reconciliation_report["status"] != "passed":
         issues.extend(reconciliation_report["issues"])
         report = {
@@ -549,7 +563,7 @@ def build_package_profile(package_path: str | Path, *, profile: str = "dev", out
         }
         bind_report(report, build_identity)
         report_path = reports_dir / "package_report.json"
-        report_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        write_json(report_path, report)
         return report
 
     with zipfile.ZipFile(out_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
@@ -569,6 +583,7 @@ def build_package_profile(package_path: str | Path, *, profile: str = "dev", out
         "runtime_view_behavior": runtime_view_behavior(runtime_view) if profile == "runtime" else None,
         "included_files": [_rel(root, p) for p in files],
         "issues": [],
+        "package_integrity": integrity,
     }
     write_json(reports_dir / "package_report.json", report)
     return report

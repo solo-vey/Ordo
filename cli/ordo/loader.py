@@ -4,6 +4,8 @@ from pathlib import Path
 from typing import Any
 import yaml
 
+from .canonical_source import validate_canonical_source
+
 
 def load_yaml(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as f:
@@ -30,6 +32,10 @@ def resolve_package_root(path: str | Path) -> Path:
 
 def load_package(package_path: str | Path) -> tuple[Path, dict[str, Any], dict[str, Any], dict[str, Any]]:
     root = resolve_package_root(package_path)
+    canonical = validate_canonical_source(root)
+    if canonical.get("status") != "passed":
+        details = "; ".join(item.get("message", "canonical source check failed") for item in canonical.get("errors", []))
+        raise ValueError(f"canonical source check blocked package loading: {details}")
     manifest = load_yaml(root / "ordo.yml")
     source_path = root / manifest.get("source", "source/program.ordo.yaml")
     tests_path = root / manifest.get("tests", "tests/test_cases.yaml")
