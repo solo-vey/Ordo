@@ -1,6 +1,6 @@
 {
   "schema_version": "ordo.consolidated_backlog.v1",
-  "updated_at": "2026-07-31",
+  "updated_at": "2026-08-03",
   "canonical_document": "backlog/CONSOLIDATED_BACKLOG.md",
   "items": [
     {
@@ -1180,6 +1180,354 @@
         "Apply optional bidirectional incoming contracts, reachability, terminal-path, and cycle analysis to executable gates.",
         "Preserve strict unknown-target checks and do not automatically allow undeclared source cycles.",
         "Add regression coverage for gate routes, mixed cycles, duplicate IDs, provenance, compilation, and lint integration."
+      ]
+    },
+    {
+      "id": "BL-ORDO-089",
+      "title": "Canonical Source, Version and Physical-File Identity",
+      "status": "open",
+      "priority": "P0",
+      "type": "canonical_source_identity",
+      "goal": "Ensure edits, exports, tests, downloads, and confirmations use one authoritative YAML source with verified version and digest.",
+      "problem_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        43,
+        44
+      ],
+      "dependencies": [
+        "BL-ORDO-102"
+      ],
+      "acceptance": [
+        "Reject stale or non-canonical source paths.",
+        "Verify version, path, size, mtime, and SHA-256 before overwrite/export and in PASS reports.",
+        "Cover duplicate-name attachment and rollback regressions."
+      ]
+    },
+    {
+      "id": "BL-ORDO-090",
+      "title": "Package Version Coherence and Integrity Evidence",
+      "status": "open",
+      "priority": "P0",
+      "type": "package_integrity",
+      "goal": "Build every package from one coherent versioned snapshot of source, validators, templates, reports, manifest, and checksums.",
+      "problem_ids": [
+        59,
+        60
+      ],
+      "dependencies": [
+        "BL-ORDO-089",
+        "BL-ORDO-091"
+      ],
+      "acceptance": [
+        "Reject mixed-version packages.",
+        "Require complete manifest and checksums.",
+        "Prove reproducible rebuild and emit a machine-readable integrity report."
+      ]
+    },
+    {
+      "id": "BL-ORDO-091",
+      "title": "Validation Reports, Run Identity and Evidence Separation",
+      "status": "open",
+      "priority": "P0",
+      "type": "validation_evidence_provenance",
+      "goal": "Make validation reports identify the exact source, run, digest, metadata, validator layers, and current-versus-historical status.",
+      "problem_ids": [
+        44,
+        45,
+        46,
+        58
+      ],
+      "dependencies": [
+        "BL-ORDO-089"
+      ],
+      "acceptance": [
+        "Separate stale failures from current results.",
+        "Report parse, schema, graph, lineage, regression, and artifact status independently.",
+        "Prove PASS attribution to the tested physical file."
+      ]
+    },
+    {
+      "id": "BL-ORDO-092",
+      "title": "State Variable Contract and Data-Lineage Closure",
+      "status": "open",
+      "priority": "P0",
+      "type": "state_data_lineage",
+      "goal": "Validate producer, consumer, collection mode, shape, registry, binding, and template contracts for every state path.",
+      "problem_ids": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "dependencies": [
+        "BL-ORDO-093",
+        "BL-ORDO-099"
+      ],
+      "acceptance": [
+        "Detect lost, unowned, unused, missing, inconsistent, and split-node fields.",
+        "Cover missing-producer, unused-field, shape-mismatch, and node-split fixtures."
+      ]
+    },
+    {
+      "id": "BL-ORDO-093",
+      "title": "Full ORDO Graph Contract and Dynamic-Route Safety",
+      "status": "open",
+      "priority": "P0",
+      "type": "language_graph_contract",
+      "goal": "Validate all supported node/gate constructs, incoming declarations, intentional cycles, deleted IDs, orphan vertices, and bounded dynamic routes.",
+      "problem_ids": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "dependencies": [
+        "BL-ORDO-073"
+      ],
+      "acceptance": [
+        "Cover every supported transition form.",
+        "Distinguish allowed from undeclared cycles.",
+        "Reject stale IDs, orphan vertices, and dynamic targets outside declared bounds."
+      ]
+    },
+    {
+      "id": "BL-ORDO-094",
+      "title": "Layered Validator and ARF-Package Propagation Contract",
+      "status": "open",
+      "priority": "P1",
+      "type": "validator_package_propagation",
+      "goal": "Separate validation layers and ensure approved validator, rule, and test changes reach the canonical ARF package.",
+      "problem_ids": [
+        26,
+        47,
+        57
+      ],
+      "dependencies": [
+        "BL-ORDO-090",
+        "BL-ORDO-091",
+        "BL-ORDO-093"
+      ],
+      "acceptance": [
+        "Emit layer-specific diagnostics.",
+        "Verify package contents include the approved changes.",
+        "Prevent local-only validator fixes."
+      ]
+    },
+    {
+      "id": "BL-ORDO-095",
+      "title": "Safe Correction, Invalidation and Selective Replay",
+      "status": "open",
+      "priority": "P1",
+      "type": "correction_invalidation",
+      "goal": "Invalidate only affected downstream state, derivations, gates, tests, and artifacts after an upstream correction while preserving unrelated confirmed state.",
+      "problem_ids": [
+        22,
+        23,
+        24
+      ],
+      "dependencies": [
+        "BL-ORDO-092",
+        "BL-ORDO-093"
+      ],
+      "acceptance": [
+        "Replay source gates after upstream changes.",
+        "Cover selective invalidation and preserved-state fixtures."
+      ]
+    },
+    {
+      "id": "BL-ORDO-096",
+      "title": "Analyst Interaction, Question and Deviation Contract",
+      "status": "open",
+      "priority": "P1",
+      "type": "analyst_interaction",
+      "goal": "Improve field explanations, response modes, semantic checks, actionable gate failures, retry preservation, draft confirmation, and deviation return-to-node behavior.",
+      "problem_ids": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        25,
+        52,
+        54
+      ],
+      "dependencies": [
+        "BL-ORDO-092",
+        "BL-ORDO-095"
+      ],
+      "acceptance": [
+        "Cover structured/free-text collection, semantic rejection, partial retry, draft confirmation, and deviation/resume conversations."
+      ]
+    },
+    {
+      "id": "BL-ORDO-097",
+      "title": "Recovery Routes and Terminal-State Semantics",
+      "status": "open",
+      "priority": "P1",
+      "type": "recovery_terminal_states",
+      "goal": "Distinguish recoverable failures from terminal stops and reject unreachable or unconnected stop nodes.",
+      "problem_ids": [
+        35,
+        36
+      ],
+      "dependencies": [
+        "BL-ORDO-093",
+        "BL-ORDO-095"
+      ],
+      "acceptance": [
+        "Cover recoverable-error and explicit-terminal fixtures.",
+        "Detect orphan stops and prevent accidental workflow termination."
+      ]
+    },
+    {
+      "id": "BL-ORDO-098",
+      "title": "Materialization, Artifact Existence and Delivery Lifecycle",
+      "status": "open",
+      "priority": "P1",
+      "type": "artifact_delivery_lifecycle",
+      "goal": "Require physical output existence, expose download links, and separate generated, reviewed, approved, and delivered states.",
+      "problem_ids": [
+        37,
+        38,
+        53
+      ],
+      "dependencies": [
+        "BL-ORDO-090",
+        "BL-ORDO-091",
+        "BL-ORDO-097"
+      ],
+      "acceptance": [
+        "Block missing files.",
+        "Require link presence.",
+        "Reject premature approval status transitions."
+      ]
+    },
+    {
+      "id": "BL-ORDO-099",
+      "title": "Canonical Regression Runner and Decision-Rule Coverage",
+      "status": "open",
+      "priority": "P1",
+      "type": "regression_runner",
+      "goal": "Require complete applicable validation after structural changes, including negative assertions, dynamic graph discovery, decision-rule coverage, canonical identity, and file metadata.",
+      "problem_ids": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        56
+      ],
+      "dependencies": [
+        "BL-ORDO-089",
+        "BL-ORDO-091",
+        "BL-ORDO-093"
+      ],
+      "acceptance": [
+        "Discover new vertices automatically.",
+        "Assert deprecated constructs are absent.",
+        "Link each decision rule to a regression and identify the tested file by digest."
+      ]
+    },
+    {
+      "id": "BL-ORDO-100",
+      "title": "Reference-Data Provenance and Draft-Value Controls",
+      "status": "open",
+      "priority": "P1",
+      "type": "reference_provenance",
+      "goal": "Prevent reference examples from becoming defaults and label every value by provenance until explicit analyst confirmation.",
+      "problem_ids": [
+        50,
+        51,
+        52
+      ],
+      "dependencies": [
+        "BL-ORDO-092",
+        "BL-ORDO-096"
+      ],
+      "acceptance": [
+        "Cover provenance round-trip and reference isolation.",
+        "Reject unconfirmed drafts from confirmed derivation paths."
+      ]
+    },
+    {
+      "id": "BL-ORDO-103",
+      "title": "Decision Registry and Cross-Chat State Handoff",
+      "status": "open",
+      "priority": "P1",
+      "type": "decision_registry_handoff",
+      "goal": "Persist accepted decisions, implementation links, tests, and lifecycle state, and restore active playbook context across chats without replay or rollback ambiguity.",
+      "problem_ids": [
+        7,
+        8,
+        55,
+        56
+      ],
+      "dependencies": [
+        "BL-ORDO-089",
+        "BL-ORDO-091",
+        "BL-ORDO-099"
+      ],
+      "acceptance": [
+        "Pass a handoff round-trip.",
+        "Detect missing context.",
+        "Link decisions to tests.",
+        "Reject stale or conflicting decision records."
+      ]
+    },
+    {
+      "id": "BL-ORDO-101",
+      "title": "Node Responsibility and Process Decomposition",
+      "status": "open",
+      "priority": "P2",
+      "type": "node_decomposition",
+      "goal": "Prevent multi-responsibility nodes and preserve ownership, ordering, edges, gates, and cycles when nodes are split.",
+      "problem_ids": [
+        15,
+        16
+      ],
+      "dependencies": [
+        "BL-ORDO-092",
+        "BL-ORDO-093"
+      ],
+      "acceptance": [
+        "Classify node responsibilities.",
+        "Emit split-impact diagnostics.",
+        "Prove no producer, consumer, edge, or gate is lost during decomposition."
+      ]
+    },
+    {
+      "id": "BL-ORDO-102",
+      "title": "Documentation and Executable Pseudo-Chat Synchronization",
+      "status": "open",
+      "priority": "P2",
+      "type": "documentation_pseudo_chat",
+      "goal": "Keep documentation and pseudo-chat synchronized with the executable current graph and transitions.",
+      "problem_ids": [
+        48,
+        49
+      ],
+      "dependencies": [
+        "BL-ORDO-093",
+        "BL-ORDO-099"
+      ],
+      "acceptance": [
+        "Detect stale documentation.",
+        "Generate or validate pseudo-chat from executable transitions.",
+        "Fail when examples describe removed or unreachable routes."
       ]
     },
     {

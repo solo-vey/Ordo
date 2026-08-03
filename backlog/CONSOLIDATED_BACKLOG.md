@@ -530,6 +530,220 @@ and allow created and deleted routes to retain the selected canonical form.
 Completed by Tree Editor `0.2.0-alpha.2`; focused editor tests cover canonical
 nodes, gates, terminals, fallback allowed routes, and reference rewrites.
 
+# Problem-group backlog reconciliation
+
+The supplied 15-group problem register is retained as open planning work. The source handoff proposed BL-ORDO-074–088; those IDs conflicted with existing canonical records, so this block uses BL-ORDO-089–103 and preserves the source problem IDs in each scope.
+
+### BL-ORDO-089 — Canonical Source, Version and Physical-File Identity
+
+Status: `open`
+Priority: `P0`
+
+Fix the risk that edits, exports, downloads, tests, or model confirmations use
+an intermediate YAML instead of the canonical source. Define one authoritative
+path, require version/digest checks before overwrite or export, prevent stale
+same-name attachments, and include the verified path, size, mtime, and SHA-256
+in every PASS. Scope: problems 1–6, 43–44 from the supplied problem register.
+
+Depends on: BL-ORDO-102 for package-level enforcement. Acceptance requires
+negative tests for stale copies, rollback overwrites, wrong export sources,
+duplicate canonical names, and non-canonical test paths.
+
+### BL-ORDO-090 — Package Version Coherence and Integrity Evidence
+
+Status: `open`
+Priority: `P0`
+
+Make every built package a single coherent snapshot: source, validators,
+templates, reports, manifest, and checksums must share one version identity and
+be reproducibly verified after packaging. Scope: problems 59–60.
+
+Depends on: BL-ORDO-089 and BL-ORDO-091. Acceptance requires manifest and
+checksum completeness, mixed-version rejection, reproducible rebuild checks,
+and a machine-readable package-integrity report.
+
+### BL-ORDO-091 — Validation Reports, Run Identity and Evidence Separation
+
+Status: `open`
+Priority: `P0`
+
+Make validation reports auditable and unambiguous: identify the exact source
+path, run timestamp, file metadata, digest, validator layers, and status of
+each parse/schema/graph/lineage/regression/artifact check; separate current
+results from historical failures. Scope: problems 44–46 and 58.
+
+Depends on: BL-ORDO-089. Acceptance requires stale-report separation,
+per-layer status, deterministic report names, and tests proving a PASS cannot
+be attributed to another physical file.
+
+### BL-ORDO-092 — State Variable Contract and Data-Lineage Closure
+
+Status: `open`
+Priority: `P0`
+
+Add a complete producer/consumer contract for state paths across nodes, gates,
+registries, bindings, collection modes, and templates. Detect lost or
+unowned fields, unused collected values, missing producers, inconsistent
+collection shapes, and node-split ownership regressions. Scope: problems 9–14
+and 16.
+
+Depends on: BL-ORDO-093 and BL-ORDO-099. Acceptance requires path-aware
+positive, missing-producer, unused-field, shape-mismatch, and node-split tests.
+
+### BL-ORDO-093 — Full ORDO Graph Contract and Dynamic-Route Safety
+
+Status: `open`
+Priority: `P0`
+
+Extend the gate-aware graph work to the full language contract: validate all
+supported node/gate constructs, explicit incoming declarations, intentional
+retry cycles, declared SCCs, deleted IDs, orphan vertices, and bounded dynamic
+routes. Scope: problems 26–34; BL-ORDO-073 is the prerequisite gate-vertex
+foundation, not a duplicate of this language-level task.
+
+Depends on: BL-ORDO-073. Acceptance requires fixtures for every supported
+transition form, allowed and forbidden cycles, orphan detection, stale IDs,
+and dynamic targets outside the declared allowed set.
+
+### BL-ORDO-094 — Layered Validator and ARF-Package Propagation Contract
+
+Status: `open`
+Priority: `P1`
+
+Separate schema, graph, lineage, artifact, and semantic validation results,
+and ensure every approved validator/rule/test change is propagated into the
+canonical ARF package and its release build. Scope: problems 26, 47, and 57.
+
+Depends on: BL-ORDO-090, BL-ORDO-091, BL-ORDO-093. Acceptance requires
+layer-specific diagnostics, package-content checks, and a regression proving a
+local validator fix cannot remain outside the published ARF kit.
+
+### BL-ORDO-095 — Safe Correction, Invalidation and Selective Replay
+
+Status: `open`
+Priority: `P1`
+
+Define dependency-aware correction semantics: upstream changes must invalidate
+only affected downstream state, derivations, gates, tests, and artifacts;
+source gates must be replayed, while unrelated confirmed state remains intact.
+Scope: problems 22–24.
+
+Depends on: BL-ORDO-092 and BL-ORDO-093. Acceptance requires upstream-change,
+selective-invalidation, preserved-state, and replay-gate fixtures.
+
+### BL-ORDO-096 — Analyst Interaction, Question and Deviation Contract
+
+Status: `open`
+Priority: `P1`
+
+Improve user-facing interaction with field meaning, suitable response modes,
+semantic sufficiency checks, actionable gate failures, retry preservation,
+human-readable route labels, explicit draft confirmation, and a policy for
+side questions that returns to the active node. Scope: problems 17–21, 25,
+52, and 54.
+
+Depends on: BL-ORDO-092 and BL-ORDO-095. Acceptance requires conversation
+fixtures for structured/free-text collection, rejected semantics, partial
+retry, draft confirmation, and deviation/resume behavior.
+
+### BL-ORDO-097 — Recovery Routes and Terminal-State Semantics
+
+Status: `open`
+Priority: `P1`
+
+Distinguish recoverable validation/materialization failures from terminal
+stops, and reject unreachable or unconnected stop nodes after route changes.
+Scope: problems 35–36.
+
+Depends on: BL-ORDO-093 and BL-ORDO-095. Acceptance requires recoverable-error
+fixtures, explicit terminal routing, orphan-stop detection, and no accidental
+workflow termination on correctable input failures.
+
+### BL-ORDO-098 — Materialization, Artifact Existence and Delivery Lifecycle
+
+Status: `open`
+Priority: `P1`
+
+Make completion evidence depend on the physical output, expose a usable
+download link, and separate generated, reviewed, approved, and delivered
+statuses. Scope: problems 37–38 and 53.
+
+Depends on: BL-ORDO-090, BL-ORDO-091, and BL-ORDO-097. Acceptance requires
+missing-file blocking, link-presence checks, and status-transition tests that
+reject premature approval.
+
+### BL-ORDO-099 — Canonical Regression Runner and Decision-Rule Coverage
+
+Status: `open`
+Priority: `P1`
+
+Require structural changes to run the complete applicable validation contour,
+including negative assertions for removed constructs, dynamic graph discovery,
+decision-log coverage, canonical source identity, and physical-file metadata.
+Scope: problems 39–44 and 56.
+
+Depends on: BL-ORDO-089, BL-ORDO-091, and BL-ORDO-093. Acceptance requires
+runner tests proving new vertices are discovered, deprecated artifacts are
+absent, each decision rule has a regression, and reports identify the tested
+file by digest.
+
+### BL-ORDO-100 — Reference-Data Provenance and Draft-Value Controls
+
+Status: `open`
+Priority: `P1`
+
+Prevent reference examples from becoming silent defaults and label every value
+by provenance (analyst, model-derived, automatic, default, or reference).
+Draft values must remain visibly unconfirmed until an explicit analyst gate.
+Scope: problems 50–52.
+
+Depends on: BL-ORDO-092 and BL-ORDO-096. Acceptance requires provenance
+round-trip, reference-isolation, draft-rejection, and explicit-confirmation
+tests.
+
+### BL-ORDO-103 — Decision Registry and Cross-Chat State Handoff
+
+Status: `open`
+Priority: `P1`
+
+Create one machine-readable registry for accepted decisions, their rationale,
+implementing files, tests, and lifecycle status, and make chat-to-chat handoff
+restore the active node, completed artifacts, open backlog, canonical source
+digest, and pending decisions without replay or rollback ambiguity. Scope:
+problems 7–8 and 55–56.
+
+Depends on: BL-ORDO-089, BL-ORDO-091, and BL-ORDO-099. Acceptance requires
+handoff round-trip, missing-context detection, decision-to-test linkage, and
+rejection of stale or conflicting decision records.
+
+### BL-ORDO-101 — Node Responsibility and Process Decomposition
+
+Status: `open`
+Priority: `P2`
+
+Introduce authoring checks and guidance that prevent one node from combining
+collection, analysis, drafting, confirmation, and routing, while preserving
+variable ownership, ordering, gates, and cycles when a node is split. Scope:
+problems 15–16.
+
+Depends on: BL-ORDO-092 and BL-ORDO-093. Acceptance requires responsibility
+classification, split-impact diagnostics, and a regression proving no producer,
+consumer, edge, or gate is lost during decomposition.
+
+### BL-ORDO-102 — Documentation and Executable Pseudo-Chat Synchronization
+
+Status: `open`
+Priority: `P2`
+
+Keep README, runtime examples, and pseudo-chat synchronized with the current
+tree and transitions; generate or validate examples from the executable graph
+instead of memory. Scope: problems 48–49.
+
+Depends on: BL-ORDO-093 and BL-ORDO-099. Acceptance requires stale-document
+detection, transition-backed pseudo-chat generation/validation, and a gate that
+fails when examples describe a removed or unreachable route.
+
+
 ## Backlog Reconciliation — 2026-07-18
 
 The following items are authoritatively closed:
