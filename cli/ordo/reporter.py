@@ -23,5 +23,5 @@ def write_json(path: Path, data: Any) -> None:
         from .evidence_identity import attach_evidence_identity
         data = attach_evidence_identity(data, package_root, report_name=path.name)
     with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2, default=str)
         f.write("\n")
