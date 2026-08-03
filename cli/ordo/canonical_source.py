@@ -94,14 +94,24 @@ def validate_canonical_source(
     if expected_version is not None and manifest.get("version") != expected_version:
         errors.append({"code": "CANONICAL_SOURCE_VERSION_MISMATCH", "message": "package version does not match the expected version"})
 
-    # Example/fixture payloads intentionally contain illustrative programs with
-    # the same filename; they are not candidate package sources. All other
-    # same-name files are ambiguous and therefore fail closed.
+    # Example/fixture payloads and shipped template/regression inputs intentionally
+    # contain illustrative programs with the same filename; they are not candidate
+    # package sources. All other same-name files are ambiguous and fail closed.
     noncanonical_contours = {"generated_examples", "examples", "fixtures", "tests"}
+
+    def is_noncanonical(path: Path) -> bool:
+        parts = path.relative_to(root).parts
+        if set(parts) & noncanonical_contours:
+            return True
+        return (
+            parts[:4] == ("cli_embedded", "ordo_pkg", "ordo", "templates")
+            or parts[:2] == ("regression", "prp")
+        )
+
     same_name = sorted(
         p.relative_to(root).as_posix()
         for p in root.rglob(source.name)
-        if p.is_file() and p.resolve() != source and not (set(p.relative_to(root).parts) & noncanonical_contours)
+        if p.is_file() and p.resolve() != source and not is_noncanonical(p)
     )
     if same_name:
         errors.append({"code": "CANONICAL_SOURCE_DUPLICATE_NAME", "message": f"duplicate canonical source filename found: {', '.join(same_name)}"})
