@@ -78,6 +78,12 @@ Commands removed by the lean cleanup are not part of the current CLI surface: re
 
 `ordo validate-artifacts` checks rendered Markdown, JSON, and YAML artifacts against confirmed contract values and writes `reports/artifact_validation_report.json`.
 
+Repository release gates also run the domain-neutral cross-artifact contract
+consistency check described in
+[`docs/CROSS_ARTIFACT_CONTRACT_CONSISTENCY.md`](docs/CROSS_ARTIFACT_CONTRACT_CONSISTENCY.md).
+It checks external gates, templates, bindings, registries, and `state.schema`
+without replacing graph linting or compilation.
+
 `ordo consistency` generates `reports/CONSISTENCY_CHECK_REPORT.json` and checks whether generated artifacts agree on confirmed contract fields.
 
 `ordo go-no-go` runs the final deterministic helper pipeline and writes `reports/GO_NO_GO_REPORT.json`. It returns exit code `0` only for `go`.

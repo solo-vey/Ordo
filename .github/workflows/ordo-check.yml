@@ -54,6 +54,12 @@ jobs:
             ordo test "$package"
             ordo coverage "$package"
           done
+      - name: Validate cross-artifact contract consistency
+        run: |
+          mkdir -p reports/ci
+          python tools/validate_cross_artifact_contract_consistency.py \
+            --repo-root . \
+            --json-out reports/ci/cross_artifact_contract_consistency.json
       - name: Validate Process Rail helper commands
         run: |
           ordo validate-state packages/ordo_project_builder --answers packages/ordo_project_builder/run_inputs/authoring_success.yaml

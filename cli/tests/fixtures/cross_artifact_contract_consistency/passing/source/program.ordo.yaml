@@ -1,0 +1,4 @@
+state:
+  schema:
+    current_contract: null
+    removed_contract: null

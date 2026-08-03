@@ -87,6 +87,15 @@ jobs:
             rm -rf "$work"
           done
 
+      - name: Validate cross-artifact contract consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reports/ci
+          python tools/validate_cross_artifact_contract_consistency.py \
+            --repo-root . \
+            --json-out reports/ci/cross_artifact_contract_consistency.json
+
       - name: Run full non-destructive delivery gate
         shell: bash
         run: |

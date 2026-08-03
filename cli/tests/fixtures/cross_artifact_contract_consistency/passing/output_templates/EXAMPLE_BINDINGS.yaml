@@ -1,0 +1,3 @@
+bindings:
+  current_contract: state.current_contract
+  removed_contract: state.removed_contract

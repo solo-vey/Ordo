@@ -1,0 +1,2 @@
+# Example
+{{current_contract}}

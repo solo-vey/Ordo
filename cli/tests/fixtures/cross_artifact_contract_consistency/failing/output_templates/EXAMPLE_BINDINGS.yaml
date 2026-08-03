@@ -1,0 +1,2 @@
+bindings:
+  current_contract: state.current_contract
