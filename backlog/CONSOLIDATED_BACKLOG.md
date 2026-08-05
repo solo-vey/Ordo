@@ -743,6 +743,76 @@ Depends on: BL-ORDO-093 and BL-ORDO-099. Acceptance requires stale-document
 detection, transition-backed pseudo-chat generation/validation, and a gate that
 fails when examples describe a removed or unreachable route.
 
+## Generalized Playbook-Engineering Problem Groups — 2026-08-05
+
+The following open issues were derived from the generalized portions of
+`ORDO_PLAYBOOK_PROBLEMS_AND_DECISIONS_HANDOFF_UK.md`. Passport-specific domain
+decisions were intentionally excluded.
+
+### BL-ORDO-104 — Script-first Playbook Modification and Regression Preservation
+
+Status: `open` · Issue [#105](https://github.com/solo-vey/Ordo/issues/105)
+
+Require assertion-based patch scripts, immutable checkpoints, explicit
+versioning, preserved regression coverage, and self-contained unpacked-package
+validation for every playbook modification.
+
+### BL-ORDO-105 — Compiled LLM Execution Layer
+
+Status: `open` · Issue [#106](https://github.com/solo-vey/Ordo/issues/106)
+
+Compile canonical YAML into a verified execution plan while keeping YAML as the
+sole semantic source of truth.
+
+### BL-ORDO-106 — Canonical Source, Versioning and Playbook Package Lifecycle
+
+Status: `open` · Issue [#107](https://github.com/solo-vey/Ordo/issues/107)
+
+Make canonical identity, script-first changes, checkpoints, versioning,
+regression preservation, and unpacked-package validation mandatory.
+
+### BL-ORDO-107 — Cross-artifact Consistency and Validator Quality
+
+Status: `open` · Issue [#108](https://github.com/solo-vey/Ordo/issues/108)
+
+Detect drift between templates, bindings, state, validators, finalization
+writes, and rendered outputs without mutating valid business data.
+
+### BL-ORDO-108 — Runtime State, Execution Modes and Source-of-truth Separation
+
+Status: `open` · Issue [#109](https://github.com/solo-vey/Ordo/issues/109)
+
+Separate business state from runtime context, enforce explicit execution modes,
+and block stale or noncanonical derived artifacts.
+
+### BL-ORDO-109 — Replay, Debug and Evidence Contract
+
+Status: `open` · Issue [#110](https://github.com/solo-vey/Ordo/issues/110)
+
+Define machine-replayable run records and prove that debug/evidence export cannot
+mutate runtime state or accepted decisions.
+
+### BL-ORDO-110 — Compiler Dependency Closure and Runtime Semantic Plan
+
+Status: `open` · Issue [#111](https://github.com/solo-vey/Ordo/issues/111)
+
+Make derived runtime plans complete, recovery-safe, dependency-aware, and
+independently validated with no silent YAML fallback.
+
+### BL-ORDO-111 — Explicit Input and Clarification Contracts
+
+Status: `open` · Issue [#112](https://github.com/solo-vey/Ordo/issues/112)
+
+Block missing or ambiguous analyst inputs from being silently invented or
+written into the wrong state concept.
+
+### BL-ORDO-112 — ARF Graph Registry and Dynamic Routing
+
+Status: `open` · Issue [#113](https://github.com/solo-vey/Ordo/issues/113)
+
+Register graph contracts in ARF and formalize safe dynamic recovery and
+correction routing.
+
 
 ## Backlog Reconciliation — 2026-07-18
 

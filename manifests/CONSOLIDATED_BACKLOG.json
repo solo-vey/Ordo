@@ -1,6 +1,6 @@
 {
   "schema_version": "ordo.consolidated_backlog.v1",
-  "updated_at": "2026-08-03",
+  "updated_at": "2026-08-05",
   "canonical_document": "backlog/CONSOLIDATED_BACKLOG.md",
   "items": [
     {
@@ -1561,6 +1561,87 @@
         "Validate canonical node, gate, terminal, fallback-route, and reference-rewrite behavior through focused tests."
       ],
       "completion": "Implemented in Tree Editor 0.2.0-alpha.2; GitHub release publication is tracked with the versioned utility artifact."
+    },
+    {
+      "id": "BL-ORDO-104",
+      "title": "Script-first Playbook Modification and Regression Preservation",
+      "status": "open",
+      "priority": "P1",
+      "type": "playbook_maintenance_lifecycle",
+      "goal": "Require reproducible patch scripts, immutable checkpoints, regression preservation, and self-contained release validation for every playbook modification.",
+      "issue": 105
+    },
+    {
+      "id": "BL-ORDO-105",
+      "title": "Compiled LLM Execution Layer",
+      "status": "open",
+      "priority": "P1",
+      "type": "compiled_runtime_execution",
+      "goal": "Compile canonical YAML into a verified execution plan while keeping YAML as the sole semantic source of truth.",
+      "issue": 106
+    },
+    {
+      "id": "BL-ORDO-106",
+      "title": "Canonical Source, Versioning and Playbook Package Lifecycle",
+      "status": "open",
+      "priority": "P1",
+      "type": "playbook_package_lifecycle",
+      "goal": "Make canonical identity, script-first changes, checkpoints, versioning, regression preservation, and unpacked-package validation mandatory.",
+      "issue": 107
+    },
+    {
+      "id": "BL-ORDO-107",
+      "title": "Cross-artifact Consistency and Validator Quality",
+      "status": "open",
+      "priority": "P1",
+      "type": "cross_artifact_validation",
+      "goal": "Detect drift between templates, bindings, state, validators, finalization writes, and rendered outputs without mutating valid business data.",
+      "issue": 108
+    },
+    {
+      "id": "BL-ORDO-108",
+      "title": "Runtime State, Execution Modes and Source-of-truth Separation",
+      "status": "open",
+      "priority": "P1",
+      "type": "runtime_state_contract",
+      "goal": "Separate business state from runtime context, enforce explicit execution modes, and block stale or noncanonical derived artifacts.",
+      "issue": 109
+    },
+    {
+      "id": "BL-ORDO-109",
+      "title": "Replay, Debug and Evidence Contract",
+      "status": "open",
+      "priority": "P1",
+      "type": "replay_evidence",
+      "goal": "Define machine-replayable run records and prove that debug/evidence export cannot mutate runtime state or accepted decisions.",
+      "issue": 110
+    },
+    {
+      "id": "BL-ORDO-110",
+      "title": "Compiler Dependency Closure and Runtime Semantic Plan",
+      "status": "open",
+      "priority": "P1",
+      "type": "compiler_dependency_analysis",
+      "goal": "Make derived runtime plans complete, recovery-safe, dependency-aware, and independently validated with no silent YAML fallback.",
+      "issue": 111
+    },
+    {
+      "id": "BL-ORDO-111",
+      "title": "Explicit Input and Clarification Contracts",
+      "status": "open",
+      "priority": "P1",
+      "type": "input_clarification_contract",
+      "goal": "Block missing or ambiguous analyst inputs from being silently invented or written into the wrong state concept.",
+      "issue": 112
+    },
+    {
+      "id": "BL-ORDO-112",
+      "title": "ARF Graph Registry and Dynamic Routing",
+      "status": "open",
+      "priority": "P1",
+      "type": "arf_graph_framework",
+      "goal": "Register graph contracts in ARF and formalize safe dynamic recovery and correction routing.",
+      "issue": 113
     }
   ],
   "maintenance_contours": [
