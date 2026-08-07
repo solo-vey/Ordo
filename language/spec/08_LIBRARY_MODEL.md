@@ -45,7 +45,7 @@ gate:
   id: G_NO_UNRESOLVED_LAYER_CONFLICT
   method: mechanical
   trust_class: deterministic
-  assert: NO_UNRESOLVED_LAYER_CONFLICT
+  condition: NO_UNRESOLVED_LAYER_CONFLICT
 ```
 
 If a lower layer conflicts with a higher layer and no explicit override exists, execution MUST be blocked.

@@ -4,7 +4,7 @@ Gate:
     - id
     - method
     - trust_class
-    - assert
+    - condition
   properties:
     id:
       type: string
@@ -15,7 +15,7 @@ Gate:
       enum: [mechanical, self_verification, self_consistency, human]
     trust_class:
       enum: [deterministic, model_judgment, repeated_model_judgment, human_decision]
-    assert:
+    condition:
       type: string
     source:
       type: string

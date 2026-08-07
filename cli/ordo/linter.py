@@ -62,6 +62,10 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
         trust_class = gate.get("trust_class")
         if trust_class not in ALLOWED_TRUST_CLASSES:
             _add(issues, "error", "TRUST_CLASS_REQUIRED", f"Gate trust_class must be one of {sorted(ALLOWED_TRUST_CLASSES)}.", f"{loc}.trust_class")
+        if not isinstance(gate.get("condition"), str) or not gate["condition"].strip():
+            _add(issues, "error", "GATE_CONDITION_REQUIRED", "Gate condition must be a non-empty canonical string.", f"{loc}.condition")
+        if "assert" in gate:
+            _add(issues, "error", "GATE_LEGACY_ASSERT_FIELD", "Gate field 'assert' is not supported; use canonical field 'condition'.", f"{loc}.assert")
         if method == "mechanical" and trust_class != "deterministic":
             _add(issues, "warning", "MECHANICAL_TRUST_MISMATCH", "mechanical gate should normally use trust_class: deterministic.", f"{loc}.trust_class")
         if method == "self_verification" and trust_class != "model_judgment":

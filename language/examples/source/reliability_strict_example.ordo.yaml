@@ -42,14 +42,14 @@ gates:
   - id: G_CONTRACT_CONFIRMED
     method: human
     trust_class: human_decision
-    assert: CONTRACT_CONFIRMED
+    condition: CONTRACT_CONFIRMED
     source: state.contract_confirmed
     on_fail: STOP
 
   - id: G_NO_FINAL_OUTPUT_BEFORE_GATE
     method: mechanical
     trust_class: deterministic
-    assert: ASSERTION_HOLDS
+    condition: ASSERTION_HOLDS
     source: assertion.A_NO_FINAL_OUTPUT_BEFORE_GATE
     on_fail: STOP
 
