@@ -37,7 +37,7 @@ gates:
   - id: G1
     method: mechanical
     trust_class: deterministic
-    assert: FIELD_PRESENT
+    condition: FIELD_PRESENT
     source: state.contract
 
 assertions:

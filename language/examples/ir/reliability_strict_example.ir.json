@@ -43,7 +43,7 @@
       "source_local_id": "G_CONTRACT_CONFIRMED",
       "method": "human",
       "trust_class": "human_decision",
-      "assert": "CONTRACT_CONFIRMED",
+      "condition": "CONTRACT_CONFIRMED",
       "source": "state.contract_confirmed"
     },
     {
@@ -52,7 +52,7 @@
       "source_local_id": "G_NO_FINAL_OUTPUT_BEFORE_GATE",
       "method": "mechanical",
       "trust_class": "deterministic",
-      "assert": "ASSERTION_HOLDS",
+      "condition": "ASSERTION_HOLDS",
       "source": "program.examples.strict_handoff.A_NO_FINAL_OUTPUT_BEFORE_GATE"
     },
     {

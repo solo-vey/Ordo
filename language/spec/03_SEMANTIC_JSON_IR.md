@@ -30,7 +30,7 @@ Semantic JSON IR — поточний основний формат compiled Ord
     "source_local_id": "G1",
     "method": "mechanical",
     "trust_class": "deterministic",
-    "assert": "FIELD_PRESENT",
+    "condition": "FIELD_PRESENT",
     "source": "contract"
   },
   {
