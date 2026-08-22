@@ -1,6 +1,9 @@
 name: ordo.vibe_arf_factory
 version: 0.1.2
 ordo_version: '0.12'
+language_version_constraint: '>=0.12.0,<0.14.0'
+framework_version_constraint: '>=0.2.0-rc.1,<0.3.0'
+version_state: ../../manifests/VERSION_STATE.json
 source: source/program.ordo.yaml
 compiled: compiled/program.ir.json
 tests: tests/test_cases.yaml
