@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_INTERACTIVE_ANALYST_WORKFLOW_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "conversation_model": "continuous_fact_stream",
+  "scope": "framework_level_generated_interactive_playbooks",
+  "principles": [
+    "Analyst conversation is a continuous evidence/fact stream, not positional form submission.",
+    "Model extraction may identify all relevant facts in a message; canonical merge, status transitions, conflict handling and completeness are deterministic contracts.",
+    "Canonical Data Layer owns resolution status and provenance; gap engine, question planner, materializer and UI are projections/consumers, not parallel truth stores."
+  ],
+  "field_resolution": {
+    "statuses": [
+      "KNOWN",
+      "UNASKED",
+      "UNKNOWN_CONFIRMED",
+      "INAPPLICABLE"
+    ],
+    "optional_extended_statuses": [
+      "DERIVED",
+      "SOURCE_CONFIRMED",
+      "CONFLICTED",
+      "DEFERRED_WITH_REASON"
+    ],
+    "value_does_not_imply_status": true,
+    "text_keyword_does_not_imply_status": true,
+    "unknown_confirmed_requires_explicit_provenance": true,
+    "inapplicable_requires_reason": true
+  },
+  "field_classes": [
+    "SUBSTANTIVE_REQUIRED",
+    "SUBSTANTIVE_DECISIONAL",
+    "DERIVABLE",
+    "OPTIONAL",
+    "INAPPLICABLE",
+    "PRESENTATIONAL"
+  ],
+  "incremental_intake": {
+    "accept_full_partial_incremental_reordered_input": true,
+    "capture_all_relevant_facts": true,
+    "active_question_does_not_limit_fact_extraction": true,
+    "recompute_after_each_meaningful_message": true,
+    "recompute_sequence": [
+      "normalize",
+      "source_evidence_audit",
+      "auto_resolve",
+      "conflict_detection",
+      "gap_normalization",
+      "interactive_completeness"
+    ],
+    "unrelated_or_unsafe_content_is_not_silently_canonicalized": true
+  },
+  "canonical_merge": {
+    "single_canonical_truth": true,
+    "dependent_surfaces_are_deterministic_projections": true,
+    "accepted_fact_updates_all_dependent_projections_before_next_question": true
+  },
+  "corrections": {
+    "silent_overwrite_forbidden": true,
+    "explicit_correction_may_supersede_with_provenance": true,
+    "ambiguous_contradiction_creates_conflict": true
+  },
+  "questioning": {
+    "derive_before_ask": true,
+    "ask_only_consequential_non_derivable_user_owned": true,
+    "reask_known_fact": false,
+    "reask_unknown_confirmed_without_new_evidence": false,
+    "group_only_tightly_related_questions": true,
+    "progressive_disclosure_default": true,
+    "exhaustive_authority_discovery_before_ask": true,
+    "same_group_simultaneously_known_consequential_decisions_are_batched": true,
+    "stable_decision_id_required": true,
+    "partial_answers_preserve_resolved_decision_ids": true,
+    "resolved_decision_reask_requires_new_conflicting_evidence": true
+  },
+  "materialization": {
+    "blocking_gaps_empty_is_not_sufficient": true,
+    "substantive_unasked_is_hard_block": true,
+    "allowed_substantive_terminal_statuses": [
+      "KNOWN",
+      "UNKNOWN_CONFIRMED",
+      "INAPPLICABLE"
+    ],
+    "materializer_must_not_infer_missing_status": true
+  },
+  "progress": {
+    "enter_before_long_operation": true,
+    "event_order": [
+      "ENTER",
+      "RESULT",
+      "NEXT"
+    ],
+    "show": [
+      "node_or_gate",
+      "purpose",
+      "high_level_action",
+      "counts",
+      "PASS_OR_BLOCK",
+      "next_route",
+      "short_reason"
+    ],
+    "hide": [
+      "chain_of_thought",
+      "scratch_reasoning",
+      "hidden_evaluator_targets"
+    ]
+  },
+  "interaction_robustness": {
+    "quality_dimension": "ANALYST_INTERACTION_ROBUSTNESS",
+    "score_effect": 0,
+    "status": "DIAGNOSTIC_ONLY",
+    "dimensions": [
+      "chunking_invariance",
+      "input_order_invariance",
+      "off_shape_assimilation",
+      "correction_handling",
+      "explicit_unknown_semantics",
+      "no_redundant_reasking",
+      "interactive_completeness",
+      "progress_visibility"
+    ],
+    "burden_metrics": [
+      "analyst_messages",
+      "questions_asked",
+      "redundant_questions",
+      "facts_repeated_by_analyst",
+      "facts_auto_derived",
+      "facts_captured_off_question",
+      "explicit_unknown_reasks",
+      "time_to_first_useful_progress",
+      "longest_silent_interval"
+    ]
+  },
+  "required_regression_families": [
+    "FULL_INPUT",
+    "INCREMENTAL_INPUT",
+    "OFF_SHAPE_ANSWER",
+    "EXPLICIT_UNKNOWN",
+    "UNASKED_SUBSTANTIVE",
+    "CORRECTION",
+    "REORDER",
+    "CHUNKING_INVARIANCE",
+    "INPUT_ORDER_INVARIANCE",
+    "EXHAUSTIVE_AUTHORITY_DISCOVERY",
+    "STABLE_DECISION_ID_NO_REASK"
+  ],
+  "adaptive_quality_profile": {
+    "policy": "source/adaptive-artifact-quality-policy.json",
+    "completeness_role_field": "completeness_role",
+    "interaction_field_class_remains_distinct": true,
+    "rule": "interaction class describes who/how to resolve; completeness role describes whether this case must resolve, derive, omit, defer, or mark inapplicable"
+  }
+}

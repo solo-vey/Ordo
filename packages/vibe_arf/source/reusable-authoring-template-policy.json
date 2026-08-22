@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "REUSABLE_AUTHORING_TEMPLATES",
+  "law_ref": "E43_REUSABLE_AUTHORING_TEMPLATES",
+  "kit_registry": "authoring_templates/reusable/TEMPLATE_KIT_REGISTRY.json",
+  "required_categories": [
+    "information_model",
+    "bindings",
+    "document",
+    "materialization",
+    "validator",
+    "editor_projection",
+    "semantic_execution_invariants",
+    "interactive_analyst_workflow",
+    "adaptive_artifact_quality"
+  ],
+  "requirements": [
+    "generated playbooks instantiate the reusable kit before domain specialization",
+    "known contract shapes are reused rather than regenerated from model memory",
+    "information_model is instantiated first and remains canonical",
+    "bindings/document/materialization/validator/editor_projection trace to the canonical information model",
+    "domain-specific structure may specialize templates but may not bypass required categories",
+    "semantic_execution_invariants are instantiated before interaction/process specialization so state merge, re-entry and recovery semantics are inherited",
+    "interactive analyst workflows inherit exhaustive same-group authority discovery and stable decision identity",
+    "recovery-capable generated playbooks inherit full fail-repair-pass regression requirements"
+  ],
+  "enforcement": {
+    "validator": "tools/validate_reusable_authoring_templates.py",
+    "fail_closed": true
+  }
+}

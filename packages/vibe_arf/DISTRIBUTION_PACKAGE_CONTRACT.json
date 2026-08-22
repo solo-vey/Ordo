@@ -1,0 +1,113 @@
+{
+  "schema_version": "3.0",
+  "contract_id": "VIBE_THREE_PROFILE_RELEASE_DISTRIBUTION",
+  "principle": "One canonical source identity produces deterministic sibling EDIT, CLI_RUN and MODEL_RUN projections with identical business semantics.",
+  "source_identity_files": [
+    "ordo.yml",
+    "ordo.lock.json",
+    "source/program.ordo.yaml"
+  ],
+  "release_rule": "all_three_profiles_required",
+  "candidate_rule": "requested_subset_or_all",
+  "profiles": {
+    "EDIT": {
+      "builder": "tools/build_production_playbook_package.py",
+      "purpose": "Full engineering/master distribution for continued authoring, validation and reproducible rebuilds.",
+      "selection": "full_declared_engineering_surface",
+      "start_files": [
+        "START_HERE.md",
+        "START_PROMPT.md"
+      ],
+      "asset_selection": "consumer_aware_transitive_dependency_closure",
+      "startup_projection": "profile_specific_clean",
+      "test_projection": "project_with_retained_contract_if_tests_are_shipped",
+      "validator_applicability": "profile_and_stage_aware"
+    },
+    "CLI_RUN": {
+      "builder": "tools/build_three_profile_playbook_distribution.py",
+      "closure_manifest": "CLI_RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+      "purpose": "Minimal strict execution profile with embedded CLI/runtime authority.",
+      "selection": "jit_runtime_reachability_closure",
+      "start_files": [
+        "START_HERE_CLI_RUN.md",
+        "START_PROMPT_CLI_RUN.md"
+      ],
+      "forbidden_prefixes": [
+        "authoring/",
+        "editor/",
+        "verification/",
+        "development_history/",
+        "change_records/",
+        "checkpoints/",
+        "evaluator/"
+      ],
+      "forbidden_name_tokens": [
+        "golden",
+        "expected_output",
+        "best_candidate",
+        "calibration_evidence"
+      ],
+      "clean_context": true,
+      "asset_selection": "consumer_aware_transitive_dependency_closure",
+      "context_efficiency_policy": "source/context-runtime-efficiency-policy.json",
+      "startup_projection": "profile_specific_clean",
+      "test_projection": "project_with_retained_contract_if_tests_are_shipped",
+      "validator_applicability": "profile_and_stage_aware"
+    },
+    "MODEL_RUN": {
+      "builder": "tools/build_three_profile_playbook_distribution.py",
+      "closure_manifest": "MODEL_RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+      "purpose": "Minimal Model Mode profile without CLI authority, compiled strict-runtime or authoring/editor surfaces.",
+      "selection": "jit_model_execution_reachability_closure",
+      "start_files": [
+        "START_HERE_MODEL_MODE.md",
+        "START_PROMPT_MODEL_MODE.md"
+      ],
+      "forbidden_prefixes": [
+        "cli_embedded/",
+        "compiled/",
+        "authoring/",
+        "editor/",
+        "verification/",
+        "development_history/",
+        "change_records/",
+        "checkpoints/",
+        "evaluator/",
+        "tests/"
+      ],
+      "forbidden_name_tokens": [
+        "golden",
+        "expected_output",
+        "best_candidate",
+        "calibration_evidence"
+      ],
+      "clean_context": true,
+      "fail_on_runtime_reference_prefixes": [
+        "authoring/",
+        "editor/",
+        "cli_embedded/",
+        "compiled/"
+      ],
+      "asset_selection": "consumer_aware_transitive_dependency_closure",
+      "context_efficiency_policy": "source/context-runtime-efficiency-policy.json",
+      "startup_projection": "profile_specific_clean",
+      "test_projection": "project_with_retained_contract_if_tests_are_shipped",
+      "validator_applicability": "profile_and_stage_aware"
+    }
+  },
+  "compatibility_aliases": {
+    "dev": "edit",
+    "debug": "edit",
+    "run": "cli_run",
+    "pair": "release"
+  },
+  "packaging_continuity_policy": "source/packaging-continuity-policy.json",
+  "validator_applicability_policy": "source/validator-applicability-policy.json",
+  "continuity_manifest": "PACKAGE_CONTINUITY_MANIFEST.json",
+  "release_parity_checks": [
+    "version_parity",
+    "canonical_source_identity_parity",
+    "semantic_contract_parity",
+    "continuity_manifest_parity"
+  ]
+}

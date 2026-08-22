@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Write Operation Contract",
+  "type": "object",
+  "required": [
+    "operation_id",
+    "write_semantics",
+    "approved_change_plan_id",
+    "reviewed_scope_id"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_change_plan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "write_semantics": {
+      "enum": [
+        "patch",
+        "merge",
+        "full_replace"
+      ]
+    },
+    "baseline_fingerprint_scope_id": {
+      "type": "string"
+    },
+    "preapply_capture_scope_id": {
+      "type": "string"
+    },
+    "fresh_current_state_evidence": {
+      "type": "string"
+    },
+    "full_target_materialization_evidence": {
+      "type": "string"
+    },
+    "pre_change_backup_evidence": {
+      "type": "string"
+    },
+    "destructive_effect_disclosure_evidence": {
+      "type": "string"
+    },
+    "human_approval_evidence": {
+      "type": "string"
+    },
+    "post_state_verification_evidence": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "write_semantics": {
+            "const": "full_replace"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "baseline_fingerprint_scope_id",
+          "preapply_capture_scope_id",
+          "fresh_current_state_evidence",
+          "full_target_materialization_evidence",
+          "pre_change_backup_evidence",
+          "destructive_effect_disclosure_evidence",
+          "human_approval_evidence",
+          "post_state_verification_evidence"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": true
+}

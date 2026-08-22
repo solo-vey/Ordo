@@ -1,0 +1,18 @@
+schema_version: '1.0'
+model_id: GENERATED_PLAYBOOK_INFORMATION_OBJECTS
+objects: []
+# Each object should declare:
+# - id: stable language-neutral identifier
+# - kind: scalar|structured|evidence|derived|decision|other
+# - group_id
+# - value_contract:
+#     type: string|number|boolean|object|array|enum|uri|date|other
+#     cardinality: one|many
+#     required: true|false
+#     value_states: [unset, value, unknown, not_applicable]
+# - lifecycle:
+#     validation_states: [draft, validated, approved, stale]
+#     invalidate_on_change: true
+# - origins: [human_input|source_material|model_derivation|deterministic_derivation|artifact]
+# - provenance_required: true|false
+# - consumers: []

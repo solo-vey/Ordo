@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_POST_RUN_IMPROVEMENT_LEADERSHIP_V1",
+  "status": "ACTIVE_ALPHA9_CANDIDATE_POLICY",
+  "principle": "SUCCESSFUL_RUN_IS_INPUT_TO_QUALITY_CLOSURE_NOT_THE_END",
+  "audit_dimensions": [
+    "runtime semantics",
+    "semantic integrity and source conflicts",
+    "analyst burden",
+    "deterministic eligibility",
+    "artifact quality and integrity",
+    "test/branch coverage",
+    "consumer compatibility",
+    "efficiency/time"
+  ],
+  "finding_classes": {
+    "AUTO_FIX": "technically owned reversible non-domain change; apply autonomously",
+    "RECOMMEND": "bounded trade-off; recommend preferred option",
+    "HDG_REQUIRED": "consequential business/domain/authority decision; ask only after deriving everything else"
+  },
+  "loop": [
+    "collect candidate + evidence + artifacts",
+    "audit and rank findings",
+    "apply safe AUTO_FIX items",
+    "run impacted FAST_EDIT checks",
+    "repeat audit",
+    "PLAYBOOK_VERIFY before handoff",
+    "surface only genuine human decisions/material deferrals"
+  ],
+  "stop_condition": [
+    "no blocking runtime/language/editor defects",
+    "no evidence-backed semantic contradiction",
+    "no safe AUTO_FIX left undone",
+    "coverage gaps tested or explicitly deferred",
+    "remaining human decisions have explicit owners"
+  ],
+  "anti_patterns": [
+    "STOP_AFTER_GREEN",
+    "USER_MUST_NOTICE_QUALITY_DEBT",
+    "PASS_WITH_EMPTY_SEMANTIC_EVIDENCE",
+    "AUTO_ANSWERS_HIDE_ANALYST_BURDEN",
+    "STATIC_PASS_TREATED_AS_RUNTIME_ACCEPTANCE"
+  ]
+}

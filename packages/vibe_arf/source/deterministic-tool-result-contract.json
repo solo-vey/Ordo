@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_DETERMINISTIC_TOOL_RESULT_CONTRACT_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "result_contract_id": "state_updates_v1",
+  "applies_to": [
+    "generated_playbook_deterministic_tools",
+    "generated_playbook_package_tools",
+    "generated_playbook_materialization_helpers"
+  ],
+  "envelope": {
+    "contract": "state_updates_v1",
+    "status": "PASS|PASS_WITH_NOTES|FAIL",
+    "report": "object",
+    "state_updates": "object"
+  },
+  "executor": {
+    "merge_source": "state_updates",
+    "merge_mode": "MERGE_BY_DIFF",
+    "report_is_state": false,
+    "fail_closed_on_invalid_envelope": true,
+    "ignore_undeclared_top_level_state_fields": true
+  },
+  "rules": [
+    "Tools return diagnostics/evidence in report and only canonical state mutations in state_updates.",
+    "Executor never guesses state fields from report, stdout, wrappers, or arbitrary top-level keys.",
+    "A tool with no state mutation returns state_updates as an empty object.",
+    "FAIL results do not mutate canonical state unless an explicit failure-state update is declared by the node contract."
+  ]
+}

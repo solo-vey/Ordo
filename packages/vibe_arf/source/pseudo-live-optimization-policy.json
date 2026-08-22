@@ -1,0 +1,63 @@
+{
+  "format": "vibe-pseudo-live-optimization-policy/v1",
+  "status": "mandatory_profile_policy",
+  "purpose": "permit full offline optimization with blind synthetic model-node responses while preserving strict separation from formal live acceptance",
+  "execution_modes": [
+    "PSEUDO_LIVE_OPTIMIZATION",
+    "LIVE_ACCEPTANCE"
+  ],
+  "response_origins": [
+    "LIVE_CALL",
+    "EXACT_LIVE_REPLAY",
+    "PSEUDO_LIVE_SYNTHETIC",
+    "FIXTURE_ONLY"
+  ],
+  "pseudo_live": {
+    "formal_acceptance_claim": false,
+    "allowed_response_origin": "PSEUDO_LIVE_SYNTHETIC",
+    "generator_isolation": "blind to target score, hidden golden artifact, evaluator-only rubric/output, future node outputs, competing candidates and candidate ranking",
+    "frozen_generator_policy_per_regime": true,
+    "input_hash_binding_required": true,
+    "response_regeneration_on_input_hash_change": true,
+    "post_score_response_rewrite_forbidden": true,
+    "artifact_lineage_required": true,
+    "score_namespace": [
+      "pseudo_result_score",
+      "process_score",
+      "pseudo_playbook_score",
+      "pseudo_score_eligible"
+    ]
+  },
+  "live_acceptance": {
+    "allowed_origins": [
+      "LIVE_CALL",
+      "EXACT_LIVE_REPLAY"
+    ],
+    "exact_live_replay_requires_effective_input_hash_match": true,
+    "artifact_lineage_required": true,
+    "score_namespace": [
+      "formal_result_score",
+      "formal_process_score",
+      "formal_playbook_score",
+      "formal_score_eligible"
+    ]
+  },
+  "model_call_requirement": "Every model response required by the executed path must have provenance appropriate to the active execution mode. A deterministic executed path with zero model nodes does not require a model call.",
+  "offline_loop": "deterministic checks -> blind pseudo-live responses -> graph execution/materialization -> lineage validation -> pseudo score -> diagnose/repair -> repeat until convergence/budget -> freeze best candidate -> live acceptance",
+  "status_vocabulary": [
+    "OFFLINE_OPTIMIZATION_ACTIVE",
+    "OFFLINE_CONVERGED_PENDING_LIVE_ACCEPTANCE",
+    "LIVE_ACCEPTANCE_RUNNING",
+    "LIVE_ACCEPTANCE_FAILED",
+    "LIVE_ACCEPTANCE_PASSED"
+  ],
+  "anti_cheat": [
+    "generator/evaluator separation",
+    "frozen simulator policy within evaluation regime",
+    "no candidate-specific answer shaping after score observation",
+    "no hidden golden/reference leakage to response simulator",
+    "exact effective-input hash binding",
+    "candidate-produced artifact only",
+    "pseudo score never copied into formal score fields"
+  ]
+}

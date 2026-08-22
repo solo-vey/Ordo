@@ -1,0 +1,749 @@
+test_cases:
+- id: TC_N_VIBE_INTAKE
+  fixture:
+    state:
+      current_node: N_VIBE_INTAKE
+  expected:
+    node: N_VIBE_INTAKE
+- id: TC_N_U_SOURCE_ASSIMILATION
+  fixture:
+    state:
+      current_node: N_U_SOURCE_ASSIMILATION
+  expected:
+    node: N_U_SOURCE_ASSIMILATION
+- id: TC_N_U_EPISTEMIC_CLASSIFICATION
+  fixture:
+    state:
+      current_node: N_U_EPISTEMIC_CLASSIFICATION
+  expected:
+    node: N_U_EPISTEMIC_CLASSIFICATION
+- id: TC_N_U_DOMAIN_ACTOR_MODEL
+  fixture:
+    state:
+      current_node: N_U_DOMAIN_ACTOR_MODEL
+  expected:
+    node: N_U_DOMAIN_ACTOR_MODEL
+- id: TC_N_U_ARTIFACT_SURFACE
+  fixture:
+    state:
+      current_node: N_U_ARTIFACT_SURFACE
+  expected:
+    node: N_U_ARTIFACT_SURFACE
+- id: TC_N_U_RULE_AUTHORITY_MODEL
+  fixture:
+    state:
+      current_node: N_U_RULE_AUTHORITY_MODEL
+  expected:
+    node: N_U_RULE_AUTHORITY_MODEL
+- id: TC_N_U_LEGACY_MIGRATION
+  fixture:
+    state:
+      current_node: N_U_LEGACY_MIGRATION
+  expected:
+    node: N_U_LEGACY_MIGRATION
+- id: TC_N_U_PROCESS_SEMANTIC_HYPOTHESIS
+  fixture:
+    state:
+      current_node: N_U_PROCESS_SEMANTIC_HYPOTHESIS
+  expected:
+    node: N_U_PROCESS_SEMANTIC_HYPOTHESIS
+- id: TC_N_U_INTEGRITY_CHECK
+  fixture:
+    state:
+      current_node: N_U_INTEGRITY_CHECK
+  expected:
+    node: N_U_INTEGRITY_CHECK
+- id: TC_N_P_PARAMETER_DISCOVERY
+  fixture:
+    state:
+      current_node: N_P_PARAMETER_DISCOVERY
+  expected:
+    node: N_P_PARAMETER_DISCOVERY
+- id: TC_N_P_PARAMETER_DERIVATION
+  fixture:
+    state:
+      current_node: N_P_PARAMETER_DERIVATION
+  expected:
+    node: N_P_PARAMETER_DERIVATION
+- id: TC_N_P_OWNERSHIP_BLOCKING_CLASSIFICATION
+  fixture:
+    state:
+      current_node: N_P_OWNERSHIP_BLOCKING_CLASSIFICATION
+  expected:
+    node: N_P_OWNERSHIP_BLOCKING_CLASSIFICATION
+- id: TC_N_P_PRODUCTION_PATH_CLOSURE
+  fixture:
+    state:
+      current_node: N_P_PRODUCTION_PATH_CLOSURE
+  expected:
+    node: N_P_PRODUCTION_PATH_CLOSURE
+- id: TC_N_P_ANSWER_PROPAGATION
+  fixture:
+    state:
+      current_node: N_P_ANSWER_PROPAGATION
+  expected:
+    node: N_P_ANSWER_PROPAGATION
+    gates:
+    - id: G_PARAMETER_FLOW_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_P_QUESTION_QUEUE
+  fixture:
+    state:
+      current_node: N_P_QUESTION_QUEUE
+  expected:
+    node: N_P_QUESTION_QUEUE
+- id: TC_N_HDG_DECISION
+  fixture:
+    state:
+      current_node: N_HDG_DECISION
+  expected:
+    node: N_HDG_DECISION
+- id: TC_N_HDG_QUESTION
+  fixture:
+    state:
+      current_node: N_HDG_QUESTION
+  expected:
+    node: N_HDG_QUESTION
+- id: TC_N_D_ARTIFACT_BACKWARDS
+  fixture:
+    state:
+      current_node: N_D_ARTIFACT_BACKWARDS
+  expected:
+    node: N_D_ARTIFACT_BACKWARDS
+- id: TC_N_D_PARAMETER_DEPENDENCIES
+  fixture:
+    state:
+      current_node: N_D_PARAMETER_DEPENDENCIES
+  expected:
+    node: N_D_PARAMETER_DEPENDENCIES
+- id: TC_N_D_MINIMUM_INPUT
+  fixture:
+    state:
+      current_node: N_D_MINIMUM_INPUT
+  expected:
+    node: N_D_MINIMUM_INPUT
+- id: TC_N_D_PROCESS_DECOMPOSITION
+  fixture:
+    state:
+      current_node: N_D_PROCESS_DECOMPOSITION
+  expected:
+    node: N_D_PROCESS_DECOMPOSITION
+- id: TC_N_D_DECISION_GATE_DESIGN
+  fixture:
+    state:
+      current_node: N_D_DECISION_GATE_DESIGN
+  expected:
+    node: N_D_DECISION_GATE_DESIGN
+- id: TC_N_D_REUSE_PATTERN_SELECTION
+  fixture:
+    state:
+      current_node: N_D_REUSE_PATTERN_SELECTION
+  expected:
+    node: N_D_REUSE_PATTERN_SELECTION
+- id: TC_N_D_ALTERNATIVES_OPTIMIZATION
+  fixture:
+    state:
+      current_node: N_D_ALTERNATIVES_OPTIMIZATION
+  expected:
+    node: N_D_ALTERNATIVES_OPTIMIZATION
+- id: TC_N_D_CONSISTENCY
+  fixture:
+    state:
+      current_node: N_D_CONSISTENCY
+  expected:
+    node: N_D_CONSISTENCY
+- id: TC_N_DESIGN_READINESS
+  fixture:
+    state:
+      current_node: N_DESIGN_READINESS
+  expected:
+    node: N_DESIGN_READINESS
+- id: TC_N_A_IDENTITY_TEMPLATE
+  fixture:
+    state:
+      current_node: N_A_IDENTITY_TEMPLATE
+  expected:
+    node: N_A_IDENTITY_TEMPLATE
+- id: TC_N_A_FIELD_INVENTORY
+  fixture:
+    state:
+      current_node: N_A_FIELD_INVENTORY
+  expected:
+    node: N_A_FIELD_INVENTORY
+- id: TC_N_A_FIELD_CONTRACT_REQUIREDNESS
+  fixture:
+    state:
+      current_node: N_A_FIELD_CONTRACT_REQUIREDNESS
+  expected:
+    node: N_A_FIELD_CONTRACT_REQUIREDNESS
+- id: TC_N_A_PARAMETER_PRODUCER_BINDING
+  fixture:
+    state:
+      current_node: N_A_PARAMETER_PRODUCER_BINDING
+  expected:
+    node: N_A_PARAMETER_PRODUCER_BINDING
+- id: TC_N_A_VALIDATION_GATE_BINDING
+  fixture:
+    state:
+      current_node: N_A_VALIDATION_GATE_BINDING
+  expected:
+    node: N_A_VALIDATION_GATE_BINDING
+- id: TC_N_A_MATERIALIZATION_READINESS
+  fixture:
+    state:
+      current_node: N_A_MATERIALIZATION_READINESS
+  expected:
+    node: N_A_MATERIALIZATION_READINESS
+- id: TC_N_A_POST_RENDER_REGISTRATION
+  fixture:
+    state:
+      current_node: N_A_POST_RENDER_REGISTRATION
+  expected:
+    node: N_A_POST_RENDER_REGISTRATION
+- id: TC_N_A_VERSION_COMPATIBILITY
+  fixture:
+    state:
+      current_node: N_A_VERSION_COMPATIBILITY
+  expected:
+    node: N_A_VERSION_COMPATIBILITY
+- id: TC_N_K_KNOWLEDGE_CONTEXT
+  fixture:
+    state:
+      current_node: N_K_KNOWLEDGE_CONTEXT
+  expected:
+    node: N_K_KNOWLEDGE_CONTEXT
+- id: TC_N_K_TRACEABILITY_SYNC
+  fixture:
+    state:
+      current_node: N_K_TRACEABILITY_SYNC
+  expected:
+    node: N_K_TRACEABILITY_SYNC
+- id: TC_N_B_BUILD_READINESS
+  fixture:
+    state:
+      current_node: N_B_BUILD_READINESS
+  expected:
+    node: N_B_BUILD_READINESS
+- id: TC_N_B_CONTRACT_MAPPING
+  fixture:
+    state:
+      current_node: N_B_CONTRACT_MAPPING
+  expected:
+    node: N_B_CONTRACT_MAPPING
+- id: TC_N_B_STATE_ARTIFACT_SCHEMA
+  fixture:
+    state:
+      current_node: N_B_STATE_ARTIFACT_SCHEMA
+  expected:
+    node: N_B_STATE_ARTIFACT_SCHEMA
+- id: TC_N_B_NODE_ACTION_SYNTHESIS
+  fixture:
+    state:
+      current_node: N_B_NODE_ACTION_SYNTHESIS
+  expected:
+    node: N_B_NODE_ACTION_SYNTHESIS
+- id: TC_N_B_GATE_AUTHORITY_SYNTHESIS
+  fixture:
+    state:
+      current_node: N_B_GATE_AUTHORITY_SYNTHESIS
+  expected:
+    node: N_B_GATE_AUTHORITY_SYNTHESIS
+- id: TC_N_B_GRAPH_RECOVERY_WIRING
+  fixture:
+    state:
+      current_node: N_B_GRAPH_RECOVERY_WIRING
+  expected:
+    node: N_B_GRAPH_RECOVERY_WIRING
+- id: TC_N_B_REUSE_PROVENANCE_ASSEMBLY
+  fixture:
+    state:
+      current_node: N_B_REUSE_PROVENANCE_ASSEMBLY
+  expected:
+    node: N_B_REUSE_PROVENANCE_ASSEMBLY
+- id: TC_N_B_SOURCE_MATERIALIZE
+  fixture:
+    state:
+      current_node: N_B_SOURCE_MATERIALIZE
+  expected:
+    node: N_B_SOURCE_MATERIALIZE
+- id: TC_N_B_ORDO_LANGUAGE_GROUNDING_CHECK
+  fixture:
+    state:
+      current_node: N_B_ORDO_LANGUAGE_GROUNDING_CHECK
+  expected:
+    node: N_B_ORDO_LANGUAGE_GROUNDING_CHECK
+    gates:
+    - id: G_LANGUAGE_GROUNDING_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_R_REVIEW_BASELINE
+  fixture:
+    state:
+      current_node: N_R_REVIEW_BASELINE
+  expected:
+    node: N_R_REVIEW_BASELINE
+- id: TC_N_R_LAWS_ANTIPATTERNS
+  fixture:
+    state:
+      current_node: N_R_LAWS_ANTIPATTERNS
+  expected:
+    node: N_R_LAWS_ANTIPATTERNS
+- id: TC_N_R_SCENARIO_DESIGN
+  fixture:
+    state:
+      current_node: N_R_SCENARIO_DESIGN
+  expected:
+    node: N_R_SCENARIO_DESIGN
+- id: TC_N_R_PATHWALK_BEHAVIOR
+  fixture:
+    state:
+      current_node: N_R_PATHWALK_BEHAVIOR
+  expected:
+    node: N_R_PATHWALK_BEHAVIOR
+- id: TC_N_R_ARTIFACT_PROVENANCE_ORACLES
+  fixture:
+    state:
+      current_node: N_R_ARTIFACT_PROVENANCE_ORACLES
+  expected:
+    node: N_R_ARTIFACT_PROVENANCE_ORACLES
+- id: TC_N_R_ADVERSARIAL_NEGATIVE
+  fixture:
+    state:
+      current_node: N_R_ADVERSARIAL_NEGATIVE
+  expected:
+    node: N_R_ADVERSARIAL_NEGATIVE
+- id: TC_N_R_FINDINGS_ROOT_CAUSE
+  fixture:
+    state:
+      current_node: N_R_FINDINGS_ROOT_CAUSE
+  expected:
+    node: N_R_FINDINGS_ROOT_CAUSE
+- id: TC_N_R_VERIFICATION_READINESS
+  fixture:
+    state:
+      current_node: N_R_VERIFICATION_READINESS
+  expected:
+    node: N_R_VERIFICATION_READINESS
+    gates:
+    - id: G_VERIFICATION_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_REVIEW_ROUTING
+  fixture:
+    state:
+      current_node: N_REVIEW_ROUTING
+  expected:
+    node: N_REVIEW_ROUTING
+- id: TC_N_RP_ROOT_CAUSE
+  fixture:
+    state:
+      current_node: N_RP_ROOT_CAUSE
+  expected:
+    node: N_RP_ROOT_CAUSE
+- id: TC_N_RP_IMPACT_PLAN
+  fixture:
+    state:
+      current_node: N_RP_IMPACT_PLAN
+  expected:
+    node: N_RP_IMPACT_PLAN
+- id: TC_N_RP_APPLY_REPAIR
+  fixture:
+    state:
+      current_node: N_RP_APPLY_REPAIR
+  expected:
+    node: N_RP_APPLY_REPAIR
+- id: TC_N_RP_REGRESSION_MEMORY
+  fixture:
+    state:
+      current_node: N_RP_REGRESSION_MEMORY
+  expected:
+    node: N_RP_REGRESSION_MEMORY
+- id: TC_N_PRESENT_BUSINESS_VIEW
+  fixture:
+    state:
+      current_node: N_PRESENT_BUSINESS_VIEW
+  expected:
+    node: N_PRESENT_BUSINESS_VIEW
+- id: TC_N_FEEDBACK_CLASSIFY
+  fixture:
+    state:
+      current_node: N_FEEDBACK_CLASSIFY
+  expected:
+    node: N_FEEDBACK_CLASSIFY
+- id: TC_N_C_CHANGE_NORMALIZE
+  fixture:
+    state:
+      current_node: N_C_CHANGE_NORMALIZE
+  expected:
+    node: N_C_CHANGE_NORMALIZE
+- id: TC_N_C_ROOT_CAUSE
+  fixture:
+    state:
+      current_node: N_C_ROOT_CAUSE
+  expected:
+    node: N_C_ROOT_CAUSE
+- id: TC_N_C_DEPENDENCY_CLOSURE
+  fixture:
+    state:
+      current_node: N_C_DEPENDENCY_CLOSURE
+  expected:
+    node: N_C_DEPENDENCY_CLOSURE
+- id: TC_N_C_INVALIDATION
+  fixture:
+    state:
+      current_node: N_C_INVALIDATION
+  expected:
+    node: N_C_INVALIDATION
+- id: TC_N_C_PRESERVE_VALID
+  fixture:
+    state:
+      current_node: N_C_PRESERVE_VALID
+  expected:
+    node: N_C_PRESERVE_VALID
+- id: TC_N_C_ROUTE_PLAN
+  fixture:
+    state:
+      current_node: N_C_ROUTE_PLAN
+  expected:
+    node: N_C_ROUTE_PLAN
+- id: TC_N_ACCEPTANCE_READINESS
+  fixture:
+    state:
+      current_node: N_ACCEPTANCE_READINESS
+  expected:
+    node: N_ACCEPTANCE_READINESS
+- id: TC_PI_PACKAGE_READINESS
+  fixture:
+    state:
+      current_node: N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+  expected:
+    node: N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+    gates:
+    - id: G_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_GATE
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_PI_PACKAGE_DEPENDENCY_CLOSURE
+  fixture:
+    state:
+      current_node: N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+  expected:
+    node: N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+- id: TC_PI_PACKAGE_ASSEMBLE
+  fixture:
+    state:
+      current_node: N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+  expected:
+    node: N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+- id: TC_PI_PACKAGE_VALIDATE
+  fixture:
+    state:
+      current_node: N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+  expected:
+    node: N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+- id: TC_PI_PACKAGE_EXACT_EXTRACT
+  fixture:
+    state:
+      current_node: N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+  expected:
+    node: N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+- id: TC_PI_PACKAGE_RECORD_EVIDENCE
+  fixture:
+    state:
+      current_node: N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE
+  expected:
+    node: N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE
+    gates:
+    - id: G_PACKAGE_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_PK_REVISION_COMMIT
+  fixture:
+    state:
+      current_node: N_PK_REVISION_COMMIT
+  expected:
+    node: N_PK_REVISION_COMMIT
+- id: TC_N_PK_LKV_RECOVERY_SEAL
+  fixture:
+    state:
+      current_node: N_PK_LKV_RECOVERY_SEAL
+  expected:
+    node: N_PK_LKV_RECOVERY_SEAL
+- id: TC_N_PK_HANDOFF_PREPARE
+  fixture:
+    state:
+      current_node: N_PK_HANDOFF_PREPARE
+  expected:
+    node: N_PK_HANDOFF_PREPARE
+- id: TC_N_PK_DELIVERY_VALIDATE
+  fixture:
+    state:
+      current_node: N_PK_DELIVERY_VALIDATE
+  expected:
+    node: N_PK_DELIVERY_VALIDATE
+- id: TC_N_PK_DELIVERY_EVIDENCE
+  fixture:
+    state:
+      acceptance_status: accepted
+      generated_package_status: VALID
+      verification_profile_status: PASS
+      resume_integrity_status: PASS
+      session_continuity_status: READY
+      delivery_status: DELIVERABLE
+      human_format_validation_status: PASS
+      artifact_surface_status: READY
+      parameter_closure_plan_status: READY
+      derivation_ladder_status: PASS
+      answer_propagation_status: PASS
+      authoring_burden_status: PASS
+      chat_first_bootstrap_status: PASS
+      autonomous_until_blocker_status: PASS
+      artifact_surface_bootstrap_status: READY
+      business_language_surface_status: PASS
+      progress_surface_status: PASS
+      first_question_quality_status: PASS
+      e2e_authoring_trial_status: PASS
+  expected:
+    node: N_PK_DELIVERY_EVIDENCE
+    gates:
+    - id: G_DELIVERY_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+    - id: G_FINAL_DIALOGUE_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+    - id: G_USER_ACCEPTANCE_CONFIRMED
+      status: pass
+      method: human
+      trust_class: human_decision
+    assertions:
+    - id: A_NO_DIRECT_TECHNICAL_QUESTION
+      projection: EXPECT.NOT
+    - id: A_NO_SEMANTIC_GAP_HIDDEN_IN_YAML
+      projection: EXPECT.NOT
+    - id: A_REPAIR_REQUIRES_REGRESSION
+      projection: EXPECT.MUST
+    - id: A_CHANGE_REVERIFIES_IMPACT
+      projection: EXPECT.MUST
+    - id: A_LAWS_PROPAGATE_VERBATIM
+      projection: EXPECT.MUST
+    - id: A_RESUME_DOES_NOT_REASK_VALID_ANSWER
+      projection: EXPECT.MUST
+    - id: A_DELIVERY_RETRY_PRESERVES_SEMANTICS
+      projection: EXPECT.MUST
+    - id: A_LEGACY_STRUCTURE_NOT_TARGET_AUTHORITY
+      projection: EXPECT.NOT
+    - id: A_HUMAN_VIEW_NO_ENGINEERING_LEAK
+      projection: EXPECT.NOT
+    - id: A_REQUIRED_FIELDS_HAVE_PRODUCTION_PATH
+      projection: EXPECT.MUST
+    - id: A_DERIVATION_LADDER_BEFORE_USER_QUESTION
+      projection: EXPECT.MUST
+    - id: A_NO_TECHNICAL_AUTHORING_QUESTION_LEAK
+      projection: EXPECT.NOT
+    - id: A_DRAFT_BEFORE_NON_AUTHORITY_CLARIFICATION
+      projection: EXPECT.MUST
+    - id: A_USER_ANSWER_PROPAGATES_DEPENDENCIES
+      projection: EXPECT.MUST
+    - id: A_CHAT_START_NOT_RUNTIME_JARGON_DEFAULT
+      projection: EXPECT.NOT
+    - id: A_NO_INTERMEDIATE_APPROVAL_CHECKPOINT
+      projection: EXPECT.NOT
+    - id: A_ARTIFACT_SURFACE_PRECEDES_BROAD_QUESTIONING
+      projection: EXPECT.MUST
+    - id: A_PROGRESS_SURFACE_BUSINESS_LEVEL
+      projection: EXPECT.MUST
+    - id: A_FIRST_QUESTION_HDG_CONSEQUENCE_BACKED
+      projection: EXPECT.MUST
+    output:
+      final_package_created: true
+- id: TC_N_A_BUSINESS_VIEW_TEMPLATE_BIND
+  fixture:
+    state:
+      current_node: N_A_BUSINESS_VIEW_TEMPLATE_BIND
+  expected:
+    node: N_A_BUSINESS_VIEW_TEMPLATE_BIND
+- id: TC_N_A_PACKAGE_ASSEMBLY_CONTRACT_BIND
+  fixture:
+    state:
+      current_node: N_A_PACKAGE_ASSEMBLY_CONTRACT_BIND
+  expected:
+    node: N_A_PACKAGE_ASSEMBLY_CONTRACT_BIND
+- id: TC_PI_BUSINESS_VIEW_READINESS
+  fixture:
+    state:
+      current_node: N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK
+  expected:
+    node: N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK
+    gates:
+    - id: G_PI_BUSINESS_VIEW_DOCUMENT_READINESS_GATE
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_PI_BUSINESS_VIEW_MATERIALIZE
+  fixture:
+    state:
+      current_node: N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE
+  expected:
+    node: N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE
+- id: TC_PI_BUSINESS_VIEW_VALIDATE
+  fixture:
+    state:
+      current_node: N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE
+  expected:
+    node: N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE
+    gates:
+    - id: G_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_GATE
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_PI_BUSINESS_VIEW_REGISTER
+  fixture:
+    state:
+      current_node: N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT
+  expected:
+    node: N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT
+- id: TC_N_OUT_GENERATED_PACKAGE_HANDOFF
+  fixture:
+    state:
+      current_node: N_OUT_GENERATED_PACKAGE_HANDOFF
+  expected:
+    node: N_OUT_GENERATED_PACKAGE_HANDOFF
+- id: TC_N_VERIFY_SOURCE
+  fixture:
+    state:
+      current_node: N_VERIFY_SOURCE
+  expected:
+    node: N_VERIFY_SOURCE
+    gates:
+    - id: G_SOURCE_VERIFICATION_PASS
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_VERIFY_STRUCTURE
+  fixture:
+    state:
+      current_node: N_VERIFY_STRUCTURE
+  expected:
+    node: N_VERIFY_STRUCTURE
+    gates:
+    - id: G_STRUCTURE_VERIFICATION_PASS
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_VERIFY_ARTIFACTS
+  fixture:
+    state:
+      current_node: N_VERIFY_ARTIFACTS
+  expected:
+    node: N_VERIFY_ARTIFACTS
+    gates:
+    - id: G_ARTIFACT_VERIFICATION_PASS
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_VERIFY_REGRESSION
+  fixture:
+    state:
+      current_node: N_VERIFY_REGRESSION
+  expected:
+    node: N_VERIFY_REGRESSION
+    gates:
+    - id: G_REGRESSION_VERIFICATION_PASS
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_VERIFY_RELEASE
+  fixture:
+    state:
+      current_node: N_VERIFY_RELEASE
+  expected:
+    node: N_VERIFY_RELEASE
+    gates:
+    - id: G_RELEASE_VERIFICATION_PASS
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_B_SOURCE_MATERIALIZE
+  fixture:
+    state:
+      current_node: N_B_SOURCE_MATERIALIZE
+  expected:
+    node: N_B_SOURCE_MATERIALIZE
+- id: TC_N_R_VERIFICATION_READINESS
+  fixture:
+    state:
+      current_node: N_R_VERIFICATION_READINESS
+  expected:
+    node: N_R_VERIFICATION_READINESS
+- id: TC_N_R_AUTHORING_BURDEN
+  fixture:
+    state:
+      current_node: N_R_AUTHORING_BURDEN
+  expected:
+    node: N_R_AUTHORING_BURDEN
+- id: TC_N_R_ANALYST_EXPERIENCE
+  fixture:
+    state:
+      current_node: N_R_ANALYST_EXPERIENCE
+  expected:
+    node: N_R_ANALYST_EXPERIENCE
+    gates:
+    - id: G_REVIEW_EXPERIENCE_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_PK_HUMAN_FORMAT_VALIDATE
+  fixture:
+    state:
+      current_node: N_PK_HUMAN_FORMAT_VALIDATE
+  expected:
+    node: N_PK_HUMAN_FORMAT_VALIDATE
+- id: TC_N_PK_CONTINUITY_EVIDENCE
+  fixture:
+    state:
+      current_node: N_PK_CONTINUITY_EVIDENCE
+  expected:
+    node: N_PK_CONTINUITY_EVIDENCE
+- id: TC_N_PK_FINAL_EXPERIENCE_EVIDENCE
+  fixture:
+    state:
+      current_node: N_PK_FINAL_EXPERIENCE_EVIDENCE
+  expected:
+    node: N_PK_FINAL_EXPERIENCE_EVIDENCE
+- id: TC_N_OUT_GENERATED_PACKAGE_MATERIALIZE
+  fixture:
+    state:
+      current_node: N_OUT_GENERATED_PACKAGE_MATERIALIZE
+  expected:
+    node: N_OUT_GENERATED_PACKAGE_MATERIALIZE
+    gates:
+    - id: G_GENERATED_PACKAGE_OUTPUT_VALID
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_U_CHAT_FIRST_BOOTSTRAP_CHECK
+  fixture:
+    state:
+      current_node: N_U_CHAT_FIRST_BOOTSTRAP_CHECK
+  expected:
+    node: N_U_CHAT_FIRST_BOOTSTRAP_CHECK
+    gates:
+    - id: G_UNDERSTANDING_READY
+      status: pass
+      method: mechanical
+      trust_class: deterministic
+- id: TC_N_BUSINESS_VIEW_PRESENTATION_EVIDENCE
+  fixture:
+    state:
+      current_node: N_BUSINESS_VIEW_PRESENTATION_EVIDENCE
+  expected:
+    node: N_BUSINESS_VIEW_PRESENTATION_EVIDENCE
+cases: []

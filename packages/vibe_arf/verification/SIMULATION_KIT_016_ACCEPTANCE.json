@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.1",
+  "status": "PASS",
+  "evidence_kind": "inherited_byte_identical_015_unit_suite_plus_actual_016_delta_and_runtime_smokes",
+  "dependency_id": "ORDO_PLAYBOOK_SIMULATION_KIT",
+  "version": "0.1.6",
+  "runtime_baseline": "Ordo Tree Editor 0.2.0-alpha.20.0.166-dev",
+  "zip_path": "dependencies/ORDO_PLAYBOOK_SIMULATION_KIT_0.1.6.zip",
+  "zip_sha256": "5ad957acd5e5c5807556e5a85a01d3248da2996f8c20bbcebd719956bd36efe3",
+  "self_check": {
+    "status": "PASS",
+    "command": "python self_check.py",
+    "stdout": "SELF_CHECK PASS"
+  },
+  "unit_tests": {
+    "status": "PASS",
+    "passed": 13,
+    "failed": 0,
+    "evidence": "0.1.5 accepted 12/12 suite retained byte-identically in 0.1.6 plus actual 0.1.6 required_state_writes delta test 1/1 PASS",
+    "inherited_acceptance": "verification/SIMULATION_KIT_015_ACCEPTANCE.json",
+    "inherited_passed": 12,
+    "delta_passed": 1,
+    "delta_command": "python -m pytest -q tests/test_required_state_writes_016.py",
+    "delta_result": "1 passed in 0.04s",
+    "byte_identical_test_files": [
+      "tests/test_simulation_kit.py",
+      "tests/test_gate_state_contract_robustness.py",
+      "tests/test_state_survivability_strict.py"
+    ]
+  },
+  "runtime_smoke": {
+    "basic_human_model": {
+      "status": "PASS",
+      "steps": 4,
+      "final_node": "END_DONE",
+      "errors": 0,
+      "command": "ordo_simulate.py run examples/basic_human_model ... --gate-contract-mode strict"
+    },
+    "package_tool_route": {
+      "status": "PASS",
+      "steps": 1,
+      "final_node": "END_DONE",
+      "errors": 0,
+      "command": "ordo_simulate.py run examples/package_tool_route ... --gate-contract-mode strict"
+    },
+    "vibe_alpha27_inspect": {
+      "status": "PASS",
+      "analyst_fixture_points": 19,
+      "model_fixture_points": 146,
+      "semantic_recovery_fixture_points": 0,
+      "playbook": "VIBE_ARF_0.1.0-alpha.45_SIM_RELEASE_V8.zip"
+    },
+    "vibe_terminal_run": {
+      "status": "PASS",
+      "steps": 199,
+      "final_node": "END_PLAYBOOK_PACKAGE_ACCEPTED",
+      "errors": 0,
+      "source_summary": "/mnt/data/sim016_run/summary.md"
+    }
+  },
+  "capabilities": {
+    "deterministic_artifact_archive_validation": true,
+    "mechanical_gate_no_llm_fallback": true,
+    "required_state_writes": true,
+    "profile_contract_gap_evidence": "profile_contract_gaps.json"
+  },
+  "scope": "offline_runtime_adapter_conformance_not_live_provider_acceptance"
+}

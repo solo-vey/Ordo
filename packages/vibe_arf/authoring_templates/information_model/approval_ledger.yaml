@@ -1,0 +1,7 @@
+schema_version: '1.0'
+ledger_mode: append_only_revisioned
+entries: []
+rules:
+  preserve_prior_approvals: true
+  approved_and_rejected_disjoint: true
+  mutation_invalidates_dependent_evidence: true

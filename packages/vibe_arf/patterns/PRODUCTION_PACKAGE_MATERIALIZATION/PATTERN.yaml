@@ -1,0 +1,40 @@
+schema_version: '1.0'
+pattern:
+  id: PRODUCTION_PACKAGE_MATERIALIZATION
+  version: '1.1'
+  title: Production Package Materialization
+  kind: reusable_data_execution_pattern
+  selection_phase: data_layer_authoring
+  tree_projection: derived_only
+  legacy_origin: ORDO_ARF_PLAYBOOK_KIT_0.4.10:PACKAGE_HANDOFF_LIFECYCLE
+  data_layer_first: true
+  scoring:
+    qualified_reuse_reward_points: 50
+    reward_unit: distinct_preexisting_semantic_responsibility
+    requires_mechanical_verification: true
+applicability:
+  artifact_kinds:
+  - archive
+  capability_tags:
+  - package_materialization
+  - handoff_package
+  fit_policy:
+    exact: auto_instantiate
+    partial: semantic_fit_then_instantiate_or_reject
+    none: ad_hoc_allowed_with_justification
+  requirement_origin_policy: must_preexist_pattern_instantiation_for_reward
+facets:
+  data_layer: DATA_LAYER.template.yaml
+  execution: EXECUTION.template.yaml
+extension_policy:
+  allowed:
+  - domain_bindings
+  - artifact_identity
+  - template_identity
+  - validator_identity
+  - bounded_repair_policy
+  forbidden:
+  - remove_required_role
+  - bypass_validation_gate
+  - change_authority_semantics
+  - detach_execution_from_data_layer_instance

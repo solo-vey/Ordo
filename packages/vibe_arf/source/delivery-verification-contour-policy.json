@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_DELIVERY_VERIFICATION_CONTOUR_V1",
+  "revision": "0.1.0-alpha.26",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "principle": "VIBE_LEADS_VERIFICATION_EXECUTION_AND_IMPROVEMENT",
+  "required_contour": [
+    {
+      "stage": "PLAYBOOK_VERIFICATION",
+      "required": true,
+      "satisfied_by": [
+        "VIBE_ARF_NATIVE_VERIFICATION",
+        "EDITOR_VERIFICATION_EVIDENCE"
+      ],
+      "rule": "A meaningful candidate revision must be verified before execution evidence is treated as quality evidence."
+    },
+    {
+      "stage": "GENERATED_EDITOR_CONTRACT",
+      "required": true,
+      "satisfied_by": [
+        "VIBE_GENERATED_PLAYBOOK_CONTRACT_V1"
+      ],
+      "rule": "Before Auto Answers or analyst-visible Editor execution, the exact generated candidate must pass the Vibe-owned generated_playbook_contract. Machine-detectable failures are repaired internally."
+    },
+    {
+      "stage": "AUTO_ANSWERS",
+      "required": true,
+      "rule": "Before a fast editor live-run, Vibe must generate a current Auto Answers package for the exact candidate revision. Any change to analyst-facing node ids, prompts, answer semantics, routing, or required inputs makes the package stale."
+    },
+    {
+      "stage": "PINNED_RUNTIME_SIMULATION",
+      "required": true,
+      "rule": "Inspect exact ZIP, synthesize exact-schema fixtures, run required behavioral scenarios on pinned runtime, validate non-vacuous gate evidence and classify defects before analyst visibility."
+    },
+    {
+      "stage": "ANALYST_VISIBILITY_BARRIER",
+      "required": true,
+      "rule": "Do not present the candidate as analyst-ready until generated contract, PRE_EDITOR and current Auto Answers replay validation are PASS. Editor-native live run remains the next empirical runtime proof."
+    },
+    {
+      "stage": "EDITOR_LIVE_RUN",
+      "required": true,
+      "rule": "A candidate that is presented as ready for use must have at least one editor-native live run using the current candidate and current Auto Answers. The run result and debug/evidence package must be returned to the authoring Vibe chat."
+    },
+    {
+      "stage": "POST_RUN_SELF_AUDIT",
+      "required": true,
+      "rule": "Vibe must analyze editor evidence itself, classify findings as AUTO_FIX, RECOMMEND, or HDG_REQUIRED, apply safe AUTO_FIX items, and reverify/re-run impacted contours."
+    },
+    {
+      "stage": "INDEPENDENT_DRY_CHECK",
+      "required": false,
+      "activation": "ANALYST_OPT_IN_ONLY_AFTER_VIBE_READY_FOR_USE",
+      "rule": "Only after Vibe considers the playbook ready for use, offer an independent clean-chat dry-check. The independent chat must return result plus debug/evidence to the authoring chat. Do not use this as a routine edit-loop step."
+    }
+  ],
+  "readiness_states": [
+    "DRAFT",
+    "LOCALLY_VERIFIED",
+    "AUTO_ANSWERS_READY",
+    "EDITOR_RUN_VERIFIED",
+    "QUALITY_CLOSURE",
+    "READY_FOR_USE",
+    "FINAL_READY"
+  ],
+  "leadership_rules": [
+    "Vibe proposes and leads the next verification/improvement action.",
+    "The analyst is not expected to discover which verification step should happen next.",
+    "Operational external execution requests are distinct from human business decisions.",
+    "A green terminal status without evidence review is not readiness."
+  ]
+}

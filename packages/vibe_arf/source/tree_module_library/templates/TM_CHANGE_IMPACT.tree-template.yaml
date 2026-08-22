@@ -1,0 +1,48 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_CHANGE_IMPACT
+  version: '1.0'
+  title: Change Impact
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_C_CHANGE_NORMALIZE
+    type: automatic
+    title: Change Normalization
+    next: N_C_ROOT_CAUSE
+    responsibility_id: change_normalization
+  - id: N_C_ROOT_CAUSE
+    type: automatic
+    title: Root Cause Analysis
+    next: N_C_DEPENDENCY_CLOSURE
+    responsibility_id: root_cause_analysis
+  - id: N_C_DEPENDENCY_CLOSURE
+    type: automatic
+    title: Dependency Closure
+    next: N_C_INVALIDATION
+    responsibility_id: dependency_closure
+  - id: N_C_INVALIDATION
+    type: automatic
+    title: Invalidation
+    next: N_C_PRESERVE_VALID
+    responsibility_id: invalidation
+  - id: N_C_PRESERVE_VALID
+    type: automatic
+    title: Valid State Preservation
+    next: N_C_ROUTE_PLAN
+    responsibility_id: valid_state_preservation
+  - id: N_C_ROUTE_PLAN
+    type: automatic
+    title: Reroute Planning
+    next: '{{success_exit_node}}'
+    responsibility_id: reroute_planning
+  gates: []

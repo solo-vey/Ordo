@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interactive field resolution state",
+  "type": "object",
+  "required": [
+    "field_id",
+    "resolution_status",
+    "field_class"
+  ],
+  "properties": {
+    "field_id": {
+      "type": "string"
+    },
+    "value": {},
+    "resolution_status": {
+      "enum": [
+        "KNOWN",
+        "UNASKED",
+        "UNKNOWN_CONFIRMED",
+        "INAPPLICABLE"
+      ]
+    },
+    "field_class": {
+      "enum": [
+        "SUBSTANTIVE_REQUIRED",
+        "SUBSTANTIVE_DECISIONAL",
+        "DERIVABLE",
+        "OPTIONAL",
+        "INAPPLICABLE",
+        "PRESENTATIONAL"
+      ]
+    },
+    "provenance_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "asked_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_question_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "supersedes": {},
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,61 @@
+schema_version: '1.0'
+policy:
+  progressive_intake: true
+  proposal_first_when_derivable: true
+  human_only_for_authority_or_unresolved_semantics: true
+  continuous_fact_stream: true
+  capture_off_shape_facts: true
+  recompute_after_merge: true
+  structural_resolution_status: true
+  interactive_completeness_before_materialization: true
+  correction_provenance_required: true
+interactions:
+- id: X_INITIAL_INTENT
+  strategy: free_text_seed
+  consumes: []
+  produces:
+  - I_RAW_USER_INTENT
+  - I_DESIRED_ARTIFACT_REFS
+  group_ids:
+  - G_INPUT
+- id: X_SOURCE_CONTEXT
+  strategy: clarification
+  consumes:
+  - I_RAW_USER_INTENT
+  produces:
+  - I_SOURCE_MATERIALS
+  group_ids:
+  - G_INPUT
+  condition: only_when_missing_and_material
+- id: X_PROPOSAL_CONFIRM
+  strategy: proposal_confirm
+  consumes:
+  - I_INFORMATION_FLOW_GRAPH
+  - I_INTERACTION_PROJECTION
+  - I_BUSINESS_PROCESS_DESIGN_IR
+  - I_REVIEW_BUNDLE_CATALOG
+  - I_PROPOSAL_CANONICALIZATION
+  produces:
+  - I_HUMAN_DECISION_NEEDS
+  group_ids:
+  - G_INFORMATION_MODEL
+  - G_PROCESS_DESIGN
+  condition: only_when_consequential_semantics_remain
+- id: X_ANALYST_ACCEPTANCE
+  strategy: authority_decision
+  consumes:
+  - I_BUSINESS_VIEW
+  - I_VERIFICATION_EVIDENCE
+  produces:
+  - I_ACCEPTANCE_STATUS
+  group_ids:
+  - G_DELIVERY
+  authority_owner: analyst
+- id: X_BUSINESS_PRESENTATION
+  strategy: presentation
+  consumes:
+  - I_BUSINESS_VIEW
+  - I_PACKAGE_VALIDATION_STATUS
+  produces: []
+  group_ids:
+  - G_DELIVERY

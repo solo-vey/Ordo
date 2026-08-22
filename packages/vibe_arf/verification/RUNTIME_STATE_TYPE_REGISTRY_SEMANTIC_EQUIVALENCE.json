@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "baseline_release": "0.1.0-alpha.46-qualified-runtime-plan",
+  "compiler_contract": "compile_runtime_semantic_plan_v7._load_declared_state_types",
+  "files": [
+    {
+      "path": "design/variable_catalog.yaml",
+      "baseline_sha256": "772036542b36b6327f6181573f15b96f326a188642248b549e9f96e83d5ec27b",
+      "current_sha256": "7ddcadf884d9f6630b380cb4795b3b773999d080d4ef37b6c3bb8be00a6a010a",
+      "baseline_compiler_declarations": [],
+      "current_compiler_declarations": [],
+      "semantically_equal_for_compiler": true
+    },
+    {
+      "path": "authoring_templates/reusable/EDITOR_PROJECTION.template.yaml",
+      "baseline_sha256": "59451c7a53e7363c679a52f50d078e33304e292eb77383d2b161a0dadee91020",
+      "current_sha256": "59451c7a53e7363c679a52f50d078e33304e292eb77383d2b161a0dadee91020",
+      "baseline_compiler_declarations": [],
+      "current_compiler_declarations": [],
+      "semantically_equal_for_compiler": true
+    }
+  ],
+  "current_release": "0.1.2"
+}

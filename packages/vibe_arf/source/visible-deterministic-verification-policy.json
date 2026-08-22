@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_VISIBLE_DETERMINISTIC_VERIFICATION_V1",
+  "revision": "0.1.0-alpha.16",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "required_runtime_stages": [
+    {
+      "id": "N_VERIFY_SOURCE",
+      "scope": [
+        "lint",
+        "compile",
+        "runtime-status"
+      ]
+    },
+    {
+      "id": "N_VERIFY_STRUCTURE",
+      "scope": [
+        "graph",
+        "source uniqueness",
+        "laws",
+        "targets"
+      ]
+    },
+    {
+      "id": "N_VERIFY_ARTIFACTS",
+      "scope": [
+        "materialization registry",
+        "responsibility map",
+        "template/assembler refs"
+      ]
+    },
+    {
+      "id": "N_VERIFY_REGRESSION",
+      "scope": [
+        "tests",
+        "coverage",
+        "package-local Python regressions"
+      ]
+    },
+    {
+      "id": "N_VERIFY_RELEASE",
+      "scope": [
+        "strict clean",
+        "release/readiness evidence"
+      ]
+    }
+  ],
+  "rules": [
+    "These stages must be real reachable graph elements, not prose-only guidance.",
+    "Each stage must have non-empty canonical node_context.allowed_tools.",
+    "Concrete Python/helper references must be visible in the stage knowledge_refs and user-visible tree text.",
+    "Detailed individual checks remain in verification_profile to avoid stage explosion."
+  ]
+}

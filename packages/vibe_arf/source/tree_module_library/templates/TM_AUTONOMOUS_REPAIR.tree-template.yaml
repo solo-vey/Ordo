@@ -1,0 +1,38 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_AUTONOMOUS_REPAIR
+  version: '1.0'
+  title: Autonomous Repair
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_RP_ROOT_CAUSE
+    type: automatic
+    title: Repair Root Cause
+    next: N_RP_IMPACT_PLAN
+    responsibility_id: repair_root_cause
+  - id: N_RP_IMPACT_PLAN
+    type: automatic
+    title: Impact Planning
+    next: N_RP_APPLY_REPAIR
+    responsibility_id: impact_planning
+  - id: N_RP_APPLY_REPAIR
+    type: automatic
+    title: Repair Application
+    next: N_RP_REGRESSION_MEMORY
+    responsibility_id: repair_application
+  - id: N_RP_REGRESSION_MEMORY
+    type: automatic
+    title: Regression Memory
+    next: '{{success_exit_node}}'
+    responsibility_id: regression_memory
+  gates: []

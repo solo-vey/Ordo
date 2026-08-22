@@ -1,0 +1,129 @@
+schema_version: '1.0'
+pattern_id: EXECUTION_DEBUG_EVIDENCE_EXPORT
+pattern_version: '1.1'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_instance_id_and_role
+  compiler_valid_lowering_required: true
+  abstract_outcome_edges_are_not_compiled_routes: true
+  compiled_route_contract:
+    single_successor: next
+    human_interaction: on_answer.next
+    binary_gate: on_pass/on_fail
+    multi_outcome: exact deterministic cascade gates over canonical discriminator tokens
+    invalid_discriminator: fail_closed
+    postcondition: all non-terminals routed; all executables reachable; all targets resolved
+required_responsibilities:
+- role: determine_debug_export_requirement
+  kind: gate
+  responsibility_class: deterministic
+- role: collect_debug_evidence
+  kind: node
+  responsibility_class: deterministic
+- role: build_debug_export_manifest
+  kind: node
+  responsibility_class: deterministic
+- role: redact_debug_evidence
+  kind: node
+  responsibility_class: deterministic
+- role: materialize_debug_bundle
+  kind: node
+  responsibility_class: deterministic
+- role: validate_debug_bundle
+  kind: gate
+  responsibility_class: deterministic
+- role: register_debug_bundle
+  kind: node
+  responsibility_class: deterministic
+- role: present_debug_bundle
+  kind: node
+  responsibility_class: model_assisted
+- role: finalize_debug_export
+  kind: node
+  responsibility_class: deterministic
+outcome_edges:
+- from_role: determine_debug_export_requirement
+  outcome: DEBUG_REQUIRED
+  to_role: collect_debug_evidence
+- from_role: determine_debug_export_requirement
+  outcome: DEBUG_NOT_REQUIRED
+  to_role: finalize_debug_export
+- from_role: collect_debug_evidence
+  outcome: DONE
+  to_role: build_debug_export_manifest
+- from_role: build_debug_export_manifest
+  outcome: DONE
+  to_role: redact_debug_evidence
+- from_role: redact_debug_evidence
+  outcome: DONE
+  to_role: materialize_debug_bundle
+- from_role: materialize_debug_bundle
+  outcome: DONE
+  to_role: validate_debug_bundle
+- from_role: validate_debug_bundle
+  outcome: PASS
+  to_role: register_debug_bundle
+- from_role: validate_debug_bundle
+  outcome: FAIL
+  to_role: DEBUG_EXPORT_BLOCKED
+- from_role: register_debug_bundle
+  outcome: REGISTERED
+  to_role: present_debug_bundle
+- from_role: present_debug_bundle
+  outcome: PRESENTED
+  to_role: finalize_debug_export
+gate_contracts:
+  determine_debug_export_requirement:
+    DEBUG_REQUIRED: runtime/host declares debug mode or bound debug policy requires export
+    DEBUG_NOT_REQUIRED: debug mode is not active and no bound policy requires export
+    fail_closed: true
+  validate_debug_bundle:
+    PASS: bundle is readable, manifest-complete, contains only allowed evidence, has redaction report, contains
+      no detected unredacted secrets, and excludes unrelated files
+    FAIL: otherwise; fail closed to DEBUG_EXPORT_BLOCKED
+    fail_closed: true
+evidence_contract:
+  purpose: Produce a bounded, inspectable evidence package for a workflow run when debug export is required.
+  generic_evidence_classes:
+  - execution_state_snapshot
+  - execution_receipts_or_ledger
+  - machine_validation_reports
+  - artifact_references_and_statuses
+  - pattern_instance_provenance
+  - bounded_failure_or_recovery_evidence
+  include_rules:
+  - include only evidence declared by the bound evidence-source policy
+  - include machine-readable index/manifest
+  - include provenance sufficient to identify the run and instantiated patterns
+  - include validation/redaction reports
+  exclude_rules:
+  - exclude unrelated project files
+  - exclude full source artifacts unless explicitly required by evidence policy
+  - exclude credentials, tokens, secrets and sensitive runtime values unless safely redacted
+  - exclude domain attachments unless explicitly bound
+  redaction_precedes_materialization: true
+presentation_contract:
+  role: present_debug_bundle
+  requires_validation_pass: true
+  approval_semantics: informational_only
+  delivery_semantics: actual_user_visible_file_or_attachment_required_for_PRESENTED
+compiler_preflight_contract:
+- YAML parses
+- all executable IDs are unique
+- all route targets resolve or are declared allowed external terminal targets
+- every non-terminal executable element has at least one valid outgoing route
+- every executable element is reachable from graph_contract.entry_node
+- all canonical outcome destinations are preserved by the lowering
+- multi-outcome semantic branches preserve exact canonical outcome tokens and fail closed on invalid discriminator
+  state
+- interactive nodes that continue execution use compiler-supported on_answer.next routing
+- compiled graph passes the target editor/runtime-plan validator before delivery

@@ -1,0 +1,5000 @@
+{
+  "schema_version": "1.0",
+  "profile": "production",
+  "file_count": 832,
+  "files": [
+    {
+      "path": "AUTHORING_TOOLING.md",
+      "class": "materialization",
+      "bytes": 7191,
+      "sha256": "bee5105ea545204092a8df369068311de0d9d794aeb3f16050394c8490804b06"
+    },
+    {
+      "path": "AUTHORITY_SIMULATION_ANALYST_MINIMIZATION_PROTOCOL.md",
+      "class": "validation",
+      "bytes": 2600,
+      "sha256": "b73759de7d774f532965e72da1ddae645ab7ef6fd43a78d826fa80d83f8df903"
+    },
+    {
+      "path": "COMPATIBILITY_KNOWLEDGE_ORDO_0.4.10_ALPHA9.md",
+      "class": "validation",
+      "bytes": 15248,
+      "sha256": "9b6735889e59a8c3375935a11082470c89dbb3d1fc8fb9d32b0763688f8e3f4d"
+    },
+    {
+      "path": "DEVELOPMENT_VERIFICATION_PROTOCOL.md",
+      "class": "validation",
+      "bytes": 3175,
+      "sha256": "3c1a5813ddcb0c687f42ced4dc8c26a712252e32fcf92b79fad7786000fb49aa"
+    },
+    {
+      "path": "DISTRIBUTION_PACKAGE_CONTRACT.json",
+      "class": "distribution_contract",
+      "bytes": 2164,
+      "sha256": "a57778c76313b0d5ff5884d24e3f099ea9248cb72563c251ce6638ec0ade14a8"
+    },
+    {
+      "path": "GENERATED_PLAYBOOK_REGRESSION_PROTOCOL.md",
+      "class": "validation",
+      "bytes": 3856,
+      "sha256": "103e10ad719213e18b976f18885949594d4a6a3d834f944963bea9a59aebeb73"
+    },
+    {
+      "path": "INFORMATION_FIRST_AUTHORING_PROTOCOL.md",
+      "class": "validation",
+      "bytes": 3755,
+      "sha256": "ba7f3b4b6a82ef2489b30145f3451734b4a76d26ac376a132abf52539199dfc6"
+    },
+    {
+      "path": "PLAYBOOK_LAWS.md",
+      "class": "validation",
+      "bytes": 40337,
+      "sha256": "f2db1d9eb3b15850a140fc36ebe41982ea9588f89f841a0dc2c0338c02f3c2f1"
+    },
+    {
+      "path": "PRODUCTION_DEPENDENCY_CLOSURE.json",
+      "class": "dependency_closure_manifest",
+      "bytes": 254618,
+      "sha256": "125ef8664b7c3649cf0d89f24b075993b99c0308cb91f47027131eed38121fcc"
+    },
+    {
+      "path": "PRODUCTION_PACKAGE_CONTRACT.json",
+      "class": "package_contract",
+      "bytes": 8268,
+      "sha256": "27404d1b3f5569afd56b407c897df17a9c29b3410f2a9b6b6dfee0ca11276e54"
+    },
+    {
+      "path": "README.md",
+      "class": "materialization",
+      "bytes": 7014,
+      "sha256": "2f64f0aa814fa9f2fe7ac9e6de331155c5622cc98af9ccd78a883254ebb1b601"
+    },
+    {
+      "path": "RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+      "class": "distribution_contract",
+      "bytes": 311705,
+      "sha256": "352650678bd8b4c01c6b8f50559593f6cdd49280cc24e95c4347189c2a041e0e"
+    },
+    {
+      "path": "SELF_DATA_FLOW_PUBLICATION_PROTOCOL.md",
+      "class": "validation",
+      "bytes": 926,
+      "sha256": "1804032adf2028a5b4e4022e133b85368a4341d97d9de70f1b07c5e52d90250b"
+    },
+    {
+      "path": "SELF_HOSTED_INFORMATION_MODEL_PROTOCOL.md",
+      "class": "validation",
+      "bytes": 2173,
+      "sha256": "5406f559f72e918671ff3c824e33731e313ab88c469ae3deb6a7d4f70c041b6c"
+    },
+    {
+      "path": "START_HERE.md",
+      "class": "materialization",
+      "bytes": 1999,
+      "sha256": "a048cc7817df53335745e73cba3d92da7ab8ad91bcb807b4c5d281848e5afdfa"
+    },
+    {
+      "path": "START_HERE_RUNTIME_MODE.md",
+      "class": "materialization",
+      "bytes": 9364,
+      "sha256": "063c6a35c6137939e8fe1edf070bc5473276a24830b843d2db940cfcd2856a5b"
+    },
+    {
+      "path": "START_PROMPT.md",
+      "class": "materialization",
+      "bytes": 771,
+      "sha256": "76e2ed48a1012534cc5111cb46e7773bea23ab9ff39e5592803afb2e06722688"
+    },
+    {
+      "path": "START_PROMPT_RUNTIME_MODE.md",
+      "class": "materialization",
+      "bytes": 1767,
+      "sha256": "c59bfd9b13470507896888468f031478af7aca90bb6d138211da2d6ce449146f"
+    },
+    {
+      "path": "analyst_context/README.md",
+      "class": "analyst_context",
+      "bytes": 277,
+      "sha256": "9f8e65a0585b47038095eff5929818718074651fa99292b8aedc06c527f37acc"
+    },
+    {
+      "path": "analyst_context/context_catalog.json",
+      "class": "analyst_context",
+      "bytes": 167,
+      "sha256": "720de83800330cea203bec3480807547b0ffba04a3dad2e9f6a797b159b9fdb0"
+    },
+    {
+      "path": "authoring/approval_ledger.yaml",
+      "class": "data_layer",
+      "bytes": 197,
+      "sha256": "c3039bf428dacf8c802913961cd92e9e661df4a6c75878fc1775ef346f0a7a6f"
+    },
+    {
+      "path": "authoring/artifact_catalog.yaml",
+      "class": "data_layer",
+      "bytes": 1949,
+      "sha256": "74eb1f22b3d534ccbd4d138d4ae142f29879af9ba356bbbb9c534f9cfde57864"
+    },
+    {
+      "path": "authoring/capability_requirement_catalog.yaml",
+      "class": "data_layer",
+      "bytes": 485,
+      "sha256": "f443e6ce4bd2f33078937293b81f764ab0888e7f1a2ea88df3d503e21b263f4d"
+    },
+    {
+      "path": "authoring/information_flow_graph.yaml",
+      "class": "data_layer",
+      "bytes": 28134,
+      "sha256": "2982a96c3d054e7646944fb6450611884d9510fe443afba70d47e863bcfc3e6d"
+    },
+    {
+      "path": "authoring/information_group_catalog.yaml",
+      "class": "data_layer",
+      "bytes": 5905,
+      "sha256": "6c2994a03610f1aa1103cefe5bf3931a95e749e3f61b4c09e9ec2693e8c6adba"
+    },
+    {
+      "path": "authoring/information_object_catalog.yaml",
+      "class": "data_layer",
+      "bytes": 35955,
+      "sha256": "6a2a337912c0bba8f243d0cf2f370e1d90e2b6e6a19360dbf4bb2dc47c8d5629"
+    },
+    {
+      "path": "authoring/interaction_projection.yaml",
+      "class": "data_layer",
+      "bytes": 1469,
+      "sha256": "e131e82a9839889d1574ee14868883e9d6253f7d0caeb6a8b412af3e499da0d4"
+    },
+    {
+      "path": "authoring/ordo_projection.yaml",
+      "class": "data_layer",
+      "bytes": 28468,
+      "sha256": "e50097ac4d86e299f925cef69453939ac96bc32d254eabab091a15771913357f"
+    },
+    {
+      "path": "authoring/pattern_data_layer_expansion.yaml",
+      "class": "data_layer",
+      "bytes": 4067,
+      "sha256": "04d5089a43585d432a8665cd1ea97bc9fa632c2ebd4ff1e0713663a16babe9e0"
+    },
+    {
+      "path": "authoring/pattern_execution_projection.yaml",
+      "class": "data_layer",
+      "bytes": 5559,
+      "sha256": "ea5dd81879be1caa8de203ceafd6f2c3b5d5aea3a28686e6f3955187752d8817"
+    },
+    {
+      "path": "authoring/pattern_instance_catalog.yaml",
+      "class": "data_layer",
+      "bytes": 1788,
+      "sha256": "96ecfe1b990dc2aeac637d5ee3f7ec9249629a22f00c3e82903206919cab6d53"
+    },
+    {
+      "path": "authoring/pattern_reuse_evaluation.json",
+      "class": "data_layer",
+      "bytes": 5120,
+      "sha256": "ec46cd02576a3dc124f7b330ebb527e017c0a80d265f1cf897b203134f473f2a"
+    },
+    {
+      "path": "authoring/pattern_selection_input_snapshot.json",
+      "class": "data_layer",
+      "bytes": 1671,
+      "sha256": "be3f43a732af5a79c84ab083b54ace2bb91a0741ff944d99f2d1b61c62c1c6c1"
+    },
+    {
+      "path": "authoring/projection_generation_manifest.json",
+      "class": "data_layer",
+      "bytes": 1998,
+      "sha256": "955d706d04b9e9c4c25f486cfcbc3b25c65ebdf126016036936a53a81bec2b7a"
+    },
+    {
+      "path": "authoring/proposal_canonicalization.yaml",
+      "class": "data_layer",
+      "bytes": 284,
+      "sha256": "196dacdc9409f3eb60c59530298a6096c42360284b694782f1674c1bef241279"
+    },
+    {
+      "path": "authoring/review_bundle_catalog.yaml",
+      "class": "data_layer",
+      "bytes": 2170,
+      "sha256": "7bd1584739bb126e4c64438db59fa2a1219ad91bdf294d48e311dcb5d8552f36"
+    },
+    {
+      "path": "authoring/scenario_matrix.yaml",
+      "class": "data_layer",
+      "bytes": 377,
+      "sha256": "090a41fae8e1cee2030005eb1578cb5b17cdea439126d92837c6da1ea2cad69c"
+    },
+    {
+      "path": "authoring_templates/PLAYBOOK_LAWS.md",
+      "class": "authoring_templates",
+      "bytes": 40337,
+      "sha256": "f2db1d9eb3b15850a140fc36ebe41982ea9588f89f841a0dc2c0338c02f3c2f1"
+    },
+    {
+      "path": "authoring_templates/information_model/approval_ledger.yaml",
+      "class": "authoring_templates",
+      "bytes": 197,
+      "sha256": "c3039bf428dacf8c802913961cd92e9e661df4a6c75878fc1775ef346f0a7a6f"
+    },
+    {
+      "path": "authoring_templates/information_model/artifact_catalog.yaml",
+      "class": "authoring_templates",
+      "bytes": 157,
+      "sha256": "67433ae7814bbc46532e5cf92eb007e32997a2f783dcb21f14d821681aab226d"
+    },
+    {
+      "path": "authoring_templates/information_model/information_flow_graph.yaml",
+      "class": "authoring_templates",
+      "bytes": 302,
+      "sha256": "31244968fa72be86fc035cf4a8b3cc042148e5839afebd2dffb5be57c4f8eab1"
+    },
+    {
+      "path": "authoring_templates/information_model/information_group_catalog.yaml",
+      "class": "authoring_templates",
+      "bytes": 185,
+      "sha256": "1d664b38dc87b6de335c6db0ea6cd02bdeeedf1e54cff836e6c2d6d5a86159c8"
+    },
+    {
+      "path": "authoring_templates/information_model/information_object_catalog.yaml",
+      "class": "authoring_templates",
+      "bytes": 688,
+      "sha256": "77302a0e7250c71e442065f39472339edce4b939296d8001406f415db691ac4b"
+    },
+    {
+      "path": "authoring_templates/information_model/interaction_projection.yaml",
+      "class": "authoring_templates",
+      "bytes": 456,
+      "sha256": "dee19017a3ac9079d52fb18dc0ff1be63448d8e792c2f4814be5146dc5888c5f"
+    },
+    {
+      "path": "authoring_templates/information_model/ordo_projection.yaml",
+      "class": "authoring_templates",
+      "bytes": 235,
+      "sha256": "b7d1b4c7fd28587257022ae4700eb74b8a7208b2fba0cd160194549bbbe4e710"
+    },
+    {
+      "path": "authoring_templates/information_model/proposal_canonicalization.yaml",
+      "class": "authoring_templates",
+      "bytes": 284,
+      "sha256": "196dacdc9409f3eb60c59530298a6096c42360284b694782f1674c1bef241279"
+    },
+    {
+      "path": "authoring_templates/information_model/review_bundle_catalog.yaml",
+      "class": "authoring_templates",
+      "bytes": 165,
+      "sha256": "eea027b78d8d925f44e0e9f8653ffc4f6fb8457393aa4fe638d102d6f888c7de"
+    },
+    {
+      "path": "authoring_templates/information_model/scenario_matrix.yaml",
+      "class": "authoring_templates",
+      "bytes": 155,
+      "sha256": "5584b0273f37a086d491d3fb19ed081a60dfabf9ab8ddd53983969bc3bf878df"
+    },
+    {
+      "path": "authoring_templates/node_profiles/APPROVAL_LEDGER_COMMIT.yaml",
+      "class": "authoring_templates",
+      "bytes": 159,
+      "sha256": "fb831f898d9f19b8f072c05be904159f9fc8d51c691eab2a7845b9f08eda2cf5"
+    },
+    {
+      "path": "authoring_templates/node_profiles/ARTIFACT_PRESENT.yaml",
+      "class": "authoring_templates",
+      "bytes": 125,
+      "sha256": "db72b1ce84d184a6799e09c201bd860bad48480f0d1568f87671408842e07528"
+    },
+    {
+      "path": "authoring_templates/node_profiles/DETERMINISTIC_GATE.yaml",
+      "class": "authoring_templates",
+      "bytes": 184,
+      "sha256": "010f0c64fda7199234093b1ca5dd4c83e6b49f4dfcd4fa64d1d0443995efee55"
+    },
+    {
+      "path": "authoring_templates/node_profiles/DETERMINISTIC_RUN.yaml",
+      "class": "authoring_templates",
+      "bytes": 466,
+      "sha256": "74b721df3291391c74f99bdbbaa62ed95a03014c7da2e73da952c9903ade72ff"
+    },
+    {
+      "path": "authoring_templates/node_profiles/DOCUMENT_MATERIALIZE.yaml",
+      "class": "authoring_templates",
+      "bytes": 425,
+      "sha256": "4b97d4e02f1b6fc11401c87e0da165a8769c4384688dbd99b722b68a3d53f861"
+    },
+    {
+      "path": "authoring_templates/node_profiles/HUMAN_ENUM_DECISION.yaml",
+      "class": "authoring_templates",
+      "bytes": 318,
+      "sha256": "84eee86587a231131532d83092c125771e1d13d5210838da8107cf1b66fb9731"
+    },
+    {
+      "path": "authoring_templates/node_profiles/HUMAN_FREE_TEXT_CAPTURE.yaml",
+      "class": "authoring_templates",
+      "bytes": 303,
+      "sha256": "18958a5f00e187f5da5174a3c5362f571d95c6fd85ce0239fa37548f39a9833d"
+    },
+    {
+      "path": "authoring_templates/node_profiles/HUMAN_REVIEW_BUNDLE.yaml",
+      "class": "authoring_templates",
+      "bytes": 197,
+      "sha256": "e5be5359c92416a31f2672278ce7877a8bc4528499b0d71ed01729af24718fe4"
+    },
+    {
+      "path": "authoring_templates/node_profiles/LOCAL_PERSISTENCE_GATE.yaml",
+      "class": "authoring_templates",
+      "bytes": 166,
+      "sha256": "234a909af13abe429f66925fe09381f68a02955e46e32e68d978adf9bffeb9ea"
+    },
+    {
+      "path": "authoring_templates/node_profiles/MODEL_AUTOMATIC.yaml",
+      "class": "authoring_templates",
+      "bytes": 283,
+      "sha256": "c50dca9ca8215c8637b55ade49e06f536797337ee0abaefa8f175937e9e076a9"
+    },
+    {
+      "path": "authoring_templates/node_profiles/MODEL_PROPOSAL_GENERATE.yaml",
+      "class": "authoring_templates",
+      "bytes": 162,
+      "sha256": "302d024095e6bfd36a0bf41a9b1fb5adbf0c3749f6837e0303e31b24103610e3"
+    },
+    {
+      "path": "authoring_templates/node_profiles/PACKAGE_BUILD.yaml",
+      "class": "authoring_templates",
+      "bytes": 353,
+      "sha256": "450439cf5b98153f1c1d9fcf7817f37d656f4e477b20ef626e8f318a46ba9e28"
+    },
+    {
+      "path": "authoring_templates/node_profiles/TERMINAL.yaml",
+      "class": "authoring_templates",
+      "bytes": 123,
+      "sha256": "544094360b45715f6f172f2fade222511a922a41950f12ce7601b8d6f104ae8b"
+    },
+    {
+      "path": "authoring_templates/reusable/ADAPTIVE_ARTIFACT_QUALITY.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 2350,
+      "sha256": "163f7b490b88f01dce05dd18e7c1d686a0861801f4e9c72f327be8d843e63ed4"
+    },
+    {
+      "path": "authoring_templates/reusable/BINDINGS.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 363,
+      "sha256": "b3dc0e695d919d430d0d953692e630a8ceb134f5e7132c2d19c46cc76c6709be"
+    },
+    {
+      "path": "authoring_templates/reusable/DOCUMENT.template.md",
+      "class": "authoring_templates",
+      "bytes": 224,
+      "sha256": "5b3f6d9b76d380d919316411f15f759ce5311700e27371fbd4cff221b1b39fd5"
+    },
+    {
+      "path": "authoring_templates/reusable/EDITOR_PROJECTION.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 487,
+      "sha256": "59451c7a53e7363c679a52f50d078e33304e292eb77383d2b161a0dadee91020"
+    },
+    {
+      "path": "authoring_templates/reusable/INFORMATION_MODEL.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 520,
+      "sha256": "fcec5e1890f835e030eab6daa4d5ddc36ac10d38a0d031c6929cccfb1088138b"
+    },
+    {
+      "path": "authoring_templates/reusable/INTERACTIVE_ANALYST_WORKFLOW.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 1990,
+      "sha256": "6de129bb51b560623f7fce5deb3f2772787e85f0ae7f305c6da16abe8585274d"
+    },
+    {
+      "path": "authoring_templates/reusable/MATERIALIZATION.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 392,
+      "sha256": "fa162baf356eb2853fe2b5781d309d07db05cbd87c571e7402b76a5f0c289651"
+    },
+    {
+      "path": "authoring_templates/reusable/SEMANTIC_EXECUTION_INVARIANTS.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 1557,
+      "sha256": "aa09e6c9782f52eb8741ee1feeb6be02db98f97dfba2ce8ea578743b5d97a598"
+    },
+    {
+      "path": "authoring_templates/reusable/TEMPLATE_KIT_REGISTRY.json",
+      "class": "authoring_templates",
+      "bytes": 2319,
+      "sha256": "4072aca9d7512da73c5ac36ab854d6c1e3d7dacbedaa00a25f2442ec52fd0bf1"
+    },
+    {
+      "path": "authoring_templates/reusable/VALIDATOR.template.yaml",
+      "class": "authoring_templates",
+      "bytes": 389,
+      "sha256": "d9eacf925c1f34e499652a75f0a54f029a773b5c90a1afd33cf6fb12d1475fd6"
+    },
+    {
+      "path": "canonical_support/CANONICAL_SUPPORT_MANIFEST.json",
+      "class": "dependency_closure",
+      "bytes": 154550,
+      "sha256": "ec97fc8d25a57086abd015d903eeaa2d05fa62fb368efb8a29e0de3707377e35"
+    },
+    {
+      "path": "canonical_support/guides/ARF_PACKAGE_README.md",
+      "class": "dependency_closure",
+      "bytes": 4938,
+      "sha256": "a25f9914c90670b21410ff695730bff7b1cff8deeb28d1a96d41fee350a04bac"
+    },
+    {
+      "path": "canonical_support/guides/DECISION_DEBUG_TRACE.md",
+      "class": "dependency_closure",
+      "bytes": 1221,
+      "sha256": "f0782f7b24ee1a3595fe09a91e46bd788fc1d1356d2afeafd0ff14467b0231b7"
+    },
+    {
+      "path": "canonical_support/guides/DOCUMENT_FIELD_BINDINGS.example.yaml",
+      "class": "dependency_closure",
+      "bytes": 307,
+      "sha256": "bdd151040d271f0802d7ee6b1b353053fe0e980ae2ccfbaae0d22d4631dc2d77"
+    },
+    {
+      "path": "canonical_support/guides/DOCUMENT_FIELD_PROVENANCE.md",
+      "class": "dependency_closure",
+      "bytes": 1451,
+      "sha256": "4ba4718b2845ce081a1b6a3b3040732511d29b571a483c9f9d50f77bad5a834e"
+    },
+    {
+      "path": "canonical_support/guides/EXPECTED_DELIVERABLES.md",
+      "class": "dependency_closure",
+      "bytes": 713,
+      "sha256": "0da0802f4f3dd9eaf7109f3f39df8d462476aa37e6a3fe9dbe188ddeae0a9653"
+    },
+    {
+      "path": "canonical_support/guides/GRAPH_TRANSITION_CONTRACT.md",
+      "class": "dependency_closure",
+      "bytes": 1403,
+      "sha256": "6d3bfecb4ff19b96e02eb21e17e822e29266b52657fa5865a0cf2576f223f352"
+    },
+    {
+      "path": "canonical_support/guides/PLAYBOOK_BRIEF.md",
+      "class": "dependency_closure",
+      "bytes": 691,
+      "sha256": "86aa07ce0cf1679825b8fbfa79bd93f7dbd6f9c6dc82a2057a6f5ad627e35096"
+    },
+    {
+      "path": "canonical_support/guides/PLAYBOOK_LAWS.md",
+      "class": "dependency_closure",
+      "bytes": 40337,
+      "sha256": "f2db1d9eb3b15850a140fc36ebe41982ea9588f89f841a0dc2c0338c02f3c2f1"
+    },
+    {
+      "path": "canonical_support/guides/PLAYBOOK_TEMPLATE.md",
+      "class": "dependency_closure",
+      "bytes": 870,
+      "sha256": "a723489cbaea9fad3402aeaa4b95e7db364e6f3d52f0f63db4a877cd7770ecee"
+    },
+    {
+      "path": "canonical_support/guides/START_HERE.md",
+      "class": "dependency_closure",
+      "bytes": 1303,
+      "sha256": "c6c13c220133760df51c12db2e2c3d475acd01c392065d506065c2c70fa15093"
+    },
+    {
+      "path": "canonical_support/guides/START_PROMPT.md",
+      "class": "dependency_closure",
+      "bytes": 1764,
+      "sha256": "dcae65368826594cb0722e7570c0ac327ee6355abc76b33eb9dec00192d357dc"
+    },
+    {
+      "path": "canonical_support/guides/TEST_AND_IMPROVE.md",
+      "class": "dependency_closure",
+      "bytes": 628,
+      "sha256": "651d454b861b840cd3cc465a81b0f777dd3b5b9d1a74485c4a2e78981489b782"
+    },
+    {
+      "path": "canonical_support/guides/TREE_MODULE_LIBRARY.md",
+      "class": "dependency_closure",
+      "bytes": 1637,
+      "sha256": "bf0832ba4fd4d11a7d707bac3f0f6ca85e0a8d20dd8aa6f99a6a0216a8fcab87"
+    },
+    {
+      "path": "canonical_support/language/examples/arf_node_contract_profiles.examples.json",
+      "class": "dependency_closure",
+      "bytes": 4917,
+      "sha256": "f238e6775315a5341356b7f9d66ed739157f918d68f5dfdccb2af6afc194a9ae"
+    },
+    {
+      "path": "canonical_support/language/examples/blind_automation_semantic_adaptive.yaml",
+      "class": "dependency_closure",
+      "bytes": 1421,
+      "sha256": "4fd03823c4be0280ac89a6f328e114aa002aef1627083b37a667ef0ddf1c353e"
+    },
+    {
+      "path": "canonical_support/language/examples/blind_automation_step_bound.yaml",
+      "class": "dependency_closure",
+      "bytes": 1223,
+      "sha256": "d1a0f56f4f5e7549b81f40e8310eabd7bfd4ea1dfa47bc8b641d70520c789fbc"
+    },
+    {
+      "path": "canonical_support/language/examples/diagnostic_causal_review.json",
+      "class": "dependency_closure",
+      "bytes": 875,
+      "sha256": "fa5e6e2a8a4f2a060da106431fe9922891f6f35f9a066cd029bc912a84be67ea"
+    },
+    {
+      "path": "canonical_support/language/examples/execution_trace_full.yaml",
+      "class": "dependency_closure",
+      "bytes": 1778,
+      "sha256": "793ea28f0db47a5cc08c4ff1323545e14966f1b6c7703da7f7a5fe7f848ef2b4"
+    },
+    {
+      "path": "canonical_support/language/examples/execution_trace_minimal.yaml",
+      "class": "dependency_closure",
+      "bytes": 1323,
+      "sha256": "fe9df30ffe5f18a273f39cd210ac7f44d9481a63ed5cf9bfb8b5aa8d19dcc7b3"
+    },
+    {
+      "path": "canonical_support/language/examples/execution_trace_replayable.yaml",
+      "class": "dependency_closure",
+      "bytes": 2356,
+      "sha256": "dba0b1280cd75a9771a5517d3a04924ccd5b9ae2db080a0ce0784f5d67661b82"
+    },
+    {
+      "path": "canonical_support/language/examples/ir/reliability_strict_example.ir.json",
+      "class": "dependency_closure",
+      "bytes": 2154,
+      "sha256": "8c15df72c6b35af28a8ff28c1c8d5b9992756e1736d8a5d8109ec42b72198e3e"
+    },
+    {
+      "path": "canonical_support/language/examples/source/basic_summary.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 315,
+      "sha256": "2cdef03fca4a2865ad2ecc04ae4e65719ec352e9b710d067995cedaeec77a320"
+    },
+    {
+      "path": "canonical_support/language/examples/source/ci_release_clean_gate_policy_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 585,
+      "sha256": "62d3a27de1cd800853922a884dbbd2c49902c500982de58e719586c248a60308"
+    },
+    {
+      "path": "canonical_support/language/examples/source/clean_package_gate_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 1773,
+      "sha256": "d70dc5fea0b82d87c035ba519ca6301f2f03040ba0bf514bdf2dc427a283bea7"
+    },
+    {
+      "path": "canonical_support/language/examples/source/derived_artifact_sync_delta_backlog_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 2499,
+      "sha256": "0790478216c73db893c37920e3dd0d24c796b1cc384562116d77391b498788ee"
+    },
+    {
+      "path": "canonical_support/language/examples/source/interaction_process_rail_conversation_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 2093,
+      "sha256": "8f4c4df9be805a7a2fe00f789bfc6fdfc02c8473e15c2aaef9b20353869da8c4"
+    },
+    {
+      "path": "canonical_support/language/examples/source/optional_flow_reuse_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 1733,
+      "sha256": "cf0871948d26c50cc3793bcf8c20b437e19950ef9741803e786543b8a63a0971"
+    },
+    {
+      "path": "canonical_support/language/examples/source/program_level_approval_gate_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 3613,
+      "sha256": "386d330fd124946d03476253c23207a6355cde960c29aee662348ccf17e09a96"
+    },
+    {
+      "path": "canonical_support/language/examples/source/program_level_contract_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 773,
+      "sha256": "f581a31c17c9d17681aee686251f95c7812c29e660ff0e634e34c065959055c8"
+    },
+    {
+      "path": "canonical_support/language/examples/source/prompt_registry_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 3373,
+      "sha256": "e6161274e2fad6c8c4223299e3d81bbc357c75ac3af4740b18a8546ed9577333"
+    },
+    {
+      "path": "canonical_support/language/examples/source/prompt_registry_validation_profile_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 3003,
+      "sha256": "f98e33ddc8527a595c9a8cc116d553099bcd94c23b7d855baa919114b6e4d055"
+    },
+    {
+      "path": "canonical_support/language/examples/source/reliability_strict_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 1420,
+      "sha256": "487440c2398f07a3464a64ce1c7215286906e98701c8eca72b32cfa8b5ed3b76"
+    },
+    {
+      "path": "canonical_support/language/examples/source/startup_package_profile_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 2176,
+      "sha256": "53af8c4cb8027205ba2d5910616328e89fe404b35b8a8e762038baca05f5df33"
+    },
+    {
+      "path": "canonical_support/language/examples/source/startup_profile_validation_profile_example.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 1764,
+      "sha256": "3237be92eff0eea72c6981278c155c68b4627c5c0df482ae3a36f04002076cca"
+    },
+    {
+      "path": "canonical_support/language/examples/test_cases/assertion_projection_test.yaml",
+      "class": "dependency_closure",
+      "bytes": 503,
+      "sha256": "bac0b027b54f0073fc366dde18b71508f7ce32d5ff7c081ef797f887b5d37e82"
+    },
+    {
+      "path": "canonical_support/language/integration/ANTIPATTERN_WIRING_CONTRACT.md",
+      "class": "dependency_closure",
+      "bytes": 2592,
+      "sha256": "ebf28e3690f0d6a4d320b8b82511df3e2d041dccd98bef294368642ef4ff0c93"
+    },
+    {
+      "path": "canonical_support/language/integration/antipattern_activation_profile.apf.v1.json",
+      "class": "dependency_closure",
+      "bytes": 1724,
+      "sha256": "6981809596d2ccf8d77625da53e98ccf39dae353e8859f3b503af4199c64bdae"
+    },
+    {
+      "path": "canonical_support/language/integration/antipattern_gate_adapter.py",
+      "class": "dependency_closure",
+      "bytes": 4328,
+      "sha256": "ebfb7ba7582e258aa6dc945f573e4d20f255846fdf00279259aa03bd9b8da930"
+    },
+    {
+      "path": "canonical_support/language/integration/arf_control_model.v1.json",
+      "class": "dependency_closure",
+      "bytes": 3191,
+      "sha256": "d1e293e64dd43ad30145ac58d49b585d9aa595f7caf46a2f23bd69128e1363f4"
+    },
+    {
+      "path": "canonical_support/language/integration/bl_ordo_020_closure_gate.py",
+      "class": "dependency_closure",
+      "bytes": 2688,
+      "sha256": "72fe6be1846e8ce43ba152e38aa7ca82139993fd85ef6c87d8a0ee01a4ae6dd4"
+    },
+    {
+      "path": "canonical_support/language/integration/examples/apf_antipattern_hook.example.json",
+      "class": "dependency_closure",
+      "bytes": 1649,
+      "sha256": "5f6c8a2b634255cd6c4ef70ee744e16ca19ff7b895811fee5e9d3d2d2d5d8fcb"
+    },
+    {
+      "path": "canonical_support/language/process_patterns/pattern_def.schema.json",
+      "class": "dependency_closure",
+      "bytes": 767,
+      "sha256": "10a6ccb070e4fd430f56d48565079bfca587ecde3116620f10c113ab39f976b8"
+    },
+    {
+      "path": "canonical_support/language/process_patterns/pattern_engine.py",
+      "class": "dependency_closure",
+      "bytes": 2727,
+      "sha256": "e5fcfd83c6f1ea457b6849d9021aea8be14ec5fe95805800df39755397072d3f"
+    },
+    {
+      "path": "canonical_support/language/process_patterns/pattern_registry.v1.json",
+      "class": "dependency_closure",
+      "bytes": 2259,
+      "sha256": "4ffe968e9da078b278abdec390284bb3dbe0aa6a7ca0aa09e3fe9dbc94ffe918"
+    },
+    {
+      "path": "canonical_support/language/registries/antipattern_policy.v1.json",
+      "class": "dependency_closure",
+      "bytes": 444,
+      "sha256": "6a95d448e2ea2709fe020ea4fec7969b2085c70d6bbbf8a551b1e87834aff1ab"
+    },
+    {
+      "path": "canonical_support/language/registries/antipattern_registry.v1.json",
+      "class": "dependency_closure",
+      "bytes": 14863,
+      "sha256": "cafef7f43b6cbd20cf18bf6351dd9c1019f0a557a76a91557462ce1fdee225c3"
+    },
+    {
+      "path": "canonical_support/language/registries/antipattern_taxonomy_governance.v1.json",
+      "class": "dependency_closure",
+      "bytes": 1298,
+      "sha256": "8a2012535e64213a1d38f60d2cd1ac9ef817690c5e588c4f41003144a4110a26"
+    },
+    {
+      "path": "canonical_support/language/registries/detect_rule_registry.v1.json",
+      "class": "dependency_closure",
+      "bytes": 11039,
+      "sha256": "8bec9214bb23908793df07e56ae9ea5613e4baaece01ff5e6e50476dbff6c86a"
+    },
+    {
+      "path": "canonical_support/language/registries/fundamental_antipattern_registry.v1.json",
+      "class": "dependency_closure",
+      "bytes": 9680,
+      "sha256": "98617d9433b47b7b6f7c95d52f0f2df60e5701b225d2500a72d21a32cab6e9d1"
+    },
+    {
+      "path": "canonical_support/language/registry/CAPABILITY_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 836,
+      "sha256": "3a05d023689cd60c922ceee7015c4c24ab9d1e62bb2d9529ed0308cb737903bc"
+    },
+    {
+      "path": "canonical_support/language/registry/CAPABILITY_MATURITY_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 690,
+      "sha256": "ac507fe559d87a0e89297198389bbc984fea07d4982430cfecd381cd48ef27a8"
+    },
+    {
+      "path": "canonical_support/language/registry/CONTROL_LEVELS.md",
+      "class": "dependency_closure",
+      "bytes": 335,
+      "sha256": "495ee2a885b0f34fd7deb0e9dc6923cb427f1a71ac5471191ebf35221e8da4ca"
+    },
+    {
+      "path": "canonical_support/language/registry/DERIVED_ARTIFACT_SYNC_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 1011,
+      "sha256": "82bfcd07954ac9584e974833ae2665469576b6c51f502e059e4e38ce646ce723"
+    },
+    {
+      "path": "canonical_support/language/registry/EXECUTION_MODES.md",
+      "class": "dependency_closure",
+      "bytes": 349,
+      "sha256": "cf4a7fa8d059b06287527e1ad8cc0f9081451dc5695956c1363e0b435c020737"
+    },
+    {
+      "path": "canonical_support/language/registry/EXECUTION_TRACE_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 1179,
+      "sha256": "14ac62329bfa379c56f6c4d2dab2d5a095c137791a4d13fb2b81dc992e35db74"
+    },
+    {
+      "path": "canonical_support/language/registry/INTERACTION_PROCESS_RAIL_CONVERSATION_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 3541,
+      "sha256": "82214b9f68e246246c0bc0b342b3f6ed8467e4d27e8106124f342be9c99f84d5"
+    },
+    {
+      "path": "canonical_support/language/registry/LAYER_PRIORITY.md",
+      "class": "dependency_closure",
+      "bytes": 386,
+      "sha256": "f7dfbbed5d9bd9bfa9c5e7db56e18da7ae559bc854174d02b5d51d2dd84fd120"
+    },
+    {
+      "path": "canonical_support/language/registry/OPCODE_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 6397,
+      "sha256": "044189907f45ba6ec31d9ccdbea4a863f5c50013f50d781b45d1fe0ac53bc6da"
+    },
+    {
+      "path": "canonical_support/language/registry/PROGRAM_LEVEL_APPROVAL_GATE_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 3339,
+      "sha256": "4a8244361c37c846bb54822eeaa722568fcb7764767718d83cce6813007436e2"
+    },
+    {
+      "path": "canonical_support/language/registry/PROGRAM_LEVEL_CONTRACT_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 1929,
+      "sha256": "2b67102471c20a3d719203a626d82331b2e64502ac1e5fa48007f80e77d4deaa"
+    },
+    {
+      "path": "canonical_support/language/registry/PROMPT_REGISTRY_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 5989,
+      "sha256": "fab7ce14552eb425d5d115afa1697f89c83b341664057f7a847a54eb1dda8276"
+    },
+    {
+      "path": "canonical_support/language/registry/SOURCE_CONSTRUCT_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 1024,
+      "sha256": "bae7b6a91500e2a345b6e7de3c2755939bf8684c68445d4c39081adf03c88454"
+    },
+    {
+      "path": "canonical_support/language/registry/STARTUP_PACKAGE_PROFILE_VALUES.md",
+      "class": "dependency_closure",
+      "bytes": 3922,
+      "sha256": "46b3756ff4b6db03563943cca58765e0f253448811d6d07128c554d336261b60"
+    },
+    {
+      "path": "canonical_support/language/registry/TRACE_EVENT_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 1252,
+      "sha256": "c4db9df9976f5f23e26db250c94eda3edf4a8336f27d1dcfb760984aa9d05e70"
+    },
+    {
+      "path": "canonical_support/language/registry/TRUST_METHODS.md",
+      "class": "dependency_closure",
+      "bytes": 654,
+      "sha256": "7d8b9e88d7339ccbe528ac52be3798d8d132bc1dcff70bb957dae4dbb057999c"
+    },
+    {
+      "path": "canonical_support/language/registry/arf_node_contract_profiles.v1.json",
+      "class": "dependency_closure",
+      "bytes": 3941,
+      "sha256": "f672f63b5f5962d16496c05a62aa8a2f407084d65de51f9afdbb6171e2104712"
+    },
+    {
+      "path": "canonical_support/language/registry/capability_catalog.yaml",
+      "class": "dependency_closure",
+      "bytes": 968,
+      "sha256": "b647e70c2bc5669bca62c65434aeab500d42bafa10365756137949e44723a6ef"
+    },
+    {
+      "path": "canonical_support/language/registry/source_construct_catalog.yaml",
+      "class": "dependency_closure",
+      "bytes": 1915,
+      "sha256": "e41435677705cfb7bb8d2041fae094757d2493d579153b7594cb018c2c4c4676"
+    },
+    {
+      "path": "canonical_support/language/registry/trace_event_catalog.yaml",
+      "class": "dependency_closure",
+      "bytes": 1179,
+      "sha256": "e931b56b535ace8ad718bfe3022f4e605e381fdae75286ac23669efde54830b8"
+    },
+    {
+      "path": "canonical_support/language/runtime/antipattern_runtime.py",
+      "class": "dependency_closure",
+      "bytes": 1680,
+      "sha256": "1035962abc326bec457ac82ce563adc055516b09a317700135e3530d6a39ced0"
+    },
+    {
+      "path": "canonical_support/language/runtime/antipattern_signal_extractors.py",
+      "class": "dependency_closure",
+      "bytes": 2029,
+      "sha256": "8f25ad963bb549c8dae753fb7d4d455fc3cd98277209212b0ab0f464e3a10b8b"
+    },
+    {
+      "path": "canonical_support/language/runtime/fixtures/antipattern_integration_cases.v1.json",
+      "class": "dependency_closure",
+      "bytes": 3032,
+      "sha256": "29aafb97fed03122c2c59b977bb004a1a761878b74056dd63de21b49e3c514bb"
+    },
+    {
+      "path": "canonical_support/language/runtime/fixtures/initial_antipattern_runtime_cases.v1.json",
+      "class": "dependency_closure",
+      "bytes": 2640,
+      "sha256": "619bf073a438c3ff514d1148c382b55a6ee925193ff83328ab893282846d3d1c"
+    },
+    {
+      "path": "canonical_support/language/schemas/antipattern_def.schema.json",
+      "class": "dependency_closure",
+      "bytes": 5283,
+      "sha256": "1d535e56b34efe6047f01c54df9a8cc83792de00245b7d810dd8e7e57191610f"
+    },
+    {
+      "path": "canonical_support/language/schemas/antipattern_evidence_ref.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1210,
+      "sha256": "191690ff5ce2c1c9990d3a2929e0ed570f40a10d2c7bc754a4cb85e20abe7a05"
+    },
+    {
+      "path": "canonical_support/language/schemas/antipattern_finding.schema.json",
+      "class": "dependency_closure",
+      "bytes": 3497,
+      "sha256": "bae2b76699d0487b872c6efc62027ad8b269ccf2127cbe78171622a47aae0bc5"
+    },
+    {
+      "path": "canonical_support/language/schemas/antipattern_gate_report.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1850,
+      "sha256": "e1aadebebe5530edd6f290f0cdcab8a383b690cda4a8512a7e202949da27abce"
+    },
+    {
+      "path": "canonical_support/language/schemas/antipattern_policy.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1389,
+      "sha256": "37c214a235f1193b24599e3d9f47ff3874657a2a420786712d201abfbaa1d273"
+    },
+    {
+      "path": "canonical_support/language/schemas/antipattern_wiring_hook.schema.json",
+      "class": "dependency_closure",
+      "bytes": 4715,
+      "sha256": "e377392f50c619ce705152fa4d49be7e9f2b661dbf3bc46c31a047e5e9c4875b"
+    },
+    {
+      "path": "canonical_support/language/schemas/arf_control_model_contract.schema.json",
+      "class": "dependency_closure",
+      "bytes": 5247,
+      "sha256": "616cc59cd3cb5227d3c2f32bde8e2cdd46e161bfe509d74be92e85e86d8d9632"
+    },
+    {
+      "path": "canonical_support/language/schemas/arf_delivery_target_decision.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1495,
+      "sha256": "00f91a398f68d8a6c333d91eb1ac83ad25c7334bb62869bb02be1bd815911b59"
+    },
+    {
+      "path": "canonical_support/language/schemas/arf_node_contract.schema.json",
+      "class": "dependency_closure",
+      "bytes": 9826,
+      "sha256": "f51c6b10efb593debb9f9f616365621b8cb6798575817df2cbe86246c4540b13"
+    },
+    {
+      "path": "canonical_support/language/schemas/artifact_requirement_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 816,
+      "sha256": "4394cd8c4060b200da42e133d82ebecb2a2eb7cd5cdb5b682f9408d4567ab2a6"
+    },
+    {
+      "path": "canonical_support/language/schemas/artifact_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 310,
+      "sha256": "d2db78af7ee16603b6e411fbb62386a28d145b45d4edd79c1449eb4b9bd66f54"
+    },
+    {
+      "path": "canonical_support/language/schemas/assertion_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 423,
+      "sha256": "8702c88127bddce11c8b7c76f81d4440b8e6d58893e49c213b6703f82bed2665"
+    },
+    {
+      "path": "canonical_support/language/schemas/blind_automation_profile.schema.json",
+      "class": "dependency_closure",
+      "bytes": 5376,
+      "sha256": "994dbd39263713fa604c553e19332dbe1c1543ca2f7797fe9f52371ce4cfc7ab"
+    },
+    {
+      "path": "canonical_support/language/schemas/capability_maturity.schema.json",
+      "class": "dependency_closure",
+      "bytes": 3238,
+      "sha256": "8a82a99ff936df5b17d6935d74ba8d1d93049f26b6298992ce15690837af3034"
+    },
+    {
+      "path": "canonical_support/language/schemas/ci_release_clean_gate_policy_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1121,
+      "sha256": "cde525034ea587b808a1c62dc238fe8ed8a56ede7dbc5d42ff962a4c27f4fc75"
+    },
+    {
+      "path": "canonical_support/language/schemas/clean_package_gate_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1910,
+      "sha256": "2550345e82e49dd74b6b7073ecafa94d089eeb3601cc3754e38c491ee875e270"
+    },
+    {
+      "path": "canonical_support/language/schemas/contract_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 572,
+      "sha256": "ea864b03fc1be480778dca81c5dce0083790508a8bf309828109cf1f1ed225d3"
+    },
+    {
+      "path": "canonical_support/language/schemas/conversation_scope_guard_source.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1327,
+      "sha256": "9514616a58cc9aea624d5e086368404bb2aaa7df2530a5f7179f8e0af4decbc8"
+    },
+    {
+      "path": "canonical_support/language/schemas/conversation_semantics_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1647,
+      "sha256": "37bb980c41ba2aeea323553f216e98aac78e5e503508eddf784f6d65c38c5615"
+    },
+    {
+      "path": "canonical_support/language/schemas/coverage_rule_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 407,
+      "sha256": "8c173513247cb6d54e20e013325ad83759091046576f7506cc2022d146bae4d4"
+    },
+    {
+      "path": "canonical_support/language/schemas/csg_package_binding.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1420,
+      "sha256": "71721fd4c9b2e8dd64395ac38dcd37889992a2153bc2c8967df9e6f2fd95c5aa"
+    },
+    {
+      "path": "canonical_support/language/schemas/delta_backlog_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1169,
+      "sha256": "b46b319dcfde0bc1e844d7e92a362bfc5b29bec4d159c1e49657073426810bf6"
+    },
+    {
+      "path": "canonical_support/language/schemas/derived_artifact_sync_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1639,
+      "sha256": "9cdfdc2135b719b006ef42b69ee52bdcca3d64e73e78e75515c7eae20d2504c4"
+    },
+    {
+      "path": "canonical_support/language/schemas/derived_artifact_sync_validation_profile_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1576,
+      "sha256": "6dda512d23c510374c78d9e4ef4fbdd5619ce0ba79f052b2d716142649f22057"
+    },
+    {
+      "path": "canonical_support/language/schemas/detect_rule.schema.json",
+      "class": "dependency_closure",
+      "bytes": 5984,
+      "sha256": "e8e16e31ed6d9bdd265d4c84824d28d7741954f1fa1d324a851cf328149fd60c"
+    },
+    {
+      "path": "canonical_support/language/schemas/deviation_classification.schema.json",
+      "class": "dependency_closure",
+      "bytes": 2658,
+      "sha256": "4ff2fe4aec2ee659918976742d9bd8d24619832d3e8138329844f149e858b87f"
+    },
+    {
+      "path": "canonical_support/language/schemas/execution_trace_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 5239,
+      "sha256": "ad2d8b6e16e4658077c8b06a39fd868f072fd7942d606ce01468060ed0a4d3f3"
+    },
+    {
+      "path": "canonical_support/language/schemas/flow_join_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 2042,
+      "sha256": "0753b7f466430f4c150c09433439b6f21f1352818297488cc009d61f308bf347"
+    },
+    {
+      "path": "canonical_support/language/schemas/freeform_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 405,
+      "sha256": "a85ec83110395e843e88cb0929b6386e8a733a44308a53dd2a17f7e9882dcd0e"
+    },
+    {
+      "path": "canonical_support/language/schemas/gate_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 761,
+      "sha256": "3f6a8efac7631eae09b3b8ac347f7aedc3d9d8b3979c9842ded74e4b492e1616"
+    },
+    {
+      "path": "canonical_support/language/schemas/go_no_go_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 681,
+      "sha256": "4df9273f43c1cb91d814fbdcd33c5aea52794e1a02f1841c8ec5d1bd9e03c4e2"
+    },
+    {
+      "path": "canonical_support/language/schemas/improvement_record_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 755,
+      "sha256": "cff6b7947e6abd0c5f2ac72843a2014a4ec4174198c70eca47a4612476097ad7"
+    },
+    {
+      "path": "canonical_support/language/schemas/interaction_model_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1165,
+      "sha256": "023ada1885691d6523501c4f8b8b67d055615f30082241e2bdfffa397ddbc94e"
+    },
+    {
+      "path": "canonical_support/language/schemas/library_include_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 267,
+      "sha256": "a7092f08e7eff867e56c1844a8a00f8cea91b7762c60de01fa967dae8420264b"
+    },
+    {
+      "path": "canonical_support/language/schemas/manual_run_journey.schema.json",
+      "class": "dependency_closure",
+      "bytes": 882,
+      "sha256": "94eaecdf5523bddd8170504a5725522fee9db71175d5cc8d901fbffdbbbbe6fd"
+    },
+    {
+      "path": "canonical_support/language/schemas/migration_ambiguity.schema.json",
+      "class": "dependency_closure",
+      "bytes": 247,
+      "sha256": "6165f40545194e0135ef287ea3b15f18e2d3c8332f4f7157dafeffbeeb7bce42"
+    },
+    {
+      "path": "canonical_support/language/schemas/migration_clause_inventory.schema.json",
+      "class": "dependency_closure",
+      "bytes": 360,
+      "sha256": "065d37bde6216c7a9509305dfd91a5e816df95d9c068f5b8876418868e70d9b6"
+    },
+    {
+      "path": "canonical_support/language/schemas/migration_dependency_graph.schema.json",
+      "class": "dependency_closure",
+      "bytes": 409,
+      "sha256": "baa34dcf85636f7dfc91741c5f4c688fb890ab98d4a665b8874a0a2ebdef786d"
+    },
+    {
+      "path": "canonical_support/language/schemas/migration_loss_finding.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1338,
+      "sha256": "f189232cc1dd5327889aacb49e3acf338b55767f743006d7e2455c1591ff60b1"
+    },
+    {
+      "path": "canonical_support/language/schemas/migration_ordo_mapping.schema.json",
+      "class": "dependency_closure",
+      "bytes": 356,
+      "sha256": "4deee07f51cfe2417d9d31ffb12adea2d1b6d7182e2cf7dbdd85931af3ac6076"
+    },
+    {
+      "path": "canonical_support/language/schemas/migration_traceability_matrix.schema.json",
+      "class": "dependency_closure",
+      "bytes": 3204,
+      "sha256": "9fac59b80aafe1a079f4de3dc321f4c8f168508f16a5e66bb34c32a288cf691a"
+    },
+    {
+      "path": "canonical_support/language/schemas/node_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1199,
+      "sha256": "f0fe695b3fea972cdf99a4ce76c2c02b4a2d2bd239b8724f87aa233749586011"
+    },
+    {
+      "path": "canonical_support/language/schemas/playbook_release.schema.json",
+      "class": "dependency_closure",
+      "bytes": 2639,
+      "sha256": "52dac03a2ce7d1a0154b9c5c41278468fafc8c1b56e64e7c1beb5da657a34994"
+    },
+    {
+      "path": "canonical_support/language/schemas/playbook_rollback_checkpoint.schema.json",
+      "class": "dependency_closure",
+      "bytes": 911,
+      "sha256": "bc131256a0b12abbe7346cd33c007e4cb10cce194751b5a2f6dea1e9c4afa194"
+    },
+    {
+      "path": "canonical_support/language/schemas/process_instruction_migration_intake.schema.json",
+      "class": "dependency_closure",
+      "bytes": 703,
+      "sha256": "98a8164be279486a35343593480ef84e5533907e3eca1b1ba7da09c9c12d9ff8"
+    },
+    {
+      "path": "canonical_support/language/schemas/process_instruction_migration_package.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1628,
+      "sha256": "d934194be62c83b06a214795d19b3b100276c4518407fc162faa78146f7f9162"
+    },
+    {
+      "path": "canonical_support/language/schemas/process_rail_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1393,
+      "sha256": "f01c573767605e4512cb628d7f832866079bedd5cd544f04fcf5a36a3b32b1a3"
+    },
+    {
+      "path": "canonical_support/language/schemas/program_level_approval_gate_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 2186,
+      "sha256": "787bdad067ee142b140794d12426b4754d5508920d84a60636da1d4e463c6603"
+    },
+    {
+      "path": "canonical_support/language/schemas/program_level_contract_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1935,
+      "sha256": "849c2a80f852cbfa9b8a16623a347a43bc5ded91cb201d01f1faff6b743899b8"
+    },
+    {
+      "path": "canonical_support/language/schemas/prompt_compilation_manifest.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1553,
+      "sha256": "4c8c8869de4d5cb0f503a952ba4c2d2295e9ecc7266315050011aae717e2c934"
+    },
+    {
+      "path": "canonical_support/language/schemas/prompt_ref_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1335,
+      "sha256": "8815d48a110eaf15d310322782c5ea29dd651c2b38c7c50fff2a4bcb81453e6d"
+    },
+    {
+      "path": "canonical_support/language/schemas/prompt_registry_packaging_checks_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1498,
+      "sha256": "42d991759b7fc0439eca0e2b9ddfe5491e57734715f932476158b428b6e4d03f"
+    },
+    {
+      "path": "canonical_support/language/schemas/prompt_registry_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 5264,
+      "sha256": "b08d1c6e1ff65b4c1cb46e1b3def1c869f53066843ab9b5eb7f4ea55c068e91d"
+    },
+    {
+      "path": "canonical_support/language/schemas/prompt_registry_validation_profile_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 2135,
+      "sha256": "c2c8ab8c622e0a7928c4c1d9fc3bb451b9a9fcfc46496ff5d6b70613cc1c01a3"
+    },
+    {
+      "path": "canonical_support/language/schemas/release_clean_gate_provenance_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1347,
+      "sha256": "fe59b2e9d9007f0e365191f272c61bf46fb8cbd9d833e14cce175eecb3d8ebdc"
+    },
+    {
+      "path": "canonical_support/language/schemas/rendered_artifact_assertion_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 439,
+      "sha256": "a469c3d9db37b94dc568afc84565d5cc443a2750fe890ab0e0ed472a47d0cf39"
+    },
+    {
+      "path": "canonical_support/language/schemas/rendering_template_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 815,
+      "sha256": "3269939d5cc61736d8e1e00b5161ac0f169eb3353be5ee426cb3a4316ee39992"
+    },
+    {
+      "path": "canonical_support/language/schemas/scope_guard_policy.schema.json",
+      "class": "dependency_closure",
+      "bytes": 2495,
+      "sha256": "fd92356670d18e3497a048b104c048278da10fcdf4fc8eb71206ca011020b8a2"
+    },
+    {
+      "path": "canonical_support/language/schemas/semantic_json_ir_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 3777,
+      "sha256": "78ee3f800b034a969a812da38e70f97d6d7e800787b264b63b69a1e5272df86a"
+    },
+    {
+      "path": "canonical_support/language/schemas/shared_tail_reference_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1721,
+      "sha256": "b204caf14ad5317be6d51137a469fc2307c33740257186e56e3ffb38b5e7deae"
+    },
+    {
+      "path": "canonical_support/language/schemas/startup_package_profile_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 2440,
+      "sha256": "9a7dab628bd1f0b19d6935110c6b417ec83560feabba9e78e95150fa91d8e919"
+    },
+    {
+      "path": "canonical_support/language/schemas/startup_profile_validation_profile_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1963,
+      "sha256": "fdb11b6840ed14922eeb2282b663fbad05484a500ac461911f3ddc4d6c2830aa"
+    },
+    {
+      "path": "canonical_support/language/schemas/state_protection.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1406,
+      "sha256": "5f82294b36d1da68ea8bf016c6952bfb2ced933b87a00c0e57774abf2a1c505d"
+    },
+    {
+      "path": "canonical_support/language/schemas/trace_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 558,
+      "sha256": "56e1ec305db17b48de0cb8a72e9758770bea7186badc61789317758e9183e320"
+    },
+    {
+      "path": "canonical_support/language/spec/00_ORDO_OVERVIEW.md",
+      "class": "dependency_closure",
+      "bytes": 3320,
+      "sha256": "610d60801ca8fb9e369df41678d19da7ac9bd1ad7e61cd279d25b76c2e7c6fb0"
+    },
+    {
+      "path": "canonical_support/language/spec/01_ORDO_CORE.md",
+      "class": "dependency_closure",
+      "bytes": 1480,
+      "sha256": "cf4ab5124dbc6d8c5ac18d34d39d110f10be77c5d7a6d8d0d06593ac4499e32a"
+    },
+    {
+      "path": "canonical_support/language/spec/02_ORDO_SOURCE_SYNTAX.md",
+      "class": "dependency_closure",
+      "bytes": 1471,
+      "sha256": "092cd9461d0a431c17be7be708d02dfcd5b3ea5dab8a72e46bc654da056e7087"
+    },
+    {
+      "path": "canonical_support/language/spec/03_SEMANTIC_JSON_IR.md",
+      "class": "dependency_closure",
+      "bytes": 3483,
+      "sha256": "150ed7a709e3ed74f383c04308102cce4dc2b7776d7da8d1197a5084cfa8f65f"
+    },
+    {
+      "path": "canonical_support/language/spec/04_EXECUTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 3850,
+      "sha256": "cea69fb92fe01d679045c126b50d17290f7ff7f7547db3fccb57ac63bfec4a10"
+    },
+    {
+      "path": "canonical_support/language/spec/05_GATE_AND_ASSERTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2053,
+      "sha256": "12277016159a27f8995e1181729ad49a560c41174c84df0d0e7b4f1c8423ac38"
+    },
+    {
+      "path": "canonical_support/language/spec/06_DEBUG_TEST_IMPROVEMENT_LAYER.md",
+      "class": "dependency_closure",
+      "bytes": 1998,
+      "sha256": "3fb195bd7dc168b687440fd18242f5f966f78b3d77d1f540d6c26a3fe5424de5"
+    },
+    {
+      "path": "canonical_support/language/spec/07_FREEFORM_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1234,
+      "sha256": "36f54e2493e7b665fad200685de89f68de71ba501a476a9f0bc79345fdf96e07"
+    },
+    {
+      "path": "canonical_support/language/spec/08_LIBRARY_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1118,
+      "sha256": "db54f2f27755aef66fc151484e476fd01c6fc1d6cc2650fbebc05adc73804533"
+    },
+    {
+      "path": "canonical_support/language/spec/09_EXECUTION_MODES.md",
+      "class": "dependency_closure",
+      "bytes": 878,
+      "sha256": "6ba7e83e021beafc387efd43408fc1c0eb240e41601cb995a4810e6de3f1884b"
+    },
+    {
+      "path": "canonical_support/language/spec/10_COMPILER_RULES.md",
+      "class": "dependency_closure",
+      "bytes": 2380,
+      "sha256": "2fd2f98fbcd057b1c1a550a37a312780136f4ab105c29520d1a61e1dcf537b79"
+    },
+    {
+      "path": "canonical_support/language/spec/11_PROCESS_RAIL_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2807,
+      "sha256": "1154fdd81b82100f1d3d47a704c6134b58c89e003a57124ca0312e095ef9783e"
+    },
+    {
+      "path": "canonical_support/language/spec/12_PROJECT_BUILDER_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1653,
+      "sha256": "7e8c76de97779b273a66629686b210a756f2f917552d74acebb9654df4eb62c5"
+    },
+    {
+      "path": "canonical_support/language/spec/13_HYBRID_EXECUTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1749,
+      "sha256": "c1cdd07cbf79840f17b9a12ba38cfc2d0a8930222ee0cf5f07af8700ca3c9088"
+    },
+    {
+      "path": "canonical_support/language/spec/14_CLI_HELPER_COMMANDS_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1335,
+      "sha256": "643661883afb8ab2a8d219cf6b865aca3958974c46ceb7057fca95f6f16f850b"
+    },
+    {
+      "path": "canonical_support/language/spec/15_CONTRACT_ARTIFACT_COVERAGE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 6232,
+      "sha256": "29eb47cb85c1c76df1f0b36ab536528ada5962bde53a23162807243f5229bd68"
+    },
+    {
+      "path": "canonical_support/language/spec/16_PROGRAM_LEVEL_CONTRACT_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1871,
+      "sha256": "8aeaeb26135d08ac6c6ef02cf24a5c05427aebb42432f94d284565f9982dd356"
+    },
+    {
+      "path": "canonical_support/language/spec/17_INTERACTION_PROCESS_RAIL_CONVERSATION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2044,
+      "sha256": "ad086a7afc48b6e5af7a0ea06efe182a22cfebab780cabcae8e01ef37ecd96a5"
+    },
+    {
+      "path": "canonical_support/language/spec/18_PROGRAM_LEVEL_APPROVAL_GATE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 4266,
+      "sha256": "c88dcf9428e3eaf78a645d2c9686b68780a394f98ab81ae4ba7dbd89b49c66c3"
+    },
+    {
+      "path": "canonical_support/language/spec/19_PROMPT_REGISTRY_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 5151,
+      "sha256": "534498a351f3297c9b2feed78ea18595ea04c7152705a91136c7ae8c7d97e015"
+    },
+    {
+      "path": "canonical_support/language/spec/20_PROMPT_REGISTRY_VALIDATION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1845,
+      "sha256": "db30c19267681581416bacd720ca736402ab4388ee02b2e7a00a184429024429"
+    },
+    {
+      "path": "canonical_support/language/spec/21_PACKAGE_STARTUP_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2844,
+      "sha256": "865c3cb2d4036ef3a0e766a51f10dbe23ed49e0b4414b64d03507768c86fbbad"
+    },
+    {
+      "path": "canonical_support/language/spec/22_STARTUP_PROFILE_VALIDATION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2161,
+      "sha256": "a92b8e734be31d090ca794757d438f948d7a9d3a5f83e80d2b137634782592a8"
+    },
+    {
+      "path": "canonical_support/language/spec/23_DERIVED_ARTIFACT_SYNC_DELTA_BACKLOG_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1576,
+      "sha256": "49dab7bc43769ab4cfe165c41f8eaa8475452d01e95d174a0e7e83689f2c52c9"
+    },
+    {
+      "path": "canonical_support/language/spec/24_CLEAN_PACKAGE_CLI_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 3309,
+      "sha256": "cacfa8b3178ad7a69c7182961fd56bbb69ce112d18c71b0b862c868a78a0e449"
+    },
+    {
+      "path": "canonical_support/language/spec/25_CLEAN_PACKAGE_GATE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2483,
+      "sha256": "57eb0106049b4e4fb8524e842ed2f3c2bb2dfb0ccd78679669e63d0e22c1fe25"
+    },
+    {
+      "path": "canonical_support/language/spec/26_CLI_CLEAN_CHECK_HARDENING_FIXTURE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2637,
+      "sha256": "55ead584d88976c5b648456bf484517d4deeb046b6aff52843a2b5d32ca68948"
+    },
+    {
+      "path": "canonical_support/language/spec/27_REPO_LEVEL_PACKAGE_HYGIENE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2088,
+      "sha256": "26ba88706506aeb4f0c47111517ac66d868084e245f7290d2483e09c5f7ed4da"
+    },
+    {
+      "path": "canonical_support/language/spec/28_CI_RELEASE_CLEAN_GATE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1460,
+      "sha256": "18122e86856641a1814e12d3d86f3a1dd61dd957c0e1d0a17f94c00f83a312b2"
+    },
+    {
+      "path": "canonical_support/language/spec/29_CLEAN_GATE_EVIDENCE_PROVENANCE_LINKAGE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 610,
+      "sha256": "a31b3fbefa15173d0adeadfb05061d6bf22c5fa71493aafd0f69155317880983"
+    },
+    {
+      "path": "canonical_support/language/spec/30_PRODUCTION_REPO_HYGIENE_POLICY_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2050,
+      "sha256": "e66199a79211537540de1484ca82a49675e72eb490df919ba6712fb1234a5a6b"
+    },
+    {
+      "path": "canonical_support/language/spec/31_LANGUAGE_CLI_REPO_ROOT_CONTRACT_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 460,
+      "sha256": "73015dacb0fe76a061d8b6a7f214bf130bd5b4b50c31422bb546071fb4334f80"
+    },
+    {
+      "path": "canonical_support/language/spec/32_STABLE_PROMPT_IDENTITY_VERSIONING_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 4162,
+      "sha256": "fec17ac517e732fe26e2fcf3a61d8469992d8df74519cd24203b90c7db7059f3"
+    },
+    {
+      "path": "canonical_support/language/spec/33_EXECUTION_TRACE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 3830,
+      "sha256": "d78ac33e97e4f4c70945cfc8cf3f472268aeccec7d8cb4275364243bf838a494"
+    },
+    {
+      "path": "canonical_support/language/spec/33_NODE_LOCAL_EXECUTION_AND_TRANSITION_PROVENANCE.md",
+      "class": "dependency_closure",
+      "bytes": 2044,
+      "sha256": "215ab563f80f42c049b327d2dc95bb165eb53ea6c0381ed13215eba1c7aa3bfd"
+    },
+    {
+      "path": "canonical_support/language/spec/34_AI_DECISION_DEBUG_TRACE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 2991,
+      "sha256": "4a8055bcfa1ecd14813a6ad8e9e16aa881a4c6d3f90048520cee43a86a6647a4"
+    },
+    {
+      "path": "canonical_support/language/spec/34_OPTIONAL_FLOW_REUSE_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 5420,
+      "sha256": "25e5788f2496cabe98c0c4fea44809a70a29e5bee216b1bedd7a5c56071ccc80"
+    },
+    {
+      "path": "canonical_support/language/spec/35_PROCESS_PATTERN_ENGINEERING_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 936,
+      "sha256": "10f03ae5e647148716038d02d96baa96868fbbbf1ae023782df1c8ad0a117fbd"
+    },
+    {
+      "path": "canonical_support/output_templates/.gitkeep",
+      "class": "dependency_closure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "canonical_support/output_templates/APPLIED_PROJECT_OUTPUT_TEMPLATE_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 3548,
+      "sha256": "0f13315ad651892aa35f86d704e542c597e31410d934c703beccf79b6fd04e16"
+    },
+    {
+      "path": "canonical_support/output_templates/APPLIED_PROJECT_SOURCE_YAML_TEMPLATE.md",
+      "class": "dependency_closure",
+      "bytes": 5353,
+      "sha256": "8d7d3ec90738a57bf524a60d6681c7aa1776902645c087efd665bb26889fd3b1"
+    },
+    {
+      "path": "canonical_support/output_templates/BUSINESS_VIEW.template.md",
+      "class": "dependency_closure",
+      "bytes": 286,
+      "sha256": "5baa31b5cf859a2a3d413d75dd86a71d5448c4c708c2682f13d9ce0b5ea38219"
+    },
+    {
+      "path": "canonical_support/output_templates/GENERATED_PLAYBOOK_PACKAGE_ASSEMBLY_CONTRACT.json",
+      "class": "dependency_closure",
+      "bytes": 1279,
+      "sha256": "fc8be353f79abf131361592fca6232ddf42ff561bf708cd43bedc19bc83da4da"
+    },
+    {
+      "path": "canonical_support/output_templates/GENERATED_PLAYBOOK_RUN_PACKAGE_ASSEMBLY_CONTRACT.json",
+      "class": "dependency_closure",
+      "bytes": 1314,
+      "sha256": "36d4b48f333535a2e41a819e803644fa8ce03a051766b65c24308678c77c5dfe"
+    },
+    {
+      "path": "canonical_support/output_templates/PLAYBOOK_LAWS.md",
+      "class": "dependency_closure",
+      "bytes": 40337,
+      "sha256": "f2db1d9eb3b15850a140fc36ebe41982ea9588f89f841a0dc2c0338c02f3c2f1"
+    },
+    {
+      "path": "canonical_support/provenance/KIT_MANIFEST.json",
+      "class": "dependency_closure",
+      "bytes": 227942,
+      "sha256": "31e855da6692f3f36ef28a912ef41088706b92e334969ec321f132d5029098b6"
+    },
+    {
+      "path": "canonical_support/provenance/LOCAL_OVERRIDE_PROVENANCE.json",
+      "class": "dependency_closure",
+      "bytes": 635,
+      "sha256": "4a09d8351479314d592316f08cd4f1c2cbbb205dd6712648997b0c259e77b8a2"
+    },
+    {
+      "path": "canonical_support/release_tools/README.md",
+      "class": "dependency_closure",
+      "bytes": 722,
+      "sha256": "761c9c31d734f4c99d75625236e23281671db252ee69c354aaf4b11f3518b9e9"
+    },
+    {
+      "path": "canonical_support/release_tools/build_arf_playbook_kit.py",
+      "class": "dependency_closure",
+      "bytes": 10420,
+      "sha256": "d0dd303912932fab48cd568dcfe23ee47d044c8208fad1decdbb3b88d7afba29"
+    },
+    {
+      "path": "canonical_support/release_tools/build_release_archive.py",
+      "class": "dependency_closure",
+      "bytes": 19502,
+      "sha256": "67df74b8703f3cd9803510a664d3526aa694e7b224b4f5dafc65db2e291992ac"
+    },
+    {
+      "path": "canonical_support/release_tools/check_english_only_policy.py",
+      "class": "dependency_closure",
+      "bytes": 6421,
+      "sha256": "c9a0b37a8cb60203f49c9d78a9730b4409624771af5ac271fd0696bb8a6a54ff"
+    },
+    {
+      "path": "canonical_support/release_tools/release_integrity.py",
+      "class": "dependency_closure",
+      "bytes": 6375,
+      "sha256": "1959f252d9d840c0060dc648774311d583fd4319185161ca81bd9dfc5f4b21f4"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/README.md",
+      "class": "dependency_closure",
+      "bytes": 1222,
+      "sha256": "660a641846a7f1e63682010fb4e327003c479366c93df79dbba5c4bac72500ed"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/docs/IMPLEMENTATION_CHANGE_LIFECYCLE_INTEGRATION.md",
+      "class": "dependency_closure",
+      "bytes": 2073,
+      "sha256": "9f860bb6d2ace1861ae1958e44c3d551d578c5816261185d205eee807b5a0d62"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/docs/IMPLEMENTATION_CHANGE_LIFECYCLE_MAPPING.md",
+      "class": "dependency_closure",
+      "bytes": 1364,
+      "sha256": "3ec74ff43e4bd83fd45cd881534808311366a83c45e2e01162eb6a8eced2807e"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/docs/IMPLEMENTATION_CHANGE_LIFECYCLE_USAGE.md",
+      "class": "dependency_closure",
+      "bytes": 1628,
+      "sha256": "3fc0f4833e2ecfac6732c0d0a4060c479413a4ea9dd96311a957aff1ca5cea89"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/examples/IMPLEMENTATION_CHANGE_LIFECYCLE.generated.example.yaml",
+      "class": "dependency_closure",
+      "bytes": 13498,
+      "sha256": "0ccb7351533b859e79e23bf1bafd0aa494ee7802bfd21ec44036ee221b71ceca"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/examples/IMPLEMENTATION_CHANGE_LIFECYCLE.instance.example.yaml",
+      "class": "dependency_closure",
+      "bytes": 703,
+      "sha256": "632dc38439f98942ead493680a23a64c4ae1999887939b63fdb2d5c7ffb4d7cf"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/manifest.yaml",
+      "class": "dependency_closure",
+      "bytes": 760,
+      "sha256": "9e72d40b3e266b0bde0f33360eacfcbe94411af106bec4b4a27f0c2cc658d7d5"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/templates/DOCUMENT_MATERIALIZATION_LIFECYCLE.tree-template.yaml",
+      "class": "dependency_closure",
+      "bytes": 1867,
+      "sha256": "5e35364a9f786ba63ef81cff675742e5a66f5f0bc1b4a7f993469ad6473be98c"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/templates/IMPLEMENTATION_CHANGE_LIFECYCLE.tree-template.yaml",
+      "class": "dependency_closure",
+      "bytes": 12857,
+      "sha256": "344686a1b3f72dfce97625e80efbd2fcdbf719990902927e5c08cca806bfdf9e"
+    },
+    {
+      "path": "canonical_support/source/tree_module_library/templates/PACKAGE_HANDOFF_LIFECYCLE.tree-template.yaml",
+      "class": "dependency_closure",
+      "bytes": 2066,
+      "sha256": "5c9e9e148d26686aa03c79bdadc70eea67d65577e8c9a4e74dee1d532a43cea8"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/README.md",
+      "class": "dependency_closure",
+      "bytes": 3153,
+      "sha256": "598e54acd525a2fbdf0b25569622ebffc58c907cc374121354a3abcc10521506"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/VERSION",
+      "class": "dependency_closure",
+      "bytes": 14,
+      "sha256": "f77cccdd10d79797508947f77adeb8181bf2bf86afbac7fa09d91aae585378a7"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 52,
+      "sha256": "28354787a7121f65d89be0406cc3bc5abf9d39f962db01a341aaaaf74e653227"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/build_distribution.py",
+      "class": "dependency_closure",
+      "bytes": 2290,
+      "sha256": "0f3f84ecf9da1421655302ed76ef446cb90b8edd0367e954023bdc41cc2c844b"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/editor_service.py",
+      "class": "dependency_closure",
+      "bytes": 20025,
+      "sha256": "48faf2b31812b11820f1c1910773aff6407cd0ff599c1586d4769cb592204cd3"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/start_ordo_tree_editor.command",
+      "class": "dependency_closure",
+      "bytes": 460,
+      "sha256": "237e3fd546f926295e628547af3ae1c00f6d1e9ff49ce2d08967967b97b5805e"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/web/app.js",
+      "class": "dependency_closure",
+      "bytes": 28090,
+      "sha256": "a9bd1f77f2cfdbf6ea71dbaff821b8692cc86924bad3cc6daaabec89c85f514b"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/web/index.html",
+      "class": "dependency_closure",
+      "bytes": 4522,
+      "sha256": "6fa9f3ac364cb0a3597656b0c555a81ac0bcd9a014b4e3deba5e01aaa0cd2cf3"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_tree_editor/web/styles.css",
+      "class": "dependency_closure",
+      "bytes": 6187,
+      "sha256": "56ae15301ba67bde811c3678ca5dbc45a8181eef4b23e24ef0d8342a4de0f24f"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md",
+      "class": "dependency_closure",
+      "bytes": 1221,
+      "sha256": "93c543681c456952707fa3939f73b50a080ca86e0ee7ff207186f47a2c08cff3"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_STEP_REPORT.json",
+      "class": "dependency_closure",
+      "bytes": 1394,
+      "sha256": "d7cb21b961e32d6f4dd215f9be2132c2f7915fa91b2172cfeda367c29a65358b"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/GRAPH_OUTPUT_LAYERS.md",
+      "class": "dependency_closure",
+      "bytes": 7515,
+      "sha256": "78b55ba34c83c74754b508ed993cd0cb5e2e317fe1cc06dd951d1a5a932a3a8f"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ORDO_GRAPH_INPUT_CONTRACT.md",
+      "class": "dependency_closure",
+      "bytes": 6748,
+      "sha256": "c184a4453bc5a2a96be63e359672f723d8586d544eb9485db969052fca1eca5f"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ORDO_INTEGRATION_NOTES.md",
+      "class": "dependency_closure",
+      "bytes": 1887,
+      "sha256": "0df197b955dc5c09b35c936fde195bb5aaaa04d95c1db116099bdb784d700712"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/README.md",
+      "class": "dependency_closure",
+      "bytes": 7557,
+      "sha256": "08369737a11da8a25b1f2d58e75802f5cac5c59f884a118aefb7473509fb3fde"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/RELEASE_NOTES_V1.md",
+      "class": "dependency_closure",
+      "bytes": 1709,
+      "sha256": "868a30d6a245fc17129001cfceb1dd3bb55eaa760919f4613fadcada142ae2e5"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/TESTING.md",
+      "class": "dependency_closure",
+      "bytes": 861,
+      "sha256": "5443244d0e5b401f816c2e5bc1b1755e9b23cd390c87b4b5e35bc0ecbe7faf8d"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/TRACE_OVERLAY_SCHEMA.md",
+      "class": "dependency_closure",
+      "bytes": 3345,
+      "sha256": "c0d29f3e0b8b6012f058f4f1073a92c783f21dc2cdf09663d9b4032f9bc7453d"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/V1_1_PREVIEW_MANIFEST.json",
+      "class": "dependency_closure",
+      "bytes": 2981,
+      "sha256": "0b88d4e2736065eec48b98cff7ffbf6e1db808d4780ad45b6f27df2a5622e239"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/V1_PACKAGE_MANIFEST.json",
+      "class": "dependency_closure",
+      "bytes": 1692,
+      "sha256": "939d1c5ec5f05ff90f9c920eb6b160340f4df64edf9adb9c34c820b223979ec5"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/V1_VERIFICATION_REPORT.json",
+      "class": "dependency_closure",
+      "bytes": 3529,
+      "sha256": "18b51c6a0de358693d366600e2f7bdebfed830c2c48d33418be91438c5612938"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/VALIDATION_REPORT.json",
+      "class": "dependency_closure",
+      "bytes": 2000,
+      "sha256": "576a2cda9c00d4572a7aa9bac11f20ad50563f6cb1bbcf3e26bcd63df05dd0df"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 194,
+      "sha256": "aad6f7a69563ed249cd4b3195c0f150bb094000971b06d72229e345c5d9bff17"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/examples/demo_support_triage.annotations.v1.json",
+      "class": "dependency_closure",
+      "bytes": 1162,
+      "sha256": "40678845e2974bf624c9a007bb60643d0a707d8bc1919dbd8915339e25e8f14a"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/examples/demo_support_triage.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 1742,
+      "sha256": "51684ccbb1ad8b4fab63e35d7fd026b5456f30e646502299f2eaba925514e463"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/examples/demo_support_triage.trace.v2.json",
+      "class": "dependency_closure",
+      "bytes": 597,
+      "sha256": "c9f05c5a4751db43af7597ecfc2972406e550ab6ba185aa466f059ed363ff461"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/examples/p0_test_subtree_startup.svg",
+      "class": "dependency_closure",
+      "bytes": 15653,
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/examples/program_error_user_survey_with_artifacts.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 8029,
+      "sha256": "86cb8fcbb59596df471756c0c004529231a4782673d2ca4b8b475d65778298dc"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ordo_graph.py",
+      "class": "dependency_closure",
+      "bytes": 31952,
+      "sha256": "fed4d935ec54af2bf401fd5edf1ac2f6ba81ef2f590d8a62016c8214b73db47d"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ordo_graph_annotation_demo.py",
+      "class": "dependency_closure",
+      "bytes": 8742,
+      "sha256": "6a3ea50dd9e6969ffd415a027599f63ca46a9ca718faef760c9f02cb0f0f3f92"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/ordo_graph_with_attached_gates.py",
+      "class": "dependency_closure",
+      "bytes": 40455,
+      "sha256": "5fe8e25f04bf2e565ab638e6863e11f3b26db690e5ac18fccb4a37afb9d207d5"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage.mmd",
+      "class": "dependency_closure",
+      "bytes": 377,
+      "sha256": "9a07ab43b4a2b3ddb0d7df371b7a3dcc51c438586183a5f809d2472a56bc8b87"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.dot",
+      "class": "dependency_closure",
+      "bytes": 4749,
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.report.json",
+      "class": "dependency_closure",
+      "bytes": 220,
+      "sha256": "9aa73ce806d9604896e929abbda1b7db5f6bafcd93981baaf4e1a81fc59f20d2"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.svg",
+      "class": "dependency_closure",
+      "bytes": 24258,
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.dot",
+      "class": "dependency_closure",
+      "bytes": 4749,
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.report.json",
+      "class": "dependency_closure",
+      "bytes": 226,
+      "sha256": "1bd5a2b6feef501f25b9ff96d229008b3cbdc7fa2239a51d4438f9b29bac9788"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.svg",
+      "class": "dependency_closure",
+      "bytes": 24258,
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.dot",
+      "class": "dependency_closure",
+      "bytes": 3338,
+      "sha256": "d1e198a1d422b5a3461f60d446649d9db5218f86b330fd338ec2e80f62492a23"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.svg",
+      "class": "dependency_closure",
+      "bytes": 19912,
+      "sha256": "9a9c91c0b619e687cf437ac25628cfffff54dc86d52a48d75eae71b9b676d169"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/requirements-dev.txt",
+      "class": "dependency_closure",
+      "bytes": 14,
+      "sha256": "ed68ea16ad8aab76f809478c881995e191c8762d8f6d76edee8ae047c7defe3d"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/test_survey_startup_subtree.svg",
+      "class": "dependency_closure",
+      "bytes": 15653,
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "canonical_support/utilities/ordo_visual_graph_generator/tests/test_ordo_graph.py",
+      "class": "dependency_closure",
+      "bytes": 9572,
+      "sha256": "f7cc03fccf326e4010cd075caf533b31aff7112539dcaa4a5d71264a1f4d006f"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_lifecycle/README.md",
+      "class": "dependency_closure",
+      "bytes": 781,
+      "sha256": "1336e512723d8c9a4c8d0df8e56c6334e6931743030bf3d3fa30d5903a68da6b"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_lifecycle/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 76,
+      "sha256": "f415d5afa65ef4bdf2dbd15be61f293b62a1e58b2d6044e60f5d93210daafd9b"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_lifecycle/manage_playbook_checkpoint.py",
+      "class": "dependency_closure",
+      "bytes": 3084,
+      "sha256": "cf79a2aaea9e79dec72dc5dcdb140d695a88baf6b36db146cb48463e9ea2dac5"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_lifecycle/resolve_playbook_upgrade.py",
+      "class": "dependency_closure",
+      "bytes": 1426,
+      "sha256": "cfbb44371909f7fd50d3ab9395decb20a1ca631b693734749933bf15f6badb9b"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_lifecycle/resolve_upgrade_impact.py",
+      "class": "dependency_closure",
+      "bytes": 2105,
+      "sha256": "37fe55c1a905b472f1370d4ee07d5643bceb7adf2cbe249fefc925c123e3ff7e"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/README.md",
+      "class": "dependency_closure",
+      "bytes": 737,
+      "sha256": "d422259261cc85044b1e709dfc947db7cd9a6cb7062ac0bd1c77d6036d137859"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/CHANGELOG_1.7.0.md",
+      "class": "dependency_closure",
+      "bytes": 302,
+      "sha256": "f09337e1ceb768db8549ad74fd1da486c16bf44dec795e59479318f87fb2ffaa"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/PACKAGE_INVENTORY.md",
+      "class": "dependency_closure",
+      "bytes": 2281,
+      "sha256": "655a90d2bb020df0f65b4e6e31f70ed3752381b4b276852ff33dc82215c49b54"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/README.md",
+      "class": "dependency_closure",
+      "bytes": 1506,
+      "sha256": "6289d5cec30a352f6531c90774c34737884a9ec39a328bfc50d0908d349090c7"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/SCOPE_AND_STATUS.md",
+      "class": "dependency_closure",
+      "bytes": 609,
+      "sha256": "2ba0c1492c32ba7dfc495a68b8565ed19a9d88906150abfad2ac78c80ac19c68"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/SHA256SUMS.txt",
+      "class": "dependency_closure",
+      "bytes": 4802,
+      "sha256": "ab6a47ddfc8581c8392771565eba0da3969bbbe87ccdccb96b9fdf6d8e77698c"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/CHAT_NATIVE_POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 570,
+      "sha256": "7df4399f4b1d4324a928226e97797381b0b8e145f95ec5a4e0df932f8718924e"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/PACKAGE_INVENTORY.md",
+      "class": "dependency_closure",
+      "bytes": 420,
+      "sha256": "54f28d9e4da951cb525a0c12ee2eabc0d4a36d7cdf35f50982629d4a041c97fd"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/README.md",
+      "class": "dependency_closure",
+      "bytes": 618,
+      "sha256": "de9c56af8004f4b43998ca65a7f7988ca6f4647d7237dd5fdc0fa3f0a3342d91"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/SCOPE_AND_STATUS.md",
+      "class": "dependency_closure",
+      "bytes": 497,
+      "sha256": "87726eb4fb6f96e662639361b9517968ee224b1ca7b48f904fb531ef1bc45996"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/SHA256SUMS.txt",
+      "class": "dependency_closure",
+      "bytes": 1081,
+      "sha256": "b54539a0e3fe7372ad4e0547186b0bee347ca776efa386f244384119833608ff"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/docs/MULTI_CHAT_EXECUTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1039,
+      "sha256": "116deffc362cca6078f5df833750d6b7345023ba949f9b5201c6fc4429ace1f5"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/examples/MULTI_CHAT_CAMPAIGN_EXAMPLE.yaml",
+      "class": "dependency_closure",
+      "bytes": 500,
+      "sha256": "04401e4137b2502eb583e9af2f8748a302946879a1f4be3592fcbbdc19799cec"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_EXECUTE_ASSIGNED_CHAT.md",
+      "class": "dependency_closure",
+      "bytes": 1472,
+      "sha256": "3d45cc3021ad039dce83f2642ca945ee3c78d0aaa3f917e6cccd41e7901c56cc"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_MERGE_MULTI_CHAT_RESULTS.md",
+      "class": "dependency_closure",
+      "bytes": 1107,
+      "sha256": "a6f82b413acb3e83fde0442e8af0880d591d5e8772263bc86667b266f9c07d23"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/schemas/chat_native_campaign.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1400,
+      "sha256": "922b623f2b3be2182ee118227358fcb5fa2f2f3399950df4993a4bc6f1ee887f"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/schemas/chat_native_run_manifest.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1282,
+      "sha256": "4e5706130ef5137453069b0662a7da14794a7a8e1272e8f3e3ebb6850f961a4c"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/tools/validate_partial_results.py",
+      "class": "dependency_closure",
+      "bytes": 1031,
+      "sha256": "daea91fbdcaba9866facc9de45e5dc6c46672e8fa96e0b05686815243cbe7b9b"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/core/generate_execution_package.py",
+      "class": "dependency_closure",
+      "bytes": 2701,
+      "sha256": "5a69417a6407b795546da491c53bd209d170a305b1f7a37bcca05ade087ae2bb"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/checksum_domains/POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 500,
+      "sha256": "082de52417636faf02f1838de5e78d1b0cb89ae21dc39a5dedf5186bc97d3a07"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/checksum_domains/evaluate_checksum_domains.py",
+      "class": "dependency_closure",
+      "bytes": 1820,
+      "sha256": "cdf274bad59175e824ad2cbfeedcecd17722e9e8608e568d9a94ff2355b21ef7"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/release_metadata/POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 478,
+      "sha256": "fcf36d42d80aa5c78cd4c493262cbd8f64c9287c54b0090af2f79b46dd24a3dc"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/release_metadata/evaluate_release_metadata.py",
+      "class": "dependency_closure",
+      "bytes": 1851,
+      "sha256": "1936c88b1a4d801e2e6800c8a4a244898203d6bc694588742f332568894b4710"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/docs/BEHAVIORAL_MODE_SELECTION.md",
+      "class": "dependency_closure",
+      "bytes": 408,
+      "sha256": "f88aa614ee4e7aa545398660ae63c17f635e91858997a27cddaf50ebab3b062f"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/docs/EXECUTION_PACKAGE_GENERATOR.md",
+      "class": "dependency_closure",
+      "bytes": 754,
+      "sha256": "d26fd35e37a73e1deb6c6687c2ac0fa5acdf7585b5b7de79947a08d20591ce9e"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/examples/CHAT_NATIVE_CAMPAIGN_MINIMAL.yaml",
+      "class": "dependency_closure",
+      "bytes": 395,
+      "sha256": "6c4f05a12e1b81dac519da0910d6f71efe223c664cfef17837acf0e236596444"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-002.yaml",
+      "class": "dependency_closure",
+      "bytes": 271,
+      "sha256": "a4239636518dc43283dcee58e1a808d900ab252addf360320b91190c436e2abe"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-003.yaml",
+      "class": "dependency_closure",
+      "bytes": 266,
+      "sha256": "97f07c2f893ca8990d5e3c256329bef8bbfe9be50956ca5c8d1e276d6679f97e"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-005.yaml",
+      "class": "dependency_closure",
+      "bytes": 262,
+      "sha256": "b5780690e0e75f293b1a007d557a4de7e5e2d14c2f50052d4a9e03667c55f35e"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/schemas/negative_test_evaluation.schema.json",
+      "class": "dependency_closure",
+      "bytes": 876,
+      "sha256": "e4983c68a6619f64482af4debf06c50767e1d457a4dfe18c3280c963e240fcaa"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/tests/HARDENING_TEST_MATRIX.yaml",
+      "class": "dependency_closure",
+      "bytes": 613,
+      "sha256": "b30b9405c3aef6bea955a14b93845301eaa938b5f3df7d31c624d633948cd01b"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/tools/stability_analyzer_v1_2.py",
+      "class": "dependency_closure",
+      "bytes": 3247,
+      "sha256": "9369d2895e12d7870fde04c2261c10b009dc79e159efffec66bd4886952babe7"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/prompts/PROMPT_EXECUTE_CHAT_NATIVE_TEST_PACKAGE.md",
+      "class": "dependency_closure",
+      "bytes": 1114,
+      "sha256": "9b46e4bb511c8e454740a664cbe5affd99f5aa40d7944ad49f1b2579f51e99d9"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/prompts/PROMPT_RUN_UNIFIED_PRH_FROM_START.md",
+      "class": "dependency_closure",
+      "bytes": 3310,
+      "sha256": "6fd1362b5d5c8a14a4cacf47f6001ef5392a9d6c904b92f56a2e0321eacad217"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/SEMANTIC_PROJECTION_POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 550,
+      "sha256": "325f26b6208cdc509d4e279ad407936be8091a8c9f94957411ddb3763499ff99"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/docs/SEMANTIC_PROJECTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 563,
+      "sha256": "d14c98fe65d7fdfe41e44d5e8d004b6bf656c0af33cf3316d8cdc5aa8b9a787a"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/prompts/PROMPT_COMPARE_PROJECTIONS.md",
+      "class": "dependency_closure",
+      "bytes": 352,
+      "sha256": "d5541238c8684fa8df93674e66580c2cfc5122d3666173fe15fa6d7f13bea33b"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/prompts/PROMPT_EXTRACT_SINGLE_PLAYBOOK_PROJECTIONS.md",
+      "class": "dependency_closure",
+      "bytes": 357,
+      "sha256": "d85ab42ca034cc9e2379e13edfce08f80542f68309575478410161eef2604946"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/schemas/semantic_projection.schema.json",
+      "class": "dependency_closure",
+      "bytes": 2568,
+      "sha256": "dc6a865aa63a8cdc2c23f5c98dcb49cb0eb7cc213876c281d29c151fcc1d535c"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/schemas/semantic_projection_diff.schema.json",
+      "class": "dependency_closure",
+      "bytes": 571,
+      "sha256": "329f8a0d5545e5a023fd3bfc43aeaaee95359fe1c335cad22521fb62fbe147fa"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/tools/compare_projections.py",
+      "class": "dependency_closure",
+      "bytes": 1876,
+      "sha256": "94c194d31c52fe95a63b8c5492cb90a9971a6ebd39ba7224b5c3c9550d70da6c"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/workflows/BEHAVIORAL_MODE_POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 938,
+      "sha256": "271248b79131c68ec961fc73e0a5f29eec74734f24ffbb4df0996f8c069ce64d"
+    },
+    {
+      "path": "canonical_support/utilities/playbook_regression_harness/versions/1.7.0/workflows/UNIFIED_REGRESSION_WORKFLOW.yaml",
+      "class": "dependency_closure",
+      "bytes": 1223,
+      "sha256": "a9871e77c2609af2246f63547d26d051a03f0dab31df4a306314a841e38d4d78"
+    },
+    {
+      "path": "cli_embedded/README.md",
+      "class": "dependency_closure",
+      "bytes": 1616,
+      "sha256": "ee236a24a41742851dc12e5379028a9b1ebcd91d763a4429cfcd2c5f7779025b"
+    },
+    {
+      "path": "cli_embedded/language/registry/CAPABILITY_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 836,
+      "sha256": "3a05d023689cd60c922ceee7015c4c24ab9d1e62bb2d9529ed0308cb737903bc"
+    },
+    {
+      "path": "cli_embedded/language/registry/OPCODE_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 6397,
+      "sha256": "044189907f45ba6ec31d9ccdbea4a863f5c50013f50d781b45d1fe0ac53bc6da"
+    },
+    {
+      "path": "cli_embedded/language/registry/SOURCE_CONSTRUCT_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 1024,
+      "sha256": "bae7b6a91500e2a345b6e7de3c2755939bf8684c68445d4c39081adf03c88454"
+    },
+    {
+      "path": "cli_embedded/language/registry/TRACE_EVENT_CATALOG.md",
+      "class": "dependency_closure",
+      "bytes": 1252,
+      "sha256": "c4db9df9976f5f23e26db250c94eda3edf4a8336f27d1dcfb760984aa9d05e70"
+    },
+    {
+      "path": "cli_embedded/language/registry/capability_catalog.yaml",
+      "class": "dependency_closure",
+      "bytes": 968,
+      "sha256": "b647e70c2bc5669bca62c65434aeab500d42bafa10365756137949e44723a6ef"
+    },
+    {
+      "path": "cli_embedded/language/registry/source_construct_catalog.yaml",
+      "class": "dependency_closure",
+      "bytes": 1915,
+      "sha256": "e41435677705cfb7bb8d2041fae094757d2493d579153b7594cb018c2c4c4676"
+    },
+    {
+      "path": "cli_embedded/language/registry/trace_event_catalog.yaml",
+      "class": "dependency_closure",
+      "bytes": 1179,
+      "sha256": "e931b56b535ace8ad718bfe3022f4e605e381fdae75286ac23669efde54830b8"
+    },
+    {
+      "path": "cli_embedded/ordo",
+      "class": "dependency_closure",
+      "bytes": 1719,
+      "sha256": "be2184431cdf2ac7762e4223b628b0b19dcf63a34b695b7cb88e0fd1e495f6d3"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 23,
+      "sha256": "5c15ceed224b372b217ade23afdfb7c64e48186e448e92004b468d078fd2b939"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/apf_replay.py",
+      "class": "dependency_closure",
+      "bytes": 2431,
+      "sha256": "a6da370b289b9affe1fb2a5a08cf9d392e2cb53166d1c1da64043718a68aa510"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/artifact_validator.py",
+      "class": "dependency_closure",
+      "bytes": 19981,
+      "sha256": "36f9fd86fd3a7a044d6dabf469a3a2e2ccbcb5a8455904e4e04ce8a160f6bf2b"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/blind_automation.py",
+      "class": "dependency_closure",
+      "bytes": 7763,
+      "sha256": "63eafc9a745f7d5122e0bbfc3755637dc9fa0ef165dcb16f9ae0fd161c79e632"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/build_identity.py",
+      "class": "dependency_closure",
+      "bytes": 3684,
+      "sha256": "ad2595d226875d7befff56d25815fb41ecd2f034cc5e7f5cf4c15149f88d3712"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/checkpoints.py",
+      "class": "dependency_closure",
+      "bytes": 7316,
+      "sha256": "6760acda40b6282eec15f21354f21155266785ef4a1fb92d7dfd10cf6b25bfbc"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/ci_release_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 3814,
+      "sha256": "52c4b0ca3fec0c658b2877d20855caf684a64b9f63a17c87d29d99707820a654"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/clean_check.py",
+      "class": "dependency_closure",
+      "bytes": 18319,
+      "sha256": "8481cbbf04a13a4f9c93229c2fe49dad09ae67615aa51024af4aad24b4c2bc36"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/cli.py",
+      "class": "dependency_closure",
+      "bytes": 63240,
+      "sha256": "e0b222df7ad94d95e31b3c73ae9435f396f712d04a6d11c2a25bbb3dcc9671ae"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/compiler.py",
+      "class": "dependency_closure",
+      "bytes": 19914,
+      "sha256": "fe4aafc3d5ebc8313572b23e24626d1cb40676bcd23b8ef247091d010dfeeaae"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/consistency.py",
+      "class": "dependency_closure",
+      "bytes": 10234,
+      "sha256": "4e6e4f7cbd7a2a9a2c91e7592f78b516f5350560b54a7d2006c1b8de6fc68363"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/contract_coverage.py",
+      "class": "dependency_closure",
+      "bytes": 12066,
+      "sha256": "0fbdba2f993b4a6b1b0c0596189299048dbd0342eb23dbe5a4b3e75a88fc7393"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/coverage.py",
+      "class": "dependency_closure",
+      "bytes": 3065,
+      "sha256": "392d78522cac167398001f4703d1196e744baebc1dcc742565e14da5bd11722e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/csg_runtime.py",
+      "class": "dependency_closure",
+      "bytes": 7610,
+      "sha256": "d659199b50648fe1bd44fdb7fd5318bc10d8465aef112b8664d40ab36acbfcee"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/delivery_target.py",
+      "class": "dependency_closure",
+      "bytes": 4511,
+      "sha256": "07899161541f88674b902d3f881a2cac12d4dfbde50267d2a806fc8d589c4007"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/dependency_conflicts.py",
+      "class": "dependency_closure",
+      "bytes": 5389,
+      "sha256": "93a502fb378e7f43d34ea303cf27411861f4e11bfd9dc52c05d56d1e6d58ee6a"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/dependency_lock.py",
+      "class": "dependency_closure",
+      "bytes": 7911,
+      "sha256": "0340666f185340a93c7bf01323750a5f71cc7c8fd00dc51dc2a807cc6db4e7e5"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/document_field_bindings.py",
+      "class": "dependency_closure",
+      "bytes": 7097,
+      "sha256": "0791ce943efd36df4b95d4eac18ad4f58ab7e8de07bf7c0ec39b3e45fe703038"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/errors.py",
+      "class": "dependency_closure",
+      "bytes": 155,
+      "sha256": "4b19b416590cccaad1517e7809dcc0aecdab4c108a6bca2a4e7bd68c3b4bd53e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/execution_trace.py",
+      "class": "dependency_closure",
+      "bytes": 18043,
+      "sha256": "fd8b0c2369a58712dea71cd592ed6ec3aa146b2f5b4bb2566541e92159c65453"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/flow_reuse_runtime.py",
+      "class": "dependency_closure",
+      "bytes": 8827,
+      "sha256": "dd2e575782e34ed35ca6b48a753bb8187df637467dc367765bd4364889e85e36"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/flow_reuse_validation.py",
+      "class": "dependency_closure",
+      "bytes": 5576,
+      "sha256": "472bcbc16aab58a5a7e1888551f24a047484803f9c27e90671b61b91d4509f0a"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/go_no_go.py",
+      "class": "dependency_closure",
+      "bytes": 12058,
+      "sha256": "b72fd437459522278470d1f326f60d914a2baaa2eb38181bb0f3f99d670bdf6f"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/graph_topology.py",
+      "class": "dependency_closure",
+      "bytes": 3750,
+      "sha256": "b66c64cd2376ae9999ed9160c2ff78b20879702625d367e44f941b73c2e0deae"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/graph_validation.py",
+      "class": "dependency_closure",
+      "bytes": 14169,
+      "sha256": "78ce9a1474fec1f9d97983798267c0fc466420aaf655471ffe0c1a532dae7f8f"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/helpers.py",
+      "class": "dependency_closure",
+      "bytes": 12927,
+      "sha256": "43841e6ad104fc72b27dbfc3f9033830b877a7a34ef5af6fac49e289dc2155d9"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/intake.py",
+      "class": "dependency_closure",
+      "bytes": 36398,
+      "sha256": "fe2f14f6e10a02d91dab926e74029a274c480946c113a72f670691ce35e88e6d"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/linter.py",
+      "class": "dependency_closure",
+      "bytes": 11062,
+      "sha256": "0027246c45367e0f1d25aad26f33c7e3e5badb71a7d4880bdc990b38b56be260"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/loader.py",
+      "class": "dependency_closure",
+      "bytes": 1245,
+      "sha256": "757cf31bbfa160a7af2c414c1b3811f7d1a27bbaf5886cc763e00d4ba7b3f25a"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/manual_run_journey.py",
+      "class": "dependency_closure",
+      "bytes": 11130,
+      "sha256": "978e213e41e740c0d8429d5efc55081419c644a3145444f33f31a58a64fa70e0"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/output_generator.py",
+      "class": "dependency_closure",
+      "bytes": 18390,
+      "sha256": "6d9a4f0d5a6ecdf3bbd99d806c6568accface5fbe2fae5ced40d24f2ba560956"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/output_registry.py",
+      "class": "dependency_closure",
+      "bytes": 2767,
+      "sha256": "089b661d22a2bc779b15c9df0070be7791cf29bb92040d419ec40b0217633db5"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/output_validator.py",
+      "class": "dependency_closure",
+      "bytes": 11919,
+      "sha256": "07a3e5688e74478dbfe464b804b8faf5a8c3fe8a4685a44a62d3ce3f9a307dce"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/package_cache.py",
+      "class": "dependency_closure",
+      "bytes": 19925,
+      "sha256": "e4e98a2850338e1b28b844f8649ade5297fa5e15fbf81a7d097b2fbe044fdfac"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/package_profiles.py",
+      "class": "dependency_closure",
+      "bytes": 28707,
+      "sha256": "d4da2a157a199036ecb86cf88afc5311bf6da06bedb76041a0b5c27a92c9ccde"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/package_reconciliation.py",
+      "class": "dependency_closure",
+      "bytes": 5804,
+      "sha256": "4ca12818d247c75da5f9a7605d414cfe1c51a2bbabe656281472c2f6b6e42f37"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/performance_budget.py",
+      "class": "dependency_closure",
+      "bytes": 454,
+      "sha256": "37e47a284b622cf43ab0055086539c372e244d9c5f4a224b914de967d147ad3c"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/prompt_compiler.py",
+      "class": "dependency_closure",
+      "bytes": 8647,
+      "sha256": "6c308e75f4f55d13e71dc3c516269f07dd56cdcdbdc01a1b48fd35309392e6a1"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/prompt_governance.py",
+      "class": "dependency_closure",
+      "bytes": 7319,
+      "sha256": "4ca7b9ba095fc46287a8d2be2d18b179f1ca690e3237d6b2b2528545731bd159"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/prompt_registry_reconcile.py",
+      "class": "dependency_closure",
+      "bytes": 4281,
+      "sha256": "177eadc4b0f9a0a67ad983d6f9f826d98259eafe21ab3ccbe170f865140531aa"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/provenance.py",
+      "class": "dependency_closure",
+      "bytes": 9702,
+      "sha256": "d0f23cb30d52bf08f1642d07192e7268293d7b2bd99cd335a01556610a6a7354"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/registry_checks.py",
+      "class": "dependency_closure",
+      "bytes": 5562,
+      "sha256": "5aa388f08f71f2380d0c47a5e6b745eeacb8fc86ec16e7b6b35bb834a913c3cc"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/release.py",
+      "class": "dependency_closure",
+      "bytes": 18081,
+      "sha256": "fa98aebafdf8731abe0e471453d16607090d4c943d1bdd51472249fc363f4008"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/release_diff.py",
+      "class": "dependency_closure",
+      "bytes": 6616,
+      "sha256": "16627086880f88af39aa3de8fb9b971928c8ed55cf45f411624eef066688c9c9"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/release_notes.py",
+      "class": "dependency_closure",
+      "bytes": 6462,
+      "sha256": "0754cd4a80934a47d323c094dbf13c55e5ab9eaf1355c3fd708ef1f48670bfaa"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/rendering_policy.py",
+      "class": "dependency_closure",
+      "bytes": 11015,
+      "sha256": "0c17a1add2b8c7ca399de98a0216700bca2c9fe4a44cc64ad3f445721ba2f6c8"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/repo_checks.py",
+      "class": "dependency_closure",
+      "bytes": 27727,
+      "sha256": "5dd664b5ef1fd2d5f0d2de409fb8534d73b3f948bc45ca3ab243699a3ff8e6a9"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/reporter.py",
+      "class": "dependency_closure",
+      "bytes": 323,
+      "sha256": "1c94ecc4b7c832da6a4b051578259a0ec80f0743e84c8b496838a73c1bec86d4"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runner.py",
+      "class": "dependency_closure",
+      "bytes": 18965,
+      "sha256": "50c677decc05ad4097a7a1e107ebc295113d7c08c2b8daf60e49256d45d71652"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runtime.py",
+      "class": "dependency_closure",
+      "bytes": 27268,
+      "sha256": "5643541a1d373a2b9190ef9995a8e8a3f973185d7b2a4fde1335b8c063976522"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runtime_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 3698,
+      "sha256": "26b58b1054c2d5096977fac672619492b620bb6863170a5687b495abf407e066"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/runtime_restore.py",
+      "class": "dependency_closure",
+      "bytes": 10471,
+      "sha256": "e497424b15be02760a58854ada6f51f2ae85253a61df4e8e5deafcef799cfc74"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/ir_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1032,
+      "sha256": "aebf89e96612dd043f00478e1c2b2e1bfb7acae02c0555422292739c01af6bbc"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/package_cache_state.schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 856,
+      "sha256": "525341c36f861c2b0337a919c60a2b2a25bd12bd68dd797aaea7cdaa0d3edeb3"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/source_schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 1758,
+      "sha256": "b2b76156910d6c15e2be0b916710a07975c60482b59e3e2db1d0e4883965ec29"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/template_contract.schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 755,
+      "sha256": "4d8737b31b0ff0f5d71cb8f0fa7d824efed137a657303836f3b9184cbc90022b"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/schemas/template_registry.schema.yaml",
+      "class": "dependency_closure",
+      "bytes": 900,
+      "sha256": "7e40c90c520a18894ecde473123a4356b13d5d490ca082560eae72808a1c8666"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/session_chain.py",
+      "class": "dependency_closure",
+      "bytes": 13145,
+      "sha256": "b75dc9f9a8b5dea9bfd9d2d83b831995fcc2296f0d22ccd13a07a711522dae13"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/session_trace.py",
+      "class": "dependency_closure",
+      "bytes": 13493,
+      "sha256": "1f0893a73692f850b1e692a591c94eed282badd47abe9bbd354349d434d093a6"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/startup_artifact_reconcile.py",
+      "class": "dependency_closure",
+      "bytes": 7111,
+      "sha256": "2ace6ca107e07d4dfe2c85e15d64fe5fe6fc97702547ada59190a7863086191b"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/targets.py",
+      "class": "dependency_closure",
+      "bytes": 19533,
+      "sha256": "6ae3fb5788913e62814037da6f953473faf688429ad40a31f5d8dddde9047822"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/template_tooling.py",
+      "class": "dependency_closure",
+      "bytes": 32266,
+      "sha256": "9dfd0e122118441a81697fdccebe2929b4d8e9774c738b3564f578cb26d5bc86"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/PACKAGING_PROFILES.md",
+      "class": "dependency_closure",
+      "bytes": 585,
+      "sha256": "3caab5ffd4a457fc92fc26b349af364322bd8c0f7cde01106d1fd09780878d7f"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/README.md",
+      "class": "dependency_closure",
+      "bytes": 1770,
+      "sha256": "2f4ccd0cb4fe7acace3d3c46450270668476fa7caac7fb0cefbfdccc774efb17"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/START_HERE_RUNTIME_MODE.md",
+      "class": "dependency_closure",
+      "bytes": 9993,
+      "sha256": "9c0f41fb4bc9f5e25170b052e18884b3c25f69b6c1993725d13617424983d93e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/START_PROMPT_RUNTIME_MODE.md",
+      "class": "dependency_closure",
+      "bytes": 293,
+      "sha256": "23dbf1d211724a97f80665cf79446cec09700f4b0e5bab484741ffb217ff07ec"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/compiled/.gitkeep",
+      "class": "dependency_closure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/generated_outputs/.gitkeep",
+      "class": "dependency_closure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/ordo.yml",
+      "class": "dependency_closure",
+      "bytes": 178,
+      "sha256": "9f8c746820401244e90f0d3d28d7f303f1e99bc7968f5ff44684e5e3431cae2b"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/output_templates/.gitkeep",
+      "class": "dependency_closure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/reports/.gitkeep",
+      "class": "dependency_closure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/reports/CLI_VALIDATION_SUMMARY.md",
+      "class": "dependency_closure",
+      "bytes": 356,
+      "sha256": "13e94252b6eda04c43f59a9c0e0c6ca85aa8bd3c8e82ff5ac2cf25ec1fb7f608"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/reports/PACKAGE_PROFILE_SUMMARY.md",
+      "class": "dependency_closure",
+      "bytes": 194,
+      "sha256": "fd8b0494c30526ff0adbb517644da3900283381550a91e26be8061d0c3d41503"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/run_inputs/answers_blocked.yaml",
+      "class": "dependency_closure",
+      "bytes": 117,
+      "sha256": "68c6207703c1327a15a5ede5f56d64b9526bc0345141877db328783391cead3d"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/run_inputs/answers_success.yaml",
+      "class": "dependency_closure",
+      "bytes": 175,
+      "sha256": "35881bad6519bd1c33298e297daa80b75bf1414d75ab8500d99b61b3c276d7c3"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/run_inputs/intake_success.yaml",
+      "class": "dependency_closure",
+      "bytes": 165,
+      "sha256": "7b47491b95d65a71671d26f1aff8e12111cc37c0840f8e08a0e3a4fcbc861e7b"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/run_inputs/intake_unmatched_then_success.yaml",
+      "class": "dependency_closure",
+      "bytes": 184,
+      "sha256": "5581b43eafaaaeb37277b4421864b973323ea12b7455943621ea0faf01aea73e"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/runtime/.gitkeep",
+      "class": "dependency_closure",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/source/program.ordo.yaml.template",
+      "class": "dependency_closure",
+      "bytes": 3047,
+      "sha256": "cd2ab2fedee61e6fdabd06bd87bb1eaa849fc84d8089346f56a756fc3a6b0d96"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/templates/package_template/tests/test_cases.yaml",
+      "class": "dependency_closure",
+      "bytes": 834,
+      "sha256": "24b16ffa570c93fb1562310e1476f4043bdd619dfd00a3998194c4148bc92d33"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/tester.py",
+      "class": "dependency_closure",
+      "bytes": 7755,
+      "sha256": "4eae6341cb702ed6ec2e6d55ed3a83a7db4e838c92d964160a5ceacee9e0d745"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/transition_provenance.py",
+      "class": "dependency_closure",
+      "bytes": 6921,
+      "sha256": "b1eae2b0268f77bf202edf70c984002114d3a763514b2ce90f8686b8a6ec2532"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/tree_modules.py",
+      "class": "dependency_closure",
+      "bytes": 10629,
+      "sha256": "15d3e385709192beb914c02b76b7c4a27ba14f8112d3deb5a8e3e781737863f3"
+    },
+    {
+      "path": "cli_embedded/ordo_pkg/ordo/validation_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 1416,
+      "sha256": "638de8ab736fca81e51eb7e0b90fcebc70e21361edba4edaaf8dd43e182240c4"
+    },
+    {
+      "path": "compiled/program.ir.json",
+      "class": "runtime",
+      "bytes": 420568,
+      "sha256": "35959d8fd42a1b8ebd0e9bfae958e49ac3306e01ec048bcde7c8e24e52c6a9cb"
+    },
+    {
+      "path": "compiled/program.ordo.view",
+      "class": "runtime",
+      "bytes": 111950,
+      "sha256": "60ebbeef971f1a5a1fe5f1b2f3d2a86a989817110941f5c97ee99855a76956a7"
+    },
+    {
+      "path": "compiled/targets.manifest.json",
+      "class": "runtime",
+      "bytes": 1816,
+      "sha256": "31f7e29543a9f747bab9d47f12285c2317017bdc2fc3bbc5e90a86df89ff159f"
+    },
+    {
+      "path": "dependencies/ORDO_PLAYBOOK_SIMULATION_KIT_0.1.5.zip",
+      "class": "dependency_closure",
+      "bytes": 858934,
+      "sha256": "fa9a5b2aa5627419ccdece322e2d0198032d4f125fa5b6b38896528cce53eee2"
+    },
+    {
+      "path": "design/DATA_FLOW_PACKAGE.zip",
+      "class": "design_projection",
+      "bytes": 19199,
+      "sha256": "064da0d494c6739c9707529b6e964c0b0d225d6f65cf37cc0263ca315a99b60d"
+    },
+    {
+      "path": "design/MODEL_BUNDLE.yaml",
+      "class": "design_projection",
+      "bytes": 1855,
+      "sha256": "9b40061d6f7e837971ca251703d530c6a5ba22a542f26242173257e9b7d6a7aa"
+    },
+    {
+      "path": "design/artifact_catalog.yaml",
+      "class": "design_projection",
+      "bytes": 3882,
+      "sha256": "03720245a11ae192588beb8f6e43efe6349d3a6e5c551871051356853c002127"
+    },
+    {
+      "path": "design/information_dependency_graph.yaml",
+      "class": "design_projection",
+      "bytes": 43642,
+      "sha256": "b6eae086a05a127d1e3ef492f4c4da4bb87ed8a15b8bc07e7fe493d9675051d4"
+    },
+    {
+      "path": "design/playbook_projection.yaml",
+      "class": "design_projection",
+      "bytes": 18886,
+      "sha256": "b6cf7db09393a4660ffaa1a978a39d62915bb577db59da87b810b1f2bb310ed5"
+    },
+    {
+      "path": "design/variable_catalog.yaml",
+      "class": "design_projection",
+      "bytes": 106120,
+      "sha256": "10c79d4b79778a1385488e649d6df972dab7277ef1207b2080085395ac274560"
+    },
+    {
+      "path": "design/variable_group_catalog.yaml",
+      "class": "design_projection",
+      "bytes": 15489,
+      "sha256": "e253dd04ab6a353dcf630da0b9ea6b305424988a946087bf2cf6f535cc9052e4"
+    },
+    {
+      "path": "editor/architecture_surface.json",
+      "class": "editor",
+      "bytes": 76395,
+      "sha256": "e1f04ad40bef6b0f48b8d564cbeeddff41ca66e502203c33265929b07182994b"
+    },
+    {
+      "path": "ordo.lock.json",
+      "class": "runtime",
+      "bytes": 380,
+      "sha256": "11dde85c82ac03453d9ab4f371978378a58c6a3126ef6a46ec606657afd05e34"
+    },
+    {
+      "path": "ordo.yml",
+      "class": "runtime",
+      "bytes": 170,
+      "sha256": "bba89811e0c2e998a8ef93988a5dee2490aadbfb762d98597e11713a58197555"
+    },
+    {
+      "path": "patterns/DOCUMENT_MATERIALIZATION/DATA_LAYER.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1691,
+      "sha256": "65109bb0a382bdc017c2a331f674e49f7d5550d5d3bf497224283bc14cb283ec"
+    },
+    {
+      "path": "patterns/DOCUMENT_MATERIALIZATION/EXECUTION.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 2085,
+      "sha256": "5acc9bebffe6472bb73fe0df3881d4c0b11ff5c61968a595877dec4da588878b"
+    },
+    {
+      "path": "patterns/DOCUMENT_MATERIALIZATION/PATTERN.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1162,
+      "sha256": "b63ca3bae81ce1decf279f0270d472d9215b6866d8b21a3e2e4fc77f4fb70ac8"
+    },
+    {
+      "path": "patterns/IMPLEMENTATION_CHANGE/DATA_LAYER.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1744,
+      "sha256": "7d62bf5588b6786a1f32c93ac75d89d61ee62a5dec14046c8013e71a30cce7ca"
+    },
+    {
+      "path": "patterns/IMPLEMENTATION_CHANGE/EXECUTION.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1445,
+      "sha256": "3a11cde9012bbd5baad5fe608f5e2e873cde9e106c3ce61c708a99b3c40a856a"
+    },
+    {
+      "path": "patterns/IMPLEMENTATION_CHANGE/PATTERN.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1158,
+      "sha256": "c7942e840c8f3a8c590367df62762ef21081f1e81723e62f697795e27dfcd705"
+    },
+    {
+      "path": "patterns/PATTERN_REGISTRY.json",
+      "class": "reusable_patterns",
+      "bytes": 2096,
+      "sha256": "6c0bd010b1703c2bf851e2fe0b244e6455d23ae0b69ca222a2da86256ca2a693"
+    },
+    {
+      "path": "patterns/PRODUCTION_PACKAGE_MATERIALIZATION/DATA_LAYER.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1962,
+      "sha256": "235d3d0a780f9c6ff2425a0b59974ae91a2382ea64c66bd896bad028315b3736"
+    },
+    {
+      "path": "patterns/PRODUCTION_PACKAGE_MATERIALIZATION/EXECUTION.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 2576,
+      "sha256": "9da612308141b7f18bdd63cc242961fa32f1ccb7894254df3b44c433fe117ce2"
+    },
+    {
+      "path": "patterns/PRODUCTION_PACKAGE_MATERIALIZATION/PATTERN.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1191,
+      "sha256": "ccd90ac95de89664b6959916c71394250fead3559c85d77ccd14ed850a98ce6a"
+    },
+    {
+      "path": "patterns/README.md",
+      "class": "reusable_patterns",
+      "bytes": 426,
+      "sha256": "9f5c31bf0f7dc0926d88078627cd3dccc545e0eba8cd0d37087e131c8c48b723"
+    },
+    {
+      "path": "patterns/VALIDATE_REPAIR_CONVERGENCE/DATA_LAYER.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1815,
+      "sha256": "0b262fa10640c94280fcceeaca87d4e2906a473bd9e08d6e4baa1a9c35d5a096"
+    },
+    {
+      "path": "patterns/VALIDATE_REPAIR_CONVERGENCE/EXECUTION.template.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1463,
+      "sha256": "be0833fe88c92a6e1d889a19a0f4a8cfdec6550e2e890325f73a7910a0993e17"
+    },
+    {
+      "path": "patterns/VALIDATE_REPAIR_CONVERGENCE/PATTERN.yaml",
+      "class": "reusable_patterns",
+      "bytes": 1175,
+      "sha256": "8355f555038351e1b3d30bf8151e9086e2c3ec08fb36721aec6d3c4c74f0e051"
+    },
+    {
+      "path": "portable_overrides/ORDO_0.4.10_GRAPH_CONTRACT_REGISTRY_ALIGNMENT.json",
+      "class": "dependency_closure",
+      "bytes": 893,
+      "sha256": "3d998bb6efa3956605f5169d515c86a81374e008c3e0891b3cf6d1b19af71cb4"
+    },
+    {
+      "path": "reports/CLI_VALIDATION_SUMMARY.md",
+      "class": "production_exact_include",
+      "bytes": 1404,
+      "sha256": "3d5460e02090658dc4fd879c988ad9eb5529833dd3979b5a689940658c945471"
+    },
+    {
+      "path": "source/adaptive-artifact-quality-policy.json",
+      "class": "source",
+      "bytes": 5557,
+      "sha256": "c12f8d6054727331ccd32f77369b41dddc1aeb60f00fa50d0546a0fadd7dc7b5"
+    },
+    {
+      "path": "source/analyst-context-preservation-policy.json",
+      "class": "source",
+      "bytes": 1925,
+      "sha256": "52311b9a1d4ec2746b5c6474a7f11456bfddf8f73784d0d0fb259b6429c05a0f"
+    },
+    {
+      "path": "source/analyst-minimal-authoring-policy.json",
+      "class": "source",
+      "bytes": 906,
+      "sha256": "6dbd85283e2483f1879eafa75d04831c6974edb64db61599eae3c2c78f68cd8c"
+    },
+    {
+      "path": "source/analyst-visibility-barrier-policy.json",
+      "class": "source",
+      "bytes": 1544,
+      "sha256": "699a38f845cf9c14ccbb97049a1341ed90a2100291a2c09b2868ee5c1340444c"
+    },
+    {
+      "path": "source/authoring-execution-watchdog-policy.json",
+      "class": "source",
+      "bytes": 747,
+      "sha256": "b233197ad64eec1d2dc87e24f925917a65648b405eac48e23c709cfa0ee59d71"
+    },
+    {
+      "path": "source/authoring-verification-modes-policy.json",
+      "class": "source",
+      "bytes": 3319,
+      "sha256": "9aa848998594471dd3350839b201b95b62753f395d1de9e24cc5c8bd89181c36"
+    },
+    {
+      "path": "source/auto-answers-authoring-profile.json",
+      "class": "source",
+      "bytes": 1388,
+      "sha256": "032455522397b72af194b47faf751f07a8b1df71a31314f1582315a575471887"
+    },
+    {
+      "path": "source/autonomous-playbook-improvement-policy.json",
+      "class": "source",
+      "bytes": 11835,
+      "sha256": "d4246ebe6cd9275bcdf27a00ee97113f3144a1c318ad2e6e9f94c124156d8460"
+    },
+    {
+      "path": "source/behavioral-coverage-policy.json",
+      "class": "source",
+      "bytes": 569,
+      "sha256": "96dcbfe97036e2ebfc73389256b96a5dcbdd5bf71a27417b6437a1aae037592d"
+    },
+    {
+      "path": "source/constructive_correctness_policy.json",
+      "class": "source",
+      "bytes": 1300,
+      "sha256": "7a937105577362766e3bcd15e77a8fd5f8e96ea7457ba6b052f71402ef8e9886"
+    },
+    {
+      "path": "source/data-layer-first-hard-architecture-policy.json",
+      "class": "source",
+      "bytes": 2491,
+      "sha256": "da61cc914105672542461e7de953a60b86df8f5dc40cdbf3f2f2d3a9a389ab83"
+    },
+    {
+      "path": "source/default-debug-handoff-progress-policy.json",
+      "class": "source",
+      "bytes": 1633,
+      "sha256": "5c5b61eecb1ed7f1c3732d40e88e47c8362139a2d7b03aae0b7b7973ae1f646a"
+    },
+    {
+      "path": "source/defect-ownership-policy.json",
+      "class": "source",
+      "bytes": 850,
+      "sha256": "c5a861e23e90ec82c7fab95c5d2bff5efdb24d9539731d99a888430173bdb2b9"
+    },
+    {
+      "path": "source/delivery-verification-contour-policy.json",
+      "class": "source",
+      "bytes": 3345,
+      "sha256": "e3f6a2ed7a578c8f346b50eb47caf28e8ef897993bb24fa828977b109ea3082a"
+    },
+    {
+      "path": "source/dependency-aware-validation-policy.json",
+      "class": "source",
+      "bytes": 1082,
+      "sha256": "704725134b6d750b07e55031c6f53f291cbc09c515f7c9c8129bb62352381413"
+    },
+    {
+      "path": "source/design_rule_incentive_registry.v1.json",
+      "class": "source",
+      "bytes": 6803,
+      "sha256": "36108ed39f66678712e570d19b0f61108a2cbfe4aeb3b0020f24bc2885601b61"
+    },
+    {
+      "path": "source/deterministic-first-execution-policy.json",
+      "class": "source",
+      "bytes": 1181,
+      "sha256": "349fa5ac18e3b962f35bf768a3e6d95ab8a918cc64d8d57f06e4d9957bfc1b0a"
+    },
+    {
+      "path": "source/deterministic-tool-result-contract.json",
+      "class": "source",
+      "bytes": 1134,
+      "sha256": "5b875414d19a1c71195e7dd6da6b28b0eced7970693edfa09f62f629d3ca4e22"
+    },
+    {
+      "path": "source/development-timing-policy.json",
+      "class": "source",
+      "bytes": 1261,
+      "sha256": "39dd02684f348016372d11362ec457f618f1a0bc1d0f540bfb74f53abfca0f97"
+    },
+    {
+      "path": "source/distribution-package-validation-policy.json",
+      "class": "source",
+      "bytes": 1141,
+      "sha256": "a41523b132028450ca1810f1fff732d1c22d761d375a65debde8a19a1bdea8c4"
+    },
+    {
+      "path": "source/dual-distribution-package-policy.json",
+      "class": "source",
+      "bytes": 1022,
+      "sha256": "0bafcc75e1ea9a2857567184d170747a3a1451c15a7e3c15d3b31bd512421745"
+    },
+    {
+      "path": "source/editor-binding-evidence.json",
+      "class": "source",
+      "bytes": 2870,
+      "sha256": "ecf72b7b813160ff23f77c7b7749eefed5c8d2bdea6691bcf1523f4348b5dd87"
+    },
+    {
+      "path": "source/editor-runtime-compatibility-contract.json",
+      "class": "source",
+      "bytes": 4808,
+      "sha256": "0d1755de70ef38fa7ee350472acf4dbeda9c48c2502da8c7b952d49957655294"
+    },
+    {
+      "path": "source/editor-visible-architecture-policy.json",
+      "class": "source",
+      "bytes": 580,
+      "sha256": "0e10bccf45765c92d2cf247199dbb9e11e174ed4fa809f6b5ecb220655a36783"
+    },
+    {
+      "path": "source/evidence-driven-hardening-policy.json",
+      "class": "source",
+      "bytes": 3223,
+      "sha256": "6fb9f18753fd2687ac52be648175ebb226af719eb1c4d27f1e28e234461f5d6c"
+    },
+    {
+      "path": "source/executable-verification-architecture-policy.json",
+      "class": "source",
+      "bytes": 1211,
+      "sha256": "db5e67ecfcdac543509ef707fa215fba80538f0af69c4d73bb33947b3ea0999d"
+    },
+    {
+      "path": "source/explicit-runtime-tools-templates-outputs-policy.json",
+      "class": "source",
+      "bytes": 884,
+      "sha256": "5b1433a9e73b76fc13fed3066e37fc9ce731e276995bdfcde435495efb622865"
+    },
+    {
+      "path": "source/fail-fast-validation-order-policy.json",
+      "class": "source",
+      "bytes": 1036,
+      "sha256": "39619c7fc7602fa839c9846b76759e7f88605efd97a8ea8c47649823f402b34f"
+    },
+    {
+      "path": "source/fast-authoring-lifecycle-policy.json",
+      "class": "source",
+      "bytes": 2864,
+      "sha256": "0830ebc3c41b2941130595f82933b17f24c90cf1d90cb3667ff012afb9252432"
+    },
+    {
+      "path": "source/generated-artifact-materialization-policy.json",
+      "class": "source",
+      "bytes": 2007,
+      "sha256": "8a606b75ae76f3c3bc7a0bd5027241ab0c9d903c4f3561cd8c1b7d3e99e3f39e"
+    },
+    {
+      "path": "source/generated-playbook-execution-inheritance-policy.json",
+      "class": "source",
+      "bytes": 7484,
+      "sha256": "2a07ec045aca090a38e5d645161c42a54f179b7f58ad7129890746d64169b574"
+    },
+    {
+      "path": "source/generated-playbook-production-package-policy.json",
+      "class": "source",
+      "bytes": 4459,
+      "sha256": "9bdb015d814385af495a41c21c5d2fe5669a339b0b24c06a767da8f43f7b4e3f"
+    },
+    {
+      "path": "source/generated-playbook-regression-policy.json",
+      "class": "source",
+      "bytes": 7456,
+      "sha256": "aaa82699bde207e4112baa86e057006a595de9933a2cb28f499b5669e35024e0"
+    },
+    {
+      "path": "source/generated-playbook-safe-node-profiles.json",
+      "class": "source",
+      "bytes": 4734,
+      "sha256": "0fa412a9f6cadf6c73a55791e88e027403bef5ae47482ceb41b365f2724b0d59"
+    },
+    {
+      "path": "source/generated-playbook-semantic-execution-policy.json",
+      "class": "source",
+      "bytes": 3217,
+      "sha256": "b5d35662c5dabeb914ee822955643f97cdfccaebffeb04d6a776bbc6bd4aa0df"
+    },
+    {
+      "path": "source/graph-locality-incentive-policy.json",
+      "class": "source",
+      "bytes": 1493,
+      "sha256": "0fe91dc4818006b97ae89b428994ae66872714b855675fcd4e284d06377168f2"
+    },
+    {
+      "path": "source/incremental-development-verification-policy.json",
+      "class": "source",
+      "bytes": 898,
+      "sha256": "b389482e11bda00127eb0f7013ef185bbc2cfd73c5650e1389d0f0ce11b4be11"
+    },
+    {
+      "path": "source/information-first-authoring-policy.json",
+      "class": "source",
+      "bytes": 4067,
+      "sha256": "29a8b12f641c462bf078437b5b4215561fd3809c77ac928497916c6c6bdb6c16"
+    },
+    {
+      "path": "source/information-preservation-policy.json",
+      "class": "source",
+      "bytes": 962,
+      "sha256": "3a438c2347f13869294eda8ae73969f69754adf6605313b54721530e203adbe9"
+    },
+    {
+      "path": "source/interactive-analyst-workflow-policy.json",
+      "class": "source",
+      "bytes": 4956,
+      "sha256": "0b789e77b8844174facd4e5daff0ce9954c554879e0ea5eb1ef6169e54a4837f"
+    },
+    {
+      "path": "source/interactive-field-resolution.schema.json",
+      "class": "source",
+      "bytes": 1211,
+      "sha256": "42ed9128bab899c25ab365a5c34304244be29aa7438e431103f33903d3a92ac8"
+    },
+    {
+      "path": "source/laws-propagation-policy.json",
+      "class": "source",
+      "bytes": 682,
+      "sha256": "4616306067a6e5de3df3d660d7ec7cb000076697117818cb7333ef3879c3098f"
+    },
+    {
+      "path": "source/model-response-provenance-policy.json",
+      "class": "source",
+      "bytes": 3381,
+      "sha256": "4eece14c2c3efea64ccea5aed5abd60aa449eb459df1f57df45e14b08d6eb040"
+    },
+    {
+      "path": "source/module_manifest.yaml",
+      "class": "source",
+      "bytes": 861,
+      "sha256": "54c27d590dac33f89045bcd680313c1c37caca922ed3c4af114b8000a2733740"
+    },
+    {
+      "path": "source/modules/00_program_metadata.ordo.module.yaml",
+      "class": "source",
+      "bytes": 698,
+      "sha256": "e52726ffd8ec794527ad1b0d007c1c128e7d89a9656bb53776924d706d80911a"
+    },
+    {
+      "path": "source/modules/10_entry_contract_state.ordo.module.yaml",
+      "class": "source",
+      "bytes": 13147,
+      "sha256": "ea415f0b9f6c5795f5cec40ebdc2becfbf610f30dbd09be2a8e7c68a89cbb6e8"
+    },
+    {
+      "path": "source/modules/20_process_rail.ordo.module.yaml",
+      "class": "source",
+      "bytes": 6315,
+      "sha256": "3d67e4e7345934a028b02efec81e05de3fd880f6ac56a75d6b2c7a37f53ebe82"
+    },
+    {
+      "path": "source/modules/30_vibe_architecture.ordo.module.yaml",
+      "class": "source",
+      "bytes": 230589,
+      "sha256": "c0c64e8175dca05f2361d243bc736a4ecc91e5a8b08683833f7015008700c5ea"
+    },
+    {
+      "path": "source/modules/40_policies.ordo.module.yaml",
+      "class": "source",
+      "bytes": 56684,
+      "sha256": "0ab4474198a9791d2224ee4ebaa837625e93c0e14153da8062ee35a50a3a3569"
+    },
+    {
+      "path": "source/modules/60_validation_outputs.ordo.module.yaml",
+      "class": "source",
+      "bytes": 18743,
+      "sha256": "40e46cf91060d0ca20d8eeb68a8c43f768ff6f7bd8530cbc5e4e35624aa05c10"
+    },
+    {
+      "path": "source/optimization-runtime-efficiency-policy.json",
+      "class": "source",
+      "bytes": 5993,
+      "sha256": "e2453eccd7b51010d3d443af5d0f445b3d5763f40633d707ac3ce11930581428"
+    },
+    {
+      "path": "source/optimization-timing-evidence.schema.json",
+      "class": "source",
+      "bytes": 2449,
+      "sha256": "f6ae1e946480be29d146c522c72a11389cc6fd267cf31d60fc03586018d88dd1"
+    },
+    {
+      "path": "source/orchestration-granularity-policy.json",
+      "class": "source",
+      "bytes": 2519,
+      "sha256": "efb82b5574fcca916a6497de48b28e76085d00002e5eda8ffddd8ae51e953bb0"
+    },
+    {
+      "path": "source/pattern-reuse-scoring-policy.json",
+      "class": "source",
+      "bytes": 2128,
+      "sha256": "163667dbb3b0b484e9ea348052f5369eaa5cddd9c1496ef81be228dff45a00cf"
+    },
+    {
+      "path": "source/portable-authoring-support-policy.json",
+      "class": "source",
+      "bytes": 595,
+      "sha256": "16dfe7a8af7703ace8d72e9a0b29af0d5280705d468039fb266605e83f755093"
+    },
+    {
+      "path": "source/post-run-improvement-leadership-policy.json",
+      "class": "source",
+      "bytes": 1546,
+      "sha256": "1354686d5ba308fa1a6731c94c8a00a419d381c5d9c8fd83d28031c4e02fe16d"
+    },
+    {
+      "path": "source/production-dependency-closure-policy.json",
+      "class": "source",
+      "bytes": 1195,
+      "sha256": "369104caa2ca3226c1b94c44877842e8d5871218f6e0c954a9abf19ba14d07dc"
+    },
+    {
+      "path": "source/program.ordo.yaml",
+      "class": "source",
+      "bytes": 326170,
+      "sha256": "b6d4e0d6a2befb49b0ac8a767fda5f41f8112fc368540073e13d4aa910bec378"
+    },
+    {
+      "path": "source/proposal-canonicalization-policy.json",
+      "class": "source",
+      "bytes": 811,
+      "sha256": "4403837029c1ea1cc8071964cb1ffd103fd10cac99149ea26d8f85b0a04b0169"
+    },
+    {
+      "path": "source/pseudo-live-optimization-policy.json",
+      "class": "source",
+      "bytes": 2547,
+      "sha256": "7491617c79de1b409a8c619ce0181b3936eaa8fcafb9765a97730d7075e16b02"
+    },
+    {
+      "path": "source/quality-incentive-anti-gaming-policy.json",
+      "class": "source",
+      "bytes": 1949,
+      "sha256": "b96c3e7f712ca8a630e9a5b367e9b5f2fad6f4f45fe23198fc2455b8835780e7"
+    },
+    {
+      "path": "source/quality_acceptance_policy.json",
+      "class": "source",
+      "bytes": 20722,
+      "sha256": "cd3c9619e59e1ce430067eae21dffce35fc8802ddd231959c9fad366f0cf9f78"
+    },
+    {
+      "path": "source/reusable-authoring-template-policy.json",
+      "class": "source",
+      "bytes": 1416,
+      "sha256": "93549c681fc584c5a45979189f88018279e4b14e258485cbf3943f55a8058c95"
+    },
+    {
+      "path": "source/reusable-data-execution-pattern-policy.json",
+      "class": "source",
+      "bytes": 3122,
+      "sha256": "9caa55208f8bdb4c528dd3dbe7f0105f8bef52a979687c8065c0a8584086f6dc"
+    },
+    {
+      "path": "source/runtime-adapter-compatibility-policy.json",
+      "class": "source",
+      "bytes": 1351,
+      "sha256": "95a6943587f2209a99f7bbbdc9f06ff68458aee505876ca498e931414a42d19d"
+    },
+    {
+      "path": "source/self-repair-log-policy.json",
+      "class": "source",
+      "bytes": 1095,
+      "sha256": "22be09cb592fd61dc809563a420005bb594674ce1e50d9f5980347190c6343ef"
+    },
+    {
+      "path": "source/semantic-artifact-quality-gate.schema.json",
+      "class": "source",
+      "bytes": 1720,
+      "sha256": "744349ee28dfbb44a4e0bfb0fca3adeb9a4b801c40493e6a14f1658defd5b60d"
+    },
+    {
+      "path": "source/simulation-first-verification-policy.json",
+      "class": "source",
+      "bytes": 2574,
+      "sha256": "b2966e56c1c399ed97d5b9cc253638a6bc8db283b2d8a624e445e324c657f257"
+    },
+    {
+      "path": "source/single-responsibility-execution-policy.json",
+      "class": "source",
+      "bytes": 806,
+      "sha256": "c20eb8816b5fccbc8baa7a9382db2d2e43152c9ebe37c97554668675034e7942"
+    },
+    {
+      "path": "source/tree_module_library/README.md",
+      "class": "source",
+      "bytes": 266,
+      "sha256": "33e154b7298d4ff0250eb3dfb92fab05d36852627403fc3596750d85a2a65ff3"
+    },
+    {
+      "path": "source/tree_module_library/manifest.yaml",
+      "class": "source",
+      "bytes": 1874,
+      "sha256": "48b454ef66d790f64c0f78eef93146f2caed2f0ec1ff22457b47009b50a649fe"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_ARTIFACT_CONTRACT.tree-template.yaml",
+      "class": "source",
+      "bytes": 1816,
+      "sha256": "93f1621a1500c5d49d5e084fc181fe37911a904f5b009775a821aeccc0ce0083"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_AUTONOMOUS_DESIGN.tree-template.yaml",
+      "class": "source",
+      "bytes": 1671,
+      "sha256": "e2232dd4e0004b8387c7f4c9e935969276d277e35c15a9378844d5a695890107"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_AUTONOMOUS_REPAIR.tree-template.yaml",
+      "class": "source",
+      "bytes": 908,
+      "sha256": "0926dfde012613a9f592c25d7f16501c57265d6950bcf6e303b48802de4d4a9f"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_CHANGE_IMPACT.tree-template.yaml",
+      "class": "source",
+      "bytes": 1199,
+      "sha256": "e4bf1ce1c1a5503e07ebac610f06ffa695a489c4282153864905f1ae8e3daa86"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_KNOWLEDGE_TRACE_SYNC.tree-template.yaml",
+      "class": "source",
+      "bytes": 674,
+      "sha256": "206c58ed0c03318c6d6cea155ae9275fc6de33432f75ac90f2f8eef49b96a50d"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_ORDO_BUILD.tree-template.yaml",
+      "class": "source",
+      "bytes": 1996,
+      "sha256": "b5c8f89bf93b1388fa3ccb4da97c43ff1aec4433a07bcff165c1ccd99cc70250"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_PACKAGE_REVISION_DELIVERY.tree-template.yaml",
+      "class": "source",
+      "bytes": 1477,
+      "sha256": "7d129dfa9bd5c498629a35f9c2c3d77adf74f36f1a9f2c9655890506b3a649d4"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_PARAMETER_CLOSURE.tree-template.yaml",
+      "class": "source",
+      "bytes": 1378,
+      "sha256": "3d53385122a903bf8ba0c9d2c79e9244212080d55bee6150d64d78d1ee1dc134"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_SELF_REVIEW.tree-template.yaml",
+      "class": "source",
+      "bytes": 2315,
+      "sha256": "7b9cfc46d2cb84a6c28dfcbb040efc05b567cca2495d88a0ea51974a614504a1"
+    },
+    {
+      "path": "source/tree_module_library/templates/TM_UNDERSTANDING_PROCESS_MODEL.tree-template.yaml",
+      "class": "source",
+      "bytes": 1907,
+      "sha256": "541d2e1d8b4e43ef6391f43a33cc3d01548fa09edaa50a5d4d0ef88d14feaabb"
+    },
+    {
+      "path": "source/verification-runner-registry.json",
+      "class": "source",
+      "bytes": 4430,
+      "sha256": "5c76f5e593801932775f3188c5c5bb1aa7758c680937b67bb5f43a287c1b6336"
+    },
+    {
+      "path": "source/vibe-implementation-trace.json",
+      "class": "source",
+      "bytes": 7927,
+      "sha256": "b35ede4706ac0e3a3642d3b91e7f767b8672e3a02e82f666c38b577d0bfd6d2a"
+    },
+    {
+      "path": "source/vibe-self-data-flow-publication-policy.json",
+      "class": "source",
+      "bytes": 981,
+      "sha256": "2ea248892b31feec01dc5d744b5fbd8f6e003c207bb92856c479a04bc06b4d87"
+    },
+    {
+      "path": "source/vibe-self-hosting-policy.json",
+      "class": "source",
+      "bytes": 2281,
+      "sha256": "b227b04b461a44e03de9683c452f94141cc4dddcd760e0a2ef79316de30282a7"
+    },
+    {
+      "path": "source/visible-debug-timing-policy.json",
+      "class": "source",
+      "bytes": 521,
+      "sha256": "fb2838d0b205652dd4344cb254f4eeb2976621309b396c2c4a2a4c6b3ead52b5"
+    },
+    {
+      "path": "source/visible-deterministic-verification-policy.json",
+      "class": "source",
+      "bytes": 1319,
+      "sha256": "dc37908db91e9aa3173f7f5820caa8a5b19c6d33b42161b4018c8f646b844487"
+    },
+    {
+      "path": "tests/generated_playbook_regressions/REGRESSION_MATRIX.json",
+      "class": "dependency_closure",
+      "bytes": 10462,
+      "sha256": "18abdf22829b800c32a118a9c3ac0a59ec477b5fbebf4c0b41ae3f8c4eefa651"
+    },
+    {
+      "path": "tests/test_cases.yaml",
+      "class": "dependency_closure",
+      "bytes": 19501,
+      "sha256": "6007ae095b88311973eb4a2f6d65b63ece69ad89c04faae088036c12d5236483"
+    },
+    {
+      "path": "tools/_alpha26_validation_common.py",
+      "class": "dependency_closure",
+      "bytes": 1893,
+      "sha256": "f3cc4398a69c417045782f3feb04689577e3abd20c4dfa91669f88dd6646f1e7"
+    },
+    {
+      "path": "tools/aggregate_candidate_verification.py",
+      "class": "dependency_closure",
+      "bytes": 3462,
+      "sha256": "2616d63d41663125c946944e4f5d469870ed49c50382b3cc7f482eab0408f4e9"
+    },
+    {
+      "path": "tools/analyze_data_layer_architecture.py",
+      "class": "dependency_closure",
+      "bytes": 2485,
+      "sha256": "962fe71300e83c6136b103645816d98c379c6b7bf06de7038cfba31f56bdf447"
+    },
+    {
+      "path": "tools/analyze_graph_locality.py",
+      "class": "dependency_closure",
+      "bytes": 4549,
+      "sha256": "a24cf1f29945a7a2961f6d787df2338a9879d12a3ab8c7170d2792aaf2fc5e1b"
+    },
+    {
+      "path": "tools/append_progress_event.py",
+      "class": "dependency_closure",
+      "bytes": 2085,
+      "sha256": "432709f56a836bdb4837a45c21e548a2df0e5dba92c90ea1f9cdbe3d27138783"
+    },
+    {
+      "path": "tools/append_self_repair_event.py",
+      "class": "dependency_closure",
+      "bytes": 1651,
+      "sha256": "4fa856ba471aec38fb38d86ff45dde0419c1174723b27557d69a73478d5b8ec7"
+    },
+    {
+      "path": "tools/build_debug_handoff_package.py",
+      "class": "dependency_closure",
+      "bytes": 1165,
+      "sha256": "c6e8d8d19bc3d311da11080125afd331883a80580ef69fbcdfa067e6407cfeae"
+    },
+    {
+      "path": "tools/build_dual_playbook_distribution.py",
+      "class": "dependency_closure",
+      "bytes": 3847,
+      "sha256": "87191d627c8149a28d28c6e94b996a62eabb71c372ebdcbda985159d765cc583"
+    },
+    {
+      "path": "tools/build_dynamic_comparative_prompt.py",
+      "class": "dependency_closure",
+      "bytes": 1096,
+      "sha256": "b2b5a8bb949a5780998b178fadd347192355939bae9c68279d1da02f7599be32"
+    },
+    {
+      "path": "tools/build_editor_auto_answers.py",
+      "class": "dependency_closure",
+      "bytes": 2533,
+      "sha256": "4fe0ac620321e756ffa9950ac8e389b65d7b50e213228be7d54f09c2c57b7ff7"
+    },
+    {
+      "path": "tools/build_evaluator_reference_bundle.py",
+      "class": "dependency_closure",
+      "bytes": 2581,
+      "sha256": "d26171e67d6ca3136e3c83da9d45422f2e233bccb5fbb6b8ed328aa7ad8c7ade"
+    },
+    {
+      "path": "tools/build_portable_candidate_zip.py",
+      "class": "dependency_closure",
+      "bytes": 2061,
+      "sha256": "6d260541c669a307b3e4dfb5229daa8f330aacf1448a9e360187c8c5f481c338"
+    },
+    {
+      "path": "tools/build_production_playbook_package.py",
+      "class": "dependency_closure",
+      "bytes": 7452,
+      "sha256": "2d687710620364ffcf05a0a0de717a2b387f087fe6e3f443ea9375330d927bcd"
+    },
+    {
+      "path": "tools/build_pseudo_live_simulation_driver.py",
+      "class": "dependency_closure",
+      "bytes": 1115,
+      "sha256": "d2c95f47c1423f359058a5b16cec2e5bf996539ba583fe8f7723a04097fcb0bf"
+    },
+    {
+      "path": "tools/calculate_playbook_quality_score.py",
+      "class": "dependency_closure",
+      "bytes": 13285,
+      "sha256": "cce47adcc4884af052807cc7bf204ca70719ad67ef5fa2f103231eb40413edc8"
+    },
+    {
+      "path": "tools/capture_analyst_context.py",
+      "class": "dependency_closure",
+      "bytes": 2415,
+      "sha256": "5c99a05458445a3d725061f1357dabfb95a9b5abab0836249a0437ac944a3d55"
+    },
+    {
+      "path": "tools/check_verification_truth.py",
+      "class": "dependency_closure",
+      "bytes": 2417,
+      "sha256": "4b3cc892ecf7c8bdcb5f8129bce67144adf4cf0aff24e79dc655826d8c99b6c3"
+    },
+    {
+      "path": "tools/compile_review_bundles.py",
+      "class": "dependency_closure",
+      "bytes": 2695,
+      "sha256": "88025264f401d5fd901fdbf47bb09608e716734e8b3275c132c74cd675a96d24"
+    },
+    {
+      "path": "tools/create_verification_checkpoint.py",
+      "class": "dependency_closure",
+      "bytes": 1589,
+      "sha256": "eb7d2331afbb01715122afaf8f06f3a45c58ac59bccfd33ce31755461a80ead8"
+    },
+    {
+      "path": "tools/derive_behavioral_scenario_matrix.py",
+      "class": "dependency_closure",
+      "bytes": 1686,
+      "sha256": "55135fa5b3d399d46046aeda1f6fdd251b77b5bf5aec3420304870e3a6e60934"
+    },
+    {
+      "path": "tools/derive_pattern_execution_projection.py",
+      "class": "dependency_closure",
+      "bytes": 5269,
+      "sha256": "9c37608ab4ea4ab863721919fcbd8b943f7cc71245ffe0ea5c8277f1ddae9e56"
+    },
+    {
+      "path": "tools/detect_time_degradation.py",
+      "class": "dependency_closure",
+      "bytes": 2038,
+      "sha256": "1502799367ba2059aa9d9b1f29807e45678f62f78960e491f6f9ecb9e2e5e974"
+    },
+    {
+      "path": "tools/discover_data_layer_patterns.py",
+      "class": "dependency_closure",
+      "bytes": 1258,
+      "sha256": "c0b043c3cb131dce7c24382603d14b82d17b84e30cb9eeb7abe9b8e0dba84186"
+    },
+    {
+      "path": "tools/evaluate_adaptive_artifact_quality.py",
+      "class": "dependency_closure",
+      "bytes": 6408,
+      "sha256": "2b922a115b2924ba4f8210634cabe04f9d67d97a63b7242b8cee1120b6358b85"
+    },
+    {
+      "path": "tools/evaluate_pattern_reuse_opportunities.py",
+      "class": "dependency_closure",
+      "bytes": 5416,
+      "sha256": "46f7031e980fcabc0c6ac4a58f8c74a86d584fa2e55c48fab9a9bb76cccb5e04"
+    },
+    {
+      "path": "tools/evaluate_quality_process_integrity.py",
+      "class": "dependency_closure",
+      "bytes": 7820,
+      "sha256": "8b8bb8be54e69c33c0c2ab4390f6b6bfd66801f87c8a3a87595cb898190542ff"
+    },
+    {
+      "path": "tools/execute_deterministic_state_transform.py",
+      "class": "dependency_closure",
+      "bytes": 8990,
+      "sha256": "2948869d23711883ed15ca670e6255173385365b4de5512b379dd9cfaeab7070"
+    },
+    {
+      "path": "tools/freeze_pattern_selection_inputs.py",
+      "class": "dependency_closure",
+      "bytes": 1664,
+      "sha256": "7b14539a503df3e2bcaeaed86b36bd2e3c3a74864572ced2597a7734a2b5fc74"
+    },
+    {
+      "path": "tools/generate_verification_profile.py",
+      "class": "dependency_closure",
+      "bytes": 13984,
+      "sha256": "b925d2d65b2f5a5627a61ac9b6d76f269e8ee06dfcddc540361b8f8af9e915e1"
+    },
+    {
+      "path": "tools/init_debug_handoff_bundle.py",
+      "class": "dependency_closure",
+      "bytes": 1050,
+      "sha256": "309c5638b9933109d3a2b7d6fc1a80154b010cc92f21210866b186b97d06218f"
+    },
+    {
+      "path": "tools/init_information_first_authoring.py",
+      "class": "dependency_closure",
+      "bytes": 1805,
+      "sha256": "b0e64c4d1faf14bab2716278a70f6738388056abef127eba656232f0ed8926d0"
+    },
+    {
+      "path": "tools/instantiate_data_layer_pattern.py",
+      "class": "dependency_closure",
+      "bytes": 2234,
+      "sha256": "9369a583f337eeeb39c75ac848d19abfaa232eb0682d0f474dc24b4b472d5172"
+    },
+    {
+      "path": "tools/materialize_data_layer_projection_lineage.py",
+      "class": "dependency_closure",
+      "bytes": 1257,
+      "sha256": "d4f472cfecafdf1743573b16b71274abb79beb66a1471fbd67748928130a7183"
+    },
+    {
+      "path": "tools/materialize_editor_visible_architecture.py",
+      "class": "dependency_closure",
+      "bytes": 2598,
+      "sha256": "504f312a3f690ca2652bf5702364c6980b86414f9796786f541af9f2e700cd60"
+    },
+    {
+      "path": "tools/materialize_generated_playbook_verification.py",
+      "class": "dependency_closure",
+      "bytes": 10768,
+      "sha256": "98d0cb7416199384a03c85009d852316a1ef9e471a4b92deed1c56663eb050fb"
+    },
+    {
+      "path": "tools/materialize_pattern_data_layer_expansion.py",
+      "class": "dependency_closure",
+      "bytes": 2204,
+      "sha256": "f895b73e983ef82d4b1ce9ddc7b6f05cbddcaa6f045a0c20f1844ff90fdcc9c5"
+    },
+    {
+      "path": "tools/materialize_production_dependency_closure.py",
+      "class": "dependency_closure",
+      "bytes": 6140,
+      "sha256": "1e8609bd48e800f1c00463f56f51809cb71917894d9d6d3e1cb57ee9ccb37ec2"
+    },
+    {
+      "path": "tools/materialize_pseudo_live_response_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 2054,
+      "sha256": "326af8e44a9a936e327a1c85601504695e35548e7155275460d6e5c5b808a519"
+    },
+    {
+      "path": "tools/materialize_run_package_dependency_closure.py",
+      "class": "dependency_closure",
+      "bytes": 3576,
+      "sha256": "b962580a7dd42e583028582a6ffee6722cb3ada53b749e7caa2ab90782532ef9"
+    },
+    {
+      "path": "tools/merge_authoritative_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 2367,
+      "sha256": "37cfd11fc96c1d8ff36681b51341fe99e0f9bd6061d4a2aa24f12688a2ec223b"
+    },
+    {
+      "path": "tools/ordo_authoring.py",
+      "class": "dependency_closure",
+      "bytes": 231,
+      "sha256": "3303f413d21cd77d41bda206ede260189eebd2cc5ca6c71a5881a44f054c6524"
+    },
+    {
+      "path": "tools/prepare_candidate_verification.py",
+      "class": "dependency_closure",
+      "bytes": 3560,
+      "sha256": "fad29d388aa71f8490d8a2b2796837262f06f093b45197be358e8f70d2e39940"
+    },
+    {
+      "path": "tools/publish_authoring_data_flow.py",
+      "class": "dependency_closure",
+      "bytes": 14478,
+      "sha256": "6cf3d1037bb1b8bd831d83e97ad3cf737d09776593f5545588afd3cce63f9c16"
+    },
+    {
+      "path": "tools/run_candidate_verification_shard.py",
+      "class": "dependency_closure",
+      "bytes": 4134,
+      "sha256": "4f35e410f45ec58a567c2661661b90403f530ff03947e7edf9d6a4d8ca6550c8"
+    },
+    {
+      "path": "tools/run_incremental_verification.py",
+      "class": "dependency_closure",
+      "bytes": 6977,
+      "sha256": "7721a5f5d5ce00286b1abf192728f50c3c96c0afc43755a5361c5115c1de3eed"
+    },
+    {
+      "path": "tools/run_simulation_preflight.py",
+      "class": "dependency_closure",
+      "bytes": 10148,
+      "sha256": "15842c25f05b1fe7ee14b3f3965f2e2e2c2d6c2f411d099baf6b654a7bf57a17"
+    },
+    {
+      "path": "tools/run_verification_profile.py",
+      "class": "dependency_closure",
+      "bytes": 21748,
+      "sha256": "20d0f8c21fed543ee4803f9235b5fad2d02cc10188e4a48720770c4ed7add83c"
+    },
+    {
+      "path": "tools/run_with_watchdog.py",
+      "class": "dependency_closure",
+      "bytes": 3305,
+      "sha256": "b10448d86f1f772d54889acf79ccae75ac948650202ef51cd6531487de2cf1be"
+    },
+    {
+      "path": "tools/sanitize_evaluation_defects.py",
+      "class": "dependency_closure",
+      "bytes": 655,
+      "sha256": "96c412ac28e34811e3a3e674c161dc4e6aa7f265f13d95bbb2a90c6927e38452"
+    },
+    {
+      "path": "tools/state_updates_v1.py",
+      "class": "dependency_closure",
+      "bytes": 2049,
+      "sha256": "25344d6c757a77e755d5635a9be207cbfe749900e8ff3feaa76591f34b8eab58"
+    },
+    {
+      "path": "tools/test_alpha13_generated_execution_inheritance.py",
+      "class": "dependency_closure",
+      "bytes": 3156,
+      "sha256": "e3d858a3bfa62e45dd5a9acd3b11ba8b0ce8296e16b3781f86ad63493c1f47dd"
+    },
+    {
+      "path": "tools/test_alpha14_staged_quality_and_materialization.py",
+      "class": "dependency_closure",
+      "bytes": 4151,
+      "sha256": "03051b70ff227d3e3be0e004a36826d1b98f90fc0a21b451f006c3c53366c494"
+    },
+    {
+      "path": "tools/test_alpha15_explicit_tools_templates_outputs.py",
+      "class": "dependency_closure",
+      "bytes": 2919,
+      "sha256": "28671c7c956372aa9ff15bc9526b413193cb36d8ceeaf711de612ebe7099f192"
+    },
+    {
+      "path": "tools/test_alpha16_visible_deterministic_verification.py",
+      "class": "dependency_closure",
+      "bytes": 4508,
+      "sha256": "d1f1814e9f5642c638e1c693ba1f5b99d34d2de1cb9cd5d5b564c5420c2a45d6"
+    },
+    {
+      "path": "tools/test_alpha17_full_language_validation.py",
+      "class": "dependency_closure",
+      "bytes": 2283,
+      "sha256": "91dc2330fa3d51d7d571565cb753d77de5d7d88493ee9d335b80afb946a4fb98"
+    },
+    {
+      "path": "tools/test_alpha18_single_responsibility_architecture.py",
+      "class": "dependency_closure",
+      "bytes": 5072,
+      "sha256": "649848e5b906cc583ac8164f5b784ba32135130b3ea56cf65e14bf4f1ccb29e2"
+    },
+    {
+      "path": "tools/test_alpha19_drycheck_and_evidence_hardening.py",
+      "class": "dependency_closure",
+      "bytes": 1504,
+      "sha256": "07acdba0603f5246978fd3426a572e8c9a2688e344fced8370d3b622160fb825"
+    },
+    {
+      "path": "tools/test_alpha20_generated_playbook_regression_layer.py",
+      "class": "dependency_closure",
+      "bytes": 11152,
+      "sha256": "d6f8397eccfce07fe221175a94924d90bebf200597b16a82e720e1bd070cc7c7"
+    },
+    {
+      "path": "tools/test_alpha21_editor_binding_regression.py",
+      "class": "dependency_closure",
+      "bytes": 4109,
+      "sha256": "d1c31dd79df9ec5750ef0f35f1444d2b6926841c574eedeef453ff3f59b5058c"
+    },
+    {
+      "path": "tools/test_alpha22_language_authority_separation.py",
+      "class": "dependency_closure",
+      "bytes": 4492,
+      "sha256": "f00011d92eff84d09003225e6639c1bfa491ceb69791398d7174d4542d9f4994"
+    },
+    {
+      "path": "tools/test_alpha23_corrected_editor_rebinding.py",
+      "class": "dependency_closure",
+      "bytes": 3538,
+      "sha256": "402bfa980849d13f76a14bf5353fcbe0e324004a4f4a6090232390c956807440"
+    },
+    {
+      "path": "tools/test_alpha24_information_first_authoring.py",
+      "class": "dependency_closure",
+      "bytes": 13411,
+      "sha256": "eb61939be7d83a4fce6cfa4d79c0837b334884a5918ed411ffbe8178c6672a8e"
+    },
+    {
+      "path": "tools/test_alpha25_self_hosted_information_model.py",
+      "class": "dependency_closure",
+      "bytes": 6020,
+      "sha256": "1489fe6d441864c5cad33baed698c190b26425a4ac8e2a88db996ea7d0d70f13"
+    },
+    {
+      "path": "tools/test_alpha26_authority_simulation_analyst_minimization.py",
+      "class": "dependency_closure",
+      "bytes": 17908,
+      "sha256": "154f39471df7508bc1d2911ba356670f6c2248e90d4d35d0062e2f7ac6476a61"
+    },
+    {
+      "path": "tools/test_alpha27_simulation_kit_012_upgrade.py",
+      "class": "dependency_closure",
+      "bytes": 3188,
+      "sha256": "eefd5467142edfbd73e44d77246ca46924757afc4afbffc91b984ca9a21dd6ad"
+    },
+    {
+      "path": "tools/test_alpha28_simulation_kit_013_upgrade.py",
+      "class": "dependency_closure",
+      "bytes": 3714,
+      "sha256": "9f34c98fd0e6de932a731c7ff14ed2fb862cbcec9c682a02d520fe036a012ff3"
+    },
+    {
+      "path": "tools/test_alpha29_deterministic_contract_route_hardening.py",
+      "class": "dependency_closure",
+      "bytes": 7521,
+      "sha256": "06b2ffa0aa7af0963a52ddffba4d0cb471fa80805e78a01090d9e5058f5c4610"
+    },
+    {
+      "path": "tools/test_alpha30_self_data_flow_publication.py",
+      "class": "dependency_closure",
+      "bytes": 7710,
+      "sha256": "3e8565f76c2a8e3cc0a45e3f9ab887be02bf062820ae49c1f0808781604afbf3"
+    },
+    {
+      "path": "tools/test_alpha31_incremental_verification.py",
+      "class": "dependency_closure",
+      "bytes": 8763,
+      "sha256": "69505c91c58c58158b0d0ae3877583e1f5951b8e5f7cd9f408fe65495a414e7b"
+    },
+    {
+      "path": "tools/test_alpha36_autonomous_improvement_anticheat.py",
+      "class": "dependency_closure",
+      "bytes": 1566,
+      "sha256": "e8bb80b7b9e50bcf61afbc27d905572d881647db10f5894364d336e94a3208b9"
+    },
+    {
+      "path": "tools/test_alpha37_quality_scoring.py",
+      "class": "dependency_closure",
+      "bytes": 6144,
+      "sha256": "31e13bd77d325769b79d687ae74ee41fd848890553081f31a873b75788939c50"
+    },
+    {
+      "path": "tools/test_alpha38_model_response_provenance.py",
+      "class": "dependency_closure",
+      "bytes": 2041,
+      "sha256": "07914064e8898e11855c9eec7cca382b07d5a2ba33b5c3c349bce7447d061702"
+    },
+    {
+      "path": "tools/test_alpha42_adaptive_artifact_quality.py",
+      "class": "dependency_closure",
+      "bytes": 7177,
+      "sha256": "5333faa6101fd7e479ffa3969a83990b3031d7e13eb50c0688af94d906c409af"
+    },
+    {
+      "path": "tools/test_alpha42_data_layer_architecture_detectors.py",
+      "class": "dependency_closure",
+      "bytes": 1410,
+      "sha256": "1eb2fbf7307de7866c9e87d28c0231b252bbf693bd0893a4fa42837c77ec711d"
+    },
+    {
+      "path": "tools/test_alpha42_graph_locality_incentives.py",
+      "class": "dependency_closure",
+      "bytes": 3683,
+      "sha256": "7e636dccfce3b64385d43c9c9fcc825c59fbada02fa15ac824be836e826061b6"
+    },
+    {
+      "path": "tools/test_alpha42_incentive_registry.py",
+      "class": "dependency_closure",
+      "bytes": 1748,
+      "sha256": "4c56c5313853bd1696b8ea33b3c2336c2c1f1d2c6ddac1eaacf003cf853559c0"
+    },
+    {
+      "path": "tools/test_alpha42_interactive_analyst_workflow.py",
+      "class": "dependency_closure",
+      "bytes": 8887,
+      "sha256": "6255e5f1349c61f43148b43720899b228f912f635dbddfbc9a9abbfad7a4fe8a"
+    },
+    {
+      "path": "tools/test_alpha42_performance_ab_guard.py",
+      "class": "dependency_closure",
+      "bytes": 1287,
+      "sha256": "a0dc95fffc5514a47994a808a620fc08bb4b80d20a3a69e7ddc882c11b662c7e"
+    },
+    {
+      "path": "tools/test_alpha42_pseudo_live_optimization.py",
+      "class": "dependency_closure",
+      "bytes": 4160,
+      "sha256": "f3fdfdfce128d721ca0c9375a7dd7c06cbf7f93ffb3b7286161908476f57f033"
+    },
+    {
+      "path": "tools/test_alpha42_time_degradation_optimization.py",
+      "class": "dependency_closure",
+      "bytes": 4219,
+      "sha256": "e944f7c13b82b09dc91f380ffa47cf333c08234ee8cbaf0c3c10f5cf30d65b73"
+    },
+    {
+      "path": "tools/test_alpha43_outputless_artifact_validation.py",
+      "class": "dependency_closure",
+      "bytes": 2163,
+      "sha256": "4556fc0df80867be78ca142988e276d6561fdac64e4da26ff1cef725a93ecbc2"
+    },
+    {
+      "path": "tools/test_alpha44_authoring_execution_watchdog.py",
+      "class": "dependency_closure",
+      "bytes": 2002,
+      "sha256": "2bf7388eaaaf2ab615732c67b7fc623f0c9109971e5ac1b19493c28ef12b0f7c"
+    },
+    {
+      "path": "tools/test_alpha44_distribution_package_validator.py",
+      "class": "dependency_closure",
+      "bytes": 3223,
+      "sha256": "eee2aebcd7e33b0504a2e5909c9e4024c8a7ae5b7f1c3a64a0e34549322d3b27"
+    },
+    {
+      "path": "tools/test_alpha44_generated_playbook_semantic_execution.py",
+      "class": "dependency_closure",
+      "bytes": 3784,
+      "sha256": "2980cc302b7d9984b91571ee235d6e6cca2f7b7ad4044e2d9b17c6a96c51dc04"
+    },
+    {
+      "path": "tools/test_alpha44_tool_result_debug_self_repair.py",
+      "class": "dependency_closure",
+      "bytes": 5610,
+      "sha256": "0dfdb560c1c2a7dc14716217919ab8df53e70489dad2b847af5a59ca23f8b6f4"
+    },
+    {
+      "path": "tools/test_analyst_context_and_optimization_calibration.py",
+      "class": "dependency_closure",
+      "bytes": 4363,
+      "sha256": "12efd5c7ce007422f906ba0b77c3a9754496592acd197920ae69cd143f31107f"
+    },
+    {
+      "path": "tools/test_data_first_pattern_projection_separation.py",
+      "class": "dependency_closure",
+      "bytes": 5426,
+      "sha256": "df3a05faf24cf706b683ea6e81647a6f7fdc568905e14835891bfdfd16e19ada"
+    },
+    {
+      "path": "tools/test_data_first_reusable_pattern_library.py",
+      "class": "dependency_closure",
+      "bytes": 8332,
+      "sha256": "86290aa9726a5c1c7ffc1468edbae53fe029da4a6d7f3f5d410c628f65c6ae26"
+    },
+    {
+      "path": "tools/test_data_layer_first_hard_architecture.py",
+      "class": "dependency_closure",
+      "bytes": 4940,
+      "sha256": "289ff0b35ad0b06d1b7cad70e7e8daf55d98657d9125dfaf61d346cff50e93ce"
+    },
+    {
+      "path": "tools/test_default_debug_handoff_progress.py",
+      "class": "dependency_closure",
+      "bytes": 3260,
+      "sha256": "4f25503cf891c44ba0bf18d73b08518cbd8204c8d4bd8701df6840874c0764ca"
+    },
+    {
+      "path": "tools/test_deterministic_first_execution_responsibility.py",
+      "class": "dependency_closure",
+      "bytes": 2228,
+      "sha256": "da4acad676e9eb89b785cc7f22f804079e6b53519d3103816257dde12161ccf1"
+    },
+    {
+      "path": "tools/test_dual_distribution_package_behavior.py",
+      "class": "dependency_closure",
+      "bytes": 2809,
+      "sha256": "bab4ef83e3fe41c91ed446c816a1c0ad936c3bdbe0524bfd9e2529eb3c33cf6a"
+    },
+    {
+      "path": "tools/test_dual_distribution_package_contract.py",
+      "class": "dependency_closure",
+      "bytes": 2624,
+      "sha256": "a4f9d8d8c839c079da387d588e20ade7e7645661066f13ffd47708d414ba48d1"
+    },
+    {
+      "path": "tools/test_dynamic_multi_reference_comparative_evaluator.py",
+      "class": "dependency_closure",
+      "bytes": 2368,
+      "sha256": "8196dcdc7bd9b5ac119a685cf47e9e0be201cc23bdf6bbe691f84bdbcb664d3f"
+    },
+    {
+      "path": "tools/test_editor_registry_root_resolution.py",
+      "class": "dependency_closure",
+      "bytes": 1647,
+      "sha256": "2dd9f580cda4fdd1593ce9cf236f040777445c00af4bc70251ceb1da870febc3"
+    },
+    {
+      "path": "tools/test_editor_visible_architecture_validation.py",
+      "class": "dependency_closure",
+      "bytes": 4815,
+      "sha256": "4f239270915a21e9b426b03a34bf3347f2c0e626ae74017358945f563db2c9d5"
+    },
+    {
+      "path": "tools/test_fast_full_dependency_aware_validation.py",
+      "class": "dependency_closure",
+      "bytes": 5572,
+      "sha256": "25f9f516fce088e96ea84b76baee18b819e2a5329580e4148746ec675af5c797"
+    },
+    {
+      "path": "tools/test_generated_outputs_safe_delivery.py",
+      "class": "dependency_closure",
+      "bytes": 4078,
+      "sha256": "f770933e5b1bb1e2a451d9dc1321a32b0f66dade1ebd15f440956f7e81ffea5b"
+    },
+    {
+      "path": "tools/test_generated_playbook_production_package_contract.py",
+      "class": "dependency_closure",
+      "bytes": 2472,
+      "sha256": "5aa1adc9e7fb5617fcc53f1e8b88282749ae1717e7e83f779a5af3cce5d48754"
+    },
+    {
+      "path": "tools/test_hybrid_reference_fidelity_feedback.py",
+      "class": "dependency_closure",
+      "bytes": 3003,
+      "sha256": "980af4a469eb0beb182374b6732dd3240040bb7c5cb77d17510a2294b11c9002"
+    },
+    {
+      "path": "tools/test_information_preservation_monotonic_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 2917,
+      "sha256": "ac8afbbae75aef51c97592fe6e7722b51cc6ebd18be2ac7c8ddac80c359d04c8"
+    },
+    {
+      "path": "tools/test_logic_coherence.py",
+      "class": "dependency_closure",
+      "bytes": 6038,
+      "sha256": "fd5f99f07c82c4a18e6ba559ccef739b53f190971751e21946f7dd7b752c5a8a"
+    },
+    {
+      "path": "tools/test_pattern_library_self_dogfood.py",
+      "class": "dependency_closure",
+      "bytes": 1932,
+      "sha256": "8953b86f355e182dcdc1483072f76fcf7b60d1bcd2bd3ff6a3f6cb5b4b6ff192"
+    },
+    {
+      "path": "tools/test_pattern_reuse_reward_and_open_question_penalty.py",
+      "class": "dependency_closure",
+      "bytes": 10658,
+      "sha256": "8c9baf441ea9c3ae0da75074e3ee6192285d9c2ae330e0ceaae7da9484fe91ac"
+    },
+    {
+      "path": "tools/test_pre_release_blockers.py",
+      "class": "dependency_closure",
+      "bytes": 3528,
+      "sha256": "1966556a3dc0427007b28bde6634b20d41d42dd36046c6bfdfb30d165d2163d8"
+    },
+    {
+      "path": "tools/test_quality_incentive_anti_gaming.py",
+      "class": "dependency_closure",
+      "bytes": 7835,
+      "sha256": "51898ced2231ff8482b6a9fd54799d34a510fd1aa074a48a118cd7fa1a19d8c8"
+    },
+    {
+      "path": "tools/test_reusable_authoring_templates.py",
+      "class": "dependency_closure",
+      "bytes": 1893,
+      "sha256": "ae7c659b1dc5c4d639fe36d9a1b2c8ea48fecdeddbf4c743d5b5a1bae4dddd54"
+    },
+    {
+      "path": "tools/test_scoring_v3_development_acceptance.py",
+      "class": "dependency_closure",
+      "bytes": 3736,
+      "sha256": "e80b7800a97917bc49caf4f37951544a20c1eec3440991efc754c0786c7f2b87"
+    },
+    {
+      "path": "tools/test_simulation_kit_015_current.py",
+      "class": "dependency_closure",
+      "bytes": 2468,
+      "sha256": "532a09e6dd1195ccd94e138ef2c0cb811225dbfcd589097624f19b2b99e77f9e"
+    },
+    {
+      "path": "tools/validate_analyst_context.py",
+      "class": "dependency_closure",
+      "bytes": 1316,
+      "sha256": "898eb480c8718a6b6dc17e83ac6bb5d673336efd60789eac5613d014976e540a"
+    },
+    {
+      "path": "tools/validate_approval_persistence.py",
+      "class": "dependency_closure",
+      "bytes": 1692,
+      "sha256": "3850351efb8fdc94613b80a64ead56aefcb5e9b9cc52951d04273430ad0e9f50"
+    },
+    {
+      "path": "tools/validate_artifact_archive_registry_completeness.py",
+      "class": "dependency_closure",
+      "bytes": 6603,
+      "sha256": "770cf2238ca011fff607674299088fb190bf7445ee93dd5a0e91fd6013c64678"
+    },
+    {
+      "path": "tools/validate_artifact_materialization_registry.py",
+      "class": "dependency_closure",
+      "bytes": 4003,
+      "sha256": "b4eca44dc963ea750908cc5cd3fd764af7306126c914b5b05579be946979176d"
+    },
+    {
+      "path": "tools/validate_authoring_information_model.py",
+      "class": "dependency_closure",
+      "bytes": 8736,
+      "sha256": "57afcf1bc719b93726adc2b2b570fb5cf33ae2abfb12e229978bab27f3e49d03"
+    },
+    {
+      "path": "tools/validate_behavioral_scenario_coverage.py",
+      "class": "dependency_closure",
+      "bytes": 1279,
+      "sha256": "fa273296ac6b383b67258becada27b43d6bd7601af2f43d520f0227e13a6f7e1"
+    },
+    {
+      "path": "tools/validate_constructive_correctness.py",
+      "class": "dependency_closure",
+      "bytes": 1726,
+      "sha256": "93247edac681328ba155160fbe7f20f0788580676a396bb0dbc4ac61dde1429b"
+    },
+    {
+      "path": "tools/validate_data_layer_first_architecture.py",
+      "class": "dependency_closure",
+      "bytes": 2192,
+      "sha256": "20be62de709021178a9488838be1754a86458a54140ca854dbe281b48efaba92"
+    },
+    {
+      "path": "tools/validate_data_layer_pattern_instances.py",
+      "class": "dependency_closure",
+      "bytes": 5617,
+      "sha256": "57e82fcb33c06be543337d16e0d1f8f1f12c69ac211655277dc1758bf6ebb369"
+    },
+    {
+      "path": "tools/validate_default_debug_handoff_progress.py",
+      "class": "dependency_closure",
+      "bytes": 1128,
+      "sha256": "4b7c8d97d9715336d2605e602e463347d2cd55aba40f593552090540b105b3a4"
+    },
+    {
+      "path": "tools/validate_defect_ownership.py",
+      "class": "dependency_closure",
+      "bytes": 1132,
+      "sha256": "26df4b619e2e2457ad70a00560a53ff5ccaefbc9514b5a91f55003ca2521b579"
+    },
+    {
+      "path": "tools/validate_deterministic_contract_completeness.py",
+      "class": "dependency_closure",
+      "bytes": 4226,
+      "sha256": "31e63721effc58d0686c97cf232138484a3408541ce24b01d8ff2d92105a0a35"
+    },
+    {
+      "path": "tools/validate_deterministic_first_execution.py",
+      "class": "dependency_closure",
+      "bytes": 2221,
+      "sha256": "9917769b6073c609c3737ca71f471e80c1374a51f80be8a529f8055b40725c40"
+    },
+    {
+      "path": "tools/validate_distribution_package.py",
+      "class": "dependency_closure",
+      "bytes": 4759,
+      "sha256": "7a20c847d47a305b03bd389a0598eebe5acbcd548cef928ab9c951f193736adc"
+    },
+    {
+      "path": "tools/validate_dual_playbook_distribution.py",
+      "class": "dependency_closure",
+      "bytes": 463,
+      "sha256": "7b1508b6d543e0c6b6c5bc139171d4df97690862c170ff06e591393f51c63b51"
+    },
+    {
+      "path": "tools/validate_editor_visible_architecture.py",
+      "class": "dependency_closure",
+      "bytes": 2831,
+      "sha256": "ae91f96c4545a4cbaaa8304b428a0b0c1281ead7cb8fcd8b9bb7ba19c767eaa8"
+    },
+    {
+      "path": "tools/validate_entry_docs_revision.py",
+      "class": "dependency_closure",
+      "bytes": 1100,
+      "sha256": "cbc71133c8a9aee3fb72b585671aa8f603025bd0d9a8753c34305c52874f926f"
+    },
+    {
+      "path": "tools/validate_evaluator_reference_bundle.py",
+      "class": "dependency_closure",
+      "bytes": 1392,
+      "sha256": "2c0165d57a3757e9f83bd32e1dd226b3056fd58be32c06958dc4c7f4383145b4"
+    },
+    {
+      "path": "tools/validate_exact_production_package_roundtrip.py",
+      "class": "dependency_closure",
+      "bytes": 2506,
+      "sha256": "85a249178a7d26cb9667778e68b57d424ce29a8893c2c6acde2a296108bd57f2"
+    },
+    {
+      "path": "tools/validate_fixture_contract_closure.py",
+      "class": "dependency_closure",
+      "bytes": 1262,
+      "sha256": "9b630a104b0335de798fb7872751a058eb2ef8a1121b400354755d37d1047274"
+    },
+    {
+      "path": "tools/validate_information_preservation.py",
+      "class": "dependency_closure",
+      "bytes": 1098,
+      "sha256": "1ff23c907b6f72f1c248e987dcb5070ba96eb470699a329035aa174df1f33c3d"
+    },
+    {
+      "path": "tools/validate_information_projection.py",
+      "class": "dependency_closure",
+      "bytes": 5356,
+      "sha256": "58cbaa350bdaa1372813b000aceba5bec584e88b82cc8b62ef4e9210ec7a355e"
+    },
+    {
+      "path": "tools/validate_local_persistence_gates.py",
+      "class": "dependency_closure",
+      "bytes": 1466,
+      "sha256": "0ca1ce3b5ab3687df08615121ea0bcbbedbe22a203e1b7dfb01c6dd52f3b0eea"
+    },
+    {
+      "path": "tools/validate_model_response_provenance.py",
+      "class": "dependency_closure",
+      "bytes": 6233,
+      "sha256": "3d0e21d72fcac8f762f381d2efa94b7b89176664e04a0aba272192041e6d69db"
+    },
+    {
+      "path": "tools/validate_optimization_timing_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 1528,
+      "sha256": "75343cd2ef41a3a71c4e951e67fa60bec17adca1bf6a25c6ace7d669a1680719"
+    },
+    {
+      "path": "tools/validate_pattern_graph_realization.py",
+      "class": "dependency_closure",
+      "bytes": 4832,
+      "sha256": "f45abc178bb17a22f7e5c6a149be09e44237d64a92bd441baa6864390302aecc"
+    },
+    {
+      "path": "tools/validate_performance_ab.py",
+      "class": "dependency_closure",
+      "bytes": 1544,
+      "sha256": "bc56c14e63b1514866bb693b172e14b5bac69293385c112ccf2eaa79fa82434f"
+    },
+    {
+      "path": "tools/validate_production_dependency_closure.py",
+      "class": "dependency_closure",
+      "bytes": 2064,
+      "sha256": "11f26e9ae694367dfd1b412c04189ef0bd5f6c4ad78cc98f4b53666de10ef174"
+    },
+    {
+      "path": "tools/validate_production_playbook_package.py",
+      "class": "dependency_closure",
+      "bytes": 3588,
+      "sha256": "4fc43fc4fcf966c4ef640f3002153d8069c5768f2cdb1112095686e96b819ce7"
+    },
+    {
+      "path": "tools/validate_proposal_canonical_separation.py",
+      "class": "dependency_closure",
+      "bytes": 1781,
+      "sha256": "ec32a5de3a946ff6b7a085c7aadfcb14e15b807444acc8adcf5f85550d9518ac"
+    },
+    {
+      "path": "tools/validate_recovery_locality.py",
+      "class": "dependency_closure",
+      "bytes": 938,
+      "sha256": "6b3b81608a5bfe2dc7a073994b85aae9d1db5dfb0c99769eafa5bff68b006514"
+    },
+    {
+      "path": "tools/validate_reusable_authoring_templates.py",
+      "class": "dependency_closure",
+      "bytes": 1380,
+      "sha256": "ed1fd4f7e98f7350db9a53b943590cdb4aa96e15a1929508c84e5c5e770adf97"
+    },
+    {
+      "path": "tools/validate_review_bundle_design.py",
+      "class": "dependency_closure",
+      "bytes": 2208,
+      "sha256": "f9b8ee1ffc4b3a52d15c3b858156b5768dc7a6d4ffd8c7cdd54818c8be64918e"
+    },
+    {
+      "path": "tools/validate_revision_contract_alignment.py",
+      "class": "dependency_closure",
+      "bytes": 1857,
+      "sha256": "f4184656cbd3aedee436d2d8fa4b0db03918ca82d23f0c05bb495150291faf8b"
+    },
+    {
+      "path": "tools/validate_runtime_gate_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 833,
+      "sha256": "0892db592bc91c0736d9daa27cf7777dcc5bb2a86b4e124b75ae5eafcf3d8f62"
+    },
+    {
+      "path": "tools/validate_self_data_flow_publication.py",
+      "class": "dependency_closure",
+      "bytes": 5288,
+      "sha256": "9fefe6bee15b6709a826728317f17a1c14f28d7bfc3c109ba181bf97281023fc"
+    },
+    {
+      "path": "tools/validate_semantic_dependency_inputs.py",
+      "class": "dependency_closure",
+      "bytes": 777,
+      "sha256": "d6908f4a0d921ea62e26464e86ed35a3883e9d015253995b2df1fd8eb25f6c29"
+    },
+    {
+      "path": "tools/validate_simulation_evidence.py",
+      "class": "dependency_closure",
+      "bytes": 1802,
+      "sha256": "edb4db58c9e83970ff19f4b7dde3d6395422b4b5820f3c3447272a94242d57f4"
+    },
+    {
+      "path": "tools/validate_state_phase_ordering.py",
+      "class": "dependency_closure",
+      "bytes": 1282,
+      "sha256": "357ea24a4e30a5115b60bae66a4a3f5b2ac214be4166402339cdd86919d29e89"
+    },
+    {
+      "path": "tools/validate_verification_profile.py",
+      "class": "dependency_closure",
+      "bytes": 3539,
+      "sha256": "b7ca0567efaa0d68b9c47f3be748d7b5333bd08e2ee800caac4b9369937a6f2e"
+    },
+    {
+      "path": "tools/verification_package_fingerprint.py",
+      "class": "dependency_closure",
+      "bytes": 819,
+      "sha256": "e36a6f0b348f25d03027c3b8ae6f75f98a5c139637cb80012048d9179461edb9"
+    },
+    {
+      "path": "tools/verify_delivery_source_uniqueness.py",
+      "class": "dependency_closure",
+      "bytes": 994,
+      "sha256": "2dd4c690caf7c7eea3cf3b31fee4a8cdecd17b2d7b28ff7d6c9a5ea34d9fc799"
+    },
+    {
+      "path": "tools/verify_editor_runtime_graph_compatibility.py",
+      "class": "dependency_closure",
+      "bytes": 2287,
+      "sha256": "4f8aa01750311d8e0d396fa5a8f67e9db56e14d2b9b58a5d93fc710c652d4c61"
+    },
+    {
+      "path": "tools/verify_execution_responsibility_map.py",
+      "class": "dependency_closure",
+      "bytes": 5385,
+      "sha256": "df245f24bb14830c493280b21f5ab20a148a1379b1ba53d336cb042ae8e55dad"
+    },
+    {
+      "path": "tools/verify_generated_playbook_contract.py",
+      "class": "dependency_closure",
+      "bytes": 23580,
+      "sha256": "97939ae739d6793153b7410f51bcbd52e7dd7e57b15f5ee11b791ed886aac42d"
+    },
+    {
+      "path": "tools/verify_playbook_laws.py",
+      "class": "dependency_closure",
+      "bytes": 1961,
+      "sha256": "20fcca57286d3c3c34abd5df3aa4ae4df50d60ea093202a3171922523fa8d086"
+    },
+    {
+      "path": "tools/verify_revision_evidence_consistency.py",
+      "class": "dependency_closure",
+      "bytes": 3695,
+      "sha256": "f030bc3e28c55d1c310aa358887ec30ee95491c2a638878cee81c5100a45cb57"
+    },
+    {
+      "path": "tools/verify_simulation_kit_dependency.py",
+      "class": "dependency_closure",
+      "bytes": 5317,
+      "sha256": "f43b1fa8145ba6e3e6c2a42a88e20e0f96d871e6846578ea58fcc667cebc5206"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/README.md",
+      "class": "dependency_closure",
+      "bytes": 3153,
+      "sha256": "598e54acd525a2fbdf0b25569622ebffc58c907cc374121354a3abcc10521506"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/VERSION",
+      "class": "dependency_closure",
+      "bytes": 14,
+      "sha256": "f77cccdd10d79797508947f77adeb8181bf2bf86afbac7fa09d91aae585378a7"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 52,
+      "sha256": "28354787a7121f65d89be0406cc3bc5abf9d39f962db01a341aaaaf74e653227"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/build_distribution.py",
+      "class": "dependency_closure",
+      "bytes": 2290,
+      "sha256": "0f3f84ecf9da1421655302ed76ef446cb90b8edd0367e954023bdc41cc2c844b"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/editor_service.py",
+      "class": "dependency_closure",
+      "bytes": 21514,
+      "sha256": "75f5d5003d6ee70cbea9f1f12eb3fbea635b10d231e4b1f701ce7e0e899468f9"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/start_ordo_tree_editor.command",
+      "class": "dependency_closure",
+      "bytes": 460,
+      "sha256": "237e3fd546f926295e628547af3ae1c00f6d1e9ff49ce2d08967967b97b5805e"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/app.js",
+      "class": "dependency_closure",
+      "bytes": 29161,
+      "sha256": "b59faa734255fa7bbbb710b1bc5e954643dae73866a5e066a95d9afc1c4ec1ca"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/index.html",
+      "class": "dependency_closure",
+      "bytes": 4744,
+      "sha256": "223235a2a35ad9925df40ba3031bae062d9235157f3c9112d116475f90a26ccd"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/styles.css",
+      "class": "dependency_closure",
+      "bytes": 6187,
+      "sha256": "56ae15301ba67bde811c3678ca5dbc45a8181eef4b23e24ef0d8342a4de0f24f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md",
+      "class": "dependency_closure",
+      "bytes": 1221,
+      "sha256": "93c543681c456952707fa3939f73b50a080ca86e0ee7ff207186f47a2c08cff3"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_STEP_REPORT.json",
+      "class": "dependency_closure",
+      "bytes": 1394,
+      "sha256": "d7cb21b961e32d6f4dd215f9be2132c2f7915fa91b2172cfeda367c29a65358b"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/GRAPH_OUTPUT_LAYERS.md",
+      "class": "dependency_closure",
+      "bytes": 7515,
+      "sha256": "78b55ba34c83c74754b508ed993cd0cb5e2e317fe1cc06dd951d1a5a932a3a8f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ORDO_GRAPH_INPUT_CONTRACT.md",
+      "class": "dependency_closure",
+      "bytes": 6748,
+      "sha256": "c184a4453bc5a2a96be63e359672f723d8586d544eb9485db969052fca1eca5f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ORDO_INTEGRATION_NOTES.md",
+      "class": "dependency_closure",
+      "bytes": 1887,
+      "sha256": "0df197b955dc5c09b35c936fde195bb5aaaa04d95c1db116099bdb784d700712"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/README.md",
+      "class": "dependency_closure",
+      "bytes": 7557,
+      "sha256": "08369737a11da8a25b1f2d58e75802f5cac5c59f884a118aefb7473509fb3fde"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/RELEASE_NOTES_V1.md",
+      "class": "dependency_closure",
+      "bytes": 1709,
+      "sha256": "868a30d6a245fc17129001cfceb1dd3bb55eaa760919f4613fadcada142ae2e5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/TESTING.md",
+      "class": "dependency_closure",
+      "bytes": 861,
+      "sha256": "5443244d0e5b401f816c2e5bc1b1755e9b23cd390c87b4b5e35bc0ecbe7faf8d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/TRACE_OVERLAY_SCHEMA.md",
+      "class": "dependency_closure",
+      "bytes": 3345,
+      "sha256": "c0d29f3e0b8b6012f058f4f1073a92c783f21dc2cdf09663d9b4032f9bc7453d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_1_PREVIEW_MANIFEST.json",
+      "class": "dependency_closure",
+      "bytes": 2981,
+      "sha256": "0b88d4e2736065eec48b98cff7ffbf6e1db808d4780ad45b6f27df2a5622e239"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_PACKAGE_MANIFEST.json",
+      "class": "dependency_closure",
+      "bytes": 1692,
+      "sha256": "939d1c5ec5f05ff90f9c920eb6b160340f4df64edf9adb9c34c820b223979ec5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_VERIFICATION_REPORT.json",
+      "class": "dependency_closure",
+      "bytes": 3529,
+      "sha256": "18b51c6a0de358693d366600e2f7bdebfed830c2c48d33418be91438c5612938"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/VALIDATION_REPORT.json",
+      "class": "dependency_closure",
+      "bytes": 2000,
+      "sha256": "576a2cda9c00d4572a7aa9bac11f20ad50563f6cb1bbcf3e26bcd63df05dd0df"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 194,
+      "sha256": "aad6f7a69563ed249cd4b3195c0f150bb094000971b06d72229e345c5d9bff17"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.annotations.v1.json",
+      "class": "dependency_closure",
+      "bytes": 1162,
+      "sha256": "40678845e2974bf624c9a007bb60643d0a707d8bc1919dbd8915339e25e8f14a"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 1742,
+      "sha256": "51684ccbb1ad8b4fab63e35d7fd026b5456f30e646502299f2eaba925514e463"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.trace.v2.json",
+      "class": "dependency_closure",
+      "bytes": 597,
+      "sha256": "c9f05c5a4751db43af7597ecfc2972406e550ab6ba185aa466f059ed363ff461"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/p0_test_subtree_startup.svg",
+      "class": "dependency_closure",
+      "bytes": 15653,
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/program_error_user_survey_with_artifacts.ordo.yaml",
+      "class": "dependency_closure",
+      "bytes": 8029,
+      "sha256": "86cb8fcbb59596df471756c0c004529231a4782673d2ca4b8b475d65778298dc"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph.py",
+      "class": "dependency_closure",
+      "bytes": 32338,
+      "sha256": "1764e1099f12a233c462831db473734122216be97e447ddb19788f6d0aa3653d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph_annotation_demo.py",
+      "class": "dependency_closure",
+      "bytes": 8742,
+      "sha256": "6a3ea50dd9e6969ffd415a027599f63ca46a9ca718faef760c9f02cb0f0f3f92"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph_with_attached_gates.py",
+      "class": "dependency_closure",
+      "bytes": 40841,
+      "sha256": "762771dd47762eaf439bad04b08d443a6b1d0c964eaf117459f3e92e9193ba84"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage.mmd",
+      "class": "dependency_closure",
+      "bytes": 377,
+      "sha256": "9a07ab43b4a2b3ddb0d7df371b7a3dcc51c438586183a5f809d2472a56bc8b87"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.dot",
+      "class": "dependency_closure",
+      "bytes": 4749,
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.report.json",
+      "class": "dependency_closure",
+      "bytes": 220,
+      "sha256": "9aa73ce806d9604896e929abbda1b7db5f6bafcd93981baaf4e1a81fc59f20d2"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.svg",
+      "class": "dependency_closure",
+      "bytes": 24258,
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.dot",
+      "class": "dependency_closure",
+      "bytes": 4749,
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.report.json",
+      "class": "dependency_closure",
+      "bytes": 226,
+      "sha256": "1bd5a2b6feef501f25b9ff96d229008b3cbdc7fa2239a51d4438f9b29bac9788"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.svg",
+      "class": "dependency_closure",
+      "bytes": 24258,
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.dot",
+      "class": "dependency_closure",
+      "bytes": 3338,
+      "sha256": "d1e198a1d422b5a3461f60d446649d9db5218f86b330fd338ec2e80f62492a23"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.svg",
+      "class": "dependency_closure",
+      "bytes": 19912,
+      "sha256": "9a9c91c0b619e687cf437ac25628cfffff54dc86d52a48d75eae71b9b676d169"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/requirements-dev.txt",
+      "class": "dependency_closure",
+      "bytes": 14,
+      "sha256": "ed68ea16ad8aab76f809478c881995e191c8762d8f6d76edee8ae047c7defe3d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/test_survey_startup_subtree.svg",
+      "class": "dependency_closure",
+      "bytes": 15653,
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/tests/test_ordo_graph.py",
+      "class": "dependency_closure",
+      "bytes": 9572,
+      "sha256": "f7cc03fccf326e4010cd075caf533b31aff7112539dcaa4a5d71264a1f4d006f"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/README.md",
+      "class": "dependency_closure",
+      "bytes": 781,
+      "sha256": "1336e512723d8c9a4c8d0df8e56c6334e6931743030bf3d3fa30d5903a68da6b"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/__init__.py",
+      "class": "dependency_closure",
+      "bytes": 76,
+      "sha256": "f415d5afa65ef4bdf2dbd15be61f293b62a1e58b2d6044e60f5d93210daafd9b"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/manage_playbook_checkpoint.py",
+      "class": "dependency_closure",
+      "bytes": 3084,
+      "sha256": "cf79a2aaea9e79dec72dc5dcdb140d695a88baf6b36db146cb48463e9ea2dac5"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/resolve_playbook_upgrade.py",
+      "class": "dependency_closure",
+      "bytes": 1426,
+      "sha256": "cfbb44371909f7fd50d3ab9395decb20a1ca631b693734749933bf15f6badb9b"
+    },
+    {
+      "path": "utilities/playbook_lifecycle/resolve_upgrade_impact.py",
+      "class": "dependency_closure",
+      "bytes": 2105,
+      "sha256": "37fe55c1a905b472f1370d4ee07d5643bceb7adf2cbe249fefc925c123e3ff7e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/README.md",
+      "class": "dependency_closure",
+      "bytes": 737,
+      "sha256": "d422259261cc85044b1e709dfc947db7cd9a6cb7062ac0bd1c77d6036d137859"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/CHANGELOG_1.7.0.md",
+      "class": "dependency_closure",
+      "bytes": 302,
+      "sha256": "f09337e1ceb768db8549ad74fd1da486c16bf44dec795e59479318f87fb2ffaa"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/PACKAGE_INVENTORY.md",
+      "class": "dependency_closure",
+      "bytes": 2281,
+      "sha256": "655a90d2bb020df0f65b4e6e31f70ed3752381b4b276852ff33dc82215c49b54"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/README.md",
+      "class": "dependency_closure",
+      "bytes": 1506,
+      "sha256": "6289d5cec30a352f6531c90774c34737884a9ec39a328bfc50d0908d349090c7"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/SCOPE_AND_STATUS.md",
+      "class": "dependency_closure",
+      "bytes": 609,
+      "sha256": "2ba0c1492c32ba7dfc495a68b8565ed19a9d88906150abfad2ac78c80ac19c68"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/SHA256SUMS.txt",
+      "class": "dependency_closure",
+      "bytes": 4802,
+      "sha256": "ab6a47ddfc8581c8392771565eba0da3969bbbe87ccdccb96b9fdf6d8e77698c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/CHAT_NATIVE_POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 570,
+      "sha256": "7df4399f4b1d4324a928226e97797381b0b8e145f95ec5a4e0df932f8718924e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/PACKAGE_INVENTORY.md",
+      "class": "dependency_closure",
+      "bytes": 420,
+      "sha256": "54f28d9e4da951cb525a0c12ee2eabc0d4a36d7cdf35f50982629d4a041c97fd"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/README.md",
+      "class": "dependency_closure",
+      "bytes": 618,
+      "sha256": "de9c56af8004f4b43998ca65a7f7988ca6f4647d7237dd5fdc0fa3f0a3342d91"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/SCOPE_AND_STATUS.md",
+      "class": "dependency_closure",
+      "bytes": 497,
+      "sha256": "87726eb4fb6f96e662639361b9517968ee224b1ca7b48f904fb531ef1bc45996"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/SHA256SUMS.txt",
+      "class": "dependency_closure",
+      "bytes": 1081,
+      "sha256": "b54539a0e3fe7372ad4e0547186b0bee347ca776efa386f244384119833608ff"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/docs/MULTI_CHAT_EXECUTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 1039,
+      "sha256": "116deffc362cca6078f5df833750d6b7345023ba949f9b5201c6fc4429ace1f5"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/examples/MULTI_CHAT_CAMPAIGN_EXAMPLE.yaml",
+      "class": "dependency_closure",
+      "bytes": 500,
+      "sha256": "04401e4137b2502eb583e9af2f8748a302946879a1f4be3592fcbbdc19799cec"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_EXECUTE_ASSIGNED_CHAT.md",
+      "class": "dependency_closure",
+      "bytes": 1472,
+      "sha256": "3d45cc3021ad039dce83f2642ca945ee3c78d0aaa3f917e6cccd41e7901c56cc"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/prompts/PROMPT_MERGE_MULTI_CHAT_RESULTS.md",
+      "class": "dependency_closure",
+      "bytes": 1107,
+      "sha256": "a6f82b413acb3e83fde0442e8af0880d591d5e8772263bc86667b266f9c07d23"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/schemas/chat_native_campaign.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1400,
+      "sha256": "922b623f2b3be2182ee118227358fcb5fa2f2f3399950df4993a4bc6f1ee887f"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/schemas/chat_native_run_manifest.schema.json",
+      "class": "dependency_closure",
+      "bytes": 1282,
+      "sha256": "4e5706130ef5137453069b0662a7da14794a7a8e1272e8f3e3ebb6850f961a4c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/chat_native_backend_v1/tools/validate_partial_results.py",
+      "class": "dependency_closure",
+      "bytes": 1031,
+      "sha256": "daea91fbdcaba9866facc9de45e5dc6c46672e8fa96e0b05686815243cbe7b9b"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/core/generate_execution_package.py",
+      "class": "dependency_closure",
+      "bytes": 2701,
+      "sha256": "5a69417a6407b795546da491c53bd209d170a305b1f7a37bcca05ade087ae2bb"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/checksum_domains/POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 500,
+      "sha256": "082de52417636faf02f1838de5e78d1b0cb89ae21dc39a5dedf5186bc97d3a07"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/checksum_domains/evaluate_checksum_domains.py",
+      "class": "dependency_closure",
+      "bytes": 1820,
+      "sha256": "cdf274bad59175e824ad2cbfeedcecd17722e9e8608e568d9a94ff2355b21ef7"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/release_metadata/POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 478,
+      "sha256": "fcf36d42d80aa5c78cd4c493262cbd8f64c9287c54b0090af2f79b46dd24a3dc"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/deterministic_evaluators/release_metadata/evaluate_release_metadata.py",
+      "class": "dependency_closure",
+      "bytes": 1851,
+      "sha256": "1936c88b1a4d801e2e6800c8a4a244898203d6bc694588742f332568894b4710"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/docs/BEHAVIORAL_MODE_SELECTION.md",
+      "class": "dependency_closure",
+      "bytes": 408,
+      "sha256": "f88aa614ee4e7aa545398660ae63c17f635e91858997a27cddaf50ebab3b062f"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/docs/EXECUTION_PACKAGE_GENERATOR.md",
+      "class": "dependency_closure",
+      "bytes": 754,
+      "sha256": "d26fd35e37a73e1deb6c6687c2ac0fa5acdf7585b5b7de79947a08d20591ce9e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/examples/CHAT_NATIVE_CAMPAIGN_MINIMAL.yaml",
+      "class": "dependency_closure",
+      "bytes": 395,
+      "sha256": "6c4f05a12e1b81dac519da0910d6f71efe223c664cfef17837acf0e236596444"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-002.yaml",
+      "class": "dependency_closure",
+      "bytes": 271,
+      "sha256": "a4239636518dc43283dcee58e1a808d900ab252addf360320b91190c436e2abe"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-003.yaml",
+      "class": "dependency_closure",
+      "bytes": 266,
+      "sha256": "97f07c2f893ca8990d5e3c256329bef8bbfe9be50956ca5c8d1e276d6679f97e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/fixtures/PRH-DYN-005.yaml",
+      "class": "dependency_closure",
+      "bytes": 262,
+      "sha256": "b5780690e0e75f293b1a007d557a4de7e5e2d14c2f50052d4a9e03667c55f35e"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/schemas/negative_test_evaluation.schema.json",
+      "class": "dependency_closure",
+      "bytes": 876,
+      "sha256": "e4983c68a6619f64482af4debf06c50767e1d457a4dfe18c3280c963e240fcaa"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/tests/HARDENING_TEST_MATRIX.yaml",
+      "class": "dependency_closure",
+      "bytes": 613,
+      "sha256": "b30b9405c3aef6bea955a14b93845301eaa938b5f3df7d31c624d633948cd01b"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/negative_test_semantics/tools/stability_analyzer_v1_2.py",
+      "class": "dependency_closure",
+      "bytes": 3247,
+      "sha256": "9369d2895e12d7870fde04c2261c10b009dc79e159efffec66bd4886952babe7"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/prompts/PROMPT_EXECUTE_CHAT_NATIVE_TEST_PACKAGE.md",
+      "class": "dependency_closure",
+      "bytes": 1114,
+      "sha256": "9b46e4bb511c8e454740a664cbe5affd99f5aa40d7944ad49f1b2579f51e99d9"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/prompts/PROMPT_RUN_UNIFIED_PRH_FROM_START.md",
+      "class": "dependency_closure",
+      "bytes": 3310,
+      "sha256": "6fd1362b5d5c8a14a4cacf47f6001ef5392a9d6c904b92f56a2e0321eacad217"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/SEMANTIC_PROJECTION_POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 550,
+      "sha256": "325f26b6208cdc509d4e279ad407936be8091a8c9f94957411ddb3763499ff99"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/docs/SEMANTIC_PROJECTION_MODEL.md",
+      "class": "dependency_closure",
+      "bytes": 563,
+      "sha256": "d14c98fe65d7fdfe41e44d5e8d004b6bf656c0af33cf3316d8cdc5aa8b9a787a"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/prompts/PROMPT_COMPARE_PROJECTIONS.md",
+      "class": "dependency_closure",
+      "bytes": 352,
+      "sha256": "d5541238c8684fa8df93674e66580c2cfc5122d3666173fe15fa6d7f13bea33b"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/prompts/PROMPT_EXTRACT_SINGLE_PLAYBOOK_PROJECTIONS.md",
+      "class": "dependency_closure",
+      "bytes": 357,
+      "sha256": "d85ab42ca034cc9e2379e13edfce08f80542f68309575478410161eef2604946"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/schemas/semantic_projection.schema.json",
+      "class": "dependency_closure",
+      "bytes": 2568,
+      "sha256": "dc6a865aa63a8cdc2c23f5c98dcb49cb0eb7cc213876c281d29c151fcc1d535c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/schemas/semantic_projection_diff.schema.json",
+      "class": "dependency_closure",
+      "bytes": 571,
+      "sha256": "329f8a0d5545e5a023fd3bfc43aeaaee95359fe1c335cad22521fb62fbe147fa"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/semantic_projection/tools/compare_projections.py",
+      "class": "dependency_closure",
+      "bytes": 1876,
+      "sha256": "94c194d31c52fe95a63b8c5492cb90a9971a6ebd39ba7224b5c3c9550d70da6c"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/workflows/BEHAVIORAL_MODE_POLICY.yaml",
+      "class": "dependency_closure",
+      "bytes": 938,
+      "sha256": "271248b79131c68ec961fc73e0a5f29eec74734f24ffbb4df0996f8c069ce64d"
+    },
+    {
+      "path": "utilities/playbook_regression_harness/versions/1.7.0/workflows/UNIFIED_REGRESSION_WORKFLOW.yaml",
+      "class": "dependency_closure",
+      "bytes": 1223,
+      "sha256": "a9871e77c2609af2246f63547d26d051a03f0dab31df4a306314a841e38d4d78"
+    },
+    {
+      "path": "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+      "class": "validation",
+      "bytes": 5050,
+      "sha256": "a4236f363dc0d125e79fcaaacfca2a8604b9ca700b730847c1fec89921524a51"
+    },
+    {
+      "path": "verification/CANDIDATE_TIMING_BASELINE.json",
+      "class": "validation",
+      "bytes": 2730,
+      "sha256": "7d44ac048bd8326e4dcb4a00d30840f095b6b1d62be3d1dcc890de745fc12fc5"
+    },
+    {
+      "path": "verification/EXECUTION_RESPONSIBILITY_MAP.json",
+      "class": "validation",
+      "bytes": 91936,
+      "sha256": "8c4cc60675363ade994e0efc2b92f22e1c3854a00102446e7e15dbc9b67f4cc4"
+    },
+    {
+      "path": "verification/INVARIANT_REGISTER.json",
+      "class": "validation",
+      "bytes": 17302,
+      "sha256": "7f928c0b3fbecbb69c7469c8bd6f5537e374d3c670be3af2e638102302f8d677"
+    },
+    {
+      "path": "verification/PROFILE_EXTENSIONS.json",
+      "class": "validation",
+      "bytes": 27997,
+      "sha256": "dca088240e8a1dc43996be3d345751d3f83cd4b177a62397130bfaa8b833060d"
+    },
+    {
+      "path": "verification/RUNTIME_ADAPTER_TARGETS.json",
+      "class": "validation",
+      "bytes": 225,
+      "sha256": "d532492fae5065eb6396319d0e9f6b654a3de9a0fda3ed8ba28aaea91009a98a"
+    },
+    {
+      "path": "verification/SIMULATION_KIT_015_ACCEPTANCE.json",
+      "class": "validation",
+      "bytes": 952,
+      "sha256": "12243be6b28ff20b8459f47c9bc15b8aaedbb51cfdeba9c0c690712f7bcc15e6"
+    },
+    {
+      "path": "verification/SIMULATION_KIT_DEPENDENCY.json",
+      "class": "validation",
+      "bytes": 1404,
+      "sha256": "19bec8add688fb564e2fb128b1a624982077dd9a2d9e6f7d1cad01468b31125a"
+    },
+    {
+      "path": "verification_impact_map.json",
+      "class": "validation",
+      "bytes": 14019,
+      "sha256": "87b5063f8334dc457862d8d99335e34601375d7cc1d85a307bc3663ac0b667ed"
+    },
+    {
+      "path": "verification_profile.json",
+      "class": "validation",
+      "bytes": 43579,
+      "sha256": "ace2a9cd540b2b46c77bb1fb2df2e3d07cd4625335eeb0e51988d7ba46e947f3"
+    }
+  ],
+  "excluded_count": 275
+}

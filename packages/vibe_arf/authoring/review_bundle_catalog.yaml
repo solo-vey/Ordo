@@ -1,0 +1,83 @@
+schema_version: '1.0'
+bundles:
+- id: RB_INPUT
+  group_ids:
+  - G_INPUT
+  derived_fields: []
+  authority_fields:
+  - I_RAW_USER_INTENT
+  - I_SOURCE_MATERIALS
+  - I_DESIRED_ARTIFACT_REFS
+  uncertain_fields: []
+  display_fields:
+  - I_RAW_USER_INTENT
+  - I_SOURCE_MATERIALS
+  - I_DESIRED_ARTIFACT_REFS
+  silent_fields: []
+  approval_mode: field_projection
+  review_trigger: authority_or_uncertainty_present
+- id: RB_INFORMATION_MODEL
+  group_ids:
+  - G_INFORMATION_MODEL
+  derived_fields:
+  - I_INFORMATION_OBJECT_CATALOG
+  - I_INFORMATION_GROUP_CATALOG
+  - I_INFORMATION_FLOW_GRAPH
+  - I_INFORMATION_LIFECYCLE_AUTHORITY
+  - I_INTERACTION_PROJECTION
+  - I_REVIEW_BUNDLE_CATALOG
+  - I_PROPOSAL_CANONICALIZATION
+  authority_fields: []
+  uncertain_fields: []
+  display_fields:
+  - I_INFORMATION_OBJECT_CATALOG
+  - I_INFORMATION_GROUP_CATALOG
+  - I_INFORMATION_FLOW_GRAPH
+  - I_INFORMATION_LIFECYCLE_AUTHORITY
+  - I_INTERACTION_PROJECTION
+  - I_REVIEW_BUNDLE_CATALOG
+  - I_PROPOSAL_CANONICALIZATION
+  silent_fields: []
+  approval_mode: field_projection
+  review_trigger: authority_or_uncertainty_present
+- id: RB_PROCESS_DESIGN
+  group_ids:
+  - G_PROCESS_DESIGN
+  derived_fields:
+  - I_PROCESS_MODEL
+  - I_PARAMETER_LEDGER
+  - I_HUMAN_DECISION_NEEDS
+  - I_BUSINESS_PROCESS_DESIGN_IR
+  authority_fields: []
+  uncertain_fields: []
+  display_fields:
+  - I_PROCESS_MODEL
+  - I_PARAMETER_LEDGER
+  - I_BUSINESS_PROCESS_DESIGN_IR
+  silent_fields:
+  - I_HUMAN_DECISION_NEEDS
+  approval_mode: field_projection
+  review_trigger: authority_or_uncertainty_present
+- id: RB_DELIVERY
+  group_ids:
+  - G_DELIVERY
+  derived_fields:
+  - I_BUSINESS_VIEW
+  - I_PACKAGE_VALIDATION_STATUS
+  - I_DELIVERY_EVIDENCE
+  authority_fields:
+  - I_ACCEPTANCE_STATUS
+  uncertain_fields: []
+  display_fields:
+  - I_BUSINESS_VIEW
+  - I_ACCEPTANCE_STATUS
+  - I_PACKAGE_VALIDATION_STATUS
+  - I_DELIVERY_EVIDENCE
+  silent_fields: []
+  approval_mode: field_projection
+  review_trigger: authority_or_uncertainty_present
+generated_from: AIM information groups + interaction projection
+rules:
+  derived_from_information_groups: true
+  human_review_only_for_authority_or_uncertainty: true
+  max_bundle_fields_soft: 12

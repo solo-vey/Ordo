@@ -1,0 +1,6 @@
+profile_id: APPROVAL_LEDGER_COMMIT
+authoring_only: true
+rules:
+- append-only revision
+- preserve prior decisions
+- produce evidence for local persistence gate

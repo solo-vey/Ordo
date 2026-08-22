@@ -1,0 +1,51 @@
+{
+  "policy_id": "PACKAGING_CONTINUITY_V1",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "source_of_truth": "canonical_source_only",
+  "historical_candidates": "evidence_only_never_source_of_truth",
+  "release_profiles": [
+    "EDIT",
+    "CLI_RUN",
+    "MODEL_RUN"
+  ],
+  "candidate_materialization": "requested_subset_or_all",
+  "release_materialization": "all_three_required",
+  "projection_model": "sibling_projections_from_one_canonical_source",
+  "dependency_projection": {
+    "mode": "consumer_aware_transitive_closure",
+    "startup": "profile_specific_clean_projection",
+    "tests": "project_with_retained_contract",
+    "fixtures": "project_with_retained_contract",
+    "prompts_knowledge_tools": "reachable_or_declared_bootstrap_only",
+    "orphan_reference_policy": "fail_closed"
+  },
+  "reproducible_build": {
+    "required": true,
+    "member_order": "lexicographic",
+    "zip_timestamp": "1980-01-01T00:00:00",
+    "permissions": "normalized",
+    "forbidden_tokens": [
+      "__pycache__",
+      ".pyc",
+      ".pyo"
+    ],
+    "previous_candidate_baggage": "forbidden"
+  },
+  "continuity_manifest": "PACKAGE_CONTINUITY_MANIFEST.json",
+  "continuity_required_fields": [
+    "profile",
+    "version",
+    "canonical_source_identity",
+    "source_identity_files",
+    "dependency_closure_sha256",
+    "member_set_sha256",
+    "startup_files",
+    "rebuild_recipe",
+    "packaging_policy_sha256",
+    "validator_applicability_policy_sha256"
+  ],
+  "handoff_rule": "exact_zip_validated_before_delivery",
+  "continuity_rule": "handoff_and_rebuild_evidence_must_point_to_current_canonical_source_not_historical_candidate",
+  "candidate_rule": "candidate_snapshot_may_be_partial_but_must_record_unbuilt_profiles_and_open_release_blockers"
+}

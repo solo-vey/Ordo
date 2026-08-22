@@ -1,0 +1,82 @@
+schema_version: '1.0'
+pattern_id: PRODUCTION_PACKAGE_MATERIALIZATION
+pattern_version: '1.1'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_pattern_instance_and_role
+  canonical_data_layer_contains_execution_ids: false
+  exact_graph_realization_required: true
+  duplicate_component_ids_forbidden: true
+components:
+- role: package_readiness_check
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: validate_package_inputs_and_contract_readiness
+- role: package_readiness_gate
+  kind: gate
+  responsibility_class: deterministic
+  execution_contract:
+    operation: gate_on_package_readiness_evidence
+- role: dependency_closure
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: materialize_and_validate_dependency_closure
+    tool_refs:
+    - tools/materialize_production_dependency_closure.py
+    - tools/validate_production_dependency_closure.py
+- role: assemble_package
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: build_allowlisted_production_package
+    tool_refs:
+    - tools/build_production_playbook_package.py
+- role: validate_package
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: validate_exact_production_archive
+    tool_refs:
+    - tools/validate_production_playbook_package.py
+- role: exact_extract_validate
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: clean_extract_and_manifest_roundtrip_validate
+    tool_refs:
+    - tools/validate_exact_production_package_roundtrip.py
+- role: record_delivery_evidence
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: consolidate_package_validation_evidence
+edges:
+- from_role: package_readiness_check
+  to_role: package_readiness_gate
+  type: direct
+- from_role: package_readiness_gate
+  to_role: dependency_closure
+  type: direct
+- from_role: dependency_closure
+  to_role: assemble_package
+  type: direct
+- from_role: assemble_package
+  to_role: validate_package
+  type: direct
+- from_role: validate_package
+  to_role: exact_extract_validate
+  type: direct
+- from_role: exact_extract_validate
+  to_role: record_delivery_evidence
+  type: direct

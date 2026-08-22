@@ -1,0 +1,17 @@
+schema_version: '1.0'
+template_kind: materialization
+artifact_id: <ARTIFACT_ID>
+template_ref: <DOCUMENT_TEMPLATE_PATH>
+binding_contract_ref: <BINDINGS_PATH>
+steps:
+- id: validate_inputs
+  executor: script
+- id: render
+  executor: script
+- id: write_physical_artifact
+  executor: script
+- id: validate_physical_artifact
+  executor: script
+outputs:
+- <PHYSICAL_ARTIFACT_PATH>
+fail_closed: true

@@ -1,0 +1,42 @@
+{
+  "policy_version": "1.0",
+  "id": "DEFAULT_DEBUG_HANDOFF_PROGRESS",
+  "default_mode": "debug_handoff_visible",
+  "default_on": true,
+  "handoff_evidence": {
+    "start_at_bootstrap": true,
+    "root_directory": "debug_handoff/working",
+    "capture_intermediate_revisions": true,
+    "capture_gate_history": true,
+    "capture_problem_history": true,
+    "capture_repair_history": true,
+    "capture_test_history": true,
+    "capture_artifact_lineage": true,
+    "capture_final_summary": true,
+    "final_bundle_builder": "tools/build_debug_handoff_package.py"
+  },
+  "progress_visibility": {
+    "default_chat_visibility": "visible",
+    "quiet_override_allowed": true,
+    "quiet_override_does_not_disable_evidence": true,
+    "event_types": [
+      "stage_start",
+      "node_enter",
+      "gate_result",
+      "repair_or_route",
+      "checkpoint"
+    ],
+    "minimum_event_fields": [
+      "timestamp",
+      "event_type",
+      "current_element",
+      "summary",
+      "next_action"
+    ],
+    "rule": "During autonomous execution, publish concise progress events often enough that the user can see which stage/node/gate is active, what just happened, and where execution is going next. Do not repeat low-level logs verbatim.",
+    "timing_contract": "source/visible-debug-timing-policy.json",
+    "hidden_events_advance_visible_baseline": false
+  },
+  "generated_playbook_inheritance": true,
+  "handoff_purpose": "Produce a replayable evidence package for later independent quality assessment of how the playbook was authored, which stages ran, what failed, what was repaired, and which intermediate revisions existed."
+}

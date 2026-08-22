@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.3",
+  "library_id": "VIBE_REUSABLE_DATA_EXECUTION_PATTERNS",
+  "selection_phase": "data_layer_authoring",
+  "tree_phase_policy": "projection_only_no_reselection",
+  "patterns": [
+    {
+      "id": "DOCUMENT_MATERIALIZATION",
+      "version": "1.1",
+      "path": "DOCUMENT_MATERIALIZATION",
+      "artifact_kinds": [
+        "document"
+      ],
+      "capability_tags": [
+        "document_materialization"
+      ],
+      "data_layer_module": "DOCUMENT_MATERIALIZATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "DOCUMENT_MATERIALIZATION/EXECUTION.template.yaml"
+    },
+    {
+      "id": "PRODUCTION_PACKAGE_MATERIALIZATION",
+      "version": "1.1",
+      "path": "PRODUCTION_PACKAGE_MATERIALIZATION",
+      "artifact_kinds": [
+        "archive"
+      ],
+      "capability_tags": [
+        "package_materialization",
+        "handoff_package"
+      ],
+      "data_layer_module": "PRODUCTION_PACKAGE_MATERIALIZATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "PRODUCTION_PACKAGE_MATERIALIZATION/EXECUTION.template.yaml"
+    },
+    {
+      "id": "VALIDATE_REPAIR_CONVERGENCE",
+      "version": "1.1",
+      "path": "VALIDATE_REPAIR_CONVERGENCE",
+      "artifact_kinds": [],
+      "capability_tags": [
+        "validation_convergence",
+        "repair_loop"
+      ],
+      "data_layer_module": "VALIDATE_REPAIR_CONVERGENCE/DATA_LAYER.template.yaml",
+      "execution_projection_template": "VALIDATE_REPAIR_CONVERGENCE/EXECUTION.template.yaml"
+    },
+    {
+      "id": "IMPLEMENTATION_CHANGE",
+      "version": "1.1",
+      "path": "IMPLEMENTATION_CHANGE",
+      "artifact_kinds": [],
+      "capability_tags": [
+        "implementation_change",
+        "change_impact"
+      ],
+      "data_layer_module": "IMPLEMENTATION_CHANGE/DATA_LAYER.template.yaml",
+      "execution_projection_template": "IMPLEMENTATION_CHANGE/EXECUTION.template.yaml"
+    },
+    {
+      "id": "DOCUMENT_RECONCILIATION_VERIFICATION",
+      "version": "1.2",
+      "path": "DOCUMENT_RECONCILIATION_VERIFICATION",
+      "artifact_kinds": [
+        "document"
+      ],
+      "capability_tags": [
+        "document_analysis",
+        "document_reconciliation",
+        "evidence_grounding",
+        "semantic_verification",
+        "independent_review",
+        "bounded_repair"
+      ],
+      "data_layer_module": "DOCUMENT_RECONCILIATION_VERIFICATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "DOCUMENT_RECONCILIATION_VERIFICATION/EXECUTION.template.yaml",
+      "compilation_contract": "DOCUMENT_RECONCILIATION_VERIFICATION/COMPILATION_CONTRACT.md",
+      "selection_match_policy": "capability_required",
+      "variant_family": "DOCUMENT_RECONCILIATION_VERIFICATION",
+      "variant_tier": "advanced",
+      "variant_selection": "explicit_when_multiple_fit"
+    },
+    {
+      "id": "VERIFIED_DOCUMENT_JIRA_TASK_MATERIALIZATION",
+      "version": "1.1",
+      "path": "VERIFIED_DOCUMENT_JIRA_TASK_MATERIALIZATION",
+      "artifact_kinds": [
+        "verified_document"
+      ],
+      "capability_tags": [
+        "document_to_jira_task",
+        "test_context_acquisition",
+        "task_contract_derivation",
+        "jira_artifact_materialization",
+        "jira_render_validation",
+        "jira_task_presentation"
+      ],
+      "data_layer_module": "VERIFIED_DOCUMENT_JIRA_TASK_MATERIALIZATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "VERIFIED_DOCUMENT_JIRA_TASK_MATERIALIZATION/EXECUTION.template.yaml",
+      "compilation_contract": "VERIFIED_DOCUMENT_JIRA_TASK_MATERIALIZATION/COMPILATION_CONTRACT.md",
+      "selection_match_policy": "capability_required"
+    },
+    {
+      "id": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION",
+      "version": "1.2",
+      "path": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION",
+      "artifact_kinds": [
+        "verified_document"
+      ],
+      "capability_tags": [
+        "verified_specification_implementation",
+        "repository_grounding",
+        "change_scope_projection",
+        "implementation_autonomy",
+        "bounded_code_change",
+        "test_obligation_coverage",
+        "local_verification",
+        "implementation_result_packaging",
+        "multi_outcome_implementation_branch",
+        "implementation_contract_presentation",
+        "bounded_verification_recovery",
+        "revision_bound_verification"
+      ],
+      "data_layer_module": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/EXECUTION.template.yaml",
+      "compilation_contract": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/COMPILATION_CONTRACT.md",
+      "selection_match_policy": "capability_required",
+      "variant_family": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION",
+      "variant_tier": "advanced",
+      "variant_selection": "explicit_when_multiple_fit"
+    },
+    {
+      "id": "EXECUTION_DEBUG_EVIDENCE_EXPORT",
+      "version": "1.1",
+      "path": "EXECUTION_DEBUG_EVIDENCE_EXPORT",
+      "artifact_kinds": [
+        "execution_run",
+        "workflow_run"
+      ],
+      "capability_tags": [
+        "conditional_debug_export",
+        "debug_evidence_collection",
+        "secrets_redaction",
+        "debug_bundle_materialization",
+        "debug_bundle_validation",
+        "debug_bundle_presentation"
+      ],
+      "data_layer_module": "EXECUTION_DEBUG_EVIDENCE_EXPORT/DATA_LAYER.template.yaml",
+      "execution_projection_template": "EXECUTION_DEBUG_EVIDENCE_EXPORT/EXECUTION.template.yaml",
+      "compilation_contract": "EXECUTION_DEBUG_EVIDENCE_EXPORT/COMPILATION_CONTRACT.md",
+      "selection_match_policy": "capability_required"
+    },
+    {
+      "id": "SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION",
+      "version": "1.2",
+      "path": "SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION",
+      "artifact_kinds": [
+        "document",
+        "specification",
+        "contract_document"
+      ],
+      "capability_tags": [
+        "document_reconciliation",
+        "evidence_grounding",
+        "profile_guided_analysis",
+        "analyst_resolution",
+        "targeted_document_mutation",
+        "evidence_authority_isolation",
+        "version_drift_detection",
+        "provisional_profile_correction",
+        "auditable_resolution_ledger"
+      ],
+      "data_layer_module": "SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION/EXECUTION.template.yaml",
+      "compilation_contract": "SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION/COMPILATION_CONTRACT.md",
+      "selection_match_policy": "capability_required",
+      "variant_family": "DOCUMENT_RECONCILIATION_VERIFICATION",
+      "variant_tier": "simple",
+      "variant_selection": "explicit_when_multiple_fit"
+    },
+    {
+      "id": "SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION",
+      "version": "1.1",
+      "path": "SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION",
+      "artifact_kinds": [
+        "verified_document",
+        "verified_specification",
+        "verified_contract_document"
+      ],
+      "capability_tags": [
+        "verified_specification_implementation",
+        "repository_grounding",
+        "safe_repository_freshness",
+        "evidence_only_target_repository",
+        "provisional_implementation_family_selection",
+        "deterministic_change_risk",
+        "bounded_local_mutation",
+        "persisted_result_verification"
+      ],
+      "data_layer_module": "SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/DATA_LAYER.template.yaml",
+      "execution_projection_template": "SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/EXECUTION.template.yaml",
+      "compilation_contract": "SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/COMPILATION_CONTRACT.md",
+      "selection_match_policy": "capability_required",
+      "variant_family": "VERIFIED_DOCUMENT_CODE_IMPLEMENTATION",
+      "variant_tier": "simple",
+      "variant_selection": "explicit_when_multiple_fit"
+    }
+  ],
+  "reuse_scoring": {
+    "qualified_reuse_reward_points": 50,
+    "reward_unit": "distinct_preexisting_semantic_responsibility",
+    "missed_opportunity_score_effect": 0
+  },
+  "compiler_lowering_policy": {
+    "canonical_outcomes_are_semantic_not_compiled_routes": true,
+    "multi_outcome_requires_exact_fail_closed_lowering": true,
+    "target_editor_runtime_plan_validation_required": true
+  },
+  "variant_selection_policy": {
+    "multiple_matching_variants_require_explicit_choice": true,
+    "never_auto_replace_advanced_with_simple": true,
+    "never_auto_upgrade_simple_to_advanced": true
+  }
+}

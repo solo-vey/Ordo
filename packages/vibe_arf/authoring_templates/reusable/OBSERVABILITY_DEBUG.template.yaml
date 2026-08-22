@@ -1,0 +1,23 @@
+template_id: OBSERVABILITY_DEBUG
+scope: cross_domain
+purpose: Reusable execution observability/debug contract.
+required_capabilities:
+- EXECUTION_RECEIPTS
+- PER_NODE_TELEMETRY
+- PASS_COUNT_DIAGNOSTIC
+- STARTUP_READ_AUDIT
+- CONTEXT_ACCOUNTING_SEPARATION
+- HOTSPOT_RANKING
+- VISIBLE_TIMING
+- STANDARD_DEBUG_BUNDLE
+- SELF_REPAIR_EVIDENCE
+evidence_paths:
+  receipts: runtime/evidence/EXECUTION_RECEIPTS.jsonl
+  telemetry: runtime/evidence/PER_NODE_TELEMETRY.jsonl
+  debug_index: debug_handoff/working/DEBUG_RUN_INDEX.json
+acceptance:
+- no fabricated token usage
+- filesystem scan and model-loaded content distinguished
+- platform overhead separated
+- visible timing baseline preserved
+- debug evidence does not change semantic acceptance by itself

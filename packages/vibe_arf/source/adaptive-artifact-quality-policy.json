@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ADAPTIVE_ARTIFACT_QUALITY_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "framework_level_generated_playbooks",
+  "validation_architecture": "HYBRID_DETERMINISTIC_PLUS_SEMANTIC_MODEL",
+  "principles": [
+    "Structural validity is necessary but not sufficient for semantic quality.",
+    "Completeness is case-adaptive and applies to consequential dimensions, not every template field.",
+    "Deterministic validators own mechanically decidable invariants; semantic model review owns flexible quality judgments under a structured rubric.",
+    "Semantic review is read-only over canonical state and cannot override deterministic failures.",
+    "Derivable content is produced before analyst escalation; analyst questions are reserved for true domain decisions or unavailable source evidence."
+  ],
+  "completeness_profile": {
+    "roles": [
+      "REQUIRED_CONSEQUENTIAL",
+      "DERIVABLE",
+      "OPTIONAL",
+      "IMPLEMENTATION_DETAIL",
+      "INAPPLICABLE"
+    ],
+    "required_consequential_terminal_statuses": [
+      "KNOWN",
+      "UNKNOWN_CONFIRMED",
+      "INAPPLICABLE"
+    ],
+    "unasked_required_is_blocking": true,
+    "derivable_unknown_is_defect": true,
+    "template_wide_requiredness_forbidden": true,
+    "documented_non_ask_scope_reason_allowed": true
+  },
+  "materialization": {
+    "synthetic_unknown_forbidden": true,
+    "unknown_requires_structural_status_and_provenance": true,
+    "optional_or_implementation_missing_may_be_omitted_or_scope_labeled": true,
+    "materializer_does_not_decide_completeness": true
+  },
+  "derived_outputs": {
+    "derive_before_analyst_escalation": true,
+    "canonical_contract_is_source": true,
+    "common_families": [
+      "positive_tests",
+      "negative_tests",
+      "missing_null_tests",
+      "unknown_unrecognized_tests",
+      "error_path_tests",
+      "boundary_tests_when_meaningful",
+      "persistence_state_tests_when_meaningful",
+      "rendering_output_tests_when_meaningful",
+      "edge_case_matrices",
+      "calculation_examples",
+      "traceability_tables",
+      "mapping_summaries"
+    ],
+    "test_coverage_rule": "coverage_by_canonical_rule_not_fixed_row_count",
+    "generated_content_requires_derived_provenance": true
+  },
+  "deterministic_validation": {
+    "owns": [
+      "syntax",
+      "schema",
+      "required_structural_elements",
+      "enum_and_status_validity",
+      "referential_consistency",
+      "impossible_state_combinations",
+      "data_type_invariants",
+      "canonical_state_consistency",
+      "forbidden_unresolved_lifecycle_states",
+      "deterministic_calculation_invariants",
+      "artifact_lineage_and_provenance_presence",
+      "synthetic_unknown_detection",
+      "derivable_unknown_detection",
+      "template_completeness_validator_alignment"
+    ],
+    "must_be_generic_invariant_driven": true,
+    "domain_specific_shape_hardcoding_forbidden": true
+  },
+  "semantic_model_gate": {
+    "owns": [
+      "substantive_section_quality",
+      "case_specific_semantic_completeness",
+      "test_coverage_quality",
+      "description_usefulness",
+      "cross_section_logical_consistency",
+      "obvious_missing_scenarios",
+      "practical_usability",
+      "case_adaptive_section_rubrics"
+    ],
+    "input_contract": [
+      "canonical_state",
+      "completeness_profile",
+      "materialized_artifact",
+      "accepted_scope",
+      "confirmed_unknowns",
+      "source_and_analyst_provenance",
+      "optionality_and_inapplicability_metadata"
+    ],
+    "forbidden_inputs": [
+      "hidden_golden_artifact",
+      "expected_score",
+      "competing_candidate_ranking",
+      "hidden_benchmark_answer"
+    ],
+    "output_schema": "source/semantic-artifact-quality-gate.schema.json",
+    "canonical_state_mutation_allowed": false,
+    "deterministic_failure_override_allowed": false,
+    "may_create_new_requirements_outside_canonical_scope": false
+  },
+  "quality_routing": {
+    "categories": [
+      "DERIVABLE_FIX",
+      "ANALYST_DECISION_REQUIRED",
+      "SOURCE_REQUIRED",
+      "IMPLEMENTATION_DETAIL"
+    ],
+    "priority": [
+      "DERIVABLE_FIX",
+      "SOURCE_REQUIRED",
+      "ANALYST_DECISION_REQUIRED",
+      "IMPLEMENTATION_DETAIL"
+    ],
+    "self_repair_before_analyst": true,
+    "semantic_finding_does_not_automatically_create_question": true
+  },
+  "alignment": {
+    "template_completeness_validator_alignment_required": true,
+    "substantive_template_section_requires_resolution_strategy": true,
+    "provenance_granularity": "field_or_assertion_level_when_mixed_authority",
+    "derived_content_must_not_claim_analyst_provenance": true
+  },
+  "quality_statuses": [
+    "PASS",
+    "PASS_WITH_NOTES",
+    "BLOCK"
+  ],
+  "metrics": {
+    "DERIVABLE_UNKNOWN_COUNT": {"target": 0},
+    "UNASKED_REQUIRED_COUNT": {"target": 0},
+    "UNSUPPORTED_ASSERTION_COUNT": {"target": 0},
+    "PROVENANCE_MISMATCH_COUNT": {"target": 0},
+    "ANALYST_QUESTIONS_FOR_DERIVABLE_CONTENT": {"target": 0},
+    "TEST_RULE_COVERAGE": {"direction": "maximize_case_appropriate_coverage"}
+  },
+  "required_regression_families": [
+    "DERIVED_TESTS_FROM_COMPLETE_RULES",
+    "WEAK_GENERATED_TEST_SELF_REPAIR",
+    "MISSING_REQUIRED_DECISION_ROUTES_ANALYST",
+    "OPTIONAL_IMPLEMENTATION_DETAIL_NONBLOCKING",
+    "DERIVABLE_UNKNOWN_BLOCKED",
+    "ADAPTIVE_FEWER_SECTIONS_ALLOWED",
+    "SEMANTIC_MODEL_CANNOT_OVERRIDE_DETERMINISTIC_FAILURE",
+    "SEMANTIC_MODEL_CANNOT_MUTATE_CANONICAL_STATE",
+    "ORPHAN_SUBSTANTIVE_SECTION_BLOCKED",
+    "PROVENANCE_MISMATCH_DETECTED"
+  ]
+}

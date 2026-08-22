@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "override_id": "ORDO_0.4.10_GRAPH_CONTRACT_REGISTRY_ALIGNMENT",
+  "status": "LOCAL_COMPATIBILITY_OVERRIDE",
+  "reason": "Pinned init emits graph_contract and compiler emits GRAPH.CONTRACT while registries omit them; this aligns registry only and adds no executable semantics.",
+  "evidence": [
+    "cli_embedded/ordo_pkg/ordo/templates/package_template/source/program.ordo.yaml",
+    "cli_embedded/ordo_pkg/ordo/compiler.py"
+  ],
+  "base_sha256": {
+    "source_construct_catalog": "1b479a5561f84f81d5fa33115d75789bbab0df4bc477cc139d25dcbfd320fa31",
+    "opcode_catalog": "d5d88af03666bb896a9d4540e0386f0a0e63c04575757485ad93f27f26231d95"
+  },
+  "effective_sha256": {
+    "source_construct_catalog": "56432f5247afe65e4067b77e7c1040787d3635ac26340de25f5c32a969d25e1c",
+    "opcode_catalog": "3dbfb3c7d3ee3bd7cc0fb74bac159c0d75289a574b91de77b6c220baaefd0ce0"
+  }
+}

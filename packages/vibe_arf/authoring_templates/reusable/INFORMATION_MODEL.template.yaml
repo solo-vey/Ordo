@@ -1,0 +1,19 @@
+schema_version: '1.0'
+template_kind: information_model
+canonical_source: true
+information_objects:
+- id: <OBJECT_ID>
+  semantic_group: <GROUP_ID>
+  type: <TYPE>
+  authority: <analyst|source|derived|system>
+  provenance_ref: <REF>
+  required: true
+groups:
+- id: <GROUP_ID>
+  role: <input|evidence|derived|artifact|technical|quality|output>
+dependencies:
+- from: <OBJECT_ID>
+  to: <OBJECT_ID>
+  relation: <produces|derives|validates|materializes>
+constraints:
+- all runtime/process semantics must trace to this data layer

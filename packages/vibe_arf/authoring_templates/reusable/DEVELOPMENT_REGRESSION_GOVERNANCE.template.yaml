@@ -1,0 +1,19 @@
+schema_version: "1.0"
+template_id: DEVELOPMENT_REGRESSION_GOVERNANCE
+scope: cross_domain
+purpose: Reusable regression-first candidate development rail.
+flow:
+  - DEFINE_INVARIANT_AND_REGRESSION
+  - PROVE_PRECHANGE_RED_OR_EXPLICIT_NOT_APPLICABLE
+  - APPLY_MINIMAL_CHANGE
+  - PROVE_EXACT_REGRESSION_GREEN
+  - RUN_IMPACTED_REGRESSIONS
+  - RECORD_REGRESSION_PROOF
+  - RECORD_LIVE_PROOF_SEPARATELY
+  - DEFER_FULL_ACCUMULATED_SUITE_TO_RELEASE
+contracts:
+  regression_target: architectural_property_not_implementation_name
+  fixtures: positive_and_negative_when_practical
+  failure_memory: persistent
+  packaging_only_change: prove_semantic_source_unchanged
+  coverage: explainable_from_retained_contract

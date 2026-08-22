@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_EXPLICIT_RUNTIME_TOOLS_TEMPLATES_OUTPUTS_V1",
+  "revision": "0.1.0-alpha.15",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "rules": [
+    "Runtime graph must visibly contain deterministic helper boundaries where algorithmic verification is required.",
+    "Canonical node_context.allowed_tools is used for runtime helper permissions; package-local Python remains declared by verification_profile/python_script rather than an invented Python node type.",
+    "Concrete document templates and package assembly contracts must be represented by explicit graph nodes before generic field/materialization processing.",
+    "External outputs remain Ordo outputs, but each output must have an explicit materialization/handoff node in the graph.",
+    "Raw deterministic tool output is interpreted by AI before user-facing explanation."
+  ]
+}

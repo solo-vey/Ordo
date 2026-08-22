@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "targets": [
+    "chat_internal"
+  ],
+  "note": "Vibe factory self-verification is chat-native. editor_dev is a target-specific qualification for generated playbooks, not semantic authority."
+}

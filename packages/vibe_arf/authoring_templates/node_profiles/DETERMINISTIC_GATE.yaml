@@ -1,0 +1,7 @@
+id: G_VALID
+method: mechanical
+trust_class: deterministic
+condition: state.validation_evidence.status is one of PASS
+on_pass: N_NEXT
+on_fail: N_REPAIR
+allowed_from: [N_RUN_VALIDATION]

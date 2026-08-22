@@ -1,0 +1,11 @@
+schema_version: '1.0'
+status: design
+information_bindings: []
+group_bindings: []
+gate_bindings: []
+artifact_bindings: []
+playbook:
+  managed_node_scope: []
+  ignore_node_ids: []
+rules:
+  authoring_ids_must_not_be_ordo_extensions: true

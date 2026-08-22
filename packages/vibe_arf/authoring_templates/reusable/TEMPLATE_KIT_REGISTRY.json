@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "kit_id": "VIBE_REUSABLE_AUTHORING_TEMPLATE_KIT",
+  "source_of_truth": "data_layer",
+  "reuse_required_for_generated_playbooks": true,
+  "templates": {
+    "information_model": {
+      "path": "authoring_templates/reusable/INFORMATION_MODEL.template.yaml",
+      "purpose": "canonical information objects/groups/dependencies"
+    },
+    "bindings": {
+      "path": "authoring_templates/reusable/BINDINGS.template.yaml",
+      "purpose": "field-to-producer/source/template bindings"
+    },
+    "document": {
+      "path": "authoring_templates/reusable/DOCUMENT.template.md",
+      "purpose": "static document structure with explicit placeholders"
+    },
+    "materialization": {
+      "path": "authoring_templates/reusable/MATERIALIZATION.template.yaml",
+      "purpose": "deterministic artifact materialization lifecycle"
+    },
+    "validator": {
+      "path": "authoring_templates/reusable/VALIDATOR.template.yaml",
+      "purpose": "deterministic validation contract"
+    },
+    "editor_projection": {
+      "path": "authoring_templates/reusable/EDITOR_PROJECTION.template.yaml",
+      "purpose": "editor-visible groups/variables/edges/materialization projection"
+    },
+    "interactive_analyst_workflow": {
+      "path": "authoring_templates/reusable/INTERACTIVE_ANALYST_WORKFLOW.template.yaml",
+      "purpose": "incremental analyst fact-stream, structural resolution status and pre-compose completeness"
+    },
+    "adaptive_artifact_quality": {
+      "path": "authoring_templates/reusable/ADAPTIVE_ARTIFACT_QUALITY.template.yaml",
+      "purpose": "case-adaptive completeness, derived outputs, hybrid artifact quality validation and deterministic finding routing"
+    },
+    "semantic_execution_invariants": {
+      "path": "authoring_templates/reusable/SEMANTIC_EXECUTION_INVARIANTS.template.yaml",
+      "purpose": "model-mode semantic reference, merge-by-diff, re-entry, recovery, authority discovery and repair-loop invariants"
+    }
+  },
+  "instantiation_order": [
+    "information_model",
+    "bindings",
+    "document",
+    "semantic_execution_invariants",
+    "interactive_analyst_workflow",
+    "adaptive_artifact_quality",
+    "materialization",
+    "validator",
+    "editor_projection"
+  ],
+  "rule": "instantiate_and_specialize; do_not_invent_contract_shape_ad_hoc",
+  "reusable_subprocesses": {
+    "QUALITY_HARDENING_LOOP": "authoring_templates/reusable/QUALITY_HARDENING_LOOP.template.yaml",
+    "PERFORMANCE_TOKEN_OPTIMIZATION_LOOP": "authoring_templates/reusable/PERFORMANCE_TOKEN_OPTIMIZATION_LOOP.template.yaml",
+    "DEVELOPMENT_REGRESSION_GOVERNANCE": "authoring_templates/reusable/DEVELOPMENT_REGRESSION_GOVERNANCE.template.yaml",
+    "QUALITY_OPTIMIZATION_GOVERNANCE": "authoring_templates/reusable/QUALITY_OPTIMIZATION_GOVERNANCE.template.yaml",
+    "EXECUTION_WRITE_SAFETY_VALIDATOR_GOVERNANCE": "authoring_templates/reusable/EXECUTION_WRITE_SAFETY_VALIDATOR_GOVERNANCE.template.yaml",
+    "LIFECYCLE_RELEASE_FAMILY_GOVERNANCE": "authoring_templates/reusable/LIFECYCLE_RELEASE_FAMILY_GOVERNANCE.template.yaml",
+    "RELEASE_FAMILY_MANIFEST": "authoring_templates/reusable/RELEASE_FAMILY_MANIFEST.template.json"
+  }
+}

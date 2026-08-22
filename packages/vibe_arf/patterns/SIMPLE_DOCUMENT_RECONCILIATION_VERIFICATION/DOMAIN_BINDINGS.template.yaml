@@ -1,0 +1,125 @@
+schema_version: '1.0'
+pattern_id: SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION
+pattern_version: '1.2'
+bindings:
+  artifact_kind: <document|specification|contract_document>
+  artifact_identity: <domain-specific identity>
+  evidence_source_identity: <repository/module/archive/source>
+  profile_catalog_path: <path to instantiated DOMAIN_PROFILE_CATALOG>
+  selector_adapter_path: <domain selector adapter>
+  semantic_identity_contract: <domain identity families>
+  technical_representation_policy: <domain policy>
+  provisional_value_markers: []
+  protected_semantic_fields: []
+  causal_layer_contract:
+    enabled: false
+    upstream_business_cause_terms: []
+    downstream_technical_trigger_terms: []
+    evidence_resolution_policy: If current evidence proves a standard mediation chain
+      between an upstream business cause and a downstream technical trigger/envelope,
+      clarify the document without creating an authority discrepancy unless product
+      semantics remain ambiguous.
+  analyst_output:
+    locale: uk
+    option_labels:
+    - A
+    - B
+    - C
+    - D
+    - E
+    - F
+    - G
+    - H
+    - I
+    - J
+    - K
+    - L
+    - M
+    - N
+    discrepancy_heading: '## {number}. [{discrepancy_id}] {short_title}'
+    evidence_label: '**Evidence**'
+    variants_label: '**Resolution options**'
+    separator: '---'
+  decision_appendix:
+    required_fields:
+    - discrepancy_id
+    - issue_summary
+    - decision_id
+    - applied_change
+legacy_compatible_extensions:
+  document:
+    artifact_kind: <DOMAIN_DOCUMENT_KIND>
+    human_name: <DOMAIN_DOCUMENT_HUMAN_NAME>
+    stable_identity_rule: <HOW_CURRENT_DOCUMENT_IDENTITY_IS_ESTABLISHED>
+  evidence_source:
+    kind: <CODEBASE_SCHEMA_REGISTRY_API_CONFIGURATION_OR_OTHER>
+    acquisition: <HOW_MODEL_OR_TOOL_ACCESSES_CURRENT_EVIDENCE>
+    authority_precedence: <ORDER_OF_EVIDENCE_SOURCES_IF_MULTIPLE>
+  profile_selection:
+    key_semantic_name: <DOMAIN_PROFILE_KEY_NAME>
+    explicit_document_labels:
+    - <LABEL_USED_IN_DOCUMENT_FOR_PROFILE_KEY>
+    provisional_markers:
+    - pending approval
+    - <OPTIONAL_ADDITIONAL_PROVISIONAL_MARKER>
+    catalog_path: knowledge/DOMAIN_PROFILE_CATALOG.yaml
+    selector_command: python tools/select_domain_architecture_profile.py --document
+      <CURRENT_DOCUMENT_PATH> --catalog knowledge/DOMAIN_PROFILE_CATALOG.yaml --emit-content
+  mandatory_common_contract_rows:
+  - variable: <COMMON_VARIABLE_1>
+    expected_behavior: <EXPECTED_BEHAVIOR_FROM_GENERAL_ARCHITECTURE>
+    architecture_level: <GENERAL_ARCHITECTURE_OR_EQUIVALENT>
+    evidence_hint: <PATH_CLASS_SCHEMA_ENDPOINT_OR_OTHER_ANCHOR>
+  - variable: <COMMON_VARIABLE_2>
+    expected_behavior: <EXPECTED_BEHAVIOR>
+    architecture_level: <LEVEL>
+    evidence_hint: <ANCHOR>
+  semantic_identity_families:
+  - id: <SEMANTIC_IDENTITY_ID_1>
+    members:
+    - <DOCUMENT_LABEL_OR_PATH_1>
+    - <DOCUMENT_LABEL_OR_PATH_2>
+    compare:
+    - value
+    - approval_state
+    - scope
+    - conditionality
+    - null_error_semantics
+  discrepancy_policy:
+    risk_order:
+    - PRESENT
+    - LOW
+    - MEDIUM
+    - HIGH
+    human_authority_required_for:
+    - <DOMAIN_DECISION_CLASS_1>
+    evidence_resolvable_without_human:
+    - <DOMAIN_EVIDENCE_RESOLVABLE_CLASS_1>
+  protected_semantic_fields:
+    rule: A protected semantic field must never be changed as a side effect of resolving
+      another discrepancy. Any proposed change requires its own stable discrepancy
+      ID and explicit authority decision.
+    fields:
+    - semantic_name: <PROTECTED_SEMANTIC_FIELD_1>
+      document_labels_or_paths:
+      - <LABEL_OR_PATH_1>
+      reason: <WHY_THIS_FIELD_REQUIRES_DEDICATED_APPROVAL>
+  analyst_answer_ux:
+    option_labels: A/B/C/... in displayed risk order
+    instructions: After the numbered questions, include a short answer protocol telling
+      the analyst to reply as <question_number><option_letter>, comma-separated.
+    complete_example: If there are N questions, include a complete example selecting
+      A for every question, e.g. `1A, 2A, ..., NA`.
+    requirements:
+    - every discrepancy has stable question number and stable discrepancy ID
+    - every answer option has a letter
+    - letters follow the already risk-sorted order
+    - the all-A example covers every currently displayed question
+  resolution_appendix_legacy:
+    heading: <DOMAIN_DECISION_APPENDIX_HEADING>
+    required_fields:
+    - discrepancy_id
+    - chosen_option
+    - chosen_meaning
+    - analyst_text
+    - change_summary

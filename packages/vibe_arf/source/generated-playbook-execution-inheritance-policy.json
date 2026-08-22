@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_GENERATED_PLAYBOOK_EXECUTION_INHERITANCE_V1",
+  "revision": "0.1.0-alpha.20",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "canonical_basis": [
+    "language/spec/11_PROCESS_RAIL_MODEL.md",
+    "language/spec/13_HYBRID_EXECUTION_MODEL.md",
+    "language/spec/14_CLI_HELPER_COMMANDS_MODEL.md",
+    "language/spec/33_NODE_LOCAL_EXECUTION_AND_TRANSITION_PROVENANCE.md"
+  ],
+  "laws": [
+    {
+      "id": "MODEL_ONLY_WHERE_DETERMINISM_ENDS",
+      "rule": "If a responsibility can be resolved or validated deterministically from explicit state, artifacts, schemas, rules or tool output, the generated playbook must use a deterministic mechanism rather than unsupported model self-judgment."
+    },
+    {
+      "id": "GENERATED_PLAYBOOKS_INHERIT_VERIFICATION_ARCHITECTURE",
+      "rule": "Every generated runnable playbook inherits a revision-explicit verification_profile and an execution responsibility map. Domain-specific deterministic validators are package-local."
+    },
+    {
+      "id": "AI_LEADS_TOOLS_STABILIZE_HUMAN_OWNS_AUTHORITY",
+      "rule": "AI leads conversation and semantic interpretation; deterministic helpers stabilize mechanical parts; humans own content/approval decisions."
+    },
+    {
+      "id": "GENERATED_PLAYBOOK_EDITOR_CONTRACT_SAFE",
+      "rule": "Every generated runnable playbook must pass the Vibe-owned generated_playbook_contract before analyst-visible handoff."
+    },
+    {
+      "id": "CANONICAL_SAFE_NODE_PROFILES_DEFAULT",
+      "rule": "Use canonical safe node profiles as authoring defaults for common model, deterministic, human, materialization, package and terminal responsibilities; deviations require explicit language/editor compatibility evidence."
+    },
+    {
+      "id": "ANALYST_VISIBILITY_BARRIER_MACHINE_GATES_PASS",
+      "rule": "Machine-detectable failures are internal repair work and must not be surfaced to the analyst as a candidate requiring manual YAML repair."
+    },
+    {
+      "id": "INTERACTIVE_ANALYST_STATE_IS_STRUCTURAL",
+      "rule": "Any generated playbook with analyst interaction must treat analyst messages as a fact stream, store field resolution status separately from value, deterministically merge extracted facts, and block materialization on substantive UNASKED fields."
+    },
+    {
+      "id": "MODEL_MODE_REFERENCE_BEFORE_STRICT_RUNTIME",
+      "rule": "When a generated playbook targets a strict CLI/runtime, first prove the canonical playbook semantics to a terminal state in Model Mode and preserve the successful trace as the semantic reference for runtime equivalence."
+    },
+    {
+      "id": "STATE_WRITES_MERGE_BY_DIFF",
+      "rule": "Node outputs are state diffs. Applying a partial write must preserve unrelated state; whole-state replacement is forbidden unless an explicit contract declares a whole-state operation."
+    },
+    {
+      "id": "CURRENT_REENTRY_OVERRIDES_HISTORY",
+      "rule": "A node that becomes current again after authority resolution, repair or another loop is executable again; historical visitation or prior answers do not prove current completion."
+    },
+    {
+      "id": "GATE_ON_FAIL_IS_RECOVERY_EDGE",
+      "rule": "A mechanical gate FAIL follows its declared on_fail recovery edge. FAIL becomes terminal only when the canonical graph has no recovery route."
+    },
+    {
+      "id": "NO_RUNTIME_WORKAROUND_DATA_LAYER_POLLUTION",
+      "rule": "Do not add business/Data-Layer checkpoint or completion fields merely to compensate for CLI/runner defects; repair the adapter/runtime and preserve a regression instead."
+    },
+    {
+      "id": "EXHAUSTIVE_AUTHORITY_DISCOVERY_WITH_STABLE_IDS",
+      "rule": "Before asking the analyst, discover all simultaneously known consequential human-owned decisions in the same information group, assign stable decision_id values, preserve partial answers, and re-ask only unresolved/new/conflicted decisions."
+    },
+    {
+      "id": "FULL_REPAIR_LOOP_REGRESSION_REQUIRED",
+      "rule": "Generated playbooks with recovery edges must test FAIL → on_fail → local repair → recompute/rematerialize → PASS end to end, including unrelated-state preservation and no redundant human re-asking."
+    },
+    {
+      "id": "STATE_PATCH_V1_AT_MODEL_BOUNDARY",
+      "rule": "Model/delta outputs that mutate canonical state use state_patch_v1 with base-state hash and allowed roots; deterministic runtime validates and applies the patch and emits state_updates_v1."
+    },
+    {
+      "id": "FAIL_CLOSE_AT_PRODUCER_BOUNDARY",
+      "rule": "Declared writes, nested types and required properties are validated before persistence. Invalid output leaves current_node unchanged and creates no transition receipt."
+    },
+    {
+      "id": "MONOTONIC_LIFECYCLE_ENFORCEMENT",
+      "rule": "Resolved/terminal lifecycle states cannot downgrade unless deterministic guards accept an evidence-bound reopen reason with provenance."
+    },
+    {
+      "id": "DETERMINISTIC_RECOVERY_RESUME",
+      "rule": "When repair is possible, deterministic execution derives the first invalid or missing milestone and a non-null resume node; model guessing of resume position is forbidden."
+    },
+    {
+      "id": "MACHINE_CHECKABLE_COMPLETENESS",
+      "rule": "When a finite required set can be enumerated, generated playbooks use stable IDs and deterministic required_ids == accounted_for_ids coverage rather than prompt-only completeness claims."
+    },
+    {
+      "id": "SAFE_EVIDENCE_HYDRATION",
+      "rule": "Existing deterministic evidence is hydrated through a hash-validated allowlisted adapter; the model must not reconstruct available machine evidence from prose."
+    },
+    {
+      "id": "STATE_CONTEXT_SEPARATION",
+      "rule": "Canonical semantic state contains process/business semantics; runtime, session, recovery and staging context stay separately typed and staging markers are not semantic facts."
+    },
+    {
+      "id": "EXECUTION_RECEIPTS_REQUIRED",
+      "rule": "Every material transition persists a hash-chained receipt bound to run, sequence, route, input projection and state update hashes."
+    },
+    {
+      "id": "PER_NODE_OBSERVABILITY_REQUIRED",
+      "rule": "Generated playbooks capture per-node execution count, duration, input/output size and token provenance where observable without exposing chain-of-thought."
+    },
+    {
+      "id": "CONTEXT_ACCOUNTING_SEPARATION",
+      "rule": "Observability distinguishes filesystem scan volume, model-visible tool output, model-loaded content, playbook-controlled tokens and platform overhead."
+    },
+    {
+      "id": "STANDARD_DEBUG_BUNDLE",
+      "rule": "Debug-from-start runs materialize a standard evidence index/bundle with required surfaces present or explicitly unavailable; evidence is never fabricated."
+    },
+    {
+      "id": "PASS_COUNT_DEGRADATION_DIAGNOSTIC",
+      "rule": "Unexpected repeated node executions are an OPPORTUNITY diagnostic with zero quality-score effect until calibrated."
+    },
+    {
+      "id": "REGRESSION_FIRST_CANDIDATE_CHANGE",
+      "rule": "Every material generated-playbook candidate change defines a protected invariant and captures pre-change regression evidence before implementation, then proves the exact regression and impacted checks GREEN before candidate handoff."
+    },
+    {
+      "id": "REGRESSION_AND_LIVE_EVIDENCE_SEPARATE",
+      "rule": "REGRESSION_PROOF demonstrates the contract; LIVE_PROOF records whether a real execution exercised the path. Neither namespace may silently substitute for the other."
+    },
+    {
+      "id": "FULL_ACCUMULATED_SUITE_AT_RELEASE",
+      "rule": "Candidate iteration runs targeted and directly impacted checks; the full accumulated regression/scenario/profile suite is a release gate unless explicitly requested earlier."
+    }
+  ],
+  "required_generated_artifacts": [
+    "PLAYBOOK_LAWS.md",
+    "verification_profile.json",
+    "verification/EXECUTION_RESPONSIBILITY_MAP.json",
+    "verification/INVARIANT_REGISTER.json",
+    "authoring_templates/reusable/SEMANTIC_EXECUTION_INVARIANTS.template.yaml",
+    "source/deterministic-first-architecture-policy.json",
+    "source/state-patch-v1-contract.json",
+    "authoring_templates/reusable/DETERMINISTIC_FIRST_ARCHITECTURE.template.yaml",
+    "source/observability-debug-policy.json",
+    "authoring_templates/reusable/OBSERVABILITY_DEBUG.template.yaml",
+    "source/development-regression-governance-policy.json",
+    "authoring_templates/reusable/DEVELOPMENT_REGRESSION_GOVERNANCE.template.yaml"
+  ],
+  "responsibility_classes": {
+    "deterministic": {
+      "allowed_mechanisms": [
+        "ordo_gate",
+        "ordo_state_transition",
+        "cli_helper",
+        "package_local_python"
+      ],
+      "requirements": [
+        "mechanism",
+        "evidence_contract"
+      ]
+    },
+    "model_judgment": {
+      "requirements": [
+        "semantic_reason",
+        "evidence_contract"
+      ],
+      "rule": "Must state why deterministic resolution is not sufficient."
+    },
+    "human_authority": {
+      "requirements": [
+        "authority_owner",
+        "decision_consequence"
+      ],
+      "rule": "Use only for consequential content/approval decisions owned by a human."
+    }
+  },
+  "authoring_sequence": [
+    "identify responsibilities before final graph design",
+    "classify each responsibility",
+    "mechanize deterministic responsibilities",
+    "create package-local validators where standard helpers are insufficient",
+    "bind deterministic runtime nodes to explicit tools/evidence where applicable",
+    "materialize verification inheritance artifacts",
+    "validate responsibility map against generated source",
+    "run verification profile",
+    "select canonical safe node profile for each common responsibility before writing bespoke YAML",
+    "validate effective Editor/runtime contract with Vibe-owned generated_playbook_contract",
+    "repair all machine-detectable contract findings internally before analyst-visible handoff",
+    "instantiate deterministic-first architecture template",
+    "validate producer boundary/state patch/lifecycle/recovery/completeness/hydration/context separation"
+  ],
+  "readiness_blockers": [
+    "generated runnable playbook lacks execution responsibility map",
+    "generated runnable playbook lacks verification profile",
+    "executable node is absent from responsibility map",
+    "deterministic responsibility has no deterministic mechanism/evidence contract",
+    "model_judgment responsibility has no semantic reason",
+    "human_authority responsibility has no authority owner/consequence",
+    "package_local_python references a script outside the generated playbook package",
+    "Vibe-owned generated_playbook_contract is missing or FAIL",
+    "known Editor compatibility rule is violated without an explicit Editor-gap classification",
+    "analyst-visible handoff attempted before machine gates pass",
+    "interactive generated playbook lacks structural field resolution status or pre-compose interactive completeness",
+    "generated playbook with strict runtime target lacks a successful terminal Model Mode reference trace",
+    "node partial output can replace unrelated execution state",
+    "current node is skipped solely because it appears in historical visitation/answers",
+    "gate FAIL with declared on_fail is converted to terminal blocked state",
+    "business Data Layer contains technical checkpoint fields introduced only to compensate for runtime defects",
+    "analyst authority is asked before exhaustive same-group discovery or without stable decision ids",
+    "declared recovery route lacks an end-to-end fail-repair-pass regression",
+    "generated model mutation bypasses state_patch_v1 or deterministic apply",
+    "malformed producer output can persist or advance before write-contract validation",
+    "resolved lifecycle state can downgrade without evidence-bound reopen provenance",
+    "repairable recovery has null/model-guessed resume node",
+    "finite required item set relies on prompt-only completeness instead of stable-id accounting",
+    "deterministic evidence is reconstructed by the model instead of hash-validated allowlisted hydration",
+    "runtime/session/recovery staging fields are treated as canonical semantic facts"
+  ],
+  "reusable_subprocesses": {
+    "QUALITY_HARDENING_LOOP": {
+      "template": "authoring_templates/reusable/QUALITY_HARDENING_LOOP.template.yaml",
+      "activation": "explicit_request_or_quality_defect_evidence"
+    },
+    "PERFORMANCE_TOKEN_OPTIMIZATION_LOOP": {
+      "template": "authoring_templates/reusable/PERFORMANCE_TOKEN_OPTIMIZATION_LOOP.template.yaml",
+      "activation": "post_stable_quality_baseline_or_explicit_performance_request",
+      "context_efficiency_template": "authoring_templates/reusable/CONTEXT_RUNTIME_EFFICIENCY.template.yaml"
+    }
+  },
+  "release_blockers": [
+    "normal Model Mode recursively preloads package/source/knowledge without active-node need",
+    "context optimization attributes platform/system/tool-schema overhead to playbook-controlled context",
+    "repeated expensive node reruns without material dependency fingerprint or explicit reason"
+  ],
+  "deterministic_first_architecture_template": "authoring_templates/reusable/DETERMINISTIC_FIRST_ARCHITECTURE.template.yaml",
+  "observability_debug_template": "authoring_templates/reusable/OBSERVABILITY_DEBUG.template.yaml"
+}

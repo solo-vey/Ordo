@@ -1,0 +1,473 @@
+{
+  "schema_version": "1.0",
+  "playbook_revision": "0.1.0-alpha.44",
+  "invariants": [
+    {
+      "id": "MODEL_ONLY_WHERE_DETERMINISM_ENDS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "execution_responsibility_map"
+    },
+    {
+      "id": "GENERATED_PLAYBOOKS_INHERIT_VERIFICATION_ARCHITECTURE",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha13_inheritance_regression"
+    },
+    {
+      "id": "QUALITY_GATES_STAGED_NEAR_EVIDENCE_PRODUCERS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha14_staged_quality_regression"
+    },
+    {
+      "id": "EVERY_DECLARED_OUTPUT_HAS_EXPLICIT_MATERIALIZATION_CONTRACT",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "artifact_materialization_registry"
+    },
+    {
+      "id": "EXPLICIT_RUNTIME_TOOLS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha15_explicit_tools_templates_outputs"
+    },
+    {
+      "id": "EXPLICIT_TEMPLATE_BINDINGS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha15_explicit_tools_templates_outputs"
+    },
+    {
+      "id": "EXPLICIT_OUTPUT_HANDOFF",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha15_explicit_tools_templates_outputs"
+    },
+    {
+      "id": "VISIBLE_DETERMINISTIC_VERIFICATION_STAGES",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha16_visible_deterministic_verification"
+    },
+    {
+      "id": "EXPLICIT_PYTHON_TOOL_BINDINGS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha16_visible_deterministic_verification"
+    },
+    {
+      "id": "ONE_EXECUTABLE_ELEMENT_ONE_RESPONSIBILITY",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha18_single_responsibility_architecture"
+    },
+    {
+      "id": "RUN_CHECKS_GATE_DECIDES",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha18_single_responsibility_architecture"
+    },
+    {
+      "id": "ANALYST_MINIMAL_REVIEW_BUNDLES",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "review_bundle_design"
+    },
+    {
+      "id": "PROPOSAL_IS_NOT_CANONICAL_TRUTH",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "proposal_canonical_separation"
+    },
+    {
+      "id": "APPROVAL_PERSISTENCE",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "approval_persistence"
+    },
+    {
+      "id": "STATE_PHASE_ORDERING",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "state_phase_ordering"
+    },
+    {
+      "id": "RECOVERY_LOCALITY",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "recovery_locality"
+    },
+    {
+      "id": "BEHAVIORAL_COVERAGE_TRUTH",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "behavioral_scenario_coverage"
+    },
+    {
+      "id": "PINNED_RUNTIME_SIMULATION_PREFLIGHT",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "simulation_evidence"
+    },
+    {
+      "id": "DEFECT_OWNERSHIP_SEPARATION",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "defect_ownership"
+    },
+    {
+      "id": "VIBE_SELF_AUTHORING_INFORMATION_MODEL_VALID",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "vibe_self_authoring_information_model"
+    },
+    {
+      "id": "VIBE_SELF_AIM_ORDO_BIDIRECTIONAL_TRACEABILITY",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "vibe_self_information_projection"
+    },
+    {
+      "id": "SIMULATION_KIT_DEPENDENCY_SELF_CHECK",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "simulation_kit_dependency_integrity"
+    },
+    {
+      "id": "PINNED_SIMULATION_KIT_013_RUNTIME_0164",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha28_simulation_kit_013_upgrade"
+    },
+    {
+      "id": "DETERMINISTIC_ARTIFACT_ARCHIVE_VALIDATION_ADAPTER",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha28_simulation_kit_013_upgrade"
+    },
+    {
+      "id": "PROFILE_CONTRACT_GAP_EVIDENCE_PRESERVED",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha28_simulation_kit_013_upgrade"
+    },
+    {
+      "id": "STRICT_ROUTE_CLOSURE",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "generated_playbook_language_core"
+    },
+    {
+      "id": "DETERMINISTIC_CONTRACT_COMPLETE",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "deterministic_contract_completeness"
+    },
+    {
+      "id": "ARTIFACT_ARCHIVE_REGISTRY_COMPLETE",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "artifact_archive_registry_completeness"
+    },
+    {
+      "id": "VIBE_SELF_DATA_FLOW_PUBLICATION_EQUIVALENT",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "vibe_self_data_flow_publication"
+    },
+    {
+      "id": "INCREMENTAL_VERIFICATION_CHECKPOINTS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha31_incremental_verification"
+    },
+    {
+      "id": "IMPACT_BASED_DEVELOPMENT_VERIFICATION",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha31_incremental_verification"
+    },
+    {
+      "id": "VERIFICATION_TIMING_BUDGETS",
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha31_incremental_verification"
+    },
+    {
+      "id": "RUNTIME_BOOTSTRAP_UNAMBIGUOUS",
+      "required": true,
+      "description": "Root START_PROMPT is bootstrap-only and routes to packaged Runtime Mode; analyst intake comes only from runtime."
+    },
+    {
+      "id": "MECHANICAL_GATE_ADVANCE_AVAILABLE",
+      "required": true,
+      "description": "Portable runtime can persistently advance mechanical/deterministic gates without assuming model or human authority."
+    },
+    {
+      "id": "ANSWER_TO_STATE_BINDING_CONCRETE",
+      "required": true,
+      "description": "Accepted structured $answer.<field> bindings are resolved to concrete values before snapshots and mechanical gate evaluation; Vibe artifact-surface status bindings target explicit answer fields.",
+      "validator": "alpha33_answer_state_binding"
+    },
+    {
+      "id": "DIRECT_TRANSITION_RUNTIME_SEMANTICS",
+      "required": true,
+      "description": "Direct on_answer.next is executed as a transition and is never inferred as an answer enum branch.",
+      "validator": "alpha34_runtime_session_integrity"
+    },
+    {
+      "id": "IMMUTABLE_RUNTIME_EVIDENCE_PER_ATTEMPT",
+      "required": true,
+      "description": "Every runtime attempt gets a unique evidence artifact aligned to its monotonic session-trace step; retries never overwrite prior evidence.",
+      "validator": "alpha34_runtime_session_integrity"
+    },
+    {
+      "id": "CHECKPOINT_BOUND_EMPTY_COLLECTIONS",
+      "required": true,
+      "description": "Explicitly answered empty collections/falsey values count as bound checkpoint fields unless a separate non-empty contract requires content.",
+      "validator": "alpha34_runtime_session_integrity"
+    },
+    {
+      "id": "REFERENCE_ARTIFACT_FIDELITY_CONTRACT",
+      "required": true,
+      "description": "Explicit reference artifacts compile a provenance-aware coverage contract and configured fidelity objective is checked against materialized output.",
+      "validator": "alpha35_dogfood_quality_human_gate"
+    },
+    {
+      "id": "DERIVE_PROPOSE_CONFIRM_INTERACTION",
+      "required": true,
+      "description": "Derivable analyst-visible values are proposed/prefilled before input; open free-answer is reserved for non-derivable consequential human authority.",
+      "validator": "alpha35_dogfood_quality_human_gate"
+    },
+    {
+      "id": "MATERIALIZED_ARTIFACT_SURFACE_CLOSURE",
+      "required": true,
+      "description": "Artifact readiness is based on full materialized content surface rather than approval/status metadata alone.",
+      "validator": "alpha35_dogfood_quality_human_gate"
+    },
+    {
+      "id": "EXPLICIT_HUMAN_GATE_EXECUTION",
+      "required": true,
+      "description": "Portable runtime exposes explicit evidence-backed human gate decision action and never auto-decides human authority.",
+      "validator": "alpha35_dogfood_quality_human_gate"
+    },
+    {
+      "id": "OPTIONAL_ARCHIVE_NONBLOCKING",
+      "required": true,
+      "description": "Optional archives block core readiness only when deterministic membership/hash contracts are valid for the lifecycle phase.",
+      "validator": "alpha35_dogfood_quality_human_gate"
+    },
+    {
+      "id": "CONSTRUCTIVE_CORRECTNESS_ENFORCED",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "constructive_correctness",
+      "description": "When a playbook invariant can be enforced structurally or deterministically, prompt-only/model-only enforcement is forbidden; model-only exceptions require explicit impossibility evidence."
+    },
+    {
+      "id": "ONE_VERSION_TWO_DISTRIBUTIONS",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "dual_distribution_package_behavior",
+      "description": "Every releasable candidate produces DEV and clean RUN distributions from one exact source identity."
+    },
+    {
+      "id": "RUN_PACKAGE_DEPENDENCY_CLOSURE",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "dual_distribution_package_behavior",
+      "description": "RUN contains only declared bootstrap files, clean mutable seeds and recursively runtime-reachable dependencies."
+    },
+    {
+      "id": "RUN_PACKAGE_CONTEXT_ISOLATION",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "dual_distribution_package_behavior",
+      "description": "RUN excludes prior analyst/case context and initializes mutable analyst context from a clean seed."
+    },
+    {
+      "id": "RUN_PACKAGE_NO_EVALUATOR_LEAKAGE",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "dual_distribution_package_behavior",
+      "description": "RUN excludes evaluator/golden/reference/calibration/history surfaces that are not runtime inputs for a fresh case."
+    },
+    {
+      "id": "RUN_PACKAGE_MINIMALITY",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "dual_distribution_package_behavior",
+      "description": "Every RUN member is reachable or an explicitly declared bootstrap/distribution-proof file."
+    },
+    {
+      "id": "DUAL_PACKAGE_SOURCE_PARITY",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "dual_distribution_package_behavior",
+      "description": "DEV and RUN manifests carry the same source identity hash for the exact candidate/version."
+    },
+    {
+      "id": "OUTPUTLESS_PREMATERIALIZATION_ARTIFACT_VALIDATION",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha43_outputless_artifact_validation",
+      "description": "Packages with no active confirmed rendered-artifact requirements do not require a synthetic generated_outputs placeholder before materialization."
+    },
+    {
+      "id": "ACTIVE_RENDERED_REQUIREMENTS_FAIL_CLOSED",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha43_outputless_artifact_validation",
+      "description": "When active confirmed rendered-artifact requirements exist, missing generated_outputs remains a hard validation failure."
+    },
+    {
+      "id": "EXACT_DISTRIBUTION_ZIP_VALIDATION",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_distribution_package_validator",
+      "description": "Final DEV/RUN ZIP bytes are validated against exact distribution structure and pair source parity before delivery."
+    },
+    {
+      "id": "AUTHORING_EXECUTION_WATCHDOG",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_authoring_execution_watchdog",
+      "description": "Deterministic authoring tools are time-bounded, terminate timed-out process trees, and require reasons for long-running exceptions."
+    },
+    {
+      "id": "AUTHORING_TIME_DEGRADATION_DIAGNOSTIC",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_authoring_execution_watchdog",
+      "description": "Per-operation authoring timing evidence supports diagnostic-only detection of unexpected process degradation."
+    },
+    {
+      "id": "MODEL_MODE_SEMANTIC_REFERENCE",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Model Mode terminal trace is the semantic reference before strict runtime equivalence claims."
+    },
+    {
+      "id": "MERGE_BY_DIFF_STATE_UPDATE",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Partial state writes preserve unrelated state and apply as diffs."
+    },
+    {
+      "id": "CURRENT_NODE_REENTRY",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Current-node re-entry overrides historical visitation as completion evidence."
+    },
+    {
+      "id": "GATE_ON_FAIL_RECOVERY",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Declared on_fail routes are executable recovery edges."
+    },
+    {
+      "id": "NO_RUNTIME_WORKAROUND_DATA_LAYER_POLLUTION",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Runtime/adapter defects do not introduce technical workaround variables into the business Data Layer."
+    },
+    {
+      "id": "EXHAUSTIVE_AUTHORITY_DISCOVERY",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "All simultaneously visible consequential same-group human decisions are discovered before asking."
+    },
+    {
+      "id": "STABLE_DECISION_ID_NO_REASK",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Stable decision ids preserve partial answers and suppress redundant re-asking."
+    },
+    {
+      "id": "FULL_REPAIR_LOOP_REGRESSION",
+      "required": true,
+      "criticality": "blocking",
+      "verification_class": "deterministic",
+      "validator": "alpha44_generated_playbook_semantic_execution",
+      "description": "Recovery regressions prove FAIL-to-repair-to-PASS with state and authority preservation."
+    },
+    {
+      "id": "STATE_UPDATES_V1_TOOL_RESULT",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "validator": "alpha44_tool_result_debug_self_repair",
+      "description": "Deterministic/package tool outputs separate report evidence from mergeable state_updates."
+    },
+    {
+      "id": "VISIBLE_DEBUG_TIMING_BASELINE",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "validator": "alpha44_tool_result_debug_self_repair",
+      "description": "Hidden debug telemetry never moves the user-visible elapsed-time baseline."
+    },
+    {
+      "id": "APPEND_ONLY_SELF_REPAIR_LOG",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "validator": "alpha44_tool_result_debug_self_repair",
+      "description": "Generated-playbook self repairs append durable structured upstream-defect evidence."
+    },
+    {
+      "id": "PROFILE_AWARE_PACKAGING_CONTINUITY",
+      "law": "E89_PROFILE_AWARE_PACKAGING_CONTINUITY",
+      "status": "ACTIVE",
+      "evidence": [
+        "tools/test_alpha45_packaging_continuity.py"
+      ]
+    },
+    {
+      "id": "VALIDATOR_APPLICABILITY_BY_PROFILE_STAGE",
+      "law": "E90_VALIDATOR_APPLICABILITY_BY_PROFILE_STAGE",
+      "status": "ACTIVE",
+      "evidence": [
+        "tools/test_alpha45_packaging_continuity.py"
+      ]
+    },
+    {
+      "id": "REPRODUCIBLE_PROFILE_BUILD_AND_HANDOFF",
+      "law": "E91_REPRODUCIBLE_PROFILE_BUILD_AND_HANDOFF",
+      "status": "ACTIVE",
+      "evidence": [
+        "tools/test_alpha45_packaging_continuity.py"
+      ]
+    },
+    {
+      "id": "DETERMINISTIC_FIRST_ARCHITECTURE",
+      "class": "framework_architecture",
+      "description": "Mechanical responsibilities, state mutation boundaries, lifecycle closure, recovery resume, finite completeness, evidence hydration and context separation are deterministically enforced.",
+      "validator": "tools/validate_deterministic_first_architecture.py"
+    }
+  ]
+}

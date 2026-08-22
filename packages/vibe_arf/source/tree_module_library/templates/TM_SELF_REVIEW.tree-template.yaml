@@ -1,0 +1,78 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_SELF_REVIEW
+  version: '1.0'
+  title: Self Review
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_R_REVIEW_BASELINE
+    type: automatic
+    title: Review Baseline
+    next: N_R_LAWS_ANTIPATTERNS
+    responsibility_id: review_baseline
+  - id: N_R_LAWS_ANTIPATTERNS
+    type: automatic
+    title: Laws Contracts Antipatterns
+    next: N_R_SCENARIO_DESIGN
+    responsibility_id: laws_contracts_antipatterns
+  - id: N_R_SCENARIO_DESIGN
+    type: automatic
+    title: Scenario Design
+    next: N_R_PATHWALK_BEHAVIOR
+    responsibility_id: scenario_design
+  - id: N_R_PATHWALK_BEHAVIOR
+    type: automatic
+    title: Pathwalk Behavior
+    next: N_R_ARTIFACT_PROVENANCE_ORACLES
+    responsibility_id: pathwalk_behavior
+  - id: N_R_ARTIFACT_PROVENANCE_ORACLES
+    type: automatic
+    title: Artifact Provenance Oracles
+    next: N_R_ADVERSARIAL_NEGATIVE
+    responsibility_id: artifact_provenance_oracles
+  - id: N_R_ADVERSARIAL_NEGATIVE
+    type: automatic
+    title: Adversarial Negative Testing
+    next: N_R_FINDINGS_ROOT_CAUSE
+    responsibility_id: adversarial_negative_testing
+  - id: N_R_FINDINGS_ROOT_CAUSE
+    type: automatic
+    title: Finding Root Cause
+    next: N_R_VERIFICATION_READINESS
+    responsibility_id: finding_root_cause
+  - id: N_R_VERIFICATION_READINESS
+    type: automatic
+    title: Verification Readiness
+    next: G_VERIFICATION_READY
+    responsibility_id: verification_readiness_assessment
+  - id: G_VERIFICATION_READY
+    type: automatic
+    title: Verification Ready Gate
+    next: N_R_AUTHORING_BURDEN
+    responsibility_id: verification_readiness_gate
+  - id: N_R_AUTHORING_BURDEN
+    type: automatic
+    title: Authoring Burden Review
+    next: N_R_ANALYST_EXPERIENCE
+    responsibility_id: authoring_burden_assessment
+  - id: N_R_ANALYST_EXPERIENCE
+    type: automatic
+    title: Analyst Experience Review
+    next: G_REVIEW_EXPERIENCE_READY
+    responsibility_id: analyst_experience_assessment
+  - id: G_REVIEW_EXPERIENCE_READY
+    type: automatic
+    title: Review Experience Gate
+    next: '{{success_exit_node}}'
+    responsibility_id: review_experience_gate
+  gates: []

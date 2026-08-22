@@ -1,0 +1,14 @@
+schema_version: '1.0'
+catalog_id: VIBE_CAPABILITY_REQUIREMENTS
+phase: early_data_layer_authoring
+requirements:
+- id: CR_BUSINESS_VIEW_MATERIALIZATION
+  capability_tag: document_materialization
+  artifact_id: A_BUSINESS_VIEW
+  required: true
+  requirement_origin: artifact_delivery_contract
+- id: CR_GENERATED_PACKAGE_MATERIALIZATION
+  capability_tag: package_materialization
+  artifact_id: A_GENERATED_PLAYBOOK_PACKAGE
+  required: true
+  requirement_origin: artifact_delivery_contract

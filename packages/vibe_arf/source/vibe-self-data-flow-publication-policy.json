@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_SELF_DATA_FLOW_PUBLICATION",
+  "revision": "0.1.0-alpha.36",
+  "semantic_authority": false,
+  "semantic_source_of_truth": "canonical_ordo_language",
+  "authoring_source_of_truth": "authoring/",
+  "published_surface": "design/",
+  "consumer": "Ordo Playbook Explorer / Editor Source Data Flow adapter",
+  "rules": [
+    "authoring/ remains the sole Vibe AIM source; design/ is generated only",
+    "MODEL_BUNDLE.yaml must declare canonical_sources.graph and resolvable catalog references",
+    "published graph/object/group/artifact/projection IDs must be equivalent to canonical AIM",
+    "publication provenance must bind to exact upstream SHA-256 values",
+    "a stale or hand-edited publication blocks PRE_EDITOR readiness",
+    "publication metadata never extends or redefines Ordo execution semantics"
+  ],
+  "publisher": "tools/publish_authoring_data_flow.py",
+  "validator": "tools/validate_self_data_flow_publication.py"
+}

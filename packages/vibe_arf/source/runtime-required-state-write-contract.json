@@ -1,0 +1,333 @@
+{
+  "schema": "vibe.runtime_required_state_write_contract.v1",
+  "status": "CANONICAL_RUNTIME_BINDING",
+  "derivation_basis": "Validated release-preflight producer obligations derived from canonical process state flows and deterministic gate/release evidence consumers. The runtime projection must materialize these obligations without changing canonical process routing.",
+  "producer_contracts": [
+    {
+      "producer_id": "N_U_ARTIFACT_SURFACE",
+      "required_state_writes": [
+        "artifact_surface_status"
+      ]
+    },
+    {
+      "producer_id": "N_U_CHAT_FIRST_BOOTSTRAP_CHECK",
+      "required_state_writes": [
+        "chat_first_bootstrap_report",
+        "chat_first_bootstrap_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_PATTERN_DATA_LAYER_INSTANCE",
+      "required_state_writes": [
+        "pattern_instance_validation_report",
+        "pattern_instance_validation_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_PATTERN_DATA_LAYER_MERGE",
+      "required_state_writes": [
+        "pattern_data_layer_merge_report",
+        "pattern_data_layer_merge_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_DATA_LAYER_CANONICAL",
+      "required_state_writes": [
+        "data_layer_canonical_report"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_INFORMATION_MODEL",
+      "required_state_writes": [
+        "information_model_report",
+        "information_model_status"
+      ]
+    },
+    {
+      "producer_id": "N_P_PRODUCTION_PATH_CLOSURE",
+      "required_state_writes": [
+        "parameter_closure_plan_status"
+      ]
+    },
+    {
+      "producer_id": "N_P_ANSWER_PROPAGATION",
+      "required_state_writes": [
+        "answer_propagation_status"
+      ]
+    },
+    {
+      "producer_id": "N_P_QUESTION_QUEUE",
+      "required_state_writes": [
+        "blocking_parameter_ids",
+        "user_question_queue"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_PATTERN_GRAPH_REALIZATION",
+      "required_state_writes": [
+        "pattern_graph_realization_report",
+        "pattern_graph_realization_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_SOURCE",
+      "required_state_writes": [
+        "source_verification_report",
+        "source_verification_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_INFORMATION_PROJECTION",
+      "required_state_writes": [
+        "information_projection_report",
+        "information_projection_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_STRUCTURE",
+      "required_state_writes": [
+        "structure_verification_report",
+        "structure_verification_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_ARTIFACTS",
+      "required_state_writes": [
+        "artifact_verification_report",
+        "artifact_verification_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_REGRESSION",
+      "required_state_writes": [
+        "regression_verification_report",
+        "regression_verification_status"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_RELEASE",
+      "required_state_writes": [
+        "release_verification_report",
+        "release_verification_status"
+      ]
+    },
+    {
+      "producer_id": "N_B_ORDO_LANGUAGE_GROUNDING_CHECK",
+      "required_state_writes": [
+        "generated_source_language_conformance_status",
+        "generated_source_language_grounding_report",
+        "generated_source_semantic_preservation_status",
+        "ordo_language_reference_status"
+      ]
+    },
+    {
+      "producer_id": "N_R_VERIFICATION_READINESS",
+      "required_state_writes": [
+        "verification_profile_report",
+        "verification_profile_status"
+      ]
+    },
+    {
+      "producer_id": "N_AI_VALIDATE_REVISION_CONTRACTS",
+      "required_state_writes": [
+        "improvement_revision_validity_report",
+        "improvement_revision_validity_status"
+      ]
+    },
+    {
+      "producer_id": "N_AI_VERIFY_RESPONSE_PROVENANCE",
+      "required_state_writes": [
+        "improvement_response_provenance_report",
+        "improvement_response_provenance_status"
+      ]
+    },
+    {
+      "producer_id": "N_AI_BUILD_REFERENCE_PROFILE",
+      "required_state_writes": [
+        "improvement_reference_conflict_resolution_status",
+        "improvement_reference_conflicts",
+        "improvement_reference_profile"
+      ]
+    },
+    {
+      "producer_id": "N_VERIFY_EVALUATOR_REFERENCE_BUNDLE",
+      "required_state_writes": [
+        "improvement_evaluator_reference_bundle_report",
+        "improvement_evaluator_reference_bundle_status"
+      ]
+    },
+    {
+      "producer_id": "N_AI_RUN_FRESH_COMPARATIVE_EVALUATOR",
+      "required_state_writes": [
+        "improvement_fresh_comparative_result",
+        "improvement_fresh_defects"
+      ]
+    },
+    {
+      "producer_id": "N_AI_VALIDATE_PERFORMANCE_EVIDENCE",
+      "required_state_writes": [
+        "improvement_performance_evidence_report",
+        "improvement_performance_evidence_status"
+      ]
+    },
+    {
+      "producer_id": "N_R_AUTHORING_BURDEN",
+      "required_state_writes": [
+        "authoring_burden_status"
+      ]
+    },
+    {
+      "producer_id": "N_R_ANALYST_EXPERIENCE",
+      "required_state_writes": [
+        "analyst_interaction_robustness_status",
+        "applied_analyst_experience_status"
+      ]
+    },
+    {
+      "producer_id": "N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK",
+      "required_state_writes": [
+        "business_view_materialization_readiness_report",
+        "business_view_materialization_readiness_status"
+      ]
+    },
+    {
+      "producer_id": "N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE",
+      "required_state_writes": [
+        "business_view_render_report",
+        "business_view_render_status"
+      ]
+    },
+    {
+      "producer_id": "N_BUSINESS_VIEW_PRESENTATION_EVIDENCE",
+      "required_state_writes": [
+        "business_language_surface_report",
+        "business_language_surface_status",
+        "progress_surface_report",
+        "progress_surface_status"
+      ]
+    },
+    {
+      "producer_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK",
+      "required_state_writes": [
+        "package_pattern_readiness_report",
+        "package_pattern_readiness_status"
+      ]
+    },
+    {
+      "producer_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE",
+      "required_state_writes": [
+        "generated_package_status",
+        "generated_package_validation_report"
+      ]
+    },
+    {
+      "producer_id": "N_PK_DELIVERY_VALIDATE",
+      "required_state_writes": [
+        "delivery_status",
+        "delivery_validation_report"
+      ]
+    },
+    {
+      "producer_id": "N_PK_HUMAN_FORMAT_VALIDATE",
+      "required_state_writes": [
+        "human_format_validation_report",
+        "human_format_validation_status"
+      ]
+    },
+    {
+      "producer_id": "N_PK_CONTINUITY_EVIDENCE",
+      "required_state_writes": [
+        "resume_integrity_status",
+        "session_continuity_report",
+        "session_continuity_status"
+      ]
+    },
+    {
+      "producer_id": "N_PK_FINAL_EXPERIENCE_EVIDENCE",
+      "required_state_writes": [
+        "autonomous_until_blocker_status",
+        "e2e_authoring_trial_report",
+        "e2e_authoring_trial_status",
+        "first_question_quality_status"
+      ]
+    },
+    {
+      "producer_id": "N_OUT_GENERATED_PACKAGE_MATERIALIZE",
+      "required_state_writes": [
+        "generated_package_output_report",
+        "generated_package_output_status"
+      ]
+    },
+    {
+      "producer_id": "N_QH_RED_REGRESSION_RUN",
+      "required_state_writes": [
+        "quality_hardening_red_report",
+        "quality_hardening_red_status"
+      ]
+    },
+    {
+      "producer_id": "N_QH_GREEN_RUN",
+      "required_state_writes": [
+        "quality_hardening_green_report",
+        "quality_hardening_green_status"
+      ]
+    },
+    {
+      "producer_id": "N_QH_IMPACTED_REGRESSIONS",
+      "required_state_writes": [
+        "quality_hardening_impacted_report",
+        "quality_hardening_impacted_status"
+      ]
+    },
+    {
+      "producer_id": "N_PO_BASELINE_CAPTURE",
+      "required_state_writes": [
+        "performance_baseline",
+        "performance_quality_baseline_status"
+      ]
+    },
+    {
+      "producer_id": "N_PO_CONTEXT_RUNTIME_AUDIT",
+      "required_state_writes": [
+        "context_runtime_efficiency_evidence",
+        "context_runtime_efficiency_status"
+      ]
+    },
+    {
+      "producer_id": "N_PO_HOTSPOT_RANK",
+      "required_state_writes": [
+        "performance_hotspot_rank",
+        "performance_hotspot_status"
+      ]
+    },
+    {
+      "producer_id": "N_PO_TARGETED_COMPARE",
+      "required_state_writes": [
+        "performance_comparison_evidence",
+        "performance_improvement_status",
+        "performance_semantic_equivalence_status"
+      ]
+    },
+    {
+      "producer_id": "N_DV_PRECHANGE_REGRESSION_RUN",
+      "required_state_writes": [
+        "development_prechange_report",
+        "development_prechange_status"
+      ]
+    },
+    {
+      "producer_id": "N_DV_POSTCHANGE_REGRESSION_AUDIT",
+      "required_state_writes": [
+        "development_regression_status"
+      ]
+    }
+  ],
+  "mechanical_gate_derivation": {
+    "enabled": true,
+    "rule": "Every state path referenced by a mechanical gate becomes a required write of its unique canonical on_answer.update_state writer. Ambiguous writers require an explicit gate:path override.",
+    "writer_overrides": {
+      "G_PACKAGE_READY:generated_package_validation_report": "N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE",
+      "G_AI_EVALUATOR_REFERENCE_BUNDLE_VALID:improvement_evaluator_reference_bundle_status": "N_VERIFY_EVALUATOR_REFERENCE_BUNDLE"
+    }
+  }
+}

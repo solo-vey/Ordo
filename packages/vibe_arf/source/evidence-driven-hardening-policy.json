@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_EVIDENCE_DRIVEN_HARDENING_V1",
+  "revision": "0.1.0-alpha.11",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "purpose": "Prevent a compact applied playbook from appearing more verified than its evidence supports.",
+  "principles": [
+    {
+      "id": "INVARIANT_DECOMPOSITION",
+      "rule": "Broad quality/readiness claims must be decomposed into concrete invariants that can fail independently.",
+      "examples_of_invariant_classes": [
+        "source authority",
+        "data quality",
+        "identity consistency",
+        "cross-artifact consistency",
+        "choice neutrality",
+        "stale-state avoidance",
+        "acceptance consistency",
+        "release blockers",
+        "human-facing readability",
+        "artifact integrity",
+        "runtime routing",
+        "coverage sufficiency"
+      ]
+    },
+    {
+      "id": "DETERMINISTIC_FIRST",
+      "rule": "If an invariant can be checked mechanically from structured state, artifacts or reports, use deterministic/mechanical verification rather than model self-judgment."
+    },
+    {
+      "id": "MODEL_JUDGMENT_ONLY_FOR_SEMANTICS",
+      "rule": "Model judgment is reserved for genuinely semantic interpretation. It must not be relabeled deterministic."
+    },
+    {
+      "id": "PASS_REQUIRES_EVIDENCE",
+      "rule": "A gate/readiness PASS is not strong evidence unless the checked invariant, result and evidence/provenance are explicit."
+    },
+    {
+      "id": "VACUOUS_PASS_BLOCKING",
+      "rule": "PASS with zero checked items, zero evaluated assertions, empty check_results/evidence, or non-applicable validation silently treated as success must not support READY_FOR_USE."
+    },
+    {
+      "id": "NEGATIVE_PATHS_REQUIRED",
+      "rule": "Critical invariants need at least one negative/failure scenario where practical, not only happy-path evidence."
+    },
+    {
+      "id": "COVERAGE_TRUTHFULNESS",
+      "rule": "Structural coverage, behavioral coverage and semantic confidence must be reported separately. Do not present structural reachability as behavioral proof."
+    },
+    {
+      "id": "COMPACT_GRAPH_NOT_WEAK_GRAPH",
+      "rule": "Do not recreate stage explosion. Keep orchestration compact while moving detailed checks into deterministic reports or explicit invariant bundles."
+    },
+    {
+      "id": "CROSS_ARTIFACT_SEMANTIC_AUDIT",
+      "rule": "Before readiness, compare accepted requirements/state against generated business and technical artifacts for contradictions and unsupported additions."
+    }
+  ],
+  "required_authoring_outputs": [
+    "INVARIANT_REGISTER.json",
+    "VERIFICATION_EVIDENCE_SUMMARY.json",
+    "COVERAGE_TRUTH_REPORT.json",
+    "POST_RUN_QUALITY_AUDIT.json"
+  ],
+  "readiness_blockers": [
+    "critical invariant has no verification method",
+    "mechanically-checkable critical invariant is verified only by unsupported model assertion",
+    "critical PASS has empty evidence/check results",
+    "vacuous PASS is used as readiness evidence",
+    "known semantic contradiction remains unresolved",
+    "coverage report hides zero behavioral evaluation behind aggregate PASS",
+    "generated artifact adds unsupported business semantics"
+  ]
+}

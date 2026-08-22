@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "VIBE_TOOL_PURITY_REGISTRY_V1",
+  "tools": {
+    "ordo_lint": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_compile": {
+      "mutation_mode": "declared_mutating",
+      "mutation_scope": [
+        "compiled/*"
+      ],
+      "qualification_copy_required": true
+    },
+    "ordo_test": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_coverage": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_runtime_status": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_verify_targets": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_clean_check": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "laws_verbatim": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "delivery_source_uniqueness": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "evidence_quality": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "python_script": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "external_evidence": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "editor_runtime_graph": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "execution_responsibility_map": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "artifact_materialization_registry": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_validate_artifacts": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_consistency": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_validate_lock": {
+      "mutation_mode": "declared_mutating",
+      "mutation_scope": [
+        "ordo.lock.json"
+      ],
+      "qualification_copy_required": true
+    },
+    "ordo_check_conflicts": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_validate_output": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "ordo_repo_check": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "trusted_python_regression": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "verification_truth": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    },
+    "generated_playbook_contract": {
+      "mutation_mode": "read_only",
+      "mutation_scope": [],
+      "qualification_copy_required": false
+    }
+  },
+  "rule": "undeclared validator/build tool purity fails closed for release qualification"
+}

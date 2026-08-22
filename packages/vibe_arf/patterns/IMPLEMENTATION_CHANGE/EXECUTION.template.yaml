@@ -1,0 +1,53 @@
+schema_version: '1.0'
+pattern_id: IMPLEMENTATION_CHANGE
+pattern_version: '1.1'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_pattern_instance_and_role
+  canonical_data_layer_contains_execution_ids: false
+  exact_graph_realization_required: true
+  duplicate_component_ids_forbidden: true
+components:
+- role: normalize_change
+  kind: node
+  responsibility_class: deterministic
+- role: compute_impact
+  kind: node
+  responsibility_class: deterministic
+- role: impact_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: apply_change
+  kind: node
+  responsibility_class: contract_classified
+- role: verify_change
+  kind: node
+  responsibility_class: deterministic
+- role: change_acceptance_gate
+  kind: gate
+  responsibility_class: deterministic
+edges:
+- from_role: normalize_change
+  to_role: compute_impact
+  type: direct
+- from_role: compute_impact
+  to_role: impact_gate
+  type: direct
+- from_role: impact_gate
+  to_role: apply_change
+  type: direct
+- from_role: apply_change
+  to_role: verify_change
+  type: direct
+- from_role: verify_change
+  to_role: change_acceptance_gate
+  type: direct

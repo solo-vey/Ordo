@@ -1,0 +1,1 @@
+{"policy_id":"VIBE_RELEASE_COVERAGE_THRESHOLDS_V1","release_blocking":true,"minimums":{"gate_coverage_percent":100,"assertion_coverage_percent":100,"critical_node_coverage_percent":100,"required_behavioral_scenario_families_percent":100},"rule":"all configured release coverage dimensions must satisfy their threshold; passed test count alone is insufficient"}

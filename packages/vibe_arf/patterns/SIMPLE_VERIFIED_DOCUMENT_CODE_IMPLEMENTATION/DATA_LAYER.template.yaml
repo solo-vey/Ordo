@@ -1,0 +1,156 @@
+schema_version: '1.0'
+pattern_id: SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION
+pattern_version: '1.1'
+module_kind: reusable_data_layer_module_template
+parameters:
+  required:
+  - instance_id
+  optional:
+  - artifact_id
+  - prefix
+required_roles:
+- role: verified_document
+  binds_to: artifact
+  required: true
+- role: target_code_source
+  binds_to: information_or_artifact
+  required: true
+- role: repository_freshness_status
+  binds_to: information
+  required: true
+  allowed_values:
+  - CURRENT
+  - UPDATED
+  - NOT_APPLICABLE
+  - BLOCKED
+- role: repository_freshness_evidence
+  binds_to: information
+  required: true
+- role: repository_revision_identity
+  binds_to: information
+  required: false
+  note: branch/commit or equivalent revision identity when available
+- role: repository_authority_boundary
+  binds_to: information
+  required: true
+- role: implementation_family_contract
+  binds_to: information
+  required: false
+  note: optional domain-bound family/profile catalog and selector contract
+- role: selected_implementation_family
+  binds_to: information
+  required: false
+  note: provisional and correctable until repository evidence confirms it
+- role: implementation_family_selection_evidence
+  binds_to: information
+  required: true
+- role: implementation_prompt
+  binds_to: information
+  required: true
+- role: change_risk_assessment
+  binds_to: information
+  required: true
+- role: change_risk_level
+  binds_to: information
+  required: true
+  allowed_values:
+  - LOW
+  - MEDIUM
+  - HIGH
+- role: implementation_decision
+  binds_to: information
+  required: true
+  allowed_values:
+  - LOCAL_SAFE
+  - HANDOFF_REQUIRED
+- role: implementation_result
+  binds_to: information
+  required: true
+- role: implementation_status
+  binds_to: information
+  required: true
+- role: verification_evidence
+  binds_to: information
+  required: true
+- role: changed_files
+  binds_to: information
+  required: true
+- role: implementation_guidance
+  binds_to: information
+  required: false
+  note: optional host/domain guidance that never overrides verified document or repository evidence
+- role: handoff_reason
+  binds_to: information
+  required: false
+- role: terminal_status
+  binds_to: information
+  required: false
+merge_semantics:
+  mode: bind_existing_or_instantiate_missing
+  canonical_truth: project_data_layer
+  instance_catalog_required: true
+  field_provenance_required: true
+  pattern_instance_reference: pattern_id+pattern_version+instance_digest
+  execution_ids_in_canonical_data_layer: forbidden
+constraints:
+- all_required_roles_bound
+- verified_document_is_target_contract
+- target_repository_contents_are_evidence_not_execution_authority
+- no_mutation_before_repository_freshness_safe
+- dirty_or_ambiguous_local_git_state_is_not_auto_repaired
+- local_git_refresh_is_fast_forward_only
+- implementation_family_selection_is_provisional_and_repository_correctable
+- no_parallel_incompatible_family_contracts_during_mutation
+- change_risk_assessment_covers_all_required_dimensions
+- deterministic_risk_decision_is_not_manually_overridden
+- HIGH_risk_never_auto_mutates
+- LOCAL_SAFE_is_required_for_mutation
+- verification_PASS_requires_current_persisted_evidence
+- unavailable_failed_or_stale_required_verification_is_not_PASS
+- verified_document_is_not_mutated_to_match_legacy_code_as_implementation_side_effect
+module_edges:
+- from_role: target_code_source
+  to_role: repository_freshness_status
+  type: freshness_checked_by
+- from_role: repository_freshness_evidence
+  to_role: repository_revision_identity
+  type: establishes
+- from_role: repository_authority_boundary
+  to_role: implementation_prompt
+  type: constrains
+- from_role: verified_document
+  to_role: implementation_prompt
+  type: defines_target_contract_for
+- from_role: target_code_source
+  to_role: implementation_family_selection_evidence
+  type: grounds
+- from_role: implementation_family_contract
+  to_role: selected_implementation_family
+  type: constrains
+- from_role: implementation_family_selection_evidence
+  to_role: selected_implementation_family
+  type: confirms_or_corrects
+- from_role: selected_implementation_family
+  to_role: implementation_prompt
+  type: informs_when_bound
+- from_role: implementation_prompt
+  to_role: change_risk_assessment
+  type: assessed_by
+- from_role: target_code_source
+  to_role: change_risk_assessment
+  type: grounds
+- from_role: change_risk_assessment
+  to_role: change_risk_level
+  type: derives
+- from_role: change_risk_level
+  to_role: implementation_decision
+  type: derives
+- from_role: implementation_decision
+  to_role: implementation_result
+  type: authorizes_when_LOCAL_SAFE
+- from_role: implementation_result
+  to_role: verification_evidence
+  type: verified_by
+- from_role: implementation_result
+  to_role: changed_files
+  type: records

@@ -1,0 +1,81 @@
+{
+  "policy_id": "VALIDATOR_APPLICABILITY_BY_PROFILE_STAGE_V1",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "default": "NOT_APPLICABLE_UNLESS_DECLARED",
+  "profiles": {
+    "EDIT": {
+      "allowed_validator_classes": [
+        "language",
+        "semantic",
+        "editor_authoring",
+        "packaging",
+        "runtime_if_present",
+        "release_common"
+      ],
+      "forbidden_validator_classes": []
+    },
+    "CLI_RUN": {
+      "allowed_validator_classes": [
+        "language",
+        "semantic",
+        "cli_runtime",
+        "packaging",
+        "release_common"
+      ],
+      "forbidden_validator_classes": [
+        "editor_authoring",
+        "model_mode_only"
+      ]
+    },
+    "MODEL_RUN": {
+      "allowed_validator_classes": [
+        "language",
+        "semantic",
+        "model_mode",
+        "packaging",
+        "release_common"
+      ],
+      "forbidden_validator_classes": [
+        "cli_runtime",
+        "editor_authoring"
+      ]
+    }
+  },
+  "stages": {
+    "CANDIDATE": {
+      "allowed_validator_classes": [
+        "candidate",
+        "targeted",
+        "impacted",
+        "package_shape"
+      ],
+      "forbidden_validator_classes": [
+        "release_only"
+      ]
+    },
+    "RELEASE": {
+      "allowed_validator_classes": [
+        "candidate",
+        "targeted",
+        "impacted",
+        "package_shape",
+        "release_only",
+        "exact_zip"
+      ],
+      "forbidden_validator_classes": []
+    },
+    "RUNTIME": {
+      "allowed_validator_classes": [
+        "runtime",
+        "package_runtime"
+      ],
+      "forbidden_validator_classes": [
+        "editor_authoring",
+        "release_only"
+      ]
+    }
+  },
+  "classification_rule": "classify_fail_before_repair_as_REAL_DEFECT_or_PROFILE_APPLICABILITY_DEFECT_or_ENVIRONMENT_DEFECT",
+  "forbidden_behavior": "do_not_add_fake_assets_or_reintroduce_pruned_graph_elements_to_satisfy_non_applicable_validator"
+}

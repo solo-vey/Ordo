@@ -1,0 +1,12 @@
+{
+  "matrix_id":"VIBE_VALIDATION_CAPABILITY_MATRIX_V1",
+  "levels":{"L0":"syntax","L1":"package_sanity","L2":"editor_compatible","L3":"runtime_evidence","L4":"release_qualified"},
+  "checks":[
+    {"capability":"syntax","minimum_level":"L0","candidate_required":true,"release_required":true},
+    {"capability":"package_sanity","minimum_level":"L1","candidate_required":true,"release_required":true},
+    {"capability":"editor_compatibility","minimum_level":"L2","candidate_required":true,"release_required":true},
+    {"capability":"runtime_evidence","minimum_level":"L3","candidate_required":false,"release_required":true},
+    {"capability":"release_family","minimum_level":"L4","candidate_required":false,"release_required":true}
+  ],
+  "reporting_rule":"Never report validated without naming the highest actually proven level."
+}

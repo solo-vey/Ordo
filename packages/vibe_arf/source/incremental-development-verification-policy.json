@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_INCREMENTAL_DEVELOPMENT_VERIFICATION",
+  "revision": "0.1.2",
+  "semantic_authority": false,
+  "scope": "Vibe package development workflow",
+  "trust_base": ".dev_checkpoint.json",
+  "impact_map": "verification_impact_map.json",
+  "modes": [
+    "PATCH",
+    "CHECKPOINT",
+    "CANDIDATE",
+    "RELEASE"
+  ],
+  "rules": [
+    "PATCH runs only checks impacted by files changed since the trusted checkpoint",
+    "CHECKPOINT runs impacted checks plus a small safety net and persists a new checkpoint on PASS",
+    "CANDIDATE runs targeted and directly impacted checks plus the candidate safety net; it does not run the full accumulated PRE_EDITOR suite by default",
+    "RELEASE runs the full accumulated regression/scenario/profile suite and portable exact-package verification after candidate evidence is coherent",
+    "historical regression memories and package rebuilds must not be rerun after every small edit",
+    "every run records elapsed time and budget status"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.1",
+  "contract_id": "VIBE_EDITOR_RUNTIME_ADAPTER_CONTRACT_V2",
+  "status": "ACTIVE_RUNTIME_ADAPTER_BINDING",
+  "scope": "Target-specific Ordo Tree Editor development adapter contract. It does not define Ordo language semantics and contains only adapter or adapter-regression requirements.",
+  "scope_type": "runtime_adapter_contract",
+  "semantic_authority": false,
+  "semantic_source_of_truth": "canonical_support/language",
+  "vibe_revision": "0.1.2",
+  "evidence_basis": [
+    "Canonical Ordo language package bundled under canonical_support/language",
+    "User-supplied Ordo Tree Editor alpha.20.0.187-dev R3 as starting adapter baseline",
+    "Release-hardening Ordo Tree Editor alpha.20.0.188-dev R3 with generic required_state_writes compiler/runtime support",
+    "Native headless preflight and targeted adapter regressions executed against alpha.20.0.188-dev R3",
+    "VIBE terminal simulation executed with Simulation Kit 0.1.6: 199 steps, external terminal, zero errors"
+  ],
+  "editor_binding": {
+    "mode": "exact_editor_dev_adapter_binding",
+    "latest_editor_version": "alpha.20.0.188-dev R3",
+    "editor_version_file": "0.2.0-alpha.20.0.188-dev",
+    "editor_source_zip_sha256": "572150b0acebf46770ca0246e974169f56b9187016055d90c579cbe69d642ca2",
+    "binding_status": "VERIFIED_RELEASE_HARDENING_EDITOR_0188",
+    "semantic_authority": false
+  },
+  "rules": [
+    {
+      "id": "EFFECTIVE_EDITOR_RUNTIME_OWNERSHIP",
+      "classification": "EDITOR_ADAPTER_COMPATIBILITY",
+      "authority_layer": "EDITOR_ADAPTER",
+      "rule": "For editor_dev qualification, compare Editor effective execution traits with the ownership/trust semantics derived from canonical Ordo. A mismatch is ORDO_VALID_ADAPTER_INCOMPATIBLE unless the source itself violates canonical Ordo."
+    },
+    {
+      "id": "PACKAGE_TOOL_TRANSPORT",
+      "classification": "EDITOR_ADAPTER_COMPATIBILITY",
+      "authority_layer": "EDITOR_ADAPTER",
+      "rule": "When the Editor package-tool adapter is targeted, tool invocation must use transport forms supported by that adapter. Transport limitations do not become Ordo language semantics."
+    },
+    {
+      "id": "EDITOR_REPLAY_PACKAGE",
+      "classification": "EDITOR_ADAPTER_TEST_FIXTURE",
+      "authority_layer": "EDITOR_ADAPTER",
+      "rule": "When Editor replay is explicitly requested, Auto Answers/evidence must use the Editor-supported replay package shape. This constrains the dev test fixture, not the playbook language."
+    },
+    {
+      "id": "SOURCE_ONLY_EDITOR_AUTHORING_CANDIDATE",
+      "classification": "EDITOR_ADAPTER_PACKAGING",
+      "authority_layer": "EDITOR_ADAPTER",
+      "rule": "The Editor authoring/import flow is qualified with source-oriented candidate ZIPs; compiled Editor semantic plans are derived adapter artifacts rather than canonical playbook source."
+    },
+    {
+      "id": "PACKAGE_TOOL_CLASSIFICATION_REGRESSION",
+      "classification": "EDITOR_REGRESSION",
+      "authority_layer": "EDITOR_REGRESSION",
+      "rule": "Structurally declared package-tool execution remains deterministic/package-tool regardless of incidental explanatory prose, consistent with canonical execution ownership."
+    },
+    {
+      "id": "FREE_TEXT_ROUTE_SURFACE_REGRESSION",
+      "classification": "EDITOR_REGRESSION",
+      "authority_layer": "EDITOR_REGRESSION",
+      "rule": "Ordinary free_text/text/string human input does not expose graph-route actions as business answer choices; explicit enum/allowed-value choices remain visible."
+    },
+    {
+      "id": "TRANSITION_PROVENANCE_REGRESSION",
+      "classification": "EDITOR_REGRESSION",
+      "authority_layer": "EDITOR_REGRESSION",
+      "rule": "When canonical transition provenance is enabled, Editor validates predecessor/entry mode before action execution and blocks invalid entry without state mutation or model/tool execution."
+    },
+    {
+      "id": "NO_PROGRESS_LANGUAGE_CONFORMANCE_REGRESSION",
+      "classification": "EDITOR_REGRESSION",
+      "authority_layer": "EDITOR_REGRESSION",
+      "rule": "Editor anti-loop protection distinguishes a new analyst correction/retry event from an identical repeated automatic attempt without requiring fake business-state mutation."
+    },
+    {
+      "id": "HEADLESS_REPLAY_DETERMINISM",
+      "classification": "EDITOR_REGRESSION",
+      "authority_layer": "EDITOR_REGRESSION",
+      "rule": "Recorded replay ignores narrowly identified runtime-clock noise, preserves semantic business-state comparison, and reads the selected route from the live result contract. MBP alpha.14 positive control replays 57/57."
+    },
+    {
+      "id": "PORTABLE_MANIFEST_CONSISTENCY",
+      "classification": "EDITOR_REGRESSION",
+      "authority_layer": "EDITOR_REGRESSION",
+      "rule": "The release-hardening Editor package is hash-pinned and targeted native regressions plus headless preflight pass on 0.188-dev R3."
+    }
+  ]
+}

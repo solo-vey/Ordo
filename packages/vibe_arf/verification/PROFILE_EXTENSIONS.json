@@ -1,0 +1,1240 @@
+{
+  "schema_version": "1.0",
+  "checks": [
+    {
+      "id": "alpha13_generated_inheritance_regression",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha13_generated_execution_inheritance.py"
+      },
+      "invariants": [
+        "GENERATED_PLAYBOOKS_INHERIT_VERIFICATION_ARCHITECTURE"
+      ]
+    },
+    {
+      "id": "alpha14_staged_quality_materialization_regression",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha14_staged_quality_and_materialization.py"
+      },
+      "invariants": [
+        "QUALITY_GATES_STAGED_NEAR_EVIDENCE_PRODUCERS",
+        "EVERY_DECLARED_OUTPUT_HAS_EXPLICIT_MATERIALIZATION_CONTRACT"
+      ]
+    },
+    {
+      "id": "alpha15_explicit_tools_templates_outputs",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha15_explicit_tools_templates_outputs.py"
+      },
+      "invariants": [
+        "EXPLICIT_RUNTIME_TOOLS",
+        "EXPLICIT_TEMPLATE_BINDINGS",
+        "EXPLICIT_OUTPUT_HANDOFF"
+      ]
+    },
+    {
+      "id": "alpha16_visible_deterministic_verification",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha16_visible_deterministic_verification.py"
+      },
+      "invariants": [
+        "VISIBLE_DETERMINISTIC_VERIFICATION_STAGES",
+        "EXPLICIT_PYTHON_TOOL_BINDINGS"
+      ]
+    },
+    {
+      "id": "alpha17_full_language_validation",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha17_full_language_validation.py"
+      },
+      "invariants": [
+        "FULL_LANGUAGE_PACKAGE_VALIDATION",
+        "NO_FALSE_VISUAL_DEAD_END_ASSUMPTION"
+      ]
+    },
+    {
+      "id": "alpha18_single_responsibility_architecture",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha18_single_responsibility_architecture.py"
+      },
+      "invariants": [
+        "ONE_EXECUTABLE_ELEMENT_ONE_RESPONSIBILITY",
+        "RUN_CHECKS_GATE_DECIDES"
+      ]
+    },
+    {
+      "id": "alpha19_drycheck_evidence_hardening",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha19_drycheck_and_evidence_hardening.py"
+      },
+      "invariants": [
+        "DRY_CHECK_AUTHORITY_SEPARATION",
+        "DECLARED_OUTPUT_EXECUTION_CLOSURE",
+        "VERIFICATION_REPORT_TRUTH",
+        "NONVACUOUS_EVIDENCE"
+      ]
+    },
+    {
+      "id": "alpha20_generated_playbook_regression_layer",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha20_generated_playbook_regression_layer.py"
+      },
+      "invariants": [
+        "GENERATED_PLAYBOOK_REGRESSION_MEMORY"
+      ]
+    },
+    {
+      "id": "alpha21_editor_binding_regression",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha21_editor_binding_regression.py"
+      },
+      "invariants": [
+        "EDITOR_ADAPTER_BINDING_EVIDENCE"
+      ]
+    },
+    {
+      "id": "editor_registry_root_resolution",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_editor_registry_root_resolution.py"
+      },
+      "invariants": [
+        "EDITOR_NATIVE_REGISTRY_RESOLVES_CANONICAL_LANGUAGE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "alpha22_language_authority_separation",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha22_language_authority_separation.py"
+      },
+      "invariants": [
+        "ORDO_LANGUAGE_IS_SOLE_SEMANTIC_AUTHORITY",
+        "AUTO_ANSWERS_SEPARATED_FROM_PLAYBOOK",
+        "EDITOR_IS_RUNTIME_ADAPTER_NOT_LANGUAGE"
+      ]
+    },
+    {
+      "id": "vibe_self_authoring_information_model",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/validate_authoring_information_model.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "depends_on": [
+        "compile"
+      ],
+      "invariants": [
+        "VIBE_SELF_AUTHORING_INFORMATION_MODEL_VALID"
+      ]
+    },
+    {
+      "id": "vibe_self_information_projection",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/validate_information_projection.py",
+        "argv": [
+          "{package_root}",
+          "--playbook",
+          "{package_root}/source",
+          "--require-bound"
+        ]
+      },
+      "depends_on": [
+        "vibe_self_authoring_information_model",
+        "compile"
+      ],
+      "invariants": [
+        "VIBE_SELF_AIM_ORDO_BIDIRECTIONAL_TRACEABILITY"
+      ]
+    },
+    {
+      "id": "alpha25_self_hosted_information_model",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha25_self_hosted_information_model.py"
+      },
+      "invariants": [
+        "VIBE_SELF_HOSTS_INFORMATION_FIRST_AUTHORING",
+        "VIBE_SELF_AIM_BIDIRECTIONAL_TRACEABILITY"
+      ]
+    },
+    {
+      "id": "alpha26_authority_simulation_analyst_minimization",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha26_authority_simulation_analyst_minimization.py"
+      },
+      "invariants": [
+        "ANALYST_MINIMAL_REVIEW_BUNDLES",
+        "PROPOSAL_IS_NOT_CANONICAL_TRUTH",
+        "APPROVAL_PERSISTENCE",
+        "STATE_PHASE_ORDERING",
+        "RECOVERY_LOCALITY",
+        "BEHAVIORAL_COVERAGE_TRUTH",
+        "PINNED_RUNTIME_SIMULATION_PREFLIGHT",
+        "DEFECT_OWNERSHIP_SEPARATION"
+      ]
+    },
+    {
+      "id": "simulation_kit_dependency_integrity",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 90,
+      "args": {
+        "script": "tools/verify_simulation_kit_dependency.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "invariants": [
+        "SIMULATION_KIT_DEPENDENCY_SELF_CHECK"
+      ],
+      "long_running_reason": "historical full/integration regression with bounded corpus; retained as explicit long-running exception"
+    },
+    {
+      "id": "alpha27_simulation_kit_012_upgrade",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 120,
+      "args": {
+        "script": "tools/test_alpha27_simulation_kit_012_upgrade.py"
+      },
+      "invariants": [
+        "SIMULATION_KIT_DEPENDENCY_SELF_CHECK"
+      ],
+      "long_running_reason": "historical full/integration regression with bounded corpus; retained as explicit long-running exception"
+    },
+    {
+      "id": "alpha28_simulation_kit_013_upgrade",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha28_simulation_kit_013_upgrade.py"
+      },
+      "invariants": [
+        "PINNED_SIMULATION_KIT_013_RUNTIME_0164",
+        "DETERMINISTIC_ARTIFACT_ARCHIVE_VALIDATION_ADAPTER",
+        "PROFILE_CONTRACT_GAP_EVIDENCE_PRESERVED"
+      ]
+    },
+    {
+      "id": "alpha29_deterministic_contract_route_hardening",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha29_deterministic_contract_route_hardening.py",
+        "argv": []
+      },
+      "invariants": [
+        "STRICT_ROUTE_CLOSURE",
+        "DETERMINISTIC_CONTRACT_COMPLETE",
+        "ARTIFACT_ARCHIVE_REGISTRY_COMPLETE"
+      ]
+    },
+    {
+      "id": "vibe_self_data_flow_publication",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/validate_self_data_flow_publication.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "depends_on": [
+        "vibe_self_authoring_information_model",
+        "vibe_self_information_projection"
+      ],
+      "invariants": [
+        "VIBE_SELF_DATA_FLOW_PUBLICATION_EQUIVALENT"
+      ]
+    },
+    {
+      "id": "alpha30_self_data_flow_publication",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha30_self_data_flow_publication.py"
+      },
+      "invariants": [
+        "VIBE_SELF_DATA_FLOW_PUBLICATION_EQUIVALENT"
+      ]
+    },
+    {
+      "id": "entry_docs_revision",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 10,
+      "args": {
+        "script": "tools/validate_entry_docs_revision.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "invariants": [
+        "ENTRY_DOC_REVISION_TRUTH"
+      ]
+    },
+    {
+      "id": "alpha31_incremental_verification",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha31_incremental_verification.py"
+      },
+      "invariants": [
+        "INCREMENTAL_VERIFICATION_CHECKPOINTS",
+        "IMPACT_BASED_DEVELOPMENT_VERIFICATION",
+        "VERIFICATION_TIMING_BUDGETS"
+      ]
+    },
+    {
+      "id": "alpha36_autonomous_improvement_anticheat",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha36_autonomous_improvement_anticheat.py"
+      },
+      "invariants": [
+        "AUTONOMOUS_APPLIED_PLAYBOOK_IMPROVEMENT",
+        "FROZEN_FIXTURE_ANTI_CHEAT",
+        "HOLDOUT_EVALUATOR_SEPARATION",
+        "BEST_SO_FAR_RETENTION",
+        "NO_ANALYST_DURING_IMPROVEMENT"
+      ]
+    },
+    {
+      "id": "alpha37_quality_scoring_stagnation",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha37_quality_scoring.py"
+      },
+      "invariants": [
+        "NORMALIZED_PLAYBOOK_QUALITY_SCORE",
+        "RESULT_REFERENCE_VARIANT_MAX_SELECTION",
+        "TECHNICAL_DOCUMENT_EXCLUSION",
+        "THREE_RUN_BEST_SCORE_STAGNATION",
+        "DEVELOPMENT_STAGE_TIMING_POLICY"
+      ]
+    },
+    {
+      "id": "alpha38_model_response_provenance_anti_happy_path",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha38_model_response_provenance.py"
+      },
+      "invariants": [
+        "RESULT_SCORE_REQUIRES_PROVEN_MODEL_RESPONSES",
+        "NO_SURROGATE_RESULT_ARTIFACT",
+        "RESPONSE_PROVENANCE_FAIL_CLOSED"
+      ]
+    },
+    {
+      "id": "constructive_correctness",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/validate_constructive_correctness.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "invariants": [
+        "CONSTRUCTIVE_CORRECTNESS_ENFORCED"
+      ]
+    },
+    {
+      "id": "scoring_v3_development_acceptance",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_scoring_v3_development_acceptance.py"
+      },
+      "invariants": [
+        "DEVELOPMENT_ACCEPTANCE_SCORE_SEPARATION"
+      ]
+    },
+    {
+      "id": "data_layer_first_hard_architecture",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_data_layer_first_hard_architecture.py"
+      },
+      "invariants": [
+        "DATA_LAYER_CANONICAL_SOURCE",
+        "PROJECTION_LINEAGE_CURRENT"
+      ]
+    },
+    {
+      "id": "reusable_authoring_templates",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_reusable_authoring_templates.py"
+      },
+      "invariants": [
+        "REUSABLE_AUTHORING_TEMPLATE_KIT"
+      ]
+    },
+    {
+      "id": "hybrid_reference_fidelity_feedback",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_hybrid_reference_fidelity_feedback.py"
+      },
+      "invariants": [
+        "HYBRID_REFERENCE_FIDELITY_FEEDBACK"
+      ]
+    },
+    {
+      "id": "deterministic_first_execution",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_deterministic_first_execution_responsibility.py"
+      },
+      "invariants": [
+        "DETERMINISTIC_FIRST_EXECUTION"
+      ]
+    },
+    {
+      "id": "information_preservation_monotonic_evidence",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_information_preservation_monotonic_evidence.py"
+      },
+      "invariants": [
+        "INFORMATION_PRESERVATION_MONOTONIC_EVIDENCE"
+      ]
+    },
+    {
+      "id": "dynamic_multi_reference_comparative_evaluator",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_dynamic_multi_reference_comparative_evaluator.py"
+      },
+      "invariants": [
+        "DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION"
+      ]
+    },
+    {
+      "id": "editor_visible_architecture",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_editor_visible_architecture_validation.py"
+      },
+      "invariants": [
+        "EDITOR_VISIBLE_ARCHITECTURE"
+      ]
+    },
+    {
+      "id": "fast_full_dependency_aware_validation",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_fast_full_dependency_aware_validation.py"
+      },
+      "invariants": [
+        "FAST_FULL_DEPENDENCY_AWARE_VALIDATION"
+      ]
+    },
+    {
+      "id": "logic_coherence",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_logic_coherence.py"
+      },
+      "invariants": [
+        "GOVERNING_LAWS_LOGICALLY_COHERENT",
+        "SCORING_TIERS_NONCONTRADICTORY",
+        "MULTI_REFERENCE_AGGREGATION_COHERENT",
+        "DYNAMIC_EVALUATOR_STATE_AND_RESPONSIBILITY_COMPLETE"
+      ]
+    },
+    {
+      "id": "default_debug_handoff_progress",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_default_debug_handoff_progress.py"
+      },
+      "invariants": [
+        "DEFAULT_DEBUG_HANDOFF_EVIDENCE_CAPTURE",
+        "AUTONOMOUS_PROGRESS_VISIBILITY"
+      ]
+    },
+    {
+      "id": "generated_playbook_production_package_contract",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_generated_playbook_production_package_contract.py"
+      },
+      "invariants": [
+        "GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTROLLED",
+        "PRODUCTION_PACKAGE_SELF_CONTAINED",
+        "DEBUG_BAGGAGE_SEPARATED"
+      ]
+    },
+    {
+      "id": "analyst_context_optimization_calibration",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_analyst_context_and_optimization_calibration.py"
+      },
+      "invariants": [
+        "ANALYST_CONTEXT_PRODUCTION_PRESERVATION",
+        "OPTIMIZATION_REGIME_BEST_VALID_STAGNATION",
+        "INVALID_REVISION_NO_SCORE_OR_STAGNATION",
+        "EVIDENCE_AWARE_REMEDIATION"
+      ]
+    },
+    {
+      "id": "generated_outputs_safe_delivery",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_generated_outputs_safe_delivery.py"
+      },
+      "invariants": [
+        "GENERATED_OUTPUTS_EXPLICIT_DELIVERY_ONLY",
+        "GENERATED_OUTPUTS_HASH_BOUND",
+        "SIMULATION_EVALUATOR_REFERENCE_OUTPUTS_EXCLUDED"
+      ]
+    },
+    {
+      "id": "pre_release_blockers",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_pre_release_blockers.py"
+      },
+      "invariants": [
+        "PRE_RELEASE_BLOCKERS_CLOSED"
+      ]
+    },
+    {
+      "id": "production_dependency_closure",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/validate_production_dependency_closure.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "invariants": [
+        "PRODUCTION_DEPENDENCY_CLOSURE_VALID"
+      ]
+    },
+    {
+      "id": "simulation_kit_015_current",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_simulation_kit_015_current.py"
+      },
+      "invariants": [
+        "SIMULATION_KIT_015_CURRENT"
+      ]
+    },
+    {
+      "id": "data_first_reusable_pattern_library",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_data_first_reusable_pattern_library.py"
+      },
+      "invariants": [
+        "DATA_FIRST_REUSABLE_PATTERN_LIBRARY"
+      ]
+    },
+    {
+      "id": "data_first_pattern_projection_separation",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_data_first_pattern_projection_separation.py"
+      },
+      "invariants": [
+        "DATA_FIRST_PATTERN_PROJECTION_SEPARATION"
+      ]
+    },
+    {
+      "id": "pattern_data_layer_merge_validation",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/validate_data_layer_pattern_instances.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "invariants": [
+        "PATTERN_DATA_LAYER_MERGE_VALID"
+      ]
+    },
+    {
+      "id": "pattern_reuse_reward_open_question",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_pattern_reuse_reward_and_open_question_penalty.py"
+      },
+      "invariants": [
+        "PATTERN_REUSE_REWARD_OPEN_QUESTION_PENALTY"
+      ]
+    },
+    {
+      "id": "pattern_graph_realization_contract",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/validate_pattern_graph_realization.py",
+        "argv": [
+          "{package_root}"
+        ]
+      },
+      "invariants": [
+        "PATTERN_GRAPH_REALIZATION_VALID"
+      ]
+    },
+    {
+      "id": "pattern_library_self_dogfood",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_pattern_library_self_dogfood.py"
+      },
+      "invariants": [
+        "PATTERN_LIBRARY_SELF_DOGFOOD"
+      ]
+    },
+    {
+      "id": "quality_incentive_anti_gaming",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_quality_incentive_anti_gaming.py"
+      },
+      "invariants": [
+        "QUALITY_INCENTIVE_ANTI_GAMING"
+      ]
+    },
+    {
+      "id": "graph_locality_incentives",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_graph_locality_incentives.py"
+      },
+      "invariants": [
+        "GRAPH_LOCALITY_INCENTIVES"
+      ]
+    },
+    {
+      "id": "alpha42_pseudo_live_optimization",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_pseudo_live_optimization.py"
+      },
+      "invariants": [
+        "PSEUDO_LIVE_FORMAL_SCORE_SEPARATION"
+      ]
+    },
+    {
+      "id": "alpha42_time_degradation_optimization",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_time_degradation_optimization.py"
+      },
+      "invariants": [
+        "OPTIMIZATION_RUNTIME_EFFICIENCY",
+        "TIME_DEGRADATION_DIAGNOSTIC",
+        "QUALITY_PERFORMANCE_TRACK_SEPARATION"
+      ]
+    },
+    {
+      "id": "alpha42_performance_ab_guard",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_performance_ab_guard.py"
+      },
+      "invariants": [
+        "PERFORMANCE_AB_PRESERVES_SEMANTICS_AND_SCORE_REGIME"
+      ]
+    },
+    {
+      "id": "alpha42_data_layer_architecture_detectors",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_data_layer_architecture_detectors.py"
+      },
+      "invariants": [
+        "SINGLE_RESPONSIBILITY_DATA_LAYER_DIAGNOSTIC",
+        "RUN_TO_GATE_DATA_LAYER_DIAGNOSTIC",
+        "DETERMINISTIC_FIRST_DATA_LAYER_DIAGNOSTIC"
+      ]
+    },
+    {
+      "id": "dual_distribution_package_contract",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_dual_distribution_package_contract.py"
+      },
+      "invariants": [
+        "ONE_VERSION_TWO_DISTRIBUTIONS",
+        "RUN_PACKAGE_CLEAN_ISOLATION_CONTRACT"
+      ]
+    },
+    {
+      "id": "dual_distribution_package_behavior",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 120,
+      "args": {
+        "script": "tools/test_dual_distribution_package_behavior.py"
+      },
+      "depends_on": [
+        "dual_distribution_package_contract"
+      ],
+      "invariants": [
+        "RUN_PACKAGE_DEPENDENCY_CLOSURE",
+        "RUN_PACKAGE_CONTEXT_ISOLATION",
+        "RUN_PACKAGE_NO_EVALUATOR_LEAKAGE",
+        "RUN_PACKAGE_MINIMALITY",
+        "DUAL_PACKAGE_SOURCE_PARITY"
+      ],
+      "long_running_reason": "historical full/integration regression with bounded corpus; retained as explicit long-running exception"
+    },
+    {
+      "id": "alpha42_interactive_analyst_workflow",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_interactive_analyst_workflow.py"
+      },
+      "invariants": [
+        "CONTINUOUS_ANALYST_FACT_STREAM",
+        "STRUCTURAL_UNKNOWN_SEMANTICS",
+        "INTERACTIVE_COMPLETENESS",
+        "ANALYST_INTERACTION_ROBUSTNESS"
+      ]
+    },
+    {
+      "id": "alpha42_adaptive_artifact_quality",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha42_adaptive_artifact_quality.py"
+      },
+      "invariants": [
+        "ADAPTIVE_COMPLETENESS_PROFILE",
+        "DERIVED_OUTPUT_GENERATION",
+        "HYBRID_SEMANTIC_QUALITY_GATE",
+        "QUALITY_SELF_REPAIR_BEFORE_ANALYST_ESCALATION"
+      ]
+    },
+    {
+      "id": "alpha43_outputless_artifact_validation",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha43_outputless_artifact_validation.py"
+      },
+      "invariants": [
+        "OUTPUTLESS_PREMATERIALIZATION_ARTIFACT_VALIDATION",
+        "ACTIVE_RENDERED_REQUIREMENTS_FAIL_CLOSED"
+      ]
+    },
+    {
+      "id": "alpha44_distribution_package_validator",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha44_distribution_package_validator.py"
+      },
+      "invariants": [
+        "EXACT_DISTRIBUTION_ZIP_VALIDATION"
+      ]
+    },
+    {
+      "id": "alpha44_authoring_execution_watchdog",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha44_authoring_execution_watchdog.py"
+      },
+      "invariants": [
+        "AUTHORING_EXECUTION_WATCHDOG",
+        "AUTHORING_TIME_DEGRADATION_DIAGNOSTIC"
+      ]
+    },
+    {
+      "id": "alpha44_generated_playbook_semantic_execution",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha44_generated_playbook_semantic_execution.py"
+      },
+      "invariants": [
+        "MODEL_MODE_SEMANTIC_REFERENCE",
+        "MERGE_BY_DIFF_STATE_UPDATE",
+        "CURRENT_NODE_REENTRY",
+        "GATE_ON_FAIL_RECOVERY",
+        "NO_RUNTIME_WORKAROUND_DATA_LAYER_POLLUTION",
+        "EXHAUSTIVE_AUTHORITY_DISCOVERY",
+        "STABLE_DECISION_ID_NO_REASK",
+        "FULL_REPAIR_LOOP_REGRESSION"
+      ]
+    },
+    {
+      "id": "alpha44_tool_result_debug_self_repair",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha44_tool_result_debug_self_repair.py"
+      },
+      "invariants": [
+        "STATE_UPDATES_V1_TOOL_RESULT",
+        "VISIBLE_DEBUG_TIMING_BASELINE",
+        "APPEND_ONLY_SELF_REPAIR_LOG"
+      ]
+    },
+    {
+      "id": "alpha45_context_runtime_efficiency",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha45_context_runtime_efficiency.py"
+      },
+      "invariants": [
+        "CONTEXT_RUNTIME_EFFICIENCY",
+        "LAZY_ACTIVE_NODE_CONTEXT",
+        "PLAYBOOK_PLATFORM_OVERHEAD_SEPARATION",
+        "CONSUMER_AWARE_RUNTIME_ASSETS"
+      ]
+    },
+    {
+      "id": "alpha45_authoring_hardening_optimization_subprocesses",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha45_authoring_hardening_optimization_subprocesses.py"
+      },
+      "invariants": [
+        "QUALITY_HARDENING_SUBPROCESS",
+        "PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS",
+        "EVIDENCE_DRIVEN_SUBPROCESS_ROUTING"
+      ]
+    },
+    {
+      "id": "alpha45_three_profile_distribution",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha45_three_profile_distribution.py"
+      },
+      "invariants": [
+        "THREE_PROFILE_RELEASE_DISTRIBUTION"
+      ]
+    },
+    {
+      "id": "alpha45_packaging_continuity",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha45_packaging_continuity.py"
+      },
+      "invariants": [
+        "PROFILE_AWARE_PACKAGING_CONTINUITY",
+        "VALIDATOR_APPLICABILITY_BY_PROFILE_STAGE",
+        "REPRODUCIBLE_PROFILE_BUILD_AND_HANDOFF"
+      ]
+    },
+    {
+      "id": "alpha45_deterministic_first_architecture",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha45_deterministic_first_architecture.py"
+      },
+      "invariants": [
+        "DETERMINISTIC_FIRST_ARCHITECTURE",
+        "STATE_PATCH_V1",
+        "PRODUCER_BOUNDARY_VALIDATION",
+        "MONOTONIC_LIFECYCLE",
+        "DETERMINISTIC_RECOVERY_RESUME",
+        "MACHINE_CHECKABLE_COMPLETENESS",
+        "SAFE_EVIDENCE_HYDRATION",
+        "STATE_CONTEXT_SEPARATION"
+      ]
+    },
+    {
+      "id": "alpha45_observability_debug",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_observability_debug.py"
+      },
+      "invariants": [
+        "CROSS_DOMAIN_EXECUTION_OBSERVABILITY",
+        "HASH_CHAINED_EXECUTION_RECEIPTS",
+        "PER_NODE_TELEMETRY",
+        "STANDARD_DEBUG_BUNDLE"
+      ]
+    },
+    {
+      "id": "alpha45_development_regression_governance",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_development_regression_governance.py"
+      },
+      "invariants": [
+        "REGRESSION_FIRST_CANDIDATE_CHANGE",
+        "CANDIDATE_TARGETED_RELEASE_FULL",
+        "REGRESSION_VS_LIVE_EVIDENCE",
+        "PERSISTENT_FAILURE_MEMORY"
+      ]
+    },
+    {
+      "id": "alpha45_quality_optimization_governance",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_quality_optimization_governance.py"
+      },
+      "invariants": [
+        "QUALITY_OPTIMIZATION_GOVERNANCE",
+        "MULTI_DIMENSION_ACCEPTANCE",
+        "CALIBRATED_INCENTIVES_ONLY",
+        "END_TO_END_OPTIMIZATION_ACCEPTANCE",
+        "OPTIMIZATION_HISTORY"
+      ]
+    },
+    {
+      "id": "alpha45_four_library_patterns",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_four_library_patterns.py"
+      },
+      "invariants": [
+        "FOUR_REUSABLE_LIBRARY_PATTERNS",
+        "CANONICAL_OUTCOME_LOWERING",
+        "ADVANCED_PATTERN_SEMANTIC_APPLICABILITY",
+        "DOMAIN_BINDING_SEPARATION"
+      ]
+    },
+    {
+      "id": "alpha45_two_simple_library_patterns",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_two_simple_library_patterns.py"
+      },
+      "invariants": [
+        "TWO_SIMPLE_LIBRARY_PATTERNS",
+        "EXPLICIT_SIMPLE_ADVANCED_VARIANT_SELECTION",
+        "DATA_LAYER_DIALECT_NORMALIZATION",
+        "EXECUTION_DIALECT_NORMALIZATION",
+        "SIMPLE_SCOPE_AND_RECONCILIATION_SEMANTICS"
+      ]
+    },
+    {
+      "id": "alpha45_model_run_support_projection",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_model_run_support_projection.py"
+      },
+      "invariants": [
+        "MODEL_RUN_RUNTIME_SAFE_SUPPORT_PROJECTION",
+        "CANONICAL_SOURCE_UNCHANGED",
+        "FORBIDDEN_AUTHORING_SURFACE_NOT_SHIPPED"
+      ]
+    },
+    {
+      "id": "alpha45_runtime_actor_projection",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha45_runtime_actor_projection.py"
+      },
+      "invariants": [
+        "CANONICAL_RUNTIME_ACTOR_PROJECTION",
+        "MODEL_INTERNAL_NOT_ANALYST",
+        "CANONICAL_SOURCE_UNCHANGED"
+      ]
+    },
+    {
+      "id": "alpha46_execution_write_safety_validator_governance",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "tools/test_alpha46_execution_write_safety_validator_governance.py"
+      },
+      "invariants": [
+        "VALIDATOR_INTROSPECTION_BEFORE_HEURISTIC_FIX",
+        "NO_UNPLANNED_WRITE_DURING_INVESTIGATION",
+        "WRITE_SEMANTICS_CONTRACT",
+        "CANONICAL_REVIEWED_SCOPE_IDENTITY",
+        "NO_SUCCESS_WITHOUT_POST_STATE_VERIFICATION",
+        "SEMANTIC_VALUE_KIND_PREWRITE_VALIDATION"
+      ]
+    },
+    {
+      "id": "alpha46_p2_lifecycle_release_family_governance",
+      "runner": "python_script",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 30,
+      "args": {
+        "script": "verification/validate_alpha46_p2_governance.py",
+        "argv": []
+      },
+      "invariants": [
+        "AUTHORING_MASTER_DISTRIBUTION_SEPARATION",
+        "EDIT_DATA_LAYER_REQUIRED",
+        "RELEASE_FAMILY_IDENTITY",
+        "VALIDATION_LEVEL_LABELING",
+        "TOOL_PURITY_DECLARATION",
+        "RELEASE_COVERAGE_MINIMUMS",
+        "DIRECT_LOCAL_ENGINE_PARITY",
+        "LEARNING_FINDING_CLASSIFICATION"
+      ]
+    },
+    {
+      "id": "alpha46_simple_verified_document_code_implementation_v11",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha46_simple_verified_document_code_implementation_v11.py"
+      },
+      "invariants": [
+        "SIMPLE_CODE_IMPLEMENTATION_V11",
+        "SAFE_REPOSITORY_FRESHNESS",
+        "REPOSITORY_AUTHORITY_ISOLATION",
+        "PROVISIONAL_IMPLEMENTATION_FAMILY",
+        "DETERMINISTIC_CHANGE_RISK",
+        "VERIFIED_DOCUMENT_TARGET_AUTHORITY",
+        "PERSISTED_CURRENT_VERIFICATION_TRUTH"
+      ]
+    },
+    {
+      "id": "alpha46_simple_document_reconciliation_verification_v12",
+      "runner": "trusted_python_regression",
+      "phase": "PRE_EDITOR",
+      "required": true,
+      "timeout_seconds": 60,
+      "args": {
+        "script": "tools/test_alpha46_simple_document_reconciliation_verification_v12.py"
+      },
+      "invariants": [
+        "SIMPLE_DOCUMENT_RECONCILIATION_V12",
+        "EXPLICIT_INPUT_UX",
+        "EVIDENCE_AUTHORITY_ISOLATION",
+        "PROVISIONAL_PROFILE_CORRECTION",
+        "VERSION_DRIFT_CLASSIFICATION",
+        "STRUCTURED_DISCREPANCY_RENDERING",
+        "NARROW_RECONCILIATION_BLOCKED",
+        "AUDITABLE_DECISION_LEDGER"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+schema_version: '1.0'
+artifacts: []
+# Each artifact should declare id, kind, inputs, materialization, verification, and whether it is intermediate/terminal.

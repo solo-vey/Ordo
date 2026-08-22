@@ -1,0 +1,12 @@
+template_id: LIFECYCLE_RELEASE_FAMILY_GOVERNANCE
+version: '1.0'
+source_of_truth: authoring_master
+invariants:
+  - runtime_profiles_are_derived_not_destructive_branches
+  - edit_requires_current_data_layer
+  - release_requires_edit_cli_run_model_run_family
+  - validation_result_names_its_level
+  - mutating_validation_tools_run_on_qualification_copy
+  - release_requires_structural_and_behavioral_coverage
+  - direct_and_local_execution_share_planner_write_and_verification_engines
+  - postmortem_findings_are_classified_before_reuse

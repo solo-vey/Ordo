@@ -1,0 +1,6 @@
+name: ordo.vibe_arf_factory
+version: 0.1.2
+ordo_version: '0.12'
+source: source/program.ordo.yaml
+compiled: compiled/program.ir.json
+tests: tests/test_cases.yaml

@@ -1,0 +1,15 @@
+schema_version: '1.0'
+required_families: &id001
+- core_identity
+- trigger
+- null_no_data
+- source_failure
+- lifecycle
+- output
+- history_transition
+scenarios:
+- id: SELF_FACTORY_CONTRACT
+  families: *id001
+  status: designed
+  intent: Self-hosted factory regression proxy covers required behavioral-contract
+    families; generated playbooks require pinned runtime simulation.

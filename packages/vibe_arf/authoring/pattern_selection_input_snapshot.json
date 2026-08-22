@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "freeze_phase": "before_pattern_library_lookup",
+  "artifacts": [
+    {
+      "id": "A_BUSINESS_VIEW",
+      "kind": "document",
+      "required": true,
+      "requirement_origin": "project_artifact_contract",
+      "lifecycle": "intermediate"
+    },
+    {
+      "id": "A_DELIVERY_HANDOFF",
+      "kind": "handoff",
+      "required": true,
+      "requirement_origin": "project_artifact_contract",
+      "lifecycle": "terminal"
+    },
+    {
+      "id": "A_GENERATED_PLAYBOOK_PACKAGE",
+      "kind": "archive",
+      "required": true,
+      "requirement_origin": "project_artifact_contract",
+      "lifecycle": "terminal"
+    },
+    {
+      "id": "A_GENERATED_PLAYBOOK_SOURCE",
+      "kind": "ordo_source",
+      "required": true,
+      "requirement_origin": "project_artifact_contract",
+      "lifecycle": "intermediate"
+    },
+    {
+      "id": "A_VERIFICATION_EVIDENCE",
+      "kind": "evidence_bundle",
+      "required": true,
+      "requirement_origin": "project_artifact_contract",
+      "lifecycle": "intermediate"
+    }
+  ],
+  "capability_requirements": [
+    {
+      "id": "CR_BUSINESS_VIEW_MATERIALIZATION",
+      "capability_tag": "document_materialization",
+      "artifact_id": "A_BUSINESS_VIEW",
+      "required": true,
+      "requirement_origin": "artifact_delivery_contract"
+    },
+    {
+      "id": "CR_GENERATED_PACKAGE_MATERIALIZATION",
+      "capability_tag": "package_materialization",
+      "artifact_id": "A_GENERATED_PLAYBOOK_PACKAGE",
+      "required": true,
+      "requirement_origin": "artifact_delivery_contract"
+    }
+  ],
+  "snapshot_digest": "7e9deeccaf5a7f7cd284bf3135bf92db7507f8a09236a4194ca0b336edf12b5d"
+}

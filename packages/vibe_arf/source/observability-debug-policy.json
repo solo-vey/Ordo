@@ -1,0 +1,97 @@
+{
+  "policy_id": "OBSERVABILITY_DEBUG",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "cross_domain",
+  "purpose": "Make execution observable enough to explain state transitions, repeated work, runtime cost, context loading, repair and delivery without exposing chain-of-thought.",
+  "per_node_telemetry": {
+    "fields": [
+      "node_id",
+      "execution_count",
+      "duration_ms",
+      "input_bytes",
+      "output_bytes",
+      "input_tokens",
+      "output_tokens",
+      "token_count_source",
+      "dependency_fingerprint",
+      "route",
+      "result_sha256"
+    ],
+    "token_rule": "exact provider/host usage when available; otherwise explicitly labeled estimate"
+  },
+  "execution_receipts": {
+    "append_only": true,
+    "hash_chain": true,
+    "path": "runtime/evidence/EXECUTION_RECEIPTS.jsonl",
+    "required_fields": [
+      "run_id",
+      "sequence",
+      "from_node",
+      "to_node",
+      "route",
+      "input_projection_sha256",
+      "state_update_sha256",
+      "previous_receipt_sha256",
+      "receipt_sha256",
+      "timestamp",
+      "status"
+    ],
+    "rule": "A material transition is complete only when its persisted state transition and receipt agree."
+  },
+  "context_accounting": {
+    "platform_overhead_separate": true,
+    "separate_metrics": [
+      "filesystem_scanned_bytes",
+      "tool_output_visible_bytes",
+      "model_loaded_content_bytes",
+      "platform_overhead_tokens",
+      "playbook_controlled_tokens"
+    ],
+    "rule": "Filesystem scanning is not model-context consumption; platform overhead is not charged to playbook-controlled context."
+  },
+  "startup_read_audit": {
+    "enabled": true,
+    "audit_must_not_trigger_new_reads": true,
+    "required_fields": [
+      "files_already_read",
+      "full_or_partial",
+      "bytes_or_lines_when_observable",
+      "forbidden_directory_read",
+      "full_source_loaded"
+    ]
+  },
+  "pass_count_diagnostic": {
+    "id": "REPEATED_NODE_EXECUTION_DEGRADATION",
+    "status": "OPPORTUNITY",
+    "score_effect": 0,
+    "rule": "Unexpected repeated execution is diagnostic evidence; investigate changed dependencies, recovery routing, state instability and regeneration before scoring."
+  },
+  "hotspot_ranking": {
+    "dimensions": [
+      "total_time",
+      "total_input",
+      "total_output",
+      "execution_count",
+      "context_overread",
+      "filesystem_scan"
+    ],
+    "select": "rank and surface highest actionable playbook-controlled hotspot; do not confuse platform overhead with playbook cost"
+  },
+  "visible_timing_policy": "source/visible-debug-timing-policy.json",
+  "self_repair_policy": "source/self-repair-log-policy.json",
+  "standard_debug_bundle": {
+    "required_or_explicitly_unavailable": [
+      "DEBUG_RUN_INDEX.json",
+      "EXECUTION_RECEIPTS.jsonl",
+      "PER_NODE_TELEMETRY.jsonl",
+      "TIMING_SUMMARY.json",
+      "TOKEN_USAGE_SUMMARY.json",
+      "FILE_ACCESS_SUMMARY.json",
+      "SELF_REPAIR_LOG.jsonl",
+      "VALIDATION_SUMMARY.json"
+    ],
+    "rule": "Each expected surface is present or the debug index records why it was unobservable/unavailable; never fabricate usage or reads."
+  },
+  "generated_playbooks_inherit": true
+}

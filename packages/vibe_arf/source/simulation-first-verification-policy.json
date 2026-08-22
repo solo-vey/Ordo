@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_SIMULATION_FIRST_VERIFICATION_V1",
+  "revision": "0.1.0-alpha.36",
+  "semantic_authority": "canonical_ordo_language",
+  "simulation_role": "runtime_adapter_preflight_not_language_truth",
+  "required_workflow": [
+    "inspect_exact_candidate_zip",
+    "read_simulation_contract",
+    "synthesize_exact_schema_fixtures",
+    "run_pinned_runtime_simulation",
+    "resolve_profile_contract_gaps_before_fixture_repair",
+    "iterate_fixture_incomplete_until_closed",
+    "inspect_trace_state_errors_fixture_usage",
+    "classify_defect_owner",
+    "repair_internal_or_handoff_runtime_defect"
+  ],
+  "pass_semantics": "Fixture-based PASS proves execution under the pinned runtime and supplied fixtures; it is not live-model acceptance.",
+  "analyst_visibility": "simulation qualification is required before analyst-ready handoff when a simulation dependency is available and applicable",
+  "runtime_defect_rule": "If canonical Ordo is valid and simulation exposes runtime-adapter nonconformance, do not mutate the playbook as a workaround.",
+  "profile_adapter_rule": "explicit_adapter_not_language_semantics",
+  "dynamic_recovery_rule": "Use native semantic_recovery_fixture_points when inspect can expose them; if run returns fixture_incomplete, preserve missing_fixtures.json and missing_model_responses.template.yaml, fill/merge the exact contract, and rerun. Do not classify expected fixture discovery as a playbook defect.",
+  "kit_layout_rule": "Simulation dependency extraction must support both flat-root kit ZIPs and legacy one-enclosing-root ZIPs without changing semantic behavior.",
+  "deterministic_artifact_validation_rule": "Mechanical artifact/archive validation is adapter-layer execution of explicit structured contracts. Missing required archive membership/hash declarations are profile contract gaps; never infer them from prose, node names, or Python source, and never fall through to LLM semantic recovery.",
+  "profile_contract_gap_rule": "Preserve profile_contract_gaps.json, classify it as VIBE_AUTHORING_PROFILE_CONTRACT_GAP, repair the generated-playbook profile contract internally, and rerun simulation before analyst visibility. Do not misclassify it as missing model fixtures or canonical Ordo invalidity.",
+  "pre_simulation_contract_rule": "Before invoking the runtime simulator, deterministic package-tool and artifact/archive profile contracts must pass factory-owned static completeness gates. Simulation remains the runtime backstop and must still fail closed on any profile_contract_gap."
+}

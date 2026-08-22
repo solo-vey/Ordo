@@ -1,0 +1,1 @@
+{"policy_id":"DIRECT_LOCAL_EXECUTION_ENGINE_PARITY_V1","required_equal":["target_bundle_identity","planner_contract","write_engine","verification_engine"],"allowed_difference":["transport","handoff"],"mismatch":"fail_closed"}

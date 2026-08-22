@@ -1,0 +1,211 @@
+{
+  "format": "vibe-autonomous-playbook-improvement-policy/v8",
+  "status": "mandatory_profile_policy",
+  "scope": "post-generation optimization of the generated applied playbook; Vibe itself is frozen during this subprocess",
+  "entry": {
+    "requires": "first runnable generated playbook candidate has passed baseline deterministic/runtime simulation qualification"
+  },
+  "scope_freeze": {
+    "vibe_revision": "read_only for entire improvement run",
+    "mutable_target": "generated applied playbook only",
+    "forbidden": [
+      "mutating Vibe to make its own improvement test pass",
+      "changing canonical Ordo semantics to hide adapter/runtime defects"
+    ]
+  },
+  "anti_cheat": {
+    "freeze_before_run": [
+      "simulated analyst/model responses",
+      "fixture set/version",
+      "scenario membership",
+      "candidate revision hash"
+    ],
+    "fixture_immutability": "after a revision run begins, its response fixtures may not be changed in response to output, score, or evaluator feedback",
+    "optimizer_rule": "optimizer may repair the playbook, never the frozen fixture for a failed run",
+    "new_fixture_rule": "any fixture change creates a new immutable test-set version and does not overwrite prior evidence",
+    "evaluator_separation": "response simulator and evaluator are distinct responsibilities; optimizer receives scores/sanitized deficits, not hidden expected outputs",
+    "holdout": "required when sufficient independent scenarios exist; hidden expected outcomes are inaccessible to optimizer before final evaluation",
+    "adversarial": "include scenarios designed to detect exemplar memorization, answer shaping, leakage, and overfitting",
+    "model_response_provenance": "In PSEUDO_LIVE_OPTIMIZATION, blind synthetic responses bound to exact effective-input hashes are allowed and must be marked PSEUDO_LIVE_SYNTHETIC; in LIVE_ACCEPTANCE every executed model response requires live/exact-live-replay provenance. Pseudo responses are never formal acceptance evidence.",
+    "result_artifact_lineage": "Score only exact artifact materialized by declared candidate graph; surrogate/control/post-repaired documents are ineligible.",
+    "fail_closed_scoring": "Pseudo provenance failure blocks pseudo scoring only. Missing/failed live provenance makes formal scores unavailable but must not stop an otherwise valid pseudo-live offline optimization loop.",
+    "pseudo_live_generator": "freeze simulator policy/config for the evaluation regime; simulator is blind to target score, evaluator-only golden/reference content, future outputs, competing candidates and rankings; never rewrite a response after observing score"
+  },
+  "cycle": [
+    "run deterministic/static checks first and repair deterministic hard failures before any model simulation",
+    "select PSEUDO_LIVE_OPTIMIZATION for offline iterations unless the candidate has already converged and LIVE_ACCEPTANCE was explicitly entered",
+    "for every model node actually executed in pseudo-live mode, build the exact effective input/context hash and generate a blind PSEUDO_LIVE_SYNTHETIC response under the frozen simulator policy; regenerate when the input hash changes",
+    "execute the candidate graph through declared materialization; surrogate/helper-generated artifacts are forbidden",
+    "verify pseudo provenance + exact artifact lineage and compute process_score, pseudo_result_score and pseudo_playbook_score; do not populate formal score fields",
+    "diagnose pseudo score loss and defect ownership; repair generated playbook only and repeat until convergence/budget",
+    "freeze best offline candidate as OFFLINE_CONVERGED_PENDING_LIVE_ACCEPTANCE",
+    "only then run LIVE_ACCEPTANCE with real calls/exact-live-replay and calculate formal scores after provenance PASS"
+  ],
+  "best_so_far": {
+    "required": true,
+    "retain": [
+      "baseline candidate",
+      "meaningful revisions",
+      "scores",
+      "change rationale",
+      "exact hashes",
+      "best candidate so far"
+    ],
+    "monotonic_rule": "a worse revision never replaces the best-so-far candidate",
+    "return_rule": "highest_scoring_valid_revision by development_score among protected-dimension-eligible valid revisions; eligibility_rule applies first and LIVE_ACCEPTANCE remains a later non-substitutable evidence gate",
+    "eligibility_rule": "candidate must be VALID, hard-eligible, and show no regression in any protected QUALITY_OPTIMIZATION_GOVERNANCE dimension before development_score ranking is considered",
+    "ranking_rule": "among protected-dimension-eligible candidates only, strictly greater development_score may replace best-so-far; numeric score can never override a protected-dimension regression or hard guard failure"
+  },
+  "analyst_interaction": {
+    "during_improvement": "forbidden",
+    "business_owned_unknown": "record as unresolved limitation; continue every optimization possible without asking"
+  },
+  "termination": {
+    "rule": "stop_after_three_consecutive_valid_evaluated_revisions_without_development_score_above_current_best",
+    "streak_limit": 3,
+    "best_comparison": "protected-dimension eligibility first; then strictly greater development_score among eligible candidates only; equal score is non-improving",
+    "streak_semantics": "after each valid evaluated run, first apply protected-dimension/hard-eligibility gates. An ineligible revision never replaces best. For eligible revisions, update best only if development_score is greater than pre-run best; then apply the declared stagnation streak semantics.",
+    "example_scores": [
+      917,
+      905,
+      907
+    ],
+    "example_result": "stop after 907; best-so-far remains 917",
+    "threshold_termination": false,
+    "max_cycles_semantic_stop": false,
+    "on_stop": "return protected-dimension-eligible valid best-so-far exact revision with highest development_score, never latest by default",
+    "on_strict_improvement_streak": 0,
+    "invalid_revision_counts_toward_stagnation": false,
+    "score_1000_is_required_target": false,
+    "stagnation_streak_definition": "count consecutive valid evaluated revisions that do not produce an eligible strict development_score improvement over current best; protected-dimension-ineligible revisions are non-improving and never replace best",
+    "cycle_budget": 24,
+    "cycle_budget_rule": "hard safety budget independent of stagnation; reaching it stops the run and returns best-so-far",
+    "invalid_revision_streak_limit": 3,
+    "invalid_revision_streak_rule": "consecutive HARD_UNSCORABLE revisions are counted independently from valid-run stagnation and terminate at the limit"
+  },
+  "evidence": {
+    "required": [
+      "test_set_version",
+      "fixture_hashes",
+      "candidate_hash",
+      "simulator_identity_or_contract",
+      "evaluator_identity_or_contract",
+      "holdout_visibility_contract",
+      "deficits",
+      "change_rationale",
+      "best_so_far_pointer",
+      "process_score",
+      "score_decomposition",
+      "non_best_streak",
+      "model_call_evidence",
+      "response_provenance_report",
+      "result_scoring_eligibility",
+      "artifact_lineage",
+      "evidence_tier",
+      "development_result_score",
+      "development_score",
+      "acceptance_result_score",
+      "acceptance_score",
+      "acceptance_status",
+      "execution_mode",
+      "pseudo_result_score",
+      "pseudo_playbook_score",
+      "pseudo_score_eligible",
+      "formal_result_score",
+      "formal_process_score",
+      "formal_playbook_score",
+      "formal_score_eligible",
+      "pseudo_generator_policy_version",
+      "effective_input_hashes",
+      "timing_evidence",
+      "performance_diagnostics",
+      "latest_candidate",
+      "best_candidate",
+      "best_score",
+      "valid_stagnation_count",
+      "optimization_status"
+    ]
+  },
+  "quality_evaluation": {
+    "scorer": "tools/calculate_playbook_quality_score.py",
+    "dimensions": [
+      "development_score",
+      "acceptance_score",
+      "process_score",
+      "pseudo_result_score",
+      "pseudo_playbook_score",
+      "pseudo_score_eligible",
+      "formal_result_score",
+      "formal_process_score",
+      "formal_playbook_score",
+      "formal_score_eligible"
+    ],
+    "ranking": "strictly greater development_score wins; ties do not replace best-so-far",
+    "thresholds": "none; development_score guides ranking and diagnosis; acceptance_score is evidence-gated and never used as a substitute subjective objective",
+    "subjective_primary_objective": "forbidden",
+    "next_iteration_input": "consolidated mechanical artifact defects plus deterministic process-integrity defects plus sanitized comparative defects plus mechanically verified positive reward opportunities (including missed reusable-pattern fits); never full golden references",
+    "diagnosis_rule": "numeric development_score never stands alone; optimizer must consume scorer-emitted defects/remediation and positive reward opportunities. It may repair only the candidate playbook, never frozen grader/reference fixtures, and may claim reusable-pattern reward only from deterministic pre-library eligibility + exact final graph-realization evidence. Treat unsupported human-authority values as invalid revisions, not as a way to avoid analyst questions; prefer justified derivation, accepted sources, or an explicit authority interaction. Penalize only proven redundant variables, never useful Data-Layer richness. Respect non-double-counting interaction suppression and the reusable-pattern reward cap.",
+    "grader_freeze": "freeze mechanical rubric, analytical rubric, eligible references and evaluator criteria across a revision-comparison loop",
+    "fresh_reference_comparison": "required on every scored revision before prior-defect regression confirmation",
+    "reference_isolation": "full golden artifacts evaluator-only; optimizer receives sanitized class/depth remediation targets",
+    "known_defect_regression_phase": "separate_after_fresh_discovery",
+    "multi_reference_objective": "relevance_weighted_consensus_quality",
+    "unsupported_reference_fact_policy": "SOURCE_EVIDENCE_REQUIRED_not_optimizer_fabrication",
+    "remediation_types": [
+      "PLAYBOOK_CAPABILITY",
+      "SOURCE_EVIDENCE_REQUIRED"
+    ],
+    "invalid_revision_scoring": "ineligible_no_score",
+    "offline_live_separation": "development_optimum_is_not_live_acceptance",
+    "cross_contract_alignment_before_scoring": [
+      "template",
+      "bindings",
+      "state_schema",
+      "validator",
+      "materializer",
+      "dataflow",
+      "information_model",
+      "responsibility_map",
+      "simulation_fixtures"
+    ],
+    "pattern_reuse_reward": {
+      "points_per_distinct_qualified_reuse": 50,
+      "evaluator": "tools/evaluate_pattern_reuse_opportunities.py",
+      "missed_fit": "surface as +50 potential opportunity without applying a penalty",
+      "anti_gaming": "eligibility is frozen before library lookup and duplicate/pattern-created responsibilities receive no reward",
+      "max_process_score_contribution": 200
+    },
+    "process_integrity_evaluator": "tools/evaluate_quality_process_integrity.py",
+    "unsupported_human_authority_value": "invalid_revision_ineligible_no_score",
+    "redundant_variable_policy": "penalize only mechanically proven redundant variables; useful internal variables are free",
+    "interaction_penalty_stacking": "group-collapse suppresses cross-group for same interaction; independent harms may stack"
+  },
+  "evaluation_regime": {
+    "frozen_within_run": true,
+    "identity_fields": [
+      "id",
+      "scorer_version",
+      "reference_set_hash",
+      "prompt_builder_version",
+      "aggregation_policy_version",
+      "deterministic_validator_set_hash",
+      "process_score_policy_version",
+      "severity_weights_version",
+      "stagnation_threshold",
+      "holdout_split_hash"
+    ],
+    "change_semantics": "any identity field change starts a new non-comparable evaluation regime",
+    "holdout_split_hash_required": true
+  },
+  "performance_track": {
+    "policy": "source/optimization-runtime-efficiency-policy.json",
+    "timing_schema": "source/optimization-timing-evidence.schema.json",
+    "required_for_every_valid_evaluated_revision": true,
+    "quality_score_effect": 0,
+    "one_pass_callback_preferred": true,
+    "compile_inspect_cache_reuse": true,
+    "independent_scenario_parallelism": true,
+    "time_degradation_diagnostic_required": true,
+    "gap_loop_fusion": "CONTROLLED_EXPERIMENT_ONLY"
+  }
+}

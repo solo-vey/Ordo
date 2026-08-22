@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "evidence_kind": "actual_dependency_self_check_and_unit_test_run",
+  "dependency_id": "ORDO_PLAYBOOK_SIMULATION_KIT",
+  "version": "0.1.5",
+  "runtime_baseline": "Ordo Tree Editor 0.2.0-alpha.20.0.166-dev",
+  "zip_path": "dependencies/ORDO_PLAYBOOK_SIMULATION_KIT_0.1.5.zip",
+  "zip_sha256": "fa9a5b2aa5627419ccdece322e2d0198032d4f125fa5b6b38896528cce53eee2",
+  "self_check": {
+    "status": "PASS",
+    "command": "python self_check.py"
+  },
+  "unit_tests": {
+    "status": "PASS",
+    "passed": 12,
+    "failed": 0,
+    "command": "python -m unittest discover -s tests -v",
+    "stdout_sha256": "e821de9c0d4912435e77ff61e276acf5b949ba6587d083ce8571360f7791ab0f"
+  },
+  "source_evidence": "reports/WORKING_SIMULATION_KIT_015_ACCEPTANCE.json",
+  "source_evidence_sha256": "b679acc2348a425d9a31fbdeada375f307d2234263e072ce8dd6c007fe01a058",
+  "materialized_scope": "production_verification_evidence"
+}

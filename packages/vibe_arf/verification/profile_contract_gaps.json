@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "evidence_kind": "actual_vibe_terminal_simulation_profile_contract_gap_observation",
+  "kit_version": "0.1.6",
+  "observed_gap_count": 0,
+  "terminal_simulation": {
+    "status": "PASS",
+    "steps": 199,
+    "final_node": "END_PLAYBOOK_PACKAGE_ACCEPTED",
+    "errors": 0
+  },
+  "note": "No profile_contract_gaps.json was emitted by the successful terminal simulation; zero structured profile gaps were observed."
+}

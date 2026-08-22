@@ -1,0 +1,63 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_UNDERSTANDING_PROCESS_MODEL
+  version: '1.0'
+  title: Understanding Process Model
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_U_SOURCE_ASSIMILATION
+    type: automatic
+    title: Source Assimilation
+    next: N_U_EPISTEMIC_CLASSIFICATION
+    responsibility_id: source_assimilation
+  - id: N_U_EPISTEMIC_CLASSIFICATION
+    type: automatic
+    title: Epistemic Classification
+    next: N_U_DOMAIN_ACTOR_MODEL
+    responsibility_id: epistemic_classification
+  - id: N_U_DOMAIN_ACTOR_MODEL
+    type: automatic
+    title: Domain Actor Model
+    next: N_U_ARTIFACT_SURFACE
+    responsibility_id: domain_actor_model
+  - id: N_U_ARTIFACT_SURFACE
+    type: automatic
+    title: Artifact Surface Inventory
+    next: N_U_CHAT_FIRST_BOOTSTRAP_CHECK
+    responsibility_id: artifact_surface_inventory
+  - id: N_U_CHAT_FIRST_BOOTSTRAP_CHECK
+    type: automatic
+    title: Chat-First Bootstrap Evidence
+    next: '{{success_exit_node}}'
+    responsibility_id: chat_first_bootstrap_quality_evidence
+  - id: N_U_RULE_AUTHORITY_MODEL
+    type: automatic
+    title: Business Rule Authority Model
+    next: N_U_LEGACY_MIGRATION
+    responsibility_id: business_rule_authority_model
+  - id: N_U_LEGACY_MIGRATION
+    type: automatic
+    title: Legacy Semantic Migration
+    next: N_U_PROCESS_SEMANTIC_HYPOTHESIS
+    responsibility_id: legacy_semantic_migration
+  - id: N_U_PROCESS_SEMANTIC_HYPOTHESIS
+    type: automatic
+    title: Process Semantic Hypothesis
+    next: N_U_INTEGRITY_CHECK
+    responsibility_id: process_semantic_hypothesis
+  - id: N_U_INTEGRITY_CHECK
+    type: automatic
+    title: Understanding Integrity
+    next: '{{success_exit_node}}'
+    responsibility_id: understanding_integrity
+  gates: []

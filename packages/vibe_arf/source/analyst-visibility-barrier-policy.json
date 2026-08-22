@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ANALYST_VISIBILITY_BARRIER_V1",
+  "blocking": true,
+  "goal": "Do not expose a generated playbook candidate as analyst-ready while known machine-detectable defects remain.",
+  "required_before_candidate_handoff": [
+    "language_conformance",
+    "vibe_authoring_profile",
+    "auto_answers",
+    "target_adapter_qualification",
+    "pre_editor",
+    "simulation_contract",
+    "simulation_fixture_closure",
+    "simulation_pass",
+    "defect_ownership"
+  ],
+  "required_artifacts": [
+    "verification_profile.json",
+    "reports/GENERATED_PLAYBOOK_CONTRACT.json",
+    "EDITOR_AUTO_ANSWERS.zip",
+    "reports/SIMULATION_EVIDENCE.json",
+    "reports/DEFECT_OWNERSHIP.json",
+    "authoring/scenario_matrix.yaml"
+  ],
+  "handoff_rule": "If any required trusted gate is FAIL, Vibe repairs internally and reruns. The analyst receives only the first candidate that passes the barrier.",
+  "time_goal": {
+    "first_analyst_visible_alpha_minutes_target": 10,
+    "note": "Gate execution should be seconds-scale; internal repair loops are allowed but must not require analyst YAML editing."
+  },
+  "revision": "0.1.0-alpha.26",
+  "semantic_authority": "canonical_ordo_language",
+  "status_semantics": {
+    "ORDO_INVALID": "repair_playbook",
+    "ORDO_VALID_VIBE_PROFILE_NONCONFORMANT": "repair_or_explicitly_waive_profile",
+    "AUTO_ANSWERS_INVALID": "repair_test_scenario",
+    "ORDO_VALID_ADAPTER_INCOMPATIBLE": "repair_adapter_or_choose_other_target",
+    "PASS": "eligible_for_next_stage"
+  }
+}

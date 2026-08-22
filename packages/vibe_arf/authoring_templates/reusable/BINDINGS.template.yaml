@@ -1,0 +1,12 @@
+schema_version: '1.0'
+template_kind: bindings
+bindings:
+- target: <artifact.field_or_section>
+  producer_object: <OBJECT_ID>
+  source_ref: <REF>
+  transform: <deterministic_transform_or_none>
+  required: true
+  fallback: <explicit_policy_or_none>
+constraints:
+- every required artifact field has exactly one authoritative binding
+- no hidden model-memory binding

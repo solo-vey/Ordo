@@ -1,0 +1,6 @@
+schema_version: '1.0'
+bundles: []
+rules:
+  derived_from_information_groups: true
+  human_review_only_for_authority_or_uncertainty: true
+  max_bundle_fields_soft: 12

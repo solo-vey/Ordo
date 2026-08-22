@@ -1,0 +1,24 @@
+{
+  "policy_id": "DEVELOPMENT_SUBPROCESS_ROUTING",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "rules": [
+    {
+      "when": "analyst asks how to debug/fix instability OR playbook defect evidence exists",
+      "recommend": "QUALITY_HARDENING_LOOP"
+    },
+    {
+      "when": "analyst asks why slow/expensive OR telemetry shows degradation",
+      "recommend": "PERFORMANCE_TOKEN_OPTIMIZATION_LOOP"
+    },
+    {
+      "when": "performance requested but quality baseline unstable",
+      "route": "QUALITY_HARDENING_LOOP first"
+    },
+    {
+      "when": "no actionable issue",
+      "route": "continue normal authoring"
+    }
+  ],
+  "analyst_experience": "The model names the matching standard subprocess and guides the analyst through its next declared step instead of inventing an ad-hoc debugging/optimization method."
+}

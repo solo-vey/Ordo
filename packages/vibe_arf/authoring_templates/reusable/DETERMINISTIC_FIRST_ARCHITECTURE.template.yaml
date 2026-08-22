@@ -1,0 +1,39 @@
+schema_version: "1.0"
+template_id: DETERMINISTIC_FIRST_ARCHITECTURE
+scope: cross_domain
+purpose: Reusable architecture contract that keeps mechanical responsibilities deterministic and model judgment semantic.
+required_capabilities:
+  - RESPONSIBILITY_CLASSIFICATION
+  - STATE_PATCH_V1
+  - PRODUCER_BOUNDARY_VALIDATION
+  - MONOTONIC_LIFECYCLE_GUARD
+  - DETERMINISTIC_RECOVERY_RESUME
+  - MACHINE_CHECKABLE_COMPLETENESS
+  - SAFE_EVIDENCE_HYDRATION
+  - STATE_CONTEXT_SEPARATION
+contracts:
+  model_delta:
+    contract: state_patch_v1
+    apply_owner: deterministic_runtime
+    fail_closed_on_stale_baseline: true
+  deterministic_tool:
+    contract: state_updates_v1
+    merge_owner: deterministic_runtime
+  producer_boundary:
+    validation_before_persistence: true
+    transition_receipt_after_validation_only: true
+  lifecycle:
+    monotonic_terminal_states: true
+    reopen_requires_reason_and_provenance: true
+  recovery:
+    resume_owner: deterministic
+    strategy: first_invalid_or_missing_milestone
+  completeness:
+    stable_ids: true
+    rule: required_ids_equals_accounted_for_ids
+  evidence_hydration:
+    source_hash: required
+    state_update_allowlist: required
+  contexts:
+    canonical_semantic_state: separate
+    runtime_session_recovery: separate

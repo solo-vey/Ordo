@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vibe://semantic-artifact-quality-gate/v1",
+  "title": "Semantic Artifact Quality Gate Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["quality_status", "issues", "coverage"],
+  "properties": {
+    "quality_status": {"type": "string", "enum": ["PASS", "PASS_WITH_NOTES", "BLOCK"]},
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["section", "severity", "category", "finding", "why_it_matters", "recommended_action", "requires_analyst_input"],
+        "properties": {
+          "section": {"type": ["string", "null"]},
+          "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+          "category": {"type": "string", "enum": ["DERIVABLE_FIX", "ANALYST_DECISION_REQUIRED", "SOURCE_REQUIRED", "IMPLEMENTATION_DETAIL"]},
+          "finding": {"type": "string", "minLength": 1},
+          "why_it_matters": {"type": "string", "minLength": 1},
+          "recommended_action": {"type": "string", "minLength": 1},
+          "requires_analyst_input": {"type": "boolean"}
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["substantive_complete", "derivable_outputs_complete", "test_quality", "contradictions"],
+      "properties": {
+        "substantive_complete": {"type": "boolean"},
+        "derivable_outputs_complete": {"type": "boolean"},
+        "test_quality": {"type": "string", "enum": ["adequate", "needs_improvement", "not_applicable"]},
+        "contradictions": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "release_family_id": "VIBE_ARF@0.1.2",
+  "version": "0.1.2",
+  "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d",
+  "profiles": {
+    "EDIT": {
+      "artifact": "VIBE_ARF_0.1.2_EDIT.zip",
+      "artifact_sha256": "c1b7a38a0c3d7aeddef8f0510f3dc074f419310c4429bbd71bff733ea9a1c40b",
+      "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+    },
+    "CLI_RUN": {
+      "artifact": "VIBE_ARF_0.1.2_CLI_RUN.zip",
+      "artifact_sha256": "cb50c97544cb2fe3823ddfb2eaea9e8d65732c8415b3675208da73e3872d64f8",
+      "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+    },
+    "MODEL_RUN": {
+      "artifact": "VIBE_ARF_0.1.2_MODEL_RUN.zip",
+      "artifact_sha256": "66a63ee8cf19d27908bf946cc12547492e3c7919d6693dc6741c463e16be31b2",
+      "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "release_family_id":"<playbook_id>@<version>",
+  "version":"<version>",
+  "canonical_source_sha256":"<sha256>",
+  "profiles":{
+    "EDIT":{"artifact_sha256":"<sha256>","canonical_source_sha256":"<sha256>"},
+    "CLI_RUN":{"artifact_sha256":"<sha256>","canonical_source_sha256":"<sha256>"},
+    "MODEL_RUN":{"artifact_sha256":"<sha256>","canonical_source_sha256":"<sha256>"}
+  }
+}

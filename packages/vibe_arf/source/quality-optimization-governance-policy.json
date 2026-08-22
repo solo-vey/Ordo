@@ -1,0 +1,111 @@
+{
+  "policy_id": "QUALITY_OPTIMIZATION_GOVERNANCE",
+  "version": "1.1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "cross_domain",
+  "purpose": "Govern quality and optimization decisions across distinct protected dimensions so local efficiency wins cannot replace semantic, authority, safety or artifact quality, and uncalibrated diagnostics cannot become score incentives.",
+  "acceptance_dimensions": {
+    "correctness": {
+      "protected": true,
+      "examples": [
+        "semantic correctness",
+        "required behavior",
+        "state/output consistency"
+      ]
+    },
+    "safety_authority": {
+      "protected": true,
+      "examples": [
+        "authority boundaries",
+        "provenance",
+        "grounding",
+        "fail-closed guards"
+      ]
+    },
+    "efficiency": {
+      "protected": true,
+      "examples": [
+        "wall time",
+        "tokens",
+        "bytes/context",
+        "execution/pass counts"
+      ]
+    },
+    "artifact_quality": {
+      "protected": true,
+      "examples": [
+        "completeness",
+        "readiness",
+        "materialized artifact integrity",
+        "human-facing usability"
+      ]
+    }
+  },
+  "dimension_rules": {
+    "no_single_dimension_substitution": true,
+    "protected_dimensions_must_be_reported_separately": true,
+    "hard_guard_failure_overrides_numeric_score": true
+  },
+  "calibration": {
+    "hard_law_compliance_reward": 0,
+    "uncalibrated_diagnostic_score_effect": 0,
+    "numeric_score_effect_requires_calibration_evidence": true,
+    "calibration_evidence_requires": [
+      "stable definition",
+      "independent detector/evaluator",
+      "non-duplicate harm or benefit",
+      "regression fixtures",
+      "bounded magnitude rationale"
+    ],
+    "same_evidence_double_counting_forbidden": true
+  },
+  "candidate_selection": {
+    "latest_is_best_by_default": false,
+    "best_so_far_requires_valid_candidate": true,
+    "strict_improvement_required_to_replace_best": true,
+    "invalid_or_hard_ineligible_candidate_cannot_replace_best": true,
+    "protected_dimension_eligibility_precedes_numeric_ranking": true,
+    "development_score_ranks_only_among_protected_dimension_eligible_candidates": true
+  },
+  "optimization_acceptance": {
+    "reject_if_any_protected_quality_dimension_regresses": true,
+    "end_to_end_improvement_required": true,
+    "local_metric_gain_alone_is_insufficient": true,
+    "same_regime_comparison_required": true,
+    "semantic_and_artifact_equivalence_required_for_performance_only_change": true,
+    "platform_overhead_must_be_separated_from_playbook_controlled_cost": true
+  },
+  "optimization_history": {
+    "append_only": true,
+    "required_fields": [
+      "problem",
+      "baseline_evidence",
+      "hypothesis",
+      "protected_invariants",
+      "regression_asset",
+      "change",
+      "comparison_evidence",
+      "measured_result",
+      "limitations",
+      "decision"
+    ],
+    "rule": "Retain rejected and accepted attempts; do not rewrite prior evidence to make the latest candidate appear best.",
+    "hash_chained": true,
+    "ledger": "source/optimization-history-ledger.json",
+    "validator": "tools/validate_optimization_history_ledger.py"
+  },
+  "degradation_diagnostics": {
+    "status": "OPPORTUNITY",
+    "score_effect": 0,
+    "signals": [
+      "time_degradation",
+      "token_degradation",
+      "pass_count_degradation"
+    ],
+    "rule": "Uncalibrated degradation is visible diagnostic evidence only; it cannot lower quality score or create a reward until calibrated."
+  },
+  "inheritance": {
+    "generated_playbooks": true,
+    "template": "authoring_templates/reusable/QUALITY_OPTIMIZATION_GOVERNANCE.template.yaml"
+  }
+}

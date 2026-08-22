@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "assembly_id": "GENERATED_PLAYBOOK_MODEL_RUN_PACKAGE",
+  "purpose": "Minimal Model Mode execution projection without CLI authority or editor/authoring surfaces.",
+  "required_members": [
+    "ordo.yml",
+    "source/program.ordo.yaml",
+    "START_HERE_MODEL_MODE.md",
+    "START_PROMPT_MODEL_MODE.md",
+    "DISTRIBUTION_PACKAGE_CONTRACT.json",
+    "MODEL_RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+    "DISTRIBUTION_MANIFEST.json",
+    "PACKAGE_CONTINUITY_MANIFEST.json"
+  ],
+  "rules": [
+    "independent consumer-aware model execution closure, never derived from CLI_RUN bytes",
+    "clean Model Mode startup",
+    "no cli_embedded/compiled/editor/authoring/test/development baggage unless contract explicitly proves runtime reachability and profile permits it",
+    "exact ZIP validation before delivery",
+    "shared canonical source identity with EDIT and CLI_RUN"
+  ],
+  "distribution_contract": "DISTRIBUTION_PACKAGE_CONTRACT.json",
+  "continuity_policy": "source/packaging-continuity-policy.json"
+}

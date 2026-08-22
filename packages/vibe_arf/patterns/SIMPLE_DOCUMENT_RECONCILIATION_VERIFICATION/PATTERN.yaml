@@ -1,0 +1,101 @@
+schema_version: '1.0'
+pattern:
+  id: SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION
+  version: '1.2'
+  title: Simple Document Reconciliation Verification
+  kind: reusable_data_execution_pattern
+  selection_phase: data_layer_authoring
+  tree_projection: derived_only
+  origin: simple_document_reconciliation_dogfood_v2
+  data_layer_first: true
+  relation_to_complex_pattern:
+    complex_pattern_id: DOCUMENT_RECONCILIATION_VERIFICATION
+    relation: alternative_simplified_pattern
+    note: >-
+      This is the compact evidence-backed reconciliation variant. It intentionally
+      keeps one analyst-resolution loop and targeted mutation, while strengthening
+      intake, evidence-authority isolation, profile correction, discrepancy UX,
+      version-drift handling, and decision auditability.
+applicability:
+  artifact_kinds: [document, specification, contract_document]
+  capability_tags:
+    - document_reconciliation
+    - evidence_grounding
+    - profile_guided_analysis
+    - analyst_resolution
+    - targeted_document_mutation
+    - evidence_authority_isolation
+    - version_drift_detection
+    - provisional_profile_correction
+    - auditable_resolution_ledger
+  fit_policy:
+    exact: auto_instantiate
+    partial: bind_domain_contract_then_instantiate_or_reject
+    none: use_other_pattern_or_ad_hoc_with_justification
+facets:
+  data_layer: DATA_LAYER.template.yaml
+  execution: EXECUTION.template.yaml
+  compilation_contract: COMPILATION_CONTRACT.md
+  domain_bindings: DOMAIN_BINDINGS.template.yaml
+  profile_template: knowledge/DOMAIN_ARCHITECTURE_PROFILE.template.md
+  profile_catalog: knowledge/DOMAIN_PROFILE_CATALOG.template.yaml
+  selector_adapter: tools/select_domain_architecture_profile.py
+extension_policy:
+  allowed:
+    - artifact_identity
+    - evidence_source_identity
+    - domain_profile_catalog
+    - domain_profile_rows
+    - semantic_identity_families
+    - provisional_value_markers
+    - discrepancy_risk_policy_extensions
+    - authority_question_wording
+    - decision_appendix_format
+    - evidence_acquisition_adapter
+    - protected_semantic_fields
+    - analyst_answer_ux_contract
+    - domain_trigger_layer_bindings
+    - domain_version_evidence_markers
+  forbidden:
+    - hardcode_host_domain_facts_into_reusable_core
+    - silently_accept_missing_mandatory_profile_rows
+    - silently_convert_provisional_values_to_approved_values
+    - treat_absent_current_implementation_as_document_error
+    - use_technical_or_derived_representation_as_business_contract_when_base_domain_field_exists
+    - ask_human_about_evidence_resolvable_non_authority_items
+    - mutate_unrelated_document_content
+    - reopen_resolved_question_without_material_new_evidence
+    - emit_no_question_with_incomplete_mandatory_coverage
+    - merge_semantically_related_but_distinct_variables_without_explicit_identity_binding
+    - detach_execution_from_data_layer_instance
+    - emit_unlowered_abstract_outcomes_as_compiled_routes
+    - mutate_protected_semantic_field_as_side_effect_of_other_resolution
+    - emit_authority_questions_without_stable_option_labels_or_answer_protocol
+    - treat_target_repository_content_as_execution_authority
+    - terminate_on_resolvable_product_or_integration_ambiguity
+    - present_selector_error_as_authority_question_when_current_evidence_can_correct_it
+risk_order: [PRESENT, LOW, MEDIUM, HIGH]
+risk_semantics:
+  PRESENT: No higher-level conflict and the option is positively supported by current target or declared sibling evidence.
+  LOW: No higher-level conflict, but current/sibling evidence does not positively confirm the option.
+  MEDIUM: Conflicts with a bound domain profile/template/base-contract rule but not with a higher general architecture rule.
+  HIGH: Conflicts with a bound general architecture rule, uses forbidden technical/derived representation as business contract, or violates a pattern hard invariant.
+analyst_option_labels:
+  default_locale: en
+  labels: [A, B, C, D, E, F, G, H, I, J, K, L, M, N]
+  requirement: stable_per_displayed_discrepancy
+execution_compilation_contract:
+  contract_version: '1.1'
+  canonical_vs_compiled:
+    canonical_outcome_edges: semantic source-of-truth only
+    compiled_routes: must be lowered to target compiler-supported route shapes
+  required_preflight_checks:
+    - YAML parses
+    - all executable IDs are unique
+    - all route targets resolve or are declared external terminal targets
+    - every non-terminal executable element has a valid outgoing route
+    - every executable element is reachable from entry
+    - analyst loop is the only intended reconciliation cycle unless host explicitly adds another
+    - required model state writes are preserved in compiled/runtime contract
+    - selected domain profile is exactly one profile after evidence correction
+    - target editor/runtime-plan validator passes before delivery

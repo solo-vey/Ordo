@@ -1,0 +1,125 @@
+{
+  "policy_id": "GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT",
+  "version": "3.0",
+  "default_package_profile": "edit",
+  "principles": [
+    "generated_playbook_is_a_controlled_artifact",
+    "production_package_is_self_contained_for_run_edit_validate_rematerialize",
+    "production_inclusion_is_allowlist_based_not_directory_dump",
+    "debug_handoff_evidence_is_separate_by_default",
+    "every_included_artifact_class_has_declared_purpose_and_inclusion_rule",
+    "production excludes generated simulation outputs and evaluator-only evidence except explicitly safe analyst-context references under access boundary",
+    "one_version_has_edit_cli_run_model_run_profiles",
+    "all_profiles_are_sibling_projections_of_one_canonical_source",
+    "release_requires_all_three_profiles_candidate_may_build_requested_subset",
+    "execution_profiles_use_independent_just_in_time_dependency_closures",
+    "reproducible_zip_bytes_required",
+    "profile_tests_and_fixtures_project_with_retained_contract",
+    "validator_applicability_is_profile_and_stage_aware",
+    "continuity_manifest_makes_each_profile_rebuildable_from_canonical_source",
+    "historical_candidates_are_evidence_not_source_of_truth"
+  ],
+  "package_profiles": {
+    "edit": {
+      "purpose": "Full master/engineering profile; canonical source plus all rebuild, Editor, tools, tests and authoring surfaces.",
+      "required_surfaces": [
+        "runtime",
+        "source",
+        "data_layer",
+        "analyst_context",
+        "authoring_templates",
+        "reusable_patterns",
+        "editor",
+        "validation",
+        "materialization"
+      ],
+      "excluded_classes": [
+        "development_history",
+        "intermediate_reports",
+        "large_traces",
+        "screenshots",
+        "golden_reference_artifacts",
+        "interpreter_cache"
+      ]
+    },
+    "cli_run": {
+      "purpose": "Minimal strict CLI/runtime execution profile.",
+      "selection": "jit_runtime_reachability_closure"
+    },
+    "model_run": {
+      "purpose": "Minimal Model Mode execution profile without CLI authority or authoring/editor surfaces.",
+      "selection": "jit_model_execution_reachability_closure",
+      "required_surfaces": [
+        "execution_source",
+        "model_mode_startup",
+        "runtime_reachable_resources",
+        "deterministic_helpers",
+        "output_templates",
+        "clean_mutable_seed"
+      ],
+      "forbidden_surfaces": [
+        "cli_authority",
+        "compiled_strict_runtime",
+        "editor_publication",
+        "authoring_data_layer",
+        "development_history",
+        "golden_reference_artifacts",
+        "evaluator_only_runtime_evidence"
+      ],
+      "mutable_context_initialization": "clean_seed",
+      "context_isolation": "fail_closed",
+      "minimality": "every_shipped_file_must_be_model_execution_reachable_or_declared_bootstrap"
+    },
+    "production": {
+      "alias_of": "edit",
+      "purpose": "Legacy production alias of EDIT distribution."
+    },
+    "debug_handoff": {
+      "extends": "production",
+      "additional_classes": [
+        "development_history",
+        "intermediate_reports",
+        "large_traces",
+        "screenshots",
+        "calibration_evidence",
+        "reference_metadata"
+      ],
+      "purpose": "Diagnostic/audit handoff with development history and evidence; not default distribution."
+    }
+  },
+  "generated_outputs": {
+    "default": "deny",
+    "manifest": "generated_outputs/PRODUCTION_DELIVERABLES.json",
+    "inclusion_requires": [
+      "production_deliverable_true",
+      "allowed_role",
+      "exact_sha256_match"
+    ],
+    "allowed_roles": [
+      "declared_delivery"
+    ],
+    "forbidden_roles": [
+      "simulation",
+      "evaluator",
+      "reference",
+      "calibration",
+      "best_candidate",
+      "expected_output"
+    ],
+    "undeclared_generated_output": "fail_closed"
+  },
+  "dependency_closure": {
+    "required": true,
+    "manifest": "PRODUCTION_DEPENDENCY_CLOSURE.json",
+    "policy": "source/production-dependency-closure-policy.json",
+    "principle": "reachability_not_directory_snapshot"
+  },
+  "distribution_rule": "one_version_three_sibling_profiles",
+  "continuity": {
+    "policy": "source/packaging-continuity-policy.json",
+    "manifest": "PACKAGE_CONTINUITY_MANIFEST.json",
+    "validator_applicability": "source/validator-applicability-policy.json"
+  },
+  "authoring_master_rule": "runtime/model/cli profiles are generated projections; pruning a distribution must never mutate the canonical EDIT authoring master",
+  "release_family_manifest": "RELEASE_FAMILY_MANIFEST.json"
+}

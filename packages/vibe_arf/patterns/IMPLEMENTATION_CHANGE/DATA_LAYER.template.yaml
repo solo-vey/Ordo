@@ -1,0 +1,69 @@
+schema_version: '1.0'
+pattern_id: IMPLEMENTATION_CHANGE
+pattern_version: '1.1'
+module_kind: reusable_data_layer_module_template
+parameters:
+  required:
+  - instance_id
+  optional:
+  - artifact_id
+  - prefix
+required_roles:
+- role: baseline
+  binds_to: information_or_artifact
+  required: true
+- role: change_request
+  binds_to: information
+  required: true
+- role: impact_set
+  binds_to: information
+  required: true
+- role: change_patch
+  binds_to: information_or_artifact
+  required: true
+- role: verification_evidence
+  binds_to: information
+  required: true
+merge_semantics:
+  mode: bind_existing_or_instantiate_missing
+  canonical_truth: project_data_layer
+  instance_catalog_required: true
+  field_provenance_required: true
+  pattern_instance_reference: pattern_id+pattern_version+instance_digest
+  execution_ids_in_canonical_data_layer: forbidden
+constraints:
+- all_required_roles_bound
+- bindings_resolve_to_project_data_layer
+- no_parallel_semantic_truth
+- pattern_version_and_digest_persisted
+- requirement_origin_precedes_pattern_selection_for_reward
+- no_execution_node_or_gate_ids_in_pattern_instance
+module_objects:
+- role: baseline
+  kind: information_or_artifact
+  required: true
+- role: change_request
+  kind: information
+  required: true
+- role: impact_set
+  kind: information
+  required: true
+- role: change_patch
+  kind: information_or_artifact
+  required: true
+- role: verification_evidence
+  kind: information
+  required: true
+module_edges:
+- from_role: baseline
+  to_role: impact_set
+  type: constrains
+- from_role: change_request
+  to_role: impact_set
+  type: derived_from
+- from_role: impact_set
+  to_role: change_patch
+  type: constrains
+- from_role: change_patch
+  to_role: verification_evidence
+  type: validated_by

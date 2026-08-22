@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_FAST_AUTHORING_LIFECYCLE_V1",
+  "status": "ACTIVE_ALPHA20_CANDIDATE_POLICY",
+  "principle": "DEVELOP_FAST -> CHECKPOINT_OFTEN -> VERIFY_DELTA -> FULL_VERIFY_AT_MILESTONE",
+  "default_mode": "FAST_EDIT",
+  "rules": [
+    "Ordinary applied-playbook authoring defaults to FAST_EDIT without asking the user to choose a verification mode.",
+    "After a local edit, run only the minimum mechanically justified checks for the changed scope and its direct dependency closure.",
+    "A verified checkpoint is trusted as the regression baseline; subsequent authoring verifies the delta from that checkpoint instead of replaying previously proven history.",
+    "PLAYBOOK_VERIFY is required before an applied playbook is handed off, shared as a working candidate, or promoted to a verified checkpoint.",
+    "FULL_VERIFY/FULL_FACTORY is reserved for explicit milestone/finalization/readiness/acceptance, shared factory or canonical foundation changes, or unknown/ambiguous impact.",
+    "A text-only edit must not trigger full playbook or factory regression unless impact analysis proves that the edited text is itself shared executable policy.",
+    "FAST_EDIT and PLAYBOOK_VERIFY are feedback/readiness scopes and must never be reported as full release verification.",
+    "Measure verification wall-clock time. Material slowdown of a previously fast contour is a DX regression to investigate rather than silently accepting broader checks.",
+    "PLAYBOOK_VERIFY for a generated candidate must include the Vibe-owned generated_playbook_contract and replay-package validation before analyst-visible handoff.",
+    "Known machine-detectable generated-playbook defects are repaired inside the Vibe loop; do not spend analyst time on YAML/editor-contract debugging that trusted gates can detect.",
+    "Target first analyst-visible alpha within about 10 minutes when source inputs are sufficient; investigate loops dominated by repeated Editor/YAML repair as a factory regression."
+  ],
+  "interaction_contract": {
+    "normal_loop": "user request -> apply change -> minimal affected checks -> concise result -> continue",
+    "no_intermediate_confirmation_for_model_owned_changes": true,
+    "full_verification_trigger": [
+      "user explicitly asks to finalize/release/fully verify",
+      "factory/shared/canonical foundation changed",
+      "impact closure is unknown or ambiguous"
+    ],
+    "checkpoint_use": "Promote coherent passing states frequently so future checks use checkpoint delta rather than full history."
+  },
+  "time_expectations": {
+    "FAST_EDIT": "seconds for a small applied playbook; investigate strong regression",
+    "PLAYBOOK_VERIFY": "tens of seconds to local-playbook minutes depending on fixtures; no factory-wide suite",
+    "FULL_FACTORY": "may be slow and is intentionally rare"
+  }
+}

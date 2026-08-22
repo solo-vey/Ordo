@@ -1,0 +1,68 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_ORDO_BUILD
+  version: '1.0'
+  title: Ordo Build
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_B_BUILD_READINESS
+    type: automatic
+    title: Build Readiness
+    next: N_B_CONTRACT_MAPPING
+    responsibility_id: build_readiness
+  - id: N_B_CONTRACT_MAPPING
+    type: automatic
+    title: Contract Mapping
+    next: N_B_STATE_ARTIFACT_SCHEMA
+    responsibility_id: contract_mapping
+  - id: N_B_STATE_ARTIFACT_SCHEMA
+    type: automatic
+    title: State Artifact Schema
+    next: N_B_NODE_ACTION_SYNTHESIS
+    responsibility_id: state_artifact_schema
+  - id: N_B_NODE_ACTION_SYNTHESIS
+    type: automatic
+    title: Node Action Synthesis
+    next: N_B_GATE_AUTHORITY_SYNTHESIS
+    responsibility_id: node_action_synthesis
+  - id: N_B_GATE_AUTHORITY_SYNTHESIS
+    type: automatic
+    title: Gate Authority Synthesis
+    next: N_B_GRAPH_RECOVERY_WIRING
+    responsibility_id: gate_authority_synthesis
+  - id: N_B_GRAPH_RECOVERY_WIRING
+    type: automatic
+    title: Graph Recovery Wiring
+    next: N_B_REUSE_PROVENANCE_ASSEMBLY
+    responsibility_id: graph_recovery_wiring
+  - id: N_B_REUSE_PROVENANCE_ASSEMBLY
+    type: automatic
+    title: Reuse Provenance Assembly
+    next: N_B_SOURCE_MATERIALIZE
+    responsibility_id: reuse_provenance_assembly
+  - id: N_B_SOURCE_MATERIALIZE
+    type: automatic
+    title: Source Candidate Materialization
+    next: N_VERIFY_SOURCE
+    responsibility_id: source_candidate_materialization
+  - id: N_VERIFY_SOURCE
+    type: automatic
+    title: Source Verification Execution
+    next: G_SOURCE_VERIFICATION_PASS
+    responsibility_id: source_verification_execution
+  - id: G_SOURCE_VERIFICATION_PASS
+    type: automatic
+    title: Source Verification Gate
+    next: '{{success_exit_node}}'
+    responsibility_id: source_verification_gate
+  gates: []

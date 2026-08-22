@@ -1,0 +1,152 @@
+schema_version: '1.2'
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_policy: derive_only_no_tree_reselection
+canonical_data_layer_inputs:
+- authoring/information_object_catalog.yaml
+- authoring/information_group_catalog.yaml
+- authoring/artifact_catalog.yaml
+- authoring/information_flow_graph.yaml
+- authoring/interaction_projection.yaml
+- authoring/capability_requirement_catalog.yaml
+- authoring/pattern_instance_catalog.yaml
+canonical_data_layer_digest: 2a8e7db66985ef327e653b687fe3dd177938251c96daac55b5e9bb9bf1b1372f
+fragments:
+- pattern_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  pattern_id: DOCUMENT_MATERIALIZATION
+  pattern_version: '1.1'
+  instance_digest: c1facae2aa68cf1719c37c35284c97b887f3411370e638b7b3f2a2ff5c557b5f
+  artifact_id: A_BUSINESS_VIEW
+  projection_source: pattern_execution_template
+  selection_performed_at_tree_stage: false
+  components:
+  - role: readiness_check
+    component_id: N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  - role: readiness_gate
+    component_id: G_PI_BUSINESS_VIEW_DOCUMENT_READINESS_GATE
+    kind: gate
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  - role: materialize
+    component_id: N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE
+    kind: node
+    responsibility_class: contract_classified
+    data_layer_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  - role: rendered_artifact_validate
+    component_id: N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  - role: rendered_artifact_gate
+    component_id: G_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_GATE
+    kind: gate
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  - role: register_artifact
+    component_id: N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  edges:
+  - from: N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK
+    type: direct
+    outcome: NEXT
+    to: G_PI_BUSINESS_VIEW_DOCUMENT_READINESS_GATE
+    to_role: readiness_gate
+  - from: G_PI_BUSINESS_VIEW_DOCUMENT_READINESS_GATE
+    type: direct
+    outcome: NEXT
+    to: N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE
+    to_role: materialize
+  - from: N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE
+    type: direct
+    outcome: NEXT
+    to: N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE
+    to_role: rendered_artifact_validate
+  - from: N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE
+    type: direct
+    outcome: NEXT
+    to: G_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_GATE
+    to_role: rendered_artifact_gate
+  - from: G_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_GATE
+    type: direct
+    outcome: NEXT
+    to: N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT
+    to_role: register_artifact
+- pattern_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  pattern_id: PRODUCTION_PACKAGE_MATERIALIZATION
+  pattern_version: '1.1'
+  instance_digest: 67b0175fafc547204df3a3bb5b0373f9dbfc355642e6ea9fb67a597e3bcb8712
+  artifact_id: A_GENERATED_PLAYBOOK_PACKAGE
+  projection_source: pattern_execution_template
+  selection_performed_at_tree_stage: false
+  components:
+  - role: package_readiness_check
+    component_id: N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  - role: package_readiness_gate
+    component_id: G_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_GATE
+    kind: gate
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  - role: dependency_closure
+    component_id: N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  - role: assemble_package
+    component_id: N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  - role: validate_package
+    component_id: N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  - role: exact_extract_validate
+    component_id: N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  - role: record_delivery_evidence
+    component_id: N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE
+    kind: node
+    responsibility_class: deterministic
+    data_layer_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  edges:
+  - from: N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+    type: direct
+    outcome: NEXT
+    to: G_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_GATE
+    to_role: package_readiness_gate
+  - from: G_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_GATE
+    type: direct
+    outcome: NEXT
+    to: N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+    to_role: dependency_closure
+  - from: N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+    type: direct
+    outcome: NEXT
+    to: N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+    to_role: assemble_package
+  - from: N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+    type: direct
+    outcome: NEXT
+    to: N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+    to_role: validate_package
+  - from: N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+    type: direct
+    outcome: NEXT
+    to: N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+    to_role: exact_extract_validate
+  - from: N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+    type: direct
+    outcome: NEXT
+    to: N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE
+    to_role: record_delivery_evidence
+projection_digest: 313c9dbc0daf54070114091f875ea1c45af564a66c740e2b4fe6e10b2b018a33

@@ -1,0 +1,16 @@
+schema_version: '1.0'
+template_kind: validator
+validator_id: <VALIDATOR_ID>
+executor: python
+checks:
+- id: required_structure
+  type: deterministic
+- id: binding_completeness
+  type: deterministic
+- id: provenance_presence
+  type: deterministic
+- id: physical_materialization
+  type: deterministic
+result_contract:
+  PASS: all required checks pass
+  FAIL: one or more required checks fail

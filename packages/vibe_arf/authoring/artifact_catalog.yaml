@@ -1,0 +1,81 @@
+schema_version: '1.0'
+artifacts:
+- id: A_BUSINESS_VIEW
+  kind: document
+  inputs:
+  - I_BUSINESS_VIEW
+  materialization:
+    required: true
+  verification:
+    required: true
+  lifecycle: intermediate
+  pattern_binding:
+    pattern_id: DOCUMENT_MATERIALIZATION
+    pattern_version: '1.1'
+    instance_id: PI_BUSINESS_VIEW_DOCUMENT
+    selection_phase: data_layer_authoring
+  requirement_origin: project_artifact_contract
+- id: A_GENERATED_PLAYBOOK_SOURCE
+  kind: ordo_source
+  inputs:
+  - I_ORDO_BUILD_IR
+  - I_ARTIFACT_CONTRACT_REGISTRY
+  - I_TRACEABILITY_GRAPH
+  materialization:
+    required: true
+  verification:
+    required: true
+  lifecycle: intermediate
+  requirement_origin: project_artifact_contract
+- id: A_VERIFICATION_EVIDENCE
+  kind: evidence_bundle
+  inputs:
+  - I_VERIFICATION_PROFILE
+  - I_VERIFICATION_EVIDENCE
+  materialization:
+    required: true
+  verification:
+    required: true
+  lifecycle: intermediate
+  requirement_origin: project_artifact_contract
+- id: A_GENERATED_PLAYBOOK_PACKAGE
+  kind: archive
+  inputs:
+  - A_GENERATED_PLAYBOOK_SOURCE
+  - A_VERIFICATION_EVIDENCE
+  - I_PACKAGE_VALIDATION_STATUS
+  - I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  materialization:
+    required: true
+  verification:
+    required: true
+  lifecycle: terminal
+  pattern_binding:
+    pattern_id: PRODUCTION_PACKAGE_MATERIALIZATION
+    pattern_version: '1.1'
+    instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+    selection_phase: data_layer_authoring
+  requirement_origin: project_artifact_contract
+  distribution_set:
+    members:
+    - EDIT
+    - CLI_RUN
+    - MODEL_RUN
+    same_version: true
+    shared_source_identity_required: true
+    business_semantic_parity_required: true
+    release_requires_all_members: true
+    candidate_may_build_requested_subset: true
+- id: A_DELIVERY_HANDOFF
+  kind: handoff
+  inputs:
+  - A_GENERATED_PLAYBOOK_PACKAGE
+  - A_BUSINESS_VIEW
+  - I_ACCEPTANCE_STATUS
+  - I_DELIVERY_EVIDENCE
+  materialization:
+    required: true
+  verification:
+    required: true
+  lifecycle: terminal
+  requirement_origin: project_artifact_contract

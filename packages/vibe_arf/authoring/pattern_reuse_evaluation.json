@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "producer": "tools/evaluate_pattern_reuse_opportunities.py",
+  "selection_input_snapshot_digest": "7e9deeccaf5a7f7cd284bf3135bf92db7507f8a09236a4194ca0b336edf12b5d",
+  "qualified_reuse_events": [
+    {
+      "opportunity_id": "artifact:A_BUSINESS_VIEW:DOCUMENT_MATERIALIZATION",
+      "semantic_responsibility_id": "artifact:A_BUSINESS_VIEW:DOCUMENT_MATERIALIZATION",
+      "pattern_id": "DOCUMENT_MATERIALIZATION",
+      "pattern_instance_id": "PI_BUSINESS_VIEW_DOCUMENT",
+      "artifact_id": "A_BUSINESS_VIEW",
+      "capability_requirement_id": null,
+      "requirement_origin": "project_artifact_contract",
+      "status": "QUALIFIED_REUSE",
+      "mechanically_verified": true,
+      "graph_realization_status": "PASS",
+      "miss_reason": null,
+      "candidate_evidence": "pre-library requirement snapshot + validated instance PI_BUSINESS_VIEW_DOCUMENT + exact graph-realization PASS",
+      "awarded_points": 50,
+      "potential_points": 50
+    },
+    {
+      "opportunity_id": "artifact:A_GENERATED_PLAYBOOK_PACKAGE:PRODUCTION_PACKAGE_MATERIALIZATION",
+      "semantic_responsibility_id": "artifact:A_GENERATED_PLAYBOOK_PACKAGE:PRODUCTION_PACKAGE_MATERIALIZATION",
+      "pattern_id": "PRODUCTION_PACKAGE_MATERIALIZATION",
+      "pattern_instance_id": "PI_GENERATED_PLAYBOOK_PACKAGE",
+      "artifact_id": "A_GENERATED_PLAYBOOK_PACKAGE",
+      "capability_requirement_id": null,
+      "requirement_origin": "project_artifact_contract",
+      "status": "QUALIFIED_REUSE",
+      "mechanically_verified": true,
+      "graph_realization_status": "PASS",
+      "miss_reason": null,
+      "candidate_evidence": "pre-library requirement snapshot + validated instance PI_GENERATED_PLAYBOOK_PACKAGE + exact graph-realization PASS",
+      "awarded_points": 50,
+      "potential_points": 50
+    }
+  ],
+  "opportunities": [
+    {
+      "opportunity_id": "artifact:A_BUSINESS_VIEW:DOCUMENT_MATERIALIZATION",
+      "semantic_responsibility_id": "artifact:A_BUSINESS_VIEW:DOCUMENT_MATERIALIZATION",
+      "pattern_id": "DOCUMENT_MATERIALIZATION",
+      "pattern_instance_id": "PI_BUSINESS_VIEW_DOCUMENT",
+      "artifact_id": "A_BUSINESS_VIEW",
+      "capability_requirement_id": null,
+      "requirement_origin": "project_artifact_contract",
+      "status": "QUALIFIED_REUSE",
+      "mechanically_verified": true,
+      "graph_realization_status": "PASS",
+      "miss_reason": null,
+      "candidate_evidence": "pre-library requirement snapshot + validated instance PI_BUSINESS_VIEW_DOCUMENT + exact graph-realization PASS",
+      "awarded_points": 50,
+      "potential_points": 50
+    },
+    {
+      "opportunity_id": "artifact:A_GENERATED_PLAYBOOK_PACKAGE:PRODUCTION_PACKAGE_MATERIALIZATION",
+      "semantic_responsibility_id": "artifact:A_GENERATED_PLAYBOOK_PACKAGE:PRODUCTION_PACKAGE_MATERIALIZATION",
+      "pattern_id": "PRODUCTION_PACKAGE_MATERIALIZATION",
+      "pattern_instance_id": "PI_GENERATED_PLAYBOOK_PACKAGE",
+      "artifact_id": "A_GENERATED_PLAYBOOK_PACKAGE",
+      "capability_requirement_id": null,
+      "requirement_origin": "project_artifact_contract",
+      "status": "QUALIFIED_REUSE",
+      "mechanically_verified": true,
+      "graph_realization_status": "PASS",
+      "miss_reason": null,
+      "candidate_evidence": "pre-library requirement snapshot + validated instance PI_GENERATED_PLAYBOOK_PACKAGE + exact graph-realization PASS",
+      "awarded_points": 50,
+      "potential_points": 50
+    }
+  ],
+  "missed_reward_opportunities": [],
+  "total_awarded_points": 100,
+  "total_potential_points": 100,
+  "graph_realization_status": "PASS",
+  "graph_realization_report": {
+    "schema_version": "1.0",
+    "status": "PASS",
+    "producer": "tools/validate_pattern_graph_realization.py",
+    "source": "source/program.ordo.yaml",
+    "source_sha256": "01650b1256fef84dddd24a95330671c0c570e47592aa0480aa62d7de0dbf9bd9",
+    "pattern_projection_digest": "aced02246af67f2fcc239d2beb457ecccc615ed2e6f96681b13dca23d505bd5c",
+    "instances": [
+      {
+        "pattern_instance_id": "PI_BUSINESS_VIEW_DOCUMENT",
+        "pattern_id": "DOCUMENT_MATERIALIZATION",
+        "pattern_version": "1.1",
+        "instance_digest": "c1facae2aa68cf1719c37c35284c97b887f3411370e638b7b3f2a2ff5c557b5f",
+        "status": "PASS",
+        "missing_components": [],
+        "kind_mismatches": [],
+        "duplicate_components": [],
+        "edge_failures": [],
+        "component_count": 6,
+        "edge_count": 5
+      },
+      {
+        "pattern_instance_id": "PI_GENERATED_PLAYBOOK_PACKAGE",
+        "pattern_id": "PRODUCTION_PACKAGE_MATERIALIZATION",
+        "pattern_version": "1.1",
+        "instance_digest": "67b0175fafc547204df3a3bb5b0373f9dbfc355642e6ea9fb67a597e3bcb8712",
+        "status": "PASS",
+        "missing_components": [],
+        "kind_mismatches": [],
+        "duplicate_components": [],
+        "edge_failures": [],
+        "component_count": 7,
+        "edge_count": 6
+      }
+    ],
+    "realized_instances": 2,
+    "required_instances": 2
+  },
+  "report_digest": "b5315059b1c3fbdb9ea302d8cc715adfb3be69a273f2acda890ec0d910adf649"
+}

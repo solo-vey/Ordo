@@ -1,0 +1,4 @@
+artifact:
+  expected_path: generated_outputs/current/artifact.ext
+  presentation: download_link
+  required_before_next: true

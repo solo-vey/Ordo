@@ -1,0 +1,35 @@
+{
+  "policy_id": "THREE_PROFILE_RELEASE_DISTRIBUTION",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "canonical_profiles": [
+    "EDIT",
+    "CLI_RUN",
+    "MODEL_RUN"
+  ],
+  "projection_model": "sibling_from_one_canonical_source",
+  "release_requires": [
+    "EDIT",
+    "CLI_RUN",
+    "MODEL_RUN"
+  ],
+  "candidate_materialization": "requested_subset_or_all",
+  "source_parity": [
+    "version",
+    "canonical_source_identity",
+    "semantic_contract_parity"
+  ],
+  "legacy_aliases": [
+    "dev",
+    "run",
+    "pair"
+  ],
+  "rule": "Never maintain profile-specific business logic or independently writable canonical sources.",
+  "authoring_master": "canonical_non_destructive_source_of_all_profiles",
+  "release_family_manifest": "RELEASE_FAMILY_MANIFEST.json",
+  "edit_requires": [
+    "data_layer_present",
+    "data_layer_source_hash_match",
+    "data_layer_projection_current"
+  ]
+}

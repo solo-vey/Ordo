@@ -1,0 +1,35 @@
+{
+  "format": "vibe-graph-locality-incentive-policy/v1",
+  "status": "canonical_working_policy",
+  "semantic_source": "authoring/information_flow_graph.yaml",
+  "principles": {
+    "data_layer_first": true,
+    "projection_geometry_is_not_semantic_distance": true,
+    "nearest_reachable_validating_gate_wins": true,
+    "missing_validation_is_out_of_scope_for_locality_metrics": true
+  },
+  "metrics": {
+    "VALIDATION_LATENCY": {
+      "definition": "Shortest directed dependency-path edge count from an information node to the earliest reachable validation gate that explicitly covers that information.",
+      "healthy_baseline": "distance <= 1",
+      "current_enforcement": "OPPORTUNITY",
+      "score_effect": 0
+    },
+    "UNVALIDATED_EXPOSURE": {
+      "definition": "Count of downstream semantic nodes reached strictly before the earliest validating gate.",
+      "healthy_baseline": "0 exposed nodes",
+      "current_enforcement": "OPPORTUNITY",
+      "score_effect": 0
+    },
+    "ROLLBACK_SPAN": {
+      "definition": "Count of downstream information or artifact nodes materialized strictly before the earliest validating gate.",
+      "healthy_baseline": "0 rollback nodes",
+      "current_enforcement": "OPPORTUNITY",
+      "score_effect": 0
+    }
+  },
+  "future_calibration": {
+    "numeric_penalties_enabled": false,
+    "rule": "Do not activate bounded penalties or rewards until calibration against representative playbooks and anti-farming regressions is complete."
+  }
+}

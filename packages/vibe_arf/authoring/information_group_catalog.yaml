@@ -1,0 +1,209 @@
+schema_version: '1.0'
+catalog_language_policy:
+  default_language: en
+groups:
+- id: G_INPUT
+  members:
+  - I_RAW_USER_INTENT
+  - I_SOURCE_MATERIALS
+  - I_DESIRED_ARTIFACT_REFS
+  - I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  display:
+    language: en
+    title: Intent and sources
+    description: Initial analyst intent, source materials and desired outputs.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids: []
+- id: G_UNDERSTANDING
+  members:
+  - I_SOURCE_ASSIMILATION
+  - I_EPISTEMIC_RECORDS
+  - I_DOMAIN_ACTOR_MODEL
+  - I_ARTIFACT_SURFACE
+  - I_RULE_AUTHORITY_MODEL
+  display:
+    language: en
+    title: Understanding
+    description: Assimilated domain knowledge, actors, artifact surface and authority.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_UNDERSTANDING
+- id: G_INFORMATION_MODEL
+  members:
+  - I_INFORMATION_OBJECT_CATALOG
+  - I_INFORMATION_GROUP_CATALOG
+  - I_INFORMATION_FLOW_GRAPH
+  - I_INFORMATION_LIFECYCLE_AUTHORITY
+  - I_INTERACTION_PROJECTION
+  - I_REVIEW_BUNDLE_CATALOG
+  - I_PROPOSAL_CANONICALIZATION
+  - I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  - I_PATTERN_INSTANCE_CATALOG
+  - I_CAPABILITY_REQUIREMENT_CATALOG
+  - I_PATTERN_APPLICABILITY_RESULT
+  - I_PATTERN_FIT_RESOLUTION
+  - I_PATTERN_DATA_LAYER_EXPANSION
+  - I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  - I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  - I_FIELD_RESOLUTION_STATUS_CONTRACT
+  - I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  display:
+    language: en
+    title: Information model
+    description: Information objects, semantic groups, dependencies, lifecycle and interaction projection.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_INFORMATION_MODEL
+    - IG_PATTERN_FOUNDATION
+    - IG_PATTERN_SELECTION_INPUT
+    - IG_PATTERN_APPLICABILITY
+    - IG_PATTERN_FIT
+    - IG_PATTERN_INSTANCE
+    - IG_PATTERN_EXPANSION
+- id: G_PROCESS_DESIGN
+  members:
+  - I_PROCESS_MODEL
+  - I_PARAMETER_LEDGER
+  - I_HUMAN_DECISION_NEEDS
+  - I_BUSINESS_PROCESS_DESIGN_IR
+  - I_INTERACTIVE_COMPLETENESS_CONTRACT
+  - I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  - I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  display:
+    language: en
+    title: Process design
+    description: Parameter closure, human-decision needs and business process design.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_PROCESS_DESIGN
+- id: G_ARTIFACTS
+  members:
+  - I_ARTIFACT_CONTRACT_REGISTRY
+  - I_TRACEABILITY_GRAPH
+  - I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  - I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  - I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  - I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  display:
+    language: en
+    title: Artifact contracts
+    description: Artifact contracts and traceability between business requirements and outputs.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_ARTIFACT_CONTRACT
+- id: G_BUILD
+  members:
+  - I_ORDO_BUILD_IR
+  - I_GENERATED_SOURCE_STATUS
+  - I_APPROVAL_LEDGER_CONTRACT
+  - I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  - I_INFORMATION_PRESERVATION_CONTRACT
+  - I_PATTERN_EXECUTION_PROJECTION
+  - I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  - I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  display:
+    language: en
+    title: Ordo build
+    description: Executable Ordo build model and materialized source status.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_BUILD_SOURCE
+    - IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+- id: G_VERIFICATION
+  members:
+  - I_VERIFICATION_PROFILE
+  - I_VERIFICATION_EVIDENCE
+  - I_REVIEW_FINDINGS
+  - I_SIMULATION_CONTRACT
+  - I_SIMULATION_FIXTURES
+  - I_SIMULATION_EVIDENCE
+  - I_DEFECT_OWNERSHIP
+  - I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  - I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  - I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  - I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  - I_BUSINESS_VIEW_RENDER_VALIDATION
+  - I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  - I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  - I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  - I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  display:
+    language: en
+    title: Verification and review
+    description: Verification profile, evidence, findings and readiness.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_VERIFICATION
+- id: G_CHANGE_REPAIR
+  members:
+  - I_REPAIR_REGRESSION_MEMORY
+  - I_CHANGE_IMPACT_PLAN
+  - I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  - I_PATTERN_REUSE_SCORING_CONTRACT
+  - I_PATTERN_REUSE_EVALUATION
+  - I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  - I_OPTIMIZATION_TIMING_EVIDENCE
+  - I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  - I_PERFORMANCE_AB_CONTRACT
+  - I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  - I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  - I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  - I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  - I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  - I_OBSERVABILITY_DEBUG_CONTRACT
+  - I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  - I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  display:
+    language: en
+    title: Repair and change
+    description: Repair memory and selective impact plans.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IG_OPTIMIZATION_TIMING_EVIDENCE
+- id: G_DELIVERY
+  members:
+  - I_BUSINESS_VIEW
+  - I_ACCEPTANCE_STATUS
+  - I_PACKAGE_VALIDATION_STATUS
+  - I_DELIVERY_EVIDENCE
+  - I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  - I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  - I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  - I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  - I_VISIBLE_DEBUG_TIMING_CONTRACT
+  - I_PACKAGING_CONTINUITY_CONTRACT
+  display:
+    language: en
+    title: Acceptance and delivery
+    description: Business view, acceptance, packaging and delivery evidence.
+  interaction_policy:
+    progressive: true
+    proposal_first_when_derivable: true
+  validation:
+    gate_ids:
+    - IA_ANALYST_ACCEPTANCE
+    - IG_DELIVERY

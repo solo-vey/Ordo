@@ -1,0 +1,45 @@
+kind: ordo_tree_module_library
+version: '1.0'
+library_id: VIBE_ARF_INTERNAL_SUBTREES
+maturity: stable_optional
+templates:
+- id: TM_UNDERSTANDING_PROCESS_MODEL
+  version: '1.0'
+  path: templates/TM_UNDERSTANDING_PROCESS_MODEL.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: UNDERSTANDING_PROCESS_MODEL.'
+- id: TM_PARAMETER_CLOSURE
+  version: '1.0'
+  path: templates/TM_PARAMETER_CLOSURE.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: PARAMETER_CLOSURE.'
+- id: TM_AUTONOMOUS_DESIGN
+  version: '1.0'
+  path: templates/TM_AUTONOMOUS_DESIGN.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: AUTONOMOUS_DESIGN.'
+- id: TM_ARTIFACT_CONTRACT
+  version: '1.0'
+  path: templates/TM_ARTIFACT_CONTRACT.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: ARTIFACT_CONTRACT.'
+- id: TM_KNOWLEDGE_TRACE_SYNC
+  version: '1.0'
+  path: templates/TM_KNOWLEDGE_TRACE_SYNC.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: KNOWLEDGE_TRACE_SYNC.'
+- id: TM_ORDO_BUILD
+  version: '1.0'
+  path: templates/TM_ORDO_BUILD.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: ORDO_BUILD.'
+- id: TM_SELF_REVIEW
+  version: '1.0'
+  path: templates/TM_SELF_REVIEW.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: SELF_REVIEW.'
+- id: TM_AUTONOMOUS_REPAIR
+  version: '1.0'
+  path: templates/TM_AUTONOMOUS_REPAIR.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: AUTONOMOUS_REPAIR.'
+- id: TM_CHANGE_IMPACT
+  version: '1.0'
+  path: templates/TM_CHANGE_IMPACT.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: CHANGE_IMPACT.'
+- id: TM_PACKAGE_REVISION_DELIVERY
+  version: '1.0'
+  path: templates/TM_PACKAGE_REVISION_DELIVERY.tree-template.yaml
+  purpose: 'Internal atomic responsibility subtree: PACKAGE_REVISION_DELIVERY.'

@@ -1,0 +1,28 @@
+schema: vibe.simple_document_reconciliation.profile_catalog.v1
+selector:
+  field_labels:
+  - <DOMAIN_PROFILE_FIELD_LABEL_1>
+  - <DOMAIN_PROFILE_FIELD_LABEL_2>
+  provisional_markers:
+  - pending approval
+  - <OPTIONAL_MARKER>
+profiles:
+  <PROFILE_KEY_1>:
+    aliases:
+    - <PROFILE_KEY_1>
+    - <OPTIONAL_ALIAS>
+    profile_path: knowledge/<GENERATED_PROFILE_FILE_1>.md
+  <PROFILE_KEY_2>:
+    aliases:
+    - <PROFILE_KEY_2>
+    profile_path: knowledge/<GENERATED_PROFILE_FILE_2>.md
+schema_version: '1.0'
+pattern_id: SIMPLE_DOCUMENT_RECONCILIATION_VERIFICATION
+pattern_version: '1.2'
+selection_contract:
+  initial_selection_is_provisional: true
+  current_evidence_must_confirm_or_correct: true
+  correction_requires_human_authority: false
+  discard_stale_profile_findings_after_correction: true
+  exactly_one_final_profile: true
+  ambiguous_after_evidence: fail_closed_or_domain_defined

@@ -1,0 +1,47 @@
+{
+  "policy_id": "ANALYST_CONTEXT_PRESERVATION",
+  "version": "1.0",
+  "status": "mandatory",
+  "production_package_surface": "analyst_context",
+  "purpose": "Preserve analyst-provided information needed for future editing, evaluation, rematerialization or refresh without treating it as debug history.",
+  "retention_modes": {
+    "embed_authoritative": "Stable analyst-provided source or decision retained in production package.",
+    "embed_evaluator_only": "Stable golden/reference artifact retained under evaluator-only access boundary.",
+    "summary_plus_refresh_record": "Large or volatile source is not embedded by default; retain provenance, fingerprint/locator, analyst-approved or derived summary, dependencies and refresh-required marker.",
+    "metadata_only": "Retain existence/provenance/dependency record when content retention is unnecessary or unsafe."
+  },
+  "classification_required": [
+    "purpose",
+    "authority",
+    "volatility",
+    "size_class",
+    "future_use",
+    "retention_mode",
+    "access_scope"
+  ],
+  "volatile_or_large_source": {
+    "default_retention": "summary_plus_refresh_record",
+    "must_mark_refresh_required": true,
+    "reason": "stale large sources must not become false source-of-truth"
+  },
+  "provenance": {
+    "field_or_item_level": true,
+    "required": [
+      "source_id",
+      "provided_by",
+      "captured_at",
+      "content_hash_or_external_fingerprint",
+      "authority_status"
+    ]
+  },
+  "reference_access": {
+    "full_golden_visibility": "evaluator_only",
+    "generator_visibility": "sanitized_metadata_or_derived_requirements_only",
+    "optimizer_visibility": "sanitized_remediation_only"
+  },
+  "required_files": [
+    "analyst_context/context_catalog.json",
+    "analyst_context/README.md"
+  ],
+  "reuse_rule": "On later edit, inspect context catalog first; refresh any record marked refresh_required before relying on time-volatile content."
+}

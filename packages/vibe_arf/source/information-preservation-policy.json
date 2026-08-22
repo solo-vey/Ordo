@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_INFORMATION_PRESERVATION_MONOTONIC_EVIDENCE",
+  "field_level_provenance_required": true,
+  "authoritative_known_cannot_silently_downgrade": true,
+  "whole_object_replace_for_authoritative_evidence_forbidden": true,
+  "default_update_semantics": "merge_append",
+  "generated_playbooks_inherit": true,
+  "field_envelope": {
+    "state": [
+      "known",
+      "unknown",
+      "conflict",
+      "not_applicable"
+    ],
+    "value": "typed",
+    "provenance": {
+      "source": "required",
+      "ref": "required"
+    }
+  },
+  "overwrite_rule": "known authoritative value may change only through explicit conflict/resolution evidence; never silent replacement",
+  "model_node_rule": "model nodes emit field patches only; deterministic merge applies patch to persisted authoritative evidence",
+  "required_tools": [
+    "tools/merge_authoritative_evidence.py",
+    "tools/validate_information_preservation.py"
+  ]
+}

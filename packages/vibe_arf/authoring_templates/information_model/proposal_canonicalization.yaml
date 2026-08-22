@@ -1,0 +1,8 @@
+schema_version: '1.0'
+proposal_state_root: proposal
+approved_projection_root: approved_projection
+canonical_state_root: canonical
+rules:
+  deep_merge_proposal_into_canonical_forbidden: true
+  materializers_must_consume_approved_projection: true
+  rejected_fields_must_be_pruned: true

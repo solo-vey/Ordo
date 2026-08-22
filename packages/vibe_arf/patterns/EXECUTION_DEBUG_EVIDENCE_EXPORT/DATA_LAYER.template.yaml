@@ -1,0 +1,123 @@
+schema_version: '1.0'
+pattern_id: EXECUTION_DEBUG_EVIDENCE_EXPORT
+pattern_version: '1.1'
+module_kind: reusable_data_layer_module_template
+parameters:
+  required:
+  - instance_id
+  optional:
+  - artifact_id
+  - prefix
+required_roles:
+- role: debug_mode
+  binds_to: information
+  required: true
+- role: debug_export_required
+  binds_to: information
+  required: true
+- role: debug_evidence_catalog
+  binds_to: information
+  required: true
+- role: debug_export_manifest
+  binds_to: information
+  required: true
+- role: debug_redaction_report
+  binds_to: information
+  required: true
+- role: debug_bundle_reference
+  binds_to: artifact
+  required: true
+- role: debug_bundle_validation_status
+  binds_to: information
+  required: true
+- role: debug_bundle_registration_report
+  binds_to: information
+  required: true
+- role: debug_bundle_presentation_status
+  binds_to: information
+  required: true
+- role: debug_export_status
+  binds_to: information
+  required: true
+merge_semantics:
+  mode: bind_existing_or_instantiate_missing
+  canonical_truth: project_data_layer
+  instance_catalog_required: true
+  field_provenance_required: true
+  pattern_instance_reference: pattern_id+pattern_version+instance_digest
+  execution_ids_in_canonical_data_layer: forbidden
+constraints:
+- all_required_roles_bound
+- bindings_resolve_to_project_data_layer
+- no_parallel_semantic_truth
+- pattern_version_and_digest_persisted
+- requirement_origin_precedes_pattern_selection_for_reward
+- no_execution_node_or_gate_ids_in_pattern_instance
+- debug_mode_is_host_or_runtime_supplied_not_invented
+- debug_export_required_is_derived_from_debug_mode_and_bound_policy
+- non_debug_mode_must_not_materialize_debug_bundle
+- evidence_catalog_contains_only_declared_execution_evidence_sources
+- include_exclude_policy_prevents_unrelated_file_packaging
+- redaction_boundary_runs_before_materialization
+- secrets_credentials_tokens_and_sensitive_runtime_values_are_not_exported_unredacted
+- debug_bundle_must_pass_validation_before_presentation
+- presentation_status_can_be_presented_only_after_real_user_visible_delivery
+module_objects:
+- role: debug_mode
+  kind: information
+  required: true
+- role: debug_export_required
+  kind: information
+  required: true
+- role: debug_evidence_catalog
+  kind: information
+  required: true
+- role: debug_export_manifest
+  kind: information
+  required: true
+- role: debug_redaction_report
+  kind: information
+  required: true
+- role: debug_bundle_reference
+  kind: artifact
+  required: true
+- role: debug_bundle_validation_status
+  kind: information
+  required: true
+- role: debug_bundle_registration_report
+  kind: information
+  required: true
+- role: debug_bundle_presentation_status
+  kind: information
+  required: true
+- role: debug_export_status
+  kind: information
+  required: true
+module_edges:
+- from_role: debug_mode
+  to_role: debug_export_required
+  type: determines
+- from_role: debug_export_required
+  to_role: debug_evidence_catalog
+  type: enables
+- from_role: debug_evidence_catalog
+  to_role: debug_export_manifest
+  type: filters
+- from_role: debug_export_manifest
+  to_role: debug_redaction_report
+  type: sanitized_by
+- from_role: debug_redaction_report
+  to_role: debug_bundle_reference
+  type: constrains_materialization
+- from_role: debug_bundle_reference
+  to_role: debug_bundle_validation_status
+  type: validated_by
+- from_role: debug_bundle_validation_status
+  to_role: debug_bundle_registration_report
+  type: constrains
+- from_role: debug_bundle_registration_report
+  to_role: debug_bundle_presentation_status
+  type: constrains
+- from_role: debug_bundle_presentation_status
+  to_role: debug_export_status
+  type: finalizes

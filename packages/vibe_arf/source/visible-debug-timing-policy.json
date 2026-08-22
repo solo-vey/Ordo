@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_VISIBLE_DEBUG_TIMING_BASELINE_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "clock_source": "runtime_server_utc",
+  "visible_baseline": "previous_actually_visible_execution_marker",
+  "hidden_events_recorded_in_telemetry": true,
+  "hidden_events_advance_visible_baseline": false,
+  "first_visible_marker_delta": null,
+  "rule": "Visible elapsed time is measured between markers actually exposed to the user. Hidden/internal telemetry never moves the visible baseline."
+}

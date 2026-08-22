@@ -1,0 +1,338 @@
+schema_version: '1.0'
+pattern_id: VERIFIED_DOCUMENT_CODE_IMPLEMENTATION
+pattern_version: '1.2'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_pattern_instance_and_role
+  canonical_data_layer_contains_execution_ids: false
+  exact_graph_realization_required: true
+  duplicate_component_ids_forbidden: true
+  gate_outcome_edges_required: true
+  multi_outcome_gate_lowering:
+    mode: exact_enum_outcome_dispatch
+    applies_to:
+    - implementation_branch_gate
+    requirements:
+    - evaluate exactly one canonical outcome token
+    - outcomes are mutually exclusive and collectively exhaustive for valid input state
+    - do not coerce to PASS/FAIL
+    - unknown, empty, or multiple outcomes fail closed
+    - preserve all declared outcome destinations during lowering
+  compiler_valid_lowering_required: true
+  abstract_outcome_edges_are_not_compiled_routes: true
+  compiled_route_contract:
+    single_successor: next
+    human_interaction: on_answer.next
+    binary_gate: on_pass/on_fail
+    multi_outcome: exact deterministic cascade gates over canonical discriminator tokens
+    invalid_discriminator: fail_closed
+    postcondition: all non-terminals routed; all executables reachable; all targets resolved
+extension_contracts:
+  document_to_requirements_adapter:
+    required: true
+    purpose: Translate the verified domain document into implementation obligations without inventing semantics.
+  repository_architecture_adapter:
+    required: true
+    purpose: Define domain/repository-specific architecture evidence and inspection guidance. Repository evidence
+      outranks assumptions.
+  repository_scope_policy:
+    required: true
+    purpose: Map every material implementation obligation to local, shared/external, or unresolved repository ownership.
+  autonomy_policy:
+    required: true
+    purpose: Define when local mutation is permitted. Shared, architectural, or unresolved ownership must not auto-mutate.
+  test_obligation_policy:
+    required: true
+    purpose: Require explicit obligation-to-test/assertion coverage for every implemented obligation.
+  verification_adapter:
+    required: true
+    purpose: Bind project-specific executable verification commands/evidence; absence of a runnable verifier must
+      remain explicit and unverified.
+  result_packaging_policy:
+    required: true
+    purpose: Select in-place completion or a validated result archive without packaging unrelated files.
+  implementation_contract_presentation_adapter:
+    required: true
+    purpose: Render/present the implementation change contract before mutation. Presentation is informational and
+      must not silently become an approval gate.
+  verification_recovery_policy:
+    required: true
+    purpose: Classify verification failure evidence, define allowed bounded repair actions, and never convert missing/stale
+      verification into PASS.
+components:
+- role: resolve_code_source
+  kind: node
+  responsibility_class: deterministic
+- role: code_source_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: request_code_source
+  kind: node
+  responsibility_class: human_interaction
+- role: inspect_repository
+  kind: node
+  responsibility_class: contract_classified
+- role: build_repository_profile
+  kind: node
+  responsibility_class: contract_classified
+- role: derive_implementation_requirements
+  kind: node
+  responsibility_class: contract_classified
+- role: map_requirements_to_repository
+  kind: node
+  responsibility_class: contract_classified
+- role: compose_implementation_change_contract
+  kind: node
+  responsibility_class: contract_classified
+- role: present_implementation_change_contract
+  kind: node
+  responsibility_class: model_assisted
+- role: classify_change_scope
+  kind: node
+  responsibility_class: contract_classified
+- role: decide_autonomy
+  kind: node
+  responsibility_class: contract_classified
+- role: implementation_branch_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: complete_no_local_change
+  kind: node
+  responsibility_class: deterministic
+- role: developer_handoff
+  kind: node
+  responsibility_class: contract_classified
+- role: plan_local_implementation
+  kind: node
+  responsibility_class: contract_classified
+- role: apply_local_code_change
+  kind: node
+  responsibility_class: contract_classified
+- role: update_tests
+  kind: node
+  responsibility_class: contract_classified
+- role: test_obligation_coverage_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: update_documentation
+  kind: node
+  responsibility_class: contract_classified
+- role: run_local_verification
+  kind: node
+  responsibility_class: contract_classified
+- role: local_verification_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: local_verification_failure
+  kind: node
+  responsibility_class: deterministic
+- role: verification_recovery_budget_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: package_changed_project
+  kind: node
+  responsibility_class: deterministic
+- role: result_archive_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: register_implementation_result
+  kind: node
+  responsibility_class: deterministic
+- role: present_implementation_result
+  kind: node
+  responsibility_class: model_assisted
+- role: finalize_implementation
+  kind: node
+  responsibility_class: deterministic
+outcome_edges:
+- from_role: resolve_code_source
+  outcome: DONE
+  to_role: code_source_gate
+- from_role: code_source_gate
+  outcome: AVAILABLE
+  to_role: inspect_repository
+- from_role: code_source_gate
+  outcome: UNAVAILABLE
+  to_role: request_code_source
+- from_role: request_code_source
+  outcome: PROVIDED
+  to_role: inspect_repository
+- from_role: request_code_source
+  outcome: NOT_PROVIDED
+  terminal: IMPLEMENTATION_BLOCKED_NO_CODE
+- from_role: inspect_repository
+  outcome: DONE
+  to_role: build_repository_profile
+- from_role: build_repository_profile
+  outcome: DONE
+  to_role: derive_implementation_requirements
+- from_role: derive_implementation_requirements
+  outcome: DONE
+  to_role: map_requirements_to_repository
+- from_role: map_requirements_to_repository
+  outcome: DONE
+  to_role: compose_implementation_change_contract
+- from_role: compose_implementation_change_contract
+  outcome: DONE
+  to_role: present_implementation_change_contract
+- from_role: present_implementation_change_contract
+  outcome: PRESENTED
+  to_role: classify_change_scope
+- from_role: classify_change_scope
+  outcome: DONE
+  to_role: decide_autonomy
+- from_role: decide_autonomy
+  outcome: DONE
+  to_role: implementation_branch_gate
+- from_role: implementation_branch_gate
+  outcome: NO_LOCAL_CHANGE
+  to_role: complete_no_local_change
+- from_role: implementation_branch_gate
+  outcome: HANDOFF_REQUIRED
+  to_role: developer_handoff
+- from_role: implementation_branch_gate
+  outcome: LOCAL_SAFE
+  to_role: plan_local_implementation
+- from_role: plan_local_implementation
+  outcome: DONE
+  to_role: apply_local_code_change
+- from_role: apply_local_code_change
+  outcome: DONE
+  to_role: update_tests
+- from_role: update_tests
+  outcome: DONE
+  to_role: test_obligation_coverage_gate
+- from_role: test_obligation_coverage_gate
+  outcome: PASS
+  to_role: update_documentation
+- from_role: test_obligation_coverage_gate
+  outcome: FAIL
+  to_role: update_tests
+- from_role: update_documentation
+  outcome: DONE
+  to_role: run_local_verification
+- from_role: run_local_verification
+  outcome: DONE
+  to_role: local_verification_gate
+- from_role: local_verification_gate
+  outcome: PASS
+  to_role: package_changed_project
+- from_role: local_verification_gate
+  outcome: FAIL
+  to_role: local_verification_failure
+- from_role: local_verification_failure
+  outcome: DIAGNOSED
+  to_role: verification_recovery_budget_gate
+- from_role: verification_recovery_budget_gate
+  outcome: RETRY
+  to_role: plan_local_implementation
+- from_role: verification_recovery_budget_gate
+  outcome: EXHAUSTED
+  terminal: IMPLEMENTATION_VERIFICATION_BLOCKED
+- from_role: package_changed_project
+  outcome: IN_PLACE
+  to_role: finalize_implementation
+- from_role: package_changed_project
+  outcome: ARCHIVE_CREATED
+  to_role: result_archive_gate
+- from_role: result_archive_gate
+  outcome: PASS
+  to_role: register_implementation_result
+- from_role: result_archive_gate
+  outcome: FAIL
+  to_role: package_changed_project
+- from_role: register_implementation_result
+  outcome: DONE
+  to_role: present_implementation_result
+- from_role: present_implementation_result
+  outcome: DONE
+  to_role: finalize_implementation
+- from_role: complete_no_local_change
+  outcome: DONE
+  to_role: finalize_implementation
+- from_role: developer_handoff
+  outcome: DONE
+  to_role: finalize_implementation
+gate_contracts:
+  code_source_gate:
+    AVAILABLE: readable target repository/module source exists
+    UNAVAILABLE: otherwise
+  implementation_branch_gate:
+    evaluator: exact_enum_outcome_dispatch
+    outcome_field: implementation_branch_decision
+    allowed_outcomes:
+    - NO_LOCAL_CHANGE
+    - HANDOFF_REQUIRED
+    - LOCAL_SAFE
+    NO_LOCAL_CHANGE: fresh mapping proves no local implementation obligation
+    HANDOFF_REQUIRED: scope is shared, architectural, externally owned, or unresolved unsafe
+    LOCAL_SAFE: all mutation obligations are locally owned and autonomy policy permits bounded change
+    fail_closed_on:
+    - missing outcome
+    - unknown outcome
+    - multiple outcomes
+    binary_pass_fail_coercion: forbidden
+  test_obligation_coverage_gate:
+    PASS: every implemented obligation has explicit test/assertion or justified executable verification coverage
+    FAIL: otherwise
+  local_verification_gate:
+    PASS: bound project verification evidence passes for the persisted patch and test state
+    FAIL: failure, unavailable required verifier, or stale evidence
+  result_archive_gate:
+    PASS: archive is readable, non-empty, contains exactly required persisted changed files and passes integrity
+      validation
+    FAIL: otherwise
+  verification_recovery_budget_gate:
+    RETRY: failure is repairable and verification_recovery_attempt < max_verification_repair_attempts
+    EXHAUSTED: repair is unsafe/unresolved or attempt budget is exhausted
+    fail_closed: true
+parameters:
+  max_verification_repair_attempts:
+    type: integer
+    default: 2
+    minimum: 0
+    maximum: 5
+    purpose: Maximum number of repair cycles after failed local verification before fail-closed handoff/block.
+mutation_invalidation_contract:
+  revision_role: implementation_revision_identity
+  verification_role: local_verification_evidence
+  mutation_roles:
+  - apply_local_code_change
+  - update_tests
+  - update_documentation
+  rules:
+  - after any persisted mutation advance implementation_revision_identity
+  - mark prior local_verification_evidence stale before continuing
+  - PASS is valid only when evidence revision identity equals current implementation revision identity
+presentation_contract:
+  role: present_implementation_change_contract
+  mandatory_before_local_mutation: true
+  approval_semantics: informational_only_unless_host_adds_separate_explicit_authority_gate
+  must_present: implementation_change_contract
+recovery_contract:
+  bounded: true
+  attempt_counter: verification_recovery_state.attempt
+  max_attempts_parameter: max_verification_repair_attempts
+  failure_processing: diagnose_then_increment_before_budget_gate
+  retry_target: plan_local_implementation
+  exhausted_result: IMPLEMENTATION_VERIFICATION_BLOCKED
+compiler_preflight_contract:
+- YAML parses
+- all executable IDs are unique
+- all route targets resolve or are declared allowed external terminal targets
+- every non-terminal executable element has at least one valid outgoing route
+- every executable element is reachable from graph_contract.entry_node
+- all canonical outcome destinations are preserved by the lowering
+- multi-outcome semantic branches preserve exact canonical outcome tokens and fail closed on invalid discriminator
+  state
+- interactive nodes that continue execution use compiler-supported on_answer.next routing
+- compiled graph passes the target editor/runtime-plan validator before delivery

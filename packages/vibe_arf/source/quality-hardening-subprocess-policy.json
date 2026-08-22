@@ -1,0 +1,31 @@
+{
+  "policy_id": "STANDARD_QUALITY_HARDENING_SUBPROCESS",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "purpose": "Reusable quality debugging/hardening subprocess for any generated playbook.",
+  "entry_triggers": [
+    "explicit_analyst_request",
+    "real_or_simulated_playbook_defect",
+    "quality_instability_evidence"
+  ],
+  "ordered_steps": [
+    "capture_baseline",
+    "classify_defect_ownership",
+    "define_regression_invariant",
+    "run_red",
+    "minimal_repair",
+    "run_green",
+    "run_impacted_regressions",
+    "confirm_quality_baseline"
+  ],
+  "hard_rules": {
+    "repair_requires_reproduced_red": true,
+    "red_must_fail_for_expected_reason": true,
+    "minimal_repair_only": true,
+    "green_required_before_impacted": true,
+    "impacted_regressions_required": true,
+    "do_not_weaken_acceptance_gates": true,
+    "wrong_layer_defect_routes_to_owner": true
+  },
+  "completion": "quality_baseline_stable_or_non_playbook_defect_handed_off"
+}

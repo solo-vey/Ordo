@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_GENERATED_PLAYBOOK_REGRESSION_POLICY_V1",
+  "revision": "0.1.0-alpha.36",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "goal": "Preserve regression memory while keeping canonical Ordo language conformance, Vibe authoring policy, Auto Answers test-scenario policy, and runtime-adapter compatibility as separate authority layers.",
+  "principles": [
+    "Regression memory is domain-neutral: business-specific dogfood defects are reduced to minimal generic fixtures.",
+    "Factory-owned validators are authoritative for shared contracts; a generated package-local validator may add domain checks but cannot replace or weaken trusted factory gates.",
+    "A candidate with any machine-detectable failure is repaired internally and is not presented to the analyst as a usable alpha.",
+    "The successful live dogfood revision is a positive control; regression hardening must not reject a proven-good runtime shape.",
+    "Ordo-valid but Editor-unsupported constructs are classified as Editor gaps, not silently prohibited as language defects.",
+    "Canonical Ordo language is the sole semantic source of truth; runtime adapters cannot redefine language validity.",
+    "Auto Answers defects are repaired in the test scenario unless the playbook itself violates Ordo.",
+    "Adapter incompatibility is reported distinctly from Ordo invalidity.",
+    "A corrected runtime adapter replaces obsolete workarounds in adapter contracts; historical adapter bugs remain regression tests rather than playbook constraints."
+  ],
+  "trusted_tools": [
+    "tools/verify_generated_playbook_contract.py",
+    "tools/test_alpha20_generated_playbook_regression_layer.py",
+    "tools/verify_revision_evidence_consistency.py",
+    "tools/validate_authoring_information_model.py",
+    "tools/validate_information_projection.py",
+    "tools/test_alpha24_information_first_authoring.py",
+    "tools/test_alpha27_simulation_kit_012_upgrade.py",
+    "tools/test_alpha28_simulation_kit_013_upgrade.py",
+    "tools/validate_deterministic_contract_completeness.py",
+    "tools/validate_artifact_archive_registry_completeness.py",
+    "tools/test_alpha29_deterministic_contract_route_hardening.py",
+    "tools/evaluate_adaptive_artifact_quality.py",
+    "tools/test_alpha42_adaptive_artifact_quality.py"
+  ],
+  "authoring_defaults": [
+    "source/generated-playbook-safe-node-profiles.json",
+    "source/runtime-adapter-compatibility-policy.json",
+    "source/auto-answers-authoring-profile.json",
+    "source/information-first-authoring-policy.json",
+    "authoring_templates/information_model/information_object_catalog.yaml",
+    "authoring_templates/information_model/information_flow_graph.yaml",
+    "authoring_templates/information_model/ordo_projection.yaml",
+    "authoring_templates/information_model/interaction_projection.yaml",
+    "source/interactive-analyst-workflow-policy.json",
+    "source/interactive-field-resolution.schema.json",
+    "authoring_templates/reusable/INTERACTIVE_ANALYST_WORKFLOW.template.yaml",
+    "source/adaptive-artifact-quality-policy.json",
+    "source/semantic-artifact-quality-gate.schema.json",
+    "authoring_templates/reusable/ADAPTIVE_ARTIFACT_QUALITY.template.yaml",
+    "source/generated-playbook-semantic-execution-policy.json",
+    "authoring_templates/reusable/SEMANTIC_EXECUTION_INVARIANTS.template.yaml",
+    "source/deterministic-tool-result-contract.json",
+    "source/visible-debug-timing-policy.json",
+    "source/self-repair-log-policy.json",
+    "source/development-regression-governance-policy.json",
+    "authoring_templates/reusable/DEVELOPMENT_REGRESSION_GOVERNANCE.template.yaml"
+  ],
+  "evidence": [
+    "tests/generated_playbook_regressions/REGRESSION_MATRIX.json",
+    "reports/ALPHA20_REGRESSION_RED_BASELINE.json",
+    "reports/ALPHA20_INTEGRATION_RED_BASELINE.json",
+    "reports/ALPHA20_INTEGRATION_GREEN.json",
+    "reports/MBP_ALPHA1_ALPHA14_CONTRACT_RETROSPECTIVE.json"
+  ],
+  "trusted_regression_assets": [
+    "tools/test_alpha21_editor_binding_regression.py",
+    "source/editor-binding-evidence.json",
+    "tools/test_alpha23_corrected_editor_rebinding.py"
+  ],
+  "language_blocking_contracts": [
+    "graph_closure",
+    "canonical_language_source_and_contracts",
+    "human_decision_trust_boundary"
+  ],
+  "vibe_profile_blocking_contracts": [
+    "model_required_write_enforcement",
+    "run_evidence_gate_separation",
+    "artifact_control_flow",
+    "information_first_model_before_graph",
+    "information_projection_bidirectional_traceability"
+  ],
+  "auto_answers_contracts": [
+    "retry_scenario_progress",
+    "editor_replay_package_shape"
+  ],
+  "adapter_blocking_contracts": {
+    "editor_dev": [
+      "effective_editor_runtime_ownership",
+      "package_tool_transport",
+      "source_only_editor_candidate",
+      "editor_replay_compatibility"
+    ]
+  },
+  "alpha26_contracts": [
+    "review_bundle_design",
+    "proposal_canonical_separation",
+    "approval_persistence",
+    "local_persistence_gates",
+    "state_phase_ordering",
+    "recovery_locality",
+    "semantic_dependency_inputs",
+    "behavioral_scenario_coverage",
+    "simulation_evidence",
+    "fixture_contract_closure",
+    "runtime_gate_evidence",
+    "defect_ownership"
+  ],
+  "alpha27_contracts": [
+    "simulation_kit_version_pin",
+    "simulation_runtime_baseline_pin",
+    "simulation_dependency_layout_resolution",
+    "native_semantic_recovery_fixture_contract",
+    "dynamic_missing_fixture_evidence_preservation"
+  ],
+  "alpha28_contracts": [
+    "simulation_kit_0.1.3_pin",
+    "deterministic_artifact_archive_validation",
+    "profile_contract_gap_preservation",
+    "profile_contract_gap_defect_ownership"
+  ],
+  "alpha29_contracts": [
+    "strict_route_closure",
+    "deterministic_contract_completeness",
+    "artifact_archive_registry_completeness",
+    "pre_simulation_profile_gap_prevention"
+  ],
+  "current_simulation_kit": {
+    "version": "0.1.5",
+    "runtime_baseline": "0.2.0-alpha.20.0.166-dev",
+    "gate_contract_mode_default": "strict",
+    "strict_preflight": [
+      "GATE_INPUT_HAS_NO_UPSTREAM_PRODUCER",
+      "GATE_INPUT_ONLY_ANCESTOR_WRITE",
+      "GATE_INPUT_PRODUCER_NOT_DOMINATING",
+      "GATE_INPUT_PRODUCER_NOT_GUARANTEED",
+      "REQUIRED_PATH_ANCESTOR_DESTRUCTIVE_OVERWRITE",
+      "REQUIRED_PATH_REMOVABLE"
+    ],
+    "advisory_mode": "exploratory_only_not_development_acceptance_evidence"
+  },
+  "interactive_analyst_regression_families": [
+    "FULL_INPUT",
+    "INCREMENTAL_INPUT",
+    "OFF_SHAPE_ANSWER",
+    "EXPLICIT_UNKNOWN",
+    "UNASKED_SUBSTANTIVE",
+    "CORRECTION",
+    "REORDER",
+    "CHUNKING_INVARIANCE",
+    "INPUT_ORDER_INVARIANCE"
+  ],
+  "adaptive_artifact_quality_regression_families": [
+    "DERIVED_TESTS_FROM_COMPLETE_RULES",
+    "WEAK_GENERATED_TEST_SELF_REPAIR",
+    "MISSING_REQUIRED_DECISION_ROUTES_ANALYST",
+    "OPTIONAL_IMPLEMENTATION_DETAIL_NONBLOCKING",
+    "DERIVABLE_UNKNOWN_BLOCKED",
+    "ADAPTIVE_FEWER_SECTIONS_ALLOWED",
+    "SEMANTIC_MODEL_CANNOT_OVERRIDE_DETERMINISTIC_FAILURE",
+    "SEMANTIC_MODEL_CANNOT_MUTATE_CANONICAL_STATE",
+    "ORPHAN_SUBSTANTIVE_SECTION_BLOCKED",
+    "PROVENANCE_MISMATCH_DETECTED"
+  ],
+  "semantic_execution_contracts": [
+    "model_mode_reference_trace",
+    "merge_by_diff_state_update",
+    "current_node_reentry",
+    "gate_on_fail_recovery",
+    "no_runtime_workaround_data_layer_pollution",
+    "exhaustive_authority_discovery",
+    "stable_decision_identity",
+    "full_repair_loop_regression",
+    "state_updates_v1_tool_result",
+    "visible_debug_timing_baseline",
+    "append_only_self_repair_log"
+  ],
+  "development_regression_contracts": [
+    "regression_first_candidate_change",
+    "property_invariant_over_implementation_detail",
+    "positive_negative_fixture_pair",
+    "persistent_real_failure_memory",
+    "regression_proof_vs_live_proof",
+    "packaging_only_semantic_identity_proof",
+    "explainable_derivative_coverage"
+  ]
+}

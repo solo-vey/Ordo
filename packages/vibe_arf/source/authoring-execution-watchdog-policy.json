@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_AUTHORING_EXECUTION_WATCHDOG_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "default_timeout_seconds": 60,
+  "long_running_requires_reason": true,
+  "blind_identical_retry_forbidden": true,
+  "timeout_action": "terminate_process_group_tree",
+  "timing_ledger": "reports/AUTHORING_EXECUTION_TIMING.jsonl",
+  "degradation_diagnostic": {
+    "id": "AUTHORING_TIME_DEGRADATION",
+    "status": "OPPORTUNITY",
+    "score_effect": 0,
+    "compare_same_family_recent_valid_runs": true
+  },
+  "required_evidence": [
+    "run_id",
+    "operation_id",
+    "command",
+    "started_at",
+    "finished_at",
+    "duration_ms",
+    "timeout_seconds",
+    "status",
+    "retry_count",
+    "diagnostic_reason"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "VIBE_ARF_VERIFICATION_RUNNER_REGISTRY_V1",
+  "runners": {
+    "ordo_lint": {
+      "kind": "builtin",
+      "description": "Canonical Ordo source lint."
+    },
+    "ordo_compile": {
+      "kind": "builtin",
+      "description": "Canonical Ordo compile to IR."
+    },
+    "ordo_test": {
+      "kind": "builtin",
+      "description": "Package static/regression test contour."
+    },
+    "ordo_coverage": {
+      "kind": "builtin",
+      "description": "Package declared coverage contour."
+    },
+    "ordo_runtime_status": {
+      "kind": "builtin",
+      "description": "Runtime/source freshness status."
+    },
+    "ordo_verify_targets": {
+      "kind": "builtin",
+      "description": "Compiled target integrity."
+    },
+    "ordo_clean_check": {
+      "kind": "builtin",
+      "description": "Package hygiene/release readiness profile."
+    },
+    "laws_verbatim": {
+      "kind": "builtin",
+      "description": "PLAYBOOK_LAWS.md presence and verbatim propagation."
+    },
+    "delivery_source_uniqueness": {
+      "kind": "builtin",
+      "description": "Exactly one delivery source/program.ordo.yaml."
+    },
+    "evidence_quality": {
+      "kind": "builtin",
+      "description": "Reject vacuous PASS in an evidence report."
+    },
+    "python_script": {
+      "kind": "package_local",
+      "description": "Run a package-local deterministic Python validator. Script path must stay inside package root."
+    },
+    "external_evidence": {
+      "kind": "evidence_only",
+      "description": "Require a machine-readable evidence artifact created by an external consumer/editor/dry-run."
+    },
+    "editor_runtime_graph": {
+      "kind": "builtin",
+      "description": "Strict all-elements reachable/routed graph compatibility used by editor/runtime-plan consumers."
+    },
+    "execution_responsibility_map": {
+      "kind": "builtin",
+      "description": "Validate that every executable node/gate is classified as deterministic, model judgment or human authority with required mechanism/evidence."
+    },
+    "artifact_materialization_registry": {
+      "kind": "builtin",
+      "description": "Validate that every declared output has a package-local template/assembler materialization contract with validators."
+    },
+    "ordo_validate_artifacts": {
+      "kind": "builtin",
+      "description": "Canonical Ordo rendered-artifact validation."
+    },
+    "ordo_consistency": {
+      "kind": "builtin",
+      "description": "Canonical Ordo cross-artifact consistency validation."
+    },
+    "ordo_validate_lock": {
+      "kind": "builtin",
+      "description": "Canonical Ordo dependency lock validation."
+    },
+    "ordo_check_conflicts": {
+      "kind": "builtin",
+      "description": "Canonical Ordo dependency/layer conflict validation."
+    },
+    "ordo_validate_output": {
+      "kind": "builtin",
+      "description": "Canonical Ordo generated-output validation."
+    },
+    "ordo_repo_check": {
+      "kind": "builtin",
+      "description": "Canonical Ordo repository/package reference validation."
+    },
+    "trusted_python_regression": {
+      "kind": "builtin",
+      "description": "Run a Vibe-owned trusted regression script in-process. Not for generated/applied package-local validators."
+    },
+    "verification_truth": {
+      "kind": "builtin",
+      "description": "Validate report truth, output execution closure and vacuous-PASS compensation."
+    },
+    "generated_playbook_contract": {
+      "kind": "builtin",
+      "description": "Layered Vibe-owned generated-playbook contract for Ordo language, Vibe authoring, Auto Answers and target-adapter qualification. It does not make Editor semantics authoritative."
+    }
+  },
+  "mandatory_profile_contract": {
+    "FAST": [
+      "ordo_lint",
+      "ordo_compile"
+    ],
+    "PRE_EDITOR": [
+      "ordo_test",
+      "ordo_coverage",
+      "ordo_runtime_status",
+      "ordo_verify_targets",
+      "laws_verbatim",
+      "delivery_source_uniqueness",
+      "editor_runtime_graph",
+      "execution_responsibility_map",
+      "artifact_materialization_registry",
+      "ordo_validate_artifacts",
+      "ordo_consistency",
+      "ordo_validate_output",
+      "ordo_validate_lock",
+      "ordo_check_conflicts",
+      "ordo_repo_check",
+      "verification_truth"
+    ],
+    "POST_EDITOR": [
+      "external_evidence",
+      "evidence_quality"
+    ],
+    "RELEASE": [
+      "ordo_clean_check"
+    ]
+  }
+}

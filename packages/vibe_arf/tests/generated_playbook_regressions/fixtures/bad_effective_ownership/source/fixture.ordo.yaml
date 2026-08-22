@@ -1,0 +1,22 @@
+ordo:
+  package_version: 0.0.1
+  execution_mode: chat_internal
+  control_level: guided
+graph_contract:
+  entry_node: N1
+  external_terminal_targets:
+  - END
+nodes:
+- id: N1
+  type: automatic
+  action: AI.RUN
+  question: q
+  answer_type: free_text
+  node_context:
+    interaction_class: MODEL_INTERNAL
+  on_answer:
+    update_state:
+      x: $answer
+    next: END
+gates: []
+outputs: []

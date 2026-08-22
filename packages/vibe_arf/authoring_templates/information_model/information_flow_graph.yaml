@@ -1,0 +1,7 @@
+schema_version: '1.0'
+entry_nodes: []
+terminal_nodes: []
+nodes: []
+edges: []
+# Node kinds: information, validation_gate, authority_decision, artifact, source, interaction.
+# Edge types: provided_by, derived_from, validated_by, approved_by, consumed_by, materializes, invalidates, packages, depends_on.

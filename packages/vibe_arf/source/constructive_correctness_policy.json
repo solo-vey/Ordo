@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_CONSTRUCTIVE_CORRECTNESS",
+  "principle": "Make invalid authoring states structurally impossible when possible; do not substitute prompt strength for enforceable structure.",
+  "enforcement_precedence": [
+    "schema_constraint",
+    "typed_structure",
+    "static_template",
+    "deterministic_generator",
+    "deterministic_validator",
+    "mechanical_gate",
+    "model_instruction"
+  ],
+  "prompt_only_when_constructive_enforcement_available": "forbidden",
+  "generated_playbooks_inherit": true,
+  "model_only_exception": {
+    "requires_explicit_impossibility_evidence": true,
+    "required_fields": [
+      "responsibility_id",
+      "why_schema_insufficient",
+      "why_typed_structure_insufficient",
+      "why_template_insufficient",
+      "why_generator_insufficient",
+      "why_validator_or_gate_insufficient",
+      "residual_model_judgment"
+    ]
+  },
+  "constructively_enforceable_examples": [
+    "required field presence",
+    "enum/domain membership",
+    "static artifact structure",
+    "template placeholder closure",
+    "producer/consumer binding existence",
+    "route closure",
+    "hash/membership verification",
+    "deterministic scoring",
+    "provenance preservation",
+    "artifact materialization prerequisites"
+  ]
+}

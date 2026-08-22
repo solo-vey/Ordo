@@ -1,0 +1,17 @@
+ordo:
+  package_version: 0.0.1
+  execution_mode: chat_internal
+  control_level: guided
+graph_contract:
+  entry_node: N1
+  external_terminal_targets:
+  - END
+nodes:
+- id: N1
+  type: automatic
+  action: AI.RUN
+  node_context:
+    interaction_class: MODEL_INTERNAL
+  next: MISSING
+gates: []
+outputs: []

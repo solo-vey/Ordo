@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Validator Introspection Contract",
+  "type": "object",
+  "required": [
+    "validator_id",
+    "contract_resolution_status"
+  ],
+  "properties": {
+    "validator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validator_registry_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "implementation_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schema_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected_contract": {
+      "type": [
+        "object",
+        "array",
+        "string",
+        "null"
+      ]
+    },
+    "contract_resolution_status": {
+      "enum": [
+        "RESOLVED",
+        "UNAVAILABLE"
+      ]
+    },
+    "heuristic_fix_allowed": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "contract_resolution_status": {
+            "const": "RESOLVED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "heuristic_fix_allowed": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

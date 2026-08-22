@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_PROPOSAL_CANONICALIZATION_V1",
+  "revision": "0.1.0-alpha.26",
+  "principle": "PROPOSAL_IS_NOT_CANONICAL_TRUTH",
+  "state_spaces": {
+    "proposal": "model-generated or source-inferred hypotheses",
+    "approved_projection": "explicitly approved/validated field projection",
+    "canonical": "artifact/runtime truth"
+  },
+  "rules": [
+    "proposal, approved_projection and canonical roots must be distinct",
+    "deep merge from proposal into canonical is forbidden",
+    "rejected or unconfirmed proposal fields must not materialize into canonical artifacts",
+    "materializers consume approved projection or independently validated canonical values",
+    "human review apply appends revisioned approval evidence rather than replacing prior approvals"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_SINGLE_RESPONSIBILITY_EXECUTION_V1",
+  "revision": "0.1.0-alpha.18",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "rules": [
+    "One executable node or gate owns one cohesive responsibility.",
+    "Several deterministic commands may remain in one RUN node only when they produce one cohesive evidence report.",
+    "A blocking deterministic decision is RUN -> evidence -> mechanical GATE.",
+    "A node must not hardcode PASS for quality/readiness status fields.",
+    "Materialization, validation, and handoff are separate responsibilities.",
+    "Multiway semantic routing may remain a node when binary GATE semantics are insufficient.",
+    "Generated runnable playbooks inherit this policy through PLAYBOOK_LAWS.md and Vibe authoring behavior."
+  ]
+}

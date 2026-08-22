@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_EXECUTABLE_VERIFICATION_ARCHITECTURE_V1",
+  "revision": "0.1.0-alpha.12",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "rules": [
+    "Every generated runnable playbook must have a revision-explicit verification_profile.json before it can claim LOCALLY_VERIFIED.",
+    "The profile is the executable source of truth for which algorithmic checks run in FAST, PRE_EDITOR, POST_EDITOR and RELEASE phases.",
+    "The model may select applicable invariants and profile entries, but must not substitute remembered/manual command lists for the profile.",
+    "Required checks fail closed. Missing runner, missing evidence, dependency failure, timeout or nonzero deterministic result blocks the phase.",
+    "Readiness is derived from machine-readable profile execution evidence, not from prose claims.",
+    "External editor/live-run/dry-check results enter through explicit external_evidence checks and are analyzed after import.",
+    "Custom Python verification is allowed only from a package-local script path declared in the profile.",
+    "Verification result must state which invariants each check covers and which required invariants remain unverified."
+  ]
+}

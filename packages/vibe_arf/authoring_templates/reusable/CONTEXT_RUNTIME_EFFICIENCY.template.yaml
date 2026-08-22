@@ -1,0 +1,23 @@
+template_id: CONTEXT_RUNTIME_EFFICIENCY
+version: '1.0'
+scope: cross_domain
+sequence:
+- CONTEXT_RUNTIME_AUDIT
+- CONTEXT_EVIDENCE_GATE
+- HOTSPOT_RANKING
+- ONE_OPTIMIZATION
+- TARGETED_COMPARE
+- SEMANTIC_QUALITY_EQUIVALENCE
+principles:
+- measure playbook-controlled context separately from platform overhead
+- package presence does not authorize model preload
+- load active-node prompts and knowledge lazily
+- prefer targeted active-element source reads over full-source preload
+- use compact evidence references and hash-bound deltas for repeated passes
+- accept only end-to-end improvements with semantic and quality equivalence
+runtime_read_contract:
+  no_recursive_package_preload: true
+  no_full_source_preload: true
+  authoring_editor_surfaces_forbidden_in_normal_model_execution: true
+  targeted_read_budget_bytes: 8192
+  targeted_read_budget_lines: 80
