@@ -605,6 +605,16 @@ def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
                 continue
             targets = _targets(route)
             edges.extend({"target": target, "storage": "on_answer", "key": str(outcome)} for target in targets)
+    # ``navigation_contract.allowed_to`` is canonical routing authority when a
+    # record intentionally omits an executable transition list.  Do not render
+    # it in addition to explicit transitions: that would duplicate the same
+    # control edge and misleadingly imply two runtime routes.
+    if not edges:
+        navigation = node.get("navigation_contract")
+        if isinstance(navigation, dict):
+            for target in navigation.get("allowed_to", []):
+                if isinstance(target, str) and target and not target.startswith("$"):
+                    edges.append({"target": target, "storage": "navigation_allowed_to", "key": target})
     for edge in edges:
         edge.setdefault("edge_type", "control_flow")
     return edges
@@ -886,6 +896,10 @@ def _projection_resolve_declared_outputs(
             candidates = sorted(item["node_id"] for item in selected)
 
         path = _declared_output_display_path(record)
+        # Older editor payloads used a bare ``outputs: [{id: ...}]`` entry as
+        # an external terminal declaration.  Preserve that representation
+        # without conflating modern output contracts that carry metadata.
+        legacy_terminal = set(record) == {"id"}
         entities.append({
             "id": output_id,
             "path": path,
@@ -895,6 +909,7 @@ def _projection_resolve_declared_outputs(
             "traceability_reason": reason,
             "record": record,
             "declared": True,
+            "legacy_terminal": legacy_terminal,
         })
         diagnostics.append({
             "check": "DECLARED_OUTPUT_PRODUCER_TRACEABILITY",
@@ -1316,13 +1331,16 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
         ] + [
             {
                 "id": out_entity["id"],
-                "element_type": "output",
-                "entity_type": "declared_output" if out_entity.get("declared") else "output",
+                # A bare legacy top-level output ID historically represented a
+                # terminal destination.  Rich declared outputs remain their
+                # own view-only entity, with producer traceability.
+                "element_type": "terminal" if out_entity.get("legacy_terminal") else "output",
+                "entity_type": "terminal" if out_entity.get("legacy_terminal") else ("declared_output" if out_entity.get("declared") else "output"),
                 "collection": "declared_outputs" if out_entity.get("declared") else "derived_outputs",
                 "label": (out_entity.get("path") or out_entity["id"]),
                 "path": out_entity.get("path") or "",
                 "answer_type": (f"declared output · {str(out_entity.get('traceability_status') or '').lower()}" if out_entity.get("declared") else "materialized output"),
-                "terminal": False,
+                "terminal": bool(out_entity.get("legacy_terminal")),
                 "producers": out_entity.get("producers",[]),
                 "traceability_status": out_entity.get("traceability_status"),
                 "traceability_reason": out_entity.get("traceability_reason"),
@@ -1332,7 +1350,17 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
             }
             for out_entity in declared_outputs
         ],
-        "edges": edges,
+        # Alpha.20 clients infer a missing relation as control-flow. Preserve
+        # the established pre-Alpha.20 contract for older compact payloads;
+        # canonical graph-contract payloads retain typed control edges.
+        "edges": [
+            {key: value for key, value in edge.items() if key not in {"edge_type", "relation_type"}}
+            if edge.get("edge_type") == "control_flow" and (
+                not isinstance(source.get("graph_contract"), dict)
+                or (source.get("ordo") or {}).get("version") == "0.12"
+            ) else edge
+            for edge in edges
+        ],
         "projection_validation": {
             "status": "PASS" if not unresolved_dependencies and not [row for row in output_traceability if row.get("status") == "FAIL"] and not unreachable_terminals else "FAIL",
             "checks": {
@@ -1665,11 +1693,22 @@ def validate_source(source: dict[str, Any]) -> dict[str, Any]:
     errors = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "error")
     warnings = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "warning")
     infos = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "info")
+    issues = []
+    for check in checks:
+        for finding in check["findings"]:
+            issue = dict(finding)
+            if issue.get("code") == "DANGLING_TARGET":
+                issue["code"] = "GRAPH_TARGET_MISSING"
+            issue["check"] = check["id"]
+            issues.append(issue)
     return {
         "scope": "editor_structural_validation",
         "status": "failed" if errors else ("warning" if warnings else "passed"),
         "summary": {"checks": len(checks), "errors": errors, "warnings": warnings, "info": infos},
         "checks": checks,
+        # Compatibility alias retained for integrations that consume a flat
+        # graph-finding list rather than grouped validation checks.
+        "issues": issues,
         "note": "Structural validation only. Full Ordo playbook validation must be performed by the Ordo validation/playbook tooling.",
     }
 
