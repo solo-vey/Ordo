@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ordo Tree Editor</title>
+    <title>Ordo Playbook Explorer</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -16,74 +16,604 @@
         <li>Use the <code>http://127.0.0.1:8765</code> page that opens automatically.</li>
       </ol>
     </section>
-    <header>
-      <div><strong>Ordo Tree Editor</strong><span>Local visual editor and validator</span></div>
-      <div class="actions">
-        <label class="button">Open YAML<input id="file-input" type="file" accept=".yaml,.yml" hidden></label>
-        <button id="validate">Validate</button>
-        <button id="download">Download YAML</button>
-      </div>
+    <header class="app-header">
+      <div class="app-brand"><strong>Ordo Playbook Explorer</strong><span>Playbook runtime and explorer</span></div>
+      <div class="actions"><button id="header-model-settings" type="button" class="model-unconfigured" aria-label="Model Settings">Model Settings</button></div>
     </header>
-    <main>
-      <aside id="palette">
-        <h2>Node palette</h2>
-        <button data-template="question">Question</button>
-        <button data-template="gate">Gate</button>
-        <button data-template="materialization">Materialization</button>
-        <button data-template="terminal">Terminal</button>
-        <button id="add-transition">Add transition</button>
-        <hr>
-        <h2>Reusable modules</h2>
-        <div id="module-list">Loading…</div>
-        <p class="hint">Modules are suggested building blocks. Their build-time instantiation remains explicit.</p>
-      </aside>
+    <main class="source-empty" data-workspace-mode="upload">
+      <nav id="workspace-tabs" class="workspace-tabs" role="tablist" aria-label="Workspace views">
+        <button type="button" class="workspace-tab active" data-workspace-tab="upload">Upload Playbook</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="chat">Execute Playbook</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="replay">Replay Real Chat</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="tree">Show Tree</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="paths">Show Path</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="lineage">Show Data Flow</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="settings">Playbook Settings</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="verification">Verify Playbook</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="modelchat">Model Chat</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="help">Help</button>
+      </nav>
+      <button id="side-pane-toggle" type="button" class="side-pane-toggle" title="Collapse side panel" aria-label="Collapse side panel" hidden>›</button>
+      <button id="workspace-maximize-toggle" type="button" class="workspace-maximize-toggle" title="Expand workspace" aria-label="Expand workspace" hidden>⛶</button>
+      <section id="upload-home-panel" class="upload-home-panel" aria-label="Upload Playbook">
+        <div class="upload-home-card">
+          <div class="upload-home-copy"><h1>Upload Playbook</h1><p>Load a local Ordo YAML/ZIP package or choose a published playbook from a public GitLab repository.</p></div>
+          <label class="button upload-home-primary">Upload Playbook<input id="package-file-input" type="file" accept=".yaml,.yml,.zip,application/yaml,text/yaml,application/zip" hidden></label>
+          <button id="gitlab-playbook-browser" type="button" class="upload-home-secondary">Browse GitLab</button>
+          <section id="gitlab-browser-panel" class="gitlab-browser-panel" hidden>
+            <div class="gitlab-root-row"><label>GitLab root<input id="gitlab-root-input" type="url" spellcheck="false" placeholder="https://gitlab.example/group/project/-/tree/main/path/to/playbooks"></label><button id="gitlab-refresh" type="button">Refresh</button></div>
+            <div id="gitlab-status" class="hint"></div>
+            <div id="gitlab-playbook-list" class="gitlab-playbook-list"></div>
+          </section>
+        </div>
+      </section>
       <section id="workspace">
         <div id="transition-mode" hidden><span id="transition-mode-text"></span><button id="cancel-transition-mode" type="button">Cancel</button></div>
-        <div id="empty-state">Open an Ordo YAML file to start editing its decision tree.</div>
+        <div id="empty-state" hidden></div>
         <svg id="edges" aria-hidden="true"></svg>
         <div id="canvas"></div>
+        <div id="tree-zoom-controls" class="tree-zoom-controls" aria-label="Tree controls">
+          <div id="tree-layout-controls" class="tree-layout-controls" aria-label="Tree layout controls">
+            <div class="tree-layout-density" role="group" aria-label="Layout density">
+              <button id="tree-layout-compact" type="button" title="Compact layout">Compact</button>
+              <button id="tree-layout-normal" type="button" class="active" title="Normal layout">Normal</button>
+              <button id="tree-layout-spacious" type="button" title="Spacious layout · topology-aware crossing reduction">Spacious</button>
+            </div>
+            <button id="tree-layout-reflow" type="button" title="Recalculate automatic layout and clear manual dragging">Reflow</button>
+          </div>
+          <span class="tree-controls-separator" aria-hidden="true"></span>
+          <button id="tree-zoom-out" type="button" title="Zoom out" aria-label="Zoom out">−</button>
+          <button id="tree-zoom-reset" type="button" title="Reset to 100%" aria-label="Reset to 100%">1:1</button>
+          <button id="tree-zoom-in" type="button" title="Zoom in" aria-label="Zoom in">+</button>
+        </div>
       </section>
+      <section id="model-chat-main-panel" hidden class="model-chat-main-panel" aria-label="Model Chat">
+        <div class="model-chat-page">
+          <div class="model-chat-toolbar">
+            <button id="model-chat-export" type="button">Export Chat</button>
+            <button id="model-chat-export-debug" type="button">Export Chat Debug</button>
+          </div>
+          <div id="model-chat-transcript" class="model-chat-transcript"><div class="model-chat-empty"><strong>Model Chat</strong><span>Free conversation with the configured model. This does not execute a playbook.</span></div></div>
+          <div id="model-chat-attachments" class="model-chat-attachments"></div>
+          <form id="model-chat-form" class="model-chat-form">
+            <button id="model-chat-attach" type="button" class="model-chat-attach" aria-label="Attach files">+</button>
+            <input id="model-chat-file-input" type="file" multiple hidden>
+            <textarea id="model-chat-input" rows="1" placeholder="Message"></textarea>
+            <button id="model-chat-send" type="submit" class="model-chat-send" aria-label="Send">↑</button>
+          </form>
+        </div>
+      </section>
+      <section id="lineage-main-panel" hidden class="lineage-main-panel" aria-label="Playbook data flow">
+        <div class="lineage-page">
+          <div class="lineage-page-head">
+            <div>
+              <h1>Show Data Flow</h1>
+              <p>Inspect the canonical authoring data-flow model shipped inside the playbook package.</p>
+            </div>
+            <div id="lineage-summary" class="lineage-summary"></div>
+          </div>
+          <section id="source-flow-panel" class="lineage-subview source-flow-panel" aria-label="Embedded source data flow">
+            <div class="source-flow-meta"><div><strong id="source-flow-title">Source Data Flow</strong><span id="source-flow-subtitle">Canonical authoring topology embedded in the playbook package.</span></div><div id="source-flow-summary" class="lineage-summary"></div></div>
+            <div class="source-flow-subtabs" role="tablist" aria-label="Source Data Flow views"><button id="source-flow-subview-tree" type="button" class="active">Dependency Tree</button><button id="source-flow-subview-passports" type="button">Variable Passports</button></div>
+            <div id="source-flow-tree-view" class="source-flow-tree-view">
+              <div class="lineage-toolbar-row source-flow-toolbar">
+                <div class="source-flow-legend" aria-label="Source Data Flow legend"><span><i class="source-flow-swatch variable"></i>Variable</span><span><i class="source-flow-swatch gate"></i>Gate</span><span><i class="source-flow-swatch artifact"></i>Artifact</span><span><i class="source-flow-swatch contract"></i>Contract</span><span><i class="source-flow-line validation"></i>Validation</span><span><i class="source-flow-line upstream"></i>Upstream</span><span><i class="source-flow-line downstream"></i>Downstream</span></div>
+                <div class="lineage-controls">
+                  <label class="source-flow-data-class-control" title="Filter canonical variables by data class"><span>Data</span><select id="source-flow-data-class-filter" aria-label="Data class filter"><option value="all">All</option></select></label>
+                  <div class="lineage-layout-toggle"><button id="source-flow-layout-auto" type="button" class="active">Auto</button><button id="source-flow-layout-free" type="button">Free</button></div>
+                  <div class="lineage-layout-toggle"><button id="source-flow-direction-tb" type="button" class="active" title="Top to bottom">Top ↓</button><button id="source-flow-direction-lr" type="button" title="Left to right">Left →</button></div>
+                  <button id="source-flow-clear-focus" type="button" title="Show complete source flow">Clear focus</button>
+                  <button id="source-flow-zoom-out" type="button" title="Zoom out">−</button><button id="source-flow-zoom-reset" type="button" title="Reset zoom">100%</button><button id="source-flow-zoom-in" type="button" title="Zoom in">+</button><button id="source-flow-zoom-fit" type="button" title="Fit source flow to viewport">Fit</button>
+                </div>
+              </div>
+              <div id="source-flow-empty" class="lineage-empty" hidden>No canonical Data Layer / authoring data-flow projection was found in this playbook package.</div>
+              <div id="source-flow-viewport" class="source-flow-viewport"><div id="source-flow-stage" class="source-flow-stage"><div id="source-flow-world" class="source-flow-world"><svg id="source-flow-edges" aria-hidden="true"></svg><div id="source-flow-canvas"></div></div></div></div>
+            </div>
+            <div id="source-flow-passports-view" class="source-flow-passports-view" hidden><div class="source-passport-intro">Variable groups and passports are shown separately from the dependency tree. Choose a passport to inspect the same variable used in the graph.</div><div id="source-flow-passport-groups"></div></div>
+          </section>
+        </div>
+      </section>
+      <section id="playbook-settings-main-panel" hidden class="playbook-settings-main-panel" aria-label="Playbook settings">
+        <div class="playbook-settings-page">
+          <div class="playbook-settings-head">
+            <div>
+              <h1>Playbook Settings</h1>
+              <p>Inspect every language-defined program setting, including values that are not explicitly declared by the loaded playbook.</p>
+            </div>
+          </div>
+          <div class="playbook-settings-subtabs" role="tablist" aria-label="Playbook Settings sections">
+            <button type="button" class="active" data-playbook-settings-subtab="settings">Settings</button>
+            <button type="button" data-playbook-settings-subtab="runtime">Global runtime infrastructure</button>
+            <button type="button" data-playbook-settings-subtab="package">Package/startup metadata</button>
+            <button type="button" data-playbook-settings-subtab="verification">Global verification policy</button>
+          </div>
+          <section id="playbook-settings-catalog-view" class="playbook-settings-subview">
+            <div id="playbook-settings-source" class="hint"></div>
+            <div id="playbook-settings-summary" class="playbook-settings-summary"></div>
+            <div id="playbook-settings-list" class="playbook-settings-list"></div>
+          </section>
+          <section id="playbook-settings-resources-view" class="playbook-settings-subview" hidden>
+            <div id="playbook-settings-resource-intro" class="playbook-settings-resource-intro"></div>
+            <div class="playbook-settings-resource-layout">
+              <div id="playbook-settings-resource-list" class="playbook-settings-resource-list"></div>
+              <section id="playbook-settings-resource-preview" class="playbook-settings-resource-preview">
+                <div class="playbook-settings-resource-preview-empty">Select a file to preview it.</div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </section>
+        <section id="verification-main-panel" hidden class="verification-main-panel" aria-label="Playbook verification">
+          <div class="verification-page">
+            <div class="verification-page-head">
+              <div>
+                <h1>Verify Playbook</h1>
+                <p>Run every verification registered in the Editor verification catalog. Checks execute sequentially against an isolated copy of the loaded playbook.</p>
+              </div>
+              <div class="verification-head-actions">
+                <button id="verification-export-json" type="button" class="verification-export-button" disabled>Export results JSON</button>
+                <button id="verification-run-all" type="button" class="verification-run-button">Run all verifications</button>
+              </div>
+            </div>
+            <div class="verification-progress-wrap">
+              <div class="verification-progress-meta"><strong id="verification-progress-label">Not run</strong><span id="verification-progress-count">0 / 0</span></div>
+              <div class="verification-progress"><div id="verification-progress-bar"></div></div>
+              <p id="verification-summary" class="hint">The registry is loaded dynamically from <code>verification/checks/</code>.</p>
+            </div>
+            <div id="verification-list" class="verification-list"></div>
+          </div>
+        </section>
+      <aside id="artifact-preview-panel" class="artifact-preview-panel" hidden aria-label="File preview">
+        <div class="artifact-preview-header">
+          <div class="artifact-preview-title-wrap">
+            <span class="artifact-preview-icon" aria-hidden="true">▤</span>
+            <div>
+              <strong id="artifact-preview-title">Document</strong>
+              <span id="artifact-preview-subtitle">File preview</span>
+            </div>
+          </div>
+          <div class="artifact-preview-actions">
+            <a id="artifact-preview-download" class="artifact-preview-download" href="#" download aria-label="Download document" title="Download">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10m0 0 4-4m-4 4-4-4M5 19h14"/></svg>
+            </a>
+            <button id="artifact-preview-close" type="button" title="Close preview" aria-label="Close preview">×</button>
+          </div>
+        </div>
+        <div id="artifact-preview-body" class="artifact-preview-body"></div>
+      </aside>
       <div id="inspector-resizer" role="separator" aria-label="Resize inspector" aria-orientation="vertical"></div>
       <aside id="inspector">
-        <h2>Inspector</h2>
-        <section id="transition-inspector" hidden>
-          <h3>Selected transition</h3>
-          <p id="transition-summary" class="hint"></p>
-          <button id="delete-transition" type="button" class="danger">Delete transition</button>
-          <p id="transition-note" class="hint"></p>
-          <hr>
-        </section>
-        <p id="selection-help">Select a node to inspect its complete definition.</p>
-        <form id="node-form" hidden>
-          <p id="node-summary" class="hint"></p>
-          <div class="inspector-tabs" role="tablist" aria-label="Node inspector views">
-            <button type="button" class="inspector-tab active" data-inspector-tab="fields">Edit fields</button>
-            <button type="button" class="inspector-tab" data-inspector-tab="yaml">Full YAML</button>
-          </div>
-          <section id="node-fields-view">
-            <section id="node-transition-manager" hidden>
-              <h3>Transitions</h3>
-              <button id="add-selected-transition" type="button">Add transition from this node</button>
-              <div id="outgoing-transition-list"></div>
-              <p class="hint">Click an arrow or use this list to inspect and manage direct transitions.</p>
-              <hr>
+        <div class="panel-tabs legacy-panel-tabs" role="tablist" aria-label="Legacy inspector panels" hidden>
+          <button type="button" class="panel-tab active" data-panel-tab="inspection">Inspection</button>
+          <button type="button" class="panel-tab" data-panel-tab="validate">Validate</button>
+          <button type="button" class="panel-tab" data-panel-tab="dialog">Dialog</button>
+          <button type="button" class="panel-tab" data-panel-tab="replay">Replay</button>
+          <button type="button" class="panel-tab" data-panel-tab="run" id="run-tab">Run</button>
+        </div>
+        <section id="inspection-panel">
+          <section id="transition-inspector" hidden>
+            <h3>Selected transition</h3>
+            <p id="transition-summary" class="hint"></p>
+            <button id="delete-transition" type="button" class="danger">Delete transition</button>
+            <p id="transition-note" class="hint"></p>
+            <hr>
+          </section>
+          <p id="selection-help">Select a node to inspect its complete definition.</p>
+          <form id="node-form" hidden>
+            <p id="node-summary" class="hint"></p>
+            <div class="inspector-tabs" role="tablist" aria-label="Node inspector views">
+              <button type="button" class="inspector-tab active" data-inspector-tab="fields">Parameters</button>
+              <button type="button" class="inspector-tab" data-inspector-tab="yaml">YAML</button>
+              <button type="button" class="inspector-tab" data-inspector-tab="references">References</button>
+              <button type="button" class="inspector-tab" data-inspector-tab="explanation">Explanation</button>
+            </div>
+            <section id="node-fields-view">
+              <section id="node-transition-manager" hidden>
+                <h3>Transitions</h3>
+                <button id="add-selected-transition" type="button">Add transition from this node</button>
+                <div id="outgoing-transition-list"></div>
+                <p class="hint">Click an arrow or use this list to inspect and manage direct transitions.</p>
+                <hr>
+              </section>
+              <div id="node-sections"></div>
+              <p class="hint">Edit each top-level block independently. Lists and nested contracts remain YAML; all other node fields are preserved as separate sections.</p>
+              <button type="submit">Apply node changes</button>
+              <button id="delete-node" type="button" class="danger">Delete node</button>
             </section>
-            <div id="node-sections"></div>
-            <p class="hint">Edit each top-level block independently. Lists and nested contracts remain YAML; all other node fields are preserved as separate sections.</p>
-            <button type="submit">Apply node changes</button>
-            <button id="delete-node" type="button" class="danger">Delete node</button>
-          </section>
-          <section id="node-yaml-view" hidden>
-            <p class="hint">This is the current node definition assembled from the edits above. Highlighted blocks have unsaved changes.</p>
-            <pre id="node-yaml-preview" aria-label="Current full node YAML"></pre>
-          </section>
-        </form>
-        <hr>
-        <h2>Validation</h2>
-        <div id="validation">Not run.</div>
+            <section id="node-yaml-view" hidden>
+              <p class="hint">This is the current node definition assembled from the edits above. Highlighted blocks have unsaved changes.</p>
+              <pre id="node-yaml-preview" aria-label="Current full node YAML"></pre>
+            </section>
+            <section id="template-inspector-view" hidden class="template-inspector-view" aria-label="Package references">
+              <div id="template-inspector-content" class="template-inspector-content"></div>
+            </section>
+            <section id="node-explanation-view" hidden class="node-explanation-view" aria-label="Node explanation">
+              <div id="node-explanation-content" class="node-explanation-content"></div>
+            </section>
+          </form>
+        </section>
+        <section id="model-chat-preview-panel" hidden class="model-chat-preview-panel" aria-label="Model Chat playbook preview">
+          <div class="model-chat-preview-head"><div><strong id="model-chat-preview-title">Playbook Preview</strong><span>Generated Ordo YAML / ZIP tree preview</span></div><button id="model-chat-preview-close" type="button" aria-label="Close preview">×</button></div>
+          <div id="model-chat-preview-body" class="model-chat-preview-body"><div class="model-chat-preview-empty">Select a generated Ordo YAML or ZIP file to preview its tree.</div></div>
+        </section>
+        <section id="lineage-assistant-panel" hidden class="lineage-assistant-panel" aria-label="Data flow inspector and assistant">
+          <div class="lineage-assistant">
+            <div class="lineage-assistant-head">
+              <div>
+                <strong id="lineage-inspector-title">Data Flow Inspector</strong>
+                <span id="lineage-inspector-subtitle">Inspect a selected value or artifact and discuss its lineage with the configured model.</span>
+              </div>
+              <button id="lineage-clear-selection" type="button">Clear</button>
+            </div>
+            <div id="lineage-selection" class="lineage-selection">
+              Select an item in the data-flow graph.
+            </div>
+            <div id="lineage-assistant-toolbar" class="lineage-assistant-toolbar">
+              <button id="lineage-explain" type="button" disabled>Explain with model</button>
+              <span id="lineage-model-unavailable" class="hint" hidden>Configure a model to request an explanation.</span>
+            </div>
+            <div id="lineage-assistant-messages" class="lineage-assistant-messages"></div>
+            <form id="lineage-assistant-form" class="lineage-assistant-form">
+              <textarea id="lineage-assistant-input" rows="3" placeholder="Ask about this value or artifact…"></textarea>
+              <button id="lineage-assistant-send" type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+        <section id="playbook-settings-assistant-panel" hidden class="playbook-settings-assistant-panel" aria-label="AI settings assistant">
+          <div class="playbook-settings-assistant">
+            <div class="settings-assistant-head">
+              <div>
+                <strong id="settings-assistant-title">AI Settings Assistant</strong>
+                <span id="settings-assistant-subtitle">Read-only guidance. The model never edits the playbook.</span>
+              </div>
+              <button id="settings-assistant-analyze" type="button">Analyze current settings</button>
+            </div>
+            <div id="settings-assistant-unavailable" class="settings-assistant-unavailable" hidden>Configure a model to analyze or discuss playbook settings.</div>
+            <div id="settings-assistant-context" class="settings-assistant-context" hidden></div>
+            <div id="settings-assistant-messages" class="settings-assistant-messages">
+              <div class="settings-assistant-placeholder">Ask how the current settings behave, describe how you want them changed, or request a proposed YAML settings block.</div>
+            </div>
+            <form id="settings-assistant-form" class="settings-assistant-form">
+              <textarea id="settings-assistant-input" rows="3" placeholder="Describe how you want the playbook settings to behave…"></textarea>
+              <button id="settings-assistant-send" type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+        <section id="verification-assistant-panel" hidden class="verification-assistant-panel" aria-label="Verification assistant">
+          <div class="verification-assistant">
+            <div class="verification-assistant-head">
+              <div>
+                <strong>Verification Assistant</strong>
+                <span>Discuss a failed, skipped, or errored verification with the configured model. Read-only: the assistant does not change the playbook or the verification result.</span>
+              </div>
+              <button id="verification-assistant-clear" type="button">Clear</button>
+            </div>
+            <div id="verification-assistant-unavailable" class="verification-assistant-unavailable" hidden>Configure a model to discuss verification results.</div>
+            <div id="verification-assistant-context" class="verification-assistant-context">
+              Select <strong>Discuss in chat</strong> on a non-PASS verification.
+            </div>
+            <div id="verification-assistant-messages" class="verification-assistant-messages"></div>
+            <form id="verification-assistant-form" class="verification-assistant-form">
+              <textarea id="verification-assistant-input" rows="3" placeholder="Ask about this verification…"></textarea>
+              <button id="verification-assistant-send" type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+        <section id="help-panel" hidden class="help-panel" aria-label="Help documentation">
+          <aside class="help-sidebar">
+            <div class="help-sidebar-title">Help</div>
+            <nav id="help-nav" class="help-nav" aria-label="Help topics"></nav>
+          </aside>
+          <article class="help-content">
+            <div class="help-breadcrumb" id="help-breadcrumb">Help</div>
+            <div id="help-page"></div>
+          </article>
+        </section>
+        <section id="validate-panel" hidden>
+          <button id="validate" type="button" hidden>Validate</button>
+          <div id="validation">Not run.</div>
+        </section>
+        <section id="dialog-panel" hidden>
+          <div class="path-builder">
+            <label>From<select id="dialog-start-node"></select></label>
+            <label>To<select id="dialog-end-node"></select></label>
+            <button id="dialog-build-path" type="button">Build path</button>
+          </div>
+          <div id="dialog-empty" class="dialog-empty">Choose a dialog path from a node context menu.</div>
+          <div id="dialog-view" hidden>
+            <div id="dialog-header"></div>
+            <div id="dialog-playback-controls" class="dialog-playback-controls">
+              <button id="dialog-play-toggle" type="button">Play</button>
+              <button id="dialog-restart" type="button">Restart</button>
+              <label class="dialog-advance-mode">Advance
+                <select id="dialog-advance-mode">
+                  <option value="manual" selected>Manual</option>
+                  <option value="timer">Timer</option>
+                </select>
+              </label>
+              <label id="dialog-delay-wrap">Delay
+                <select id="dialog-delay">
+                  <option value="1">1 s</option>
+                  <option value="2" selected>2 s</option>
+                  <option value="3">3 s</option>
+                  <option value="5">5 s</option>
+                </select>
+              </label>
+              <label class="dialog-auto-pass"><input id="dialog-auto-pass" type="checkbox" checked> Auto-pass gates via OnPass</label>
+              <button id="dialog-static" type="button">Show all</button>
+            </div>
+            <div id="dialog-transcript"></div>
+          </div>
+        </section>
+        <section id="replay-panel" hidden>
+          <div class="replay-upload-card">
+            <strong>Replay</strong>
+            <p class="hint">Load a replay package ZIP (with <code>run_trace.json</code>) or a standalone <code>run_trace.json</code>. This view is read-only.</p>
+            <label class="button replay-upload-button">Upload Replay Package<input id="replay-file-input" type="file" accept=".zip,.json,application/zip,application/json" hidden></label>
+            <span id="replay-file-name" class="hint"></span>
+          </div>
+          <div id="replay-empty" class="dialog-empty">Upload a replay package to inspect how the playbook was actually traversed.</div>
+          <div id="replay-view" hidden>
+            <div class="replay-topbar">
+              <div id="replay-header"></div>
+              <div class="replay-export-actions">
+                <button id="replay-download-md" type="button">Download MD</button>
+                <button id="replay-print-pdf" type="button">Print / Save PDF</button>
+              </div>
+            </div>
+            <div id="replay-note" class="replay-note"></div>
+            <div id="replay-transcript"></div>
+          </div>
+        </section>
+
+        <section id="run-panel" hidden>
+          <div id="chat-control-bar" class="chat-control-bar">
+            <div class="chat-control-left">
+              <button id="chat-start-proxy" type="button">Execute Playbook</button>
+              <div id="chat-current-step" class="chat-current-step" hidden></div>
+            </div>
+            <div class="chat-control-right">
+              <button id="chat-state-proxy" type="button" hidden>Current State</button>
+              <button id="chat-pause-proxy" type="button" hidden>Pause</button>
+              <button id="chat-auto-answers-proxy" type="button">Auto Answers</button>
+              <button id="chat-settings" type="button">Settings</button>
+              <button id="chat-token-usage" type="button" class="chat-token-usage token-usage-badge" hidden title="Open token usage and debug details">0 tokens</button>
+              <button id="chat-stop-proxy" type="button" hidden>Stop</button>
+              <button id="chat-reset-proxy" type="button" hidden>Reset</button>
+            </div>
+          </div>
+          <div class="live-run-card legacy-live-config">
+            <div class="live-run-heading"><strong>Live playbook execution</strong><span id="live-model-badge" class="hint"></span></div>
+            <div id="live-readiness" class="live-readiness"></div>
+            <p id="live-config-note" class="hint live-config-note">Run parameters are configured separately using the <strong>Configure</strong> button in the corresponding row below.</p>
+            <p id="live-disabled-note" class="hint">Run mode requires a verified playbook source and a configured LLM provider.</p>
+            <div id="live-controls" hidden>
+              <button id="live-start" type="button">Start dialog</button>
+              <button id="live-stop" type="button" disabled>Stop</button>
+              <button id="live-reset" type="button" disabled>Reset</button>
+              <button id="live-auto-answers" type="button">Auto answers</button>
+              <input id="live-auto-answers-file" type="file" accept=".zip,.json,application/zip,application/json" hidden>
+              <span id="live-auto-answers-note" class="hint"></span>
+              <button id="live-guided-replay" type="button">Replay to checkpoint</button>
+              <input id="live-guided-replay-file" type="file" accept=".zip,.json,application/zip,application/json" hidden>
+              <span id="live-guided-replay-note" class="hint"></span>
+            </div>
+          </div>
+          <div id="live-empty" class="dialog-empty">Load a playbook source and configure the model to start execution.</div>
+          <div id="live-view" hidden>
+            <div id="live-status" class="live-status"></div>
+            <div id="live-transcript"></div>
+            <button id="live-scroll-to-bottom" class="live-scroll-to-bottom" type="button" title="Scroll to latest message" aria-label="Scroll to latest message" hidden data-state="idle">
+              <svg class="live-scroll-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9.5 12 15l5.5-5.5"/></svg>
+              <span class="live-scroll-working-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </button>
+            <form id="live-form" class="live-input-form">
+              <div id="live-choice-panel" class="live-choice-panel" hidden></div>
+              <div id="live-attachments" class="live-attachments" hidden></div>
+              <button id="live-state-button" class="legacy-chat-control" type="button" hidden>Current State</button>
+              <button id="live-pause" class="legacy-chat-control" type="button" hidden>Pause</button>
+              <div class="live-composer-shell" data-composer-mode="single">
+                <textarea id="live-input" rows="1" placeholder="Message"></textarea>
+                <button id="live-composer-expand" class="live-composer-expand" type="button" title="Expand composer" aria-label="Expand composer" hidden>↗</button>
+                <div class="live-composer-bottom">
+                  <label id="live-attach-button" class="live-attach-button" title="Attach files" aria-label="Attach files">
+                    <span aria-hidden="true">+</span>
+                    <input id="live-attachment-input" type="file" multiple hidden>
+                  </label>
+                  <button id="live-send" class="live-send-button" type="submit" title="Send" aria-label="Send"><span aria-hidden="true">↑</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
       </aside>
     </main>
-    <div id="edge-context-menu" hidden><button id="edge-delete-action" type="button" class="danger">Delete transition</button></div>
+    <div id="edge-context-menu" hidden><button id="edge-delete-action" type="button" class="danger" hidden>Delete transition</button></div>
+    <div id="canvas-context-menu" hidden role="menu" aria-label="Graph actions">
+      <div id="canvas-create-actions" class="legacy-edit-actions" hidden>
+        <button id="canvas-add-node" type="button" role="menuitem">Add node</button>
+        <button id="canvas-add-gate" type="button" role="menuitem">Add gate</button>
+        <div class="context-submenu">
+          <button id="canvas-add-library" class="context-submenu-trigger" type="button" role="menuitem" aria-haspopup="true">Add library element <span aria-hidden="true">›</span></button>
+          <div class="context-submenu-panel" role="menu" aria-label="Library elements">
+            <button id="canvas-add-materialization" type="button" role="menuitem">Add document materialization</button>
+            <button id="canvas-add-terminal" type="button" role="menuitem">Add terminal block</button>
+          </div>
+        </div>
+        <div class="context-menu-separator" aria-hidden="true"></div>
+        <button id="canvas-open-yaml" type="button" role="menuitem">Open YAML…</button>
+        <button id="canvas-open-package" type="button" role="menuitem">Open Playbook…</button>
+        <div class="context-menu-separator" aria-hidden="true"></div>
+        <div id="canvas-collapse-all-actions">
+          <button id="canvas-collapse-all" type="button" role="menuitem">Collapse all</button>
+          <button id="canvas-expand-all" type="button" role="menuitem">Expand all</button>
+        </div>
+        <div class="context-menu-separator" aria-hidden="true"></div>
+        <button id="canvas-download-yaml" type="button" role="menuitem">Download YAML</button>
+        <button id="canvas-download-playbook" type="button" role="menuitem">Download full playbook</button>
+        <button id="canvas-download-svg" type="button" role="menuitem">Download tree as SVG</button>
+      </div>
+      <div id="canvas-selection-actions" hidden>
+        <button id="canvas-toggle-collapse" type="button" role="menuitem">Collapse</button>
+        <div id="canvas-dialog-actions" hidden>
+          <div class="context-menu-separator" aria-hidden="true"></div>
+          <button id="canvas-dialog-from-entry" type="button" role="menuitem">Show dialog: start → this node</button>
+          <div class="context-submenu">
+            <button id="canvas-dialog-to-terminal" class="context-submenu-trigger" type="button" role="menuitem" aria-haspopup="true">Show dialog: this node → ending <span aria-hidden="true">›</span></button>
+            <div id="canvas-dialog-terminal-menu" class="context-submenu-panel" role="menu" aria-label="Reachable endings"></div>
+          </div>
+        </div>
+        <div class="context-menu-separator" aria-hidden="true"></div>
+        <button id="canvas-delete-selection" type="button" class="danger legacy-edit-actions" role="menuitem" hidden>Delete selected</button>
+      </div>
+    </div>
+
+    <div id="live-state-modal" class="live-state-modal" hidden aria-hidden="true">
+      <div class="live-state-backdrop" data-live-state-close></div>
+      <section class="live-state-dialog" role="dialog" aria-modal="true" aria-labelledby="live-state-title">
+        <div class="live-state-header">
+          <div>
+            <strong id="live-state-title">Current runtime state</strong>
+            <div id="live-state-subtitle" class="hint">Canonical JSON state used by the playbook executor.</div>
+          </div>
+          <button id="live-state-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="live-state-body">
+          <pre id="live-state-json"></pre>
+        </div>
+        <div class="live-state-footer">
+          <span id="live-state-copy-status" class="hint" aria-live="polite"></span>
+          <button id="live-state-copy" type="button">Copy</button>
+          <button id="live-state-download" type="button">Download JSON</button>
+          <button type="button" data-live-state-close>Close</button>
+        </div>
+      </section>
+    </div>
+    <div id="settings-overview-modal" class="settings-overview-modal" hidden aria-hidden="true">
+      <div class="settings-overview-backdrop" data-settings-overview-close></div>
+      <section class="settings-overview-dialog" role="dialog" aria-modal="true" aria-labelledby="settings-overview-title">
+        <div class="settings-overview-header">
+          <div>
+            <strong id="settings-overview-title">Settings</strong>
+            <div class="hint">Current chat configuration and loaded automation inputs.</div>
+          </div>
+          <button id="settings-overview-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div id="settings-overview-body" class="settings-overview-body"></div>
+        <div class="settings-overview-footer"><button type="button" data-settings-overview-close>Close</button></div>
+      </section>
+    </div>
+    <div id="live-setting-modal" class="live-setting-modal" hidden aria-hidden="true">
+      <div class="live-setting-backdrop" data-live-setting-close></div>
+      <section class="live-setting-dialog" role="dialog" aria-modal="true" aria-labelledby="live-setting-title">
+        <div class="live-setting-header">
+          <div>
+            <strong id="live-setting-title">Run setting</strong>
+            <div id="live-setting-subtitle" class="hint"></div>
+          </div>
+          <button id="live-setting-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div id="live-setting-body" class="live-setting-body"></div>
+        <div class="live-setting-footer">
+          <button id="live-setting-refresh" type="button" hidden>Refresh model list</button>
+          <button id="live-setting-save" type="button">Save</button>
+          <button type="button" data-live-setting-close>Cancel</button>
+        </div>
+      </section>
+    </div>
+    <div id="recovery-clarification-modal" class="recovery-clarification-modal" hidden aria-hidden="true">
+      <div class="recovery-clarification-backdrop" data-recovery-clarification-close></div>
+      <section class="recovery-clarification-dialog" role="dialog" aria-modal="true" aria-labelledby="recovery-clarification-title">
+        <div class="recovery-clarification-header">
+          <div>
+            <strong id="recovery-clarification-title">Recovery transition</strong>
+            <div id="recovery-clarification-subtitle" class="hint"></div>
+          </div>
+          <button type="button" data-recovery-clarification-close aria-label="Close">×</button>
+        </div>
+        <div class="recovery-clarification-body">
+          <label class="live-setting-field">
+            <span>Optional analyst clarification for the automatic model step</span>
+            <textarea id="recovery-clarification-input" rows="8" placeholder="Describe what should be corrected, clarified, or added. This context will be passed to the selected model step."></textarea>
+          </label>
+          <fieldset class="recovery-clarification-scope">
+            <legend>Apply clarification</legend>
+            <label><input type="radio" name="recovery-clarification-scope" value="single"> Selected automatic node only</label>
+            <label><input id="recovery-clarification-scope-chain" type="radio" name="recovery-clarification-scope" value="chain" checked> Automatic chain until the next analyst interaction</label>
+          </fieldset>
+          <p class="hint">The clarification supplements the model prompt. It cannot override canonical routes, state paths, schemas, or deterministic evidence. Gates are not modified.</p>
+        </div>
+        <div class="recovery-clarification-footer">
+          <button id="recovery-clarification-without" type="button">Continue without clarification</button>
+          <button id="recovery-clarification-apply" type="button">Continue with clarification</button>
+          <button type="button" data-recovery-clarification-close>Cancel</button>
+        </div>
+      </section>
+    </div>
+    <div id="gitlab-readme-modal" class="gitlab-readme-modal" hidden aria-hidden="true">
+      <div class="gitlab-readme-backdrop" data-gitlab-readme-close></div>
+      <section class="gitlab-readme-dialog" role="dialog" aria-modal="true" aria-labelledby="gitlab-readme-title">
+        <div class="gitlab-readme-header">
+          <div><strong id="gitlab-readme-title">README.md</strong><div id="gitlab-readme-path" class="hint"></div></div>
+          <button type="button" data-gitlab-readme-close aria-label="Close">×</button>
+        </div>
+        <div id="gitlab-readme-body" class="gitlab-readme-body markdown-body"></div>
+        <div class="gitlab-readme-footer"><button type="button" data-gitlab-readme-close>Close</button></div>
+      </section>
+    </div>
+    <div id="token-debug-modal" class="token-debug-modal" hidden aria-hidden="true">
+      <div class="token-debug-backdrop" data-token-debug-close></div>
+      <section class="token-debug-dialog" role="dialog" aria-modal="true" aria-labelledby="token-debug-title">
+        <div class="token-debug-header">
+          <div>
+            <strong id="token-debug-title">LLM step debug</strong>
+            <div id="token-debug-subtitle" class="hint"></div>
+          </div>
+          <button id="token-debug-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="token-debug-tabs" role="tablist">
+          <button type="button" class="token-debug-tab active" data-token-debug-tab="summary">Summary</button>
+          <button type="button" class="token-debug-tab" data-token-debug-tab="input">Input</button>
+          <button type="button" class="token-debug-tab" data-token-debug-tab="output">Output</button>
+          <button type="button" class="token-debug-tab" data-token-debug-tab="runtime">Runtime</button>
+        </div>
+        <div id="token-debug-body" class="token-debug-body"></div>
+        <div class="token-debug-footer">
+          <button id="token-debug-copy" type="button">Copy current tab</button>
+          <button id="token-debug-download" type="button">Download debug JSON</button>
+          <button type="button" data-token-debug-close>Close</button>
+        </div>
+      </section>
+    </div>
     <script src="app.js"></script>
-  </body>
+    <div id="playbook-preparation-overlay" class="playbook-preparation-overlay" hidden>
+    <div class="playbook-preparation-card" role="status" aria-live="polite">
+      <div class="playbook-preparation-heading">
+        <div><strong id="playbook-preparation-title">Preparing Playbook</strong><div id="playbook-preparation-file" class="hint"></div></div>
+        <button id="playbook-preparation-close" type="button" class="icon-button" hidden aria-label="Close">×</button>
+      </div>
+      <div class="playbook-preparation-progress"><span id="playbook-preparation-progress-bar"></span></div>
+      <div id="playbook-preparation-status" class="playbook-preparation-status">Loading source…</div>
+      <div id="playbook-preparation-stages" class="playbook-preparation-stages"></div>
+      <div id="playbook-preparation-tabs" class="playbook-preparation-tabs" role="tablist" aria-label="Playbook startup diagnostics" hidden>
+        <button type="button" class="playbook-preparation-tab active" data-playbook-preparation-tab="human" role="tab" aria-selected="true">Human-readable</button>
+        <button type="button" class="playbook-preparation-tab" data-playbook-preparation-tab="technical" role="tab" aria-selected="false">Technical details</button>
+      </div>
+      <div id="playbook-preparation-body" class="playbook-preparation-body">
+        <div id="playbook-preparation-summary" class="playbook-preparation-summary" data-playbook-preparation-panel="human" hidden></div>
+        <section id="playbook-preparation-technical" class="playbook-preparation-technical" data-playbook-preparation-panel="technical" hidden>
+          <div class="playbook-preparation-technical-toolbar">
+            <strong>Technical diagnostics</strong>
+            <button id="playbook-preparation-download-diagnostics" type="button" class="playbook-preparation-download" title="Download diagnostics JSON">Download diagnostics JSON</button>
+          </div>
+          <div id="playbook-preparation-diagnostics" class="playbook-preparation-diagnostics"></div>
+          <details class="playbook-preparation-raw-details">
+            <summary>Raw diagnostics</summary>
+            <pre id="playbook-preparation-error" class="playbook-preparation-error"></pre>
+          </details>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

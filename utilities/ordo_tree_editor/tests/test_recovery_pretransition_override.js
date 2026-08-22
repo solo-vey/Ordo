@@ -1,0 +1,21 @@
+const fs = require('fs');
+const path = require('path');
+const root = path.resolve(__dirname, '..');
+const app = fs.readFileSync(path.join(root, 'web', 'app.js'), 'utf8');
+const html = fs.readFileSync(path.join(root, 'web', 'index.html'), 'utf8');
+function assert(cond,msg){ if(!cond) throw new Error(msg); }
+assert(app.includes('function recoveryTargetSupportsClarification(targetId)'), 'automatic-target detector missing');
+assert(app.includes('openRecoveryClarificationDialog(option)'), 'automatic recovery target must open clarification dialog');
+assert(!app.includes('Перейти з уточненням'), 'separate clarification button must be removed');
+assert(html.includes('id="recovery-clarification-modal"'), 'clarification modal missing');
+assert(html.includes('value="single"'), 'single-node scope missing');
+assert(html.includes('value="chain"'), 'automatic-chain scope missing');
+assert(app.includes('state.liveAnalystOverride={ target:String(option.target), text:clean, scope, active:false }'), 'override storage missing');
+assert(app.includes('override.scope === "single"'), 'single-node consumption missing');
+assert(app.includes('result.waiting && state.liveAnalystOverride?.active'), 'chain override must clear at analyst boundary');
+assert(app.includes('liveElementKind(id) !== "gate"'), 'clarification must not alter gate prompts');
+assert(app.includes('analyst_override_context: analystOverrideContext'), 'override must be sent to backend');
+assert(app.includes("tokenDebugPre('Analyst clarification applied', clarification)"), 'token debug must expose applied clarification');
+assert(app.includes("['Analyst clarification','analyst_override_chars']"), 'token summary must expose clarification size');
+assert(app.includes('debug.execution_mechanism'), 'token summary must expose execution mechanism');
+console.log('recovery clarification + token debug UI regression: PASS');

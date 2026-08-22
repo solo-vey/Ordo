@@ -1,0 +1,12 @@
+const fs=require('fs'), path=require('path'), vm=require('vm');
+const app=fs.readFileSync(path.join(__dirname,'..','web','app.js'),'utf8');
+const start=app.indexOf('function humanReadableNodeLabel');
+const end=app.indexOf('async function diagnoseLiveRecovery',start);
+const sandbox={state:{interactionContract:{locale:'uk-UA'},source:{nodes:[{id:'N_FIX',title:'Виправити алгоритм'}],gates:[{id:'G_H',trust_class:'human_decision',condition:'алгоритм повний і узгоджений'}]},liveDebugTrace:[]},graphNodeView:(id)=>({id,label:id}),console};
+vm.createContext(sandbox); vm.runInContext(app.slice(start,end),sandbox);
+const ctx=sandbox.buildLiveChoiceContext('G_H',{await_analyst:true,llm_call_skipped:true,debug:{runtime:{reason:'declared-human-input'}},routes:[{key:'on_pass',target:'NEXT'},{key:'on_fail',target:'N_FIX'}]});
+if(!ctx||!ctx.humanGate) throw new Error('human gate context missing');
+if(!ctx.summary.includes('Criterion:')) throw new Error('criterion is not visible');
+if(!ctx.options.some(x=>x.value==='on_pass'&&x.label.includes('Approve'))) throw new Error('pass label unclear');
+if(!ctx.options.some(x=>x.value==='on_fail'&&x.label.includes('Needs correction'))) throw new Error('fail label unclear');
+console.log('HUMAN GATE UX REGRESSION: PASS');

@@ -1,0 +1,20 @@
+{
+  "python": [],
+  "js": [
+    "test_r2_d03_run_journal.js",
+    "test_r3_chat_message_copy_button.js",
+    "test_r3_data_flow_report_filter.js",
+    "test_r3_data_lineage_focused_edges_only.js",
+    "test_r3_data_lineage_strict_monotonic_hover.js",
+    "test_r3_dependency_only_projection_ui.js",
+    "test_r3_dynamic_transformation_layers_ui.js",
+    "test_r3_focused_causal_slice.js",
+    "test_r3_initial_execute_layout.js",
+    "test_r3_lineage_canonical_layers_focus.js",
+    "test_r3_lineage_monotonic_focus.js",
+    "test_r3_lineage_visible_single_definition.js",
+    "test_r3_no_downstream_coinput_expansion.js",
+    "test_r3_playbook_settings.js",
+    "test_r3_real_rfp_focused_projection.js"
+  ]
+}

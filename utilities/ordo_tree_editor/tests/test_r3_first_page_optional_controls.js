@@ -1,0 +1,10 @@
+const fs=require("fs");
+const js=fs.readFileSync("web/app.js","utf8");
+const html=fs.readFileSync("web/index.html","utf8");
+if(js.includes('document.querySelector("#file-input").addEventListener')) throw new Error("file-input listener is still unconditional");
+if(js.includes('document.querySelector("#file-input").click()')) throw new Error("file-input click is still unconditional");
+if(!js.includes('document.querySelector("#file-input")?.addEventListener')) throw new Error("optional file-input listener missing");
+if(!js.includes('document.querySelector("#file-input")?.click()')) throw new Error("optional file-input click missing");
+if(html.includes('id="empty-model-settings"') || html.includes('id="empty-model-chat"')) throw new Error("obsolete startup controls must not return");
+if(!js.includes('document.querySelector("#gitlab-playbook-browser")?.addEventListener')) throw new Error("GitLab browser startup control must be optional-safe");
+console.log("PASS startup optional controls cannot abort app initialization");

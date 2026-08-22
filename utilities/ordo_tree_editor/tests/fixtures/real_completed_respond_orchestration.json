@@ -1,0 +1,111 @@
+{
+  "source": "real debug run 0.8.6 call 15",
+  "record": {
+    "id": "N_TRIGGER_SOURCE_BLOCK",
+    "title": "Зібрати дані про джерело для визначення ризик-фактора",
+    "question": "Надайте один блок джерела даних, з якого можна отримати інформацію для визначення спрацювання ризик-фактора. Вкажіть тип даних у продукті та назву модуля, де розташовані REST для цього типу. Додайте або посилання чи опис типу даних у Confluence, або приклад REST-відповіді, у якому присутнє поле чи поля, що можуть впливати на розрахунок. Не визначайте роль джерела як primary або additional. Якщо джерел кілька, вони фіксуються як джерело 1, 2, 3 у порядку додавання.",
+    "answer_type": "text_or_structured",
+    "on_unmatched_input": {
+      "action": "CLARIFY.REQUEST",
+      "strategy": "rephrase_and_narrow",
+      "max_attempts": 2,
+      "on_exhausted": {
+        "action": "escalate_to_human",
+        "reason": "input remains unmatched after clarification attempts"
+      }
+    },
+    "interpretation_policy": {
+      "transform": "AI.EXTRACT_TRIGGER_SOURCE_BLOCK($answer,state.risk_factor_identity,state.business_meaning)",
+      "required_meaning": [
+        "module",
+        "data_type",
+        "rest_or_documentation_context",
+        "response_structure_or_example",
+        "at_least_one_potentially_relevant_field"
+      ],
+      "do_not_require": "Do not require the analyst to enumerate every field of the data type. Only fields plausibly related to trigger calculation or client output are relevant.",
+      "clarification_policy": "If the block is incomplete, ask only for the missing source facts and preserve valid parts."
+    },
+    "on_answer": {
+      "normalize": {
+        "current_source_block": "AI.NORMALIZE_TRIGGER_SOURCE_BLOCK($answer,source_number=NEXT_SEQUENCE_NUMBER(state.source_data_definition.rows))"
+      },
+      "update_state": {
+        "source_data_definition.rows": "APPEND_OR_REPLACE_BY_SOURCE_KEY(state.source_data_definition.rows,$normalized.current_source_block.source_row)",
+        "source_attribute_mapping.rows": "APPEND_UNCONFIRMED_CANDIDATES(state.source_attribute_mapping.rows,$normalized.current_source_block.potential_field_rows)"
+      },
+      "next": "G_TRIGGER_SOURCE_BLOCK_VALID"
+    }
+  },
+  "analyst_input": "Джерело 1 — companyProfile / EDR, модуль API company-profile. API: https://api-in-dev.ligazakon.net/compliance/company-profile/v1.0/api/data/companyProfile. Опис типу даних: узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості. Для визначення спрацювання використовується statusCode; для формування клієнтських values використовуються companyType.isIndividualInterprener, termination.date, shortName, fullName, shortEn, nameEn.",
+  "model_result": {
+    "assistant_message": "Дякую. Дані про джерело 1 (companyProfile / EDR, модуль API company-profile) зафіксовані. Чи є інші джерела даних, які необхідно додати для визначення цього ризик-фактора?",
+    "route_key": "next",
+    "state_updates": {
+      "source_data_definition.rows": [
+        {
+          "source_number": 1,
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "rest_or_documentation_context": "https://api-in-dev.ligazakon.net/compliance/company-profile/v1.0/api/data/companyProfile",
+          "description": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості"
+        }
+      ],
+      "source_attribute_mapping.rows": [
+        {
+          "source_number": 1,
+          "field": "statusCode",
+          "purpose": "trigger_calculation",
+          "confirmed": false
+        },
+        {
+          "source_number": 1,
+          "field": "companyType.isIndividualInterprener",
+          "purpose": "client_output",
+          "confirmed": false
+        },
+        {
+          "source_number": 1,
+          "field": "termination.date",
+          "purpose": "client_output",
+          "confirmed": false
+        },
+        {
+          "source_number": 1,
+          "field": "shortName",
+          "purpose": "client_output",
+          "confirmed": false
+        },
+        {
+          "source_number": 1,
+          "field": "fullName",
+          "purpose": "client_output",
+          "confirmed": false
+        },
+        {
+          "source_number": 1,
+          "field": "shortEn",
+          "purpose": "client_output",
+          "confirmed": false
+        },
+        {
+          "source_number": 1,
+          "field": "nameEn",
+          "purpose": "client_output",
+          "confirmed": false
+        }
+      ]
+    },
+    "rationale_short": "Extracted source block 1 and potential fields for trigger and output mapping.",
+    "await_analyst": true
+  },
+  "expected": {
+    "await_analyst": false,
+    "route_key": "next",
+    "next_id": "G_TRIGGER_SOURCE_BLOCK_VALID",
+    "required_state_updates": [
+      "source_data_definition.rows",
+      "source_attribute_mapping.rows"
+    ]
+  }
+}

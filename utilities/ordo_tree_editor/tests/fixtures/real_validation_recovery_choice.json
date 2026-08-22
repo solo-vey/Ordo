@@ -1,0 +1,80 @@
+{
+  "source": {
+    "nodes": [
+      {
+        "id": "N_VALIDATION_FAILURE_RECOVERY",
+        "title": "Обрати точку повернення після помилки валідації",
+        "action": "AI.EXPLAIN_VALIDATION_FAILURE_AND_ROUTE",
+        "purpose": "Перетворити технічну або семантичну помилку перевірки на зрозуміле пояснення для аналітика",
+        "allowed_values": [
+          "stop_target",
+          "N_TRIGGER_ALGORITHM_DRAFT",
+          "N_GENERATE_PASSPORT_DRAFT"
+        ]
+      },
+      {
+        "id": "N_TRIGGER_ALGORITHM_DRAFT",
+        "title": "Уточнити алгоритм розрахунку ризик-фактора"
+      },
+      {
+        "id": "N_GENERATE_PASSPORT_DRAFT",
+        "title": "Перегенерувати чернетку паспорта"
+      }
+    ],
+    "gates": []
+  },
+  "debug_trace": [
+    {
+      "current_id": "G_PASSPORT_PRE_MATERIALIZATION_MODEL",
+      "element_kind": "gate",
+      "output": {
+        "parsed_result": {
+          "assistant_message": "Перевірка готовності даних до матеріалізації паспорта: профіль підтверджено, проте відсутні докази проходження семантичних перевірок PM-001.PM-010.",
+          "route_key": "on_fail",
+          "rationale_short": "Risk factor implementation profile is confirmed, but evidence for semantic pre-materialization checks PM-001.PM-010 is unavailable."
+        }
+      },
+      "runtime": {
+        "selected_route_key": "on_fail"
+      }
+    }
+  ],
+  "live": {
+    "await_analyst": true,
+    "llm_call_skipped": true,
+    "routes": [
+      {
+        "key": "stop_target",
+        "target": "stop_target"
+      },
+      {
+        "key": "N_TRIGGER_ALGORITHM_DRAFT",
+        "target": "N_TRIGGER_ALGORITHM_DRAFT"
+      },
+      {
+        "key": "N_GENERATE_PASSPORT_DRAFT",
+        "target": "N_GENERATE_PASSPORT_DRAFT"
+      }
+    ],
+    "debug": {
+      "runtime": {
+        "reason": "declared-human-input"
+      }
+    }
+  },
+  "expected": {
+    "recovery": true,
+    "option_count": 3,
+    "recommended_count": 0,
+    "summary_contains": [
+      "PM-001.PM-010",
+      "Recommended recovery point unavailable",
+      "G_PASSPORT_PRE_MATERIALIZATION_MODEL"
+    ],
+    "labels": [
+      "Stop process",
+      "Trigger Algorithm Draft",
+      "Generate Passport Draft"
+    ]
+  }
+}

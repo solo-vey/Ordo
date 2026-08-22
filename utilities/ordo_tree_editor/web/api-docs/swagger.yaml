@@ -1,0 +1,1847 @@
+openapi: 3.1.0
+info:
+  title: Ordo Tree Editor Local REST API
+  version: 0.2.0-alpha.20.0.195-dev
+  description: HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference
+    documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract.
+servers:
+- url: http://127.0.0.1:8765
+  description: Default local Editor server
+tags:
+- name: Source & Graph
+  description: Parse, validate, edit and export Ordo source documents.
+- name: Packages & Replay
+  description: Load/export playbook packages, replay packages and GitLab-hosted archives.
+- name: Runtime & Providers
+  description: Configure providers, inspect runtime configuration, execute one runtime step and retrieve run artifacts.
+- name: Execute Playbook
+  description: 'Server-managed Execute Playbook runs for autonomous agents: start, advance, inspect state/transcript/debug,
+    submit analyst input and stop.'
+- name: Model Chat
+  description: Free Model Chat execution, polling, cancellation, export, preview and workspace files.
+- name: Inspection
+  description: Templates, tree modules, playbook settings, data lineage and embedded source data-flow.
+- name: Assistants & Recovery
+  description: Read-only model-assisted explanations, settings/data-flow assistance and recovery helpers.
+- name: Verification
+  description: Verification catalog, execution, polling and verification assistant.
+paths:
+  /api/parse:
+    post:
+      tags:
+      - Source & Graph
+      summary: Parse an Ordo source
+      operationId: postparse
+      description: Parses YAML or accepts a source mapping and returns the normalized source plus graph projection.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yaml:
+                  type: string
+                  description: YAML text. Use either yaml or source.
+                source: &id001
+                  type: object
+                  description: Parsed Ordo source mapping.
+                  additionalProperties: true
+              additionalProperties: true
+  /api/validate:
+    post:
+      tags:
+      - Source & Graph
+      summary: Validate an Ordo source
+      operationId: postvalidate
+      description: Runs Editor source validation and returns validation diagnostics.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yaml:
+                  type: string
+                  description: YAML text. Use either yaml or source.
+                source: *id001
+              additionalProperties: true
+  /api/export:
+    post:
+      tags:
+      - Source & Graph
+      summary: Serialize source as YAML
+      operationId: postexport
+      description: Serialize source as YAML
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source: *id001
+              additionalProperties: true
+              required:
+              - source
+  /api/update-node:
+    post:
+      tags:
+      - Source & Graph
+      summary: Replace one node or gate
+      operationId: postupdate_node
+      description: Replace one node or gate
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source: *id001
+                old_id:
+                  type: string
+                  description: Current node/gate id.
+                collection:
+                  type: string
+                  description: nodes or gates.
+                  enum:
+                  - nodes
+                  - gates
+                node_yaml:
+                  type: string
+                  description: Replacement record as YAML text.
+              additionalProperties: true
+              required:
+              - source
+              - old_id
+              - node_yaml
+  /api/update-node-sections:
+    post:
+      tags:
+      - Source & Graph
+      summary: Update record sections
+      operationId: postupdate_node_sections
+      description: Update record sections
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source: *id001
+                old_id:
+                  type: string
+                  description: Current node/gate id.
+                collection:
+                  type: string
+                  description: nodes or gates.
+                  enum:
+                  - nodes
+                  - gates
+                sections:
+                  type: object
+                  description: Section-key to YAML-text mapping.
+                  additionalProperties:
+                    type: string
+              additionalProperties: true
+              required:
+              - source
+              - old_id
+              - sections
+  /api/playbook-package:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Load a playbook ZIP package
+      operationId: postplaybook_package
+      description: Load a playbook ZIP package
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  description: Original ZIP filename.
+                data_base64:
+                  type: string
+                  description: Base64-encoded ZIP bytes.
+              additionalProperties: true
+              required:
+              - filename
+              - data_base64
+  /api/export-playbook:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Export edited playbook package
+      operationId: postexport_playbook
+      description: Export edited playbook package
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                source: *id001
+              additionalProperties: true
+              required:
+              - package_id
+              - source
+  /api/replay-package:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Load a replay ZIP package
+      operationId: postreplay_package
+      description: Load a replay ZIP package
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  description: Replay ZIP filename.
+                data_base64:
+                  type: string
+                  description: Base64-encoded replay bytes.
+              additionalProperties: true
+              required:
+              - filename
+              - data_base64
+  /api/gitlab-playbooks:
+    post:
+      tags:
+      - Packages & Replay
+      summary: List the first directory level from the configured GitLab tree
+      operationId: postgitlab_playbooks
+      description: List the first directory level from the configured GitLab tree
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                root_url:
+                  type: string
+                  description: GitLab repository tree URL. Optional when server startup configured a default root.
+              additionalProperties: true
+  /api/gitlab-directory:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Lazy-load one GitLab directory level
+      operationId: postgitlab_directory
+      description: Lazy-load one GitLab directory level
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                root_url:
+                  type: string
+                  description: GitLab repository tree URL.
+                path:
+                  type: string
+                  description: Directory path under the configured GitLab root.
+              additionalProperties: true
+              required:
+              - path
+  /api/gitlab-playbook-load:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Load a GitLab playbook archive
+      operationId: postgitlab_playbook_load
+      description: Load a GitLab playbook archive
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                root_url:
+                  type: string
+                  description: GitLab repository tree URL.
+                path:
+                  type: string
+                  description: Archive path returned by gitlab-playbooks.
+              additionalProperties: true
+              required:
+              - path
+  /api/gitlab-readme:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Read a GitLab directory README
+      operationId: postgitlab_readme
+      description: Read a GitLab directory README
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                root_url:
+                  type: string
+                  description: GitLab repository tree URL.
+                path:
+                  type: string
+                  description: README.md path returned by gitlab-playbooks.
+              additionalProperties: true
+              required:
+              - path
+  /api/gitlab-archive:
+    get:
+      tags:
+      - Packages & Replay
+      summary: Download an original GitLab ZIP archive
+      operationId: getgitlab_archive
+      description: Download an original GitLab ZIP archive
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: root_url
+        in: query
+        required: true
+        schema:
+          type: string
+          description: GitLab repository tree URL.
+        description: GitLab repository tree URL.
+      - name: path
+        in: query
+        required: true
+        schema:
+          type: string
+          description: ZIP path returned by gitlab-playbooks.
+        description: ZIP path returned by gitlab-playbooks.
+  /api/runtime-config:
+    get:
+      tags:
+      - Runtime & Providers
+      summary: Read effective runtime configuration
+      operationId: getruntime_config
+      description: Read effective runtime configuration
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: session_id
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Optional browser session id.
+        description: Optional browser session id.
+  /api/node-templates:
+    get:
+      tags:
+      - Inspection
+      summary: List built-in node templates
+      operationId: getnode_templates
+      description: List built-in node templates
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/tree-modules:
+    get:
+      tags:
+      - Inspection
+      summary: Read tree module library
+      operationId: gettree_modules
+      description: Read tree module library
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /api/provider-models:
+    post:
+      tags:
+      - Runtime & Providers
+      summary: List provider models
+      operationId: postprovider_models
+      description: List provider models
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Browser session id.
+                provider:
+                  type: string
+                  description: Provider id.
+                  enum:
+                  - openai
+                  - mlx
+                  - custom
+                base_url:
+                  type: string
+                  description: MLX/custom provider base URL.
+                api_key:
+                  type: string
+                  description: Personal provider key when applicable.
+              additionalProperties: true
+              required:
+              - provider
+  /api/live-config:
+    post:
+      tags:
+      - Runtime & Providers
+      summary: Configure live provider session
+      operationId: postlive_config
+      description: Configure live provider session
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Browser session id.
+                provider:
+                  type: string
+                  description: Provider id.
+                  enum:
+                  - openai
+                  - mlx
+                  - custom
+                base_url:
+                  type: string
+                  description: MLX/custom provider base URL.
+                model:
+                  type: string
+                  description: Selected model id.
+                api_key:
+                  type: string
+                  description: Personal OpenAI key when no shared key exists.
+                structured_output_mode:
+                  type: string
+                  description: Structured-output mode.
+                  enum:
+                  - auto
+                  - strict_json_schema
+                  - json_object
+              additionalProperties: true
+              required:
+              - session_id
+              - provider
+              - model
+  /api/provider-capability-probe:
+    post:
+      tags:
+      - Runtime & Providers
+      summary: Probe provider structured-output capability
+      operationId: postprovider_capability_probe
+      description: Probe provider structured-output capability
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Configured browser session id.
+              additionalProperties: true
+              required:
+              - session_id
+  /api/live-step:
+    post:
+      tags:
+      - Runtime & Providers
+      summary: Execute one live playbook step
+      operationId: postlive_step
+      description: Execute one live playbook step
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                session_id:
+                  type: string
+                  description: Configured browser session id.
+                run_id:
+                  type: string
+                  description: Runtime run id.
+                source: *id001
+                state:
+                  type: object
+                  description: Current canonical runtime state.
+                  additionalProperties: true
+                state_revision:
+                  type: integer
+                  description: Current state revision.
+                  minimum: 0
+                current_id:
+                  type: string
+                  description: Current node/gate id.
+                phase:
+                  type: string
+                  description: enter or respond.
+                  enum:
+                  - enter
+                  - respond
+                history:
+                  type: array
+                  description: Prior runtime interaction history.
+                  items:
+                    type: object
+                    additionalProperties: true
+                analyst_input:
+                  type: string
+                  description: Analyst response for respond phase.
+                analyst_override_context:
+                  type: string
+                  description: Optional analyst override context.
+                attachments: &id002
+                  type: array
+                  description: Attachment descriptors accepted by the browser/runtime transport.
+                  items:
+                    type: object
+                    additionalProperties: true
+                previous_node_id:
+                  type: string
+                  description: Previous element for transition provenance.
+                entry_mode:
+                  type: string
+                  description: Runtime entry mode.
+              additionalProperties: true
+              required:
+              - package_id
+              - source
+              - state
+              - current_id
+  /api/run-artifact:
+    get:
+      tags:
+      - Runtime & Providers
+      summary: Download a runtime artifact
+      operationId: getrun_artifact
+      description: Download a runtime artifact
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: path
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Relative path inside runtime workspace.
+        description: Relative path inside runtime workspace.
+      - name: package_id
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Package id.
+        description: Package id.
+      - name: session_id
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Session id.
+        description: Session id.
+      - name: run_id
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Run id.
+        description: Run id.
+  /api/execute-run-start:
+    post:
+      tags:
+      - Execute Playbook
+      summary: Create an Execute Playbook run
+      operationId: postexecute_run_start
+      description: Creates server-managed execution state. Unlike /api/live-step, the caller does not need to resend current
+        state/history on every request.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded playbook package id.
+                session_id:
+                  type: string
+                  description: Configured provider session id.
+                auto_answers_replay_id:
+                  type: string
+                  description: Optional replay_id returned by /api/replay-package.
+                advance:
+                  type: boolean
+                  description: Immediately advance until analyst input, terminal, halt or error.
+                max_steps:
+                  type: integer
+                  description: Maximum runtime phases when advance=true.
+                  minimum: 1
+                  maximum: 1000
+                semantic_fallback_policy:
+                  type: string
+                  description: Runtime semantic fallback policy.
+              additionalProperties: true
+              required:
+              - package_id
+  /api/execute-run-step:
+    post:
+      tags:
+      - Execute Playbook
+      summary: Execute one managed runtime phase
+      operationId: postexecute_run_step
+      description: Executes exactly one enter/respond runtime phase and persists state, revision, path, transcript and debug
+        evidence server-side.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Execute run id.
+                analyst_input:
+                  type: string
+                  description: Optional analyst input. When omitted at a waiting node, the next loaded Auto Answer is consumed
+                    if available.
+                attachments: *id002
+              additionalProperties: true
+              required:
+              - run_id
+  /api/execute-run-advance:
+    post:
+      tags:
+      - Execute Playbook
+      summary: Advance until the next control boundary
+      operationId: postexecute_run_advance
+      description: Automatically advances through deterministic/model steps and consumes loaded Auto Answers until analyst
+        input is missing, terminal/halt/error occurs, or max_steps is reached.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Execute run id.
+                max_steps:
+                  type: integer
+                  description: Maximum runtime phases before fail-closed stop.
+                  minimum: 1
+                  maximum: 1000
+              additionalProperties: true
+              required:
+              - run_id
+  /api/execute-run-input:
+    post:
+      tags:
+      - Execute Playbook
+      summary: Submit analyst input and optionally continue
+      operationId: postexecute_run_input
+      description: Submit analyst input and optionally continue
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Execute run id.
+                analyst_input:
+                  type: string
+                  description: Analyst response for the current waiting node.
+                attachments: *id002
+                advance:
+                  type: boolean
+                  description: Continue automatically after accepting the input; defaults to true.
+                max_steps:
+                  type: integer
+                  description: Maximum follow-on runtime phases.
+                  minimum: 1
+                  maximum: 1000
+              additionalProperties: true
+              required:
+              - run_id
+              - analyst_input
+  /api/execute-run-stop:
+    post:
+      tags:
+      - Execute Playbook
+      summary: Stop a managed run
+      operationId: postexecute_run_stop
+      description: Stop a managed run
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Execute run id.
+              additionalProperties: true
+              required:
+              - run_id
+  /api/execute-run-status:
+    get:
+      tags:
+      - Execute Playbook
+      summary: Read current run state and transcript
+      operationId: getexecute_run_status
+      description: Returns current element, canonical runtime state, state revision, path, transcript, outcome/error, artifact
+        registry and debug download link.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: run_id
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Execute run id.
+        description: Execute run id.
+  /api/execute-run-debug:
+    get:
+      tags:
+      - Execute Playbook
+      summary: Download complete run debug snapshot
+      operationId: getexecute_run_debug
+      description: Returns state, history, transcript, full debug trace, error traceback, artifact registry and Auto Answer
+        cursors. Intended for automated post-failure analysis.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: run_id
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Execute run id.
+        description: Execute run id.
+  /api/model-chat:
+    post:
+      tags:
+      - Model Chat
+      summary: Run Model Chat synchronously
+      operationId: postmodel_chat
+      description: Run Model Chat synchronously
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Workspace/session id.
+                messages: &id003
+                  type: array
+                  description: Conversation messages; each item normally contains role/content and may contain files.
+                  items:
+                    type: object
+                    additionalProperties: true
+                attachments: *id002
+              additionalProperties: true
+              required:
+              - session_id
+              - messages
+  /api/model-chat-start:
+    post:
+      tags:
+      - Model Chat
+      summary: Start asynchronous Model Chat run
+      operationId: postmodel_chat_start
+      description: Starts the same Model Chat workflow as /api/model-chat in a background thread and returns run_id.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Workspace/session id.
+                messages: *id003
+                attachments: *id002
+              additionalProperties: true
+              required:
+              - session_id
+              - messages
+  /api/model-chat-status:
+    post:
+      tags:
+      - Model Chat
+      summary: Poll asynchronous Model Chat run
+      operationId: postmodel_chat_status
+      description: Poll asynchronous Model Chat run
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Run id returned by model-chat-start.
+                after_seq:
+                  type: integer
+                  description: Only activity events with seq greater than this value are returned.
+                  minimum: 0
+              additionalProperties: true
+              required:
+              - run_id
+  /api/model-chat-cancel:
+    post:
+      tags:
+      - Model Chat
+      summary: Cancel asynchronous Model Chat run
+      operationId: postmodel_chat_cancel
+      description: Cancel asynchronous Model Chat run
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Run id returned by model-chat-start.
+              additionalProperties: true
+              required:
+              - run_id
+  /api/model-chat-export:
+    post:
+      tags:
+      - Model Chat
+      summary: Export Model Chat conversation/debug package
+      operationId: postmodel_chat_export
+      description: Export Model Chat conversation/debug package
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Session id.
+                debug:
+                  type: boolean
+                  description: false => Markdown export; true => diagnostic ZIP.
+                messages: *id003
+                attachments: *id002
+                agent_trace:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                usage_history:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                errors:
+                  type: array
+                  items: {}
+                generated_files:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                provider_info:
+                  type: object
+                  additionalProperties: true
+              additionalProperties: true
+              required:
+              - session_id
+              - messages
+  /api/model-chat-playbook-preview:
+    post:
+      tags:
+      - Model Chat
+      summary: Preview generated YAML or ZIP playbook
+      operationId: postmodel_chat_playbook_preview
+      description: Preview generated YAML or ZIP playbook
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  description: Displayed file name.
+                content_text:
+                  type: string
+                  description: YAML text for YAML preview.
+                content_base64:
+                  type: string
+                  description: Base64 ZIP bytes for ZIP preview.
+              additionalProperties: true
+              required:
+              - filename
+  /api/model-chat-workspace-file:
+    get:
+      tags:
+      - Model Chat
+      summary: Download a Model Chat workspace file
+      operationId: getmodel_chat_workspace_file
+      description: Download a Model Chat workspace file
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: session_id
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Workspace/session id.
+        description: Workspace/session id.
+      - name: path
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Relative workspace path.
+        description: Relative workspace path.
+  /api/template-inspector:
+    post:
+      tags:
+      - Inspection
+      summary: Inspect a node template/materialization contract
+      operationId: posttemplate_inspector
+      description: Inspect a node template/materialization contract
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                node_id:
+                  type: string
+                  description: Node id.
+                source: *id001
+              additionalProperties: true
+              required:
+              - package_id
+              - node_id
+              - source
+  /api/playbook-settings:
+    post:
+      tags:
+      - Inspection
+      summary: Read language-defined playbook settings
+      operationId: postplaybook_settings
+      description: Read language-defined playbook settings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id; active package used when omitted.
+              additionalProperties: true
+  /api/data-lineage:
+    post:
+      tags:
+      - Inspection
+      summary: Build reconstructed logical data lineage
+      operationId: postdata_lineage
+      description: Build reconstructed logical data lineage
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                source: *id001
+                runtime_state:
+                  type: object
+                  description: Optional current runtime state for values.
+                  additionalProperties: true
+              additionalProperties: true
+  /api/embedded-data-flow:
+    post:
+      tags:
+      - Inspection
+      summary: Read canonical authoring data flow
+      operationId: postembedded_data_flow
+      description: Read canonical authoring data flow
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id.
+              additionalProperties: true
+              required:
+              - package_id
+  /api/explain:
+    post:
+      tags:
+      - Assistants & Recovery
+      summary: Explain a selected Editor entity with the configured model
+      operationId: postexplain
+      description: Explain a selected Editor entity with the configured model
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Configured model session.
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                kind:
+                  type: string
+                  description: Explanation kind.
+                node_id:
+                  type: string
+                  description: Selected node id.
+                collection:
+                  type: string
+                  description: nodes/gates where applicable.
+                source: *id001
+                runtime_state:
+                  type: object
+                  additionalProperties: true
+                verification_check:
+                  type: object
+                  additionalProperties: true
+              additionalProperties: true
+              required:
+              - session_id
+  /api/data-lineage-assistant:
+    post:
+      tags:
+      - Assistants & Recovery
+      summary: Ask the Data Flow assistant
+      operationId: postdata_lineage_assistant
+      description: Ask the Data Flow assistant
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Configured model session.
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                entity:
+                  type: object
+                  description: Selected lineage entity.
+                  additionalProperties: true
+                context:
+                  type: object
+                  description: Connected lineage context.
+                  additionalProperties: true
+                messages: *id003
+              additionalProperties: true
+              required:
+              - session_id
+              - entity
+  /api/playbook-settings-assistant:
+    post:
+      tags:
+      - Assistants & Recovery
+      summary: Ask the Playbook Settings assistant
+      operationId: postplaybook_settings_assistant
+      description: Ask the Playbook Settings assistant
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Configured model session.
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                mode:
+                  type: string
+                  description: Assistant mode.
+                message:
+                  type: string
+                  description: Current user message.
+                messages: *id003
+                resource_path:
+                  type: string
+                  description: Selected package file path when mode=resource_chat.
+              additionalProperties: true
+              required:
+              - session_id
+              - package_id
+              - message
+  /api/recovery-diagnose:
+    post:
+      tags:
+      - Assistants & Recovery
+      summary: Diagnose a runtime recovery situation
+      operationId: postrecovery_diagnose
+      description: Diagnose a runtime recovery situation
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                evidence:
+                  type: object
+                  description: Failure/runtime evidence.
+                  additionalProperties: true
+                choices:
+                  type: array
+                  description: Available recovery choices.
+                  items:
+                    type: object
+                    additionalProperties: true
+              additionalProperties: true
+              required:
+              - evidence
+  /api/recovery-chat:
+    post:
+      tags:
+      - Assistants & Recovery
+      summary: Continue conversational recovery
+      operationId: postrecovery_chat
+      description: Continue conversational recovery
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Configured model session.
+                evidence:
+                  type: object
+                  additionalProperties: true
+                choices:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                history:
+                  type: array
+                  items:
+                    type: object
+                    additionalProperties: true
+                state:
+                  type: object
+                  additionalProperties: true
+                state_revision:
+                  type: integer
+                  minimum: 0
+                analyst_input:
+                  type: string
+                  description: Analyst recovery message.
+              additionalProperties: true
+              required:
+              - session_id
+              - evidence
+  /api/verification-catalog:
+    post:
+      tags:
+      - Verification
+      summary: List verification checks
+      operationId: postverification_catalog
+      description: List verification checks
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+              additionalProperties: true
+  /api/verification-start:
+    post:
+      tags:
+      - Verification
+      summary: Start package verification
+      operationId: postverification_start
+      description: Start package verification
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id.
+              additionalProperties: true
+              required:
+              - package_id
+  /api/verification-status:
+    post:
+      tags:
+      - Verification
+      summary: Poll package verification
+      operationId: postverification_status
+      description: Poll package verification
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Verification run id.
+              additionalProperties: true
+              required:
+              - run_id
+  /api/verification-assistant:
+    post:
+      tags:
+      - Verification
+      summary: Ask the verification assistant
+      operationId: postverification_assistant
+      description: Ask the verification assistant
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                  description: Configured model session.
+                package_id:
+                  type: string
+                  description: Loaded package id.
+                verification_check:
+                  type: object
+                  description: Selected verification check and evidence.
+                  additionalProperties: true
+                messages: *id003
+              additionalProperties: true
+              required:
+              - session_id
+              - verification_check
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          examples:
+          - passed
+          - failed
+      additionalProperties: true
+    ErrorResponse:
+      type: object
+      required:
+      - status
+      - error
+      properties:
+        status:
+          const: failed
+        error:
+          type: string
+      additionalProperties: true
+  responses:
+    BadRequest:
+      description: Invalid request or contract violation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Unknown endpoint/resource/run
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'

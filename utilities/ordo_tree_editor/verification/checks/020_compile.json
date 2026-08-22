@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "compile",
+  "title": "Compile to Semantic IR",
+  "group": "language",
+  "description": "Compile Ordo Source to Semantic JSON IR",
+  "order": 20,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "compile",
+      "{package_root}"
+    ]
+  }
+}

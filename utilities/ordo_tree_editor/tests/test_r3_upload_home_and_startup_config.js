@@ -1,0 +1,15 @@
+const fs=require('fs');
+const html=fs.readFileSync('web/index.html','utf8');
+const js=fs.readFileSync('web/app.js','utf8');
+const css=fs.readFileSync('web/styles.css','utf8');
+const tabs=[...html.matchAll(/data-workspace-tab="([^"]+)"/g)].map(m=>m[1]);
+if(tabs[0]!=='upload') throw new Error('Upload Playbook must be the first workspace tab');
+if(!html.includes('data-workspace-tab="upload"')) throw new Error('missing Upload Playbook workspace tab');
+if(!html.includes('id="upload-home-panel"')) throw new Error('missing dedicated upload home panel');
+if(!html.includes('id="gitlab-playbook-browser"')) throw new Error('missing GitLab playbook browser');
+if(!html.includes('id="gitlab-root-input"')) throw new Error('missing editable GitLab root');
+if(!js.includes('showPanelTab("run")') || !js.includes('finishPlaybookPreparation(pkg)')) throw new Error('successful load must still enter Execute Playbook');
+if(!js.includes('!loaded && !["upload","modelchat","help"].includes(mode)')) throw new Error('playbook-dependent tabs must be disabled before load');
+if(!js.includes('syncModelSettingsIndicator')) throw new Error('model settings indicator sync missing');
+if(!css.includes('#header-model-settings.model-unconfigured')) throw new Error('unconfigured model red state missing');
+console.log('PASS upload-home/startup navigation contract');

@@ -1,0 +1,15 @@
+const fs=require('fs'), path=require('path'), vm=require('vm');
+const app=fs.readFileSync(path.join(__dirname,'..','web','app.js'),'utf8');
+const start=app.indexOf('function stableLiveJson');
+const end=app.indexOf('function accumulateLiveUsage');
+if(start<0||end<0) throw new Error('no-progress helpers not found');
+const snippet=app.slice(start,end);
+const sandbox={state:{liveNoProgressGateFailures:{}},console};
+vm.createContext(sandbox); vm.runInContext(snippet,sandbox);
+const failure={failed_checks:[{check_id:'G_TEST_COVERAGE_COMPLETE',summary:'missing declared test coverage: schedules, calculation timestamps'}],missing_coverage:['schedules','calculation timestamps'],invalid_state:[],missing_information:[],affected_state:['functional_test_catalog']};
+const runtime={state_after:{functional_test_catalog:{rows:[{tc_id:'FT-1'}]}}};
+if(sandbox.detectNoProgressGateFailure('G_TEST_COVERAGE_COMPLETE',failure,runtime)!==false) throw new Error('first failure must not halt');
+if(sandbox.detectNoProgressGateFailure('G_TEST_COVERAGE_COMPLETE',failure,runtime)!==true) throw new Error('identical repeated failure with unchanged state must halt');
+const changed={state_after:{functional_test_catalog:{rows:[{tc_id:'FT-1'},{tc_id:'FT-SCHEDULE'}]}}};
+if(sandbox.detectNoProgressGateFailure('G_TEST_COVERAGE_COMPLETE',failure,changed)!==true) throw new Error('same missing coverage must halt even when unrelated runtime state changed');
+console.log('NO-PROGRESS GATE REGRESSION: PASS');

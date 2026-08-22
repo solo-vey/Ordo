@@ -1,0 +1,39 @@
+{
+  "record": {
+    "id": "GENERIC_CLIENT_MAPPING_NODE",
+    "answer_type": "table_confirmation_or_correction",
+    "draft_generation": {
+      "source": ["state.source_attribute_mapping.rows", "state.trigger_logic"],
+      "columns": ["source_field", "target_field", "transformation", "basic_fallback"]
+    },
+    "on_answer": {
+      "normalize": {"output_payload_mapping.rows": "AI.NORMALIZE_CLIENT_VALUE_ROWS($answer)"},
+      "update_state": {"output_payload_mapping.rows": "$normalized.output_payload_mapping.rows"},
+      "next": "GENERIC_VALIDATION_GATE"
+    }
+  },
+  "state": {
+    "source_attribute_mapping": {
+      "rows": [
+        {"module":"company-profile","data_type":"companyProfile","field_path":"statusCode","analyst_status":"Confirmed"},
+        {"module":"company-profile","data_type":"companyProfile","field_path":"termination.date","analyst_status":"Confirmed"},
+        {"module":"company-profile","data_type":"companyProfile","field_path":"companyType.isIndividualInterprener","analyst_status":"Confirmed"},
+        {"module":"company-profile","data_type":"companyProfile","field_path":"shortName","analyst_status":"Confirmed"}
+      ]
+    },
+    "output_payload_mapping": {
+      "rows": [
+        {"source_field":"companyType.isIndividualInterprener","target_field":"values.companyTypeUA","transformation":"false -> company; true -> FOP","basic_fallback":"omit_and_log"},
+        {"source_field":"termination.date","target_field":"values.date","transformation":"as_is","basic_fallback":"omit_and_log"},
+        {"source_field":"shortName","target_field":"values.nameUA","transformation":"as_is","basic_fallback":"fullName"}
+      ]
+    }
+  },
+  "regenerated_model_updates": {
+    "output_payload_mapping.rows": [
+      {"source_field":"companyProfile.statusCode","target_field":"status","transformation":"direct","basic_fallback":"unknown"},
+      {"source_field":"companyProfile.termination.date","target_field":"termination_date","transformation":"date_format(ISO)","basic_fallback":null},
+      {"source_field":"companyProfile.companyType.isIndividualInterprener","target_field":"is_fop","transformation":"boolean_to_string","basic_fallback":"false"}
+    ]
+  }
+}

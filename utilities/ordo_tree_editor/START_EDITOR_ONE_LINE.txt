@@ -1,0 +1,1 @@
+cd "/Users/test/Downloads/ORDO_TREE_EDITOR/utilities/ordo_tree_editor" && sh ./start_ordo_tree_editor.command

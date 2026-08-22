@@ -1,0 +1,20 @@
+const fs=require('fs');
+const path=require('path');
+const vm=require('vm');
+const root=path.resolve(__dirname,'..');
+const js=fs.readFileSync(path.join(root,'web/app.js'),'utf8');
+const match=js.match(/const NODE_WIDTH = 205, NODE_MIN_HEIGHT = 88, HORIZONTAL_GAP = 55, VERTICAL_GAP = 70, CANVAS_MARGIN = 42;\nfunction treeLayoutMetrics\(\) \{[\s\S]*?return presets\[density\] \|\| presets\.normal;\n\}/);
+if(!match) throw new Error('treeLayoutMetrics definition not found');
+const sandbox={state:{treeLayoutDensity:'normal'}};
+vm.createContext(sandbox);
+vm.runInContext(match[0]+'\nthis.treeLayoutMetrics = treeLayoutMetrics;', sandbox);
+function metrics(mode){sandbox.state.treeLayoutDensity=mode;return sandbox.treeLayoutMetrics();}
+const compact=metrics('compact');
+const normal=metrics('normal');
+const spacious=metrics('spacious');
+if(!(compact.horizontalGap < normal.horizontalGap && normal.horizontalGap < spacious.horizontalGap)) throw new Error('horizontal gap must widen from compact to spacious');
+if(!(compact.verticalGap < normal.verticalGap && normal.verticalGap < spacious.verticalGap)) throw new Error('vertical gap must widen from compact to spacious');
+if(!(compact.pathGapY < normal.pathGapY && normal.pathGapY < spacious.pathGapY)) throw new Error('path spacing must widen from compact to spacious');
+if(!(compact.branchGapX < normal.branchGapX && normal.branchGapX < spacious.branchGapX)) throw new Error('branch spacing must widen from compact to spacious');
+if(!(compact.minCanvasWidth < normal.minCanvasWidth && normal.minCanvasWidth < spacious.minCanvasWidth)) throw new Error('canvas width budget must widen from compact to spacious');
+console.log('PASS tree layout density metrics regression');

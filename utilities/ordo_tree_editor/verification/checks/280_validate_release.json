@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "validate_release",
+  "title": "Release validation/archive",
+  "group": "release",
+  "description": "Broader release validation that creates release artifacts",
+  "order": 280,
+  "enabled": true,
+  "requires": [
+    "release_context"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "unsafe_one_click"
+}

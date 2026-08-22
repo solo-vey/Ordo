@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "validate_prompt",
+  "title": "Prompt-only compilation binding",
+  "group": "templates",
+  "description": "Validate prompt-only compilation/source binding",
+  "order": 210,
+  "enabled": true,
+  "requires": [
+    "prompt_compilation"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "needs_template_context"
+}

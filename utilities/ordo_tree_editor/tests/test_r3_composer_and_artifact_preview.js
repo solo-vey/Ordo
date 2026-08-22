@@ -1,0 +1,21 @@
+const fs=require('fs'), path=require('path');
+const root=path.join(__dirname,'..','web');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'app.js'),'utf8');
+const css=fs.readFileSync(path.join(root,'styles.css'),'utf8');
+function must(h,n,m){ if(!h.includes(n)) throw new Error(m||`missing ${n}`); }
+for(const id of ['live-composer-expand','artifact-preview-panel','artifact-preview-body','artifact-preview-download','artifact-preview-close']) must(html,id);
+must(html,'rows="1" placeholder="Message"','composer must start as one row');
+must(js,'function updateLiveComposerLayout()','adaptive composer layout missing');
+must(js,"const maxLines=state.liveComposerExpanded ? 10 : (multiline ? 3 : 1);",'composer 1/3/10 line contract missing');
+must(js,"state.liveComposerExpanded=!state.liveComposerExpanded",'expand/collapse toggle missing');
+if(js.includes('You can type while the model is working')) throw new Error('busy placeholder must not be shown');
+must(js,'function isMarkdownArtifact(path)','markdown artifact detection missing');
+must(js,"card.addEventListener('click',()=>openArtifactPreview(item.artifact))",'markdown card must open preview');
+must(js,'live-artifact-card-download-only','non-markdown artifact must remain download-only');
+must(js,"body.innerHTML=renderBasicMarkdown(text)",'markdown preview must use safe renderer');
+must(css,'data-composer-mode="multiline"','multiline composer layout missing');
+must(css,'data-composer-mode="expanded"','expanded composer layout missing');
+must(css,'.artifact-preview-panel','artifact preview styling missing');
+must(css,'.live-artifact-card','markdown card styling missing');
+console.log('PASS R3 adaptive composer and artifact preview contract');

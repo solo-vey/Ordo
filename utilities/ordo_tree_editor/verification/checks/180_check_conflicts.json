@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "check_conflicts",
+  "title": "Dependency conflicts",
+  "group": "package",
+  "description": "Detect unresolved dependency/layer conflicts",
+  "order": 180,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "check-conflicts",
+      "{package_root}"
+    ]
+  }
+}
