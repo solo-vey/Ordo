@@ -1,0 +1,12 @@
+schema: ordo.library.implementation_profile_catalog.v1
+discriminator_field: <STABLE_DOCUMENT_OR_STATE_FIELD>
+profiles:
+- key: <PROFILE_KEY_1>
+  file: IMPLEMENTATION_PROFILE_<KEY_1>.md
+  aliases:
+  - <OPTIONAL_ALIAS>
+  description: <WHEN_THIS_PROFILE_APPLIES>
+fallback:
+  status: GENERIC_FALLBACK
+  rule: Never guess a profile. Use repository-grounded generic implementation when
+    unresolved, unsupported, missing, or contradicted by current repository evidence.

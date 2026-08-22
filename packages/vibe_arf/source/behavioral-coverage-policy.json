@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_BEHAVIORAL_COVERAGE_V1",
+  "revision": "0.1.0-alpha.26",
+  "required_families": [
+    "core_identity",
+    "trigger",
+    "null_no_data",
+    "source_failure",
+    "lifecycle",
+    "output",
+    "history_transition"
+  ],
+  "rules": [
+    "Coverage status is derived from a required scenario matrix, never from a model assertion.",
+    "Aggregate PASS is invalid when required scenario families are missing or unexecuted.",
+    "Scenario evidence must identify exact candidate revision/hash and execution result."
+  ]
+}

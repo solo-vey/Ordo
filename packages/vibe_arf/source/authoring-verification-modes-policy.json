@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1",
+  "policy_id": "VIBE_ARF_AUTHORING_VERIFICATION_MODES_V1",
+  "status": "ACTIVE_ALPHA20_CANDIDATE_POLICY",
+  "goal": "Keep analyst playbook authoring fast while preserving fail-closed release verification.",
+  "modes": {
+    "FAST_EDIT": {
+      "purpose": "Immediate feedback after a local applied-playbook edit.",
+      "required_checks": [
+        "pinned Ordo lint + compile through audit_generated_ordo_language.py",
+        "applied validator wiring audit when runtime validator tools are present",
+        "fail-fast parse-before-semantic validation order audit when staged runtime validators are present"
+      ],
+      "must_not_run": [
+        "full factory regression",
+        "full mutation corpus",
+        "release packaging"
+      ],
+      "promotion": "PASS permits continued editing only; it is not a readiness or release claim."
+    },
+    "PLAYBOOK_VERIFY": {
+      "purpose": "Verify one applied playbook before sharing or checkpointing it.",
+      "required_checks": [
+        "all FAST_EDIT checks",
+        "package-local test cases",
+        "package-local validator fixture/E2E suite when supplied",
+        "Vibe-owned generated_playbook_contract",
+        "Editor replay/Auto Answers package shape validation"
+      ],
+      "promotion": "PASS permits a verified applied-playbook checkpoint, not factory acceptance."
+    },
+    "FULL_FACTORY": {
+      "purpose": "Shared-system, language-contract, factory-tooling, checkpoint/readiness or acceptance verification.",
+      "required_checks": [
+        "impact policy says FULL_REQUIRED or explicit milestone/checkpoint",
+        "full factory regression corpus",
+        "required mutation and readiness evidence"
+      ]
+    }
+  },
+  "selection_rules": [
+    "Ordinary applied package-local edits default to FAST_EDIT during iteration without asking the user to choose a mode.",
+    "Text-only applied-playbook edits must not trigger PLAYBOOK_VERIFY or FULL_FACTORY unless the edited text is shared executable policy.",
+    "Use the latest VERIFIED checkpoint as the regression baseline and verify the dependency delta rather than replaying already-proven history.",
+    "Before handing an applied package to another chat/person or promoting a checkpoint, run PLAYBOOK_VERIFY.",
+    "Changes to shared Vibe factory, pinned Ordo/compiler/runtime foundation, shared regression infrastructure, canonical laws, or accepted-baseline governance require FULL_FACTORY.",
+    "Explicit user finalization/readiness/acceptance requires full verification appropriate to the changed scope.",
+    "Unknown or ambiguous impact fails closed to FULL_FACTORY.",
+    "FAST_EDIT or PLAYBOOK_VERIFY must never be reported as full factory regression.",
+    "Measure contour wall-clock; strong FAST_EDIT slowdown is a DX regression to investigate."
+  ],
+  "ux_target": {
+    "FAST_EDIT": "seconds to tens of seconds for a small playbook",
+    "PLAYBOOK_VERIFY": "local playbook scope only",
+    "FULL_FACTORY": "allowed to be slow; run at system boundaries, not every edit",
+    "FIRST_ANALYST_VISIBLE_ALPHA": "target <=10 minutes when required source inputs are available and no external human-authority decision is needed"
+  },
+  "lifecycle_principle": "DEVELOP_FAST -> CHECKPOINT_OFTEN -> VERIFY_DELTA -> FULL_VERIFY_AT_MILESTONE"
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "state_patch_v1",
+  "purpose": "Hash-bound model/delta proposal contract applied only by deterministic runtime.",
+  "required": ["contract", "base_state_sha256", "allowed_roots", "set"],
+  "shape": {
+    "contract": "state_patch_v1",
+    "base_state_sha256": "sha256 hex of canonical pre-patch state",
+    "dependency_fingerprint": "optional on first pass; required by policy for repeat-pass optimization",
+    "allowed_roots": "non-empty list of top-level state roots the node contract permits",
+    "set": "object keyed by JSON Pointer-like absolute paths",
+    "delete": "optional list of paths; forbidden unless allow_delete=true and node contract permits deletion",
+    "allow_delete": "boolean, default false"
+  },
+  "application": {
+    "owner": "deterministic_runtime",
+    "stale_baseline": "FAIL_CLOSED",
+    "path_outside_allowed_roots": "FAIL_CLOSED",
+    "whole_state_replacement": "FORBIDDEN_BY_DEFAULT",
+    "output_contract": "state_updates_v1"
+  }
+}

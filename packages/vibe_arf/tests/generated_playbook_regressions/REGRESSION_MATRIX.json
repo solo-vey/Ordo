@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0",
+  "suite_id": "VIBE_GENERATED_PLAYBOOK_REGRESSION_SUITE_V1",
+  "source_history": "Monitoring Business Prepare alpha.1-alpha.14 + Risk Factor Passport draft.6-draft.7 dogfood handoffs",
+  "tests": [
+    {
+      "id": "R01_GRAPH_UNKNOWN_TARGET",
+      "expected_code": "GP_GRAPH_UNKNOWN_TARGET",
+      "lesson": "Stale edge/removed node references must block before Editor."
+    },
+    {
+      "id": "R02_GRAPH_UNREACHABLE",
+      "expected_code": "GP_GRAPH_UNREACHABLE_ELEMENT",
+      "lesson": "Detached nodes/gates must block."
+    },
+    {
+      "id": "R03_EXTERNAL_TERMINAL_INCOMING",
+      "expected_code": "GP_GRAPH_TERMINAL_NO_INCOMING",
+      "lesson": "Declared external terminals need reachable incoming transitions."
+    },
+    {
+      "id": "R04_EFFECTIVE_OWNERSHIP",
+      "expected_code": "GP_EFFECTIVE_OWNERSHIP_CONFLICT",
+      "lesson": "Automatic/model/deterministic nodes must not contain human-input constructs such as question+answer_type or residual $answer."
+    },
+    {
+      "id": "R05_MODEL_REQUIRED_WRITES",
+      "expected_code": "GP_MODEL_REQUIRED_WRITES_UNENFORCED",
+      "lesson": "Required model writes must be runtime-enforced, not metadata-only."
+    },
+    {
+      "id": "R06_HUMAN_AUTHORITY_DIRECT_RESPONSE",
+      "expected_code": "GP_HUMAN_AUTHORITY_MODEL_INTERPRETATION",
+      "lesson": "Human approval/signoff cannot depend on semantic recovery or structured $answer selectors."
+    },
+    {
+      "id": "R07_PACKAGE_TOOL_TRANSPORT",
+      "expected_code": "GP_PACKAGE_TOOL_RAW_STATE_ARGV",
+      "lesson": "Raw object/list/string state must not be transported via CLI argv; use materialized context snapshots."
+    },
+    {
+      "id": "R08_RUN_EVIDENCE_GATE",
+      "expected_code": "GP_RUN_GATE_CONFLATION",
+      "lesson": "Deterministic RUN writes evidence; separate GATE decides."
+    },
+    {
+      "id": "R09_ARTIFACT_CONTROL_FLOW",
+      "expected_code": "GP_ARTIFACT_NOT_ON_CONTROL_FLOW",
+      "lesson": "Declared deliverables must be materialized on reachable control flow."
+    },
+    {
+      "id": "R10_AUTO_ANSWERS_REPLAY",
+      "expected_code": "GP_AUTO_ANSWERS_REPLAY_INVALID",
+      "lesson": "Auto Answers ZIP must match Editor replay package shape."
+    },
+    {
+      "id": "R11_SOURCE_ONLY_EDITOR_PACKAGE",
+      "expected_code": "GP_EDITOR_COMPILED_ARTIFACT_PACKAGED",
+      "lesson": "Editor candidate must be source-only with respect to Editor compilation."
+    },
+    {
+      "id": "R12_FREE_TEXT_RETRY_PROGRESS",
+      "expected_code": "GP_FREE_TEXT_RETRY_NO_PROGRESS",
+      "lesson": "Fail-closed free-text retries must mutate observable attempt/progress state."
+    },
+    {
+      "id": "R13_REVISION_EVIDENCE_ATOMICITY",
+      "expected_code": "GP_REVISION_EVIDENCE_INCONSISTENT",
+      "lesson": "Revision registries/matrices/evidence must update atomically and retain full revision records."
+    },
+    {
+      "id": "R14_CANONICAL_NODE_PROFILES",
+      "expected_code": "GP_CANONICAL_NODE_PROFILES_MISSING",
+      "lesson": "Factory must ship canonical safe profiles for automatic model, deterministic RUN/GATE, human enum/free-text, materialization, package and terminal nodes."
+    },
+    {
+      "id": "R15_COMPATIBILITY_PROTOCOL",
+      "expected_code": "GP_EDITOR_COMPATIBILITY_CONTRACT_MISSING",
+      "lesson": "Vibe and Editor-facing gates need one machine-readable compatibility protocol."
+    },
+    {
+      "id": "R16_ANALYST_VISIBILITY_BARRIER",
+      "expected_code": "GP_ANALYST_VISIBILITY_BARRIER_MISSING",
+      "lesson": "Candidate must not be exposed as analyst-ready until all trusted regressions and smoke checks pass."
+    },
+    {
+      "id": "R17_RUNNER_REGISTERED",
+      "expected_code": "INTEGRATION",
+      "lesson": "Generated contract validator must be a registered Vibe-owned runner."
+    },
+    {
+      "id": "R18_GENERATED_PROFILE_INHERITS_GATE",
+      "expected_code": "INTEGRATION",
+      "lesson": "Every generated playbook verification profile must include the blocking generated-playbook contract."
+    },
+    {
+      "id": "R19_FACTORY_PROFILE_RUNS_ALPHA20_SUITE",
+      "expected_code": "INTEGRATION",
+      "lesson": "The Vibe factory must continuously execute this regression memory on itself."
+    },
+    {
+      "id": "R20_AUTHORING_GRAPH_WIRED",
+      "expected_code": "INTEGRATION",
+      "lesson": "The authoring verification rail must explicitly use the contract validator, safe profiles and Editor compatibility protocol."
+    },
+    {
+      "id": "R21_BARRIER_WIRED_TO_HANDOFF",
+      "expected_code": "INTEGRATION",
+      "lesson": "Review/acceptance/handoff must not expose candidates while the generated contract is failing."
+    },
+    {
+      "id": "R22_PORTABLE_MANIFEST_ATOMICITY",
+      "expected_code": "INTEGRATION",
+      "lesson": "Portable immutable manifest must be complete for alpha20 assets, exclude generated bytecode, and match file hashes/sizes atomically."
+    },
+    {
+      "id": "R23_CANONICAL_SUPPORT_MANIFEST_ATOMICITY",
+      "expected_code": "INTEGRATION",
+      "lesson": "Canonical support provenance manifest must resolve every effective path and match the effective hash/size; local effective changes must never leave stale support hashes."
+    },
+    {
+      "id": "R24_ENTRY_DOC_REVISION_TRUTH",
+      "expected_code": "INTEGRATION",
+      "lesson": "User-facing entry documents and compatibility evidence must identify the actual candidate revision and must not falsely claim an accepted baseline."
+    },
+    {
+      "id": "R25_STRICT_ROUTE_CLOSURE_CONTROL_WORD",
+      "expected_code": "GP_GRAPH_UNKNOWN_TARGET",
+      "lesson": "Static route words such as block are not implicit terminals; only declared targets or canonical reserved STOP may close a route."
+    },
+    {
+      "id": "R26_DETERMINISTIC_PACKAGE_TOOL_CONTRACT",
+      "expected_code": "VIBE_DETERMINISTIC_CONTRACT_COMPLETENESS",
+      "lesson": "Explicit deterministic package-tool responsibilities need tool identity, declared effect/output, and an explicit route before simulation."
+    },
+    {
+      "id": "R27_ARCHIVE_REQUIRED_MEMBERS_CONTRACT",
+      "expected_code": "VIBE_ARTIFACT_ARCHIVE_REGISTRY_COMPLETENESS",
+      "lesson": "Archive/package outputs must declare required membership rather than relying on prose or runtime inference."
+    },
+    {
+      "id": "R28_ARCHIVE_HASH_CONTRACT",
+      "expected_code": "VIBE_ARTIFACT_ARCHIVE_REGISTRY_COMPLETENESS",
+      "lesson": "Archive/package outputs require structured member/archive hash evidence or an explicit deterministic dynamic hash validation contract."
+    },
+    {
+      "id": "R29_POST_MATERIALIZATION_VALIDATOR_CONTRACT",
+      "expected_code": "VIBE_ARTIFACT_ARCHIVE_REGISTRY_COMPLETENESS",
+      "lesson": "A declared post-materialization validation requirement must name a deterministic validator."
+    },
+    {
+      "id": "R30_PROFILE_GAP_BEFORE_SIMULATION",
+      "expected_code": "INTEGRATION",
+      "lesson": "Factory static completeness gates should catch generated deterministic profile gaps before invoking the pinned runtime simulation; simulation remains the fail-closed backstop."
+    },
+    {
+      "id": "R31_DERIVABLE_UNKNOWN",
+      "expected_code": "GP_DERIVABLE_UNKNOWN",
+      "lesson": "A derivable field must be resolved from canonical rules rather than materialized as UNKNOWN."
+    },
+    {
+      "id": "R32_SYNTHETIC_UNKNOWN",
+      "expected_code": "GP_SYNTHETIC_UNKNOWN",
+      "lesson": "Missing data must not be converted to analyst-confirmed UNKNOWN without structural provenance."
+    },
+    {
+      "id": "R33_ORPHAN_SUBSTANTIVE_SECTION",
+      "expected_code": "GP_ORPHAN_SUBSTANTIVE_SECTION",
+      "lesson": "Every substantive template section needs a canonical/source/derived/optional/downstream resolution strategy."
+    },
+    {
+      "id": "R34_SEMANTIC_GATE_READ_ONLY",
+      "expected_code": "GP_SEMANTIC_GATE_CANONICAL_MUTATION",
+      "lesson": "Semantic quality review may return structured findings but must not mutate canonical state or override deterministic failures."
+    },
+    {
+      "id": "R35_WEAK_DERIVED_TESTS",
+      "expected_code": "GP_WEAK_DERIVED_TESTS",
+      "lesson": "Generated tests must be rule-linked with concrete inputs/preconditions and expected outcomes; fixed row counts are not quality."
+    },
+    {
+      "id": "R36_QUALITY_FINDING_ROUTING",
+      "expected_code": "GP_QUALITY_FINDING_ROUTING",
+      "lesson": "Derivable defects self-repair before analyst escalation; source, analyst and downstream findings route distinctly."
+    },
+    {
+      "id": "R37_MODEL_MODE_REFERENCE_TRACE",
+      "expected_code": "INTEGRATION",
+      "lesson": "Generated playbooks with strict runtime targets prove terminal semantics in Model Mode first and preserve that trace as the runtime equivalence oracle."
+    },
+    {
+      "id": "R38_MERGE_BY_DIFF_STATE",
+      "expected_code": "GP_STATE_WHOLE_REPLACEMENT",
+      "lesson": "Partial node output must merge by diff and preserve unrelated state."
+    },
+    {
+      "id": "R39_CURRENT_NODE_REENTRY",
+      "expected_code": "GP_REENTRY_SKIPPED_BY_HISTORY",
+      "lesson": "A node that becomes current again must execute even if it was historically visited or answered."
+    },
+    {
+      "id": "R40_GATE_ON_FAIL_RECOVERY",
+      "expected_code": "GP_GATE_RECOVERY_DROPPED",
+      "lesson": "Gate FAIL with declared on_fail must enter the recovery route rather than terminal block."
+    },
+    {
+      "id": "R41_RUNTIME_WORKAROUND_DATA_POLLUTION",
+      "expected_code": "GP_RUNTIME_WORKAROUND_DATA_FIELD",
+      "lesson": "Business/Data-Layer fields must not be invented solely to compensate for CLI/runner defects."
+    },
+    {
+      "id": "R42_EXHAUSTIVE_AUTHORITY_DISCOVERY",
+      "expected_code": "GP_AUTHORITY_DISCOVERY_INCREMENTAL",
+      "lesson": "Simultaneously visible consequential human decisions from the same information group are discovered before asking."
+    },
+    {
+      "id": "R43_STABLE_DECISION_ID_NO_REASK",
+      "expected_code": "GP_DECISION_IDENTITY_UNSTABLE",
+      "lesson": "Stable decision ids preserve partial answers and prevent re-asking resolved decisions without new conflict."
+    },
+    {
+      "id": "R44_FULL_REPAIR_LOOP",
+      "expected_code": "GP_RECOVERY_LOOP_UNPROVEN",
+      "lesson": "Recovery behavior must be tested end to end from validation FAIL through repair/rematerialization to PASS while preserving unrelated state and resolved authority."
+    }
+  ]
+}

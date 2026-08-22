@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "assembly_id": "GENERATED_PLAYBOOK_EDIT_PACKAGE",
+  "required_members": [
+    "PLAYBOOK_LAWS.md",
+    "PRODUCTION_PACKAGE_CONTRACT.json",
+    "authoring/information_flow_graph.yaml",
+    "authoring/information_group_catalog.yaml",
+    "authoring/information_object_catalog.yaml",
+    "authoring/ordo_projection.yaml",
+    "editor/architecture_surface.json",
+    "source/program.ordo.yaml",
+    "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+    "verification/EXECUTION_RESPONSIBILITY_MAP.json",
+    "verification/INVARIANT_REGISTER.json",
+    "verification_profile.json"
+  ],
+  "rules": [
+    "EDIT is a deterministic sibling projection of the exact canonical source",
+    "EDIT is self-contained for edit + validate + rebuild of CLI_RUN and MODEL_RUN",
+    "EDIT inclusion remains allowlist/reachability controlled",
+    "tests and fixtures belong to EDIT unless another profile explicitly requires a projected subset",
+    "debug/reference/history baggage is excluded unless explicitly declared",
+    "ZIP bytes are reproducible: sorted members, fixed timestamp and normalized permissions",
+    "PACKAGE_CONTINUITY_MANIFEST.json records exact rebuild provenance"
+  ],
+  "production_contract": "PRODUCTION_PACKAGE_CONTRACT.json",
+  "purpose": "Full EDIT engineering distribution derived from the exact canonical source.",
+  "distribution_contract": "DISTRIBUTION_PACKAGE_CONTRACT.json"
+}

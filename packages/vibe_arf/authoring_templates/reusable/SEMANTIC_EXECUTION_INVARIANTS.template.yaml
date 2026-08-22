@@ -1,0 +1,51 @@
+schema_version: '1.0'
+template_id: VIBE_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_INVARIANTS_TEMPLATE
+applicability: generated_playbooks_with_stateful_execution
+model_mode_reference:
+  required_before_strict_runtime_equivalence_claim: true
+  terminal_trace_required: true
+state_update:
+  mode: MERGE_BY_DIFF
+  unrelated_state_survives: true
+  explicit_deletion_only: true
+reentry:
+  current_node_overrides_historical_visitation: true
+  previously_executed_node_may_execute_again: true
+gate_recovery:
+  on_fail_is_real_route: true
+  fail_is_terminal_only_without_recovery_route: true
+data_layer_barrier:
+  runtime_workaround_fields_forbidden: true
+analyst_authority:
+  exhaustive_same_group_discovery_before_ask: true
+  stable_decision_id_required: true
+  preserve_partial_answers: true
+  reask_resolved_without_new_conflict: false
+required_regressions:
+- MODEL_MODE_REFERENCE_TRACE
+- MERGE_BY_DIFF
+- REENTRY_AFTER_REPAIR
+- GATE_ON_FAIL_RECOVERY
+- NO_RUNTIME_WORKAROUND_DATA_FIELDS
+- EXHAUSTIVE_AUTHORITY_DISCOVERY
+- STABLE_DECISION_ID_NO_REASK
+- FULL_REPAIR_LOOP
+- STATE_UPDATES_V1_TOOL_RESULT
+- APPEND_ONLY_SELF_REPAIR_LOG
+template_kind: semantic_execution_invariants
+deterministic_tool_result:
+  contract: state_updates_v1
+  report_is_evidence_only: true
+  executor_merge_source: state_updates
+  merge_mode: MERGE_BY_DIFF
+self_repair_log:
+  required_when_local_repair_continues_execution: true
+  append_only: true
+  business_state_surface: false
+  required_fields:
+  - problem
+  - root_cause
+  - files_changed
+  - repair
+  - validation
+  - continuation_point

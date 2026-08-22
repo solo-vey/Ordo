@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Package Continuity Manifest",
+  "type": "object",
+  "required": [
+    "profile",
+    "version",
+    "canonical_source_identity",
+    "source_identity_files",
+    "dependency_closure_sha256",
+    "member_set_sha256",
+    "startup_files",
+    "rebuild_recipe",
+    "packaging_policy_sha256",
+    "validator_applicability_policy_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "profile": {
+      "enum": [
+        "EDIT",
+        "CLI_RUN",
+        "MODEL_RUN"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "canonical_source_identity": {
+      "type": "string",
+      "minLength": 64
+    },
+    "source_identity_files": {
+      "type": "array"
+    },
+    "dependency_closure_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "member_set_sha256": {
+      "type": "string",
+      "minLength": 64
+    },
+    "startup_files": {
+      "type": "array"
+    },
+    "rebuild_recipe": {
+      "type": "object"
+    },
+    "packaging_policy_sha256": {
+      "type": "string"
+    },
+    "validator_applicability_policy_sha256": {
+      "type": "string"
+    },
+    "test_projection": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,98 @@
+{
+  "policy_id": "EXECUTION_WRITE_SAFETY_VALIDATOR_GOVERNANCE",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "cross_domain",
+  "purpose": "Prevent heuristic validator repair and unsafe write execution by making validator expectations, write authority, write semantics, reviewed scope, post-state success, and semantic value kinds explicit and machine-checkable.",
+  "validator_introspection": {
+    "resolve_validator_id_before_repair": true,
+    "implementation_or_schema_before_heuristic_fix": true,
+    "heuristic_fix_forbidden_when_contract_available": true,
+    "machine_readable_expectations_required_when_platform_supports": true,
+    "introspection_order": [
+      "validator_id",
+      "validator_registry",
+      "implementation_or_schema",
+      "expected_contract",
+      "repair"
+    ],
+    "unavailable_contract_rule": "If implementation/schema is unavailable, record the limitation and use bounded hypothesis testing without weakening the validator."
+  },
+  "planned_write_boundary": {
+    "unplanned_write_during_investigation_forbidden": true,
+    "approved_change_plan_identity_required": true,
+    "new_write_requires_new_plan_risk_approval": true,
+    "probe_write_is_write": true,
+    "write_authorization_bindings": [
+      "approved_change_plan_id",
+      "approved_write_set_hash",
+      "approval_evidence_id"
+    ],
+    "rule": "Investigation/remediation may observe freely within authority, but any write not already represented in the approved plan is a new change and fails closed until re-planned and re-approved."
+  },
+  "write_semantics_contract": {
+    "required_for_write_operations": true,
+    "allowed_modes": [
+      "patch",
+      "merge",
+      "full_replace"
+    ],
+    "unknown_mode_blocks_write": true,
+    "full_replace_requirements": {
+      "fresh_current_state": true,
+      "full_target_materialization": true,
+      "canonical_scope_identity": true,
+      "drift_guard": true,
+      "pre_change_backup": true,
+      "destructive_effect_disclosure": true,
+      "explicit_human_approval": true,
+      "post_state_verification": true
+    }
+  },
+  "canonical_reviewed_scope": {
+    "reviewed_scope_id_required": true,
+    "baseline_fingerprint_scope_must_equal_reviewed_scope": true,
+    "preapply_capture_scope_must_equal_reviewed_scope": true,
+    "target_materialization_scope_must_equal_reviewed_scope_for_full_replace": true,
+    "scope_mismatch_blocks_write": true,
+    "comparison_keys": [
+      "reviewed_scope_id",
+      "baseline_fingerprint_scope_id",
+      "preapply_capture_scope_id"
+    ]
+  },
+  "post_state_semantic_success": {
+    "transport_success_is_not_semantic_success": true,
+    "fresh_post_state_required": true,
+    "semantic_target_verification_required": true,
+    "success_claim_forbidden_before_post_state_verification": true,
+    "required_evidence": [
+      "transport_result",
+      "fresh_post_state_identity",
+      "semantic_comparison",
+      "target_verification_status"
+    ]
+  },
+  "semantic_value_kinds": {
+    "data_layer_contract": true,
+    "pre_write_validation_required": true,
+    "allowed": [
+      "literal_text",
+      "translation_key",
+      "identifier",
+      "enum",
+      "opaque"
+    ],
+    "unknown_or_ambiguous_kind_blocks_write_when_behavior_depends_on_kind": true,
+    "rule": "Information objects used in write payloads declare semantic_value_kind when field interpretation changes validation or materialization behavior."
+  },
+  "inheritance": {
+    "generated_playbooks": true,
+    "template": "authoring_templates/reusable/EXECUTION_WRITE_SAFETY_VALIDATOR_GOVERNANCE.template.yaml"
+  },
+  "schemas": {
+    "write_operation": "source/write-operation-contract.schema.json",
+    "validator_introspection": "source/validator-introspection-contract.schema.json",
+    "semantic_value_kind": "source/semantic-value-kind.schema.json"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_RUNTIME_ADAPTER_COMPATIBILITY_POLICY_V1",
+  "revision": "0.1.0-alpha.26",
+  "semantic_source_of_truth": "canonical_ordo_language",
+  "language_package": "canonical_support/language",
+  "adapter_failure_status": "ORDO_VALID_ADAPTER_INCOMPATIBLE",
+  "profile_failure_status": "ORDO_VALID_VIBE_PROFILE_NONCONFORMANT",
+  "rules": [
+    "Language conformance is evaluated independently of any Editor implementation detail.",
+    "If canonical Ordo allows a construct and an adapter rejects or misexecutes it, fix the adapter and add an adapter regression.",
+    "Adapter transport, UI, replay, packaging, and compiler-version constraints never become language semantics.",
+    "chat_internal qualification must not depend on Editor ZIP, UI, argv, or replay conventions."
+  ],
+  "targets": {
+    "language_core": {
+      "authority": "canonical_ordo_language",
+      "blocking": true
+    },
+    "chat_internal": {
+      "authority": "canonical_ordo_language",
+      "blocking": true,
+      "forbidden_dependencies": [
+        "editor_auto_answers_zip",
+        "editor_ui_routes",
+        "editor_package_tool_argv",
+        "exact_editor_version"
+      ]
+    },
+    "editor_dev": {
+      "authority": "runtime_adapter",
+      "blocking_for_target_only": true,
+      "semantic_authority": false
+    }
+  }
+}

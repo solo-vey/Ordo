@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "VIBE_EDITOR_VISIBLE_ARCHITECTURE_V1",
+  "status": "ACTIVE",
+  "required_surfaces": [
+    "groups",
+    "variables",
+    "dataflow_edges",
+    "bindings",
+    "materialization",
+    "archive_path"
+  ],
+  "zip_presence_is_insufficient": true,
+  "rule": "Generated playbook architecture is accepted only when the bundled Editor can reconstruct and expose semantic groups, variables, dataflow edges, information-to-node bindings, materialization chain, and archive path from a deterministic surface bound to canonical authoring data."
+}

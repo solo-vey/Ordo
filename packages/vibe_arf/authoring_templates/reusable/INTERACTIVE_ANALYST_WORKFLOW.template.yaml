@@ -1,0 +1,61 @@
+schema_version: '1.0'
+template_id: VIBE_INTERACTIVE_ANALYST_WORKFLOW_TEMPLATE
+applicability: generated_playbooks_with_analyst_interaction
+canonical_state_contract:
+  field_shape:
+    field_id: <id>
+    value: null
+    resolution_status: UNASKED
+    field_class: SUBSTANTIVE_REQUIRED
+    provenance_type: null
+    provenance_ref: null
+    asked_count: 0
+    last_question_id: null
+    supersedes: null
+    reason: null
+    completeness_role: REQUIRED_CONSEQUENTIAL
+  resolution_statuses:
+  - KNOWN
+  - UNASKED
+  - UNKNOWN_CONFIRMED
+  - INAPPLICABLE
+intake_pipeline:
+- MODEL_EXTRACT_ALL_RELEVANT_SUPPORTED_FACTS
+- DETERMINISTIC_MERGE_FACT_BATCH
+- DETERMINISTIC_SYNC_PROJECTIONS
+- DETERMINISTIC_RECOMPUTE_GAPS
+- DETERMINISTIC_INTERACTIVE_COMPLETENESS
+- QUESTION_PLAN_ONLY_REMAINING_CONSEQUENTIAL_USER_GAPS
+merge_operation: tools/execute_deterministic_state_transform.py --operation merge_incremental_analyst_facts
+completeness_operation: tools/execute_deterministic_state_transform.py --operation
+  interactive_completeness_scan
+precompose_rule: SUBSTANTIVE_UNASKED_BLOCKS_COMPOSE
+unknown_rule: UNKNOWN_CONFIRMED_REQUIRES_EXPLICIT_PROVENANCE_AND_IS_NOT_REASKED_WITHOUT_NEW_EVIDENCE
+correction_rule: EXPLICIT_CORRECTION_SUPERSEDES_WITH_PROVENANCE; AMBIGUOUS_CONTRADICTION_CREATES_CONFLICT
+progress_protocol:
+- ENTER
+- RESULT
+- NEXT
+required_regressions:
+- FULL_INPUT
+- INCREMENTAL_INPUT
+- OFF_SHAPE_ANSWER
+- EXPLICIT_UNKNOWN
+- UNASKED_SUBSTANTIVE
+- CORRECTION
+- REORDER
+- CHUNKING_INVARIANCE
+- INPUT_ORDER_INVARIANCE
+- EXHAUSTIVE_AUTHORITY_DISCOVERY
+- STABLE_DECISION_ID_NO_REASK
+adaptive_completeness_policy: source/adaptive-artifact-quality-policy.json
+template_kind: interactive_analyst_workflow
+authority_discovery:
+  exhaustive_before_ask: true
+  batch_scope: same_information_group_simultaneously_known_consequential_human_owned
+  stable_decision_id_required: true
+  partial_answers_preserve_resolved_decisions: true
+  reask_only:
+  - UNRESOLVED
+  - NEWLY_DISCOVERED
+  - NEWLY_CONFLICTED

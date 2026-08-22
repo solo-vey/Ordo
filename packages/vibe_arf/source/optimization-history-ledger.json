@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "VIBE_OPTIMIZATION_HISTORY",
+  "append_only": true,
+  "hash_algorithm": "sha256",
+  "entry_hash_rule": "sha256(canonical JSON of entry excluding entry_hash)",
+  "entries": [
+    {
+      "sequence": 1,
+      "problem": "Change 8 audit found incomplete generated-playbook inheritance, template/policy parity, aggregate-score best-so-far eligibility, and append-only history enforcement gaps.",
+      "baseline_evidence": {
+        "audit_result": "0/9 PASS on dedicated hardening surface audit",
+        "candidate": "0.1.0-alpha.45 Change 8 pre-hardening"
+      },
+      "hypothesis": "Registering and fully propagating E95, making protected-dimension eligibility precede numeric ranking, and hash-chaining optimization history closes the governance gaps without changing unrelated execution semantics.",
+      "protected_invariants": [
+        "E31_NORMALIZED_PLAYBOOK_QUALITY_SCORE",
+        "E94_DEVELOPMENT_REGRESSION_GOVERNANCE",
+        "E95_QUALITY_OPTIMIZATION_GOVERNANCE",
+        "no protected quality regression",
+        "hard guards override numeric score"
+      ],
+      "regression_asset": "tools/test_alpha45_quality_optimization_governance.py",
+      "change": {
+        "scope": "Change 8 hardening",
+        "surfaces": [
+          "template kit registry",
+          "E95 reusable template",
+          "canonical-support law propagation",
+          "autonomous improvement best-so-far selection",
+          "optimization history ledger/validator"
+        ]
+      },
+      "comparison_evidence": {
+        "regime": "same candidate package / deterministic targeted regressions"
+      },
+      "measured_result": {
+        "hardening_regression": "53/53 PASS",
+        "optimization_subprocess": "62/62 PASS",
+        "context_runtime_efficiency": "53/53 PASS",
+        "observability_debug": "72/72 PASS",
+        "development_regression_governance": "57/57 PASS",
+        "quality_incentive_anti_gaming": "39/39 PASS",
+        "packaging_continuity": "72/72 PASS",
+        "deterministic_first_architecture": "78/78 PASS",
+        "three_profile_distribution": "17/17 PASS",
+        "logic_coherence": "21/21 PASS",
+        "execution_responsibility_map": "205/205 PASS",
+        "data_layer": "90 objects / 249 edges PASS",
+        "verification_profile": "113 checks generated PASS",
+        "inherited_known_failure": "25/26; production_policy_required_surface only, identical pre-existing class"
+      },
+      "limitations": [
+        "Full accumulated 113-check release cycle remains deferred by candidate policy."
+      ],
+      "decision": "ACCEPT",
+      "previous_entry_hash": null,
+      "entry_hash": "sha256:b6f03d4919554a18981474c0962f046f4d286ed35d25d308c9b21f9c77dd19d0"
+    }
+  ]
+}

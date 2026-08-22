@@ -1,0 +1,88 @@
+{
+  "format": "vibe-optimization-runtime-efficiency-policy/v1",
+  "status": "mandatory_optimization_policy",
+  "scope": "framework-level performance/runtime optimization for VIBE candidate evaluation; domain-specific benchmark values are fixtures only",
+  "tracks": {
+    "quality": {"namespace": "quality_score_track", "purpose": "correctness, analyst burden, artifact quality, architecture and generalization"},
+    "performance": {"namespace": "runtime_performance_track", "purpose": "wall-clock, duplicate work, graph steps, compile/inspect overhead, gap-loop cost and model execution overhead"}
+  },
+  "invariants": [
+    "performance optimization must not change the active score regime",
+    "performance optimization must not suppress consequential gaps or worsen analyst experience",
+    "performance optimization must not weaken provenance, conflict, grounding, lineage, unknown-preservation or source-contract checks",
+    "performance-only changes require controlled equivalence evidence before acceptance"
+  ],
+  "one_pass_model_execution": {
+    "preferred": true,
+    "rule": "when runtime supports an in-process model callback, continue the same runtime traversal from the actual model-node execution point using the exact runtime-effective input",
+    "effective_input_source": "runtime-built request/context, never evaluator reconstruction",
+    "pseudo_live_binding": "synthetic response remains PSEUDO_LIVE_SYNTHETIC and is bound to exact effective-input hash"
+  },
+  "restart_from_zero": {
+    "allowed_when_callback_available": false,
+    "fallback": "allowed only when the runtime cannot continue in-process; record runtime_restart_count and classify the overhead as orchestration cost"
+  },
+  "compile_cache": {
+    "enabled": true,
+    "key_fields": ["candidate_sha256", "runtime_version", "compiler_or_kit_version", "compile_config_hash"],
+    "reusable": ["candidate extraction", "compile result", "static inspect", "deterministic schema parse", "immutable reference preprocessing", "evaluator-independent technical normalization"],
+    "must_not_blindly_reuse": ["canonical state after analyst-answer change", "gap ledger after semantic delta", "evaluator result after evaluator update", "model response after effective-input change", "artifact after compose-affecting change", "conflict set after source-fixture change", "result score after benchmark change"]
+  },
+  "parallelism": {
+    "independent_scenarios": true,
+    "requirements": ["no shared mutable state", "scenario-scoped evidence", "evaluator/reference isolation preserved", "simulator policy semantics unchanged", "output order is not semantic input"],
+    "dependent_graph_steps": "do not parallelize without deterministic proof of equivalence"
+  },
+  "time_degradation": {
+    "mode": "OPPORTUNITY_DIAGNOSTIC",
+    "score_effect": 0,
+    "threshold_multiplier": {"default": 1.35, "configurable": true},
+    "recent_window": {"default": 5, "minimum": 3},
+    "trigger": "current wall time exceeds configured multiplier of recent valid median while semantic complexity delta is small, or deterministic repeated-work signals are present",
+    "diagnosis_order": [
+      "confirm frozen/comparable regime",
+      "profile high-level phases",
+      "count repeated work",
+      "identify input-driven complexity",
+      "remove orchestration waste first",
+      "optimize architecture second",
+      "controlled before/after A/B"
+    ],
+    "inspect_signals": ["runtime_restart_count", "candidate_compile_count", "model_node_calls", "gap_loop_iterations", "artifact_materialization_ms", "evaluation_ms", "unexpected_serial_execution", "cache_misses", "runtime_or_environment_drift", "logging_or_debug_overhead"]
+  },
+  "gap_loop_fusion": {
+    "status": "CONTROLLED_EXPERIMENT_ONLY",
+    "target": "repeated deterministic normalize -> audit -> auto-resolve -> gate stages",
+    "must_preserve": {
+      "canonical_state_semantics": true,
+      "gap_ledger": true,
+      "audit_detail": true,
+      "source_evidence_interpretation": true,
+      "decision_ordering": true,
+      "analyst_visible_queue": true,
+      "final_artifact_semantics": true,
+      "externally_relevant_trace_semantics": true,
+      "score_regime": true
+    },
+    "acceptance": "controlled same-scenario A/B with artifact/score/gap equivalence and consistent timing improvement",
+    "default_action": "do not fuse during ordinary quality revision"
+  },
+  "stop_rules": {
+    "best_so_far_is_continuation_point": true,
+    "latest_revision_is_not_best_by_default": true,
+    "valid_non_improving_limit": 3,
+    "invalid_revision_counts_toward_stagnation": false,
+    "after_convergence": "freeze best exact candidate and proceed to next lifecycle stage rather than revision churn"
+  },
+  "pseudo_live_live_acceptance": {
+    "offline": "many pseudo-live iterations may run with exact-input-bound blind synthetic responses",
+    "live": "formal Live Acceptance is reserved for the frozen offline best after convergence/promotion gates",
+    "fidelity_gap": "when Live Acceptance materially differs from pseudo-live prediction, register SIMULATION_FIDELITY_GAP; never post-hoc tune stored synthetic responses"
+  },
+  "performance_ab": {
+    "freeze": ["candidate/scoped delta", "runtime version", "evaluator version/hash", "scenario hash", "source fixtures", "simulator policy", "score regime"],
+    "record": ["before_wall_time_ms", "after_wall_time_ms", "graph_steps", "gap_loop_iterations", "artifact_sha256_before", "artifact_sha256_after", "process_score_before", "process_score_after", "result_score_before", "result_score_after"],
+    "reject_if": ["artifact semantics changed", "active gaps suppressed", "score regime changed", "evaluator changed without regime reset", "timing improvement is not consistent"]
+  },
+  "impact_hypothesis_before_revision": ["affected metric", "affected scenarios", "affected evaluator checks", "process impact", "document impact", "architecture impact", "runtime impact", "regression risk"]
+}

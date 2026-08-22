@@ -1,0 +1,68 @@
+{
+  "policy_id": "CONTEXT_RUNTIME_EFFICIENCY",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "cross_domain",
+  "purpose": "Minimize playbook-controlled model context and repeated runtime payload without changing canonical semantics, authority, evidence or readiness strength.",
+  "metrics": [
+    "static_source_bytes",
+    "startup_loaded_bytes",
+    "node_prompt_loaded_bytes",
+    "node_knowledge_loaded_bytes",
+    "model_visible_tool_output_bytes",
+    "package_bytes",
+    "platform_overhead_tokens"
+  ],
+  "runtime_read_rules": {
+    "no_recursive_package_preload": true,
+    "no_full_source_preload": true,
+    "active_element_targeted_read": true,
+    "lazy_prompt_loading": true,
+    "lazy_knowledge_loading": true,
+    "authoring_editor_runtime_isolation": true
+  },
+  "targeted_read_budget": {
+    "default_max_lines": 80,
+    "default_max_bytes": 8192,
+    "continuation": "one adjacent continuation is allowed; finish the same active element only",
+    "exceptions": ["playbook_editing", "compile_or_lint_investigation", "graph_wide_validation", "source_migration", "targeted_lookup_proven_insufficient"]
+  },
+  "prompt_externalization": {
+    "recommended_threshold_bytes": 4096,
+    "root": "knowledge/node_prompts",
+    "load": "active_node_only",
+    "semantics_preserving": true,
+    "hash_bound": true,
+    "missing_file": "fail_closed"
+  },
+  "token_estimation": {
+    "prefer": "provider_or_host_exact_usage",
+    "fallback": "utf8_bytes_div_4",
+    "must_label_estimate": true
+  },
+  "context_accounting": {
+    "separate_platform_overhead": true,
+    "distinguish": ["filesystem_scanned_bytes", "tool_output_visible_bytes", "model_loaded_content_bytes", "platform_overhead_tokens"]
+  },
+  "asset_consumers": [
+    "model_runtime_required",
+    "model_runtime_lazy",
+    "deterministic_runtime",
+    "strict_cli_runtime",
+    "authoring_editor_only",
+    "release_validation_only"
+  ],
+  "optimization_patterns": {
+    "compact_evidence_by_reference": true,
+    "delta_outputs_for_repeat_passes": true,
+    "material_dependency_fingerprint_before_rerun": true,
+    "no_duplicate_large_report_and_state_update_payload": true,
+    "consumer_aware_transitive_dependency_pruning": true
+  },
+  "acceptance": {
+    "semantic_quality_equivalence_required": true,
+    "end_to_end_measurement_required": true,
+    "platform_overhead_not_charged_to_playbook": true,
+    "quality_regression_rejects_optimization": true
+  }
+}

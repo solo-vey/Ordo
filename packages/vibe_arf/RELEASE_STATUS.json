@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "release": "0.1.2",
+  "status": "ACCEPTED_STABLE_RELEASE",
+  "previous_stable_release": "0.1.0-alpha.45",
+  "qualified_candidate": "0.1.0-alpha.46 Change 4",
+  "verification": {
+    "profile": "verification_profile.json",
+    "checks_total": 121,
+    "checks_passed": 121,
+    "ledger": "reports/FINAL_RELEASE_VERIFICATION_121.json"
+  },
+  "simulation": {
+    "kit_version": "0.1.6",
+    "status": "PASS",
+    "steps": 199,
+    "final_node": "END_PLAYBOOK_PACKAGE_ACCEPTED",
+    "errors": 0
+  },
+  "editor": {
+    "version": "0.2.0-alpha.20.0.188-dev R3",
+    "native_evidence": "reports/EDITOR_RUN_EVIDENCE.json",
+    "status": "PASS"
+  },
+  "distribution_profiles": [
+    "EDIT",
+    "CLI_RUN",
+    "MODEL_RUN"
+  ],
+  "release_family_manifest": "RELEASE_FAMILY_MANIFEST.json",
+  "canonical_source_identity_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+}

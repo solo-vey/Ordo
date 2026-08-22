@@ -1,0 +1,288 @@
+{
+  "schema_version": "1.0",
+  "status": "COMPLETE",
+  "revision": "0.1.0-alpha.7",
+  "source_revision": {
+    "path": "source/program.ordo.yaml",
+    "sha256": "a1bb31e9623e8189d0e6e911e6722e82ffc082518ae0ab48b0620b698de591ae"
+  },
+  "verification_revision": {
+    "path": "tests/test_cases.yaml",
+    "sha256": "f91b34c3c79f4ada3f63bde6bb30e55db8ce0cb472f7f3289e70fa2e99bcf11e"
+  },
+  "capability_mappings": [
+    {
+      "capability": "artifact_surface_discovery",
+      "design_ref": "authoring_quality_dogfooding_contract.artifact_surface_policy",
+      "implementation": {
+        "state_fields": [
+          "artifact_surface_status",
+          "artifact_field_inventory"
+        ],
+        "rules": [
+          "DESIRED_ARTIFACTS_DRIVE_AUTHORING",
+          "REQUIRED_FIELDS_BEFORE_USER_QUESTIONING"
+        ],
+        "gates": [
+          "G_UNDERSTANDING_READY"
+        ],
+        "assertions": [
+          "A_REQUIRED_FIELDS_HAVE_PRODUCTION_PATH"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA3_ARTIFACT_SURFACE@1.0"
+      ]
+    },
+    {
+      "capability": "parameter_closure_planner",
+      "design_ref": "authoring_quality_dogfooding_contract.parameter_closure_policy",
+      "implementation": {
+        "state_fields": [
+          "parameter_closure_plan_status",
+          "unresolved_required_field_refs"
+        ],
+        "rules": [
+          "REQUIRED_FIELDS_BEFORE_USER_QUESTIONING"
+        ],
+        "gates": [
+          "G_PARAMETER_FLOW_READY"
+        ],
+        "assertions": [
+          "A_REQUIRED_FIELDS_HAVE_PRODUCTION_PATH"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA3_PARAMETER_CLOSURE@1.0"
+      ]
+    },
+    {
+      "capability": "derive_before_ask",
+      "design_ref": "authoring_quality_dogfooding_contract.derivation_ladder",
+      "implementation": {
+        "state_fields": [
+          "derivation_ladder_status"
+        ],
+        "rules": [
+          "DERIVE_BEFORE_ASK"
+        ],
+        "gates": [],
+        "assertions": [
+          "A_DERIVATION_LADDER_BEFORE_USER_QUESTION",
+          "A_NO_TECHNICAL_AUTHORING_QUESTION_LEAK"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA3_DERIVE_BEFORE_ASK@1.0"
+      ]
+    },
+    {
+      "capability": "draft_before_question",
+      "design_ref": "authoring_quality_dogfooding_contract.question_policy",
+      "implementation": {
+        "state_fields": [
+          "draft_hypothesis_status"
+        ],
+        "rules": [
+          "DRAFT_OR_RECOMMEND_BEFORE_NON_AUTHORITY_QUESTION"
+        ],
+        "gates": [],
+        "assertions": [
+          "A_DRAFT_BEFORE_NON_AUTHORITY_CLARIFICATION"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA3_DRAFT_BEFORE_QUESTION@1.0"
+      ]
+    },
+    {
+      "capability": "answer_dependency_propagation",
+      "design_ref": "authoring_quality_dogfooding_contract.answer_propagation_policy",
+      "implementation": {
+        "state_fields": [
+          "answer_propagation_status"
+        ],
+        "rules": [
+          "ONE_USER_ANSWER_PROPAGATES_DEPENDENT_PARAMETERS"
+        ],
+        "gates": [
+          "G_PARAMETER_FLOW_READY"
+        ],
+        "assertions": [
+          "A_USER_ANSWER_PROPAGATES_DEPENDENCIES"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA3_ANSWER_PROPAGATION@1.0"
+      ]
+    },
+    {
+      "capability": "authoring_user_burden_metrics",
+      "design_ref": "authoring_quality_dogfooding_contract.burden_metrics",
+      "implementation": {
+        "state_fields": [
+          "authoring_burden_status",
+          "authoring_burden_metrics"
+        ],
+        "rules": [
+          "AUTHORING_BURDEN_METRICS_FAIL_CLOSED"
+        ],
+        "gates": [
+          "G_REVIEW_EXPERIENCE_READY"
+        ],
+        "assertions": [
+          "A_NO_TECHNICAL_AUTHORING_QUESTION_LEAK"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA3_USER_BURDEN@1.0"
+      ]
+    },
+    {
+      "capability": "natural_language_bootstrap",
+      "design_ref": "chat_first_self_hosting_contract.natural_language_bootstrap",
+      "implementation": {
+        "state_fields": [
+          "chat_first_bootstrap_status"
+        ],
+        "rules": [
+          "NATURAL_LANGUAGE_BOOTSTRAP_DEFAULT",
+          "CHAT_FIRST_RUNTIME_MODE_IS_OPTIONAL_ENGINEERING_SURFACE"
+        ],
+        "gates": [
+          "G_UNDERSTANDING_READY"
+        ],
+        "assertions": [
+          "A_CHAT_START_NOT_RUNTIME_JARGON_DEFAULT"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_NATURAL_BOOTSTRAP@1.0"
+      ]
+    },
+    {
+      "capability": "autonomous_until_user_blocker",
+      "design_ref": "chat_first_self_hosting_contract.autonomous_until_blocker",
+      "implementation": {
+        "state_fields": [
+          "autonomous_until_blocker_status"
+        ],
+        "rules": [
+          "AUTONOMOUS_UNTIL_USER_BLOCKER"
+        ],
+        "gates": [
+          "G_FINAL_DIALOGUE_READY"
+        ],
+        "assertions": [
+          "A_NO_INTERMEDIATE_APPROVAL_CHECKPOINT"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_AUTONOMOUS_UNTIL_BLOCKER@1.0"
+      ]
+    },
+    {
+      "capability": "artifact_surface_session_bootstrap",
+      "design_ref": "chat_first_self_hosting_contract.artifact_surface_session_bootstrap",
+      "implementation": {
+        "state_fields": [
+          "artifact_surface_bootstrap_status"
+        ],
+        "rules": [
+          "ARTIFACT_SURFACE_BEFORE_BROAD_QUESTIONING"
+        ],
+        "gates": [],
+        "assertions": [
+          "A_ARTIFACT_SURFACE_PRECEDES_BROAD_QUESTIONING"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_ARTIFACT_SURFACE_BOOTSTRAP@1.0"
+      ]
+    },
+    {
+      "capability": "business_language_default_surface",
+      "design_ref": "chat_first_self_hosting_contract.business_language_default_surface",
+      "implementation": {
+        "state_fields": [
+          "business_language_surface_status"
+        ],
+        "rules": [
+          "BUSINESS_LANGUAGE_USER_SURFACE_DEFAULT"
+        ],
+        "gates": [
+          "G_FINAL_DIALOGUE_READY"
+        ],
+        "assertions": [
+          "A_PROGRESS_SURFACE_BUSINESS_LEVEL"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_BUSINESS_LANGUAGE@1.0"
+      ]
+    },
+    {
+      "capability": "progress_surface",
+      "design_ref": "chat_first_self_hosting_contract.progress_surface",
+      "implementation": {
+        "state_fields": [
+          "progress_surface_status"
+        ],
+        "rules": [
+          "PROGRESS_SUMMARY_ONLY_WHAT_NEEDS_USER"
+        ],
+        "gates": [],
+        "assertions": [
+          "A_PROGRESS_SURFACE_BUSINESS_LEVEL"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_PROGRESS_SURFACE@1.0"
+      ]
+    },
+    {
+      "capability": "first_question_quality",
+      "design_ref": "chat_first_self_hosting_contract.first_question_quality",
+      "implementation": {
+        "state_fields": [
+          "first_question_quality_status"
+        ],
+        "rules": [
+          "FIRST_QUESTION_HDG_ONLY"
+        ],
+        "gates": [
+          "G_FINAL_DIALOGUE_READY"
+        ],
+        "assertions": [
+          "A_FIRST_QUESTION_HDG_CONSEQUENCE_BACKED"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_FIRST_QUESTION_QUALITY@1.0"
+      ]
+    },
+    {
+      "capability": "corpus_backed_e2e_authoring_trials",
+      "design_ref": "chat_first_self_hosting_contract.end_to_end_trials",
+      "implementation": {
+        "state_fields": [
+          "e2e_authoring_trial_status"
+        ],
+        "rules": [
+          "NATURAL_LANGUAGE_BOOTSTRAP_DEFAULT",
+          "ARTIFACT_SURFACE_BEFORE_BROAD_QUESTIONING"
+        ],
+        "gates": [
+          "G_DELIVERY_READY"
+        ],
+        "assertions": [
+          "A_CHAT_START_NOT_RUNTIME_JARGON_DEFAULT",
+          "A_NO_INTERMEDIATE_APPROVAL_CHECKPOINT"
+        ]
+      },
+      "verification": [
+        "REG_ALPHA5_E2E_TRIALS@1.0"
+      ]
+    }
+  ]
+}

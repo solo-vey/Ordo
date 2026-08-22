@@ -1,0 +1,25 @@
+{
+  "schema_version": "2.0",
+  "assembly_id": "GENERATED_PLAYBOOK_CLI_RUN_PACKAGE",
+  "purpose": "Minimal strict CLI/runtime execution projection from the exact canonical source.",
+  "required_members": [
+    "ordo.yml",
+    "source/program.ordo.yaml",
+    "START_HERE_CLI_RUN.md",
+    "START_PROMPT_CLI_RUN.md",
+    "DISTRIBUTION_PACKAGE_CONTRACT.json",
+    "CLI_RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+    "DISTRIBUTION_MANIFEST.json",
+    "PACKAGE_CONTINUITY_MANIFEST.json"
+  ],
+  "rules": [
+    "consumer-aware transitive dependency closure",
+    "clean profile-specific startup",
+    "no editor/authoring/history/golden baggage",
+    "tests/fixtures only when retained runtime contract requires them",
+    "exact ZIP validation before delivery",
+    "shared canonical source identity with EDIT and MODEL_RUN"
+  ],
+  "distribution_contract": "DISTRIBUTION_PACKAGE_CONTRACT.json",
+  "continuity_policy": "source/packaging-continuity-policy.json"
+}

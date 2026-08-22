@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_LAWS_PROPAGATION_V1",
+  "revision": "0.1.0-alpha.10",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "canonical_artifact": "PLAYBOOK_LAWS.md",
+  "canonical_location": "package_root/PLAYBOOK_LAWS.md",
+  "source_location": "canonical_support/guides/PLAYBOOK_LAWS.md",
+  "propagation": {
+    "mode": "VERBATIM",
+    "target": "generated_playbook_root/PLAYBOOK_LAWS.md",
+    "release_blocked_when_absent": true,
+    "release_blocked_when_hash_mismatch": true
+  },
+  "runtime_visibility": {
+    "required": true,
+    "rule": "The authoring/runtime model must be able to identify PLAYBOOK_LAWS.md as a governing artifact when asked."
+  }
+}

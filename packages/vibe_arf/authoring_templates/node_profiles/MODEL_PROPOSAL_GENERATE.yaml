@@ -1,0 +1,6 @@
+profile_id: MODEL_PROPOSAL_GENERATE
+authoring_only: true
+rules:
+- writes proposal state only
+- does not write canonical truth
+- declares source inputs/provenance

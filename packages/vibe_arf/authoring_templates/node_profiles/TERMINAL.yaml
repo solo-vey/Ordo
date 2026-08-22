@@ -1,0 +1,3 @@
+graph_contract:
+  external_terminal_targets: [END_OK]
+# END_OK must be targeted by at least one reachable node/gate route.

@@ -1,0 +1,72 @@
+schema_version: '1.0'
+pattern_id: VALIDATE_REPAIR_CONVERGENCE
+pattern_version: '1.1'
+module_kind: reusable_data_layer_module_template
+parameters:
+  required:
+  - instance_id
+  optional:
+  - artifact_id
+  - prefix
+required_roles:
+- role: validation_target
+  binds_to: information_or_artifact
+  required: true
+- role: validation_profile
+  binds_to: information
+  required: true
+- role: defects
+  binds_to: information
+  required: true
+- role: repair_plan
+  binds_to: information
+  required: true
+- role: convergence_status
+  binds_to: information
+  required: true
+merge_semantics:
+  mode: bind_existing_or_instantiate_missing
+  canonical_truth: project_data_layer
+  instance_catalog_required: true
+  field_provenance_required: true
+  pattern_instance_reference: pattern_id+pattern_version+instance_digest
+  execution_ids_in_canonical_data_layer: forbidden
+constraints:
+- all_required_roles_bound
+- bindings_resolve_to_project_data_layer
+- no_parallel_semantic_truth
+- pattern_version_and_digest_persisted
+- requirement_origin_precedes_pattern_selection_for_reward
+- no_execution_node_or_gate_ids_in_pattern_instance
+module_objects:
+- role: validation_target
+  kind: information_or_artifact
+  required: true
+- role: validation_profile
+  kind: information
+  required: true
+- role: defects
+  kind: information
+  required: true
+- role: repair_plan
+  kind: information
+  required: true
+- role: convergence_status
+  kind: information
+  required: true
+module_edges:
+- from_role: validation_target
+  to_role: defects
+  type: validated_by
+- from_role: validation_profile
+  to_role: defects
+  type: constrains
+- from_role: defects
+  to_role: repair_plan
+  type: derived_from
+- from_role: repair_plan
+  to_role: validation_target
+  type: updates
+- from_role: validation_target
+  to_role: convergence_status
+  type: validated_by

@@ -1,0 +1,28 @@
+{
+  "authoring_source_of_truth": "data_layer",
+  "downstream_hashes": {
+    "source/program.ordo.yaml": "206a96c82cebe13a7b4db4ce7ede7c730291ff55359e5d730bb291dcb1cd3e5e"
+  },
+  "generator": "materialize_data_layer_projection_lineage.py",
+  "intermediate_bundle_sha256": "59be78658b6fd48ca1773ae8f825d57e3e7ac1639066281bb85e07a9c8283abe",
+  "intermediate_hashes": {
+    "authoring/pattern_data_layer_expansion.yaml": "04d5089a43585d432a8665cd1ea97bc9fa632c2ebd4ff1e0713663a16babe9e0",
+    "authoring/pattern_execution_projection.yaml": "6c56891a814eb94a35919a47507eaf1b30a89ce582eb0cafd28a9310ba390131",
+    "authoring/pattern_selection_input_snapshot.json": "be3f43a732af5a79c84ab083b54ace2bb91a0741ff944d99f2d1b61c62c1c6c1",
+    "editor/architecture_surface.json": "049bc26743815d9396561b95413d66817705affbbc217822ad403ff18aa2cb20"
+  },
+  "manifest_id": "VIBE_DATA_LAYER_PROJECTION_LINEAGE_V1",
+  "schema_version": "1.1",
+  "status": "CURRENT_AT_MATERIALIZATION",
+  "upstream_bundle_sha256": "cb529508559d7095e6b18950e456b3cfd455875db7089fd0f02d9779205c4058",
+  "upstream_hashes": {
+    "authoring/artifact_catalog.yaml": "a4bceb9a261c3a8146e02f6d3e5cb6303e904f7d7d193844b6d262de72084fa5",
+    "authoring/capability_requirement_catalog.yaml": "f443e6ce4bd2f33078937293b81f764ab0888e7f1a2ea88df3d503e21b263f4d",
+    "authoring/information_flow_graph.yaml": "922c78efd8413a8cb14691debf0f92e5f1261720069b86831f484f4646503f0d",
+    "authoring/information_group_catalog.yaml": "4c0981348ebc89849df4975eb3fd4390f8433d79161fa4e5af2349f8f3e69921",
+    "authoring/information_object_catalog.yaml": "5dcecdd4ff07241737a466e5ef2550b26f399df6b95e550ffc13d40253c9620c",
+    "authoring/interaction_projection.yaml": "e131e82a9839889d1574ee14868883e9d6253f7d0caeb6a8b412af3e499da0d4",
+    "authoring/ordo_projection.yaml": "8551c63712116019140985c7d8e8796d6fed949fcba72757ecae9f83b3a0273f",
+    "authoring/pattern_instance_catalog.yaml": "96ecfe1b990dc2aeac637d5ee3f7ec9249629a22f00c3e82903206919cab6d53"
+  }
+}

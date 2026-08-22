@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_DEFECT_OWNERSHIP_V1",
+  "revision": "0.1.0-alpha.26",
+  "classes": [
+    "ORDO_LANGUAGE_INVALID",
+    "PLAYBOOK_SOURCE_CONTRACT_DEFECT",
+    "VERIFIER_COMPILER_PARITY_DEFECT",
+    "SIMULATION_FIXTURE_INCOMPLETE",
+    "MODEL_QUALITY_DEFECT",
+    "RUNTIME_ADAPTER_CONFORMANCE_DEFECT",
+    "EDITOR_UI_TOOLING_DEFECT"
+  ],
+  "rules": [
+    "Every blocking failure must have exactly one primary owner class and evidence.",
+    "Canonical-language-invalid defects are repaired in generated source/Vibe generation.",
+    "Fixture incompleteness is repaired in fixtures, not business state.",
+    "Runtime-adapter conformance defects are handed to the adapter owner and must not produce playbook workarounds.",
+    "Compiler/verifier parity gaps add a trusted Vibe regression without redefining Ordo."
+  ]
+}

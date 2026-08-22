@@ -1,0 +1,11 @@
+id: N_CAPTURE_TEXT
+question: Enter the required value in the text field.
+answer_type: free_text
+execution_contract:
+  owner: human
+  advancement: human_response
+on_answer:
+  next: N_BUILD_VALIDATION_CONTEXT
+  update_state:
+    captured_value: $answer
+    captured_value_attempted_at: $runtime.timestamp

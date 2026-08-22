@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_GENERATED_ARTIFACT_MATERIALIZATION_V1",
+  "revision": "0.1.0-alpha.14",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "principle": "EVERY_DECLARED_OUTPUT_HAS_EXPLICIT_MATERIALIZATION_CONTRACT",
+  "rules": [
+    "Every generated playbook output declared in source must have exactly one entry in verification/ARTIFACT_MATERIALIZATION_REGISTRY.json.",
+    "Document-like outputs use materialization_mode=template with a package-local template file.",
+    "Package/archive/binary outputs may use materialization_mode=assembler with a package-local assembler/assembly contract instead of a document template.",
+    "Each registry entry declares output path/type, field or content contract, producers, validators and post-render/post-assembly validation.",
+    "A declared output without a materialization contract blocks PRE_EDITOR.",
+    "A template/assembler reference outside the generated package is invalid.",
+    "Generated artifacts must not introduce fields or semantics absent from the declared contract without an explicit revision.",
+    "Template/materialization design occurs before final build/readiness and is not merely documentation.",
+    "Pre-materialization/outputless package validation is contract-driven: generated_outputs/ is not required when there are no active confirmed rendered-artifact requirements or rendered assertions.",
+    "If any active confirmed rendered-artifact requirement or rendered assertion exists, missing generated_outputs/ remains a fail-closed validation error; empty placeholder directories must never substitute for required materialized evidence."
+  ],
+  "authoring_contour": [
+    "artifact identity",
+    "template or assembler selection/creation",
+    "field/content inventory",
+    "requiredness and missing-value policy",
+    "producer/provenance binding",
+    "validator binding",
+    "materialization readiness",
+    "post-render/post-assembly validation",
+    "registration/version compatibility"
+  ]
+}

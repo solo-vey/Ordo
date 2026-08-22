@@ -1,0 +1,82 @@
+{
+  "format": "vibe-model-response-provenance-policy/v3",
+  "status": "mandatory_profile_policy",
+  "purpose": "prevent model-response fabrication from becoming formal acceptance evidence while permitting explicitly isolated pseudo-live responses for offline optimization",
+  "result_eligibility": {
+    "required_gate": "G_AI_RESPONSE_PROVENANCE_VALID",
+    "allowed_model_response_origins": [
+      "live_model_call",
+      "replayed_live_call"
+    ],
+    "synthetic_model_response": "allowed only in PSEUDO_LIVE_OPTIMIZATION as PSEUDO_LIVE_SYNTHETIC; never formal acceptance evidence",
+    "missing_provenance": "fail_closed_for_acceptance_only; development scoring remains available with explicit offline_conformance tier",
+    "zero_substitution": "forbidden for acceptance_score; unavailable acceptance stays null",
+    "development_scoring": "development_score remains available for valid exact-lineage offline_conformance/pseudo-live evidence; this never creates acceptance eligibility",
+    "acceptance_scoring": "requires LIVE_ACCEPTANCE + PASS formal provenance; pseudo score can never populate formal fields",
+    "model_call_requirement": "model calls are required only for model nodes actually executed by the path; a deterministic zero-model path may be formally eligible"
+  },
+  "per_model_step_required": [
+    "step_index",
+    "element_id",
+    "origin",
+    "effective_input_sha256",
+    "output_sha256",
+    "candidate_sha256",
+    "hidden_reference_visible_to_generator",
+    "post_generation_mutation"
+  ],
+  "live_call_required": [
+    "provider",
+    "model",
+    "runtime_run_id"
+  ],
+  "replay_required": [
+    "source_live_run_id",
+    "source_live_step_index",
+    "source_live_input_sha256",
+    "source_live_output_sha256",
+    "exact_input_match"
+  ],
+  "artifact_required": [
+    "artifact_path",
+    "artifact_sha256",
+    "producer_node_id",
+    "declared_graph_lineage",
+    "post_generation_mutation"
+  ],
+  "forbidden": [
+    "hand-authored expected model response used as if generated",
+    "reference/expected output visible to generator",
+    "manual or helper repair outside declared graph",
+    "scoring a control/surrogate document",
+    "changing frozen model response after observing output or score"
+  ],
+  "separation": "response simulator, provenance verifier, result evaluator, and optimizer are separate responsibilities; simulator cannot see evaluator-only references/target score/ranking and verifier/evaluator cannot author replacement responses",
+  "evidence_file": "reports/MODEL_CALL_EVIDENCE.json",
+  "verification_report": "reports/MODEL_RESPONSE_PROVENANCE_REPORT.json",
+  "execution_modes": {
+    "PSEUDO_LIVE_OPTIMIZATION": {
+      "allowed_origins": [
+        "PSEUDO_LIVE_SYNTHETIC"
+      ],
+      "pseudo_score_eligible": "yes when all pseudo provenance + artifact lineage checks PASS",
+      "formal_score_eligible": false
+    },
+    "LIVE_ACCEPTANCE": {
+      "allowed_origins": [
+        "LIVE_CALL",
+        "EXACT_LIVE_REPLAY",
+        "live_model_call",
+        "replayed_live_call"
+      ],
+      "pseudo_score_eligible": false,
+      "formal_score_eligible": "yes when all required executed model responses + artifact lineage checks PASS"
+    }
+  },
+  "pseudo_live_required": [
+    "generator_policy_version",
+    "generator_identity",
+    "generation_config_hash",
+    "response_binding_input_sha256"
+  ]
+}

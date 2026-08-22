@@ -1,0 +1,53 @@
+schema_version: '1.0'
+pattern_id: VALIDATE_REPAIR_CONVERGENCE
+pattern_version: '1.1'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_pattern_instance_and_role
+  canonical_data_layer_contains_execution_ids: false
+  exact_graph_realization_required: true
+  duplicate_component_ids_forbidden: true
+components:
+- role: run_validator
+  kind: node
+  responsibility_class: deterministic
+- role: validation_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: diagnose_defects
+  kind: node
+  responsibility_class: contract_classified
+- role: apply_repair
+  kind: node
+  responsibility_class: contract_classified
+- role: rerun_validator
+  kind: node
+  responsibility_class: deterministic
+- role: convergence_gate
+  kind: gate
+  responsibility_class: deterministic
+edges:
+- from_role: run_validator
+  to_role: validation_gate
+  type: direct
+- from_role: validation_gate
+  to_role: diagnose_defects
+  type: direct
+- from_role: diagnose_defects
+  to_role: apply_repair
+  type: direct
+- from_role: apply_repair
+  to_role: rerun_validator
+  type: direct
+- from_role: rerun_validator
+  to_role: convergence_gate
+  type: direct

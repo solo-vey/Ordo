@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "vibe.quality_incentive_anti_gaming.v1",
+  "law_id": "E60_QUALITY_INCENTIVE_ANTI_GAMING",
+  "status": "mandatory_profile_policy",
+  "objective": "maximize material artifact quality while minimizing analyst effort without fabrication, under-modeling, duplicate penalties, or reward farming",
+  "authority_protection": {
+    "unsupported_human_authority_value": "NO_SCORE",
+    "ordinary_unsupported_inference": {
+      "points_each": 100,
+      "cap": 300
+    },
+    "required_evidence": "field-level provenance or accepted source evidence"
+  },
+  "variable_economy": {
+    "useful_variable_penalty": 0,
+    "redundant_variable": {
+      "points_each": 10,
+      "cap": 100,
+      "mechanical_evidence_required": true
+    }
+  },
+  "interaction_stacking": {
+    "same_interaction_group_collapse_suppresses_cross_group": true,
+    "base_and_additional_variable_burden_still_stack": true,
+    "independent_harms_may_stack": true,
+    "same_evidence_double_charge": "forbidden"
+  },
+  "pattern_reward_calibration": {
+    "points_per_qualified_reuse": 50,
+    "max_process_score_contribution": 200,
+    "raw_qualified_reuse_visibility": true,
+    "excess_reward_points": "visible_but_not_scored"
+  },
+  "deterministic_evaluator": "tools/evaluate_quality_process_integrity.py",
+  "scorer": "tools/calculate_playbook_quality_score.py",
+  "evidence_origin": {
+    "authority_and_inference_findings": "independent evaluator derives from frozen execution trace, field-level provenance, accepted-source evidence and authority metadata; candidate/optimizer self-report is not sufficient",
+    "redundancy_findings": "independent evaluator derives from canonical Data-Layer producer/consumer/binding evidence; mechanical evidence is required"
+  },
+  "optimizer_feedback": "All score-bearing process-integrity findings emit candidate evidence, basis, missing/weak condition and remediation into consolidated defects."
+}

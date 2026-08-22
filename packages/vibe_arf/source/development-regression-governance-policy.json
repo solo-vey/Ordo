@@ -1,0 +1,77 @@
+{
+  "policy_id": "DEVELOPMENT_REGRESSION_GOVERNANCE",
+  "version": "1.0",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "cross_domain",
+  "purpose": "Make every material candidate change regression-first, evidence-bound, impact-scoped and release-safe without rerunning the full accumulated suite after every small edit.",
+  "principles": [
+    "regression_first",
+    "invariant_not_implementation_detail",
+    "candidate_targeted_release_full",
+    "positive_negative_fixtures",
+    "real_failure_retention",
+    "regression_vs_live_evidence",
+    "packaging_only_semantic_proof",
+    "explainable_coverage"
+  ],
+  "candidate_change_contract": {
+    "required_fields": [
+      "change_id",
+      "change_class",
+      "protected_invariant",
+      "baseline_identity",
+      "regression_asset",
+      "prechange_evidence",
+      "postchange_evidence",
+      "impacted_checks",
+      "regression_proof",
+      "live_proof"
+    ],
+    "prechange_rule": "material change requires reproducible pre-change non-PASS for the new invariant, or explicit NOT_APPLICABLE with machine-checkable reason",
+    "postchange_rule": "exact regression PASS plus impacted checks PASS before candidate handoff",
+    "minimal_change_required": true,
+    "acceptance_gate_weakening_forbidden": true
+  },
+  "verification_modes": {
+    "patch": {
+      "impacted_checks_required": true,
+      "full_accumulated_suite": false
+    },
+    "checkpoint": {
+      "impacted_checks_required": true,
+      "full_accumulated_suite": false
+    },
+    "candidate": {
+      "impacted_checks_required": true,
+      "full_accumulated_suite": false,
+      "candidate_safety_net": true
+    },
+    "release": {
+      "impacted_checks_required": true,
+      "full_accumulated_suite": true,
+      "scenario_and_exact_package_required": true
+    }
+  },
+  "evidence_namespaces": [
+    "REGRESSION_PROOF",
+    "LIVE_PROOF"
+  ],
+  "live_evidence_rule": "LIVE_PROOF never substitutes for REGRESSION_PROOF; path-not-exercised is a valid live status",
+  "fixture_policy": {
+    "positive_fixture_required_when_practical": true,
+    "negative_fixture_required_when_practical": true,
+    "real_failures_become_persistent_regression_memory": true
+  },
+  "packaging_only_semantic_proof": {
+    "required_equal_hashes": [
+      "source/program.ordo.yaml",
+      "canonical_data_layer"
+    ],
+    "rule": "A packaging/context-only change must prove executable semantic source identity unchanged for surfaces declared out of scope."
+  },
+  "explainable_coverage": {
+    "required": true,
+    "rule": "Derived test/coverage counts must be explainable from retained contract elements or an explicit alternative coverage formula."
+  },
+  "generated_playbooks_inherit": true
+}

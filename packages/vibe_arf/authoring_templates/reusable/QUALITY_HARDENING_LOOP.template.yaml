@@ -1,0 +1,21 @@
+template_id: QUALITY_HARDENING_LOOP
+version: '1.0'
+scope: cross_domain
+sequence:
+- BASELINE_CAPTURE
+- DEFECT_CLASSIFY
+- RED_REGRESSION_DEFINE
+- RED_RUN
+- RED_GATE
+- MINIMAL_REPAIR
+- GREEN_RUN
+- GREEN_GATE
+- IMPACTED_REGRESSIONS
+- IMPACTED_GATE
+- QUALITY_CONFIRM
+invariants:
+- RED before repair
+- minimal repair
+- GREEN before impacted regressions
+- acceptance gates unchanged
+- wrong-layer defects route to their owner

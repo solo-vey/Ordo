@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_INVARIANTS_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "framework_level_generated_playbooks",
+  "model_mode_reference": {
+    "rule": "When a generated playbook has both model-led execution and a strict CLI/runtime target, semantics must first be proven in Model Mode; the successful terminal trace becomes the semantic reference for later CLI/runtime equivalence.",
+    "cli_is_semantic_authority": false,
+    "runtime_divergence_default_classification": "CLI_OR_RUNTIME_DEFECT_UNLESS_CANONICAL_PLAYBOOK_CONTRACT_IS_WRONG"
+  },
+  "state_update": {
+    "mode": "MERGE_BY_DIFF",
+    "replace_whole_state_for_partial_node_output": false,
+    "unrelated_keys_must_survive": true,
+    "deletion_requires_explicit_declared_operation": true
+  },
+  "reentry": {
+    "current_node_is_authoritative": true,
+    "historical_visitation_is_completion_evidence": false,
+    "rule": "If routing returns to a previously executed node, it executes again under current state unless its current contract itself proves no-op completion."
+  },
+  "gate_recovery": {
+    "on_fail_is_real_route": true,
+    "validator_failure_is_terminal_only_if_no_recovery_route_exists": true,
+    "repair_must_preserve_unrelated_state": true
+  },
+  "data_layer_runtime_workaround_barrier": {
+    "forbid_runner_bug_compensation_in_business_data_layer": true,
+    "forbidden_examples": [
+      "checkpoint_*",
+      "technical_completion_flag_only_for_runner_history",
+      "branch_visit_marker_only_for_cli"
+    ],
+    "rule": "Execution-engine defects are repaired in adapter/runtime contracts and regression tests, not by inventing business information objects."
+  },
+  "analyst_authority_discovery": {
+    "exhaustive_before_ask": true,
+    "batch_scope": "same_information_group_simultaneously_known_consequential_human_owned",
+    "one_by_one_discovery_loop_for_simultaneously_visible_same_group_decisions": false
+  },
+  "stable_decision_identity": {
+    "decision_id_required": true,
+    "partial_answers_preserve_resolved_decisions": true,
+    "reask_resolved_without_new_conflict": false,
+    "unknown_confirmed_is_resolved": true
+  },
+  "repair_loop_regression": {
+    "required": true,
+    "minimum_trace": [
+      "VALIDATE_FAIL",
+      "FOLLOW_ON_FAIL",
+      "LOCAL_REPAIR",
+      "REMATERIALIZE_OR_RECOMPUTE",
+      "REVALIDATE_PASS"
+    ],
+    "must_assert_unrelated_state_preserved": true,
+    "must_assert_resolved_human_decisions_not_reasked": true
+  },
+  "required_regression_families": [
+    "MODEL_MODE_REFERENCE_TRACE",
+    "MERGE_BY_DIFF",
+    "REENTRY_AFTER_REPAIR",
+    "GATE_ON_FAIL_RECOVERY",
+    "NO_RUNTIME_WORKAROUND_DATA_FIELDS",
+    "EXHAUSTIVE_AUTHORITY_DISCOVERY",
+    "STABLE_DECISION_ID_NO_REASK",
+    "FULL_REPAIR_LOOP",
+    "STATE_UPDATES_V1_TOOL_RESULT",
+    "APPEND_ONLY_SELF_REPAIR_LOG"
+  ],
+  "deterministic_tool_result": {
+    "contract": "state_updates_v1",
+    "policy": "source/deterministic-tool-result-contract.json",
+    "executor_merges_only": "state_updates"
+  },
+  "self_repair_log": {
+    "required": true,
+    "policy": "source/self-repair-log-policy.json",
+    "business_state_surface": false
+  }
+}

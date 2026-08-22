@@ -1,0 +1,5 @@
+profile_id: LOCAL_PERSISTENCE_GATE
+authoring_only: true
+rules:
+- deterministically verifies new decision and preservation
+- fails to nearest causal review/apply node

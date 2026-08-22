@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_FAIL_FAST_VALIDATION_ORDER_V1",
+  "status": "ACTIVE_ALPHA8_CANDIDATE_POLICY",
+  "scope": "Generated applied playbooks that validate parseable structured input before semantic/content validation.",
+  "requirements": [
+    "Syntax/parse validation must be represented as deterministic helper evidence followed by a mechanical deterministic gate.",
+    "Semantic/content validation must not be reachable from the parse gate fail branch.",
+    "Parse failure must terminate validation with only parse/syntax findings from machine evidence.",
+    "Parse success may continue to structural, fallback, language, placeholder or other semantic validation.",
+    "A final all-stage validator must not be used to infer semantic findings after parse failure."
+  ],
+  "ordo_grounding": {
+    "helper_binding": "node_context.allowed_tools and knowledge_refs",
+    "control": "mechanical deterministic gate using condition and explicit on_pass/on_fail",
+    "new_language_constructs": false
+  }
+}

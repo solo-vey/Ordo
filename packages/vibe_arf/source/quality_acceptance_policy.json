@@ -1,0 +1,347 @@
+{
+  "format": "vibe-quality-acceptance-policy/v8",
+  "status": "mandatory_profile_policy",
+  "scope": "generated applied-playbook pseudo-chat evaluation and autonomous improvement; does not extend Ordo syntax",
+  "score_range": {
+    "result_score": {
+      "min": 0,
+      "max": 1000,
+      "clamp": true
+    },
+    "process_score": {
+      "starting_points": 1000,
+      "lower_bound": null,
+      "upper_bound": null,
+      "clamp_at_zero": false
+    },
+    "playbook_score": {
+      "lower_bound": null,
+      "upper_bound": null,
+      "clamp_at_zero": false
+    }
+  },
+  "process_score": {
+    "starting_points": 1000,
+    "purpose": "measure analyst-facing process burden while discouraging unnecessary internal variable proliferation",
+    "penalties": {
+      "open_question": 30,
+      "startup_full_information": 500,
+      "open_question_cross_group_2_groups": 70,
+      "open_question_each_group_after_2": 50,
+      "group_collapse_per_group_when_2_or_more": 100,
+      "excess_independent_fact_after_10": 5,
+      "excess_independent_fact_cap": 100,
+      "source_derivable_technical_fact_requested": 25,
+      "source_derivable_technical_fact_cap": 150,
+      "no_partial_information_path": 150,
+      "reasked_known_information": 50,
+      "nonadaptive_question": 30,
+      "prefilled_confirmation": 5,
+      "prefilled_confirmation_cross_group": 15,
+      "open_question_additional_variable": 10,
+      "redundant_variable": 10,
+      "redundant_variable_cap": 100,
+      "unsupported_inference": 100,
+      "unsupported_inference_cap": 300
+    },
+    "counting_contract": {
+      "open_question": "Each analyst-facing open/free-answer interaction costs -30 for its first requested variable plus -10 for every additional requested variable in the same interaction, regardless of semantic-group membership. Separate open interactions each incur their own -30 base. If the interaction does not enumerate requested variables, it is conservatively counted as at least one requested variable.",
+      "open_question_cross_group": "For n semantic groups in one open interaction: n<=1 => 0; n=2 => -70; each group after the second adds -50.",
+      "group_collapse": "For an interaction surface that collapses n>=2 semantic groups: penalty = -100*n (2=>-200, 3=>-300, 4=>-400, ...).",
+      "prefilled_confirmation": "each analyst-facing interaction presenting model-derived/prefilled values for confirm/edit",
+      "prefilled_confirmation_cross_group": "additional penalty for each prefilled confirmation that combines parameters/variables from more than one semantic information group",
+      "startup_interaction": "A startup prompt/request counts as an open analyst interaction whenever analyst-authored information is required to begin execution.",
+      "startup_full_information": "Additional -500 when the startup analyst message contains all or nearly all information needed to produce the final artifact, because the playbook has externalized its discovery/elicitation burden.",
+      "analyst_independent_facts": "First 10 independent manually supplied facts carry no extra overload penalty; each additional fact costs -5 up to -100.",
+      "source_derivable_technical_facts_requested": "Each technical fact requested from analyst that could reasonably be derived from accepted sources/state costs -25 up to -150.",
+      "no_partial_information_path": "-150 when execution requires near-complete upfront information and lacks a graceful progressive/partial-information path.",
+      "reasked_known_information": "-50 per case where already-known information is asked again.",
+      "nonadaptive_question": "-30 per question whose content does not adapt to information already collected.",
+      "redundant_variable": "Only mechanically evidenced redundant variables are penalized: -10 per unique redundant variable, capped at -100. Allowed redundancy includes duplicate semantic alias, unconsumed variable, missing producer/consumer caused by dead design, or constructively eliminable alias/transform. Useful internal or derived variables carry no penalty merely for existing.",
+      "unsupported_inference": "Each mechanically evidenced non-authority value used without required source/provenance support costs -100, capped at -300. Unsupported human/analyst authority or approval values are not scoreable at all.",
+      "interaction_penalty_stacking": "Base open-interaction burden and additional-variable burden stack. For the same interaction, mechanically proven group-collapse suppresses the weaker open-question cross-group scope penalty. Reasked-known, nonadaptive, source-derivable and other independently evidenced defect families may stack only when they represent distinct harms/evidence; the same defect evidence must not be charged twice within one penalty family."
+    },
+    "formula": "max(0, 1000 - all non-duplicative configured penalties + capped mechanically qualified reusable-pattern reward contribution); values may exceed 1000 through qualified rewards, but negative raw totals are floored at 0.",
+    "optimization_intent": [
+      "minimize total analyst effort, not merely interaction count",
+      "count startup analyst input as interaction burden",
+      "avoid full-information upfront prompts",
+      "prefer progressive semantic-group elicitation",
+      "preserve semantic group boundaries",
+      "derive source-available technical facts instead of asking the analyst",
+      "support partial information and adaptive questioning",
+      "avoid re-asking known information",
+      "minimize unnecessary variables and confirmations without metric gaming",
+      "reuse validated canonical Data-Layer patterns for preexisting responsibilities before synthesizing ad-hoc subtrees",
+      "treat mechanically proven missed pattern fits as positive-score improvement opportunities",
+      "require final graph realization before reusable-pattern reward is awarded",
+      "avoid bundling many analyst-supplied variables into one open question",
+      "derive dependent parameters from fewer analyst inputs whenever the derivation is justified and mechanically/semantically valid",
+      "never avoid analyst effort by fabricating human-authority or unsupported values",
+      "do not penalize useful internal Data-Layer variables; penalize only mechanically proven redundancy",
+      "avoid double-counting the same interaction scope defect across overlapping penalty families",
+      "cap reusable-pattern score contribution so larger playbooks cannot farm score merely by having more legitimate pattern instances"
+    ],
+    "rewards": {
+      "qualified_reusable_pattern": 50
+    },
+    "reward_contract": {
+      "qualified_reusable_pattern": {
+        "points": 50,
+        "unit": "distinct_preexisting_semantic_responsibility",
+        "requires_mechanical_verification": true,
+        "eligibility_source": "frozen pre-library pattern-selection input snapshot",
+        "requires": "exact or explicitly approved partial fit + valid Data Layer pattern instance + post-canonical derived execution projection + exact final graph realization PASS",
+        "duplicate_semantic_responsibility_reward": false,
+        "pattern_created_requirement_reward": "forbidden",
+        "forced_or_redundant_pattern_reward": "forbidden",
+        "blueprint_only_reward": "forbidden",
+        "max_score_contribution": 200,
+        "raw_reward_visibility": "required",
+        "cap_semantics": "Each qualified reuse remains a +50 event, but aggregate reusable-pattern contribution to process_score is capped at +200. Excess qualified reuse remains visible as architectural reuse evidence without additional score gain."
+      },
+      "missed_pattern_opportunity": {
+        "score_effect": 0,
+        "optimizer_visibility": "required",
+        "potential_points": 50,
+        "meaning": "positive improvement opportunity, not a hidden penalty"
+      }
+    },
+    "hard_invalidations": {
+      "unsupported_human_authority_value": "HARD_INELIGIBLE_SCORE_VISIBLE"
+    },
+    "floor": 0,
+    "family_caps": {
+      "open_question": 240,
+      "group_mixing": 300,
+      "reasked_known": 150,
+      "nonadaptive": 120,
+      "prefilled_confirmation": 80
+    },
+    "family_cap_semantics": "caps bound each penalty family before process-score aggregation; same defect evidence cannot be counted twice; process score is floored at 0 after penalties/rewards",
+    "floor_semantics": "Executable optimization contract: compute the raw signed process total, then apply a lower floor of 0 via max(0, raw_process_score). No upper clamp is applied; qualified rewards may produce values above 1000."
+  },
+  "result_score": {
+    "starting_points_per_document": 1000,
+    "technical_documents": "excluded",
+    "eligible_documents": "primary/business result documents produced for the user or downstream business process",
+    "penalties": {
+      "missing_major_part": 100,
+      "missing_or_incomplete_detail": 10
+    },
+    "detail_interpretation": "a materially incorrect reference-required detail is nonconforming and is counted as missing_or_incomplete_detail for scoring evidence",
+    "reference_variants": {
+      "rule": "when multiple eligible references exist, build a relevance profile before comparative scoring; evaluate relevant dimensions per reference without literal-copy expectations",
+      "selection": "relevance_weighted_consensus_with_explicit_conflict_handling",
+      "weight_authority": "independent comparative evaluator using frozen policy; weights and reasons are persisted and optimizer cannot choose them",
+      "conflict_rule": "REFERENCE_CONFLICT dimensions are surfaced explicitly and contribute no candidate penalty until precedence/applicability handling is recorded",
+      "aggregation": "aggregate non-conflicting reference-relative analytical penalties by recorded relevance; mechanical penalties remain candidate-intrinsic and are applied once, not once per reference"
+    },
+    "per_document_formula": "clamp(1000 - mechanical_penalties - relevance_weighted_nonconflicting_analytical_penalties, 0, 1000); every penalty requires evidence and remediation",
+    "aggregate_formula": "arithmetic mean of selected per-document scores across all eligible non-technical result documents",
+    "empty_set": "blocking evaluation error; a result-quality score cannot be invented when no eligible result document exists",
+    "eligibility_gate": "Pseudo-live: PASS pseudo provenance + exact artifact lineage -> pseudo_result_score only. Live acceptance: PASS live/exact-live-replay provenance + exact artifact lineage -> formal_result_score. A deterministic executed path with zero model nodes requires no artificial model call.",
+    "ineligible_run": "Acceptance result/score is undefined when provenance is ineligible. Development result/score remains available only when exact candidate artifact lineage is proven; no surrogate artifact may be substituted.",
+    "forbidden_surrogates": [
+      "expected/reference document",
+      "control regeneration",
+      "manually repaired output",
+      "post-run helper reconstruction",
+      "artifact not produced by exact candidate graph"
+    ],
+    "hybrid_rule": "1000 - mechanical penalties - analytical penalties per selected reference variant; emit both decompositions and consolidated defects",
+    "analytical_comparative_evaluator": {
+      "dynamic_prompt_from_artifact_and_references": true,
+      "multiple_references": "relevance_weighted_with_conflict_detection",
+      "fresh_discovery_each_revision": true,
+      "perfect_score_gate": "zero_known_and_zero_fresh_material_or_major_defects",
+      "evaluator_separate_from_generator_optimizer": true,
+      "golden_reference_visibility": "evaluator_only_sanitized_remediation_to_optimizer",
+      "reference_meaning": "quality/depth standard, never literal expected output",
+      "reference_weighting": "profile by artifact subtype, domain similarity, audience, maturity, delivery surface, semantic relevance; persist weights and reasons",
+      "reference_conflicts": "surface REFERENCE_CONFLICT; do not average contradiction away and do not penalize candidate without precedence policy",
+      "fresh_discovery_instruction": "ignore previous defect backlog while discovering new gaps; previous defects are supplied only after fresh discovery for regression confirmation",
+      "required_output": [
+        "reference_selection",
+        "dimension_scores",
+        "strengths",
+        "defects",
+        "freshly_discovered_defects",
+        "reference_conflicts",
+        "score_rationale",
+        "next_improvement_targets"
+      ],
+      "anti_self_grading": [
+        "separate evaluator call/responsibility",
+        "no target score",
+        "blind to previous revision score during fresh discovery",
+        "candidate immutable during evaluation",
+        "no evaluator repair"
+      ]
+    }
+  },
+  "final_score": {
+    "formula": "pseudo_playbook_score = (process_score + 2*pseudo_result_score)/3 in pseudo-live mode; formal_playbook_score = (formal_process_score + 2*formal_result_score)/3 only when live acceptance provenance is eligible",
+    "equivalent_formula": "(process_score + 2 * result_component) / 3",
+    "range": "signed raw score; development_score may exceed 1000 when verified process rewards outweigh penalties; acceptance_score is nullable",
+    "weight_interpretation": {
+      "process": "1/3",
+      "result": "2/3"
+    },
+    "rounding": "retain six decimal places; do not clamp negative values"
+  },
+  "reference_artifact_fidelity": {
+    "when_explicit_reference_supplied": "compile a reference coverage contract before process synthesis",
+    "separate": [
+      "observable structure/content expectations",
+      "example-specific facts",
+      "unknown universality"
+    ],
+    "materialization_rule": "final artifact must bind full accepted content surface; review/approval metadata alone is insufficient",
+    "scoring": "apply the hybrid mechanical + analytical reference-relative 1000-point result scoring contract; do not invent a threshold and do not reduce evaluation to deterministic checklist coverage"
+  },
+  "analyst_interaction_burden": {
+    "derive_before_ask": true,
+    "interaction_classes": [
+      "prefilled_confirmation",
+      "consequential_free_answer",
+      "informational"
+    ],
+    "rule": "information derivable from accepted sources/state must be proposed/prefilled before analyst input, but every remaining confirmation still carries the configured process-score cost",
+    "free_answer_rule": "allowed only for genuinely non-derivable consequential user-owned decision; every occurrence is still scored by the process rubric"
+  },
+  "human_gate_runtime": {
+    "rule": "human/human_decision gates require explicit external decision action and immutable evidence",
+    "forbidden": [
+      "model auto-decision",
+      "mechanical reclassification solely for adapter convenience",
+      "manual state patch as approval"
+    ]
+  },
+  "optional_archives": {
+    "rule": "optional archive/delivery contour must not block core artifact readiness unless a deterministic membership/hash contract is valid for that lifecycle phase"
+  },
+  "development_score": {
+    "availability": "always_numeric_for_valid_evaluated_candidate",
+    "evidence_tiers": [
+      "offline_conformance",
+      "live_acceptance"
+    ],
+    "process_component": "signed process_score from the canonical process rubric",
+    "result_component": "deterministic score of the exact artifact produced by the exact candidate run; technical documents excluded; reference selection remains deterministic max",
+    "artifact_eligibility": "exact candidate lineage is mandatory; surrogate/control/manually repaired outputs are forbidden even offline",
+    "formula": "(process_score + 2 * development_result_score) / 3",
+    "purpose": "primary autonomous best-so-far, stagnation and diagnosis objective",
+    "acceptance_claim": "forbidden; offline_conformance development_score is not acceptance evidence"
+  },
+  "acceptance_score": {
+    "availability": "only_when_live_acceptance_provenance_eligible",
+    "required_evidence_tier": "live_acceptance",
+    "required_provenance": "PASS model-response provenance from live_model_call or exact-input replayed_live_call plus exact declared artifact lineage",
+    "formula": "same deterministic process/result formula as development_score on the provenance-eligible live artifact",
+    "on_missing_or_failed_provenance": "null with explicit UNAVAILABLE_PROVENANCE_INELIGIBLE status; never zero-filled or estimated"
+  },
+  "hybrid_reference_fidelity": {
+    "purpose": "combine deterministic/mechanical penalties with evidence-grounded analytical penalties while emitting actionable feedback for autonomous improvement",
+    "mechanical_component": {
+      "required": true,
+      "authority": "deterministic validators/scorer",
+      "score": "1000 - mechanical penalties",
+      "examples": [
+        "section/field presence",
+        "binding coverage",
+        "required structure",
+        "test/contract presence",
+        "countable completeness"
+      ]
+    },
+    "analytical_component": {
+      "required": true,
+      "authority": "independent evaluator responsibility",
+      "score": "1000 - analytical penalties",
+      "requirements": [
+        "candidate evidence",
+        "reference/rule basis when applicable",
+        "explicit missing_or_weak statement",
+        "concrete remediation"
+      ],
+      "dimensions": [
+        "semantic_depth",
+        "reference_fidelity",
+        "operational_completeness",
+        "decision_usefulness",
+        "payload_depth",
+        "error_state_depth",
+        "test_breadth",
+        "fallback_semantics",
+        "historical_lifecycle_invariants"
+      ]
+    },
+    "combined_result_rule": "per-document result score = clamp(1000 - sum(mechanical penalties) - sum(analytical penalties), 0, 1000); mechanical_score and analytical_score are diagnostic decompositions, not separately weighted averages",
+    "penalty_explanation_contract": {
+      "required": true,
+      "required_fields": [
+        "id",
+        "source",
+        "points",
+        "dimension",
+        "candidate_evidence",
+        "basis",
+        "missing_or_weak",
+        "remediation"
+      ],
+      "source_values": [
+        "mechanical",
+        "analytical"
+      ],
+      "analytical_reference_evidence": "required when penalty is reference-relative"
+    },
+    "consolidated_defects": {
+      "required": true,
+      "optimizer_input": true,
+      "rule": "every nonzero penalty becomes a machine-readable defect; bare numeric penalties are invalid",
+      "next_cycle": "feed consolidated defects and remediation targets unchanged into diagnosis/repair planning"
+    },
+    "anti_saturation": "1000 is allowed only when both mechanical and analytical penalty sets are empty; checklist presence alone cannot prove perfect fidelity",
+    "grader_freeze": "mechanical rules, analytical rubric/reference set, and penalty calibration are frozen for all revisions in one comparison loop"
+  },
+  "tiers": {
+    "T0_CORRECTNESS_AUTHORITY_SAFETY": "hard eligibility and measurement state",
+    "T1_ARTIFACT_QUALITY": "result artifact correctness/completeness",
+    "T2_ANALYST_BURDEN": "analyst-facing process burden",
+    "T3_ARCHITECTURE": "architecture quality opportunities/penalties",
+    "T4_REUSE": "mechanically proven reusable-pattern value",
+    "T5_COMPACTNESS": "non-semantic economy; never overrides higher tiers"
+  },
+  "ranking_transition": "tier taxonomy is recorded now; numeric development_score remains the current ranking objective until separately calibrated/promoted",
+  "pseudo_live_scoring": {
+    "evidence_tier": "pseudo_live_optimization",
+    "required_provenance": "PASS pseudo-live provenance for every executed model node plus exact declared artifact lineage",
+    "allowed_model_origin": "PSEUDO_LIVE_SYNTHETIC",
+    "outputs": [
+      "pseudo_result_score",
+      "process_score",
+      "pseudo_playbook_score",
+      "pseudo_score_eligible"
+    ],
+    "formal_fields": "must remain null/false",
+    "ranking_use": "primary offline best-so-far/stagnation objective"
+  },
+  "formal_scoring": {
+    "evidence_tier": "live_acceptance",
+    "required_provenance": "PASS LIVE_ACCEPTANCE provenance for every executed model node plus exact declared artifact lineage",
+    "allowed_model_origins": [
+      "LIVE_CALL",
+      "EXACT_LIVE_REPLAY",
+      "live_model_call",
+      "replayed_live_call"
+    ],
+    "outputs": [
+      "formal_result_score",
+      "formal_process_score",
+      "formal_playbook_score",
+      "formal_score_eligible"
+    ],
+    "pseudo_substitution": "forbidden"
+  }
+}

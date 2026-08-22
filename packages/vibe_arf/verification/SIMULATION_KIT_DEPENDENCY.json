@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.3",
+  "dependency_id": "ORDO_PLAYBOOK_SIMULATION_KIT",
+  "version": "0.1.6",
+  "path": "dependencies/ORDO_PLAYBOOK_SIMULATION_KIT_0.1.6.zip",
+  "sha256": "5ad957acd5e5c5807556e5a85a01d3248da2996f8c20bbcebd719956bd36efe3",
+  "runtime_baseline": "Ordo Tree Editor 0.2.0-alpha.20.0.166-dev",
+  "semantic_authority": "runtime_adapter_only",
+  "replaceable": true,
+  "layout": "flat_or_single_root_supported",
+  "profile_adapter": "generated_playbook_package_tool_and_deterministic_artifact_validation_explicit_compiler_adapter",
+  "dynamic_recovery_fixture_protocol": "missing_fixtures.json + missing_model_responses.template.yaml",
+  "rule": "Rebase deliberately when runtime changes; never treat the kit, package_tool adapter, artifact/archive validation adapter, gate-contract preflight, or state-survivability analysis as Ordo language law.",
+  "acceptance_evidence": "verification/SIMULATION_KIT_016_ACCEPTANCE.json",
+  "profile_contract_gap_protocol": "profile_contract_gaps.json",
+  "artifact_validation_protocol": "structured artifact.state_path / artifact.expected_path plus optional ARTIFACT_MATERIALIZATION_REGISTRY; archive membership/hash requirements must be declared, never inferred from prose",
+  "gate_contract_mode_default": "strict",
+  "state_survivability_evidence": "state_survivability.json",
+  "acceptance_evidence_scope": "production_verification_evidence"
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_SELF_HOSTING_INFORMATION_MODEL",
+  "revision": "0.1.0-alpha.36",
+  "same_authoring_contract_as_generated_playbooks": true,
+  "special_authoring_path_for_vibe": false,
+  "semantic_authority": "canonical_ordo_language",
+  "requirements": [
+    "vibe_has_persisted_authoring_information_model",
+    "vibe_aim_validated_by_same_python_gate",
+    "vibe_aim_ordo_projection_bidirectionally_validated",
+    "all_vibe_executable_nodes_and_gates_reverse_trace_to_aim",
+    "self_hosting_regression_is_pre_editor_blocking",
+    "vibe_publishes_editor_discoverable_source_data_flow_from_canonical_aim",
+    "published_data_flow_is_hash_bound_generated_projection_not_second_source_of_truth"
+  ],
+  "principle": "Vibe is a standard Ordo playbook and must satisfy the information-first authoring and projection contract it imposes on generated playbooks.",
+  "alpha26_self_checks": [
+    "review_bundle_design",
+    "proposal_canonical_separation",
+    "behavioral_scenario_matrix",
+    "simulation_policy_regression"
+  ],
+  "alpha27_self_checks": [
+    "simulation_kit_0.1.2_pin",
+    "runtime_baseline_0.163",
+    "flat_or_single_root_dependency_layout",
+    "native_semantic_recovery_fixture_discovery"
+  ],
+  "alpha28_self_checks": [
+    "simulation_kit_0.1.3_pin",
+    "runtime_baseline_0.164",
+    "deterministic_artifact_archive_validation_adapter",
+    "profile_contract_gap_evidence_preservation"
+  ],
+  "alpha29_self_checks": [
+    "strict route closure treats only canonical STOP as reserved",
+    "deterministic package-tool contracts are statically complete before simulation",
+    "artifact/archive registry contains executable materialization and validation contracts"
+  ],
+  "alpha30_self_checks": [
+    "design/MODEL_BUNDLE.yaml is generated from authoring/ canonical AIM",
+    "published variable/group/artifact/graph/projection views are deterministically equivalent to canonical AIM",
+    "DATA_FLOW_PACKAGE.zip is complete and deterministic",
+    "Editor embedded-data-flow discovery contract resolves Vibe Source Data Flow"
+  ],
+  "current_simulation_kit": {
+    "version": "0.1.5",
+    "runtime_baseline": "0.2.0-alpha.20.0.166-dev",
+    "strict_gate_contract_mode": true,
+    "state_survivability_preflight": true
+  }
+}

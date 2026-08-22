@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "GENERATED_PLAYBOOK_PRODUCTION_PACKAGE",
+  "default_profile": "production",
+  "artifact_classes": [
+    {
+      "class": "distribution_contract",
+      "default_inclusion": "required",
+      "purpose": "Dual-distribution DEV/RUN contract and exact RUN reachability closure used to derive clean execution packages from the same candidate.",
+      "patterns": [
+        "DISTRIBUTION_PACKAGE_CONTRACT.json",
+        "RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+        "CLI_RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+        "MODEL_RUN_PACKAGE_DEPENDENCY_CLOSURE.json"
+      ]
+    },
+    {
+      "class": "dependency_closure_manifest",
+      "default_inclusion": "required",
+      "purpose": "Exact reachability closure for production runtime/editor/verification dependencies; controlled support/tool trees may ship only through this manifest.",
+      "patterns": [
+        "PRODUCTION_DEPENDENCY_CLOSURE.json"
+      ]
+    },
+    {
+      "class": "runtime",
+      "default_inclusion": "required",
+      "purpose": "Files needed to execute the playbook: package descriptor, lock, compiled targets, embedded/declared runtime support.",
+      "patterns": [
+        "ordo.yml",
+        "ordo.lock.json",
+        "compiled/**",
+        "runtime_semantic_plan.json",
+        "runtime_projection/**",
+        "runtime_semantic_plan_required_writes.json"
+      ]
+    },
+    {
+      "class": "source",
+      "default_inclusion": "required",
+      "purpose": "Editable canonical Ordo source and machine-readable runtime policies.",
+      "patterns": [
+        "source/**"
+      ]
+    },
+    {
+      "class": "data_layer",
+      "default_inclusion": "required",
+      "purpose": "Canonical information/data layer used as semantic source of truth for future edits and projection regeneration.",
+      "patterns": [
+        "authoring/**"
+      ]
+    },
+    {
+      "class": "analyst_context",
+      "default_inclusion": "required",
+      "purpose": "Analyst-provided durable context, reference metadata/evaluator-only references, summaries and refresh records needed for future editing/evaluation.",
+      "patterns": [
+        "analyst_context/**"
+      ]
+    },
+    {
+      "class": "authoring_templates",
+      "default_inclusion": "required",
+      "purpose": "Reusable authoring, node, document, binding, materialization, validator and editor-projection templates.",
+      "patterns": [
+        "authoring_templates/**"
+      ]
+    },
+    {
+      "class": "reusable_patterns",
+      "default_inclusion": "required",
+      "purpose": "Canonical reusable Data+Execution Pattern Library required for future Data-Layer-first authoring and deterministic execution projection.",
+      "patterns": [
+        "patterns/**"
+      ]
+    },
+    {
+      "class": "editor",
+      "default_inclusion": "required",
+      "purpose": "Editor-visible architecture projection and bundled editor support required to reconstruct and edit the playbook.",
+      "patterns": [
+        "editor/**"
+      ]
+    },
+    {
+      "class": "validation",
+      "default_inclusion": "required",
+      "purpose": "Production validators, verification registries, laws and verification protocols needed to verify edits and runtime invariants.",
+      "patterns": [
+        "verification/**",
+        "PLAYBOOK_LAWS.md",
+        "DEVELOPMENT_VERIFICATION_PROTOCOL.md",
+        "GENERATED_PLAYBOOK_REGRESSION_PROTOCOL.md",
+        "INFORMATION_FIRST_AUTHORING_PROTOCOL.md",
+        "SELF_HOSTED_INFORMATION_MODEL_PROTOCOL.md",
+        "SELF_DATA_FLOW_PUBLICATION_PROTOCOL.md",
+        "verification_profile.json",
+        "verification_impact_map.json",
+        "AUTHORITY_SIMULATION_ANALYST_MINIMIZATION_PROTOCOL.md",
+        "COMPATIBILITY_KNOWLEDGE_ORDO_0.4.10_ALPHA9.md",
+        "verification/RUNTIME_SEMANTIC_PLAN_PROVENANCE.json"
+      ]
+    },
+    {
+      "class": "materialization",
+      "default_inclusion": "required",
+      "purpose": "Package-local deterministic tools required to compile, materialize, merge, validate, package and rematerialize artifacts.",
+      "patterns": [
+        "START_HERE.md",
+        "START_HERE_RUNTIME_MODE.md",
+        "START_PROMPT.md",
+        "START_PROMPT_RUNTIME_MODE.md",
+        "README.md",
+        "AUTHORING_TOOLING.md",
+        "START_HERE_CLI_RUN.md",
+        "START_HERE_MODEL_MODE.md",
+        "START_PROMPT_CLI_RUN.md",
+        "START_PROMPT_MODEL_MODE.md"
+      ]
+    },
+    {
+      "class": "generated_outputs",
+      "default_inclusion": "declared_only",
+      "purpose": "Stable materialized deliverables intentionally shipped with the playbook. Each file must be explicitly declared in generated_outputs/PRODUCTION_DELIVERABLES.json with production_deliverable=true, an allowed role, and exact SHA256; undeclared or unsafe generated outputs are excluded/fail-closed.",
+      "patterns": [
+        "generated_outputs/**"
+      ]
+    },
+    {
+      "class": "portable_support",
+      "default_inclusion": "optional",
+      "purpose": "Portable compatibility/support artifacts required by the declared runtime/editor profile.",
+      "patterns": []
+    },
+    {
+      "class": "design_projection",
+      "default_inclusion": "optional",
+      "purpose": "Derived design/editor projection when declared as non-canonical and traceable to the Data Layer.",
+      "patterns": [
+        "design/**"
+      ]
+    },
+    {
+      "class": "development_history",
+      "default_inclusion": "debug_only",
+      "purpose": "Intermediate revisions and workstream change history.",
+      "patterns": [
+        "change_records/**",
+        "development_history/**",
+        "CANDIDATE_CHECKPOINT.json",
+        "CANDIDATE_SNAPSHOT_MANIFEST.json",
+        "CANDIDATE_STATUS.md",
+        "RELEASE_AUDIT_*.md",
+        "RELEASE_STATUS.json",
+        "RELEASE_FAMILY_MANIFEST.json"
+      ]
+    },
+    {
+      "class": "intermediate_reports",
+      "default_inclusion": "debug_only",
+      "purpose": "Development/candidate reports not required to run, edit or rematerialize the production playbook.",
+      "patterns": [
+        "reports/**"
+      ]
+    },
+    {
+      "class": "large_traces",
+      "default_inclusion": "debug_only",
+      "purpose": "Verbose runtime/debug traces and state snapshots.",
+      "patterns": [
+        "runtime/**",
+        "debug_handoff/**"
+      ]
+    },
+    {
+      "class": "screenshots",
+      "default_inclusion": "debug_only",
+      "purpose": "Visual calibration/evidence screenshots.",
+      "patterns": [
+        "**/*.png",
+        "**/*.jpg",
+        "**/*.jpeg",
+        "**/*.webp"
+      ]
+    },
+    {
+      "class": "golden_reference_artifacts",
+      "default_inclusion": "debug_only",
+      "purpose": "Golden/reference artifacts available to evaluator/audit only, not production generator distribution.",
+      "patterns": [
+        "**/*reference*",
+        "**/*golden*"
+      ]
+    },
+    {
+      "class": "interpreter_cache",
+      "default_inclusion": "forbidden",
+      "purpose": "Generated interpreter cache/bytecode must never ship.",
+      "patterns": [
+        "**/__pycache__/**",
+        "**/*.pyc",
+        "**/*.pyo"
+      ]
+    },
+    {
+      "class": "workspace_metadata",
+      "default_inclusion": "forbidden",
+      "purpose": "Local working/checkpoint metadata is not part of production artifact.",
+      "patterns": [
+        ".dev_checkpoint.json",
+        ".git/**",
+        ".gitignore",
+        ".DS_Store",
+        "PORTABLE_PACKAGE_MANIFEST.json",
+        "checkpoints/**",
+        "PRODUCTION_PACKAGE_MANIFEST.json"
+      ]
+    }
+  ],
+  "required_root_artifacts": [
+    "ordo.yml",
+    "source/program.ordo.yaml",
+    "authoring/information_object_catalog.yaml",
+    "authoring/information_group_catalog.yaml",
+    "authoring/information_flow_graph.yaml",
+    "authoring/artifact_catalog.yaml",
+    "authoring/ordo_projection.yaml",
+    "PLAYBOOK_LAWS.md",
+    "PRODUCTION_DEPENDENCY_CLOSURE.json",
+    "DISTRIBUTION_PACKAGE_CONTRACT.json",
+    "RUN_PACKAGE_DEPENDENCY_CLOSURE.json"
+  ],
+  "safe_delivery_manifest": "generated_outputs/PRODUCTION_DELIVERABLES.json",
+  "generated_output_policy": {
+    "default": "exclude_unless_declared",
+    "required_fields": [
+      "path",
+      "production_deliverable",
+      "role",
+      "sha256"
+    ],
+    "allowed_roles": [
+      "declared_delivery"
+    ],
+    "forbidden_roles": [
+      "simulation",
+      "evaluator",
+      "reference",
+      "calibration",
+      "best_candidate",
+      "expected_output"
+    ]
+  },
+  "dependency_closure": {
+    "manifest": "PRODUCTION_DEPENDENCY_CLOSURE.json",
+    "controlled_prefixes": [
+      "tools/",
+      "tests/",
+      "canonical_support/",
+      "dependencies/",
+      "utilities/",
+      "cli_embedded/",
+      "portable_overrides/",
+      "language/",
+      "verification/"
+    ],
+    "hash_required": true,
+    "unreachable_behavior": "exclude"
+  },
+  "production_exact_includes": [
+    "reports/CLI_VALIDATION_SUMMARY.md"
+  ]
+}

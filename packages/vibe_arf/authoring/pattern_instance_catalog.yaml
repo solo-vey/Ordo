@@ -1,0 +1,40 @@
+schema_version: '1.1'
+catalog_id: VIBE_PATTERN_INSTANCES
+selection_phase: data_layer_authoring
+tree_policy: derive_execution_from_pattern_template_do_not_reselect
+instances:
+- instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  pattern_id: DOCUMENT_MATERIALIZATION
+  pattern_version: '1.1'
+  artifact_id: A_BUSINESS_VIEW
+  selection_phase: data_layer_authoring
+  selection_status: exact_fit_auto_instantiated
+  data_layer_bindings:
+    artifact: A_BUSINESS_VIEW
+    content: I_BUSINESS_VIEW
+    template: I_ARTIFACT_CONTRACT_REGISTRY
+    materialization_status: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+    validation_result: I_BUSINESS_VIEW_RENDER_VALIDATION
+  local_overrides: []
+  instance_digest: c1facae2aa68cf1719c37c35284c97b887f3411370e638b7b3f2a2ff5c557b5f
+  requirement_origin: preexisting_project_data_layer
+  projection_contract: patterns/<pattern_id>/EXECUTION.template.yaml + this semantic binding
+- instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  pattern_id: PRODUCTION_PACKAGE_MATERIALIZATION
+  pattern_version: '1.1'
+  artifact_id: A_GENERATED_PLAYBOOK_PACKAGE
+  selection_phase: data_layer_authoring
+  selection_status: exact_fit_auto_instantiated
+  data_layer_bindings:
+    artifact: A_GENERATED_PLAYBOOK_PACKAGE
+    package_inputs:
+    - A_GENERATED_PLAYBOOK_SOURCE
+    - A_VERIFICATION_EVIDENCE
+    package_contract: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+    closure_manifest: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+    package_validation_status: I_PACKAGE_VALIDATION_STATUS
+    delivery_evidence: I_DELIVERY_EVIDENCE
+  local_overrides: []
+  instance_digest: 67b0175fafc547204df3a3bb5b0373f9dbfc355642e6ea9fb67a597e3bcb8712
+  requirement_origin: preexisting_project_data_layer
+  projection_contract: patterns/<pattern_id>/EXECUTION.template.yaml + this semantic binding

@@ -1,0 +1,68 @@
+schema_version: '1.0'
+pattern_id: DOCUMENT_MATERIALIZATION
+pattern_version: '1.1'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_pattern_instance_and_role
+  canonical_data_layer_contains_execution_ids: false
+  exact_graph_realization_required: true
+  duplicate_component_ids_forbidden: true
+components:
+- role: readiness_check
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: validate_bound_artifact_readiness
+    evidence: readiness_status_and_report
+- role: readiness_gate
+  kind: gate
+  responsibility_class: deterministic
+  execution_contract:
+    operation: gate_on_readiness_evidence
+- role: materialize
+  kind: node
+  responsibility_class: contract_classified
+  execution_contract:
+    operation: materialize_bound_document_template
+    evidence: artifact_plus_materialization_record
+- role: rendered_artifact_validate
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: validate_exact_rendered_artifact
+    evidence: render_validation_status_and_report
+- role: rendered_artifact_gate
+  kind: gate
+  responsibility_class: deterministic
+  execution_contract:
+    operation: gate_on_exact_render_validation
+- role: register_artifact
+  kind: node
+  responsibility_class: deterministic
+  execution_contract:
+    operation: register_artifact_provenance_and_validation_evidence
+edges:
+- from_role: readiness_check
+  to_role: readiness_gate
+  type: direct
+- from_role: readiness_gate
+  to_role: materialize
+  type: direct
+- from_role: materialize
+  to_role: rendered_artifact_validate
+  type: direct
+- from_role: rendered_artifact_validate
+  to_role: rendered_artifact_gate
+  type: direct
+- from_role: rendered_artifact_gate
+  to_role: register_artifact
+  type: direct

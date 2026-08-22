@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "records": [],
+  "rules": {
+    "unknown_or_stale": "do_not_silently_treat_as_current",
+    "refresh_required_before_reuse": true
+  }
+}

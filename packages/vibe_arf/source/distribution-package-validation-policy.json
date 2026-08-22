@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_EXACT_DISTRIBUTION_PACKAGE_VALIDATION_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "modes": [
+    "dev",
+    "debug",
+    "run",
+    "pair"
+  ],
+  "debug_alias": "dev",
+  "validation_target": "final_zip_bytes",
+  "principles": [
+    "Validate delivered ZIP structure, not only the working tree.",
+    "DEV and RUN fail closed on missing required files and undeclared baggage.",
+    "Editor-facing Data Flow publication must use canonical design/ paths; arbitrary applied_dataflow/ or authoring_reference/ surfaces are not accepted as the generated playbook canonical publication.",
+    "Pair mode proves DEV/RUN source identity parity."
+  ],
+  "dev_required_editor_surface": [
+    "design/MODEL_BUNDLE.yaml",
+    "design/variable_catalog.yaml",
+    "design/variable_group_catalog.yaml",
+    "design/information_dependency_graph.yaml",
+    "design/artifact_catalog.yaml",
+    "design/playbook_projection.yaml",
+    "design/DATA_FLOW_PACKAGE.zip"
+  ],
+  "forbidden_applied_surfaces": [
+    "applied_dataflow/",
+    "authoring_reference/"
+  ],
+  "final_gate": "G_DISTRIBUTION_PACKAGE_VALID"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_INFORMATION_FIRST_AUTHORING_POLICY_V1",
+  "revision": "0.1.0-alpha.26",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "semantic_authority": "canonical_ordo_language",
+  "authoring_model_role": "design_time_internal_model",
+  "process_graph_role": "projection_of_information_model",
+  "ordo_extension_allowed": false,
+  "principles": [
+    "Start from required outcomes and artifacts, decompose them into information objects, then synthesize interaction and process flow from those information needs.",
+    "Model information movement before process-graph synthesis. The Ordo process graph is a projection of the validated authoring information model, not the primary design source.",
+    "Use one typed information-flow topology for scalar values, structured records, evidence, documents, reports, manifests, packages and intermediate artifacts.",
+    "Every information object has a stable catalog definition and a runtime value instance. Value state and validation state are independent: unknown or not_applicable can still be explicitly validated or approved when business semantics allow it.",
+    "Supported value states include unset, value, unknown and not_applicable. Supported validation lifecycle includes draft, validated, approved and stale.",
+    "Any post-validation mutation that affects validated information makes its validation evidence stale and invalidates dependent evidence until the relevant deterministic gate reruns.",
+    "Group information objects into semantic bundles to support progressive intake, proposal-first interaction, shared validation and coherent analyst review.",
+    "Prefer progressive intake: use an initial free description to seed multiple information objects, derive or propose downstream values from approved information, and ask the human only for unresolved business authority or semantic trade-offs.",
+    "Reject irrelevant or structurally invalid information before it contaminates durable state when deterministic checks can decide this.",
+    "Artifacts are first-class information-flow nodes and may be intermediate or terminal. Artifact materialization and verification must be represented in the same topology.",
+    "Use typed edges such as provided_by, derived_from, validated_by, approved_by, consumed_by, materializes, invalidates, packages and depends_on rather than an untyped diagram.",
+    "The authoring information model is internal Vibe implementation state and must project to ordinary canonical Ordo constructs; it must not extend Ordo syntax.",
+    "Bidirectional traceability is mandatory once process synthesis begins: every required authoring entity must be materially represented in Ordo, and every authoring-managed Ordo element must trace back to the authoring model.",
+    "Machine-detectable information-model or projection defects remain behind the analyst visibility barrier and must be repaired before a candidate is handed off.",
+    "Persist progressive interaction as an authoring projection that references information objects/groups; interaction order is derived from information needs and authority, not invented independently of the information model."
+  ],
+  "canonical_authoring_files": [
+    "authoring/information_object_catalog.yaml",
+    "authoring/information_group_catalog.yaml",
+    "authoring/artifact_catalog.yaml",
+    "authoring/information_flow_graph.yaml",
+    "authoring/interaction_projection.yaml",
+    "authoring/ordo_projection.yaml"
+  ],
+  "mandatory_pre_graph_sequence": [
+    "artifact_discovery",
+    "artifact_decomposition",
+    "information_object_catalog",
+    "semantic_grouping",
+    "information_dependency_graph",
+    "validation_authority_lifecycle",
+    "interaction_projection",
+    "deterministic_information_model_validation",
+    "ordo_graph_synthesis",
+    "bidirectional_projection_validation"
+  ],
+  "edge_types": [
+    "provided_by",
+    "derived_from",
+    "validated_by",
+    "approved_by",
+    "consumed_by",
+    "materializes",
+    "invalidates",
+    "packages",
+    "depends_on"
+  ]
+}

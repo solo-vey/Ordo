@@ -11,7 +11,13 @@ def test_repository_prompt_governance_passes():
     r = audit_prompt_governance(ROOT)
     assert r["status"] == "passed", r
     assert r["blocking_issues"] == []
-    assert len(r["package_results"]) == 4
+    assert {item["package"] for item in r["package_results"]} == {
+        "history_event_guided_intake",
+        "ordo_applied_project_factory",
+        "ordo_hybrid_executor",
+        "ordo_project_builder",
+        "vibe_arf",
+    }
     assert r["apf_registry"]["registry_entries"] == 6
     assert r["candidate_governance"]["candidate_count"] == 2
     assert r["internal_mini_prompt_review"]["status"] == "passed"

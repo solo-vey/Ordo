@@ -1,0 +1,16 @@
+{
+  "pattern_version": "1.2",
+  "protected_semantic_fields_placeholder": true,
+  "analyst_answer_ux_placeholder": true,
+  "execution_protected_guard": true,
+  "execution_all_a_example": true,
+  "apply_side_effect_guard": true,
+  "status": "PASS",
+  "explicit_input_ux": true,
+  "evidence_authority_isolation": true,
+  "provisional_profile_correction": true,
+  "version_drift_classification": true,
+  "structured_discrepancy_rendering": true,
+  "narrow_blocked_semantics": true,
+  "issue_summary_required": true
+}

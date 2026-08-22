@@ -1,0 +1,1875 @@
+{
+  "schema_version": "1.0",
+  "playbook_revision": "0.1.0-alpha.45",
+  "entries": [
+    {
+      "element_id": "N_VIBE_INTAKE",
+      "element_type": "node",
+      "responsibility": "Primary Vibe entry. Collect natural intent without technical questionnaire. Existing playbooks/instructions are accepted as migration evidence; a resumed session reconstructs context from persisted state rather than asking the user to restate it. Automatically inventory provided desired artifacts, templates, examples and legacy output surfaces before asking for structured requirements. Chat-first default: no CLI/runtime/Ordo terminology is required from the user.",
+      "class": "human_authority",
+      "authority_owner": "analyst/product owner",
+      "decision_consequence": "Defines the requested playbook intent and desired outcomes."
+    },
+    {
+      "element_id": "N_U_SOURCE_ASSIMILATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: source_assimilation.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_EPISTEMIC_CLASSIFICATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: epistemic_classification.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_DOMAIN_ACTOR_MODEL",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: domain_actor_model.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_ARTIFACT_SURFACE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: artifact_surface_inventory.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_CHAT_FIRST_BOOTSTRAP_CHECK",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: chat_first_bootstrap_quality_evidence.",
+      "class": "model_judgment",
+      "semantic_reason": "Chat-first quality requires semantic assessment of actual interaction evidence.",
+      "evidence_contract": "Structured evidence; PASS must be derived from evidence, never hardcoded."
+    },
+    {
+      "element_id": "N_U_RULE_AUTHORITY_MODEL",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: business_rule_authority_model.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_LEGACY_MIGRATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: legacy_semantic_migration.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_PROCESS_SEMANTIC_HYPOTHESIS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: process_semantic_hypothesis.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_U_INTEGRITY_CHECK",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: understanding_integrity.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_P_PARAMETER_DISCOVERY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: parameter_discovery.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_P_PARAMETER_DERIVATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: parameter_derivation.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_P_OWNERSHIP_BLOCKING_CLASSIFICATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: ownership_blocking_classification.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_P_PRODUCTION_PATH_CLOSURE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: production_path_closure.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_P_ANSWER_PROPAGATION",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: answer_dependency_propagation.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic transform report containing operation, input fingerprint, output diff, and invariant checks.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/execute_deterministic_state_transform.py"
+      ]
+    },
+    {
+      "element_id": "N_P_QUESTION_QUEUE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: question_queue_derivation.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_HDG_DECISION",
+      "element_type": "node",
+      "responsibility": "Only this decision may authorize an authoring-time user question. Before ask_user, exhaust the derive-before-ask ladder; technical/model-owned uncertainty never qualifies as a user question. This is the only route to a post-intake user question; the question must be business-semantic and consequence-backed.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_HDG_QUESTION",
+      "element_type": "node",
+      "responsibility": "Human Decision Gateway. Every question must cite its blocker/authority basis in state/trace.",
+      "class": "human_authority",
+      "authority_owner": "analyst/decision owner",
+      "decision_consequence": "Supplies a consequential decision the model is not authorized to make."
+    },
+    {
+      "element_id": "N_D_ARTIFACT_BACKWARDS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: artifact_backwards_decomposition.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_PARAMETER_DEPENDENCIES",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: parameter_dependency_design.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_MINIMUM_INPUT",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: minimum_input_design.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_PROCESS_DECOMPOSITION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: process_decomposition.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_DECISION_GATE_DESIGN",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: decision_gate_design.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_REUSE_PATTERN_SELECTION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: reuse_pattern_selection.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_ALTERNATIVES_OPTIMIZATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: alternative_optimization.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_D_CONSISTENCY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: design_consistency.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_DESIGN_READINESS",
+      "element_type": "node",
+      "responsibility": "Internally classify design readiness. Return to Understanding for a semantic gap, return to the ledger/HDG for a user-owned blocker, and otherwise continue autonomously.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_IDENTITY_TEMPLATE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: artifact_identity_template_revision.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_BUSINESS_VIEW_TEMPLATE_BIND",
+      "element_type": "node",
+      "responsibility": "Concrete document-template binding for OUT_BUSINESS_VIEW.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "tool_or_validator_refs": [
+        "canonical_support/output_templates/BUSINESS_VIEW.template.md"
+      ],
+      "evidence_contract": "Machine-readable helper/materialization evidence bound to the exact revision."
+    },
+    {
+      "element_id": "N_A_PACKAGE_ASSEMBLY_CONTRACT_BIND",
+      "element_type": "node",
+      "responsibility": "Concrete assembly-contract binding for OUT_GENERATED_PLAYBOOK_PACKAGE.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "tool_or_validator_refs": [
+        "canonical_support/output_templates/GENERATED_PLAYBOOK_PACKAGE_ASSEMBLY_CONTRACT.json"
+      ],
+      "evidence_contract": "Machine-readable helper/materialization evidence bound to the exact revision."
+    },
+    {
+      "element_id": "N_A_FIELD_INVENTORY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: template_field_inventory.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_FIELD_CONTRACT_REQUIREDNESS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: field_requiredness_missing_policy.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_PARAMETER_PRODUCER_BINDING",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: parameter_producer_provenance_binding.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_VALIDATION_GATE_BINDING",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: validation_gate_binding.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_MATERIALIZATION_READINESS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: materialization_readiness.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_POST_RENDER_REGISTRATION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: post_render_registration.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_A_VERSION_COMPATIBILITY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: version_compatibility_migration.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_K_KNOWLEDGE_CONTEXT",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: knowledge_context_assembly.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_K_TRACEABILITY_SYNC",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: traceability_sync.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic transform report containing operation, input fingerprint, output diff, and invariant checks.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/execute_deterministic_state_transform.py"
+      ]
+    },
+    {
+      "element_id": "N_B_BUILD_READINESS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: build_readiness.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_CONTRACT_MAPPING",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: contract_mapping.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_STATE_ARTIFACT_SCHEMA",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: state_artifact_schema.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_NODE_ACTION_SYNTHESIS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: node_action_synthesis.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_GATE_AUTHORITY_SYNTHESIS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: gate_authority_synthesis.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_GRAPH_RECOVERY_WIRING",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: graph_recovery_wiring.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_REUSE_PROVENANCE_ASSEMBLY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: reuse_provenance_assembly.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_B_SOURCE_MATERIALIZE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: source_candidate_materialization.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_SOURCE",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: source syntax/compile/runtime freshness.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "verification_profile.json",
+        "tools/run_verification_profile.py",
+        "source/program.ordo.yaml"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_STRUCTURE",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: graph/source/laws/targets.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "verification_profile.json",
+        "tools/verify_editor_runtime_graph_compatibility.py",
+        "tools/verify_delivery_source_uniqueness.py",
+        "tools/verify_playbook_laws.py"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_ARTIFACTS",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: templates/materialization/responsibility contracts.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "verification_profile.json",
+        "tools/validate_artifact_materialization_registry.py",
+        "tools/verify_execution_responsibility_map.py",
+        "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+        "generated_outputs/.gitkeep"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_REGRESSION",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: tests/coverage/package-local Python regressions.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "verification_profile.json",
+        "verification/PROFILE_EXTENSIONS.json",
+        "tools/test_alpha13_generated_execution_inheritance.py",
+        "tools/test_alpha14_staged_quality_and_materialization.py",
+        "tools/test_alpha15_explicit_tools_templates_outputs.py"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_RELEASE",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: release/readiness evidence.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "verification_profile.json",
+        "tools/run_verification_profile.py",
+        "ordo.lock.json",
+        "ordo.yml"
+      ]
+    },
+    {
+      "element_id": "N_B_ORDO_LANGUAGE_GROUNDING_CHECK",
+      "element_type": "node",
+      "responsibility": "Deterministic helper validation step grounded in the pinned Ordo language kit; it adds no new Ordo executable construct.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_R_REVIEW_BASELINE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: review_baseline.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_R_LAWS_ANTIPATTERNS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: laws_contracts_antipatterns.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_R_SCENARIO_DESIGN",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: scenario_design.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_R_PATHWALK_BEHAVIOR",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: pathwalk_behavior.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_R_ARTIFACT_PROVENANCE_ORACLES",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: artifact_provenance_oracles.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_R_ADVERSARIAL_NEGATIVE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: adversarial_negative_testing.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_R_FINDINGS_ROOT_CAUSE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: finding_root_cause.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_R_VERIFICATION_READINESS",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: verification_readiness_assessment.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation/synthesis or multiway routing beyond a deterministic predicate.",
+      "evidence_contract": "Structured state/provenance evidence."
+    },
+    {
+      "element_id": "N_R_AUTHORING_BURDEN",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: authoring_burden_assessment.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation/synthesis or multiway routing beyond a deterministic predicate.",
+      "evidence_contract": "Structured state/provenance evidence."
+    },
+    {
+      "element_id": "N_R_ANALYST_EXPERIENCE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: applied_analyst_experience_assessment.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation/synthesis or multiway routing beyond a deterministic predicate.",
+      "evidence_contract": "Structured state/provenance evidence."
+    },
+    {
+      "element_id": "N_REVIEW_ROUTING",
+      "element_type": "node",
+      "responsibility": "Internally classify the review result. Repair technical and model-owned defects autonomously, route semantic or user-authority gaps upstream, and expose only a clean candidate as ready for user review.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_RP_ROOT_CAUSE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: repair_root_cause.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_RP_IMPACT_PLAN",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: impact_planning.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_RP_APPLY_REPAIR",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: repair_application.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_RP_REGRESSION_MEMORY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: regression_memory.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_PRESENT_BUSINESS_VIEW",
+      "element_type": "node",
+      "responsibility": "Default presentation surface; Engineering View only on explicit request. The presented surface must pass the declared human-format profile and must not leak Ordo/YAML internals by default. When clarification is non-authority and a useful reversible hypothesis exists, present the draft/recommendation first rather than asking an open-ended question.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_BUSINESS_VIEW_PRESENTATION_EVIDENCE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: business_view_presentation_quality_evidence.",
+      "class": "model_judgment",
+      "semantic_reason": "Business-language/progress quality requires semantic assessment of the actual presentation.",
+      "evidence_contract": "Structured evidence; PASS must be derived from evidence, never hardcoded."
+    },
+    {
+      "element_id": "N_FEEDBACK_CLASSIFY",
+      "element_type": "node",
+      "responsibility": "Internally classify the latest user feedback as accept, semantic_change, add_context, or explanation_only. Do not require node or YAML coordinates from the user.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_C_CHANGE_NORMALIZE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: change_normalization.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_C_ROOT_CAUSE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: root_cause_analysis.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_C_DEPENDENCY_CLOSURE",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: dependency_closure.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic transform report containing operation, input fingerprint, output diff, and invariant checks.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/execute_deterministic_state_transform.py"
+      ]
+    },
+    {
+      "element_id": "N_C_INVALIDATION",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: invalidation.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic transform report containing operation, input fingerprint, output diff, and invariant checks.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/execute_deterministic_state_transform.py"
+      ]
+    },
+    {
+      "element_id": "N_C_PRESERVE_VALID",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: valid_state_preservation.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic transform report containing operation, input fingerprint, output diff, and invariant checks.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/execute_deterministic_state_transform.py"
+      ]
+    },
+    {
+      "element_id": "N_C_ROUTE_PLAN",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: reroute_planning.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_ACCEPTANCE_READINESS",
+      "element_type": "node",
+      "responsibility": "Internally verify acceptance readiness of the exact revision: zero blockers, required verification PASS, artifact, trace, revision, and package integrity, no critical findings, and feedback acceptance bound to the candidate.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report produced by the declared deterministic mechanism.",
+      "tool_or_validator_refs": [
+        "verification_profile:readiness"
+      ]
+    },
+    {
+      "element_id": "N_PK_REVISION_COMMIT",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: atomic_revision_commit.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Structured state/report produced by the declared deterministic mechanism."
+    },
+    {
+      "element_id": "N_PK_LKV_RECOVERY_SEAL",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: lkv_recovery_preservation.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Structured state/report produced by the declared deterministic mechanism."
+    },
+    {
+      "element_id": "N_PK_HANDOFF_PREPARE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: handoff_preparation.",
+      "class": "model_judgment",
+      "semantic_reason": "This responsibility requires interpretation, synthesis, prioritization, or semantic design from domain/context evidence; deterministic helpers may validate outputs but cannot fully decide the content.",
+      "evidence_contract": "Structured state diff with provenance/refs used by downstream deterministic or semantic verification."
+    },
+    {
+      "element_id": "N_PK_DELIVERY_VALIDATE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: delivery_integrity_validation.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_PK_HUMAN_FORMAT_VALIDATE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: human_format_validation.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_PK_DELIVERY_EVIDENCE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: delivery_evidence_recording.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_PK_CONTINUITY_EVIDENCE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: session_continuity_evidence.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "vibe_arf_authoring_model",
+        "parameter_ledger",
+        "applicable_project_evidence"
+      ]
+    },
+    {
+      "element_id": "N_PK_FINAL_EXPERIENCE_EVIDENCE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: final_analyst_experience_evidence.",
+      "class": "model_judgment",
+      "semantic_reason": "Final analyst-experience evidence includes semantic/user-experience judgments.",
+      "evidence_contract": "Structured evidence; PASS must be derived from evidence, never hardcoded."
+    },
+    {
+      "element_id": "N_OUT_GENERATED_PACKAGE_MATERIALIZE",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: generated_package_output_materialization.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "canonical_support/output_templates/GENERATED_PLAYBOOK_PACKAGE_ASSEMBLY_CONTRACT.json",
+        "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+        "verification_profile.json"
+      ]
+    },
+    {
+      "element_id": "N_OUT_GENERATED_PACKAGE_HANDOFF",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: generated_package_final_handoff.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Structured state/report evidence for this single responsibility.",
+      "tool_or_validator_refs": [
+        "canonical_support/output_templates/GENERATED_PLAYBOOK_PACKAGE_ASSEMBLY_CONTRACT.json",
+        "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+        "verification_profile.json"
+      ]
+    },
+    {
+      "element_id": "G_UNDERSTANDING_READY",
+      "element_type": "gate",
+      "responsibility": "state.artifact_surface_status is one of READY and state.chat_first_bootstrap_status is one of PASS and state.chat_first_bootstrap_report is not empty",
+      "class": "deterministic",
+      "evidence_contract": "Mechanical predicate over already-produced model/runtime evidence; gate performs no semantic judgment.",
+      "authority_owner": "runtime",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "G_PARAMETER_FLOW_READY",
+      "element_type": "gate",
+      "responsibility": "state.parameter_closure_plan_status is one of READY and state.answer_propagation_status is one of PASS",
+      "class": "deterministic",
+      "evidence_contract": "Mechanical predicate over already-produced model/runtime evidence; gate performs no semantic judgment.",
+      "authority_owner": "runtime",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "G_LANGUAGE_GROUNDING_READY",
+      "element_type": "gate",
+      "responsibility": "state.ordo_language_reference_status is one of PASS and state.generated_source_language_conformance_status is one of PASS and state.generated_source_semantic_preservation_status is one of PASS and state.generated_source_language_grounding_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_VERIFICATION_READY",
+      "element_type": "gate",
+      "responsibility": "state.verification_profile_status is one of PASS and state.verification_profile_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_REVIEW_EXPERIENCE_READY",
+      "element_type": "gate",
+      "responsibility": "state.authoring_burden_status is one of PASS and state.applied_analyst_experience_status is one of PASS",
+      "class": "deterministic",
+      "evidence_contract": "Mechanical predicate over already-produced model/runtime evidence; gate performs no semantic judgment.",
+      "authority_owner": "runtime",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "G_PACKAGE_READY",
+      "element_type": "gate",
+      "responsibility": "state.generated_package_status is one of VALID and state.generated_package_validation_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_DELIVERY_READY",
+      "element_type": "gate",
+      "responsibility": "state.delivery_status is one of DELIVERABLE and state.delivery_validation_report is not empty and state.human_format_validation_status is one of PASS and state.human_format_validation_report is not empty and state.resume_integrity_status is one of PASS and state.session_continuity_status is one of READY and state.session_continuity_report is not empty and state.e2e_authoring_trial_status is one of PASS and state.e2e_authoring_trial_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_FINAL_DIALOGUE_READY",
+      "element_type": "gate",
+      "responsibility": "state.autonomous_until_blocker_status is one of PASS and state.business_language_surface_status is one of PASS and state.business_language_surface_report is not empty and state.progress_surface_status is one of PASS and state.progress_surface_report is not empty and state.first_question_quality_status is one of PASS and state.user_question_queue is empty and state.blocking_parameter_ids is empty",
+      "class": "deterministic",
+      "evidence_contract": "Mechanical predicate over already-produced model/runtime evidence; gate performs no semantic judgment.",
+      "authority_owner": "runtime",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "G_USER_ACCEPTANCE_CONFIRMED",
+      "element_type": "gate",
+      "responsibility": "state.acceptance_status is one of accepted",
+      "class": "human_authority",
+      "authority_owner": "authorized analyst/owner",
+      "decision_consequence": "Controls exact-revision acceptance/handoff."
+    },
+    {
+      "element_id": "G_SOURCE_VERIFICATION_PASS",
+      "element_type": "gate",
+      "responsibility": "state.source_verification_status is one of PASS and state.source_verification_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_STRUCTURE_VERIFICATION_PASS",
+      "element_type": "gate",
+      "responsibility": "state.structure_verification_status is one of PASS and state.structure_verification_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_ARTIFACT_VERIFICATION_PASS",
+      "element_type": "gate",
+      "responsibility": "state.artifact_verification_status is one of PASS and state.artifact_verification_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_REGRESSION_VERIFICATION_PASS",
+      "element_type": "gate",
+      "responsibility": "state.regression_verification_status is one of PASS and state.regression_verification_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_RELEASE_VERIFICATION_PASS",
+      "element_type": "gate",
+      "responsibility": "state.release_verification_status is one of PASS and state.release_verification_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "G_GENERATED_PACKAGE_OUTPUT_VALID",
+      "element_type": "gate",
+      "responsibility": "state.generated_package_output_status is one of VALID and state.generated_package_output_report is not empty",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over already-produced evidence; gate performs no check execution."
+    },
+    {
+      "element_id": "N_U_INFORMATION_OBJECT_CATALOG",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: artifact decomposition into information-object passports.",
+      "class": "model_judgment",
+      "semantic_reason": "Information decomposition, semantic grouping, dependency modeling, interaction projection, or design-to-Ordo mapping requires semantic synthesis from artifact/domain evidence; deterministic validators verify structural contracts afterward.",
+      "evidence_contract": "Structured authoring-model/projection state with persisted YAML provenance and downstream deterministic validation."
+    },
+    {
+      "element_id": "N_U_INFORMATION_GROUP_CATALOG",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: semantic information grouping.",
+      "class": "model_judgment",
+      "semantic_reason": "Information decomposition, semantic grouping, dependency modeling, interaction projection, or design-to-Ordo mapping requires semantic synthesis from artifact/domain evidence; deterministic validators verify structural contracts afterward.",
+      "evidence_contract": "Structured authoring-model/projection state with persisted YAML provenance and downstream deterministic validation."
+    },
+    {
+      "element_id": "N_U_INFORMATION_FLOW_TOPOLOGY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: one typed authoring information-flow topology.",
+      "class": "model_judgment",
+      "semantic_reason": "Information decomposition, semantic grouping, dependency modeling, interaction projection, or design-to-Ordo mapping requires semantic synthesis from artifact/domain evidence; deterministic validators verify structural contracts afterward.",
+      "evidence_contract": "Structured authoring-model/projection state with persisted YAML provenance and downstream deterministic validation."
+    },
+    {
+      "element_id": "N_U_INFORMATION_LIFECYCLE_AUTHORITY",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: information lifecycle, provenance and authority semantics.",
+      "class": "model_judgment",
+      "semantic_reason": "Information decomposition, semantic grouping, dependency modeling, interaction projection, or design-to-Ordo mapping requires semantic synthesis from artifact/domain evidence; deterministic validators verify structural contracts afterward.",
+      "evidence_contract": "Structured authoring-model/projection state with persisted YAML provenance and downstream deterministic validation."
+    },
+    {
+      "element_id": "N_U_INTERACTION_PROJECTION",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: progressive analyst-interaction projection from information needs.",
+      "class": "model_judgment",
+      "semantic_reason": "Information decomposition, semantic grouping, dependency modeling, interaction projection, or design-to-Ordo mapping requires semantic synthesis from artifact/domain evidence; deterministic validators verify structural contracts afterward.",
+      "evidence_contract": "Structured authoring-model/projection state with persisted YAML provenance and downstream deterministic validation."
+    },
+    {
+      "element_id": "N_B_INFORMATION_TO_ORDO_PROJECTION_BIND",
+      "element_type": "node",
+      "responsibility": "Atomic responsibility: AIM-to-Ordo projection manifest binding.",
+      "class": "model_judgment",
+      "semantic_reason": "Information decomposition, semantic grouping, dependency modeling, interaction projection, or design-to-Ordo mapping requires semantic synthesis from artifact/domain evidence; deterministic validators verify structural contracts afterward.",
+      "evidence_contract": "Structured authoring-model/projection state with persisted YAML provenance and downstream deterministic validation."
+    },
+    {
+      "element_id": "N_VERIFY_INFORMATION_MODEL",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: authoring information model validation.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_authoring_information_model.py"
+      ],
+      "evidence_contract": "Machine-readable PASS/FAIL report from package-local deterministic Python validator."
+    },
+    {
+      "element_id": "N_VERIFY_INFORMATION_PROJECTION",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: AIM ↔ Ordo bidirectional traceability.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_information_projection.py"
+      ],
+      "evidence_contract": "Machine-readable PASS/FAIL report from package-local deterministic Python validator."
+    },
+    {
+      "element_id": "G_INFORMATION_MODEL_READY",
+      "element_type": "gate",
+      "responsibility": "Mechanical blocking gate for G_INFORMATION_MODEL_READY",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical condition over explicit validation status and non-empty machine-readable report."
+    },
+    {
+      "element_id": "G_INFORMATION_PROJECTION_PASS",
+      "element_type": "gate",
+      "responsibility": "Mechanical blocking gate for G_INFORMATION_PROJECTION_PASS",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical condition over explicit validation status and non-empty machine-readable report."
+    },
+    {
+      "element_id": "N_U_REVIEW_BUNDLE_COMPILATION",
+      "element_type": "node",
+      "responsibility": "Derive analyst-minimal review bundles from AIM authority/uncertainty/dependencies.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic synthesis/classification from AIM or runtime evidence; deterministic validators verify structural truth afterward.",
+      "evidence_contract": "Structured state diff and persisted authoring/simulation evidence."
+    },
+    {
+      "element_id": "N_SIM_RUN",
+      "element_type": "node",
+      "responsibility": "Execute required simulation scenarios and persist trace/state/errors/fixture usage.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/run_simulation_preflight.py"
+      ],
+      "evidence_contract": "Machine-readable simulation contract/evidence bound to exact candidate."
+    },
+    {
+      "element_id": "N_SIM_RUNTIME_HANDOFF",
+      "element_type": "node",
+      "responsibility": "Produce evidence-rich runtime-adapter handoff for canonical-valid runtime defects.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic synthesis/classification from AIM or runtime evidence; deterministic validators verify structural truth afterward.",
+      "evidence_contract": "Structured state diff and persisted authoring/simulation evidence."
+    },
+    {
+      "element_id": "N_SIM_CLASSIFY",
+      "element_type": "node",
+      "responsibility": "Classify simulation result by defect ownership without cross-layer workaround pollution.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic synthesis/classification from AIM or runtime evidence; deterministic validators verify structural truth afterward.",
+      "evidence_contract": "Structured state diff and persisted authoring/simulation evidence."
+    },
+    {
+      "element_id": "N_SIM_INSPECT",
+      "element_type": "node",
+      "responsibility": "Inspect exact candidate ZIP with pinned runtime simulation kit and persist simulation contract.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/run_simulation_preflight.py"
+      ],
+      "evidence_contract": "Machine-readable simulation contract/evidence bound to exact candidate."
+    },
+    {
+      "element_id": "N_SIM_FIXTURE_SYNTHESIS",
+      "element_type": "node",
+      "responsibility": "Synthesize exact-schema analyst/model/recovery fixtures from simulation contract and scenario matrix.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic synthesis/classification from AIM or runtime evidence; deterministic validators verify structural truth afterward.",
+      "evidence_contract": "Structured state diff and persisted authoring/simulation evidence."
+    },
+    {
+      "element_id": "N_B_APPROVAL_RECOVERY_BINDING",
+      "element_type": "node",
+      "responsibility": "Bind approval ledger persistence, local authority gates and causal recovery.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic synthesis/classification from AIM or runtime evidence; deterministic validators verify structural truth afterward.",
+      "evidence_contract": "Structured state diff and persisted authoring/simulation evidence."
+    },
+    {
+      "element_id": "N_U_PROPOSAL_CANONICALIZATION",
+      "element_type": "node",
+      "responsibility": "Define proposal quarantine and approved canonical projection semantics.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic synthesis/classification from AIM or runtime evidence; deterministic validators verify structural truth afterward.",
+      "evidence_contract": "Structured state diff and persisted authoring/simulation evidence."
+    },
+    {
+      "element_id": "N_AI_IMPROVEMENT_INIT",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_TESTSET_FREEZE",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_RUN_REVISION",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_EVALUATE_REVISION",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_DIAGNOSE",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_DECIDE",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_APPLY_REPAIR",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_FINALIZE",
+      "element_type": "node",
+      "responsibility": "Autonomous applied-playbook improvement responsibility governed by frozen-fixture anti-cheat and best-so-far policy.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic diagnosis, quality optimization, and evidence-grounded repair decisions over a generated applied playbook while preserving frozen fixtures and evaluator separation.",
+      "evidence_contract": "Persist state diff, exact candidate/test-set hashes, scores/deficits, revision rationale, and best-so-far evidence."
+    },
+    {
+      "element_id": "N_AI_VERIFY_RESPONSE_PROVENANCE",
+      "element_type": "node",
+      "responsibility": "Deterministically verify immutable model-call provenance and emit PASS/FAIL evidence without repairing responses.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_model_response_provenance.py"
+      ],
+      "evidence_contract": "Immutable model-response provenance report with eligibility facts for acceptance scoring."
+    },
+    {
+      "element_id": "G_AI_RESPONSE_PROVENANCE_VALID",
+      "element_type": "gate",
+      "responsibility": "Mechanically require that provenance verification completed with a persisted PASS/FAIL report before scoring; acceptance eligibility is decided by the scorer tier contract.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Gate evaluation over provenance verification status/report."
+    },
+    {
+      "element_id": "N_VERIFY_DATA_LAYER_CANONICAL",
+      "element_type": "node",
+      "responsibility": "Atomic deterministic execution: data-layer canonical pregraph validation.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_authoring_information_model.py",
+        "tools/validate_data_layer_first_architecture.py"
+      ],
+      "evidence_contract": "Persisted data-layer canonical readiness and lineage validation report."
+    },
+    {
+      "element_id": "G_DATA_LAYER_CANONICAL_READY",
+      "element_type": "gate",
+      "responsibility": "Mechanical gate: block graph synthesis until canonical data layer is valid.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Gate predicates over persisted data-layer canonical validation state."
+    },
+    {
+      "element_id": "N_AI_DISCOVER_ARTIFACT_EVAL_PROFILE",
+      "element_type": "node",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation of artifact purpose/reference relevance or comparative quality.",
+      "evidence_contract": "Structured evidence with rationale, references used, and immutable state diff."
+    },
+    {
+      "element_id": "N_AI_SELECT_GOLDEN_REFERENCES",
+      "element_type": "node",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation of artifact purpose/reference relevance or comparative quality.",
+      "evidence_contract": "Structured evidence with rationale, references used, and immutable state diff."
+    },
+    {
+      "element_id": "N_AI_BUILD_REFERENCE_PROFILE",
+      "element_type": "node",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation of artifact purpose/reference relevance or comparative quality.",
+      "evidence_contract": "Structured evidence with rationale, references used, and immutable state diff."
+    },
+    {
+      "element_id": "N_AI_BUILD_DYNAMIC_COMPARATIVE_PROMPT",
+      "element_type": "node",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic evidence derived from explicit state/policy.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/build_dynamic_comparative_prompt.py"
+      ]
+    },
+    {
+      "element_id": "N_AI_RUN_FRESH_COMPARATIVE_EVALUATOR",
+      "element_type": "node",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic interpretation of artifact purpose/reference relevance or comparative quality.",
+      "evidence_contract": "Structured evidence with rationale, references used, and immutable state diff."
+    },
+    {
+      "element_id": "N_AI_SANITIZE_EVALUATION_DEFECTS",
+      "element_type": "node",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable deterministic evidence derived from explicit state/policy.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/sanitize_evaluation_defects.py"
+      ]
+    },
+    {
+      "element_id": "G_AI_REFERENCE_CONFLICTS_RESOLVED",
+      "element_type": "gate",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "deterministic",
+      "evidence_contract": "Mechanical predicate over already-produced evaluator/profile evidence; gate performs no semantic judgment.",
+      "mechanism": "ordo_gate",
+      "authority_owner": "runtime"
+    },
+    {
+      "element_id": "G_AI_FRESH_REFERENCE_FIDELITY",
+      "element_type": "gate",
+      "responsibility": "Dynamic multi-reference comparative evaluation responsibility.",
+      "class": "deterministic",
+      "evidence_contract": "Mechanical predicate over already-produced evaluator/profile evidence; gate performs no semantic judgment.",
+      "mechanism": "ordo_gate",
+      "authority_owner": "runtime"
+    },
+    {
+      "element_id": "N_U_ANALYST_CONTEXT_CAPTURE",
+      "element_type": "node",
+      "responsibility": "Classify analyst-provided context retention mode and persist durable context using deterministic capture tool.",
+      "class": "model_judgment",
+      "semantic_reason": "Retention classification depends on semantic future-use/volatility judgment; persistence itself is deterministic.",
+      "evidence_contract": "Context catalog record with retention mode, provenance, access scope and refresh requirement."
+    },
+    {
+      "element_id": "N_AI_VALIDATE_REVISION_CONTRACTS",
+      "element_type": "node",
+      "responsibility": "Deterministically validate cross-contract synchronization before scoring.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable cross-contract alignment report; FAIL makes revision score-ineligible and does not increment stagnation.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_revision_contract_alignment.py"
+      ]
+    },
+    {
+      "element_id": "G_AI_REVISION_CONTRACTS_VALID",
+      "element_type": "gate",
+      "responsibility": "Fail-closed scoring eligibility gate for revision contract alignment.",
+      "class": "deterministic",
+      "evidence_contract": "Gate evaluation over improvement_revision_validity_status/report; FAIL routes to repair without scoring.",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "N_AI_BUILD_EVALUATOR_REFERENCE_BUNDLE",
+      "element_type": "node",
+      "responsibility": "Materialize selected full reference content into evaluator-only immutable bundle.",
+      "class": "deterministic",
+      "evidence_contract": "Bundle manifest with hashes and access boundary.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/build_evaluator_reference_bundle.py"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_EVALUATOR_REFERENCE_BUNDLE",
+      "element_type": "node",
+      "responsibility": "Validate evaluator-only reference bundle hashes and consumer boundaries.",
+      "class": "deterministic",
+      "evidence_contract": "Machine-readable validation report.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_evaluator_reference_bundle.py"
+      ]
+    },
+    {
+      "element_id": "G_AI_EVALUATOR_REFERENCE_BUNDLE_VALID",
+      "element_type": "gate",
+      "responsibility": "Fail-closed gate preventing comparative evaluation without valid full reference inputs.",
+      "class": "deterministic",
+      "evidence_contract": "Gate over bundle PASS status/report.",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "N_U_PATTERN_APPLICABILITY_DISCOVERY",
+      "element_type": "node",
+      "responsibility": "Deterministically discover reusable Data+Execution patterns from artifact/capability signatures during Data Layer authoring.",
+      "class": "deterministic",
+      "executor": "tools/discover_data_layer_patterns.py",
+      "evidence_contract": "Structured exact/partial/no-fit discovery result bound to current artifact surface.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/discover_data_layer_patterns.py"
+      ]
+    },
+    {
+      "element_id": "N_U_PATTERN_FIT_RESOLUTION",
+      "element_type": "node",
+      "responsibility": "Resolve only partial/ambiguous reusable-pattern applicability using semantic evidence.",
+      "class": "model_judgment",
+      "semantic_reason": "Partial fit can require domain semantic interpretation after deterministic candidate discovery.",
+      "evidence_contract": "Recorded fit rationale; exact fits may be rejected only with explicit incompatibility evidence."
+    },
+    {
+      "element_id": "N_U_PATTERN_DATA_LAYER_INSTANTIATION",
+      "element_type": "node",
+      "responsibility": "Instantiate selected reusable pattern Data Layer facets and persist canonical bindings/provenance.",
+      "class": "deterministic",
+      "executor": "tools/instantiate_data_layer_pattern.py",
+      "evidence_contract": "Pattern instance catalog with exact version, bindings and digest.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/instantiate_data_layer_pattern.py",
+        "tools/materialize_pattern_data_layer_expansion.py"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_PATTERN_DATA_LAYER_INSTANCE",
+      "element_type": "node",
+      "responsibility": "Early validate reusable pattern Data-Layer instance shape/provenance and materialize mini Data-Layer expansion without deriving tree projection.",
+      "class": "deterministic",
+      "executor": "tools/validate_data_layer_pattern_instances.py --phase early + tools/materialize_pattern_data_layer_expansion.py",
+      "evidence_contract": "Early pattern instance/expansion PASS; concrete node/gate ids forbidden.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_data_layer_pattern_instances.py",
+        "tools/materialize_pattern_data_layer_expansion.py"
+      ]
+    },
+    {
+      "element_id": "G_PATTERN_DATA_LAYER_INSTANCE_VALID",
+      "element_type": "gate",
+      "responsibility": "Block downstream Data Layer authoring until pattern instances are mechanically valid.",
+      "class": "deterministic",
+      "executor": "mechanical_gate",
+      "evidence_contract": "Requires pattern_instance_validation_status=PASS and non-empty report.",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "N_U_CAPABILITY_REQUIREMENT_CATALOG",
+      "element_type": "node",
+      "responsibility": "Classify genuine project capability requirements before reusable library visibility.",
+      "class": "model_judgment",
+      "semantic_reason": "Capability need is a business/domain semantic classification that precedes library lookup to avoid reward-driven invention.",
+      "evidence_contract": "Persisted capability requirement catalog with requirement origin."
+    },
+    {
+      "element_id": "N_U_PATTERN_SELECTION_INPUT_FREEZE",
+      "element_type": "node",
+      "responsibility": "Freeze pre-library artifact/capability requirements for pattern applicability and scoring eligibility.",
+      "class": "deterministic",
+      "executor": "tools/freeze_pattern_selection_inputs.py",
+      "evidence_contract": "Hash-bound pattern_selection_input_snapshot.json.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/freeze_pattern_selection_inputs.py"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_PATTERN_DATA_LAYER_MERGE",
+      "element_type": "node",
+      "responsibility": "Validate complete reusable pattern Data-Layer module merge after final canonical information-model PASS, then derive the synchronized execution projection.",
+      "class": "deterministic",
+      "executor": "tools/validate_data_layer_pattern_instances.py --phase merged + tools/derive_pattern_execution_projection.py",
+      "evidence_contract": "Final Data-Layer canonical/information-model PASS + merged module-edge/object closure + canonical Data-Layer synchronization digest + exact projection digest.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_data_layer_pattern_instances.py",
+        "tools/materialize_pattern_data_layer_expansion.py",
+        "tools/derive_pattern_execution_projection.py"
+      ]
+    },
+    {
+      "element_id": "G_PATTERN_DATA_LAYER_MERGE_VALID",
+      "element_type": "gate",
+      "responsibility": "Block process/tree semantic derivation until reusable pattern modules are fully merged and execution projection is derived from the final canonical Data Layer.",
+      "class": "deterministic",
+      "executor": "mechanical_gate",
+      "evidence_contract": "Requires pattern_data_layer_merge_status=PASS and non-empty report.",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "N_AI_EVALUATE_PATTERN_REUSE",
+      "element_type": "node",
+      "responsibility": "Mechanically evaluate qualified reusable-pattern rewards and missed positive opportunities for the exact candidate.",
+      "class": "deterministic",
+      "executor": "tools/evaluate_pattern_reuse_opportunities.py",
+      "evidence_contract": "Frozen pre-library snapshot + valid pattern instance + post-canonical derived projection + exact final graph-realization PASS; distinct semantic reward units only.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/evaluate_pattern_reuse_opportunities.py"
+      ]
+    },
+    {
+      "element_id": "N_VERIFY_PATTERN_GRAPH_REALIZATION",
+      "element_type": "node",
+      "responsibility": "Mechanically prove every selected reusable Data-Layer pattern is materially realized in the exact generated Ordo source as the derived component IDs/types/internal edges.",
+      "class": "deterministic",
+      "executor": "tools/validate_pattern_graph_realization.py",
+      "evidence_contract": "Current Data-Layer-bound pattern projection + exact source hash + per-instance graph realization PASS.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/validate_pattern_graph_realization.py"
+      ]
+    },
+    {
+      "element_id": "G_PATTERN_GRAPH_REALIZATION_VALID",
+      "element_type": "gate",
+      "responsibility": "Block source verification and downstream acceptance when any selected pattern remains blueprint-only, stale, or not exactly graph-realized.",
+      "class": "deterministic",
+      "executor": "mechanical_gate",
+      "evidence_contract": "Requires pattern_graph_realization_status=PASS and non-empty realization report.",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK",
+      "element_type": "node",
+      "responsibility": "Deterministically verify Business View Data-Layer bindings and materialization readiness before rendering.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Non-empty readiness PASS report bound to PI_BUSINESS_VIEW_DOCUMENT."
+    },
+    {
+      "element_id": "G_PI_BUSINESS_VIEW_DOCUMENT_READINESS_GATE",
+      "element_type": "gate",
+      "responsibility": "Business View pattern readiness evidence is PASS and non-empty.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over readiness evidence."
+    },
+    {
+      "element_id": "N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE",
+      "element_type": "node",
+      "responsibility": "Materialize the Business View artifact from the declared template and accepted Data-Layer state only.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Materialized Business View plus materialization record/status.",
+      "tool_or_validator_refs": [
+        "canonical_support/output_templates/BUSINESS_VIEW.template.md",
+        "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json"
+      ]
+    },
+    {
+      "element_id": "N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE",
+      "element_type": "node",
+      "responsibility": "Deterministically validate the exact rendered Business View against its artifact/template contract.",
+      "class": "deterministic",
+      "mechanism": "cli_helper",
+      "evidence_contract": "Non-empty exact rendered-artifact validation report.",
+      "tool_or_validator_refs": [
+        "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json"
+      ]
+    },
+    {
+      "element_id": "G_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_GATE",
+      "element_type": "gate",
+      "responsibility": "Exact Business View rendered-artifact validation evidence is PASS and non-empty.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over rendered artifact validation evidence."
+    },
+    {
+      "element_id": "N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT",
+      "element_type": "node",
+      "responsibility": "Register validated Business View artifact provenance and validation evidence before presentation.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Artifact registration record with pattern/materialization provenance."
+    },
+    {
+      "element_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK",
+      "element_type": "node",
+      "responsibility": "Deterministically verify package-pattern readiness from bound Data-Layer inputs and production package contracts.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Non-empty package readiness PASS report."
+    },
+    {
+      "element_id": "G_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_GATE",
+      "element_type": "gate",
+      "responsibility": "Package-pattern readiness evidence is PASS and non-empty.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Mechanical predicate over package readiness evidence."
+    },
+    {
+      "element_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE",
+      "element_type": "node",
+      "responsibility": "Materialize and validate exact production dependency closure before archive assembly.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Current dependency closure manifest and PASS validation report.",
+      "tool_or_validator_refs": [
+        "tools/materialize_production_dependency_closure.py",
+        "tools/validate_production_dependency_closure.py"
+      ]
+    },
+    {
+      "element_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE",
+      "element_type": "node",
+      "responsibility": "Assemble the allowlisted production package from the current dependency closure.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Production package manifest and archive hash evidence.",
+      "tool_or_validator_refs": [
+        "tools/build_production_playbook_package.py"
+      ]
+    },
+    {
+      "element_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE",
+      "element_type": "node",
+      "responsibility": "Validate the exact production archive against the production package contract.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Exact production ZIP validation PASS report.",
+      "tool_or_validator_refs": [
+        "tools/validate_production_playbook_package.py"
+      ]
+    },
+    {
+      "element_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE",
+      "element_type": "node",
+      "responsibility": "Clean-extract and roundtrip-validate exact production ZIP bytes against manifest hashes and required surfaces.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Clean extraction exact-hash/size validation PASS report.",
+      "tool_or_validator_refs": [
+        "tools/validate_exact_production_package_roundtrip.py"
+      ]
+    },
+    {
+      "element_id": "N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE",
+      "element_type": "node",
+      "responsibility": "Consolidate deterministic package evidence and record delivery readiness without rebuilding or reinterpreting package semantics.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Consolidated package delivery evidence from all upstream PASS records."
+    },
+    {
+      "element_id": "N_AI_VALIDATE_PERFORMANCE_EVIDENCE",
+      "element_type": "node",
+      "responsibility": "Validate per-revision timing evidence and run time-degradation diagnostics without changing quality score.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Timing schema validation plus machine-readable performance diagnostic.",
+      "tool_or_validator_refs": [
+        "tools/validate_optimization_timing_evidence.py",
+        "tools/detect_time_degradation.py"
+      ]
+    },
+    {
+      "element_id": "G_AI_PERFORMANCE_EVIDENCE_VALID",
+      "element_type": "gate",
+      "responsibility": "Admit optimization diagnosis only when required timing evidence is valid; degradation itself remains non-blocking diagnostic evidence.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "improvement_performance_evidence_status=PASS with non-empty report.",
+      "tool_or_validator_refs": [
+        "source/optimization-runtime-efficiency-policy.json"
+      ]
+    },
+    {
+      "element_id": "N_QH_BASELINE_CAPTURE",
+      "element_type": "node",
+      "responsibility": "Capture exact quality/debug baseline without repair.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Candidate/source identity plus baseline verification/debug evidence."
+    },
+    {
+      "element_id": "N_QH_DEFECT_CLASSIFY",
+      "element_type": "node",
+      "responsibility": "Classify defect ownership only.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic ownership classification when evidence may span playbook, runtime/adapter, or no-defect states.",
+      "evidence_contract": "Persist one ownership class and evidence references."
+    },
+    {
+      "element_id": "N_QH_RED_REGRESSION_DEFINE",
+      "element_type": "node",
+      "responsibility": "Define invariant-focused RED regression.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires translating a discovered defect into a general regression property without overfitting implementation names.",
+      "evidence_contract": "Persist regression contract and expected RED reason."
+    },
+    {
+      "element_id": "N_QH_RED_REGRESSION_RUN",
+      "element_type": "node",
+      "responsibility": "Execute unchanged-baseline regression and prove RED.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Machine report proving expected FAIL before repair.",
+      "tool_or_validator_refs": [
+        "tools/run_with_watchdog.py"
+      ]
+    },
+    {
+      "element_id": "N_QH_MINIMAL_REPAIR",
+      "element_type": "node",
+      "responsibility": "Apply minimal root-cause repair only.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires semantic/code change selection constrained by the proven defect and invariant.",
+      "evidence_contract": "Repair application record plus self-repair provenance."
+    },
+    {
+      "element_id": "N_QH_GREEN_RUN",
+      "element_type": "node",
+      "responsibility": "Rerun exact regression and prove GREEN.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Machine report proving exact regression PASS after repair.",
+      "tool_or_validator_refs": [
+        "tools/run_with_watchdog.py"
+      ]
+    },
+    {
+      "element_id": "N_QH_IMPACTED_REGRESSIONS",
+      "element_type": "node",
+      "responsibility": "Run directly impacted regression contour.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Machine report for all impacted required checks.",
+      "tool_or_validator_refs": [
+        "tools/run_verification_profile.py"
+      ]
+    },
+    {
+      "element_id": "N_QH_FINAL_CONFIRM",
+      "element_type": "node",
+      "responsibility": "Confirm stable quality baseline from accumulated evidence.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Coherent RED→repair→GREEN/impacted evidence or explicit no-defect baseline."
+    },
+    {
+      "element_id": "N_PO_BASELINE_CAPTURE",
+      "element_type": "node",
+      "responsibility": "Capture frozen quality/performance/token baseline.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Baseline identity, quality evidence and end-to-end cost metrics."
+    },
+    {
+      "element_id": "N_PO_TELEMETRY_COLLECT",
+      "element_type": "node",
+      "responsibility": "Collect observable per-node telemetry.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Timing/token/pass/restart/compile evidence with provenance."
+    },
+    {
+      "element_id": "N_PO_HOTSPOT_RANK",
+      "element_type": "node",
+      "responsibility": "Rank evidence-backed optimization hotspots.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Deterministic ordered hotspot list from telemetry."
+    },
+    {
+      "element_id": "N_PO_HYPOTHESIS_DEFINE",
+      "element_type": "node",
+      "responsibility": "Form one optimization hypothesis and preserved invariant.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires selecting an architecture-level optimization hypothesis from measured hotspots.",
+      "evidence_contract": "One hotspot, one hypothesis, one preserved semantic invariant."
+    },
+    {
+      "element_id": "N_PO_OPTIMIZATION_APPLY",
+      "element_type": "node",
+      "responsibility": "Apply one bounded performance/token optimization.",
+      "class": "model_judgment",
+      "semantic_reason": "Requires implementing the selected optimization while preserving semantics and authority boundaries.",
+      "evidence_contract": "Optimization change record bound to hypothesis/baseline."
+    },
+    {
+      "element_id": "N_PO_TARGETED_COMPARE",
+      "element_type": "node",
+      "responsibility": "Compare before/after under the same regime.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "Exact quality-equivalence and end-to-end cost comparison.",
+      "tool_or_validator_refs": [
+        "tools/run_with_watchdog.py"
+      ]
+    },
+    {
+      "element_id": "N_PO_ACCEPT_REJECT",
+      "element_type": "node",
+      "responsibility": "Accept/reject optimization from deterministic comparison evidence.",
+      "class": "deterministic",
+      "mechanism": "ordo_state_transition",
+      "evidence_contract": "Decision record; quality regression always rejects."
+    },
+    {
+      "element_id": "G_QH_RED_CONFIRMED",
+      "element_type": "gate",
+      "responsibility": "Admit repair only after expected RED is proven.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "quality_hardening_red_report proves expected baseline failure."
+    },
+    {
+      "element_id": "G_QH_GREEN",
+      "element_type": "gate",
+      "responsibility": "Admit impacted checks only after exact regression GREEN.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "quality_hardening_green_report PASS."
+    },
+    {
+      "element_id": "G_QH_IMPACTED_GREEN",
+      "element_type": "gate",
+      "responsibility": "Admit quality confirmation only after impacted checks PASS.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "quality_hardening_impacted_report all required PASS."
+    },
+    {
+      "element_id": "G_PO_QUALITY_BASELINE_STABLE",
+      "element_type": "gate",
+      "responsibility": "Block performance optimization unless quality baseline is stable.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "performance_baseline has stable quality evidence and no blocker."
+    },
+    {
+      "element_id": "G_PO_ACTIONABLE_HOTSPOT",
+      "element_type": "gate",
+      "responsibility": "Branch only when telemetry identifies an actionable hotspot.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "performance_hotspot_rank non-empty/actionable."
+    },
+    {
+      "element_id": "G_PO_SEMANTIC_EQUIVALENCE",
+      "element_type": "gate",
+      "responsibility": "Reject speed/token optimization that changes quality semantics.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "performance_comparison_evidence proves semantic/quality equivalence."
+    },
+    {
+      "element_id": "G_PO_PERFORMANCE_IMPROVED",
+      "element_type": "gate",
+      "responsibility": "Classify measured end-to-end improvement under same regime.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "performance_comparison_evidence contains comparable cost delta."
+    },
+    {
+      "element_id": "N_PO_CONTEXT_RUNTIME_AUDIT",
+      "element_type": "node",
+      "responsibility": "Measure and classify playbook-controlled runtime context without optimization.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/audit_context_runtime_efficiency.py",
+        "tools/validate_context_runtime_efficiency.py"
+      ],
+      "evidence_contract": "state_updates_v1 context runtime audit with measured/estimated provenance and consumer classification."
+    },
+    {
+      "element_id": "G_PO_CONTEXT_EVIDENCE_VALID",
+      "element_type": "gate",
+      "responsibility": "Gate context telemetry completeness/provenance before optimization telemetry continues.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Context runtime evidence contains non-fabricated measured or explicitly unavailable metrics and provenance."
+    },
+    {
+      "element_id": "N_PK_PACKAGE_CONTINUITY_AUDIT",
+      "element_type": "node",
+      "responsibility": "Deterministically audit packaging continuity, profile projection/applicability, reproducible build and rebuild provenance without changing semantic content.",
+      "class": "deterministic",
+      "deterministic_reason": "All decisions are contract/hash/profile checks over explicit package metadata and files.",
+      "evidence_contract": "state_updates_v1 packaging continuity report.",
+      "mechanism": "package_local_python",
+      "tool_or_validator_refs": [
+        "tools/audit_packaging_continuity.py"
+      ]
+    },
+    {
+      "element_id": "G_PK_PACKAGE_CONTINUITY_VALID",
+      "element_type": "gate",
+      "responsibility": "Mechanically block package acceptance unless packaging continuity audit is PASS with evidence.",
+      "class": "deterministic",
+      "deterministic_reason": "Boolean routing over explicit packaging_continuity_status/report.",
+      "evidence_contract": "PASS routes to package readiness; FAIL stops.",
+      "mechanism": "ordo_gate"
+    },
+    {
+      "element_id": "N_DV_REGRESSION_DEFINE",
+      "element_type": "node",
+      "responsibility": "Define protected invariant, regression asset and impacted-check scope for a material candidate change.",
+      "class": "model_judgment",
+      "evidence_contract": "development_regression_plan with protected invariant, baseline identity, regression asset and impacted scope.",
+      "semantic_reason": "Selecting the cross-domain invariant and expressing the regression property requires semantic judgment over the intended change; execution of the regression remains deterministic."
+    },
+    {
+      "element_id": "N_DV_PRECHANGE_REGRESSION_RUN",
+      "element_type": "node",
+      "responsibility": "Execute declared regression against unchanged baseline and capture pre-change proof.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "development_prechange_report proves expected non-PASS or justified NOT_APPLICABLE.",
+      "tool_or_validator_refs": [
+        "tools/build_development_regression_plan.py"
+      ]
+    },
+    {
+      "element_id": "N_DV_POSTCHANGE_REGRESSION_AUDIT",
+      "element_type": "node",
+      "responsibility": "Audit exact regression GREEN plus directly impacted checks before candidate handoff.",
+      "class": "deterministic",
+      "mechanism": "package_local_python",
+      "evidence_contract": "development_regression_evidence proves exact regression and impacted checks GREEN; LIVE_PROOF separate.",
+      "tool_or_validator_refs": [
+        "tools/validate_development_regression_governance.py"
+      ]
+    },
+    {
+      "element_id": "G_DV_PRECHANGE_EVIDENCE_VALID",
+      "element_type": "gate",
+      "responsibility": "Block implementation progression until valid pre-change regression evidence exists.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "Expected baseline non-PASS or machine-checkable NOT_APPLICABLE."
+    },
+    {
+      "element_id": "G_DV_CANDIDATE_REGRESSION_READY",
+      "element_type": "gate",
+      "responsibility": "Block acceptance/package handoff unless exact regression and impacted checks are GREEN.",
+      "class": "deterministic",
+      "mechanism": "ordo_gate",
+      "evidence_contract": "development_regression_status PASS; LIVE_PROOF remains separate."
+    }
+  ]
+}

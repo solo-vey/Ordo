@@ -1,0 +1,16 @@
+id: N_RUN_VALIDATION
+action: PACKAGE.TOOL
+execution_contract:
+  owner: deterministic
+  advancement: automatic
+  runtime_executor: package_tool
+purpose: python tools/validate.py --state-zip runtime_inputs/context.zip --output
+  runtime_reports/N_RUN_VALIDATION.json
+on_answer:
+  next: G_VALID
+  update_state:
+    validation_evidence: $answer.validation_evidence
+tool_result_contract:
+  id: state_updates_v1
+  report: evidence_only
+  state_merge_source: state_updates

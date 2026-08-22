@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_GENERATED_PLAYBOOK_SELF_REPAIR_LOG_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "append_only": true,
+  "business_state_surface": false,
+  "canonical_generated_runtime_path": "runtime/evidence/SELF_REPAIR_LOG.jsonl",
+  "required_when": "execution_model_or_runtime_repairs_generated_playbook_or_derivable_mechanical_defect_and_continues_run",
+  "required_fields": [
+    "repair_id",
+    "timestamp",
+    "problem",
+    "root_cause",
+    "files_changed",
+    "repair",
+    "validation",
+    "continuation_point",
+    "previous_entry_sha256",
+    "entry_sha256"
+  ],
+  "rules": [
+    "Successful self-repair must remain visible as generator-improvement evidence and must not disappear because the run continued successfully.",
+    "The repair log is execution evidence, not canonical business state and not acceptance evidence by itself.",
+    "Entries are hash-chained append-only records; existing entries are never rewritten by the append tool.",
+    "Later VIBE optimization may use repeated repair causes as upstream generator defects."
+  ]
+}

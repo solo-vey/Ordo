@@ -1,0 +1,133 @@
+schema_version: '1.0'
+source_of_truth: authoring/pattern_instance_catalog.yaml + patterns/*/DATA_LAYER.template.yaml
+modules:
+- pattern_instance_id: PI_BUSINESS_VIEW_DOCUMENT
+  pattern_id: DOCUMENT_MATERIALIZATION
+  pattern_version: '1.1'
+  instance_digest: c1facae2aa68cf1719c37c35284c97b887f3411370e638b7b3f2a2ff5c557b5f
+  module_objects:
+  - role: artifact
+    binding_kind: artifact
+    bound_ids:
+    - A_BUSINESS_VIEW
+    required: true
+    resolved_by_project_data_layer: true
+  - role: content
+    binding_kind: information
+    bound_ids:
+    - I_BUSINESS_VIEW
+    required: true
+    resolved_by_project_data_layer: true
+  - role: template
+    binding_kind: information
+    bound_ids:
+    - I_ARTIFACT_CONTRACT_REGISTRY
+    required: true
+    resolved_by_project_data_layer: true
+  - role: materialization_status
+    binding_kind: information
+    bound_ids:
+    - I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+    required: true
+    resolved_by_project_data_layer: true
+  - role: validation_result
+    binding_kind: information
+    bound_ids:
+    - I_BUSINESS_VIEW_RENDER_VALIDATION
+    required: true
+    resolved_by_project_data_layer: true
+  module_edges:
+  - from: I_BUSINESS_VIEW
+    to: A_BUSINESS_VIEW
+    type: materializes
+    from_role: content
+    to_role: artifact
+  - from: I_ARTIFACT_CONTRACT_REGISTRY
+    to: A_BUSINESS_VIEW
+    type: depends_on
+    from_role: template
+    to_role: artifact
+  - from: I_BUSINESS_VIEW
+    to: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+    type: derived_from
+    from_role: content
+    to_role: materialization_status
+  - from: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+    to: I_BUSINESS_VIEW_RENDER_VALIDATION
+    type: validated_by
+    from_role: materialization_status
+    to_role: validation_result
+- pattern_instance_id: PI_GENERATED_PLAYBOOK_PACKAGE
+  pattern_id: PRODUCTION_PACKAGE_MATERIALIZATION
+  pattern_version: '1.1'
+  instance_digest: 67b0175fafc547204df3a3bb5b0373f9dbfc355642e6ea9fb67a597e3bcb8712
+  module_objects:
+  - role: artifact
+    binding_kind: artifact
+    bound_ids:
+    - A_GENERATED_PLAYBOOK_PACKAGE
+    required: true
+    resolved_by_project_data_layer: true
+  - role: package_inputs
+    binding_kind: artifact_or_information
+    bound_ids:
+    - A_GENERATED_PLAYBOOK_SOURCE
+    - A_VERIFICATION_EVIDENCE
+    required: true
+    resolved_by_project_data_layer: true
+  - role: package_contract
+    binding_kind: information
+    bound_ids:
+    - I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+    required: true
+    resolved_by_project_data_layer: true
+  - role: closure_manifest
+    binding_kind: information
+    bound_ids:
+    - I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+    required: true
+    resolved_by_project_data_layer: true
+  - role: package_validation_status
+    binding_kind: information
+    bound_ids:
+    - I_PACKAGE_VALIDATION_STATUS
+    required: true
+    resolved_by_project_data_layer: true
+  - role: delivery_evidence
+    binding_kind: information
+    bound_ids:
+    - I_DELIVERY_EVIDENCE
+    required: true
+    resolved_by_project_data_layer: true
+  module_edges:
+  - from: A_GENERATED_PLAYBOOK_SOURCE
+    to: A_GENERATED_PLAYBOOK_PACKAGE
+    type: packages
+    from_role: package_inputs
+    to_role: artifact
+  - from: A_VERIFICATION_EVIDENCE
+    to: A_GENERATED_PLAYBOOK_PACKAGE
+    type: packages
+    from_role: package_inputs
+    to_role: artifact
+  - from: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+    to: A_GENERATED_PLAYBOOK_PACKAGE
+    type: materializes
+    from_role: package_contract
+    to_role: artifact
+  - from: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+    to: A_GENERATED_PLAYBOOK_PACKAGE
+    type: materializes
+    from_role: closure_manifest
+    to_role: artifact
+  - from: I_PACKAGE_VALIDATION_STATUS
+    to: A_GENERATED_PLAYBOOK_PACKAGE
+    type: validated_by
+    from_role: package_validation_status
+    to_role: artifact
+  - from: A_GENERATED_PLAYBOOK_PACKAGE
+    to: I_DELIVERY_EVIDENCE
+    type: provided_by
+    from_role: artifact
+    to_role: delivery_evidence
+expansion_digest: 7452992d744e4d05b4e56d1c7d286d94457a1e60dc0dd90564d9df4b82d0fd03

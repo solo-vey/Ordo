@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.1",
+  "binding_id": "VIBE_ALPHA45_EDITOR_ALPHA20_0_188_R3_RELEASE_HARDENING",
+  "semantic_source_of_truth": "canonical_support/language",
+  "editor": {
+    "release": "alpha.20.0.188-dev R3",
+    "version_file": "0.2.0-alpha.20.0.188-dev",
+    "source_kind": "release_hardening_editor_from_user_supplied_0187",
+    "source_filename": "ORDO_TREE_EDITOR_ALPHA20_0_188_DEV_R3.zip",
+    "source_zip_sha256": "572150b0acebf46770ca0246e974169f56b9187016055d90c579cbe69d642ca2",
+    "manifest_status": "PASS",
+    "language_authority": false
+  },
+  "probes": {
+    "required_state_writes_targeted_regression": {
+      "status": "PASS",
+      "tests_passed": 10,
+      "tests_failed": 0,
+      "scope": [
+        "required_state_writes",
+        "runtime_plan_package_authority",
+        "headless_runner"
+      ]
+    },
+    "native_headless_preflight": {
+      "status": "PASS",
+      "package": "VIBE_ARF_0.1.0-alpha.45_EDITOR_NATIVE_PREFLIGHT.zip",
+      "package_id": "fed1977d19e4e09b",
+      "source_name": "vibe_release_fix/runtime_projection/program.ordo.yaml",
+      "checks": {
+        "package_id_present": true,
+        "source_present": true,
+        "semantic_plan_present": true,
+        "semantic_plan_status_pass": true
+      }
+    },
+    "terminal_simulation_kit_016": {
+      "status": "PASS",
+      "steps": 199,
+      "outcome": "external_terminal",
+      "final_node": "END_PLAYBOOK_PACKAGE_ACCEPTED",
+      "errors": 0,
+      "runtime_baseline": "0.2.0-alpha.20.0.166-dev",
+      "kit_version": "0.1.6",
+      "kit_zip_sha256": "5ad957acd5e5c5807556e5a85a01d3248da2996f8c20bbcebd719956bd36efe3"
+    },
+    "package_tool_classification": {
+      "status": "PASS",
+      "runtime_executor": "package_tool",
+      "requires_analyst": false
+    },
+    "source_only_live_success_preflight": {
+      "status": "PASS",
+      "mode": "preflight",
+      "checks": {
+        "package_id_present": true,
+        "source_present": true,
+        "semantic_plan_present": true,
+        "semantic_plan_status_pass": true
+      }
+    }
+  },
+  "accepted_editor_language_conformance_items": [
+    "ELC-001",
+    "ELC-004",
+    "ELC-005",
+    "ELC-006",
+    "ELC-007",
+    "ELC-008"
+  ],
+  "closed_editor_tooling_items": [
+    "ER-POST-001",
+    "ER-POST-002"
+  ],
+  "status": "PASS",
+  "binding_meaning": "Editor 0.188-dev R3 is the release-hardening development/runtime adapter for VIBE alpha.45. It adds generic required_state_writes enforcement; canonical Ordo remains semantic authority."
+}

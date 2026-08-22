@@ -1,0 +1,13 @@
+schema_version: '1.0'
+policy:
+  progressive_intake: true
+  proposal_first_when_derivable: true
+  human_only_for_authority_or_unresolved_semantics: true
+interactions: []
+# Each interaction should declare:
+# - id
+# - strategy: free_text_seed|proposal_confirm|authority_decision|clarification|presentation
+# - consumes: [information ids]
+# - produces: [information ids]
+# - group_ids: [semantic group ids]
+# - authority_owner when strategy=authority_decision

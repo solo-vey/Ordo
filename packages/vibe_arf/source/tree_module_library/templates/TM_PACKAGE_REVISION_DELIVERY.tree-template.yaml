@@ -1,0 +1,53 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_PACKAGE_REVISION_DELIVERY
+  version: '1.0'
+  title: Package Revision Delivery
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_PK_PACKAGE_MATERIALIZE
+    type: automatic
+    title: Package Materialization
+    next: N_PK_PACKAGE_VALIDATE
+    responsibility_id: package_materialization
+  - id: N_PK_PACKAGE_VALIDATE
+    type: automatic
+    title: Package Validation
+    next: N_PK_REVISION_COMMIT
+    responsibility_id: package_validation
+  - id: N_PK_REVISION_COMMIT
+    type: automatic
+    title: Atomic Revision Commit
+    next: N_PK_LKV_RECOVERY_SEAL
+    responsibility_id: atomic_revision_commit
+  - id: N_PK_LKV_RECOVERY_SEAL
+    type: automatic
+    title: Lkv Recovery Preservation
+    next: N_PK_HANDOFF_PREPARE
+    responsibility_id: lkv_recovery_preservation
+  - id: N_PK_HANDOFF_PREPARE
+    type: automatic
+    title: Handoff Preparation
+    next: N_PK_DELIVERY_VALIDATE
+    responsibility_id: handoff_preparation
+  - id: N_PK_DELIVERY_VALIDATE
+    type: automatic
+    title: Delivery Validation
+    next: N_PK_DELIVERY_EVIDENCE
+    responsibility_id: delivery_validation
+  - id: N_PK_DELIVERY_EVIDENCE
+    type: automatic
+    title: Delivery Evidence Recording
+    next: '{{success_exit_node}}'
+    responsibility_id: delivery_evidence_recording
+  gates: []

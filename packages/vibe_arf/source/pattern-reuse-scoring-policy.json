@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.1",
+  "policy_id": "vibe.pattern_reuse_scoring.v1",
+  "law_id": "E59_PATTERN_REUSE_OPTIMIZATION_INCENTIVE",
+  "status": "mandatory_profile_policy",
+  "reward_points_per_distinct_qualified_reuse": 50,
+  "eligibility": {
+    "requirement_source": "authoring/pattern_selection_input_snapshot.json frozen before library lookup",
+    "fit": "exact or explicitly approved partial",
+    "pattern_instance": "mechanically valid",
+    "execution_projection": "mechanically derived from EXECUTION template only after final canonical Data Layer and information-model PASS",
+    "semantic_unit": "distinct preexisting responsibility frozen before library lookup",
+    "pattern_created_requirement": "ineligible",
+    "duplicate_responsibility": "ineligible",
+    "forced_or_redundant_pattern": "ineligible",
+    "graph_realization": "final generated source materially contains the exact derived component IDs/types/internal edges; blueprint-only selection is ineligible"
+  },
+  "missed_opportunity": {
+    "score_effect": 0,
+    "potential_points": 50,
+    "optimizer_visibility": "required",
+    "selected_but_unrealized": "surface the same +50 potential opportunity with zero immediate score effect"
+  },
+  "analyst_open_question": {
+    "penalty_points_per_open_interaction": 30,
+    "parameter_count_inside_one_interaction": "first requested variable uses the -30 interaction base; every additional requested variable adds -10 regardless of semantic group",
+    "separate_open_interactions": "each_counts_once",
+    "penalty_points_first_variable": 30,
+    "penalty_points_each_additional_variable": 10,
+    "missing_variable_list_fallback": "count at least one requested variable for every open/free-answer analyst interaction"
+  },
+  "evaluator": "tools/evaluate_pattern_reuse_opportunities.py",
+  "scorer": "tools/calculate_playbook_quality_score.py",
+  "max_reuse_reward_score_contribution": 200,
+  "reward_calibration": {
+    "raw_points_per_distinct_qualified_reuse": 50,
+    "max_process_score_contribution": 200,
+    "excess_raw_points": "persisted_for_diagnostics_but_not_added_to_process_score"
+  }
+}

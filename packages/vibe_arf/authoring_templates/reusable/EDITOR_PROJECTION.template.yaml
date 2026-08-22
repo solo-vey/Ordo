@@ -1,0 +1,23 @@
+schema_version: '1.0'
+template_kind: editor_projection
+source: data_layer
+groups:
+- id: <GROUP_ID>
+  label: <LABEL>
+variables:
+- id: <OBJECT_ID>
+  group: <GROUP_ID>
+  producer: <NODE_OR_SOURCE>
+  consumers:
+  - <NODE_OR_ARTIFACT>
+edges:
+- from: <OBJECT_ID_OR_NODE>
+  to: <OBJECT_ID_OR_NODE>
+  kind: <data|derive|materialize|validate>
+required_visible_surfaces:
+- analyst_inputs
+- internal_derivations
+- template_bindings
+- materialization
+- artifact_validation
+- package_or_archive_path

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1",
+  "policy_id": "VIBE_DATA_LAYER_FIRST_HARD_ARCHITECTURE_V1",
+  "status": "WORKING_POLICY",
+  "authoring_source_of_truth": "data_layer",
+  "process_graph_role": "derived_projection",
+  "ordo_source_role": "materialized_projection",
+  "direct_graph_or_source_semantic_edit": "forbidden",
+  "required_write_order": [
+    "data_layer",
+    "validate_data_layer",
+    "derive_projection",
+    "materialize_source",
+    "validate_projection_lineage"
+  ],
+  "upstream_change_invalidates_downstream_projection": true,
+  "projection_lineage_required": true,
+  "canonical_upstream_files": [
+    "authoring/information_object_catalog.yaml",
+    "authoring/information_group_catalog.yaml",
+    "authoring/artifact_catalog.yaml",
+    "authoring/information_flow_graph.yaml",
+    "authoring/interaction_projection.yaml",
+    "authoring/ordo_projection.yaml",
+    "authoring/capability_requirement_catalog.yaml",
+    "authoring/pattern_instance_catalog.yaml"
+  ],
+  "downstream_projection_files": [
+    "source/program.ordo.yaml"
+  ],
+  "generated_playbooks_inherit": true,
+  "rules": [
+    "All semantic authoring changes begin in the data layer. Runtime/process graph changes are derived consequences, never an independent authoring path.",
+    "A current data-layer validation PASS is required before process decomposition or graph synthesis.",
+    "Any canonical upstream change invalidates previously materialized process/source projections until they are regenerated and lineage is rematerialized.",
+    "Any direct downstream source/graph edit invalidates projection lineage even if bidirectional IDs still appear mapped.",
+    "Projection lineage records exact upstream and downstream hashes and is verified mechanically after source materialization.",
+    "Reusable pattern selection inputs, Data-Layer module expansion, execution projection, and Editor architecture are derived intermediates. Any change to their canonical inputs invalidates them until deterministic rematerialization.",
+    "Pattern execution projection is derived only after the full canonical Data Layer and final information-model validation PASS; selected patterns are then mechanically checked for exact graph realization after source materialization."
+  ],
+  "derived_intermediate_files": [
+    "authoring/pattern_selection_input_snapshot.json",
+    "authoring/pattern_data_layer_expansion.yaml",
+    "authoring/pattern_execution_projection.yaml",
+    "editor/architecture_surface.json"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "DUAL_DEV_RUN_DISTRIBUTION",
+  "law_id": "E65_DUAL_DEV_RUN_DISTRIBUTION",
+  "distribution_rule": "one_version_two_distributions",
+  "dev": {
+    "purpose": "engineering continuity",
+    "preserve": [
+      "canonical source",
+      "Data Layer",
+      "authoring/templates",
+      "validation",
+      "optimization/evidence contracts"
+    ]
+  },
+  "run": {
+    "purpose": "fresh-case execution",
+    "selection": "runtime_reachability_closure",
+    "mutable_context": "clean_seed",
+    "forbid": [
+      "prior_case_outputs",
+      "development_history",
+      "debug_traces",
+      "evaluator_only_evidence",
+      "golden_reference_artifacts",
+      "calibration_evidence"
+    ]
+  },
+  "hard_gates": [
+    "RUN_PACKAGE_DEPENDENCY_CLOSURE",
+    "RUN_PACKAGE_CONTEXT_ISOLATION",
+    "RUN_PACKAGE_NO_EVALUATOR_LEAKAGE",
+    "RUN_PACKAGE_MINIMALITY",
+    "DUAL_PACKAGE_SOURCE_PARITY"
+  ],
+  "versioning": "DEV and RUN share the exact same playbook version and source identity."
+}

@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "playbook_revision": "0.1.0-alpha.43",
+  "artifacts": [
+    {
+      "artifact_id": "OUT_BUSINESS_VIEW",
+      "output_type": "markdown",
+      "output_path": "delivery/BUSINESS_VIEW.md",
+      "materialization_mode": "template",
+      "template_path": "canonical_support/output_templates/BUSINESS_VIEW.template.md",
+      "content_contract": {
+        "fields": [
+          {
+            "field": "playbook_name",
+            "required": true,
+            "producer": "accepted playbook identity",
+            "missing_policy": "block"
+          },
+          {
+            "field": "purpose",
+            "required": true,
+            "producer": "confirmed intent/state",
+            "missing_policy": "block"
+          },
+          {
+            "field": "business_flow",
+            "required": true,
+            "producer": "accepted process/design state",
+            "missing_policy": "block"
+          },
+          {
+            "field": "analyst_experience",
+            "required": true,
+            "producer": "analyst-experience review state",
+            "missing_policy": "block"
+          },
+          {
+            "field": "outputs_summary",
+            "required": true,
+            "producer": "artifact contract registry",
+            "missing_policy": "block"
+          },
+          {
+            "field": "human_decisions",
+            "required": false,
+            "producer": "human decision ledger",
+            "missing_policy": "render none"
+          },
+          {
+            "field": "readiness_summary",
+            "required": true,
+            "producer": "verification evidence summary",
+            "missing_policy": "block"
+          }
+        ]
+      },
+      "validators": [
+        "human_format_validation",
+        "cross_artifact_semantic_consistency"
+      ],
+      "post_materialization_validation_required": true,
+      "version": "1",
+      "materialization_node_id": "N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE",
+      "pattern_instance_id": "PI_BUSINESS_VIEW_DOCUMENT",
+      "render_validation_node_id": "N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE",
+      "registration_node_id": "N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT"
+    },
+    {
+      "artifact_id": "OUT_GENERATED_PLAYBOOK_PACKAGE",
+      "output_type": "archive",
+      "output_path": "delivery/GENERATED_PLAYBOOK_DEV.zip",
+      "materialization_mode": "assembler",
+      "assembler_ref": "canonical_support/output_templates/GENERATED_PLAYBOOK_PACKAGE_ASSEMBLY_CONTRACT.json",
+      "content_contract": {
+        "required_members": [
+          "source/program.ordo.yaml",
+          "PLAYBOOK_LAWS.md",
+          "verification_profile.json",
+          "verification/EXECUTION_RESPONSIBILITY_MAP.json",
+          "verification/INVARIANT_REGISTER.json",
+          "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+          "DISTRIBUTION_PACKAGE_CONTRACT.json",
+          "DISTRIBUTION_MANIFEST.json"
+        ],
+        "forbidden_members": [],
+        "member_hashes": {
+          "PLAYBOOK_LAWS.md": "ae7627a38767b9fc7b5aec870f51c478361346aacc6df8374060a132315ae35a"
+        }
+      },
+      "validators": [
+        "package_integrity",
+        "delivery_source_uniqueness",
+        "verification_profile",
+        "laws_verbatim",
+        "dual_distribution_package_behavior",
+        "dual_package_source_parity"
+      ],
+      "post_materialization_validation_required": true,
+      "version": "1",
+      "materialization_node_id": "N_OUT_GENERATED_PACKAGE_MATERIALIZE"
+    },
+    {
+      "artifact_id": "OUT_GENERATED_PLAYBOOK_RUN_PACKAGE",
+      "output_type": "archive",
+      "output_path": "delivery/GENERATED_PLAYBOOK_RUN.zip",
+      "materialization_mode": "assembler",
+      "assembler_ref": "canonical_support/output_templates/GENERATED_PLAYBOOK_RUN_PACKAGE_ASSEMBLY_CONTRACT.json",
+      "content_contract": {
+        "required_members": [
+          "ordo.yml",
+          "source/program.ordo.yaml",
+          "compiled/program.ir.json",
+          "START_PROMPT_RUNTIME_MODE.md",
+          "DISTRIBUTION_PACKAGE_CONTRACT.json",
+          "RUN_PACKAGE_DEPENDENCY_CLOSURE.json",
+          "DISTRIBUTION_MANIFEST.json",
+          "analyst_context/context_catalog.json"
+        ],
+        "forbidden_members": [
+          "reports/**",
+          "runtime/**",
+          "debug_handoff/**",
+          "evaluator/**",
+          "change_records/**",
+          "development_history/**"
+        ],
+        "dynamic_hash_validation": {
+          "mode": "post_materialization_content_hash_and_source_parity",
+          "validator_ref": "tools/validate_distribution_package.py"
+        }
+      },
+      "validators": [
+        "run_package_dependency_closure",
+        "run_package_context_isolation",
+        "run_package_no_evaluator_leakage",
+        "run_package_minimality",
+        "dual_package_source_parity"
+      ],
+      "post_materialization_validation_required": true,
+      "version": "1",
+      "materialization_node_id": "N_OUT_GENERATED_PACKAGE_MATERIALIZE"
+    }
+  ]
+}

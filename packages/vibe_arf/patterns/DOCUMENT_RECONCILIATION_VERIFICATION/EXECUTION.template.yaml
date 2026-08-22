@@ -1,0 +1,232 @@
+schema_version: '1.1'
+pattern_id: DOCUMENT_RECONCILIATION_VERIFICATION
+pattern_version: '1.2'
+facet_kind: execution_projection_template
+source_of_truth: authoring/pattern_instance_catalog.yaml
+projection_semantics:
+  selection: forbidden_at_tree_stage
+  derive_from_data_layer_instance: true
+  role_to_node_binding_required: true
+  provenance_required:
+  - pattern_id
+  - pattern_version
+  - pattern_instance_id
+  - instance_digest
+  component_ids: deterministically_generated_from_pattern_instance_and_role
+  canonical_data_layer_contains_execution_ids: false
+  exact_graph_realization_required: true
+  duplicate_component_ids_forbidden: true
+  gate_outcome_edges_required: true
+  document_mutation_requires_acceptance_evidence_invalidation: true
+  compiler_valid_lowering_required: true
+  abstract_outcome_edges_are_not_compiled_routes: true
+  compiled_route_contract:
+    single_successor: next
+    human_interaction: on_answer.next
+    binary_gate: on_pass/on_fail
+    multi_outcome: exact deterministic cascade gates over canonical discriminator tokens
+    invalid_discriminator: fail_closed
+    postcondition: all non-terminals routed; all executables reachable; all targets resolved
+extension_contracts:
+  evidence_acquisition_adapter:
+    required: true
+    purpose: Acquire only domain-relevant evidence for discovered findings. The host binds concrete sources/tools/knowledge;
+      the pattern owns the evidence boundary, not domain facts.
+  authority_resolution:
+    required: true
+    outcomes:
+      NONE_REQUIRED: bypass human interaction and continue
+      AUTHORITY_REQUIRED: request explicit authority decision, then deterministically apply it before materialization
+  bounded_repair:
+    required: true
+    rule: Any repair that mutates document identity invalidates semantic and independent acceptance evidence for
+      the prior identity and returns to semantic_acceptance_review.
+components:
+- role: capture_document_baseline
+  kind: node
+  responsibility_class: deterministic
+- role: discover_document_findings
+  kind: node
+  responsibility_class: contract_classified
+- role: gather_domain_evidence
+  kind: node
+  responsibility_class: contract_classified
+- role: reconcile_findings
+  kind: node
+  responsibility_class: contract_classified
+- role: resolution_coverage_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: authority_required_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: request_authority_decision
+  kind: node
+  responsibility_class: human_interaction
+- role: apply_authority_decision
+  kind: node
+  responsibility_class: deterministic
+- role: materialize_reconciled_document
+  kind: node
+  responsibility_class: contract_classified
+- role: semantic_acceptance_review
+  kind: node
+  responsibility_class: contract_classified
+- role: semantic_acceptance_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: diagnose_semantic_defects
+  kind: node
+  responsibility_class: contract_classified
+- role: apply_semantic_repair
+  kind: node
+  responsibility_class: contract_classified
+- role: semantic_convergence_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: independent_document_review
+  kind: node
+  responsibility_class: contract_classified
+- role: independent_review_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: process_independent_findings
+  kind: node
+  responsibility_class: contract_classified
+- role: apply_independent_repair
+  kind: node
+  responsibility_class: contract_classified
+- role: independent_convergence_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: final_verification_gate
+  kind: gate
+  responsibility_class: deterministic
+- role: register_verified_document
+  kind: node
+  responsibility_class: deterministic
+outcome_edges:
+- from_role: capture_document_baseline
+  outcome: DONE
+  to_role: discover_document_findings
+- from_role: discover_document_findings
+  outcome: DONE
+  to_role: gather_domain_evidence
+- from_role: gather_domain_evidence
+  outcome: DONE
+  to_role: reconcile_findings
+- from_role: reconcile_findings
+  outcome: DONE
+  to_role: resolution_coverage_gate
+- from_role: resolution_coverage_gate
+  outcome: PASS
+  to_role: authority_required_gate
+- from_role: resolution_coverage_gate
+  outcome: FAIL
+  to_role: reconcile_findings
+- from_role: authority_required_gate
+  outcome: NO_AUTHORITY_REQUIRED
+  to_role: materialize_reconciled_document
+- from_role: authority_required_gate
+  outcome: AUTHORITY_REQUIRED
+  to_role: request_authority_decision
+- from_role: request_authority_decision
+  outcome: ANSWERED
+  to_role: apply_authority_decision
+- from_role: apply_authority_decision
+  outcome: APPLIED
+  to_role: materialize_reconciled_document
+- from_role: materialize_reconciled_document
+  outcome: DONE
+  to_role: semantic_acceptance_review
+- from_role: semantic_acceptance_review
+  outcome: DONE
+  to_role: semantic_acceptance_gate
+- from_role: semantic_acceptance_gate
+  outcome: PASS
+  to_role: independent_document_review
+- from_role: semantic_acceptance_gate
+  outcome: FAIL
+  to_role: diagnose_semantic_defects
+- from_role: diagnose_semantic_defects
+  outcome: DONE
+  to_role: apply_semantic_repair
+- from_role: apply_semantic_repair
+  outcome: MUTATED
+  to_role: semantic_convergence_gate
+  effects:
+  - invalidate_prior_semantic_acceptance
+  - invalidate_prior_independent_acceptance
+- from_role: semantic_convergence_gate
+  outcome: RETRY_ALLOWED
+  to_role: semantic_acceptance_review
+- from_role: semantic_convergence_gate
+  outcome: LIMIT_REACHED
+  terminal: VERIFICATION_BLOCKED
+- from_role: independent_document_review
+  outcome: DONE
+  to_role: independent_review_gate
+- from_role: independent_review_gate
+  outcome: PASS
+  to_role: final_verification_gate
+- from_role: independent_review_gate
+  outcome: FAIL
+  to_role: process_independent_findings
+- from_role: process_independent_findings
+  outcome: REPAIR_REQUIRED
+  to_role: apply_independent_repair
+- from_role: process_independent_findings
+  outcome: AUTHORITY_REQUIRED
+  to_role: request_authority_decision
+- from_role: apply_independent_repair
+  outcome: MUTATED
+  to_role: independent_convergence_gate
+  effects:
+  - invalidate_prior_semantic_acceptance
+  - invalidate_prior_independent_acceptance
+- from_role: independent_convergence_gate
+  outcome: RETRY_ALLOWED
+  to_role: semantic_acceptance_review
+- from_role: independent_convergence_gate
+  outcome: LIMIT_REACHED
+  terminal: VERIFICATION_BLOCKED
+- from_role: final_verification_gate
+  outcome: PASS
+  to_role: register_verified_document
+- from_role: final_verification_gate
+  outcome: FAIL
+  terminal: VERIFICATION_BLOCKED
+gate_contracts:
+  resolution_coverage_gate:
+    pass_when: every explicit finding has exactly one allowed disposition
+    fail_closed: true
+  authority_required_gate:
+    NO_AUTHORITY_REQUIRED: no unresolved authority-required items
+    AUTHORITY_REQUIRED: one or more unresolved authority-required items
+  semantic_acceptance_gate:
+    PASS: fresh semantic evidence accepts current document identity
+    FAIL: otherwise
+  semantic_convergence_gate:
+    RETRY_ALLOWED: repair budget remains and successor document identity exists
+    LIMIT_REACHED: otherwise
+  independent_review_gate:
+    PASS: fresh independent evidence accepts current document identity
+    FAIL: otherwise
+  independent_convergence_gate:
+    RETRY_ALLOWED: repair budget remains and successor document identity exists
+    LIMIT_REACHED: otherwise
+  final_verification_gate:
+    PASS: resolution coverage PASS and no unresolved authority items and fresh semantic PASS and fresh independent
+      PASS all bind to current document identity
+    FAIL: otherwise
+compiler_preflight_contract:
+- YAML parses
+- all executable IDs are unique
+- all route targets resolve or are declared allowed external terminal targets
+- every non-terminal executable element has at least one valid outgoing route
+- every executable element is reachable from graph_contract.entry_node
+- all canonical outcome destinations are preserved by the lowering
+- multi-outcome semantic branches preserve exact canonical outcome tokens and fail closed on invalid discriminator
+  state
+- interactive nodes that continue execution use compiler-supported on_answer.next routing
+- compiled graph passes the target editor/runtime-plan validator before delivery

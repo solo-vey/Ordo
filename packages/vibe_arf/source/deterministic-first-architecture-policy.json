@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "DETERMINISTIC_FIRST_ARCHITECTURE",
+  "scope": "cross_domain",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "generated_playbooks_inherit": true,
+  "purpose": "Make every mechanically decidable responsibility executable, fail-closed and auditable outside model judgment while preserving model use for semantic reasoning.",
+  "responsibility_ownership": {
+    "hashing": "deterministic",
+    "schema_validation": "deterministic",
+    "state_merge": "deterministic",
+    "patch_application": "deterministic",
+    "routing": "deterministic",
+    "counters": "deterministic",
+    "duplicate_detection": "deterministic",
+    "lifecycle_guards": "deterministic",
+    "coverage_accounting": "deterministic",
+    "package_integrity": "deterministic"
+  },
+  "model_owned_classes": [
+    "semantic_interpretation",
+    "ambiguous_classification",
+    "business_reasoning",
+    "natural_language_synthesis",
+    "hypothesis_generation"
+  ],
+  "state_patch": {
+    "contract": "state_patch_v1",
+    "allowed_roots_required": true,
+    "base_state_hash_required": true,
+    "dependency_fingerprint_required_for_repeat_pass": true,
+    "fail_closed_on_stale_baseline": true,
+    "whole_state_replacement_default": "forbidden",
+    "apply_owner": "deterministic_runtime",
+    "result_envelope": "state_updates_v1"
+  },
+  "producer_boundary": {
+    "validate_before_persist": true,
+    "validate_declared_writes": true,
+    "validate_types_and_required_properties": true,
+    "validate_allowed_enums": true,
+    "no_transition_receipt_on_validation_failure": true,
+    "current_node_unchanged_on_validation_failure": true,
+    "error_class": "STATE_WRITE_CONTRACT_VIOLATION"
+  },
+  "monotonic_lifecycle": {
+    "deterministic_guard_required": true,
+    "terminal_or_resolved_state_downgrade_default": "forbidden",
+    "reopen_requires_evidence_bound_reason": true,
+    "reopen_requires_provenance": true
+  },
+  "recovery_resume": {
+    "owner": "deterministic",
+    "strategy": "first_invalid_or_missing_milestone",
+    "resume_node_required_when_repairable": true,
+    "null_resume_when_repairable": "forbidden",
+    "model_guessing_resume_node": "forbidden"
+  },
+  "machine_checkable_completeness": {
+    "stable_ids_required": true,
+    "acceptance_rule": "required_ids_equals_accounted_for_ids",
+    "prompt_only_complete_all_instruction": "insufficient",
+    "explicit_exclusions_require_rationale": true
+  },
+  "evidence_hydration": {
+    "owner": "deterministic_adapter",
+    "source_hash_required": true,
+    "state_update_allowlist_required": true,
+    "schema_validation_required": true,
+    "fail_closed_on_hash_or_schema_mismatch": true,
+    "model_reconstruction_of_available_deterministic_evidence": "forbidden"
+  },
+  "state_context_separation": {
+    "canonical_semantic_state": "business_or_process_semantics_only",
+    "runtime_session_recovery_context_separate": true,
+    "staging_status_is_not_semantic_fact": true,
+    "do_not_add_runtime_fields_to_semantic_state_to_satisfy_runner": true
+  },
+  "acceptance": {
+    "architecture_validator": "tools/validate_deterministic_first_architecture.py",
+    "responsibility_map_required": true,
+    "safe_node_profiles_required": true,
+    "regression_required": "tools/test_alpha45_deterministic_first_architecture.py"
+  }
+}

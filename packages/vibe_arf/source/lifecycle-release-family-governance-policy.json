@@ -1,0 +1,13 @@
+{
+  "policy_id":"VIBE_LIFECYCLE_RELEASE_FAMILY_GOVERNANCE_V1",
+  "status":"ACTIVE_CANDIDATE_POLICY",
+  "authoring_master":{"canonical":true,"distribution_profiles_are_derived":true,"destructive_runtime_pruning_forbidden":true},
+  "lifecycle":["AUTHORING","CANDIDATE_BUILD","CANDIDATE_VALIDATION","RELEASE_QUALIFICATION","PROFILE_MATERIALIZATION","RELEASE_FAMILY_VALIDATION","RELEASE"],
+  "edit_invariants":["DATA_LAYER_PRESENT","DATA_LAYER_SOURCE_HASH_MATCH","DATA_LAYER_PROJECTION_CURRENT"],
+  "release_family":{"required_profiles":["EDIT","CLI_RUN","MODEL_RUN"],"manifest":"RELEASE_FAMILY_MANIFEST.json","canonical_identity_fields":["playbook_id","version","canonical_source_sha256"]},
+  "validation_levels":{"L0":"syntax","L1":"package_sanity","L2":"editor_compatible","L3":"runtime_evidence","L4":"release_qualified"},
+  "tool_purity":{"required":true,"allowed_mutation_modes":["read_only","declared_mutating"],"mutating_tools_run_on_qualification_copy":true},
+  "coverage":{"release_requires_minimums":true,"required_signals":["gate_coverage","assertion_coverage","critical_node_coverage","behavioral_scenario_coverage"]},
+  "execution_parity":{"direct_local_same_planner":true,"direct_local_same_write_engine":true,"direct_local_same_verification_engine":true,"transport_layer_only_may_differ":true},
+  "learning_classification":{"required":true,"classes":["SESSION_EXECUTION_ERROR","DOMAIN_CONTRACT_DISCOVERY","FRAMEWORK_PROCESS_DEFECT","PLATFORM_LIMITATION"],"framework_core_accepts_only":"FRAMEWORK_PROCESS_DEFECT_OR_DOMAIN_NEUTRAL_GUARDRAIL"}
+}

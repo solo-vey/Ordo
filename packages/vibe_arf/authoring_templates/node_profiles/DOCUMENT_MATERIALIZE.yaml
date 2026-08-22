@@ -1,0 +1,14 @@
+id: N_MATERIALIZE_DOCUMENT
+action: DOCUMENT.GENERATE
+template: templates/DOCUMENT.template.md
+bindings: templates/DOCUMENT.bindings.yaml
+output: generated_outputs/current/Document.md
+artifact:
+  expected_path: generated_outputs/current/Document.md
+  presentation: download_link
+  required_before_next: true
+next: N_NEXT
+tool_result_contract:
+  id: state_updates_v1
+  report: evidence_only
+  state_merge_source: state_updates

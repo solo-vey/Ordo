@@ -1,0 +1,15 @@
+id: N_APPROVE
+type: human_decision
+question: Approve?
+answer_type: enum
+allowed_answers: [approve, reject]
+execution_contract:
+  owner: human
+  advancement: human_response
+on_answer:
+  approve:
+    update_state: {approval: approved}
+    next: N_NEXT
+  reject:
+    update_state: {approval: rejected}
+    next: N_REPAIR

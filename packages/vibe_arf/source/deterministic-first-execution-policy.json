@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_DETERMINISTIC_FIRST_EXECUTION",
+  "algorithmic_operation_default": "deterministic",
+  "classification_before_node_synthesis": true,
+  "model_fallback_requires_explicit_nondeterminism_evidence": true,
+  "generated_playbooks_inherit": true,
+  "deterministic_mechanism_precedence": [
+    "ordo_native",
+    "typed_state_transform",
+    "package_local_python",
+    "cli_helper"
+  ],
+  "algorithmic_classes": [
+    "dependency_propagation",
+    "graph_closure",
+    "invalidation",
+    "set_difference_preservation",
+    "traceability_sync",
+    "schema_validation",
+    "binding_projection",
+    "materialization",
+    "scoring",
+    "hashing",
+    "packaging"
+  ],
+  "model_allowed_only_for": [
+    "semantic_interpretation",
+    "ambiguous_classification",
+    "business_reasoning",
+    "natural_language_synthesis",
+    "hypothesis_generation"
+  ],
+  "required_generated_contract": {
+    "classify_every_executable_responsibility": true,
+    "deterministic_entries_require_executable_mechanism": true,
+    "model_entries_require_nondeterminism_reason": true,
+    "validator": "tools/validate_deterministic_first_execution.py"
+  },
+  "architecture_policy_ref": "source/deterministic-first-architecture-policy.json",
+  "state_patch_contract_ref": "source/state-patch-v1-contract.json",
+  "producer_boundary_validation_required": true,
+  "monotonic_lifecycle_guard_required": true,
+  "deterministic_recovery_resume_required": true,
+  "machine_checkable_completeness_required": true,
+  "safe_evidence_hydration_required": true
+}

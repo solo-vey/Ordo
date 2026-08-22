@@ -1,0 +1,5 @@
+schema_version: '1.0'
+catalog_language_policy:
+  default_language: en
+groups: []
+# Each group should declare id, members, localized display, interaction policy and validation gate IDs.

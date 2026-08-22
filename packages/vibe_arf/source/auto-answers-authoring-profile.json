@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "VIBE_AUTO_ANSWERS_AUTHORING_PROFILE_V1",
+  "revision": "0.1.0-alpha.26",
+  "purpose": "Keep test-scenario mechanics out of the generated Ordo playbook.",
+  "rules": [
+    {
+      "id": "RETRY_SCENARIO_PROGRESS",
+      "classification": "AUTO_ANSWERS",
+      "rule": "When testing retry/backtrack behavior, do not feed the same invalid answer indefinitely. Exercise the invalid path, then vary the next answer or advance to a valid answer. Do not mutate playbook business state merely to satisfy the test harness."
+    },
+    {
+      "id": "EDITOR_REPLAY_PACKAGE_SHAPE",
+      "classification": "EDITOR_DEV_TEST_FIXTURE",
+      "rule": "When targeting Ordo Tree Editor replay, package Auto Answers in the adapter-supported replay ZIP shape. This is not Ordo language validity."
+    },
+    {
+      "id": "PATH_COVERAGE",
+      "classification": "AUTO_ANSWERS",
+      "rule": "Auto Answers should intentionally cover required happy, retry, reject, and recovery paths without introducing semantic assumptions into the playbook."
+    },
+    {
+      "id": "NO_TEST_HARNESS_WORKAROUND_IN_PLAYBOOK",
+      "classification": "AUTO_ANSWERS",
+      "rule": "A limitation of replay/UI/test sequencing must be fixed in Auto Answers or the adapter, not encoded as a business-state mutation in the playbook."
+    }
+  ],
+  "scenario_matrix_required": true
+}

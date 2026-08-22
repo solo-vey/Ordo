@@ -1,0 +1,58 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_ARTIFACT_CONTRACT
+  version: '1.0'
+  title: Artifact Contract
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_A_IDENTITY_TEMPLATE
+    type: automatic
+    title: Artifact Identity Template Revision
+    next: N_A_FIELD_INVENTORY
+    responsibility_id: artifact_identity_template_revision
+  - id: N_A_FIELD_INVENTORY
+    type: automatic
+    title: Template Field Inventory
+    next: N_A_FIELD_CONTRACT_REQUIREDNESS
+    responsibility_id: template_field_inventory
+  - id: N_A_FIELD_CONTRACT_REQUIREDNESS
+    type: automatic
+    title: Field Requiredness Missing Policy
+    next: N_A_PARAMETER_PRODUCER_BINDING
+    responsibility_id: field_requiredness_missing_policy
+  - id: N_A_PARAMETER_PRODUCER_BINDING
+    type: automatic
+    title: Parameter Producer Provenance Binding
+    next: N_A_VALIDATION_GATE_BINDING
+    responsibility_id: parameter_producer_provenance_binding
+  - id: N_A_VALIDATION_GATE_BINDING
+    type: automatic
+    title: Validation Gate Binding
+    next: N_A_MATERIALIZATION_READINESS
+    responsibility_id: validation_gate_binding
+  - id: N_A_MATERIALIZATION_READINESS
+    type: automatic
+    title: Materialization Readiness
+    next: N_A_POST_RENDER_REGISTRATION
+    responsibility_id: materialization_readiness
+  - id: N_A_POST_RENDER_REGISTRATION
+    type: automatic
+    title: Post Render Registration
+    next: N_A_VERSION_COMPATIBILITY
+    responsibility_id: post_render_registration
+  - id: N_A_VERSION_COMPATIBILITY
+    type: automatic
+    title: Version Compatibility Migration
+    next: '{{success_exit_node}}'
+    responsibility_id: version_compatibility_migration
+  gates: []

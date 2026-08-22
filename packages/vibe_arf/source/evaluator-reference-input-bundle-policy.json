@@ -1,0 +1,26 @@
+{
+  "format": "vibe-evaluator-reference-input-bundle-policy/v1",
+  "status": "canonical_policy",
+  "purpose": "Keep selected reference content available to the fresh comparative evaluator while preventing generator or optimizer access to reference text that could enable answer-shaping or imitation.",
+  "bundle_id": "EVALUATOR_REFERENCE_INPUT_BUNDLE",
+  "materialized_path": "evaluator/reference_bundle",
+  "access_scope": "evaluator_only",
+  "allowed_consumers": [
+    "comparative_evaluator"
+  ],
+  "denied_consumers": [
+    "generator",
+    "optimizer"
+  ],
+  "rules": [
+    "materialize only references selected by the frozen reference-selection stage",
+    "reject references marked refresh_required before bundle materialization",
+    "copy full selected reference content only into the evaluator-only bundle",
+    "record bundle-local hashes for every materialized reference",
+    "validate a non-empty reference set, hashes, allowlist, denylist and evaluator-only scope before comparative evaluation",
+    "do not expose evaluator bundle files or reference excerpts to generator or optimizer responsibilities",
+    "sanitize comparative defects before optimizer handoff so remediation guidance does not contain reference text or hidden expected output"
+  ],
+  "builder": "tools/build_evaluator_reference_bundle.py",
+  "validator": "tools/validate_evaluator_reference_bundle.py"
+}

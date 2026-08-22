@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_V1",
+  "validation_classes": {
+    "FAST": {
+      "selection": "dependency_aware_impacted",
+      "modes": [
+        "PATCH",
+        "CHECKPOINT"
+      ],
+      "forbids_full_suite": true,
+      "rule": "Run only checks directly mapped from changed authoritative inputs plus unsatisfied transitive dependencies and a small mode safety net."
+    },
+    "FULL": {
+      "selection": "complete_candidate_or_release_profile",
+      "allowed_modes": [
+        "CANDIDATE",
+        "RELEASE"
+      ],
+      "forbids_intermediate_edit_loop": true,
+      "rule": "Run complete required verification only at final candidate/release boundaries; candidate execution uses persisted shards."
+    }
+  },
+  "dependency_semantics": {
+    "trusted_checkpoint_reuse": true,
+    "transitive_dependencies_only_when_not_trusted": true,
+    "specific_rules_precede_generic_rules": true,
+    "exclusive_path_rules_suppress_generic_matches_for_that_changed_file": true,
+    "selection_must_emit_reasons": true
+  }
+}

@@ -1,0 +1,25 @@
+template_id: PERFORMANCE_TOKEN_OPTIMIZATION_LOOP
+version: '1.0'
+scope: cross_domain
+sequence:
+- BASELINE_CAPTURE
+- QUALITY_BASELINE_GATE
+- CONTEXT_EVIDENCE_GATE
+- CONTEXT_RUNTIME_AUDIT
+- TELEMETRY_COLLECT
+- HOTSPOT_RANK
+- ACTIONABLE_HOTSPOT_GATE
+- HYPOTHESIS_DEFINE
+- OPTIMIZATION_APPLY
+- TARGETED_COMPARE
+- SEMANTIC_EQUIVALENCE_GATE
+- PERFORMANCE_GATE
+- ACCEPT_REJECT
+invariants:
+- quality first
+- measure before optimize
+- one hotspot/hypothesis at a time
+- semantic equivalence before acceptance
+- quality regression rejects optimization
+- separate playbook-controlled context from platform overhead
+- no package/source/knowledge preload without active-node need

@@ -1,0 +1,14 @@
+id: N_MODEL_STEP
+type: automatic
+action: AI.MODEL_STEP
+execution_contract:
+  owner: model
+  advancement: automatic
+writes: [result]
+model_result_contract:
+  required_state_writes: [result]
+authority_contract:
+  derived_targets:
+    result:
+      sources: [source_state]
+next: N_NEXT

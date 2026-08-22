@@ -1,0 +1,6 @@
+profile_id: HUMAN_REVIEW_BUNDLE
+authoring_only: true
+rules:
+- shows authority/uncertain fields preferentially
+- records field-level approval/rejection
+- does not deep-merge proposal into canonical

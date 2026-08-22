@@ -1,0 +1,28 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_KNOWLEDGE_TRACE_SYNC
+  version: '1.0'
+  title: Knowledge Trace Sync
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_K_KNOWLEDGE_CONTEXT
+    type: automatic
+    title: Knowledge Context Assembly
+    next: N_K_TRACEABILITY_SYNC
+    responsibility_id: knowledge_context_assembly
+  - id: N_K_TRACEABILITY_SYNC
+    type: automatic
+    title: Traceability Dependency Sync
+    next: '{{success_exit_node}}'
+    responsibility_id: traceability_dependency_sync
+  gates: []

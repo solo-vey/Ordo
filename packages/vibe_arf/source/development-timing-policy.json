@@ -1,0 +1,20 @@
+{
+  "format": "vibe-development-stage-timing-policy/v1",
+  "status": "mandatory_development_policy",
+  "timezone": "Europe/Vienna",
+  "purpose": "detect verification/development wall-clock degradation across revisions",
+  "rules": [
+    "record started_at for every major development/verification stage when that stage actually begins",
+    "duration_seconds of a completed non-final stage equals next_stage.started_at minus current_stage.started_at",
+    "record finished_at for the final stage and compute its duration_seconds as finished_at minus final_stage.started_at",
+    "for candidate shards preserve candidate_plan started_at -> shards started_at -> aggregate started_at -> next stage/finished_at; shard block duration is aggregate started_at minus shards started_at",
+    "never reconstruct invented timestamps after the fact; mark unavailable evidence explicitly if a timestamp was not captured"
+  ],
+  "required_evidence_fields": [
+    "stage_id",
+    "started_at",
+    "duration_seconds"
+  ],
+  "final_stage_extra_field": "finished_at",
+  "comparison": "retain revision timing report and compare major stages/candidate contours against prior baselines; timing degradation is diagnostic evidence, not a reason to falsify or skip required checks"
+}

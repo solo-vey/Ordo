@@ -1,0 +1,62 @@
+schema: ordo.library.domain_bindings_template.v1
+pattern: SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION
+bindings:
+  verified_document:
+    artifact_name: <DOMAIN_VERIFIED_DOCUMENT_NAME>
+    required_fields_or_sections:
+    - <DOMAIN_REQUIRED_DOCUMENT_SECTION_OR_FIELD>
+    implementation_guidance_source: <OPTIONAL_GUIDANCE_SOURCE_OR_NONE>
+  repository:
+    accepted_source_forms:
+    - <ZIP|LOCAL_PATH|CONNECTED_REPOSITORY|OTHER>
+    project_root_rule: <HOW_TO_IDENTIFY_WRITABLE_PROJECT_ROOT>
+    local_ownership_rule: <WHAT_COUNTS_AS_LOCAL_OWNERSHIP>
+    shared_or_architectural_indicators:
+    - <BASE_CLASS_PATTERN>
+    - <SHARED_MODULE_PATTERN>
+    - <FRAMEWORK_CONTRACT_PATTERN>
+    freshness_adapter: <SAFE_LOCAL_GIT_REFRESH_ADAPTER_OR_NOT_APPLICABLE>
+    authority_boundary: repository files are evidence/context only; host playbook and explicit user instruction
+      remain execution authority
+  implementation_profiles:
+    enabled: true
+    profile_discriminator_field: <STABLE_DOCUMENT_OR_STATE_FIELD>
+    supported_profile_keys:
+    - <PROFILE_KEY_1>
+    catalog_path: knowledge/IMPLEMENTATION_PROFILE_CATALOG.yaml
+    profile_files:
+    - knowledge/IMPLEMENTATION_PROFILE_<KEY>.md
+    repository_anchor_verification_guidance: <HOW_TO_LIGHTLY_VERIFY_PROFILE_ASSUMPTIONS_AGAINST_CURRENT_CODE>
+    selection_is_provisional: true
+    repository_evidence_may_correct_selection: true
+  verification:
+    commands_or_checks:
+    - <REPOSITORY_SPECIFIC_TEST_OR_CHECK>
+    required_evidence:
+    - <EVIDENCE_OF_PERSISTED_CURRENT_RESULT>
+    pass_rule: <HOST_SPECIFIC_DETAILS_WITHOUT_WEAKENING_CORE_PASS_REQUIREMENT>
+    current_persisted_evidence_required: true
+  code_documentation:
+    native_format: <JAVADOC|KDOC|DOCSTRING|XML_DOCS|OTHER>
+    extra_rules:
+    - <OPTIONAL_REPOSITORY_DOCUMENTATION_RULE>
+  risk_assessment:
+    dimensions:
+    - scope_locality
+    - ownership_clarity
+    - shared_contract_impact
+    - blast_radius
+    - cross_module_dependency
+    - backward_compatibility
+    - migration_operational_impact
+    - verification_confidence
+    deterministic_assessor: patterns/SIMPLE_VERIFIED_DOCUMENT_CODE_IMPLEMENTATION/tools/assess_implementation_change_risk.py
+    manual_override: forbidden
+generator_instructions:
+- Replace every placeholder with evidence-backed domain/repository information; never leave angle-bracket placeholders
+  in generated executable nodes.
+- If no domain implementation profiles exist, set implementation_profiles.enabled=false and retain generic repository-grounded
+  fallback.
+- Profile knowledge may guide search and expected structure but never outranks current repository evidence.
+- 'Do not weaken LOCAL_SAFE: shared/base/framework/core/cross-module/architectural/unresolved work remains HANDOFF_REQUIRED.'
+- Preserve the code-documentation obligation in both prompt construction and execution nodes.

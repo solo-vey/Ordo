@@ -1,0 +1,172 @@
+schema_version: '1.0'
+pattern_id: DOCUMENT_RECONCILIATION_VERIFICATION
+pattern_version: '1.2'
+module_kind: reusable_data_layer_module_template
+parameters:
+  required:
+  - instance_id
+  optional:
+  - artifact_id
+  - prefix
+required_roles:
+- role: candidate_document
+  binds_to: artifact
+  required: true
+- role: document_identity
+  binds_to: information
+  required: true
+- role: verification_contract
+  binds_to: information
+  required: true
+- role: evidence_context
+  binds_to: information
+  required: true
+- role: finding_set
+  binds_to: information
+  required: true
+- role: resolution_ledger
+  binds_to: information
+  required: true
+- role: reconciled_document
+  binds_to: artifact
+  required: true
+- role: semantic_acceptance_evidence
+  binds_to: information
+  required: true
+- role: independent_review_evidence
+  binds_to: information
+  required: true
+- role: convergence_status
+  binds_to: information
+  required: true
+- role: verified_document
+  binds_to: artifact
+  required: true
+- role: verification_receipt
+  binds_to: information
+  required: true
+merge_semantics:
+  mode: bind_existing_or_instantiate_missing
+  canonical_truth: project_data_layer
+  instance_catalog_required: true
+  field_provenance_required: true
+  pattern_instance_reference: pattern_id+pattern_version+instance_digest
+  execution_ids_in_canonical_data_layer: forbidden
+constraints:
+- all_required_roles_bound
+- bindings_resolve_to_project_data_layer
+- no_parallel_semantic_truth
+- pattern_version_and_digest_persisted
+- requirement_origin_precedes_pattern_selection_for_reward
+- no_execution_node_or_gate_ids_in_pattern_instance
+- candidate_document_identity_is_stable_for_each_verification_attempt
+- every_explicit_finding_has_exactly_one_resolution_disposition_before_acceptance
+- authority_required_findings_require_explicit_authority_evidence
+- semantic_acceptance_is_bound_to_the_reconciled_document_identity
+- independent_review_is_bound_to_the_same_candidate_identity_or_a_declared_repair_successor
+- verified_document_requires_semantic_and_independent_acceptance
+- verification_receipt_identifies_verified_document_and_verification_evidence
+- domain_rules_must_arrive_through_bound_project_information_not_pattern_hardcoding
+- document_mutation_invalidates_all_acceptance_evidence_bound_to_prior_document_identity
+- semantic_acceptance_must_be_reestablished_after_every_document_mutation
+- independent_acceptance_must_be_reestablished_after_every_document_mutation
+- authority_required_items_block_materialization_until_explicit_authority_evidence_is_applied
+- no_authority_items_allows_deterministic_bypass_of_human_interaction
+module_objects:
+- role: candidate_document
+  kind: artifact
+  required: true
+- role: document_identity
+  kind: information
+  required: true
+- role: verification_contract
+  kind: information
+  required: true
+- role: evidence_context
+  kind: information
+  required: true
+- role: finding_set
+  kind: information
+  required: true
+- role: resolution_ledger
+  kind: information
+  required: true
+- role: reconciled_document
+  kind: artifact
+  required: true
+- role: semantic_acceptance_evidence
+  kind: information
+  required: true
+- role: independent_review_evidence
+  kind: information
+  required: true
+- role: convergence_status
+  kind: information
+  required: true
+- role: verified_document
+  kind: artifact
+  required: true
+- role: verification_receipt
+  kind: information
+  required: true
+module_edges:
+- from_role: candidate_document
+  to_role: finding_set
+  type: validated_by
+- from_role: document_identity
+  to_role: finding_set
+  type: constrains
+- from_role: verification_contract
+  to_role: finding_set
+  type: constrains
+- from_role: evidence_context
+  to_role: finding_set
+  type: constrains
+- from_role: finding_set
+  to_role: resolution_ledger
+  type: derived_from
+- from_role: verification_contract
+  to_role: resolution_ledger
+  type: constrains
+- from_role: evidence_context
+  to_role: resolution_ledger
+  type: constrains
+- from_role: resolution_ledger
+  to_role: reconciled_document
+  type: constrains
+- from_role: candidate_document
+  to_role: reconciled_document
+  type: updates
+- from_role: reconciled_document
+  to_role: semantic_acceptance_evidence
+  type: validated_by
+- from_role: verification_contract
+  to_role: semantic_acceptance_evidence
+  type: constrains
+- from_role: reconciled_document
+  to_role: independent_review_evidence
+  type: validated_by
+- from_role: semantic_acceptance_evidence
+  to_role: convergence_status
+  type: derived_from
+- from_role: independent_review_evidence
+  to_role: convergence_status
+  type: derived_from
+- from_role: convergence_status
+  to_role: verified_document
+  type: constrains
+- from_role: reconciled_document
+  to_role: verified_document
+  type: updates
+- from_role: verified_document
+  to_role: verification_receipt
+  type: derived_from
+- from_role: document_identity
+  to_role: verification_receipt
+  type: constrains
+- from_role: semantic_acceptance_evidence
+  to_role: verification_receipt
+  type: constrains
+- from_role: independent_review_evidence
+  to_role: verification_receipt
+  type: constrains

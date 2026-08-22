@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ANALYST_MINIMAL_AUTHORING_V1",
+  "revision": "0.1.0-alpha.26",
+  "principle": "SHOW_ONLY_INFORMATION_THAT_REQUIRES_HUMAN_AUTHORITY_OR_CANNOT_BE_SAFELY_DERIVED",
+  "review_bundle_role": "interaction projection derived from AIM; not a semantic source of truth",
+  "required_field_classes": [
+    "derived_fields",
+    "authority_fields",
+    "uncertain_fields",
+    "display_fields",
+    "silent_fields"
+  ],
+  "rules": [
+    "Semantic information groups and human review bundles are different constructs.",
+    "Review bundles must be derived from AIM dependencies, authority, uncertainty, stability and cognitive load.",
+    "Already-supported and safely-derived fields should remain silent unless context is needed for a consequential decision.",
+    "Analyst-visible candidate is blocked while machine-detectable authoring/runtime defects remain."
+  ]
+}

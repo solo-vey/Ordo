@@ -1,0 +1,98 @@
+schema_version: '1.0'
+pattern:
+  id: DOCUMENT_RECONCILIATION_VERIFICATION
+  version: '1.2'
+  title: Document Reconciliation Verification
+  kind: reusable_data_execution_pattern
+  selection_phase: data_layer_authoring
+  tree_projection: derived_only
+  legacy_origin: PASSPORT_CHANGE_PLAYBOOK_0.3.7:RECONCILIATION_SEMANTIC_AND_INDEPENDENT_VERIFICATION_FLOW
+  data_layer_first: true
+  scoring:
+    qualified_reuse_reward_points: 50
+    reward_unit: distinct_preexisting_semantic_responsibility
+    requires_mechanical_verification: true
+applicability:
+  artifact_kinds:
+  - document
+  capability_tags:
+  - document_analysis
+  - document_reconciliation
+  - evidence_grounding
+  - semantic_verification
+  - independent_review
+  - bounded_repair
+  fit_policy:
+    exact: auto_instantiate
+    partial: semantic_fit_then_instantiate_or_reject
+    none: ad_hoc_allowed_with_justification
+  requirement_origin_policy: must_preexist_pattern_instantiation_for_reward
+facets:
+  data_layer: DATA_LAYER.template.yaml
+  execution: EXECUTION.template.yaml
+extension_policy:
+  allowed:
+  - domain_bindings
+  - artifact_identity
+  - verification_contract_identity
+  - evidence_source_identity
+  - reconciliation_policy
+  - authority_resolution_policy
+  - semantic_acceptance_policy
+  - independent_review_policy
+  - bounded_repair_policy
+  - evidence_acquisition_adapter
+  forbidden:
+  - remove_required_role
+  - bypass_resolution_coverage_gate
+  - bypass_semantic_acceptance_gate
+  - bypass_independent_review_gate
+  - bypass_final_verification_gate
+  - silently_invent_domain_rules
+  - silently_resolve_authority_required_items
+  - change_authority_semantics
+  - detach_execution_from_data_layer_instance
+  - create_parallel_semantic_truth
+  - reuse_acceptance_evidence_after_document_mutation
+  - skip_authority_interaction_when_authority_is_required
+  - emit_unlowered_abstract_outcomes_as_compiled_routes
+  - deliver_graph_with_unreachable_executable_elements
+  - deliver_nonterminal_without_compiler_valid_route
+execution_compilation_contract:
+  contract_version: '1.0'
+  purpose: Require compiler-valid lowering of canonical pattern outcome semantics into executable Vibe/Ordo graph
+    routes.
+  canonical_vs_compiled:
+    canonical_outcome_edges: Outcome edges in the pattern are semantic source-of-truth and MUST NOT be assumed to
+      be editor-executable syntax.
+    compiled_routes: The host/model must lower every canonical outcome into route shapes supported by the target
+      editor/compiler.
+  supported_route_shapes:
+  - 'single-successor node: next'
+  - 'interactive/question node: on_answer.next (with update_state when needed)'
+  - 'binary deterministic gate: on_pass + on_fail'
+  - 'multi-outcome/enum branch: explicit deterministic cascade gates using exact token predicates; final fallback
+    fails closed'
+  - 'model-produced discriminator: write canonical outcome token to state, then route through deterministic gate(s)'
+  forbidden_compiled_shortcuts:
+  - emitting abstract outcomes/outcome_edges as if they were executable routes when the editor does not support
+    them
+  - leaving a non-terminal node/gate without an outgoing route
+  - coercing a canonical enum branch to semantically different PASS/FAIL behavior
+  - dropping an outcome destination during lowering
+  - routing unknown/empty/multiple enum outcomes into a success branch
+  required_preflight_checks:
+  - YAML parses
+  - all executable IDs are unique
+  - all route targets resolve or are declared allowed external terminal targets
+  - every non-terminal executable element has at least one valid outgoing route
+  - every executable element is reachable from graph_contract.entry_node
+  - all canonical outcome destinations are preserved by the lowering
+  - multi-outcome semantic branches preserve exact canonical outcome tokens and fail closed on invalid discriminator
+    state
+  - interactive nodes that continue execution use compiler-supported on_answer.next routing
+  - compiled graph passes the target editor/runtime-plan validator before delivery
+  editor_observation:
+    validated_against: Ordo editor diagnostics 0.2.0-alpha.20.0.106-dev
+    finding: Abstract outcomes were not recognized as outgoing compiled routes for affected nodes/gates; explicit
+      supported route shapes are required.

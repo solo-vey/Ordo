@@ -1,0 +1,35 @@
+kind: ordo_local_module_manifest
+version: '1.0'
+assembly_target: program.ordo.yaml
+modules:
+- path: modules/00_program_metadata.ordo.module.yaml
+  owns_top_level_keys:
+  - ordo
+  - module
+  - includes
+- path: modules/10_entry_contract_state.ordo.module.yaml
+  owns_top_level_keys:
+  - interaction_model
+  - intent
+  - contract
+  - state
+- path: modules/20_process_rail.ordo.module.yaml
+  owns_top_level_keys:
+  - process_rail
+  - graph_contract
+  - hybrid_execution
+- path: modules/30_vibe_architecture.ordo.module.yaml
+  owns_top_level_keys:
+  - nodes
+- path: modules/40_policies.ordo.module.yaml
+  owns_top_level_keys:
+  - playbook_laws
+  - conversation_semantics
+  - freeform
+- path: modules/60_validation_outputs.ordo.module.yaml
+  owns_top_level_keys:
+  - gates
+  - assertions
+  - outputs
+duplicate_key_policy: blocking
+semantic_equivalence_required: true

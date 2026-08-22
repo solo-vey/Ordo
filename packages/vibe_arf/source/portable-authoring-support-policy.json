@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_PORTABLE_AUTHORING_SUPPORT_V1",
+  "revision": "0.1.0-alpha.9",
+  "purpose": "Self-contained clean-chat authoring support",
+  "source_authority": {
+    "base_kit": "ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip",
+    "executable_overlay": "ORDO_ARF_PLAYBOOK_KIT_0.4.10_LOCAL_CONDITION_OVERRIDE.zip"
+  },
+  "behavior": {
+    "fast_edit_default": true,
+    "full_regression_only_for_milestone_or_shared_foundation_change": true,
+    "canonical_source_lookup_must_precede_invention": true,
+    "portable_package_must_be_manifested_and_hash_verified": true
+  }
+}

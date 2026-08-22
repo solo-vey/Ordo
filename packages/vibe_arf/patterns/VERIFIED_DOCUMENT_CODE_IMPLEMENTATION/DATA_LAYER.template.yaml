@@ -1,0 +1,238 @@
+schema_version: '1.0'
+pattern_id: VERIFIED_DOCUMENT_CODE_IMPLEMENTATION
+pattern_version: '1.2'
+module_kind: reusable_data_layer_module_template
+parameters:
+  required:
+  - instance_id
+  optional:
+  - artifact_id
+  - prefix
+  - max_verification_repair_attempts
+required_roles:
+- role: verified_document
+  binds_to: artifact
+  required: true
+- role: verified_document_identity
+  binds_to: information
+  required: true
+- role: target_code_source
+  binds_to: information_or_artifact
+  required: true
+- role: repository_profile
+  binds_to: information
+  required: true
+- role: implementation_requirements
+  binds_to: information
+  required: true
+- role: repository_scope
+  binds_to: information
+  required: true
+- role: implementation_change_contract
+  binds_to: artifact
+  required: true
+- role: change_scope_classification
+  binds_to: information
+  required: true
+- role: autonomy_decision
+  binds_to: information
+  required: true
+- role: implementation_plan
+  binds_to: information
+  required: true
+- role: change_patch
+  binds_to: information_or_artifact
+  required: true
+- role: test_obligation_evidence
+  binds_to: information
+  required: true
+- role: documentation_update
+  binds_to: information_or_artifact
+  required: true
+- role: implementation_revision_identity
+  binds_to: information
+  required: true
+- role: verification_recovery_state
+  binds_to: information
+  required: true
+- role: local_verification_evidence
+  binds_to: information
+  required: true
+- role: implementation_result
+  binds_to: artifact
+  required: true
+- role: implementation_receipt
+  binds_to: information
+  required: true
+merge_semantics:
+  mode: bind_existing_or_instantiate_missing
+  canonical_truth: project_data_layer
+  instance_catalog_required: true
+  field_provenance_required: true
+  pattern_instance_reference: pattern_id+pattern_version+instance_digest
+  execution_ids_in_canonical_data_layer: forbidden
+constraints:
+- all_required_roles_bound
+- bindings_resolve_to_project_data_layer
+- no_parallel_semantic_truth
+- pattern_version_and_digest_persisted
+- requirement_origin_precedes_pattern_selection_for_reward
+- no_execution_node_or_gate_ids_in_pattern_instance
+- verified_document_identity_is_immutable_input_boundary
+- implementation_requirements_are_derived_only_from_verified_document_and_bound_domain_adapter
+- repository_profile_requires_fresh_repository_evidence
+- repository_scope_maps_every_material_implementation_requirement
+- code_mutation_requires_local_implementable_scope_and_explicit_autonomy_decision
+- shared_or_architectural_scope_never_auto_mutates
+- every_implemented_obligation_has_test_or_verification_evidence
+- local_verification_failure_is_not_success
+- result_packaging_contains_only_persisted_changed_files
+- implementation_receipt_binds_document_identity_repository_evidence_and_verification_outcome
+- every_persisted_code_test_or_documentation_mutation_advances_implementation_revision_identity
+- local_verification_evidence_is_valid_only_for_exact_current_implementation_revision_identity
+- any_new_mutation_invalidates_prior_local_verification_evidence
+- verification_recovery_attempts_are_bounded_by_max_verification_repair_attempts
+- implementation_branch_is_exactly_one_of_NO_LOCAL_CHANGE_HANDOFF_REQUIRED_LOCAL_SAFE
+- implementation_change_contract_is_presented_before_any_local_code_mutation
+module_objects:
+- role: verified_document
+  kind: artifact
+  required: true
+- role: verified_document_identity
+  kind: information
+  required: true
+- role: target_code_source
+  kind: information_or_artifact
+  required: true
+- role: repository_profile
+  kind: information
+  required: true
+- role: implementation_requirements
+  kind: information
+  required: true
+- role: repository_scope
+  kind: information
+  required: true
+- role: implementation_change_contract
+  kind: artifact
+  required: true
+- role: change_scope_classification
+  kind: information
+  required: true
+- role: autonomy_decision
+  kind: information
+  required: true
+- role: implementation_plan
+  kind: information
+  required: true
+- role: change_patch
+  kind: information_or_artifact
+  required: true
+- role: test_obligation_evidence
+  kind: information
+  required: true
+- role: documentation_update
+  kind: information_or_artifact
+  required: true
+- role: implementation_revision_identity
+  kind: information
+  required: true
+- role: verification_recovery_state
+  kind: information
+  required: true
+- role: local_verification_evidence
+  kind: information
+  required: true
+- role: implementation_result
+  kind: artifact
+  required: true
+- role: implementation_receipt
+  kind: information
+  required: true
+module_edges:
+- from_role: verified_document
+  to_role: implementation_requirements
+  type: derived_from
+- from_role: verified_document_identity
+  to_role: implementation_requirements
+  type: constrains
+- from_role: target_code_source
+  to_role: repository_profile
+  type: validated_by
+- from_role: repository_profile
+  to_role: repository_scope
+  type: constrains
+- from_role: implementation_requirements
+  to_role: repository_scope
+  type: mapped_to
+- from_role: repository_scope
+  to_role: implementation_change_contract
+  type: constrains
+- from_role: repository_scope
+  to_role: change_scope_classification
+  type: derived_from
+- from_role: repository_profile
+  to_role: change_scope_classification
+  type: constrains
+- from_role: change_scope_classification
+  to_role: autonomy_decision
+  type: constrains
+- from_role: repository_profile
+  to_role: autonomy_decision
+  type: constrains
+- from_role: autonomy_decision
+  to_role: implementation_plan
+  type: constrains
+- from_role: repository_scope
+  to_role: implementation_plan
+  type: constrains
+- from_role: implementation_plan
+  to_role: change_patch
+  type: constrains
+- from_role: change_patch
+  to_role: test_obligation_evidence
+  type: validated_by
+- from_role: change_patch
+  to_role: documentation_update
+  type: updates
+- from_role: change_patch
+  to_role: local_verification_evidence
+  type: validated_by
+- from_role: test_obligation_evidence
+  to_role: local_verification_evidence
+  type: constrains
+- from_role: local_verification_evidence
+  to_role: implementation_result
+  type: constrains
+- from_role: change_patch
+  to_role: implementation_result
+  type: updates
+- from_role: implementation_result
+  to_role: implementation_receipt
+  type: derived_from
+- from_role: verified_document_identity
+  to_role: implementation_receipt
+  type: constrains
+- from_role: repository_profile
+  to_role: implementation_receipt
+  type: constrains
+- from_role: local_verification_evidence
+  to_role: implementation_receipt
+  type: constrains
+- from_role: change_patch
+  to_role: implementation_revision_identity
+  type: advances
+- from_role: implementation_revision_identity
+  to_role: local_verification_evidence
+  type: constrains
+- from_role: local_verification_evidence
+  to_role: verification_recovery_state
+  type: updates
+- from_role: verification_recovery_state
+  to_role: implementation_plan
+  type: constrains
+- from_role: implementation_revision_identity
+  to_role: implementation_receipt
+  type: constrains
+parameter_defaults:
+  max_verification_repair_attempts: 2

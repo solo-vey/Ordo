@@ -1,0 +1,234 @@
+{
+  "format": "vibe-design-rule-incentive-registry/v1",
+  "status": "canonical_working_policy",
+  "rules": [
+    {
+      "id": "FABRICATED_HUMAN_AUTHORITY",
+      "canonical_law": "E60_QUALITY_INCENTIVE_ANTI_GAMING",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "HARD_INELIGIBLE",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "MEASUREMENT_FAILURE",
+      "canonical_law": "E31_NORMALIZED_PLAYBOOK_QUALITY_SCORE",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "HARD_UNSCORABLE",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "ARTIFACT_SURFACE_CLOSURE",
+      "canonical_law": "E22_MATERIALIZED_ARTIFACT_SURFACE_CLOSURE",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "HARD_INELIGIBLE",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "DATA_LAYER_PROJECTION_TRACEABILITY",
+      "canonical_law": "E42_DATA_LAYER_CANONICAL_SOURCE",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "HARD_INELIGIBLE",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "INFORMATION_PRESERVATION",
+      "canonical_law": "E46_INFORMATION_PRESERVATION_MONOTONIC_EVIDENCE",
+      "detector_class": "HYBRID",
+      "enforcement": "HARD_INELIGIBLE",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "GOLDEN_REFERENCE_ISOLATION",
+      "canonical_law": "E50_GOLDEN_REFERENCE_EVALUATOR_ONLY",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "HARD_INELIGIBLE",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "BLOCKED_DEFECT",
+      "canonical_law": "E56_OPTIMIZATION_REGIME_BEST_VALID_STAGNATION",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "BLOCKED",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": 0
+    },
+    {
+      "id": "REDUNDANT_VARIABLE",
+      "canonical_law": "E60_QUALITY_INCENTIVE_ANTI_GAMING",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "PENALTY",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "QUALIFIED_PATTERN_REUSE",
+      "canonical_law": "E59_PATTERN_REUSE_OPTIMIZATION_INCENTIVE",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "REWARD",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": null
+    },
+    {
+      "id": "MISSED_PATTERN_FIT",
+      "canonical_law": "E59_PATTERN_REUSE_OPTIMIZATION_INCENTIVE",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "OPPORTUNITY",
+      "regression_asset": "tools/test_alpha42_incentive_registry.py",
+      "score_effect": 0
+    },
+    {
+      "id": "DETERMINISTIC_FIRST_EXECUTION",
+      "canonical_law": "E45_DETERMINISTIC_FIRST_EXECUTION",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "OPPORTUNITY",
+      "regression_asset": "tools/test_alpha42_data_layer_architecture_detectors.py",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "signal": "OPPORTUNITY"
+    },
+    {
+      "id": "VALIDATION_LATENCY",
+      "canonical_law": "E41_CONSTRUCTIVE_CORRECTNESS",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "OPPORTUNITY",
+      "regression_asset": "tools/test_alpha42_graph_locality_incentives.py",
+      "score_effect": 0,
+      "semantic_source": "authoring/information_flow_graph.yaml",
+      "description": "Shortest canonical Data-Layer dependency distance from an information producer to its earliest reachable validating gate.",
+      "calibration_status": "DIAGNOSTIC_ONLY_NO_NUMERIC_PENALTY"
+    },
+    {
+      "id": "UNVALIDATED_EXPOSURE",
+      "canonical_law": "E41_CONSTRUCTIVE_CORRECTNESS",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "OPPORTUNITY",
+      "regression_asset": "tools/test_alpha42_graph_locality_incentives.py",
+      "score_effect": 0,
+      "semantic_source": "authoring/information_flow_graph.yaml",
+      "description": "Downstream semantic nodes that consume or materialize information before its earliest validating gate.",
+      "calibration_status": "DIAGNOSTIC_ONLY_NO_NUMERIC_PENALTY"
+    },
+    {
+      "id": "ROLLBACK_SPAN",
+      "canonical_law": "E41_CONSTRUCTIVE_CORRECTNESS",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "OPPORTUNITY",
+      "regression_asset": "tools/test_alpha42_graph_locality_incentives.py",
+      "score_effect": 0,
+      "semantic_source": "authoring/information_flow_graph.yaml",
+      "description": "Downstream information/artifact nodes created before validation that may require reconsideration if validation rejects the source value.",
+      "calibration_status": "DIAGNOSTIC_ONLY_NO_NUMERIC_PENALTY"
+    },
+    {
+      "id": "SINGLE_RESPONSIBILITY",
+      "canonical_law": "E18_ONE_EXECUTABLE_ELEMENT_ONE_RESPONSIBILITY",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha42_data_layer_architecture_detectors.py",
+      "description": "Canonical Data-Layer architecture diagnostic; no score effect before calibration."
+    },
+    {
+      "id": "RUN_TO_GATE",
+      "canonical_law": "E18_ONE_EXECUTABLE_ELEMENT_ONE_RESPONSIBILITY",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha42_data_layer_architecture_detectors.py",
+      "description": "Canonical Data-Layer architecture diagnostic; no score effect before calibration."
+    },
+    {
+      "id": "PERFORMANCE_DEGRADATION",
+      "canonical_law": "E63_TIME_DEGRADATION_CONTROL",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha42_time_degradation_optimization.py",
+      "description": "Unexpected runtime/time degradation diagnostic; separate performance track and zero quality-score effect."
+    },
+    {
+      "id": "ANALYST_INTERACTION_ROBUSTNESS",
+      "canonical_law": "E69_ANALYST_INTERACTION_ROBUSTNESS",
+      "detector_class": "HYBRID",
+      "signal": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha42_interactive_analyst_workflow.py",
+      "description": "Interaction robustness diagnostic; no score effect before calibration."
+    },
+    {
+      "id": "UNEXPLAINED_REPEAT_PASS",
+      "canonical_law": "E86_STANDARD_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "enforcement": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha45_authoring_hardening_optimization_subprocesses.py",
+      "description": "Repeated expensive execution without a material dependency change is an optimization opportunity, not a quality-score reward/penalty until calibrated."
+    },
+    {
+      "id": "OBSERVABILITY_COVERAGE_GAP",
+      "canonical_law": "E86_STANDARD_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "enforcement": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha45_authoring_hardening_optimization_subprocesses.py",
+      "description": "Missing per-node timing/token/pass telemetry blocks evidence-based optimization attribution; zero quality-score effect until calibrated."
+    },
+    {
+      "id": "QUALITY_REGRESSION_DURING_OPTIMIZATION",
+      "canonical_law": "E86_STANDARD_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS",
+      "detector_class": "DETERMINISTIC",
+      "enforcement": "HARD_INELIGIBLE",
+      "score_effect": null,
+      "status": "HARD_GUARD",
+      "regression_asset": "tools/test_alpha45_authoring_hardening_optimization_subprocesses.py",
+      "description": "A performance/token candidate that regresses semantic/artifact quality is ineligible regardless of speed/token savings."
+    },
+    {
+      "id": "CONTEXT_RUNTIME_OVERREAD",
+      "canonical_law": "E88_CONTEXT_RUNTIME_EFFICIENCY",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "enforcement": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha45_context_runtime_efficiency.py",
+      "description": "Unexpected package/source/knowledge preload or playbook-controlled context amplification is a performance opportunity with zero quality-score effect until calibrated."
+    },
+    {
+      "id": "TOKEN_DEGRADATION",
+      "canonical_law": "E95_QUALITY_OPTIMIZATION_GOVERNANCE",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "enforcement": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha45_quality_optimization_governance.py",
+      "description": "Unexpected playbook-controlled token degradation is an optimization opportunity with zero score effect until calibrated."
+    },
+    {
+      "id": "PASS_COUNT_DEGRADATION",
+      "canonical_law": "E95_QUALITY_OPTIMIZATION_GOVERNANCE",
+      "detector_class": "DETERMINISTIC",
+      "signal": "OPPORTUNITY",
+      "enforcement": "OPPORTUNITY",
+      "score_effect": 0,
+      "status": "DIAGNOSTIC_ONLY",
+      "regression_asset": "tools/test_alpha45_quality_optimization_governance.py",
+      "description": "Unexpected pass/execution-count degradation is an optimization opportunity with zero score effect until calibrated."
+    }
+  ]
+}

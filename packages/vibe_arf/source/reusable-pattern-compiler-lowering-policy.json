@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_REUSABLE_PATTERN_COMPILER_LOWERING_V1",
+  "status": "ACTIVE_CANDIDATE_POLICY",
+  "scope": "reusable_data_execution_pattern_instantiation",
+  "rules": [
+    "PATTERN.yaml, DATA_LAYER.template.yaml, EXECUTION.template.yaml and COMPILATION_CONTRACT.md are the ordered semantic source-of-truth for registered advanced patterns.",
+    "Canonical outcome_edges are semantic edges and must not be emitted as executable routing syntax unless the target compiler explicitly supports them.",
+    "Single-successor canonical outcomes lower to next; interactive continuations lower to on_answer.next; binary deterministic branches lower to on_pass/on_fail.",
+    "Enum or multi-outcome branches lower to explicit deterministic cascade gates over exact canonical discriminator tokens, with invalid, empty, malformed or multiple discriminator states failing closed.",
+    "Model-produced classifications persist the canonical discriminator before deterministic routing.",
+    "Every canonical outcome destination must survive lowering exactly; semantic enum branches must never be coerced to different binary PASS/FAIL semantics.",
+    "The generated graph must have unique executable IDs, resolved targets, valid routes for every non-terminal and full reachability from graph_contract.entry_node.",
+    "Target editor/runtime-plan validation or an equivalent route-semantics validator is mandatory before delivery."
+  ],
+  "domain_boundary": {
+    "generic_pattern_core_forbids": ["passport facts", "company IDs", "repository names", "Jira project/component values", "debug attachments"],
+    "target_playbook_supplies": ["domain bindings", "host/runtime policy", "tool/adaptor bindings", "artifact identities", "routing metadata"]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.1",
+  "policy_id": "vibe.reusable_data_execution_pattern_library.v1",
+  "law_id": "E58_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY",
+  "principle": "Reusable patterns are selected during canonical Data Layer authoring from requirements frozen before library lookup. Each selected pattern contributes a reusable mini Data-Layer module. The complete project Data Layer is canonicalized and mechanically validated first; only then is the execution/tree fragment deterministically derived from the pattern EXECUTION template. Final generated source must materially realize every selected fragment as its exact deterministic component IDs/types/internal edges. Canonical Data Layer never stores concrete node/gate IDs and the tree may not re-select the pattern.",
+  "required_sequence": [
+    "artifact_and_rule_discovery",
+    "capability_requirement_classification_without_library_visibility",
+    "freeze_pattern_selection_inputs",
+    "pattern_applicability_discovery",
+    "partial_fit_resolution_when_needed",
+    "data_layer_pattern_instantiation",
+    "early_pattern_instance_validation",
+    "project_data_layer_completion",
+    "final_data_layer_canonical_validation",
+    "pattern_data_layer_merge_validation",
+    "execution_projection_derivation",
+    "ordo_tree_materialization",
+    "pattern_graph_realization_validation"
+  ],
+  "constructive_rules": {
+    "exact_fit": "auto_instantiate",
+    "partial_fit": "semantic_fit_with_recorded_reason",
+    "no_fit": "ad_hoc_allowed_only_with_justification",
+    "tree_stage_reselection": "forbidden",
+    "parallel_pattern_semantic_truth": "forbidden",
+    "pattern_instance_provenance": "required",
+    "capability_invention_from_library": "forbidden",
+    "pre_library_requirement_snapshot": "required",
+    "concrete_execution_ids_in_canonical_data_layer": "forbidden",
+    "execution_projection_before_data_layer_merge": "forbidden",
+    "reward_eligibility_requires_pre_library_requirement": "required",
+    "execution_projection_before_final_data_layer_validation": "forbidden",
+    "final_graph_realization": "required",
+    "blueprint_only_reuse": "not_qualified_as_realized_reuse",
+    "pattern_reward_requires_graph_realization": "required"
+  },
+  "canonical_artifacts": [
+    "patterns/PATTERN_REGISTRY.json",
+    "authoring/capability_requirement_catalog.yaml",
+    "authoring/pattern_selection_input_snapshot.json",
+    "authoring/pattern_instance_catalog.yaml",
+    "authoring/pattern_data_layer_expansion.yaml",
+    "authoring/pattern_execution_projection.yaml"
+  ],
+  "projection_sync_inputs": [
+    "authoring/information_object_catalog.yaml",
+    "authoring/information_group_catalog.yaml",
+    "authoring/artifact_catalog.yaml",
+    "authoring/information_flow_graph.yaml",
+    "authoring/interaction_projection.yaml",
+    "authoring/capability_requirement_catalog.yaml",
+    "authoring/pattern_instance_catalog.yaml"
+  ],
+  "graph_realization_validator": "tools/validate_pattern_graph_realization.py",
+  "reward_qualification": "requires exact final graph realization PASS; selection or execution blueprint alone earns zero"
+}

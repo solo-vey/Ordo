@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "artifact": "runtime_semantic_plan.json",
+  "artifact_sha256": "126b0902213cbca73f4155410faf0b246587b043f72e76d6b629b9823673f053",
+  "canonical_source": "source/program.ordo.yaml",
+  "canonical_source_sha256": "fe7b4f13092a92bb23c430cb600440463c5cd74ec5d1c06a012d4ed9d4669a17",
+  "runtime_projection": "runtime_projection/program.ordo.yaml",
+  "runtime_projection_sha256": "ddc2d871bf95dfd9dd672cb570b7c46c8a8d88d023d8e1421582c12f1db3e52a",
+  "actor_projection_provenance": "runtime_projection/ACTOR_PROJECTION_PROVENANCE.json",
+  "compiler_version": "ordo-runtime-semantic-compiler/0.7.15.7-r3dev-gate-state-contract-analysis",
+  "simulation_kit_version": "0.1.6",
+  "runtime_baseline": "Ordo Tree Editor 0.2.0-alpha.20.0.166-dev",
+  "state_type_registry_inputs": [
+    {
+      "path": "design/variable_catalog.yaml",
+      "sha256": "7ddcadf884d9f6630b380cb4795b3b773999d080d4ef37b6c3bb8be00a6a010a"
+    },
+    {
+      "path": "authoring_templates/reusable/EDITOR_PROJECTION.template.yaml",
+      "sha256": "59451c7a53e7363c679a52f50d078e33304e292eb77383d2b161a0dadee91020"
+    }
+  ],
+  "validation_status": "PASS",
+  "structural_status": "PASS",
+  "semantic_status": "PASS",
+  "compiler_issue_count": 96,
+  "derivation": "semantic-equivalence provenance rebind over exact projected nodes, gates, state schema and unchanged-or-proven-equivalent registry/compiler identities",
+  "state_type_registry_semantic_equivalence": "verification/RUNTIME_STATE_TYPE_REGISTRY_SEMANTIC_EQUIVALENCE.json"
+}

@@ -1,0 +1,66 @@
+schema_version: '1.0'
+template_id: VIBE_ADAPTIVE_ARTIFACT_QUALITY_TEMPLATE
+applicability: generated_playbooks_that_materialize_human_or_machine_consumable_artifacts
+canonical_inputs:
+- canonical_state
+- accepted_scope
+- field_resolution_status
+- source_and_analyst_provenance
+completeness_profile:
+  roles:
+  - REQUIRED_CONSEQUENTIAL
+  - DERIVABLE
+  - OPTIONAL
+  - IMPLEMENTATION_DETAIL
+  - INAPPLICABLE
+  rule: every REQUIRED_CONSEQUENTIAL dimension must reach a legitimate terminal resolution; DERIVABLE dimensions are produced
+    before analyst escalation
+quality_pipeline:
+- DETERMINISTIC_COMPLETENESS_AND_INVARIANT_PREFLIGHT
+- DERIVE_OUTPUTS_FROM_CANONICAL_CONTRACT
+- MATERIALIZE_ARTIFACT
+- DETERMINISTIC_ARTIFACT_VALIDATION
+- SEMANTIC_MODEL_QUALITY_GATE_READ_ONLY
+- DETERMINISTIC_FINDING_ROUTER
+- SELF_REPAIR_BEFORE_ANALYST_ESCALATION
+materialization_rules:
+- MISSING_VALUE_MUST_NOT_BECOME_UNKNOWN_AUTOMATICALLY
+- UNKNOWN_REQUIRES_UNKNOWN_CONFIRMED_OR_EQUIVALENT_EXPLICIT_PROVENANCE
+- OPTIONAL_AND_IMPLEMENTATION_DETAIL_MAY_BE_OMITTED_OR_SCOPE_LABELED
+- DERIVED_CONTENT_RETAINS_DERIVED_PROVENANCE
+derived_outputs:
+  source: canonical_rules_and_contracts
+  derive_when_meaningful:
+  - positive_tests
+  - negative_tests
+  - missing_null_tests
+  - unknown_unrecognized_tests
+  - error_path_tests
+  - boundary_tests
+  - persistence_state_tests
+  - rendering_output_tests
+  - edge_case_matrices
+  - traceability_tables
+  coverage_rule: semantic_rule_coverage_not_fixed_row_count
+semantic_quality_gate:
+  output_schema: source/semantic-artifact-quality-gate.schema.json
+  canonical_state_mutation_allowed: false
+  deterministic_failure_override_allowed: false
+  new_requirements_outside_scope_allowed: false
+finding_routes:
+  DERIVABLE_FIX: self_repair
+  SOURCE_REQUIRED: source_evidence_route
+  ANALYST_DECISION_REQUIRED: analyst_question
+  IMPLEMENTATION_DETAIL: downstream_or_nonblocking_note
+required_regressions:
+- DERIVED_TESTS_FROM_COMPLETE_RULES
+- WEAK_GENERATED_TEST_SELF_REPAIR
+- MISSING_REQUIRED_DECISION_ROUTES_ANALYST
+- OPTIONAL_IMPLEMENTATION_DETAIL_NONBLOCKING
+- DERIVABLE_UNKNOWN_BLOCKED
+- ADAPTIVE_FEWER_SECTIONS_ALLOWED
+- SEMANTIC_MODEL_CANNOT_OVERRIDE_DETERMINISTIC_FAILURE
+- SEMANTIC_MODEL_CANNOT_MUTATE_CANONICAL_STATE
+- ORPHAN_SUBSTANTIVE_SECTION_BLOCKED
+- PROVENANCE_MISMATCH_DETECTED
+template_kind: adaptive_artifact_quality

@@ -1,0 +1,24 @@
+ordo:
+  version: '0.12'
+  package: ordo.vibe_arf_factory
+  control_level: strict
+  execution_mode: chat_internal
+  package_version: 0.1.2
+  language_package_version: 0.12.0-preview-rc1
+module:
+  id: ordo.vibe_arf_factory
+  version: 0.1.2
+  versioning_scope: module_local
+  release_channel: alpha
+  parent_language_package_version: 0.12.0-preview-rc1
+  design_baseline: VIBE_ARF alpha.27 simulation-kit-0.1.2 rebased candidate
+includes:
+- library: ordo.process_rail.core
+  version: ^0.1.0
+  as: process_rail
+- library: ordo.project_authoring.validation
+  version: ^0.1.0
+  as: project_validation
+- library: ordo.output_template.contracts
+  version: ^0.1.0
+  as: template_contracts

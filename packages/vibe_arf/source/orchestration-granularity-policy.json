@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "VIBE_ARF_ORCHESTRATION_GRANULARITY_V1",
+  "status": "ACTIVE_ALPHA8_CANDIDATE_POLICY",
+  "anti_pattern": {
+    "id": "AP_ORCHESTRATION_STAGE_EXPLOSION",
+    "name": "Orchestration stage explosion",
+    "definition": "Do not materialize repeated validator stages as separate run/gate/failure-record orchestration chains when they share the same deterministic authority, contract, tool and recovery semantics and do not create a real control boundary.",
+    "signals": [
+      "The same deterministic validator or contract is invoked repeatedly only with different stage selectors.",
+      "Each stage adds near-identical run -> gate -> record-failure boilerplate.",
+      "Intermediate gates do not change user interaction, authority, recovery, artifact ownership or downstream reachability in a materially distinct way.",
+      "Detailed validation findings belong in the machine report but are duplicated as orchestration structure."
+    ],
+    "preferred_design": [
+      "Keep a separate stage only when it creates a real control boundary such as fail-fast parse reachability, a distinct user decision, a distinct authority/tool boundary, a distinct recovery route, or a separately owned artifact/evidence contract.",
+      "Aggregate same-authority semantic checks into one authoritative deterministic execution when intermediate orchestration adds no distinct control semantics.",
+      "Use gates for routing decisions, not as a visual mirror of every internal validator rule.",
+      "Preserve detailed rule-level findings in the deterministic report/evidence rather than expanding the graph solely for visibility."
+    ],
+    "non_rule": "Node count alone is not a correctness criterion; a larger graph is acceptable when each element represents a distinct responsibility or control boundary."
+  },
+  "source_grounding": [
+    "Documents/38_RESPONSIBILITY_DECOMPOSITION_AND_SUBTREE_ARCHITECTURE.md: overloaded-node correction requires atomic responsibilities, not arbitrary graph inflation.",
+    "Documents/91_ALPHA3_REMEDIATION_DOSSIER_ASSESSMENT_FOR_ALPHA4.md: explicitly warns not to blindly create a 200+ node graph for every package file.",
+    "JSON validation applied-pilot dogfood: repeated same-validator stage chains were reducible while preserving fail-fast parse and deterministic evidence."
+  ],
+  "claim_boundary": "This is a Vibe authoring anti-pattern/policy. It does not add an Ordo language construct or impose a universal node-count threshold."
+}

@@ -1,0 +1,48 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_PARAMETER_CLOSURE
+  version: '1.0'
+  title: Parameter Closure
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_P_PARAMETER_DISCOVERY
+    type: automatic
+    title: Parameter Discovery
+    next: N_P_PARAMETER_DERIVATION
+    responsibility_id: parameter_discovery
+  - id: N_P_PARAMETER_DERIVATION
+    type: automatic
+    title: Parameter Derivation
+    next: N_P_OWNERSHIP_BLOCKING_CLASSIFICATION
+    responsibility_id: parameter_derivation
+  - id: N_P_OWNERSHIP_BLOCKING_CLASSIFICATION
+    type: automatic
+    title: Ownership Blocking Classification
+    next: N_P_PRODUCTION_PATH_CLOSURE
+    responsibility_id: ownership_blocking_classification
+  - id: N_P_PRODUCTION_PATH_CLOSURE
+    type: automatic
+    title: Production Path Closure
+    next: N_P_ANSWER_PROPAGATION
+    responsibility_id: production_path_closure
+  - id: N_P_ANSWER_PROPAGATION
+    type: automatic
+    title: Answer Dependency Propagation
+    next: N_P_QUESTION_QUEUE
+    responsibility_id: answer_dependency_propagation
+  - id: N_P_QUESTION_QUEUE
+    type: automatic
+    title: Question Queue Derivation
+    next: '{{success_exit_node}}'
+    responsibility_id: question_queue_derivation
+  gates: []

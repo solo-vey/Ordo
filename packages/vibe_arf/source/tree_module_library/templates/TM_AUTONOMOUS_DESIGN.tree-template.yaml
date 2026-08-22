@@ -1,0 +1,58 @@
+kind: ordo_tree_module_template
+template:
+  id: TM_AUTONOMOUS_DESIGN
+  version: '1.0'
+  title: Autonomous Design
+parameters:
+  required:
+    instance_id:
+      type: identifier
+    entry_node:
+      type: node_id
+    success_exit_node:
+      type: node_id
+  optional: {}
+generated:
+  state_schema: {}
+  nodes:
+  - id: N_D_ARTIFACT_BACKWARDS
+    type: automatic
+    title: Artifact Backwards Decomposition
+    next: N_D_PARAMETER_DEPENDENCIES
+    responsibility_id: artifact_backwards_decomposition
+  - id: N_D_PARAMETER_DEPENDENCIES
+    type: automatic
+    title: Parameter Dependency Design
+    next: N_D_MINIMUM_INPUT
+    responsibility_id: parameter_dependency_design
+  - id: N_D_MINIMUM_INPUT
+    type: automatic
+    title: Minimum Input Design
+    next: N_D_PROCESS_DECOMPOSITION
+    responsibility_id: minimum_input_design
+  - id: N_D_PROCESS_DECOMPOSITION
+    type: automatic
+    title: Process Decomposition
+    next: N_D_DECISION_GATE_DESIGN
+    responsibility_id: process_decomposition
+  - id: N_D_DECISION_GATE_DESIGN
+    type: automatic
+    title: Decision Gate Design
+    next: N_D_REUSE_PATTERN_SELECTION
+    responsibility_id: decision_gate_design
+  - id: N_D_REUSE_PATTERN_SELECTION
+    type: automatic
+    title: Reuse Pattern Selection
+    next: N_D_ALTERNATIVES_OPTIMIZATION
+    responsibility_id: reuse_pattern_selection
+  - id: N_D_ALTERNATIVES_OPTIMIZATION
+    type: automatic
+    title: Alternative Optimization
+    next: N_D_CONSISTENCY
+    responsibility_id: alternative_optimization
+  - id: N_D_CONSISTENCY
+    type: automatic
+    title: Design Consistency
+    next: '{{success_exit_node}}'
+    responsibility_id: design_consistency
+  gates: []

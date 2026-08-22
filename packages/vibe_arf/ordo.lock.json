@@ -1,0 +1,18 @@
+{
+  "lockfile_version": "1.0",
+  "generated_by": "ordo-cli 0.6.0",
+  "generated_at": "2026-08-18T14:17:18.955474+00:00",
+  "package": {
+    "name": "ordo.vibe_arf_factory",
+    "version": "0.1.2",
+    "ordo_version": "0.12",
+    "root": "."
+  },
+  "dependencies": [],
+  "summary": {
+    "dependencies_total": 0,
+    "warnings": 0,
+    "kinds": []
+  },
+  "warnings": []
+}

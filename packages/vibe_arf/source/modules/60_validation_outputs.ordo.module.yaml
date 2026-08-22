@@ -1,0 +1,643 @@
+gates:
+- id: G_UNDERSTANDING_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.artifact_surface_status is one of READY and state.chat_first_bootstrap_status
+    is one of PASS and state.chat_first_bootstrap_report is not empty
+  on_pass: N_U_RULE_AUTHORITY_MODEL
+  on_fail: STOP
+  allowed_from:
+  - N_U_CHAT_FIRST_BOOTSTRAP_CHECK
+- id: G_PARAMETER_FLOW_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.parameter_closure_plan_status is one of READY and state.answer_propagation_status
+    is one of PASS
+  on_pass: N_P_QUESTION_QUEUE
+  on_fail: STOP
+  allowed_from:
+  - N_P_ANSWER_PROPAGATION
+- id: G_LANGUAGE_GROUNDING_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.ordo_language_reference_status is one of PASS and state.generated_source_language_conformance_status
+    is one of PASS and state.generated_source_semantic_preservation_status is one
+    of PASS and state.generated_source_language_grounding_report is not empty
+  on_pass: N_R_REVIEW_BASELINE
+  on_fail: STOP
+  allowed_from:
+  - N_B_ORDO_LANGUAGE_GROUNDING_CHECK
+- id: G_VERIFICATION_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.verification_profile_status is one of PASS and state.verification_profile_report
+    is not empty
+  on_pass: N_SIM_INSPECT
+  on_fail: STOP
+  allowed_from:
+  - N_R_VERIFICATION_READINESS
+- id: G_REVIEW_EXPERIENCE_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.authoring_burden_status is one of PASS and state.applied_analyst_experience_status
+    is one of PASS and state.analyst_interaction_robustness_status is one of PASS
+  on_pass: N_REVIEW_ROUTING
+  on_fail: STOP
+  allowed_from:
+  - N_R_ANALYST_EXPERIENCE
+- id: G_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_GATE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.package_pattern_readiness_status is one of PASS and state.package_pattern_readiness_report
+    is not empty
+  on_pass: N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+  on_fail: STOP
+  allowed_from:
+  - N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+- id: G_PK_PACKAGE_CONTINUITY_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.packaging_continuity_status == PASS and state.packaging_continuity_report
+    is not empty
+  allowed_from:
+  - N_PK_PACKAGE_CONTINUITY_AUDIT
+  on_pass: G_PACKAGE_READY
+  on_fail: STOP
+- id: G_PACKAGE_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.generated_package_status is one of VALID and state.generated_package_validation_report
+    is not empty
+  on_pass: N_PK_REVISION_COMMIT
+  on_fail: STOP
+  allowed_from:
+  - G_PK_PACKAGE_CONTINUITY_VALID
+- id: G_DELIVERY_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.delivery_status is one of DELIVERABLE and state.delivery_validation_report
+    is not empty and state.human_format_validation_status is one of PASS and state.human_format_validation_report
+    is not empty and state.resume_integrity_status is one of PASS and state.session_continuity_status
+    is one of READY and state.session_continuity_report is not empty and state.e2e_authoring_trial_status
+    is one of PASS and state.e2e_authoring_trial_report is not empty
+  on_pass: G_FINAL_DIALOGUE_READY
+  on_fail: STOP
+  allowed_from:
+  - N_PK_FINAL_EXPERIENCE_EVIDENCE
+- id: G_FINAL_DIALOGUE_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.autonomous_until_blocker_status is one of PASS and state.business_language_surface_status
+    is one of PASS and state.business_language_surface_report is not empty and state.progress_surface_status
+    is one of PASS and state.progress_surface_report is not empty and state.first_question_quality_status
+    is one of PASS and state.user_question_queue is empty and state.blocking_parameter_ids
+    is empty
+  on_pass: G_USER_ACCEPTANCE_CONFIRMED
+  on_fail: STOP
+  allowed_from:
+  - G_DELIVERY_READY
+- id: G_USER_ACCEPTANCE_CONFIRMED
+  method: human
+  trust_class: human_decision
+  condition: state.acceptance_status is one of accepted
+  on_pass: N_OUT_GENERATED_PACKAGE_MATERIALIZE
+  on_fail: STOP
+  allowed_from:
+  - G_FINAL_DIALOGUE_READY
+- id: G_SOURCE_VERIFICATION_PASS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.source_verification_status is one of PASS and state.source_verification_report
+    is not empty
+  on_pass: N_VERIFY_INFORMATION_PROJECTION
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_SOURCE
+- id: G_STRUCTURE_VERIFICATION_PASS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.structure_verification_status is one of PASS and state.structure_verification_report
+    is not empty
+  on_pass: N_VERIFY_ARTIFACTS
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_STRUCTURE
+- id: G_ARTIFACT_VERIFICATION_PASS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.artifact_verification_status is one of PASS and state.artifact_verification_report
+    is not empty
+  on_pass: N_VERIFY_REGRESSION
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_ARTIFACTS
+- id: G_REGRESSION_VERIFICATION_PASS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.regression_verification_status is one of PASS and state.regression_verification_report
+    is not empty
+  on_pass: N_VERIFY_RELEASE
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_REGRESSION
+- id: G_RELEASE_VERIFICATION_PASS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.release_verification_status is one of PASS and state.release_verification_report
+    is not empty
+  on_pass: N_B_ORDO_LANGUAGE_GROUNDING_CHECK
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_RELEASE
+- id: G_PI_BUSINESS_VIEW_DOCUMENT_READINESS_GATE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.business_view_materialization_readiness_status is one of PASS and
+    state.business_view_materialization_readiness_report is not empty
+  on_pass: N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE
+  on_fail: STOP
+  allowed_from:
+  - N_PI_BUSINESS_VIEW_DOCUMENT_READINESS_CHECK
+- id: G_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_GATE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.business_view_render_status is one of PASS and state.business_view_render_report
+    is not empty
+  on_pass: N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT
+  on_fail: STOP
+  allowed_from:
+  - N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE
+- id: G_GENERATED_PACKAGE_OUTPUT_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.generated_package_output_status is one of VALID and state.generated_package_output_report
+    is not empty
+  on_pass: N_OUT_GENERATED_PACKAGE_HANDOFF
+  on_fail: STOP
+  allowed_from:
+  - N_OUT_GENERATED_PACKAGE_MATERIALIZE
+- id: G_PATTERN_DATA_LAYER_INSTANCE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.pattern_instance_validation_status is one of PASS and state.pattern_instance_validation_report
+    is not empty
+  on_pass: N_U_INFORMATION_OBJECT_CATALOG
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_PATTERN_DATA_LAYER_INSTANCE
+- id: G_PATTERN_DATA_LAYER_MERGE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.pattern_data_layer_merge_status is one of PASS and state.pattern_data_layer_merge_report
+    is not empty
+  on_pass: N_U_LEGACY_MIGRATION
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_PATTERN_DATA_LAYER_MERGE
+- id: G_PATTERN_GRAPH_REALIZATION_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.pattern_graph_realization_status is one of PASS and state.pattern_graph_realization_report
+    is not empty
+  on_pass: N_VERIFY_SOURCE
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_PATTERN_GRAPH_REALIZATION
+- id: G_INFORMATION_MODEL_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.information_model_status is one of PASS and state.information_model_report
+    is not empty
+  on_pass: N_VERIFY_PATTERN_DATA_LAYER_MERGE
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_INFORMATION_MODEL
+- id: G_INFORMATION_PROJECTION_PASS
+  method: mechanical
+  trust_class: deterministic
+  condition: state.information_projection_status is one of PASS and state.information_projection_report
+    is not empty
+  on_pass: N_VERIFY_STRUCTURE
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_INFORMATION_PROJECTION
+- id: G_AI_REVISION_CONTRACTS_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_revision_validity_status is one of PASS and state.improvement_revision_validity_report
+    is not empty
+  on_pass: N_AI_RUN_REVISION
+  on_fail: N_AI_APPLY_REPAIR
+  allowed_from:
+  - N_AI_VALIDATE_REVISION_CONTRACTS
+- id: G_AI_RESPONSE_PROVENANCE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_response_provenance_status is one of PASS, FAIL and
+    state.improvement_response_provenance_report is not empty
+  on_pass: N_AI_DISCOVER_ARTIFACT_EVAL_PROFILE
+  on_fail: STOP
+  allowed_from:
+  - N_AI_VERIFY_RESPONSE_PROVENANCE
+- id: G_DATA_LAYER_CANONICAL_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.data_layer_canonical_status is one of PASS and state.data_layer_canonical_report
+    is not empty
+  on_pass: N_VERIFY_INFORMATION_MODEL
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_DATA_LAYER_CANONICAL
+- id: G_AI_REFERENCE_CONFLICTS_RESOLVED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_reference_profile is not empty and state.improvement_reference_conflicts
+    != null and state.improvement_reference_conflict_resolution_status == PASS
+  on_pass: N_AI_BUILD_DYNAMIC_COMPARATIVE_PROMPT
+  on_fail: STOP
+  allowed_from:
+  - N_AI_BUILD_REFERENCE_PROFILE
+- id: G_AI_FRESH_REFERENCE_FIDELITY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_fresh_comparative_result is not empty and state.improvement_fresh_defects
+    != null
+  on_pass: N_AI_SANITIZE_EVALUATION_DEFECTS
+  on_fail: STOP
+  allowed_from:
+  - N_AI_RUN_FRESH_COMPARATIVE_EVALUATOR
+- id: G_AI_EVALUATOR_REFERENCE_BUNDLE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_evaluator_reference_bundle_status == PASS and state.improvement_evaluator_reference_bundle_report
+    is not empty
+  on_pass: N_AI_RUN_FRESH_COMPARATIVE_EVALUATOR
+  on_fail: STOP
+  allowed_from:
+  - N_VERIFY_EVALUATOR_REFERENCE_BUNDLE
+- id: G_AI_PERFORMANCE_EVIDENCE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.improvement_performance_evidence_status is one of PASS and state.improvement_performance_evidence_report
+    is not empty
+  on_pass: N_AI_DIAGNOSE
+  on_fail: STOP
+  allowed_from:
+  - N_AI_VALIDATE_PERFORMANCE_EVIDENCE
+- id: G_QH_RED_CONFIRMED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.quality_hardening_red_status == PASS
+  on_pass: N_QH_MINIMAL_REPAIR
+  on_fail: N_QH_DEFECT_CLASSIFY
+  allowed_from:
+  - N_QH_RED_REGRESSION_RUN
+- id: G_QH_GREEN
+  method: mechanical
+  trust_class: deterministic
+  condition: state.quality_hardening_green_status == PASS
+  on_pass: N_QH_IMPACTED_REGRESSIONS
+  on_fail: N_QH_DEFECT_CLASSIFY
+  allowed_from:
+  - N_QH_GREEN_RUN
+- id: G_QH_IMPACTED_GREEN
+  method: mechanical
+  trust_class: deterministic
+  condition: state.quality_hardening_impacted_status == PASS
+  on_pass: N_QH_FINAL_CONFIRM
+  on_fail: N_QH_DEFECT_CLASSIFY
+  allowed_from:
+  - N_QH_IMPACTED_REGRESSIONS
+- id: G_PO_QUALITY_BASELINE_STABLE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.performance_quality_baseline_status == PASS
+  on_pass: N_PO_CONTEXT_RUNTIME_AUDIT
+  on_fail: N_QH_BASELINE_CAPTURE
+  allowed_from:
+  - N_PO_BASELINE_CAPTURE
+- id: G_PO_CONTEXT_EVIDENCE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.context_runtime_efficiency_status == PASS
+  on_pass: N_PO_TELEMETRY_COLLECT
+  on_fail: N_PO_CONTEXT_RUNTIME_AUDIT
+  allowed_from:
+  - N_PO_CONTEXT_RUNTIME_AUDIT
+- id: G_PO_ACTIONABLE_HOTSPOT
+  method: mechanical
+  trust_class: deterministic
+  condition: state.performance_hotspot_status == PASS
+  on_pass: N_PO_HYPOTHESIS_DEFINE
+  on_fail: N_PO_ACCEPT_REJECT
+  allowed_from:
+  - N_PO_HOTSPOT_RANK
+- id: G_PO_SEMANTIC_EQUIVALENCE
+  method: mechanical
+  trust_class: deterministic
+  condition: state.performance_semantic_equivalence_status == PASS
+  on_pass: G_PO_PERFORMANCE_IMPROVED
+  on_fail: N_PO_ACCEPT_REJECT
+  allowed_from:
+  - N_PO_TARGETED_COMPARE
+- id: G_PO_PERFORMANCE_IMPROVED
+  method: mechanical
+  trust_class: deterministic
+  condition: state.performance_improvement_status == PASS
+  on_pass: N_PO_ACCEPT_REJECT
+  on_fail: N_R_AUTHORING_BURDEN
+  allowed_from:
+  - G_PO_SEMANTIC_EQUIVALENCE
+- id: G_DV_PRECHANGE_EVIDENCE_VALID
+  method: mechanical
+  trust_class: deterministic
+  condition: state.development_prechange_status == PASS
+  on_pass: N_C_DEPENDENCY_CLOSURE
+  on_fail: N_DV_REGRESSION_DEFINE
+  allowed_from:
+  - N_DV_PRECHANGE_REGRESSION_RUN
+- id: G_DV_CANDIDATE_REGRESSION_READY
+  method: mechanical
+  trust_class: deterministic
+  condition: state.development_regression_status == PASS
+  on_pass: N_ACCEPTANCE_READINESS
+  on_fail: N_QH_BASELINE_CAPTURE
+  allowed_from:
+  - N_DV_POSTCHANGE_REGRESSION_AUDIT
+assertions:
+- id: A_NO_DIRECT_TECHNICAL_QUESTION
+  polarity: not
+  condition: model_owned_technical_decision_asked_of_user_outside_hdg
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_SEMANTIC_GAP_HIDDEN_IN_YAML
+  polarity: not
+  condition: unknown_business_semantics_encoded_as_if_confirmed
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_REPAIR_REQUIRES_REGRESSION
+  polarity: must
+  condition: material_repair_has_regression_evidence_or_explicit_covered_exception
+  phase:
+  - test
+  - debug
+  severity: block
+  on_fail: STOP
+- id: A_CHANGE_REVERIFIES_IMPACT
+  polarity: must
+  condition: invalidated_refs_are_rebuilt_and_reverified_before_acceptance
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_LAWS_PROPAGATE_VERBATIM
+  polarity: must
+  condition: generated_playbook_root_PLAYBOOK_LAWS_matches_canonical_signature
+  phase:
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_RESUME_DOES_NOT_REASK_VALID_ANSWER
+  polarity: must
+  condition: resolved_user_answer_is_reasked_only_when_upstream_basis_was_materially_invalidated
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_DELIVERY_RETRY_PRESERVES_SEMANTICS
+  polarity: must
+  condition: recoverable_transport_retry_does_not_rebuild_or_mutate_accepted_semantic_content
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_LEGACY_STRUCTURE_NOT_TARGET_AUTHORITY
+  polarity: not
+  condition: legacy_implementation_structure_preserved_without_current_semantic_or_contract_basis
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_HUMAN_VIEW_NO_ENGINEERING_LEAK
+  polarity: not
+  condition: default_business_view_exposes_unrequested_ordo_yaml_or_internal_engineering_coordinates
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_REQUIRED_FIELDS_HAVE_PRODUCTION_PATH
+  polarity: must
+  condition: every_active_required_artifact_field_has_at_least_one_allowed_production_path
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_DERIVATION_LADDER_BEFORE_USER_QUESTION
+  polarity: must
+  condition: user_question_occurs_only_after_non_user_resolution_paths_are_exhausted_or_user_authority_is_intrinsically_required
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_TECHNICAL_AUTHORING_QUESTION_LEAK
+  polarity: not
+  condition: user_is_asked_to_choose_ordo_nodes_gates_state_ids_schemas_or_other_model_owned_implementation_details
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_DRAFT_BEFORE_NON_AUTHORITY_CLARIFICATION
+  polarity: must
+  condition: when_a_useful_reversible_hypothesis_can_be_formed_it_is_proposed_or_used_before_open_ended_non_authority_clarification
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_USER_ANSWER_PROPAGATES_DEPENDENCIES
+  polarity: must
+  condition: accepted_user_answer_updates_all_valid_dependency_closure_targets_before_next_question_queue_is_computed
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CHAT_START_NOT_RUNTIME_JARGON_DEFAULT
+  polarity: not
+  condition: default_chat_start_requires_user_to_understand_runtime_contract_node_gate_yaml_or_cli_terminology
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_INTERMEDIATE_APPROVAL_CHECKPOINT
+  polarity: not
+  condition: model_requests_user_approval_for_model_owned_intermediate_engineering_step_before_a_user_owned_blocker_exists
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_ARTIFACT_SURFACE_PRECEDES_BROAD_QUESTIONING
+  polarity: must
+  condition: artifact_surface_is_discovered_or_drafted_before_broad_requirement_questioning
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_PROGRESS_SURFACE_BUSINESS_LEVEL
+  polarity: must
+  condition: progress_surface_states_what_was_understood_what_model_did_and_only_what_needs_user_without_default_engineering_jargon
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_FIRST_QUESTION_HDG_CONSEQUENCE_BACKED
+  polarity: must
+  condition: every_user_question_after_intake_is_preceded_by_hdg_decision_and_has_user_owned_consequence_authority_basis
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_INFORMATION_MODEL_PRECEDES_PROCESS_GRAPH
+  polarity: must
+  condition: validated_authoring_information_model_exists_before_process_graph_or_ordo_node_synthesis
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_INFORMATION_ORDO_BIDIRECTIONAL_TRACEABILITY
+  polarity: must
+  condition: every_required_authoring_entity_maps_to_ordinary_ordo_and_every_authoring_managed_ordo_element_has_reverse_authoring_trace
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_PARALLEL_INFORMATION_DEPENDENCY_SOURCE_OF_TRUTH
+  polarity: not
+  condition: parameter_or_process_dependency_graph_is_invented_independently_when_authoring_information_flow_graph_already_defines_the_dependency
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_PROGRESSIVE_INTERACTION_PROJECTED_FROM_INFORMATION_NEEDS
+  polarity: must
+  condition: analyst_question_queue_prefers_derived_or_proposed_values_and_requests_only_information_not_resolvable_from_validated_information_model
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CONTINUOUS_ANALYST_FACT_STREAM
+  polarity: must
+  condition: generated_interactive_playbook_accepts_incremental_reordered_and_wider_than_question_input_and_merges_all_relevant_supported_facts_before_next_question
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_STRUCTURAL_FIELD_RESOLUTION_STATUS
+  polarity: must
+  condition: generated_interactive_playbook_represents_known_unasked_unknown_confirmed_inapplicable_structurally_and_never_infers_status_from_value_text
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_INTERACTIVE_COMPLETENESS_BEFORE_COMPOSE
+  polarity: must
+  condition: generated_interactive_playbook_blocks_compose_while_any_substantive_field_is_unasked_and_does_not_equate_zero_active_gaps_with_completion
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_CONFIRMED_UNKNOWN_NO_REASK
+  polarity: must
+  condition: generated_interactive_playbook_does_not_reask_unknown_confirmed_without_new_conflicting_evidence
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_PROGRESS_ENTER_BEFORE_LONG_WORK
+  polarity: must
+  condition: analyst_visible_long_operation_emits_enter_before_work_and_result_next_after_work_without_chain_of_thought
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_ADAPTIVE_COMPLETENESS_NOT_TEMPLATE_WIDE
+  polarity: must
+  condition: generated_playbook_completeness_is_case_adaptive_and_blocks_only_required_consequential_or_pending_derivable_dimensions_not_every_template_field
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_NO_SYNTHETIC_UNKNOWN_MATERIALIZATION
+  polarity: must
+  condition: materializer_never_converts_missing_or_unasked_value_into_unknown_without_structural_confirmed_unknown_provenance
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_DERIVED_OUTPUTS_BEFORE_ANALYST_ESCALATION
+  polarity: must
+  condition: generated_playbook_derives_rule_implied_tests_matrices_summaries_and_expected_outcomes_before_requesting_analyst_input
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_SEMANTIC_QUALITY_GATE_READ_ONLY
+  polarity: must
+  condition: semantic_quality_model_returns_structured_findings_without_mutating_canonical_state_overriding_deterministic_failures_or_inventing_out_of_scope_requirements
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+- id: A_QUALITY_FINDINGS_ROUTE_BY_OWNERSHIP
+  polarity: must
+  condition: quality_findings_are_deterministically_routed_to_self_fix_source_analyst_or_downstream_and_derivable_fixes_do_not_create_analyst_questions
+  phase:
+  - runtime
+  - test
+  severity: block
+  on_fail: STOP
+outputs:
+- id: OUT_BUSINESS_VIEW
+  type: markdown
+  allowed_after:
+  - N_PI_BUSINESS_VIEW_DOCUMENT_REGISTER_ARTIFACT
+- id: OUT_GENERATED_PLAYBOOK_PACKAGE
+  type: archive
+  allowed_after:
+  - N_OUT_GENERATED_PACKAGE_HANDOFF
+- id: OUT_GENERATED_PLAYBOOK_RUN_PACKAGE
+  type: archive
+  allowed_after:
+  - N_OUT_GENERATED_PACKAGE_HANDOFF

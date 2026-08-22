@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "registry_id": "VIBE_GENERATED_PLAYBOOK_SAFE_NODE_PROFILES_V1",
+  "purpose": "Canonical Vibe safe authoring defaults derived from Ordo language and Vibe architecture. Profiles are not language restrictions and are not bound to any single runtime adapter.",
+  "profiles": {
+    "MODEL_AUTOMATIC": {
+      "owner": "model",
+      "required": [
+        "type=automatic",
+        "action=AI.*",
+        "execution_contract.owner=model",
+        "execution_contract.advancement=automatic",
+        "writes"
+      ],
+      "forbidden": [
+        "question + answer_type human-input shape",
+        "any $answer reference"
+      ],
+      "conditional_requirements": [
+        "if model_result_contract.required_state_writes exists, authority_contract must runtime-enforce every required path",
+        "if the model proposes canonical state mutation, emit state_patch_v1 with base_state_sha256 and allowed_roots; deterministic runtime applies it",
+        "producer output is validated before persistence; invalid output keeps current node unchanged and produces no transition receipt"
+      ],
+      "template": "authoring_templates/node_profiles/MODEL_AUTOMATIC.yaml"
+    },
+    "DETERMINISTIC_RUN": {
+      "owner": "deterministic",
+      "required": [
+        "execution_contract.owner=deterministic",
+        "execution_contract.advancement=automatic",
+        "machine-readable evidence",
+        "single transition to a separate deterministic gate",
+        "state_updates_v1 result envelope",
+        "validate deterministic output before canonical state persistence"
+      ],
+      "forbidden": [
+        "pass/fail semantic branching inside RUN"
+      ],
+      "template": "authoring_templates/node_profiles/DETERMINISTIC_RUN.yaml",
+      "conditional_requirements": [
+        "structured machine stdout may be consumed as $answer.* and committed mechanically before routing"
+      ]
+    },
+    "DETERMINISTIC_GATE": {
+      "owner": "deterministic",
+      "required": [
+        "trust_class=deterministic",
+        "mechanical condition over materialized state/evidence",
+        "on_pass",
+        "on_fail"
+      ],
+      "template": "authoring_templates/node_profiles/DETERMINISTIC_GATE.yaml",
+      "conditional_requirements": [
+        "if on_fail names a recovery node, FAIL routes there rather than becoming terminal blocked",
+        "re-entry after recovery is allowed even if target node was executed earlier",
+        "when recovery is repairable, deterministic recovery resume must identify the first invalid or missing milestone and non-null resume node",
+        "lifecycle reopen routes require evidence-bound reason and provenance when they downgrade a resolved state"
+      ]
+    },
+    "HUMAN_ENUM_DECISION": {
+      "owner": "human",
+      "required": [
+        "type=human_decision",
+        "answer_type=enum",
+        "explicit allowed_answers",
+        "branch-local deterministic update_state"
+      ],
+      "forbidden": [
+        "model semantic recovery to interpret authority"
+      ],
+      "template": "authoring_templates/node_profiles/HUMAN_ENUM_DECISION.yaml",
+      "conditional_requirements": [
+        "consequential analyst-owned decisions use stable decision_id",
+        "if multiple same-group consequential decisions are simultaneously known, exhaustive discovery precedes asking and they may be presented as one coherent authority batch",
+        "partial answers preserve resolved decision ids and only unresolved/new/conflicted ids are re-asked"
+      ]
+    },
+    "HUMAN_FREE_TEXT_CAPTURE": {
+      "owner": "human",
+      "required": [
+        "answer_type=free_text",
+        "verbatim $answer capture",
+        "analyst message treated as fact stream",
+        "all relevant supported facts may be extracted beyond active question",
+        "verbatim input retained for provenance"
+      ],
+      "conditional_requirements": [
+        "for substantive decisions, structural resolution_status is canonical; value text does not determine status",
+        "after semantic extraction, deterministic merge/recompute occurs before next question"
+      ],
+      "template": "authoring_templates/node_profiles/HUMAN_FREE_TEXT_CAPTURE.yaml"
+    },
+    "DOCUMENT_MATERIALIZE": {
+      "owner": "deterministic",
+      "required": [
+        "action=DOCUMENT.GENERATE",
+        "template",
+        "bindings",
+        "output",
+        "artifact.expected_path",
+        "reachable control-flow transition"
+      ],
+      "template": "authoring_templates/node_profiles/DOCUMENT_MATERIALIZE.yaml"
+    },
+    "PACKAGE_BUILD": {
+      "owner": "deterministic",
+      "required": [
+        "action=PACKAGE.*",
+        "explicit package.path or artifact.expected_path",
+        "reachable control-flow transition"
+      ],
+      "template": "authoring_templates/node_profiles/PACKAGE_BUILD.yaml"
+    },
+    "ARTIFACT_PRESENT": {
+      "owner": "deterministic",
+      "required": [
+        "artifact.expected_path",
+        "artifact.presentation",
+        "required_before_next when blocking"
+      ],
+      "template": "authoring_templates/node_profiles/ARTIFACT_PRESENT.yaml"
+    },
+    "TERMINAL": {
+      "owner": "runtime",
+      "required": [
+        "declared terminal id",
+        "at least one reachable incoming route unless it is the entry itself"
+      ],
+      "template": "authoring_templates/node_profiles/TERMINAL.yaml"
+    }
+  }
+}
