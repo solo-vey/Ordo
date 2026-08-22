@@ -1,0 +1,8 @@
+{
+  "schema_version": "ordo.editor.verification_source.v1",
+  "source": "repository-native language and tooling contours",
+  "catalog": "VERIFICATION_CATALOG.md",
+  "integration_baseline": "Curated Alpha.20 import without a duplicated external toolkit",
+  "toolkit_bundled": false,
+  "descriptor_count": 31
+}

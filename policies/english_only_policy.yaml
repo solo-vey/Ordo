@@ -32,6 +32,9 @@ path_exemptions:
 - id: validator_test_fixtures
   glob: cli/tests/fixtures/english_only_policy/**
   reason: Validator fixtures.
+- id: editor_localized_runtime_fixtures
+  glob: utilities/ordo_tree_editor/tests/fixtures/**
+  reason: Recorded runtime fixtures preserve localized analyst and playbook payloads for replay coverage.
 file_exemptions:
 - id: legal_name_commercial
   path: COMMERCIAL_LICENSE.md

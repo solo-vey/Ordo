@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "quick_authoring_preflight",
+  "title": "Quick authoring preflight",
+  "group": "aggregate",
+  "description": "Compatibility preflight from the portable authoring bundle",
+  "order": 260,
+  "enabled": true,
+  "requires": [
+    "portable_bundle"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "toolkit_only"
+}

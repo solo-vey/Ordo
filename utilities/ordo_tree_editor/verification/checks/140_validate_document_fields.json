@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "validate_document_fields",
+  "title": "Document-field bindings",
+  "group": "artifacts",
+  "description": "Validate document field producers and bindings",
+  "order": 140,
+  "enabled": true,
+  "requires": [
+    "bindings_file"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "needs_bindings_context"
+}

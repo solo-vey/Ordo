@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "coverage",
+  "title": "Coverage",
+  "group": "behavior",
+  "description": "Measure declared playbook/test coverage",
+  "order": 40,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "coverage",
+      "{package_root}"
+    ]
+  }
+}

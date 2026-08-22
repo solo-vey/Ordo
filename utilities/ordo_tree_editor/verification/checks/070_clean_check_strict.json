@@ -1,0 +1,23 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "clean_check_strict",
+  "title": "Strict clean check",
+  "group": "package",
+  "description": "Strict package hygiene/handoff check",
+  "order": 70,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "clean-check",
+      "{package_root}",
+      "--profile",
+      "strict"
+    ]
+  }
+}

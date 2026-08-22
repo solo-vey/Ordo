@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "template_diff",
+  "title": "Template contract diff",
+  "group": "templates",
+  "description": "Compare template contract versions and enforce breaking-change policy",
+  "order": 238,
+  "enabled": true,
+  "requires": [
+    "template_contract_pair"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "needs_template_context"
+}

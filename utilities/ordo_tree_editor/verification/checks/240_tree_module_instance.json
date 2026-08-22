@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "tree_module_instance",
+  "title": "Reusable tree-module instance",
+  "group": "templates",
+  "description": "Validate a generated reusable tree-module instance",
+  "order": 240,
+  "enabled": true,
+  "requires": [
+    "tree_instance"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "needs_tree_module_context"
+}

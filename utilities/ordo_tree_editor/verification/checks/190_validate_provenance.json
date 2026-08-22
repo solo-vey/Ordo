@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "validate_provenance",
+  "title": "Release provenance",
+  "group": "package",
+  "description": "Validate release provenance manifest",
+  "order": 190,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "validate-provenance",
+      "{package_root}"
+    ]
+  },
+  "evidence_requirement": {
+    "any_of": [
+      "reports/release_provenance.json"
+    ],
+    "skip_reason": "No release provenance manifest is present. Provenance validation is not applicable to this non-release/source package."
+  },
+  "skip_kind": "release_only"
+}

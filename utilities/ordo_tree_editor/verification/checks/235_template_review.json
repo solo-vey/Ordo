@@ -1,0 +1,18 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "template_review",
+  "title": "Template rendered-artifact review",
+  "group": "templates",
+  "description": "Review a rendered template artifact and emit structured evidence",
+  "order": 235,
+  "enabled": true,
+  "requires": [
+    "template_contract",
+    "rendered_artifact"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "needs_template_context"
+}

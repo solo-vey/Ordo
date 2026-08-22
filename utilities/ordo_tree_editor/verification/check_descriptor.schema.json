@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo.editor.verification_check.v1",
+  "type": "object",
+  "required": ["schema_version", "id", "title", "group", "description", "order", "runner"],
+  "properties": {
+    "schema_version": {"const": "ordo.editor.verification_check.v1"},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "group": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "order": {"type": "integer"},
+    "enabled": {"type": "boolean"},
+    "requires": {"type": "array", "items": {"type": "string"}},
+    "requires_any_files": {"type": "array", "items": {"type": "string"}},
+    "timeout_seconds": {"type": "integer", "minimum": 1},
+    "runner": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["command", "internal_editor_validate"]},
+        "command": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

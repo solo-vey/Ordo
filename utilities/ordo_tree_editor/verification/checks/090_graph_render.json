@@ -1,0 +1,29 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "graph_render",
+  "title": "Visual graph render",
+  "group": "graph",
+  "description": "Render the source graph as SVG to prove visual tooling can consume it",
+  "order": 90,
+  "enabled": true,
+  "requires": [
+    "source_file"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "{toolkit_root}/utilities/ordo_visual_graph_generator/ordo_graph.py",
+      "{source_path}",
+      "--format",
+      "svg",
+      "--out",
+      "{output_root}/graph.svg"
+    ]
+  },
+  "requires_executables": [
+    "dot"
+  ],
+  "skip_kind": "missing_optional_dependency"
+}

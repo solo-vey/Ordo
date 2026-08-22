@@ -1,0 +1,20 @@
+const fs=require('fs');
+const path=require('path');
+const root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'web/index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'web/app.js'),'utf8');
+const css=fs.readFileSync(path.join(root,'web/styles.css'),'utf8');
+function must(v,m){if(!v) throw new Error(m);}
+must(html.includes('id="tree-layout-compact"'), 'tree toolbar must expose Compact density control');
+must(html.includes('id="tree-layout-normal"'), 'tree toolbar must expose Normal density control');
+must(html.includes('id="tree-layout-spacious"'), 'tree toolbar must expose Spacious density control');
+must(html.includes('id="tree-layout-reflow"'), 'tree toolbar must expose Reflow action');
+must(js.includes('treeLayoutDensity:"normal"'), 'editor state must persist current tree layout density');
+must(js.includes('function setTreeLayoutDensity(mode, options = {})'), 'density changes must go through a dedicated setter');
+must(js.includes('function reflowTreeLayout()'), 'reflow action must exist');
+must(js.includes('state.positions = {};\n  state.manualPositions = new Set();'), 'reflow must clear manual node placements before rerender');
+must(js.includes('document.querySelector("#tree-layout-spacious")?.addEventListener("click",()=>setTreeLayoutDensity("spacious"));'), 'spacious control must be wired to the layout setter');
+must(js.includes('setTreeLayoutDensity(state.treeLayoutDensity, { rerender: false });'), 'toolbar active state must initialize from current density');
+must(css.includes('.tree-layout-controls, .tree-layout-density { display:flex; align-items:center; }'), 'layout toolbar must render as a control group');
+must(css.includes('.tree-zoom-controls button.active { background:#edf4ff; color:#23446f; box-shadow:inset 0 0 0 1px #b7c9eb; }'), 'active density button must be visually distinguished');
+console.log('PASS tree layout density controls regression');

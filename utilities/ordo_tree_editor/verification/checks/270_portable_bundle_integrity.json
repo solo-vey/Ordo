@@ -1,0 +1,17 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "portable_bundle_integrity",
+  "title": "Portable bundle integrity",
+  "group": "aggregate",
+  "description": "Validate the self-contained authoring bundle itself",
+  "order": 270,
+  "enabled": true,
+  "requires": [
+    "portable_bundle"
+  ],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command"
+  },
+  "skip_kind": "toolkit_only"
+}

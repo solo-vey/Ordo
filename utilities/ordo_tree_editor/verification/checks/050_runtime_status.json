@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "runtime_status",
+  "title": "Runtime readiness",
+  "group": "package",
+  "description": "Check source-of-truth runtime readiness and stale compiled IR",
+  "order": 50,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "runtime-status",
+      "{package_root}"
+    ]
+  }
+}

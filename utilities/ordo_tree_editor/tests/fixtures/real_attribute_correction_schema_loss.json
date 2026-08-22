@@ -1,0 +1,22 @@
+{
+  "assistant_proposal": "На основі джерела підготовлено таблицю.\n\n| module | data_type | field_path | field_type | field_role | calculation_relevance | source_evidence | analyst_status |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| company-profile | companyProfile | `.status` | string | Trigger | Визначення статусу | Опис модуля: містить статус | Pending |\n| company-profile | companyProfile | `.terminationDate` | date | Client Data | Дата припинення | Логічний атрибут | Pending |",
+  "analyst_input": "Підтверджую наведений перелік релевантних полів і їх призначення. Типи полів: statusCode — string; companyType.isIndividualInterprener — boolean; termination.date — date; shortName, fullName, shortEn, nameEn — string. Правило для statusCode: фактор наявний, якщо значення дорівнює \"closed\"; інакше відсутній.",
+  "state": {
+    "source_data_definition.rows": [
+      {
+        "source_number": 1,
+        "module": "company-profile",
+        "data_type": "companyProfile",
+        "context": "https://example/api/companyProfile",
+        "description": "company profile source"
+      }
+    ]
+  },
+  "model_updates": {
+    "source_attribute_mapping.rows": [
+      {"source_number": 1, "field": "statusCode", "purpose": "trigger_calculation", "confirmed": true, "type": "string", "logic": "factor present if value == 'closed'"},
+      {"source_number": 1, "field": "termination.date", "purpose": "client_output", "confirmed": true, "type": "date"}
+    ]
+  },
+  "expected_columns": ["module", "data_type", "field_path", "field_type", "field_role", "calculation_relevance", "source_evidence", "analyst_status"]
+}

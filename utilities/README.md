@@ -22,7 +22,7 @@ M61.2 imports the Visual Graph Generator as a second included companion utility.
 | Visual Graph Generator | `utilities/ordo_visual_graph_generator/` | Render Ordo YAML/IR as `.mmd`, `.svg`, `.png`; support subtree/context/path views and annotation overlays | Included as of M61.2 |
 | Playbook Lifecycle | `utilities/playbook_lifecycle/` | Upgrade-impact review, release comparison, and verified rollback checkpoints | Included |
 | Playbook Regression Harness | `utilities/playbook_regression_harness/` | Versioned deterministic, semantic, stability, provenance, and behavioral-package preparation for playbook regression | Candidate 1.7.0 |
-| Ordo Tree Editor | `utilities/ordo_tree_editor/` | Local browser-based visual editing of Ordo YAML graphs with canonical Python validation | Alpha v0.2.0-alpha.1 |
+| Ordo Tree Editor | `utilities/ordo_tree_editor/` | Local browser-based visual inspection, validation, and controlled authoring of Ordo YAML graphs | Alpha v0.2.0-alpha.20.0.195-dev |
 
 ## Rule
 

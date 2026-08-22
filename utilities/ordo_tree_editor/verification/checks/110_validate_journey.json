@@ -1,0 +1,30 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "validate_journey",
+  "title": "Journey validation",
+  "group": "state",
+  "description": "Validate the contractual manual-run journey ledger when available",
+  "order": 110,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "validate-journey",
+      "{package_root}"
+    ]
+  },
+  "evidence_requirement": {
+    "any_of": [
+      "runtime/manual_run_journey.events.jsonl",
+      "runtime/MANUAL_RUN_JOURNEY.yaml"
+    ],
+    "require_nonempty": true,
+    "skip_reason": "No non-empty manual-run journey evidence is available. Journey validation is not applicable to a source-only verification run."
+  },
+  "skip_kind": "needs_runtime_evidence"
+}

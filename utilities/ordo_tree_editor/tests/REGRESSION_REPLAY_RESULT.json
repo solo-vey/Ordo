@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "fixture": "source_collection_gate_human_variant",
+      "route_key": "on_pass",
+      "next_id": "NEXT_NODE",
+      "reason": "inherited-human-decision",
+      "status": "running"
+    },
+    {
+      "fixture": "source_collection_gate_deterministic_variant",
+      "route_key": "on_pass",
+      "next_id": "NEXT_NODE",
+      "reason": "inherited-branch-evidence",
+      "status": "running"
+    },
+    {
+      "fixture": "missing_input_unresolved",
+      "route_key": null,
+      "next_id": null,
+      "reason": "missing required inputs: payload.checksum",
+      "gate_result": "unresolved",
+      "status": "halted",
+      "completion_reason": "unresolved_required_input"
+    },
+    {
+      "fixture": "attribute_confirmation",
+      "reason": "proposal-preserving-confirmation",
+      "row_count": 3,
+      "full_schema": true,
+      "route_key": "next",
+      "next_id": "VALIDATION_GATE"
+    },
+    {
+      "fixture": "completed_respond_runtime_route_authority",
+      "route_key": "next",
+      "next_id": "G_TRIGGER_SOURCE_BLOCK_VALID",
+      "await_analyst": false,
+      "override_reason": "allowed-route-overrides-model-await",
+      "state_update_keys": [
+        "source_attribute_mapping.rows",
+        "source_data_definition.rows"
+      ]
+    },
+    {
+      "fixture": "attribute_correction_schema_preservation",
+      "row_count": 2,
+      "full_schema": true,
+      "route_key": "next",
+      "next_id": "VALIDATION_GATE_2",
+      "reconciliation": {
+        "mode": "schema-preserving-reconciliation",
+        "proposal_chars": 474,
+        "proposal_columns": [
+          "module",
+          "data_type",
+          "field_path",
+          "field_type",
+          "field_role",
+          "calculation_relevance",
+          "source_evidence",
+          "analyst_status"
+        ],
+        "proposal_row_count": 2,
+        "proposal_contract": {},
+        "targets": [
+          "source_attribute_mapping.rows"
+        ],
+        "merged_object_targets": [],
+        "unresolved_columns": {}
+      }
+    },
+    {
+      "fixture": "client_mapping_retry_continuity",
+      "enter_reason": "retry-existing-structured-output",
+      "enter_preserved_target": true,
+      "enter_regenerated_target": false,
+      "respond_reason": "generic-proposal-preserving-confirmation",
+      "next_id": "GENERIC_VALIDATION_GATE",
+      "same_rows": true
+    }
+  ]
+}

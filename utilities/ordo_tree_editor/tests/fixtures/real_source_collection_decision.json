@@ -1,0 +1,48 @@
+{
+  "origin": "ordo-llm-debug-run-summary(10).json",
+  "problem": "missing required input was treated as false and sent deterministic gate to on_fail",
+  "analyst_input": "ні",
+  "producer": {
+    "id": "DECISION_NODE_A",
+    "answer_type": "enum",
+    "allowed_values": [
+      "так",
+      "ні",
+      "не впевнений"
+    ],
+    "on_answer": {
+      "branch": {
+        "так": {
+          "next": "MORE_INPUT_NODE"
+        },
+        "ні": {
+          "next": "COLLECTION_COMPLETE_GATE"
+        },
+        "не впевнений": {
+          "next": "DECISION_NODE_A"
+        }
+      }
+    }
+  },
+  "gate_human_variant": {
+    "id": "COLLECTION_COMPLETE_GATE",
+    "method": "human",
+    "trust_class": "human_decision",
+    "condition": "all collected source blocks are valid and analyst has stated that no additional source is required",
+    "on_pass": "NEXT_NODE",
+    "on_fail": "MORE_INPUT_NODE"
+  },
+  "gate_deterministic_variant": {
+    "id": "COLLECTION_COMPLETE_GATE",
+    "method": "deterministic",
+    "trust_class": "deterministic",
+    "required_inputs": [
+      "arbitrary_decision_state"
+    ],
+    "condition": "all collected source blocks are valid and analyst has stated that no additional source is required",
+    "on_pass": "NEXT_NODE",
+    "on_fail": "MORE_INPUT_NODE"
+  },
+  "expected_route": "on_pass",
+  "expected_next": "NEXT_NODE"
+}

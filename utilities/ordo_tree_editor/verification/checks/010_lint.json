@@ -1,0 +1,21 @@
+{
+  "schema_version": "ordo.editor.verification_check.v1",
+  "id": "lint",
+  "title": "Language lint",
+  "group": "language",
+  "description": "Validate playbook source against the Ordo language model",
+  "order": 10,
+  "enabled": true,
+  "requires": [],
+  "timeout_seconds": 180,
+  "runner": {
+    "type": "command",
+    "command": [
+      "python",
+      "-m",
+      "ordo.cli",
+      "lint",
+      "{package_root}"
+    ]
+  }
+}

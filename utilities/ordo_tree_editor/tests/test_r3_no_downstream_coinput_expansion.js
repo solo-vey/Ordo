@@ -1,0 +1,1 @@
+const fs=require('fs');const j=fs.readFileSync('web/app.js','utf8');if(j.includes('function lineageSupportingPrerequisites'))throw Error('coinput helper remains');if(!j.includes('selected semantic layer renders exactly one'))throw Error('uniqueness contract missing');console.log('PASS no coinput expansion');

@@ -1,0 +1,26 @@
+{
+  "origin": "ordo-llm-debug-run-summary(9).json",
+  "problem": "bare confirmation caused model to replace full proposal table with reduced rows, then validation looped",
+  "assistant_proposal": "На основі бізнес-значення ризик-фактора «Діяльність компанії офіційно припинена» та визначеного джерела `company-profile`, я проаналізував потенційні поля для розрахунку. Оскільки детальна схема REST-відповіді для `companyProfile` не була надана в поточному стані, я виділив найбільш імовірні поля-кандидати, які зазвичай присутні в таких реєстраційних даних для визначення статусу припинення.\n\n| module | data_type | field_path | field_type | field_role | calculation_relevance | source_evidence | analyst_status |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| company-profile | companyProfile | `status` | string | Trigger | Основний індикатор статусу (наприклад, \"припинено\") | Стандартна структура реєстраційних даних | Pending |\n| company-profile | companyProfile | `terminationDate` | date | Client Data | Дата припинення діяльності для відомості клієнта | Стандартна структура реєстраційних даних | Pending |\n| company-profile | companyProfile | `registrationStatus` | string | Trigger | Додаткова перевірка статусу реєстрації | Стандартна структура реєстраційних даних | Pending |\n\nЧи відповідають ці поля структурі API `companyProfile`, або необхідно додати/видалити конкретні атрибути згідно з технічною документацією?",
+  "analyst_input": "так",
+  "state": {
+    "source_data_definition.rows": [
+      {
+        "source_number": 1,
+        "module": "company-profile",
+        "data_type": "companyProfile"
+      }
+    ]
+  },
+  "expected_required_columns": [
+    "module",
+    "data_type",
+    "field_path",
+    "field_type",
+    "field_role",
+    "calculation_relevance",
+    "source_evidence",
+    "analyst_status"
+  ],
+  "history_index": 26
+}
