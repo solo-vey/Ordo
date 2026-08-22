@@ -133,7 +133,11 @@ def build_profile(stage: Path, output: Path, profile: str, version: str) -> dict
             info.create_system = 3
             info.external_attr = ((0o100755 if rel == "cli_embedded/ordo" else 0o100644) << 16)
             archive.writestr(info, path.read_bytes())
-        archive.writestr("RELEASE_MANIFEST.json", json.dumps(manifest, indent=2).encode() + b"\n")
+        manifest_info = zipfile.ZipInfo("RELEASE_MANIFEST.json", date_time=FIXED_TIMESTAMP)
+        manifest_info.create_system = 3
+        manifest_info.external_attr = (0o100644 << 16)
+        manifest_info.compress_type = zipfile.ZIP_DEFLATED
+        archive.writestr(manifest_info, json.dumps(manifest, indent=2).encode() + b"\n")
     return {"path": output.name, "sha256": sha256(output), "bytes": output.stat().st_size}
 
 
