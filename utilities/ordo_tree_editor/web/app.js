@@ -4128,7 +4128,7 @@ function providerLabel(provider) {
   return provider === "mlx" ? "Local LLM" : provider === "custom" ? "OpenAI-compatible" : "OpenAI";
 }
 function defaultProviderBaseUrl(provider) {
-  return provider === "mlx" ? "http://127.0.0.1:8080/v1" : provider === "custom" ? "http://ml03.ligazakon.net:8555/v1" : "https://api.openai.com/v1";
+  return provider === "mlx" ? "http://127.0.0.1:8080/v1" : provider === "custom" ? "" : "https://api.openai.com/v1";
 }
 let activeLiveSetting = null;
 function liveSettingLocked() { return state.liveRunning || state.liveBusy; }
