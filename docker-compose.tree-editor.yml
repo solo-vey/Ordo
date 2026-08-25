@@ -1,0 +1,17 @@
+services:
+  ordo-tree-editor:
+    build:
+      context: .
+      dockerfile: utilities/ordo_tree_editor/Dockerfile
+    image: ordo-tree-editor:local
+    ports:
+      - "${ORDO_EDITOR_PORT:-8765}:8765"
+    environment:
+      ORDO_EDITOR_HOST: 0.0.0.0
+      ORDO_EDITOR_PORT: 8765
+      ORDO_MODEL_PROVIDER: ${ORDO_MODEL_PROVIDER:-}
+      ORDO_MODEL_NAME: ${ORDO_MODEL_NAME:-}
+      ORDO_MODEL_BASE_URL: ${ORDO_MODEL_BASE_URL:-}
+      ORDO_MODEL_API_KEY: ${ORDO_MODEL_API_KEY:-}
+      ORDO_GITLAB_ROOT: ${ORDO_GITLAB_ROOT:-}
+    restart: unless-stopped
