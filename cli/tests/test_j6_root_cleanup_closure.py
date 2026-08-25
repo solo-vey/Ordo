@@ -42,7 +42,7 @@ def test_j6_closure_root_allowlist_matches_repository() -> None:
     closure = load_json(CLOSURE_PATH)
     actual = sorted(path.name for path in ROOT.iterdir() if path.is_file())
 
-    assert closure["root_file_count"] == len(closure["root_allowed_files"]) == 15
+    assert closure["root_file_count"] == len(closure["root_allowed_files"]) == 17
     assert actual == sorted(closure["root_allowed_files"])
     assert closure["historical_contours_rewritten"] is False
 
