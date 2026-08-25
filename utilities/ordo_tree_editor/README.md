@@ -71,6 +71,15 @@ corresponding `ORDO_MODEL_*` environment variables. This compose file is for
 trusted internal networks and intentionally does not provide authentication,
 TLS, or a reverse proxy.
 
+The canonical published image is:
+
+```text
+ghcr.io/solo-vey/ordo-tree-editor:latest
+```
+
+It is published automatically from `main` by the `Publish Tree Editor Docker image`
+workflow. Set `ORDO_EDITOR_IMAGE` to select another tag or a local image.
+
 ## Validation boundary
 
 The editor performs editor-local structural validation only. It does not treat
