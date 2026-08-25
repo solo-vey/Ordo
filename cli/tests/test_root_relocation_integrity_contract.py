@@ -15,6 +15,7 @@ REPORT_MANIFEST_PATH = ROOT / "reports/CANONICAL_REPORTS_MANIFEST.yaml"
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^]]*]\(([^)]+)\)")
 ROOT_FILES = {
     ".gitignore",
+    ".dockerignore",
     "CHANGELOG.md",
     "CITATION.cff",
     "CODE_OF_CONDUCT.md",
@@ -29,6 +30,7 @@ ROOT_FILES = {
     "SUPPORT.md",
     "generated_artifacts_policy.yaml",
     "repo_hygiene.yml",
+    "docker-compose.tree-editor.yml",
 }
 
 

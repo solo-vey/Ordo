@@ -1,0 +1,15 @@
+.git
+.git/**
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+**/*.pyo
+dist/
+reports/
+archive/
+evidence/
+empirical_evidence/
+packages/vibe_arf/
+utilities/ordo_tree_editor/tests/
+**/.DS_Store
+**/.icloud

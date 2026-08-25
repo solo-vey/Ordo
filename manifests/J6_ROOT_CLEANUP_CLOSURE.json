@@ -4,8 +4,9 @@
   "status": "closed",
   "closed_at": "2026-07-21",
   "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663",
-  "root_file_count": 15,
+  "root_file_count": 17,
   "root_allowed_files": [
+    ".dockerignore",
     ".gitignore",
     "CHANGELOG.md",
     "CITATION.cff",
@@ -20,7 +21,8 @@
     "SHA256SUMS.txt",
     "SUPPORT.md",
     "generated_artifacts_policy.yaml",
-    "repo_hygiene.yml"
+    "repo_hygiene.yml",
+    "docker-compose.tree-editor.yml"
   ],
   "phases": [
     {"id": "J.6a", "status": "closed", "result": "read_only_root_inventory_and_classification"},

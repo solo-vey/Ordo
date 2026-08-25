@@ -54,6 +54,23 @@ To choose a different port or avoid opening a browser automatically:
 python3 utilities/ordo_tree_editor/editor_service.py --port 9000 --no-browser
 ```
 
+## Docker Compose deployment
+
+For an internal, unauthenticated deployment without persistent upload storage,
+run from the repository root:
+
+```bash
+docker compose -f docker-compose.tree-editor.yml up --build
+```
+
+Open `http://127.0.0.1:8765`. Uploaded YAML and ZIP content is held in the
+container process workspace and is not persisted across container recreation.
+The image exposes `/healthz` for Docker health checks. Set `ORDO_EDITOR_PORT`
+to change the host port; model provider settings can be supplied through the
+corresponding `ORDO_MODEL_*` environment variables. This compose file is for
+trusted internal networks and intentionally does not provide authentication,
+TLS, or a reverse proxy.
+
 ## Validation boundary
 
 The editor performs editor-local structural validation only. It does not treat

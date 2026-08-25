@@ -196,7 +196,7 @@
       "title": "Repository root structure audit and cleanup",
       "status": "closed",
       "closed_at": "2026-07-21",
-      "root_file_count": 15,
+      "root_file_count": 17,
       "closure_evidence": "manifests/J6_ROOT_CLEANUP_CLOSURE.json",
       "validated_main_baseline": "42fdf1e9b439e3d0c4c0109f8ca8061d657ee663"
     },
