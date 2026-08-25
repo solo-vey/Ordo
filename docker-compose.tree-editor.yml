@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: utilities/ordo_tree_editor/Dockerfile
-    image: ordo-tree-editor:local
+    image: ${ORDO_EDITOR_IMAGE:-ghcr.io/solo-vey/ordo-tree-editor:latest}
     ports:
       - "${ORDO_EDITOR_PORT:-8765}:8765"
     environment:
