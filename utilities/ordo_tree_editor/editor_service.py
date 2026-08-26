@@ -131,7 +131,9 @@ except ImportError:
 OPENAI_MODELS = ("gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna")
 PROVIDERS = ("openai", "mlx", "custom")
 DEFAULT_MLX_BASE_URL = "http://127.0.0.1:8080/v1"
-DEFAULT_CUSTOM_BASE_URL = "http://ml03.ligazakon.net:8555/v1"
+# No organization-specific endpoint is embedded in the standard distribution.
+# Configure a custom OpenAI-compatible endpoint explicitly at local startup.
+DEFAULT_CUSTOM_BASE_URL = ""
 LIVE_SESSIONS: dict[str, dict[str, Any]] = {}
 PROVIDER_CAPABILITY_CACHE: dict[str, dict[str, Any]] = {}
 PROVIDER_CAPABILITY_CACHE_PATH = Path.home() / ".ordo_tree_editor" / "provider_capabilities.json"

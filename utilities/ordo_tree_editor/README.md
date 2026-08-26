@@ -338,7 +338,7 @@ Optional startup configuration can be supplied as command-line parameters or env
 --gitlab-root / ORDO_GITLAB_ROOT
 ```
 
-For a local installation, edit `ordo_editor_defaults.env`. These values are runtime parameters; they are not embedded into Editor logic.
+For a local installation, edit `ordo_editor_defaults.env`. These values are runtime parameters; they are not embedded into Editor logic. The standard distribution does not contain an organization-specific custom model endpoint or GitLab repository URL; provide both explicitly through environment variables when launching your private local instance.
 
 On macOS, executable permission is not required when the launcher is invoked through the shell:
 
