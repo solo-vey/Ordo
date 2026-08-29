@@ -21,7 +21,7 @@ Derived from the real attribute-mapping retry loop.
 
 The fixture stores a real assistant Markdown proposal table and a one-word analyst confirmation.
 
-Invariant: a bare confirmation must preserve the structured proposal instead of asking a model to reconstruct the table from the word `так`.
+Invariant: a bare confirmation must preserve the structured proposal instead of asking a model to reconstruct the table from a single token.
 
 ## Generic safety cases
 
