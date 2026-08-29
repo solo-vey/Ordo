@@ -6,17 +6,17 @@
   "profiles": {
     "EDIT": {
       "artifact": "VIBE_ARF_0.1.2_EDIT.zip",
-      "artifact_sha256": "13bdf9da53d6a3b5308d47e91891743dc08ad013f88d1e99919836b3a955808a",
+      "artifact_sha256": "ec54392d02f154176442b6370b7d0c01c869144629774e1db839f46e350e0a90",
       "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
     },
     "CLI_RUN": {
       "artifact": "VIBE_ARF_0.1.2_CLI_RUN.zip",
-      "artifact_sha256": "e1d66eb9786dad9b79e2f585a9181736c4d2641b4281a8ce0a5e35bc4afb2175",
+      "artifact_sha256": "a5daead42a4be71431d7933b4f97c81d34962b9b9100dd889945bdce7fa4fe82",
       "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
     },
     "MODEL_RUN": {
       "artifact": "VIBE_ARF_0.1.2_MODEL_RUN.zip",
-      "artifact_sha256": "d1da9473b813cb1b44aa6c25f87fd645045c127dde36a7ed99eeb20efebb8d5e",
+      "artifact_sha256": "df15ca3835d514838712e6023bfc1a7cb07c29962c510394635b0de72e7f5910",
       "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
     }
   }
