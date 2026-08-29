@@ -605,8 +605,14 @@ def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
                 continue
             targets = _targets(route)
             edges.extend({"target": target, "storage": "on_answer", "key": str(outcome)} for target in targets)
-    for edge in edges:
-        edge.setdefault("edge_type", "control_flow")
+    navigation = node.get("navigation_contract", {})
+    if isinstance(navigation, dict) and isinstance(navigation.get("allowed_to"), list):
+        existing = {edge["target"] for edge in edges}
+        edges.extend(
+            {"target": target, "storage": "navigation_allowed_to", "key": target}
+            for target in navigation["allowed_to"]
+            if isinstance(target, str) and not target.startswith("$") and target not in existing
+        )
     return edges
 
 
@@ -636,7 +642,7 @@ def _gate_edges(gate: dict[str, Any], known_entity_ids: set[str] | None = None) 
         for target in _route_targets(gate.get(key)):
             if _is_reserved_graph_disposition(target) and target not in known_entity_ids:
                 continue
-            result.append({"target": target, "storage": "gate_route", "key": key, "edge_type": "control_flow"})
+            result.append({"target": target, "storage": "gate_route", "key": key})
     return result
 
 
@@ -1223,7 +1229,8 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
                     if any(str(g.get("id"))==pred for g in gates):
                         edges.append({"source":pred,"target":out_entity["id"],"edge_type":"enables_output","relation_type":"enables_output","artifact_path":out_entity.get("path") or ""})
     for edge in edges:
-        edge.setdefault("relation_type",edge.get("edge_type","control_flow"))
+        if edge.get("edge_type"):
+            edge.setdefault("relation_type", edge["edge_type"])
 
     # Reachability is computed from execution edges only.  It is diagnostic in
     # Release 1; we do not mutate playbook semantics or delete source entities.
@@ -1316,13 +1323,13 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
         ] + [
             {
                 "id": out_entity["id"],
-                "element_type": "output",
-                "entity_type": "declared_output" if out_entity.get("declared") else "output",
-                "collection": "declared_outputs" if out_entity.get("declared") else "derived_outputs",
+                "element_type": "terminal" if not out_entity.get("path") and not out_entity.get("producers") else "output",
+                "entity_type": "terminal" if not out_entity.get("path") and not out_entity.get("producers") else ("declared_output" if out_entity.get("declared") else "output"),
+                "collection": None if not out_entity.get("path") and not out_entity.get("producers") else ("declared_outputs" if out_entity.get("declared") else "derived_outputs"),
                 "label": (out_entity.get("path") or out_entity["id"]),
                 "path": out_entity.get("path") or "",
                 "answer_type": (f"declared output · {str(out_entity.get('traceability_status') or '').lower()}" if out_entity.get("declared") else "materialized output"),
-                "terminal": False,
+                "terminal": not out_entity.get("path") and not out_entity.get("producers"),
                 "producers": out_entity.get("producers",[]),
                 "traceability_status": out_entity.get("traceability_status"),
                 "traceability_reason": out_entity.get("traceability_reason"),
@@ -1451,7 +1458,7 @@ def _structural_model(source: dict[str, Any]) -> dict[str, Any]:
     for edge in edges:
         adjacency.setdefault(edge["source"], []).append(edge["target"])
         reverse.setdefault(edge["target"], []).append(edge["source"])
-    return {
+    result = {
         "nodes": nodes,
         "gates": gates,
         "records": records,
@@ -1465,6 +1472,7 @@ def _structural_model(source: dict[str, Any]) -> dict[str, Any]:
         "entry": _entry_node_id(source),
         "outputs": outputs,
     }
+    return result
 
 
 def _result(check_id: str, name: str, findings: list[dict[str, Any]], pass_summary: str) -> dict[str, Any]:
@@ -1665,13 +1673,18 @@ def validate_source(source: dict[str, Any]) -> dict[str, Any]:
     errors = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "error")
     warnings = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "warning")
     infos = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "info")
-    return {
+    result = {
         "scope": "editor_structural_validation",
         "status": "failed" if errors else ("warning" if warnings else "passed"),
         "summary": {"checks": len(checks), "errors": errors, "warnings": warnings, "info": infos},
         "checks": checks,
         "note": "Structural validation only. Full Ordo playbook validation must be performed by the Ordo validation/playbook tooling.",
     }
+    result["issues"] = [
+        ({**finding, "code": "GRAPH_TARGET_MISSING"} if finding.get("code") == "DANGLING_TARGET" else finding)
+        for check in checks for finding in check["findings"]
+    ]
+    return result
 
 
 def tree_module_manifest_path() -> Path:
