@@ -1,15 +1,22 @@
-# ARF Playbook Kit
+# ARF Playbook Kit (legacy)
 
-This directory is the canonical source for the chat-first ARF Playbook Kit.
-Users download the reviewed ZIP from the current GitHub Release; they do not
-need to clone this repository, install Python, or build the archive.
+> **Deprecation notice:** New playbooks should be created with the Vibe ARF
+> package. This lower-level kit remains available for compatibility,
+> migration, and engineering workflows and is scheduled for deprecation.
+
+This directory is the legacy source for the lower-level chat-first ARF Playbook Kit.
+It is retained for compatibility, migration, and engineering workflows. New users
+should download the current Vibe ARF release instead; they do not need to clone
+this repository, install Python, or build either archive.
 
 The source files and the active Applied Project Factory runtime are assembled
 deterministically by
 [`../../tools/build_arf_playbook_kit.py`](../../tools/build_arf_playbook_kit.py).
 The next build version is declared in [`VERSION`](VERSION); it is not a
-download claim. The current downloadable release is identified by
+download claim. The historical ARF release pointer is identified by
 [`../../manifests/ARF_PLAYBOOK_KIT_CURRENT.json`](../../manifests/ARF_PLAYBOOK_KIT_CURRENT.json).
+The current recommended download route is the
+[`Vibe ARF release`](../../manifests/VIBE_ARF_CURRENT.json).
 
 [`manifest.json`](manifest.json) records the immutable metadata for the
 currently published release. A new version only becomes current after its
@@ -29,7 +36,7 @@ Playbook Regression Harness (PRH) 1.7.0 and Playbook Regression Playbook (PRP)
 PRP orchestrates baseline-versus-candidate comparison. Their full pilot and
 promotion remain candidate-stage work.
 
-ARF Kit 0.4.10 also packages the gate-aware graph validation contour, reusable tree-module library, companion utility set including the local Ordo Tree Editor, guided Mode 5 migration
+The legacy ARF Kit 0.4.10 snapshot also packages the gate-aware graph validation contour, reusable tree-module library, companion utility set including the local Ordo Tree Editor, guided Mode 5 migration
 working-artifact templates, and the release-build
 tooling described in `source/ARF_PACKAGE_README.md`, so the downloadable
 artifact documents both its included capabilities and its deliberate

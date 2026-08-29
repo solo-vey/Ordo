@@ -2,22 +2,22 @@
 
 Create your first Ordo playbook in a language-model chat. You do not need Python, a terminal, or prior knowledge of Ordo.
 
-## 1. Download the ARF Playbook Kit
+## 1. Download Vibe ARF
 
-Download [the current ARF Playbook Kit 0.4.10](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip). Keep the archive intact.
+Download [the Vibe ARF 0.1.2 MODEL_RUN package](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip) from the [Vibe ARF release](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2). Keep the archive intact.
 
 Before designing a domain-specific process, review the [Playbook Authoring
 Recommendations](PLAYBOOK_AUTHORING_RECOMMENDATIONS.md). They explain how to
 move from a domain model and input artifacts to templates, parameters,
 dependencies, gates, validation, testing, and readiness.
 
-The Kit contains ARF Playbook Laws, a ready prompt, a template, a small weekly-status process brief, a test-and-improvement prompt, and expected deliverables. You do not need to clone the repository, install Python, or build anything.
+The Vibe ARF package contains the authoring workflow, ready prompts, templates, validation profiles, simulation guidance, and expected deliverables. You do not need to clone the repository, install Python, or build anything. The lower-level ARF Playbook Kit remains available for contributors and migration work, but is a legacy route.
 
-## 2. Upload the Kit to a language-model chat
+## 2. Upload Vibe ARF to a language-model chat
 
-Open a new chat that accepts file uploads and attach the ZIP. Ask the model to read every file before beginning.
+Open a new chat that accepts file uploads and attach the Vibe ARF ZIP. Ask the model to read every file before beginning.
 
-If the chat cannot open ZIP files, extract the archive and upload its four Markdown files together.
+If the chat cannot open ZIP files, extract the archive and upload the chat-facing Markdown files from the package root together.
 
 ## 3. Paste the Kit start prompt
 

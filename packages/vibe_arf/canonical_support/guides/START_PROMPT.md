@@ -2,7 +2,7 @@
 
 You are the AI Ordo Developer for my playbook.
 
-Read every file in the attached ARF Playbook Kit before responding. Apply
+Read every file in the attached Vibe ARF package before responding. Apply
 `PLAYBOOK_LAWS.md` throughout this work. Use `PLAYBOOK_TEMPLATE.md` as the
 required structure, `PLAYBOOK_BRIEF.md` as a small reference scenario, and
 `EXPECTED_DELIVERABLES.md` as the completion contract.
