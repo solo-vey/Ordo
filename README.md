@@ -1,6 +1,6 @@
 # Ordo — AI Process Language and Applied Runtime Framework
 
-Ordo is a language and framework for designing, validating, executing, testing, and improving structured AI-assisted processes. The repository contains the language specification, runtime contracts, Applied Process Factory (APF), reference playbooks, command-line tooling, tests, documentation, books, and empirical evidence.
+Ordo is a language and framework for designing, validating, executing, testing, and improving structured AI-assisted processes. The repository contains the language specification, runtime contracts, Vibe ARF authoring layer, lower-level ARF runtime contracts, reference playbooks, command-line tooling, tests, documentation, books, and empirical evidence.
 
 > Latest canonical packaged baseline: `ordo-2026.07.17-rc.10`  
 > Language: `0.14.0-rc.1` · Framework: `0.6.0-rc.1`
@@ -11,13 +11,13 @@ Ordo is a language and framework for designing, validating, executing, testing, 
 
 The primary first-use path is a language-model chat. Python is optional.
 
-1. [Download the ARF Playbook Kit 0.4.10](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip).
+1. [Download the Vibe ARF 0.1.2 MODEL_RUN package](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip) from the [Vibe ARF release](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2).
 2. Upload the ZIP to a new language-model chat.
-3. Open and paste `START_PROMPT.md` from the attached Kit.
+3. Open and paste `START_PROMPT.md` from the attached Vibe ARF package.
 4. Answer the model's short clarification sequence and approve the first playbook draft.
 5. Ask the model to test the playbook, explain any failures, and improve it before returning the final package.
 
-No local installation is required for this route. The Kit contains the ARF rules, prompts, template, full factory runtime, test-and-improve prompt, decision debug trace guidance, document-field provenance validation guidance, gate-aware graph transition validation, reusable tree-module library, package-local anti-pattern language contour, delivery contract, companion utilities including the local Tree Editor, guided Mode 5 migration templates, and release-build tools. Its [checksum](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip.sha256) is published beside the ZIP.
+No local installation is required for this route. Vibe ARF is the recommended authoring layer and includes the information-first workflow, prompts, templates, validation profiles, simulation hooks, and package guidance. The lower-level ARF Playbook Kit remains available for compatibility and engineering use, but is a legacy route scheduled for deprecation. Release checksums are published in the [Vibe ARF SHA256SUMS.txt](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/SHA256SUMS.txt).
 
 See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the complete chat walkthrough and the optional CLI validation path.
 

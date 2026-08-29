@@ -4,15 +4,15 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 ## Start here
 
-- [`QUICKSTART.md`](QUICKSTART.md) — download the ARF Playbook Kit, then create, test, and improve a first playbook in a language-model chat.
-- [`CHAT_FIRST_ONBOARDING.md`](CHAT_FIRST_ONBOARDING.md) — canonical chat-first contract, ARF Kit artifact, and completion criteria.
+- [`QUICKSTART.md`](QUICKSTART.md) — download Vibe ARF, then create, test, and improve a first playbook in a language-model chat.
+- [`CHAT_FIRST_ONBOARDING.md`](CHAT_FIRST_ONBOARDING.md) — canonical chat-first contract, Vibe ARF artifact, and completion criteria.
 - [`FAQ.md`](FAQ.md) — answers to common project, licensing, package, and support questions.
 - [`GLOSSARY.md`](GLOSSARY.md) — short definitions and links for core Ordo terminology.
 - [`../CITATION.cff`](../CITATION.cff) — canonical repository citation metadata.
 - [`../README.md`](../README.md) — repository overview, release distinction, and top-level entry points.
 - [`../SUPPORT.md`](../SUPPORT.md) — choose the correct route for bugs, questions, proposals, security reports, and conduct concerns.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution workflow and repository expectations.
-- [`regression/README.md`](regression/README.md) — candidate PRP/PRH playbook regression contour and ARF authoring use.
+- [`regression/README.md`](regression/README.md) — candidate PRP/PRH playbook regression contour and Vibe ARF authoring use.
 
 ## Security, support, and governance
 
@@ -32,7 +32,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 ## Packages and authoring
 
 - [`../packages/README.md`](../packages/README.md) — reference process and playbook packages.
-- [`PLAYBOOK_AUTHORING_RECOMMENDATIONS.md`](PLAYBOOK_AUTHORING_RECOMMENDATIONS.md) — complete v0.6 guidance for designing a new playbook on ARF.
+- [`PLAYBOOK_AUTHORING_RECOMMENDATIONS.md`](PLAYBOOK_AUTHORING_RECOMMENDATIONS.md) — complete v0.6 guidance for designing a new playbook on Vibe ARF.
 - [`../integrations/README.md`](../integrations/README.md) — versioned external and aligned integrations.
 - [`apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md`](apf/legacy-root/APF_STANDARD_MODULE_GUIDE.md) — preserved standard APF module guidance.
 

@@ -1,6 +1,6 @@
-# ARF Playbook Factory
+# Vibe ARF Playbook Factory
 
-This is the standalone ARF package for creating a new Ordo playbook in a language-model chat.
+This is the standalone Vibe ARF package for creating a new Ordo playbook in a language-model chat. The lower-level ARF runtime remains the execution foundation.
 
 ## Start in chat
 
@@ -22,7 +22,7 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The 0.4.10 kit contains these optional capabilities in addition to the core ARF
+The Vibe ARF 0.1.2 package contains these optional capabilities in addition to the core
 authoring and runtime contract:
 
 - `source/tree_module_library/` — build-time reusable document-materialization,
@@ -40,7 +40,7 @@ authoring and runtime contract:
   companion utility.
 - `utilities/ordo_tree_editor/` — a local browser-based Ordo YAML graph editor
   with canonical Python graph and lint validation.
-- `release_tools/` — the ARF Kit builder, project release-archive builder,
+- `release_tools/` — the Vibe ARF package builder, project release-archive builder,
   release-integrity verifier, and English-only policy validator.
 
 These utilities are optional advanced tooling. They do not replace the

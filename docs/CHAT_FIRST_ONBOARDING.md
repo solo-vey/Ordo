@@ -2,13 +2,17 @@
 
 Chat-first is the primary creation and learning route for Ordo. A language model guides the user from a natural-language process description to a reviewed playbook package. CLI and Python tooling remain optional deterministic helpers for automation, reproducibility, CI, and release validation.
 
-## Canonical ARF Playbook Kit
+## Canonical Vibe ARF package
 
-- [Download ARF Playbook Kit 0.4.10](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip)
-- [Download SHA-256](https://github.com/solo-vey/Ordo/releases/download/arf-playbook-kit-v0.4.10/ORDO_ARF_PLAYBOOK_KIT_0.4.10.zip.sha256)
-- [`current Kit manifest`](../manifests/ARF_PLAYBOOK_KIT_CURRENT.json)
-- [`Kit source`](../packages/arf_playbook_kit/)
+- [Download Vibe ARF 0.1.2 MODEL_RUN](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip)
+- [Vibe ARF release and profiles](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2)
+- [Download SHA-256 manifest](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/SHA256SUMS.txt)
+- [`Vibe ARF source`](../packages/vibe_arf/)
 - [`five-step quickstart`](QUICKSTART.md)
+
+The older ARF Playbook Kit remains a lower-level compatibility package for
+engineering and migration work. It is not the recommended first-use route and
+is scheduled for deprecation.
 
 ## Required interaction contract
 

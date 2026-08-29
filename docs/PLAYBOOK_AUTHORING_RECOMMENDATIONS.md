@@ -1,10 +1,14 @@
-# Recommendations for Building Playbooks on ARF
+# Recommendations for Building Playbooks on Vibe ARF
+
+Vibe ARF is the recommended authoring layer for new playbooks. The lower-level
+ARF runtime remains the execution foundation and compatibility layer, but its
+standalone authoring kit is a legacy route scheduled for deprecation.
 
 Document version: 0.6
 Status: complete working guidance
 
 These recommendations describe a disciplined authoring route for creating a
-new playbook on the Applied Runtime Framework (ARF). They are authoring
+new playbook on Vibe ARF and its Applied Runtime Framework (ARF) foundation. They are authoring
 guidance, not a replacement for deterministic CLI and release validation.
 
 ## 1. Start with a domain model
@@ -225,7 +229,8 @@ versioned package is created.
 
 ## Relationship to ARF and the CLI
 
-This document describes the recommended authoring discipline. The ARF Kit is
-the chat-first route for designing and reviewing a playbook; the CLI provides
+This document describes the recommended authoring discipline. Vibe ARF is
+the chat-first route for designing and reviewing a playbook; the lower-level
+ARF Kit remains a compatibility route; the CLI provides
 deterministic validation, reproducibility, and release enforcement. A
 conversational review must not be presented as equivalent to a release gate.

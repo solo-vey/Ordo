@@ -1,0 +1,16 @@
+{
+  "schema_version": "ordo.vibe_arf_release_pointer.v1",
+  "package": "Vibe ARF",
+  "version": "0.1.2",
+  "release_tag": "vibe-arf-v0.1.2",
+  "release_url": "https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2",
+  "recommended_profile": "MODEL_RUN",
+  "profiles": {
+    "MODEL_RUN": "https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip",
+    "CLI_RUN": "https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_CLI_RUN.zip",
+    "EDIT": "https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_EDIT.zip"
+  },
+  "checksums_url": "https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/SHA256SUMS.txt",
+  "legacy_arf_pointer": "manifests/ARF_PLAYBOOK_KIT_CURRENT.json",
+  "status": "current_recommended; legacy_arf_retained_for_compatibility"
+}

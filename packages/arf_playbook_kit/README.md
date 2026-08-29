@@ -1,6 +1,10 @@
-# ARF Playbook Kit
+# ARF Playbook Kit (legacy)
 
-This directory is the canonical source for the chat-first ARF Playbook Kit.
+> **Deprecation notice:** New playbooks should be created with the Vibe ARF
+> package. This lower-level kit remains available for compatibility,
+> migration, and engineering workflows and is scheduled for deprecation.
+
+This directory is the legacy source for the lower-level chat-first ARF Playbook Kit.
 Users download the reviewed ZIP from the current GitHub Release; they do not
 need to clone this repository, install Python, or build the archive.
 
