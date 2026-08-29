@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/antipattern_evidence_ref.schema.json",
+  "title": "Ordo anti-pattern evidence reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","evidence_type","evidence_id","hook_id","source_id","context_type","decision","finding_ids","report_digest","recorded_at"],
+  "properties": {
+    "schema_version": {"const": "ordo.antipattern_evidence_ref.v1"},
+    "evidence_type": {"const": "ANTIPATTERN.EVIDENCE_REF"},
+    "evidence_id": {"type":"string","pattern":"^APE-[A-F0-9]{16}$"},
+    "hook_id": {"type":"string","minLength":3},
+    "source_id": {"type":"string","minLength":1},
+    "gate_id": {"type":["string","null"]},
+    "context_type": {"enum":["conversation","process_trace","repository_state","package_state","evidence_state","runtime_state"]},
+    "decision": {"enum":["allow","allow_with_advisory","block","inconclusive"]},
+    "finding_ids": {"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^FIND-[A-Z0-9_-]+$"}},
+    "report_digest": {"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "recorded_at": {"type":"string","format":"date-time"}
+  }
+}

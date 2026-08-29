@@ -12,14 +12,12 @@ def _yaml(bound: bool) -> bytes:
     return f'''playbook:\n  id: generic-human-binding-guard\n  version: 0.1.0\ngraph_contract:\n  entry_node: N_INTAKE\n  external_terminal_targets: [END_DONE]\nstate:\n  schema:\n    baseline_reference:\n    evidence_status:\nnodes:\n  - id: N_INTAKE\n    type: human_decision\n    question: "Provide evidence."\n    answer_type: structured\n    expected_fields: [baseline_reference, evidence_status]\n    writes: [baseline_reference, evidence_status]\n    on_answer:{binding}\n      next: END_DONE\n'''.encode('utf-8')
 
 
-def test_human_declared_writes_without_answer_binding_fail_compilation():
-    try:
-        es.parse_playbook_package('bad-human.yaml', _yaml(False))
-    except ValueError as e:
-        text=str(e)
-        assert 'HUMAN_WRITE_WITHOUT_BINDING' in text or 'semantic' in text.lower()
-    else:
-        raise AssertionError('human_decision writes without answer bindings must fail closed')
+def test_human_declared_writes_without_answer_binding_loads_for_inspection_only():
+    result=es.parse_playbook_package('bad-human.yaml', _yaml(False))
+    assert result['load_status']=='degraded'
+    assert result['capabilities']['execute'] is False
+    assert result['capabilities']['show_tree'] is True
+    assert any('HUMAN_WRITE_WITHOUT_BINDING' in str(item.get('message') or '') for item in result['load_diagnostics'])
 
 
 def test_human_declared_writes_with_update_state_are_allowed():

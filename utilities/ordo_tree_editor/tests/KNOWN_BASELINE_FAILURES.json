@@ -1,12 +1,15 @@
 {
-  "python": [],
+  "python": [
+    "tests/test_r3_data_lineage_transformations.py::test_real_rfp_lineage_has_transformations_and_registry_traceability",
+    "tests/test_r3_graph_reference_badges_authoritative.py::test_graph_badges_match_resolved_inspector_references",
+    "tests/test_r3_model_chat_backend.py::test_model_chat_returns_files_and_bundle",
+    "tests/test_r3_model_chat_backend.py::test_model_chat_playbook_yaml_preview",
+    "tests/test_r3_safe_model_recovery.py::test_safe_recovery_rejects_unauthorized_target"
+  ],
   "js": [
     "test_r2_d03_run_journal.js",
-    "test_r3_chat_message_copy_button.js",
-    "test_r3_data_flow_report_filter.js",
     "test_r3_data_lineage_focused_edges_only.js",
     "test_r3_data_lineage_strict_monotonic_hover.js",
-    "test_r3_dependency_only_projection_ui.js",
     "test_r3_dynamic_transformation_layers_ui.js",
     "test_r3_focused_causal_slice.js",
     "test_r3_initial_execute_layout.js",

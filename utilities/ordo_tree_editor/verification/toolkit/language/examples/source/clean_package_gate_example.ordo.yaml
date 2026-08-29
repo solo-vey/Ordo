@@ -1,0 +1,53 @@
+clean_package_gate:
+  gate_id: default_clean_package_gate
+  version: "0.1"
+  command: ordo clean-check
+  default_profile: standard
+  report_path: reports/clean_check_report.json
+  fail_on_warning: false
+  decisions:
+    passed: approved
+    passed_with_warnings: approved_with_warnings
+    blocked: blocked
+    not_applicable: not_applicable
+  required_checks:
+    - package_root_exists
+    - package_manifest_present
+    - package_manifest_parse
+    - source_yaml_declared
+    - source_yaml_exists
+    - source_yaml_parse
+    - declared_manifest_paths_exist
+    - declared_manifest_checksums_match
+    - prompt_registry_refs_resolve_when_present
+    - startup_profile_entries_exist_when_present
+    - derived_artifacts_current_or_backlogged_when_declared
+    - delta_backlog_blockers_not_expired_when_declared
+  authority_boundary:
+    may_mutate_package: false
+    may_regenerate_artifacts: false
+    may_override_gates: false
+    may_confirm_state: false
+    may_add_opcodes: false
+
+derived_artifact_sync_validation_profile:
+  profile_id: clean_package_default_sync_profile
+  version: "0.1"
+  default_cli_command: ordo clean-check
+  default_profile: standard
+  required_report: reports/clean_check_report.json
+  artifact_policy:
+    missing_declared_artifact: block_unless_backlogged
+    checksum_mismatch: block_in_standard_and_strict
+    stale_artifact: block_unless_backlogged
+  delta_backlog_policy:
+    expired_blocker_standard: warning
+    expired_blocker_strict: error
+    ownerless_blocker_strict: error
+  check_mapping:
+    - check_id: derived_artifacts_current_or_backlogged_when_declared
+      profile: standard
+      default_severity: error
+    - check_id: delta_backlog_blockers_not_expired_when_declared
+      profile: strict
+      default_severity: error

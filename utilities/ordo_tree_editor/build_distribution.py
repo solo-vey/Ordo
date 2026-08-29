@@ -25,7 +25,6 @@ def build(output: Path) -> dict[str, str | int]:
         stage = Path(temporary_directory) / "ORDO_TREE_EDITOR"
         _copy_tree(EDITOR, stage / "utilities" / "ordo_tree_editor")
         _copy_tree(ROOT / "cli" / "ordo", stage / "cli" / "ordo")
-        _copy_tree(ROOT / "language", stage / "utilities" / "ordo_tree_editor" / "verification" / "language")
         if TREE_MODULE_LIBRARY.exists():
             _copy_tree(
                 TREE_MODULE_LIBRARY,

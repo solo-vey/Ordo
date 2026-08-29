@@ -15,7 +15,7 @@ must(css,'main[data-workspace-mode="help"]','help workspace layout');
 must(js,'const HELP_PAGES = [','help page registry');
 must(js,'title:"Getting Started"','getting started page');
 must(js,'title:"Execute Playbook"','execute docs');
-must(js,'title:"Files and Markdown Preview"','file docs');
+must(js,'title:"Package Files"','file docs');
 must(js,'title:"Troubleshooting"','troubleshooting docs');
 must(js,'help:"help"','help workspace mapping');
 no(html,'Допомога','Ukrainian help label');

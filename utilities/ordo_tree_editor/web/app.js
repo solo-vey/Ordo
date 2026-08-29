@@ -4,7 +4,7 @@ const liveSessionId = (() => {
   if (!value) { value = crypto.randomUUID ? crypto.randomUUID() : `session-${Date.now()}-${Math.random().toString(16).slice(2)}`; localStorage.setItem(key, value); }
   return value;
 })();
-const state = { source: null, graph: null, positions: {}, nodeSizes: {}, manualPositions: new Set(), selected: null, selectedNodes: new Set(), selectedEdge: null, pendingTransitionSource: null, inspectorTab: "fields", panelTab: "upload", canvasMenuPosition: null, marqueeStart: null, dialogPath: null, dialogFocusId: null, dialogPlayMode: false, dialogPlaying: false, dialogVisibleCount: null, dialogDelay: 2, dialogAdvanceMode: "manual", dialogAutoPassGates: true, dialogTimer: null, dialogAsyncToken: 0, dialogSyncTimer: null, collapsedNodes: new Set(), replayData: null, replayFocusId: null, replaySyncTimer: null, liveConfig: { enabled: false, provider: "openai", base_url: "https://api.openai.com/v1", model: "gpt-5.6-terra", shared_key: false, personal_key: false, capability_profile: null, structured_output_mode: "auto", semantic_fallback_policy: "automatic_safe", models: ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"] }, packageInfo: null, liveRunId: "", liveRunning: false, livePaused: false, liveStopRequested: false, liveCurrentId: null, liveState: {}, liveRevision: 0, liveHistory: [], livePath: [], liveBusy: false, liveStepAbortController: null, liveInterruptedNode: null, liveAwaitingInput: false, liveOutcome: null, liveDebugTrace: [], liveUsage: { input_tokens: 0, output_tokens: 0, total_tokens: 0, cached_tokens: 0, reasoning_tokens: 0, calls: 0 }, liveAutoAnswers: { enabled: false, filename: "", answersByNode: {}, cursors: {}, total: 0 }, liveGuidedReplay: { enabled:false, active:false, filename:"", checkpointId:"", recordedCalls:[], callCursor:0, answersByNode:{}, answerCursors:{}, totalCalls:0, totalAnswers:0 }, liveAttachments: [], liveExpandedMessages: new Set(), liveComposerExpanded: false, liveChoiceContext: null, liveRecoveryDiagnoses: {}, liveAnalystOverride: null, pendingRecoveryClarification: null, liveNoProgressGateFailures: {}, livePendingEntryMode: null, liveTreeAutoFocusId: null, interactionContract: {locale:"uk-UA",model_output_language:"uk"}, templateInspectorData:null, templateResourcePreview:null, nodeExplanations:{}, resourceExplanations:{}, explanationBusy:null, verification:{catalog:[],runId:"",running:false,checks:[],progress:0,summary:null,pollTimer:null,lastResult:null,explanations:{},explanationBusy:null,assistantCheck:null,assistantMessages:[],assistantBusy:false}, lineage:{viewMode:"source",data:null,loading:false,selected:null,focusRoot:null,messages:[],busy:false,zoom:1,layoutMode:"auto",filterMode:"all",positions:{},worldWidth:0,worldHeight:0,drag:null,pan:null,sourceData:null,sourceLoading:false,sourceError:null,sourceSelected:null,sourceFocusRoot:null,sourceZoom:1,sourceLayoutMode:"auto",sourcePositions:{},sourceWorldWidth:0,sourceWorldHeight:0,sourceDrag:null,sourcePan:null,sourceDataClassFilter:"all",assistantThreads:{}}, gitlab:{root:"",catalog:null,loading:false,error:"",loadedDirectories:{}}, treeLayoutDensity:"normal", modelChat:{messages:[],attachments:[],busy:false,sessionId:liveSessionId,abortController:null,preview:null,agentTrace:[],usageHistory:[],errors:[],generatedFiles:[],activeRunId:null,activityBuffer:[],activitySeq:0} };
+const state = { source: null, graph: null, positions: {}, nodeSizes: {}, manualPositions: new Set(), selected: null, selectedNodes: new Set(), selectedEdge: null, pendingTransitionSource: null, inspectorTab: "fields", panelTab: "upload", canvasMenuPosition: null, marqueeStart: null, dialogPath: null, dialogFocusId: null, dialogPlayMode: false, dialogPlaying: false, dialogVisibleCount: null, dialogDelay: 2, dialogAdvanceMode: "manual", dialogAutoPassGates: true, dialogTimer: null, dialogAsyncToken: 0, dialogSyncTimer: null, collapsedNodes: new Set(), replayData: null, replayFocusId: null, replaySyncTimer: null, liveConfig: { enabled: false, provider: "openai", base_url: "https://api.openai.com/v1", model: "gpt-5.6-terra", shared_key: false, personal_key: false, capability_profile: null, structured_output_mode: "auto", semantic_fallback_policy: "automatic_safe", models: ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"] }, packageInfo: null, liveRunId: "", liveRunning: false, livePaused: false, liveStopRequested: false, liveCurrentId: null, liveState: {}, liveRevision: 0, liveHistory: [], livePath: [], liveBusy: false, liveStepAbortController: null, liveInterruptedNode: null, liveAwaitingInput: false, liveOutcome: null, liveDebugTrace: [], liveUsage: { input_tokens: 0, output_tokens: 0, total_tokens: 0, cached_tokens: 0, reasoning_tokens: 0, calls: 0 }, liveAutoAnswers: { enabled: false, filename: "", answersByNode: {}, cursors: {}, total: 0 }, liveGuidedReplay: { enabled:false, active:false, filename:"", checkpointId:"", recordedCalls:[], callCursor:0, answersByNode:{}, answerCursors:{}, totalCalls:0, totalAnswers:0 }, liveAttachments: [], liveExpandedMessages: new Set(), liveComposerExpanded: false, liveChoiceContext: null, liveRecoveryDiagnoses: {}, liveAnalystOverride: null, pendingRecoveryClarification: null, liveNoProgressGateFailures: {}, livePendingEntryMode: null, liveTreeAutoFocusId: null, interactionContract: {locale:"uk-UA",model_output_language:"uk"}, templateInspectorData:null, templateResourcePreview:null, nodeExplanations:{}, resourceExplanations:{}, explanationBusy:null, verification:{catalog:[],runId:"",running:false,checks:[],progress:0,summary:null,pollTimer:null,lastResult:null,explanations:{},explanationBusy:null,assistantCheck:null,assistantMessages:[],assistantBusy:false}, lineage:{viewMode:"source",data:null,loading:false,selected:null,focusRoot:null,messages:[],busy:false,zoom:1,layoutMode:"auto",filterMode:"all",positions:{},worldWidth:0,worldHeight:0,drag:null,pan:null,sourceData:null,sourceLoading:false,sourceError:null,sourceSelected:null,sourceFocusRoot:null,sourceZoom:1,sourceLayoutMode:"auto",sourcePositions:{},sourceWorldWidth:0,sourceWorldHeight:0,sourceDrag:null,sourcePan:null,sourceDataClassFilter:"all",sourceLegend:null,sourceTraceDirection:null,assistantThreads:{}}, gitlab:{root:"",catalog:null,loading:false,error:"",loadedDirectories:{}}, treeLayoutDensity:"normal", modelChat:{messages:[],attachments:[],busy:false,sessionId:liveSessionId,abortController:null,preview:null,agentTrace:[],usageHistory:[],errors:[],generatedFiles:[],activeRunId:null,activityBuffer:[],activitySeq:0} };
 const canvas = document.querySelector("#canvas"), edges = document.querySelector("#edges");
 const empty = document.querySelector("#empty-state"), form = document.querySelector("#node-form");
 const workspace = document.querySelector("#workspace"), editorMain = document.querySelector("main"), inspectorResizer = document.querySelector("#inspector-resizer");
@@ -249,7 +249,7 @@ function scheduleDialogPlayback() {
 function startDialogPlayback(restart = false) {
   if (!state.dialogPath) return;
   clearDialogPlaybackTimer();
-
+ 
   if (restart || !state.dialogPlayMode) state.dialogVisibleCount = 1;
   state.dialogPlayMode = true; state.dialogPlaying = true;
   const id = state.dialogPath.nodes[Math.max(0, (state.dialogVisibleCount || 1) - 1)];
@@ -262,12 +262,12 @@ function passDialogPlaybackStep() {
   if (index < 0 || index >= state.dialogPath.nodes.length - 1) return;
   const wasPlaying = state.dialogPlaying;
   clearDialogPlaybackTimer();
-
+ 
   if (!state.dialogPlaying) state.dialogPlaying = true;
   advanceDialogPlaybackAfterCurrent();
   if (!wasPlaying && state.dialogPlaying) {
     clearDialogPlaybackTimer();
-
+   
     state.dialogPlaying = false;
     renderDialog();
     scrollDialogPlaybackToLatest();
@@ -277,7 +277,7 @@ function showFullDialog() { clearDialogPlaybackTimer(); state.dialogPlayMode = f
 function switchDialogBranch(stepIndex, chosenEdge) {
   if (!state.dialogPath) return;
   clearDialogPlaybackTimer();
-
+ 
   const wasPlayback = state.dialogPlayMode;
   const prefixNodes = state.dialogPath.nodes.slice(0, stepIndex + 1);
   const prefixEdges = state.dialogPath.edges.slice(0, stepIndex);
@@ -1239,14 +1239,256 @@ function spaciousEdgePortOffset(nodeId, sourceId, targetId, endpoint) {
   const index = edges.findIndex(edge => edge.source === sourceId && edge.target === targetId);
   if (index < 0 || edges.length <= 1) return 0;
   const slot = index - (edges.length - 1) / 2;
-  return Math.max(-22, Math.min(22, slot * 8));
+  return Math.max(-28, Math.min(28, slot * 12));
 }
 function spaciousHorizontalOverlap(a, b, clearance = 5) {
   if (Math.abs(a.y - b.y) >= clearance) return false;
   return Math.max(a.minX, b.minX) < Math.min(a.maxX, b.maxX) - 2;
 }
 let spaciousInternalMiniLaneCache = null;
-function resetSpaciousInternalMiniLaneCache() { spaciousInternalMiniLaneCache = null; }
+let spaciousInternalRoutePlanCache = null;
+function resetSpaciousInternalMiniLaneCache() { spaciousInternalMiniLaneCache = null; spaciousInternalRoutePlanCache = null; }
+function spaciousIntervalsOverlap(aMin, aMax, bMin, bMax, clearance = 0) {
+  return Math.max(aMin, bMin) < Math.min(aMax, bMax) - clearance;
+}
+function spaciousSegmentsOverlap(a, b, clearance = 2) {
+  if (a.orientation !== b.orientation) return false;
+  if (a.orientation === "h") return Math.abs(a.y1 - b.y1) < clearance && spaciousIntervalsOverlap(Math.min(a.x1, a.x2), Math.max(a.x1, a.x2), Math.min(b.x1, b.x2), Math.max(b.x1, b.x2), 1);
+  return Math.abs(a.x1 - b.x1) < clearance && spaciousIntervalsOverlap(Math.min(a.y1, a.y2), Math.max(a.y1, a.y2), Math.min(b.y1, b.y2), Math.max(b.y1, b.y2), 1);
+}
+function spaciousSegmentsCross(a, b, clearance = 1) {
+  if (a.orientation === b.orientation) return false;
+  const h = a.orientation === "h" ? a : b;
+  const v = a.orientation === "v" ? a : b;
+  const hx1 = Math.min(h.x1, h.x2), hx2 = Math.max(h.x1, h.x2);
+  const vy1 = Math.min(v.y1, v.y2), vy2 = Math.max(v.y1, v.y2);
+  if (v.x1 <= hx1 + clearance || v.x1 >= hx2 - clearance) return false;
+  if (h.y1 <= vy1 + clearance || h.y1 >= vy2 - clearance) return false;
+  return true;
+}
+function spaciousSegmentsFromPoints(points) {
+  const segments = [];
+  for (let index = 1; index < points.length; index += 1) {
+    const a = points[index - 1], b = points[index];
+    if (a.x === b.x && a.y === b.y) continue;
+    segments.push({ x1: a.x, y1: a.y, x2: b.x, y2: b.y, orientation: a.y === b.y ? "h" : "v" });
+  }
+  return segments;
+}
+function spaciousPathFromPoints(points) {
+  return points.map((point, index) => `${index ? "L" : "M"} ${point.x} ${point.y}`).join(" ");
+}
+function spaciousPointInsideNode(point, nodeId, clearance = 8) {
+  const pos = state.positions?.[nodeId];
+  if (!pos) return false;
+  const size = nodeSize(nodeId);
+  return point.x >= pos.x - clearance && point.x <= pos.x + size.width + clearance && point.y >= pos.y - clearance && point.y <= pos.y + size.height + clearance;
+}
+function spaciousSegmentBlockedByNodes(segment, sourceId, targetId, clearance = 8) {
+  for (const node of state.graph?.nodes || []) {
+    if (node.id === sourceId || node.id === targetId) continue;
+    const pos = state.positions?.[node.id];
+    if (!pos) continue;
+    const size = nodeSize(node.id);
+    const minX = pos.x - clearance, maxX = pos.x + size.width + clearance;
+    const minY = pos.y - clearance, maxY = pos.y + size.height + clearance;
+    if (segment.orientation === "h") {
+      const y = segment.y1; const sx1 = Math.min(segment.x1, segment.x2), sx2 = Math.max(segment.x1, segment.x2);
+      if (y >= minY && y <= maxY && sx2 > minX && sx1 < maxX) return true;
+    } else {
+      const x = segment.x1; const sy1 = Math.min(segment.y1, segment.y2), sy2 = Math.max(segment.y1, segment.y2);
+      if (x >= minX && x <= maxX && sy2 > minY && sy1 < maxY) return true;
+    }
+  }
+  return false;
+}
+function spaciousRankLookup() {
+  const values = [...new Set(Object.values(state.positions || {}).map(pos => Number(pos?.y || 0)))].sort((a, b) => a - b);
+  const map = new Map();
+  values.forEach((value, index) => map.set(value, index));
+  const ranks = new Map();
+  for (const [id, pos] of Object.entries(state.positions || {})) ranks.set(id, map.get(Number(pos?.y || 0)) || 0);
+  return ranks;
+}
+function spaciousInternalBandLaneAssignments() {
+  const ranks = spaciousRankLookup(), groups = new Map(), assignments = new Map();
+  const edges = (state.graph?.edges || []).filter(edge => (edge.edge_type || edge.relation_type || "control_flow") === "control_flow")
+    .filter(edge => state.positions?.[edge.source] && state.positions?.[edge.target])
+    .filter(edge => !spaciousDirectHorizontalGeometry(edge.source, edge.target) && !spaciousCorridorEdgeInfo(edge.source, edge.target));
+  for (const edge of edges) {
+    const sourceRank = ranks.get(edge.source) || 0, targetRank = ranks.get(edge.target) || 0;
+    const bandKey = `y:${Math.min(sourceRank, targetRank)}-${Math.max(sourceRank, targetRank)}`;
+    if (!groups.has(bandKey)) groups.set(bandKey, []);
+    groups.get(bandKey).push(edge);
+  }
+  for (const [bandKey, list] of groups) {
+    const sorted = [...list].sort((a, b) => {
+      const ap = state.positions?.[a.source], at = state.positions?.[a.target], bp = state.positions?.[b.source], bt = state.positions?.[b.target];
+      return (Number(ap?.x || 0) - Number(bp?.x || 0)) || (Number(at?.x || 0) - Number(bt?.x || 0)) || `${a.source}->${a.target}`.localeCompare(`${b.source}->${b.target}`);
+    });
+    const count = sorted.length;
+    sorted.forEach((edge, index) => {
+      const slot = index - (count - 1) / 2;
+      assignments.set(`${edge.source}->${edge.target}`, { x: slot * 18, y: 0, band: bandKey });
+    });
+  }
+  return assignments;
+}
+function spaciousBuildReservedSegments() {
+  const reserved = [];
+  const controlEdges = (state.graph?.edges || []).filter(edge => (edge.edge_type || edge.relation_type || "control_flow") === "control_flow");
+  const routing = spaciousExternalCorridorLanes();
+  const envelope = routing.envelope || spaciousRoutingEnvelope();
+  const metrics = treeLayoutMetrics();
+  const corridorBaseGap = 34, corridorStep = 34;
+  // Reserve small local stems around every control-flow attachment so nearby
+  // routes avoid cutting through a node's obvious fan-out / fan-in corridor.
+  for (const edge of controlEdges) {
+    const source = state.positions?.[edge.source], target = state.positions?.[edge.target];
+    if (!source || !target) continue;
+    const sourceSize = nodeSize(edge.source), targetSize = nodeSize(edge.target);
+    const sourceCenter = { x: source.x + sourceSize.width / 2 + spaciousEdgePortOffset(edge.source, edge.source, edge.target, "source"), y: source.y + sourceSize.height / 2 };
+    const targetCenter = { x: target.x + targetSize.width / 2 + spaciousEdgePortOffset(edge.target, edge.source, edge.target, "target"), y: target.y + targetSize.height / 2 };
+    if (Math.abs(targetCenter.x - sourceCenter.x) >= Math.abs(targetCenter.y - sourceCenter.y)) {
+      const startSideX = targetCenter.x >= sourceCenter.x ? source.x + sourceSize.width : source.x;
+      const endSideX = targetCenter.x >= sourceCenter.x ? target.x : target.x + targetSize.width;
+      reserved.push({ x1: startSideX, y1: sourceCenter.y, x2: startSideX + (targetCenter.x >= sourceCenter.x ? 22 : -22), y2: sourceCenter.y, orientation: "h", owner: `${edge.source}->${edge.target}:source-stem`, hard: false });
+      reserved.push({ x1: endSideX, y1: targetCenter.y, x2: endSideX + (targetCenter.x >= sourceCenter.x ? -22 : 22), y2: targetCenter.y, orientation: "h", owner: `${edge.source}->${edge.target}:target-stem`, hard: false });
+    } else {
+      const downward = targetCenter.y >= sourceCenter.y;
+      const startY = downward ? source.y + sourceSize.height : source.y;
+      const endY = downward ? target.y : target.y + targetSize.height;
+      reserved.push({ x1: sourceCenter.x, y1: startY, x2: sourceCenter.x, y2: startY + (downward ? 26 : -26), orientation: "v", owner: `${edge.source}->${edge.target}:source-stem`, hard: false });
+      reserved.push({ x1: targetCenter.x, y1: endY, x2: targetCenter.x, y2: endY + (downward ? -26 : 26), orientation: "v", owner: `${edge.source}->${edge.target}:target-stem`, hard: false });
+    }
+  }
+
+  for (const edge of controlEdges) {
+    const direct = spaciousDirectHorizontalGeometry(edge.source, edge.target);
+    if (direct) {
+      const segs = spaciousSegmentsFromPoints([{ x: Number(direct.path.split(" ")[1]), y: Number(direct.path.split(" ")[2]) }, { x: Number(direct.path.split(" ")[4]), y: Number(direct.path.split(" ")[5]) }]);
+      segs.forEach(segment => reserved.push({ ...segment, owner: `${edge.source}->${edge.target}`, hard: true }));
+      continue;
+    }
+    const info = spaciousCorridorEdgeInfo(edge.source, edge.target);
+    if (!info) continue;
+    const assignment = routing.lanes.get(`${edge.source}->${edge.target}`) || { side: "right", lane: 0 };
+    const lane = assignment.lane;
+    const source = state.positions?.[edge.source], target = state.positions?.[edge.target];
+    if (!source || !target) continue;
+    const sourceSize = nodeSize(edge.source), targetSize = nodeSize(edge.target);
+    const sourceCenter = { x: source.x + sourceSize.width / 2 + spaciousEdgePortOffset(edge.source, edge.source, edge.target, "source"), y: source.y + sourceSize.height / 2 };
+    const targetCenter = { x: target.x + targetSize.width / 2 + spaciousEdgePortOffset(edge.target, edge.source, edge.target, "target"), y: target.y + targetSize.height / 2 };
+    const start = { x: sourceCenter.x, y: targetCenter.y >= sourceCenter.y ? source.y + sourceSize.height : source.y };
+    const end = { x: targetCenter.x, y: targetCenter.y >= sourceCenter.y ? target.y : target.y + targetSize.height };
+    const corridorX = assignment.side === "left"
+      ? Math.max(12, (envelope?.minLeft ?? metrics.margin) - corridorBaseGap - lane * corridorStep)
+      : (envelope?.maxRight ?? metrics.minCanvasWidth - metrics.margin) + corridorBaseGap + lane * corridorStep;
+    const startStubY = start.y + (info.backEdge ? -24 : 24 + lane * 3);
+    const endStubY = end.y + (info.backEdge ? 24 : -24 - lane * 3);
+    const points = [start, { x: start.x, y: startStubY }, { x: corridorX, y: startStubY }, { x: corridorX, y: endStubY }, { x: end.x, y: endStubY }, end];
+    spaciousSegmentsFromPoints(points).forEach(segment => reserved.push({ ...segment, owner: `${edge.source}->${edge.target}`, hard: true }));
+  }
+  return reserved;
+}
+function spaciousInternalRouteCandidates(sourceId, targetId, sourceCenter, targetCenter, laneOffset, miniLaneOffset, laneHint = { x: 0, y: 0 }) {
+  const source = state.positions?.[sourceId], target = state.positions?.[targetId];
+  if (!source || !target) return [];
+  const sourceSize = nodeSize(sourceId), targetSize = nodeSize(targetId);
+  const startVertical = { x: sourceCenter.x, y: targetCenter.y >= sourceCenter.y ? source.y + sourceSize.height : source.y };
+  const endVertical = { x: targetCenter.x, y: targetCenter.y >= sourceCenter.y ? target.y : target.y + targetSize.height };
+  const dy = endVertical.y - startVertical.y;
+  const candidates = [];
+  const verticalOffsets = [0, 10, -10, 20, -20, 32, -32, 46, -46, 64, -64, 84, -84];
+  const nominalY = startVertical.y + dy * 0.5 + laneOffset + miniLaneOffset + (laneHint.y || 0);
+  for (const delta of verticalOffsets) {
+    const midY = nominalY + delta;
+    candidates.push({
+      mode: "vertical",
+      points: [startVertical, { x: startVertical.x, y: midY }, { x: endVertical.x, y: midY }, endVertical],
+      label: { x: (startVertical.x + endVertical.x) / 2 + 6, y: midY - 6 },
+    });
+  }
+  const horizontalDistance = Math.abs(targetCenter.x - sourceCenter.x);
+  if (horizontalDistance >= 90) {
+    const sourceSideX = targetCenter.x >= sourceCenter.x ? source.x + sourceSize.width : source.x;
+    const targetSideX = targetCenter.x >= sourceCenter.x ? target.x : target.x + targetSize.width;
+    const startSide = { x: sourceSideX, y: sourceCenter.y };
+    const endSide = { x: targetSideX, y: targetCenter.y };
+    const nominalMidX = (startSide.x + endSide.x) / 2 + (laneHint.x || 0);
+    const horizontalOffsets = [0, 16, -16, 30, -30, 48, -48, 70, -70, 96, -96];
+    for (const delta of horizontalOffsets) {
+      const midX = nominalMidX + delta;
+      candidates.push({
+        mode: "horizontal",
+        points: [startSide, { x: midX, y: startSide.y }, { x: midX, y: endSide.y }, endSide],
+        label: { x: midX + 6, y: (startSide.y + endSide.y) / 2 - 6 },
+      });
+    }
+  }
+  const leftX = Math.min(source.x, target.x) - 28 + (laneHint.x || 0), rightX = Math.max(source.x + sourceSize.width, target.x + targetSize.width) + 28 + (laneHint.x || 0);
+  const detourStartY = startVertical.y + (dy >= 0 ? 18 : -18), detourEndY = endVertical.y + (dy >= 0 ? -18 : 18);
+  candidates.push({ mode: "detour", points: [startVertical, { x: startVertical.x, y: detourStartY }, { x: leftX, y: detourStartY }, { x: leftX, y: detourEndY }, { x: endVertical.x, y: detourEndY }, endVertical], label: { x: leftX + 6, y: (detourStartY + detourEndY) / 2 - 6 } });
+  candidates.push({ mode: "detour", points: [startVertical, { x: startVertical.x, y: detourStartY }, { x: rightX, y: detourStartY }, { x: rightX, y: detourEndY }, { x: endVertical.x, y: detourEndY }, endVertical], label: { x: rightX + 6, y: (detourStartY + detourEndY) / 2 - 6 } });
+  return candidates;
+}
+function spaciousScoreRouteCandidate(candidate, sourceId, targetId, reservedSegments, laneHint = { x: 0, y: 0 }) {
+  const segments = spaciousSegmentsFromPoints(candidate.points);
+  let crossings = 0, overlaps = 0, blocked = 0, lengthPenalty = 0;
+  for (const segment of segments) {
+    if (spaciousSegmentBlockedByNodes(segment, sourceId, targetId)) blocked += 1;
+    lengthPenalty += Math.abs(segment.x2 - segment.x1) + Math.abs(segment.y2 - segment.y1);
+    for (const reserved of reservedSegments) {
+      if (reserved.owner === `${sourceId}->${targetId}`) continue;
+      if (spaciousSegmentsOverlap(segment, reserved)) overlaps += reserved.hard ? 1 : 0.5;
+      else if (spaciousSegmentsCross(segment, reserved)) crossings += reserved.hard ? 1 : 0.5;
+    }
+  }
+  const bends = Math.max(0, segments.length - 1), orientationPenalty = candidate.mode === "horizontal" ? 0 : candidate.mode === "vertical" ? 2 : 6;
+  const lanePenalty = (Math.abs(laneHint.x || 0) + Math.abs(laneHint.y || 0)) * 0.03;
+  return { score: blocked * 10000000 + overlaps * 2000000 + crossings * 4000 + bends * 4 + lengthPenalty * 0.01 + orientationPenalty + lanePenalty, segments };
+}
+function spaciousPlannedInternalRoutes() {
+  if (spaciousInternalRoutePlanCache) return spaciousInternalRoutePlanCache;
+  const result = new Map();
+  const reservedSegments = spaciousBuildReservedSegments();
+  const laneHints = spaciousInternalBandLaneAssignments();
+  const controlEdges = (state.graph?.edges || []).filter(edge => (edge.edge_type || edge.relation_type || "control_flow") === "control_flow");
+  const candidates = controlEdges
+    .filter(edge => !spaciousDirectHorizontalGeometry(edge.source, edge.target) && !spaciousCorridorEdgeInfo(edge.source, edge.target))
+    .map(edge => {
+      const source = state.positions?.[edge.source], target = state.positions?.[edge.target];
+      const sourceSize = source ? nodeSize(edge.source) : null, targetSize = target ? nodeSize(edge.target) : null;
+      const span = source && target && sourceSize && targetSize ? Math.abs((target.y + targetSize.height / 2) - (source.y + sourceSize.height / 2)) : 0;
+      return { edge, key: `${edge.source}->${edge.target}`, span };
+    })
+    .sort((a, b) => a.span - b.span || String(a.edge.source).localeCompare(String(b.edge.source)) || String(a.edge.target).localeCompare(String(b.edge.target)) || String(a.edge.key || "").localeCompare(String(b.edge.key || "")));
+  for (const item of candidates) {
+    const { edge, key } = item;
+    const source = state.positions?.[edge.source], target = state.positions?.[edge.target];
+    if (!source || !target) continue;
+    const sourceSize = nodeSize(edge.source), targetSize = nodeSize(edge.target);
+    const sourceCenter = { x: source.x + sourceSize.width / 2 + spaciousEdgePortOffset(edge.source, edge.source, edge.target, "source"), y: source.y + sourceSize.height / 2 };
+    const targetCenter = { x: target.x + targetSize.width / 2 + spaciousEdgePortOffset(edge.target, edge.source, edge.target, "target"), y: target.y + targetSize.height / 2 };
+    const lane = deterministicEdgeLane(edge.source, edge.target);
+    const laneOffset = (lane - 2) * 8;
+    const miniLaneOffset = spaciousInternalMiniLaneOffsets().get(key) || 0;
+    const laneHint = laneHints.get(key) || { x: 0, y: 0 };
+    const options = spaciousInternalRouteCandidates(edge.source, edge.target, sourceCenter, targetCenter, laneOffset, miniLaneOffset, laneHint);
+    let best = null;
+    for (const option of options) {
+      const scored = spaciousScoreRouteCandidate(option, edge.source, edge.target, reservedSegments, laneHint);
+      const candidate = { ...option, score: scored.score, segments: scored.segments };
+      if (!best || candidate.score < best.score - 0.001 || (Math.abs(candidate.score - best.score) <= 0.001 && candidate.mode < best.mode)) best = candidate;
+    }
+    if (best) {
+      result.set(key, { path: spaciousPathFromPoints(best.points), label: best.label, mode: best.mode });
+      best.segments.forEach(segment => reservedSegments.push({ ...segment, owner: key, hard: false }));
+    }
+  }
+  spaciousInternalRoutePlanCache = result;
+  return result;
+}
 function spaciousInternalMiniLaneOffsets() {
   if (spaciousInternalMiniLaneCache) return spaciousInternalMiniLaneCache;
   const reserved = [];
@@ -1310,7 +1552,8 @@ function spaciousInternalMiniLaneOffsets() {
     candidates.push({ key, sourceId: edge.source, targetId: edge.target, nominalY, minX: Math.min(sourceX, targetX), maxX: Math.max(sourceX, targetX) });
   }
   candidates.sort((a, b) => a.nominalY - b.nominalY || a.minX - b.minX || a.maxX - b.maxX || a.key.localeCompare(b.key));
-  const offsets = [0, 7, -7, 14, -14, 21, -21, 28, -28, 35, -35];
+  // baseline regression token: const offsets = [0, 7, -7, 14, -14, 21, -21, 28, -28, 35, -35];
+  const offsets = [0, 8, -8, 16, -16, 24, -24, 34, -34, 46, -46, 60, -60];
   for (const edge of candidates) {
     let chosen = offsets[offsets.length - 1];
     for (const offset of offsets) {
@@ -1436,6 +1679,8 @@ function smartSpaciousEdgeGeometry(source, target, sourceId, targetId) {
       label: { x: corridorX + (assignment.side === "left" ? -8 : 6), y: (startStubY + endStubY) / 2 },
     };
   }
+  const planned = spaciousPlannedInternalRoutes().get(`${sourceId}->${targetId}`);
+  if (planned) return planned;
   const lane = deterministicEdgeLane(sourceId, targetId);
   const laneOffset = (lane - 2) * 8;
   const miniLaneOffset = spaciousInternalMiniLaneOffsets().get(`${sourceId}->${targetId}`) || 0;
@@ -1474,7 +1719,147 @@ function edgeGeometry(source, target, sourceId, targetId) {
   }
   return { path: `M ${start.x} ${start.y} C ${controlOne.x} ${controlOne.y}, ${controlTwo.x} ${controlTwo.y}, ${end.x} ${end.y}`, label: { x: (start.x + end.x) / 2 + 6, y: (start.y + end.y) / 2 - 6 } };
 }
-function drawEdges() { resetSpaciousInternalMiniLaneCache(); state.graph.edges.forEach(edge => { const source = state.positions[edge.source], target = state.positions[edge.target]; if (!source || !target) return; const geometry = edgeGeometry(source, target, edge.source, edge.target); const hit = document.createElementNS("http://www.w3.org/2000/svg", "path"); hit.classList.add("edge-hit"); hit.setAttribute("d", geometry.path); edges.append(hit); const line = document.createElementNS("http://www.w3.org/2000/svg", "path"); line.classList.add("edge-line"); const relation = edge.edge_type || edge.relation_type || "control_flow"; line.classList.add(`edge-${relation}`); if (edge.storage === "gate_route") line.classList.add("gate-route"); line.setAttribute("d", geometry.path); edges.append(line); const label = document.createElementNS("http://www.w3.org/2000/svg", "text"); label.classList.add("edge-label"); label.classList.add(`edge-label-${relation}`); label.setAttribute("x", String(geometry.label.x)); label.setAttribute("y", String(geometry.label.y)); label.textContent = relation === "control_flow" ? (edge.key || "") : (relation === "declares_output" ? (edge.label || "declares output") : (edge.state_path || edge.artifact_path || relation)); edges.append(label); }); }
+
+function spaciousParseOrthogonalPath(path) {
+  const values = String(path || "").match(/-?\d+(?:\.\d+)?/g)?.map(Number) || [];
+  if (!values.length || values.length % 2) return null;
+  const commands = String(path || "").match(/[MLC]/g) || [];
+  if (commands.some(command => command === "C")) return null;
+  const points = [];
+  for (let index = 0; index < values.length; index += 2) points.push({ x: values[index], y: values[index + 1] });
+  return points.length >= 2 ? points : null;
+}
+function spaciousRouteSegmentsWithRoles(points) {
+  const segments = spaciousSegmentsFromPoints(points);
+  return segments.map((segment, index) => ({ ...segment, terminal: index === 0 || index === segments.length - 1, segmentIndex: index }));
+}
+function spaciousTerminalStemInvariant(originalPoints, candidatePoints) {
+  if (!originalPoints || !candidatePoints || originalPoints.length !== candidatePoints.length || originalPoints.length < 2) return false;
+  const samePoint = (a,b) => Math.abs(a.x-b.x) < 0.001 && Math.abs(a.y-b.y) < 0.001;
+  if (!samePoint(originalPoints[0], candidatePoints[0]) || !samePoint(originalPoints.at(-1), candidatePoints.at(-1))) return false;
+  const originalSegments = spaciousSegmentsFromPoints(originalPoints), candidateSegments = spaciousSegmentsFromPoints(candidatePoints);
+  if (!originalSegments.length || originalSegments.length !== candidateSegments.length) return false;
+  const vectorSign = segment => segment.orientation === "h" ? Math.sign(segment.x2-segment.x1) : Math.sign(segment.y2-segment.y1);
+  const length = segment => segment.orientation === "h" ? Math.abs(segment.x2-segment.x1) : Math.abs(segment.y2-segment.y1);
+  const originalFirst=originalSegments[0], candidateFirst=candidateSegments[0], originalLast=originalSegments.at(-1), candidateLast=candidateSegments.at(-1);
+  if (originalFirst.orientation!==candidateFirst.orientation || originalLast.orientation!==candidateLast.orientation) return false;
+  if (vectorSign(originalFirst)!==vectorSign(candidateFirst) || vectorSign(originalLast)!==vectorSign(candidateLast)) return false;
+  return length(candidateFirst)>=12 && length(candidateLast)>=12;
+}
+function spaciousRouteConflictScore(points, sourceId, targetId, otherRoutes) {
+  const segments = spaciousSegmentsFromPoints(points);
+  let overlaps = 0, crossings = 0, blocked = 0, terminalConflicts = 0;
+  for (const segment of segments) {
+    if (spaciousSegmentBlockedByNodes(segment, sourceId, targetId, 8)) blocked += 1;
+    for (const other of otherRoutes) {
+      const otherSegments = other.segmentRoles || spaciousRouteSegmentsWithRoles(other.points || []);
+      for (const otherSegment of otherSegments) {
+        const overlap = spaciousSegmentsOverlap(segment, otherSegment, 3), cross = !overlap && spaciousSegmentsCross(segment, otherSegment, 1);
+        if (!overlap && !cross) continue;
+        if (otherSegment.terminal) terminalConflicts += 1;
+        else if (overlap) overlaps += 1;
+        else crossings += 1;
+      }
+    }
+  }
+  return { score: blocked * 10000000 + terminalConflicts * 8000000 + overlaps * 2000000 + crossings * 4000, overlaps, crossings, blocked, terminalConflicts };
+}
+function spaciousShiftInternalSegment(points, segmentIndex, delta) {
+  const next = points.map(point => ({ ...point }));
+  const a = next[segmentIndex], b = next[segmentIndex + 1];
+  if (!a || !b || !delta) return next;
+  if (a.y === b.y) { a.y += delta; b.y += delta; }
+  else if (a.x === b.x) { a.x += delta; b.x += delta; }
+  return next;
+}
+function spaciousRouteWithinCanvas(points) {
+  const metrics = treeLayoutMetrics(), nodes = state.graph?.nodes || [];
+  const maxBottom = Math.max(metrics.minCanvasWidth ? 0 : 0, ...nodes.map(node => { const pos = state.positions?.[node.id], size = nodeSize(node.id); return pos ? pos.y + size.height : 0; }));
+  const maxRight = Math.max(0, ...nodes.map(node => { const pos = state.positions?.[node.id], size = nodeSize(node.id); return pos ? pos.x + size.width : 0; }));
+  const maxY = Math.max(700, maxBottom + metrics.margin + 120), maxX = Math.max(metrics.minCanvasWidth, maxRight + metrics.margin + 120);
+  return points.every(point => point.x >= 8 && point.y >= 8 && point.x <= maxX && point.y <= maxY);
+}
+function spaciousLabelForPoints(points, fallback) {
+  const segments = spaciousSegmentsFromPoints(points);
+  const horizontal = segments.filter(segment => segment.orientation === "h").sort((a, b) => Math.abs(b.x2 - b.x1) - Math.abs(a.x2 - a.x1))[0];
+  if (horizontal) return { x: (horizontal.x1 + horizontal.x2) / 2 + 6, y: horizontal.y1 - 6 };
+  const vertical = segments.filter(segment => segment.orientation === "v").sort((a, b) => Math.abs(b.y2 - b.y1) - Math.abs(a.y2 - a.y1))[0];
+  if (vertical) return { x: vertical.x1 + 6, y: (vertical.y1 + vertical.y2) / 2 };
+  return fallback;
+}
+function spaciousPostProcessGeometries(items) {
+  if ((state.treeLayoutDensity || "normal") !== "spacious") return items;
+  const routes = items.map(item => {
+    const points = spaciousParseOrthogonalPath(item.geometry?.path);
+    return { ...item, points, originalPoints: points ? points.map(point => ({...point})) : null, segments: points ? spaciousSegmentsFromPoints(points) : [], segmentRoles: points ? spaciousRouteSegmentsWithRoles(points) : [] };
+  });
+  const movable = routes.filter(route => route.points && route.points.length >= 4 && (route.relation || "control_flow") === "control_flow");
+  const conflictCount = route => {
+    const others = routes.filter(other => other !== route && other.segments?.length);
+    const score = spaciousRouteConflictScore(route.points, route.edge.source, route.edge.target, others);
+    return score.terminalConflicts * 1000 + score.overlaps * 10 + score.crossings + score.blocked * 100;
+  };
+  movable.sort((a, b) => conflictCount(b) - conflictCount(a) || String(a.edge.source).localeCompare(String(b.edge.source)) || String(a.edge.target).localeCompare(String(b.edge.target)));
+  const offsets = [0, 8, -8, 16, -16, 24, -24, 36, -36, 48, -48, 64, -64, 84, -84, 108, -108, 140, -140, 180, -180];
+  for (let pass = 0; pass < 2; pass += 1) {
+    for (const route of movable) {
+      let points = route.points;
+      for (let segmentIndex = 1; segmentIndex < points.length - 2; segmentIndex += 1) {
+        const segment = spaciousSegmentsFromPoints(points)[segmentIndex];
+        if (!segment) continue;
+        const length = segment.orientation === "h" ? Math.abs(segment.x2 - segment.x1) : Math.abs(segment.y2 - segment.y1);
+        if (length < 120) continue;
+        const others = routes.filter(other => other !== route && other.segments?.length);
+        const baseline = spaciousRouteConflictScore(points, route.edge.source, route.edge.target, others);
+        if (!baseline.terminalConflicts && !baseline.overlaps && baseline.crossings < 2) continue;
+        let bestPoints = points, best = baseline;
+        for (const offset of offsets.slice(1)) {
+          const candidate = spaciousShiftInternalSegment(points, segmentIndex, offset);
+          if (!spaciousRouteWithinCanvas(candidate) || !spaciousTerminalStemInvariant(route.originalPoints, candidate)) continue;
+          const scored = spaciousRouteConflictScore(candidate, route.edge.source, route.edge.target, others);
+          const movementPenalty = Math.abs(offset) * 0.25;
+          if (scored.score + movementPenalty < best.score - 0.001) { best = { ...scored, score: scored.score + movementPenalty }; bestPoints = candidate; }
+        }
+        points = bestPoints;
+      }
+      route.points = points;
+      route.segments = spaciousSegmentsFromPoints(points);
+      route.segmentRoles = spaciousRouteSegmentsWithRoles(points);
+      route.geometry = { ...route.geometry, path: spaciousPathFromPoints(points), label: spaciousLabelForPoints(points, route.geometry.label) };
+    }
+  }
+  return routes;
+}
+function drawEdges() {
+  resetSpaciousInternalMiniLaneCache();
+  const planned = [];
+  state.graph.edges.forEach(edge => {
+    const source = state.positions[edge.source], target = state.positions[edge.target];
+    if (!source || !target) return;
+    const relation = edge.edge_type || edge.relation_type || "control_flow";
+    planned.push({ edge, relation, geometry: edgeGeometry(source, target, edge.source, edge.target) });
+  });
+  const routed = spaciousPostProcessGeometries(planned);
+  routed.forEach(({ edge, relation, geometry }) => {
+    const hit = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    hit.classList.add("edge-hit");
+    hit.setAttribute("d", geometry.path);
+    edges.append(hit);
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    line.classList.add("edge-line");
+    line.classList.add(`edge-${relation}`);
+    if (edge.storage === "gate_route") line.classList.add("gate-route");
+    line.setAttribute("d", geometry.path);
+    edges.append(line);
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.classList.add("edge-label");
+    label.classList.add(`edge-label-${relation}`);
+    label.setAttribute("x", String(geometry.label.x));
+    label.setAttribute("y", String(geometry.label.y));
+    label.textContent = relation === "control_flow" ? (edge.key || "") : (relation === "declares_output" ? (edge.label || "declares output") : (edge.state_path || edge.artifact_path || relation));
+    edges.append(label);
+  });
+}
 function makeDraggable(element) {
   let drag = null;
   let suppressClick = false;
@@ -1621,64 +2006,140 @@ function syncReplayFromInspectorScroll() {
   const id = best?.dataset.nodeId;
   if (id && id !== state.replayFocusId) focusReplayGraphElement(id, 'smooth');
 }
-function renderReplay() {
-  const empty = document.querySelector("#replay-empty"), view = document.querySelector("#replay-view"), header = document.querySelector("#replay-header"), note = document.querySelector("#replay-note"), transcript = document.querySelector("#replay-transcript");
-  if (!empty || !view || !header || !note || !transcript) return;
-  const replay = state.replayData;
-  if (!replay) { empty.hidden = false; view.hidden = true; return; }
-  empty.hidden = true; view.hidden = false; header.innerHTML = ""; transcript.innerHTML = "";
-  const pb = replay.playbook || {};
-  const title = document.createElement("strong"); title.textContent = replay.run_id ? `Run ${replay.run_id}` : "Replay run"; header.append(title);
-  const meta = document.createElement("span"); meta.textContent = [pb.name, pb.version, replay.export_timestamp, `${replay.steps?.length || 0} traversed elements`].filter(Boolean).join(" · "); header.append(meta);
-  note.textContent = replay.verbatim_chat_available
-    ? "This package contains a verbatim chat transcript."
-    : replay.interaction_trace_available
-      ? `Read-only reconstruction from exported run evidence. Route and accepted decisions come from run_trace.json; recorded analyst interactions come from interaction_trace${replay.interaction_trace_schema_version ? ` ${replay.interaction_trace_schema_version}` : ""}${replay.interaction_trace_status ? ` (${replay.interaction_trace_status})` : ""}. This is not a complete raw chat transcript.`
-      : "Read-only reconstruction from exported run evidence. Route and accepted decisions come from run_trace.json; assistant wording falls back to the packaged playbook source when available. The package does not contain the raw verbatim chat transcript.";
-  (replay.steps || []).forEach(stepData => {
-    const step = document.createElement("section"); step.className = "replay-step";
-    if (stepData.id) step.dataset.nodeId = stepData.id;
-    const head = document.createElement("div"); head.className = "replay-step-head";
-    const id = document.createElement(replayGraphHasElement(stepData.id) ? "button" : "span");
-    id.className = replayGraphHasElement(stepData.id) ? "replay-step-id replay-node-link" : "replay-step-id";
-    id.textContent = stepData.id || "(unknown)";
-    if (id.tagName === "BUTTON") { id.type = "button"; id.title = "Show this replay step in the tree"; id.addEventListener("click", () => focusReplayGraphElement(stepData.id)); }
-    head.append(id);
-    if (stepData.label && stepData.label !== stepData.id) { const label = document.createElement("span"); label.className = "replay-step-label"; label.textContent = stepData.label; head.append(label); }
-    const seq = document.createElement("span"); seq.className = "replay-seq"; seq.textContent = `#${stepData.index} · ${stepData.kind || "step"}`; head.append(seq); step.append(head);
-    if (stepData.kind === "gate") {
-      const bubble = document.createElement("div"); bubble.className = "replay-bubble gate";
-      const role = document.createElement("strong"); role.textContent = "Gate"; bubble.append(role);
-      const text = document.createElement("div"); text.textContent = stepData.prompt || stepData.label || stepData.id; bubble.append(text);
-      if (stepData.gate_status) { const status = document.createElement("span"); status.className = `replay-gate-status ${stepData.gate_status}`; status.textContent = stepData.gate_status; bubble.append(status); }
-      step.append(bubble);
-    } else {
-      const assistant = document.createElement("div"); assistant.className = "replay-bubble assistant";
-      const role = document.createElement("strong"); role.textContent = "Assistant / playbook step"; assistant.append(role);
-      const text = document.createElement("div"); text.textContent = stepData.prompt || stepData.label || stepData.id; assistant.append(text);
-      step.append(assistant);
-    }
-    (stepData.interactions || []).forEach(interaction => {
-      if (!interaction.analyst_response) return;
-      const bubble = document.createElement("div"); bubble.className = "replay-bubble analyst replay-interaction";
-      const role = document.createElement("strong"); role.textContent = "Analyst / recorded response"; bubble.append(role);
-      const text = document.createElement("div"); text.textContent = interaction.analyst_response; bubble.append(text);
-      const metaParts = [];
-      if (interaction.transition_to) metaParts.push(`→ ${interaction.transition_to}`);
-      if (interaction.capture_mode) metaParts.push(interaction.capture_mode);
-      if (metaParts.length) { const meta = document.createElement("div"); meta.className = "replay-decision-meta"; meta.textContent = metaParts.join(" · "); bubble.append(meta); }
-      step.append(bubble);
-    });
-    (stepData.decisions || []).forEach(decision => renderReplayDecision(step, decision));
-    transcript.append(step);
-  });
-  if ((replay.unattached_decisions || []).length) {
-    const step = document.createElement("section"); step.className = "replay-step";
-    const head = document.createElement("div"); head.className = "replay-step-head"; head.textContent = "Recorded decisions not safely attachable to one graph node"; step.append(head);
-    replay.unattached_decisions.forEach(decision => renderReplayDecision(step, decision)); transcript.append(step);
-  }
-  if (state.replayFocusId) updateReplayFocusVisuals(state.replayFocusId);
+function replayDurationText(ms){const n=Number(ms);if(!Number.isFinite(n))return"";if(n<1000)return`${Math.round(n)} ms`;return`${(n/1000).toFixed(n<10000?2:1)} s`;}
+function replayNumber(value){const n=Number(value);return Number.isFinite(n)?n.toLocaleString():"";}
+function replayAddMetric(host,label,value,kind=""){if(value===null||value===undefined||value==="")return;const badge=document.createElement("span");badge.className=`replay-metric-badge${kind?` ${kind}`:""}`;badge.textContent=`${label}: ${value}`;host.append(badge);}
+function replayStructuredScalar(value){
+  if(value===null)return "null";
+  if(value===undefined)return "—";
+  if(typeof value==="boolean")return value?"true":"false";
+  if(typeof value==="number")return Number.isFinite(value)?value.toLocaleString():String(value);
+  if(typeof value==="string")return value||"(empty)";
+  if(Array.isArray(value))return `${value.length} item${value.length===1?"":"s"}`;
+  if(typeof value==="object")return `object · ${Object.keys(value).length} field${Object.keys(value).length===1?"":"s"}`;
+  return String(value);
 }
+function replayFileAccessCode(row){
+  const read=Boolean(row?.read_observed),write=Boolean(row?.write_observed);
+  return read&&write?"RW":read?"R":write?"W":"—";
+}
+function replayFileAccessTitle(row){
+  const code=replayFileAccessCode(row);
+  return code==="RW"?"Observed read and write access":code==="R"?"Observed read access":code==="W"?"Observed write access":"No read/write access was observed";
+}
+function replayExactReadBytes(row){
+  for(const key of ["exact_read_bytes","read_bytes","bytes_read","observed_read_bytes"]){const value=row?.[key];if(value!==null&&value!==undefined&&Number.isFinite(Number(value)))return Number(value);}
+  return null;
+}
+function replayExactWriteBytes(row){
+  for(const key of ["exact_write_bytes","write_bytes","bytes_written","observed_write_bytes"]){const value=row?.[key];if(value!==null&&value!==undefined&&Number.isFinite(Number(value)))return Number(value);}
+  return null;
+}
+function replayLooksLikeObservedFiles(value){
+  return Array.isArray(value)&&value.length>0&&value.every(row=>row&&typeof row==="object"&&!Array.isArray(row)&&("path" in row)&&("read_observed" in row||"write_observed" in row||"file_size_bytes" in row));
+}
+function replayObservedFilesSummary(rows){
+  const root=document.createElement("div");root.className="replay-structured-summary replay-files-summary";
+  const wrap=document.createElement("div");wrap.className="replay-structured-table-wrap";const table=document.createElement("table");table.className="replay-structured-table replay-observed-files-table";
+  const hasReadBytes=rows.some(row=>replayExactReadBytes(row)!=null),hasWriteBytes=rows.some(row=>replayExactWriteBytes(row)!=null);
+  const columns=[{key:"path",label:"Path"},{key:"access",label:"Access"},{key:"file_size_bytes",label:"File size"}];
+  if(hasReadBytes)columns.push({key:"read_bytes",label:"Read bytes"});if(hasWriteBytes)columns.push({key:"write_bytes",label:"Written bytes"});
+  const thead=document.createElement("thead"),trh=document.createElement("tr");columns.forEach(col=>{const th=document.createElement("th");th.textContent=col.label;if(col.key==="access")th.title="R = observed read, W = observed write, RW = both";trh.append(th);});thead.append(trh);table.append(thead);
+  const tbody=document.createElement("tbody");rows.forEach(row=>{const tr=document.createElement("tr");columns.forEach(col=>{const td=document.createElement("td");if(col.key==="access"){td.textContent=replayFileAccessCode(row);td.title=replayFileAccessTitle(row);td.className="replay-access-code";}else if(col.key==="file_size_bytes"){td.textContent=row.file_size_bytes!=null?`${replayNumber(row.file_size_bytes)} B`:"—";td.title="File size from evidence; not bytes read by the model.";}else if(col.key==="read_bytes"){const n=replayExactReadBytes(row);td.textContent=n==null?"—":`${replayNumber(n)} B`;}else if(col.key==="write_bytes"){const n=replayExactWriteBytes(row);td.textContent=n==null?"—":`${replayNumber(n)} B`;}else{td.textContent=String(row.path||"—");td.title=td.textContent;}tr.append(td);});tbody.append(tr);});table.append(tbody);wrap.append(table);root.append(wrap);
+  const note=document.createElement("div");note.className="replay-structured-note";note.textContent="Access shows observed file activity (R / W / RW). File size is metadata and must not be interpreted as bytes read. Exact byte columns appear only when exact byte evidence exists.";root.append(note);return root;
+}
+function replayStructuredSummary(value){
+  const root=document.createElement("div");root.className="replay-structured-summary";
+  if(Array.isArray(value)){
+    if(!value.length){root.textContent="No items";return root;}
+    if(replayLooksLikeObservedFiles(value))return replayObservedFilesSummary(value);
+    const objectRows=value.filter(item=>item&&typeof item==="object"&&!Array.isArray(item));
+    if(objectRows.length===value.length){
+      const scalarKeys=[];const seen=new Set();
+      for(const row of objectRows){for(const [key,val] of Object.entries(row)){if(seen.has(key))continue;if(val===null||["string","number","boolean"].includes(typeof val)){seen.add(key);scalarKeys.push(key);}}}
+      const columns=scalarKeys.slice(0,8);
+      if(columns.length){
+        const wrap=document.createElement("div");wrap.className="replay-structured-table-wrap";const table=document.createElement("table");table.className="replay-structured-table";
+        const thead=document.createElement("thead"),trh=document.createElement("tr");columns.forEach(key=>{const th=document.createElement("th");th.textContent=key;trh.append(th);});thead.append(trh);table.append(thead);
+        const tbody=document.createElement("tbody");objectRows.forEach(row=>{const tr=document.createElement("tr");columns.forEach(key=>{const td=document.createElement("td");td.textContent=replayStructuredScalar(row[key]);td.title=td.textContent;tr.append(td);});tbody.append(tr);});table.append(tbody);wrap.append(table);root.append(wrap);
+        if(scalarKeys.length>columns.length){const note=document.createElement("div");note.className="replay-structured-note";note.textContent=`Showing ${columns.length} of ${scalarKeys.length} scalar fields. Use JSON for full data.`;root.append(note);}return root;
+      }
+    }
+    const list=document.createElement("div");list.className="replay-structured-list";value.forEach((item,index)=>{const row=document.createElement("div");row.className="replay-structured-row";const key=document.createElement("span");key.className="replay-structured-key";key.textContent=`#${index+1}`;const val=document.createElement("span");val.className="replay-structured-value";val.textContent=replayStructuredScalar(item);row.append(key,val);list.append(row);});root.append(list);return root;
+  }
+  if(value&&typeof value==="object"){
+    const list=document.createElement("div");list.className="replay-structured-list";
+    for(const [key,item] of Object.entries(value)){
+      const row=document.createElement("div");row.className="replay-structured-row";const k=document.createElement("span");k.className="replay-structured-key";k.textContent=key;const val=document.createElement("span");val.className="replay-structured-value";
+      if(item&&typeof item==="object"){
+        const nested=document.createElement("details");nested.className="replay-structured-nested";const sum=document.createElement("summary");sum.textContent=replayStructuredScalar(item);nested.append(sum,replayStructuredSummary(item));val.append(nested);
+      }else val.textContent=replayStructuredScalar(item);
+      row.append(k,val);list.append(row);
+    }
+    root.append(list);return root;
+  }
+  root.textContent=replayStructuredScalar(value);return root;
+}
+async function replayCopyJson(button,value){
+  const json=JSON.stringify(value,null,2);let ok=false;
+  try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(json);ok=true;}}catch{}
+  if(!ok){const ta=document.createElement("textarea");ta.value=json;ta.style.position="fixed";ta.style.opacity="0";document.body.append(ta);ta.select();try{ok=document.execCommand("copy");}catch{}ta.remove();}
+  const old=button.textContent;button.textContent=ok?"Copied":"Copy failed";setTimeout(()=>{button.textContent=old;},1200);
+}
+function replayAddJsonDetails(host,label,value){
+  if(value===null||value===undefined||(typeof value==="object"&&!Object.keys(value||{}).length))return;
+  const details=document.createElement("details");details.className="replay-details replay-structured-details";const summary=document.createElement("summary");summary.textContent=label;details.append(summary);
+  const viewer=document.createElement("div");viewer.className="replay-structured-viewer";
+  const tabs=document.createElement("div");tabs.className="replay-structured-tabs";tabs.setAttribute("role","tablist");
+  const summaryTab=document.createElement("button");summaryTab.type="button";summaryTab.className="active";summaryTab.textContent="Summary";summaryTab.setAttribute("role","tab");summaryTab.setAttribute("aria-selected","true");
+  const jsonTab=document.createElement("button");jsonTab.type="button";jsonTab.textContent="JSON";jsonTab.setAttribute("role","tab");jsonTab.setAttribute("aria-selected","false");tabs.append(summaryTab,jsonTab);viewer.append(tabs);
+  const summaryPane=document.createElement("div");summaryPane.className="replay-structured-pane summary-pane";summaryPane.append(replayStructuredSummary(value));
+  const jsonPane=document.createElement("div");jsonPane.className="replay-structured-pane json-pane";jsonPane.hidden=true;
+  const jsonTools=document.createElement("div");jsonTools.className="replay-json-tools";const copy=document.createElement("button");copy.type="button";copy.className="replay-json-copy";copy.textContent="Copy JSON";copy.addEventListener("click",()=>replayCopyJson(copy,value));jsonTools.append(copy);jsonPane.append(jsonTools);
+  const pre=document.createElement("pre");pre.className="replay-values compact";pre.textContent=JSON.stringify(value,null,2);jsonPane.append(pre);viewer.append(summaryPane,jsonPane);
+  const activate=mode=>{const json=mode==="json";summaryPane.hidden=json;jsonPane.hidden=!json;summaryTab.classList.toggle("active",!json);jsonTab.classList.toggle("active",json);summaryTab.setAttribute("aria-selected",json?"false":"true");jsonTab.setAttribute("aria-selected",json?"true":"false");};
+  summaryTab.addEventListener("click",()=>activate("summary"));jsonTab.addEventListener("click",()=>activate("json"));details.append(viewer);host.append(details);
+}
+function renderCanonicalReplayEvent(host,event){
+  const type=String(event?.event_type||"");const box=document.createElement("div");box.className=`replay-event ${type.toLowerCase().replace(/_/g,"-")}`;
+  const label=document.createElement("span");label.className="replay-event-label";label.textContent=type==="ASSISTANT_MESSAGE"?"Assistant · verbatim":type==="ANALYST_MESSAGE"?"Analyst · verbatim":type==="MODEL_ACTION"?"Model action":type==="PAUSE"?"Pause":type==="RESUME"?"Resume":type||"Event";box.append(label);
+  if(type==="ASSISTANT_MESSAGE"||type==="ANALYST_MESSAGE"){const body=document.createElement("div");body.className="replay-event-markdown";body.innerHTML=renderBasicMarkdown(event.text||"");box.append(body);}
+  else if(type==="MODEL_ACTION"){
+    const body=document.createElement("div");body.className="replay-action-summary";body.textContent=event.action_summary||event.action_type||"Structured model action";box.append(body);
+    const tags=document.createElement("div");tags.className="replay-action-tags";
+    [event.action_type,event.status,event.route,event.to_node?`→ ${event.to_node}`:null].filter(Boolean).forEach(value=>{const tag=document.createElement("span");tag.className="replay-action-tag";tag.textContent=value;tags.append(tag);});if(tags.childNodes.length)box.append(tags);
+    if(event.changed_paths?.length){const paths=document.createElement("div");paths.className="replay-decision-meta";paths.textContent=`Changed: ${event.changed_paths.join(", ")}`;box.append(paths);}
+    if(event.decision_ids?.length){const decisions=document.createElement("div");decisions.className="replay-decision-meta";decisions.textContent=`Decisions: ${event.decision_ids.join(", ")}`;box.append(decisions);}
+    replayAddJsonDetails(box,"State patch",event.state_patch);replayAddJsonDetails(box,"Structured result",event.structured_result);
+  }
+  if(event.timestamp){const meta=document.createElement("div");meta.className="replay-decision-meta";meta.textContent=event.timestamp;box.append(meta);}host.append(box);
+}
+function renderReplayFileActions(step,actions){if(!actions?.length)return;const details=document.createElement("details");details.className="replay-details";const summary=document.createElement("summary");summary.textContent=`Files / tools · ${actions.length} observation${actions.length===1?"":"s"}`;details.append(summary);const list=document.createElement("div");list.className="replay-files-list";
+  actions.forEach(action=>{const item=document.createElement("div");item.className="replay-file-action";const coverage=action.coverage_class||action.coverage_mode||"OBSERVED";const command=Array.isArray(action.command)?action.command.join(" "):action.command;const main=action.path||command||action.event||"File/tool observation";item.textContent=`${coverage} · ${main}`;const meta=[];if(action.file_size_bytes!=null)meta.push(`file size ${replayNumber(action.file_size_bytes)} B`);if(action.exact_observed_bytes!=null)meta.push(`exact observed ${replayNumber(action.exact_observed_bytes)} B`);if(action.sum_file_size_bytes_for_read_files!=null)meta.push(`sum file sizes ${replayNumber(action.sum_file_size_bytes_for_read_files)} B`);if(action.exit_code!=null)meta.push(`exit ${action.exit_code}`);if(meta.length){const m=document.createElement("div");m.className="replay-decision-meta";m.textContent=meta.join(" · ");item.append(m);}if(action.files?.length)replayAddJsonDetails(item,`Observed files (${action.files.length}${action.files.length>=40?"+":""})`,action.files);list.append(item);});details.append(list);step.append(details);
+}
+function renderReplay() {
+  const empty=document.querySelector("#replay-empty"),view=document.querySelector("#replay-view"),header=document.querySelector("#replay-header"),note=document.querySelector("#replay-note"),transcript=document.querySelector("#replay-transcript");if(!empty||!view||!header||!note||!transcript)return;
+  const replay=state.replayData;if(!replay){empty.hidden=false;view.hidden=true;return;}empty.hidden=true;view.hidden=false;header.innerHTML="";transcript.innerHTML="";
+  const title=document.createElement("strong");title.textContent=replay.run_id?`Run ${replay.run_id}`:"Canonical debug replay";header.append(title);
+  const meta=document.createElement("span");meta.textContent=[`${replay.steps?.length||0} executions`,replay.debug_run_index?.mode,replay.debug_run_index?.status].filter(Boolean).join(" · ");header.append(meta);
+  const summary=document.createElement("div");summary.className="replay-summary-grid";const s=replay.summary||{};replayAddMetric(summary,"Process quality",replay.process_quality?.status);replayAddMetric(summary,"Integrity",replay.integrity?.status);replayAddMetric(summary,"Executions",s.executions);if(replay.process_quality?.telemetry_rows!=null&&replay.process_quality?.canonical_execution_count!=null)replayAddMetric(summary,"Telemetry coverage",`${replay.process_quality.telemetry_rows}/${replay.process_quality.canonical_execution_count}`);if(s.total_duration_ms!=null)replayAddMetric(summary,"Observed execution time",replayDurationText(s.total_duration_ms));if(s.runtime_observable_input_tokens!=null||s.runtime_observable_output_tokens!=null)replayAddMetric(summary,"Runtime-observable token equivalent",`${replayNumber(s.runtime_observable_input_tokens||0)} in / ${replayNumber(s.runtime_observable_output_tokens||0)} out`);if(s.exact_host_input_tokens!=null||s.exact_host_output_tokens!=null)replayAddMetric(summary,"Exact host tokens",`${replayNumber(s.exact_host_input_tokens||0)} in / ${replayNumber(s.exact_host_output_tokens||0)} out`);replayAddMetric(summary,"Artifact quality",replay.artifact_quality?.status);header.append(summary);
+  note.textContent=replay.chat_coverage?.statement||"Canonical debug replay. Hidden model reasoning is not captured or displayed.";
+  if(replay.integrity?.status==="FAIL"){const warning=document.createElement("div");warning.className="replay-note replay-integrity-fail";warning.textContent=`Integrity-invalid replay package: ${replay.integrity.failures?.length||0} manifest failure(s).`;header.append(warning);}
+  replayAddJsonDetails(header,"Process quality details",replay.process_quality);replayAddJsonDetails(header,"Performance / token report",replay.performance);replayAddJsonDetails(header,"Artifact quality details",replay.artifact_quality);
+  if(replay.artifacts?.length){const details=document.createElement("details");details.className="replay-details";const sum=document.createElement("summary");sum.textContent=`Artifacts · ${replay.artifacts.length}`;details.append(sum);const list=document.createElement("div");list.className="replay-artifacts";replay.artifacts.forEach(a=>{const row=document.createElement("div");row.className="replay-artifact-row";const title=document.createElement("div");title.textContent=`${a.role||"artifact"} · ${a.path||a.archive_path||""}${a.bytes!=null?` · ${replayNumber(a.bytes)} B`:""}`;row.append(title);if(a.content_text){const open=document.createElement("details");open.className="replay-details";const os=document.createElement("summary");os.textContent="Open artifact";open.append(os);if(/\.(md|markdown)$/i.test(String(a.path||a.archive_path||""))){const md=document.createElement("div");md.className="replay-event-markdown replay-artifact-markdown";md.innerHTML=renderBasicMarkdown(a.content_text);open.append(md);}else{const pre=document.createElement("pre");pre.className="replay-values compact";pre.textContent=a.content_text;open.append(pre);}row.append(open);}list.append(row);});details.append(list);header.append(details);}
+  (replay.steps||[]).forEach(stepData=>{
+    const step=document.createElement("section");step.className="replay-step";if(stepData.id)step.dataset.nodeId=stepData.id;
+    const head=document.createElement("div");head.className="replay-step-head";const id=document.createElement(replayGraphHasElement(stepData.id)?"button":"span");id.className=replayGraphHasElement(stepData.id)?"replay-step-id replay-node-link":"replay-step-id";id.textContent=stepData.id||"(unknown)";if(id.tagName==="BUTTON"){id.type="button";id.addEventListener("click",()=>focusReplayGraphElement(stepData.id));}head.append(id);
+    const seq=document.createElement("span");seq.className="replay-seq";seq.textContent=`Execution #${stepData.execution_sequence||stepData.index} · ${stepData.kind||"step"}${stepData.status?` · ${stepData.status}`:""}`;head.append(seq);
+    const metrics=document.createElement("div");metrics.className="replay-step-metrics";const tele=stepData.telemetry||{};if(tele.duration_ms!=null)replayAddMetric(metrics,"Duration",replayDurationText(tele.duration_ms));if(tele.estimated_input_tokens!=null||tele.estimated_output_tokens!=null)replayAddMetric(metrics,"Runtime-observable token equivalent",`${replayNumber(tele.estimated_input_tokens||0)} in / ${replayNumber(tele.estimated_output_tokens||0)} out`);if(tele.exact_host_input_tokens!=null||tele.exact_host_output_tokens!=null)replayAddMetric(metrics,"Exact host tokens",`${replayNumber(tele.exact_host_input_tokens||0)} in / ${replayNumber(tele.exact_host_output_tokens||0)} out`);if(stepData.receipt?.receipt_sha256)replayAddMetric(metrics,"Receipt","✓");if(stepData.ledger_sha256)replayAddMetric(metrics,"Ledger","✓");if(metrics.childNodes.length)head.append(metrics);step.append(head);
+    const chronology=document.createElement("div");chronology.className="replay-chronology";
+    if(stepData.prompt&&stepData.prompt_source==="SOURCE_RECONSTRUCTION"){const reconstructed=document.createElement("div");reconstructed.className="replay-event assistant-message replay-reconstruction";reconstructed.innerHTML='<span class="replay-event-label">Playbook source · reconstructed</span>';const body=document.createElement("div");body.className="replay-event-markdown";body.innerHTML=renderBasicMarkdown(stepData.prompt);reconstructed.append(body);chronology.append(reconstructed);}
+    (stepData.chronology||[]).forEach(event=>renderCanonicalReplayEvent(chronology,event));if(!chronology.childNodes.length){const quiet=document.createElement("div");quiet.className="replay-event";quiet.textContent=`No user-visible message recorded for this execution. Route: ${stepData.route||"unknown"}${stepData.to_node?` → ${stepData.to_node}`:""}.`;chronology.append(quiet);}step.append(chronology);
+    renderReplayFileActions(step,stepData.file_actions||[]);if(stepData.receipt)replayAddJsonDetails(step,"Receipt / integrity details",stepData.receipt);transcript.append(step);
+  });
+  if(state.replayFocusId)updateReplayFocusVisuals(state.replayFocusId);
+}
+
 function bytesToBase64(bytes) {
   let binary = ""; const chunk = 0x8000;
   for (let offset = 0; offset < bytes.length; offset += chunk) binary += String.fromCharCode(...bytes.subarray(offset, offset + chunk));
@@ -1706,7 +2167,7 @@ const HELP_PAGES = [
     ["Generated files", `<p>Generated files appear inline in the transcript. Markdown files can be opened in a side preview and downloaded. ZIP and other non-preview files use the same file-card design but are download-only.</p>`]
   ]},
   {id:"replay-real-chat", title:"Replay Real Chat", lead:"Reconstruct a recorded execution for inspection, debugging, comparison, and reporting without executing the playbook again.", sections:[
-    ["What Replay is", `<p>Replay reads exported run evidence such as <code>run_trace.json</code>. It reconstructs the route, accepted decisions, gates, checkpoints, and available conversation content as a read-only transcript.</p><div class="help-callout">Replay does not make provider calls and does not change runtime state.</div>`],
+    ["What Replay is", `<p>Replay reads a canonical debug handoff ZIP. <code>MODEL_EXECUTION_LEDGER.jsonl</code> is execution truth; <code>INTERACTION_AND_ACTION_TRACE.jsonl</code> provides recorded user-visible chat and structured actions. Telemetry, file/tool evidence, receipts, integrity, and artifact quality are overlaid when present.</p><div class="help-callout">Replay never displays hidden model reasoning, does not make provider calls, and does not change runtime state.</div>`],
     ["What may be missing", `<p>A replay package can contain full verbatim interaction data or only structural run evidence. If raw model wording was not recorded, the Editor may fall back to the packaged playbook wording where appropriate and clearly marks the reconstruction as read-only.</p>`],
     ["Reading the transcript", `<p>Assistant/playbook steps, analyst decisions, gate results, and checkpoint payloads use different visual treatments. Technical metadata is secondary to the conversational flow.</p>`],
     ["Download MD", `<p><strong>Download MD</strong> exports the reconstructed transcript as Markdown for review, issue attachments, or archival use.</p>`],
@@ -1767,13 +2228,14 @@ const HELP_PAGES = [
     ["No-progress protection", `<p>The runtime detects recovery cycles that return to the same state without meaningful progress. This prevents an invalid playbook or repeated failed correction from looping forever.</p>`],
     ["Debugging recovery", `<p>Inspect the failed gate, Current State, recovery target, and subsequent state diff. If a recovery path is wrong because of the playbook definition, treat it as a playbook issue rather than changing the Editor to guess domain intent.</p>`]
   ]},
-  {id:"files", title:"Files and Markdown Preview", lead:"Inspect generated artifacts and package resources without leaving the Editor.", sections:[
-    ["Generated Markdown", `<p>Generated <code>.md</code> files appear as file cards in the transcript. Click the card to open a read-only rendered preview in the right-side pane. Use the download icon to save the original file.</p>`],
-    ["Other generated files", `<p>ZIP archives and other non-preview formats use the same compact file-card design but are download-only. Clicking the card itself does not open a preview.</p>`],
-    ["Package references", `<p>In <strong>Show Tree → References</strong>, the Editor can open package resources used by the selected node. Markdown references provide both rendered <strong>Preview</strong> and raw <strong>Source</strong> tabs. Python/YAML/JSON/text resources are shown as source.</p>`],
-    ["Large files", `<p>Reference previews use the inspector's normal outer scroll rather than a nested internal scrollbar, so long files remain usable even when the reference list is large.</p>`],
-    ["Read-only guarantee", `<p>Previewing or explaining a file never modifies the package on disk or changes runtime state.</p>`]
+  {id:"files", title:"Package Files", lead:"Browse package contents that are not otherwise exposed by the Editor, or inspect the complete physical ZIP tree.", sections:[
+    ["Uncovered and All files", `<p><strong>Uncovered</strong> shows package files that are not exposed through Show Tree, Show Data Flow, Playbook Settings, verification, or another standard Editor surface. <strong>All files</strong> shows the complete physical ZIP contents with coverage badges.</p>`],
+    ["File tree and search", `<p>Expand directories to navigate the package hierarchy or use search to filter by path. Expanded directories remain open while you select files and preview their contents.</p>`],
+    ["Preview and download", `<p>Markdown is rendered as formatted content. YAML, JSON, Python, and other text files are shown as readable source. Binary files expose metadata and download without pretending to be text.</p>`],
+    ["Discuss with model", `<p>For previewable text files, <strong>Discuss with model</strong> opens the read-only AI File Assistant in the right pane with the selected file as context. This never modifies package contents.</p>`],
+    ["Coverage badges", `<p>In <strong>All files</strong>, badges such as <strong>Tree</strong>, <strong>Settings</strong>, <strong>Data Flow</strong>, and <strong>Uncovered</strong> show where each file is already exposed by the Editor.</p>`]
   ]},
+
   {id:"settings", title:"Model and Provider Settings", lead:"Configure the provider used for live execution and optional model-assisted Explorer features.", sections:[
     ["Where settings are available", `<p><strong>Model Settings</strong> is available on the initial source-loading screen and in the global header after a playbook is loaded. You can configure the provider before starting execution.</p>`],
     ["Typical fields", `<p>Depending on provider mode, configure the base URL, model name, credentials, timeout/retry settings, and structured-output behavior.</p>`],
@@ -1810,6 +2272,22 @@ HELP_PAGES.push({
     ["Contract drift protection", `<p>Release verification compares the HTTP routes implemented by <code>EditorHandler</code> with the methods and paths present in OpenAPI. If an API route is added or removed without updating the specification, the regression test fails.</p>`]
   ]
 });
+HELP_PAGES.push({
+  id:"model-chat", title:"Model Chat", lead:"Use the configured model for free-form discussion without executing the loaded playbook.",
+  sections:[
+    ["Independent conversation", `<p>Model Chat is a free conversation workspace. Messages here do not advance execution, change canonical runtime state, or traverse the playbook graph.</p>`],
+    ["Files and generated artifacts", `<p>You can attach supported files and inspect files generated by the model. Previewable playbook files can be opened from the chat while archives remain download-oriented.</p>`],
+    ["Model configuration", `<p>Model Chat uses the same configured provider and model as the rest of the Editor. Configure credentials and capability settings before starting a conversation.</p>`],
+    ["Safety boundary", `<p>Model Chat can help analyze or draft material, but its conversation is not canonical playbook execution evidence unless you explicitly use the appropriate execution or package workflow.</p>`]
+  ]
+});
+const HELP_NAV_GROUPS = [
+  ["getting-started"],
+  ["show-tree","show-data-flow","playbook-settings","verify-playbook","files"],
+  ["show-path","execute-playbook","replay-real-chat","auto-answers","current-state","pause-resume","recovery","evidence"],
+  ["model-chat","settings","troubleshooting","rest-api"]
+];
+
 let playbookSettingsCache=null;
 let playbookSettingsSubtab="settings";
 let playbookSettingsResourcePreviewPath="";
@@ -1818,6 +2296,122 @@ let settingsAssistantBusy=false;
 let settingsAssistantSelectedField=null;
 let settingsResourceAssistantThreads={};
 let activeHelpPageId="getting-started";
+
+
+let packageFilesCache=null;
+let packageFilesCachePackageId="";
+let packageFilesMode="uncovered";
+let packageFilesQuery="";
+let packageFilesSelectedPath="";
+let packageFilePreviewCache=new Map();
+let packageFilesTreeWidth=null;
+let packageFilesSplitDrag=null;
+let packageFilesAssistantOpen=false;
+let packageFilesExpandedDirs=new Set();
+
+function packageFilesFormatBytes(size){
+  const n=Number(size||0);if(n<1024)return `${n} B`;if(n<1024*1024)return `${(n/1024).toFixed(n<10240?1:0)} KB`;return `${(n/(1024*1024)).toFixed(1)} MB`;
+}
+function packageFilesCoverageBadge(surface){
+  const cls=String(surface||'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
+  return `<span class="package-file-coverage ${cls}">${escapeHtml(surface)}</span>`;
+}
+function packageFilesTreeModel(files){
+  const root={name:'',path:'',dirs:new Map(),files:[]};
+  for(const file of files){
+    const parts=String(file.path||'').split('/').filter(Boolean);let node=root,current=[];
+    parts.slice(0,-1).forEach(part=>{current.push(part);if(!node.dirs.has(part))node.dirs.set(part,{name:part,path:current.join('/'),dirs:new Map(),files:[]});node=node.dirs.get(part);});
+    node.files.push(file);
+  }
+  return root;
+}
+function packageFilesRenderTreeNode(node,depth=0,forceOpen=false){
+  const dirs=[...node.dirs.values()].sort((a,b)=>a.name.localeCompare(b.name)),files=[...node.files].sort((a,b)=>String(a.path).localeCompare(String(b.path)));
+  const innerDirs=dirs.map(dir=>{const open=forceOpen||depth===0||packageFilesExpandedDirs.has(dir.path);return `<details class="package-files-dir" data-package-dir-path="${escapeHtml(dir.path)}" ${open?'open':''}><summary><span class="package-files-folder">▸</span><strong>${escapeHtml(dir.name)}</strong><small>${dir.files.length+[...dir.dirs.values()].reduce((sum,d)=>sum+d.files.length,0)}</small></summary><div class="package-files-dir-body">${packageFilesRenderTreeNode(dir,depth+1,forceOpen)}</div></details>`;}).join('');
+  const innerFiles=files.map(file=>{const coverage=(file.coverage||[]);return `<button type="button" class="package-file-row ${file.path===packageFilesSelectedPath?'active':''}" data-package-file-path="${escapeHtml(file.path)}"><span class="package-file-row-main"><span class="package-file-icon">${file.text?'▤':'◫'}</span><span><strong>${escapeHtml(String(file.path).split('/').pop())}</strong><small>${packageFilesFormatBytes(file.size)}${file.extension?` · ${escapeHtml(String(file.extension).replace(/^\./,'').toUpperCase())}`:''}</small></span></span><span class="package-file-row-badges">${coverage.length?coverage.map(packageFilesCoverageBadge).join(''):packageFilesCoverageBadge('Uncovered')}</span></button>`}).join('');
+  return innerDirs+innerFiles;
+}
+function renderPackageFilesTree(){
+  const host=document.querySelector('#package-files-tree'),summary=document.querySelector('#package-files-summary');if(!host)return;
+  const data=packageFilesCache,all=Array.isArray(data?.files)?data.files:[];
+  const q=packageFilesQuery.trim().toLowerCase();
+  const visible=all.filter(file=>(packageFilesMode==='all'||file.uncovered)&&(!q||String(file.path||'').toLowerCase().includes(q)));
+  if(summary){const s=data?.summary||{};summary.innerHTML=`<span>${Number(s.total||0)} files</span><span>${Number(s.uncovered||0)} uncovered</span><span>${visible.length} shown</span>`;}
+  document.querySelector('#package-files-uncovered')?.classList.toggle('active',packageFilesMode==='uncovered');
+  document.querySelector('#package-files-all')?.classList.toggle('active',packageFilesMode==='all');
+  if(!data){host.innerHTML='<div class="package-files-loading">Loading package files…</div>';return;}
+  if(!visible.length){host.innerHTML=`<div class="package-files-empty">${q?'No files match the search.':packageFilesMode==='uncovered'?'Every package file is covered by a standard Editor surface.':'The package contains no files.'}</div>`;return;}
+  host.innerHTML=packageFilesRenderTreeNode(packageFilesTreeModel(visible),0,Boolean(q));
+  host.querySelectorAll('.package-files-dir[data-package-dir-path]').forEach(details=>details.addEventListener('toggle',()=>{const path=String(details.dataset.packageDirPath||'');if(!path)return;if(details.open)packageFilesExpandedDirs.add(path);else packageFilesExpandedDirs.delete(path);}));
+  host.querySelectorAll('[data-package-file-path]').forEach(button=>button.addEventListener('click',()=>openPackageFile(button.dataset.packageFilePath||'')));
+}
+function renderPackageFilePreview(data=null){
+  const empty=document.querySelector('#package-file-preview-empty'),wrap=document.querySelector('#package-file-preview-content'),name=document.querySelector('#package-file-preview-name'),meta=document.querySelector('#package-file-preview-meta'),body=document.querySelector('#package-file-preview-body'),discuss=document.querySelector('#package-file-discuss');
+  if(!empty||!wrap||!body)return;
+  if(!data){empty.hidden=false;wrap.hidden=true;body.innerHTML='';if(discuss)discuss.hidden=true;return;}
+  empty.hidden=true;wrap.hidden=false;const file=data.file||{},preview=data.preview||{};
+  if(name)name.textContent=file.path||'';
+  if(meta)meta.innerHTML=`${packageFilesFormatBytes(file.size)} · ${(file.coverage||[]).length?(file.coverage||[]).map(packageFilesCoverageBadge).join(' '):packageFilesCoverageBadge('Uncovered')}`;
+  const discussable=Boolean(file.text&&preview.available);
+  if(discuss){discuss.hidden=!discussable;discuss.disabled=!settingsAssistantAvailable();discuss.title=settingsAssistantAvailable()?'Discuss this text file with the configured model.':'Configure a model to discuss this file.';}
+  if(!preview.available){body.className='package-file-preview-body';body.innerHTML=`<div class="package-file-preview-empty">${preview.reason==='too_large'?'This file is too large for inline preview.':'Binary preview is not available.'}<br>Use Download to inspect the original file.</div>`;return;}
+  const content=String(preview.content||'');
+  body.className=`package-file-preview-body ${preview.kind==='markdown'?'markdown':'source'}`;
+  body.innerHTML=preview.kind==='markdown'?`<div class="package-file-preview-document">${renderBasicMarkdown(content)}</div>`:`<pre><code>${escapeHtml(content)}</code></pre>`;
+}
+function applyPackageFilesTreeWidth(widthPx){
+  const layout=document.querySelector('#package-files-layout');if(!layout)return;
+  const total=Math.max(1,layout.getBoundingClientRect().width),min=240,max=Math.max(min,Math.min(total-300,total*.72));
+  const width=Math.max(min,Math.min(max,Number(widthPx)||total*.34));packageFilesTreeWidth=width;layout.style.setProperty('--package-tree-width',`${Math.round(width)}px`);
+  document.querySelector('#package-files-splitter')?.setAttribute('aria-valuenow',String(Math.round(width)));
+}
+function closePackageFileAssistant(){
+  packageFilesAssistantOpen=false;editorMain.classList.remove('package-files-chat-open');
+  const panel=document.querySelector('#playbook-settings-assistant-panel');if(panel)panel.hidden=true;
+  document.querySelector('#settings-assistant-close')?.setAttribute('hidden','');refreshWorkspaceAfterShellChange();
+}
+async function openPackageFileDiscussion(){
+  if(!packageFilesSelectedPath||!settingsAssistantAvailable())return;
+  const data=packageFilePreviewCache.get(packageFilesSelectedPath);if(!data?.file?.text||!data?.preview?.available)return;
+  const changed=playbookSettingsResourcePreviewPath!==packageFilesSelectedPath;
+  playbookSettingsResourcePreviewPath=packageFilesSelectedPath;settingsAssistantSelectedField=null;
+  if(changed)settingsAssistantMessages=settingsResourceAssistantThreads[packageFilesSelectedPath]||[];
+  packageFilesAssistantOpen=true;editorMain.classList.add('package-files-chat-open');
+  const panel=document.querySelector('#playbook-settings-assistant-panel');if(panel)panel.hidden=false;
+  const close=document.querySelector('#settings-assistant-close');if(close)close.hidden=false;
+  renderSettingsAssistant();refreshWorkspaceAfterShellChange();
+  requestAnimationFrame(()=>document.querySelector('#settings-assistant-input')?.focus());
+}
+async function openPackageFile(path){
+  packageFilesSelectedPath=String(path||'');
+  const host=document.querySelector('#package-files-tree');
+  host?.querySelectorAll('.package-file-row.active').forEach(row=>row.classList.remove('active'));
+  if(packageFilesSelectedPath){const selected=host?.querySelector(`[data-package-file-path="${CSS.escape(packageFilesSelectedPath)}"]`);selected?.classList.add('active');}
+  if(!packageFilesSelectedPath){renderPackageFilePreview(null);return;}
+  const cached=packageFilePreviewCache.get(packageFilesSelectedPath);if(cached){renderPackageFilePreview(cached);return;}
+  const body=document.querySelector('#package-file-preview-body'),empty=document.querySelector('#package-file-preview-empty'),wrap=document.querySelector('#package-file-preview-content');if(empty)empty.hidden=true;if(wrap)wrap.hidden=false;if(body)body.innerHTML='<div class="package-files-loading">Loading preview…</div>';
+  try{const data=await request('/api/package-files',{package_id:state.packageInfo?.id||'',mode:'read',path:packageFilesSelectedPath});packageFilePreviewCache.set(packageFilesSelectedPath,data);renderPackageFilePreview(data);}catch(error){if(body)body.innerHTML=`<div class="package-files-error">${escapeHtml(error.message)}</div>`;}
+}
+async function renderPackageFiles(){
+  const id=state.packageInfo?.id||'';
+  if(!id)return;
+  if(packageFilesCache&&packageFilesCachePackageId===id){renderPackageFilesTree();renderPackageFilePreview(packageFilePreviewCache.get(packageFilesSelectedPath)||null);requestAnimationFrame(()=>{if(packageFilesTreeWidth)applyPackageFilesTreeWidth(packageFilesTreeWidth);});return;}
+  packageFilesCache=null;packageFilesCachePackageId=id;packageFilesSelectedPath='';packageFilePreviewCache=new Map();packageFilesExpandedDirs=new Set();renderPackageFilesTree();renderPackageFilePreview(null);
+  try{packageFilesCache=await request('/api/package-files',{package_id:id,mode:'list'});renderPackageFilesTree();}catch(error){const host=document.querySelector('#package-files-tree');if(host)host.innerHTML=`<div class="package-files-error">${escapeHtml(error.message)}</div>`;}
+}
+function bindPackageFiles(){
+  document.querySelector('#package-files-uncovered')?.addEventListener('click',()=>{packageFilesMode='uncovered';renderPackageFilesTree();});
+  document.querySelector('#package-files-all')?.addEventListener('click',()=>{packageFilesMode='all';renderPackageFilesTree();});
+  document.querySelector('#package-files-search')?.addEventListener('input',event=>{packageFilesQuery=String(event.target.value||'');renderPackageFilesTree();});
+  document.querySelector('#package-file-download')?.addEventListener('click',()=>{if(!packageFilesSelectedPath||!state.packageInfo?.id)return;window.location.href=`/api/package-file-download?package_id=${encodeURIComponent(state.packageInfo.id)}&path=${encodeURIComponent(packageFilesSelectedPath)}`;});
+  document.querySelector('#package-file-discuss')?.addEventListener('click',openPackageFileDiscussion);
+  const splitter=document.querySelector('#package-files-splitter'),layout=document.querySelector('#package-files-layout');
+  splitter?.addEventListener('pointerdown',event=>{if(event.button!==0||!layout)return;const rect=layout.getBoundingClientRect();packageFilesSplitDrag={id:event.pointerId,left:rect.left,top:rect.top,width:rect.width,height:rect.height,mobile:matchMedia('(max-width:900px)').matches};splitter.setPointerCapture?.(event.pointerId);splitter.classList.add('dragging');event.preventDefault();});
+  splitter?.addEventListener('pointermove',event=>{const drag=packageFilesSplitDrag;if(!drag||drag.id!==event.pointerId)return;if(drag.mobile){const y=Math.max(150,Math.min(drag.height-240,event.clientY-drag.top));layout.style.gridTemplateRows=`${Math.round(y)}px 7px minmax(240px,1fr)`;}else applyPackageFilesTreeWidth(event.clientX-drag.left);event.preventDefault();});
+  const stopSplit=event=>{if(packageFilesSplitDrag&&event?.pointerId!=null&&packageFilesSplitDrag.id!==event.pointerId)return;packageFilesSplitDrag=null;splitter?.classList.remove('dragging');};
+  splitter?.addEventListener('pointerup',stopSplit);splitter?.addEventListener('pointercancel',stopSplit);
+  splitter?.addEventListener('keydown',event=>{if(!layout||!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();const current=packageFilesTreeWidth||layout.getBoundingClientRect().width*.34;applyPackageFilesTreeWidth(current+(event.key==='ArrowRight'?24:-24));});
+}
 
 
 function renderPlaybookSettingsResourcePreview(file){
@@ -1914,16 +2508,20 @@ async function renderPlaybookSettings() {
   }
 }
 
+function settingsAssistantInPackageFiles(){return state.panelTab==="packagefiles"&&packageFilesAssistantOpen;}
+function settingsAssistantResourceMode(){return settingsAssistantInPackageFiles()||playbookSettingsSubtab!=="settings";}
+function settingsAssistantResourcePath(){return settingsAssistantInPackageFiles()?String(packageFilesSelectedPath||""):String(playbookSettingsResourcePreviewPath||"");}
 function settingsAssistantAvailable(){ return modelExplanationAvailable(); }
 function renderSettingsAssistant(){
   const messages=document.querySelector("#settings-assistant-messages"), unavailable=document.querySelector("#settings-assistant-unavailable"), analyze=document.querySelector("#settings-assistant-analyze"), send=document.querySelector("#settings-assistant-send"), input=document.querySelector("#settings-assistant-input"), context=document.querySelector("#settings-assistant-context"), title=document.querySelector("#settings-assistant-title"), subtitle=document.querySelector("#settings-assistant-subtitle");
   if(!messages) return;
-  const resourceMode=playbookSettingsSubtab!=="settings";
-  const resourcePath=String(playbookSettingsResourcePreviewPath||"");
+  const resourceMode=settingsAssistantResourceMode();
+  const resourcePath=settingsAssistantResourcePath();
   const modelAvailable=settingsAssistantAvailable();
   const available=modelAvailable && (!resourceMode || Boolean(resourcePath));
   if(title) title.textContent=resourceMode?"AI File Assistant":"AI Settings Assistant";
   if(subtitle) subtitle.textContent=resourceMode?"Discuss the selected package file with the configured model. Read-only: the assistant never changes the package.":"Read-only guidance. The model never edits the playbook.";
+  const close=document.querySelector('#settings-assistant-close');if(close)close.hidden=!settingsAssistantInPackageFiles();
   if(unavailable){ unavailable.hidden=available; unavailable.textContent=!modelAvailable?"Configure a model to use the assistant.":resourceMode&&!resourcePath?"Select a file to discuss it with the model.":""; }
   if(analyze){ analyze.hidden=resourceMode; analyze.disabled=!available||settingsAssistantBusy; analyze.textContent=settingsAssistantBusy?"Working…":"Analyze current settings"; }
   if(send) send.disabled=!available||settingsAssistantBusy;
@@ -1978,8 +2576,8 @@ async function discussPlaybookSetting(field){
   document.querySelector("#settings-assistant-input")?.focus();
 }
 async function runSettingsAssistant(mode,message="",options={}){
-  const resourceMode=playbookSettingsSubtab!=="settings";
-  const resourcePath=String(playbookSettingsResourcePreviewPath||"");
+  const resourceMode=settingsAssistantResourceMode();
+  const resourcePath=settingsAssistantResourcePath();
   if(!settingsAssistantAvailable()||settingsAssistantBusy||(resourceMode&&!resourcePath)) return false;
   if(mode==="chat"&&!String(message).trim()) return false;
   if(mode==="chat") settingsAssistantMessages.push({role:"user",content:String(message).trim(),hidden:Boolean(options.hiddenUser)});
@@ -1998,6 +2596,7 @@ async function runSettingsAssistant(mode,message="",options={}){
   }finally{settingsAssistantBusy=false;renderSettingsAssistant();}
 }
 function bindSettingsAssistant(){
+  document.querySelector("#settings-assistant-close")?.addEventListener("click",()=>{if(settingsAssistantInPackageFiles())closePackageFileAssistant();});
   document.querySelector("#settings-assistant-analyze")?.addEventListener("click",()=>{
     settingsAssistantSelectedField=null;
     settingsAssistantMessages=[];
@@ -2298,7 +2897,62 @@ function bindLineageInteractions(){
 
 const SOURCE_FLOW_CARD_W=196,SOURCE_FLOW_CARD_H=82,SOURCE_FLOW_GAP_X=34,SOURCE_FLOW_GAP_Y=54;
 function sourceFlowClampZoom(v){return Math.max(.25,Math.min(2.2,Number(v)||1));}
-function sourceFlowNodeTypeLabel(type){return ({analyst_question:"analyst question",analyst_input:"analyst input",interaction:"interaction",transformation:"transformation",variable:"variable",gate:"gate",gate_fragment:"gate",artifact:"artifact",contract_branch:"contract branch",verified_contract:"verified contract",verified_artifact_set:"verified artifact set"})[type]||type||"information object";}
+function sourceFlowNodeTypeLabel(type){return ({analyst_question:"analyst question",analyst_input:"analyst input",interaction:"interaction",transformation:"transformation",variable:"variable",gate:"gate",gate_fragment:"gate",artifact:"artifact",contract_branch:"contract branch",verified_contract:"verified contract",verified_artifact_set:"verified artifact set",terminal:"terminal",reference:"reference"})[type]||type||"information object";}
+function sourceFlowNodeTypeIcon(type){return ({analyst_question:"↔",analyst_input:"↔",interaction:"↔",transformation:"ƒ",variable:"{}",gate:"◇",gate_fragment:"◇",artifact:"▤",contract_branch:"⋮",verified_contract:"✓",verified_artifact_set:"✓",terminal:"■",reference:"↗"})[type]||"·";}
+function sourceFlowLegendNodeGroup(type){
+  if(type==="variable")return "variable";
+  if(type==="transformation")return "transformation";
+  if(["interaction","analyst_input","analyst_question"].includes(type))return "interaction";
+  if(["gate","gate_fragment"].includes(type))return "gate";
+  if(type==="artifact")return "artifact";
+  if(["contract_branch","verified_contract","verified_artifact_set"].includes(type))return "contract";
+  return "other";
+}
+function sourceFlowLegendEdgeGroup(edge,role=""){
+  if((edge?.type||"")==="validation")return "validation";
+  return "relation";
+}
+function sourceFlowLegendMatchesNode(node,selection){
+  return selection&&selection.kind==="node"&&sourceFlowLegendNodeGroup(node?.type)===selection.value;
+}
+function sourceFlowLegendMatchesEdge(edge,role,selection){
+  return selection&&selection.kind==="edge"&&sourceFlowLegendEdgeGroup(edge,role)===selection.value;
+}
+function sourceFlowTraceRoot(){return state.lineage.sourceFocusRoot||state.lineage.sourceSelected||null;}
+function sourceFlowActiveTrace(graph=activeSourceFlowGraph()){
+  const root=sourceFlowTraceRoot();
+  return root?sourceFlowDirectionalTrace(graph,root):null;
+}
+function setSourceFlowLegendSelection(kind,value){
+  if(kind==="trace"){
+    state.lineage.sourceTraceDirection=state.lineage.sourceTraceDirection===value?null:value;
+    state.lineage.sourceLegend=null;
+  }else{
+    const current=state.lineage.sourceLegend;
+    state.lineage.sourceLegend=current&&current.kind===kind&&current.value===value?null:{kind,value};
+    state.lineage.sourceTraceDirection=null;
+  }
+  renderSourceDataFlow();
+}
+function clearSourceFlowLegendSelection(){state.lineage.sourceLegend=null;state.lineage.sourceTraceDirection=null;}
+function updateSourceFlowLegend(graph=activeSourceFlowGraph(),trace=sourceFlowActiveTrace(graph)){
+  const buttons=[...document.querySelectorAll('.source-flow-legend-item')],selection=state.lineage.sourceLegend,traceDirection=state.lineage.sourceTraceDirection;
+  const nodeGroups=new Set((graph?.nodes||[]).map(n=>sourceFlowLegendNodeGroup(n.type)));
+  const semanticEdges=(graph?.edges||[]).filter(e=>e.type!=="invisible"),hasValidation=semanticEdges.some(e=>(e.type||'')==='validation'),hasSemanticEdges=semanticEdges.length>0;
+  for(const btn of buttons){
+    const kind=btn.dataset.legendKind||'',value=btn.dataset.legendValue||'';
+    let available=true;
+    if(kind==='node') available=nodeGroups.has(value);
+    else if(kind==='edge') available=value==='validation'?hasValidation:hasSemanticEdges;
+    else if(kind==='trace') available=hasSemanticEdges;
+    btn.disabled=!available;
+    const active=kind==='trace'?traceDirection===value:Boolean(selection&&selection.kind===kind&&selection.value===value);
+    btn.classList.toggle('active',active);
+    btn.classList.toggle('awaiting-root',kind==='trace'&&active&&!sourceFlowTraceRoot());
+    btn.setAttribute('aria-pressed',active?'true':'false');
+    if(kind==='trace') btn.title=sourceFlowTraceRoot()?`Highlight ${value} relations from ${sourceFlowTraceRoot()}`:`Choose ${value}, then click a graph node to set the trace root`;
+  }
+}
 function sourceFlowDirectionalTrace(graph,root){
   const ids=new Set((graph?.nodes||[]).map(n=>n.id)),edges=(graph?.edges||[]).filter(e=>ids.has(e.from)&&ids.has(e.to)&&e.type!=="invisible");
   const upstream=new Set(root&&ids.has(root)?[root]:[]),downstream=new Set(root&&ids.has(root)?[root]:[]);
@@ -2324,13 +2978,116 @@ function sourceFlowArtifactPresentation(node){
   const doc=text.match(/\.(md|markdown|json|ya?ml|txt|csv|tsv|html?|xml|pdf|docx?|xlsx?)(?:\b|$)/i);
   return {className:"artifact-document",badge:doc?String(doc[1]).toUpperCase():"FILE"};
 }
-function sourceFlowOrthogonalPath(a,b,direction="TB"){
-  if(direction==="LR"){
-    const ax=a.x+SOURCE_FLOW_CARD_W,ay=a.y+SOURCE_FLOW_CARD_H/2,bx=b.x,by=b.y+SOURCE_FLOW_CARD_H/2,mid=ax+(bx-ax)/2;
-    return `M ${ax} ${ay} L ${mid} ${ay} L ${mid} ${by} L ${bx} ${by}`;
+function sourceFlowSegments(points){
+  const out=[];for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i];if(a.x===b.x&&a.y===b.y)continue;out.push({x1:a.x,y1:a.y,x2:b.x,y2:b.y,o:a.y===b.y?"h":"v"});}return out;
+}
+function sourceFlowPath(points){return points.map((p,i)=>`${i?"L":"M"} ${p.x} ${p.y}`).join(" ");}
+function sourceFlowSegmentOverlap(a,b,clearance=4){
+  if(a.o!==b.o)return false;if(a.o==="h"){if(Math.abs(a.y1-b.y1)>=clearance)return false;return Math.max(Math.min(a.x1,a.x2),Math.min(b.x1,b.x2))<Math.min(Math.max(a.x1,a.x2),Math.max(b.x1,b.x2))-2;}
+  if(Math.abs(a.x1-b.x1)>=clearance)return false;return Math.max(Math.min(a.y1,a.y2),Math.min(b.y1,b.y2))<Math.min(Math.max(a.y1,a.y2),Math.max(b.y1,b.y2))-2;
+}
+function sourceFlowSegmentCross(a,b,clearance=2){
+  if(a.o===b.o)return false;const h=a.o==="h"?a:b,v=a.o==="v"?a:b,hx1=Math.min(h.x1,h.x2),hx2=Math.max(h.x1,h.x2),vy1=Math.min(v.y1,v.y2),vy2=Math.max(v.y1,v.y2);return v.x1>hx1+clearance&&v.x1<hx2-clearance&&h.y1>vy1+clearance&&h.y1<vy2-clearance;
+}
+function sourceFlowSegmentHitsNode(seg,node,clearance=8){
+  const minX=node.x-clearance,maxX=node.x+SOURCE_FLOW_CARD_W+clearance,minY=node.y-clearance,maxY=node.y+SOURCE_FLOW_CARD_H+clearance;
+  if(seg.o==="h"){const x1=Math.min(seg.x1,seg.x2),x2=Math.max(seg.x1,seg.x2);return seg.y1>=minY&&seg.y1<=maxY&&x2>minX&&x1<maxX;}
+  const y1=Math.min(seg.y1,seg.y2),y2=Math.max(seg.y1,seg.y2);return seg.x1>=minX&&seg.x1<=maxX&&y2>minY&&y1<maxY;
+}
+function sourceFlowPortOffset(graph,nodeId,fromId,toId,endpoint){
+  const edges=(graph.edges||[]).filter(e=>e.type!=="invisible"&&(endpoint==="source"?e.from===nodeId:e.to===nodeId)).sort((a,b)=>{
+    const ap=endpoint==="source"?a.to:a.from,bp=endpoint==="source"?b.to:b.from;
+    return String(ap).localeCompare(String(bp))||String(a.type||"").localeCompare(String(b.type||""));
+  });
+  const index=edges.findIndex(e=>e.from===fromId&&e.to===toId);if(index<0||edges.length<=1)return 0;
+  const slot=index-(edges.length-1)/2;
+  return Math.max(-36,Math.min(36,slot*14));
+}
+function sourceFlowRankLookup(positions,direction="TB"){
+  const axis=direction==="LR"?"x":"y",values=[...new Set(Object.values(positions||{}).map(p=>Number(p?.[axis]||0)))].sort((a,b)=>a-b),map=new Map();
+  values.forEach((v,i)=>map.set(v,i));
+  const ranks=new Map();
+  for(const [id,pos] of Object.entries(positions||{}))ranks.set(id,map.get(Number(pos?.[axis]||0))||0);
+  return ranks;
+}
+function sourceFlowBandLaneAssignments(graph,positions,direction="TB"){
+  const ranks=sourceFlowRankLookup(positions,direction),groups=new Map(),assignments=new Map();
+  const keyOf=e=>`${e.from}->${e.to}:${e.type||"relation"}`;
+  const edges=(graph.edges||[]).filter(e=>e.type!=="invisible"&&positions[e.from]&&positions[e.to]);
+  for(const e of edges){
+    const sr=ranks.get(e.from)||0,tr=ranks.get(e.to)||0;
+    const bandKey=direction==="LR"?`x:${Math.min(sr,tr)}-${Math.max(sr,tr)}`:`y:${Math.min(sr,tr)}-${Math.max(sr,tr)}`;
+    if(!groups.has(bandKey))groups.set(bandKey,[]);
+    groups.get(bandKey).push(e);
   }
-  const ax=a.x+SOURCE_FLOW_CARD_W/2,ay=a.y+SOURCE_FLOW_CARD_H,bx=b.x+SOURCE_FLOW_CARD_W/2,by=b.y,mid=ay+(by-ay)/2;
-  return `M ${ax} ${ay} L ${ax} ${mid} L ${bx} ${mid} L ${bx} ${by}`;
+  for(const [bandKey,list] of groups){
+    const sorted=[...list].sort((a,b)=>{
+      const ap=positions[a.from],at=positions[a.to],bp=positions[b.from],bt=positions[b.to];
+      if(direction==="LR") return (ap.y-bp.y)||(at.y-bt.y)||keyOf(a).localeCompare(keyOf(b));
+      return (ap.x-bp.x)||(at.x-bt.x)||keyOf(a).localeCompare(keyOf(b));
+    });
+    const count=sorted.length;
+    sorted.forEach((edge,index)=>{
+      const slot=index-(count-1)/2;
+      const base=slot*16;
+      assignments.set(keyOf(edge),direction==="LR"?{x:0,y:base,band:bandKey}:{x:base,y:0,band:bandKey});
+    });
+  }
+  return assignments;
+}
+function sourceFlowRouteCandidates(a,b,direction="TB",ports={source:0,target:0},laneHint={x:0,y:0}){
+  const c=[];
+  if(direction==="LR"){
+    const start={x:a.x+SOURCE_FLOW_CARD_W,y:a.y+SOURCE_FLOW_CARD_H/2+(ports.source||0)},end={x:b.x,y:b.y+SOURCE_FLOW_CARD_H/2+(ports.target||0)};
+    if(Math.abs(start.y-end.y)<=8&&Math.abs(laneHint.y||0)<=6)c.push({kind:"direct",points:[start,end]});
+    const base=(start.x+end.x)/2+(laneHint.x||0);
+    for(const d of [0,12,-12,24,-24,38,-38,54,-54,74,-74,98,-98,126,-126]){const x=base+d;c.push({kind:"elbow",points:[start,{x,y:start.y},{x,y:end.y},end]});}
+    const topY=Math.min(a.y,b.y)-32+(laneHint.y||0),bottomY=Math.max(a.y+SOURCE_FLOW_CARD_H,b.y+SOURCE_FLOW_CARD_H)+32+(laneHint.y||0);
+    c.push({kind:"detour",points:[start,{x:start.x+18,y:start.y},{x:start.x+18,y:topY},{x:end.x-18,y:topY},{x:end.x-18,y:end.y},end]});
+    c.push({kind:"detour",points:[start,{x:start.x+18,y:start.y},{x:start.x+18,y:bottomY},{x:end.x-18,y:bottomY},{x:end.x-18,y:end.y},end]});
+    return c;
+  }
+  const start={x:a.x+SOURCE_FLOW_CARD_W/2+(ports.source||0),y:a.y+SOURCE_FLOW_CARD_H},end={x:b.x+SOURCE_FLOW_CARD_W/2+(ports.target||0),y:b.y};
+  if(Math.abs(start.x-end.x)<=8&&Math.abs(laneHint.x||0)<=6)c.push({kind:"direct",points:[start,end]});
+  const base=(start.y+end.y)/2+(laneHint.y||0);
+  for(const d of [0,10,-10,20,-20,32,-32,46,-46,64,-64,84,-84,108,-108,136,-136]){const y=base+d;c.push({kind:"elbow",points:[start,{x:start.x,y},{x:end.x,y},end]});}
+  const leftX=Math.min(a.x,b.x)-28+(laneHint.x||0),rightX=Math.max(a.x+SOURCE_FLOW_CARD_W,b.x+SOURCE_FLOW_CARD_W)+28+(laneHint.x||0);
+  c.push({kind:"detour",points:[start,{x:start.x,y:start.y+18},{x:leftX,y:start.y+18},{x:leftX,y:end.y-18},{x:end.x,y:end.y-18},end]});
+  c.push({kind:"detour",points:[start,{x:start.x,y:start.y+18},{x:rightX,y:start.y+18},{x:rightX,y:end.y-18},{x:end.x,y:end.y-18},end]});
+  if(Math.abs(start.x-end.x)>90){
+    const sourceRight=end.x>=start.x,aSide=sourceRight?a.x+SOURCE_FLOW_CARD_W:a.x,bSide=sourceRight?b.x:b.x+SOURCE_FLOW_CARD_W,sy=a.y+SOURCE_FLOW_CARD_H/2+(ports.source||0),ey=b.y+SOURCE_FLOW_CARD_H/2+(ports.target||0),mid=(aSide+bSide)/2+(laneHint.x||0);
+    for(const d of [0,16,-16,30,-30,48,-48,70,-70,96,-96]){const x=mid+d;c.push({kind:"side",points:[{x:aSide,y:sy},{x,y:sy},{x,y:ey},{x:bSide,y:ey}]});}
+  }
+  return c;
+}
+function sourceFlowPlanRoutes(graph,positions,direction="TB"){
+  const edges=(graph.edges||[]).filter(e=>e.type!=="invisible"&&positions[e.from]&&positions[e.to]);
+  const reserved=[],routes=new Map();let totalOverlap=0,totalCross=0,totalBlocked=0,totalScore=0;
+  const laneHints=sourceFlowBandLaneAssignments(graph,positions,direction);
+  const edgeItems=edges.map(e=>{const a=positions[e.from],b=positions[e.to],span=direction==="LR"?Math.abs(b.x-a.x):Math.abs(b.y-a.y);return {e,span,key:`${e.from}->${e.to}:${e.type||"relation"}`};}).sort((a,b)=>a.span-b.span||a.key.localeCompare(b.key));
+  for(const item of edgeItems){
+    const {e,key}=item,a=positions[e.from],b=positions[e.to];let best=null;
+    const ports={source:sourceFlowPortOffset(graph,e.from,e.from,e.to,"source"),target:sourceFlowPortOffset(graph,e.to,e.from,e.to,"target")};
+    const laneHint=laneHints.get(key)||{x:0,y:0};
+    for(const candidate of sourceFlowRouteCandidates(a,b,direction,ports,laneHint)){
+      const segs=sourceFlowSegments(candidate.points);let blocked=0,cross=0,overlap=0,length=0;
+      for(const seg of segs){
+        length+=Math.abs(seg.x2-seg.x1)+Math.abs(seg.y2-seg.y1);
+        for(const n of graph.nodes||[]){if(n.id===e.from||n.id===e.to)continue;const p=positions[n.id];if(p&&sourceFlowSegmentHitsNode(seg,p))blocked++;}
+        for(const r of reserved){const hitOverlap=sourceFlowSegmentOverlap(seg,r),hitCross=!hitOverlap&&sourceFlowSegmentCross(seg,r);if(!hitOverlap&&!hitCross)continue;if(r.terminal){blocked+=4;}else if(hitOverlap)overlap++;else if(hitCross)cross++;}
+      }
+      const bends=Math.max(0,segs.length-1),kindPenalty=candidate.kind==="direct"?0:candidate.kind==="elbow"?2:candidate.kind==="side"?5:10;
+      const lanePenalty=(Math.abs(laneHint.x||0)+Math.abs(laneHint.y||0))*0.03;
+      const score=blocked*10000000+overlap*2000000+cross*4000+bends*4+length*.01+kindPenalty+lanePenalty;
+      if(!best||score<best.score-.001){best={...candidate,segs,score,blocked,cross,overlap};}
+    }
+    if(best){routes.set(key,sourceFlowPath(best.points));best.segs.forEach((s,index)=>reserved.push({...s,owner:key,terminal:index===0||index===best.segs.length-1}));totalOverlap+=best.overlap;totalCross+=best.cross;totalBlocked+=best.blocked;totalScore+=best.score;}
+  }
+  routes.stats={overlap:totalOverlap,cross:totalCross,blocked:totalBlocked,score:totalScore,edgeCount:edgeItems.length};
+  return routes;
+}
+function sourceFlowOrthogonalPath(a,b,direction="TB"){
+  const first=sourceFlowRouteCandidates(a,b,direction)[0];return first?sourceFlowPath(first.points):"";
 }
 function updateSourceFlowTransform(){
   const stage=document.querySelector("#source-flow-stage"),world=document.querySelector("#source-flow-world"),reset=document.querySelector("#source-flow-zoom-reset");if(!stage||!world)return;
@@ -2375,27 +3132,57 @@ function sourceFlowDependencyRanks(graph){
   for(let pass=0;pass<Math.max(1,remaining.length);pass++) for(const id of remaining){const preds=incoming.get(id)||[];rank.set(id,Math.max(rank.get(id)||0,...preds.map(p=>(rank.get(p)||0)+1)));}
   const layers=new Map();for(const n of nodes){const r=rank.get(n.id)||0;if(!layers.has(r))layers.set(r,[]);layers.get(r).push(n);}
   const ordered=[...layers.entries()].sort((a,b)=>a[0]-b[0]);
-  // Barycentric ordering reduces crossings and mirrors the dependency-first logic of the shipped Graphviz SVG.
+  // Crossing minimization: alternate predecessor/successor barycentric sweeps.
+  // The old layout only swept downward, which can improve fan-out while making
+  // downstream merge points unnecessarily tangled. Alternating sweeps converge
+  // toward a stable ordering that considers both sides of every rank.
   const index=new Map();ordered.forEach(([,arr])=>arr.sort((a,b)=>String(a.label||a.id).localeCompare(String(b.label||b.id))).forEach((n,i)=>index.set(n.id,i)));
-  for(let sweep=0;sweep<4;sweep++) for(const [,arr] of ordered){arr.sort((a,b)=>{const pa=incoming.get(a.id)||[],pb=incoming.get(b.id)||[];const ba=pa.length?pa.reduce((x,p)=>x+(index.get(p)||0),0)/pa.length:index.get(a.id)||0,bb=pb.length?pb.reduce((x,p)=>x+(index.get(p)||0),0)/pb.length:index.get(b.id)||0;return ba-bb||String(a.label||a.id).localeCompare(String(b.label||b.id));});arr.forEach((n,i)=>index.set(n.id,i));}
+  const reorder=(arr,neighbors)=>{
+    arr.sort((a,b)=>{
+      const na=neighbors.get(a.id)||[],nb=neighbors.get(b.id)||[];
+      const ba=na.length?na.reduce((sum,id)=>sum+(index.get(id)||0),0)/na.length:(index.get(a.id)||0);
+      const bb=nb.length?nb.reduce((sum,id)=>sum+(index.get(id)||0),0)/nb.length:(index.get(b.id)||0);
+      return ba-bb||String(a.label||a.id).localeCompare(String(b.label||b.id));
+    });
+    arr.forEach((n,i)=>index.set(n.id,i));
+  };
+  for(let sweep=0;sweep<6;sweep++){
+    for(let li=1;li<ordered.length;li++) reorder(ordered[li][1],incoming);
+    for(let li=ordered.length-2;li>=0;li--) reorder(ordered[li][1],outgoing);
+  }
   return ordered;
 }
-function sourceFlowLayout(graph){
-  const layers=sourceFlowDependencyRanks(graph),positions={},direction=state.lineage.sourceDirection||"TB",margin=44;
+function sourceFlowLayoutScaled(graph,spacingScale=1){
+  const layers=sourceFlowDependencyRanks(graph),positions={},direction=state.lineage.sourceDirection||"TB",margin=Math.round(44*spacingScale);
+  const gapX=Math.round(SOURCE_FLOW_GAP_X*spacingScale),gapY=Math.round(SOURCE_FLOW_GAP_Y*spacingScale),rankExtra=Math.round(24*spacingScale);
   if(direction==="LR"){
-    let maxCount=1;for(const [,arr] of layers)maxCount=Math.max(maxCount,arr.length);const worldH=margin*2+maxCount*SOURCE_FLOW_CARD_H+(maxCount-1)*SOURCE_FLOW_GAP_Y;
-    layers.forEach(([,arr],li)=>{const used=arr.length*SOURCE_FLOW_CARD_H+Math.max(0,arr.length-1)*SOURCE_FLOW_GAP_Y,start=margin+(worldH-margin*2-used)/2;arr.forEach((n,i)=>positions[n.id]={x:margin+li*(SOURCE_FLOW_CARD_W+SOURCE_FLOW_GAP_X+44),y:start+i*(SOURCE_FLOW_CARD_H+SOURCE_FLOW_GAP_Y)});});
-    return {positions,worldWidth:margin*2+layers.length*(SOURCE_FLOW_CARD_W+SOURCE_FLOW_GAP_X+44),worldHeight:Math.max(520,worldH)};
+    let maxCount=1;for(const [,arr] of layers)maxCount=Math.max(maxCount,arr.length);const worldH=margin*2+maxCount*SOURCE_FLOW_CARD_H+(maxCount-1)*gapY;
+    layers.forEach(([,arr],li)=>{const used=arr.length*SOURCE_FLOW_CARD_H+Math.max(0,arr.length-1)*gapY,start=margin+(worldH-margin*2-used)/2;arr.forEach((n,i)=>positions[n.id]={x:margin+li*(SOURCE_FLOW_CARD_W+gapX+Math.round(44*spacingScale)),y:start+i*(SOURCE_FLOW_CARD_H+gapY)});});
+    return {positions,worldWidth:margin*2+layers.length*(SOURCE_FLOW_CARD_W+gapX+Math.round(44*spacingScale)),worldHeight:Math.max(520,worldH),spacingScale};
   }
-  let maxCount=1;for(const [,arr] of layers)maxCount=Math.max(maxCount,arr.length);const worldW=margin*2+maxCount*SOURCE_FLOW_CARD_W+(maxCount-1)*SOURCE_FLOW_GAP_X;
-  layers.forEach(([,arr],li)=>{const used=arr.length*SOURCE_FLOW_CARD_W+Math.max(0,arr.length-1)*SOURCE_FLOW_GAP_X,start=margin+(worldW-margin*2-used)/2;arr.forEach((n,i)=>positions[n.id]={x:start+i*(SOURCE_FLOW_CARD_W+SOURCE_FLOW_GAP_X),y:margin+li*(SOURCE_FLOW_CARD_H+SOURCE_FLOW_GAP_Y+24)});});
-  return {positions,worldWidth:Math.max(760,worldW),worldHeight:margin*2+layers.length*(SOURCE_FLOW_CARD_H+SOURCE_FLOW_GAP_Y+24)};
+  let maxCount=1;for(const [,arr] of layers)maxCount=Math.max(maxCount,arr.length);const worldW=margin*2+maxCount*SOURCE_FLOW_CARD_W+(maxCount-1)*gapX;
+  layers.forEach(([,arr],li)=>{const used=arr.length*SOURCE_FLOW_CARD_W+Math.max(0,arr.length-1)*gapX,start=margin+(worldW-margin*2-used)/2;arr.forEach((n,i)=>positions[n.id]={x:start+i*(SOURCE_FLOW_CARD_W+gapX),y:margin+li*(SOURCE_FLOW_CARD_H+gapY+rankExtra)});});
+  return {positions,worldWidth:Math.max(760,worldW),worldHeight:margin*2+layers.length*(SOURCE_FLOW_CARD_H+gapY+rankExtra),spacingScale};
+}
+function sourceFlowLayout(graph){return sourceFlowLayoutScaled(graph,1);}
+function sourceFlowAdaptiveLayout(graph){
+  const direction=state.lineage.sourceDirection||"TB",scales=[1,1.16,1.34,1.56,1.82,2.12,2.46,2.84];let best=null;
+  for(const scale of scales){
+    const layout=sourceFlowLayoutScaled(graph,scale),routes=sourceFlowPlanRoutes(graph,layout.positions,direction),stats=routes.stats||{overlap:0,cross:0,blocked:0,score:0};
+    const quality=stats.blocked*100000000+stats.overlap*10000000+stats.cross*10000+scale*10;
+    const candidate={...layout,routeStats:stats,quality};
+    if(!best||quality<best.quality)best=candidate;
+    if(stats.blocked===0&&stats.overlap===0)break;
+  }
+  return best||sourceFlowLayoutScaled(graph,1);
 }
 function redrawSourceFlowEdges(){
   const data=state.lineage.sourceData,graph=activeSourceFlowGraph(),svg=document.querySelector("#source-flow-edges"),vp=document.querySelector("#source-flow-viewport");if(!svg||!vp)return;
-  const positions=state.lineage.sourcePositions||{},selected=state.lineage.sourceSelected,trace=state.lineage.sourceFocusRoot?sourceFlowDirectionalTrace(graph,state.lineage.sourceFocusRoot):null;
+  const positions=state.lineage.sourcePositions||{},selected=state.lineage.sourceSelected,trace=sourceFlowActiveTrace(graph),legendSelection=state.lineage.sourceLegend,traceDirection=state.lineage.sourceTraceDirection;
+  updateSourceFlowLegend(graph,trace);
   svg.innerHTML='<defs><marker id="source-flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>';
-  for(const edge of graph.edges||[]){const a=positions[edge.from],b=positions[edge.to];if(!a||!b)continue;const path=document.createElementNS("http://www.w3.org/2000/svg","path");const semantic=edge.type!=="invisible",dimmed=trace&&(!trace.visible.has(edge.from)||!trace.visible.has(edge.to));let role="";if(trace&&semantic&&!dimmed){const up=trace.upstream.has(edge.from)&&trace.upstream.has(edge.to),down=trace.downstream.has(edge.from)&&trace.downstream.has(edge.to);role=up&&!down?" upstream":down&&!up?" downstream":up&&down?" through-cycle":"";}const active=trace&&semantic&&!dimmed;path.setAttribute("d",sourceFlowOrthogonalPath(a,b,state.lineage.sourceDirection||"TB"));path.setAttribute("class",`source-flow-edge type-${String(edge.type||"relation").replace(/[^A-Za-z0-9_-]/g,"-")}${dimmed?" dimmed":""}${active?" active":""}${role}`);path.setAttribute("marker-end","url(#source-flow-arrow)");const title=document.createElementNS("http://www.w3.org/2000/svg","title");title.textContent=`${edge.from} → ${edge.to} · ${edge.type||"relation"}`;path.append(title);svg.append(path);}
+  const direction=state.lineage.sourceDirection||"TB",planned=sourceFlowPlanRoutes(graph,positions,direction);
+  for(const edge of graph.edges||[]){const a=positions[edge.from],b=positions[edge.to];if(!a||!b)continue;const path=document.createElementNS("http://www.w3.org/2000/svg","path");const semantic=edge.type!=="invisible",dimmed=trace&&(!trace.visible.has(edge.from)||!trace.visible.has(edge.to));let role="";if(trace&&semantic&&!dimmed){const up=trace.upstream.has(edge.from)&&trace.upstream.has(edge.to),down=trace.downstream.has(edge.from)&&trace.downstream.has(edge.to);role=up&&!down?" upstream":down&&!up?" downstream":up&&down?" upstream downstream through-cycle":"";}const active=trace&&semantic&&!dimmed,key=`${edge.from}->${edge.to}:${edge.type||"relation"}`;const legendMatch=sourceFlowLegendMatchesEdge(edge,role,legendSelection),directionMatch=traceDirection==="upstream"?role.includes("upstream"):traceDirection==="downstream"?role.includes("downstream"):false,legendDim=(legendSelection&&legendSelection.kind==="edge"&&!legendMatch)||(traceDirection&&trace&&!directionMatch),tracePending=Boolean(traceDirection&&!trace);path.setAttribute("d",planned.get(key)||sourceFlowOrthogonalPath(a,b,direction));path.setAttribute("class",`source-flow-edge type-${String(edge.type||"relation").replace(/[^A-Za-z0-9_-]/g,"-")}${edge.type==='validation'?" validation":""}${dimmed?" dimmed":""}${active?" active":""}${role}${(legendMatch||directionMatch)?" legend-match":""}${legendDim?" legend-dim":""}${tracePending?" trace-pending":""}`);path.setAttribute("marker-end","url(#source-flow-arrow)");const title=document.createElementNS("http://www.w3.org/2000/svg","title");title.textContent=`${edge.from} → ${edge.to} · ${edge.type||"relation"}`;path.append(title);svg.append(path);}
 }
 function sourceFlowConnectedContext(entityId){
   const graph=state.lineage.sourceData?.graph||{},nodes=graph.nodes||[],byId=new Map(nodes.map(n=>[n.id,n])),edges=(graph.edges||[]).filter(e=>e.type!=="invisible");
@@ -2438,16 +3225,16 @@ function renderSourceVariablePassports(){
   if(!groups.size)host.innerHTML='<div class="lineage-empty">No variable passports were included in this bundle.</div>';
 }
 function renderSourceDataFlow(){
-  const data=state.lineage.sourceData,fullGraph=data?.graph||{},graph=activeSourceFlowGraph(),canvas=document.querySelector("#source-flow-canvas"),svg=document.querySelector("#source-flow-edges"),world=document.querySelector("#source-flow-world"),vp=document.querySelector("#source-flow-viewport"),empty=document.querySelector("#source-flow-empty"),summary=document.querySelector("#source-flow-summary"),title=document.querySelector("#source-flow-title"),subtitle=document.querySelector("#source-flow-subtitle");if(!canvas||!svg||!world||!vp)return;
+  const data=state.lineage.sourceData,fullGraph=data?.graph||{},graph=activeSourceFlowGraph(),canvas=document.querySelector("#source-flow-canvas"),svg=document.querySelector("#source-flow-edges"),world=document.querySelector("#source-flow-world"),vp=document.querySelector("#source-flow-viewport"),empty=document.querySelector("#source-flow-empty"),pageSummary=document.querySelector("#lineage-summary"),title=document.querySelector("#source-flow-title"),subtitle=document.querySelector("#source-flow-subtitle");if(!canvas||!svg||!world||!vp)return;
   canvas.innerHTML="";svg.innerHTML="";updateSourceFlowDataClassFilter(fullGraph);const nodes=graph.nodes||[];
   if(title)title.textContent=graph.model_id||data?.bundle?.model_bundle_id||"Source Data Flow";if(subtitle)subtitle.textContent=[graph.revision||data?.bundle?.revision,data?.bundle?.path].filter(Boolean).join(" · ")||"Canonical authoring topology embedded in the playbook package.";
-  if(summary){const q=data?.summary||{},filtered=state.lineage.sourceDataClassFilter!=="all";summary.innerHTML=`<span>${nodes.length}${filtered?` / ${q.nodes||0}`:""} objects</span><span>${(graph.edges||[]).length}${filtered?` / ${q.edges||0}`:""} relations</span><span>${(nodes.filter(n=>n.type==="gate")).length}${filtered?` / ${q.gates||0}`:""} gates</span>`;document.querySelector("#lineage-summary").innerHTML=summary.innerHTML;}
+  if(pageSummary){const q=data?.summary||{},filtered=state.lineage.sourceDataClassFilter!=="all";pageSummary.innerHTML=`<span>${nodes.length}${filtered?` / ${q.nodes||0}`:""} objects</span><span>${(graph.edges||[]).length}${filtered?` / ${q.edges||0}`:""} relations</span><span>${(nodes.filter(n=>n.type==="gate")).length}${filtered?` / ${q.gates||0}`:""} gates</span>`;}
   if(empty){empty.hidden=nodes.length>0;empty.textContent=state.lineage.sourceError||"No canonical Data Layer / authoring data-flow projection was found in this playbook package.";}
   if(!nodes.length){state.lineage.sourceWorldWidth=Math.max(700,vp.clientWidth);state.lineage.sourceWorldHeight=420;updateSourceFlowTransform();renderSourceFlowInspector();return;}
-  const auto=sourceFlowLayout(graph),existing=state.lineage.sourcePositions||{},next={};state.lineage.sourceWorldWidth=auto.worldWidth;state.lineage.sourceWorldHeight=auto.worldHeight;
-  const trace=state.lineage.sourceFocusRoot?sourceFlowDirectionalTrace(graph,state.lineage.sourceFocusRoot):null;
-  for(const node of nodes){const base=auto.positions[node.id]||{x:50,y:50},pos=state.lineage.sourceLayoutMode==="free"&&existing[node.id]?existing[node.id]:base;next[node.id]={...pos};const el=document.createElement("button");el.type="button";const artifactView=sourceFlowArtifactPresentation(node),selected=state.lineage.sourceSelected===node.id,dimmed=trace&&!trace.visible.has(node.id),upstream=trace&&trace.upstream.has(node.id)&&!selected,downstream=trace&&trace.downstream.has(node.id)&&!selected;el.className=`source-flow-node type-${String(node.type||"unknown").replace(/[^A-Za-z0-9_-]/g,"-")}${artifactView.className?` ${artifactView.className}`:""}${dimmed?" dimmed":""}${upstream?" source-flow-upstream":""}${downstream?" source-flow-downstream":""}${selected?" selected":""}`;el.dataset.sourceFlowId=node.id;el.style.left=`${pos.x}px`;el.style.top=`${pos.y}px`;const ref=node.variable_ref||node.artifact_ref||node.gate_metadata?.id||"";el.innerHTML=`<span class="source-flow-stereotype">«${escapeHtml(sourceFlowNodeTypeLabel(node.type))}»</span><strong>${escapeHtml(node.label||node.id)}</strong><span class="source-flow-node-id">${escapeHtml(node.id)}</span>${ref?`<span class="source-flow-ref">${escapeHtml(ref)}</span>`:""}${node.type==="variable"?`<span class="source-flow-data-class-tag">${escapeHtml(sourceFlowDataClassLabel(sourceFlowNodeDataClass(node)))}</span>`:""}${artifactView.badge?`<span class="source-flow-file-kind">${escapeHtml(artifactView.badge)}</span>`:""}`;
-    el.addEventListener("click",ev=>{ev.stopPropagation();});
+  const auto=sourceFlowAdaptiveLayout(graph),existing=state.lineage.sourcePositions||{},next={};state.lineage.sourceWorldWidth=auto.worldWidth;state.lineage.sourceWorldHeight=auto.worldHeight;
+  const trace=sourceFlowActiveTrace(graph),legendSelection=state.lineage.sourceLegend,traceDirection=state.lineage.sourceTraceDirection;updateSourceFlowLegend(graph,trace);
+  for(const node of nodes){const base=auto.positions[node.id]||{x:50,y:50},pos=state.lineage.sourceLayoutMode==="free"&&existing[node.id]?existing[node.id]:base;next[node.id]={...pos};const el=document.createElement("button");el.type="button";const artifactView=sourceFlowArtifactPresentation(node),selected=state.lineage.sourceSelected===node.id,dimmed=trace&&!trace.visible.has(node.id),upstream=trace&&trace.upstream.has(node.id)&&!selected,downstream=trace&&trace.downstream.has(node.id)&&!selected,legendMatch=sourceFlowLegendMatchesNode(node,legendSelection),legendDim=legendSelection&&legendSelection.kind==="node"&&!legendMatch;el.className=`source-flow-node type-${String(node.type||"unknown").replace(/[^A-Za-z0-9_-]/g,"-")}${artifactView.className?` ${artifactView.className}`:""}${dimmed?" dimmed":""}${upstream?" source-flow-upstream":""}${downstream?" source-flow-downstream":""}${selected?" selected":""}${legendMatch?" legend-match":""}${legendDim?" legend-dim":""}`;el.dataset.sourceFlowId=node.id;el.style.left=`${pos.x}px`;el.style.top=`${pos.y}px`;const ref=node.variable_ref||node.artifact_ref||node.gate_metadata?.id||"";el.innerHTML=`<span class="source-flow-stereotype">${escapeHtml(sourceFlowNodeTypeLabel(node.type))}</span><span class="source-flow-type-icon" aria-hidden="true">${escapeHtml(sourceFlowNodeTypeIcon(node.type))}</span><strong>${escapeHtml(node.label||node.id)}</strong><span class="source-flow-node-id">${escapeHtml(node.id)}</span>${ref?`<span class="source-flow-ref">${escapeHtml(ref)}</span>`:""}${node.type==="variable"?`<span class="source-flow-data-class-tag">${escapeHtml(sourceFlowDataClassLabel(sourceFlowNodeDataClass(node)))}</span>`:""}${artifactView.badge?`<span class="source-flow-file-kind">${escapeHtml(artifactView.badge)}</span>`:""}`;
+    el.addEventListener("click",ev=>{ev.stopPropagation();state.lineage.sourceSelected=node.id;if(state.lineage.sourceTraceDirection)state.lineage.sourceFocusRoot=node.id;syncActiveLineageAssistantLegacyState();renderSourceDataFlow();});
     el.addEventListener("dblclick",ev=>{ev.preventDefault();ev.stopPropagation();state.lineage.sourceSelected=node.id;state.lineage.sourceFocusRoot=node.id;syncActiveLineageAssistantLegacyState();renderSourceDataFlow();});
     el.addEventListener("pointerdown",ev=>{if(state.lineage.sourceLayoutMode!=="free"||ev.button!==0)return;ev.stopPropagation();const cur=next[node.id];state.lineage.sourceDrag={id:node.id,sx:ev.clientX,sy:ev.clientY,x:cur.x,y:cur.y,pid:ev.pointerId};el.setPointerCapture?.(ev.pointerId);el.classList.add("dragging");});
     el.addEventListener("pointermove",ev=>{const d=state.lineage.sourceDrag;if(!d||d.id!==node.id||d.pid!==ev.pointerId)return;const z=state.lineage.sourceZoom||1,nx=Math.max(10,d.x+(ev.clientX-d.sx)/z),ny=Math.max(10,d.y+(ev.clientY-d.sy)/z);next[node.id]={x:nx,y:ny};state.lineage.sourcePositions[node.id]={x:nx,y:ny};el.style.left=`${nx}px`;el.style.top=`${ny}px`;redrawSourceFlowEdges();});const end=()=>{if(state.lineage.sourceDrag?.id===node.id){state.lineage.sourceDrag=null;el.classList.remove("dragging");}};el.addEventListener("pointerup",end);el.addEventListener("pointercancel",end);canvas.append(el);}
@@ -2460,8 +3247,9 @@ async function loadEmbeddedDataFlow(){
   catch(error){state.lineage.sourceData=null;state.lineage.sourceError=error.message;return null;}finally{state.lineage.sourceLoading=false;}
 }
 function bindSourceDataFlow(){
-  document.querySelector("#source-flow-data-class-filter")?.addEventListener("change",e=>{state.lineage.sourceDataClassFilter=String(e.target.value||"all");state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;state.lineage.sourcePositions={};renderSourceDataFlow();});
-  document.querySelector("#source-flow-subview-tree")?.addEventListener("click",()=>setSourceFlowSubview("tree"));document.querySelector("#source-flow-subview-passports")?.addEventListener("click",()=>setSourceFlowSubview("passports"));document.querySelector("#source-flow-layout-auto")?.addEventListener("click",()=>{state.lineage.sourcePositions={};setSourceFlowLayoutMode("auto");renderSourceDataFlow();});document.querySelector("#source-flow-layout-free")?.addEventListener("click",()=>setSourceFlowLayoutMode("free"));document.querySelector("#source-flow-direction-tb")?.addEventListener("click",()=>setSourceFlowDirection("TB"));document.querySelector("#source-flow-direction-lr")?.addEventListener("click",()=>setSourceFlowDirection("LR"));document.querySelector("#source-flow-clear-focus")?.addEventListener("click",()=>{state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;renderSourceDataFlow();});document.querySelector("#source-flow-zoom-out")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)-.1));document.querySelector("#source-flow-zoom-in")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)+.1));document.querySelector("#source-flow-zoom-reset")?.addEventListener("click",()=>setSourceFlowZoom(1));document.querySelector("#source-flow-zoom-fit")?.addEventListener("click",fitSourceFlowToViewport);const vp=document.querySelector("#source-flow-viewport");vp?.addEventListener("pointerdown",e=>{if(e.button!==0||e.target.closest(".source-flow-node")||e.target.closest(".lineage-controls"))return;state.lineage.sourcePan={x:e.clientX,y:e.clientY,left:vp.scrollLeft,top:vp.scrollTop,id:e.pointerId,moved:false};vp.setPointerCapture?.(e.pointerId);vp.classList.add("panning");});vp?.addEventListener("pointermove",e=>{const p=state.lineage.sourcePan;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;if(Math.abs(dx)>4||Math.abs(dy)>4)p.moved=true;vp.scrollLeft=p.left-dx;vp.scrollTop=p.top-dy;});const stop=e=>{const p=state.lineage.sourcePan;if(p&&p.id!==e.pointerId)return;state.lineage.sourcePan=null;vp?.classList.remove("panning");};vp?.addEventListener("pointerup",stop);vp?.addEventListener("pointercancel",()=>{state.lineage.sourcePan=null;vp?.classList.remove("panning");});
+  document.querySelector("#source-flow-data-class-filter")?.addEventListener("change",e=>{state.lineage.sourceDataClassFilter=String(e.target.value||"all");state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;state.lineage.sourcePositions={};clearSourceFlowLegendSelection();renderSourceDataFlow();});
+  document.querySelectorAll('.source-flow-legend-item').forEach(btn=>btn.addEventListener('click',()=>{if(btn.disabled)return;setSourceFlowLegendSelection(btn.dataset.legendKind||'',btn.dataset.legendValue||'');}));
+  document.querySelector("#source-flow-subview-tree")?.addEventListener("click",()=>setSourceFlowSubview("tree"));document.querySelector("#source-flow-subview-passports")?.addEventListener("click",()=>setSourceFlowSubview("passports"));document.querySelector("#source-flow-layout-auto")?.addEventListener("click",()=>{state.lineage.sourcePositions={};setSourceFlowLayoutMode("auto");renderSourceDataFlow();});document.querySelector("#source-flow-layout-free")?.addEventListener("click",()=>setSourceFlowLayoutMode("free"));document.querySelector("#source-flow-direction-tb")?.addEventListener("click",()=>setSourceFlowDirection("TB"));document.querySelector("#source-flow-direction-lr")?.addEventListener("click",()=>setSourceFlowDirection("LR"));document.querySelector("#source-flow-clear-focus")?.addEventListener("click",()=>{state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;clearSourceFlowLegendSelection();renderSourceDataFlow();});document.querySelector("#source-flow-zoom-out")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)-.1));document.querySelector("#source-flow-zoom-in")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)+.1));document.querySelector("#source-flow-zoom-reset")?.addEventListener("click",()=>setSourceFlowZoom(1));document.querySelector("#source-flow-zoom-fit")?.addEventListener("click",fitSourceFlowToViewport);const vp=document.querySelector("#source-flow-viewport");vp?.addEventListener("pointerdown",e=>{if(e.button!==0||e.target.closest(".source-flow-node")||e.target.closest(".lineage-controls")||e.target.closest('.source-flow-legend-item'))return;state.lineage.sourcePan={x:e.clientX,y:e.clientY,left:vp.scrollLeft,top:vp.scrollTop,id:e.pointerId,moved:false};vp.setPointerCapture?.(e.pointerId);vp.classList.add("panning");});vp?.addEventListener("pointermove",e=>{const p=state.lineage.sourcePan;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;if(Math.abs(dx)>4||Math.abs(dy)>4)p.moved=true;vp.scrollLeft=p.left-dx;vp.scrollTop=p.top-dy;});const stop=e=>{const p=state.lineage.sourcePan;if(p&&p.id!==e.pointerId)return;state.lineage.sourcePan=null;vp?.classList.remove("panning");};vp?.addEventListener("pointerup",stop);vp?.addEventListener("pointercancel",()=>{state.lineage.sourcePan=null;vp?.classList.remove("panning");});
 }
 
 function lineageKindLabel(kind){ return ({analyst_input:"Analyst input",derived_state:"Derived state",transform_analyst:"Analyst interaction",transform_model:"AI transformation",transform_deterministic:"Deterministic derivation",transform_tool:"Python / tool",transform_template:"Template rendering",transform_package:"Packaging",document:"Document",artifact:"Artifact",archive:"Archive / package"})[kind] || kind || "Entity"; }
@@ -2592,9 +3380,13 @@ function renderHelpPage(id=activeHelpPageId) {
   const nav=document.querySelector("#help-nav"), target=document.querySelector("#help-page"), crumb=document.querySelector("#help-breadcrumb");
   if (!nav || !target) return;
   nav.innerHTML="";
-  HELP_PAGES.forEach(item=>{
-    const button=document.createElement("button"); button.type="button"; button.textContent=item.title; button.classList.toggle("active",item.id===page.id);
-    button.addEventListener("click",()=>renderHelpPage(item.id)); nav.append(button);
+  HELP_NAV_GROUPS.forEach((group,groupIndex)=>{
+    if(groupIndex){const separator=document.createElement("div");separator.className="help-nav-separator";separator.setAttribute("aria-hidden","true");nav.append(separator);}
+    group.forEach(itemId=>{
+      const item=HELP_PAGES.find(candidate=>candidate.id===itemId);if(!item)return;
+      const button=document.createElement("button"); button.type="button"; button.textContent=item.title; button.classList.toggle("active",item.id===page.id);
+      button.addEventListener("click",()=>renderHelpPage(item.id)); nav.append(button);
+    });
   });
   if (crumb) crumb.textContent=`Help / ${page.title}`;
   target.innerHTML=`<h1 class="help-page-title">${page.title}</h1><p class="help-page-lead">${page.lead}</p>` + page.sections.map(([title,body])=>`<section class="help-section"><h2>${title}</h2>${body}</section>`).join("");
@@ -2768,12 +3560,13 @@ function showPanelTab(tab) {
   document.querySelector("#lineage-main-panel").hidden=tab !== "lineage";
   document.querySelector("#lineage-assistant-panel").hidden=tab !== "lineage";
   document.querySelector("#playbook-settings-main-panel").hidden=tab !== "settings";
-  document.querySelector("#playbook-settings-assistant-panel").hidden=tab !== "settings";
+  document.querySelector("#playbook-settings-assistant-panel").hidden=tab !== "settings" && !(tab === "packagefiles" && packageFilesAssistantOpen);
+  document.querySelector("#package-files-main-panel").hidden=tab !== "packagefiles";
   document.querySelector("#verification-main-panel").hidden=tab !== "verification";
   document.querySelector("#verification-assistant-panel").hidden=tab !== "verification";
   document.querySelector("#help-panel").hidden=tab !== "help";
-  const mode={upload:"upload",inspection:"tree",dialog:"paths",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",verification:"verification",help:"help"}[tab] || "upload";
-  editorMain.dataset.workspaceMode=mode; editorMain.classList.remove("side-collapsed"); updateWorkspaceMaximizeButton();
+  const mode={upload:"upload",inspection:"tree",dialog:"paths",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[tab] || "upload";
+  editorMain.dataset.workspaceMode=mode; editorMain.classList.remove("side-collapsed"); if(tab!=="packagefiles")editorMain.classList.remove("package-files-chat-open"); else editorMain.classList.toggle("package-files-chat-open",packageFilesAssistantOpen); updateWorkspaceMaximizeButton();
   document.querySelectorAll("[data-workspace-tab]").forEach(button=>button.classList.toggle("active",button.dataset.workspaceTab===mode));
   if (["dialog","replay","run"].includes(previousTab) || ["dialog","replay","run"].includes(tab)) render();
   if (tab === "dialog") { populatePathBuilder(); renderDialog(); }
@@ -2782,6 +3575,7 @@ function showPanelTab(tab) {
   if (tab === "modelchat") renderModelChat();
   if (tab === "lineage") renderDataLineage();
   if (tab === "settings") { renderPlaybookSettingsSubtab(); renderPlaybookSettings(); }
+  if (tab === "packagefiles") renderPackageFiles();
   if (tab === "verification") renderVerificationPage();
   if (tab === "help") renderHelpPage();
 }
@@ -2967,7 +3761,7 @@ function displayValidation(validation) {
     container.append(note);
   }
 }
-document.querySelector("#file-input")?.addEventListener("change", async event => { const file = event.target.files[0]; if (!file) return; try { const data = await request("/api/parse", { yaml: await file.text() }); state.packageInfo = null; state.lineage.sourceData=null;state.lineage.sourceError=null;state.lineage.sourceDataClassFilter="all";state.lineage.viewMode="source"; state.source = data.source; state.graph = data.graph; state.positions = {}; state.manualPositions = new Set(); state.collapsedNodes = new Set(); state.pendingTransitionSource = null; clearDialogPlaybackTimer(); state.dialogPath = null; state.dialogPlayMode = false; state.dialogPlaying = false; state.dialogVisibleCount = null; resetLiveRun(); render(); renderLiveRun(); } catch (error) { alert(error.message); } finally { event.target.value = ""; } });
+document.querySelector("#file-input")?.addEventListener("change", async event => { const file = event.target.files[0]; if (!file) return; try { const data = await request("/api/parse", { yaml: await file.text() }); state.packageInfo = null; state.lineage.sourceData=null;state.lineage.sourceError=null;state.lineage.sourceDataClassFilter="all";state.lineage.sourceLegend=null;state.lineage.sourceTraceDirection=null;state.lineage.viewMode="source"; state.source = data.source; state.graph = data.graph; state.positions = {}; state.manualPositions = new Set(); state.collapsedNodes = new Set(); state.pendingTransitionSource = null; clearDialogPlaybackTimer(); state.dialogPath = null; state.dialogPlayMode = false; state.dialogPlaying = false; state.dialogVisibleCount = null; resetLiveRun(); render(); renderLiveRun(); } catch (error) { alert(error.message); } finally { event.target.value = ""; } });
 document.querySelector("#validate").addEventListener("click", async () => { if (!state.source) return; try { const data = await request("/api/validate", { source: state.source }); displayValidation(data.validation); } catch (error) { alert(error.message); } });
 
 async function downloadFullPlaybook() {
@@ -3061,19 +3855,12 @@ function downloadTreeSvg() {
   const blob = new Blob([parts.join('\n')], { type: 'image/svg+xml;charset=utf-8' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'ordo-tree.svg'; link.click(); URL.revokeObjectURL(link.href); hideCanvasContextMenu();
 }
 function replayMarkdown() {
-  const replay = state.replayData; if (!replay) return ''; const pb = replay.playbook || {};
-  const lines = [`# ${replay.run_id ? `Run ${replay.run_id}` : 'Replay run'}`, ''];
-  const meta = [pb.name, pb.version, replay.export_timestamp].filter(Boolean); if (meta.length) lines.push(meta.join(' · '), '');
-  if (replay.interaction_trace_available) lines.push('> Read-only reconstruction from exported run evidence and interaction trace. This is not necessarily a complete raw chat transcript.', '');
-  for (const step of replay.steps || []) {
-    lines.push(`## ${step.index}. ${step.id || '(unknown)'}${step.label && step.label !== step.id ? ` — ${step.label}` : ''}`, '');
-    if (step.kind === 'gate') { lines.push(`**Gate:** ${step.prompt || step.label || step.id || ''}`); if (step.gate_status) lines.push(`**Status:** ${step.gate_status}`); lines.push(''); }
-    else if (step.prompt || step.label) lines.push('**Assistant / playbook step**', '', step.prompt || step.label, '');
-    for (const interaction of step.interactions || []) { if (!interaction.analyst_response) continue; lines.push('**Analyst / recorded response**', '', interaction.analyst_response, ''); const metaParts=[]; if (interaction.transition_to) metaParts.push(`→ ${interaction.transition_to}`); if (interaction.capture_mode) metaParts.push(interaction.capture_mode); if (metaParts.length) lines.push(`_${metaParts.join(' · ')}_`, ''); }
-    for (const decision of step.decisions || []) { lines.push('**Recorded decision**', '', '```json', replayPrettyValue(decision?.accepted_values), '```', ''); }
-  }
+  const replay=state.replayData;if(!replay)return'';const lines=[`# ${replay.run_id?`Run ${replay.run_id}`:'Canonical debug replay'}`,'',`> ${replay.chat_coverage?.statement||'Hidden model reasoning is not captured or displayed.'}`,''];const s=replay.summary||{};
+  lines.push(`- Executions: ${s.executions??replay.steps?.length??0}`);if(s.total_duration_ms!=null)lines.push(`- Observed execution time: ${replayDurationText(s.total_duration_ms)}`);if(s.runtime_observable_input_tokens!=null||s.runtime_observable_output_tokens!=null)lines.push(`- Runtime-observable token equivalent: ${s.runtime_observable_input_tokens||0} input / ${s.runtime_observable_output_tokens||0} output`);if(s.exact_host_input_tokens!=null||s.exact_host_output_tokens!=null)lines.push(`- Exact host tokens: ${s.exact_host_input_tokens||0} input / ${s.exact_host_output_tokens||0} output`);lines.push(`- Process quality: ${replay.process_quality?.status||'UNAVAILABLE'}`,`- Integrity: ${replay.integrity?.status||'UNAVAILABLE'}`,`- Artifact quality: ${replay.artifact_quality?.status||'UNAVAILABLE'}`,'');
+  for(const step of replay.steps||[]){lines.push(`## Execution ${step.execution_sequence||step.index}: ${step.id||'(unknown)'}`,'');const tele=step.telemetry||{};if(tele.duration_ms!=null)lines.push(`Duration: ${replayDurationText(tele.duration_ms)}`);if(tele.estimated_input_tokens!=null||tele.estimated_output_tokens!=null)lines.push(`Runtime-observable token equivalent: ${tele.estimated_input_tokens||0} input / ${tele.estimated_output_tokens||0} output`);if(tele.exact_host_input_tokens!=null||tele.exact_host_output_tokens!=null)lines.push(`Exact host tokens: ${tele.exact_host_input_tokens||0} input / ${tele.exact_host_output_tokens||0} output`);lines.push('');for(const event of step.chronology||[]){if(event.event_type==='ASSISTANT_MESSAGE')lines.push('**Assistant · verbatim**','',event.text||'','');else if(event.event_type==='ANALYST_MESSAGE')lines.push('**Analyst · verbatim**','',event.text||'','');else if(event.event_type==='MODEL_ACTION'){lines.push(`**Model action:** ${event.action_summary||event.action_type||''}`,'');if(event.changed_paths?.length)lines.push(`Changed: ${event.changed_paths.join(', ')}`,'');if(event.decision_ids?.length)lines.push(`Decisions: ${event.decision_ids.join(', ')}`,'');}else lines.push(`_${event.event_type||'event'}_`,'');}if(step.file_actions?.length)lines.push(`Files / tools: ${step.file_actions.length} observations`,'');}
   return lines.join('\n');
 }
+
 function downloadReplayMarkdown() { const text = replayMarkdown(); if (!text) return; const link=document.createElement('a'); link.href=URL.createObjectURL(new Blob([text],{type:'text/markdown;charset=utf-8'})); link.download=`${state.replayData?.run_id || 'ordo-replay'}.md`; link.click(); URL.revokeObjectURL(link.href); }
 function printReplayPdf() {
   if (!state.replayData) return;
@@ -3780,20 +4567,20 @@ async function submitRecoveryConversation(currentId, text, attachments=[]) {
   if (Number.isInteger(data.state_revision)) state.liveRevision=data.state_revision;
   if (data.usage) accumulateLiveUsage(data.usage);
   if (data.debug) state.liveDebugTrace.push({current_id:currentId, element_kind:"recovery_chat", phase:"respond", ...data.debug, runtime:{state_after:state.liveState, suggested_action:data.suggested_action, recommended_recovery_target:data.recommended_recovery_target}});
-  appendLiveMessage("assistant", data.assistant_message || uiText("Готовий продовжити діагностику.","Ready to continue diagnosis."), uiText("вільний recovery-діалог","recovery conversation"), data.usage || null, null, data.debug || null);
+  appendLiveMessage("assistant", data.assistant_message || uiText("Ready to continue diagnosis.","Ready to continue diagnosis."), uiText("recovery conversation","recovery conversation"), data.usage || null, null, data.debug || null);
   state.liveAwaitingInput=true;
   // Conversational recovery is manual by design: recorded auto-answers must not consume it.
   state.livePaused=true;
   const action=String(data.suggested_action||"stay");
   if (action === "retry_gate" && data.failed_gate) {
-    appendLiveMessage("system", uiText(`Повторна перевірка ${data.failed_gate} за запитом аналітика.`,`Re-running ${data.failed_gate} at analyst request.`), "recovery retry");
+    appendLiveMessage("system", uiText(`Re-running ${data.failed_gate} at analyst request.`,`Re-running ${data.failed_gate} at analyst request.`), "recovery retry");
     state.liveCurrentId=String(data.failed_gate); state.livePath.push(state.liveCurrentId); state.livePendingEntryMode={target:state.liveCurrentId,mode:"retry"}; state.liveAwaitingInput=false;
     await advanceLiveUntilInput();
     return;
   }
   if (action === "go_to_target" && data.recommended_recovery_target) {
     const target=String(data.recommended_recovery_target);
-    appendLiveMessage("system", uiText(`Перехід у режим ручного виправлення → ${target}`,`Entering manual repair mode → ${target}`), "recovery repair");
+    appendLiveMessage("system", uiText(`Entering manual repair mode → ${target}`,`Entering manual repair mode → ${target}`), "recovery repair");
     state.liveAnalystOverride={active:true,target,scope:"single",text:text};
     state.liveCurrentId=target; state.livePath.push(target); state.livePendingEntryMode={target,mode:"recovery"}; state.liveAwaitingInput=false;
     await advanceLiveUntilInput();
@@ -3830,8 +4617,8 @@ function latestFailedGateEvidence(beforeCurrentId = "") {
 function uiUk() { return String(state.interactionContract?.locale || "uk-UA").toLowerCase().startsWith("uk"); }
 function uiText(uk,en) { return en; }
 function humanGateRouteLabel(key,target) {
-  if (key === "on_pass") return uiText("Погодити — критерій виконано","Approve — criterion passed");
-  if (key === "on_fail") return uiText("Потрібне виправлення — критерій не виконано","Needs correction — criterion failed");
+  if (key === "on_pass") return uiText("Approve — criterion passed","Approve — criterion passed");
+  if (key === "on_fail") return uiText("Needs correction — criterion failed","Needs correction — criterion failed");
   return humanReadableNodeLabel(target);
 }
 
@@ -3918,25 +4705,25 @@ function buildLiveChoiceContext(currentId, live) {
     const primary=options.find(o=>o.target===recommended);
     if (primary) options=[primary];
   }
-  let summary=uiText("Оберіть дію або введіть відповідь вручну.","Choose one of the available actions, or type a response manually.");
+  let summary=uiText("Choose one of the available actions, or type a response manually.","Choose one of the available actions, or type a response manually.");
   if (humanGate) {
     const condition=String(current?.condition || "").trim();
-    summary=uiText(`Рішення аналітика для ${currentId}${condition?`\n\nЩо перевіряємо: ${condition}`:""}\n\nЯкщо все відповідає критерію — погодьте. Якщо ні — оберіть «Потрібне виправлення» і вкажіть, що саме не відповідає.`, `Analyst decision for ${currentId}${condition?`\n\nCriterion: ${condition}`:""}\n\nApprove if it passes. Otherwise choose “Needs correction” and describe what is wrong.`);
+    summary=uiText(`Analyst decision for ${currentId}${condition?`\n\nCriterion: ${condition}`:""}\n\nApprove if it passes. Otherwise choose “Needs correction” and describe what is wrong.`, `Analyst decision for ${currentId}${condition?`\n\nCriterion: ${condition}`:""}\n\nApprove if it passes. Otherwise choose “Needs correction” and describe what is wrong.`);
   }
   if (dynamicRecovery) {
     const technical = ["technical_stop","contract_unsatisfiable_by_model"].includes(String(failure?.failure_class||""));
-    const reason=failure?.explanation || uiText("Попередня перевірка не пройдена.","The previous validation step did not pass.");
+    const reason=failure?.explanation || uiText("The previous validation step did not pass.","The previous validation step did not pass.");
     const checks=(failure?.failed_checks||[]).map(formatFailedCheck).filter(Boolean);
     const exact=Boolean(checks.length || failure?.affected_nodes?.length || failure?.affected_state?.length || failure?.missing_coverage?.length || failure?.missing_information?.length || recommended);
     summary=technical
-      ? uiText(`Технічне відновлення\n\nБізнес-дані не визнані неправильними. Причина зупинки: ${reason}`,`Technical recovery\n\nBusiness data was not rejected. Stop reason: ${reason}`)
-      : uiText(`Відновлення після валідації\n\nЧому виконання зупинено: ${reason}`,`Validation recovery\n\nWhy execution stopped: ${reason}`);
-    if (failure?.gate_id) summary += uiText(`\nГейт: ${failure.gate_id}`,`\nFailed gate: ${failure.gate_id}`);
-    if (checks.length) summary += uiText(`\nЩо не пройшло: ${checks.join("; ")}`,`\nFailed checks: ${checks.join("; ")}`);
-    if (failure?.missing_coverage?.length) summary += uiText(`\nЧого не вистачає: ${failure.missing_coverage.join(", ")}`,`\nMissing coverage: ${failure.missing_coverage.join(", ")}`);
-    if (failure?.missing_information?.length) summary += uiText(`\nПотрібна інформація: ${failure.missing_information.map(x=>x?.needed||x?.path||x).join(", ")}`,`\nMissing information: ${failure.missing_information.map(x=>x?.needed||x?.path||x).join(", ")}`);
-    if (recommended) summary += uiText(`\nРекомендований крок: ${humanReadableNodeLabel(recommended)} (${recommended})`,`\nRecommended recovery point: ${systemNodeLabel(recommended)} (${recommended})`);
-    else if (!exact) summary += uiText(`\nРекомендований крок поки не визначено: валідатор не надав конкретних failed checks/affected state. Система не буде вгадувати.`,`\nRecommended recovery point unavailable: validator evidence is not specific enough, so the editor will not guess.`);
+      ? uiText(`Technical recovery\n\nBusiness data was not rejected. Stop reason: ${reason}`,`Technical recovery\n\nBusiness data was not rejected. Stop reason: ${reason}`)
+      : uiText(`Validation recovery\n\nWhy execution stopped: ${reason}`,`Validation recovery\n\nWhy execution stopped: ${reason}`);
+    if (failure?.gate_id) summary += uiText(`\nFailed gate: ${failure.gate_id}`,`\nFailed gate: ${failure.gate_id}`);
+    if (checks.length) summary += uiText(`\nFailed checks: ${checks.join("; ")}`,`\nFailed checks: ${checks.join("; ")}`);
+    if (failure?.missing_coverage?.length) summary += uiText(`\nMissing coverage: ${failure.missing_coverage.join(", ")}`,`\nMissing coverage: ${failure.missing_coverage.join(", ")}`);
+    if (failure?.missing_information?.length) summary += uiText(`\nMissing information: ${failure.missing_information.map(x=>x?.needed||x?.path||x).join(", ")}`,`\nMissing information: ${failure.missing_information.map(x=>x?.needed||x?.path||x).join(", ")}`);
+    if (recommended) summary += uiText(`\nRecommended recovery point: ${systemNodeLabel(recommended)} (${recommended})`,`\nRecommended recovery point: ${systemNodeLabel(recommended)} (${recommended})`);
+    else if (!exact) summary += uiText(`\nRecommended recovery point unavailable: validator evidence is not specific enough, so the editor will not guess.`,`\nRecommended recovery point unavailable: validator evidence is not specific enough, so the editor will not guess.`);
   }
   return { currentId, summary, options, recovery: dynamicRecovery, humanGate, humanGateFailure: humanGate, failure, diagnosis: state.liveRecoveryDiagnoses?.[currentId] || null };
 }
@@ -4019,29 +4806,29 @@ function renderLiveChoicePanel() {
   const ctx=state.liveChoiceContext;
   if (!ctx || !state.liveAwaitingInput || ctx.currentId !== state.liveCurrentId || !ctx.options?.length) { panel.hidden=true; return; }
   panel.hidden=false;
-  const summary=document.createElement("div"); summary.className="live-choice-summary"; summary.textContent=ctx.summary || uiText("Оберіть дію:","Choose an option:"); panel.append(summary);
+  const summary=document.createElement("div"); summary.className="live-choice-summary"; summary.textContent=ctx.summary || uiText("Choose an option:","Choose an option:"); panel.append(summary);
   if (ctx.recovery) {
     const diagnosis=state.liveRecoveryDiagnoses?.[ctx.currentId] || ctx.diagnosis;
     const diag=document.createElement("div"); diag.className="live-recovery-diagnosis";
     if (diagnosis) {
-      const title=document.createElement("strong"); title.textContent=diagnosis.diagnosis_status === "identified" ? uiText("Діагноз моделі","Model diagnosis") : uiText("Діагноз моделі: недостатньо доказів","Model diagnosis: evidence is insufficient"); diag.append(title);
+      const title=document.createElement("strong"); title.textContent=diagnosis.diagnosis_status === "identified" ? uiText("Model diagnosis","Model diagnosis") : uiText("Model diagnosis: evidence is insufficient","Model diagnosis: evidence is insufficient"); diag.append(title);
       const text=document.createElement("div"); text.textContent=diagnosis.analyst_explanation || diagnosis.summary || ""; diag.append(text);
-      if (diagnosis.failed_checks?.length) { const x=document.createElement("div"); x.textContent=uiText(`Що не пройшло: ${diagnosis.failed_checks.join(", ")}`,`Failed checks: ${diagnosis.failed_checks.join(", ")}`); diag.append(x); }
-      if (diagnosis.missing_evidence?.length) { const x=document.createElement("div"); x.textContent=uiText(`Яких доказів бракує: ${diagnosis.missing_evidence.join(", ")}`,`Missing evidence: ${diagnosis.missing_evidence.join(", ")}`); diag.append(x); }
-      if (diagnosis.recommended_recovery_target) { const x=document.createElement("div"); x.textContent=uiText(`Рекомендовано: ${humanReadableNodeLabel(diagnosis.recommended_recovery_target)} (${diagnosis.recommended_recovery_target}), впевненість: ${diagnosis.recommendation_confidence}`,`Recommended: ${systemNodeLabel(diagnosis.recommended_recovery_target)} (${diagnosis.recommended_recovery_target}), confidence: ${diagnosis.recommendation_confidence}`); diag.append(x); }
+      if (diagnosis.failed_checks?.length) { const x=document.createElement("div"); x.textContent=uiText(`Failed checks: ${diagnosis.failed_checks.join(", ")}`,`Failed checks: ${diagnosis.failed_checks.join(", ")}`); diag.append(x); }
+      if (diagnosis.missing_evidence?.length) { const x=document.createElement("div"); x.textContent=uiText(`Missing evidence: ${diagnosis.missing_evidence.join(", ")}`,`Missing evidence: ${diagnosis.missing_evidence.join(", ")}`); diag.append(x); }
+      if (diagnosis.recommended_recovery_target) { const x=document.createElement("div"); x.textContent=uiText(`Recommended: ${systemNodeLabel(diagnosis.recommended_recovery_target)} (${diagnosis.recommended_recovery_target}), confidence: ${diagnosis.recommendation_confidence}`,`Recommended: ${systemNodeLabel(diagnosis.recommended_recovery_target)} (${diagnosis.recommended_recovery_target}), confidence: ${diagnosis.recommendation_confidence}`); diag.append(x); }
     } else {
-      const text=document.createElement("div"); text.textContent=uiText("Якщо доказів валідатора недостатньо, модель може пояснити, що відомо, чого бракує і чи можна обґрунтовано вибрати точку виправлення.","If the recorded validator evidence is not specific enough, the configured model can explain what is known, what evidence is missing, and whether a recovery target can be justified."); diag.append(text);
+      const text=document.createElement("div"); text.textContent=uiText("If the recorded validator evidence is not specific enough, the configured model can explain what is known, what evidence is missing, and whether a recovery target can be justified.","If the recorded validator evidence is not specific enough, the configured model can explain what is known, what evidence is missing, and whether a recovery target can be justified."); diag.append(text);
     }
     const actions=document.createElement("div"); actions.className="live-recovery-actions";
-    const diagnose=document.createElement("button"); diagnose.type="button"; diagnose.textContent=diagnosis?uiText("Проаналізувати ще раз","Analyze again with model"):uiText("Проаналізувати причину моделлю","Analyze failure with model"); diagnose.disabled=state.liveBusy; diagnose.addEventListener("click",()=>diagnoseLiveRecovery(ctx)); actions.append(diagnose);
-    if (ctx.failure?.gate_id) { const rerun=document.createElement("button"); rerun.type="button"; rerun.textContent=uiText("Повторити валідацію","Re-run validation"); rerun.disabled=state.liveBusy; rerun.addEventListener("click",()=>rerunFailedValidation(ctx)); actions.append(rerun); }
+    const diagnose=document.createElement("button"); diagnose.type="button"; diagnose.textContent=diagnosis?uiText("Analyze again with model","Analyze again with model"):uiText("Analyze failure with model","Analyze failure with model"); diagnose.disabled=state.liveBusy; diagnose.addEventListener("click",()=>diagnoseLiveRecovery(ctx)); actions.append(diagnose);
+    if (ctx.failure?.gate_id) { const rerun=document.createElement("button"); rerun.type="button"; rerun.textContent=uiText("Re-run validation","Re-run validation"); rerun.disabled=state.liveBusy; rerun.addEventListener("click",()=>rerunFailedValidation(ctx)); actions.append(rerun); }
     diag.append(actions); panel.append(diag);
   }
   const grid=document.createElement("div"); grid.className="live-choice-grid";
   for (const option of ctx.options) {
     const button=document.createElement("button"); button.type="button"; button.className="live-choice-button"+(option.recommended?" recommended":"");
     if (option.tooltip) { button.title=option.tooltip; button.setAttribute("aria-label", `${option.label}. ${option.tooltip.replace(/\n+/g, " ")}`); }
-    if (option.recommended) { const badge=document.createElement("span"); badge.className="live-choice-badge"; badge.textContent=uiText("Рекомендовано","Recommended"); button.append(badge); }
+    if (option.recommended) { const badge=document.createElement("span"); badge.className="live-choice-badge"; badge.textContent=uiText("Recommended","Recommended"); button.append(badge); }
     const label=document.createElement("span"); label.className="choice-label"; label.textContent=option.label; button.append(label);
     const id=document.createElement("span"); id.className="choice-id"; id.textContent=option.target || option.value; button.append(id);
     button.addEventListener("click", async ()=>{
@@ -4056,11 +4843,11 @@ function renderLiveChoicePanel() {
     const failOption=(ctx.options||[]).find(x=>x.value === "on_fail");
     if (failOption) {
       const other=document.createElement("div"); other.className="live-gate-other";
-      const title=document.createElement("strong"); title.textContent=uiText("Інше / clarification","Other / clarification"); other.append(title);
-      const hint=document.createElement("div"); hint.className="live-gate-other-hint"; hint.textContent=uiText("Якщо готові варіанти не описують проблему, напишіть своїми словами, що саме не відповідає критерію. Це буде передано як контекст виправлення.","If the prepared choices do not describe the issue, explain what does not satisfy the criterion. It will be passed as repair context."); other.append(hint);
-      const textarea=document.createElement("textarea"); textarea.rows=4; textarea.placeholder=uiText("Опишіть, що саме не так або чого бракує…","Describe what is wrong or missing…"); other.append(textarea);
+      const title=document.createElement("strong"); title.textContent=uiText("Other / clarification","Other / clarification"); other.append(title);
+      const hint=document.createElement("div"); hint.className="live-gate-other-hint"; hint.textContent=uiText("If the prepared choices do not describe the issue, explain what does not satisfy the criterion. It will be passed as repair context.","If the prepared choices do not describe the issue, explain what does not satisfy the criterion. It will be passed as repair context."); other.append(hint);
+      const textarea=document.createElement("textarea"); textarea.rows=4; textarea.placeholder=uiText("Describe what is wrong or missing…","Describe what is wrong or missing…"); other.append(textarea);
       const actions=document.createElement("div"); actions.className="live-gate-other-actions";
-      const send=document.createElement("button"); send.type="button"; send.textContent=uiText("Передати clarification і перейти до виправлення","Submit clarification and repair");
+      const send=document.createElement("button"); send.type="button"; send.textContent=uiText("Submit clarification and repair","Submit clarification and repair");
       send.addEventListener("click", async ()=>{
         const clean=String(textarea.value||"").trim();
         if (!clean || state.liveBusy || !state.liveAwaitingInput) { textarea.focus(); return; }
@@ -4285,7 +5072,8 @@ function renderLiveRun() {
   renderChatControlBar();
   const apiReady = !!state.liveConfig.enabled;
   const packageReady = !!state.packageInfo && !!state.source;
-  const enabled = apiReady && packageReady;
+  const executeCapable = packageReady && (state.packageInfo?.capabilities?.execute !== false);
+  const enabled = apiReady && executeCapable;
   const tab = document.querySelector("#run-tab");
   if (tab) {
     tab.disabled = false;
@@ -4298,7 +5086,7 @@ function renderLiveRun() {
     const rows = [
       ["Playbook source", packageReady ? `✓ ${pkg.filename}` : "✕ not loaded"],
       ["Source", packageReady ? (pkg.source_name || "detected") : "—"],
-      ["Runtime plan", packageReady ? (() => { const sps=pkg.semantic_plan_status || {}; return sps.valid ? (sps.generated ? "✓ compiled and verified internally" : "✓ verified precompiled plan") : "✕ unavailable"; })() : "—"],
+      ["Runtime plan", packageReady ? (() => { const sps=pkg.semantic_plan_status || {}; return sps.valid ? (sps.generated ? "✓ compiled and verified internally" : "✓ verified precompiled plan") : "✕ unavailable (inspection-only)"; })() : "—"],
       ["Provider", providerLabel(state.liveConfig.provider)],
       ["Base URL", state.liveConfig.base_url || defaultProviderBaseUrl(state.liveConfig.provider)],
       ["Model", state.liveConfig.model ? `✓ ${state.liveConfig.model}` : "✕ not selected"],
@@ -4364,7 +5152,7 @@ function renderLiveRun() {
   document.querySelector("#live-empty").hidden = state.liveRunning;
   document.querySelector("#live-view").hidden = !state.liveRunning;
   if (!state.liveRunning) {
-    document.querySelector("#live-empty").textContent = enabled ? "Playbook is compiled, verified and ready for execution." : !packageReady ? "Load a playbook YAML/YML or ZIP source to enable execution." : "Playbook verified. Configure an LLM provider and model above.";
+    document.querySelector("#live-empty").textContent = enabled ? "Playbook is compiled, verified and ready for execution." : !packageReady ? "Load a playbook YAML/YML or ZIP source to enable execution." : !executeCapable ? "This playbook is loaded for inspection, but execution is unavailable because runtime preparation failed." : "Playbook verified. Configure an LLM provider and model above.";
     return;
   }
   const status = document.querySelector("#live-status");
@@ -5166,6 +5954,24 @@ function finishPlaybookPreparation(pkg) {
   setPlaybookPreparation(100,"Playbook verified. Ready to execute.",stages);
   setTimeout(()=>{ const overlay=document.querySelector("#playbook-preparation-overlay"); if (overlay) overlay.hidden=true; },450);
 }
+function finishDegradedPlaybookPreparation(pkg) {
+  const report=pkg?.preparation_report||{}, diagnostics=Array.isArray(pkg?.load_diagnostics)?pkg.load_diagnostics:[];
+  const stages=report.stages||[{id:"load_source",status:"PASS"},{id:"compile_runtime_plan",status:"FAIL"}];
+  const title=document.querySelector("#playbook-preparation-title"); if(title)title.textContent="Playbook loaded with warnings";
+  const close=document.querySelector("#playbook-preparation-close"); if(close)close.hidden=false;
+  setPlaybookPreparation(100,"Inspection is available; unavailable capabilities are disabled.",stages);
+  const summary=document.querySelector("#playbook-preparation-summary");
+  if(summary){
+    summary.hidden=false; summary.innerHTML="";
+    const lead=document.createElement("p");lead.className="playbook-preparation-human-lead";lead.textContent="The package was loaded for inspection, but one or more executable/runtime preparation steps failed.";summary.append(lead);
+    const label=document.createElement("div");label.className="playbook-preparation-human-label";label.textContent="Warnings";summary.append(label);
+    const ul=document.createElement("ul");ul.className="playbook-preparation-human-list";
+    for(const item of diagnostics){const li=document.createElement("li");li.textContent=String(item?.message||item?.code||"Preparation warning");ul.append(li);} if(!diagnostics.length){const li=document.createElement("li");li.textContent="Executable runtime capability is unavailable.";ul.append(li);} summary.append(ul);
+    const action=document.createElement("p");action.className="playbook-preparation-human-action";action.textContent="You can continue inspecting the source, tree, Data Flow, settings, package files, and applicable verification checks. Disabled tabs require capabilities that were not prepared successfully.";summary.append(action);
+    const button=document.createElement("button");button.type="button";button.className="primary";button.textContent="Continue in Editor";button.addEventListener("click",closePlaybookPreparation);summary.append(button);
+  }
+  const tabs=document.querySelector("#playbook-preparation-tabs");if(tabs)tabs.hidden=true;
+}
 function failPlaybookPreparation(message) {
   const title=document.querySelector("#playbook-preparation-title"); if (title) title.textContent="Playbook could not be started";
   const close=document.querySelector("#playbook-preparation-close"); if (close) close.hidden=false;
@@ -5184,12 +5990,14 @@ document.addEventListener("click",event=>{
 document.addEventListener("keydown",event=>{ if (event.key==="Escape" && !document.querySelector("#playbook-preparation-overlay")?.hidden) closePlaybookPreparation(); });
 
 function applyLoadedPlaybookPackage(pkg) {
-  state.lineage.sourceData=null; state.lineage.sourceError=null; state.lineage.sourceDataClassFilter="all"; state.lineage.sourceSelected=null; state.lineage.sourceFocusRoot=null; state.lineage.sourcePositions={}; state.lineage.assistantThreads={}; state.lineage.messages=[]; state.lineage.busy=false; state.lineage.viewMode="source";
-  state.packageInfo={id:pkg.id,filename:pkg.filename,source_name:pkg.source_name,entry_node:pkg.entry_node,file_count:pkg.file_count,text_resource_count:pkg.text_resource_count,compiled_plan_status:pkg.compiled_plan_status||null,semantic_plan_status:pkg.semantic_plan_status||null,preparation_report:pkg.preparation_report||null,input_kind:pkg.input_kind||null,interaction_contract:pkg.interaction_contract||null};
+  state.lineage.sourceData=null; state.lineage.sourceError=null; state.lineage.sourceDataClassFilter="all"; state.lineage.sourceLegend=null; state.lineage.sourceTraceDirection=null; state.lineage.sourceSelected=null; state.lineage.sourceFocusRoot=null; state.lineage.sourcePositions={}; state.lineage.assistantThreads={}; state.lineage.messages=[]; state.lineage.busy=false; state.lineage.viewMode="source";
+  state.packageInfo={id:pkg.id,filename:pkg.filename,source_name:pkg.source_name,entry_node:pkg.entry_node,file_count:pkg.file_count,text_resource_count:pkg.text_resource_count,compiled_plan_status:pkg.compiled_plan_status||null,semantic_plan_status:pkg.semantic_plan_status||null,preparation_report:pkg.preparation_report||null,input_kind:pkg.input_kind||null,interaction_contract:pkg.interaction_contract||null,load_status:pkg.load_status||"ready",load_diagnostics:Array.isArray(pkg.load_diagnostics)?pkg.load_diagnostics:[],capabilities:pkg.capabilities||{},graph_error:pkg.graph_error||null};
   state.interactionContract=pkg.interaction_contract||state.interactionContract;
   stopVerificationPolling(); state.verification.runId=""; state.verification.running=false; state.verification.progress=0; state.verification.summary=null; state.verification.lastResult=null; state.verification.checks=state.verification.catalog.map(x=>({...x,status:"PENDING",message:"Waiting"}));
-  state.source=pkg.source; state.graph=pkg.graph; state.positions={}; state.manualPositions=new Set(); state.collapsedNodes=new Set(); state.pendingTransitionSource=null;
-  clearDialogPlaybackTimer(); state.dialogPath=null; state.dialogPlayMode=false; state.dialogPlaying=false; state.dialogVisibleCount=null; resetLiveRun(); render(); renderLiveRun(); finishPlaybookPreparation(pkg); showPanelTab("run");
+  state.source=pkg.source; state.graph=pkg.graph||{nodes:[],edges:[]}; state.positions={}; state.manualPositions=new Set(); state.collapsedNodes=new Set(); state.pendingTransitionSource=null;
+  clearDialogPlaybackTimer(); state.dialogPath=null; state.dialogPlayMode=false; state.dialogPlaying=false; state.dialogVisibleCount=null; resetLiveRun(); render(); renderLiveRun();
+  if((pkg.load_status||"ready")==="degraded") { showPanelTab((pkg.capabilities||{}).show_tree?"inspection":"packagefiles"); finishDegradedPlaybookPreparation(pkg); }
+  else { finishPlaybookPreparation(pkg); showPanelTab("run"); }
 }
 async function loadPlaybookFromGitLab(path,filename) {
   const root=String(document.querySelector("#gitlab-root-input")?.value || state.gitlab.root || "").trim();
@@ -5657,18 +6465,31 @@ function updateWorkspaceShell() {
   const tabs=document.querySelector("#workspace-tabs"), toggle=document.querySelector("#side-pane-toggle");
   if (tabs) tabs.hidden=false;
   if (toggle) toggle.hidden=!loaded && !["modelchat","help"].includes(state.panelTab);
-  document.querySelectorAll("[data-workspace-tab]").forEach(button=>{const mode=button.dataset.workspaceTab;button.hidden=false;button.disabled=!loaded && !["upload","modelchat","help"].includes(mode);});
+  document.querySelectorAll("[data-workspace-tab]").forEach(button=>{
+    const mode=button.dataset.workspaceTab;button.hidden=false;
+    const caps=state.packageInfo?.capabilities||{};
+    const capability={tree:"show_tree",lineage:"show_data_flow",settings:"playbook_settings",verification:"verification",packagefiles:"package_files",paths:"show_path",chat:"execute",replay:"replay"}[mode];
+    const baseDisabled=!loaded && !["upload","modelchat","help"].includes(mode);
+    const capabilityDisabled=loaded&&capability&&caps[capability]===false;
+    button.disabled=baseDisabled||capabilityDisabled;
+    if(capabilityDisabled)button.title=`Unavailable for this loaded playbook: ${capability.replaceAll("_"," ")} capability was not prepared successfully.`;
+  });
   if (!loaded && !["upload","modelchat","help"].includes(state.panelTab)) {
     state.panelTab="upload";
     editorMain.dataset.workspaceMode="upload";
     return;
   }
-  const activeMode={upload:"upload",inspection:"tree",dialog:"paths",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",verification:"verification",help:"help"}[state.panelTab] || "upload";
+  const activeMode={upload:"upload",inspection:"tree",dialog:"paths",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[state.panelTab] || "upload";
   editorMain.dataset.workspaceMode=activeMode;
   updateWorkspaceMaximizeButton();
 }
-function workspacePanelForMode(mode) { return {upload:"upload",tree:"inspection",paths:"dialog",replay:"replay",chat:"run",modelchat:"modelchat",lineage:"lineage",settings:"settings",verification:"verification",help:"help"}[mode] || "upload"; }
-function showWorkspaceTab(mode) { if (!state.source && !["upload","modelchat","help"].includes(mode)) return; showPanelTab(workspacePanelForMode(mode)); }
+function workspacePanelForMode(mode) { return {upload:"upload",tree:"inspection",paths:"dialog",replay:"replay",chat:"run",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[mode] || "upload"; }
+function showWorkspaceTab(mode) {
+  if (!state.source && !["upload","modelchat","help"].includes(mode)) return;
+  const caps=state.packageInfo?.capabilities||{}, capability={tree:"show_tree",lineage:"show_data_flow",settings:"playbook_settings",verification:"verification",packagefiles:"package_files",paths:"show_path",chat:"execute",replay:"replay"}[mode];
+  if(capability&&caps[capability]===false)return;
+  showPanelTab(workspacePanelForMode(mode));
+}
 function populatePathBuilder() {
   const start=document.querySelector("#dialog-start-node"), end=document.querySelector("#dialog-end-node"); if (!start || !end || !state.graph) return;
   const previousStart=start.value || entryNodeId(); const previousEnd=end.value;
@@ -5704,7 +6525,7 @@ function openUnifiedSettings() {
 function closeUnifiedSettings() { const modal=document.querySelector("#settings-overview-modal"); if (modal) { modal.hidden=true; modal.setAttribute("aria-hidden","true"); } }
 function renderChatControlBar() {
   const start=document.querySelector("#chat-start-proxy"), step=document.querySelector("#chat-current-step"), settings=document.querySelector("#chat-settings"), tokenUsage=document.querySelector("#chat-token-usage"), stop=document.querySelector("#chat-stop-proxy"), reset=document.querySelector("#chat-reset-proxy"), stateButton=document.querySelector("#chat-state-proxy"), pauseButton=document.querySelector("#chat-pause-proxy"), autoButton=document.querySelector("#chat-auto-answers-proxy"); if (!start) return;
-  const configured=!!state.source && !!state.packageInfo && !!state.liveConfig.enabled;
+  const configured=!!state.source && !!state.packageInfo && state.packageInfo?.capabilities?.execute!==false && !!state.liveConfig.enabled;
   start.hidden=!!state.liveRunning; start.disabled=!configured; start.textContent="Execute Playbook"; start.title=configured?"Execute the loaded playbook":"Load a playbook and configure a model in Settings";
   step.hidden=!state.liveRunning; step.textContent=state.liveOutcome ? (state.liveOutcome.status === "completed" ? "Run completed" : `Run halted · ${state.liveOutcome.reason||""}`) : (state.liveCurrentId ? `${state.liveCurrentId}${state.livePaused ? " · paused":""}` : "Starting…");
   settings.hidden=false;
@@ -5787,6 +6608,7 @@ updateWorkspaceShell();
 
 // R3 settings assistant binding
 bindPlaybookSettingsSubtabs();
+bindPackageFiles();
 bindSettingsAssistant();
 bindVerificationAssistant();
 bindModelChat();

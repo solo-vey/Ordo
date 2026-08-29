@@ -1,0 +1,76 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "Ordo Clean Package Gate Schema"
+type: object
+additionalProperties: true
+required:
+  - clean_package_gate
+properties:
+  clean_package_gate:
+    type: object
+    additionalProperties: true
+    required:
+      - gate_id
+      - version
+      - command
+      - default_profile
+      - decisions
+      - authority_boundary
+    properties:
+      gate_id:
+        type: string
+      version:
+        type: string
+      command:
+        type: string
+        const: "ordo clean-check"
+      default_profile:
+        type: string
+        enum: [light, standard, strict]
+      report_path:
+        type: string
+      fail_on_warning:
+        type: boolean
+      decisions:
+        type: object
+        required: [passed, passed_with_warnings, blocked, not_applicable]
+        properties:
+          passed:
+            type: string
+            enum: [approved]
+          passed_with_warnings:
+            type: string
+            enum: [approved_with_warnings, blocked]
+          blocked:
+            type: string
+            enum: [blocked]
+          not_applicable:
+            type: string
+            enum: [not_applicable]
+      required_checks:
+        type: array
+        items:
+          type: string
+      authority_boundary:
+        type: object
+        required:
+          - may_mutate_package
+          - may_regenerate_artifacts
+          - may_override_gates
+          - may_confirm_state
+          - may_add_opcodes
+        properties:
+          may_mutate_package:
+            type: boolean
+            const: false
+          may_regenerate_artifacts:
+            type: boolean
+            const: false
+          may_override_gates:
+            type: boolean
+            const: false
+          may_confirm_state:
+            type: boolean
+            const: false
+          may_add_opcodes:
+            type: boolean
+            const: false

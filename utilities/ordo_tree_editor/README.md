@@ -48,37 +48,28 @@ The editor opens at `http://127.0.0.1:8765`. On macOS, double-click
 `start_ordo_tree_editor.command` after making it executable, or run it from a
 terminal.
 
+## Run with Docker Compose
+
+The published image is a read-only, unauthenticated local service. From the
+repository root:
+
+```bash
+docker compose -f docker-compose.tree-editor.yml pull
+docker compose -f docker-compose.tree-editor.yml up -d
+```
+
+Open `http://127.0.0.1:8765`. Playbook files and session state are kept only
+for the lifetime of the container; no persistent volume is required. The
+standard image has no organization-specific model or GitLab defaults. For a
+local custom provider, set `ORDO_MODEL_PROVIDER`, `ORDO_MODEL_BASE_URL`,
+`ORDO_MODEL_NAME`, and (optionally) `ORDO_GITLAB_ROOT` in your shell or an
+uncommitted env file before starting Compose.
+
 To choose a different port or avoid opening a browser automatically:
 
 ```bash
 python3 utilities/ordo_tree_editor/editor_service.py --port 9000 --no-browser
 ```
-
-## Docker Compose deployment
-
-For an internal, unauthenticated deployment without persistent upload storage,
-run from the repository root:
-
-```bash
-docker compose -f docker-compose.tree-editor.yml up --build
-```
-
-Open `http://127.0.0.1:8765`. Uploaded YAML and ZIP content is held in the
-container process workspace and is not persisted across container recreation.
-The image exposes `/healthz` for Docker health checks. Set `ORDO_EDITOR_PORT`
-to change the host port; model provider settings can be supplied through the
-corresponding `ORDO_MODEL_*` environment variables. This compose file is for
-trusted internal networks and intentionally does not provide authentication,
-TLS, or a reverse proxy.
-
-The canonical published image is:
-
-```text
-ghcr.io/solo-vey/ordo-tree-editor:latest
-```
-
-It is published automatically from `main` by the `Publish Tree Editor Docker image`
-workflow. Set `ORDO_EDITOR_IMAGE` to select another tag or a local image.
 
 ## Validation boundary
 
@@ -92,7 +83,7 @@ validation, and explicit tree-module instantiation.
 ## Distribution model
 
 The source utility is shipped in the repository and can be packed into a
-versioned ZIP release. Version `0.2.0-alpha.11.2` is an experimental alpha test build: use it
+versioned ZIP release. Version `0.2.0-alpha.20.0.215-dev` is an experimental alpha test build: use it
 to review and edit local copies, then validate the exported YAML through the
 normal Ordo controls before relying on it. It requires an installed Python
 runtime. A later desktop-distribution phase may bundle Python into a macOS
@@ -307,7 +298,7 @@ Validation-recovery nodes now support free-form analyst/model dialogue while rem
 - Runtime technical IDs preserve underscores in transcript rendering.
 - Assistant/model messages are expanded by default; only long analyst messages collapse automatically.
 - Human-decision gates provide prepared actions plus an inline `Other / clarification` field that is carried into the repair route as analyst correction context.
-- Deterministic test-coverage detection recognizes configured localized negative-case wording as evidence for the `negative` requirement.
+- Deterministic test-coverage detection recognizes localized negative-case wording as evidence for the `negative` requirement.
 
 
 ## Replay to checkpoint (alpha.20.0.13)
@@ -338,7 +329,7 @@ Optional startup configuration can be supplied as command-line parameters or env
 --gitlab-root / ORDO_GITLAB_ROOT
 ```
 
-For a local installation, edit `ordo_editor_defaults.env`. These values are runtime parameters; they are not embedded into Editor logic. The standard distribution does not contain an organization-specific custom model endpoint or GitLab repository URL; provide both explicitly through environment variables when launching your private local instance.
+For a local installation, edit `ordo_editor_defaults.env`. These values are runtime parameters; they are not embedded into Editor logic.
 
 On macOS, executable permission is not required when the launcher is invoked through the shell:
 

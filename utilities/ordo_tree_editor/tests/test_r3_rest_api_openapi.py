@@ -23,7 +23,7 @@ def spec_routes(spec):
 def test_openapi_covers_every_implemented_http_api_route_exactly():
     spec=build_spec()
     assert spec_routes(spec)==implemented_routes()
-    assert len(spec_routes(spec))==48
+    assert len(spec_routes(spec))==50
 
 def test_generated_openapi_files_match_generator_and_swagger_alias():
     expected=build_spec()

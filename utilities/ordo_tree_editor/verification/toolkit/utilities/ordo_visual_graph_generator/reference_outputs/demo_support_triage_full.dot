@@ -1,0 +1,48 @@
+
+digraph DemoSupportTriageFull {
+  rankdir=TB;
+  graph [fontname="Helvetica", bgcolor="white", label="Demo Support Triage — FULL graph / all data layers", labelloc=t, fontsize=22, pad=0.35, nodesep=0.55, ranksep=0.75, splines=true];
+  node [fontname="Helvetica", shape=box, style="rounded,filled", color="#475569", penwidth=1.2, margin="0.16,0.10", fontsize=9];
+  edge [fontname="Helvetica", color="#475569", arrowsize=0.65, fontsize=8];
+
+  ENTRY [label="ENTRY\nDemo Support Triage", fillcolor="#DBEAFE", color="#2563EB", penwidth=2];
+
+  N1 [label="N1_ISSUE_TYPE\nChoose support issue type", fillcolor="#FEF3C7", color="#F59E0B", penwidth=3];
+  N2 [label="N2_SEVERITY\nChoose severity", fillcolor="#FEF3C7", color="#F59E0B", penwidth=3];
+  N3 [label="N3_USER_CONTEXT\nConfirm user context", fillcolor="#F8FAFC"];
+  N4 [label="N4_RESOLUTION_PLAN\nConfirm resolution plan", fillcolor="#F8FAFC"];
+  N5 [label="N5_APPROVAL\nApprove final support summary?", fillcolor="#F8FAFC"];
+
+  C1 [label="Contract v2\ninput: choice\nrequires: issue_type\nwrites: state.issue_type\ncoverage: ✓ issue_type", fillcolor="#EEF2FF", color="#4F46E5", shape=note];
+  C2 [label="Contract v2\ninput: choice\nrequires: severity\nwrites: state.severity\ncoverage: ✓ severity", fillcolor="#EEF2FF", color="#4F46E5", shape=note];
+  S1 [label="state.issue_type\nrequired | written\nwriters: N1_ISSUE_TYPE", fillcolor="#E8F8EC", color="#16A34A", shape=note];
+  S2 [label="state.severity\nrequired | written\nwriters: N2_SEVERITY", fillcolor="#E8F8EC", color="#16A34A", shape=note];
+  G1 [label="G_FINAL_APPROVED\nmethod: mechanical\ntrust: deterministic\ncondition: state.approval_received is true\non_fail: BLOCK", fillcolor="#FEF3C7", color="#D97706", shape=note];
+  A1 [label="A_NO_OUTPUT_WITHOUT_APPROVAL\nfinal package created without approval\nblock/STOP", fillcolor="#F3E8FF", color="#7C3AED", shape=note];
+  R1 [label="Unmatched input\nCLARIFY.REQUEST\nstrategy: show_A_B_C_options\nmax attempts: 2", fillcolor="#FFF7ED", color="#EA580C", shape=note];
+  OUT [label="OUT_SUPPORT_TRIAGE_PACKAGE\narchive\nallowed_after: 5 gates", fillcolor="#E0F2FE", color="#0284C7", shape=folder];
+  TRACE1 [label="Trace branch comment\nUser selected login problem and clarified password reset failed.", fillcolor="#FEF3C7", color="#D97706", shape=note];
+
+  ENTRY -> N1;
+  N1 -> N2 [label="A — login problem", color="#F59E0B", penwidth=3, fontcolor="#B45309"];
+  N1 -> N2 [label="B — billing question"];
+  N1 -> N2 [label="C — product bug"];
+  N2 -> N3 [label="2 — medium", color="#F59E0B", penwidth=3, fontcolor="#B45309"];
+  N3 -> N4;
+  N4 -> N5;
+  N5 -> G1 [label="yes — generate package"];
+
+  N1 -> C1 [style=dashed, label="contract", color="#4F46E5"];
+  N2 -> C2 [style=dashed, label="contract", color="#4F46E5"];
+  N1 -> S1 [style=dashed, label="writes", color="#16A34A"];
+  N2 -> S2 [style=dashed, label="writes", color="#16A34A"];
+  N5 -> G1 [style=dashed, label="gate", color="#D97706"];
+  N5 -> A1 [style=dashed, label="asserts", color="#7C3AED"];
+  N1 -> R1 [style=dashed, label="repair", color="#EA580C"];
+  G1 -> OUT [style=dotted, label="allowed_after", color="#0284C7"];
+  N1 -> TRACE1 [style=dashed, label="trace branch", color="#D97706"];
+
+  { rank=same; N1; C1; S1; R1; TRACE1; }
+  { rank=same; N2; C2; S2; }
+  { rank=same; N5; G1; A1; OUT; }
+}

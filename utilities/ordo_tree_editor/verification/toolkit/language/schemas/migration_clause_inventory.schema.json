@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_ref",
+    "clauses"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.migration_clause_inventory.v1"
+    },
+    "source_ref": {
+      "type": "string"
+    },
+    "clauses": {
+      "type": "array"
+    }
+  }
+}

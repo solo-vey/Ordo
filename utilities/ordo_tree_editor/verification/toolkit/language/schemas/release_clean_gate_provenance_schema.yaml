@@ -1,0 +1,64 @@
+$id: ordo.release_clean_gate.provenance.v2
+$title: Ordo release clean-gate provenance linkage
+$type: object
+required:
+  - schema_version
+  - gate_id
+  - gate_class
+  - repository
+  - revision
+  - ref
+  - run_id
+  - profile
+  - fail_on_warning
+  - linkage
+properties:
+  schema_version:
+    const: ordo.release_clean_gate.provenance.v2
+  gate_id:
+    type: string
+  gate_class:
+    const: release
+  repository:
+    type: string
+  revision:
+    type: string
+  ref:
+    type: string
+  run_id:
+    type: string
+  profile:
+    const: strict
+  fail_on_warning:
+    const: true
+  linkage:
+    type: object
+    required:
+      - status
+      - report_path
+      - report_schema_version
+      - report_status
+      - report_exit_code
+      - report_profile
+      - report_sha256
+      - report_size_bytes
+    properties:
+      status:
+        enum: [linked, report_missing]
+      report_path:
+        const: reports/release/repo_clean_check.json
+      report_schema_version:
+        type: [string, 'null']
+      report_status:
+        type: [string, 'null']
+      report_exit_code:
+        type: [integer, 'null']
+      report_profile:
+        type: [string, 'null']
+      report_sha256:
+        type: [string, 'null']
+        pattern: '^[0-9a-f]{64}$'
+      report_size_bytes:
+        type: [integer, 'null']
+        minimum: 0
+additionalProperties: false

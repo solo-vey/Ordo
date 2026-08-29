@@ -146,6 +146,16 @@ def assemble(stage: Path) -> None:
     copy_file(UTILITIES / "README.md", stage / "utilities" / "README.md")
     for name in UTILITY_TREES:
         copy_tree_without_caches(UTILITIES / name, stage / "utilities" / name)
+    # The editor bundles the generic package template for its own verification
+    # toolkit.  It must not be copied into the ARF kit as a second canonical
+    # source/program.ordo.yaml, otherwise the package loader correctly rejects
+    # the assembled kit for duplicate canonical sources.
+    duplicate_template = (
+        stage / "utilities" / "ordo_tree_editor" / "verification" / "toolkit"
+        / "ordo_pkg" / "ordo" / "templates" / "package_template" / "source" / "program.ordo.yaml"
+    )
+    if duplicate_template.is_file():
+        duplicate_template.unlink()
     copy_file(RELEASE_TOOLS / "README.md", stage / "release_tools" / "README.md")
     for name in RELEASE_TOOL_FILES:
         copy_file(RELEASE_TOOLS / name, stage / "release_tools" / name)

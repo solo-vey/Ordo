@@ -4,7 +4,7 @@ const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const js=fs.readFileSync(path.join(root,'app.js'),'utf8');
 const css=fs.readFileSync(path.join(root,'styles.css'),'utf8');
 function must(hay,needle,msg){ if(!hay.includes(needle)) throw new Error(msg||`missing ${needle}`); }
-const tabSeq=['data-workspace-tab="chat">Execute Playbook','data-workspace-tab="replay">Replay Real Chat','data-workspace-tab="tree">Show Tree','data-workspace-tab="paths">Show Path'];
+const tabSeq=['data-workspace-tab="upload">Upload Playbook','data-workspace-tab="tree">Show Tree','data-workspace-tab="lineage">Show Data Flow','data-workspace-tab="settings">Playbook Settings','data-workspace-tab="verification">Verify Playbook','data-workspace-tab="packagefiles">Package Files','data-workspace-tab="paths">Show Path','data-workspace-tab="chat">Execute Playbook','data-workspace-tab="replay">Replay Real Chat','data-workspace-tab="modelchat">Model Chat','data-workspace-tab="help">Help'];
 let pos=-1; for(const x of tabSeq){const n=html.indexOf(x); if(n<=pos) throw new Error('workspace tab order/labels invalid'); pos=n;}
 for(const id of ['chat-state-proxy','chat-pause-proxy','chat-auto-answers-proxy','tree-zoom-out','tree-zoom-reset','tree-zoom-in']) must(html,id);
 must(html,'live-composer-shell'); must(html,'aria-label="Attach files"'); must(html,'aria-label="Send"');

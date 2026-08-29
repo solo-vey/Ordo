@@ -1,0 +1,50 @@
+# Interaction Model Schema Convention v1
+# Status: M64.2 documented schema convention, not enforced runtime schema.
+
+type: object
+name: interaction_model_schema_v1
+status: convention
+properties:
+  human_role:
+    type: string
+    enum_or_convention:
+      - content_decision_owner
+      - approval_owner
+      - process_owner
+      - reviewer
+  ai_role:
+    type: string
+    enum_or_convention:
+      - guided_process_driver
+      - ordo_executor
+      - ordo_developer
+      - summarizer
+  cli_role:
+    type: string
+    enum_or_convention:
+      - deterministic_validator
+      - artifact_builder
+      - graph_renderer
+      - none
+  raw_tool_output_policy:
+    type: string
+    enum:
+      - summarize_before_user
+      - show_on_request
+      - show_full
+      - never_show_raw
+  decision_authority:
+    type: object
+    additionalProperties:
+      type: string
+      enum:
+        - human
+        - ai
+        - cli
+        - shared
+  review_points:
+    type: array
+    items: {type: string}
+validation_notes:
+  m64_2: Documentation/schema convention only.
+  future_m64_3: May define profile/lint requirements for standard_applied_module and strict profiles.

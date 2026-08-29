@@ -1,8 +1,9 @@
 {
   "schema_version": "ordo.editor.verification_source.v1",
-  "source": "repository-native language and tooling contours",
+  "source": "ORDO_PLAYBOOK_GRAPH_VERIFICATION_TOOLKIT_0.4.10_ALPHA9",
   "catalog": "VERIFICATION_CATALOG.md",
-  "integration_baseline": "Curated Alpha.20 import without a duplicated external toolkit",
-  "toolkit_bundled": false,
+  "toolkit_manifest_sha256": "860b3c2ea8cc0f4ec19d3dc4a6e397ca5496e805833efd3353a720ff6c0f67ce",
+  "integration_baseline": "Editor R3 verification framework initial import",
+  "snapshot_manifest_sha256": "a79f6714bdc98866be18caab0415d6d1a47d1764053bf1ba4564d07478495438",
   "descriptor_count": 31
 }

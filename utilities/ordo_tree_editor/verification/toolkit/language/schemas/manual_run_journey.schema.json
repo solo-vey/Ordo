@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/manual_run_journey.v1.json",
+  "title": "Ordo Manual Run Journey",
+  "type": "object",
+  "required": [
+    "schema",
+    "playbook",
+    "run",
+    "events",
+    "summary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ordo.manual_run.journey.v1"
+    },
+    "playbook": {
+      "type": "object"
+    },
+    "run": {
+      "type": "object"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sequence",
+          "timestamp_utc",
+          "event_type",
+          "run_id",
+          "event_digest"
+        ]
+      }
+    },
+    "final_state": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "array"
+    },
+    "summary": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

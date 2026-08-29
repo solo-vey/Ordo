@@ -9,7 +9,7 @@ When a new Ordo language/tooling package adds, removes, or changes verification 
 A model or build process assembling the Editor from a language/tooling package MUST:
 
 1. Inspect the language/tooling verification catalog, CLI help, runner scripts, and verification modules.
-2. Resolve executable dependencies from the canonical repository source during development. Bundle a toolkit only when it is required for a standalone distribution and does not duplicate a canonical repository contour.
+2. Copy the executable dependencies required by those checks into `utilities/ordo_tree_editor/verification/toolkit/` (or replace that snapshot atomically).
 3. Reconcile `utilities/ordo_tree_editor/verification/checks/*.json` with the capabilities actually present in the copied toolkit.
 4. Create one descriptor per user-visible verification capability.
 5. Never silently delete a previously known descriptor. If a check no longer exists, remove it only when the source tooling confirms removal; record that change in release notes.
@@ -18,7 +18,7 @@ A model or build process assembling the Editor from a language/tooling package M
 8. Validate every descriptor against `check_descriptor.schema.json`.
 9. Run a discovery test proving the catalog visible through `/api/verification-catalog` exactly matches the descriptor directory.
 10. Run a smoke verification against at least one fixture playbook and prove progress/status transitions are emitted sequentially.
-11. Update `VERIFICATION_SOURCE.json` with the language/tooling source version and integration baseline. Record an optional toolkit manifest hash only when a toolkit is actually bundled.
+11. Update `VERIFICATION_SOURCE.json` with the language/tooling source version, toolkit manifest hash, and integration timestamp/build identifier.
 
 ## Model instructions for future automatic integration
 

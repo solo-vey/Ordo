@@ -35,6 +35,9 @@ path_exemptions:
 - id: editor_localized_runtime_fixtures
   glob: utilities/ordo_tree_editor/tests/fixtures/**
   reason: Recorded runtime fixtures preserve localized analyst and playbook payloads for replay coverage.
+- id: editor_language_toolkit
+  glob: utilities/ordo_tree_editor/verification/toolkit/language/**
+  reason: Bundled language behavior examples and specifications may contain localized fixture values.
 file_exemptions:
 - id: legal_name_commercial
   path: COMMERCIAL_LICENSE.md
@@ -51,6 +54,9 @@ file_exemptions:
 - id: localized_apf_defect_review_rationale
   path: docs/apf/legacy-root/uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md
   reason: Preserved Ukrainian APF rationale.
+- id: editor_recorded_localized_run
+  path: utilities/ordo_tree_editor/tests/OFFLINE_E2E_0_8_7_RESULT.json
+  reason: Recorded localized runtime evidence retained for replay coverage.
 structured_value_exemptions:
 - id: localized_uk_field
   path_suffix: display_name_uk

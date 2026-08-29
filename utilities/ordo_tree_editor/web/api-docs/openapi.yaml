@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Ordo Tree Editor Local REST API
-  version: 0.2.0-alpha.20.0.195-dev
+  version: 0.2.0-alpha.20.0.215-dev
   description: HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference
     documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract.
 servers:
@@ -278,9 +278,9 @@ paths:
     post:
       tags:
       - Packages & Replay
-      summary: Load a replay ZIP package
+      summary: Load a canonical debug handoff ZIP
       operationId: postreplay_package
-      description: Load a replay ZIP package
+      description: Load a canonical debug handoff ZIP
       responses:
         '200':
           description: Successful response
@@ -301,7 +301,7 @@ paths:
               properties:
                 filename:
                   type: string
-                  description: Replay ZIP filename.
+                  description: Canonical debug handoff ZIP filename.
                 data_base64:
                   type: string
                   description: Base64-encoded replay bytes.
@@ -1383,6 +1383,78 @@ paths:
                   type: string
                   description: Loaded package id; active package used when omitted.
               additionalProperties: true
+  /api/package-files:
+    post:
+      tags:
+      - Inspection
+      summary: List package files or preview one package file
+      operationId: postpackage_files
+      description: List package files or preview one package file
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                package_id:
+                  type: string
+                  description: Loaded package id; active package used when omitted.
+                mode:
+                  type: string
+                  description: list or read.
+                  enum:
+                  - list
+                  - read
+                path:
+                  type: string
+                  description: Package-relative file path for read mode.
+              additionalProperties: true
+  /api/package-file-download:
+    get:
+      tags:
+      - Inspection
+      summary: Download one original file from the loaded package
+      operationId: getpackage_file_download
+      description: Download one original file from the loaded package
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      parameters:
+      - name: package_id
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Loaded package id.
+        description: Loaded package id.
+      - name: path
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Package-relative file path.
+        description: Package-relative file path.
   /api/data-lineage:
     post:
       tags:

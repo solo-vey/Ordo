@@ -1,0 +1,70 @@
+SHARED.TAIL.REFERENCE:
+  type: object
+  required: [id, namespace, tail_id, entry, return_to, namespace_policy]
+  properties:
+    id:
+      type: string
+      minLength: 1
+    namespace:
+      type: string
+      minLength: 1
+      description: Namespace of the reference declaration.
+    tail_id:
+      type: string
+      minLength: 1
+    tail_namespace:
+      type: string
+      minLength: 1
+    entry:
+      type: string
+      minLength: 1
+    return_to:
+      type: string
+      minLength: 1
+      description: Deterministic caller continuation after shared-tail return.
+    max_call_depth:
+      type: integer
+      minimum: 1
+      maximum: 128
+      default: 16
+    namespace_policy:
+      enum: [inherit, qualified, explicit_map]
+    namespace_map:
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+    import_state:
+      type: object
+      properties:
+        allow:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+        rename:
+          type: object
+          additionalProperties: { type: string, minLength: 1 }
+        required:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+    export_state:
+      type: object
+      properties:
+        allow:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+        rename:
+          type: object
+          additionalProperties: { type: string, minLength: 1 }
+    protected_fields:
+      type: array
+      uniqueItems: true
+      items: { type: string }
+    preserve_provenance:
+      type: boolean
+      default: true
+    maturity:
+      enum: [experimental_optional, stable_optional]
+      default: experimental_optional

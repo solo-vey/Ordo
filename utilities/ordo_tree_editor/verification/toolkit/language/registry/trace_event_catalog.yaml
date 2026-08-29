@@ -1,0 +1,39 @@
+catalog: ordo_trace_events
+version: 0.12-m74.1
+events:
+- id: conversation.deviation.detected
+  capability: conversation_scope_guard
+  status: specified
+- id: conversation.deviation.classified
+  capability: conversation_scope_guard
+  status: specified
+- id: conversation.redirect.emitted
+  capability: conversation_scope_guard
+  status: specified
+- id: conversation.escalation.changed
+  capability: conversation_scope_guard
+  status: specified
+- id: conversation.scope_guard.bypassed_for_control_intent
+  capability: conversation_scope_guard
+  status: specified
+- id: conversation.scope_guard.bypassed_for_safety
+  capability: conversation_scope_guard
+  status: specified
+- id: process.pause.requested
+  capability: conversation_scope_guard
+  status: specified
+- id: process.paused
+  capability: conversation_scope_guard
+  status: specified
+- id: process.resume.requested
+  capability: conversation_scope_guard
+  status: specified
+- id: process.resumed
+  capability: conversation_scope_guard
+  status: specified
+- id: process.exit.requested
+  capability: conversation_scope_guard
+  status: specified
+- id: process.exited
+  capability: conversation_scope_guard
+  status: specified

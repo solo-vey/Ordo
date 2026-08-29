@@ -52,7 +52,7 @@ add('POST','/api/update-node-sections','Source & Graph','Update record sections'
 # Packages & Replay
 add('POST','/api/playbook-package','Packages & Replay','Load a playbook ZIP package',{'filename':p(desc='Original ZIP filename.'),'data_base64':p(desc='Base64-encoded ZIP bytes.')},['filename','data_base64'])
 add('POST','/api/export-playbook','Packages & Replay','Export edited playbook package',{'package_id':p(desc='Loaded package id.'),'source':SOURCE},['package_id','source'])
-add('POST','/api/replay-package','Packages & Replay','Load a replay ZIP package',{'filename':p(desc='Replay ZIP filename.'),'data_base64':p(desc='Base64-encoded replay bytes.')},['filename','data_base64'])
+add('POST','/api/replay-package','Packages & Replay','Load a canonical debug handoff ZIP',{'filename':p(desc='Canonical debug handoff ZIP filename.'),'data_base64':p(desc='Base64-encoded replay bytes.')},['filename','data_base64'])
 add('POST','/api/gitlab-playbooks','Packages & Replay','List the first directory level from the configured GitLab tree',{'root_url':p(desc='GitLab repository tree URL. Optional when server startup configured a default root.')})
 add('POST','/api/gitlab-directory','Packages & Replay','Lazy-load one GitLab directory level',{'root_url':p(desc='GitLab repository tree URL.'),'path':p(desc='Directory path under the configured GitLab root.')},['path'])
 add('POST','/api/gitlab-playbook-load','Packages & Replay','Load a GitLab playbook archive',{'root_url':p(desc='GitLab repository tree URL.'),'path':p(desc='Archive path returned by gitlab-playbooks.')},['path'])
@@ -91,6 +91,8 @@ add('GET','/api/model-chat-workspace-file','Model Chat','Download a Model Chat w
 # Inspection
 add('POST','/api/template-inspector','Inspection','Inspect a node template/materialization contract',{'package_id':p(desc='Loaded package id.'),'node_id':p(desc='Node id.'),'source':SOURCE},['package_id','node_id','source'])
 add('POST','/api/playbook-settings','Inspection','Read language-defined playbook settings',{'package_id':p(desc='Loaded package id; active package used when omitted.')})
+add('POST','/api/package-files','Inspection','List package files or preview one package file',{'package_id':p(desc='Loaded package id; active package used when omitted.'),'mode':p(desc='list or read.',enum=['list','read']),'path':p(desc='Package-relative file path for read mode.')})
+add('GET','/api/package-file-download','Inspection','Download one original file from the loaded package',query={'package_id':p(desc='Loaded package id.'),'path':p(desc='Package-relative file path.',required=True)},body=False,response={'type':'string','format':'binary'})
 add('POST','/api/data-lineage','Inspection','Build reconstructed logical data lineage',{'package_id':p(desc='Loaded package id.'),'source':SOURCE,'runtime_state':p('object','Optional current runtime state for values.',additionalProperties=True)})
 add('POST','/api/embedded-data-flow','Inspection','Read canonical authoring data flow',{'package_id':p(desc='Loaded package id.')},['package_id'])
 
@@ -113,7 +115,7 @@ def build_spec()->dict[str,Any]:
     for (method,path),op in OPS.items(): paths.setdefault(path,{})[method]=op
     return {
       "openapi":"3.1.0",
-      "info":{"title":"Ordo Tree Editor Local REST API","version":"0.2.0-alpha.20.0.195-dev","description":"HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract."},
+      "info":{"title":"Ordo Tree Editor Local REST API","version":"0.2.0-alpha.20.0.215-dev","description":"HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract."},
       "servers":[{"url":"http://127.0.0.1:8765","description":"Default local Editor server"}],
       "tags":TAGS,
       "paths":paths,

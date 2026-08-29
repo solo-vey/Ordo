@@ -21,9 +21,7 @@ Checks that require context unavailable to a one-click suite remain visible and 
 
 - `checks/*.json` — discoverable verification descriptors.
 - `check_descriptor.schema.json` — descriptor schema.
-- `toolkit/` — optional executable verification dependencies. It is intentionally not
-  duplicated in the curated Editor source tree; checks that need it are reported as
-  `SKIPPED` unless a compatible toolkit is supplied for that installation.
+- `toolkit/` — executable verification dependencies copied from the language/tooling package.
 - `LANGUAGE_PACKAGE_INTEGRATION_CONTRACT.md` — build/update instructions.
 
 ## Placeholders available to command descriptors
@@ -31,7 +29,7 @@ Checks that require context unavailable to a one-click suite remain visible and 
 - `{package_root}` — extracted playbook root.
 - `{source_path}` — canonical source YAML if resolved.
 - `{output_root}` — temporary verification output directory.
-- `{toolkit_root}` — optional verification toolkit root.
+- `{toolkit_root}` — bundled verification toolkit root.
 
 Example:
 
@@ -56,3 +54,4 @@ Example:
 ## Portable executable contract
 
 Verification descriptors MUST remain platform-neutral. For Python checks, the first command token SHOULD be `python` or `{python}`; the Editor verification runner resolves it to `sys.executable` at runtime. Do not hard-code an absolute interpreter path, virtualenv path, or assume `python`/`python3` exists on PATH. Future descriptor generators must preserve this rule.
+

@@ -1,0 +1,16 @@
+Artifact:
+  type: object
+  required: [kind, id, path_pattern, format]
+  properties:
+    kind:
+      const: artifact
+    id:
+      type: string
+    path_pattern:
+      type: string
+    format:
+      enum: [markdown, json, yaml, text, other]
+    required:
+      type: boolean
+    description:
+      type: string

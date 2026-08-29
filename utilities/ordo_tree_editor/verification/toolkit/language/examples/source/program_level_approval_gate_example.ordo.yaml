@@ -1,0 +1,120 @@
+# Example source fragment for M64.3 Program-level Approval Gate
+
+program_contract:
+  program_id: example_guided_process
+  module_id: ordo.example_guided_process
+  version: 0.1.0
+  ordo_version: "0.12"
+  lifecycle: release-candidate
+  control_level: standard
+  execution_mode: full_runtime
+  contract_profile: standard_applied_module
+  compatibility:
+    language_line: M64
+    parent_package: Ordo v0.12
+    cli_profile: parent-compatible
+    schema_profile: program_level_approval_gate_v1
+  runtime_profile:
+    ai_layer: guided_process_driver
+    cli_layer: deterministic_validator
+    human_layer: content_decision_owner
+  required_review_points:
+    - approve_program_contract
+    - approve_runtime_profile
+    - approve_output_templates
+    - approve_final_package
+  required_validation_commands:
+    - lint
+    - compile
+    - validate-state
+    - validate-output
+    - consistency
+    - go-no-go
+
+interaction_model:
+  human_role: content_decision_owner
+  ai_role: guided_process_driver
+  cli_role: deterministic_validator
+  raw_tool_output_policy: summarize_before_user
+  decision_authority:
+    content_decisions: human
+    routing_suggestions: ai
+    deterministic_checks: cli
+    final_release_decision: human
+  review_points:
+    - approve_program_contract
+    - approve_runtime_profile
+    - approve_output_templates
+    - approve_final_package
+
+process_rail:
+  rail_id: default_runtime_rail
+  state_tracking: required
+  allow_deviation: true
+  require_resume_after_deviation: true
+  resume_policy: return_to_current_node_after_deviation
+  backtracking: restricted
+  backtracking_policy:
+    invalidates_dependent_state: true
+    requires_review_before_continue: true
+  skip_ahead_policy: block_until_required_state_ready
+  stale_answer_policy: require_reconfirmation
+
+conversation_semantics:
+  input_classes:
+    - answer_current_node
+    - clarification
+    - deviation
+    - backtrack_request
+    - new_requirement
+    - approval
+    - refusal
+    - out_of_scope
+  routing_rules:
+    answer_current_node: evaluate_current_node_gate
+    clarification: answer_without_state_change
+    deviation: answer_then_resume
+    backtrack_request: apply_backtracking_policy
+    new_requirement: capture_and_route_to_change_review
+    approval: record_approval_and_continue
+    refusal: record_refusal_and_revise
+    out_of_scope: reject_as_out_of_scope
+  unmatched_input_policy: clarify_before_state_change
+  clarification_policy: do_not_advance_node
+  resume_policy: return_to_current_node_after_deviation
+
+program_level_approval_gate:
+  gate_id: program_level_contract_approval
+  applies_to:
+    - program_contract
+    - interaction_model
+    - process_rail
+    - conversation_semantics
+  profile: standard
+  severity_policy:
+    missing_required_contract: error
+    missing_recommended_contract: warning
+    incomplete_routing_rule: warning
+    unsafe_authority_claim: error
+    undocumented_profile_value: warning
+  required_checks:
+    - program_contract_identity_present
+    - module_id_present_for_reusable_package
+    - runtime_profile_declared
+    - required_review_points_declared
+    - required_validation_commands_declared
+    - interaction_roles_consistent
+    - human_final_approval_declared
+    - raw_tool_output_policy_safe
+    - process_rail_resume_policy_consistent
+    - backtracking_invalidation_policy_present
+    - conversation_input_classes_routed
+    - unmatched_input_policy_safe
+  approval_decision:
+    allowed_values:
+      - approved
+      - approved_with_warnings
+      - blocked
+      - not_applicable
+    default_on_error: blocked
+    default_on_warning: approved_with_warnings

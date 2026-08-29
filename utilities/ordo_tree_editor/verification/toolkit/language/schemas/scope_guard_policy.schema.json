@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ordo://schemas/conversation/scope-guard-policy.schema.json",
+  "title": "Ordo Conversation Scope Guard Strictness and Escalation Policy",
+  "type": "object",
+  "required": [
+    "mode",
+    "resolved_policy",
+    "escalation"
+  ],
+  "properties": {
+    "mode": {
+      "enum": [
+        "advisory",
+        "guided_redirect",
+        "strict_redirect",
+        "locked_process"
+      ]
+    },
+    "resolved_policy": {
+      "type": "object",
+      "required": [
+        "answer_external_question",
+        "acknowledge_message",
+        "explain_scope_boundary",
+        "repeat_active_question",
+        "preserve_state"
+      ],
+      "properties": {
+        "answer_external_question": {
+          "type": "boolean"
+        },
+        "acknowledge_message": {
+          "type": "boolean"
+        },
+        "explain_scope_boundary": {
+          "type": "boolean"
+        },
+        "repeat_active_question": {
+          "type": "boolean"
+        },
+        "preserve_state": {
+          "const": true
+        },
+        "allowed_external_answer_scope": {
+          "enum": [
+            "none",
+            "brief"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "escalation": {
+      "type": "object",
+      "required": [
+        "counter_scope",
+        "reset_on",
+        "levels"
+      ],
+      "properties": {
+        "counter_scope": {
+          "enum": [
+            "active_node",
+            "deviation_session",
+            "process_run"
+          ]
+        },
+        "reset_on": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "valid_process_answer",
+              "node_transition",
+              "process_resume"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "levels": {
+          "type": "object",
+          "required": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "properties": {
+            "1": {
+              "const": "gentle_redirect"
+            },
+            "2": {
+              "const": "explicit_scope_reminder"
+            },
+            "3": {
+              "const": "offer_pause_or_exit"
+            },
+            "4": {
+              "const": "suspend_until_process_choice"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

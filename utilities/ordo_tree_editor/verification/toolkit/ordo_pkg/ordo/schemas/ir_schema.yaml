@@ -1,0 +1,31 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "Semantic JSON IR v0.12 schema"
+type: object
+required: [ordo_version, package, ops]
+properties:
+  ops:
+    type: array
+    items:
+      type: object
+      required: [op, id]
+      properties:
+        op: {type: string}
+      allOf:
+        - if:
+            properties:
+              op: {const: EXECUTION_TRACE.DEF}
+          then:
+            required: [enabled, version, capture_level, storage, replay]
+            properties:
+              capture_level: {enum: [minimal, standard, full, audit]}
+              storage:
+                type: object
+                required: [format, path, append_only]
+                properties:
+                  format: {const: json}
+                  append_only: {const: true}
+              replay:
+                type: object
+                required: [replayable, replay_mode, required_inputs_preserved]
+                properties:
+                  replay_mode: {enum: [deterministic, re_evaluate, simulation, audit_only]}

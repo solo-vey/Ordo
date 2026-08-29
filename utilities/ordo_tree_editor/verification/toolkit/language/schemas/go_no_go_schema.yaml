@@ -1,0 +1,28 @@
+GoNoGo:
+  type: object
+  required: [kind, status, blocking_issues, warnings]
+  properties:
+    kind:
+      const: go_no_go
+    status:
+      enum: [go, no_go_requires_confirmation, no_go_requires_artifact_fix, no_go_requires_template_fix, no_go_requires_runner_contract]
+    blocking_issues:
+      type: array
+      items:
+        type: object
+        required: [code, message]
+        properties:
+          code:
+            type: string
+          message:
+            type: string
+          contract:
+            type: string
+          artifact:
+            type: string
+          field:
+            type: string
+    warnings:
+      type: array
+      items:
+        type: object

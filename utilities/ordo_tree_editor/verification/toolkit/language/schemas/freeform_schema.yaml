@@ -1,0 +1,18 @@
+Freeform:
+  type: object
+  required: [id, role]
+  properties:
+    id:
+      type: string
+    role:
+      enum: [domain_explanation, example, warning, template_note, edge_case_note]
+    binding:
+      type: string
+    maturity:
+      enum: [stable, volatile, candidate_for_formalization]
+    incident_count:
+      type: integer
+      minimum: 0
+    incident_threshold:
+      type: integer
+      minimum: 1

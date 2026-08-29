@@ -1,0 +1,15 @@
+program:
+  id: examples.basic_summary
+  ordo_version: "0.12"
+  control_level: light
+  execution_mode: freeform_only
+
+intent:
+  goal: "Підготувати короткий підсумок наданого тексту."
+
+contract:
+  output_type: bullet_summary
+  max_items: 3
+
+output:
+  format: markdown_bullets

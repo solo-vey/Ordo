@@ -1,0 +1,6 @@
+N_PACKAGE_GOAL: "Create a package for guided requirements intake"
+N_EXPECTED_OUTPUTS:
+  - README.md
+  - compiled/program.ir.json
+  - reports/run_report.json
+N_APPROVAL: "yes"

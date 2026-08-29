@@ -89,20 +89,18 @@ def test_red1_nested_compiled_fixture_does_not_claim_runtime_plan_authority():
     ]
 
 
-def test_red2_canonical_invalid_runtime_plan_remains_fail_closed():
+def test_red2_canonical_invalid_runtime_plan_loads_degraded_and_execution_remains_fail_closed():
     raw = _zip([
         ("program.ordo.yaml", SOURCE),
         ("compiled/runtime_semantic_plan.json", _invalid_plan()),
     ])
-    try:
-        es.parse_playbook_package("canonical-invalid.zip", raw)
-    except ValueError as exc:
-        text = str(exc)
-        assert "unsupported_format" in text
-        assert "compiled/runtime_semantic_plan.json" in text
-        assert "canonical_package_path" in text
-    else:
-        raise AssertionError("authoritative invalid runtime plan must fail closed")
+    parsed=es.parse_playbook_package("canonical-invalid.zip", raw)
+    assert parsed['load_status']=='degraded'
+    assert parsed['capabilities']['execute'] is False
+    assert parsed['capabilities']['package_files'] is True
+    assert parsed['semantic_plan_status']['reason']=='unsupported_format'
+    message=' '.join(str(item.get('message') or '') for item in parsed['load_diagnostics'])
+    assert 'compiled/runtime_semantic_plan.json' in message
 
 
 def test_red3_canonical_valid_runtime_plan_wins_over_nested_invalid_fixture():

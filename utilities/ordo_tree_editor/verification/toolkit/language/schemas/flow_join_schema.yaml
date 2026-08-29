@@ -1,0 +1,69 @@
+FLOW.JOIN:
+  type: object
+  required: [id, namespace, incoming, target, state_contract, merge_policy, conflict_policy]
+  properties:
+    id:
+      type: string
+      minLength: 1
+    namespace:
+      type: string
+      minLength: 1
+      description: Package-local namespace containing the join declaration.
+    incoming:
+      type: array
+      minItems: 2
+      uniqueItems: true
+      items:
+        type: object
+        required: [node, namespace]
+        properties:
+          node: { type: string, minLength: 1 }
+          namespace: { type: string, minLength: 1 }
+          alias: { type: string, minLength: 1 }
+    target:
+      type: object
+      required: [node, namespace]
+      properties:
+        node: { type: string, minLength: 1 }
+        namespace: { type: string, minLength: 1 }
+    state_contract:
+      type: object
+      required: [required_fields, protected_fields, optional_fields]
+      properties:
+        required_fields:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+        protected_fields:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+        optional_fields:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+        branch_local_fields:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+    merge_policy:
+      type: object
+      required: [default, fields]
+      properties:
+        default:
+          enum: [require_equal, prefer_non_null, reject]
+        fields:
+          type: object
+          additionalProperties:
+            enum: [require_equal, prefer_non_null, prefer_left, prefer_right, explicit_resolver, discard]
+    conflict_policy:
+      enum: [reject, explicit_resolver]
+    resolver_ref:
+      type: string
+      minLength: 1
+    provenance_policy:
+      enum: [preserve_all_inputs, preserve_selected_input]
+      default: preserve_all_inputs
+    maturity:
+      enum: [experimental_optional, stable_optional]
+      default: experimental_optional

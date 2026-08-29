@@ -1,0 +1,22 @@
+Assertion:
+  type: object
+  required: [id, polarity, condition, phase, severity]
+  properties:
+    id:
+      type: string
+    source_local_id:
+      type: string
+    polarity:
+      enum: [must, not]
+    condition:
+      type: string
+    phase:
+      type: array
+      items:
+        enum: [runtime, test, debug]
+    severity:
+      enum: [block, warn, info]
+    on_fail:
+      type: string
+    message:
+      type: string

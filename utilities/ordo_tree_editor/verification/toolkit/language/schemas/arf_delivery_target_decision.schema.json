@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/arf_delivery_target_decision.schema.json",
+  "title": "ARF Delivery Target Decision",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "selected_target",
+    "recommended_target",
+    "analyst_override",
+    "safe_default",
+    "package_outputs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.arf.delivery_target_decision.v1"
+    },
+    "status": {
+      "enum": [
+        "confirmed",
+        "blocked_prompt_only_override"
+      ]
+    },
+    "selected_target": {
+      "enum": [
+        "engine_runtime",
+        "prompt_only",
+        "both"
+      ]
+    },
+    "recommended_target": {
+      "enum": [
+        "engine_runtime",
+        "prompt_only",
+        "both"
+      ]
+    },
+    "analyst_override": {
+      "type": "boolean"
+    },
+    "analyst_id": {
+      "type": "string"
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "safe_default": {
+      "const": "engine_runtime"
+    },
+    "prompt_only_guarantees_lost_acknowledged": {
+      "type": "boolean"
+    },
+    "package_outputs": {
+      "type": "object",
+      "required": [
+        "engine_runtime",
+        "prompt_only"
+      ],
+      "properties": {
+        "engine_runtime": {
+          "type": "boolean"
+        },
+        "prompt_only": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

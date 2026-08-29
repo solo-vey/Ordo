@@ -1,0 +1,23 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: ordo.template.registry.v1
+title: Ordo Template Registry
+required: [schema_version, templates]
+type: object
+properties:
+  schema_version:
+    const: ordo.template.registry.v1
+  templates:
+    type: array
+    items:
+      type: object
+      required: [template_id, version, status, contract_ref, sha256, render_mode, used_by]
+      properties:
+        template_id: {type: string, pattern: '^[a-z0-9]+(?:[._-][a-z0-9]+)+$'}
+        version: {type: string, pattern: '^[0-9]+\.[0-9]+\.[0-9]+$'}
+        status: {enum: [active, deprecated, experimental, disabled]}
+        contract_ref: {type: string}
+        sha256: {type: string, pattern: '^[a-f0-9]{64}$'}
+        render_mode: {enum: [deterministic, model_rendered, hybrid]}
+        used_by: {type: array, items: {type: string}}
+        replaced_by: {type: string}
+additionalProperties: false
