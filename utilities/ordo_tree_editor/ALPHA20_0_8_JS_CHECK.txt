@@ -1,0 +1,4 @@
+manual pause UI regression: PASS
+NO-PROGRESS GATE REGRESSION: PASS
+recovery clarification + token debug UI regression: PASS
+RECOVERY UI REGRESSION: PASS

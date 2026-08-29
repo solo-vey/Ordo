@@ -1,27 +1,27 @@
 <!doctype html>
-<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Execute Playbook API Guide — Ordo Editor</title><link rel="stylesheet" href="api-docs.css"><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Execute Playbook API Guide — Ordo Editor</title><link rel="stylesheet" href="api-docs.css"><style>
 .guide{max-width:1050px;margin:0 auto;padding:28px}.guide h2{margin-top:34px}.flow{display:grid;gap:10px}.flow .step{border:1px solid var(--line,#d7dce4);border-radius:10px;padding:14px;background:var(--panel,#fff)}pre{overflow:auto;padding:14px;border-radius:8px;background:#111827;color:#e5e7eb}code{word-break:break-word}.endpoint-link{font-family:ui-monospace,monospace}.warn{border-left:4px solid #d97706;padding:10px 14px;background:rgba(217,119,6,.08)}.ok{border-left:4px solid #059669;padding:10px 14px;background:rgba(5,150,105,.08)}table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}</style></head><body>
-<header class="top"><div><a class="back" href="/">← Editor</a><h1>Execute Playbook API Guide</h1><p>Як зовнішній агент може завантажити playbook + Auto Answers, виконувати його в режимі Execute Playbook і автоматично забирати state/debug.</p></div><div class="spec-links"><a href="/api-docs/">REST Reference</a><a href="openapi.yaml">OpenAPI YAML</a></div></header>
+<header class="top"><div><a class="back" href="/">← Editor</a><h1>Execute Playbook API Guide</h1><p>How an external agent can upload a playbook and Auto Answers, run it through Execute Playbook, and retrieve runtime state and debug evidence automatically.</p></div><div class="spec-links"><a href="/api-docs/">REST Reference</a><a href="openapi.yaml">OpenAPI YAML</a></div></header>
 <main class="guide">
-<div class="notice"><strong>Local integration API.</strong> За замовчуванням Editor слухає <code>127.0.0.1</code>. Цей API призначений для локальної автоматизації/агентів і використовує той самий runtime boundary, що й веб-режим Execute Playbook.</div>
+<div class="notice"><strong>Local integration API.</strong> By default, the Editor listens on <code>127.0.0.1</code>. This API is intended for local automation and agents, and uses the same runtime boundary as the web-based Execute Playbook mode.</div>
 
-<h2>Що можна автоматизувати</h2>
-<p>Агент може: завантажити playbook; завантажити replay/Auto Answers; налаштувати model provider; створити server-managed run; виконувати по одному кроку або автоматично до наступної зупинки; читати canonical runtime state та transcript; передати analyst input; зупинити run; отримати artifacts; у разі помилки одразу забрати повний debug snapshot.</p>
+<h2>What can be automated</h2>
+<p>An agent can upload a playbook; upload replay/Auto Answers; configure a model provider; create a server-managed run; execute one phase at a time or advance automatically to the next stop; read canonical runtime state and transcript; submit analyst input; stop a run; retrieve artifacts; and fetch a complete debug snapshot immediately after an error.</p>
 
-<h2>Рекомендований сценарій</h2>
+<h2>Recommended workflow</h2>
 <div class="flow">
-<div class="step"><strong>1. Завантажити playbook</strong><br><a class="endpoint-link" href="/api-docs/#postplaybook_package">POST /api/playbook-package</a><br>Передайте ZIP у <code>data_base64</code>. У відповіді збережіть <code>package.id</code>.</div>
-<div class="step"><strong>2. Завантажити Auto Answers</strong><br><a class="endpoint-link" href="/api-docs/#postreplay_package">POST /api/replay-package</a><br>Replay package реєструється на сервері. У відповіді використайте <code>replay_id</code> як <code>auto_answers_replay_id</code>.</div>
-<div class="step"><strong>3. Налаштувати модель</strong><br><a class="endpoint-link" href="/api-docs/#postlive_config">POST /api/live-config</a><br>Виберіть provider/model і використовуйте той самий <code>session_id</code> у Execute run.</div>
-<div class="step"><strong>4. Створити run</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_start">POST /api/execute-run-start</a><br>Передайте <code>package_id</code>, <code>session_id</code>, опційно <code>auto_answers_replay_id</code>. Можна одразу задати <code>advance:true</code>.</div>
-<div class="step"><strong>5A. Контрольований режим</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_step">POST /api/execute-run-step</a><br>Один HTTP виклик = одна runtime phase (<code>enter</code> або <code>respond</code>). Це найкращий режим для агента, який хоче аналізувати кожен крок.</div>
-<div class="step"><strong>5B. Автоматичний режим</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_advance">POST /api/execute-run-advance</a><br>Editor сам проходить deterministic/model steps та використовує Auto Answers до terminal/halt/error або до вузла, де бракує analyst input.</div>
-<div class="step"><strong>6. Якщо потрібна ручна відповідь</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_input">POST /api/execute-run-input</a><br>Передайте <code>analyst_input</code>; за замовчуванням після цього execution продовжиться автоматично.</div>
-<div class="step"><strong>7. Контролювати стан</strong><br><a class="endpoint-link" href="/api-docs/#getexecute_run_status">GET /api/execute-run-status?run_id=...</a><br>Повертає <code>current_id</code>, canonical <code>state</code>, <code>state_revision</code>, path, transcript, outcome/error, artifact registry та посилання на debug.</div>
-<div class="step"><strong>8. При помилці — забрати все evidence</strong><br><a class="endpoint-link" href="/api-docs/#getexecute_run_debug">GET /api/execute-run-debug?run_id=...</a><br>Повертає state, history, transcript, повний debug trace, traceback помилки, artifact registry та cursors Auto Answers.</div>
+<div class="step"><strong>1. Upload the playbook</strong><br><a class="endpoint-link" href="/api-docs/#postplaybook_package">POST /api/playbook-package</a><br>Send the ZIP in <code>data_base64</code>. Save <code>package.id</code> from the response.</div>
+<div class="step"><strong>2. Upload Auto Answers</strong><br><a class="endpoint-link" href="/api-docs/#postreplay_package">POST /api/replay-package</a><br>The replay package is registered on the server. Use the returned <code>replay_id</code> as <code>auto_answers_replay_id</code>.</div>
+<div class="step"><strong>3. Configure the model</strong><br><a class="endpoint-link" href="/api-docs/#postlive_config">POST /api/live-config</a><br>Select the provider/model and use the same <code>session_id</code> for the Execute run.</div>
+<div class="step"><strong>4. Create the run</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_start">POST /api/execute-run-start</a><br>Send <code>package_id</code>, <code>session_id</code>, and optionally <code>auto_answers_replay_id</code>. You may also set <code>advance:true</code> immediately.</div>
+<div class="step"><strong>5A. Controlled mode</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_step">POST /api/execute-run-step</a><br>One HTTP call equals one runtime phase (<code>enter</code> or <code>respond</code>). This is the best mode for an agent that wants to inspect every step.</div>
+<div class="step"><strong>5B. Automatic mode</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_advance">POST /api/execute-run-advance</a><br>The Editor advances deterministic/model steps and uses Auto Answers until terminal/halt/error or until analyst input is required.</div>
+<div class="step"><strong>6. Submit manual input when required</strong><br><a class="endpoint-link" href="/api-docs/#postexecute_run_input">POST /api/execute-run-input</a><br>Send <code>analyst_input</code>; by default execution continues automatically after the input is accepted.</div>
+<div class="step"><strong>7. Inspect run status</strong><br><a class="endpoint-link" href="/api-docs/#getexecute_run_status">GET /api/execute-run-status?run_id=...</a><br>Returns <code>current_id</code>, canonical <code>state</code>, <code>state_revision</code>, path, transcript, outcome/error, artifact registry, and the debug link.</div>
+<div class="step"><strong>8. Retrieve all evidence after a failure</strong><br><a class="endpoint-link" href="/api-docs/#getexecute_run_debug">GET /api/execute-run-debug?run_id=...</a><br>Returns state, history, transcript, the full debug trace, error traceback, artifact registry, and Auto Answers cursors.</div>
 </div>
 
-<h2>Мінімальний приклад</h2>
+<h2>Minimal example</h2>
 <pre><code># 1) upload playbook
 POST /api/playbook-package
 {"filename":"PLAYBOOK.zip","data_base64":"..."}
@@ -50,28 +50,28 @@ GET /api/execute-run-status?run_id=execute-...
 GET /api/execute-run-debug?run_id=execute-...
 </code></pre>
 
-<h2>Що містить run status</h2>
-<table><thead><tr><th>Поле</th><th>Значення</th></tr></thead><tbody>
-<tr><td><code>current_id</code></td><td>Поточний node/gate.</td></tr>
-<tr><td><code>state</code></td><td>Поточний canonical runtime state.</td></tr>
+<h2>What run status contains</h2>
+<table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>current_id</code></td><td>Current node/gate.</td></tr>
+<tr><td><code>state</code></td><td>Current canonical runtime state.</td></tr>
 <tr><td><code>state_revision</code></td><td>Runtime-owned revision.</td></tr>
-<tr><td><code>transcript</code></td><td>Server-side transcript Execute Playbook: assistant/analyst/system events.</td></tr>
-<tr><td><code>path</code></td><td>Фактично пройдений execution path.</td></tr>
-<tr><td><code>awaiting_analyst</code></td><td>Чи очікується analyst input.</td></tr>
-<tr><td><code>outcome</code></td><td><code>completed</code>, <code>halted</code> або <code>error</code> з reason/node.</td></tr>
-<tr><td><code>artifacts</code></td><td>Поточний runtime artifact registry; файли забираються через <a href="/api-docs/#getrun_artifact">GET /api/run-artifact</a>.</td></tr>
-<tr><td><code>debug_endpoint</code></td><td>Готове URL для повного debug snapshot.</td></tr>
+<tr><td><code>transcript</code></td><td>Server-side Execute Playbook transcript: assistant/analyst/system events.</td></tr>
+<tr><td><code>path</code></td><td>The execution path actually traversed.</td></tr>
+<tr><td><code>awaiting_analyst</code></td><td>Whether analyst input is currently required.</td></tr>
+<tr><td><code>outcome</code></td><td><code>completed</code>, <code>halted</code>, or <code>error</code> with reason/node details.</td></tr>
+<tr><td><code>artifacts</code></td><td>Current runtime artifact registry; retrieve files through <a href="/api-docs/#getrun_artifact">GET /api/run-artifact</a>.</td></tr>
+<tr><td><code>debug_endpoint</code></td><td>Ready-to-use URL for the complete debug snapshot.</td></tr>
 </tbody></table>
 
-<h2>Як агенту поводитися з помилкою</h2>
-<div class="ok"><strong>Рекомендований цикл:</strong> якщо <code>outcome.status</code> дорівнює <code>error</code> або <code>halted</code>, не реконструювати проблему з UI. Одразу викликати <code>/api/execute-run-debug</code>, зберегти snapshot, проаналізувати <code>error</code>, останній <code>debug_trace</code>, <code>state</code>, <code>path</code> та artifacts.</div>
-<p>Exception під час runtime phase є fail-closed: server-managed run зберігає state до невдалого виклику й додає тип помилки, message, node, phase та traceback. Частковий state не підставляється агентом самостійно.</p>
+<h2>How an agent should handle an error</h2>
+<div class="ok"><strong>Recommended loop:</strong> if <code>outcome.status</code> is <code>error</code> or <code>halted</code>, do not reconstruct the failure from the UI. Call <code>/api/execute-run-debug</code> immediately, save the snapshot, and inspect <code>error</code>, the latest <code>debug_trace</code>, <code>state</code>, <code>path</code>, and artifacts.</div>
+<p>An exception during a runtime phase is fail-closed: the server-managed run keeps the state from before the failed call and records the error type, message, node, phase, and traceback. The agent must not invent or substitute a partial state.</p>
 
-<h2>Низькорівневий API</h2>
-<p><a href="/api-docs/#postlive_step"><code>POST /api/live-step</code></a> залишається доступним для browser/UI та спеціальних інтеграцій. Там caller сам передає <code>source</code>, <code>state</code>, revision, history і current element. Для автономного агента рекомендовано high-level <code>/api/execute-run-*</code>, тому що server сам підтримує ці структури та не дозволяє зовнішньому клієнту випадково розсинхронізувати їх.</p>
+<h2>Low-level API</h2>
+<p><a href="/api-docs/#postlive_step"><code>POST /api/live-step</code></a> remains available for the browser UI and specialized integrations. In that mode the caller supplies <code>source</code>, <code>state</code>, revision, history, and the current element. Autonomous agents should prefer the high-level <code>/api/execute-run-*</code> endpoints because the server owns these structures and prevents external clients from accidentally desynchronizing them.</p>
 
-<h2>Зупинка</h2>
-<p><a class="endpoint-link" href="/api-docs/#postexecute_run_stop">POST /api/execute-run-stop</a> переводить run у <code>halted / user_stop</code>. Оскільки Execute REST виклики синхронні, stop застосовується між runtime phases; він не є transport-level cancellation уже активного HTTP/provider call.</p>
+<h2>Stopping a run</h2>
+<p><a class="endpoint-link" href="/api-docs/#postexecute_run_stop">POST /api/execute-run-stop</a> moves the run to <code>halted / user_stop</code>. Because Execute REST calls are synchronous, stop is applied between runtime phases; it is not transport-level cancellation of an HTTP/provider call that is already in progress.</p>
 
-<div class="warn"><strong>Безпека.</strong> API локальний і може запускати package-local tooling playbook-а. Використовуйте його лише з довіреними playbook packages. Не публікуйте Editor server назовні без окремого authentication/security layer.</div>
+<div class="warn"><strong>Security.</strong> The API is local and can execute package-local playbook tooling. Use it only with trusted playbook packages. Do not expose the Editor server publicly without a separate authentication and security layer.</div>
 </main></body></html>

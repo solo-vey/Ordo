@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/migration_traceability_matrix.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "matrix_id",
+    "source_ref",
+    "rows"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.migration_traceability_matrix.v1"
+    },
+    "matrix_id": {
+      "type": "string",
+      "pattern": "^MIG-TRACE-[A-Z0-9_-]{3,127}$"
+    },
+    "source_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "clause_id",
+          "mandatory",
+          "mapped_unit_ids",
+          "mapped_constructs",
+          "coverage_status",
+          "semantic_preservation"
+        ],
+        "properties": {
+          "clause_id": {
+            "type": "string",
+            "pattern": "^C-[0-9]{4,}$"
+          },
+          "mandatory": {
+            "type": "boolean"
+          },
+          "mapped_unit_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^U-[0-9]{4,}$"
+            }
+          },
+          "mapped_constructs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 2
+            }
+          },
+          "coverage_status": {
+            "enum": [
+              "full",
+              "partial",
+              "unmapped",
+              "excluded_with_reason"
+            ]
+          },
+          "semantic_preservation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "normativity_preserved",
+              "mandatory_strength_preserved",
+              "authorization_boundary_preserved",
+              "decision_semantics_preserved",
+              "evidence_requirement_preserved"
+            ],
+            "properties": {
+              "normativity_preserved": {
+                "type": "boolean"
+              },
+              "mandatory_strength_preserved": {
+                "type": "boolean"
+              },
+              "authorization_boundary_preserved": {
+                "type": "boolean"
+              },
+              "decision_semantics_preserved": {
+                "type": "boolean"
+              },
+              "evidence_requirement_preserved": {
+                "type": "boolean"
+              }
+            }
+          },
+          "exclusion_reason": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "coverage_status": {
+                  "const": "excluded_with_reason"
+                }
+              },
+              "required": [
+                "coverage_status"
+              ]
+            },
+            "then": {
+              "required": [
+                "exclusion_reason"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

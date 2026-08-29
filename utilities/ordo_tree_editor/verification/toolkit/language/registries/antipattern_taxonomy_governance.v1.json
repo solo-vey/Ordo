@@ -1,0 +1,31 @@
+{
+  "schema_version": "ordo.antipattern_taxonomy_governance.v1",
+  "policy_version": "1.0",
+  "status": "active",
+  "rules": {
+    "fundamental_set_is_owner_controlled": true,
+    "new_fundamental_requires_explicit_owner_approval": true,
+    "implicit_fundamental_creation_forbidden": true,
+    "new_cases_must_first_be_mapped_to_existing_fundamental": true,
+    "process_specific_terms_forbidden_in_fundamental_name_and_summary": true,
+    "examples_and_detectors_may_be_process_specific": true,
+    "detector_pattern_must_reference_fundamental_id": true,
+    "fundamental_rules_target_approach_failures_not_single_scenarios": true,
+    "recommended_total_range": {
+      "min": 10,
+      "max": 20
+    }
+  },
+  "change_process": [
+    "Submit candidate case and evidence.",
+    "Attempt mapping to an existing fundamental rule.",
+    "Add as example, subpattern or detector case when mapping succeeds.",
+    "When no existing rule fits, prepare a fundamental-gap analysis.",
+    "Do not add a new fundamental rule without explicit project-owner approval."
+  ],
+  "owner_decision_record": {
+    "decision": "approved",
+    "statement": "All new anti-patterns must fit this hierarchy; a new fundamental-level anti-pattern requires separate explicit owner approval.",
+    "date": "2026-07-13"
+  }
+}

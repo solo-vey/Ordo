@@ -1,39 +1,36 @@
 
+from pathlib import Path
+import yaml
 from utilities.ordo_tree_editor import editor_service as es
 
 
-def test_lineage_has_transformations_and_registry_traceability():
-    """Lineage behavior must be verified without a developer-machine fixture."""
-    source={
-        "nodes":[
-            {
-                "id":"N_DRAFT_IDENTITY", "runtime_executor":"deterministic",
-                "update_state":{"risk_factor_identity.contract_version":"$state.risk_factor_candidate"},
-            },
-            {
-                "id":"N_GENERATE_DOCUMENT", "runtime_executor":"deterministic",
-                "output":"generated_outputs/RISK_FACTOR_PASSPORT.md",
-                "derive_before_generate":{"document.title":"$state.risk_factor_identity"},
-            },
-            {
-                "id":"N_PACKAGE_DOCUMENT", "runtime_executor":"deterministic",
-                "package":{"path":"generated_outputs/RISK_FACTOR_PASSPORT_PACKAGE.zip"},
-                "inputs":["generated_outputs/RISK_FACTOR_PASSPORT.md"],
-            },
-        ],
-        "gates":[],
-    }
-    package={"resources":{
-        "registries/state.yaml": "variables:\n  - path: risk_factor_identity.contract_version\n    source_node: N_DRAFT_IDENTITY\n",
-    }}
-    data=es._build_data_lineage(package,source,{})
+def _package_from_dir(base: Path):
+    resources={}
+    for p in base.rglob('*'):
+        if not p.is_file():
+            continue
+        rel=p.relative_to(base).as_posix()
+        try: text=p.read_text(encoding='utf-8')
+        except Exception: continue
+        resources[rel]=text
+    return {"resources":resources}
+
+
+def test_real_rfp_lineage_has_transformations_and_registry_traceability():
+    base=Path('/tmp/rfp095/RISK_FACTOR_PASSPORT_PLAYBOOK_ALFA_0.9.5_DEV_R3COMPAT')
+    source=yaml.safe_load((base/'source/program.ordo.yaml').read_text(encoding='utf-8'))
+    data=es._build_data_lineage(_package_from_dir(base),source,{})
     by={n['id']:n for n in data['nodes']}
     edges={(e['source'],e['target'],e['relation']) for e in data['edges']}
-    assert data['summary']['transformations'] >= 3
-    assert 'transform:N_DRAFT_IDENTITY' in by
-    assert ('state:risk_factor_candidate','transform:N_DRAFT_IDENTITY','input_to') in edges
-    assert ('transform:N_DRAFT_IDENTITY','state:risk_factor_identity.contract_version','produces') in edges
-    assert ('transform:N_GENERATE_DOCUMENT','artifact:generated_outputs/RISK_FACTOR_PASSPORT.md','materializes') in edges
-    assert ('transform:N_PACKAGE_DOCUMENT','artifact:generated_outputs/RISK_FACTOR_PASSPORT_PACKAGE.zip','packages') in edges
+    assert data['summary']['transformations'] > 10
+    assert 'transform:N_RISK_FACTOR_IDENTITY_DRAFT' in by
+    assert ('state:risk_factor_candidate','transform:N_RISK_FACTOR_IDENTITY_DRAFT','input_to') in edges
+    assert ('transform:N_RISK_FACTOR_IDENTITY_DRAFT','state:risk_factor_identity.contract_version','produces') in edges
+    assert 'transform:N_BUSINESS_MEANING' in by
+    assert ('state:risk_factor_identity','transform:N_BUSINESS_MEANING','input_to') in edges
+    assert ('transform:N_DERIVE_JIRA_TASK_CONTENT','state:jira_task.title','produces') in edges
+    assert ('transform:N_GENERATE_PASSPORT_DRAFT','artifact:generated_outputs/RISK_FACTOR_PASSPORT.md','materializes') in edges
+    assert ('artifact:generated_outputs/RISK_FACTOR_PASSPORT.md','transform:N_FORM_DELIVERY_PACKAGE','input_to') in edges
+    assert ('transform:N_FORM_DELIVERY_PACKAGE','artifact:generated_outputs/RISK_FACTOR_PASSPORT_PACKAGE.zip','packages') in edges
     cv=by['state:risk_factor_identity.contract_version']
-    assert cv.get('registry_metadata',{}).get('source_node')=='N_DRAFT_IDENTITY'
+    assert cv.get('registry_metadata',{}).get('source_node')=='N_RISK_FACTOR_IDENTITY_DRAFT'

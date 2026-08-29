@@ -1,0 +1,69 @@
+ordo: "0.12"
+intent:
+  id: DEMO_SUPPORT_TRIAGE
+  title: Demo Support Triage
+nodes:
+  - id: N1_ISSUE_TYPE
+    answer_type: choice
+    required_fields: [issue_type]
+    question: |
+      Choose issue type:
+      A — login problem
+      B — billing question
+    on_answer:
+      A:
+        update_state: {issue_type: login_problem}
+        next: N2_SEVERITY
+      B:
+        update_state: {issue_type: billing_question}
+        next: N2_SEVERITY
+  - id: N2_SEVERITY
+    answer_type: choice
+    required_fields: [severity]
+    question: |
+      Choose severity:
+      1 — low
+      2 — medium
+    on_answer:
+      "1":
+        update_state: {severity: low}
+        next: N3_USER_CONTEXT
+      "2":
+        update_state: {severity: medium}
+        next: N3_USER_CONTEXT
+  - id: N3_USER_CONTEXT
+    answer_type: free_text
+    required_fields: [user_context]
+    question: Confirm user context.
+    on_answer:
+      update_state: {user_context: "$answer"}
+      next: N4_APPROVAL
+  - id: N4_APPROVAL
+    answer_type: choice
+    required_fields: [approval_received]
+    question: |
+      Approve package?
+      yes — generate
+      no — revise
+    on_answer:
+      yes:
+        update_state: {approval_received: true}
+        next: G_FINAL_APPROVED
+      no:
+        update_state: {approval_received: false}
+        next: STOP_REVISION_REQUIRED
+gates:
+  - id: G_FINAL_APPROVED
+    method: mechanical
+    trust_class: deterministic
+    condition: state.approval_received is true
+    on_fail: BLOCK
+assertions:
+  - id: A_NO_OUTPUT_WITHOUT_APPROVAL
+    condition: final_package_created_without_approval
+    severity: block
+    on_fail: STOP
+outputs:
+  - id: OUT_SUPPORT_TRIAGE_PACKAGE
+    type: archive
+    allowed_after: [G_FINAL_APPROVED]

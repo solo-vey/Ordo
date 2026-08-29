@@ -1,5 +1,6 @@
 
 import json
+import pytest
 from utilities.ordo_tree_editor import editor_service as es
 
 def _semantic():
@@ -36,7 +37,7 @@ def test_safe_recovery_can_choose_allowed_route_without_writes(monkeypatch):
     assert out["debug"]["runtime"]["runtime_executor"]=="semantic_model_recovery"
     assert out["state"]=={"x":1}
 
-def test_safe_recovery_rejects_unauthorized_target_without_state_mutation(monkeypatch):
+def test_safe_recovery_rejects_unauthorized_target(monkeypatch):
     monkeypatch.setattr(es, "_package_context_for_record", lambda record: {"resolved_resources":[]})
     monkeypatch.setattr(es, "_provider_api_call", lambda credentials, system, context: (
         {}, {}, json.dumps({
@@ -44,17 +45,14 @@ def test_safe_recovery_rejects_unauthorized_target_without_state_mutation(monkey
             "state_patch":{"base_revision":0,"operations":[]},"next_id":"N_HACK"
         }), {}
     ))
-    out=es._safe_semantic_model_recovery(
-        credentials={"provider":"test","model":"m","base_url":"x","api_style":"chat_completions"},
-        record={"id":"G_X"}, kind="gate", current_id="G_X", phase="enter",
-        state={}, routes=[{"key":"on_pass","target":"N_OK"}],
-        semantic_element=_semantic(), current_revision=0, failure_class="unsupported_runtime_executor",
-        failure_detail={},
-    )
-    assert out["run_status"] == "halted"
-    assert out["failure_class"] == "contract_unsatisfiable_by_model"
-    assert out["state"] == {}
-    assert out["next_id"] is None
+    with pytest.raises(ValueError, match="not allowed"):
+        es._safe_semantic_model_recovery(
+            credentials={"provider":"test","model":"m","base_url":"x","api_style":"chat_completions"},
+            record={"id":"G_X"}, kind="gate", current_id="G_X", phase="enter",
+            state={}, routes=[{"key":"on_pass","target":"N_OK"}],
+            semantic_element=_semantic(), current_revision=0, failure_class="unsupported_runtime_executor",
+            failure_detail={},
+        )
 
 def test_safe_recovery_needs_analyst_never_commits(monkeypatch):
     monkeypatch.setattr(es, "_package_context_for_record", lambda record: {"resolved_resources":[]})

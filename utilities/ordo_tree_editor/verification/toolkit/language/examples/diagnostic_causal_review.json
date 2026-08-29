@@ -1,0 +1,31 @@
+{
+  "schema_version": "ordo.diagnostic_causal_review.v1",
+  "run_id": "RUN-EXAMPLE",
+  "artifact_id": "jira",
+  "artifact_version": "v2",
+  "problem_element": "acceptance criteria are generic",
+  "status": "trace_corroborated",
+  "source_node": "N_GENERATE_JIRA",
+  "loaded_assets": {
+    "prompt": "prompts/jira.md",
+    "template": "templates/jira.md",
+    "contract": "contracts/jira.json"
+  },
+  "confirmed_evidence": [
+    "fact.change.field_path",
+    "fact.change.operation"
+  ],
+  "fixture_inputs": [
+    "scenario.tc03.ex02"
+  ],
+  "gate_path": [
+    "G_REQUIRED_FIELDS",
+    "G_JIRA_STRUCTURE"
+  ],
+  "suspected_component": "validation_gate",
+  "reason": "structural gate checked field presence but not case-specific semantic completeness",
+  "evidence_refs": [
+    "runtime/execution_trace.json#event-000042",
+    "reports/document_audit.json#jira.criteria"
+  ]
+}

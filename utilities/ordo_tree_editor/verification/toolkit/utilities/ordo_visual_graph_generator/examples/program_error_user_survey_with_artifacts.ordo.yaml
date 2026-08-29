@@ -1,0 +1,241 @@
+agent:
+  name: Program Error Support Survey
+intent:
+  id: INTENT_PROGRAM_ERROR_SUPPORT
+  description: Guided intake questionnaire for a user who encountered an error in a program.
+
+state:
+  id: STATE_PROGRAM_ERROR_SUPPORT
+  schema:
+    error_category: null
+    startup_context: null
+    action_context: null
+    data_context: null
+    startup_detail: null
+    action_detail: null
+    data_detail: null
+
+nodes:
+  - id: N1_ERROR_CATEGORY
+    question: |
+      Який тип проблеми стався у програмі?
+    answer_type: enum
+    answer_options:
+      A: програма не запускається
+      B: помилка з'являється під час певної дії
+      C: проблема пов'язана з даними / мережею / синхронізацією
+    on_answer:
+      A:
+        update_state:
+          error_category: startup
+        next: N2_STARTUP_CONTEXT
+      B:
+        update_state:
+          error_category: action_error
+        next: N2_ACTION_CONTEXT
+      C:
+        update_state:
+          error_category: data_or_network
+        next: N2_DATA_CONTEXT
+    required_fields: [error_category]
+
+  - id: N2_STARTUP_CONTEXT
+    question: |
+      Коли саме проявляється проблема із запуском?
+    answer_type: enum
+    answer_options:
+      A: одразу після натискання "Запустити"
+      B: після оновлення програми
+      C: після входу в акаунт
+    on_answer:
+      A:
+        update_state:
+          startup_context: immediate_start
+        next: N3_STARTUP_DETAIL
+      B:
+        update_state:
+          startup_context: after_update
+        next: N3_STARTUP_DETAIL
+      C:
+        update_state:
+          startup_context: after_login
+        next: N3_STARTUP_DETAIL
+    required_fields: [startup_context]
+
+  - id: N2_ACTION_CONTEXT
+    question: |
+      Під час якої дії з'являється помилка?
+    answer_type: enum
+    answer_options:
+      A: збереження файлу
+      B: відкриття меню / екрана
+      C: надсилання форми або команди
+    on_answer:
+      A:
+        update_state:
+          action_context: save_file
+        next: N3_ACTION_DETAIL
+      B:
+        update_state:
+          action_context: open_screen
+        next: N3_ACTION_DETAIL
+      C:
+        update_state:
+          action_context: submit_command
+        next: N3_ACTION_DETAIL
+    required_fields: [action_context]
+
+  - id: N2_DATA_CONTEXT
+    question: |
+      Який із варіантів найкраще описує проблему з даними або мережею?
+    answer_type: enum
+    answer_options:
+      A: дані не завантажуються
+      B: зміни не зберігаються / не синхронізуються
+      C: з'являється повідомлення про мережеву помилку
+    on_answer:
+      A:
+        update_state:
+          data_context: loading_failed
+        next: N3_DATA_DETAIL
+      B:
+        update_state:
+          data_context: sync_failed
+        next: N3_DATA_DETAIL
+      C:
+        update_state:
+          data_context: network_error
+        next: N3_DATA_DETAIL
+    required_fields: [data_context]
+
+  - id: N3_STARTUP_DETAIL
+    question: |
+      Що саме бачить користувач?
+    answer_type: enum
+    answer_options:
+      A: нічого не відбувається
+      B: програма закривається / crash
+      C: показується текст помилки
+    on_answer:
+      A:
+        update_state:
+          startup_detail: no_response
+        next: STOP_STARTUP_NO_RESPONSE
+        artifacts:
+          - id: DOC_STARTUP_NO_RESPONSE_REPORT
+            title: Diagnostic report — no response on startup
+            type: support_case_document
+          - id: DOC_SYSTEM_INFO_CHECKLIST
+            title: System info checklist
+            type: qa_checklist
+      B:
+        update_state:
+          startup_detail: crash
+        next: STOP_STARTUP_CRASH
+        artifacts:
+          - id: DOC_CRASH_REPRO_REPORT
+            title: Crash reproduction report
+            type: support_case_document
+          - id: DOC_CRASH_LOG_REQUEST
+            title: Crash log request
+            type: evidence_request
+      C:
+        update_state:
+          startup_detail: error_message
+        next: STOP_STARTUP_ERROR_MESSAGE
+        artifacts:
+          - id: DOC_ERROR_TEXT_CAPTURE
+            title: Error text and screenshot capture
+            type: evidence_request
+          - id: DOC_STARTUP_ERROR_TRIAGE
+            title: Startup error triage note
+            type: support_case_document
+    required_fields: [startup_detail]
+
+  - id: N3_ACTION_DETAIL
+    question: |
+      Як часто повторюється помилка під час цієї дії?
+    answer_type: enum
+    answer_options:
+      A: кожного разу
+      B: інколи / нестабільно
+      C: лише з конкретним файлом або формою
+    on_answer:
+      A:
+        update_state:
+          action_detail: always
+        next: STOP_ACTION_ALWAYS_REPRODUCIBLE
+        artifacts:
+          - id: DOC_REPRO_STEPS_FOR_ACTION
+            title: Exact reproduction steps
+            type: support_case_document
+          - id: DOC_EXPECTED_ACTUAL_RESULT
+            title: Expected vs actual result
+            type: qa_checklist
+      B:
+        update_state:
+          action_detail: intermittent
+        next: STOP_ACTION_INTERMITTENT
+        artifacts:
+          - id: DOC_INTERMITTENT_ERROR_TIMELINE
+            title: Intermittent error timeline
+            type: evidence_request
+          - id: DOC_ENVIRONMENT_COMPARISON
+            title: Environment comparison checklist
+            type: qa_checklist
+      C:
+        update_state:
+          action_detail: specific_input
+        next: STOP_ACTION_SPECIFIC_INPUT
+        artifacts:
+          - id: DOC_SAMPLE_FILE_REQUEST
+            title: Sample file or form data request
+            type: evidence_request
+          - id: DOC_INPUT_SPECIFIC_REPRO_CASE
+            title: Input-specific repro case
+            type: support_case_document
+    required_fields: [action_detail]
+
+  - id: N3_DATA_DETAIL
+    question: |
+      Що найкраще описує симптом зараз?
+    answer_type: enum
+    answer_options:
+      A: помилка тільки в одній мережі / VPN
+      B: проблема у всіх користувачів або на різних пристроях
+      C: локальні дані відрізняються від серверних
+    on_answer:
+      A:
+        update_state:
+          data_detail: network_specific
+        next: STOP_DATA_NETWORK_SPECIFIC
+        artifacts:
+          - id: DOC_NETWORK_PROXY_VPN_CHECK
+            title: Network / proxy / VPN checklist
+            type: qa_checklist
+          - id: DOC_CONNECTION_DIAGNOSTIC_REPORT
+            title: Connection diagnostic report
+            type: support_case_document
+      B:
+        update_state:
+          data_detail: widespread_issue
+        next: STOP_DATA_WIDESPREAD_INCIDENT
+        artifacts:
+          - id: DOC_BACKEND_INCIDENT_ESCALATION
+            title: Backend or service incident escalation
+            type: escalation_document
+          - id: DOC_AFFECTED_USERS_MATRIX
+            title: Affected users matrix
+            type: support_case_document
+      C:
+        update_state:
+          data_detail: local_server_mismatch
+        next: STOP_DATA_LOCAL_SERVER_MISMATCH
+        artifacts:
+          - id: DOC_LOCAL_SERVER_STATE_COMPARISON
+            title: Local vs server state comparison
+            type: support_case_document
+          - id: DOC_SYNC_CONFLICT_EVIDENCE
+            title: Sync conflict evidence request
+            type: evidence_request
+    required_fields: [data_detail]

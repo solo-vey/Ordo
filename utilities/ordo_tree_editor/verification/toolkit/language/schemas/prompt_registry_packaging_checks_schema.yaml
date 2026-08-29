@@ -1,0 +1,28 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: Ordo Prompt Registry Packaging Checks Schema
+status: M67.0 convention schema
+type: object
+additionalProperties: false
+required: [prompt_registry_packaging_checks]
+properties:
+  prompt_registry_packaging_checks:
+    type: object
+    additionalProperties: true
+    required: [checkset_id, profile, required_checks, decision_policy]
+    properties:
+      checkset_id: {type: string, minLength: 1}
+      profile: {type: string, enum: [light, standard, strict]}
+      required_checks:
+        type: array
+        minItems: 1
+        items:
+          type: string
+          enum: [prompt_registry_present, prompt_registry_schema_valid, prompt_ids_unique, prompt_paths_exist, required_prompts_present, prompt_refs_resolve, prompt_targets_resolve, prompt_manifest_present, prompt_manifest_paths_exist, prompt_manifest_checksums_match, packaged_prompt_files_manifest_covered, startup_profile_present, startup_entry_files_exist, startup_prompt_refs_resolve, startup_prompts_manifest_covered, authority_boundary_safe, derived_artifacts_declared, delta_backlog_covers_deferred_sync]
+      decision_policy:
+        type: object
+        additionalProperties: true
+        required: [error_decision, warning_decision, success_decision]
+        properties:
+          error_decision: {type: string, enum: [blocked]}
+          warning_decision: {type: string, enum: [approved_with_warnings]}
+          success_decision: {type: string, enum: [approved]}

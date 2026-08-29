@@ -1,0 +1,122 @@
+# Ordo v0.12+ core schema: EXECUTION_TRACE
+ExecutionTrace:
+  type: object
+  additionalProperties: false
+  required: [id, version, run, status, started_at, actor, source, capture_level, events, replay, integrity]
+  properties:
+    id: {type: string, minLength: 1}
+    version: {type: string, pattern: '^[0-9]+\.[0-9]+$'}
+    run:
+      type: object
+      additionalProperties: false
+      required: [run_id, process_id, process_version, execution_mode]
+      properties:
+        run_id: {type: string, minLength: 1}
+        process_id: {type: string, minLength: 1}
+        process_version: {type: string, minLength: 1}
+        program_id: {type: [string, 'null']}
+        execution_mode: {enum: [normal, debug, dry_run, test, replay, improvement_capture]}
+        runtime_mode: {enum: [full_runtime, chat_internal, freeform_only]}
+        trace_source: {enum: [model_self_report, runtime_enforced, hybrid]}
+    status: {enum: [created, running, paused, completed, failed, cancelled, interrupted]}
+    started_at: {type: string, format: date-time}
+    finished_at: {type: [string, 'null'], format: date-time}
+    actor:
+      type: object
+      required: [actor_type]
+      properties:
+        actor_type: {enum: [analyst, user, model, runtime, system, service]}
+        actor_id: {type: [string, 'null']}
+        session_id: {type: [string, 'null']}
+    source:
+      type: object
+      required: [entry_point]
+      properties:
+        entry_point: {type: string}
+        input_refs: {type: array, items: {type: string}}
+    capture_level: {enum: [minimal, standard, full, audit]}
+    events:
+      type: array
+      items: {$ref: '#/definitions/ExecutionTraceEvent'}
+    final_state:
+      type: [object, 'null']
+      properties:
+        snapshot_ref: {type: [string, 'null']}
+        result: {type: [string, 'null']}
+    outputs:
+      type: array
+      items:
+        type: object
+        required: [output_id]
+        properties:
+          output_id: {type: string}
+          artifact_ref: {type: [string, 'null']}
+          checksum: {type: [string, 'null']}
+    replay:
+      type: object
+      required: [replayable, replay_mode, required_inputs_preserved]
+      properties:
+        replayable: {type: boolean}
+        replay_mode: {enum: [deterministic, re_evaluate, simulation, audit_only]}
+        required_inputs_preserved: {type: boolean}
+        external_dependencies:
+          type: object
+          properties:
+            strategy: {enum: [recorded, referenced, mocked, unavailable]}
+        sensitive_values:
+          type: object
+          properties:
+            strategy: {enum: [redacted, reference, hashed, excluded]}
+    integrity:
+      type: object
+      required: [event_count, sequence_complete]
+      properties:
+        event_count: {type: integer, minimum: 0}
+        sequence_complete: {type: boolean}
+        checksum: {type: [string, 'null']}
+        previous_trace_checksum: {type: [string, 'null']}
+  definitions:
+    ExecutionTraceEvent:
+      type: object
+      additionalProperties: false
+      required: [sequence, event_id, event_type, occurred_at, actor, payload, outcome]
+      properties:
+        sequence: {type: integer, minimum: 1}
+        event_id: {type: string, minLength: 1}
+        event_type:
+          enum: [run_started, run_paused, run_resumed, run_completed, run_failed, run_cancelled, node_entered, node_exited, path_selected, phase_changed, question_asked, user_input, input_validated, input_rejected, field_assigned, field_cleared, action_started, action_completed, action_failed, external_call, decision_evaluated, decision_selected, branch_selected, gate_evaluated, gate_passed, gate_failed, gate_overridden, state_snapshot, state_changed, template_selected, artifact_generation_started, artifact_generated, artifact_updated, artifact_validation, warning_raised, error_raised, recovery_applied, approval_requested, approval_granted, approval_rejected, checkpoint_created]
+        occurred_at: {type: string, format: date-time}
+        location:
+          type: object
+          properties:
+            node_id: {type: [string, 'null']}
+            path_id: {type: [string, 'null']}
+            phase_id: {type: [string, 'null']}
+        actor:
+          type: object
+          required: [actor_type]
+          properties:
+            actor_type: {enum: [analyst, user, model, runtime, system, service]}
+            actor_id: {type: [string, 'null']}
+        payload: {type: object}
+        state_effect:
+          type: object
+          properties:
+            changed: {type: boolean}
+            before_ref: {type: [string, 'null']}
+            after_ref: {type: [string, 'null']}
+            diff_ref: {type: [string, 'null']}
+        correlation:
+          type: object
+          properties:
+            parent_event_id: {type: [string, 'null']}
+            decision_id: {type: [string, 'null']}
+            gate_id: {type: [string, 'null']}
+            output_id: {type: [string, 'null']}
+        outcome:
+          type: object
+          required: [status]
+          properties:
+            status: {enum: [accepted, completed, passed, failed, skipped, rejected, warning]}
+            reason_code: {type: [string, 'null']}
+            summary: {type: [string, 'null']}

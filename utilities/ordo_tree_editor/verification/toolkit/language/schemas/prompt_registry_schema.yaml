@@ -1,0 +1,160 @@
+# Prompt Registry Schema Convention v1
+# Status: M65.0 documented source/schema convention, not enforced runtime schema.
+# This file is intended for package authors, future linters, manifest builders, and human reviewers.
+
+type: object
+name: prompt_registry_schema_v1
+status: convention
+properties:
+  registry_id:
+    type: string
+    description: Stable identifier for the package prompt registry.
+  version:
+    type: string
+    description: Registry version local to the package.
+  default_language:
+    type: string
+    description: Default BCP-47-like or package-local language code for prompt files.
+  prompt_root:
+    type: string
+    description: Package-relative prompt root folder, for example prompts/.
+  prompts:
+    type: array
+    items:
+      type: object
+      required:
+        - prompt_id
+        - prompt_family
+        - version
+        - type
+        - audience
+        - path
+      properties:
+        prompt_id:
+          type: string
+          pattern: '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+\.v[1-9][0-9]*$'
+          description: Immutable semantic prompt identifier used by prompt_refs and manifest entries; must be independent of node_id and end with .v<major>.
+        prompt_family:
+          type: string
+          pattern: '^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$'
+          description: Stable semantic family without the .v<major> suffix; must equal prompt_id with the final version segment removed.
+        version:
+          type: integer
+          minimum: 1
+          description: Positive major semantic version encoded by the prompt_id suffix.
+        supersedes:
+          type:
+            - string
+            - 'null'
+          description: Optional immediately prior prompt_id in the same prompt_family. Must resolve, have a lower version, and must not create a lineage cycle.
+        type:
+          type: string
+          enum_or_convention:
+            - package_bootstrap
+            - runtime_start
+            - node_helper
+            - artifact_helper
+            - repair_helper
+            - validation_helper
+            - human_explanation
+            - model_execution
+        audience:
+          type: string
+          enum_or_convention:
+            - human_to_ai
+            - ai_runtime
+            - developer
+            - analyst
+            - cli_operator
+        path:
+          type: string
+          description: Package-relative file path.
+        attached_to:
+          type: object
+          properties:
+            node_id:
+              type: string
+            artifact_id:
+              type: string
+            template_id:
+              type: string
+            gate_id:
+              type: string
+        required:
+          type:
+            - boolean
+            - string
+          enum_or_convention:
+            - true
+            - false
+            - recommended
+            - conditional
+        required_when:
+          type: string
+          description: Optional condition when required is conditional.
+        language:
+          type: string
+          description: Prompt language if different from default_language.
+        lifecycle:
+          type: string
+          enum_or_convention:
+            - draft
+            - stable
+            - deprecated
+        visibility:
+          type: string
+          enum_or_convention:
+            - visible_to_analyst
+            - model_internal
+            - expose_on_request
+        state_change_allowed:
+          type: boolean
+          description: Whether this prompt may directly lead to state update.
+        validation_policy:
+          type:
+            - string
+            - array
+          enum_or_convention:
+            - required_file_only
+            - required_file_and_readme_reference
+            - resolve_node_and_file
+            - resolve_artifact_and_file
+            - manifest_checksum_required
+            - authority_safe_text_review
+validation_notes:
+  required_checks:
+    - prompt_ids_unique
+    - prompt_ids_semantic_and_node_independent
+    - prompt_id_version_matches_version_field
+    - prompt_family_matches_prompt_id
+    - supersedes_resolves_within_same_family
+    - supersedes_version_is_lower
+    - supersedes_lineage_acyclic
+    - stable_prompt_id_immutable
+    - prompt_filename_semantic_and_node_independent
+    - prompt_ref_application_phase_valid
+    - prompt_ref_order_deterministic
+    - prompt_paths_exist
+    - required_prompts_present
+    - attached_node_ids_exist
+    - attached_artifact_or_template_ids_exist_when_declared
+    - prompt_visibility_declared_or_inherited
+    - prompt_language_declared_or_inherited
+    - prompt_authority_safe
+    - state_change_policy_consistent
+  warning_checks:
+    - complex_node_without_helper_prompt
+    - prompt_file_unreferenced
+    - duplicated_prompt_content
+    - stable_prompt_references_deprecated_target
+    - unversioned_prompt_id
+    - node_coupled_prompt_filename
+    - legacy_unversioned_prompt_id
+    - reverse_node_mapping_drift
+    - quick_start_prompt_not_linked_from_readme_or_start_here
+  m65_0: Documentation/schema/lint-profile design only. Do not treat this as runtime-enforced schema.
+  non_changes:
+    - no runtime core changes
+    - no compiler behavior changes
+    - no CLI command changes
+    - no opcode promotion

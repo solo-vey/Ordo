@@ -1,0 +1,39 @@
+Node:
+  type: object
+  required: [id, question]
+  properties:
+    id:
+      type: string
+    question:
+      type: string
+    allowed_answers:
+      type: array
+      items: { type: string }
+    on_unmatched_input:
+      type: object
+      properties:
+        action:
+          enum: [CLARIFY.REQUEST, escalate_to_human, block]
+        strategy:
+          enum: [rephrase_and_narrow, ask_for_exact_choice, explain_allowed_answers]
+        max_attempts:
+          type: integer
+        on_exhausted:
+          type: object
+    unmatched_policy:
+      enum: [handled, impossible_by_source]
+    prompt_refs:
+      type: array
+      description: M65.0 convention. Supportive helper prompts attached to the node; prompt refs must resolve to prompt_registry entries and must not override node/gate/state authority.
+      items:
+        type: object
+        required: [prompt_id, use]
+        properties:
+          prompt_id:
+            type: string
+          use:
+            enum: [before_question, during_clarification, after_answer, on_gate_fail, on_backtrack, artifact_generation, validation_review]
+          state_change_allowed:
+            type: boolean
+          notes:
+            type: string

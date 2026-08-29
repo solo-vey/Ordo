@@ -1,0 +1,48 @@
+startup_profile_validation:
+  profile: standard
+  applies_to:
+    - startup_package_profile
+    - prompt_registry
+    - package_manifest
+    - entry_files
+    - startup_prompts
+  severity_policy:
+    startup_profile_present: error
+    startup_profile_schema_valid: error
+    default_startup_mode_declared: error
+    default_startup_mode_defined: error
+    required_entry_files_exist: error
+    startup_prompt_refs_resolve: error
+    startup_prompts_manifest_covered: warning
+    startup_authority_boundary_declared: error
+    startup_text_does_not_bypass_gates: error
+    startup_text_does_not_claim_validation_success: error
+    runtime_start_prompt_available_when_runtime_mode_declared: warning
+    developer_entry_declared_when_maintenance_mode_supported: warning
+  required_checks:
+    - startup_profile_present
+    - startup_profile_schema_valid
+    - default_startup_mode_declared
+    - default_startup_mode_defined
+    - required_entry_files_exist
+    - startup_prompt_refs_resolve
+    - startup_authority_boundary_declared
+    - startup_text_does_not_bypass_gates
+    - startup_text_does_not_claim_validation_success
+  optional_checks:
+    - startup_prompts_manifest_covered
+    - startup_manifest_checksums_match
+    - runtime_start_prompt_available_when_runtime_mode_declared
+    - developer_entry_declared_when_maintenance_mode_supported
+  readiness_decision:
+    allowed_values:
+      - start_ready
+      - start_ready_with_warnings
+      - blocked
+      - not_applicable
+    default_on_error: blocked
+    default_on_warning: start_ready_with_warnings
+    default_when_clean: start_ready
+  notes:
+    - This profile validates startup discoverability and safety boundaries only.
+    - It does not execute startup, compile IR, or approve package output.

@@ -1,0 +1,203 @@
+[
+  {
+    "node_id": "N_MODE_ROUTE",
+    "profile": "routing_node",
+    "atomic_responsibility": "Select one declared authoring route.",
+    "prerequisites": [
+      "mode_options_loaded"
+    ],
+    "allowed_inputs": [
+      "selected_mode"
+    ],
+    "allowed_actions": [
+      "route_selected_mode"
+    ],
+    "explicit_transitions": [
+      {
+        "on": "mode_a",
+        "to": "N_MODE_A"
+      }
+    ],
+    "forbidden_transitions": [
+      "implicit_default_route"
+    ],
+    "ambiguity_route": {
+      "status": "blocked_missing_instruction",
+      "allowed_action": "request_exact_user_decision"
+    }
+  },
+  {
+    "node_id": "N_INPUT_CAPTURE",
+    "profile": "capture_node",
+    "atomic_responsibility": "Capture one declared process input.",
+    "prerequisites": [
+      "input_contract_loaded"
+    ],
+    "allowed_inputs": [
+      "user_supplied_input"
+    ],
+    "allowed_actions": [
+      "capture_input"
+    ],
+    "required_outputs": [
+      "captured_input_record"
+    ],
+    "validation_gates": [
+      "INPUT_SHAPE_GATE"
+    ],
+    "explicit_transitions": [
+      {
+        "on": "valid",
+        "to": "N_EXECUTE"
+      }
+    ],
+    "forbidden_transitions": [
+      "skip_input_validation"
+    ],
+    "ambiguity_route": {
+      "status": "blocked_missing_instruction",
+      "allowed_action": "request_exact_user_decision"
+    }
+  },
+  {
+    "node_id": "N_EXECUTE",
+    "profile": "execution_node",
+    "atomic_responsibility": "Perform one declared transformation.",
+    "prerequisites": [
+      "input_valid"
+    ],
+    "allowed_inputs": [
+      "captured_input_record"
+    ],
+    "allowed_actions": [
+      "apply_declared_transformation"
+    ],
+    "required_outputs": [
+      "transformed_output"
+    ],
+    "validation_gates": [
+      "OUTPUT_PRESENCE_GATE"
+    ],
+    "explicit_transitions": [
+      {
+        "on": "completed",
+        "to": "N_VALIDATE"
+      }
+    ],
+    "forbidden_transitions": [
+      "jump_to_terminal"
+    ],
+    "invalidation_effects": [
+      "invalidate_downstream_confirmation"
+    ],
+    "authorization_boundary": {
+      "required": false,
+      "scope": "active_node_only",
+      "authorization_type": null
+    },
+    "ambiguity_route": {
+      "status": "blocked_missing_instruction",
+      "allowed_action": "request_exact_user_decision"
+    }
+  },
+  {
+    "node_id": "N_VALIDATE",
+    "profile": "validator_node",
+    "atomic_responsibility": "Independently validate transformed output.",
+    "prerequisites": [
+      "transformed_output_available"
+    ],
+    "allowed_actions": [
+      "run_declared_validation"
+    ],
+    "validation_target": "transformed_output",
+    "validation_rules": [
+      "required_fields_present",
+      "semantic_constraints_pass"
+    ],
+    "machine_checkable_outputs": [
+      "validation_report_json"
+    ],
+    "independent_from_target": true,
+    "explicit_transitions": [
+      {
+        "on": "passed",
+        "to": "N_TERMINAL"
+      },
+      {
+        "on": "failed",
+        "to": "N_REPAIR"
+      }
+    ],
+    "forbidden_transitions": [
+      "accept_self_declared_pass"
+    ],
+    "ambiguity_route": {
+      "status": "blocked_missing_instruction",
+      "allowed_action": "request_exact_user_decision"
+    }
+  },
+  {
+    "node_id": "N_AUTHORIZE_MUTATION",
+    "profile": "authorization_node",
+    "atomic_responsibility": "Capture authorization for one repository mutation scope.",
+    "prerequisites": [
+      "change_scope_resolved"
+    ],
+    "allowed_actions": [
+      "record_explicit_authorization"
+    ],
+    "authorization_type": "repository_mutation",
+    "authorized_scope": "declared_change_set_only",
+    "active_decision_only": true,
+    "non_transitive": true,
+    "explicit_transitions": [
+      {
+        "on": "authorized",
+        "to": "N_APPLY_CHANGE"
+      },
+      {
+        "on": "declined",
+        "to": "N_BLOCKED"
+      }
+    ],
+    "forbidden_transitions": [
+      "inherit_scope_confirmation"
+    ],
+    "ambiguity_route": {
+      "status": "blocked_missing_instruction",
+      "allowed_action": "request_exact_user_decision"
+    }
+  },
+  {
+    "node_id": "N_TERMINAL",
+    "profile": "terminal_node",
+    "atomic_responsibility": "Derive final status from mandatory evidence.",
+    "prerequisites": [
+      "independent_validation_complete"
+    ],
+    "allowed_actions": [
+      "derive_terminal_status"
+    ],
+    "validation_gates": [
+      "FINAL_EVIDENCE_GATE"
+    ],
+    "explicit_transitions": [],
+    "forbidden_transitions": [
+      "declare_passed_without_evidence"
+    ],
+    "closure_prerequisites": [
+      "all_mandatory_nodes_complete",
+      "no_blocking_findings"
+    ],
+    "evidence_requirements": [
+      "independent_validation_report",
+      "traceability_report"
+    ],
+    "status_derivation": "weakest_mandatory_check",
+    "ambiguity_route": {
+      "status": "blocked_missing_instruction",
+      "allowed_action": "request_exact_user_decision"
+    }
+  }
+]

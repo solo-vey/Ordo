@@ -1,0 +1,53 @@
+digraph AnnotationOverlayDemo {
+  rankdir=TB;
+  graph [fontname="Helvetica", bgcolor="white", label="Demo Support Triage — annotation overlay", labelloc=t, fontsize=22, pad=0.3, nodesep=0.6, ranksep=0.75];
+  node [fontname="Helvetica", shape=box, style="rounded,filled", color="#475569", penwidth=1.2, fontsize=10];
+  edge [fontname="Helvetica", color="#475569", arrowsize=0.7, fontsize=9];
+  ENTRY [label="ENTRY\nDemo Support Triage", fillcolor="#DBEAFE", color="#2563EB"];
+  N1_ISSUE_TYPE [label="N1_ISSUE_TYPE\nChoose issue type: A — login problem B — billing question", fillcolor="#F8FAFC"];
+  contract_N1_ISSUE_TYPE [label="Contract\nrequires: issue_type", shape=note, fillcolor="#EEF2FF"];
+  N1_ISSUE_TYPE -> contract_N1_ISSUE_TYPE [style=dashed, label="contract", color="#4F46E5"];
+  N2_SEVERITY [label="N2_SEVERITY\nChoose severity: 1 — low 2 — medium", fillcolor="#F8FAFC"];
+  contract_N2_SEVERITY [label="Contract\nrequires: severity", shape=note, fillcolor="#EEF2FF"];
+  N2_SEVERITY -> contract_N2_SEVERITY [style=dashed, label="contract", color="#4F46E5"];
+  N3_USER_CONTEXT [label="N3_USER_CONTEXT\nConfirm user context.", fillcolor="#DCFCE7", color="#16A34A", penwidth=3];
+  contract_N3_USER_CONTEXT [label="Contract\nrequires: user_context", shape=note, fillcolor="#EEF2FF"];
+  N3_USER_CONTEXT -> contract_N3_USER_CONTEXT [style=dashed, label="contract", color="#4F46E5"];
+  N4_APPROVAL [label="N4_APPROVAL\nApprove package? yes — generate no — revise", fillcolor="#F8FAFC"];
+  contract_N4_APPROVAL [label="Contract\nrequires: approval_received", shape=note, fillcolor="#EEF2FF"];
+  N4_APPROVAL -> contract_N4_APPROVAL [style=dashed, label="contract", color="#4F46E5"];
+  state_issue_type [label="state.issue_type", shape=note, fillcolor="#E8F8EC"];
+  N1_ISSUE_TYPE -> state_issue_type [style=dashed, label="writes", color="#16A34A"];
+  state_severity [label="state.severity", shape=note, fillcolor="#F3E8FF", color="#7C3AED", penwidth=3];
+  N2_SEVERITY -> state_severity [style=dashed, label="writes", color="#16A34A"];
+  state_user_context [label="state.user_context", shape=note, fillcolor="#E8F8EC"];
+  N3_USER_CONTEXT -> state_user_context [style=dashed, label="writes", color="#16A34A"];
+  state_approval_received [label="state.approval_received", shape=note, fillcolor="#E8F8EC"];
+  N4_APPROVAL -> state_approval_received [style=dashed, label="writes", color="#16A34A"];
+  G_FINAL_APPROVED [label="G_FINAL_APPROVED\nstate.approval_received is true", shape=note, fillcolor="#FEE2E2", color="#DC2626", penwidth=3];
+  output_OUT_SUPPORT_TRIAGE_PACKAGE [label="OUT_SUPPORT_TRIAGE_PACKAGE\narchive", shape=folder, fillcolor="#FEE2E2", color="#DC2626", penwidth=3];
+  G_FINAL_APPROVED -> output_OUT_SUPPORT_TRIAGE_PACKAGE [style=dotted, label="allowed_after", color="#0284C7"];
+  ENTRY -> N1_ISSUE_TYPE;
+  N1_ISSUE_TYPE -> N2_SEVERITY [label="A", color="#F59E0B", penwidth=3, fontcolor="#F59E0B"];
+  N1_ISSUE_TYPE -> N2_SEVERITY [label="B"];
+  N2_SEVERITY -> N3_USER_CONTEXT [label="1"];
+  N2_SEVERITY -> N3_USER_CONTEXT [label="2"];
+  N3_USER_CONTEXT -> N4_APPROVAL;
+  N4_APPROVAL -> G_FINAL_APPROVED [label="True"];
+  N4_APPROVAL -> STOP_REVISION_REQUIRED [label="False"];
+  annotation_note_1 [label="new annotation\nNew context node added for clearer evidence collection.", shape=note, fillcolor="#DCFCE7", color="#16A34A", fontsize=9];
+  N3_USER_CONTEXT -> annotation_note_1 [style=dashed, label="annotation", color="#16A34A"];
+  { rank=same; N3_USER_CONTEXT; annotation_note_1; }
+  annotation_note_2 [label="changed annotation\nLogin branch now carries an explicit annotation.", shape=note, fillcolor="#FEF3C7", color="#F59E0B", fontsize=9];
+  N1_ISSUE_TYPE -> annotation_note_2 [style=dashed, label="annotation", color="#F59E0B"];
+  { rank=same; N1_ISSUE_TYPE; annotation_note_2; }
+  annotation_note_3 [label="important annotation\nOutput must remain blocked until approval is true.", shape=note, fillcolor="#FEE2E2", color="#DC2626", fontsize=9];
+  G_FINAL_APPROVED -> annotation_note_3 [style=dashed, label="annotation", color="#DC2626"];
+  { rank=same; G_FINAL_APPROVED; annotation_note_3; }
+  annotation_note_4 [label="review annotation\nTests should cover all severity choices.", shape=note, fillcolor="#F3E8FF", color="#7C3AED", fontsize=9];
+  state_severity -> annotation_note_4 [style=dashed, label="annotation", color="#7C3AED"];
+  { rank=same; state_severity; annotation_note_4; }
+  annotation_note_5 [label="important annotation\nFinal generated archive.", shape=note, fillcolor="#FEE2E2", color="#DC2626", fontsize=9];
+  output_OUT_SUPPORT_TRIAGE_PACKAGE -> annotation_note_5 [style=dashed, label="annotation", color="#DC2626"];
+  { rank=same; output_OUT_SUPPORT_TRIAGE_PACKAGE; annotation_note_5; }
+}

@@ -43,22 +43,20 @@ nodes:
 '''.encode('utf-8')
 
 
-def test_authority_derived_target_must_be_writable():
-    try:
-        es.parse_playbook_package('bad-authority.yaml', _yaml(derived_writable=False))
-    except ValueError as e:
-        assert 'AUTHORITY_DERIVED_TARGET_NOT_WRITABLE' in str(e) or 'semantic' in str(e).lower()
-    else:
-        raise AssertionError('authority-derived target without write authority must fail closed')
+def test_authority_derived_target_loads_degraded_but_execution_remains_fail_closed():
+    result=es.parse_playbook_package('bad-authority.yaml', _yaml(derived_writable=False))
+    assert result['load_status']=='degraded'
+    assert result['capabilities']['execute'] is False
+    assert result['capabilities']['show_tree'] is True
+    assert any('AUTHORITY_DERIVED_TARGET_NOT_WRITABLE' in str(item.get('message') or '') for item in result['load_diagnostics'])
 
 
-def test_authority_clarification_only_field_must_not_be_model_writable():
-    try:
-        es.parse_playbook_package('bad-authority-clarification.yaml', _yaml(derived_writable=True, clarification_writable=True))
-    except ValueError as e:
-        assert 'AUTHORITY_CLARIFICATION_FIELD_WRITABLE' in str(e) or 'semantic' in str(e).lower()
-    else:
-        raise AssertionError('clarification-only model writes must fail closed')
+def test_authority_clarification_only_field_loads_degraded_but_execution_remains_fail_closed():
+    result=es.parse_playbook_package('bad-authority-clarification.yaml', _yaml(derived_writable=True, clarification_writable=True))
+    assert result['load_status']=='degraded'
+    assert result['capabilities']['execute'] is False
+    assert result['capabilities']['package_files'] is True
+    assert any('AUTHORITY_CLARIFICATION_FIELD_WRITABLE' in str(item.get('message') or '') for item in result['load_diagnostics'])
 
 
 def test_authority_contract_with_grounded_sources_and_disjoint_roles_compiles():

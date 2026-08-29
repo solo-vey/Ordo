@@ -1,0 +1,59 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "Ordo Derived Artifact Sync Validation Profile Schema"
+type: object
+additionalProperties: true
+required:
+  - derived_artifact_sync_validation_profile
+properties:
+  derived_artifact_sync_validation_profile:
+    type: object
+    additionalProperties: true
+    required:
+      - profile_id
+      - version
+      - default_cli_command
+      - default_profile
+      - artifact_policy
+      - delta_backlog_policy
+    properties:
+      profile_id:
+        type: string
+      version:
+        type: string
+      default_cli_command:
+        type: string
+        const: "ordo clean-check"
+      default_profile:
+        type: string
+        enum: [light, standard, strict]
+      required_report:
+        type: string
+      artifact_policy:
+        type: object
+        additionalProperties:
+          type: string
+          enum:
+            - ignore
+            - warn
+            - error
+            - block_unless_backlogged
+            - block_in_standard_and_strict
+      delta_backlog_policy:
+        type: object
+        additionalProperties:
+          type: string
+          enum: [info, warning, error, block]
+      check_mapping:
+        type: array
+        items:
+          type: object
+          required: [check_id, profile, default_severity]
+          properties:
+            check_id:
+              type: string
+            profile:
+              type: string
+              enum: [light, standard, strict]
+            default_severity:
+              type: string
+              enum: [info, warning, error]

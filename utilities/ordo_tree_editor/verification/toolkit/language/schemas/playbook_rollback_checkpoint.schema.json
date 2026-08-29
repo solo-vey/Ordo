@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ordo.dev/schemas/playbook_rollback_checkpoint.v1.json",
+  "title": "Ordo Playbook Rollback Checkpoint",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "checkpoint_id",
+    "playbook_id",
+    "playbook_version",
+    "package_sha256",
+    "archive",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ordo.playbook.rollback_checkpoint.v1"
+    },
+    "checkpoint_id": {
+      "type": "string"
+    },
+    "playbook_id": {
+      "type": "string"
+    },
+    "playbook_version": {
+      "type": "string"
+    },
+    "package_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "archive": {
+      "type": "object"
+    },
+    "runtime_state": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "verification": {
+      "type": "object"
+    }
+  }
+}

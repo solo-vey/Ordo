@@ -131,8 +131,8 @@ except ImportError:
 OPENAI_MODELS = ("gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna")
 PROVIDERS = ("openai", "mlx", "custom")
 DEFAULT_MLX_BASE_URL = "http://127.0.0.1:8080/v1"
-# No organization-specific endpoint is embedded in the standard distribution.
-# Configure a custom OpenAI-compatible endpoint explicitly at local startup.
+# The standard distribution has no organization-specific model endpoint.
+# Configure a local/custom endpoint explicitly through the environment or UI.
 DEFAULT_CUSTOM_BASE_URL = ""
 LIVE_SESSIONS: dict[str, dict[str, Any]] = {}
 PROVIDER_CAPABILITY_CACHE: dict[str, dict[str, Any]] = {}
@@ -607,16 +607,6 @@ def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
                 continue
             targets = _targets(route)
             edges.extend({"target": target, "storage": "on_answer", "key": str(outcome)} for target in targets)
-    # ``navigation_contract.allowed_to`` is canonical routing authority when a
-    # record intentionally omits an executable transition list.  Do not render
-    # it in addition to explicit transitions: that would duplicate the same
-    # control edge and misleadingly imply two runtime routes.
-    if not edges:
-        navigation = node.get("navigation_contract")
-        if isinstance(navigation, dict):
-            for target in navigation.get("allowed_to", []):
-                if isinstance(target, str) and target and not target.startswith("$"):
-                    edges.append({"target": target, "storage": "navigation_allowed_to", "key": target})
     for edge in edges:
         edge.setdefault("edge_type", "control_flow")
     return edges
@@ -898,10 +888,6 @@ def _projection_resolve_declared_outputs(
             candidates = sorted(item["node_id"] for item in selected)
 
         path = _declared_output_display_path(record)
-        # Older editor payloads used a bare ``outputs: [{id: ...}]`` entry as
-        # an external terminal declaration.  Preserve that representation
-        # without conflating modern output contracts that carry metadata.
-        legacy_terminal = set(record) == {"id"}
         entities.append({
             "id": output_id,
             "path": path,
@@ -911,7 +897,6 @@ def _projection_resolve_declared_outputs(
             "traceability_reason": reason,
             "record": record,
             "declared": True,
-            "legacy_terminal": legacy_terminal,
         })
         diagnostics.append({
             "check": "DECLARED_OUTPUT_PRODUCER_TRACEABILITY",
@@ -1333,16 +1318,13 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
         ] + [
             {
                 "id": out_entity["id"],
-                # A bare legacy top-level output ID historically represented a
-                # terminal destination.  Rich declared outputs remain their
-                # own view-only entity, with producer traceability.
-                "element_type": "terminal" if out_entity.get("legacy_terminal") else "output",
-                "entity_type": "terminal" if out_entity.get("legacy_terminal") else ("declared_output" if out_entity.get("declared") else "output"),
+                "element_type": "output",
+                "entity_type": "declared_output" if out_entity.get("declared") else "output",
                 "collection": "declared_outputs" if out_entity.get("declared") else "derived_outputs",
                 "label": (out_entity.get("path") or out_entity["id"]),
                 "path": out_entity.get("path") or "",
                 "answer_type": (f"declared output · {str(out_entity.get('traceability_status') or '').lower()}" if out_entity.get("declared") else "materialized output"),
-                "terminal": bool(out_entity.get("legacy_terminal")),
+                "terminal": False,
                 "producers": out_entity.get("producers",[]),
                 "traceability_status": out_entity.get("traceability_status"),
                 "traceability_reason": out_entity.get("traceability_reason"),
@@ -1352,17 +1334,7 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
             }
             for out_entity in declared_outputs
         ],
-        # Alpha.20 clients infer a missing relation as control-flow. Preserve
-        # the established pre-Alpha.20 contract for older compact payloads;
-        # canonical graph-contract payloads retain typed control edges.
-        "edges": [
-            {key: value for key, value in edge.items() if key not in {"edge_type", "relation_type"}}
-            if edge.get("edge_type") == "control_flow" and (
-                not isinstance(source.get("graph_contract"), dict)
-                or (source.get("ordo") or {}).get("version") == "0.12"
-            ) else edge
-            for edge in edges
-        ],
+        "edges": edges,
         "projection_validation": {
             "status": "PASS" if not unresolved_dependencies and not [row for row in output_traceability if row.get("status") == "FAIL"] and not unreachable_terminals else "FAIL",
             "checks": {
@@ -1695,22 +1667,11 @@ def validate_source(source: dict[str, Any]) -> dict[str, Any]:
     errors = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "error")
     warnings = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "warning")
     infos = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "info")
-    issues = []
-    for check in checks:
-        for finding in check["findings"]:
-            issue = dict(finding)
-            if issue.get("code") == "DANGLING_TARGET":
-                issue["code"] = "GRAPH_TARGET_MISSING"
-            issue["check"] = check["id"]
-            issues.append(issue)
     return {
         "scope": "editor_structural_validation",
         "status": "failed" if errors else ("warning" if warnings else "passed"),
         "summary": {"checks": len(checks), "errors": errors, "warnings": warnings, "info": infos},
         "checks": checks,
-        # Compatibility alias retained for integrations that consume a flat
-        # graph-finding list rather than grouped validation checks.
-        "issues": issues,
         "note": "Structural validation only. Full Ordo playbook validation must be performed by the Ordo validation/playbook tooling.",
     }
 
@@ -1986,61 +1947,208 @@ def _with_replay_provenance(view: dict[str, Any], filename: str, raw: bytes) -> 
         raise ValueError("Strict replay provenance invalid: " + "; ".join(errors))
     return result
 
+def _canonical_debug_find(names: list[str], basename: str) -> str | None:
+    candidates=[name for name in names if Path(name).name == basename and not name.endswith('/')]
+    if not candidates: return None
+    candidates.sort(key=lambda name: (0 if '/working/evidence/' in f'/{name}' else 1, len(name), name))
+    return candidates[0]
+
+def _canonical_debug_json(archive: zipfile.ZipFile, names: list[str], basename: str) -> dict[str, Any] | None:
+    name=_canonical_debug_find(names,basename)
+    if not name: return None
+    try:
+        value=json.loads(archive.read(name).decode('utf-8'))
+        return value if isinstance(value,dict) else None
+    except (json.JSONDecodeError,UnicodeDecodeError,KeyError): return None
+
+def _canonical_debug_jsonl(archive: zipfile.ZipFile, names: list[str], basename: str) -> list[dict[str, Any]]:
+    name=_canonical_debug_find(names,basename)
+    if not name: return []
+    rows=[]
+    try: raw=archive.read(name).decode('utf-8')
+    except (UnicodeDecodeError,KeyError): return []
+    for line_no,line in enumerate(raw.splitlines(),1):
+        if not line.strip(): continue
+        try: value=json.loads(line)
+        except json.JSONDecodeError as error: raise ValueError(f'{basename} line {line_no} is invalid JSON: {error.msg}') from error
+        if isinstance(value,dict): rows.append(value)
+    return rows
+
+def _canonical_debug_timestamp(value: Any) -> float | None:
+    text=str(value or '').strip()
+    if not text: return None
+    try: return datetime.fromisoformat(text.replace('Z','+00:00')).timestamp()
+    except ValueError: return None
+
+def _canonical_debug_attach_occurrence(rows: list[dict[str, Any]], steps: list[dict[str, Any]], element_key: str='element_id', timestamp_key: str='timestamp') -> dict[int,list[dict[str,Any]]]:
+    by_element: dict[str,list[tuple[int,dict[str,Any]]]]={}
+    for index,step in enumerate(steps): by_element.setdefault(str(step.get('id') or ''),[]).append((index,step))
+    result={index:[] for index in range(len(steps))}
+    for row in rows:
+        element=str(row.get(element_key) or '')
+        candidates=by_element.get(element) or []
+        if not candidates: continue
+        if len(candidates)==1: result[candidates[0][0]].append(row); continue
+        ts=_canonical_debug_timestamp(row.get(timestamp_key) or row.get('started_at') or row.get('registered_at'))
+        if ts is None: result[candidates[0][0]].append(row); continue
+        best=None; best_distance=float('inf')
+        for index,step in candidates:
+            start=_canonical_debug_timestamp(step.get('started_at')); finish=_canonical_debug_timestamp(step.get('finished_at'))
+            if start is not None and finish is not None and start-.5 <= ts <= finish+.5: best=index; best_distance=-1; break
+            midpoint=((start or ts)+(finish or start or ts))/2
+            distance=abs(ts-midpoint)
+            if distance<best_distance: best=index; best_distance=distance
+        if best is not None: result[best].append(row)
+    return result
+
+def _canonical_debug_integrity(archive: zipfile.ZipFile, names: list[str], manifest: dict[str,Any] | None) -> dict[str,Any]:
+    if not isinstance(manifest,dict): return {'status':'UNAVAILABLE','checked_files':0,'failures':[]}
+    failures=[]; checked=0; name_set=set(names)
+    for item in manifest.get('files') or []:
+        if not isinstance(item,dict): continue
+        path=str(item.get('path') or '')
+        expected=str(item.get('sha256') or '')
+        if not path or not expected: continue
+        checked+=1
+        if path not in name_set: failures.append({'path':path,'reason':'MISSING'}); continue
+        actual=hashlib.sha256(archive.read(path)).hexdigest()
+        if actual!=expected: failures.append({'path':path,'reason':'SHA256_MISMATCH','expected':expected,'actual':actual})
+    return {'status':'FAIL' if failures else 'PASS','checked_files':checked,'failures':failures}
+
+def build_canonical_debug_replay_view(archive: zipfile.ZipFile, names: list[str]) -> dict[str,Any]:
+    ledger=_canonical_debug_jsonl(archive,names,'MODEL_EXECUTION_LEDGER.jsonl')
+    interactions=_canonical_debug_jsonl(archive,names,'INTERACTION_AND_ACTION_TRACE.jsonl')
+    if not ledger or not _canonical_debug_find(names,'INTERACTION_AND_ACTION_TRACE.jsonl'):
+        raise ValueError('Canonical replay package requires MODEL_EXECUTION_LEDGER.jsonl and INTERACTION_AND_ACTION_TRACE.jsonl.')
+    ledger.sort(key=lambda row:(int(row.get('sequence') or 0),str(row.get('element_id') or '')))
+    telemetry=_canonical_debug_jsonl(archive,names,'PER_NODE_TELEMETRY.jsonl')
+    receipts=_canonical_debug_jsonl(archive,names,'EXECUTION_RECEIPTS.jsonl')
+    file_trace=_canonical_debug_jsonl(archive,names,'DEBUG_FILE_ACCESS_TRACE.jsonl')
+    file_registry=_canonical_debug_jsonl(archive,names,'DEBUG_FILE_ACCESS_REGISTRY.jsonl')
+    artifact_lineage=_canonical_debug_jsonl(archive,names,'ARTIFACT_LINEAGE.jsonl')
+    timing=_canonical_debug_json(archive,names,'TIMING_SUMMARY.json') or {}
+    tokens=_canonical_debug_json(archive,names,'TOKEN_USAGE_SUMMARY.json') or {}
+    process_quality=_canonical_debug_json(archive,names,'PROCESS_QUALITY_REPORT.json') or {}
+    artifact_quality=_canonical_debug_json(archive,names,'ARTIFACT_QUALITY_REPORT.json') or {}
+    performance=_canonical_debug_json(archive,names,'PERFORMANCE_AND_TOKEN_REPORT.json') or {}
+    run_index=_canonical_debug_json(archive,names,'DEBUG_RUN_INDEX.json') or {}
+    handoff_index=_canonical_debug_json(archive,names,'HANDOFF_PACKAGE_INDEX.json') or {}
+    manifest=_canonical_debug_json(archive,names,'DEBUG_BUNDLE_MANIFEST.json')
+    integrity=_canonical_debug_integrity(archive,names,manifest)
+    validation_failures=[]
+    if str(handoff_index.get('status') or '').upper() in {'FAIL','FAILED','INVALID'}: validation_failures.append({'surface':'HANDOFF_PACKAGE_INDEX.json','reason':handoff_index.get('status')})
+    if handoff_index and handoff_index.get('canonical_debug_completion') is False: validation_failures.append({'surface':'HANDOFF_PACKAGE_INDEX.json','reason':'canonical_debug_completion=false'})
+    if str(run_index.get('evaluation_status') or '').upper() in {'FAIL','FAILED','INVALID'}: validation_failures.append({'surface':'DEBUG_RUN_INDEX.json','reason':run_index.get('evaluation_status')})
+    if validation_failures:
+        integrity['status']='FAIL'; integrity.setdefault('failures',[]).extend(validation_failures)
+    integrity['handoff_status']=handoff_index.get('status'); integrity['evaluation_status']=run_index.get('evaluation_status')
+    telemetry_by_hash={str(row.get('canonical_ledger_sha256')):row for row in telemetry if row.get('canonical_ledger_sha256')}
+    receipt_by_hash={str(row.get('canonical_ledger_sha256')):row for row in receipts if row.get('canonical_ledger_sha256')}
+    steps=[]
+    occurrence_counts: dict[str,int]={}
+    for index,row in enumerate(ledger,1):
+        element=str(row.get('element_id') or row.get('from_node') or '')
+        occurrence_counts[element]=occurrence_counts.get(element,0)+1
+        tele=telemetry_by_hash.get(str(row.get('ledger_sha256') or ''))
+        if not tele:
+            same=[x for x in telemetry if str(x.get('element_id') or '')==element]
+            occurrence=occurrence_counts[element]-1
+            tele=same[occurrence] if occurrence<len(same) else None
+        rec=receipt_by_hash.get(str(row.get('ledger_sha256') or ''))
+        step={
+            'index':index,'execution_sequence':int(row.get('sequence') or index),'id':element,
+            'kind':str(row.get('element_kind') or 'step'),'label':element,'prompt':None,'prompt_source':None,
+            'route':row.get('route'),'to_node':row.get('to_node'),'from_node':row.get('from_node'),'status':row.get('status'),
+            'started_at':row.get('started_at'),'finished_at':row.get('finished_at'),'ledger_sha256':row.get('ledger_sha256'),
+            'chronology':[],'interactions':[],'model_actions':[],'file_actions':[],
+            'telemetry':None,'receipt':None,
+        }
+        if isinstance(tele,dict):
+            step['telemetry']={
+                'duration_ms':tele.get('duration_ms',row.get('duration_ms')),
+                'estimated_input_tokens':tele.get('token_equivalent_estimate_input',tele.get('estimated_input_tokens')),
+                'estimated_output_tokens':tele.get('token_equivalent_estimate_output',tele.get('estimated_output_tokens')),
+                'exact_host_input_tokens':tele.get('exact_host_input_tokens'),
+                'exact_host_output_tokens':tele.get('exact_host_output_tokens'),
+                'exact_host_total_tokens':tele.get('exact_host_total_tokens'),
+                'token_count_source':tele.get('token_count_source'),'estimate_coverage':tele.get('estimate_coverage'),
+                'token_estimate_method':tele.get('token_estimate_method'),
+            }
+        elif row.get('duration_ms') is not None: step['telemetry']={'duration_ms':row.get('duration_ms')}
+        if isinstance(rec,dict): step['receipt']={k:rec.get(k) for k in ('status','receipt_sha256','canonical_ledger_sha256','previous_receipt_sha256','route','timestamp')}
+        steps.append(step)
+    step_by_sequence={int(step['execution_sequence']):i for i,step in enumerate(steps)}
+    model_events=[]; other_events=[]
+    for event in sorted(interactions,key=lambda row:int(row.get('sequence') or 0)):
+        if event.get('event_type')=='MODEL_ACTION' and event.get('execution_sequence') is not None: model_events.append(event)
+        elif event.get('event_type') not in {'RUN_START','RUN_COMPLETE'}: other_events.append(event)
+    for event in model_events:
+        index=step_by_sequence.get(int(event.get('execution_sequence') or 0))
+        if index is None: continue
+        action={k:copy.deepcopy(event.get(k)) for k in ('sequence','timestamp','event_type','action_type','action_summary','changed_paths','decision_ids','state_patch','structured_result','route','to_node','status','ledger_sha256')}
+        steps[index]['model_actions'].append(action); steps[index]['chronology'].append(action)
+    attached=_canonical_debug_attach_occurrence(other_events,steps)
+    for index,events in attached.items():
+        for event in events:
+            item={k:copy.deepcopy(event.get(k)) for k in ('sequence','timestamp','event_type','text','visibility')}
+            steps[index]['chronology'].append(item)
+            if event.get('event_type') in {'ASSISTANT_MESSAGE','ANALYST_MESSAGE'}: steps[index]['interactions'].append(item)
+    # File/tool observations are occurrence-aware by timestamps. Registry rows are included as read evidence.
+    file_rows=[]
+    for row in file_trace:
+        compact={k:copy.deepcopy(row.get(k)) for k in ('element_id','event','started_at','completed_at','duration_ms','target_root','command','exit_code','monitor','unique_files_read_observed','unique_paths_write_observed','sum_file_size_bytes_for_read_files','coverage_mode','path','access_type','file_size_bytes','exact_observed_bytes') if row.get(k) is not None}
+        compact['timestamp']=row.get('started_at') or row.get('timestamp'); compact['coverage_class']=row.get('coverage_class') or row.get('coverage') or row.get('coverage_mode') or ('FILE_SIZE_ONLY' if row.get('sum_file_size_bytes_for_read_files') else None)
+        if isinstance(row.get('files'),list):
+            compact['files']=[{k:f.get(k) for k in ('path','file_size_bytes','read_observed','write_observed','events') if f.get(k) is not None} for f in row['files'][:40] if isinstance(f,dict)]
+        file_rows.append(compact)
+    for row in file_registry:
+        compact={k:copy.deepcopy(row.get(k)) for k in row.keys() if k not in {'run_id','schema_version'}}; compact.setdefault('timestamp',row.get('timestamp') or row.get('registered_at')); compact.setdefault('event','registered_file_access'); file_rows.append(compact)
+    file_attached=_canonical_debug_attach_occurrence(file_rows,steps)
+    for index,rows in file_attached.items(): steps[index]['file_actions']=rows
+    for step in steps: step['chronology'].sort(key=lambda row:int(row.get('sequence') or 10**9))
+    # Package artifacts: map lineage basename to archived artifact when available.
+    archived_artifacts=[name for name in names if '/artifacts/' in f'/{name}' and not name.endswith('/')]
+    artifacts=[]
+    for row in artifact_lineage:
+        item=copy.deepcopy(row); base=Path(str(row.get('path') or '')).name
+        archive_path=next((name for name in archived_artifacts if Path(name).name==base),None)
+        if archive_path:
+            item['archive_path']=archive_path
+            suffix=Path(archive_path).suffix.lower()
+            if suffix in _TEXT_RESOURCE_EXTENSIONS and archive.getinfo(archive_path).file_size <= 1024*1024:
+                try: item['content_text']=archive.read(archive_path).decode('utf-8')
+                except UnicodeDecodeError: pass
+        artifacts.append(item)
+    assistant_count=sum(1 for row in interactions if row.get('event_type')=='ASSISTANT_MESSAGE' and row.get('visibility') in {None,'USER_VISIBLE'})
+    analyst_count=sum(1 for row in interactions if row.get('event_type')=='ANALYST_MESSAGE' and row.get('visibility') in {None,'USER_VISIBLE'})
+    run_id=str(run_index.get('run_id') or (ledger[0].get('run_id') if ledger else '') or '')
+    return {
+        'format':'canonical_debug_handoff','schema_version':'1','run_id':run_id,'steps':steps,
+        'verbatim_chat_available':bool(assistant_count or analyst_count),
+        'chat_coverage':{'assistant_messages':assistant_count,'analyst_messages':analyst_count,'statement':'Canonical debug package contains recorded user-visible messages. Hidden model reasoning is not captured.'},
+        'process_quality':process_quality,'artifact_quality':artifact_quality,'performance':performance,'timing_summary':timing,'token_usage_summary':tokens,
+        'artifacts':artifacts,'integrity':integrity,'debug_run_index':run_index,'handoff_package_index':handoff_index,
+        'summary':{
+            'executions':len(steps),'telemetry_rows':len(telemetry),'receipt_rows':len(receipts),
+            'total_duration_ms':timing.get('total_duration_ms',performance.get('total_observed_element_duration_ms')),
+            'runtime_observable_input_tokens':(tokens.get('token_equivalent_estimates') or {}).get('input'),
+            'runtime_observable_output_tokens':(tokens.get('token_equivalent_estimates') or {}).get('output'),
+            'exact_host_input_tokens':(tokens.get('exact_host_tokens') or {}).get('input_tokens') if (tokens.get('exact_host_tokens') or {}).get('rows_with_exact_input') else None,
+            'exact_host_output_tokens':(tokens.get('exact_host_tokens') or {}).get('output_tokens') if (tokens.get('exact_host_tokens') or {}).get('rows_with_exact_output') else None,
+        },
+    }
+
 def parse_replay_package(filename: str, raw: bytes) -> dict[str, Any]:
-    lower = filename.lower()
-    trace: dict[str, Any] | None = None
-    source: dict[str, Any] | None = None
-    if lower.endswith(".json"):
-        loaded = json.loads(raw.decode("utf-8"))
-        if not isinstance(loaded, dict):
-            raise ValueError("Replay JSON root must be an object.")
-        if isinstance(loaded.get("recorded_calls"), list) and (str(loaded.get("kind") or "") == "debug_reproduction" or str(loaded.get("schema_version") or "").startswith("ordo.debug_reproduction.")):
-            return _with_replay_provenance(loaded, filename, raw)
-        if isinstance(loaded.get("calls"), list) and isinstance(loaded.get("run"), dict):
-            return _with_replay_provenance(build_debug_reproduction_view(loaded), filename, raw)
-        trace = loaded
-    else:
-        try:
-            archive = zipfile.ZipFile(io.BytesIO(raw))
-        except zipfile.BadZipFile as error:
-            raise ValueError("Replay package must be a ZIP or run_trace.json file.") from error
-        names = archive.namelist()
-        reproduction_name = next((name for name in names if Path(name).name == "reproduction.json"), None)
-        if reproduction_name:
-            loaded = json.loads(archive.read(reproduction_name).decode("utf-8"))
-            if isinstance(loaded, dict) and isinstance(loaded.get("recorded_calls"), list):
-                return _with_replay_provenance(loaded, filename, raw)
-        debug_name = next((name for name in names if "debug-run-summary" in Path(name).name.lower() and name.lower().endswith(".json")), None)
-        if debug_name:
-            loaded = json.loads(archive.read(debug_name).decode("utf-8"))
-            if isinstance(loaded, dict) and isinstance(loaded.get("calls"), list) and isinstance(loaded.get("run"), dict):
-                return _with_replay_provenance(build_debug_reproduction_view(loaded), filename, raw)
-        trace_name = next((name for name in names if Path(name).name == "run_trace.json"), None)
-        if not trace_name:
-            raise ValueError("Replay ZIP does not contain run_trace.json or reproduction.json.")
-        loaded = json.loads(archive.read(trace_name).decode("utf-8"))
-        if not isinstance(loaded, dict):
-            raise ValueError("run_trace.json root must be an object.")
-        trace = loaded
-        if not isinstance(trace.get("interaction_trace"), list):
-            interaction_name = next((name for name in names if Path(name).name == "interaction_trace.json"), None)
-            if interaction_name:
-                try:
-                    interaction_candidate = json.loads(archive.read(interaction_name).decode("utf-8"))
-                    if isinstance(interaction_candidate, list):
-                        trace["interaction_trace"] = interaction_candidate
-                except (json.JSONDecodeError, UnicodeDecodeError):
-                    pass
-        preferred = "playbook/source/program.ordo.yaml"
-        yaml_name = preferred if preferred in names else next((name for name in names if Path(name).name in {"program.ordo.yaml", "program.ordo.yml"}), None)
-        if yaml_name:
-            try:
-                candidate = yaml.safe_load(archive.read(yaml_name).decode("utf-8"))
-                if isinstance(candidate, dict):
-                    source = candidate
-            except yaml.YAMLError:
-                source = None
-    return _with_replay_provenance(build_replay_view(trace or {}, source), filename, raw)
+    if not filename.lower().endswith('.zip'):
+        raise ValueError('Replay Real Chat accepts only canonical debug handoff ZIP packages.')
+    try: archive=zipfile.ZipFile(io.BytesIO(raw))
+    except zipfile.BadZipFile as error: raise ValueError('Replay package must be a canonical debug handoff ZIP.') from error
+    names=archive.namelist()
+    if not (_canonical_debug_find(names,'MODEL_EXECUTION_LEDGER.jsonl') and _canonical_debug_find(names,'INTERACTION_AND_ACTION_TRACE.jsonl')):
+        raise ValueError('Unsupported replay package. Expected canonical MODEL_EXECUTION_LEDGER.jsonl + INTERACTION_AND_ACTION_TRACE.jsonl evidence.')
+    view=build_canonical_debug_replay_view(archive,names)
+    view['source_sha256']=hashlib.sha256(raw).hexdigest(); view['source_filename']=filename; view['source_run_id']=view.get('run_id') or ''
+    return view
 
 
 def _replay_auto_answers(replay: dict[str, Any]) -> dict[str, list[str]]:
@@ -2055,7 +2163,7 @@ def _replay_auto_answers(replay: dict[str, Any]) -> dict[str, list[str]]:
         node_id=str(step["id"]); values=answers.setdefault(node_id,[])
         for interaction in step.get("interactions") or []:
             if not isinstance(interaction, dict): continue
-            value=str(interaction.get("analyst_response") or "").strip()
+            value=str(interaction.get("analyst_response") or (interaction.get("text") if interaction.get("event_type")=="ANALYST_MESSAGE" else "") or "").strip()
             if value and value not in values: values.append(value)
         if not values: answers.pop(node_id,None)
     return answers
@@ -2371,6 +2479,7 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
     semantic_plan = None
     compiled_status: dict[str, Any] = {"available": False, "valid": False, "reason": "not_present"}
     semantic_status: dict[str, Any] = {"available": False, "valid": False, "reason": "not_present"}
+    load_diagnostics: list[dict[str, Any]] = []
 
     # Runtime Semantic Plan authority is package-structural, never basename-based.
     # Nested tests/fixtures/examples may legitimately contain same-named artifacts.
@@ -2408,7 +2517,14 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
                         "warning":"Legacy Release-2 source does not declare graph_contract; integrated compilation was not required for compatibility.",
                     }
                 else:
-                    raise ValueError(str(error)) from error
+                    semantic_plan = None
+                    semantic_status = {"available": False, "valid": False, "reason": "integrated_compile_failed", "detail": str(error)}
+                    preparation_report = {
+                        "mode":"integrated_degraded",
+                        "stages":[{"id":"load_source","status":"PASS"},{"id":"compile_runtime_plan","status":"FAIL"}],
+                        "warning":str(error),
+                    }
+                    load_diagnostics.append({"severity":"warning","stage":"compile_runtime_plan","code":"RUNTIME_PLAN_COMPILE_FAILED","message":str(error)})
         if semantic_plan is not None:
             semantic_generated = True
             semantic_status = {
@@ -2484,7 +2600,9 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
         path = semantic_status.get("path")
         authority = semantic_status.get("authority")
         diagnostic = f" path={path} authority={authority}" if path or authority else ""
-        raise ValueError(f"Runtime Semantic Plan is present but unusable: {reason}.{detail}{diagnostic}")
+        message=f"Runtime Semantic Plan is present but unusable: {reason}.{detail}{diagnostic}"
+        if not any(item.get("stage")=="runtime_plan" and item.get("message")==message for item in load_diagnostics):
+            load_diagnostics.append({"severity":"warning","stage":"runtime_plan","code":"RUNTIME_PLAN_UNUSABLE","message":message,"details":copy.deepcopy(semantic_status)})
 
     # Legacy V6 plan remains supported as a separate compatibility path.
     plan_names = [name for name in names if name == "compiled/llm_execution_plan.json" or name.endswith("/compiled/llm_execution_plan.json")]
@@ -2536,6 +2654,29 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
 
     package_manifest_v2_status = _validate_r3_package_manifest_v2(archive, infos, source_name, source_raw or b"", semantic_names, semantic_plan)
 
+    graph = None
+    graph_error = None
+    try:
+        graph = graph_view(source, resources)
+    except Exception as error:
+        graph_error = str(error)
+        load_diagnostics.append({"severity":"warning","stage":"graph_projection","code":"GRAPH_PROJECTION_FAILED","message":graph_error})
+
+    legacy_execution_ok = bool(compiled_status.get("valid")) or (input_kind == "zip" and not isinstance(source.get("graph_contract"), dict))
+    execute_ok = bool(semantic_status.get("valid")) or legacy_execution_ok
+    capabilities = {
+        "inspect_source": True,
+        "show_tree": graph is not None,
+        "show_path": graph is not None,
+        "show_data_flow": True,
+        "playbook_settings": True,
+        "package_files": True,
+        "verification": True,
+        "execute": execute_ok,
+        "replay": True,
+    }
+    load_status = "degraded" if load_diagnostics or not execute_ok else "ready"
+
     package_id = hashlib.sha256(original_raw).hexdigest()[:16]
     PLAYBOOK_PACKAGE.update({
         "id": package_id, "filename": original_filename, "source_name": source_name, "source": source,
@@ -2544,6 +2685,7 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
         "package_manifest_v2_status": package_manifest_v2_status, "preparation_report": preparation_report, "input_kind": input_kind, "raw_zip": raw,
         "runtime_plan_authority": copy.deepcopy(runtime_plan_resolution),
         "ignored_non_authoritative_runtime_plan_named_resources": ignored_runtime_plan_named_resources,
+        "load_status": load_status, "load_diagnostics": copy.deepcopy(load_diagnostics), "capabilities": copy.deepcopy(capabilities), "graph_error": graph_error,
     })
     PLAYBOOK_PACKAGES[package_id] = copy.deepcopy(PLAYBOOK_PACKAGE)
     return {
@@ -2562,8 +2704,12 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
         "ignored_non_authoritative_runtime_plan_named_resources": ignored_runtime_plan_named_resources,
         "interaction_contract": (semantic_plan.get("interaction_contract") if isinstance(semantic_plan, dict) else None),
         "manifest": manifest,
+        "load_status": load_status,
+        "load_diagnostics": copy.deepcopy(load_diagnostics),
+        "capabilities": copy.deepcopy(capabilities),
+        "graph_error": graph_error,
         "source": source,
-        "graph": graph_view(source, resources),
+        "graph": graph,
     }
 
 def _plausible_resource_path(value: Any) -> bool:
@@ -3019,7 +3165,7 @@ def _live_credentials(payload: dict[str, Any]) -> dict[str, Any]:
             raise ValueError(f"Local MLX model {model!r} is not currently available. Refresh models and choose one of: {', '.join(available)}")
         api_style="chat_completions"
     else:
-        base_url=_normalize_base_url(session.get("base_url"),DEFAULT_CUSTOM_BASE_URL)
+        base_url=_normalize_base_url(session.get("base_url") or LIVE_RUNTIME.get("base_url"),DEFAULT_CUSTOM_BASE_URL)
         api_key=str(session.get("api_key") or "")
         if not model:
             raise ValueError("Select a model reported by the custom provider /models endpoint.")
@@ -3605,9 +3751,9 @@ def _human_interaction_policy(record: dict[str, Any], kind: str) -> dict[str, An
             condition = str(record.get("condition") or "").strip()
             question = str(record.get("question") or "").strip()
             if not question:
-                question = f"{title}. Підтверджуєте? Відповідайте так або ні."
+                question = f"{title}. Do you confirm? Answer yes or no."
                 if condition:
-                    question += f"\n\nКритерій: {condition}"
+                    question += f"\n\nCriterion: {condition}"
             return {
                 "requires_human": True,
                 "direct_enter": True,
@@ -4002,10 +4148,10 @@ def _retry_existing_table_message(record: dict[str, Any], current_id: str, histo
             audit["requires_schema_repair"] = True
             return "", audit
         table = _markdown_table_from_rows(migrated, columns)
-        question = str(record.get("question") or "Підтвердьте або скоригуйте поточне значення.")
+        question = str(record.get("question") or "Confirm or correct the current value.")
         msg = (
-            "Поточний структурований результат цього кроку вже збережений у state. "
-            "Після повернення з validation він не генерується заново.\n\n" + table +
+            "The current structured result of this step is already stored in state. "
+            "After returning from validation, it is not generated again.\n\n" + table +
             "\n\n" + question
         )
         return msg, audit
@@ -4833,13 +4979,13 @@ def _state_subtree(state: dict[str, Any], path: str) -> Any:
 
 def _render_markdown_value(value: Any) -> str:
     if value is None or value == "":
-        return "не надано"
+        return "not provided"
     if isinstance(value, bool):
         return "true" if value else "false"
     if isinstance(value, (str, int, float)):
         return str(value)
     if isinstance(value, list):
-        if not value: return "— немає —"
+        if not value: return "— none —"
         if all(not isinstance(x, (dict, list)) for x in value):
             return "\n".join(f"- {x}" for x in value)
         chunks=[]
@@ -4853,7 +4999,7 @@ def _render_markdown_value(value: Any) -> str:
         for k,v in value.items():
             rendered=_render_markdown_value(v)
             rows.append(f"**{k}**: {rendered}" if "\n" not in rendered else f"**{k}**:\n{rendered}")
-        return "\n\n".join(rows) if rows else "— немає —"
+        return "\n\n".join(rows) if rows else "— none —"
     return str(value)
 
 
@@ -5132,7 +5278,7 @@ def _execute_document_generate(credentials: dict[str, Any], record: dict[str, An
             # A missing leaf is explicit in the generated draft rather than being
             # silently invented. The warning remains machine-readable in debug.
             missing_leaf_warnings.append(expr)
-            return "не надано"
+            return "not provided"
         table_contract=_table_contract_for_placeholder(expr)
         if table_contract is not None and (isinstance(value,list) or (isinstance(value,dict) and isinstance(value.get("rows"),list))):
             return _render_contract_table(value,table_contract,render_state)
@@ -5149,7 +5295,7 @@ def _execute_document_generate(credentials: dict[str, Any], record: dict[str, An
     out.parent.mkdir(parents=True,exist_ok=True); out.write_text(rendered,encoding="utf-8")
     new_state,updates=_apply_declared_state_updates(record,state,derived)
     selected=next((r for r in routes if r.get("key")=="next"), routes[0] if len(routes)==1 else None)
-    message=f"Матеріалізовано документ: {output_ref} ({out.stat().st_size} bytes)."
+    message=f"Materialized document: {output_ref} ({out.stat().st_size} bytes)."
     result=_runtime_only_live_result(credentials=credentials,record=record,kind=kind,current_id=current_id,phase=phase,state=state,routes=routes,assistant_message=message,await_analyst=False,selected=selected,updates=updates,new_state=new_state,reason="deterministic-document-generate")
     result["debug"]["runtime"]["artifact"]={"path":output_ref,"workspace_path":str(out),"size":out.stat().st_size,"sha256":hashlib.sha256(out.read_bytes()).hexdigest(),"template_resource":t_name,"bindings_resource":b_name,"compatibility_aliases":compatibility_aliases,"missing_leaf_warnings":sorted(set(missing_leaf_warnings)),"rendering_rules":rendering_rules,"derivation_audit":derivation_audit,"validator_alignment_audit":validator_alignment_audit}
     if missing_leaf_warnings:
@@ -5210,7 +5356,7 @@ def _execute_delivery_package_build(credentials: dict[str, Any], record: dict[st
         result = _runtime_only_live_result(
             credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
             state=state, routes=routes,
-            assistant_message="Не вдалося сформувати пакет: один або більше оголошених артефактів застаріли після зміни залежного стану.",
+            assistant_message="Package creation failed: one or more declared artifacts became stale after dependent state changed.",
             await_analyst=False, selected=None, updates={}, new_state=copy.deepcopy(state),
             reason="deterministic-delivery-package-failed",
             extra_runtime={"runtime_executor":"delivery_package_builder","stale_artifacts":stale_required},
@@ -5223,7 +5369,7 @@ def _execute_delivery_package_build(credentials: dict[str, Any], record: dict[st
         result = _runtime_only_live_result(
             credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
             state=state, routes=routes,
-            assistant_message="Не вдалося сформувати пакет: відсутні оголошені обов'язкові артефакти.",
+            assistant_message="Package creation failed: required declared artifacts are missing.",
             await_analyst=False, selected=None, updates={}, new_state=copy.deepcopy(state),
             reason="deterministic-delivery-package-failed",
             extra_runtime={"runtime_executor":"delivery_package_builder","missing_artifacts":sorted(set(missing_required))},
@@ -5265,7 +5411,7 @@ def _execute_delivery_package_build(credentials: dict[str, Any], record: dict[st
     result = _runtime_only_live_result(
         credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
         state=state, routes=routes,
-        assistant_message=f"Сформовано пакет: {output_ref} ({out.stat().st_size} bytes).",
+        assistant_message=f"Created package: {output_ref} ({out.stat().st_size} bytes).",
         await_analyst=False, selected=selected, updates={}, new_state=copy.deepcopy(state),
         reason="deterministic-delivery-package-build",
         extra_runtime={"runtime_executor":"delivery_package_builder","package_entries":sorted(unique.keys())},
@@ -7266,7 +7412,7 @@ def _execute_alpha20_runtime_executor(
     if executor == "terminal":
         result = _runtime_only_live_result(
             credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
-            state=state, routes=routes, assistant_message="Процес завершено.", await_analyst=False,
+            state=state, routes=routes, assistant_message="Process completed.", await_analyst=False,
             selected=None, updates={}, new_state=copy.deepcopy(state), reason="alpha20-terminal",
             extra_runtime={"runtime_executor": "terminal"},
         )
@@ -7313,7 +7459,7 @@ def _execute_alpha20_runtime_executor(
     if executor == "artifact_presenter":
         artifact = record.get("artifact") if isinstance(record.get("artifact"), dict) else {}
         path = str(artifact.get("path") or artifact.get("expected_path") or "")
-        message = f"Артефакт готовий до перегляду: {path}" if path else "Артефакт готовий до перегляду."
+        message = f"Artifact is ready for review: {path}" if path else "Artifact is ready for review."
     updates = {op["path"]: copy.deepcopy(op.get("value")) for op in operations}
     return _runtime_only_live_result(
         credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
@@ -8085,11 +8231,11 @@ def _call_openai_live_impl(payload: dict[str, Any]) -> dict[str, Any]:
                 selected=inherited_route, reason="inherited-human-decision", extra_runtime={"inherited_human_decision": inherited_evidence})
         semantic_for_question = _semantic_plan_element(current_id)
         semantic_ai = semantic_for_question.get("analyst_interaction") if isinstance(semantic_for_question, dict) and isinstance(semantic_for_question.get("analyst_interaction"), dict) else {}
-        question = str(human_policy.get("question") or record.get("question") or semantic_ai.get("question") or "Потрібне рішення аналітика.")
+        question = str(human_policy.get("question") or record.get("question") or semantic_ai.get("question") or "Analyst decision required.")
         if kind == "gate" and not (human_policy.get("question") or record.get("question")):
             condition = str(record.get("condition") or (semantic_for_question.get("semantic_source") or {}).get("condition") if isinstance(semantic_for_question, dict) else "").strip()
             if condition:
-                question = f"Потрібне рішення аналітика для {current_id}. Перевірте критерій: {condition}\n\nЯкщо критерій виконано — оберіть «Погодити». Якщо ні — оберіть «Потрібне виправлення»; система покаже маршрут відновлення та передасть контекст помилки."
+                question = f"Analyst decision required for {current_id}. Review the criterion: {condition}\n\nIf the criterion passes, choose ‘Approve’. Otherwise choose ‘Needs correction’; the system will show the recovery route and pass the failure context."
         return _runtime_only_live_result(credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
             state=state if isinstance(state, dict) else {}, routes=routes, assistant_message=question, await_analyst=True,
             reason="declared-human-input")
@@ -8099,7 +8245,7 @@ def _call_openai_live_impl(payload: dict[str, Any]) -> dict[str, Any]:
         if selected is None:
             allowed = human_policy.get("allowed_values") or [r.get("key") for r in routes]
             choices = ", ".join(str(v) for v in allowed if v)
-            message = f"Невідома відповідь. Дозволені значення: {choices}." if choices else "Не вдалося визначити дозволений перехід для цієї відповіді."
+            message = f"Unknown response. Allowed values: {choices}." if choices else "Could not determine an allowed transition for this response."
             return _runtime_only_live_result(credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
                 state=state if isinstance(state, dict) else {}, routes=routes, assistant_message=message, await_analyst=True,
                 reason="unmatched-human-input")
@@ -8130,7 +8276,7 @@ def _call_openai_live_impl(payload: dict[str, Any]) -> dict[str, Any]:
             return _runtime_only_live_result(
                 credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
                 state=state if isinstance(state, dict) else {}, routes=routes,
-                assistant_message="Дякую. Підтверджений структурований результат зафіксовано без повторної генерації.",
+                assistant_message="Thank you. The confirmed structured result was committed without regeneration.",
                 await_analyst=False, selected=selected, updates=generic_updates, new_state=new_state,
                 reason="generic-proposal-preserving-confirmation",
                 extra_runtime={
@@ -8151,7 +8297,7 @@ def _call_openai_live_impl(payload: dict[str, Any]) -> dict[str, Any]:
             return _runtime_only_live_result(
                 credentials=credentials, record=record, kind=kind, current_id=current_id, phase=phase,
                 state=state if isinstance(state, dict) else {}, routes=routes,
-                assistant_message="Дякую. Підтверджену таблицю атрибутів зафіксовано без втрати її структури.",
+                assistant_message="Thank you. The confirmed attribute table was committed without losing its structure.",
                 await_analyst=False, selected=selected, updates=updates, new_state=new_state,
                 reason="proposal-preserving-confirmation",
                 extra_runtime={
@@ -8856,7 +9002,7 @@ def _recovery_conversation(payload: dict[str, Any]) -> dict[str, Any]:
         )
     except ValueError as exc:
         return {
-            "assistant_message":"Не вдалося отримати структурно коректну відповідь для recovery після 3 спроб.",
+            "assistant_message":"Could not obtain a structurally valid recovery response after 3 attempts.",
             "state_revision":current_revision,
             "suggested_action":"stay",
             "recommended_recovery_target":None,
@@ -8885,7 +9031,7 @@ def _recovery_conversation(payload: dict[str, Any]) -> dict[str, Any]:
         patch = {"base_revision": current_revision, "operations": []}
     message = str(result.get("assistant_message") or "").strip()
     if not message:
-        message = "Можу допомогти розібрати причину зупинки. Уточніть, що саме ви хочете перевірити або які дані готові надати."
+        message = "I can help investigate why execution stopped. Specify what you want to check or what data you can provide."
     state_changed = canonicalize_runtime_state(new_state) != canonicalize_runtime_state(state)
     revision_after=current_revision + (1 if state_changed else 0)
     # KF-021 fail-closed guard: never re-run the same failed gate after an attempted
@@ -8893,7 +9039,7 @@ def _recovery_conversation(payload: dict[str, Any]) -> dict[str, Any]:
     # conversational "fixed" message from becoming an immediate no-progress cycle.
     if action == "retry_gate" and attempted_patch_operations and not state_changed:
         action = "stay"
-        message += "\n\nВиправлення не було застосовано до runtime state, тому повторна перевірка не запускається на незміненому стані."
+        message += "\n\nNo repair was applied to runtime state, so validation will not be re-run against unchanged state."
     return {
         "assistant_message": message,
         "state_revision": revision_after,
@@ -8941,11 +9087,7 @@ _PLAYBOOK_SETTINGS_SCHEMA_MAP = {
 
 
 def _settings_registry_dir() -> Path:
-    editor_root = Path(__file__).resolve().parent
-    bundled = editor_root / "verification" / "language" / "registry"
-    if bundled.is_dir():
-        return bundled
-    return editor_root.parents[1] / "language" / "registry"
+    return Path(__file__).resolve().parent / "verification" / "toolkit" / "language" / "registry"
 
 
 def _parse_markdown_value_registry(path: Path) -> dict[str, list[dict[str, str]]]:
@@ -9036,11 +9178,7 @@ def _flatten_setting_fields(value: Any, prefix: str = "") -> list[tuple[str, Any
 
 
 def _settings_language_dir() -> Path:
-    editor_root = Path(__file__).resolve().parent
-    bundled = editor_root / "verification" / "language"
-    if bundled.is_dir():
-        return bundled
-    return editor_root.parents[1] / "language"
+    return Path(__file__).resolve().parent / "verification" / "toolkit" / "language"
 
 
 def _setting_path_get(source: dict[str, Any], path: str) -> tuple[bool, Any]:
@@ -9989,6 +10127,8 @@ def _workspace_root(session_id: str) -> Path:
     return root
 
 def _workspace_safe_path(root: Path, relative: str) -> Path:
+    # tempfile paths on macOS may contain a /var -> /private/var symlink;
+    # normalize both sides before enforcing the containment guard.
     root=root.resolve()
     rel=str(relative or "").replace("\\","/").lstrip("/")
     target=(root/rel).resolve()
@@ -10120,7 +10260,7 @@ def _workspace_changed_files(root: Path, before: dict[str, tuple[int,int]]) -> l
 
 
 def _workspace_tool_execute(root: Path, call: dict[str, Any]) -> dict[str, Any]:
-    root=root.resolve()
+    root=Path(root).resolve()
     name=str(call.get("name") or "")
     args=call.get("arguments") if isinstance(call.get("arguments"),dict) else {}
     if name=="workspace.list":
@@ -11027,6 +11167,103 @@ def _playbook_settings_unbound_resource_groups(package: dict[str, Any]) -> list[
     return [{"id":gid,"title":title,"description":desc,"files":sorted([r for r in rows if r["group"]==gid],key=lambda r:r["path"].lower())} for gid,title,desc in defs]
 
 
+
+def _package_file_coverage(package: dict[str, Any]) -> dict[str, list[str]]:
+    """Map physical package files to Editor surfaces that already expose them.
+
+    Coverage is deliberately structural. Files with no known UI surface remain
+    visible in Package Files / Uncovered rather than being hidden by directory
+    naming conventions.
+    """
+    manifest=package.get("manifest") if isinstance(package.get("manifest"),list) else []
+    paths=[str(item.get("path") or "").replace("\\","/") for item in manifest if isinstance(item,dict) and item.get("path")]
+    coverage={path:set() for path in paths}
+    source=package.get("source") if isinstance(package.get("source"),dict) else {}
+    resources=package.get("resources") if isinstance(package.get("resources"),dict) else {}
+    source_name=str(package.get("source_name") or "").replace("\\","/")
+    if source_name in coverage:
+        coverage[source_name].add("Tree")
+
+    records=[r for r in [*(source.get("nodes") or []),*(source.get("gates") or [])] if isinstance(r,dict)]
+    for record in records:
+        for item in _generic_record_resource_references(record,resources):
+            resolved,_=_resolve_package_resource(resources,str(item.get("path") or ""))
+            resolved=str(resolved or "").replace("\\","/")
+            if resolved in coverage:
+                coverage[resolved].add("Tree")
+
+    for group in _playbook_settings_unbound_resource_groups(package):
+        for row in group.get("files") or []:
+            path=str((row or {}).get("path") or "").replace("\\","/")
+            if path in coverage:
+                coverage[path].add("Settings")
+
+    try:
+        flow=_discover_embedded_authoring_data_flow(package)
+    except Exception:
+        flow=None
+    if isinstance(flow,dict) and flow.get("available"):
+        flow_paths=set()
+        bundle=flow.get("bundle") if isinstance(flow.get("bundle"),dict) else {}
+        for key in ("path","data_layer"):
+            value=str(bundle.get(key) or "").replace("\\","/")
+            if value: flow_paths.add(value)
+        canonical=bundle.get("canonical_sources") if isinstance(bundle.get("canonical_sources"),dict) else {}
+        bundle_path=str(bundle.get("path") or "")
+        for value in canonical.values():
+            if not isinstance(value,str) or not value.strip(): continue
+            resolved,_=_embedded_flow_resolve_resource(resources,bundle_path,value)
+            if resolved: flow_paths.add(str(resolved).replace("\\","/"))
+        catalogs=flow.get("catalogs") if isinstance(flow.get("catalogs"),dict) else {}
+        for row in catalogs.values():
+            if isinstance(row,dict) and row.get("path"):
+                flow_paths.add(str(row.get("path")).replace("\\","/"))
+        for path in flow_paths:
+            if path in coverage: coverage[path].add("Data Flow")
+
+    return {path:sorted(values) for path,values in coverage.items()}
+
+
+def _package_files_payload(package: dict[str, Any], *, mode: str="list", resource_path: str="") -> dict[str, Any]:
+    manifest=package.get("manifest") if isinstance(package.get("manifest"),list) else []
+    coverage=_package_file_coverage(package)
+    rows=[]
+    for item in manifest:
+        if not isinstance(item,dict): continue
+        path=str(item.get("path") or "").replace("\\","/")
+        surfaces=coverage.get(path) or []
+        rows.append({
+            "path":path,"size":int(item.get("size") or 0),"text":bool(item.get("text")),
+            "extension":Path(path).suffix.lower(),"coverage":surfaces,"uncovered":not bool(surfaces),
+        })
+    if mode=="list":
+        uncovered=sum(1 for row in rows if row["uncovered"])
+        return {"status":"passed","package":{"id":package.get("id"),"filename":package.get("filename")},"files":rows,"summary":{"total":len(rows),"uncovered":uncovered,"covered":len(rows)-uncovered}}
+    path=str(resource_path or "").replace("\\","/").lstrip("/")
+    row=next((r for r in rows if r["path"]==path),None)
+    if not row: raise ValueError("Package file was not found in the loaded playbook.")
+    raw=package.get("raw_zip")
+    if not isinstance(raw,(bytes,bytearray)): raise ValueError("Loaded package ZIP is unavailable.")
+    try:
+        with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+            data=archive.read(path)
+    except Exception as error:
+        raise ValueError(f"Could not read package file: {path}") from error
+    preview_limit=2*1024*1024
+    if len(data)>preview_limit:
+        return {"status":"passed","file":row,"preview":{"available":False,"reason":"too_large","limit":preview_limit}}
+    try:
+        content=data.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return {"status":"passed","file":row,"preview":{"available":False,"reason":"binary"}}
+    ext=Path(path).suffix.lower()
+    kind="markdown" if ext in {".md",".markdown"} else "yaml" if ext in {".yaml",".yml"} else "json" if ext==".json" else "code" if ext in {".py",".js",".mjs",".cjs",".ts",".tsx",".jsx",".sh",".sql",".css",".html",".xml",".toml",".ini",".cfg"} else "text"
+    if kind=="json":
+        try: content=json.dumps(json.loads(content),ensure_ascii=False,indent=2)
+        except Exception: pass
+    return {"status":"passed","file":row,"preview":{"available":True,"kind":kind,"content":content}}
+
+
 def _playbook_settings_payload(package: dict[str, Any]) -> dict[str, Any]:
     source=package.get("source") if isinstance(package.get("source"),dict) else {}
     groups=_language_defined_settings_catalog(source)
@@ -11322,6 +11559,11 @@ def _managed_execute_run_start(payload: dict[str, Any]) -> dict[str, Any]:
     package_id=str(payload.get("package_id") or "").strip()
     package=PLAYBOOK_PACKAGES.get(package_id) or (PLAYBOOK_PACKAGE if package_id==str(PLAYBOOK_PACKAGE.get("id") or "") else None)
     if not package: raise ValueError("Unknown playbook package. Load it with /api/playbook-package first.")
+    capabilities=package.get("capabilities") if isinstance(package.get("capabilities"),dict) else {}
+    if capabilities and not capabilities.get("execute",False):
+        diagnostics=package.get("load_diagnostics") if isinstance(package.get("load_diagnostics"),list) else []
+        reason=next((str(item.get("message") or "") for item in diagnostics if isinstance(item,dict) and item.get("message")),"Executable runtime plan is unavailable.")
+        raise ValueError(f"Execute Playbook is unavailable for this degraded package: {reason}")
     source=package.get("source") if isinstance(package.get("source"),dict) else None
     if not source: raise ValueError("Loaded package has no executable source.")
     entry=_entry_id(source)
@@ -11482,7 +11724,7 @@ class EditorHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
-        if path not in {"/api/parse", "/api/validate", "/api/export", "/api/update-node", "/api/update-node-sections", "/api/replay-package", "/api/playbook-package", "/api/export-playbook", "/api/live-step", "/api/execute-run-start", "/api/execute-run-step", "/api/execute-run-advance", "/api/execute-run-input", "/api/execute-run-stop", "/api/live-config", "/api/provider-models", "/api/provider-capability-probe", "/api/template-inspector", "/api/explain", "/api/recovery-diagnose", "/api/recovery-chat", "/api/verification-catalog", "/api/verification-start", "/api/verification-status", "/api/playbook-settings", "/api/playbook-settings-assistant", "/api/verification-assistant", "/api/data-lineage", "/api/embedded-data-flow", "/api/data-lineage-assistant", "/api/gitlab-playbooks", "/api/gitlab-directory", "/api/gitlab-playbook-load", "/api/gitlab-readme", "/api/model-chat", "/api/model-chat-start", "/api/model-chat-status", "/api/model-chat-cancel", "/api/model-chat-export", "/api/model-chat-playbook-preview"}:
+        if path not in {"/api/parse", "/api/validate", "/api/export", "/api/update-node", "/api/update-node-sections", "/api/replay-package", "/api/playbook-package", "/api/export-playbook", "/api/live-step", "/api/execute-run-start", "/api/execute-run-step", "/api/execute-run-advance", "/api/execute-run-input", "/api/execute-run-stop", "/api/live-config", "/api/provider-models", "/api/provider-capability-probe", "/api/template-inspector", "/api/explain", "/api/recovery-diagnose", "/api/recovery-chat", "/api/verification-catalog", "/api/verification-start", "/api/verification-status", "/api/playbook-settings", "/api/package-files", "/api/playbook-settings-assistant", "/api/verification-assistant", "/api/data-lineage", "/api/embedded-data-flow", "/api/data-lineage-assistant", "/api/gitlab-playbooks", "/api/gitlab-directory", "/api/gitlab-playbook-load", "/api/gitlab-readme", "/api/model-chat", "/api/model-chat-start", "/api/model-chat-status", "/api/model-chat-cancel", "/api/model-chat-export", "/api/model-chat-playbook-preview"}:
             _json_response(self, {"status": "failed", "error": "Unknown API endpoint."}, HTTPStatus.NOT_FOUND)
             return
         try:
@@ -11587,6 +11829,12 @@ class EditorHandler(SimpleHTTPRequestHandler):
                 if not isinstance(package,dict) or not package.get("source"):
                     _json_response(self,{"status":"failed","error":"Load a playbook before opening Playbook Settings."},HTTPStatus.BAD_REQUEST); return
                 _json_response(self,_playbook_settings_payload(package)); return
+            if path == "/api/package-files":
+                package_id=str(payload.get("package_id") or "")
+                package=PLAYBOOK_PACKAGES.get(package_id) if package_id else _active_playbook_package()
+                if not isinstance(package,dict) or not package.get("source"):
+                    _json_response(self,{"status":"failed","error":"Load a playbook before opening Package Files."},HTTPStatus.BAD_REQUEST); return
+                _json_response(self,_package_files_payload(package,mode=str(payload.get("mode") or "list"),resource_path=str(payload.get("path") or ""))); return
             if path == "/api/playbook-settings-assistant":
                 _json_response(self,_playbook_settings_assistant(payload)); return
             if path == "/api/verification-assistant":
@@ -11758,9 +12006,6 @@ class EditorHandler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         path = parsed.path
-        if path == "/healthz":
-            _json_response(self, {"status": "ok", "service": "ordo-tree-editor", "editor_version": (UTILITY_ROOT / "VERSION").read_text(encoding="utf-8").strip()})
-            return
         if path == "/api/gitlab-archive":
             query=parse_qs(parsed.query)
             root_url=str((query.get("root_url") or [EDITOR_STARTUP.get("gitlab_root") or ""])[0]).strip()
@@ -11841,6 +12086,27 @@ class EditorHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(data)
             return
+        if path == "/api/package-file-download":
+            query=parse_qs(parsed.query)
+            package_id=str((query.get("package_id") or [""])[0]).strip()
+            relative=str((query.get("path") or [""])[0]).strip().replace("\\","/").lstrip("/")
+            package=PLAYBOOK_PACKAGES.get(package_id) if package_id else _active_playbook_package()
+            if not isinstance(package,dict):
+                self.send_error(HTTPStatus.NOT_FOUND,"package not found"); return
+            manifest={str(i.get("path") or "").replace("\\","/") for i in (package.get("manifest") or []) if isinstance(i,dict)}
+            if not relative or relative not in manifest:
+                self.send_error(HTTPStatus.NOT_FOUND,"package file not found"); return
+            raw=package.get("raw_zip")
+            if not isinstance(raw,(bytes,bytearray)):
+                self.send_error(HTTPStatus.NOT_FOUND,"package archive unavailable"); return
+            try:
+                with zipfile.ZipFile(io.BytesIO(raw)) as archive: data=archive.read(relative)
+            except Exception:
+                self.send_error(HTTPStatus.NOT_FOUND,"package file not found"); return
+            content_type=mimetypes.guess_type(Path(relative).name)[0] or "application/octet-stream"
+            self.send_response(HTTPStatus.OK); self.send_header("Content-Type",content_type); self.send_header("Content-Length",str(len(data)))
+            safe_name=re.sub(r'[^A-Za-z0-9._-]+','_',Path(relative).name) or "package-file"
+            self.send_header("Content-Disposition",f'attachment; filename="{safe_name}"'); self.send_header("Cache-Control","no-store"); self.end_headers(); self.wfile.write(data); return
         if path == "/api/run-artifact":
             relative = str((parse_qs(parsed.query).get("path") or [""])[0]).strip().lstrip("/\\")
             if not relative:
@@ -11874,7 +12140,7 @@ class EditorHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
 
-def run_server(port: int, open_browser: bool, *, host: str = "127.0.0.1", provider: str | None=None, api_key: str | None=None, model: str | None=None, base_url: str | None=None, gitlab_root: str | None=None) -> None:
+def run_server(port: int, open_browser: bool, *, provider: str | None=None, api_key: str | None=None, model: str | None=None, base_url: str | None=None, gitlab_root: str | None=None) -> None:
     config=_resolve_startup_runtime_config(provider=provider,model=model,base_url=base_url,api_key=api_key)
     LIVE_RUNTIME.update(config)
     EDITOR_STARTUP["gitlab_root"]=str(gitlab_root or os.environ.get("ORDO_GITLAB_ROOT") or "").strip()
@@ -11884,9 +12150,8 @@ def run_server(port: int, open_browser: bool, *, host: str = "127.0.0.1", provid
         print("Model default is not fully configured; use Model Settings in the Editor.")
     if EDITOR_STARTUP["gitlab_root"]:
         print(f"GitLab playbook root: {EDITOR_STARTUP['gitlab_root']}")
-    server = ThreadingHTTPServer((host, port), EditorHandler)
-    display_host = "127.0.0.1" if host in {"0.0.0.0", "::"} else host
-    url = f"http://{display_host}:{server.server_port}"
+    server = ThreadingHTTPServer(("127.0.0.1", port), EditorHandler)
+    url = f"http://127.0.0.1:{server.server_port}"
     print(f"Ordo Tree Editor is running at {url}")
     if open_browser:
         webbrowser.open(url)
@@ -11900,7 +12165,6 @@ def run_server(port: int, open_browser: bool, *, host: str = "127.0.0.1", provid
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Run the local Ordo Tree Editor.")
-    parser.add_argument("--host", default=os.environ.get("ORDO_EDITOR_HOST", "127.0.0.1"))
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--no-browser", action="store_true")
     parser.add_argument("--model-provider", choices=PROVIDERS, default=os.environ.get("ORDO_MODEL_PROVIDER"), help="Default provider: openai, mlx, or custom.")
@@ -11917,7 +12181,7 @@ def main(argv: list[str] | None = None) -> int:
     api_key=args.model_api_key or args.openai_api_key
     model=args.model_name or args.openai_model
     base_url=args.model_base_url or args.openai_base_url
-    run_server(args.port,open_browser=not args.no_browser,host=args.host,provider=provider,api_key=api_key,model=model,base_url=base_url,gitlab_root=args.gitlab_root)
+    run_server(args.port,open_browser=not args.no_browser,provider=provider,api_key=api_key,model=model,base_url=base_url,gitlab_root=args.gitlab_root)
     return 0
 
 

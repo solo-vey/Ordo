@@ -1,0 +1,14 @@
+LibraryInclude:
+  type: object
+  required: [library, version]
+  properties:
+    library:
+      type: string
+    version:
+      type: string
+      description: Semver requirement.
+    as:
+      type: string
+    exports:
+      type: array
+      items: { type: string }

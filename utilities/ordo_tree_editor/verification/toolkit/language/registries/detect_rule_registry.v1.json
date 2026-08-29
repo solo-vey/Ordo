@@ -1,0 +1,385 @@
+{
+  "schema_version": "ordo.detect_rule_registry.v1",
+  "registry_version": "M88.2",
+  "status": "active",
+  "items": [
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "AP-29",
+      "antipattern_id": "PROMPT_AS_IMPLEMENTATION",
+      "name": "Prompt Present Without Implementation Artifacts",
+      "description": "Detects when an implementation prompt exists but executable implementation artifacts are absent.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "implementation_prompt_present",
+          "implementation_artifacts_absent"
+        ],
+        "optional_signals": [
+          "completion_claim_present"
+        ],
+        "allowed_contexts": [
+          "process_trace",
+          "package_state",
+          "evidence_state"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "implementation_prompt_present",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "implementation_artifacts_absent",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "AP-29"
+      },
+      "evaluation": {
+        "mode": "hybrid",
+        "missing_signal_policy": "inconclusive",
+        "deterministic": true,
+        "priority": 100
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "implementation",
+        "evidence"
+      ]
+    },
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "AP-30",
+      "antipattern_id": "PACKAGE_VALIDATION_WITHOUT_COMPLETENESS_VALIDATION",
+      "name": "Structure Valid but Mandatory Artifacts Missing",
+      "description": "Detects structurally valid packages that are missing mandatory artifacts.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "package_structure_valid",
+          "mandatory_artifacts_missing"
+        ],
+        "optional_signals": [],
+        "allowed_contexts": [
+          "package_state",
+          "evidence_state"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "package_structure_valid",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "mandatory_artifacts_missing",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "AP-30"
+      },
+      "evaluation": {
+        "mode": "static",
+        "missing_signal_policy": "error",
+        "deterministic": true,
+        "priority": 90
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "package",
+        "completeness"
+      ]
+    },
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "AP-31",
+      "antipattern_id": "MANDATORY_BRANCH_SHORT_CIRCUIT",
+      "name": "Later Stage Entered Before Required Stage",
+      "description": "Detects entry into a later process stage while a required earlier stage is incomplete.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "required_stage_missing",
+          "later_stage_entered"
+        ],
+        "optional_signals": [],
+        "allowed_contexts": [
+          "process_trace",
+          "runtime_state"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "required_stage_missing",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "later_stage_entered",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "AP-31"
+      },
+      "evaluation": {
+        "mode": "runtime",
+        "missing_signal_policy": "error",
+        "deterministic": true,
+        "priority": 100
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "process",
+        "branch"
+      ]
+    },
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "AP-32",
+      "antipattern_id": "FINAL_LABEL_OVERCLAIM",
+      "name": "Final Label Unsupported by Evidence",
+      "description": "Detects final maturity labels that are not supported by available evidence.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "final_label_present",
+          "supporting_evidence_insufficient"
+        ],
+        "optional_signals": [],
+        "allowed_contexts": [
+          "package_state",
+          "evidence_state",
+          "process_trace"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "final_label_present",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "supporting_evidence_insufficient",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "AP-32"
+      },
+      "evaluation": {
+        "mode": "hybrid",
+        "missing_signal_policy": "inconclusive",
+        "deterministic": true,
+        "priority": 95
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "label",
+        "evidence"
+      ]
+    },
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "SCOPE-NOT-AUTHORIZATION-01",
+      "antipattern_id": "SCOPE_CONFIRMATION_AS_IMPLEMENTATION_AUTHORIZATION",
+      "name": "Scope Confirmation Is Not Mutation Authorization",
+      "description": "Detects repository mutation after scope confirmation without explicit mutation authorization.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "scope_confirmed",
+          "repository_mutation_started",
+          "mutation_authorization_absent"
+        ],
+        "optional_signals": [],
+        "allowed_contexts": [
+          "conversation",
+          "repository_state",
+          "process_trace"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "scope_confirmed",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "repository_mutation_started",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "mutation_authorization_absent",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "SCOPE-NOT-AUTHORIZATION-01"
+      },
+      "evaluation": {
+        "mode": "runtime",
+        "missing_signal_policy": "error",
+        "deterministic": true,
+        "priority": 100
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "scope",
+        "authorization"
+      ]
+    },
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "COMPLEXITY-ASSESSMENT-REQUIRED-01",
+      "antipattern_id": "COMPLEXITY_ROUTING_AND_EXECUTION_IN_ONE_NODE",
+      "name": "Complexity Routing and Execution Must Be Separate",
+      "description": "Detects a process node that combines complexity assessment, route selection and execution.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "single_node_multi_decision",
+          "execution_started"
+        ],
+        "optional_signals": [
+          "route_not_explicit",
+          "authorization_not_explicit"
+        ],
+        "allowed_contexts": [
+          "conversation",
+          "process_trace",
+          "runtime_state"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "single_node_multi_decision",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "execution_started",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "COMPLEXITY-ASSESSMENT-REQUIRED-01"
+      },
+      "evaluation": {
+        "mode": "runtime",
+        "missing_signal_policy": "inconclusive",
+        "deterministic": true,
+        "priority": 90
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "complexity",
+        "routing",
+        "authorization"
+      ]
+    },
+    {
+      "schema_version": "ordo.detect_rule.v1",
+      "id": "TEST_FIXTURE_MUTATION_ASSERT",
+      "antipattern_id": "SILENT_FIXTURE_NOOP",
+      "name": "Negative Fixture Mutation Must Change Source",
+      "description": "Detects a negative test fixture mutation that has no proof the source changed before the subject under test is executed.",
+      "input_contract": {
+        "signal_schema_version": "ordo.detection_signals.v1",
+        "required_signals": [
+          "negative_fixture_mutation",
+          "mutation_change_unproven"
+        ],
+        "optional_signals": [
+          "text_replace_used",
+          "regex_substitution_used",
+          "patch_used"
+        ],
+        "allowed_contexts": [
+          "repository_state",
+          "process_trace",
+          "evidence_state"
+        ]
+      },
+      "condition": {
+        "operator": "all",
+        "clauses": [
+          {
+            "signal": "negative_fixture_mutation",
+            "predicate": "is_true"
+          },
+          {
+            "signal": "mutation_change_unproven",
+            "predicate": "is_true"
+          }
+        ]
+      },
+      "output_contract": {
+        "finding_type": "ANTIPATTERN.FINDING",
+        "include_evidence": true,
+        "include_recovery": true,
+        "include_remediation": true,
+        "finding_code": "TEST_FIXTURE_MUTATION_ASSERT"
+      },
+      "evaluation": {
+        "mode": "static",
+        "missing_signal_policy": "inconclusive",
+        "deterministic": true,
+        "priority": 100
+      },
+      "version": "v1",
+      "status": "active",
+      "tags": [
+        "testing",
+        "fixture",
+        "determinism"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1545 @@
+{
+  "package": "RISK_FACTOR_PASSPORT_PLAYBOOK_ALFA_0.8.7_20260804T140500Z.zip",
+  "compiled_plan_status": {
+    "available": true,
+    "valid": true,
+    "reason": "ok",
+    "path": "RISK_FACTOR_PASSPORT_PLAYBOOK_ALFA_0.8.7/compiled/llm_execution_plan.json",
+    "source_sha256": "e67338fd093b8850af1fd6b6e63cdeca2c4e07977da9d9d7bd494ab516396604",
+    "format": "ordo.llm_execution_plan",
+    "format_version": "2.0",
+    "validation_status": "valid"
+  },
+  "entry": "N_RISK_FACTOR_SELECTION",
+  "steps": [
+    {
+      "n": 0,
+      "id": "N_RISK_FACTOR_SELECTION",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 0,
+      "id": "N_RISK_FACTOR_SELECTION",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Діяльність компанії офіційно припинена",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "G_RISK_FACTOR_CANDIDATE_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 1,
+      "id": "G_RISK_FACTOR_CANDIDATE_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_RISK_FACTOR_IDENTITY_DRAFT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 2,
+      "id": "N_RISK_FACTOR_IDENTITY_DRAFT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 2,
+      "id": "N_RISK_FACTOR_IDENTITY_DRAFT",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Дякую, але прошу скоригувати чернетку — приймаю не запропоновані вами значення, а такі: name_ua: \"Діяльність компанії офіційно припинена\"; name_en: \"Company activity officially terminated\"; alias: \"COMPANY_TERMINATED\"; subtype: \"EDR\"; type:",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_IDENTITY_DRAFT_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 3,
+      "id": "G_IDENTITY_DRAFT_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_RISK_FACTOR_IDENTITY_SCOPE",
+      "selected": "on_pass"
+    },
+    {
+      "n": 4,
+      "id": "N_RISK_FACTOR_IDENTITY_SCOPE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 4,
+      "id": "N_RISK_FACTOR_IDENTITY_SCOPE",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Надаю повний набір із шести полів: group: \"Ризик ліквідації компанії\"; product_block: \"Загальні ризики → підгрупа «Реєстраційні ризики»\"; subject_scope: \"Компанія та ФОП\"; jurisdiction_scope: \"all\"; criticality: \"критичний\"; product_output:",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_IDENTITY_SCOPE_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 5,
+      "id": "G_IDENTITY_SCOPE_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_BUSINESS_MEANING",
+      "selected": "on_pass"
+    },
+    {
+      "n": 6,
+      "id": "N_BUSINESS_MEANING",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 6,
+      "id": "N_BUSINESS_MEANING",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Замінюю чернетку власним описом бізнес-сенсу: Субʼєкт — юридична особа або ФОП — має реєстраційний статус «припинено»: до Єдиного державного реєстру юридичних осіб, фізичних осіб-підприємців та громадських формувань внесено запис про припин",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_BUSINESS_MEANING_CONFIRMED",
+      "selected": "next"
+    },
+    {
+      "n": 7,
+      "id": "G_BUSINESS_MEANING_CONFIRMED",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 7,
+      "id": "G_BUSINESS_MEANING_CONFIRMED",
+      "kind": "gate",
+      "phase": "respond",
+      "answer_source": "synthetic",
+      "answer": "on_pass",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_TRIGGER_SOURCE_BLOCK",
+      "selected": "on_pass"
+    },
+    {
+      "n": 8,
+      "id": "N_TRIGGER_SOURCE_BLOCK",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 8,
+      "id": "N_TRIGGER_SOURCE_BLOCK",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Джерело 1 — companyProfile / EDR, модуль API company-profile. API: https://api-in-dev.ligazakon.net/compliance/company-profile/v1.0/api/data/companyProfile. Опис типу даних: узагальнена інформація про компанію, що містить основні реєстрацій",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_TRIGGER_SOURCE_BLOCK_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 9,
+      "id": "G_TRIGGER_SOURCE_BLOCK_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_TRIGGER_ADDITIONAL_SOURCE_DECISION",
+      "selected": "on_pass"
+    },
+    {
+      "n": 10,
+      "id": "N_TRIGGER_ADDITIONAL_SOURCE_DECISION",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 10,
+      "id": "N_TRIGGER_ADDITIONAL_SOURCE_DECISION",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "ні",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "G_TRIGGER_SOURCE_COLLECTION_COMPLETE",
+      "selected": "ні"
+    },
+    {
+      "n": 11,
+      "id": "G_TRIGGER_SOURCE_COLLECTION_COMPLETE",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "inherited-branch-evidence",
+      "run_status": "running",
+      "await": false,
+      "next": "N_TRIGGER_ATTRIBUTE_CANDIDATE_ANALYSIS",
+      "selected": "on_pass"
+    },
+    {
+      "n": 12,
+      "id": "N_TRIGGER_ATTRIBUTE_CANDIDATE_ANALYSIS",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 12,
+      "id": "N_TRIGGER_ATTRIBUTE_CANDIDATE_ANALYSIS",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Підтверджую наведений перелік релевантних полів і їх призначення. Типи полів: statusCode — string; companyType.isIndividualInterprener — boolean; termination.date — date; shortName, fullName, shortEn, nameEn — string. Правило для statusCode",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_TRIGGER_ATTRIBUTE_MAPPING_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 13,
+      "id": "G_TRIGGER_ATTRIBUTE_MAPPING_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_TRIGGER_ALGORITHM_DRAFT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 14,
+      "id": "N_TRIGGER_ALGORITHM_DRAFT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 14,
+      "id": "N_TRIGGER_ALGORITHM_DRAFT",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Підтверджую алгоритм: statusCode порівнюється строго case-sensitive зі значенням \"closed\", без trim. Тільки точне значення \"closed\" означає наявність ризик-фактора.\n\nДодатково:\n- null → фактор не спрацьовує, без exception;\n- \"\" (порожній ря",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_TRIGGER_ALGORITHM_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 15,
+      "id": "G_TRIGGER_ALGORITHM_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 15,
+      "id": "G_TRIGGER_ALGORITHM_VALID",
+      "kind": "gate",
+      "phase": "respond",
+      "answer_source": "synthetic",
+      "answer": "on_pass",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_TRIGGER_CLIENT_VALUE_MAPPING",
+      "selected": "on_pass"
+    },
+    {
+      "n": 16,
+      "id": "N_TRIGGER_CLIENT_VALUE_MAPPING",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 16,
+      "id": "N_TRIGGER_CLIENT_VALUE_MAPPING",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Коригую mapping — не запропоновані вами target fields, а такі:\n\n- companyType.isIndividualInterprener → values.companyTypeUA: false → \"компанія\"; true → \"ФОП\".\n- companyType.isIndividualInterprener → values.companyTypeEN: false → \"company\";",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_TRIGGER_CLIENT_VALUE_MAPPING_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 17,
+      "id": "G_TRIGGER_CLIENT_VALUE_MAPPING_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_TRIGGER_LOGIC_BLOCK_COMPLETE",
+      "selected": "on_pass"
+    },
+    {
+      "n": 18,
+      "id": "G_TRIGGER_LOGIC_BLOCK_COMPLETE",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_UPDATE_AND_HISTORY_POLICY",
+      "selected": "on_pass"
+    },
+    {
+      "n": 19,
+      "id": "N_UPDATE_AND_HISTORY_POLICY",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 19,
+      "id": "N_UPDATE_AND_HISTORY_POLICY",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Правила щодо N_UPDATE_AND_HISTORY_POLICY:\n\nmonitored_subject_schedule: щоденно.\nrealtime_recalculation: при відкритті картки компанії.\ndefault_schedule: раз на тиждень.\nhistorical_record_policy: зберігати історичні дані та історію переходів",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_UPDATE_HISTORY_POLICY_COMPLETE",
+      "selected": "next"
+    },
+    {
+      "n": 20,
+      "id": "G_UPDATE_HISTORY_POLICY_COMPLETE",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_GENERATE_FUNCTIONAL_TESTS",
+      "selected": "on_pass"
+    },
+    {
+      "n": 21,
+      "id": "N_GENERATE_FUNCTIONAL_TESTS",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_GENERATE_UNIT_TESTS",
+      "selected": "next"
+    },
+    {
+      "n": 22,
+      "id": "N_GENERATE_UNIT_TESTS",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_GENERATE_EDGE_CASES",
+      "selected": "next"
+    },
+    {
+      "n": 23,
+      "id": "N_GENERATE_EDGE_CASES",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_TEST_COVERAGE_COMPLETE",
+      "selected": "next"
+    },
+    {
+      "n": 24,
+      "id": "G_TEST_COVERAGE_COMPLETE",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "N_DERIVE_AND_CONFIRM_RISK_FACTOR_IMPLEMENTATION_PROFILE",
+      "selected": "on_pass"
+    },
+    {
+      "n": 25,
+      "id": "N_DERIVE_AND_CONFIRM_RISK_FACTOR_IMPLEMENTATION_PROFILE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 25,
+      "id": "N_DERIVE_AND_CONFIRM_RISK_FACTOR_IMPLEMENTATION_PROFILE",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "change_kind = create.\n\nПідтверджую implementation profile. Тип зміни — create, alias — COMPANY_TERMINATED, група — Ризик ліквідації компанії, jurisdiction — all, застосовується до компаній і ФОП, description template — template1.",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_PASSPORT_PRE_MATERIALIZATION_MODEL",
+      "selected": "next"
+    },
+    {
+      "n": 26,
+      "id": "G_PASSPORT_PRE_MATERIALIZATION_MODEL",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_GENERATE_PASSPORT_DRAFT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 27,
+      "id": "N_GENERATE_PASSPORT_DRAFT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "deterministic-document-generate",
+      "run_status": "running",
+      "await": false,
+      "next": "G_PASSPORT_COMPLETENESS",
+      "selected": "next"
+    },
+    {
+      "n": 28,
+      "id": "G_PASSPORT_COMPLETENESS",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "G_PASSPORT_POST_MATERIALIZATION_PYTHON",
+      "selected": "on_pass"
+    },
+    {
+      "n": 29,
+      "id": "G_PASSPORT_POST_MATERIALIZATION_PYTHON",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "G_PASSPORT_CONSISTENCY",
+      "selected": "on_pass"
+    },
+    {
+      "n": 30,
+      "id": "G_PASSPORT_CONSISTENCY",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "N_ANALYST_REVIEW",
+      "selected": "on_pass"
+    },
+    {
+      "n": 31,
+      "id": "N_ANALYST_REVIEW",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 31,
+      "id": "N_ANALYST_REVIEW",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "1 — N_GENERATE_PASSPORT_DRAFT. Виправте розбіжність: канонічний заголовок секції 3 — \"## 3. Що сталося\" (граматично коректна форма). Синхронізуйте template і validate_risk_factor_passport.py саме на це формулювання, повторно матеріалізуйте ",
+      "reason": "unmatched-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 32,
+      "id": "N_ANALYST_REVIEW",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 32,
+      "id": "N_ANALYST_REVIEW",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "approve",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_FINALIZE_APPROVED_PASSPORT",
+      "selected": "approve"
+    },
+    {
+      "n": 33,
+      "id": "N_FINALIZE_APPROVED_PASSPORT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_APPROVED_PASSPORT_FINALIZATION_VALID",
+      "selected": "next"
+    },
+    {
+      "n": 34,
+      "id": "G_APPROVED_PASSPORT_FINALIZATION_VALID",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "G_JIRA_TASK_DATA_SUFFICIENT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 35,
+      "id": "G_JIRA_TASK_DATA_SUFFICIENT",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "N_MATERIALIZE_JIRA_TASK",
+      "selected": "on_pass"
+    },
+    {
+      "n": 36,
+      "id": "N_MATERIALIZE_JIRA_TASK",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "deterministic-document-generate",
+      "run_status": "running",
+      "await": false,
+      "next": "G_JIRA_TASK_POST_MATERIALIZATION_PYTHON",
+      "selected": "next"
+    },
+    {
+      "n": 37,
+      "id": "G_JIRA_TASK_POST_MATERIALIZATION_PYTHON",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "N_PRESENT_AND_REVIEW_JIRA_TASK",
+      "selected": "on_pass"
+    },
+    {
+      "n": 38,
+      "id": "N_PRESENT_AND_REVIEW_JIRA_TASK",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 38,
+      "id": "N_PRESENT_AND_REVIEW_JIRA_TASK",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "synthetic",
+      "answer": "approve",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_PREPARE_IMPLEMENTATION_PROMPT_CONTEXT",
+      "selected": "approve"
+    },
+    {
+      "n": 39,
+      "id": "N_PREPARE_IMPLEMENTATION_PROMPT_CONTEXT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_IMPLEMENTATION_PROMPT_DATA_SUFFICIENT",
+      "selected": "next"
+    },
+    {
+      "n": 40,
+      "id": "G_IMPLEMENTATION_PROMPT_DATA_SUFFICIENT",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_MATERIALIZE_IMPLEMENTATION_PROMPT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 41,
+      "id": "N_MATERIALIZE_IMPLEMENTATION_PROMPT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "deterministic-document-generate",
+      "run_status": "running",
+      "await": false,
+      "next": "G_IMPLEMENTATION_PROMPT_POST_MATERIALIZATION_PYTHON",
+      "selected": "next"
+    },
+    {
+      "n": 42,
+      "id": "G_IMPLEMENTATION_PROMPT_POST_MATERIALIZATION_PYTHON",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": "deterministic-gate",
+      "run_status": "running",
+      "await": false,
+      "next": "N_PRESENT_IMPLEMENTATION_PROMPT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 43,
+      "id": "N_PRESENT_IMPLEMENTATION_PROMPT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_REVIEW_IMPLEMENTATION_PROMPT",
+      "selected": "next"
+    },
+    {
+      "n": 44,
+      "id": "N_REVIEW_IMPLEMENTATION_PROMPT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 44,
+      "id": "N_REVIEW_IMPLEMENTATION_PROMPT",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "approve",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_FORM_DELIVERY_PACKAGE",
+      "selected": "approve"
+    },
+    {
+      "n": 45,
+      "id": "N_FORM_DELIVERY_PACKAGE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_OFFER_IMPLEMENTATION_CONTINUATION",
+      "selected": "next"
+    },
+    {
+      "n": 46,
+      "id": "N_OFFER_IMPLEMENTATION_CONTINUATION",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 46,
+      "id": "N_OFFER_IMPLEMENTATION_CONTINUATION",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "continue_to_implementation",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_EVIDENCE_INTAKE",
+      "selected": "continue_to_implementation"
+    },
+    {
+      "n": 47,
+      "id": "N_IMPL_EVIDENCE_INTAKE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 47,
+      "id": "N_IMPL_EVIDENCE_INTAKE",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "synthetic",
+      "answer": "impl_baseline_submitted",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "G_IMPL_EVIDENCE_READY",
+      "selected": "impl_baseline_submitted"
+    },
+    {
+      "n": 48,
+      "id": "G_IMPL_EVIDENCE_READY",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_SCOPE_ASSESSMENT",
+      "selected": "on_pass"
+    },
+    {
+      "n": 49,
+      "id": "N_IMPL_SCOPE_ASSESSMENT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_IMPL_SCOPE_READY",
+      "selected": "next"
+    },
+    {
+      "n": 50,
+      "id": "G_IMPL_SCOPE_READY",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_PROMPT_SYNC",
+      "selected": "on_pass"
+    },
+    {
+      "n": 51,
+      "id": "N_IMPL_PROMPT_SYNC",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_EXECUTION_MODE",
+      "selected": "next"
+    },
+    {
+      "n": 52,
+      "id": "N_IMPL_EXECUTION_MODE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 52,
+      "id": "N_IMPL_EXECUTION_MODE",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "дай попункно що саме є блокуючим для автоматичного внесення",
+      "reason": "unmatched-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 53,
+      "id": "N_IMPL_EXECUTION_MODE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 53,
+      "id": "N_IMPL_EXECUTION_MODE",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "зроби самостійно реалізацію без виконання цих 4 блокуюяих вимог",
+      "reason": "unmatched-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 54,
+      "id": "N_IMPL_EXECUTION_MODE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 54,
+      "id": "N_IMPL_EXECUTION_MODE",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "synthetic",
+      "answer": "impl_direct_change_full_scope_selected",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_DIRECT_CHANGE",
+      "selected": "impl_direct_change_full_scope_selected"
+    },
+    {
+      "n": 55,
+      "id": "N_IMPL_DIRECT_CHANGE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_DIRECT_CHANGE_VALIDATE",
+      "selected": "next"
+    },
+    {
+      "n": 56,
+      "id": "N_IMPL_DIRECT_CHANGE_VALIDATE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_IMPL_CANDIDATE_READY",
+      "selected": "next"
+    },
+    {
+      "n": 57,
+      "id": "G_IMPL_CANDIDATE_READY",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_VERIFY",
+      "selected": "on_pass"
+    },
+    {
+      "n": 58,
+      "id": "N_IMPL_VERIFY",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "G_IMPL_VERIFICATION",
+      "selected": "next"
+    },
+    {
+      "n": 59,
+      "id": "G_IMPL_VERIFICATION",
+      "kind": "gate",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPL_VERIFICATION_REVIEW",
+      "selected": "on_pass"
+    },
+    {
+      "n": 60,
+      "id": "N_IMPL_VERIFICATION_REVIEW",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 60,
+      "id": "N_IMPL_VERIFICATION_REVIEW",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Який зараз активний вузол і статус G_IMPL_VERIFICATION / N_IMPL_VERIFICATION_REVIEW? Уточніть явно: verification status — passed чи є blocking findings, з урахуванням того, що maven compile/test suite не запускався (немає mvn/mvnw), а пройд",
+      "reason": "unmatched-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 61,
+      "id": "N_IMPL_VERIFICATION_REVIEW",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 61,
+      "id": "N_IMPL_VERIFICATION_REVIEW",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "Фіксую рішення аналітика по N_IMPL_VERIFICATION_REVIEW:\n\nimplementation_change_analyst_review_status: \"developer_handoff_ready\"\nimplementation_change_final_status: \"developer_handoff_ready\"\n\nПримітка (обов'язково включити в пакет результату",
+      "reason": "unmatched-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 62,
+      "id": "N_IMPL_VERIFICATION_REVIEW",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 62,
+      "id": "N_IMPL_VERIFICATION_REVIEW",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "synthetic",
+      "answer": "impl_implementation_accepted",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_IMPLEMENTATION_RESULT_PACKAGE",
+      "selected": "impl_implementation_accepted"
+    },
+    {
+      "n": 63,
+      "id": "N_IMPLEMENTATION_RESULT_PACKAGE",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_OFFER_RUN_EVIDENCE_EXPORT",
+      "selected": "next"
+    },
+    {
+      "n": 64,
+      "id": "N_OFFER_RUN_EVIDENCE_EXPORT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": "declared-human-input",
+      "run_status": "running",
+      "await": true,
+      "next": null,
+      "selected": null
+    },
+    {
+      "n": 64,
+      "id": "N_OFFER_RUN_EVIDENCE_EXPORT",
+      "kind": "node",
+      "phase": "respond",
+      "answer_source": "historical",
+      "answer": "так",
+      "reason": "deterministic-human-route",
+      "run_status": "running",
+      "await": false,
+      "next": "N_GENERATE_RUN_EVIDENCE_EXPORT",
+      "selected": "так"
+    },
+    {
+      "n": 65,
+      "id": "N_GENERATE_RUN_EVIDENCE_EXPORT",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "running",
+      "await": false,
+      "next": "N_PROCESS_COMPLETED",
+      "selected": "next"
+    },
+    {
+      "n": 66,
+      "id": "N_PROCESS_COMPLETED",
+      "kind": "node",
+      "phase": "enter",
+      "reason": null,
+      "run_status": "completed",
+      "await": false,
+      "next": null,
+      "selected": null
+    }
+  ],
+  "final_current": "N_PROCESS_COMPLETED",
+  "final_state": {
+    "risk_factor_candidate": "Діяльність компанії офіційно припинена",
+    "risk_factor_identity": {
+      "absent_state": "відсутній",
+      "alias": "COMPANY_TERMINATED",
+      "contract_version": 1,
+      "document_status": "draft",
+      "name_en": "Company activity officially terminated",
+      "name_ua": "Діяльність компанії офіційно припинена",
+      "present_state": "наявний",
+      "subtype": "EDR",
+      "type": "companyProfile",
+      "group": "Ризик ліквідації компанії",
+      "product_block": "Загальні ризики → підгрупа «Реєстраційні ризики»",
+      "subject_scope": "Компанія та ФОП",
+      "jurisdiction_scope": "all",
+      "criticality": "критичний",
+      "product_output": "Віджети в LU + PDF звіт у Liga360"
+    },
+    "subject_scope": "Компанія та ФОП",
+    "jurisdiction_scope": "all",
+    "business_meaning": {
+      "description": "Official termination recorded in register",
+      "what_happened": "Company officially terminated",
+      "event_definition": "Official termination record exists",
+      "business_impact": "Contracts and obligations may be affected",
+      "criticality_justification": "critical business impact",
+      "user_actions": "stop payments and verify successor",
+      "user_action_implications": "stop payments and verify successor"
+    },
+    "adjacent_state_boundaries": {
+      "rows": [
+        {
+          "boundary_name": "в стані припинення",
+          "difference": "Процедуру розпочато, але запис про припинення ще не внесено; цей ризик-фактор не спрацьовує."
+        },
+        {
+          "boundary_name": "банкрутство / ліквідаційна процедура",
+          "difference": "Окремий ризик-фактор, який може передувати припиненню."
+        },
+        {
+          "boundary_name": "скасування припинення / відновлення діяльності",
+          "difference": "Зворотна зміна статусу, ризик-фактор переходить у стан «відсутній»."
+        }
+      ]
+    },
+    "source_data_definition": {
+      "rows": [
+        {
+          "source_number": 1,
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "rest_endpoint": "https://api-in-dev.ligazakon.net/compliance/company-profile/v1.0/api/data/companyProfile",
+          "description": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості"
+        }
+      ]
+    },
+    "source_attribute_mapping": {
+      "rows": [
+        {
+          "source_number": 1,
+          "field": "statusCode",
+          "purpose": "trigger_calculation",
+          "confirmed": true,
+          "field_type": "string",
+          "logic": "factor present if value == 'closed'",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "statusCode",
+          "field_role": "Trigger",
+          "calculation_relevance": "factor present if value == 'closed'",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "string"
+        },
+        {
+          "source_number": 1,
+          "field": "companyType.isIndividualInterprener",
+          "purpose": "client_output",
+          "confirmed": true,
+          "field_type": "boolean",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "companyType.isIndividualInterprener",
+          "field_role": "Client Data",
+          "calculation_relevance": "client_output",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "boolean"
+        },
+        {
+          "source_number": 1,
+          "field": "termination.date",
+          "purpose": "client_output",
+          "confirmed": true,
+          "field_type": "date",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "termination.date",
+          "field_role": "Client Data",
+          "calculation_relevance": "client_output",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "date"
+        },
+        {
+          "source_number": 1,
+          "field": "shortName",
+          "purpose": "client_output",
+          "confirmed": true,
+          "field_type": "string",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "shortName",
+          "field_role": "Client Data",
+          "calculation_relevance": "client_output",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "string"
+        },
+        {
+          "source_number": 1,
+          "field": "fullName",
+          "purpose": "client_output",
+          "confirmed": true,
+          "field_type": "string",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "fullName",
+          "field_role": "Client Data",
+          "calculation_relevance": "client_output",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "string"
+        },
+        {
+          "source_number": 1,
+          "field": "shortEn",
+          "purpose": "client_output",
+          "confirmed": true,
+          "field_type": "string",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "shortEn",
+          "field_role": "Client Data",
+          "calculation_relevance": "client_output",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "string"
+        },
+        {
+          "source_number": 1,
+          "field": "nameEn",
+          "purpose": "client_output",
+          "confirmed": true,
+          "field_type": "string",
+          "module": "company-profile",
+          "data_type": "companyProfile",
+          "field_path": "nameEn",
+          "field_role": "Client Data",
+          "calculation_relevance": "client_output",
+          "source_evidence": "узагальнена інформація про компанію, що містить основні реєстраційні дані, статус та інші ключові відомості",
+          "analyst_status": "Confirmed",
+          "type": "string"
+        }
+      ]
+    },
+    "additional_source_required": false,
+    "trigger_logic": {
+      "source_type": "companyProfile",
+      "source_attribute": "statusCode",
+      "positive_condition": "statusCode == 'closed'",
+      "negative_condition": "statusCode != 'closed'",
+      "null_behavior": "absent",
+      "empty_behavior": "absent",
+      "unknown_value_behavior": "absent_and_log",
+      "source_error_behavior": {
+        "404": "no_data",
+        "5xx": "preserve_previous_state",
+        "timeout": "preserve_previous_state"
+      },
+      "case_policy": "case_sensitive",
+      "trim_policy": "no_trim",
+      "normalization": "none"
+    },
+    "output_payload_mapping": {
+      "rows": [
+        {
+          "source_field": "companyType.isIndividualInterprener",
+          "target_field": "values.companyTypeUA",
+          "transformation": "false -> компанія; true -> ФОП",
+          "basic_fallback": "omit_and_log"
+        },
+        {
+          "source_field": "companyType.isIndividualInterprener",
+          "target_field": "values.companyTypeEN",
+          "transformation": "false -> company; true -> individual entrepreneur",
+          "basic_fallback": "omit_and_log"
+        },
+        {
+          "source_field": "termination.date",
+          "target_field": "values.date",
+          "transformation": "as_is",
+          "basic_fallback": "omit_and_log"
+        },
+        {
+          "source_field": "shortName",
+          "target_field": "values.nameUA",
+          "transformation": "as_is",
+          "basic_fallback": "fullName"
+        },
+        {
+          "source_field": "shortEn",
+          "target_field": "values.nameEN",
+          "transformation": "as_is",
+          "basic_fallback": "nameEn"
+        },
+        {
+          "source_field": "static",
+          "target_field": "aliasRisk",
+          "transformation": "constant: COMPANY_TERMINATED",
+          "basic_fallback": null
+        },
+        {
+          "source_field": "static",
+          "target_field": "group",
+          "transformation": "constant: general_indicators",
+          "basic_fallback": null
+        },
+        {
+          "source_field": "static",
+          "target_field": "aliasTemplate",
+          "transformation": "constant: riskTemplate1",
+          "basic_fallback": null
+        },
+        {
+          "source_field": "algorithm",
+          "target_field": "riskFound",
+          "transformation": "determined_by_algorithm",
+          "basic_fallback": null
+        }
+      ]
+    },
+    "update_policy": {
+      "rows": [
+        {
+          "mode": "monitoring",
+          "periodicity": "daily"
+        },
+        {
+          "mode": "realtime",
+          "periodicity": "on card open"
+        },
+        {
+          "mode": "default",
+          "periodicity": "weekly"
+        }
+      ]
+    },
+    "history_policy": {
+      "bullets": [
+        "preserve history",
+        "do not delete terminated companies",
+        "closed->active keeps history"
+      ]
+    },
+    "functional_test_catalog": {
+      "rows": [
+        {
+          "scenario_id": "FT1",
+          "class": "positive",
+          "input_condition": "statusCode=closed",
+          "expected_risk_state": "Present"
+        },
+        {
+          "scenario_id": "FT2",
+          "class": "negative",
+          "input_condition": "statusCode=active",
+          "expected_risk_state": "Absent"
+        }
+      ]
+    },
+    "unit_test_catalog": {
+      "rows": [
+        {
+          "test_id": "UT1",
+          "input": {
+            "statusCode": "closed"
+          },
+          "expected_output": {
+            "riskFound": true
+          }
+        },
+        {
+          "test_id": "UT2",
+          "input": {
+            "statusCode": "active"
+          },
+          "expected_output": {
+            "riskFound": false
+          }
+        }
+      ]
+    },
+    "edge_case_catalog": {
+      "rows": [
+        {
+          "scenario": "null",
+          "expected_result": "Absent"
+        },
+        {
+          "scenario": "5xx",
+          "expected_result": "preserve_previous_state"
+        }
+      ]
+    },
+    "risk_factor_implementation_profile": {
+      "change_kind": "create",
+      "alias": "COMPANY_TERMINATED",
+      "group": "Ризик ліквідації компанії",
+      "applicable_jurisdictions": "all",
+      "applicable_company_types": [
+        "Компанія",
+        "ФОП"
+      ],
+      "description_template_type": "template1",
+      "confirmed": true,
+      "confirmed_at": "2026-08-04T00:00:00Z"
+    },
+    "implementation_change_kind": "create",
+    "implementation_risk_factor_alias": "COMPANY_TERMINATED",
+    "implementation_risk_factor_group": "Ризик ліквідації компанії",
+    "implementation_applicable_jurisdictions": "all",
+    "implementation_applicable_company_types": [
+      "Компанія",
+      "ФОП"
+    ],
+    "implementation_description_template_type": "template1",
+    "document_metadata": {
+      "approval_status": "draft",
+      "lifecycle_note": "Чернетка документа."
+    },
+    "passport_draft_status": "generated_with_warnings",
+    "final_passport": "generated_outputs/RISK_FACTOR_PASSPORT.md",
+    "analyst_approval": true,
+    "analyst_review_decision": "approve",
+    "analyst_reviewed_at": "$runtime.timestamp",
+    "approved_passport_finalization_status": "passed",
+    "jira_task": {
+      "path": "generated_outputs/JIRA_TASK.md",
+      "materialization_status": "generated",
+      "passport_reference": "generated_outputs/RISK_FACTOR_PASSPORT.md",
+      "validation_status": "passed",
+      "validation_report_path": "generated_outputs/JIRA_TASK_VALIDATION.json",
+      "analyst_review_status": "approved",
+      "analyst_reviewed_at": "$runtime.timestamp"
+    },
+    "implementation_prompt_context_status": "prepared",
+    "implementation_prompt_open_questions": [],
+    "implementation_prompt_path": "generated_outputs/IMPLEMENTATION_PROMPT.md",
+    "implementation_prompt_status": "approved",
+    "implementation_prompt_materialization_status": "generated",
+    "implementation_prompt_generation_attempt": 1,
+    "passport_materialization_warnings": [
+      "implementation_code_constraints",
+      "implementation_data_reader_requirements",
+      "implementation_description_payload_contract",
+      "implementation_expected_code_components",
+      "implementation_handler_strategy",
+      "implementation_registry_action",
+      "implementation_target_module"
+    ],
+    "implementation_prompt_validation_status": "passed",
+    "implementation_prompt_validation_report_path": "generated_outputs/IMPLEMENTATION_PROMPT_VALIDATION.json",
+    "implementation_prompt_gate_failure_reason": null,
+    "implementation_prompt_gate_findings": [],
+    "implementation_prompt_analyst_review_status": "approved",
+    "implementation_prompt_analyst_reviewed_at": "$runtime.timestamp",
+    "implementation_requested": true,
+    "implementation_change_scope_status": "ready",
+    "implementation_change_partial_scope_required": false,
+    "implementation_change_execution_status": "completed"
+  },
+  "visits": {
+    "N_RISK_FACTOR_SELECTION": 1,
+    "G_RISK_FACTOR_CANDIDATE_VALID": 1,
+    "N_RISK_FACTOR_IDENTITY_DRAFT": 1,
+    "G_IDENTITY_DRAFT_VALID": 1,
+    "N_RISK_FACTOR_IDENTITY_SCOPE": 1,
+    "G_IDENTITY_SCOPE_VALID": 1,
+    "N_BUSINESS_MEANING": 1,
+    "G_BUSINESS_MEANING_CONFIRMED": 1,
+    "N_TRIGGER_SOURCE_BLOCK": 1,
+    "G_TRIGGER_SOURCE_BLOCK_VALID": 1,
+    "N_TRIGGER_ADDITIONAL_SOURCE_DECISION": 1,
+    "G_TRIGGER_SOURCE_COLLECTION_COMPLETE": 1,
+    "N_TRIGGER_ATTRIBUTE_CANDIDATE_ANALYSIS": 1,
+    "G_TRIGGER_ATTRIBUTE_MAPPING_VALID": 1,
+    "N_TRIGGER_ALGORITHM_DRAFT": 1,
+    "G_TRIGGER_ALGORITHM_VALID": 1,
+    "N_TRIGGER_CLIENT_VALUE_MAPPING": 1,
+    "G_TRIGGER_CLIENT_VALUE_MAPPING_VALID": 1,
+    "G_TRIGGER_LOGIC_BLOCK_COMPLETE": 1,
+    "N_UPDATE_AND_HISTORY_POLICY": 1,
+    "G_UPDATE_HISTORY_POLICY_COMPLETE": 1,
+    "N_GENERATE_FUNCTIONAL_TESTS": 1,
+    "N_GENERATE_UNIT_TESTS": 1,
+    "N_GENERATE_EDGE_CASES": 1,
+    "G_TEST_COVERAGE_COMPLETE": 1,
+    "N_DERIVE_AND_CONFIRM_RISK_FACTOR_IMPLEMENTATION_PROFILE": 1,
+    "G_PASSPORT_PRE_MATERIALIZATION_MODEL": 1,
+    "N_GENERATE_PASSPORT_DRAFT": 1,
+    "G_PASSPORT_COMPLETENESS": 1,
+    "G_PASSPORT_POST_MATERIALIZATION_PYTHON": 1,
+    "G_PASSPORT_CONSISTENCY": 1,
+    "N_ANALYST_REVIEW": 2,
+    "N_FINALIZE_APPROVED_PASSPORT": 1,
+    "G_APPROVED_PASSPORT_FINALIZATION_VALID": 1,
+    "G_JIRA_TASK_DATA_SUFFICIENT": 1,
+    "N_MATERIALIZE_JIRA_TASK": 1,
+    "G_JIRA_TASK_POST_MATERIALIZATION_PYTHON": 1,
+    "N_PRESENT_AND_REVIEW_JIRA_TASK": 1,
+    "N_PREPARE_IMPLEMENTATION_PROMPT_CONTEXT": 1,
+    "G_IMPLEMENTATION_PROMPT_DATA_SUFFICIENT": 1,
+    "N_MATERIALIZE_IMPLEMENTATION_PROMPT": 1,
+    "G_IMPLEMENTATION_PROMPT_POST_MATERIALIZATION_PYTHON": 1,
+    "N_PRESENT_IMPLEMENTATION_PROMPT": 1,
+    "N_REVIEW_IMPLEMENTATION_PROMPT": 1,
+    "N_FORM_DELIVERY_PACKAGE": 1,
+    "N_OFFER_IMPLEMENTATION_CONTINUATION": 1,
+    "N_IMPL_EVIDENCE_INTAKE": 1,
+    "G_IMPL_EVIDENCE_READY": 1,
+    "N_IMPL_SCOPE_ASSESSMENT": 1,
+    "G_IMPL_SCOPE_READY": 1,
+    "N_IMPL_PROMPT_SYNC": 1,
+    "N_IMPL_EXECUTION_MODE": 3,
+    "N_IMPL_DIRECT_CHANGE": 1,
+    "N_IMPL_DIRECT_CHANGE_VALIDATE": 1,
+    "G_IMPL_CANDIDATE_READY": 1,
+    "N_IMPL_VERIFY": 1,
+    "G_IMPL_VERIFICATION": 1,
+    "N_IMPL_VERIFICATION_REVIEW": 3,
+    "N_IMPLEMENTATION_RESULT_PACKAGE": 1,
+    "N_OFFER_RUN_EVIDENCE_EXPORT": 1,
+    "N_GENERATE_RUN_EVIDENCE_EXPORT": 1,
+    "N_PROCESS_COMPLETED": 1
+  },
+  "historical_answers_remaining": {
+    "N_TRIGGER_CLIENT_VALUE_MAPPING": 1,
+    "null": 1,
+    "N_VALIDATION_FAILURE_RECOVERY": 1
+  },
+  "status": "completed"
+}

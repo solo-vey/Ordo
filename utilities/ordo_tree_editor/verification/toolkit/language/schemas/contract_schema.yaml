@@ -1,0 +1,23 @@
+Contract:
+  type: object
+  required: [kind, id, status, fields]
+  properties:
+    kind:
+      const: contract
+    id:
+      type: string
+    status:
+      enum: [missing, candidate, proposed, confirmed, blocked, not_applicable]
+    fields:
+      type: object
+      additionalProperties:
+        type: object
+        required: [status]
+        properties:
+          value: {}
+          status:
+            enum: [missing, candidate, proposed, confirmed, blocked, not_applicable]
+          required:
+            type: boolean
+          description:
+            type: string

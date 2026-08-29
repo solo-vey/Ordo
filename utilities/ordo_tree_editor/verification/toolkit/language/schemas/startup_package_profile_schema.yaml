@@ -1,0 +1,101 @@
+# Ordo M66.0 startup_package_profile schema convention
+# Documentation/schema convention only; not a runtime opcode.
+
+type: object
+required:
+  - startup_package_profile
+properties:
+  startup_package_profile:
+    type: object
+    required:
+      - profile_id
+      - version
+      - package_id
+      - default_startup_mode
+      - startup_modes
+      - entry_files
+      - authority_boundary
+    properties:
+      profile_id:
+        type: string
+      version:
+        type: string
+      package_id:
+        type: string
+      default_startup_mode:
+        type: string
+      default_language:
+        type: string
+      startup_root:
+        type: string
+      startup_modes:
+        type: array
+        items:
+          type: object
+          required:
+            - mode
+            - audience
+            - entry_file
+            - required
+            - visibility
+          properties:
+            mode:
+              type: string
+            audience:
+              type: string
+            entry_file:
+              type: string
+            prompt_id:
+              type: string
+            required:
+              type: string
+            visibility:
+              type: string
+            state_change_allowed:
+              type: boolean
+            resume_supported:
+              type: boolean
+      entry_files:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+            - role
+            - required
+          properties:
+            path:
+              type: string
+            role:
+              type: string
+            required:
+              type: string
+            visibility:
+              type: string
+      readiness_gates:
+        type: array
+        items:
+          type: object
+          required:
+            - check_id
+            - severity
+          properties:
+            check_id:
+              type: string
+            severity:
+              type: string
+            profile:
+              type: string
+      authority_boundary:
+        type: object
+        required:
+          - startup_files_may_override_gates
+          - startup_files_may_confirm_state
+          - startup_files_may_claim_validation_success
+        properties:
+          startup_files_may_override_gates:
+            type: boolean
+          startup_files_may_confirm_state:
+            type: boolean
+          startup_files_may_claim_validation_success:
+            type: boolean

@@ -1,0 +1,29 @@
+# Example source fragment for M64.1 Program-level Contract
+
+program_contract:
+  program_id: support_triage
+  module_id: ordo.example.support_triage
+  version: 0.1.0
+  ordo_version: "0.12"
+  lifecycle: draft
+  control_level: standard
+  execution_mode: full_runtime
+  contract_profile: basic_process
+  compatibility:
+    language_line: M64
+    parent_package: Ordo v0.12
+    cli_profile: parent-compatible
+    schema_profile: program_level_contract_v1
+  runtime_profile:
+    ai_layer: guided_process_driver
+    cli_layer: deterministic_validator
+    human_layer: content_decision_owner
+  required_review_points:
+    - approve_program_contract
+    - approve_final_package
+  required_validation_commands:
+    - lint
+    - compile
+    - test
+    - validate-state
+    - go-no-go

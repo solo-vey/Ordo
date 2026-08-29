@@ -1,0 +1,82 @@
+execution_trace:
+  id: trace.replayable.example
+  version: "1.0"
+  run:
+    run_id: run.replayable.001
+    process_id: demo.guided_intake
+    process_version: "1.0"
+    execution_mode: normal
+    runtime_mode: full_runtime
+    trace_source: runtime_enforced
+  status: completed
+  started_at: "2026-07-10T11:00:00Z"
+  finished_at: "2026-07-10T11:02:00Z"
+  actor:
+    actor_type: analyst
+    actor_id: analyst-001
+  source:
+    entry_point: start
+    input_refs: [input.case-001]
+  capture_level: standard
+  events:
+    - sequence: 1
+      event_id: evt-0001
+      event_type: run_started
+      occurred_at: "2026-07-10T11:00:00Z"
+      actor: {actor_type: runtime}
+      payload: {}
+      outcome: {status: accepted}
+    - sequence: 2
+      event_id: evt-0002
+      event_type: user_input
+      occurred_at: "2026-07-10T11:00:20Z"
+      location: {node_id: intake.item_type}
+      actor: {actor_type: analyst, actor_id: analyst-001}
+      payload:
+        field: item_type
+        value: new_item
+      state_effect:
+        changed: true
+        after_ref: state-0002
+        diff_ref: diff-0002
+      outcome: {status: accepted}
+    - sequence: 3
+      event_id: evt-0003
+      event_type: gate_passed
+      occurred_at: "2026-07-10T11:01:00Z"
+      actor: {actor_type: runtime}
+      payload: {gate_id: gate.required_inputs}
+      correlation: {gate_id: gate.required_inputs}
+      outcome: {status: passed}
+    - sequence: 4
+      event_id: evt-0004
+      event_type: artifact_generated
+      occurred_at: "2026-07-10T11:01:30Z"
+      actor: {actor_type: runtime}
+      payload: {artifact_ref: generated/package.md}
+      correlation: {output_id: output.package}
+      outcome: {status: completed}
+    - sequence: 5
+      event_id: evt-0005
+      event_type: run_completed
+      occurred_at: "2026-07-10T11:02:00Z"
+      actor: {actor_type: runtime}
+      payload: {}
+      outcome: {status: completed}
+  final_state:
+    snapshot_ref: state-final
+    result: completed
+  outputs:
+    - output_id: output.package
+      artifact_ref: generated/package.md
+      checksum: sha256:example
+  replay:
+    replayable: true
+    replay_mode: deterministic
+    required_inputs_preserved: true
+    external_dependencies: {strategy: recorded}
+    sensitive_values: {strategy: redacted}
+  integrity:
+    event_count: 5
+    sequence_complete: true
+    checksum: null

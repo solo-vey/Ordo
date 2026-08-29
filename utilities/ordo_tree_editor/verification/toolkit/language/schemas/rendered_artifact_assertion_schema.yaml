@@ -1,0 +1,18 @@
+RenderedArtifactAssertion:
+  type: object
+  required: [kind, id, field, must_appear_in]
+  properties:
+    kind:
+      const: rendered_artifact_assertion
+    id:
+      type: string
+    field:
+      type: string
+      description: Contract field reference, e.g. G_EVENT_IDENTITY_CONTRACT.alias.
+    must_appear_in:
+      type: array
+      items: { type: string }
+    severity:
+      enum: [block, warn, info]
+    message:
+      type: string

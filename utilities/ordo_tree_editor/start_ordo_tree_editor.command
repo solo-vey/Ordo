@@ -20,7 +20,7 @@ python_version_ok() {
 python_runtime_ok() {
   candidate="$1"
   python_version_ok "$candidate" || return 1
-  "$candidate" -c 'import yaml' >/dev/null 2>&1
+  "$candidate" -c 'import sys, yaml; raise SystemExit(0 if sys.version_info >= (3,10) else 1)' >/dev/null 2>&1
 }
 
 find_base_python() {
@@ -34,7 +34,14 @@ find_base_python() {
     return 1
   fi
 
-  for candidate in python3.13 python3.12 python3.11 python3.10 python3 python; do
+  for candidate in python3.13 python3.12 python3.11 python3.10; do
+    if python_version_ok "$candidate"; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  # Keep the generic pair explicit for portable launcher compatibility.
+  for candidate in python3 python; do
     if python_version_ok "$candidate"; then
       printf '%s\n' "$candidate"
       return 0

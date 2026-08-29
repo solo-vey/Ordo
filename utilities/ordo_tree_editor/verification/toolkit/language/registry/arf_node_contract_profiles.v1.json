@@ -1,0 +1,127 @@
+{
+  "schema_version": "ordo.arf.node_contract_profiles.v1",
+  "registry_id": "ARF_NODE_CONTRACT_PROFILES_V1",
+  "default_policy": "explicit_profile_required",
+  "undefined_profile": "blocked_missing_instruction",
+  "profiles": {
+    "routing_node": {
+      "purpose": "Select one explicit route without executing downstream work.",
+      "required_fields": [
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_inputs",
+        "allowed_actions",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "ambiguity_route"
+      ],
+      "forbidden_responsibilities": [
+        "artifact_generation",
+        "repository_mutation",
+        "validation_result_declaration"
+      ]
+    },
+    "capture_node": {
+      "purpose": "Capture or normalize declared input without making design or execution decisions.",
+      "required_fields": [
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_inputs",
+        "allowed_actions",
+        "required_outputs",
+        "validation_gates",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "ambiguity_route"
+      ],
+      "forbidden_responsibilities": [
+        "route_selection_and_execution_combined",
+        "implicit_inference_of_missing_data"
+      ]
+    },
+    "execution_node": {
+      "purpose": "Perform one atomic allowlisted action and emit declared outputs.",
+      "required_fields": [
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_inputs",
+        "allowed_actions",
+        "required_outputs",
+        "validation_gates",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "invalidation_effects",
+        "authorization_boundary",
+        "ambiguity_route"
+      ],
+      "forbidden_responsibilities": [
+        "self_validation",
+        "implicit_authorization",
+        "unlisted_mutation"
+      ]
+    },
+    "validator_node": {
+      "purpose": "Independently validate a declared target and emit machine-checkable results.",
+      "required_fields": [
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_actions",
+        "validation_target",
+        "validation_rules",
+        "machine_checkable_outputs",
+        "independent_from_target",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "ambiguity_route"
+      ],
+      "forbidden_responsibilities": [
+        "mutate_validation_target",
+        "accept_target_self_declared_status"
+      ]
+    },
+    "authorization_node": {
+      "purpose": "Capture one explicit authorization for one named action and scope.",
+      "required_fields": [
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_actions",
+        "authorization_type",
+        "authorized_scope",
+        "active_decision_only",
+        "non_transitive",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "ambiguity_route"
+      ],
+      "forbidden_responsibilities": [
+        "transitive_approval",
+        "multi_domain_confirmation"
+      ]
+    },
+    "terminal_node": {
+      "purpose": "Derive terminal status only from mandatory checks and evidence.",
+      "required_fields": [
+        "atomic_responsibility",
+        "prerequisites",
+        "allowed_actions",
+        "closure_prerequisites",
+        "evidence_requirements",
+        "validation_gates",
+        "status_derivation",
+        "explicit_transitions",
+        "forbidden_transitions",
+        "ambiguity_route"
+      ],
+      "forbidden_responsibilities": [
+        "self_declared_completion",
+        "completion_with_unresolved_mandatory_items"
+      ]
+    }
+  },
+  "selection_rules": [
+    "Every executable node declares exactly one profile.",
+    "A node must be split when its responsibilities require more than one profile.",
+    "Profile-specific required fields are machine validated.",
+    "Unknown profiles and unknown actions fail closed."
+  ]
+}

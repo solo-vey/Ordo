@@ -23,13 +23,17 @@
     <main class="source-empty" data-workspace-mode="upload">
       <nav id="workspace-tabs" class="workspace-tabs" role="tablist" aria-label="Workspace views">
         <button type="button" class="workspace-tab active" data-workspace-tab="upload">Upload Playbook</button>
-        <button type="button" class="workspace-tab" data-workspace-tab="chat">Execute Playbook</button>
-        <button type="button" class="workspace-tab" data-workspace-tab="replay">Replay Real Chat</button>
+        <span class="workspace-tab-separator" aria-hidden="true"></span>
         <button type="button" class="workspace-tab" data-workspace-tab="tree">Show Tree</button>
-        <button type="button" class="workspace-tab" data-workspace-tab="paths">Show Path</button>
         <button type="button" class="workspace-tab" data-workspace-tab="lineage">Show Data Flow</button>
         <button type="button" class="workspace-tab" data-workspace-tab="settings">Playbook Settings</button>
         <button type="button" class="workspace-tab" data-workspace-tab="verification">Verify Playbook</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="packagefiles">Package Files</button>
+        <span class="workspace-tab-separator" aria-hidden="true"></span>
+        <button type="button" class="workspace-tab" data-workspace-tab="paths">Show Path</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="chat">Execute Playbook</button>
+        <button type="button" class="workspace-tab" data-workspace-tab="replay">Replay Real Chat</button>
+        <span class="workspace-tab-separator" aria-hidden="true"></span>
         <button type="button" class="workspace-tab" data-workspace-tab="modelchat">Model Chat</button>
         <button type="button" class="workspace-tab" data-workspace-tab="help">Help</button>
       </nav>
@@ -93,11 +97,21 @@
             <div id="lineage-summary" class="lineage-summary"></div>
           </div>
           <section id="source-flow-panel" class="lineage-subview source-flow-panel" aria-label="Embedded source data flow">
-            <div class="source-flow-meta"><div><strong id="source-flow-title">Source Data Flow</strong><span id="source-flow-subtitle">Canonical authoring topology embedded in the playbook package.</span></div><div id="source-flow-summary" class="lineage-summary"></div></div>
+            <div class="source-flow-meta"><div><strong id="source-flow-title">Source Data Flow</strong><span id="source-flow-subtitle">Canonical authoring topology embedded in the playbook package.</span></div></div>
             <div class="source-flow-subtabs" role="tablist" aria-label="Source Data Flow views"><button id="source-flow-subview-tree" type="button" class="active">Dependency Tree</button><button id="source-flow-subview-passports" type="button">Variable Passports</button></div>
             <div id="source-flow-tree-view" class="source-flow-tree-view">
               <div class="lineage-toolbar-row source-flow-toolbar">
-                <div class="source-flow-legend" aria-label="Source Data Flow legend"><span><i class="source-flow-swatch variable"></i>Variable</span><span><i class="source-flow-swatch gate"></i>Gate</span><span><i class="source-flow-swatch artifact"></i>Artifact</span><span><i class="source-flow-swatch contract"></i>Contract</span><span><i class="source-flow-line validation"></i>Validation</span><span><i class="source-flow-line upstream"></i>Upstream</span><span><i class="source-flow-line downstream"></i>Downstream</span></div>
+                <div class="source-flow-legend" id="source-flow-legend" aria-label="Source Data Flow legend">
+  <button type="button" class="source-flow-legend-item" data-legend-kind="node" data-legend-value="variable" aria-pressed="false"><i class="source-flow-swatch variable"></i><span>Variable</span></button>
+  <button type="button" class="source-flow-legend-item" data-legend-kind="node" data-legend-value="transformation" aria-pressed="false"><i class="source-flow-swatch transformation"></i><span>Transformation</span></button>
+  <button type="button" class="source-flow-legend-item" data-legend-kind="node" data-legend-value="interaction" aria-pressed="false"><i class="source-flow-swatch interaction"></i><span>Interaction</span></button>
+  <button type="button" class="source-flow-legend-item" data-legend-kind="node" data-legend-value="gate" aria-pressed="false"><i class="source-flow-swatch gate"></i><span>Gate</span></button>
+  <button type="button" class="source-flow-legend-item" data-legend-kind="node" data-legend-value="artifact" aria-pressed="false"><i class="source-flow-swatch artifact"></i><span>Artifact</span></button>
+  <button type="button" class="source-flow-legend-item" data-legend-kind="node" data-legend-value="contract" aria-pressed="false"><i class="source-flow-swatch contract"></i><span>Contract</span></button>
+  <button type="button" class="source-flow-legend-item line-item" data-legend-kind="edge" data-legend-value="validation" aria-pressed="false"><i class="source-flow-line validation"></i><span>Validation</span></button>
+  <button type="button" class="source-flow-legend-item line-item" data-legend-kind="trace" data-legend-value="upstream" aria-pressed="false"><i class="source-flow-line upstream"></i><span>Upstream</span></button>
+  <button type="button" class="source-flow-legend-item line-item" data-legend-kind="trace" data-legend-value="downstream" aria-pressed="false"><i class="source-flow-line downstream"></i><span>Downstream</span></button>
+</div>
                 <div class="lineage-controls">
                   <label class="source-flow-data-class-control" title="Filter canonical variables by data class"><span>Data</span><select id="source-flow-data-class-filter" aria-label="Data class filter"><option value="all">All</option></select></label>
                   <div class="lineage-layout-toggle"><button id="source-flow-layout-auto" type="button" class="active">Auto</button><button id="source-flow-layout-free" type="button">Free</button></div>
@@ -143,6 +157,29 @@
           </section>
         </div>
       </section>
+        <section id="package-files-main-panel" hidden class="package-files-main-panel" aria-label="Package Files">
+          <div class="package-files-page">
+            <div class="package-files-head">
+              <div><h1>Package Files</h1><p>Inspect physical package files that are not otherwise exposed by the Editor, or browse the complete ZIP contents.</p></div>
+              <div id="package-files-summary" class="lineage-summary"></div>
+            </div>
+            <div class="package-files-toolbar">
+              <div class="package-files-mode" role="tablist" aria-label="Package file coverage"><button id="package-files-uncovered" type="button" class="active">Uncovered</button><button id="package-files-all" type="button">All files</button></div>
+              <input id="package-files-search" type="search" placeholder="Search package files…" spellcheck="false" aria-label="Search package files">
+            </div>
+            <div class="package-files-layout" id="package-files-layout">
+              <aside class="package-files-browser"><div id="package-files-tree" class="package-files-tree"></div></aside>
+              <div id="package-files-splitter" class="package-files-splitter" role="separator" aria-label="Resize package file tree and preview" aria-orientation="vertical" tabindex="0"></div>
+              <section class="package-file-preview">
+                <div id="package-file-preview-empty" class="package-file-preview-empty">Choose a file to preview it.</div>
+                <div id="package-file-preview-content" class="package-file-preview-content" hidden>
+                  <header class="package-file-preview-head"><div><strong id="package-file-preview-name"></strong><div id="package-file-preview-meta" class="hint"></div></div><div class="package-file-preview-actions"><button id="package-file-discuss" type="button" hidden>Discuss with model</button><button id="package-file-download" type="button">Download</button></div></header>
+                  <div id="package-file-preview-body" class="package-file-preview-body"></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
         <section id="verification-main-panel" hidden class="verification-main-panel" aria-label="Playbook verification">
           <div class="verification-page">
             <div class="verification-page-head">
@@ -266,7 +303,7 @@
                 <strong id="settings-assistant-title">AI Settings Assistant</strong>
                 <span id="settings-assistant-subtitle">Read-only guidance. The model never edits the playbook.</span>
               </div>
-              <button id="settings-assistant-analyze" type="button">Analyze current settings</button>
+              <div class="settings-assistant-head-actions"><button id="settings-assistant-analyze" type="button">Analyze current settings</button><button id="settings-assistant-close" type="button" hidden>Close</button></div>
             </div>
             <div id="settings-assistant-unavailable" class="settings-assistant-unavailable" hidden>Configure a model to analyze or discuss playbook settings.</div>
             <div id="settings-assistant-context" class="settings-assistant-context" hidden></div>
@@ -348,8 +385,8 @@
         <section id="replay-panel" hidden>
           <div class="replay-upload-card">
             <strong>Replay</strong>
-            <p class="hint">Load a replay package ZIP (with <code>run_trace.json</code>) or a standalone <code>run_trace.json</code>. This view is read-only.</p>
-            <label class="button replay-upload-button">Upload Replay Package<input id="replay-file-input" type="file" accept=".zip,.json,application/zip,application/json" hidden></label>
+            <p class="hint">Load a canonical debug handoff ZIP. Replay uses canonical execution, interaction, telemetry, file-access, receipt, and artifact evidence. This view is read-only.</p>
+            <label class="button replay-upload-button">Upload Replay Package<input id="replay-file-input" type="file" accept=".zip,application/zip" hidden></label>
             <span id="replay-file-name" class="hint"></span>
           </div>
           <div id="replay-empty" class="dialog-empty">Upload a replay package to inspect how the playbook was actually traversed.</div>

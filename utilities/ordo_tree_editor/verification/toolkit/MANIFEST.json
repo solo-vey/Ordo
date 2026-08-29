@@ -1,0 +1,1722 @@
+{
+  "package": "ORDO_PLAYBOOK_GRAPH_VERIFICATION_TOOLKIT_0.4.10_ALPHA9",
+  "basis": "Ordo 0.4.10 language/tooling as integrated in Vibe ARF 0.1.0-alpha.9",
+  "file_count": 343,
+  "files": [
+    {
+      "path": "COMPATIBILITY_KNOWLEDGE_ORDO_0.4.10_ALPHA9.md",
+      "bytes": 9700,
+      "sha256": "b9ed75733908847fef150e128a3a5d08ac3ff208d1c9955dd748253e09026f87"
+    },
+    {
+      "path": "README.md",
+      "bytes": 757,
+      "sha256": "e9a3fef650490c3625781f6da4c93d6d401484fee6937c14775534d6149585dc"
+    },
+    {
+      "path": "VERIFICATION_CATALOG.md",
+      "bytes": 8990,
+      "sha256": "abe2add8299e32190b0bdf319fc4be1b5589c93fad24df52ee46ba5db5c3caab"
+    },
+    {
+      "path": "language/examples/arf_node_contract_profiles.examples.json",
+      "bytes": 4917,
+      "sha256": "f238e6775315a5341356b7f9d66ed739157f918d68f5dfdccb2af6afc194a9ae"
+    },
+    {
+      "path": "language/examples/blind_automation_semantic_adaptive.yaml",
+      "bytes": 1421,
+      "sha256": "4fd03823c4be0280ac89a6f328e114aa002aef1627083b37a667ef0ddf1c353e"
+    },
+    {
+      "path": "language/examples/blind_automation_step_bound.yaml",
+      "bytes": 1223,
+      "sha256": "d1a0f56f4f5e7549b81f40e8310eabd7bfd4ea1dfa47bc8b641d70520c789fbc"
+    },
+    {
+      "path": "language/examples/diagnostic_causal_review.json",
+      "bytes": 875,
+      "sha256": "fa5e6e2a8a4f2a060da106431fe9922891f6f35f9a066cd029bc912a84be67ea"
+    },
+    {
+      "path": "language/examples/execution_trace_full.yaml",
+      "bytes": 1778,
+      "sha256": "793ea28f0db47a5cc08c4ff1323545e14966f1b6c7703da7f7a5fe7f848ef2b4"
+    },
+    {
+      "path": "language/examples/execution_trace_minimal.yaml",
+      "bytes": 1323,
+      "sha256": "fe9df30ffe5f18a273f39cd210ac7f44d9481a63ed5cf9bfb8b5aa8d19dcc7b3"
+    },
+    {
+      "path": "language/examples/execution_trace_replayable.yaml",
+      "bytes": 2356,
+      "sha256": "dba0b1280cd75a9771a5517d3a04924ccd5b9ae2db080a0ce0784f5d67661b82"
+    },
+    {
+      "path": "language/examples/ir/reliability_strict_example.ir.json",
+      "bytes": 2154,
+      "sha256": "8c15df72c6b35af28a8ff28c1c8d5b9992756e1736d8a5d8109ec42b72198e3e"
+    },
+    {
+      "path": "language/examples/source/basic_summary.ordo.yaml",
+      "bytes": 315,
+      "sha256": "2cdef03fca4a2865ad2ecc04ae4e65719ec352e9b710d067995cedaeec77a320"
+    },
+    {
+      "path": "language/examples/source/ci_release_clean_gate_policy_example.ordo.yaml",
+      "bytes": 585,
+      "sha256": "62d3a27de1cd800853922a884dbbd2c49902c500982de58e719586c248a60308"
+    },
+    {
+      "path": "language/examples/source/clean_package_gate_example.ordo.yaml",
+      "bytes": 1773,
+      "sha256": "d70dc5fea0b82d87c035ba519ca6301f2f03040ba0bf514bdf2dc427a283bea7"
+    },
+    {
+      "path": "language/examples/source/derived_artifact_sync_delta_backlog_example.ordo.yaml",
+      "bytes": 2499,
+      "sha256": "0790478216c73db893c37920e3dd0d24c796b1cc384562116d77391b498788ee"
+    },
+    {
+      "path": "language/examples/source/interaction_process_rail_conversation_example.ordo.yaml",
+      "bytes": 2093,
+      "sha256": "8f4c4df9be805a7a2fe00f789bfc6fdfc02c8473e15c2aaef9b20353869da8c4"
+    },
+    {
+      "path": "language/examples/source/optional_flow_reuse_example.ordo.yaml",
+      "bytes": 1733,
+      "sha256": "cf0871948d26c50cc3793bcf8c20b437e19950ef9741803e786543b8a63a0971"
+    },
+    {
+      "path": "language/examples/source/program_level_approval_gate_example.ordo.yaml",
+      "bytes": 3613,
+      "sha256": "386d330fd124946d03476253c23207a6355cde960c29aee662348ccf17e09a96"
+    },
+    {
+      "path": "language/examples/source/program_level_contract_example.ordo.yaml",
+      "bytes": 773,
+      "sha256": "f581a31c17c9d17681aee686251f95c7812c29e660ff0e634e34c065959055c8"
+    },
+    {
+      "path": "language/examples/source/prompt_registry_example.ordo.yaml",
+      "bytes": 3373,
+      "sha256": "e6161274e2fad6c8c4223299e3d81bbc357c75ac3af4740b18a8546ed9577333"
+    },
+    {
+      "path": "language/examples/source/prompt_registry_validation_profile_example.ordo.yaml",
+      "bytes": 3003,
+      "sha256": "f98e33ddc8527a595c9a8cc116d553099bcd94c23b7d855baa919114b6e4d055"
+    },
+    {
+      "path": "language/examples/source/reliability_strict_example.ordo.yaml",
+      "bytes": 1420,
+      "sha256": "487440c2398f07a3464a64ce1c7215286906e98701c8eca72b32cfa8b5ed3b76"
+    },
+    {
+      "path": "language/examples/source/startup_package_profile_example.ordo.yaml",
+      "bytes": 2176,
+      "sha256": "53af8c4cb8027205ba2d5910616328e89fe404b35b8a8e762038baca05f5df33"
+    },
+    {
+      "path": "language/examples/source/startup_profile_validation_profile_example.ordo.yaml",
+      "bytes": 1764,
+      "sha256": "3237be92eff0eea72c6981278c155c68b4627c5c0df482ae3a36f04002076cca"
+    },
+    {
+      "path": "language/examples/test_cases/assertion_projection_test.yaml",
+      "bytes": 503,
+      "sha256": "bac0b027b54f0073fc366dde18b71508f7ce32d5ff7c081ef797f887b5d37e82"
+    },
+    {
+      "path": "language/integration/ANTIPATTERN_WIRING_CONTRACT.md",
+      "bytes": 2592,
+      "sha256": "ebf28e3690f0d6a4d320b8b82511df3e2d041dccd98bef294368642ef4ff0c93"
+    },
+    {
+      "path": "language/integration/antipattern_activation_profile.apf.v1.json",
+      "bytes": 1724,
+      "sha256": "6981809596d2ccf8d77625da53e98ccf39dae353e8859f3b503af4199c64bdae"
+    },
+    {
+      "path": "language/integration/antipattern_gate_adapter.py",
+      "bytes": 4328,
+      "sha256": "ebfb7ba7582e258aa6dc945f573e4d20f255846fdf00279259aa03bd9b8da930"
+    },
+    {
+      "path": "language/integration/arf_control_model.v1.json",
+      "bytes": 3191,
+      "sha256": "d1e293e64dd43ad30145ac58d49b585d9aa595f7caf46a2f23bd69128e1363f4"
+    },
+    {
+      "path": "language/integration/bl_ordo_020_closure_gate.py",
+      "bytes": 2688,
+      "sha256": "72fe6be1846e8ce43ba152e38aa7ca82139993fd85ef6c87d8a0ee01a4ae6dd4"
+    },
+    {
+      "path": "language/integration/examples/apf_antipattern_hook.example.json",
+      "bytes": 1649,
+      "sha256": "5f6c8a2b634255cd6c4ef70ee744e16ca19ff7b895811fee5e9d3d2d2d5d8fcb"
+    },
+    {
+      "path": "language/process_patterns/pattern_def.schema.json",
+      "bytes": 767,
+      "sha256": "10a6ccb070e4fd430f56d48565079bfca587ecde3116620f10c113ab39f976b8"
+    },
+    {
+      "path": "language/process_patterns/pattern_engine.py",
+      "bytes": 2727,
+      "sha256": "e5fcfd83c6f1ea457b6849d9021aea8be14ec5fe95805800df39755397072d3f"
+    },
+    {
+      "path": "language/process_patterns/pattern_registry.v1.json",
+      "bytes": 2259,
+      "sha256": "4ffe968e9da078b278abdec390284bb3dbe0aa6a7ca0aa09e3fe9dbc94ffe918"
+    },
+    {
+      "path": "language/registries/antipattern_policy.v1.json",
+      "bytes": 444,
+      "sha256": "6a95d448e2ea2709fe020ea4fec7969b2085c70d6bbbf8a551b1e87834aff1ab"
+    },
+    {
+      "path": "language/registries/antipattern_registry.v1.json",
+      "bytes": 14863,
+      "sha256": "cafef7f43b6cbd20cf18bf6351dd9c1019f0a557a76a91557462ce1fdee225c3"
+    },
+    {
+      "path": "language/registries/antipattern_taxonomy_governance.v1.json",
+      "bytes": 1298,
+      "sha256": "8a2012535e64213a1d38f60d2cd1ac9ef817690c5e588c4f41003144a4110a26"
+    },
+    {
+      "path": "language/registries/detect_rule_registry.v1.json",
+      "bytes": 11039,
+      "sha256": "8bec9214bb23908793df07e56ae9ea5613e4baaece01ff5e6e50476dbff6c86a"
+    },
+    {
+      "path": "language/registries/fundamental_antipattern_registry.v1.json",
+      "bytes": 9680,
+      "sha256": "98617d9433b47b7b6f7c95d52f0f2df60e5701b225d2500a72d21a32cab6e9d1"
+    },
+    {
+      "path": "language/registry/CAPABILITY_CATALOG.md",
+      "bytes": 836,
+      "sha256": "3a05d023689cd60c922ceee7015c4c24ab9d1e62bb2d9529ed0308cb737903bc"
+    },
+    {
+      "path": "language/registry/CAPABILITY_MATURITY_VALUES.md",
+      "bytes": 690,
+      "sha256": "ac507fe559d87a0e89297198389bbc984fea07d4982430cfecd381cd48ef27a8"
+    },
+    {
+      "path": "language/registry/CONTROL_LEVELS.md",
+      "bytes": 335,
+      "sha256": "495ee2a885b0f34fd7deb0e9dc6923cb427f1a71ac5471191ebf35221e8da4ca"
+    },
+    {
+      "path": "language/registry/DERIVED_ARTIFACT_SYNC_VALUES.md",
+      "bytes": 1011,
+      "sha256": "82bfcd07954ac9584e974833ae2665469576b6c51f502e059e4e38ce646ce723"
+    },
+    {
+      "path": "language/registry/EXECUTION_MODES.md",
+      "bytes": 349,
+      "sha256": "cf4a7fa8d059b06287527e1ad8cc0f9081451dc5695956c1363e0b435c020737"
+    },
+    {
+      "path": "language/registry/EXECUTION_TRACE_VALUES.md",
+      "bytes": 1179,
+      "sha256": "14ac62329bfa379c56f6c4d2dab2d5a095c137791a4d13fb2b81dc992e35db74"
+    },
+    {
+      "path": "language/registry/INTERACTION_PROCESS_RAIL_CONVERSATION_VALUES.md",
+      "bytes": 3541,
+      "sha256": "82214b9f68e246246c0bc0b342b3f6ed8467e4d27e8106124f342be9c99f84d5"
+    },
+    {
+      "path": "language/registry/LAYER_PRIORITY.md",
+      "bytes": 386,
+      "sha256": "f7dfbbed5d9bd9bfa9c5e7db56e18da7ae559bc854174d02b5d51d2dd84fd120"
+    },
+    {
+      "path": "language/registry/OPCODE_CATALOG.md",
+      "bytes": 6397,
+      "sha256": "044189907f45ba6ec31d9ccdbea4a863f5c50013f50d781b45d1fe0ac53bc6da"
+    },
+    {
+      "path": "language/registry/PROGRAM_LEVEL_APPROVAL_GATE_VALUES.md",
+      "bytes": 3339,
+      "sha256": "4a8244361c37c846bb54822eeaa722568fcb7764767718d83cce6813007436e2"
+    },
+    {
+      "path": "language/registry/PROGRAM_LEVEL_CONTRACT_VALUES.md",
+      "bytes": 1929,
+      "sha256": "2b67102471c20a3d719203a626d82331b2e64502ac1e5fa48007f80e77d4deaa"
+    },
+    {
+      "path": "language/registry/PROMPT_REGISTRY_VALUES.md",
+      "bytes": 5989,
+      "sha256": "fab7ce14552eb425d5d115afa1697f89c83b341664057f7a847a54eb1dda8276"
+    },
+    {
+      "path": "language/registry/SOURCE_CONSTRUCT_CATALOG.md",
+      "bytes": 1024,
+      "sha256": "bae7b6a91500e2a345b6e7de3c2755939bf8684c68445d4c39081adf03c88454"
+    },
+    {
+      "path": "language/registry/STARTUP_PACKAGE_PROFILE_VALUES.md",
+      "bytes": 3922,
+      "sha256": "46b3756ff4b6db03563943cca58765e0f253448811d6d07128c554d336261b60"
+    },
+    {
+      "path": "language/registry/TRACE_EVENT_CATALOG.md",
+      "bytes": 1252,
+      "sha256": "c4db9df9976f5f23e26db250c94eda3edf4a8336f27d1dcfb760984aa9d05e70"
+    },
+    {
+      "path": "language/registry/TRUST_METHODS.md",
+      "bytes": 654,
+      "sha256": "7d8b9e88d7339ccbe528ac52be3798d8d132bc1dcff70bb957dae4dbb057999c"
+    },
+    {
+      "path": "language/registry/arf_node_contract_profiles.v1.json",
+      "bytes": 3941,
+      "sha256": "f672f63b5f5962d16496c05a62aa8a2f407084d65de51f9afdbb6171e2104712"
+    },
+    {
+      "path": "language/registry/capability_catalog.yaml",
+      "bytes": 968,
+      "sha256": "b647e70c2bc5669bca62c65434aeab500d42bafa10365756137949e44723a6ef"
+    },
+    {
+      "path": "language/registry/source_construct_catalog.yaml",
+      "bytes": 1915,
+      "sha256": "e41435677705cfb7bb8d2041fae094757d2493d579153b7594cb018c2c4c4676"
+    },
+    {
+      "path": "language/registry/trace_event_catalog.yaml",
+      "bytes": 1179,
+      "sha256": "e931b56b535ace8ad718bfe3022f4e605e381fdae75286ac23669efde54830b8"
+    },
+    {
+      "path": "language/runtime/antipattern_runtime.py",
+      "bytes": 1680,
+      "sha256": "1035962abc326bec457ac82ce563adc055516b09a317700135e3530d6a39ced0"
+    },
+    {
+      "path": "language/runtime/antipattern_signal_extractors.py",
+      "bytes": 2029,
+      "sha256": "8f25ad963bb549c8dae753fb7d4d455fc3cd98277209212b0ab0f464e3a10b8b"
+    },
+    {
+      "path": "language/runtime/fixtures/antipattern_integration_cases.v1.json",
+      "bytes": 3032,
+      "sha256": "29aafb97fed03122c2c59b977bb004a1a761878b74056dd63de21b49e3c514bb"
+    },
+    {
+      "path": "language/runtime/fixtures/initial_antipattern_runtime_cases.v1.json",
+      "bytes": 2640,
+      "sha256": "619bf073a438c3ff514d1148c382b55a6ee925193ff83328ab893282846d3d1c"
+    },
+    {
+      "path": "language/schemas/antipattern_def.schema.json",
+      "bytes": 5283,
+      "sha256": "1d535e56b34efe6047f01c54df9a8cc83792de00245b7d810dd8e7e57191610f"
+    },
+    {
+      "path": "language/schemas/antipattern_evidence_ref.schema.json",
+      "bytes": 1210,
+      "sha256": "191690ff5ce2c1c9990d3a2929e0ed570f40a10d2c7bc754a4cb85e20abe7a05"
+    },
+    {
+      "path": "language/schemas/antipattern_finding.schema.json",
+      "bytes": 3497,
+      "sha256": "bae2b76699d0487b872c6efc62027ad8b269ccf2127cbe78171622a47aae0bc5"
+    },
+    {
+      "path": "language/schemas/antipattern_gate_report.schema.json",
+      "bytes": 1850,
+      "sha256": "e1aadebebe5530edd6f290f0cdcab8a383b690cda4a8512a7e202949da27abce"
+    },
+    {
+      "path": "language/schemas/antipattern_policy.schema.json",
+      "bytes": 1389,
+      "sha256": "37c214a235f1193b24599e3d9f47ff3874657a2a420786712d201abfbaa1d273"
+    },
+    {
+      "path": "language/schemas/antipattern_wiring_hook.schema.json",
+      "bytes": 4715,
+      "sha256": "e377392f50c619ce705152fa4d49be7e9f2b661dbf3bc46c31a047e5e9c4875b"
+    },
+    {
+      "path": "language/schemas/arf_control_model_contract.schema.json",
+      "bytes": 5247,
+      "sha256": "616cc59cd3cb5227d3c2f32bde8e2cdd46e161bfe509d74be92e85e86d8d9632"
+    },
+    {
+      "path": "language/schemas/arf_delivery_target_decision.schema.json",
+      "bytes": 1495,
+      "sha256": "00f91a398f68d8a6c333d91eb1ac83ad25c7334bb62869bb02be1bd815911b59"
+    },
+    {
+      "path": "language/schemas/arf_node_contract.schema.json",
+      "bytes": 9826,
+      "sha256": "f51c6b10efb593debb9f9f616365621b8cb6798575817df2cbe86246c4540b13"
+    },
+    {
+      "path": "language/schemas/artifact_requirement_schema.yaml",
+      "bytes": 816,
+      "sha256": "4394cd8c4060b200da42e133d82ebecb2a2eb7cd5cdb5b682f9408d4567ab2a6"
+    },
+    {
+      "path": "language/schemas/artifact_schema.yaml",
+      "bytes": 310,
+      "sha256": "d2db78af7ee16603b6e411fbb62386a28d145b45d4edd79c1449eb4b9bd66f54"
+    },
+    {
+      "path": "language/schemas/assertion_schema.yaml",
+      "bytes": 423,
+      "sha256": "8702c88127bddce11c8b7c76f81d4440b8e6d58893e49c213b6703f82bed2665"
+    },
+    {
+      "path": "language/schemas/blind_automation_profile.schema.json",
+      "bytes": 5376,
+      "sha256": "994dbd39263713fa604c553e19332dbe1c1543ca2f7797fe9f52371ce4cfc7ab"
+    },
+    {
+      "path": "language/schemas/capability_maturity.schema.json",
+      "bytes": 3238,
+      "sha256": "8a82a99ff936df5b17d6935d74ba8d1d93049f26b6298992ce15690837af3034"
+    },
+    {
+      "path": "language/schemas/ci_release_clean_gate_policy_schema.yaml",
+      "bytes": 1121,
+      "sha256": "cde525034ea587b808a1c62dc238fe8ed8a56ede7dbc5d42ff962a4c27f4fc75"
+    },
+    {
+      "path": "language/schemas/clean_package_gate_schema.yaml",
+      "bytes": 1910,
+      "sha256": "2550345e82e49dd74b6b7073ecafa94d089eeb3601cc3754e38c491ee875e270"
+    },
+    {
+      "path": "language/schemas/contract_schema.yaml",
+      "bytes": 572,
+      "sha256": "ea864b03fc1be480778dca81c5dce0083790508a8bf309828109cf1f1ed225d3"
+    },
+    {
+      "path": "language/schemas/conversation_scope_guard_source.schema.json",
+      "bytes": 1327,
+      "sha256": "9514616a58cc9aea624d5e086368404bb2aaa7df2530a5f7179f8e0af4decbc8"
+    },
+    {
+      "path": "language/schemas/conversation_semantics_schema.yaml",
+      "bytes": 1647,
+      "sha256": "37bb980c41ba2aeea323553f216e98aac78e5e503508eddf784f6d65c38c5615"
+    },
+    {
+      "path": "language/schemas/coverage_rule_schema.yaml",
+      "bytes": 407,
+      "sha256": "8c173513247cb6d54e20e013325ad83759091046576f7506cc2022d146bae4d4"
+    },
+    {
+      "path": "language/schemas/csg_package_binding.schema.json",
+      "bytes": 1420,
+      "sha256": "71721fd4c9b2e8dd64395ac38dcd37889992a2153bc2c8967df9e6f2fd95c5aa"
+    },
+    {
+      "path": "language/schemas/delta_backlog_schema.yaml",
+      "bytes": 1169,
+      "sha256": "b46b319dcfde0bc1e844d7e92a362bfc5b29bec4d159c1e49657073426810bf6"
+    },
+    {
+      "path": "language/schemas/derived_artifact_sync_schema.yaml",
+      "bytes": 1639,
+      "sha256": "9cdfdc2135b719b006ef42b69ee52bdcca3d64e73e78e75515c7eae20d2504c4"
+    },
+    {
+      "path": "language/schemas/derived_artifact_sync_validation_profile_schema.yaml",
+      "bytes": 1576,
+      "sha256": "6dda512d23c510374c78d9e4ef4fbdd5619ce0ba79f052b2d716142649f22057"
+    },
+    {
+      "path": "language/schemas/detect_rule.schema.json",
+      "bytes": 5984,
+      "sha256": "e8e16e31ed6d9bdd265d4c84824d28d7741954f1fa1d324a851cf328149fd60c"
+    },
+    {
+      "path": "language/schemas/deviation_classification.schema.json",
+      "bytes": 2658,
+      "sha256": "4ff2fe4aec2ee659918976742d9bd8d24619832d3e8138329844f149e858b87f"
+    },
+    {
+      "path": "language/schemas/execution_trace_schema.yaml",
+      "bytes": 5239,
+      "sha256": "ad2d8b6e16e4658077c8b06a39fd868f072fd7942d606ce01468060ed0a4d3f3"
+    },
+    {
+      "path": "language/schemas/flow_join_schema.yaml",
+      "bytes": 2042,
+      "sha256": "0753b7f466430f4c150c09433439b6f21f1352818297488cc009d61f308bf347"
+    },
+    {
+      "path": "language/schemas/freeform_schema.yaml",
+      "bytes": 405,
+      "sha256": "a85ec83110395e843e88cb0929b6386e8a733a44308a53dd2a17f7e9882dcd0e"
+    },
+    {
+      "path": "language/schemas/gate_schema.yaml",
+      "bytes": 761,
+      "sha256": "3f6a8efac7631eae09b3b8ac347f7aedc3d9d8b3979c9842ded74e4b492e1616"
+    },
+    {
+      "path": "language/schemas/go_no_go_schema.yaml",
+      "bytes": 681,
+      "sha256": "4df9273f43c1cb91d814fbdcd33c5aea52794e1a02f1841c8ec5d1bd9e03c4e2"
+    },
+    {
+      "path": "language/schemas/improvement_record_schema.yaml",
+      "bytes": 755,
+      "sha256": "cff6b7947e6abd0c5f2ac72843a2014a4ec4174198c70eca47a4612476097ad7"
+    },
+    {
+      "path": "language/schemas/interaction_model_schema.yaml",
+      "bytes": 1165,
+      "sha256": "023ada1885691d6523501c4f8b8b67d055615f30082241e2bdfffa397ddbc94e"
+    },
+    {
+      "path": "language/schemas/library_include_schema.yaml",
+      "bytes": 267,
+      "sha256": "a7092f08e7eff867e56c1844a8a00f8cea91b7762c60de01fa967dae8420264b"
+    },
+    {
+      "path": "language/schemas/manual_run_journey.schema.json",
+      "bytes": 882,
+      "sha256": "94eaecdf5523bddd8170504a5725522fee9db71175d5cc8d901fbffdbbbbe6fd"
+    },
+    {
+      "path": "language/schemas/migration_ambiguity.schema.json",
+      "bytes": 247,
+      "sha256": "6165f40545194e0135ef287ea3b15f18e2d3c8332f4f7157dafeffbeeb7bce42"
+    },
+    {
+      "path": "language/schemas/migration_clause_inventory.schema.json",
+      "bytes": 360,
+      "sha256": "065d37bde6216c7a9509305dfd91a5e816df95d9c068f5b8876418868e70d9b6"
+    },
+    {
+      "path": "language/schemas/migration_dependency_graph.schema.json",
+      "bytes": 409,
+      "sha256": "baa34dcf85636f7dfc91741c5f4c688fb890ab98d4a665b8874a0a2ebdef786d"
+    },
+    {
+      "path": "language/schemas/migration_loss_finding.schema.json",
+      "bytes": 1338,
+      "sha256": "f189232cc1dd5327889aacb49e3acf338b55767f743006d7e2455c1591ff60b1"
+    },
+    {
+      "path": "language/schemas/migration_ordo_mapping.schema.json",
+      "bytes": 356,
+      "sha256": "4deee07f51cfe2417d9d31ffb12adea2d1b6d7182e2cf7dbdd85931af3ac6076"
+    },
+    {
+      "path": "language/schemas/migration_traceability_matrix.schema.json",
+      "bytes": 3204,
+      "sha256": "9fac59b80aafe1a079f4de3dc321f4c8f168508f16a5e66bb34c32a288cf691a"
+    },
+    {
+      "path": "language/schemas/node_schema.yaml",
+      "bytes": 1199,
+      "sha256": "f0fe695b3fea972cdf99a4ce76c2c02b4a2d2bd239b8724f87aa233749586011"
+    },
+    {
+      "path": "language/schemas/playbook_release.schema.json",
+      "bytes": 2639,
+      "sha256": "52dac03a2ce7d1a0154b9c5c41278468fafc8c1b56e64e7c1beb5da657a34994"
+    },
+    {
+      "path": "language/schemas/playbook_rollback_checkpoint.schema.json",
+      "bytes": 911,
+      "sha256": "bc131256a0b12abbe7346cd33c007e4cb10cce194751b5a2f6dea1e9c4afa194"
+    },
+    {
+      "path": "language/schemas/process_instruction_migration_intake.schema.json",
+      "bytes": 703,
+      "sha256": "98a8164be279486a35343593480ef84e5533907e3eca1b1ba7da09c9c12d9ff8"
+    },
+    {
+      "path": "language/schemas/process_instruction_migration_package.schema.json",
+      "bytes": 1628,
+      "sha256": "d934194be62c83b06a214795d19b3b100276c4518407fc162faa78146f7f9162"
+    },
+    {
+      "path": "language/schemas/process_rail_schema.yaml",
+      "bytes": 1393,
+      "sha256": "f01c573767605e4512cb628d7f832866079bedd5cd544f04fcf5a36a3b32b1a3"
+    },
+    {
+      "path": "language/schemas/program_level_approval_gate_schema.yaml",
+      "bytes": 2186,
+      "sha256": "787bdad067ee142b140794d12426b4754d5508920d84a60636da1d4e463c6603"
+    },
+    {
+      "path": "language/schemas/program_level_contract_schema.yaml",
+      "bytes": 1935,
+      "sha256": "849c2a80f852cbfa9b8a16623a347a43bc5ded91cb201d01f1faff6b743899b8"
+    },
+    {
+      "path": "language/schemas/prompt_compilation_manifest.schema.json",
+      "bytes": 1553,
+      "sha256": "4c8c8869de4d5cb0f503a952ba4c2d2295e9ecc7266315050011aae717e2c934"
+    },
+    {
+      "path": "language/schemas/prompt_ref_schema.yaml",
+      "bytes": 1335,
+      "sha256": "8815d48a110eaf15d310322782c5ea29dd651c2b38c7c50fff2a4bcb81453e6d"
+    },
+    {
+      "path": "language/schemas/prompt_registry_packaging_checks_schema.yaml",
+      "bytes": 1498,
+      "sha256": "42d991759b7fc0439eca0e2b9ddfe5491e57734715f932476158b428b6e4d03f"
+    },
+    {
+      "path": "language/schemas/prompt_registry_schema.yaml",
+      "bytes": 5264,
+      "sha256": "b08d1c6e1ff65b4c1cb46e1b3def1c869f53066843ab9b5eb7f4ea55c068e91d"
+    },
+    {
+      "path": "language/schemas/prompt_registry_validation_profile_schema.yaml",
+      "bytes": 2135,
+      "sha256": "c2c8ab8c622e0a7928c4c1d9fc3bb451b9a9fcfc46496ff5d6b70613cc1c01a3"
+    },
+    {
+      "path": "language/schemas/release_clean_gate_provenance_schema.yaml",
+      "bytes": 1347,
+      "sha256": "fe59b2e9d9007f0e365191f272c61bf46fb8cbd9d833e14cce175eecb3d8ebdc"
+    },
+    {
+      "path": "language/schemas/rendered_artifact_assertion_schema.yaml",
+      "bytes": 439,
+      "sha256": "a469c3d9db37b94dc568afc84565d5cc443a2750fe890ab0e0ed472a47d0cf39"
+    },
+    {
+      "path": "language/schemas/rendering_template_schema.yaml",
+      "bytes": 815,
+      "sha256": "3269939d5cc61736d8e1e00b5161ac0f169eb3353be5ee426cb3a4316ee39992"
+    },
+    {
+      "path": "language/schemas/scope_guard_policy.schema.json",
+      "bytes": 2495,
+      "sha256": "fd92356670d18e3497a048b104c048278da10fcdf4fc8eb71206ca011020b8a2"
+    },
+    {
+      "path": "language/schemas/semantic_json_ir_schema.yaml",
+      "bytes": 3777,
+      "sha256": "78ee3f800b034a969a812da38e70f97d6d7e800787b264b63b69a1e5272df86a"
+    },
+    {
+      "path": "language/schemas/shared_tail_reference_schema.yaml",
+      "bytes": 1721,
+      "sha256": "b204caf14ad5317be6d51137a469fc2307c33740257186e56e3ffb38b5e7deae"
+    },
+    {
+      "path": "language/schemas/startup_package_profile_schema.yaml",
+      "bytes": 2440,
+      "sha256": "9a7dab628bd1f0b19d6935110c6b417ec83560feabba9e78e95150fa91d8e919"
+    },
+    {
+      "path": "language/schemas/startup_profile_validation_profile_schema.yaml",
+      "bytes": 1963,
+      "sha256": "fdb11b6840ed14922eeb2282b663fbad05484a500ac461911f3ddc4d6c2830aa"
+    },
+    {
+      "path": "language/schemas/state_protection.schema.json",
+      "bytes": 1406,
+      "sha256": "5f82294b36d1da68ea8bf016c6952bfb2ced933b87a00c0e57774abf2a1c505d"
+    },
+    {
+      "path": "language/schemas/trace_schema.yaml",
+      "bytes": 558,
+      "sha256": "56e1ec305db17b48de0cb8a72e9758770bea7186badc61789317758e9183e320"
+    },
+    {
+      "path": "language/spec/00_ORDO_OVERVIEW.md",
+      "bytes": 3320,
+      "sha256": "610d60801ca8fb9e369df41678d19da7ac9bd1ad7e61cd279d25b76c2e7c6fb0"
+    },
+    {
+      "path": "language/spec/01_ORDO_CORE.md",
+      "bytes": 1480,
+      "sha256": "cf4ab5124dbc6d8c5ac18d34d39d110f10be77c5d7a6d8d0d06593ac4499e32a"
+    },
+    {
+      "path": "language/spec/02_ORDO_SOURCE_SYNTAX.md",
+      "bytes": 1471,
+      "sha256": "092cd9461d0a431c17be7be708d02dfcd5b3ea5dab8a72e46bc654da056e7087"
+    },
+    {
+      "path": "language/spec/03_SEMANTIC_JSON_IR.md",
+      "bytes": 3483,
+      "sha256": "150ed7a709e3ed74f383c04308102cce4dc2b7776d7da8d1197a5084cfa8f65f"
+    },
+    {
+      "path": "language/spec/04_EXECUTION_MODEL.md",
+      "bytes": 3850,
+      "sha256": "cea69fb92fe01d679045c126b50d17290f7ff7f7547db3fccb57ac63bfec4a10"
+    },
+    {
+      "path": "language/spec/05_GATE_AND_ASSERTION_MODEL.md",
+      "bytes": 2053,
+      "sha256": "12277016159a27f8995e1181729ad49a560c41174c84df0d0e7b4f1c8423ac38"
+    },
+    {
+      "path": "language/spec/06_DEBUG_TEST_IMPROVEMENT_LAYER.md",
+      "bytes": 1998,
+      "sha256": "3fb195bd7dc168b687440fd18242f5f966f78b3d77d1f540d6c26a3fe5424de5"
+    },
+    {
+      "path": "language/spec/07_FREEFORM_MODEL.md",
+      "bytes": 1234,
+      "sha256": "36f54e2493e7b665fad200685de89f68de71ba501a476a9f0bc79345fdf96e07"
+    },
+    {
+      "path": "language/spec/08_LIBRARY_MODEL.md",
+      "bytes": 1118,
+      "sha256": "db54f2f27755aef66fc151484e476fd01c6fc1d6cc2650fbebc05adc73804533"
+    },
+    {
+      "path": "language/spec/09_EXECUTION_MODES.md",
+      "bytes": 878,
+      "sha256": "6ba7e83e021beafc387efd43408fc1c0eb240e41601cb995a4810e6de3f1884b"
+    },
+    {
+      "path": "language/spec/10_COMPILER_RULES.md",
+      "bytes": 2380,
+      "sha256": "2fd2f98fbcd057b1c1a550a37a312780136f4ab105c29520d1a61e1dcf537b79"
+    },
+    {
+      "path": "language/spec/11_PROCESS_RAIL_MODEL.md",
+      "bytes": 2807,
+      "sha256": "1154fdd81b82100f1d3d47a704c6134b58c89e003a57124ca0312e095ef9783e"
+    },
+    {
+      "path": "language/spec/12_PROJECT_BUILDER_MODEL.md",
+      "bytes": 1653,
+      "sha256": "7e8c76de97779b273a66629686b210a756f2f917552d74acebb9654df4eb62c5"
+    },
+    {
+      "path": "language/spec/13_HYBRID_EXECUTION_MODEL.md",
+      "bytes": 1749,
+      "sha256": "c1cdd07cbf79840f17b9a12ba38cfc2d0a8930222ee0cf5f07af8700ca3c9088"
+    },
+    {
+      "path": "language/spec/14_CLI_HELPER_COMMANDS_MODEL.md",
+      "bytes": 1335,
+      "sha256": "643661883afb8ab2a8d219cf6b865aca3958974c46ceb7057fca95f6f16f850b"
+    },
+    {
+      "path": "language/spec/15_CONTRACT_ARTIFACT_COVERAGE_MODEL.md",
+      "bytes": 6232,
+      "sha256": "29eb47cb85c1c76df1f0b36ab536528ada5962bde53a23162807243f5229bd68"
+    },
+    {
+      "path": "language/spec/16_PROGRAM_LEVEL_CONTRACT_MODEL.md",
+      "bytes": 1871,
+      "sha256": "8aeaeb26135d08ac6c6ef02cf24a5c05427aebb42432f94d284565f9982dd356"
+    },
+    {
+      "path": "language/spec/17_INTERACTION_PROCESS_RAIL_CONVERSATION_MODEL.md",
+      "bytes": 2044,
+      "sha256": "ad086a7afc48b6e5af7a0ea06efe182a22cfebab780cabcae8e01ef37ecd96a5"
+    },
+    {
+      "path": "language/spec/18_PROGRAM_LEVEL_APPROVAL_GATE_MODEL.md",
+      "bytes": 4266,
+      "sha256": "c88dcf9428e3eaf78a645d2c9686b68780a394f98ab81ae4ba7dbd89b49c66c3"
+    },
+    {
+      "path": "language/spec/19_PROMPT_REGISTRY_MODEL.md",
+      "bytes": 5151,
+      "sha256": "534498a351f3297c9b2feed78ea18595ea04c7152705a91136c7ae8c7d97e015"
+    },
+    {
+      "path": "language/spec/20_PROMPT_REGISTRY_VALIDATION_MODEL.md",
+      "bytes": 1845,
+      "sha256": "db30c19267681581416bacd720ca736402ab4388ee02b2e7a00a184429024429"
+    },
+    {
+      "path": "language/spec/21_PACKAGE_STARTUP_MODEL.md",
+      "bytes": 2844,
+      "sha256": "865c3cb2d4036ef3a0e766a51f10dbe23ed49e0b4414b64d03507768c86fbbad"
+    },
+    {
+      "path": "language/spec/22_STARTUP_PROFILE_VALIDATION_MODEL.md",
+      "bytes": 2161,
+      "sha256": "a92b8e734be31d090ca794757d438f948d7a9d3a5f83e80d2b137634782592a8"
+    },
+    {
+      "path": "language/spec/23_DERIVED_ARTIFACT_SYNC_DELTA_BACKLOG_MODEL.md",
+      "bytes": 1576,
+      "sha256": "49dab7bc43769ab4cfe165c41f8eaa8475452d01e95d174a0e7e83689f2c52c9"
+    },
+    {
+      "path": "language/spec/24_CLEAN_PACKAGE_CLI_MODEL.md",
+      "bytes": 3309,
+      "sha256": "cacfa8b3178ad7a69c7182961fd56bbb69ce112d18c71b0b862c868a78a0e449"
+    },
+    {
+      "path": "language/spec/25_CLEAN_PACKAGE_GATE_MODEL.md",
+      "bytes": 2483,
+      "sha256": "57eb0106049b4e4fb8524e842ed2f3c2bb2dfb0ccd78679669e63d0e22c1fe25"
+    },
+    {
+      "path": "language/spec/26_CLI_CLEAN_CHECK_HARDENING_FIXTURE_MODEL.md",
+      "bytes": 2637,
+      "sha256": "55ead584d88976c5b648456bf484517d4deeb046b6aff52843a2b5d32ca68948"
+    },
+    {
+      "path": "language/spec/27_REPO_LEVEL_PACKAGE_HYGIENE_MODEL.md",
+      "bytes": 2088,
+      "sha256": "26ba88706506aeb4f0c47111517ac66d868084e245f7290d2483e09c5f7ed4da"
+    },
+    {
+      "path": "language/spec/28_CI_RELEASE_CLEAN_GATE_MODEL.md",
+      "bytes": 1460,
+      "sha256": "18122e86856641a1814e12d3d86f3a1dd61dd957c0e1d0a17f94c00f83a312b2"
+    },
+    {
+      "path": "language/spec/29_CLEAN_GATE_EVIDENCE_PROVENANCE_LINKAGE_MODEL.md",
+      "bytes": 610,
+      "sha256": "a31b3fbefa15173d0adeadfb05061d6bf22c5fa71493aafd0f69155317880983"
+    },
+    {
+      "path": "language/spec/30_PRODUCTION_REPO_HYGIENE_POLICY_MODEL.md",
+      "bytes": 2050,
+      "sha256": "e66199a79211537540de1484ca82a49675e72eb490df919ba6712fb1234a5a6b"
+    },
+    {
+      "path": "language/spec/31_LANGUAGE_CLI_REPO_ROOT_CONTRACT_MODEL.md",
+      "bytes": 460,
+      "sha256": "73015dacb0fe76a061d8b6a7f214bf130bd5b4b50c31422bb546071fb4334f80"
+    },
+    {
+      "path": "language/spec/32_STABLE_PROMPT_IDENTITY_VERSIONING_MODEL.md",
+      "bytes": 4162,
+      "sha256": "fec17ac517e732fe26e2fcf3a61d8469992d8df74519cd24203b90c7db7059f3"
+    },
+    {
+      "path": "language/spec/33_EXECUTION_TRACE_MODEL.md",
+      "bytes": 3830,
+      "sha256": "d78ac33e97e4f4c70945cfc8cf3f472268aeccec7d8cb4275364243bf838a494"
+    },
+    {
+      "path": "language/spec/33_NODE_LOCAL_EXECUTION_AND_TRANSITION_PROVENANCE.md",
+      "bytes": 2044,
+      "sha256": "215ab563f80f42c049b327d2dc95bb165eb53ea6c0381ed13215eba1c7aa3bfd"
+    },
+    {
+      "path": "language/spec/34_AI_DECISION_DEBUG_TRACE_MODEL.md",
+      "bytes": 2991,
+      "sha256": "4a8055bcfa1ecd14813a6ad8e9e16aa881a4c6d3f90048520cee43a86a6647a4"
+    },
+    {
+      "path": "language/spec/34_OPTIONAL_FLOW_REUSE_MODEL.md",
+      "bytes": 5420,
+      "sha256": "25e5788f2496cabe98c0c4fea44809a70a29e5bee216b1bedd7a5c56071ccc80"
+    },
+    {
+      "path": "language/spec/35_PROCESS_PATTERN_ENGINEERING_MODEL.md",
+      "bytes": 936,
+      "sha256": "10f03ae5e647148716038d02d96baa96868fbbbf1ae023782df1c8ad0a117fbd"
+    },
+    {
+      "path": "ordo_pkg/ordo/__init__.py",
+      "bytes": 23,
+      "sha256": "5c15ceed224b372b217ade23afdfb7c64e48186e448e92004b468d078fd2b939"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/__init__.cpython-313.pyc",
+      "bytes": 195,
+      "sha256": "2aa186c5669755897f8f5f14d8e568ac3cbe227fa22bd287e897dc0be908a7f0"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/artifact_validator.cpython-313.pyc",
+      "bytes": 26987,
+      "sha256": "ec3f323cedf9ca34d81dd5b45cb8660caeb88ec21f706c1e8d7859a2d98d5999"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/build_identity.cpython-313.pyc",
+      "bytes": 5532,
+      "sha256": "cb77e83fcfd85ff6f2ff4f97dc772ca197bef5de4a0739ca22e5232fc72d8f50"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/checkpoints.cpython-313.pyc",
+      "bytes": 8781,
+      "sha256": "061473a52340398f77ff979ece41718389be5e697b31d38cc2f333bccdaeee24"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/ci_release_evidence.cpython-313.pyc",
+      "bytes": 6585,
+      "sha256": "64e950fac6275d864ddd13797fb8d06efd5c0fc6d1c7c4af65cd05e7e3b40f3f"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/clean_check.cpython-313.pyc",
+      "bytes": 23459,
+      "sha256": "87a3fca9a8fd561cf721ce0362343e5ae519ce730096e6f3f85cd5f38067b82e"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/cli.cpython-313.pyc",
+      "bytes": 88193,
+      "sha256": "fd1b2afa03efa9bf210ae3e3f90d27ad8cc4c6ab21d44cbd15ca4cfe3a974657"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/compiler.cpython-313.pyc",
+      "bytes": 22885,
+      "sha256": "796153fe9bc50c2e497069de23d84ae87cdc7babe2d674811c50d816d90bb952"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/consistency.cpython-313.pyc",
+      "bytes": 11744,
+      "sha256": "846a3bd810948dc0e77d0471778286ab7b2cd2154cdb3e97f129529a3cef9dc3"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/contract_coverage.cpython-313.pyc",
+      "bytes": 16817,
+      "sha256": "e2856443573b0cdbd211d08a5fd52169658f12fda4893d27bf2acf3408f5c341"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/coverage.cpython-313.pyc",
+      "bytes": 4545,
+      "sha256": "500fe9fdf7b646b936fcd172bb3250af9ae07439bb59c1d02d7decacfe7748e9"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/csg_runtime.cpython-313.pyc",
+      "bytes": 8571,
+      "sha256": "f42ee50bc5fa07043382f998ab562861177dae9917f75ddae9f123e81a279414"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/delivery_target.cpython-313.pyc",
+      "bytes": 5148,
+      "sha256": "2963581963e194d7275c547af8fabfa8d80b37641e0ff1a71de231e57dedeb95"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/dependency_conflicts.cpython-313.pyc",
+      "bytes": 7324,
+      "sha256": "d28925ba495a7a3d45cbd8010839e35abd5a93a29473cbcbd6535c58a0fd4796"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/dependency_lock.cpython-313.pyc",
+      "bytes": 10565,
+      "sha256": "4bcb7df2d1dfb233227d667e2982435544bd43930ae9d71d5db7d50d32637042"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/document_field_bindings.cpython-313.pyc",
+      "bytes": 11184,
+      "sha256": "1028e822dc266675b46161a3fbf1ef0f70fc5a8df5199101bce7c31bebbc0e60"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/go_no_go.cpython-313.pyc",
+      "bytes": 13799,
+      "sha256": "f1008b3f693e141ad7becf1c2d06a7b75eb3799f4f69df748809d6399454590d"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/graph_topology.cpython-313.pyc",
+      "bytes": 5368,
+      "sha256": "24403a08a427ac8f2a916742274b6edb5d87a89f14e2ffbeb080335fce9f9e55"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/helpers.cpython-313.pyc",
+      "bytes": 15471,
+      "sha256": "da42761efcc769f9f147a418c80096670a796240f1e304ed284d0da133d92cd4"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/intake.cpython-313.pyc",
+      "bytes": 27921,
+      "sha256": "ae4c32b1cde79cb449411949026a711148bdce630e1cb6196930771a5d4af9f3"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/linter.cpython-313.pyc",
+      "bytes": 14514,
+      "sha256": "2033c2c67420a5ff87f07613baf191d5d4510f3cfd023a2ef5cba26f3fe90424"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/loader.cpython-313.pyc",
+      "bytes": 2537,
+      "sha256": "0a125b60074cad0ab41399f280b104b9ad7176a63d5b867483325403b91730ec"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/manual_run_journey.cpython-313.pyc",
+      "bytes": 18633,
+      "sha256": "65bf5332b53b95347d65472d62e00b7df0062c79e44f0dafd03c6569a1a3ff80"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/output_generator.cpython-313.pyc",
+      "bytes": 25088,
+      "sha256": "5bbe69ee8c03ffc3ea3671ac44acd40579c1fbbd7bdb2fd620c69fb4000912c0"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/output_registry.cpython-313.pyc",
+      "bytes": 4351,
+      "sha256": "d18d5620cd0cb3211801a1b6568aa431f812144bb0a3f8503be75e489a0a434b"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/output_validator.cpython-313.pyc",
+      "bytes": 14733,
+      "sha256": "ab13967364815c2bc9b13fc7d61d41a5831703fb7c1bd801fab217e3c2828af9"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/package_profiles.cpython-313.pyc",
+      "bytes": 33137,
+      "sha256": "2c6ffb0e40ddb065f28c3270b4e183ae577bd138660e7f7033c187bb804ad74d"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/package_reconciliation.cpython-313.pyc",
+      "bytes": 6370,
+      "sha256": "d72fd8f384d9be4124484032a805ec4ae55b7c527fc850bb87fdd55754b3266f"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/prompt_compiler.cpython-313.pyc",
+      "bytes": 13448,
+      "sha256": "0ada629947c2d39d83e68401e2eaa7faa2e0422fbea67339e3513cfd3a49878b"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/provenance.cpython-313.pyc",
+      "bytes": 12885,
+      "sha256": "22a226d901c1b423e711d4d1caa75565668bc1f78bb5aa677e9c1c20cc802236"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/registry_checks.cpython-313.pyc",
+      "bytes": 8613,
+      "sha256": "21624ebf765add6bb43d2b93d7822e92b0a63d0ef9c19be74aeffc1b88e702c0"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/release.cpython-313.pyc",
+      "bytes": 21183,
+      "sha256": "bafac022f1e883d5cf7631116d46231b90691b0470ca8cf5b7466e9063e64eac"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/release_diff.cpython-313.pyc",
+      "bytes": 7653,
+      "sha256": "84c6928f09be6eaaa60817e351736261fa61f4f11f959dad6d2a68059c2e9aed"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/release_notes.cpython-313.pyc",
+      "bytes": 10073,
+      "sha256": "fb971f71e3b5d44cff9706291fd0238fa19f24985c5630e9576ddfa245fe315f"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/rendering_policy.cpython-313.pyc",
+      "bytes": 13398,
+      "sha256": "e51282190550666d211b636470c286014a66a8024f1b7c62d248ca4cabe2ff65"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/repo_checks.cpython-313.pyc",
+      "bytes": 36013,
+      "sha256": "ba5af1549924a00cee742db1dc99f424726923e7c43051e1bfe3d223e54de7f7"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/reporter.cpython-313.pyc",
+      "bytes": 881,
+      "sha256": "43e5cd13d348c6cef79f48a29a6de785512476202dfe5119d7cce6ab654a778f"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/runner.cpython-313.pyc",
+      "bytes": 25317,
+      "sha256": "315faed9e3e0780af24811214739eb7cbefcc982108582061c2e0000541acdc9"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/runtime.cpython-313.pyc",
+      "bytes": 30969,
+      "sha256": "591e9e51ce7a9656a5a8188e38c8d0833e238c55f730258dac6dd8dcf872c624"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/runtime_evidence.cpython-313.pyc",
+      "bytes": 6097,
+      "sha256": "d474073aaec5bd086414307a1bd7d0277b52772ff8670faea7765cf232d9bc96"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/runtime_restore.cpython-313.pyc",
+      "bytes": 12205,
+      "sha256": "fb7c23499101048489edaa547dd0faa09a3b5f0949888270c9405050cff34e64"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/session_chain.cpython-313.pyc",
+      "bytes": 18316,
+      "sha256": "e331d30c0db2ff27edc4072d808f4a011b211be6963bb6973aaa2995b8695c42"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/session_trace.cpython-313.pyc",
+      "bytes": 18268,
+      "sha256": "cded1838db09d0ea920df067872510f000d6b20442e210f3eec71d7fae1007eb"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/targets.cpython-313.pyc",
+      "bytes": 24558,
+      "sha256": "daf86ad7192499ec35ac8e62c9f2d9d27ed173aa7f5e1b0cdf0aaba8b1590cb2"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/template_tooling.cpython-313.pyc",
+      "bytes": 40342,
+      "sha256": "a6dccb5c6faa82a0b9ad8f6f65ba475f43deb00ed0bc71fca38575da1730fc9d"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/tester.cpython-313.pyc",
+      "bytes": 10840,
+      "sha256": "5a42c4131924cc243518f1529fe907f39493408085ae298455975716a294453f"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/transition_provenance.cpython-313.pyc",
+      "bytes": 10056,
+      "sha256": "a8389759c73bb8cf3b0a5efff2bb0c63bc31bfdac1e2e4d7a70c68ece82bb9c1"
+    },
+    {
+      "path": "ordo_pkg/ordo/__pycache__/tree_modules.cpython-313.pyc",
+      "bytes": 16993,
+      "sha256": "c9c10bae3d37065bd22d12f133f9c1016927f974678b49cabc27b515cd55e8fa"
+    },
+    {
+      "path": "ordo_pkg/ordo/apf_replay.py",
+      "bytes": 2431,
+      "sha256": "a6da370b289b9affe1fb2a5a08cf9d392e2cb53166d1c1da64043718a68aa510"
+    },
+    {
+      "path": "ordo_pkg/ordo/artifact_validator.py",
+      "bytes": 18942,
+      "sha256": "dcf11b9858acaeba216e6226034e14f117f64ccc14ea7002da8f67f84fcc34ee"
+    },
+    {
+      "path": "ordo_pkg/ordo/blind_automation.py",
+      "bytes": 7763,
+      "sha256": "63eafc9a745f7d5122e0bbfc3755637dc9fa0ef165dcb16f9ae0fd161c79e632"
+    },
+    {
+      "path": "ordo_pkg/ordo/build_identity.py",
+      "bytes": 3684,
+      "sha256": "ad2595d226875d7befff56d25815fb41ecd2f034cc5e7f5cf4c15149f88d3712"
+    },
+    {
+      "path": "ordo_pkg/ordo/checkpoints.py",
+      "bytes": 7111,
+      "sha256": "84f07423b1e3b6f55e24c46e4e52bdf64a94167dc3ec1c3646b8000843c93b7f"
+    },
+    {
+      "path": "ordo_pkg/ordo/ci_release_evidence.py",
+      "bytes": 3814,
+      "sha256": "52c4b0ca3fec0c658b2877d20855caf684a64b9f63a17c87d29d99707820a654"
+    },
+    {
+      "path": "ordo_pkg/ordo/clean_check.py",
+      "bytes": 18319,
+      "sha256": "8481cbbf04a13a4f9c93229c2fe49dad09ae67615aa51024af4aad24b4c2bc36"
+    },
+    {
+      "path": "ordo_pkg/ordo/cli.py",
+      "bytes": 60305,
+      "sha256": "ab5bfb0e110933041195f27d3003b64d23e402c8e09a9efb83dd569f16e41ecc"
+    },
+    {
+      "path": "ordo_pkg/ordo/compiler.py",
+      "bytes": 19914,
+      "sha256": "fe4aafc3d5ebc8313572b23e24626d1cb40676bcd23b8ef247091d010dfeeaae"
+    },
+    {
+      "path": "ordo_pkg/ordo/consistency.py",
+      "bytes": 10234,
+      "sha256": "4e6e4f7cbd7a2a9a2c91e7592f78b516f5350560b54a7d2006c1b8de6fc68363"
+    },
+    {
+      "path": "ordo_pkg/ordo/contract_coverage.py",
+      "bytes": 12066,
+      "sha256": "0fbdba2f993b4a6b1b0c0596189299048dbd0342eb23dbe5a4b3e75a88fc7393"
+    },
+    {
+      "path": "ordo_pkg/ordo/coverage.py",
+      "bytes": 3065,
+      "sha256": "392d78522cac167398001f4703d1196e744baebc1dcc742565e14da5bd11722e"
+    },
+    {
+      "path": "ordo_pkg/ordo/csg_runtime.py",
+      "bytes": 7610,
+      "sha256": "d659199b50648fe1bd44fdb7fd5318bc10d8465aef112b8664d40ab36acbfcee"
+    },
+    {
+      "path": "ordo_pkg/ordo/delivery_target.py",
+      "bytes": 4511,
+      "sha256": "07899161541f88674b902d3f881a2cac12d4dfbde50267d2a806fc8d589c4007"
+    },
+    {
+      "path": "ordo_pkg/ordo/dependency_conflicts.py",
+      "bytes": 5389,
+      "sha256": "93a502fb378e7f43d34ea303cf27411861f4e11bfd9dc52c05d56d1e6d58ee6a"
+    },
+    {
+      "path": "ordo_pkg/ordo/dependency_lock.py",
+      "bytes": 7911,
+      "sha256": "0340666f185340a93c7bf01323750a5f71cc7c8fd00dc51dc2a807cc6db4e7e5"
+    },
+    {
+      "path": "ordo_pkg/ordo/document_field_bindings.py",
+      "bytes": 7097,
+      "sha256": "0791ce943efd36df4b95d4eac18ad4f58ab7e8de07bf7c0ec39b3e45fe703038"
+    },
+    {
+      "path": "ordo_pkg/ordo/errors.py",
+      "bytes": 155,
+      "sha256": "4b19b416590cccaad1517e7809dcc0aecdab4c108a6bca2a4e7bd68c3b4bd53e"
+    },
+    {
+      "path": "ordo_pkg/ordo/execution_trace.py",
+      "bytes": 18043,
+      "sha256": "fd8b0c2369a58712dea71cd592ed6ec3aa146b2f5b4bb2566541e92159c65453"
+    },
+    {
+      "path": "ordo_pkg/ordo/flow_reuse_runtime.py",
+      "bytes": 8827,
+      "sha256": "dd2e575782e34ed35ca6b48a753bb8187df637467dc367765bd4364889e85e36"
+    },
+    {
+      "path": "ordo_pkg/ordo/flow_reuse_validation.py",
+      "bytes": 5576,
+      "sha256": "472bcbc16aab58a5a7e1888551f24a047484803f9c27e90671b61b91d4509f0a"
+    },
+    {
+      "path": "ordo_pkg/ordo/go_no_go.py",
+      "bytes": 12058,
+      "sha256": "b72fd437459522278470d1f326f60d914a2baaa2eb38181bb0f3f99d670bdf6f"
+    },
+    {
+      "path": "ordo_pkg/ordo/graph_topology.py",
+      "bytes": 3750,
+      "sha256": "b66c64cd2376ae9999ed9160c2ff78b20879702625d367e44f941b73c2e0deae"
+    },
+    {
+      "path": "ordo_pkg/ordo/graph_validation.py",
+      "bytes": 14169,
+      "sha256": "78ce9a1474fec1f9d97983798267c0fc466420aaf655471ffe0c1a532dae7f8f"
+    },
+    {
+      "path": "ordo_pkg/ordo/helpers.py",
+      "bytes": 12927,
+      "sha256": "43841e6ad104fc72b27dbfc3f9033830b877a7a34ef5af6fac49e289dc2155d9"
+    },
+    {
+      "path": "ordo_pkg/ordo/intake.py",
+      "bytes": 25082,
+      "sha256": "4c0dd39d1cc13b7db80525055325122b14cb999298e348adcfe7d4d23c50c613"
+    },
+    {
+      "path": "ordo_pkg/ordo/linter.py",
+      "bytes": 11062,
+      "sha256": "0027246c45367e0f1d25aad26f33c7e3e5badb71a7d4880bdc990b38b56be260"
+    },
+    {
+      "path": "ordo_pkg/ordo/loader.py",
+      "bytes": 1245,
+      "sha256": "757cf31bbfa160a7af2c414c1b3811f7d1a27bbaf5886cc763e00d4ba7b3f25a"
+    },
+    {
+      "path": "ordo_pkg/ordo/manual_run_journey.py",
+      "bytes": 11130,
+      "sha256": "978e213e41e740c0d8429d5efc55081419c644a3145444f33f31a58a64fa70e0"
+    },
+    {
+      "path": "ordo_pkg/ordo/output_generator.py",
+      "bytes": 18390,
+      "sha256": "6d9a4f0d5a6ecdf3bbd99d806c6568accface5fbe2fae5ced40d24f2ba560956"
+    },
+    {
+      "path": "ordo_pkg/ordo/output_registry.py",
+      "bytes": 2767,
+      "sha256": "089b661d22a2bc779b15c9df0070be7791cf29bb92040d419ec40b0217633db5"
+    },
+    {
+      "path": "ordo_pkg/ordo/output_validator.py",
+      "bytes": 11919,
+      "sha256": "07a3e5688e74478dbfe464b804b8faf5a8c3fe8a4685a44a62d3ce3f9a307dce"
+    },
+    {
+      "path": "ordo_pkg/ordo/package_cache.py",
+      "bytes": 19925,
+      "sha256": "e4e98a2850338e1b28b844f8649ade5297fa5e15fbf81a7d097b2fbe044fdfac"
+    },
+    {
+      "path": "ordo_pkg/ordo/package_profiles.py",
+      "bytes": 28707,
+      "sha256": "d4da2a157a199036ecb86cf88afc5311bf6da06bedb76041a0b5c27a92c9ccde"
+    },
+    {
+      "path": "ordo_pkg/ordo/package_reconciliation.py",
+      "bytes": 5804,
+      "sha256": "4ca12818d247c75da5f9a7605d414cfe1c51a2bbabe656281472c2f6b6e42f37"
+    },
+    {
+      "path": "ordo_pkg/ordo/performance_budget.py",
+      "bytes": 454,
+      "sha256": "37e47a284b622cf43ab0055086539c372e244d9c5f4a224b914de967d147ad3c"
+    },
+    {
+      "path": "ordo_pkg/ordo/prompt_compiler.py",
+      "bytes": 8647,
+      "sha256": "6c308e75f4f55d13e71dc3c516269f07dd56cdcdbdc01a1b48fd35309392e6a1"
+    },
+    {
+      "path": "ordo_pkg/ordo/prompt_governance.py",
+      "bytes": 7319,
+      "sha256": "4ca7b9ba095fc46287a8d2be2d18b179f1ca690e3237d6b2b2528545731bd159"
+    },
+    {
+      "path": "ordo_pkg/ordo/prompt_registry_reconcile.py",
+      "bytes": 4281,
+      "sha256": "177eadc4b0f9a0a67ad983d6f9f826d98259eafe21ab3ccbe170f865140531aa"
+    },
+    {
+      "path": "ordo_pkg/ordo/provenance.py",
+      "bytes": 9702,
+      "sha256": "d0f23cb30d52bf08f1642d07192e7268293d7b2bd99cd335a01556610a6a7354"
+    },
+    {
+      "path": "ordo_pkg/ordo/registry_checks.py",
+      "bytes": 5562,
+      "sha256": "5aa388f08f71f2380d0c47a5e6b745eeacb8fc86ec16e7b6b35bb834a913c3cc"
+    },
+    {
+      "path": "ordo_pkg/ordo/release.py",
+      "bytes": 18081,
+      "sha256": "fa98aebafdf8731abe0e471453d16607090d4c943d1bdd51472249fc363f4008"
+    },
+    {
+      "path": "ordo_pkg/ordo/release_diff.py",
+      "bytes": 6616,
+      "sha256": "16627086880f88af39aa3de8fb9b971928c8ed55cf45f411624eef066688c9c9"
+    },
+    {
+      "path": "ordo_pkg/ordo/release_notes.py",
+      "bytes": 6462,
+      "sha256": "0754cd4a80934a47d323c094dbf13c55e5ab9eaf1355c3fd708ef1f48670bfaa"
+    },
+    {
+      "path": "ordo_pkg/ordo/rendering_policy.py",
+      "bytes": 11015,
+      "sha256": "0c17a1add2b8c7ca399de98a0216700bca2c9fe4a44cc64ad3f445721ba2f6c8"
+    },
+    {
+      "path": "ordo_pkg/ordo/repo_checks.py",
+      "bytes": 27727,
+      "sha256": "5dd664b5ef1fd2d5f0d2de409fb8534d73b3f948bc45ca3ab243699a3ff8e6a9"
+    },
+    {
+      "path": "ordo_pkg/ordo/reporter.py",
+      "bytes": 323,
+      "sha256": "1c94ecc4b7c832da6a4b051578259a0ec80f0743e84c8b496838a73c1bec86d4"
+    },
+    {
+      "path": "ordo_pkg/ordo/runner.py",
+      "bytes": 18940,
+      "sha256": "dd4ee7722cc27fb98947bd47dbde5d78afd119656f89f559fccabc3f5f5d2b71"
+    },
+    {
+      "path": "ordo_pkg/ordo/runtime.py",
+      "bytes": 27240,
+      "sha256": "3ee56bbce940ebbd18fa6de6510f40e1f445fce2de6a54ffc8599197b43345ce"
+    },
+    {
+      "path": "ordo_pkg/ordo/runtime_evidence.py",
+      "bytes": 3698,
+      "sha256": "26b58b1054c2d5096977fac672619492b620bb6863170a5687b495abf407e066"
+    },
+    {
+      "path": "ordo_pkg/ordo/runtime_restore.py",
+      "bytes": 10432,
+      "sha256": "763b8d5cb7dcf0f59116231e66a4d72099bd652002b68bad75abcfc6d66300aa"
+    },
+    {
+      "path": "ordo_pkg/ordo/schemas/ir_schema.yaml",
+      "bytes": 1032,
+      "sha256": "aebf89e96612dd043f00478e1c2b2e1bfb7acae02c0555422292739c01af6bbc"
+    },
+    {
+      "path": "ordo_pkg/ordo/schemas/package_cache_state.schema.yaml",
+      "bytes": 856,
+      "sha256": "525341c36f861c2b0337a919c60a2b2a25bd12bd68dd797aaea7cdaa0d3edeb3"
+    },
+    {
+      "path": "ordo_pkg/ordo/schemas/source_schema.yaml",
+      "bytes": 1758,
+      "sha256": "b2b76156910d6c15e2be0b916710a07975c60482b59e3e2db1d0e4883965ec29"
+    },
+    {
+      "path": "ordo_pkg/ordo/schemas/template_contract.schema.yaml",
+      "bytes": 755,
+      "sha256": "4d8737b31b0ff0f5d71cb8f0fa7d824efed137a657303836f3b9184cbc90022b"
+    },
+    {
+      "path": "ordo_pkg/ordo/schemas/template_registry.schema.yaml",
+      "bytes": 900,
+      "sha256": "7e40c90c520a18894ecde473123a4356b13d5d490ca082560eae72808a1c8666"
+    },
+    {
+      "path": "ordo_pkg/ordo/session_chain.py",
+      "bytes": 13145,
+      "sha256": "b75dc9f9a8b5dea9bfd9d2d83b831995fcc2296f0d22ccd13a07a711522dae13"
+    },
+    {
+      "path": "ordo_pkg/ordo/session_trace.py",
+      "bytes": 13493,
+      "sha256": "1f0893a73692f850b1e692a591c94eed282badd47abe9bbd354349d434d093a6"
+    },
+    {
+      "path": "ordo_pkg/ordo/startup_artifact_reconcile.py",
+      "bytes": 7111,
+      "sha256": "2ace6ca107e07d4dfe2c85e15d64fe5fe6fc97702547ada59190a7863086191b"
+    },
+    {
+      "path": "ordo_pkg/ordo/targets.py",
+      "bytes": 19505,
+      "sha256": "b4e189a2d5f24379b22dd9c1c4736e043475581e4618523708225e26af6c5a4e"
+    },
+    {
+      "path": "ordo_pkg/ordo/template_tooling.py",
+      "bytes": 32266,
+      "sha256": "9dfd0e122118441a81697fdccebe2929b4d8e9774c738b3564f578cb26d5bc86"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/PACKAGING_PROFILES.md",
+      "bytes": 585,
+      "sha256": "3caab5ffd4a457fc92fc26b349af364322bd8c0f7cde01106d1fd09780878d7f"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/README.md",
+      "bytes": 1770,
+      "sha256": "2f4ccd0cb4fe7acace3d3c46450270668476fa7caac7fb0cefbfdccc774efb17"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/START_HERE_RUNTIME_MODE.md",
+      "bytes": 9314,
+      "sha256": "b0655fec03fd03203f6c5e55ef62ca2a9856a8011613c487a695486ef043806a"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/START_PROMPT_RUNTIME_MODE.md",
+      "bytes": 293,
+      "sha256": "23dbf1d211724a97f80665cf79446cec09700f4b0e5bab484741ffb217ff07ec"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/compiled/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/generated_outputs/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/ordo.yml",
+      "bytes": 178,
+      "sha256": "9f8c746820401244e90f0d3d28d7f303f1e99bc7968f5ff44684e5e3431cae2b"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/output_templates/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/reports/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/reports/CLI_VALIDATION_SUMMARY.md",
+      "bytes": 356,
+      "sha256": "13e94252b6eda04c43f59a9c0e0c6ca85aa8bd3c8e82ff5ac2cf25ec1fb7f608"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/reports/PACKAGE_PROFILE_SUMMARY.md",
+      "bytes": 194,
+      "sha256": "fd8b0494c30526ff0adbb517644da3900283381550a91e26be8061d0c3d41503"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/run_inputs/answers_blocked.yaml",
+      "bytes": 117,
+      "sha256": "68c6207703c1327a15a5ede5f56d64b9526bc0345141877db328783391cead3d"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/run_inputs/answers_success.yaml",
+      "bytes": 175,
+      "sha256": "35881bad6519bd1c33298e297daa80b75bf1414d75ab8500d99b61b3c276d7c3"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/run_inputs/intake_success.yaml",
+      "bytes": 165,
+      "sha256": "7b47491b95d65a71671d26f1aff8e12111cc37c0840f8e08a0e3a4fcbc861e7b"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/run_inputs/intake_unmatched_then_success.yaml",
+      "bytes": 184,
+      "sha256": "5581b43eafaaaeb37277b4421864b973323ea12b7455943621ea0faf01aea73e"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/runtime/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/source/program.ordo.yaml",
+      "bytes": 3047,
+      "sha256": "cd2ab2fedee61e6fdabd06bd87bb1eaa849fc84d8089346f56a756fc3a6b0d96"
+    },
+    {
+      "path": "ordo_pkg/ordo/templates/package_template/tests/test_cases.yaml",
+      "bytes": 834,
+      "sha256": "24b16ffa570c93fb1562310e1476f4043bdd619dfd00a3998194c4148bc92d33"
+    },
+    {
+      "path": "ordo_pkg/ordo/tester.py",
+      "bytes": 7755,
+      "sha256": "4eae6341cb702ed6ec2e6d55ed3a83a7db4e838c92d964160a5ceacee9e0d745"
+    },
+    {
+      "path": "ordo_pkg/ordo/transition_provenance.py",
+      "bytes": 6921,
+      "sha256": "b1eae2b0268f77bf202edf70c984002114d3a763514b2ce90f8686b8a6ec2532"
+    },
+    {
+      "path": "ordo_pkg/ordo/tree_modules.py",
+      "bytes": 10629,
+      "sha256": "15d3e385709192beb914c02b76b7c4a27ba14f8112d3deb5a8e3e781737863f3"
+    },
+    {
+      "path": "ordo_pkg/ordo/validation_evidence.py",
+      "bytes": 1416,
+      "sha256": "638de8ab736fca81e51eb7e0b90fcebc70e21361edba4edaaf8dd43e182240c4"
+    },
+    {
+      "path": "run_core_verification.sh",
+      "bytes": 592,
+      "sha256": "8cedaff1ca130bfdab195e0dfa9f88d8c60cf4b5b71a4a0e03622aae4b197c82"
+    },
+    {
+      "path": "tools/quick_authoring_preflight.py",
+      "bytes": 1373,
+      "sha256": "b2a710d6401e7faf8cfaf276df9f6adb676abbd5a00d8bc13f1c062fcb17b8f9"
+    },
+    {
+      "path": "tools/verify_portable_authoring_bundle.py",
+      "bytes": 3597,
+      "sha256": "3c8454bd96dd54d3ebfb9228008647edc5c758b8e50a3ca6b18eb5bfce2b3565"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/README.md",
+      "bytes": 3153,
+      "sha256": "598e54acd525a2fbdf0b25569622ebffc58c907cc374121354a3abcc10521506"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/VERSION",
+      "bytes": 14,
+      "sha256": "f77cccdd10d79797508947f77adeb8181bf2bf86afbac7fa09d91aae585378a7"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/__init__.py",
+      "bytes": 52,
+      "sha256": "28354787a7121f65d89be0406cc3bc5abf9d39f962db01a341aaaaf74e653227"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/build_distribution.py",
+      "bytes": 2290,
+      "sha256": "0f3f84ecf9da1421655302ed76ef446cb90b8edd0367e954023bdc41cc2c844b"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/editor_service.py",
+      "bytes": 20358,
+      "sha256": "6bd2bd18bba525333d3f4cdb2e0d4695e1590f4669afaed1aa961d5eb1f5e7f4"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/start_ordo_tree_editor.command",
+      "bytes": 460,
+      "sha256": "237e3fd546f926295e628547af3ae1c00f6d1e9ff49ce2d08967967b97b5805e"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/app.js",
+      "bytes": 28090,
+      "sha256": "a9bd1f77f2cfdbf6ea71dbaff821b8692cc86924bad3cc6daaabec89c85f514b"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/index.html",
+      "bytes": 4522,
+      "sha256": "6fa9f3ac364cb0a3597656b0c555a81ac0bcd9a014b4e3deba5e01aaa0cd2cf3"
+    },
+    {
+      "path": "utilities/ordo_tree_editor/web/styles.css",
+      "bytes": 6187,
+      "sha256": "56ae15301ba67bde811c3678ca5dbc45a8181eef4b23e24ef0d8342a4de0f24f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md",
+      "bytes": 1221,
+      "sha256": "93c543681c456952707fa3939f73b50a080ca86e0ee7ff207186f47a2c08cff3"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_STEP_REPORT.json",
+      "bytes": 1394,
+      "sha256": "d7cb21b961e32d6f4dd215f9be2132c2f7915fa91b2172cfeda367c29a65358b"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/GRAPH_OUTPUT_LAYERS.md",
+      "bytes": 7515,
+      "sha256": "78b55ba34c83c74754b508ed993cd0cb5e2e317fe1cc06dd951d1a5a932a3a8f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ORDO_GRAPH_INPUT_CONTRACT.md",
+      "bytes": 6748,
+      "sha256": "c184a4453bc5a2a96be63e359672f723d8586d544eb9485db969052fca1eca5f"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ORDO_INTEGRATION_NOTES.md",
+      "bytes": 1887,
+      "sha256": "0df197b955dc5c09b35c936fde195bb5aaaa04d95c1db116099bdb784d700712"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/README.md",
+      "bytes": 7557,
+      "sha256": "08369737a11da8a25b1f2d58e75802f5cac5c59f884a118aefb7473509fb3fde"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/RELEASE_NOTES_V1.md",
+      "bytes": 1709,
+      "sha256": "868a30d6a245fc17129001cfceb1dd3bb55eaa760919f4613fadcada142ae2e5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/TESTING.md",
+      "bytes": 861,
+      "sha256": "5443244d0e5b401f816c2e5bc1b1755e9b23cd390c87b4b5e35bc0ecbe7faf8d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/TRACE_OVERLAY_SCHEMA.md",
+      "bytes": 3345,
+      "sha256": "c0d29f3e0b8b6012f058f4f1073a92c783f21dc2cdf09663d9b4032f9bc7453d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_1_PREVIEW_MANIFEST.json",
+      "bytes": 2981,
+      "sha256": "0b88d4e2736065eec48b98cff7ffbf6e1db808d4780ad45b6f27df2a5622e239"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_PACKAGE_MANIFEST.json",
+      "bytes": 1692,
+      "sha256": "939d1c5ec5f05ff90f9c920eb6b160340f4df64edf9adb9c34c820b223979ec5"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/V1_VERIFICATION_REPORT.json",
+      "bytes": 3529,
+      "sha256": "18b51c6a0de358693d366600e2f7bdebfed830c2c48d33418be91438c5612938"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/VALIDATION_REPORT.json",
+      "bytes": 2000,
+      "sha256": "576a2cda9c00d4572a7aa9bac11f20ad50563f6cb1bbcf3e26bcd63df05dd0df"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/__init__.py",
+      "bytes": 194,
+      "sha256": "aad6f7a69563ed249cd4b3195c0f150bb094000971b06d72229e345c5d9bff17"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.annotations.v1.json",
+      "bytes": 1162,
+      "sha256": "40678845e2974bf624c9a007bb60643d0a707d8bc1919dbd8915339e25e8f14a"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.ordo.yaml",
+      "bytes": 1742,
+      "sha256": "51684ccbb1ad8b4fab63e35d7fd026b5456f30e646502299f2eaba925514e463"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/demo_support_triage.trace.v2.json",
+      "bytes": 597,
+      "sha256": "c9f05c5a4751db43af7597ecfc2972406e550ab6ba185aa466f059ed363ff461"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/p0_test_subtree_startup.svg",
+      "bytes": 15653,
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/examples/program_error_user_survey_with_artifacts.ordo.yaml",
+      "bytes": 8029,
+      "sha256": "86cb8fcbb59596df471756c0c004529231a4782673d2ca4b8b475d65778298dc"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph.py",
+      "bytes": 32338,
+      "sha256": "1764e1099f12a233c462831db473734122216be97e447ddb19788f6d0aa3653d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph_annotation_demo.py",
+      "bytes": 8742,
+      "sha256": "6a3ea50dd9e6969ffd415a027599f63ca46a9ca718faef760c9f02cb0f0f3f92"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/ordo_graph_with_attached_gates.py",
+      "bytes": 40841,
+      "sha256": "762771dd47762eaf439bad04b08d443a6b1d0c964eaf117459f3e92e9193ba84"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage.mmd",
+      "bytes": 377,
+      "sha256": "9a07ab43b4a2b3ddb0d7df371b7a3dcc51c438586183a5f809d2472a56bc8b87"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.dot",
+      "bytes": 4749,
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.report.json",
+      "bytes": 220,
+      "sha256": "9aa73ce806d9604896e929abbda1b7db5f6bafcd93981baaf4e1a81fc59f20d2"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay.svg",
+      "bytes": 24258,
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.dot",
+      "bytes": 4749,
+      "sha256": "3b99003ef6e8d3f620fb79c916af81050d6a51b525fee5570e9dc1190f8d5230"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.report.json",
+      "bytes": 226,
+      "sha256": "1bd5a2b6feef501f25b9ff96d229008b3cbdc7fa2239a51d4438f9b29bac9788"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_annotation_overlay_smoke.svg",
+      "bytes": 24258,
+      "sha256": "37751d083b320a161895133825aba658d870275f8e58e1e29bcd0df37c777a71"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.dot",
+      "bytes": 3338,
+      "sha256": "d1e198a1d422b5a3461f60d446649d9db5218f86b330fd338ec2e80f62492a23"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/reference_outputs/demo_support_triage_full.svg",
+      "bytes": 19912,
+      "sha256": "9a9c91c0b619e687cf437ac25628cfffff54dc86d52a48d75eae71b9b676d169"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/requirements-dev.txt",
+      "bytes": 14,
+      "sha256": "ed68ea16ad8aab76f809478c881995e191c8762d8f6d76edee8ae047c7defe3d"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/test_survey_startup_subtree.svg",
+      "bytes": 15653,
+      "sha256": "aaf098a86652f87b306019bfbead76aedb243a28846a71848438493b4fe31534"
+    },
+    {
+      "path": "utilities/ordo_visual_graph_generator/tests/test_ordo_graph.py",
+      "bytes": 9572,
+      "sha256": "f7cc03fccf326e4010cd075caf533b31aff7112539dcaa4a5d71264a1f4d006f"
+    }
+  ]
+}

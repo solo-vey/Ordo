@@ -1,0 +1,142 @@
+SemanticJsonIR:
+  type: object
+  required:
+  - ordo_version
+  - program_id
+  - control_level
+  - execution_mode
+  - ops
+  properties:
+    ordo_version:
+      type: string
+    program_id:
+      type: string
+    control_level:
+      enum:
+      - light
+      - standard
+      - strict
+    execution_mode:
+      enum:
+      - full_runtime
+      - chat_internal
+      - freeform_only
+    process_rail:
+      type: object
+      description: M26 Process Rail metadata for AI-guided execution.
+      properties:
+        rail_id:
+          type: string
+        state_tracking:
+          enum:
+          - required
+          - optional
+        allow_deviation:
+          type: boolean
+        require_resume_after_deviation:
+          type: boolean
+        backtracking:
+          enum:
+          - enabled
+          - disabled
+          - restricted
+    conversation_semantics:
+      type: object
+      description: Rules for classifying and routing human input during AI-led execution.
+    backtracking_rules:
+      type: array
+      description: Rules for invalidating dependent state when a previous answer changes.
+      items:
+        type: object
+    tool_hooks:
+      type: array
+      description: Deterministic helper calls available to AI.
+      items:
+        type: object
+    human_explanation_policy:
+      type: object
+      description: Policy for converting raw tool output into human-facing explanation.
+    contracts:
+      type: array
+      description: First-class confirmed/proposed process contracts used by coverage
+        validation.
+      items:
+        type: object
+    artifacts:
+      type: array
+      description: Declared generated artifact targets.
+      items:
+        type: object
+    artifact_requirements:
+      type: array
+      description: Rules that map confirmed contracts and fields to required artifacts.
+      items:
+        type: object
+    coverage_rules:
+      type: array
+      description: Deterministic rules for checking contract-to-artifact coverage.
+      items:
+        type: object
+    rendered_artifact_assertions:
+      type: array
+      description: Assertions evaluated against rendered/generated artifact files.
+      items:
+        type: object
+    go_no_go:
+      type: object
+      description: Machine-readable final decision object for draft/release readiness.
+    rendering_templates:
+      type: array
+      description: Two-tier rendering template declarations with deterministic/model-assisted
+        metadata.
+      items:
+        type: object
+    model_assisted_render_handoffs:
+      type: array
+      description: Runtime handoff packet metadata for templates that require AI rendering.
+      items:
+        type: object
+    execution_trace:
+      type: object
+      description: Canonical EXECUTION_TRACE.DEF contract and initial trace metadata
+        for the run.
+    ops:
+      type: array
+      items:
+        type: object
+        required:
+        - op
+        - id
+        properties:
+          op:
+            type: string
+        allOf:
+        - if:
+            properties:
+              op:
+                const: CONVERSATION.SCOPE.DEF
+          then:
+            required:
+            - op
+            - id
+            - supported
+            - enabled
+            properties:
+              op:
+                const: CONVERSATION.SCOPE.DEF
+              supported:
+                type: boolean
+              enabled:
+                type: boolean
+              mode:
+                enum:
+                - advisory
+                - guided_redirect
+                - strict_redirect
+                - locked_process
+              state_change_on_out_of_scope:
+                const: false
+              escalation:
+                type: object
+              trace:
+                type: object
