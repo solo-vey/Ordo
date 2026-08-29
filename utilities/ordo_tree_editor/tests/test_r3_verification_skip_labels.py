@@ -28,15 +28,13 @@ def test_registry_contextual_checks_have_skip_kind():
         }:
             assert item.get("skip_kind")
 
-def test_missing_optional_dependency_label_and_graphviz_descriptor(monkeypatch, tmp_path):
-    kind,label=runner._skip_kind({"skip_kind":"missing_optional_dependency"},"dot missing")
+def test_missing_optional_dependency_label_is_generic(monkeypatch, tmp_path):
+    kind,label=runner._skip_kind({"skip_kind":"missing_optional_dependency"},"tool missing")
     assert (kind,label)==("missing_optional_dependency","Missing optional dependency")
-    item=json.loads((runner.CHECKS_DIR/'090_graph_render.json').read_text())
-    assert item.get('requires_executables')==['dot']
-    assert item.get('skip_kind')=='missing_optional_dependency'
-    monkeypatch.setattr(runner.shutil,'which',lambda name: None if name=='dot' else '/usr/bin/'+name)
+    item={"requires_executables":["optional-tool"],"skip_kind":"missing_optional_dependency"}
+    monkeypatch.setattr(runner.shutil,'which',lambda name: None if name=='optional-tool' else '/usr/bin/'+name)
     source=tmp_path/'program.ordo.yaml'; source.write_text('nodes: []\n')
     applicable,reason=runner._applicable(item,tmp_path,source)
     assert applicable is False
-    assert '`dot`' in reason
+    assert '`optional-tool`' in reason
     assert 'not installed' in reason

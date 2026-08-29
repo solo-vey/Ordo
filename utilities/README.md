@@ -12,14 +12,15 @@ This directory contains optional utilities that ship beside Ordo but do not defi
 
 ## Current status
 
-M61.2 imports the Visual Graph Generator as a second included companion utility.
+The Visual Graph Generator was retired from the active utility set in the 0.1.2
+maintenance line. Its source and historical outputs remain under
+`archive/legacy_utilities/ordo_visual_graph_generator/` for provenance.
 
 ## Utilities
 
 | Utility | Package location | Purpose | Status |
 |---|---|---|---|
 | PathWalk | `utilities/ordo_pathwalk/` | Real-module graph summaries, terminal paths, clean/noise testcase artifacts, human review cards | Included |
-| Visual Graph Generator | `utilities/ordo_visual_graph_generator/` | Render Ordo YAML/IR as `.mmd`, `.svg`, `.png`; support subtree/context/path views and annotation overlays | Included as of M61.2 |
 | Playbook Lifecycle | `utilities/playbook_lifecycle/` | Upgrade-impact review, release comparison, and verified rollback checkpoints | Included |
 | Playbook Regression Harness | `utilities/playbook_regression_harness/` | Versioned deterministic, semantic, stability, provenance, and behavioral-package preparation for playbook regression | Candidate 1.7.0 |
 | Ordo Tree Editor | `utilities/ordo_tree_editor/` | Local browser-based visual inspection, validation, and controlled authoring of Ordo YAML graphs | Alpha v0.2.0-alpha.20.0.195-dev |
@@ -28,37 +29,13 @@ M61.2 imports the Visual Graph Generator as a second included companion utility.
 
 Utilities may read Ordo YAML/IR and generate review, debug, test, or visual artifacts. They must not silently change runtime-core behavior.
 
-## Visual Graph Generator quickstart
-
-Generate Mermaid:
-
-```bash
-python3 utilities/ordo_visual_graph_generator/ordo_graph.py \
-  utilities/ordo_visual_graph_generator/examples/demo_support_triage.ordo.yaml \
-  --format mmd \
-  --out runs/visual_graph/demo_support_triage.mmd
-```
-
-Generate SVG when Graphviz `dot` is installed:
-
-```bash
-python3 utilities/ordo_visual_graph_generator/ordo_graph.py \
-  utilities/ordo_visual_graph_generator/examples/demo_support_triage.ordo.yaml \
-  --format svg \
-  --out runs/visual_graph/demo_support_triage.svg
-```
-
-See `utilities/ordo_visual_graph_generator/README.md` and `utilities/ordo_visual_graph_generator/ORDO_INTEGRATION_NOTES.md`.
-
 ## M61.3 update — consolidated Visual Graph + PathWalk workflow
 
 M61.3 adds a stable companion utility workflow guide:
 
 ```text
 source/program.ordo.yaml
-  → Visual Graph Generator: visual tree inspection
   → PathWalk: graph summary, terminal paths, clean/noise cases, review cards
-  → Visual Graph annotation overlay: optional reviewer notes/highlights
 ```
 
 See `docs/apf/legacy-root/COMPANION_UTILITY_WORKFLOW.md` and `utilities/COMPANION_UTILITY_WORKFLOW.md`.

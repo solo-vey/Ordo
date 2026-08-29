@@ -48,23 +48,6 @@ The editor opens at `http://127.0.0.1:8765`. On macOS, double-click
 `start_ordo_tree_editor.command` after making it executable, or run it from a
 terminal.
 
-## Run with Docker Compose
-
-The published image is a read-only, unauthenticated local service. From the
-repository root:
-
-```bash
-docker compose -f docker-compose.tree-editor.yml pull
-docker compose -f docker-compose.tree-editor.yml up -d
-```
-
-Open `http://127.0.0.1:8765`. Playbook files and session state are kept only
-for the lifetime of the container; no persistent volume is required. The
-standard image has no organization-specific model or GitLab defaults. For a
-local custom provider, set `ORDO_MODEL_PROVIDER`, `ORDO_MODEL_BASE_URL`,
-`ORDO_MODEL_NAME`, and (optionally) `ORDO_GITLAB_ROOT` in your shell or an
-uncommitted env file before starting Compose.
-
 To choose a different port or avoid opening a browser automatically:
 
 ```bash
@@ -83,7 +66,7 @@ validation, and explicit tree-module instantiation.
 ## Distribution model
 
 The source utility is shipped in the repository and can be packed into a
-versioned ZIP release. Version `0.2.0-alpha.20.0.215-dev` is an experimental alpha test build: use it
+versioned ZIP release. Version `0.2.0-alpha.11.2` is an experimental alpha test build: use it
 to review and edit local copies, then validate the exported YAML through the
 normal Ordo controls before relying on it. It requires an installed Python
 runtime. A later desktop-distribution phase may bundle Python into a macOS
@@ -298,7 +281,7 @@ Validation-recovery nodes now support free-form analyst/model dialogue while rem
 - Runtime technical IDs preserve underscores in transcript rendering.
 - Assistant/model messages are expanded by default; only long analyst messages collapse automatically.
 - Human-decision gates provide prepared actions plus an inline `Other / clarification` field that is carried into the repair route as analyst correction context.
-- Deterministic test-coverage detection recognizes localized negative-case wording as evidence for the `negative` requirement.
+- Deterministic test-coverage detection recognizes Ukrainian negative-case wording (`негатив*`, `відсутн*`) as evidence for the `negative` requirement.
 
 
 ## Replay to checkpoint (alpha.20.0.13)

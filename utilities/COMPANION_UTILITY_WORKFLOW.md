@@ -1,8 +1,8 @@
 # M61.3 — Companion Utility Workflow Guide
 
 Status: **stable docs consolidation**.  
-Base: **M61.2 Visual Graph Generator Package Import**.  
-Scope: explain the combined read-only utility route across Visual Graph Generator and PathWalk.  
+Base: **M61.2 Visual Graph Generator Package Import** (historical).
+Scope: preserve the historical combined read-only utility route across Visual Graph Generator and PathWalk.
 Non-scope: runtime execution, scoring, calibration, benchmark orchestration, watchdog/process-boundary hardening, and merging utilities into one program.
 
 ## Purpose
@@ -17,20 +17,20 @@ After I have source/program.ordo.yaml, which utility do I run first, and what ar
 
 ```text
 source/program.ordo.yaml
-  → Visual Graph Generator: inspect the structure visually
+  → archived Visual Graph Generator: inspect the structure visually
   → PathWalk real-module-graph: summarize source YAML as graph data
   → PathWalk real-module-paths: enumerate terminal paths
   → PathWalk real-module-clean-cases: generate clean-path testcase artifacts
   → PathWalk real-module-noise-cases: generate bounded-noise testcase artifacts
   → PathWalk real-module-review-cards: generate human QA/developer review cards
-  → Visual Graph annotation overlay: optionally highlight review/debug notes
+  → archived Visual Graph annotation overlay: optionally highlight review/debug notes
 ```
 
 ## Utility responsibilities
 
 | Utility | Reads | Writes | Main question | Runtime role |
 |---|---|---|---|---|
-| Visual Graph Generator | Ordo YAML/IR | `.mmd`, `.svg`, `.png`, overlay reports | What does the tree look like? | None; read-only renderer |
+| Visual Graph Generator (archived) | Ordo YAML/IR | `.mmd`, `.svg`, `.png`, overlay reports | What did the historical visual route inspect? | Retired; read-only renderer |
 | PathWalk | Ordo source YAML or PathWalk artifacts | graph summaries, paths, cases, review cards | What paths/cases/cards should a reviewer inspect? | None in the M60.7/M61.0 artifact-only line |
 | Ordo runtime CLI | runtime packages | session/state/runtime artifacts | Did an actual runtime session progress correctly? | Runtime core |
 
@@ -49,13 +49,13 @@ mkdir -p "$RUN"
 Mermaid:
 
 ```bash
-python3 utilities/ordo_visual_graph_generator/ordo_graph.py   "$SRC"   --format mmd   --out "$RUN/full_graph.mmd"
+python3 archive/legacy_utilities/ordo_visual_graph_generator/ordo_graph.py   "$SRC"   --format mmd   --out "$RUN/full_graph.mmd"
 ```
 
 SVG, when Graphviz `dot` is installed:
 
 ```bash
-python3 utilities/ordo_visual_graph_generator/ordo_graph.py   "$SRC"   --format svg   --out "$RUN/full_graph.svg"
+python3 archive/legacy_utilities/ordo_visual_graph_generator/ordo_graph.py   "$SRC"   --format svg   --out "$RUN/full_graph.svg"
 ```
 
 Use this before generating cases when the author/reviewer needs a fast visual sanity check.
@@ -140,13 +140,13 @@ $RUN/review_cards/VALIDATION_REPORT.json
 Use annotation overlays when a reviewer wants to highlight newly added nodes, risky branches, suspicious gates, or review comments on a graph.
 
 ```bash
-python3 utilities/ordo_visual_graph_generator/ordo_graph_annotation_demo.py   "$SRC"   --annotations utilities/ordo_visual_graph_generator/examples/demo_support_triage.annotations.v1.json   --out "$RUN/annotated_graph.svg"
+python3 archive/legacy_utilities/ordo_visual_graph_generator/ordo_graph_annotation_demo.py   "$SRC"   --annotations archive/legacy_utilities/ordo_visual_graph_generator/examples/demo_support_triage.annotations.v1.json   --out "$RUN/annotated_graph.svg"
 ```
 
 The annotation schema is documented in:
 
 ```text
-utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md
+archive/legacy_utilities/ordo_visual_graph_generator/ANNOTATION_OVERLAY_SCHEMA.md
 ```
 
 ## Recommended inspection order
@@ -178,5 +178,5 @@ Explicitly out of scope:
 Use this sentence in package documentation:
 
 ```text
-For Ordo authoring and review, use Visual Graph Generator first to inspect the YAML tree, then use PathWalk to enumerate terminal paths, generate clean and bounded-noise testcase artifacts, and create human review scenario cards. Both utilities remain companion tools and do not define runtime semantics.
+For historical Ordo authoring and review, the archived Visual Graph Generator can inspect the YAML tree before PathWalk enumerates terminal paths, generates clean and bounded-noise testcase artifacts, and creates human review scenario cards. The archived utility does not define runtime semantics.
 ```

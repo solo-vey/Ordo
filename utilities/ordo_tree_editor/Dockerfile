@@ -12,7 +12,6 @@ RUN useradd --create-home --uid 10001 ordo
 COPY utilities/ordo_tree_editor/requirements-runtime.txt /tmp/requirements-runtime.txt
 RUN pip install --no-cache-dir --disable-pip-version-check -r /tmp/requirements-runtime.txt
 
-# The editor resolves these paths as repository-root resources at runtime.
 COPY utilities/ordo_tree_editor /app/utilities/ordo_tree_editor
 COPY cli/ordo /app/cli/ordo
 COPY language /app/language

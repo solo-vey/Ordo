@@ -136,8 +136,6 @@ def test_arf_playbook_kit_manifest_is_safe_and_reproducible() -> None:
                 "utilities/README.md",
                 "utilities/ordo_pathwalk/README.md",
                 "utilities/ordo_pathwalk/cli.py",
-                "utilities/ordo_visual_graph_generator/README.md",
-                "utilities/ordo_visual_graph_generator/ordo_graph.py",
                 "utilities/playbook_lifecycle/README.md",
                 "utilities/playbook_regression_harness/README.md",
                 "release_tools/build_arf_playbook_kit.py",

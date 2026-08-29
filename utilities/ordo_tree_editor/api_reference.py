@@ -115,7 +115,7 @@ def build_spec()->dict[str,Any]:
     for (method,path),op in OPS.items(): paths.setdefault(path,{})[method]=op
     return {
       "openapi":"3.1.0",
-      "info":{"title":"Ordo Tree Editor Local REST API","version":"0.2.0-alpha.20.0.215-dev","description":"HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract."},
+      "info":{"title":"Ordo Tree Editor Local REST API","version":"0.2.0-alpha.20.0.217-dev","description":"HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract."},
       "servers":[{"url":"http://127.0.0.1:8765","description":"Default local Editor server"}],
       "tags":TAGS,
       "paths":paths,

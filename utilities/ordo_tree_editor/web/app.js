@@ -19,7 +19,6 @@ if (directFileOpen) {
   document.querySelector("header").hidden = true;
   document.querySelector("main").hidden = true;
 }
-
 async function request(path, payload, options = {}) {
   const response = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal: options.signal });
   const data = await response.json(); if (!response.ok) throw new Error(data.error || "Request failed."); return data;
@@ -951,7 +950,7 @@ function hideCanvasContextMenu() {
   state.canvasMenuPosition = null;
 }
 function showCanvasContextMenu(event) {
-  if (!state.source || state.panelTab !== "dialog") return;
+  if (!state.source) return;
   const nodeElement = event.target.closest?.(".node");
   if (event.target.closest?.(".edge-hit")) return;
   const clickedView = nodeElement ? (state.graph?.nodes || []).find(item => item.id === nodeElement.dataset.id) : null;
@@ -977,6 +976,7 @@ function showCanvasContextMenu(event) {
   const singleSelection = hasSelection && selectedDeletableIds.length === 1;
   updateCollapseMenuState(singleSelection ? selectedDeletableIds[0] : null);
   document.querySelector("#canvas-create-actions").hidden = true;
+  document.querySelector("#canvas-general-actions").hidden = false;
   document.querySelector("#canvas-selection-actions").hidden = !hasSelection;
   document.querySelector("#canvas-delete-selection").hidden = true;
   const dialogActions = document.querySelector("#canvas-dialog-actions");
@@ -3246,10 +3246,36 @@ async function loadEmbeddedDataFlow(){
   try{const data=await request("/api/embedded-data-flow",{package_id:state.packageInfo.id});state.lineage.sourceData=data?.available?data:null;state.lineage.sourceError=data?.available?null:(data?.status==="invalid"?data.error:null);return data;}
   catch(error){state.lineage.sourceData=null;state.lineage.sourceError=error.message;return null;}finally{state.lineage.sourceLoading=false;}
 }
+
+function hideSourceFlowContextMenu(){const menu=document.querySelector("#source-flow-context-menu");if(menu)menu.hidden=true;}
+function sourceFlowSvgPalette(type){
+  const group=sourceFlowLegendNodeGroup(type);
+  return ({variable:{stroke:"#7e92b8",fill:"#ffffff",accent:"#7e92b8"},transformation:{stroke:"#6d9b8e",fill:"#f7fbf9",accent:"#6d9b8e"},interaction:{stroke:"#9a8054",fill:"#fffdf8",accent:"#9a8054"},gate:{stroke:"#a66e16",fill:"#fff9e9",accent:"#a66e16"},artifact:{stroke:"#6f84a8",fill:"#fbfcff",accent:"#6f84a8"},contract:{stroke:"#2f6f5a",fill:"#f3fbf7",accent:"#2f6f5a"}})[group]||{stroke:"#738095",fill:"#ffffff",accent:"#738095"};
+}
+function downloadSourceFlowSvg(){
+  const graph=activeSourceFlowGraph(),positions=state.lineage.sourcePositions||{};
+  if(!(graph?.nodes||[]).length)return;
+  const width=Math.max(700,state.lineage.sourceWorldWidth||0,...Object.values(positions).map(p=>(p?.x||0)+SOURCE_FLOW_CARD_W+40));
+  const height=Math.max(500,state.lineage.sourceWorldHeight||0,...Object.values(positions).map(p=>(p?.y||0)+SOURCE_FLOW_CARD_H+40));
+  const direction=state.lineage.sourceDirection||"TB",planned=sourceFlowPlanRoutes(graph,positions,direction);
+  const trace=sourceFlowActiveTrace(graph),parts=[`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,`<rect width="100%" height="100%" fill="#fbfcfe"/>`];
+  for(const edge of graph.edges||[]){const a=positions[edge.from],b=positions[edge.to];if(!a||!b)continue;const key=`${edge.from}->${edge.to}:${edge.type||"relation"}`,path=planned.get(key)||sourceFlowOrthogonalPath(a,b,direction);let stroke="#8a98ad",dash="",sw=1.4;if(edge.type==="validation"){stroke="#667085";dash=' stroke-dasharray="5 4"';}if(trace){const up=trace.upstream.has(edge.from)&&trace.upstream.has(edge.to),down=trace.downstream.has(edge.from)&&trace.downstream.has(edge.to);if(up&&!down){stroke="#2d6fb7";sw=2.2;}else if(down&&!up){stroke="#258064";sw=2.2;dash=' stroke-dasharray="7 4"';}}parts.push(`<path d="${escapeXml(path)}" fill="none" stroke="${stroke}" stroke-width="${sw}"${dash}/>`);}
+  for(const node of graph.nodes||[]){const pos=positions[node.id];if(!pos)continue;const pal=sourceFlowSvgPalette(node.type),label=String(node.label||node.id),type=sourceFlowNodeTypeLabel(node.type),ref=String(node.variable_ref||node.artifact_ref||node.gate_metadata?.id||"");parts.push(`<rect x="${pos.x}" y="${pos.y}" width="${SOURCE_FLOW_CARD_W}" height="${SOURCE_FLOW_CARD_H}" rx="8" fill="${pal.fill}" stroke="${pal.stroke}" stroke-width="2"/>`,`<rect x="${pos.x}" y="${pos.y}" width="${SOURCE_FLOW_CARD_W}" height="4" rx="3" fill="${pal.accent}"/>`,`<text x="${pos.x+10}" y="${pos.y+18}" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#667085">${escapeXml(type)}</text>`);svgTextLines(label,28,2).forEach((line,i)=>parts.push(`<text x="${pos.x+10}" y="${pos.y+38+i*15}" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#1f2937">${escapeXml(line)}</text>`));if(ref)parts.push(`<text x="${pos.x+10}" y="${pos.y+72}" font-family="Arial,sans-serif" font-size="8.5" fill="#7a8599">${escapeXml(ref.length>32?ref.slice(0,31)+'…':ref)}</text>`);}
+  parts.push('</svg>');const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([parts.join('\n')],{type:'image/svg+xml;charset=utf-8'}));link.download='ordo-data-flow.svg';link.click();URL.revokeObjectURL(link.href);hideSourceFlowContextMenu();
+}
+function showSourceFlowContextMenu(event){
+  if(!state.lineage.sourceData||state.lineage.sourceSubview==="passports")return;
+  event.preventDefault();event.stopPropagation();hideCanvasContextMenu();
+  const menu=document.querySelector("#source-flow-context-menu");if(!menu)return;
+  document.querySelector("#source-flow-context-tb")?.classList.toggle("active",(state.lineage.sourceDirection||"TB")==="TB");
+  document.querySelector("#source-flow-context-lr")?.classList.toggle("active",(state.lineage.sourceDirection||"TB")==="LR");
+  menu.hidden=false;menu.style.left=`${event.clientX}px`;menu.style.top=`${event.clientY}px`;
+  requestAnimationFrame(()=>{const rect=menu.getBoundingClientRect();if(rect.right>window.innerWidth-8)menu.style.left=`${Math.max(8,event.clientX-rect.width)}px`;if(rect.bottom>window.innerHeight-8)menu.style.top=`${Math.max(8,event.clientY-rect.height)}px`;});
+}
 function bindSourceDataFlow(){
   document.querySelector("#source-flow-data-class-filter")?.addEventListener("change",e=>{state.lineage.sourceDataClassFilter=String(e.target.value||"all");state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;state.lineage.sourcePositions={};clearSourceFlowLegendSelection();renderSourceDataFlow();});
   document.querySelectorAll('.source-flow-legend-item').forEach(btn=>btn.addEventListener('click',()=>{if(btn.disabled)return;setSourceFlowLegendSelection(btn.dataset.legendKind||'',btn.dataset.legendValue||'');}));
-  document.querySelector("#source-flow-subview-tree")?.addEventListener("click",()=>setSourceFlowSubview("tree"));document.querySelector("#source-flow-subview-passports")?.addEventListener("click",()=>setSourceFlowSubview("passports"));document.querySelector("#source-flow-layout-auto")?.addEventListener("click",()=>{state.lineage.sourcePositions={};setSourceFlowLayoutMode("auto");renderSourceDataFlow();});document.querySelector("#source-flow-layout-free")?.addEventListener("click",()=>setSourceFlowLayoutMode("free"));document.querySelector("#source-flow-direction-tb")?.addEventListener("click",()=>setSourceFlowDirection("TB"));document.querySelector("#source-flow-direction-lr")?.addEventListener("click",()=>setSourceFlowDirection("LR"));document.querySelector("#source-flow-clear-focus")?.addEventListener("click",()=>{state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;clearSourceFlowLegendSelection();renderSourceDataFlow();});document.querySelector("#source-flow-zoom-out")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)-.1));document.querySelector("#source-flow-zoom-in")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)+.1));document.querySelector("#source-flow-zoom-reset")?.addEventListener("click",()=>setSourceFlowZoom(1));document.querySelector("#source-flow-zoom-fit")?.addEventListener("click",fitSourceFlowToViewport);const vp=document.querySelector("#source-flow-viewport");vp?.addEventListener("pointerdown",e=>{if(e.button!==0||e.target.closest(".source-flow-node")||e.target.closest(".lineage-controls")||e.target.closest('.source-flow-legend-item'))return;state.lineage.sourcePan={x:e.clientX,y:e.clientY,left:vp.scrollLeft,top:vp.scrollTop,id:e.pointerId,moved:false};vp.setPointerCapture?.(e.pointerId);vp.classList.add("panning");});vp?.addEventListener("pointermove",e=>{const p=state.lineage.sourcePan;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;if(Math.abs(dx)>4||Math.abs(dy)>4)p.moved=true;vp.scrollLeft=p.left-dx;vp.scrollTop=p.top-dy;});const stop=e=>{const p=state.lineage.sourcePan;if(p&&p.id!==e.pointerId)return;state.lineage.sourcePan=null;vp?.classList.remove("panning");};vp?.addEventListener("pointerup",stop);vp?.addEventListener("pointercancel",()=>{state.lineage.sourcePan=null;vp?.classList.remove("panning");});
+  document.querySelector("#source-flow-subview-tree")?.addEventListener("click",()=>setSourceFlowSubview("tree"));document.querySelector("#source-flow-subview-passports")?.addEventListener("click",()=>setSourceFlowSubview("passports"));document.querySelector("#source-flow-layout-auto")?.addEventListener("click",()=>{state.lineage.sourcePositions={};setSourceFlowLayoutMode("auto");renderSourceDataFlow();});document.querySelector("#source-flow-layout-free")?.addEventListener("click",()=>setSourceFlowLayoutMode("free"));document.querySelector("#source-flow-direction-tb")?.addEventListener("click",()=>setSourceFlowDirection("TB"));document.querySelector("#source-flow-direction-lr")?.addEventListener("click",()=>setSourceFlowDirection("LR"));document.querySelector("#source-flow-clear-focus")?.addEventListener("click",()=>{state.lineage.sourceSelected=null;state.lineage.sourceFocusRoot=null;clearSourceFlowLegendSelection();renderSourceDataFlow();});document.querySelector("#source-flow-zoom-out")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)-.1));document.querySelector("#source-flow-zoom-in")?.addEventListener("click",()=>setSourceFlowZoom((state.lineage.sourceZoom||1)+.1));document.querySelector("#source-flow-zoom-reset")?.addEventListener("click",()=>setSourceFlowZoom(1));document.querySelector("#source-flow-zoom-fit")?.addEventListener("click",fitSourceFlowToViewport);const vp=document.querySelector("#source-flow-viewport");vp?.addEventListener("contextmenu",showSourceFlowContextMenu);document.querySelector("#source-flow-context-download-svg")?.addEventListener("click",downloadSourceFlowSvg);document.querySelector("#source-flow-context-fit")?.addEventListener("click",()=>{hideSourceFlowContextMenu();fitSourceFlowToViewport();});document.querySelector("#source-flow-context-auto")?.addEventListener("click",()=>{hideSourceFlowContextMenu();state.lineage.sourcePositions={};setSourceFlowLayoutMode("auto");renderSourceDataFlow();});document.querySelector("#source-flow-context-tb")?.addEventListener("click",()=>{hideSourceFlowContextMenu();setSourceFlowDirection("TB");});document.querySelector("#source-flow-context-lr")?.addEventListener("click",()=>{hideSourceFlowContextMenu();setSourceFlowDirection("LR");});vp?.addEventListener("pointerdown",e=>{if(e.button!==0||e.target.closest(".source-flow-node")||e.target.closest(".lineage-controls")||e.target.closest('.source-flow-legend-item'))return;hideSourceFlowContextMenu();state.lineage.sourcePan={x:e.clientX,y:e.clientY,left:vp.scrollLeft,top:vp.scrollTop,id:e.pointerId,moved:false};vp.setPointerCapture?.(e.pointerId);vp.classList.add("panning");});vp?.addEventListener("pointermove",e=>{const p=state.lineage.sourcePan;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.x,dy=e.clientY-p.y;if(Math.abs(dx)>4||Math.abs(dy)>4)p.moved=true;vp.scrollLeft=p.left-dx;vp.scrollTop=p.top-dy;});const stop=e=>{const p=state.lineage.sourcePan;if(p&&p.id!==e.pointerId)return;state.lineage.sourcePan=null;vp?.classList.remove("panning");};vp?.addEventListener("pointerup",stop);vp?.addEventListener("pointercancel",()=>{state.lineage.sourcePan=null;vp?.classList.remove("panning");});
 }
 
 function lineageKindLabel(kind){ return ({analyst_input:"Analyst input",derived_state:"Derived state",transform_analyst:"Analyst interaction",transform_model:"AI transformation",transform_deterministic:"Deterministic derivation",transform_tool:"Python / tool",transform_template:"Template rendering",transform_package:"Packaging",document:"Document",artifact:"Artifact",archive:"Archive / package"})[kind] || kind || "Entity"; }
@@ -4072,7 +4098,7 @@ document.querySelector("#canvas-toggle-collapse").addEventListener("click", even
 });
 document.querySelector("#canvas-download-yaml").addEventListener("click", downloadYaml);
 document.querySelector("#canvas-download-playbook")?.addEventListener("click", downloadFullPlaybook);
-document.querySelector("#canvas-download-svg").addEventListener("click", downloadTreeSvg);
+document.querySelector("#canvas-download-svg")?.addEventListener("click", downloadTreeSvg);
 document.querySelector("#canvas-delete-selection").addEventListener("click", deleteSelectedNodes);
 document.querySelector("#canvas-dialog-from-entry").addEventListener("click", event => { const nodeId = event.currentTarget.dataset.nodeId; if (nodeId) openEntryToNodeDialog(nodeId); });
 document.querySelector("#dialog-play-toggle").addEventListener("click", () => { if (state.dialogPlayMode && state.dialogPlaying) pauseDialogPlayback(); else startDialogPlayback(!state.dialogPlayMode); });
@@ -4087,8 +4113,8 @@ document.querySelector("#dialog-advance-mode").addEventListener("change", event 
 });
 document.querySelector("#dialog-delay").addEventListener("change", event => { state.dialogDelay = Number(event.target.value) || 2; if (state.dialogPlaying && state.dialogAdvanceMode === "timer") scheduleDialogPlayback(); });
 document.querySelector("#dialog-auto-pass").addEventListener("change", event => { state.dialogAutoPassGates = !!event.target.checked; if (state.dialogPlaying) scheduleDialogPlayback(); });
-document.addEventListener("pointerdown", event => { if (!event.target.closest?.("#canvas-context-menu")) hideCanvasContextMenu(); });
-document.addEventListener("keydown", event => { if (event.key === "Escape") { hideCanvasContextMenu(); closeLiveSettingModal(); closeRecoveryClarificationDialog(); closeTokenDebugModal(); } });
+document.addEventListener("pointerdown", event => { if (!event.target.closest?.("#canvas-context-menu")) hideCanvasContextMenu(); if (!event.target.closest?.("#source-flow-context-menu")) hideSourceFlowContextMenu(); });
+document.addEventListener("keydown", event => { if (event.key === "Escape") { hideCanvasContextMenu(); hideSourceFlowContextMenu(); closeLiveSettingModal(); closeRecoveryClarificationDialog(); closeTokenDebugModal(); } });
 document.querySelectorAll("[data-inspector-tab]").forEach(button => button.addEventListener("click", () => showInspectorTab(button.dataset.inspectorTab)));
 document.querySelector("#header-model-settings")?.addEventListener("click",()=>openLiveSettingModal("connection"));
 function liveDisplayText(id) {
@@ -4915,7 +4941,7 @@ function providerLabel(provider) {
   return provider === "mlx" ? "Local LLM" : provider === "custom" ? "OpenAI-compatible" : "OpenAI";
 }
 function defaultProviderBaseUrl(provider) {
-  return provider === "mlx" ? "http://127.0.0.1:8080/v1" : provider === "custom" ? "" : "https://api.openai.com/v1";
+  return provider === "mlx" ? "http://127.0.0.1:8080/v1" : provider === "custom" ? "http://ml03.ligazakon.net:8555/v1" : "https://api.openai.com/v1";
 }
 let activeLiveSetting = null;
 function liveSettingLocked() { return state.liveRunning || state.liveBusy; }

@@ -480,15 +480,16 @@
         <div class="context-menu-separator" aria-hidden="true"></div>
         <button id="canvas-open-yaml" type="button" role="menuitem">Open YAML…</button>
         <button id="canvas-open-package" type="button" role="menuitem">Open Playbook…</button>
-        <div class="context-menu-separator" aria-hidden="true"></div>
+      </div>
+      <div id="canvas-general-actions">
         <div id="canvas-collapse-all-actions">
           <button id="canvas-collapse-all" type="button" role="menuitem">Collapse all</button>
           <button id="canvas-expand-all" type="button" role="menuitem">Expand all</button>
         </div>
         <div class="context-menu-separator" aria-hidden="true"></div>
+        <button id="canvas-download-svg" type="button" role="menuitem">Download current graph as SVG</button>
         <button id="canvas-download-yaml" type="button" role="menuitem">Download YAML</button>
         <button id="canvas-download-playbook" type="button" role="menuitem">Download full playbook</button>
-        <button id="canvas-download-svg" type="button" role="menuitem">Download tree as SVG</button>
       </div>
       <div id="canvas-selection-actions" hidden>
         <button id="canvas-toggle-collapse" type="button" role="menuitem">Collapse</button>
@@ -503,6 +504,16 @@
         <div class="context-menu-separator" aria-hidden="true"></div>
         <button id="canvas-delete-selection" type="button" class="danger legacy-edit-actions" role="menuitem" hidden>Delete selected</button>
       </div>
+    </div>
+
+    <div id="source-flow-context-menu" class="graph-context-menu" hidden role="menu" aria-label="Data Flow graph actions">
+      <button id="source-flow-context-download-svg" type="button" role="menuitem">Download current graph as SVG</button>
+      <div class="context-menu-separator" aria-hidden="true"></div>
+      <button id="source-flow-context-fit" type="button" role="menuitem">Fit to viewport</button>
+      <button id="source-flow-context-auto" type="button" role="menuitem">Reset to auto layout</button>
+      <div class="context-menu-separator" aria-hidden="true"></div>
+      <button id="source-flow-context-tb" type="button" role="menuitem">Top to bottom</button>
+      <button id="source-flow-context-lr" type="button" role="menuitem">Left to right</button>
     </div>
 
     <div id="live-state-modal" class="live-state-modal" hidden aria-hidden="true">

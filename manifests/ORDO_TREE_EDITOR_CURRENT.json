@@ -1,11 +1,11 @@
 {
   "schema_version": "ordo.tree_editor.current.v1",
   "utility": "Ordo Tree Editor",
-  "version": "0.1.0",
-  "release_tag": "ordo-tree-editor-v0.1.0",
-  "archive_filename": "ORDO_TREE_EDITOR_0.1.0.zip",
-  "archive_sha256": "f6fb5add1fdb313461aead53016604f615928bff9fd935ce90184c634fbfee63",
-  "download_url": "https://github.com/solo-vey/Ordo/releases/download/ordo-tree-editor-v0.1.0/ORDO_TREE_EDITOR_0.1.0.zip",
-  "sha256_url": "https://github.com/solo-vey/Ordo/releases/download/ordo-tree-editor-v0.1.0/ORDO_TREE_EDITOR_0.1.0.zip.sha256",
+  "version": "0.2.0-alpha.20.0.217-dev",
+  "release_tag": "ordo-tree-editor-v0.2.0-alpha.20.0.217-dev",
+  "archive_filename": "ORDO_TREE_EDITOR_0.2.0-alpha.20.0.217-dev.zip",
+  "archive_sha256": "32b5856ac90b72d4152c57ce15aeb261bdaa66e79cf928c9dbb982ab70c7f447",
+  "download_url": "https://github.com/solo-vey/Ordo/releases/download/ordo-tree-editor-v0.2.0-alpha.20.0.217-dev/ORDO_TREE_EDITOR_0.2.0-alpha.20.0.217-dev.zip",
+  "sha256_url": "https://github.com/solo-vey/Ordo/releases/download/ordo-tree-editor-v0.2.0-alpha.20.0.217-dev/ORDO_TREE_EDITOR_0.2.0-alpha.20.0.217-dev.zip.sha256",
   "source_directory": "utilities/ordo_tree_editor"
 }

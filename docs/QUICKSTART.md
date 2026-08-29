@@ -4,7 +4,7 @@ Create your first Ordo playbook in a language-model chat. You do not need Python
 
 ## 1. Download Vibe ARF
 
-Download [the Vibe ARF 0.1.2 MODEL_RUN package](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip) from the [Vibe ARF release](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2). Keep the archive intact.
+Download [the Vibe ARF 0.1.2 MODEL_RUN package](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2-maintenance.1/VIBE_ARF_0.1.2_MODEL_RUN.zip) from the [Vibe ARF release](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2-maintenance.1). Keep the archive intact.
 
 Before designing a domain-specific process, review the [Playbook Authoring
 Recommendations](PLAYBOOK_AUTHORING_RECOMMENDATIONS.md). They explain how to
