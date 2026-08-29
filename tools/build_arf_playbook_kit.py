@@ -13,7 +13,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 
 ROOT = Path(__file__).resolve().parents[1]
-KIT = ROOT / "packages" / "arf_playbook_kit"
+KIT = ROOT / "archive" / "legacy_packages" / "arf_playbook_kit"
 APF = ROOT / "packages" / "ordo_applied_project_factory"
 GUIDES = KIT / "source"
 REGRESSION_SOURCE = KIT / "source" / "regression"

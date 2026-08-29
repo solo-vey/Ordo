@@ -11,7 +11,9 @@ import yaml
 
 from .clean_check import run_clean_check
 
-PACKAGE_PATH_PATTERN = re.compile(r"packages/[A-Za-z0-9_./-]+")
+# Match repository package paths, not the ``packages`` component inside an
+# archive directory such as ``archive/legacy_packages``.
+PACKAGE_PATH_PATTERN = re.compile(r"(?<![A-Za-z0-9_])packages/[A-Za-z0-9_./-]+")
 
 
 def validate_workflow_paths(repo_root: str | Path) -> dict[str, Any]:

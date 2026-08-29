@@ -16,7 +16,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 POLICY_PATH = ROOT / "manifests/DOCUMENTATION_QUALITY_GATE.json"
 STARTER = ROOT / "examples/chat_first_playbook_starter"
-ARF_KIT = ROOT / "packages/arf_playbook_kit"
+ARF_KIT = ROOT / "archive/legacy_packages/arf_playbook_kit"
 LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 UKRAINIAN = re.compile(r"[\u0400-\u052f]")
 
