@@ -1,7 +1,7 @@
 {
   "algorithm": "SHA-256",
   "package": "APF_V0_1_0_RC_18_CSG_LANGUAGE_BASELINE_ALIGNED_CONFIRMED_BASELINE",
-  "file_count": 305,
+  "file_count": 302,
   "files": [
     {
       "path": "CURRENT_STATE.md",
@@ -97,21 +97,6 @@
       "path": "adaptation/ordo_v0_12/A7_REGRESSION_VALIDATION_AND_RELEASE_CANDIDATE_CLOSURE.md",
       "sha256": "85206a100ce4b1893eac2ae4f249d8fff96f61b0023a480f98453162b4e0f2f1",
       "size_bytes": 2492
-    },
-    {
-      "path": "artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_clean_source.zip",
-      "sha256": "7194f6f6c9fac173bc9d8cfe283d5d721b2a4748175346136daa95e59f17a178",
-      "size_bytes": 260827
-    },
-    {
-      "path": "artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_dev.zip",
-      "sha256": "b3833f9efe27244475f28874eeede05e8a48bf897bf437909e7d3b3b45a33600",
-      "size_bytes": 1225408
-    },
-    {
-      "path": "artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_runtime.zip",
-      "sha256": "b3455df20b81aad636564488dc6c2e76a3ee134c814e500be7a12295b5c56d17",
-      "size_bytes": 685370
     },
     {
       "path": "backlog/APF_DELTA_BACKLOG_REGISTER.md",

@@ -1,0 +1,28 @@
+{
+  "schema_version": "ordo.external_archive_locator.v1",
+  "archive_id": "historical-apf-2026-08-29",
+  "provider": "github_release_asset",
+  "repository": "solo-vey/Ordo",
+  "release_url": "https://github.com/solo-vey/Ordo/releases/tag/historical-apf-2026-08-29",
+  "source_commit": "1732b746bbd5ee1ac3e6f9daeb772d3136776368",
+  "archive": {
+    "asset_url": "https://github.com/solo-vey/Ordo/releases/download/historical-apf-2026-08-29/ordo-historical-apf-2026-08-29.tar.gz",
+    "sha256": "35864a37a1cd09ccfff41fa378dc0ac5b2376122c218dbf05bd12dbb7dfa926d"
+  },
+  "content_manifest": {
+    "asset_url": "https://github.com/solo-vey/Ordo/releases/download/historical-apf-2026-08-29/ordo-historical-apf-2026-08-29.manifest.json",
+    "sha256": "a71b386df477e503ed3b9f11f0db984ff79af197eb439720c94df0c3ad756940"
+  },
+  "content_checksums": {
+    "asset_url": "https://github.com/solo-vey/Ordo/releases/download/historical-apf-2026-08-29/ordo-historical-apf-2026-08-29.SHA256SUMS.txt"
+  },
+  "included_files": [
+    "integrations/apf/v0.1.0-rc.18/artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_clean_source.zip",
+    "integrations/apf/v0.1.0-rc.18/artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_dev.zip",
+    "integrations/apf/v0.1.0-rc.18/artifacts/ordo_applied_project_factory_v0_1_0_rc_7_cli_integration_contracts_runtime.zip"
+  ],
+  "retained_contours": [
+    "packages/benchmark_creation_playbook/1.0.0-alpha.30/PACKAGE/backlog_attachments/",
+    "language/improvement_intake/bl_ordo_055_references/"
+  ]
+}

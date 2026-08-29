@@ -10,6 +10,14 @@ Historical material that is not required for current runtime, package, or docume
 
 It contains the 2026-07-14 transfer and recovery material, historical handoffs, legacy release/status/manifests, and pre-RC6 checkpoints. It does **not** contain `docs/apf/legacy-root/`, which remains in the repository because active documentation and tests reference it.
 
+## Historical APF integration archive — 2026-08
+
+- Release: [historical-apf-2026-08-29](https://github.com/solo-vey/Ordo/releases/tag/historical-apf-2026-08-29)
+- Locator: [`../manifests/external_archives/HISTORICAL_APF_2026_08_29.json`](../manifests/external_archives/HISTORICAL_APF_2026_08_29.json)
+- Archive SHA-256: `35864a37a1cd09ccfff41fa378dc0ac5b2376122c218dbf05bd12dbb7dfa926d`
+
+It contains the three superseded APF RC18 integration contract archives removed from the active tree. Benchmark package attachments and the localized BL-ORDO-055 reference remain in-repository under their explicit fixture/localization dispositions.
+
 ## Verify and restore
 
 Download the archive and its attached `SHA256SUMS.txt`, verify the archive SHA-256, extract it, then run the checksum file from the extracted `payload/` directory:
