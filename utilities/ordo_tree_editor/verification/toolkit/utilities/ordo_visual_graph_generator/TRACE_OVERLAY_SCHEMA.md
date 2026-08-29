@@ -53,8 +53,8 @@ next_node_id
       "node_id": "N1_PATH_SELECTION",
       "answer_key": "A",
       "next_node_id": "N2_SOURCE_CONTRACT",
-      "branch_comment": "Вибрав A, бо зміна стосується demo source system / фактографії.",
-      "node_comment": "Стартовий вибір маршруту."
+      "branch_comment": "Selected A because the change concerns the demo source system facts.",
+      "node_comment": "Initial route selection."
     }
   ]
 }

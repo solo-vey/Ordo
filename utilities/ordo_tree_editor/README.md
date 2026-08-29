@@ -298,7 +298,7 @@ Validation-recovery nodes now support free-form analyst/model dialogue while rem
 - Runtime technical IDs preserve underscores in transcript rendering.
 - Assistant/model messages are expanded by default; only long analyst messages collapse automatically.
 - Human-decision gates provide prepared actions plus an inline `Other / clarification` field that is carried into the repair route as analyst correction context.
-- Deterministic test-coverage detection recognizes Ukrainian negative-case wording (`негатив*`, `відсутн*`) as evidence for the `negative` requirement.
+- Deterministic test-coverage detection recognizes localized negative-case wording as evidence for the `negative` requirement.
 
 
 ## Replay to checkpoint (alpha.20.0.13)

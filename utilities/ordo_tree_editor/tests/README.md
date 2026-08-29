@@ -7,7 +7,7 @@ They exist to test executor invariants rather than individual playbook IDs.
 ## Real-derived cases
 
 ### `real_source_collection_decision.json`
-Derived from the source-collection loop seen in the real run where an analyst answered `ні` after the "additional source" question.
+Derived from the source-collection loop seen in a recorded run where an analyst declined the "additional source" question.
 
 The same semantic transition is tested in two implementation variants:
 
@@ -19,9 +19,9 @@ Invariant: if the canonical gate condition explicitly declares the immediately p
 ### `real_attribute_confirmation.json`
 Derived from the real attribute-mapping retry loop.
 
-The fixture stores a real assistant Markdown proposal table and the real one-word analyst confirmation `так`.
+The fixture stores a real assistant Markdown proposal table and a one-word analyst confirmation.
 
-Invariant: a bare confirmation must preserve the structured proposal instead of asking a model to reconstruct the table from the word `так`.
+Invariant: a bare confirmation must preserve the structured proposal instead of asking a model to reconstruct the table from a one-word reply.
 
 ## Generic safety cases
 
