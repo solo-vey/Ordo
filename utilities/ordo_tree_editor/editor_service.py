@@ -1194,6 +1194,11 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
     ]
 
     edges, control_out, control_in = _projection_control_adjacency(nodes,gates,declared_ids)
+    concrete_pairs={(str(edge.get("source")),str(edge.get("target"))) for edge in edges if edge.get("edge_type")=="control_flow"}
+    for permission in navigation_permissions:
+        pair=(permission["source"],permission["target"])
+        if pair not in concrete_pairs:
+            edges.append({"source":pair[0],"target":pair[1],"storage":"navigation_allowed_to","key":pair[1]})
     validation_dependencies, unresolved_dependencies = _projection_dependency_edges(source,nodes,gates,declared_ids,control_out,control_in)
     edges.extend(validation_dependencies)
     known_ids = {str(record["id"]) for record in [*nodes, *gates, *terminal_records]}
@@ -1224,8 +1229,12 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
                 for pred in control_in.get(producer,set()):
                     if any(str(g.get("id"))==pred for g in gates):
                         edges.append({"source":pred,"target":out_entity["id"],"edge_type":"enables_output","relation_type":"enables_output","artifact_path":out_entity.get("path") or ""})
+    compact_legacy_graph=(not gates and not source.get("outputs") and ((source.get("graph_contract") or {}).get("bidirectional_transition_policy") == "explicit_source_and_target" or not source.get("graph_contract")))
     for edge in edges:
-        edge.setdefault("relation_type",edge.get("edge_type","control_flow"))
+        if edge.get("edge_type"):
+            edge.setdefault("relation_type",edge.get("edge_type"))
+        if compact_legacy_graph and edge.get("edge_type")=="control_flow":
+            edge.pop("edge_type",None); edge.pop("relation_type",None)
 
     # Reachability is computed from execution edges only.  It is diagnostic in
     # Release 1; we do not mutate playbook semantics or delete source entities.
@@ -1318,7 +1327,7 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
         ] + [
             {
                 "id": out_entity["id"],
-                "element_type": "output",
+                "element_type": "output" if out_entity.get("path") else "terminal",
                 "entity_type": "declared_output" if out_entity.get("declared") else "output",
                 "collection": "declared_outputs" if out_entity.get("declared") else "derived_outputs",
                 "label": (out_entity.get("path") or out_entity["id"]),
@@ -1672,6 +1681,7 @@ def validate_source(source: dict[str, Any]) -> dict[str, Any]:
         "status": "failed" if errors else ("warning" if warnings else "passed"),
         "summary": {"checks": len(checks), "errors": errors, "warnings": warnings, "info": infos},
         "checks": checks,
+        "issues": [({**finding, "code": "GRAPH_TARGET_MISSING"} if finding.get("code") == "DANGLING_TARGET" else finding) for check in checks for finding in check.get("findings", [])],
         "note": "Structural validation only. Full Ordo playbook validation must be performed by the Ordo validation/playbook tooling.",
     }
 
