@@ -44,7 +44,7 @@ def test_verification_assistant_rejects_empty_model_payload(monkeypatch):
     try:
         es._verification_assistant({
             "package_id":"verify-empty",
-            "verification_check":{"id":"graph_render","status":"FAIL","message":"dot missing"},
+            "verification_check":{"id":"lint","status":"FAIL","message":"lint failed"},
             "messages":[{"role":"user","content":"What happened?"}]
         })
     except ValueError as exc:

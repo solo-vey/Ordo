@@ -45,14 +45,6 @@ Used by the language/tooling validation pipeline to verify graph topology and tr
 
 Verifies the compiled target manifest and AI-facing target hashes. Useful after compile to detect stale or mismatched compiled targets.
 
-### Visual graph generator validation
-Location:
-`utilities/ordo_visual_graph_generator/`
-
-The generator parses the Ordo graph and can render SVG/DOT/Mermaid outputs. In alpha.9 it is aligned with canonical `graph_contract.external_terminal_targets`.
-
-A successful graph render is an additional practical graph-consumability check: the graph can be interpreted by the visual tooling without unknown-target failures.
-
 ### Tree Editor validation
 Location:
 `utilities/ordo_tree_editor/`

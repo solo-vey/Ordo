@@ -145,7 +145,8 @@ def assemble(stage: Path) -> None:
     # reproduce package/release behavior from the same kit.
     copy_file(UTILITIES / "README.md", stage / "utilities" / "README.md")
     for name in UTILITY_TREES:
-        copy_tree_without_caches(UTILITIES / name, stage / "utilities" / name)
+        source = (ROOT / "archive" / "legacy_utilities" / name) if name == "ordo_visual_graph_generator" else (UTILITIES / name)
+        copy_tree_without_caches(source, stage / "utilities" / name)
     # The editor bundles the generic package template for its own verification
     # toolkit.  It must not be copied into the ARF kit as a second canonical
     # source/program.ordo.yaml, otherwise the package loader correctly rejects

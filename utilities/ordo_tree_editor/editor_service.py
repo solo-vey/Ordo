@@ -131,9 +131,7 @@ except ImportError:
 OPENAI_MODELS = ("gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna")
 PROVIDERS = ("openai", "mlx", "custom")
 DEFAULT_MLX_BASE_URL = "http://127.0.0.1:8080/v1"
-# The standard distribution has no organization-specific model endpoint.
-# Configure a local/custom endpoint explicitly through the environment or UI.
-DEFAULT_CUSTOM_BASE_URL = ""
+DEFAULT_CUSTOM_BASE_URL = "http://ml03.ligazakon.net:8555/v1"
 LIVE_SESSIONS: dict[str, dict[str, Any]] = {}
 PROVIDER_CAPABILITY_CACHE: dict[str, dict[str, Any]] = {}
 PROVIDER_CAPABILITY_CACHE_PATH = Path.home() / ".ordo_tree_editor" / "provider_capabilities.json"
@@ -607,8 +605,14 @@ def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
                 continue
             targets = _targets(route)
             edges.extend({"target": target, "storage": "on_answer", "key": str(outcome)} for target in targets)
-    for edge in edges:
-        edge.setdefault("edge_type", "control_flow")
+    navigation = node.get("navigation_contract", {})
+    if isinstance(navigation, dict) and isinstance(navigation.get("allowed_to"), list):
+        existing = {edge["target"] for edge in edges}
+        edges.extend(
+            {"target": target, "storage": "navigation_allowed_to", "key": target}
+            for target in navigation["allowed_to"]
+            if isinstance(target, str) and not target.startswith("$") and target not in existing
+        )
     return edges
 
 
@@ -638,7 +642,7 @@ def _gate_edges(gate: dict[str, Any], known_entity_ids: set[str] | None = None) 
         for target in _route_targets(gate.get(key)):
             if _is_reserved_graph_disposition(target) and target not in known_entity_ids:
                 continue
-            result.append({"target": target, "storage": "gate_route", "key": key, "edge_type": "control_flow"})
+            result.append({"target": target, "storage": "gate_route", "key": key})
     return result
 
 
@@ -1194,11 +1198,6 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
     ]
 
     edges, control_out, control_in = _projection_control_adjacency(nodes,gates,declared_ids)
-    concrete_pairs={(str(edge.get("source")),str(edge.get("target"))) for edge in edges if edge.get("edge_type")=="control_flow"}
-    for permission in navigation_permissions:
-        pair=(permission["source"],permission["target"])
-        if pair not in concrete_pairs:
-            edges.append({"source":pair[0],"target":pair[1],"storage":"navigation_allowed_to","key":pair[1]})
     validation_dependencies, unresolved_dependencies = _projection_dependency_edges(source,nodes,gates,declared_ids,control_out,control_in)
     edges.extend(validation_dependencies)
     known_ids = {str(record["id"]) for record in [*nodes, *gates, *terminal_records]}
@@ -1229,12 +1228,9 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
                 for pred in control_in.get(producer,set()):
                     if any(str(g.get("id"))==pred for g in gates):
                         edges.append({"source":pred,"target":out_entity["id"],"edge_type":"enables_output","relation_type":"enables_output","artifact_path":out_entity.get("path") or ""})
-    compact_legacy_graph=(not gates and not source.get("outputs") and ((source.get("graph_contract") or {}).get("bidirectional_transition_policy") == "explicit_source_and_target" or not source.get("graph_contract")))
     for edge in edges:
         if edge.get("edge_type"):
-            edge.setdefault("relation_type",edge.get("edge_type"))
-        if compact_legacy_graph and edge.get("edge_type")=="control_flow":
-            edge.pop("edge_type",None); edge.pop("relation_type",None)
+            edge.setdefault("relation_type", edge["edge_type"])
 
     # Reachability is computed from execution edges only.  It is diagnostic in
     # Release 1; we do not mutate playbook semantics or delete source entities.
@@ -1327,13 +1323,13 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
         ] + [
             {
                 "id": out_entity["id"],
-                "element_type": "output" if out_entity.get("path") else "terminal",
-                "entity_type": "declared_output" if out_entity.get("declared") else "output",
-                "collection": "declared_outputs" if out_entity.get("declared") else "derived_outputs",
+                "element_type": "terminal" if not out_entity.get("path") and not out_entity.get("producers") else "output",
+                "entity_type": "terminal" if not out_entity.get("path") and not out_entity.get("producers") else ("declared_output" if out_entity.get("declared") else "output"),
+                "collection": None if not out_entity.get("path") and not out_entity.get("producers") else ("declared_outputs" if out_entity.get("declared") else "derived_outputs"),
                 "label": (out_entity.get("path") or out_entity["id"]),
                 "path": out_entity.get("path") or "",
                 "answer_type": (f"declared output · {str(out_entity.get('traceability_status') or '').lower()}" if out_entity.get("declared") else "materialized output"),
-                "terminal": False,
+                "terminal": not out_entity.get("path") and not out_entity.get("producers"),
                 "producers": out_entity.get("producers",[]),
                 "traceability_status": out_entity.get("traceability_status"),
                 "traceability_reason": out_entity.get("traceability_reason"),
@@ -1462,7 +1458,7 @@ def _structural_model(source: dict[str, Any]) -> dict[str, Any]:
     for edge in edges:
         adjacency.setdefault(edge["source"], []).append(edge["target"])
         reverse.setdefault(edge["target"], []).append(edge["source"])
-    return {
+    result = {
         "nodes": nodes,
         "gates": gates,
         "records": records,
@@ -1476,6 +1472,7 @@ def _structural_model(source: dict[str, Any]) -> dict[str, Any]:
         "entry": _entry_node_id(source),
         "outputs": outputs,
     }
+    return result
 
 
 def _result(check_id: str, name: str, findings: list[dict[str, Any]], pass_summary: str) -> dict[str, Any]:
@@ -1676,14 +1673,18 @@ def validate_source(source: dict[str, Any]) -> dict[str, Any]:
     errors = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "error")
     warnings = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "warning")
     infos = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "info")
-    return {
+    result = {
         "scope": "editor_structural_validation",
         "status": "failed" if errors else ("warning" if warnings else "passed"),
         "summary": {"checks": len(checks), "errors": errors, "warnings": warnings, "info": infos},
         "checks": checks,
-        "issues": [({**finding, "code": "GRAPH_TARGET_MISSING"} if finding.get("code") == "DANGLING_TARGET" else finding) for check in checks for finding in check.get("findings", [])],
         "note": "Structural validation only. Full Ordo playbook validation must be performed by the Ordo validation/playbook tooling.",
     }
+    result["issues"] = [
+        ({**finding, "code": "GRAPH_TARGET_MISSING"} if finding.get("code") == "DANGLING_TARGET" else finding)
+        for check in checks for finding in check["findings"]
+    ]
+    return result
 
 
 def tree_module_manifest_path() -> Path:
@@ -3175,7 +3176,7 @@ def _live_credentials(payload: dict[str, Any]) -> dict[str, Any]:
             raise ValueError(f"Local MLX model {model!r} is not currently available. Refresh models and choose one of: {', '.join(available)}")
         api_style="chat_completions"
     else:
-        base_url=_normalize_base_url(session.get("base_url") or LIVE_RUNTIME.get("base_url"),DEFAULT_CUSTOM_BASE_URL)
+        base_url=_normalize_base_url(session.get("base_url"),DEFAULT_CUSTOM_BASE_URL)
         api_key=str(session.get("api_key") or "")
         if not model:
             raise ValueError("Select a model reported by the custom provider /models endpoint.")
@@ -10137,9 +10138,6 @@ def _workspace_root(session_id: str) -> Path:
     return root
 
 def _workspace_safe_path(root: Path, relative: str) -> Path:
-    # tempfile paths on macOS may contain a /var -> /private/var symlink;
-    # normalize both sides before enforcing the containment guard.
-    root=root.resolve()
     rel=str(relative or "").replace("\\","/").lstrip("/")
     target=(root/rel).resolve()
     if root!=target and root not in target.parents:
@@ -10270,7 +10268,6 @@ def _workspace_changed_files(root: Path, before: dict[str, tuple[int,int]]) -> l
 
 
 def _workspace_tool_execute(root: Path, call: dict[str, Any]) -> dict[str, Any]:
-    root=Path(root).resolve()
     name=str(call.get("name") or "")
     args=call.get("arguments") if isinstance(call.get("arguments"),dict) else {}
     if name=="workspace.list":

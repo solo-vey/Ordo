@@ -35,9 +35,5 @@ def main():
   source=yaml.safe_load((R/'source/program.ordo.yaml').read_text(encoding='utf-8'));er=mod.validate_source(source);editor_ok=er.get('status')=='passed';editor_issues=er.get('issues',[])
  except Exception as exc: editor_issues=[{'exception':repr(exc)}]
  checks.append({'id':'EDITOR_VALIDATION','status':'PASS' if editor_ok else 'FAIL','issues':editor_issues[:20]})
- # visual graph generator smoke
- with tempfile.TemporaryDirectory() as td:
-  out=Path(td)/'graph.mmd';g=run([sys.executable,str(R/'utilities/ordo_visual_graph_generator/ordo_graph.py'),str(R/'source/program.ordo.yaml'),'--format','mmd','--out',str(out)])
-  checks.append({'id':'GRAPH_RENDER_SMOKE','status':'PASS' if g.returncode==0 and out.is_file() else 'FAIL','tail':g.stdout[-500:]+g.stderr[-500:]})
  st='PASS' if all(x['status']=='PASS' for x in checks) else 'FAIL';o={'schema_version':'1.1','status':st,'checks':checks,'duration_seconds':round(time.monotonic()-t,3)};(R/'reports/ALPHA9_PORTABLE_VERIFY.json').write_text(json.dumps(o,indent=2)+"\n",encoding='utf-8');print(json.dumps(o,indent=2));return 0 if st=='PASS' else 1
 if __name__=='__main__':raise SystemExit(main())

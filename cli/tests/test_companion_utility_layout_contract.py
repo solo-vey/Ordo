@@ -10,7 +10,8 @@ def test_pathwalk_is_consolidated_under_utilities() -> None:
     assert not (ROOT / "ordo_pathwalk").exists()
     assert (ROOT / "utilities/__init__.py").is_file()
     assert (ROOT / "utilities/ordo_pathwalk/cli.py").is_file()
-    assert (ROOT / "utilities/ordo_visual_graph_generator/ordo_graph.py").is_file()
+    assert (ROOT / "archive/legacy_utilities/ordo_visual_graph_generator/ordo_graph.py").is_file()
+    assert not (ROOT / "utilities/ordo_visual_graph_generator").exists()
 
 
 def test_active_utility_entry_points_use_the_canonical_pathwalk_location() -> None:

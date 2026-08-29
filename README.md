@@ -11,13 +11,13 @@ Ordo is a language and framework for designing, validating, executing, testing, 
 
 The primary first-use path is a language-model chat. Python is optional.
 
-1. [Download the Vibe ARF 0.1.2 MODEL_RUN package](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip) from the [Vibe ARF release](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2).
+1. [Download the Vibe ARF 0.1.2 MODEL_RUN package](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2-maintenance.1/VIBE_ARF_0.1.2_MODEL_RUN.zip) from the [Vibe ARF release](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2-maintenance.1).
 2. Upload the ZIP to a new language-model chat.
 3. Open and paste `START_PROMPT.md` from the attached Vibe ARF package.
 4. Answer the model's short clarification sequence and approve the first playbook draft.
 5. Ask the model to test the playbook, explain any failures, and improve it before returning the final package.
 
-No local installation is required for this route. Vibe ARF is the recommended authoring layer and includes the information-first workflow, prompts, templates, validation profiles, simulation hooks, and package guidance. The lower-level ARF Playbook Kit remains available for compatibility and engineering use, but is a legacy route scheduled for deprecation. Release checksums are published in the [Vibe ARF SHA256SUMS.txt](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/SHA256SUMS.txt).
+No local installation is required for this route. Vibe ARF is the recommended authoring layer and includes the information-first workflow, prompts, templates, validation profiles, simulation hooks, and package guidance. The lower-level ARF Playbook Kit remains available for compatibility and engineering use, but is a legacy route scheduled for deprecation. Release checksums are published in the [Vibe ARF SHA256SUMS.txt](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2-maintenance.1/SHA256SUMS.txt).
 
 See [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the complete chat walkthrough and the optional CLI validation path.
 

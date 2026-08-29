@@ -32,8 +32,9 @@ authoring and runtime contract:
 - `utilities/ordo_pathwalk/` — graph path exploration, terminal-path
   enumeration, clean/noise testcase generation, review cards, and benchmark
   helpers.
-- `utilities/ordo_visual_graph_generator/` — Mermaid/SVG/PNG graph rendering,
-  subtree and path views, and annotation overlays.
+- Visual graph rendering is not included in this release; the former
+  `ordo_visual_graph_generator` remains available only in the repository's
+  labelled legacy archive.
 - `utilities/playbook_lifecycle/` — checkpoint management, upgrade-impact
   review, and verified rollback helpers.
 - `utilities/playbook_regression_harness/` — the versioned regression-harness
