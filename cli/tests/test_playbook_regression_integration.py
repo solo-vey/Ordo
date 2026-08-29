@@ -9,7 +9,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 PRH = ROOT / "utilities" / "playbook_regression_harness" / "versions" / "1.7.0"
 PRP = ROOT / "packages" / "playbook_regression" / "versions" / "0.2.0-alpha.1"
-ARF_REGRESSION = ROOT / "packages" / "arf_playbook_kit" / "source" / "regression"
+ARF_REGRESSION = ROOT / "archive" / "legacy_packages" / "arf_playbook_kit" / "source" / "regression"
 
 
 def _files(root: Path) -> list[Path]:
