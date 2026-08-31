@@ -11,6 +11,14 @@ import re
 from .loader import load_package, load_yaml
 from .reporter import write_json
 from .csg_runtime import apply_csg_events
+from .execution_trace import (
+    append_decision_interaction_event,
+    append_execution_trace_event,
+    finalize_execution_trace,
+    initialize_execution_trace,
+    trace_path,
+)
+from .runtime_evidence import file_sha256
 
 
 def utc_now() -> str:
@@ -370,15 +378,81 @@ def run_package(package_path: str | Path, answers_path: str | Path | None = None
     if isinstance(csg_proposals, dict):
         csg_proposals = csg_proposals.get("events", [])
 
-    run_id = f"RUN-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+    run_id = f"RUN-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')}"
     started_at = utc_now()
     initial = copy.deepcopy(state)
+    initial_snapshot = snapshots_dir / f"{run_id}_state_initial.json"
+    final_snapshot = snapshots_dir / f"{run_id}_state_final.json"
+    write_json(initial_snapshot, initial)
+    source_path = root / str(manifest.get("source", "source/program.ordo.yaml"))
+    trace_policy = copy.deepcopy(source.get("execution_trace")) if isinstance(source.get("execution_trace"), dict) else {}
+    configured_trace_path = trace_path(root, trace_policy)
+    if configured_trace_path.exists():
+        trace_policy.setdefault("storage", {})["path"] = f"runtime/execution_trace_{run_id}.json"
+    execution_trace = initialize_execution_trace(
+        root,
+        policy=trace_policy,
+        run_id=run_id,
+        process_id=str((source.get("ordo") or {}).get("package") or root.name),
+        process_version=str((source.get("ordo") or {}).get("version") or "unversioned"),
+        execution_mode=str((source.get("ordo") or {}).get("execution_mode") or "normal"),
+        entry_point="run",
+        initial_state=initial,
+        playbook_identity={
+            "source_path": str(manifest.get("source", "source/program.ordo.yaml")),
+            "sha256": "sha256:" + file_sha256(source_path),
+            "version": (source.get("ordo") or {}).get("version"),
+        },
+    )
     csg_results = apply_csg_events(source, state, csg_proposals or [])
     csg_events = [event for result in csg_results for event in result.get("events", [])]
     answer_events = apply_answers(source, state, answers, package_root=root)
     gate_results = evaluate_gates(source, state)
     assertion_results = evaluate_assertions(source, state, gate_results)
     outputs = allowed_outputs(source, gate_results)
+    write_json(final_snapshot, state)
+
+    nodes_by_id = {str(node.get("id")): node for node in (source.get("nodes") or [])}
+    initial_ref = str(initial_snapshot.relative_to(root)).replace("\\", "/")
+    final_ref = str(final_snapshot.relative_to(root)).replace("\\", "/")
+    for event in answer_events:
+        if event.get("type") != "state_update":
+            continue
+        node_id = str(event.get("node") or "")
+        node = nodes_by_id.get(node_id, {})
+        append_decision_interaction_event(
+            root,
+            policy=trace_policy,
+            actor={"actor_type": "analyst"},
+            node_id=node_id,
+            question_text=str(node.get("question") or node_id),
+            analyst_response=event.get("answer"),
+            selected_transition=event.get("next"),
+            decision_summary="Recorded deterministic helper-runner answer and selected route.",
+            state_before_ref=initial_ref,
+            state_after_ref=final_ref,
+            state_diff=event.get("state_diff") or {},
+            replay_anchor=f"decision.{run_id}.{node_id}",
+        )
+    for gate in gate_results:
+        passed = gate.get("status") == "passed"
+        append_execution_trace_event(
+            root,
+            policy=trace_policy,
+            event_type="gate_passed" if passed else "gate_failed",
+            actor={"actor_type": "runtime"},
+            payload={"gate_id": gate.get("id"), "condition": gate.get("condition")},
+            location={"node_id": None, "path_id": None, "phase_id": "gate_evaluation"},
+            state_effect={"changed": False, "before_ref": final_ref, "after_ref": final_ref, "diff_ref": None},
+            correlation={"parent_event_id": None, "decision_id": None, "gate_id": gate.get("id"), "output_id": None},
+            outcome={"status": "passed" if passed else "failed", "reason_code": gate.get("status"), "summary": gate.get("reason")},
+        )
+    final_execution_trace = finalize_execution_trace(
+        root,
+        policy=trace_policy,
+        status="completed",
+        final_state={"snapshot_ref": final_ref, "result": "completed", "state": state},
+    )
 
     trace = {
         "run_id": run_id,
@@ -405,8 +479,10 @@ def run_package(package_path: str | Path, answers_path: str | Path | None = None
         "violations": [a for a in assertion_results if a.get("status") == "violation"],
         "blocked_outputs": [o for o in outputs if not o.get("allowed")],
     }
-    write_json(snapshots_dir / f"{run_id}_state_initial.json", initial)
-    write_json(snapshots_dir / f"{run_id}_state_final.json", state)
     write_json(runtime_dir / "trace_log.json", trace)
+    trace["execution_trace"] = {
+        "path": str(trace_path(root, trace_policy).relative_to(root)).replace("\\", "/"),
+        "checksum": ((final_execution_trace.get("integrity") or {}).get("checksum")),
+    }
     write_json(root / "reports" / "run_report.json", trace)
     return trace

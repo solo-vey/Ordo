@@ -8,6 +8,7 @@ from typing import Any
 import json
 
 TRACE_FORMAT = "ordo-execution-trace.v1"
+REPLAY_CONTRACT_VERSION = "1.0"
 DEFAULT_TRACE_PATH = "runtime/execution_trace.json"
 CAPTURE_LEVELS = {"minimal", "standard", "full", "audit"}
 REPLAY_MODES = {"deterministic", "re_evaluate", "simulation", "audit_only"}
@@ -52,6 +53,15 @@ def utc_now() -> str:
 def canonical_checksum(value: Any) -> str:
     encoded = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return "sha256:" + sha256(encoded).hexdigest()
+
+
+def state_fingerprint(state: dict[str, Any] | None) -> dict[str, Any]:
+    """Return a non-secret, machine-comparable state record for replay."""
+    value = state if isinstance(state, dict) else {}
+    return {
+        "checksum": canonical_checksum(value),
+        "value": _redact(value),
+    }
 
 
 def _redact(value: Any) -> Any:
@@ -125,6 +135,8 @@ def initialize_execution_trace(
     program_id: str | None = None,
     runtime_mode: str = "full_runtime",
     trace_source: str = "runtime_enforced",
+    initial_state: dict[str, Any] | None = None,
+    playbook_identity: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     normalized = normalize_policy(policy)
     if not normalized["enabled"]:
@@ -156,6 +168,13 @@ def initialize_execution_trace(
         "final_state": None,
         "outputs": [],
         "replay": normalized["replay"],
+        "replay_contract": {
+            "version": REPLAY_CONTRACT_VERSION,
+            "initial_state": state_fingerprint(initial_state),
+            "final_state": None,
+            "playbook": deepcopy(playbook_identity or {}),
+            "records_complete": True,
+        },
         "integrity": {"event_count": 0, "sequence_complete": True, "checksum": None, "previous_trace_checksum": None},
     }
     _write_trace(path, trace)
@@ -207,6 +226,7 @@ def append_execution_trace_event(
     if not event_is_captured(normalized["capture_level"], event_type):
         return {"captured": False, "reason": "capture_level_filtered", "event_type": event_type}
     seq = len(trace.get("events", [])) + 1
+    safe_payload = _redact(payload or {})
     event = {
         "sequence": seq,
         "event_id": f"event-{seq:06d}",
@@ -214,11 +234,12 @@ def append_execution_trace_event(
         "occurred_at": occurred_at or utc_now(),
         "location": location or {"node_id": None, "path_id": None, "phase_id": None},
         "actor": {"actor_type": actor.get("actor_type", "runtime"), "actor_id": actor.get("actor_id")},
-        "payload": _redact(payload or {}),
+        "payload": safe_payload,
         "state_effect": state_effect or {"changed": False, "before_ref": None, "after_ref": None, "diff_ref": None},
         "correlation": correlation or {"parent_event_id": None, "decision_id": None, "gate_id": None, "output_id": None},
         "outcome": outcome or {"status": "completed", "reason_code": None, "summary": None},
     }
+    event["replay_record"] = _build_replay_record(event)
     trace["events"].append(event)
     if event_type == "artifact_generated":
         output_id = event["correlation"].get("output_id") or event["payload"].get("output_id")
@@ -230,6 +251,41 @@ def append_execution_trace_event(
             })
     _write_trace(path, trace)
     return {"captured": True, "event": event, "path": str(path)}
+
+
+def _build_replay_record(event: dict[str, Any]) -> dict[str, Any]:
+    """Normalize all runtime events into one auditable replay shape.
+
+    The record intentionally stores an explainable decision summary, never private
+    model reasoning.  Missing data is explicit instead of being inferred during a
+    later replay.
+    """
+    payload = event.get("payload") if isinstance(event.get("payload"), dict) else {}
+    location = event.get("location") if isinstance(event.get("location"), dict) else {}
+    state_effect = event.get("state_effect") if isinstance(event.get("state_effect"), dict) else {}
+    correlation = event.get("correlation") if isinstance(event.get("correlation"), dict) else {}
+    outcome = event.get("outcome") if isinstance(event.get("outcome"), dict) else {}
+    decision = payload.get("decision_record") if isinstance(payload.get("decision_record"), dict) else {}
+    event_type = str(event.get("event_type") or "")
+    evidence_class = "runtime_only"
+    if event_type == "decision_selected":
+        evidence_class = "accepted_decision"
+    elif event_type in {"gate_failed", "error_raised", "run_failed"}:
+        evidence_class = "blocker"
+    elif event_type in {"warning_raised", "input_rejected"}:
+        evidence_class = "discrepancy"
+    return {
+        "node_id": decision.get("node_id", location.get("node_id")),
+        "phase_id": location.get("phase_id"),
+        "analyst_input": decision.get("analyst_response", payload.get("answer", payload.get("input"))),
+        "expected_route": decision.get("selected_transition", payload.get("next_node", payload.get("transition"))),
+        "state_before_ref": decision.get("state_before_ref", state_effect.get("before_ref")),
+        "state_after_ref": decision.get("state_after_ref", state_effect.get("after_ref")),
+        "checkpoint_id": payload.get("checkpoint_id", payload.get("checkpoint", {}).get("id") if isinstance(payload.get("checkpoint"), dict) else None),
+        "decision_id": decision.get("replay_anchor", correlation.get("decision_id")),
+        "evidence_class": evidence_class,
+        "reason_code": decision.get("reason_code", outcome.get("reason_code")),
+    }
 
 
 def append_decision_interaction_event(
@@ -328,6 +384,7 @@ def finalize_execution_trace(
     trace["status"] = status
     trace["finished_at"] = utc_now()
     trace["final_state"] = final_state
+    trace.setdefault("replay_contract", {})["final_state"] = state_fingerprint(final_state)
     _write_trace(path, trace)
     trace = load_execution_trace(root, normalized)
     report = validate_execution_trace(trace)
@@ -344,6 +401,11 @@ def validate_execution_trace(trace: dict[str, Any]) -> dict[str, Any]:
             issues.append({"code": "ORDO-EXEC-TRACE-001", "message": f"sequence gap at {idx}"})
         if event.get("event_type") not in EVENT_CLASS:
             issues.append({"code": "ORDO-EXEC-TRACE-002", "message": f"unknown event type at {idx}"})
+        record = event.get("replay_record")
+        if not isinstance(record, dict):
+            issues.append({"code": "ORDO-EXEC-TRACE-011", "message": f"event {idx} has no replay_record"})
+        elif record.get("evidence_class") not in {"accepted_decision", "blocker", "discrepancy", "runtime_only"}:
+            issues.append({"code": "ORDO-EXEC-TRACE-012", "message": f"event {idx} has invalid replay evidence_class"})
     integrity = trace.get("integrity") if isinstance(trace.get("integrity"), dict) else {}
     if integrity.get("event_count") != len(events):
         issues.append({"code": "ORDO-EXEC-TRACE-003", "message": "event_count mismatch"})
@@ -363,6 +425,11 @@ def validate_execution_trace(trace: dict[str, Any]) -> dict[str, Any]:
     replay = trace.get("replay") if isinstance(trace.get("replay"), dict) else {}
     if replay.get("replayable") and not replay.get("required_inputs_preserved"):
         issues.append({"code": "ORDO-EXEC-TRACE-008", "message": "replayable trace does not preserve required inputs"})
+    contract = trace.get("replay_contract")
+    if not isinstance(contract, dict):
+        issues.append({"code": "ORDO-EXEC-TRACE-013", "message": "trace has no replay_contract"})
+    elif not isinstance(contract.get("initial_state"), dict):
+        issues.append({"code": "ORDO-EXEC-TRACE-014", "message": "replay contract has no initial state fingerprint"})
     return {"valid": not issues, "issues": issues, "event_count": len(events), "status": status}
 
 

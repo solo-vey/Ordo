@@ -2,7 +2,7 @@
 ExecutionTrace:
   type: object
   additionalProperties: false
-  required: [id, version, run, status, started_at, actor, source, capture_level, events, replay, integrity]
+  required: [id, version, run, status, started_at, actor, source, capture_level, events, replay, replay_contract, integrity]
   properties:
     id: {type: string, minLength: 1}
     version: {type: string, pattern: '^[0-9]+\.[0-9]+$'}
@@ -66,7 +66,24 @@ ExecutionTrace:
         sensitive_values:
           type: object
           properties:
-            strategy: {enum: [redacted, reference, hashed, excluded]}
+              strategy: {enum: [redacted, reference, hashed, excluded]}
+    replay_contract:
+      type: object
+      required: [version, initial_state, final_state, records_complete]
+      properties:
+        version: {const: '1.0'}
+        initial_state: {$ref: '#/definitions/StateFingerprint'}
+        final_state:
+          anyOf:
+            - {$ref: '#/definitions/StateFingerprint'}
+            - {type: 'null'}
+        playbook:
+          type: object
+          properties:
+            source_path: {type: string}
+            sha256: {type: string}
+            version: {type: [string, 'null']}
+        records_complete: {type: boolean}
     integrity:
       type: object
       required: [event_count, sequence_complete]
@@ -76,10 +93,16 @@ ExecutionTrace:
         checksum: {type: [string, 'null']}
         previous_trace_checksum: {type: [string, 'null']}
   definitions:
+    StateFingerprint:
+      type: object
+      required: [checksum, value]
+      properties:
+        checksum: {type: string, pattern: '^sha256:'}
+        value: {type: object}
     ExecutionTraceEvent:
       type: object
       additionalProperties: false
-      required: [sequence, event_id, event_type, occurred_at, actor, payload, outcome]
+      required: [sequence, event_id, event_type, occurred_at, actor, payload, outcome, replay_record]
       properties:
         sequence: {type: integer, minimum: 1}
         event_id: {type: string, minLength: 1}
@@ -118,5 +141,19 @@ ExecutionTrace:
           required: [status]
           properties:
             status: {enum: [accepted, completed, passed, failed, skipped, rejected, warning]}
+        replay_record:
+          type: object
+          required: [node_id, phase_id, analyst_input, expected_route, state_before_ref, state_after_ref, checkpoint_id, decision_id, evidence_class, reason_code]
+          properties:
+            node_id: {type: [string, 'null']}
+            phase_id: {type: [string, 'null']}
+            analyst_input: {}
+            expected_route: {type: [string, 'null']}
+            state_before_ref: {type: [string, 'null']}
+            state_after_ref: {type: [string, 'null']}
+            checkpoint_id: {type: [string, 'null']}
+            decision_id: {type: [string, 'null']}
+            evidence_class: {enum: [accepted_decision, blocker, discrepancy, runtime_only]}
+            reason_code: {type: [string, 'null']}
             reason_code: {type: [string, 'null']}
             summary: {type: [string, 'null']}

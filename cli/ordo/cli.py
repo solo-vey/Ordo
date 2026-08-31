@@ -46,6 +46,7 @@ from .targets import emit_compiled_targets, render_runtime_view, verify_targets,
 from .package_profiles import build_package_profile
 from .template_tooling import validate_template_contract, validate_template_registry, render_template, review_template_artifact, diff_template_versions
 from .tree_modules import diff_instance, inspect_template, instantiate_template, list_templates, validate_instance
+from .replay_runner import export_replay_evidence, replay_recorded_run
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -228,6 +229,23 @@ def cmd_run(args: argparse.Namespace) -> int:
         status = "completed_with_blocks"
     print(f"run: {status} ({args.package}/reports/run_report.json)")
     return 0 if not report.get("violations") else 1
+
+
+def cmd_replay(args: argparse.Namespace) -> int:
+    report = replay_recorded_run(
+        checkout=args.checkout,
+        package=args.package,
+        trace_path=args.trace,
+        out=args.out,
+    )
+    print(f"replay: {report['status']} ({args.out or Path(args.package).resolve() / 'reports' / 'deterministic_replay_report.json'})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_export_replay_evidence(args: argparse.Namespace) -> int:
+    report = export_replay_evidence(trace_path=args.trace, state_path=args.state, out=args.out)
+    print(f"export-replay-evidence: {report['status']} ({Path(args.out).resolve() / 'replay_evidence_export_report.json'})")
+    return 0 if report["status"] == "passed" else 1
 
 
 def _digest_value(report: dict) -> str:
@@ -878,6 +896,19 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--state", help="YAML file with initial state overrides")
     p.add_argument("--csg-events", help="YAML/JSON list of model proposals to enforce through CSG runtime")
     p.set_defaults(func=cmd_run)
+
+    p = sub.add_parser("replay", help="Deterministically replay recorded execution evidence in a clean checkout")
+    p.add_argument("--checkout", required=True, help="Clean Git checkout that contains the package")
+    p.add_argument("--package", required=True, help="Package path inside --checkout")
+    p.add_argument("--trace", required=True, help="Recorded runtime/execution_trace.json")
+    p.add_argument("--out", help="Optional machine-readable replay report path")
+    p.set_defaults(func=cmd_replay)
+
+    p = sub.add_parser("export-replay-evidence", help="Create a read-only replay evidence export and verify state non-mutation")
+    p.add_argument("--trace", required=True, help="Recorded runtime/execution_trace.json")
+    p.add_argument("--state", required=True, help="State snapshot whose non-mutation must be proven")
+    p.add_argument("--out", required=True, help="Directory for replay evidence export")
+    p.set_defaults(func=cmd_export_replay_evidence)
 
     p = sub.add_parser("validate-journey", help="Validate the contractual manual-run journey ledger")
     p.add_argument("package")
