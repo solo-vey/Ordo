@@ -13,6 +13,11 @@ ALLOWED_FREEFORM_MATURITY = {"stable", "volatile", "candidate_for_formalization"
 ALLOWED_CSG_MODES = {"advisory", "guided_redirect", "strict_redirect", "locked_process"}
 ALLOWED_CSG_COUNTER_SCOPES = {"active_node", "deviation_session", "process_run"}
 ALLOWED_CSG_RESET_EVENTS = {"valid_process_answer", "node_transition", "process_resume"}
+RUNTIME_CONTEXT_RESERVED_FIELDS = {
+    "run_id", "current_node", "previous_node_id", "last_closed_node",
+    "active_node", "active_question", "execution_mode", "session_id",
+    "checkpoint_sequence", "source_binding",
+}
 
 @dataclass
 class LintIssue:
@@ -45,6 +50,11 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
     execution_mode = ordo_meta.get("execution_mode")
     if execution_mode not in ALLOWED_EXECUTION_MODES:
         _add(issues, "error", "EXECUTION_MODE_REQUIRED", f"execution_mode must be one of {sorted(ALLOWED_EXECUTION_MODES)}.", "ordo.execution_mode")
+
+    state_schema = ((source.get("state") or {}).get("schema") or {})
+    if isinstance(state_schema, dict):
+        for field in sorted(RUNTIME_CONTEXT_RESERVED_FIELDS.intersection(state_schema)):
+            _add(issues, "error", "RUNTIME_CONTEXT_FIELD_IN_BUSINESS_STATE", f"{field} is runtime/session context and must not be declared in state.schema.", f"state.schema.{field}")
 
     includes = source.get("includes", []) or []
     for i, include in enumerate(includes):

@@ -11,12 +11,27 @@ from .reporter import write_json
 from .runtime_evidence import attach_report_digest
 from .runner import initial_state, apply_answers, evaluate_gates, evaluate_assertions, allowed_outputs, state_diff
 from .checkpoints import build_checkpoint_report, enrich_state_with_checkpoint
+from .runtime_context import runtime_from_session, state_from_session, validate_live_session
 
 
 def _runtime_block_report(package_path: str | Path, *, out: str | Path | None, report_name: str) -> dict[str, Any] | None:
     status = runtime_status(package_path, require_ir=True)
     if status.get("status") == "ready":
-        return None
+        try:
+            root, _manifest, source, _ir = load_runtime_source(package_path)
+            live_path = root / "runtime" / "live_session_state.json"
+            if live_path.exists():
+                live = load_yaml(live_path)
+                issues = validate_live_session(root, source, live)
+                if not issues:
+                    return None
+                status = dict(status)
+                status["status"] = "invalid_runtime_context"
+                status["issues"] = issues
+            else:
+                return None
+        except Exception:
+            return None
     root = Path(package_path).resolve()
     try:
         root = load_package(package_path)[0]
@@ -36,12 +51,7 @@ def _runtime_block_report(package_path: str | Path, *, out: str | Path | None, r
 
 
 def _extract_state_mapping(loaded: Any) -> dict[str, Any]:
-    if not isinstance(loaded, dict):
-        return {}
-    embedded_state = loaded.get("state")
-    if isinstance(embedded_state, dict):
-        return embedded_state
-    return loaded
+    return state_from_session(loaded)
 
 
 def _load_state(
@@ -61,6 +71,9 @@ def _load_state(
         live_state = _extract_state_mapping(loaded)
         if live_state:
             state.update(live_state)
+            # These are runtime control values used only while calculating the
+            # next step; they never become part of the persisted business state.
+            state.update({k: v for k, v in runtime_from_session(loaded).items() if k in {"current_node", "previous_node_id", "last_closed_node"}})
             state_source = str(live_state_path)
     events: list[dict[str, Any]] = []
     if answers_path:

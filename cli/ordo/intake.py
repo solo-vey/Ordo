@@ -16,6 +16,13 @@ from .session_trace import append_session_trace_step
 from .manual_run_journey import record_intake_event
 from .transition_provenance import validate_node_entry, build_node_context_envelope
 from .reporter import write_json
+from .runtime_context import (
+    build_live_session,
+    runtime_from_session,
+    split_business_state,
+    state_from_session,
+    validate_live_session,
+)
 from .runner import (
     initial_state,
     state_diff,
@@ -134,12 +141,7 @@ def _rel(root: Path, path: Path) -> str:
 
 
 def _state_from_loaded_mapping(loaded: Any) -> dict[str, Any]:
-    if not isinstance(loaded, dict):
-        return {}
-    embedded = loaded.get("state")
-    if isinstance(embedded, dict):
-        return embedded
-    return loaded
+    return state_from_session(loaded)
 
 
 def _live_session_path(root: Path) -> Path:
@@ -160,6 +162,7 @@ def _load_live_session(root: Path) -> dict[str, Any]:
 def _write_live_session_state(
     root: Path,
     *,
+    source: dict[str, Any],
     run_id: str,
     state: dict[str, Any],
     current_node: str,
@@ -172,23 +175,29 @@ def _write_live_session_state(
     last_trace_digest: str = "",
     last_trace_step: int | None = None,
 ) -> str:
-    doc = {
-        "status": "active" if current_node else "complete_or_gate_ready",
-        "mode": "m59_4_live_runtime_session_state",
-        "run_id": run_id,
-        "current_node": current_node or "",
-        "last_closed_node": last_closed_node,
-        "state": state,
-        "last_snapshot": last_snapshot,
-        "last_snapshot_hash": last_snapshot_hash,
-        "last_evidence_report": last_evidence_report,
-        "last_evidence_digest": last_evidence_digest or {},
-        "last_trace_path": last_trace_path,
-        "last_trace_digest": last_trace_digest,
-        "last_trace_step": last_trace_step,
-        "updated_at": utc_now(),
-        "resume_policy": "If --state is omitted, runtime helpers may resume from runtime/live_session_state.json.",
-    }
+    business_state, legacy_runtime = split_business_state(state)
+    doc = build_live_session(
+        root, source,
+        run_id=run_id,
+        business_state=business_state,
+        status="active" if current_node else "complete_or_gate_ready",
+        runtime={
+            **legacy_runtime,
+            "current_node": current_node or "",
+            "last_closed_node": last_closed_node,
+            "updated_at": utc_now(),
+        },
+        evidence={
+            "last_snapshot": last_snapshot,
+            "last_snapshot_hash": last_snapshot_hash,
+            "last_evidence_report": last_evidence_report,
+            "last_evidence_digest": last_evidence_digest or {},
+            "last_trace_path": last_trace_path,
+            "last_trace_digest": last_trace_digest,
+            "last_trace_step": last_trace_step,
+        },
+        resume_policy="If --state is omitted, runtime helpers may resume only from a source-bound runtime/live_session_state.json.",
+    )
     target = _live_session_path(root)
     write_json(target, doc)
     return _rel(root, target)
@@ -212,7 +221,8 @@ def submit_intake_node(
     state_before_journey = copy.deepcopy(state)
     nodes = {n.get("id"): n for n in source.get("nodes", []) or []}
     node = nodes.get(node_id)
-    run_id = str(live_session.get("run_id") or f"LIVE-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}")
+    live_runtime = runtime_from_session(live_session)
+    run_id = str(live_runtime.get("run_id") or f"LIVE-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}")
 
     if not has_chain_snapshots(root):
         write_session_snapshot(root, state, node_id="000_initial", action="initial_state", status="passed")
@@ -223,7 +233,8 @@ def submit_intake_node(
     # context, `current_node` is the authoritative next submit target.
     # For arbitrary user-supplied state files we keep the older checkpoint
     # discipline: earliest incomplete mandatory node wins.
-    live_current = state.get("current_node") if isinstance(live_session, dict) and live_session else None
+    context_issues = validate_live_session(root, source, live_session) if live_session else []
+    live_current = live_runtime.get("current_node") if live_session else None
     expected_node = str(live_current) if live_current else (checkpoint_before.get("earliest_incomplete_node") or (node_id if node else ""))
     issues: list[dict[str, Any]] = []
     status = "passed"
@@ -231,14 +242,22 @@ def submit_intake_node(
     diff: dict[str, Any] = {}
     matched = False
 
-    if not node:
+    if context_issues:
+        status = "blocked"
+        issues.extend(context_issues)
+    elif not node:
         status = "blocked"
         issues.append({"severity": "error", "code": "ORDO-INTAKE-001", "message": f"node not found: {node_id}", "location": node_id})
     elif expected_node and node_id != expected_node:
         status = "blocked"
         issues.append({"severity": "error", "code": "ORDO-INTAKE-002", "message": "submit attempted for a node other than earliest incomplete node", "location": node_id, "expected_node": expected_node})
     else:
-        previous_node_id = state.get("previous_node_id") or state.get("last_closed_node")
+        previous_node_id = (
+            live_runtime.get("previous_node_id")
+            or live_runtime.get("last_closed_node")
+            or state.get("previous_node_id")
+            or state.get("last_closed_node")
+        )
         entry_mode = "resume" if live_session else ("root" if not previous_node_id else "transition")
         provenance = validate_node_entry(source, target_node_id=node_id, previous_node_id=previous_node_id, entry_mode=entry_mode)
         if provenance.get("status") != "passed":
@@ -253,6 +272,9 @@ def submit_intake_node(
             answered = state.setdefault("answered_questions", [])
             if isinstance(answered, list):
                 answered.append({"node": node_id, "answer": _parse_answer(answer, node.get("answer_type")), "closed_at": utc_now()})
+            # Control-flow fields are persisted in runtime_context, never in
+            # business state.  Keep them transient here for existing checkpoint
+            # and evidence helpers, then split them before session persistence.
             state["last_closed_node"] = node_id
             state["previous_node_id"] = node_id
             state["current_node"] = next_target or ""
@@ -325,6 +347,7 @@ def submit_intake_node(
     if status == "passed":
         live_session_file = _write_live_session_state(
             root,
+            source=source,
             run_id=run_id,
             state=state,
             current_node=next_target or "",

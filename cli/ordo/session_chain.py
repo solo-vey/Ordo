@@ -8,6 +8,7 @@ import json
 from .reporter import write_json
 from .runtime import resolve_runtime_paths
 from .runtime_evidence import attach_report_digest, canonical_sha256, file_sha256, utc_now
+from .runtime_context import split_business_state
 
 ZERO_PREV_HASH = "sha256:" + ("0" * 64)
 PROTOCOL_LINE = "[protocol] raw compiled/* read is a violation; this output is the only valid source"
@@ -42,6 +43,13 @@ def _snapshot_state(data: dict[str, Any]) -> dict[str, Any]:
     older M59.3 flat snapshots.
     """
     if isinstance(data, dict):
+        business = data.get("business_state")
+        runtime = data.get("runtime_context")
+        if isinstance(business, dict):
+            merged = dict(business)
+            if isinstance(runtime, dict):
+                merged.update({key: value for key, value in runtime.items() if key in {"current_node", "previous_node_id", "last_closed_node"}})
+            return merged
         embedded = data.get("state")
         if isinstance(embedded, dict):
             return embedded
@@ -120,9 +128,12 @@ def write_session_snapshot(
     }
     if extra:
         chain_meta.update(extra)
+    business_state, runtime_context = split_business_state(state)
     snapshot = {
+        "format": "ordo-session-snapshot.v1",
         "session_chain": chain_meta,
-        "state": copy.deepcopy(state),
+        "business_state": business_state,
+        "runtime_context": runtime_context,
     }
     snapshot["session_chain"]["snapshot_hash"] = _snapshot_hash(snapshot)
 
