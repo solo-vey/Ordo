@@ -10,6 +10,7 @@ from .loader import load_yaml, resolve_package_root
 from .canonical_source import validate_canonical_source
 from .compiler import compile_source
 from .reporter import write_json
+from .llm_execution_plan import validate_llm_execution_plan
 
 RUNTIME_STATUS_VALUES = {
     "ready",
@@ -17,6 +18,7 @@ RUNTIME_STATUS_VALUES = {
     "missing_source",
     "missing_ir",
     "stale_ir",
+    "stale_plan",
     "invalid_manifest",
     "invalid_ir",
 }
@@ -191,6 +193,23 @@ def runtime_status(package_path: str | Path, *, require_ir: bool = True, out: st
     elif not ir_required and not compiled_path.exists():
         warnings.append(_issue("ORDO-RUNTIME-003", "compiled IR missing; non-runtime fallback mode only", location=_rel(root, compiled_path), severity="warning"))
 
+    plan_path = root / "compiled" / "llm_execution_plan.json"
+    plan_validation: dict[str, Any] | None = None
+    if plan_path.exists():
+        plan_validation = validate_llm_execution_plan(plan_path, source_path=source_path if source_path.exists() else None, ir_path=compiled_path if compiled_path.exists() else None)
+        runtime_manifest = manifest.get("runtime_manifest") if isinstance(manifest.get("runtime_manifest"), dict) else {}
+        if not source_path.exists() and runtime_manifest:
+            try:
+                plan_source_hash = ((json.loads(plan_path.read_text(encoding="utf-8")).get("compiled_from") or {}).get("canonical_yaml_sha256"))
+                if plan_source_hash != runtime_manifest.get("source_yaml_sha256"):
+                    plan_validation.setdefault("issues", []).append(_issue("ORDO-LLM-PLAN-STALE", "plan canonical YAML hash differs from runtime manifest source identity", location="compiled_from.canonical_yaml_sha256"))
+                    plan_validation["status"] = "failed"
+            except Exception:
+                pass
+        if plan_validation.get("status") != "passed":
+            for item in plan_validation.get("issues", []):
+                issues.append(_issue(str(item.get("code") or "ORDO-RUNTIME-014"), str(item.get("message") or "LLM execution plan validation failed"), location=str(item.get("location") or "compiled/llm_execution_plan.json")))
+
     status = "ready" if not issues else (issues[0]["code"].replace("ORDO-RUNTIME-", "runtime_error_"))
     if issues:
         code = issues[0]["code"]
@@ -199,6 +218,8 @@ def runtime_status(package_path: str | Path, *, require_ir: bool = True, out: st
             "ORDO-RUNTIME-002": "missing_source",
             "ORDO-RUNTIME-003": "missing_ir",
             "ORDO-RUNTIME-004": "stale_ir",
+            "ORDO-LLM-PLAN-STALE": "stale_plan",
+            "ORDO-LLM-PLAN-STALE-IR": "stale_plan",
         }.get(code, "runtime_error")
 
     report = {
@@ -225,6 +246,7 @@ def runtime_status(package_path: str | Path, *, require_ir: bool = True, out: st
             "checked_at_epoch": time.time(),
         },
         "execution_mode": {"selected": mode, "compiled_ir_required": mode_policy["compiled_ir_required"], "contract": mode_policy["description"]},
+        "llm_execution_plan": {"path": _rel(root, plan_path), "validation": plan_validation} if plan_path.exists() else {"path": None, "validation": None},
         "issues": issues,
         "warnings": warnings,
     }

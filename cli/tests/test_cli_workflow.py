@@ -606,6 +606,7 @@ class PackageProfilesTest(unittest.TestCase):
         self.assertFalse(any(n.startswith(prefix + "tests/") for n in names))
         self.assertFalse(any(n.startswith(prefix + "run_inputs/") for n in names))
         self.assertIn(prefix + "compiled/program.ir.json", names)
+        self.assertIn(prefix + "compiled/llm_execution_plan.json", names)
         self.assertIn(prefix + "START_HERE_RUNTIME_MODE.md", names)
         self.assertIn(prefix + "START_PROMPT_RUNTIME_MODE.md", names)
         self.assertTrue(any(n.startswith(prefix + "output_templates/") for n in names))
@@ -639,6 +640,7 @@ class PackageProfilesTest(unittest.TestCase):
         self.assertIn('"embedded_cli_included": true', text)
         self.assertIn('"embedded_cli_path": "cli_embedded/ordo"', text)
         self.assertIn('"trust_level": "level_1_cli_in_package_hard_stop"', text)
+        self.assertIn('"llm_execution_plan": "compiled/llm_execution_plan.json"', text)
 
     def test_evidence_package_excludes_editable_source(self) -> None:
         self._prepare_validated_package()
