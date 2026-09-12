@@ -54,7 +54,7 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
     state_schema = ((source.get("state") or {}).get("schema") or {})
     if isinstance(state_schema, dict):
         for field in sorted(RUNTIME_CONTEXT_RESERVED_FIELDS.intersection(state_schema)):
-            _add(issues, "error", "RUNTIME_CONTEXT_FIELD_IN_BUSINESS_STATE", f"{field} is runtime/session context and must not be declared in state.schema.", f"state.schema.{field}")
+            _add(issues, "warning", "RUNTIME_CONTEXT_FIELD_IN_BUSINESS_STATE", f"{field} is a legacy runtime/session field in state.schema; new runtime packages must keep it in runtime_context.", f"state.schema.{field}")
 
     includes = source.get("includes", []) or []
     for i, include in enumerate(includes):

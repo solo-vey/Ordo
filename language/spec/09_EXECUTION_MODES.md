@@ -24,10 +24,11 @@ The model follows Ordo discipline through instructions only. This has the weakes
 
 ## Runtime context and source of truth
 
-`state.schema` is reserved for business/domain state. Runtime control data such
-as `run_id`, active node, closed-node history, session checkpoints and source
-digests MUST be stored under the versioned `runtime_context` envelope, not in
-business state.
+`state.schema` is reserved for business/domain state. New runtime control data
+such as `run_id`, active node, closed-node history, session checkpoints and
+source digests MUST be stored under the versioned `runtime_context` envelope,
+not in business state. Existing packages that expose such a field in their
+schema remain compatible but the linter reports an explicit migration warning.
 
 For resumable execution, `runtime/live_session_state.json` MUST bind its
 `runtime_context` to the selected `execution_mode`, canonical YAML digest (when
