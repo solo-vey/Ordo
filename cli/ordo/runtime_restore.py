@@ -14,6 +14,7 @@ from .runner import state_diff
 from .checkpoints import build_checkpoint_report, enrich_state_with_checkpoint
 from .session_chain import _chain_snapshots, _snapshot_state, write_session_snapshot
 from .session_trace import append_session_trace_step
+from .runtime_context import build_live_session, runtime_from_session, split_business_state, validate_live_session
 
 
 def utc_now() -> str:
@@ -50,6 +51,7 @@ def _load_live_session(root: Path) -> dict[str, Any]:
 def _write_live_session_state(
     root: Path,
     *,
+    source: dict[str, Any],
     run_id: str,
     state: dict[str, Any],
     current_node: str,
@@ -63,25 +65,22 @@ def _write_live_session_state(
     last_trace_step: int | None = None,
     restore: dict[str, Any] | None = None,
 ) -> str:
-    doc = {
-        "status": "active" if current_node else "complete_or_gate_ready",
-        "mode": "m60_4_live_runtime_session_state_after_restore" if restore else "m59_4_live_runtime_session_state",
-        "run_id": run_id,
-        "current_node": current_node or "",
-        "last_closed_node": last_closed_node,
-        "state": state,
-        "last_snapshot": last_snapshot,
-        "last_snapshot_hash": last_snapshot_hash,
-        "last_evidence_report": last_evidence_report,
-        "last_evidence_digest": last_evidence_digest or {},
-        "last_trace_path": last_trace_path,
-        "last_trace_digest": last_trace_digest,
-        "last_trace_step": last_trace_step,
-        "updated_at": utc_now(),
-        "resume_policy": "If --state is omitted, runtime helpers may resume from runtime/live_session_state.json.",
-    }
-    if restore:
-        doc["restore"] = restore
+    business_state, legacy_runtime = split_business_state(state)
+    doc = build_live_session(
+        root, source,
+        run_id=run_id,
+        business_state=business_state,
+        status="active" if current_node else "complete_or_gate_ready",
+        runtime={**legacy_runtime, "current_node": current_node or "", "last_closed_node": last_closed_node, "updated_at": utc_now()},
+        evidence={
+            "last_snapshot": last_snapshot, "last_snapshot_hash": last_snapshot_hash,
+            "last_evidence_report": last_evidence_report, "last_evidence_digest": last_evidence_digest or {},
+            "last_trace_path": last_trace_path, "last_trace_digest": last_trace_digest,
+            "last_trace_step": last_trace_step,
+        },
+        resume_policy="Restores resume only from a source-bound runtime/live_session_state.json.",
+        restore=restore,
+    )
     target = _live_session_path(root)
     write_json(target, doc)
     return _rel(root, target)
@@ -119,7 +118,12 @@ def restore_session(
     status = "passed"
     target_snapshot: tuple[Path, dict[str, Any], dict[str, Any]] | None = None
 
-    if not snapshots:
+    live = _load_live_session(root)
+    context_issues = validate_live_session(root, source, live) if live else []
+    if context_issues:
+        status = "blocked"
+        issues.extend(context_issues)
+    elif not snapshots:
         status = "blocked"
         issues.append({"severity": "error", "code": "ORDO-RESTORE-001", "message": "cannot restore without session snapshots", "location": "runtime/state_snapshots/"})
     elif to_seq < 0 or to_seq >= len(snapshots):
@@ -128,8 +132,7 @@ def restore_session(
     else:
         target_snapshot = snapshots[to_seq]
 
-    live = _load_live_session(root)
-    run_id = str(live.get("run_id") or f"LIVE-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}")
+    run_id = str(runtime_from_session(live).get("run_id") or f"LIVE-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}")
     current_state = _snapshot_state(snapshots[-1][1]) if snapshots else {}
     target_state = copy.deepcopy(_snapshot_state(target_snapshot[1])) if target_snapshot else current_state
     restore_node_id = f"RESTORE_TO_SEQ_{to_seq:03d}"
@@ -208,6 +211,7 @@ def restore_session(
     if status == "passed":
         live_session_file = _write_live_session_state(
             root,
+            source=source,
             run_id=run_id,
             state=target_state,
             current_node=str(target_state.get("current_node") or ""),

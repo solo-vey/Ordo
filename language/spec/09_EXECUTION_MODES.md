@@ -22,6 +22,25 @@ The model operates in a chat session but may use session-local files/scripts to 
 
 The model follows Ordo discipline through instructions only. This has the weakest guarantee and should not be presented as equivalent to runtime enforcement.
 
+## Runtime context and source of truth
+
+`state.schema` is reserved for business/domain state. New runtime control data
+such as `run_id`, active node, closed-node history, session checkpoints and
+source digests MUST be stored under the versioned `runtime_context` envelope,
+not in business state. Existing packages that expose such a field in their
+schema remain compatible but the linter reports an explicit migration warning.
+
+For resumable execution, `runtime/live_session_state.json` MUST bind its
+`runtime_context` to the selected `execution_mode`, canonical YAML digest (when
+included) and compiled IR digest. A missing, legacy or mismatched binding is a
+blocking condition: a helper MUST NOT silently resume it or treat the cached
+session as another semantic source.
+
+Mode selection is explicit:
+
+- `full_runtime` and `chat_internal` use the current compiled IR for deterministic helpers.
+- `freeform_only` is non-runtime authoring mode and has no implicit executable fallback.
+
 ## Required documentation rule
 
 Every Ordo program and every execution trace MUST declare `execution_mode`.

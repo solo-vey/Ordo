@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
+from hashlib import sha256
 import json
 import time
 
@@ -18,6 +19,12 @@ RUNTIME_STATUS_VALUES = {
     "stale_ir",
     "invalid_manifest",
     "invalid_ir",
+}
+
+MODE_RUNTIME_REQUIREMENTS = {
+    "full_runtime": {"compiled_ir_required": True, "description": "execute only the compiled representation"},
+    "chat_internal": {"compiled_ir_required": True, "description": "use the compiled representation for deterministic helpers"},
+    "freeform_only": {"compiled_ir_required": False, "description": "non-runtime authoring mode; no implicit executable fallback"},
 }
 
 CLI_TRUTHFULNESS_STATUSES = {
@@ -40,6 +47,10 @@ def _rel(root: Path, path: Path | None) -> str | None:
 
 def _issue(code: str, message: str, *, location: str | None = None, severity: str = "error") -> dict[str, Any]:
     return {"severity": severity, "code": code, "message": message, "location": location}
+
+
+def _file_sha256(path: Path) -> str | None:
+    return sha256(path.read_bytes()).hexdigest() if path.exists() else None
 
 
 def resolve_runtime_paths(package_path: str | Path) -> dict[str, Any]:
@@ -160,17 +171,24 @@ def runtime_status(package_path: str | Path, *, require_ir: bool = True, out: st
     compiled_path: Path = resolved["compiled_path"]
     issues: list[dict[str, Any]] = []
     warnings: list[dict[str, Any]] = []
+    source_meta = manifest.get("runtime_manifest", {}) if manifest.get("runtime_profile") else {}
+    mode = str(source_meta.get("execution_mode") or manifest.get("execution_mode") or "full_runtime")
+    mode_policy = MODE_RUNTIME_REQUIREMENTS.get(mode)
+    if mode_policy is None:
+        issues.append(_issue("ORDO-RUNTIME-013", f"unsupported execution mode: {mode}", location="ordo.execution_mode"))
+        mode_policy = MODE_RUNTIME_REQUIREMENTS["full_runtime"]
+    ir_required = require_ir and bool(mode_policy["compiled_ir_required"])
 
     if not source_path.exists() and not manifest.get("runtime_profile"):
         issues.append(_issue("ORDO-RUNTIME-002", "source program not found", location=_rel(root, source_path)))
-    if require_ir and not compiled_path.exists():
+    if ir_required and not compiled_path.exists():
         issues.append(_issue("ORDO-RUNTIME-003", "compiled IR missing", location=_rel(root, compiled_path)))
     if source_path.exists() and compiled_path.exists():
         source_mtime = source_path.stat().st_mtime
         ir_mtime = compiled_path.stat().st_mtime
         if source_mtime > ir_mtime + 0.0001:
             issues.append(_issue("ORDO-RUNTIME-004", "IR is stale. Run ordo compile before guided execution.", location=_rel(root, compiled_path)))
-    elif not require_ir and not compiled_path.exists():
+    elif not ir_required and not compiled_path.exists():
         warnings.append(_issue("ORDO-RUNTIME-003", "compiled IR missing; non-runtime fallback mode only", location=_rel(root, compiled_path), severity="warning"))
 
     status = "ready" if not issues else (issues[0]["code"].replace("ORDO-RUNTIME-", "runtime_error_"))
@@ -193,7 +211,8 @@ def runtime_status(package_path: str | Path, *, require_ir: bool = True, out: st
             "manifest_kind": resolved.get("manifest_kind", "ordo.yml"),
             "editable_source": _rel(root, source_path),
             "runtime_ir": _rel(root, compiled_path),
-            "run_state": "run_state.json or reports/intake_report.json",
+            "business_state": "runtime/live_session_state.json.business_state or explicit --state",
+            "runtime_context": "runtime/live_session_state.json.runtime_context (source-bound, non-business)",
             "generated_artifacts": "generated_outputs/",
         },
         "freshness": {
@@ -201,8 +220,11 @@ def runtime_status(package_path: str | Path, *, require_ir: bool = True, out: st
             "compiled_ir_exists": compiled_path.exists(),
             "source_mtime": source_path.stat().st_mtime if source_path.exists() else None,
             "compiled_ir_mtime": compiled_path.stat().st_mtime if compiled_path.exists() else None,
+            "source_sha256": _file_sha256(source_path),
+            "compiled_ir_sha256": _file_sha256(compiled_path),
             "checked_at_epoch": time.time(),
         },
+        "execution_mode": {"selected": mode, "compiled_ir_required": mode_policy["compiled_ir_required"], "contract": mode_policy["description"]},
         "issues": issues,
         "warnings": warnings,
     }
@@ -229,7 +251,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
     ir = json.loads(compiled_path.read_text(encoding="utf-8"))
     ops = ir.get("ops", []) or []
     source: dict[str, Any] = {
-        "ordo": {"version": ir.get("ordo_version"), "package": ir.get("package")},
+        "ordo": {"version": ir.get("ordo_version"), "package": ir.get("package"), "execution_mode": ir.get("execution_mode")},
         "contract": {},
         "state": {},
         "nodes": [],

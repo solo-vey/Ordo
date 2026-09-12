@@ -831,8 +831,9 @@ class RuntimeIncrementalIntakeEvidenceTest(unittest.TestCase):
         self.assertEqual(report["next_node"], "N_PATH_SELECT")
         self.assertEqual(report["live_session_state"], "runtime/live_session_state.json")
         live = json.loads((self.package / "runtime" / "live_session_state.json").read_text(encoding="utf-8"))
-        self.assertEqual(live["current_node"], "N_PATH_SELECT")
-        self.assertEqual(live["state"]["event_goal"], "Зміна капіталу")
+        self.assertEqual(live["format"], "ordo-runtime-session.v1")
+        self.assertEqual(live["runtime_context"]["current_node"], "N_PATH_SELECT")
+        self.assertEqual(live["business_state"]["event_goal"], "Зміна капіталу")
 
     def test_next_step_uses_live_session_state_when_state_omitted(self) -> None:
         self.assertEqual(main(["compile", str(self.package)]), 0)
@@ -869,8 +870,9 @@ class RuntimeSessionChainM59_3Test(unittest.TestCase):
         self.assertTrue(report["canary_present"])
         snapshot = json.loads((self.package / "runtime" / "state_snapshots" / "SESSION-001_N_EVENT_GOAL.json").read_text(encoding="utf-8"))
         self.assertIn("session_chain", snapshot)
-        self.assertIn("state", snapshot)
-        self.assertNotIn("session_chain", snapshot["state"])
+        self.assertIn("business_state", snapshot)
+        self.assertIn("runtime_context", snapshot)
+        self.assertNotIn("session_chain", snapshot["business_state"])
 
     def test_verify_session_detects_broken_chain_when_snapshot_missing(self) -> None:
         self.assertEqual(main(["compile", str(self.package)]), 0)
@@ -1166,7 +1168,7 @@ class RuntimeRestoreSessionM60_4Test(unittest.TestCase):
         self.assertIn("RESTORE_TO_SEQ_001", report["snapshot"])
         self.assertEqual(report["next_node"], "N_PATH_SELECT")
         live = json.loads((self.package / "runtime" / "live_session_state.json").read_text(encoding="utf-8"))
-        self.assertEqual(live["current_node"], "N_PATH_SELECT")
+        self.assertEqual(live["runtime_context"]["current_node"], "N_PATH_SELECT")
         self.assertIn("restore", live)
         trace = (self.package / "runtime" / "session.ordo.trace").read_text(encoding="utf-8")
         self.assertIn("action: restore_session", trace)
