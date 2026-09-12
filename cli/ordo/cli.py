@@ -4,6 +4,7 @@ import argparse
 import json
 import shutil
 import sys
+from hashlib import sha256
 from pathlib import Path
 import zipfile
 
@@ -47,6 +48,7 @@ from .package_profiles import build_package_profile
 from .template_tooling import validate_template_contract, validate_template_registry, render_template, review_template_artifact, diff_template_versions
 from .tree_modules import diff_instance, inspect_template, instantiate_template, list_templates, validate_instance
 from .replay_runner import export_replay_evidence, replay_recorded_run
+from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, validate_llm_execution_plan
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -109,6 +111,15 @@ def cmd_compile(args: argparse.Namespace) -> int:
     ir = compile_source(source)
     out = root / manifest.get("compiled", "compiled/program.ir.json")
     write_json(out, ir)
+    source_path = root / manifest.get("source", "source/program.ordo.yaml")
+    plan_path = root / "compiled" / "llm_execution_plan.json"
+    llm_plan = build_llm_execution_plan(
+        source,
+        source_sha256=sha256(source_path.read_bytes()).hexdigest(),
+        ir_sha256=semantic_ir_sha256(out),
+    )
+    write_json(plan_path, llm_plan)
+    llm_plan_validation = validate_llm_execution_plan(plan_path, source_path=source_path, ir_path=out)
     targets_manifest = emit_compiled_targets(
         root,
         ir_path=out,
@@ -124,6 +135,8 @@ def cmd_compile(args: argparse.Namespace) -> int:
         compile_status = "failed_opcode_registry_mismatch"
     if capability_registry_report["status"] == "failed":
         compile_status = "failed_capability_registry_mismatch"
+    if llm_plan_validation["status"] == "failed":
+        compile_status = "failed_llm_execution_plan"
     compile_report = {
         "status": compile_status,
         "source": manifest.get("source", "source/program.ordo.yaml"),
@@ -131,6 +144,8 @@ def cmd_compile(args: argparse.Namespace) -> int:
         "targets_manifest": "compiled/targets.manifest.json",
         "targets": sorted((targets_manifest.get("targets") or {}).keys()),
         "ops_count": len(ir.get("ops", [])),
+        "llm_execution_plan": "compiled/llm_execution_plan.json",
+        "llm_execution_plan_validation": llm_plan_validation,
         "lint_status": lint_report["status"],
         "contract_artifact_reference_check": contract_artifact_report,
         "opcode_registry_check": opcode_registry_report,
@@ -146,6 +161,9 @@ def cmd_compile(args: argparse.Namespace) -> int:
         return 1
     if capability_registry_report["status"] == "failed":
         print("compile: capability registry mismatch", file=sys.stderr)
+        return 1
+    if llm_plan_validation["status"] == "failed":
+        print("compile: LLM execution plan validation failed", file=sys.stderr)
         return 1
     return 0
 
@@ -167,6 +185,12 @@ def cmd_compile_prompt(args: argparse.Namespace) -> int:
 
 def cmd_validate_prompt(args: argparse.Namespace) -> int:
     result = validate_prompt_compilation(args.compiled, source_path=args.source)
+    print(json.dumps(result, indent=2))
+    return 0 if result["status"] == "passed" else 1
+
+
+def cmd_validate_llm_execution_plan(args: argparse.Namespace) -> int:
+    result = validate_llm_execution_plan(args.plan, source_path=args.source, ir_path=args.ir)
     print(json.dumps(result, indent=2))
     return 0 if result["status"] == "passed" else 1
 
@@ -860,6 +884,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("compiled")
     p.add_argument("--source")
     p.set_defaults(func=cmd_validate_prompt)
+
+    p = sub.add_parser("validate-llm-plan", help="Validate compiled LLM Runtime Semantic Plan and source bindings")
+    p.add_argument("plan")
+    p.add_argument("--source")
+    p.add_argument("--ir")
+    p.set_defaults(func=cmd_validate_llm_execution_plan)
 
     p = sub.add_parser("route-runtime", help="Choose prompt-only or engine runtime from measured evidence")
     p.add_argument("--metrics", required=True)

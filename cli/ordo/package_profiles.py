@@ -18,6 +18,7 @@ from .build_identity import write_build_identity, new_build_identity, bind_repor
 from .package_reconciliation import pre_zip_reconciliation
 from .package_integrity import validate_package_integrity
 from .prompt_compiler import compile_prompt_only, validate_prompt_compilation
+from .llm_execution_plan import validate_llm_execution_plan
 
 PACKAGE_PROFILES = {"dev", "runtime", "evidence", "prompt_only"}
 
@@ -185,6 +186,7 @@ def _runtime_files(root: Path) -> list[Path]:
         "START_PROMPT_RUNTIME_MODE.md",
         "ordo.runtime.json",
         "compiled/program.ir.json",
+        "compiled/llm_execution_plan.json",
         "compiled/targets.manifest.json",
         "runtime/session.ordo.trace",
         "reports/CLI_VALIDATION_SUMMARY.md",
@@ -284,9 +286,11 @@ def _write_runtime_manifest(root: Path, manifest: dict[str, Any], *, cli_status:
         "runtime_view_behavior": runtime_view_behavior(normalized_runtime_view),
         "canonical_target": "json-ir",
         "targets_manifest": "compiled/targets.manifest.json",
+        "llm_execution_plan": "compiled/llm_execution_plan.json",
         "compiled_targets": compiled_targets,
         "source_yaml_sha256": _sha256_file(source_path) if source_path.exists() else "",
         "compiled_ir_sha256": _sha256_file(compiled_path) if compiled_path.exists() else "",
+        "llm_execution_plan_sha256": _sha256_file(root / "compiled" / "llm_execution_plan.json") if (root / "compiled" / "llm_execution_plan.json").exists() else "",
         "compiler_version": manifest.get("ordo_version") or "unknown",
         "cli_validation_status": cli_status,
     }
@@ -313,8 +317,16 @@ def _validate_profile_inputs(root: Path, manifest: dict[str, Any], profile: str,
             issues.extend(validation.get("issues", []))
     if profile == "runtime":
         compiled_path = root / manifest.get("compiled", "compiled/program.ir.json")
+        source_path = root / manifest.get("source", "source/program.ordo.yaml")
+        plan_path = root / "compiled" / "llm_execution_plan.json"
         if not compiled_path.exists():
             issues.append(_issue("ORDO-PACKAGE-003", "runtime profile missing compiled IR", "compiled/program.ir.json"))
+        if not plan_path.exists():
+            issues.append(_issue("ORDO-PACKAGE-015", "runtime profile missing compiled LLM execution plan", "compiled/llm_execution_plan.json"))
+        else:
+            plan_validation = validate_llm_execution_plan(plan_path, source_path=source_path if source_path.exists() else None, ir_path=compiled_path if compiled_path.exists() else None)
+            if plan_validation.get("status") != "passed":
+                issues.extend(plan_validation.get("issues", []))
         rt = runtime_status(root, require_ir=True)
         if rt.get("status") == "stale_ir":
             issues.append(_issue("ORDO-RUNTIME-004", "IR is stale. Run ordo compile before runtime packaging.", "compiled/program.ir.json"))
@@ -340,6 +352,7 @@ def _validate_built_profile(root: Path, profile: str, files: list[Path]) -> list
         required_targets = {str(spec.get("path")): "ORDO-PACKAGE-012" for spec in targets.values() if isinstance(spec, dict) and spec.get("path")}
         required_runtime_files = {
             "compiled/program.ir.json": "ORDO-PACKAGE-003",
+            "compiled/llm_execution_plan.json": "ORDO-PACKAGE-015",
             "compiled/targets.manifest.json": "ORDO-PACKAGE-012",
             "runtime/session.ordo.trace": "ORDO-PACKAGE-013",
             "output_templates": "ORDO-PACKAGE-004",
@@ -494,7 +507,7 @@ def build_package_profile(package_path: str | Path, *, profile: str = "dev", out
         build_manifest = reports_dir / "BUILD_MANIFEST.json"
         sha_file = reports_dir / "SHA256SUMS.txt"
         runtime_manifest_data = _read_json(root / "ordo.runtime.json") or {}
-        _write_build_manifest(root, manifest, profile, initial_files, cli_status=cli_status, extra={"runtime_manifest": "ordo.runtime.json", "embedded_cli": "cli_embedded/ordo", "targets_manifest": "compiled/targets.manifest.json", "session_trace": "runtime/session.ordo.trace", "runtime_view": runtime_view, "runtime_view_behavior": runtime_view_behavior(runtime_view), "compiled_targets": runtime_manifest_data.get("compiled_targets", []), "trust_level": "level_1_cli_in_package_hard_stop", "trust_level_detail": "level_1_cli_in_package_hard_stop_hash_chain_human_verify_m59_4_hardened_m60_4_restore_session"})
+        _write_build_manifest(root, manifest, profile, initial_files, cli_status=cli_status, extra={"runtime_manifest": "ordo.runtime.json", "embedded_cli": "cli_embedded/ordo", "targets_manifest": "compiled/targets.manifest.json", "llm_execution_plan": "compiled/llm_execution_plan.json", "session_trace": "runtime/session.ordo.trace", "runtime_view": runtime_view, "runtime_view_behavior": runtime_view_behavior(runtime_view), "compiled_targets": runtime_manifest_data.get("compiled_targets", []), "trust_level": "level_1_cli_in_package_hard_stop", "trust_level_detail": "level_1_cli_in_package_hard_stop_hash_chain_human_verify_m59_4_hardened_m60_4_restore_session"})
         files = _runtime_files(root)
         _write_sha256s(root, files, sha_file)
         files = _runtime_files(root)

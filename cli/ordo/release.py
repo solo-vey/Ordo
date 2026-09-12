@@ -4,12 +4,14 @@ from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from hashlib import sha256
 import zipfile
 
 from .loader import load_package
 from .linter import lint_source
 from .registry_checks import find_repo_root
 from .compiler import compile_source
+from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, validate_llm_execution_plan
 from .coverage import build_coverage
 from .tester import run_tests
 from .runner import run_package
@@ -149,6 +151,10 @@ def validate_release(
     # Compile only when lint is usable; still try to surface errors gracefully.
     ir = compile_source(source)
     write_json(compiled_path, ir)
+    source_path = root / manifest.get("source", "source/program.ordo.yaml")
+    llm_plan_path = root / "compiled" / "llm_execution_plan.json"
+    write_json(llm_plan_path, build_llm_execution_plan(source, source_sha256=sha256(source_path.read_bytes()).hexdigest(), ir_sha256=semantic_ir_sha256(compiled_path)))
+    llm_plan_validation = validate_llm_execution_plan(llm_plan_path, source_path=source_path, ir_path=compiled_path)
     compile_report = {
         "status": "passed" if not _has_errors(lint_report) else "passed_with_lint_errors",
         "source": manifest.get("source", "source/program.ordo.yaml"),
@@ -159,8 +165,11 @@ def validate_release(
     compile_path = reports_dir / "compile_report.json"
     write_json(compile_path, compile_report)
     record_step("compile", compile_report["status"], compile_path, {"ops_count": compile_report["ops_count"]})
+    record_step("llm_execution_plan", llm_plan_validation["status"], llm_plan_path, {"issues": len(llm_plan_validation.get("issues", []))})
     if compile_report["ops_count"] == 0:
         _add(issues, "error", "COMPILED_IR_EMPTY", "Compiled IR must contain operations.", _relative(compiled_path, root))
+    if llm_plan_validation["status"] != "passed":
+        _add(issues, "error", "LLM_EXECUTION_PLAN_FAILED", "Compiled LLM Runtime Semantic Plan must validate.", _relative(llm_plan_path, root))
 
     # Static tests.
     test_report = run_tests(source, tests)

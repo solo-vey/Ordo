@@ -35,8 +35,13 @@ class RuntimeContextSeparationTest(unittest.TestCase):
         self.assertEqual(main(["compile", str(self.package)]), 0)
         self.assertEqual(main(["intake", str(self.package), "--submit", "N_EVENT_GOAL", "--answer", "Зміна капіталу"]), 0)
         compiled = self.package / "compiled" / "program.ir.json"
-        compiled.write_text(compiled.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+        ir = json.loads(compiled.read_text(encoding="utf-8"))
+        ir["ops"][0]["control_level"] = "changed"
+        compiled.write_text(json.dumps(ir), encoding="utf-8")
         self.assertEqual(main(["next-step", str(self.package)]), 1)
         report = json.loads((self.package / "reports" / "next_step_report.json").read_text(encoding="utf-8"))
         self.assertEqual(report["status"], "blocked")
-        self.assertIn("ORDO-RUNTIME-CONTEXT-003", json.dumps(report, ensure_ascii=False))
+        # A stale IR may be rejected by the compiled semantic-plan binding
+        # before the session-cache binding is evaluated; both are fail-closed.
+        serialized = json.dumps(report, ensure_ascii=False)
+        self.assertTrue("ORDO-RUNTIME-CONTEXT-003" in serialized or "ORDO-LLM-PLAN-STALE-IR" in serialized)
