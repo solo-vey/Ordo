@@ -61,6 +61,16 @@ def test_semantic_ir_hash_ignores_random_canary_material(tmp_path: Path) -> None
     assert semantic_ir_sha256(first) == semantic_ir_sha256(second)
 
 
+def test_questionless_terminal_node_is_not_an_llm_phase(tmp_path: Path) -> None:
+    src = source()
+    src["nodes"].append({"id": "END_DONE", "node_type": "terminal"})
+    source_path, ir_path, plan_path = write_inputs(tmp_path, src)
+    plan = json.loads(plan_path.read_text(encoding="utf-8"))
+    terminal = next(item for item in plan["phases"] if item["id"] == "END_DONE")
+    assert terminal["classification"] == "terminal"
+    assert validate_llm_execution_plan(plan_path, source_path=source_path, ir_path=ir_path)["status"] == "passed"
+
+
 def test_stale_source_and_illegal_route_fail_closed(tmp_path: Path) -> None:
     source_path, ir_path, plan_path = write_inputs(tmp_path, source())
     source_path.write_text(source_path.read_text(encoding="utf-8") + "# changed\n", encoding="utf-8")

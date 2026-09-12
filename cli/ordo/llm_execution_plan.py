@@ -87,7 +87,8 @@ def _node_phase(node: dict[str, Any], state_schema: dict[str, Any]) -> dict[str,
     node_type = str(node.get("node_type") or node.get("kind") or "")
     automatic = bool(node.get("automatic")) or "automatic" in node_type or "materialization" in node_type
     human = bool(node.get("human_required")) or node.get("actor") == "human"
-    classification = "runtime_only" if automatic else ("human" if human else "llm")
+    terminal = bool(node.get("terminal")) or node_id.startswith(("END_", "STOP_")) or "terminal" in node_type
+    classification = "terminal" if terminal else ("runtime_only" if automatic else ("human" if human else "llm"))
     requested = node.get("required_fields") or node.get("inputs") or node.get("reads") or []
     projected_state = []
     for field in sorted(str(x) for x in requested):
