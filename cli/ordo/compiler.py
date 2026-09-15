@@ -246,6 +246,20 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "id": namespace_id(package, "graph_contract"),
             **graph_contract,
         })
+        for route in graph_contract.get("dynamic_routes", []) or []:
+            if not isinstance(route, dict) or not route.get("id"):
+                continue
+            ops.append({
+                "op": "GRAPH.ROUTE.DEF",
+                "id": namespace_id(package, str(route["id"])),
+                "source_local_id": route["id"],
+                "from": route.get("from"),
+                "route_key": route.get("route_key"),
+                "allowed_targets": route.get("allowed_targets") or [],
+                "on_invalid_route": route.get("on_invalid_route"),
+                "max_hops": route.get("max_hops"),
+                "kind": route.get("kind", "recovery"),
+            })
 
     ops.append({
         "op": "PROGRAM.DEF",
@@ -357,10 +371,13 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "question": node.get("question"),
             "answer_type": node.get("answer_type"),
             "on_answer": node.get("on_answer"),
+            "transitions": node.get("transitions") or [],
+            "navigation_contract": node.get("navigation_contract") or {},
+            "terminal": node.get("terminal", False),
             "on_unmatched_input": node.get("on_unmatched_input"),
             "allow_unmatched_input": node.get("allow_unmatched_input", False),
             "antipattern_hooks": node.get("antipattern_hooks"),
-            "allowed_from": node.get("allowed_from") or node.get("incoming_from") or [],
+            "allowed_from": (node.get("navigation_contract") or {}).get("allowed_from") or node.get("allowed_from") or node.get("incoming_from") or [],
             "entry_modes": node.get("entry_modes") or [],
             "node_context": node.get("node_context") or {},
         })
@@ -399,7 +416,12 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "condition": gate.get("condition"),
             "on_pass": gate.get("on_pass"),
             "on_fail": gate.get("on_fail"),
-            "allowed_from": gate.get("allowed_from") or gate.get("incoming_from") or [],
+            "pass_to": gate.get("pass_to"),
+            "fail_to": gate.get("fail_to"),
+            "transitions": gate.get("transitions") or [],
+            "navigation_contract": gate.get("navigation_contract") or {},
+            "terminal": gate.get("terminal", False),
+            "allowed_from": (gate.get("navigation_contract") or {}).get("allowed_from") or gate.get("allowed_from") or gate.get("incoming_from") or [],
             "entry_modes": gate.get("entry_modes") or [],
         })
 

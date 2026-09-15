@@ -17,6 +17,7 @@ Canonical top-level Ordo Source constructs. The machine-readable source is `sour
 | `contracts` | supported |
 | `state` | supported |
 | `execution_trace` | supported |
+| `graph_contract` | supported — canonical graph, cycle, dynamic-route and deleted-ID contract |
 | `nodes` | supported |
 | `gates` | supported |
 | `assertions` | supported |
@@ -32,3 +33,15 @@ Canonical top-level Ordo Source constructs. The machine-readable source is `sour
 
 | `flow_reuse` | supported |
 | `runtime_capabilities` | supported |
+
+## `graph_contract` forms
+
+`graph_contract` is the canonical source contract for the executable graph.
+It supports `entry_node`, declared external terminals, explicit incoming-edge
+policy, declared cycle regions, `deleted_ids`, and bounded `dynamic_routes`.
+
+A dynamic route has an `id`, `from`, runtime `route_key`, non-empty
+`allowed_targets`, an explicit `on_invalid_route` fail-closed behavior, and a
+positive bounded `max_hops`. Its targets are validation-visible graph edges;
+authors do not need to add artificial static transitions for recovery,
+correction, or retry returns.

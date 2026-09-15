@@ -4,6 +4,11 @@ from dataclasses import dataclass, asdict
 from typing import Any
 
 from .graph_topology import graph_topology
+from .graph_contract import (
+    DYNAMIC_ROUTE_KINDS,
+    INVALID_DYNAMIC_ROUTE_BEHAVIORS,
+    allowed_from,
+)
 
 
 @dataclass
@@ -13,27 +18,6 @@ class GraphIssue:
     message: str
     location: str
     path: list[str] | None = None
-
-
-def _target_declarations(value: Any, path: str = "root", scope: str = "root") -> list[tuple[str, str, str]]:
-    """Return target, location, and declaration-scope triples.
-
-    A target repeated in one list/scope is a duplicate declaration. Targets
-    converging from different answer branches intentionally remain distinct
-    declarations and are valid graph edges.
-    """
-    out: list[tuple[str, str, str]] = []
-    if isinstance(value, dict):
-        for key, child in value.items():
-            child_path = f"{path}.{key}"
-            if key == "next" and isinstance(child, str):
-                out.append((child, child_path, scope))
-            else:
-                out.extend(_target_declarations(child, child_path, child_path))
-    elif isinstance(value, list):
-        for index, child in enumerate(value):
-            out.extend(_target_declarations(child, f"{path}[{index}]", scope))
-    return out
 
 
 def _deprecated(node: dict[str, Any]) -> bool:
@@ -111,6 +95,74 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     allowed_regions = contract.get("allowed_cycle_regions", []) or []
     allowed_sets = [set(r.get("nodes", []) or []) for r in allowed_regions if isinstance(r, dict)]
 
+    deleted_ids = contract.get("deleted_ids", []) or []
+    if not isinstance(deleted_ids, list) or not all(isinstance(item, str) for item in deleted_ids):
+        issues.append(GraphIssue("error", "GRAPH_DELETED_IDS_INVALID", "graph_contract.deleted_ids must be a list of historical graph IDs.", "graph_contract.deleted_ids"))
+        deleted_ids = []
+    if len(deleted_ids) != len(set(deleted_ids)):
+        issues.append(GraphIssue("error", "GRAPH_DELETED_IDS_DUPLICATE", "graph_contract.deleted_ids must not contain duplicate IDs.", "graph_contract.deleted_ids"))
+    for deleted_id in sorted(set(deleted_ids)):
+        if deleted_id in ids:
+            issues.append(GraphIssue("error", "GRAPH_DELETED_ID_REUSED", f"Deleted graph ID {deleted_id!r} is still declared as an active vertex.", "graph_contract.deleted_ids", [deleted_id]))
+
+    cycle_region_ids: set[str] = set()
+    for index, region in enumerate(allowed_regions):
+        location = f"graph_contract.allowed_cycle_regions[{index}]"
+        if not isinstance(region, dict):
+            issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_INVALID", "Cycle region must be an object.", location))
+            continue
+        region_id = region.get("id")
+        members = region.get("nodes")
+        if not isinstance(region_id, str) or not region_id:
+            issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_ID_REQUIRED", "Cycle region requires a non-empty id.", f"{location}.id"))
+        elif region_id in cycle_region_ids:
+            issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_ID_DUPLICATE", "Cycle region IDs must be unique.", f"{location}.id"))
+        else:
+            cycle_region_ids.add(region_id)
+        if not isinstance(members, list) or not members or not all(isinstance(member, str) for member in members):
+            issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_MEMBERS_REQUIRED", "Cycle region requires a non-empty nodes list.", f"{location}.nodes"))
+            continue
+        if len(members) != len(set(members)):
+            issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_MEMBERS_DUPLICATE", "Cycle region nodes must not contain duplicates.", f"{location}.nodes"))
+        for member in sorted(set(members)):
+            if member not in ids:
+                issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_MEMBER_MISSING", f"Cycle region member {member!r} does not exist.", f"{location}.nodes", [member]))
+            elif member in deleted_ids:
+                issues.append(GraphIssue("error", "GRAPH_CYCLE_REGION_MEMBER_DELETED", f"Cycle region member {member!r} is reserved as deleted.", f"{location}.nodes", [member]))
+
+    dynamic_route_ids: set[str] = set()
+    for index, route in enumerate(contract.get("dynamic_routes", []) or []):
+        location = f"graph_contract.dynamic_routes[{index}]"
+        if not isinstance(route, dict):
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_INVALID", "Dynamic route must be an object.", location))
+            continue
+        route_id = route.get("id")
+        route_source = route.get("from")
+        route_key = route.get("route_key")
+        targets = route.get("allowed_targets")
+        behavior = route.get("on_invalid_route")
+        max_hops = route.get("max_hops")
+        if not isinstance(route_id, str) or not route_id:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_ID_REQUIRED", "Dynamic route requires a non-empty id.", f"{location}.id"))
+        elif route_id in dynamic_route_ids:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_ID_DUPLICATE", "Dynamic route IDs must be unique.", f"{location}.id"))
+        else:
+            dynamic_route_ids.add(route_id)
+        if route_source not in ids:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_SOURCE_MISSING", "Dynamic route source must reference an existing graph vertex.", f"{location}.from", [str(source)]))
+        if not isinstance(route_key, str) or not route_key:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_KEY_REQUIRED", "Dynamic route requires a non-empty runtime route_key.", f"{location}.route_key"))
+        if not isinstance(targets, list) or not targets or not all(isinstance(target, str) for target in targets):
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_TARGETS_REQUIRED", "Dynamic route requires a non-empty allowed_targets list.", f"{location}.allowed_targets"))
+        elif len(targets) != len(set(targets)):
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_TARGETS_DUPLICATE", "Dynamic route allowed_targets must not contain duplicates.", f"{location}.allowed_targets"))
+        if behavior not in INVALID_DYNAMIC_ROUTE_BEHAVIORS:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_INVALID_BEHAVIOR", f"on_invalid_route must be one of {sorted(INVALID_DYNAMIC_ROUTE_BEHAVIORS)}.", f"{location}.on_invalid_route"))
+        if not isinstance(max_hops, int) or isinstance(max_hops, bool) or not 1 <= max_hops <= 64:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_BOUND_REQUIRED", "Dynamic route max_hops must be an integer from 1 through 64.", f"{location}.max_hops"))
+        if route.get("kind") is not None and route.get("kind") not in DYNAMIC_ROUTE_KINDS:
+            issues.append(GraphIssue("error", "GRAPH_DYNAMIC_ROUTE_KIND_INVALID", f"Dynamic route kind must be one of {sorted(DYNAMIC_ROUTE_KINDS)}.", f"{location}.kind"))
+
     for duplicate_id in sorted(topology["duplicate_ids"]):
         issues.append(GraphIssue(
             "error",
@@ -132,9 +184,7 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
         if not incoming_contract_enabled:
             continue
         kind = "gate" if vertex_id in gate_ids else "node"
-        raw_incoming = vertex.get("allowed_from")
-        if raw_incoming is None:
-            raw_incoming = vertex.get("incoming_from")
+        raw_incoming = allowed_from(vertex)
         if raw_incoming is None:
             if not _deprecated(vertex):
                 issues.append(GraphIssue("error", "GRAPH_INCOMING_REQUIRED", f"Active {kind} must declare allowed_from.", f"{kind}s[{vertex_id}].allowed_from", [vertex_id]))
@@ -156,12 +206,14 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
         for source_id, targets in adj.items():
             source_kind = "gate" if source_id in gate_ids else "node"
             declarations = (
-                _target_declarations(node_by_id[source_id].get("on_answer", {}), f"nodes[{source_id}].on_answer")
+                topology["node_route_declarations"].get(source_id, [])
                 if source_id in node_ids
-                else [(target, f"gates[{source_id}].transition", target) for target in targets]
+                else topology["gate_route_declarations"].get(source_id, [])
             )
+            declarations = [*declarations, *[item for item in topology["dynamic_route_declarations"] if item.source == source_id]]
             seen_by_scope: dict[tuple[str, str], str] = {}
-            for target, location, scope in declarations:
+            for declaration in declarations:
+                target, location, scope = declaration.target, declaration.location, declaration.scope
                 key = (scope, target)
                 if key in seen_by_scope:
                     issues.append(GraphIssue("error", "GRAPH_TRANSITION_DUPLICATE", f"Transition to {target!r} is declared more than once in the same transition scope.", location, [source_id, target]))
@@ -178,7 +230,9 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
     for vertex_id, targets in adj.items():
         kind = "gate" if vertex_id in gate_ids else "node"
         for target in targets:
-            if target not in ids and target not in external_terminals:
+            if target in deleted_ids:
+                issues.append(GraphIssue("error", "GRAPH_TARGET_DELETED", f"Transition target {target!r} is reserved as deleted and cannot be routed to.", f"{kind}s[{vertex_id}].transition", [vertex_id, target]))
+            elif target not in ids and target not in external_terminals:
                 issues.append(GraphIssue("error", "GRAPH_TARGET_MISSING", f"Transition target {target!r} does not exist and is not declared as an external terminal target.", f"{kind}s[{vertex_id}].transition", [vertex_id, target]))
         if by_id[vertex_id].get("terminal") is True and targets:
             issues.append(GraphIssue("error", "GRAPH_TERMINAL_OUTGOING", f"Terminal {kind} {vertex_id} must not declare outgoing transitions.", f"{kind}s[{vertex_id}].transition", [vertex_id, *targets]))
@@ -263,6 +317,7 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
             "terminal_nodes": len(terminal_vertices & node_ids),
             "external_terminal_targets": len(external_terminals),
             "dynamic_terminal_sources": len(dynamic_terminal_sources & ids),
+            "dynamic_routes": len(dynamic_route_ids),
             "cycles_detected": len(cycle_components),
             "errors": len(errors),
             "warnings": len(warnings),

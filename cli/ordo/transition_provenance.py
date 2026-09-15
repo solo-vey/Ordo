@@ -4,6 +4,7 @@ from dataclasses import dataclass, asdict
 from typing import Any
 
 from .graph_topology import graph_topology
+from .graph_contract import allowed_from
 
 
 @dataclass
@@ -42,7 +43,7 @@ def validate_transition_provenance(source: dict[str, Any]) -> dict[str, Any]:
         for vertex_id, targets in topology["adjacency"].items()
     }
     inbound: dict[str, set[str]] = {
-        node_id: set(node.get("allowed_from") or node.get("incoming_from") or [])
+        node_id: set(allowed_from(node) or [])
         for node_id, node in by_id.items()
     }
 
@@ -89,10 +90,57 @@ def validate_node_entry(source: dict[str, Any], *, target_node_id: str, previous
         if entry_mode in allowed_modes:
             return {"status":"passed","mode":"transition_provenance","entry_mode":entry_mode,"issues":[]}
         return {"status":"blocked","mode":"transition_provenance_recovery","issues":[{"severity":"error","code":"RUNTIME_ENTRY_PROVENANCE_MISSING","message":"Graph vertex entry requires previous_node_id or an explicitly allowed entry mode.","source_node":previous_node_id,"target_node":target_node_id,"direction":"entry","entry_mode":entry_mode}]}
-    allowed=set(target.get("allowed_from") or target.get("incoming_from") or [])
+    allowed=set(allowed_from(target) or [])
     if previous_node_id not in allowed:
         return {"status":"blocked","mode":"transition_provenance_recovery","issues":[{"severity":"error","code":"RUNTIME_PREDECESSOR_NOT_ALLOWED","message":f"Graph vertex {target_node_id} does not accept direct entry from {previous_node_id}.","source_node":previous_node_id,"target_node":target_node_id,"direction":"inbound","allowed_from":sorted(allowed)}]}
     return {"status":"passed","mode":"transition_provenance","source_node":previous_node_id,"target_node":target_node_id,"issues":[]}
+
+
+def validate_dynamic_route(
+    source: dict[str, Any], *, source_node_id: str, route_key: str, target_node_id: str, hops: int = 1,
+) -> dict[str, Any]:
+    """Fail closed unless a runtime-selected route is explicitly bounded and allowlisted."""
+    contract = source.get("graph_contract") or {}
+    matching = [
+        route for route in contract.get("dynamic_routes", []) or []
+        if isinstance(route, dict) and route.get("from") == source_node_id and route.get("route_key") == route_key
+    ]
+    if not matching:
+        return {"status": "blocked", "mode": "dynamic_route", "issues": [{
+            "severity": "error", "code": "RUNTIME_DYNAMIC_ROUTE_UNDECLARED",
+            "message": "Runtime-selected route has no matching graph_contract.dynamic_routes declaration.",
+            "source_node": source_node_id, "target_node": target_node_id, "route_key": route_key,
+        }]}
+    route = matching[0]
+    allowed = set(route.get("allowed_targets") or [])
+    if target_node_id not in allowed:
+        return {"status": "blocked", "mode": "dynamic_route", "route_id": route.get("id"), "issues": [{
+            "severity": "error", "code": "RUNTIME_DYNAMIC_ROUTE_TARGET_FORBIDDEN",
+            "message": "Runtime-selected target is outside the declared allowed_targets set.",
+            "source_node": source_node_id, "target_node": target_node_id, "route_key": route_key,
+            "allowed_targets": sorted(allowed),
+        }]}
+    max_hops = route.get("max_hops")
+    if not isinstance(max_hops, int) or isinstance(max_hops, bool) or not 1 <= hops <= max_hops:
+        return {"status": "blocked", "mode": "dynamic_route", "route_id": route.get("id"), "issues": [{
+            "severity": "error", "code": "RUNTIME_DYNAMIC_ROUTE_BOUND_EXCEEDED",
+            "message": "Runtime-selected route exceeded its declared max_hops bound.",
+            "source_node": source_node_id, "target_node": target_node_id, "route_key": route_key,
+            "hops": hops, "max_hops": max_hops,
+        }]}
+    topology = graph_topology(source)
+    targets = set(topology["by_id"]) | set(contract.get("external_terminal_targets", []) or [])
+    if target_node_id not in targets:
+        return {"status": "blocked", "mode": "dynamic_route", "route_id": route.get("id"), "issues": [{
+            "severity": "error", "code": "RUNTIME_DYNAMIC_ROUTE_TARGET_MISSING",
+            "message": "Runtime-selected route points to an unknown graph target.",
+            "source_node": source_node_id, "target_node": target_node_id, "route_key": route_key,
+        }]}
+    if target_node_id in topology["by_id"]:
+        entry = validate_node_entry(source, target_node_id=target_node_id, previous_node_id=source_node_id, entry_mode="recovery")
+        if entry["status"] != "passed":
+            return {**entry, "mode": "dynamic_route", "route_id": route.get("id")}
+    return {"status": "passed", "mode": "dynamic_route", "route_id": route.get("id"), "source_node": source_node_id, "target_node": target_node_id, "route_key": route_key, "issues": []}
 
 
 def build_node_context_envelope(source: dict[str, Any], state: dict[str, Any], node_id: str) -> dict[str, Any]:

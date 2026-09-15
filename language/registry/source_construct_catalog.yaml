@@ -1,5 +1,5 @@
 catalog: ordo_source_constructs
-version: 0.12-m74.1
+version: 0.12-bl-ordo-093
 constructs:
 - key: ordo
   level: top_level
@@ -46,6 +46,15 @@ constructs:
 - key: graph_contract
   level: top_level
   status: supported
+  forms:
+  - entry_node
+  - external_terminal_targets
+  - terminal_node_ids
+  - bidirectional_transition_policy
+  - incoming_edge_field
+  - allowed_cycle_regions
+  - dynamic_routes
+  - deleted_ids
 - key: nodes
   level: top_level
   status: supported

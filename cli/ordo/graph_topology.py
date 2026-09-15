@@ -3,40 +3,13 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from .graph_contract import dynamic_route_declarations, vertex_route_declarations
+
 
 # These values are gate control effects, rather than references to another
 # graph vertex. A value such as "G_MISSING" remains a real target and is
 # therefore still rejected when it is not declared.
 GATE_CONTROL_OUTCOMES = {"block", "continue", "retry", "stop", "warn"}
-
-
-def transition_targets(value: Any, *, keys: set[str]) -> list[str]:
-    """Collect nested string transition targets for the supplied keys."""
-    targets: list[str] = []
-    if isinstance(value, dict):
-        for key, child in value.items():
-            if key in keys and isinstance(child, str):
-                targets.append(child)
-            else:
-                targets.extend(transition_targets(child, keys=keys))
-    elif isinstance(value, list):
-        for child in value:
-            targets.extend(transition_targets(child, keys=keys))
-    return targets
-
-
-def gate_targets(gate: dict[str, Any], *, known_targets: set[str]) -> list[str]:
-    """Return top-level routing targets declared by an executable gate."""
-    targets: list[str] = []
-    for key in ("on_pass", "on_fail"):
-        target = gate.get(key)
-        if (
-            isinstance(target, str)
-            and target.casefold() not in GATE_CONTROL_OUTCOMES
-            and (target in known_targets or re.match(r"^(?:N|G|STOP|END|OUT)_", target) is not None)
-        ):
-            targets.append(target)
-    return targets
 
 
 def graph_topology(source: dict[str, Any]) -> dict[str, Any]:
@@ -53,12 +26,25 @@ def graph_topology(source: dict[str, Any]) -> dict[str, Any]:
     gate_by_id = {str(item["id"]): item for item in gates}
     duplicate_ids = set(node_by_id) & set(gate_by_id)
 
-    node_edges = {vertex_id: transition_targets(vertex, keys={"next"}) for vertex_id, vertex in node_by_id.items()}
     contract = source.get("graph_contract") or {}
     entry = contract.get("entry_node") or (nodes[0].get("id") if nodes else None)
     external_terminals = set(contract.get("external_terminal_targets", []) or [])
     known_targets = set(node_by_id) | set(gate_by_id) | external_terminals
-    gate_edges = {vertex_id: gate_targets(vertex, known_targets=known_targets) for vertex_id, vertex in gate_by_id.items()}
+    node_declarations = {
+        vertex_id: vertex_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="node")
+        for vertex_id, vertex in node_by_id.items()
+    }
+    gate_declarations = {
+        vertex_id: vertex_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="gate")
+        for vertex_id, vertex in gate_by_id.items()
+    }
+    node_edges = {vertex_id: [item.target for item in items] for vertex_id, items in node_declarations.items()}
+    # Catalogue-only gates remain non-vertices unless referenced by a process
+    # route. Control effects are not graph destinations.
+    gate_edges = {
+        vertex_id: [item.target for item in items if item.target.casefold() not in GATE_CONTROL_OUTCOMES and (item.target in known_targets or re.match(r"^(?:N|G|STOP|END|OUT)_", item.target) is not None)]
+        for vertex_id, items in gate_declarations.items()
+    }
     declared_gate_targets = {
         target
         for targets in [*node_edges.values(), *gate_edges.values()]
@@ -75,12 +61,19 @@ def graph_topology(source: dict[str, Any]) -> dict[str, Any]:
     by_id = {**node_by_id, **{vertex_id: gate_by_id[vertex_id] for vertex_id in executable_gate_ids}}
     adjacency = {vertex_id: node_edges[vertex_id] for vertex_id in node_by_id}
     adjacency.update({vertex_id: gate_edges[vertex_id] for vertex_id in executable_gate_ids})
+    dynamic_declarations = dynamic_route_declarations(contract)
+    for declaration in dynamic_declarations:
+        if declaration.source in adjacency:
+            adjacency[declaration.source].append(declaration.target)
     return {
         "nodes": node_by_id,
         "gates": gate_by_id,
         "duplicate_ids": duplicate_ids,
         "by_id": by_id,
         "adjacency": adjacency,
+        "node_route_declarations": node_declarations,
+        "gate_route_declarations": gate_declarations,
+        "dynamic_route_declarations": dynamic_declarations,
         "executable_gate_ids": executable_gate_ids,
         "entry": entry,
     }
