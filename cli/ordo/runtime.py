@@ -285,6 +285,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
         "runtime_source": "compiled_ir",
         "graph_contract": {},
         "state_lineage": {},
+        "input_contract": {},
     }
     for op in ops:
         op_name = op.get("op")
@@ -294,6 +295,8 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
             source["state"] = {"id": op.get("source_local_id") or op.get("id"), "schema": op.get("schema", {})}
         elif op_name == "STATE.LINEAGE.DEF":
             source["state_lineage"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
+        elif op_name == "INPUT.CONTRACT.DEF":
+            source["input_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "EXECUTION_TRACE.DEF":
             source["execution_trace"] = {
                 "id": op.get("source_local_id") or op.get("id"),
@@ -341,6 +344,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
                 "allowed_from": op.get("allowed_from") or [],
                 "entry_modes": op.get("entry_modes") or [],
                 "node_context": op.get("node_context") or {},
+                "input_contract": op.get("input_contract") or {},
             })
         elif op_name == "GATE.DEF":
             source["gates"].append({

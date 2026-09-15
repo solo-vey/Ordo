@@ -15,6 +15,7 @@ from .session_chain import has_chain_snapshots, write_session_snapshot
 from .session_trace import append_session_trace_step
 from .manual_run_journey import record_intake_event
 from .transition_provenance import validate_node_entry, build_node_context_envelope
+from .input_contract import evaluate_input_submission
 from .reporter import write_json
 from .runtime_context import (
     build_live_session,
@@ -263,11 +264,17 @@ def submit_intake_node(
         if provenance.get("status") != "passed":
             status = "blocked"
             issues.extend(provenance.get("issues", []))
+        submission = evaluate_input_submission(source, node, answer) if status == "passed" else {"status": status, "answer": answer, "issues": []}
+        answer = submission.get("answer", answer)
+        if submission.get("status") != "passed":
+            status = "clarification_required" if submission.get("status") == "clarification_required" else "blocked"
+            next_target = submission.get("next_node")
+            issues.extend(submission.get("issues", []))
         matched = status == "passed" and _is_answer_matched(node, answer)
-        if not matched:
+        if status == "passed" and not matched:
             status = "blocked"
             issues.append({"severity": "error", "code": "ORDO-INTAKE-003", "message": "answer did not match node contract", "location": node_id, "allowed_answers": node.get("allowed_answers") or []})
-        else:
+        elif status == "passed":
             next_target, diff = _apply_node_answer(node, answer, state)
             answered = state.setdefault("answered_questions", [])
             if isinstance(answered, list):

@@ -50,6 +50,7 @@ from .tree_modules import diff_instance, inspect_template, instantiate_template,
 from .replay_runner import export_replay_evidence, replay_recorded_run
 from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, validate_llm_execution_plan
 from .state_lineage import validate_state_lineage
+from .input_contract import validate_input_contract
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -106,6 +107,15 @@ def cmd_validate_state_lineage(args: argparse.Namespace) -> int:
     out = Path(args.out).resolve() if args.out else root / "reports" / "state_lineage_report.json"
     write_json(out, report)
     print(f"validate-state-lineage: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_input_contract(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = validate_input_contract(source)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "input_contract_report.json"
+    write_json(out, report)
+    print(f"validate-input-contract: {report['status']} ({out})")
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
 
 
@@ -1046,6 +1056,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("package")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_state_lineage)
+
+    p = sub.add_parser("validate-input-contract", help="Validate required analyst input, clarification and state-write bindings")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_input_contract)
 
 
     p = sub.add_parser("consistency", help="Generate CONSISTENCY_CHECK_REPORT.json for cross-artifact consistency")

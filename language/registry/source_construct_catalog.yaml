@@ -43,6 +43,9 @@ constructs:
 - key: state_lineage
   level: top_level
   status: supported
+- key: input_contract
+  level: top_level
+  status: supported
 - key: execution_trace
   level: top_level
   status: supported

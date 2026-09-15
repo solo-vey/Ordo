@@ -22,6 +22,14 @@ Node:
           type: object
     unmatched_policy:
       enum: [handled, impossible_by_source]
+    input_contract:
+      type: object
+      description: Explicit analyst-input bindings for state writes. Required when a package enables top-level input_contract in strict mode.
+      properties:
+        state_writes:
+          type: object
+          additionalProperties:
+            type: string
     prompt_refs:
       type: array
       description: M65.0 convention. Supportive helper prompts attached to the node; prompt refs must resolve to prompt_registry entries and must not override node/gate/state authority.

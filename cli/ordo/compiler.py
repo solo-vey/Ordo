@@ -358,6 +358,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             **state_lineage,
         })
 
+    input_contract = source.get("input_contract")
+    if input_contract:
+        ops.append({
+            "op": "INPUT.CONTRACT.DEF",
+            "id": namespace_id(package, "input_contract"),
+            **input_contract,
+        })
+
     execution_trace = source.get("execution_trace")
     if execution_trace:
         from .execution_trace import normalize_policy
@@ -388,6 +396,7 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "allowed_from": (node.get("navigation_contract") or {}).get("allowed_from") or node.get("allowed_from") or node.get("incoming_from") or [],
             "entry_modes": node.get("entry_modes") or [],
             "node_context": node.get("node_context") or {},
+            "input_contract": node.get("input_contract") or {},
         })
         if node.get("on_unmatched_input"):
             ops.append({
