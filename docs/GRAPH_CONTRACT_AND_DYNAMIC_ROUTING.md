@@ -7,6 +7,10 @@ Ordo accepts the following equivalent static transition forms:
 - node/gate `navigation_contract.allowed_to`;
 - gate `on_pass` / `on_fail` and `pass_to` / `fail_to`.
 
+The older node `transition: {next: TARGET}` form remains a supported
+compatibility input, but new playbooks should use one of the canonical forms
+above.
+
 For an explicit bidirectional graph, every active non-entry vertex declares
 `allowed_from`. The declaration may be placed directly on the vertex or in
 `navigation_contract.allowed_from`. Static and dynamic outgoing declarations

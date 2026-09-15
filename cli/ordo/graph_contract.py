@@ -58,6 +58,9 @@ def vertex_route_declarations(vertex: dict[str, Any], *, vertex_id: str, vertex_
         prefixes.extend([
             (vertex.get("on_answer"), f"nodes[{vertex_id}].on_answer", "on_answer"),
             (vertex.get("transitions"), f"nodes[{vertex_id}].transitions", "transitions"),
+            # Kept for v0.12 compatibility. New authoring should use
+            # `transitions` or navigation_contract.allowed_to instead.
+            (vertex.get("transition"), f"nodes[{vertex_id}].transition", "legacy_transition"),
         ])
     else:
         prefixes.extend([
