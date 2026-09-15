@@ -366,6 +366,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             **input_contract,
         })
 
+    cross_artifact_contract = source.get("cross_artifact_contract")
+    if cross_artifact_contract:
+        ops.append({
+            "op": "CROSS.ARTIFACT.CONTRACT.DEF",
+            "id": namespace_id(package, "cross_artifact_contract"),
+            **cross_artifact_contract,
+        })
+
     execution_trace = source.get("execution_trace")
     if execution_trace:
         from .execution_trace import normalize_policy

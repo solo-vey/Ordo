@@ -286,6 +286,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
         "graph_contract": {},
         "state_lineage": {},
         "input_contract": {},
+        "cross_artifact_contract": {},
     }
     for op in ops:
         op_name = op.get("op")
@@ -297,6 +298,8 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
             source["state_lineage"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "INPUT.CONTRACT.DEF":
             source["input_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
+        elif op_name == "CROSS.ARTIFACT.CONTRACT.DEF":
+            source["cross_artifact_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "EXECUTION_TRACE.DEF":
             source["execution_trace"] = {
                 "id": op.get("source_local_id") or op.get("id"),
