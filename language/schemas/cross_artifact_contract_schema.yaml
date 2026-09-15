@@ -1,0 +1,44 @@
+CrossArtifactContract:
+  type: object
+  required: [version, mode, documents]
+  properties:
+    version:
+      type: string
+      enum: ["1.0"]
+    mode:
+      enum: [advisory, strict]
+    semantic_aliases:
+      type: object
+    documents:
+      type: array
+      items:
+        type: object
+        required: [id, template, bindings, validator]
+        properties:
+          id:
+            type: string
+          template:
+            type: string
+          bindings:
+            type: object
+            additionalProperties:
+              type: string
+          validator:
+            type: object
+            properties:
+              expected_headings:
+                type: array
+                items: { type: string }
+          finalization:
+            type: object
+            properties:
+              node:
+                type: string
+              writes:
+                type: array
+                items: { type: string }
+              rendered_artifact:
+                type: string
+              rendered_fields:
+                type: array
+                items: { type: string }

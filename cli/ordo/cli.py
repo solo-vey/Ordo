@@ -51,6 +51,7 @@ from .replay_runner import export_replay_evidence, replay_recorded_run
 from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, validate_llm_execution_plan
 from .state_lineage import validate_state_lineage
 from .input_contract import validate_input_contract
+from .cross_artifact_contract import validate_cross_artifact_contract
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -95,6 +96,8 @@ def cmd_lint(args: argparse.Namespace) -> int:
     merge_subreport("runtime_start_files_check", runtime_start_report)
     canonical_source_report = validate_canonical_source(root)
     merge_subreport("canonical_source_identity", canonical_source_report)
+    cross_artifact_report = validate_cross_artifact_contract(root, source)
+    merge_subreport("cross_artifact_contract_validation", cross_artifact_report)
     out = root / "reports" / "lint_report.json"
     write_json(out, report)
     print(f"lint: {report['status']} ({out})")
@@ -119,10 +122,29 @@ def cmd_validate_input_contract(args: argparse.Namespace) -> int:
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
 
 
+def cmd_validate_cross_artifact_contract(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = validate_cross_artifact_contract(root, source, state_path=args.state)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "cross_artifact_contract_report.json"
+    write_json(out, report)
+    print(f"validate-cross-artifact-contract: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
 def cmd_compile(args: argparse.Namespace) -> int:
     root, manifest, source, tests = load_package(args.package)
     repo_root = find_repo_root(root)
     lint_report = lint_source(source, tests, repo_root=str(repo_root) if repo_root else None)
+    cross_artifact_report = validate_cross_artifact_contract(root, source)
+    cross_issues = cross_artifact_report.get("issues", []) or []
+    if cross_issues:
+        lint_report.setdefault("issues", []).extend(cross_issues)
+        summary = lint_report.setdefault("summary", {})
+        summary["errors"] = int(summary.get("errors", 0)) + len([issue for issue in cross_issues if issue.get("severity", "error") == "error"])
+        summary["warnings"] = int(summary.get("warnings", 0)) + len([issue for issue in cross_issues if issue.get("severity") == "warning"])
+        if int(summary.get("errors", 0)):
+            lint_report["status"] = "failed"
+    lint_report["cross_artifact_contract_validation"] = cross_artifact_report
     write_json(root / "reports" / "lint_report.json", lint_report)
     if lint_report["status"] != "passed" and not args.force:
         print("compile: failed because lint failed. Use --force to compile anyway.", file=sys.stderr)
@@ -1061,6 +1083,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("package")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_input_contract)
+
+    p = sub.add_parser("validate-cross-artifact-contract", help="Validate template, binding, state, finalization and rendered-output consistency")
+    p.add_argument("package")
+    p.add_argument("--state", help="Optional YAML/JSON runtime state used for rendered-value checks")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_cross_artifact_contract)
 
 
     p = sub.add_parser("consistency", help="Generate CONSISTENCY_CHECK_REPORT.json for cross-artifact consistency")
