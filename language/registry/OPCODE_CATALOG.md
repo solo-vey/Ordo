@@ -5,7 +5,8 @@
 | Construct | Type | Description |
 |---|---|---|
 | `PROGRAM.DEF` | op | Defines program metadata. |
-| `GRAPH.CONTRACT` | op | Defines graph entry, terminal, cycle and transition-provenance contracts. |
+| `GRAPH.CONTRACT` | op | Defines graph entry, terminal, cycle, dynamic-route and transition-provenance contracts. |
+| `GRAPH.ROUTE.DEF` | op | Defines one bounded, allowlisted runtime-selected recovery/correction/retry route. |
 | `CONTROL_LEVEL.DEF` | field/construct | Defines `light`, `standard`, or `strict`. |
 | `EXECUTION.MODE` | field/construct | Defines `full_runtime`, `chat_internal`, or `freeform_only`. |
 
