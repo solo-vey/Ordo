@@ -23,6 +23,7 @@
 | `CONTEXT.DEF` | op | Defines available context. |
 | `STATE.SCHEMA` | op | Defines state structure. |
 | `STATE.LINEAGE.DEF` | op | Defines the canonical producer/consumer, ownership, shape and binding contract for state paths. |
+| `INPUT.CONTRACT.DEF` | op | Defines required analyst inputs, clarification routes and explicit state-write concept bindings. |
 | `ENTRY.DEF` | op | Defines entry point. |
 | `NODE.DEF` | op | Defines question/decision node. |
 | `NODE.ASK` | op | Asks node question. |

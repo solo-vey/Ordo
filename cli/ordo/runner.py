@@ -19,6 +19,7 @@ from .execution_trace import (
     trace_path,
 )
 from .runtime_evidence import file_sha256
+from .input_contract import evaluate_input_submission
 
 
 def utc_now() -> str:
@@ -170,6 +171,17 @@ def apply_answers(source: dict[str, Any], state: dict[str, Any], answers: dict[s
         if not node:
             events.append({"type": "answer_ignored", "node": node_id, "reason": "node not found"})
             continue
+        submission = evaluate_input_submission(source, node, answer)
+        if submission.get("status") != "passed":
+            events.append({
+                "type": "clarify_requested" if submission.get("status") == "clarification_required" else "input_rejected",
+                "node": node_id,
+                "answer": submission.get("answer", answer),
+                "next": submission.get("next_node"),
+                "issues": submission.get("issues", []),
+            })
+            continue
+        answer = submission.get("answer", answer)
         before = copy.deepcopy(state)
         on_answer = node.get("on_answer") or {}
         update: dict[str, Any] = {}

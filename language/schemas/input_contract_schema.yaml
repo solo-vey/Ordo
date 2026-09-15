@@ -1,0 +1,35 @@
+InputContract:
+  type: object
+  required: [version, mode, inputs]
+  properties:
+    version:
+      type: string
+      enum: ["1.0"]
+    mode:
+      enum: [advisory, strict]
+    inputs:
+      type: array
+      items:
+        type: object
+        required: [id, state_path, responsible_node, required, ambiguity]
+        properties:
+          id:
+            type: string
+          state_path:
+            type: string
+          shape:
+            enum: [any, string, number, boolean, array, object]
+          required:
+            type: boolean
+          responsible_node:
+            type: string
+          missing_route:
+            type: string
+          ambiguity:
+            type: object
+            required: [policy]
+            properties:
+              policy:
+                enum: [clarify, reject]
+              clarification_node:
+                type: string
