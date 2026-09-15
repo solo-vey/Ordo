@@ -22,6 +22,7 @@
 | `CONTRACT.DEF` | op | Defines expected result contract. |
 | `CONTEXT.DEF` | op | Defines available context. |
 | `STATE.SCHEMA` | op | Defines state structure. |
+| `STATE.LINEAGE.DEF` | op | Defines the canonical producer/consumer, ownership, shape and binding contract for state paths. |
 | `ENTRY.DEF` | op | Defines entry point. |
 | `NODE.DEF` | op | Defines question/decision node. |
 | `NODE.ASK` | op | Asks node question. |

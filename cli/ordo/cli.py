@@ -49,6 +49,7 @@ from .template_tooling import validate_template_contract, validate_template_regi
 from .tree_modules import diff_instance, inspect_template, instantiate_template, list_templates, validate_instance
 from .replay_runner import export_replay_evidence, replay_recorded_run
 from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, validate_llm_execution_plan
+from .state_lineage import validate_state_lineage
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -97,6 +98,15 @@ def cmd_lint(args: argparse.Namespace) -> int:
     write_json(out, report)
     print(f"lint: {report['status']} ({out})")
     return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_state_lineage(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = validate_state_lineage(source)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "state_lineage_report.json"
+    write_json(out, report)
+    print(f"validate-state-lineage: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
 
 
 def cmd_compile(args: argparse.Namespace) -> int:
@@ -1031,6 +1041,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--bindings", required=True, help="YAML/JSON document field binding contract")
     p.add_argument("--out", help="Optional output path; defaults to reports/document_field_binding_report.json")
     p.set_defaults(func=cmd_validate_document_fields)
+
+    p = sub.add_parser("validate-state-lineage", help="Validate canonical state producer/consumer ownership and bindings")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_state_lineage)
 
 
     p = sub.add_parser("consistency", help="Generate CONSISTENCY_CHECK_REPORT.json for cross-artifact consistency")
