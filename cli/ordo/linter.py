@@ -163,6 +163,11 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
     for issue in graph_report.get("issues", []) or []:
         _add(issues, issue.get("severity", "error"), issue.get("code", "GRAPH_ERROR"), issue.get("message", "Graph validation failed."), issue.get("location", "graph"))
 
+    from .state_lineage import validate_state_lineage
+    state_lineage_report = validate_state_lineage(source)
+    for issue in state_lineage_report.get("issues", []) or []:
+        _add(issues, issue.get("severity", "error"), issue.get("code", "STATE_LINEAGE_ERROR"), issue.get("message", "State lineage validation failed."), issue.get("location", "state_lineage"))
+
     registry_reports: dict[str, Any] = {}
     if repo_root is not None:
         from .registry_checks import validate_source_constructs, validate_capability_registry
@@ -187,5 +192,6 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
     }
     result.update(registry_reports)
     result["graph_validation"] = graph_report
+    result["state_lineage_validation"] = state_lineage_report
     result["flow_reuse_validation"] = flow_reuse_report
     return result

@@ -350,6 +350,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "schema": state.get("schema", {}),
         })
 
+    state_lineage = source.get("state_lineage")
+    if state_lineage:
+        ops.append({
+            "op": "STATE.LINEAGE.DEF",
+            "id": namespace_id(package, "state_lineage"),
+            **state_lineage,
+        })
+
     execution_trace = source.get("execution_trace")
     if execution_trace:
         from .execution_trace import normalize_policy

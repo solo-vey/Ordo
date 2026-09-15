@@ -284,6 +284,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
         "conversation_scope_guard": None,
         "runtime_source": "compiled_ir",
         "graph_contract": {},
+        "state_lineage": {},
     }
     for op in ops:
         op_name = op.get("op")
@@ -291,6 +292,8 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
             source["contract"] = {"id": op.get("source_local_id") or op.get("id"), "required": op.get("required", [])}
         elif op_name == "STATE.SCHEMA":
             source["state"] = {"id": op.get("source_local_id") or op.get("id"), "schema": op.get("schema", {})}
+        elif op_name == "STATE.LINEAGE.DEF":
+            source["state_lineage"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "EXECUTION_TRACE.DEF":
             source["execution_trace"] = {
                 "id": op.get("source_local_id") or op.get("id"),
