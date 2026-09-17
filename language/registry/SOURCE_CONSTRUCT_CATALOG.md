@@ -18,6 +18,7 @@ Canonical top-level Ordo Source constructs. The machine-readable source is `sour
 | `state` | supported |
 | `state_lineage` | supported — canonical state ownership, shape, consumer, registry and template-binding contract |
 | `input_contract` | supported — explicit required analyst inputs, clarification routes and state-write concept bindings |
+| `correction_contract` | supported — selective downstream invalidation and bounded affected-gate replay after an upstream correction |
 | `cross_artifact_contract` | supported — template, binding, state, finalization and rendered-output consistency contract |
 | `execution_trace` | supported |
 | `graph_contract` | supported — canonical graph, cycle, dynamic-route and deleted-ID contract |

@@ -366,6 +366,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             **input_contract,
         })
 
+    correction_contract = source.get("correction_contract")
+    if correction_contract:
+        ops.append({
+            "op": "CORRECTION.CONTRACT.DEF",
+            "id": namespace_id(package, "correction_contract"),
+            **correction_contract,
+        })
+
     cross_artifact_contract = source.get("cross_artifact_contract")
     if cross_artifact_contract:
         ops.append({

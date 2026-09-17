@@ -46,6 +46,9 @@ constructs:
 - key: input_contract
   level: top_level
   status: supported
+- key: correction_contract
+  level: top_level
+  status: supported
 - key: cross_artifact_contract
   level: top_level
   status: supported

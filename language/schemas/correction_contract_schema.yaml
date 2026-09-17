@@ -1,0 +1,27 @@
+CorrectionContract:
+  type: object
+  required: [version, mode, rules]
+  properties:
+    version: { const: "1.0" }
+    mode: { enum: [strict, advisory] }
+    rules:
+      type: array
+      items:
+        type: object
+        required: [source, invalidate, replay]
+        properties:
+          source: { type: string }
+          invalidate:
+            type: object
+            required: [state]
+            properties:
+              state: { type: array, items: { type: string } }
+              derivations: { type: array, items: { type: string } }
+              gates: { type: array, items: { type: string } }
+              tests: { type: array, items: { type: string } }
+              artifacts: { type: array, items: { type: string } }
+          replay:
+            type: object
+            required: [gates]
+            properties:
+              gates: { type: array, items: { type: string } }
