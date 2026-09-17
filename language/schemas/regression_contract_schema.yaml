@@ -1,0 +1,15 @@
+RegressionContract:
+  type: object
+  required: [version, mode]
+  properties:
+    version: { const: "1.0" }
+    mode: { enum: [strict, advisory] }
+    decision_rule_coverage: { enum: [required, advisory] }
+    negative_assertions:
+      type: array
+      items:
+        type: object
+        required: [kind, id]
+        properties:
+          kind: { enum: [vertex, artifact] }
+          id: { type: string }

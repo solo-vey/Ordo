@@ -54,6 +54,16 @@ jobs:
             ordo test "$package"
             ordo coverage "$package"
           done
+      - name: Run canonical structural regression contour
+        run: |
+          for package in \
+            packages/ordo_project_builder \
+            packages/ordo_hybrid_executor \
+            packages/history_event_guided_intake \
+            packages/ordo_applied_project_factory
+          do
+            ordo regression "$package"
+          done
       - name: Validate cross-artifact contract consistency
         run: |
           mkdir -p reports/ci

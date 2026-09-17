@@ -25,6 +25,7 @@
 | `STATE.LINEAGE.DEF` | op | Defines the canonical producer/consumer, ownership, shape and binding contract for state paths. |
 | `INPUT.CONTRACT.DEF` | op | Defines required analyst inputs, clarification routes and explicit state-write concept bindings. |
 | `CORRECTION.CONTRACT.DEF` | op | Defines fail-closed selective invalidation and affected-gate replay after a declared upstream correction. |
+| `REGRESSION.CONTRACT.DEF` | op | Defines canonical structural regression, decision-rule coverage, and removed-construct assertions. |
 | `CROSS.ARTIFACT.CONTRACT.DEF` | op | Defines symmetric template, binding, finalization and rendered-output consistency checks. |
 | `ENTRY.DEF` | op | Defines entry point. |
 | `NODE.DEF` | op | Defines question/decision node. |

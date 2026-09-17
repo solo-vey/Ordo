@@ -374,6 +374,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             **correction_contract,
         })
 
+    regression_contract = source.get("regression_contract")
+    if regression_contract:
+        ops.append({
+            "op": "REGRESSION.CONTRACT.DEF",
+            "id": namespace_id(package, "regression_contract"),
+            **regression_contract,
+        })
+
     cross_artifact_contract = source.get("cross_artifact_contract")
     if cross_artifact_contract:
         ops.append({
