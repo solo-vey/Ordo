@@ -52,6 +52,7 @@ from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, va
 from .state_lineage import validate_state_lineage
 from .input_contract import validate_input_contract
 from .cross_artifact_contract import validate_cross_artifact_contract
+from .correction_replay import plan_correction, validate_correction_contract
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -129,6 +130,35 @@ def cmd_validate_cross_artifact_contract(args: argparse.Namespace) -> int:
     write_json(out, report)
     print(f"validate-cross-artifact-contract: {report['status']} ({out})")
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_correction_contract(args: argparse.Namespace) -> int:
+    root, _manifest, source, tests = load_package(args.package)
+    report = validate_correction_contract(source, tests)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "correction_contract_report.json"
+    write_json(out, report)
+    print(f"validate-correction-contract: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_plan_correction(args: argparse.Namespace) -> int:
+    root, _manifest, source, tests = load_package(args.package)
+    loaded = load_yaml(Path(args.state))
+    state = loaded.get("state", loaded) if isinstance(loaded, dict) else {}
+    if not isinstance(state, dict):
+        print("plan-correction: --state must contain a mapping", file=sys.stderr)
+        return 2
+    try:
+        value = json.loads(args.value)
+    except json.JSONDecodeError:
+        value = args.value
+    report = plan_correction(source, state, path=args.path, value=value, tests=tests)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "correction_plan_report.json"
+    write_json(out, report)
+    if args.corrected_state and report.get("status") == "planned":
+        write_json(Path(args.corrected_state).resolve(), report["corrected_state"])
+    print(f"plan-correction: {report['status']} ({out})")
+    return 0 if report.get("status") == "planned" else 1
 
 
 def cmd_compile(args: argparse.Namespace) -> int:
@@ -1083,6 +1113,20 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("package")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_input_contract)
+
+    p = sub.add_parser("validate-correction-contract", help="Validate dependency-aware safe correction and gate replay declarations")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_correction_contract)
+
+    p = sub.add_parser("plan-correction", help="Plan a non-mutating selective correction and replay affected gates")
+    p.add_argument("package")
+    p.add_argument("--state", required=True, help="Existing YAML/JSON state snapshot; it is never changed")
+    p.add_argument("--path", required=True, help="Declared upstream state path to correct")
+    p.add_argument("--value", required=True, help="New value; JSON scalars/objects are accepted")
+    p.add_argument("--out", help="Optional correction-plan report path")
+    p.add_argument("--corrected-state", help="Optional new JSON state file; input state remains untouched")
+    p.set_defaults(func=cmd_plan_correction)
 
     p = sub.add_parser("validate-cross-artifact-contract", help="Validate template, binding, state, finalization and rendered-output consistency")
     p.add_argument("package")
