@@ -44,6 +44,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`policies/README.md`](policies/README.md) — canonical policy index.
 - [`policies/DELIVERY_POLICY.md`](policies/DELIVERY_POLICY.md) — release and delivery gate policy.
 - [`../tools/run_golden_examples.py`](../tools/run_golden_examples.py) — CI-backed golden-example runner.
+- [`PACKAGE_LIFECYCLE.md`](PACKAGE_LIFECYCLE.md) — strict canonical-source, checkpoint, patch, regression, and release lifecycle contract.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
 - [`DOCUMENTATION_QUALITY_GATE.md`](DOCUMENTATION_QUALITY_GATE.md) — active-document scope, link rules, release-claim consistency, and bounded historical exclusions.
 - [`design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md`](design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md) — design-only contract for observable per-node AI interaction and decision debugging without hidden chain-of-thought.

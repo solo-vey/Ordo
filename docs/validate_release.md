@@ -2,6 +2,11 @@
 
 `ordo validate-release` is the M6 quality gate for Ordo packages.
 
+When a package enables `maintenance_lifecycle` in `ordo.yml`, this gate also
+requires its canonical-source baseline, immutable checkpoint, patch script,
+regression evidence, and release evidence to pass. See
+[`PACKAGE_LIFECYCLE.md`](PACKAGE_LIFECYCLE.md).
+
 It is intended to be run before a package is published, handed off, or committed as a ready artifact.
 
 ```bash

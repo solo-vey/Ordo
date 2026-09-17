@@ -54,6 +54,7 @@ from .input_contract import validate_input_contract
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
+from .package_lifecycle import validate_package_lifecycle, validate_unpacked_release
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -546,6 +547,22 @@ def cmd_validate_package_integrity(args: argparse.Namespace) -> int:
     report = validate_package_integrity(args.package, expected_version=args.expected_version)
     if args.out:
         write_json(Path(args.out), report)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_lifecycle(args: argparse.Namespace) -> int:
+    report = validate_package_lifecycle(args.package, verify_baseline=args.verify_baseline)
+    if args.out:
+        write_json(Path(args.out).resolve(), report)
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_unpacked_release(args: argparse.Namespace) -> int:
+    report = validate_unpacked_release(args.archive)
+    if args.out:
+        write_json(Path(args.out).resolve(), report)
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0 if report["status"] == "passed" else 1
 
@@ -1098,6 +1115,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--expected-version")
     p.add_argument("--out", help="Optional machine-readable integrity report path")
     p.set_defaults(func=cmd_validate_package_integrity)
+
+    p = sub.add_parser("validate-lifecycle", help="Validate strict canonical-source, checkpoint, patch, regression and release lifecycle")
+    p.add_argument("package")
+    p.add_argument("--verify-baseline", action="store_true", help="Require the current source to equal the patch baseline before applying a patch")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_lifecycle)
+
+    p = sub.add_parser("validate-unpacked-release", help="Independently unpack and validate a release ZIP lifecycle")
+    p.add_argument("archive")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_unpacked_release)
 
     p = sub.add_parser("validate-evidence", help="Verify a validation report belongs to the current canonical source and run")
     p.add_argument("package")

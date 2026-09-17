@@ -23,6 +23,7 @@ from .output_validator import validate_output
 from .reporter import write_json
 from .provenance import build_release_provenance, validate_release_provenance
 from .build_identity import write_build_identity, bind_report, validate_report_binding
+from .package_lifecycle import validate_package_lifecycle
 
 
 @dataclass
@@ -138,6 +139,16 @@ def validate_release(
         _add(issues, "error", "MANIFEST_NAME_REQUIRED", "ordo.yml must define package name.", "ordo.yml.name")
     if not manifest.get("version"):
         _add(issues, "error", "MANIFEST_VERSION_REQUIRED", "ordo.yml must define package version.", "ordo.yml.version")
+
+    # A package that enables the strict maintenance lifecycle cannot be
+    # released with stale/missing checkpoint, patch, regression, or evidence
+    # assets. Legacy packages remain readable until they opt in.
+    lifecycle_report = validate_package_lifecycle(root)
+    lifecycle_path = reports_dir / "lifecycle_validation_report.json"
+    write_json(lifecycle_path, lifecycle_report)
+    record_step("validate-lifecycle", lifecycle_report.get("status", "unknown"), lifecycle_path, lifecycle_report.get("summary"))
+    if lifecycle_report.get("status") == "blocked":
+        _add(issues, "error", "LIFECYCLE_VALIDATION_FAILED", "Enabled maintenance lifecycle contract must pass before release.", _relative(lifecycle_path, root))
 
     # Lint.
     repo_root = find_repo_root(root)
