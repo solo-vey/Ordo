@@ -53,6 +53,7 @@ from .state_lineage import validate_state_lineage
 from .input_contract import validate_input_contract
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
+from .canonical_regression import run_package_canonical_regression
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -306,6 +307,13 @@ def cmd_test(args: argparse.Namespace) -> int:
     if "assertions_behaviorally_evaluated" in summary:
         assertion_note = f"; assertions {summary.get('assertions_behaviorally_evaluated')}/{summary.get('assertions_total')} behaviorally evaluated"
     print(f"test: {report['status']} [static mode: {static_marker}{assertion_note}] ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_regression(args: argparse.Namespace) -> int:
+    report = run_package_canonical_regression(args.package, out=args.out)
+    destination = Path(args.out).resolve() if args.out else Path(args.package).resolve() / "reports" / "canonical_regression_report.json"
+    print(f"regression: {report['status']} ({destination})")
     return 0 if report["status"] == "passed" else 1
 
 
@@ -987,6 +995,11 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("test", help="Run static Ordo test cases")
     p.add_argument("package")
     p.set_defaults(func=cmd_test)
+
+    p = sub.add_parser("regression", help="Run canonical source-bound structural regression contour")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional canonical regression report path")
+    p.set_defaults(func=cmd_regression)
 
     p = sub.add_parser("coverage", help="Generate coverage report")
     p.add_argument("package")

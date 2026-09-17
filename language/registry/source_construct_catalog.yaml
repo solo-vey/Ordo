@@ -49,6 +49,9 @@ constructs:
 - key: correction_contract
   level: top_level
   status: supported
+- key: regression_contract
+  level: top_level
+  status: supported
 - key: cross_artifact_contract
   level: top_level
   status: supported
