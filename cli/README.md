@@ -68,6 +68,9 @@ generate-release-notes
 render-runtime-view
 verify-targets
 verify-session
+validate-decision-registry
+export-cross-chat-handoff
+restore-cross-chat-handoff
 repo-check
 package
 ```
@@ -134,6 +137,22 @@ ordo verify-session packages/history_event_guided_intake
 ```
 
 The command prints `session-chain: intact` for an intact chain. Broken chains report the failing sequence. Canary leaks report that raw IR was read.
+
+## Decision registry and cross-chat handoff
+
+Keep accepted decisions in a source-bound registry and validate their rationale,
+implementing files, and test linkage before passing work to another chat:
+
+```bash
+ordo validate-decision-registry PACKAGE --registry decision_registry.json
+ordo export-cross-chat-handoff PACKAGE --registry decision_registry.json --state handoff_context.json --out handoff.json
+ordo restore-cross-chat-handoff PACKAGE --registry decision_registry.json --handoff handoff.json
+```
+
+The restore operation is context-only: it verifies and reports the active node,
+completed artifacts, open backlog, and pending decisions. It never replays or
+rolls back the runtime. See
+[`../docs/DECISION_REGISTRY_HANDOFF.md`](../docs/DECISION_REGISTRY_HANDOFF.md).
 
 ## Runtime target views
 
