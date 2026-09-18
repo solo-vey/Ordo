@@ -55,6 +55,7 @@ from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
 from .package_lifecycle import validate_package_lifecycle, validate_unpacked_release
+from .decision_handoff import validate_decision_registry, export_cross_chat_handoff, restore_cross_chat_handoff
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -351,6 +352,26 @@ def cmd_export_replay_evidence(args: argparse.Namespace) -> int:
     report = export_replay_evidence(trace_path=args.trace, state_path=args.state, out=args.out)
     print(f"export-replay-evidence: {report['status']} ({Path(args.out).resolve() / 'replay_evidence_export_report.json'})")
     return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_decision_registry(args: argparse.Namespace) -> int:
+    report = validate_decision_registry(args.package, args.registry)
+    out = Path(args.out).resolve() if args.out else Path(args.package).resolve() / "reports" / "decision_registry_validation_report.json"
+    write_json(out, report)
+    print(f"validate-decision-registry: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_export_cross_chat_handoff(args: argparse.Namespace) -> int:
+    report = export_cross_chat_handoff(args.package, registry_path=args.registry, state_path=args.state, out=args.out)
+    print(f"export-cross-chat-handoff: {report['status']} ({report['output']})")
+    return 0 if report["status"] == "ready" else 1
+
+
+def cmd_restore_cross_chat_handoff(args: argparse.Namespace) -> int:
+    report = restore_cross_chat_handoff(args.package, registry_path=args.registry, handoff_path=args.handoff, out=args.out)
+    print(f"restore-cross-chat-handoff: {report['status']} ({report['output']})")
+    return 0 if report["status"] == "restored" else 1
 
 
 def _digest_value(report: dict) -> str:
@@ -1041,6 +1062,26 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--state", required=True, help="State snapshot whose non-mutation must be proven")
     p.add_argument("--out", required=True, help="Directory for replay evidence export")
     p.set_defaults(func=cmd_export_replay_evidence)
+
+    p = sub.add_parser("validate-decision-registry", help="Validate accepted decisions, rationale, implementation files, and test linkage")
+    p.add_argument("package")
+    p.add_argument("--registry", required=True, help="Machine-readable decision registry JSON")
+    p.add_argument("--out", help="Optional validation report path")
+    p.set_defaults(func=cmd_validate_decision_registry)
+
+    p = sub.add_parser("export-cross-chat-handoff", help="Export source-bound context for a new chat without replay or rollback")
+    p.add_argument("package")
+    p.add_argument("--registry", required=True, help="Validated decision registry JSON")
+    p.add_argument("--state", help="Explicit state/context JSON or YAML; defaults to runtime/live_session_state.json")
+    p.add_argument("--out", required=True, help="Output handoff JSON path")
+    p.set_defaults(func=cmd_export_cross_chat_handoff)
+
+    p = sub.add_parser("restore-cross-chat-handoff", help="Verify and restore a handoff context without mutating runtime state")
+    p.add_argument("package")
+    p.add_argument("--registry", required=True, help="Current decision registry JSON")
+    p.add_argument("--handoff", required=True, help="Handoff JSON exported by export-cross-chat-handoff")
+    p.add_argument("--out", help="Optional restoration report path")
+    p.set_defaults(func=cmd_restore_cross_chat_handoff)
 
     p = sub.add_parser("validate-journey", help="Validate the contractual manual-run journey ledger")
     p.add_argument("package")
