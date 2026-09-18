@@ -98,6 +98,14 @@ def _apply_node_answer(node: dict[str, Any], answer: Any, state: dict[str, Any])
     return next_target, state_diff(before, state)
 
 
+def _failure_route(node: dict[str, Any], failure_kind: str) -> dict[str, Any] | None:
+    """Return the explicitly authored route for one recoverable failure kind."""
+    for route in node.get("failure_routes", []) or []:
+        if isinstance(route, dict) and route.get("kind") == failure_kind:
+            return route
+    return None
+
+
 def _is_answer_matched(node: dict[str, Any], answer: Any) -> bool:
     allowed = node.get("allowed_answers")
     if not allowed:
@@ -473,6 +481,7 @@ def guided_intake(
     visited_steps = 0
     max_steps = 100
     gate_results: list[dict[str, Any]] = []
+    flow_status = "passed"
 
     initial_snapshot, initial_state_chained, initial_chain = write_session_snapshot(root, state, node_id="000_initial", action="initial_state", status="passed", extra={"run_id": run_id})
     state = initial_state_chained
@@ -511,13 +520,14 @@ def guided_intake(
             trace["state_snapshots"].append(str(snapshot_path.relative_to(root)).replace("\\", "/"))
             break
 
-        if current_node.startswith("STOP"):
-            trace["events"].append({"type": "stopped", "target": current_node})
-            break
-
         node = nodes.get(current_node)
         if not node:
             trace["events"].append({"type": "error", "error": "node_not_found", "node": current_node})
+            break
+        if current_node.startswith("STOP") or node.get("terminal") is True:
+            trace["events"].append({"type": "stopped" if current_node.startswith("STOP") else "terminal_reached", "target": current_node})
+            state["current_node"] = current_node
+            flow_status = "stopped" if current_node.startswith("STOP") else "passed"
             break
 
         max_attempts = int(((node.get("on_unmatched_input") or {}).get("max_attempts") or 0))
@@ -530,7 +540,8 @@ def guided_intake(
                 answer = scripted
             elif non_interactive:
                 trace["events"].append({"type": "missing_answer", "node": current_node, "action": "block"})
-                current_node = None
+                state["current_node"] = current_node
+                flow_status = "blocked"
                 break
             else:
                 answer = _prompt_for_answer(node, attempt)
@@ -546,10 +557,9 @@ def guided_intake(
                 "on_unmatched_input": node.get("on_unmatched_input"),
             })
             attempt += 1
-        if current_node is None:
-            break
         if not matched:
             exhausted = ((node.get("on_unmatched_input") or {}).get("on_exhausted") or {})
+            route = _failure_route(node, "input")
             trace["events"].append({
                 "type": "clarify_exhausted",
                 "node": current_node,
@@ -557,6 +567,30 @@ def guided_intake(
                 "action": exhausted.get("action", "escalate_to_human"),
                 "reason": exhausted.get("reason"),
             })
+            if route and route.get("classification") in {"recoverable", "terminal"} and isinstance(route.get("next"), str):
+                next_target = route["next"]
+                state["last_closed_node"] = current_node
+                state["current_node"] = next_target
+                snapshot_path, chained_state, chain_meta = write_session_snapshot(
+                    root, state, node_id=current_node, action="input_failure_routed", answer={"attempts": attempt}, status="passed", extra={"run_id": run_id, "failure_route": route},
+                )
+                state = chained_state
+                evidence = write_node_evidence(
+                    root, run_id=run_id, step_index=visited_steps, node_id=current_node, action="input_failure_routed", status="passed", state=state,
+                    answer={"attempts": attempt}, next_node=next_target, snapshot_path=str(snapshot_path.relative_to(root)).replace("\\", "/"), extra={"failure_route": route},
+                )
+                trace["events"].append({
+                    "type": "recoverable_failure_routed" if route["classification"] == "recoverable" else "terminal_failure_routed",
+                    "node": current_node, "failure_kind": "input", "classification": route["classification"], "next": next_target,
+                    "evidence_report": evidence.get("evidence_path"), "evidence_digest": evidence.get("evidence_digest"), "session_chain": chain_meta,
+                })
+                trace["state_snapshots"].append(str(snapshot_path.relative_to(root)).replace("\\", "/"))
+                current_node = next_target
+                continue
+            # No declared route is a blocked checkpoint, not a hidden terminal
+            # transition. A user can retry from the same active node later.
+            state["current_node"] = current_node
+            flow_status = "blocked"
             break
 
         node_id_for_event = current_node
@@ -614,7 +648,7 @@ def guided_intake(
         "outputs": outputs,
         "violations": [a for a in assertion_results if a.get("status") == "violation"],
         "blocked_outputs": [o for o in outputs if not o.get("allowed")],
-        "status": "passed" if not [a for a in assertion_results if a.get("status") == "violation"] else "failed",
+        "status": "failed" if [a for a in assertion_results if a.get("status") == "violation"] else flow_status,
     })
     trace = attach_report_digest(trace)
     write_json(runtime_dir / "intake_trace_log.json", trace)

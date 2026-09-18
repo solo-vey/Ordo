@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from .graph_contract import dynamic_route_declarations, vertex_route_declarations
+from .graph_contract import dynamic_route_declarations, failure_route_declarations, vertex_route_declarations
 
 
 # These values are gate control effects, rather than references to another
@@ -31,11 +31,17 @@ def graph_topology(source: dict[str, Any]) -> dict[str, Any]:
     external_terminals = set(contract.get("external_terminal_targets", []) or [])
     known_targets = set(node_by_id) | set(gate_by_id) | external_terminals
     node_declarations = {
-        vertex_id: vertex_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="node")
+        vertex_id: [
+            *vertex_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="node"),
+            *failure_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="node"),
+        ]
         for vertex_id, vertex in node_by_id.items()
     }
     gate_declarations = {
-        vertex_id: vertex_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="gate")
+        vertex_id: [
+            *vertex_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="gate"),
+            *failure_route_declarations(vertex, vertex_id=vertex_id, vertex_kind="gate"),
+        ]
         for vertex_id, vertex in gate_by_id.items()
     }
     node_edges = {vertex_id: [item.target for item in items] for vertex_id, items in node_declarations.items()}

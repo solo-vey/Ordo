@@ -20,6 +20,8 @@ INVALID_DYNAMIC_ROUTE_BEHAVIORS = frozenset({
     "block_and_return_to_last_valid_node",
 })
 DYNAMIC_ROUTE_KINDS = frozenset({"recovery", "correction", "retry"})
+FAILURE_ROUTE_KINDS = frozenset({"input", "validation", "materialization"})
+FAILURE_ROUTE_CLASSIFICATIONS = frozenset({"recoverable", "terminal"})
 
 
 @dataclass(frozen=True)
@@ -89,6 +91,31 @@ def vertex_route_declarations(vertex: dict[str, Any], *, vertex_id: str, vertex_
                     f"{vertex_kind}s[{vertex_id}].navigation_contract.allowed_to[{index}]",
                     "navigation_contract.allowed_to",
                 ))
+    return declarations
+
+
+def failure_route_declarations(vertex: dict[str, Any], *, vertex_id: str, vertex_kind: str) -> list[RouteDeclaration]:
+    """Project explicit failure routes as ordinary, validation-visible edges.
+
+    A failure route is intentionally not inferred from a node label or a
+    generic `block` outcome.  It must name its next target, so recoverable
+    routes and terminal stops remain visible to topology checks.
+    """
+    routes = vertex.get("failure_routes")
+    if not isinstance(routes, list):
+        return []
+    declarations: list[RouteDeclaration] = []
+    for index, route in enumerate(routes):
+        if not isinstance(route, dict) or not isinstance(route.get("next"), str):
+            continue
+        declarations.append(RouteDeclaration(
+            vertex_id,
+            route["next"],
+            f"{vertex_kind}s[{vertex_id}].failure_routes[{index}].next",
+            "failure_routes",
+            "failure",
+            str(route.get("kind") or ""),
+        ))
     return declarations
 
 
