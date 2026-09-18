@@ -71,6 +71,8 @@ verify-session
 validate-decision-registry
 export-cross-chat-handoff
 restore-cross-chat-handoff
+validate-artifact-lifecycle
+advance-artifact-lifecycle
 repo-check
 package
 ```
@@ -153,6 +155,22 @@ The restore operation is context-only: it verifies and reports the active node,
 completed artifacts, open backlog, and pending decisions. It never replays or
 rolls back the runtime. See
 [`../docs/DECISION_REGISTRY_HANDOFF.md`](../docs/DECISION_REGISTRY_HANDOFF.md).
+
+## Artifact delivery lifecycle
+
+Output generation creates a hash-bound lifecycle for every physical artifact:
+`generated -> reviewed -> approved -> delivered`. Approval cannot skip review,
+and a delivered artifact must retain a working package-relative download link
+to the exact generated file.
+
+```bash
+ordo validate-artifact-lifecycle PACKAGE
+ordo advance-artifact-lifecycle PACKAGE --artifact ARTIFACT_ID --to reviewed --actor reviewer-id
+ordo advance-artifact-lifecycle PACKAGE --artifact ARTIFACT_ID --to approved --actor approver-id
+ordo advance-artifact-lifecycle PACKAGE --artifact ARTIFACT_ID --to delivered --actor delivery-service
+```
+
+See [`../docs/ARTIFACT_DELIVERY_LIFECYCLE.md`](../docs/ARTIFACT_DELIVERY_LIFECYCLE.md).
 
 ## Runtime target views
 

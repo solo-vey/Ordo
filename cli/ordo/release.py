@@ -24,6 +24,7 @@ from .reporter import write_json
 from .provenance import build_release_provenance, validate_release_provenance
 from .build_identity import write_build_identity, bind_report, validate_report_binding
 from .package_lifecycle import validate_package_lifecycle
+from .artifact_lifecycle import validate_artifact_lifecycle
 
 
 @dataclass
@@ -267,6 +268,16 @@ def validate_release(
     except Exception as exc:
         _add(issues, "warning", "OUTPUT_VALIDATION_SKIPPED", f"Output validation skipped: {exc}", "reports/output_validation_report.json")
         record_step("validate-output", "skipped", None, {"reason": str(exc)})
+
+    try:
+        artifact_lifecycle_report = validate_artifact_lifecycle(root)
+        artifact_lifecycle_path = reports_dir / "artifact_lifecycle_validation_report.json"
+        record_step("validate-artifact-lifecycle", artifact_lifecycle_report.get("status", "unknown"), artifact_lifecycle_path, artifact_lifecycle_report.get("summary"))
+        if artifact_lifecycle_report.get("status") != "passed":
+            _add(issues, "error", "ARTIFACT_LIFECYCLE_VALIDATION_FAILED", "Physical artifact lifecycle and download-link validation must pass before release.", _relative(artifact_lifecycle_path, root))
+    except Exception as exc:
+        _add(issues, "error", "ARTIFACT_LIFECYCLE_VALIDATION_FAILED", f"Artifact lifecycle validation failed: {exc}", "reports/artifact_lifecycle_validation_report.json")
+        record_step("validate-artifact-lifecycle", "failed", None, {"reason": str(exc)})
 
     # Dependency lockfile.
     try:

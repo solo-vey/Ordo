@@ -56,6 +56,7 @@ from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
 from .package_lifecycle import validate_package_lifecycle, validate_unpacked_release
 from .decision_handoff import validate_decision_registry, export_cross_chat_handoff, restore_cross_chat_handoff
+from .artifact_lifecycle import validate_artifact_lifecycle, advance_artifact_lifecycle
 from . import __version__
 
 TEMPLATE_DIR = Path(__file__).parent / "templates" / "package_template"
@@ -372,6 +373,20 @@ def cmd_restore_cross_chat_handoff(args: argparse.Namespace) -> int:
     report = restore_cross_chat_handoff(args.package, registry_path=args.registry, handoff_path=args.handoff, out=args.out)
     print(f"restore-cross-chat-handoff: {report['status']} ({report['output']})")
     return 0 if report["status"] == "restored" else 1
+
+
+def cmd_validate_artifact_lifecycle(args: argparse.Namespace) -> int:
+    report = validate_artifact_lifecycle(args.package)
+    out = Path(args.out).resolve() if args.out else Path(args.package).resolve() / "reports" / "artifact_lifecycle_validation_report.json"
+    write_json(out, report)
+    print(f"validate-artifact-lifecycle: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_advance_artifact_lifecycle(args: argparse.Namespace) -> int:
+    report = advance_artifact_lifecycle(args.package, artifact_id=args.artifact, target_state=args.to, actor=args.actor, out=args.out)
+    print(f"advance-artifact-lifecycle: {report['status']} {report.get('from')} -> {report.get('to')} ({report['output']})")
+    return 0 if report["status"] == "advanced" else 1
 
 
 def _digest_value(report: dict) -> str:
@@ -1082,6 +1097,19 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--handoff", required=True, help="Handoff JSON exported by export-cross-chat-handoff")
     p.add_argument("--out", help="Optional restoration report path")
     p.set_defaults(func=cmd_restore_cross_chat_handoff)
+
+    p = sub.add_parser("validate-artifact-lifecycle", help="Validate physical artifact evidence, lifecycle state, and download links")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional lifecycle validation report path")
+    p.set_defaults(func=cmd_validate_artifact_lifecycle)
+
+    p = sub.add_parser("advance-artifact-lifecycle", help="Advance one artifact through reviewed, approved, and delivered states")
+    p.add_argument("package")
+    p.add_argument("--artifact", required=True, help="Artifact id from generated_outputs/output_manifest.json")
+    p.add_argument("--to", required=True, choices=["reviewed", "approved", "delivered"], help="Next lifecycle state")
+    p.add_argument("--actor", required=True, help="Reviewer, approver, or delivery actor")
+    p.add_argument("--out", help="Optional transition report path")
+    p.set_defaults(func=cmd_advance_artifact_lifecycle)
 
     p = sub.add_parser("validate-journey", help="Validate the contractual manual-run journey ledger")
     p.add_argument("package")
