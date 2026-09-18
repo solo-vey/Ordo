@@ -173,6 +173,11 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
     for issue in input_contract_report.get("issues", []) or []:
         _add(issues, issue.get("severity", "error"), issue.get("code", "INPUT_CONTRACT_ERROR"), issue.get("message", "Input contract validation failed."), issue.get("location", "input_contract"))
 
+    from .analyst_interaction import validate_analyst_interaction_contract
+    analyst_interaction_report = validate_analyst_interaction_contract(source)
+    for issue in analyst_interaction_report.get("issues", []) or []:
+        _add(issues, issue.get("severity", "error"), issue.get("code", "ANALYST_INTERACTION_ERROR"), issue.get("message", "Analyst interaction validation failed."), issue.get("location", "analyst_interaction_contract"))
+
     from .correction_replay import validate_correction_contract
     correction_contract_report = validate_correction_contract(source, tests)
     for issue in correction_contract_report.get("issues", []) or []:
@@ -204,6 +209,7 @@ def lint_source(source: dict[str, Any], tests: dict[str, Any] | None = None, rep
     result["graph_validation"] = graph_report
     result["state_lineage_validation"] = state_lineage_report
     result["input_contract_validation"] = input_contract_report
+    result["analyst_interaction_validation"] = analyst_interaction_report
     result["correction_contract_validation"] = correction_contract_report
     result["flow_reuse_validation"] = flow_reuse_report
     return result

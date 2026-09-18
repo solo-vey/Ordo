@@ -48,6 +48,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`DECISION_REGISTRY_HANDOFF.md`](DECISION_REGISTRY_HANDOFF.md) — source-bound accepted-decision registry and context-only cross-chat handoff/restore protocol.
 - [`ARTIFACT_DELIVERY_LIFECYCLE.md`](ARTIFACT_DELIVERY_LIFECYCLE.md) — physical-output-bound generation, review, approval, delivery, and download-link contract.
 - [`RECOVERY_AND_TERMINAL_ROUTES.md`](RECOVERY_AND_TERMINAL_ROUTES.md) — explicit recoverable failure routes and terminal STOP-node validation.
+- [`ANALYST_INTERACTION_CONTRACT.md`](ANALYST_INTERACTION_CONTRACT.md) — executable analyst-facing response, retry, confirmation, and resume contract.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
 - [`DOCUMENTATION_QUALITY_GATE.md`](DOCUMENTATION_QUALITY_GATE.md) — active-document scope, link rules, release-claim consistency, and bounded historical exclusions.
 - [`design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md`](design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md) — design-only contract for observable per-node AI interaction and decision debugging without hidden chain-of-thought.

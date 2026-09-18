@@ -366,6 +366,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             **input_contract,
         })
 
+    analyst_interaction_contract = source.get("analyst_interaction_contract")
+    if analyst_interaction_contract:
+        ops.append({
+            "op": "ANALYST.INTERACTION.CONTRACT.DEF",
+            "id": namespace_id(package, "analyst_interaction_contract"),
+            **analyst_interaction_contract,
+        })
+
     correction_contract = source.get("correction_contract")
     if correction_contract:
         ops.append({
@@ -421,6 +429,7 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             "entry_modes": node.get("entry_modes") or [],
             "node_context": node.get("node_context") or {},
             "input_contract": node.get("input_contract") or {},
+            "analyst_interaction": node.get("analyst_interaction") or {},
         })
         if node.get("on_unmatched_input"):
             ops.append({
