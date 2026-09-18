@@ -33,6 +33,20 @@ def _sha256_json(data: Any) -> str:
     return _sha256_bytes(payload)
 
 
+def _initial_lifecycle(path: str, digest: str, size_bytes: int) -> dict[str, Any]:
+    """Create physical-output-bound lifecycle evidence for a new artifact."""
+    return {
+        "state": "generated",
+        "generated": {"status": "generated", "path": path, "sha256": digest, "bytes": size_bytes},
+        "reviewed": {"status": "not_reviewed"},
+        "approved": {"status": "not_approved"},
+        "delivery": {
+            "status": "not_delivered",
+            "download": {"href": path, "label": f"Download {Path(path).name}"},
+        },
+    }
+
+
 def _load_json_if_exists(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
@@ -196,6 +210,8 @@ def _make_template_outputs(root: Path, manifest: dict[str, Any], source: dict[st
                 required_gate_ids.extend(out_status.get("required_gates") or [])
             gate_evidence = [gate_by_id[g] for g in required_gate_ids if g in gate_by_id]
             allowed = True if not output_evidence else all(bool(o.get("allowed")) for o in output_evidence)
+            digest = _sha256_file(target)
+            size_bytes = target.stat().st_size
             artifact_manifest_entries.append({
                 "id": item.get("id") or Path(target_rel).stem,
                 "type": item.get("type") or "document",
@@ -221,8 +237,9 @@ def _make_template_outputs(root: Path, manifest: dict[str, Any], source: dict[st
                 "gate_evidence": gate_evidence,
                 "output_gate_evidence": output_evidence,
                 "handoff_status": "ready_for_handoff" if allowed else "blocked_or_review_only",
-                "hash": _sha256_file(target),
-                "bytes": target.stat().st_size,
+                "hash": digest,
+                "bytes": size_bytes,
+                "lifecycle": _initial_lifecycle(rel_path.replace("\\", "/"), digest, size_bytes),
             })
         model_handoffs: list[str] = []
         model_handoff_dir = root / "runtime" / "model_assisted_render_handoff"
@@ -303,6 +320,8 @@ ordo_version: {manifest.get('ordo_version')}
 This output was generated from package state. It should be treated as a derived artifact. The Ordo Source YAML remains the source of truth.
 """, encoding="utf-8")
     generated.append(summary)
+    digest = _sha256_file(summary)
+    size_bytes = summary.stat().st_size
     entry = {
         "id": "PACKAGE_OUTPUT_SUMMARY",
         "type": "document",
@@ -314,8 +333,9 @@ This output was generated from package state. It should be treated as a derived 
         "gate_evidence": _gate_statuses(root),
         "output_gate_evidence": _outputs_status(root),
         "handoff_status": "ready_for_handoff" if all(bool(o.get("allowed")) for o in _outputs_status(root)) else "blocked_or_review_only",
-        "hash": _sha256_file(summary),
-        "bytes": summary.stat().st_size,
+        "hash": digest,
+        "bytes": size_bytes,
+        "lifecycle": _initial_lifecycle(str(summary.relative_to(root)).replace("\\", "/"), digest, size_bytes),
     }
     return generated, [entry]
 
