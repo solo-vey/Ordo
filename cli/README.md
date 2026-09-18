@@ -121,6 +121,14 @@ Runtime Mode enforces one node, one contract, and one decision at a time. Helper
 
 See [`../language/RUNTIME_CHECKPOINTS.md`](../language/RUNTIME_CHECKPOINTS.md) and package-local `START_HERE_RUNTIME_MODE.md` files.
 
+## Recovery and terminal routes
+
+Use explicit node or gate `failure_routes` for `input`, `validation`, and
+`materialization` failures. A recoverable route must lead to a non-terminal
+recovery node; a terminal route must lead to a declared terminal. STOP nodes
+are validated for terminal status and reachability. See
+[`../docs/RECOVERY_AND_TERMINAL_ROUTES.md`](../docs/RECOVERY_AND_TERMINAL_ROUTES.md).
+
 ## Incremental intake
 
 Use one-node submit mode when the runtime is collecting answers interactively:

@@ -6,6 +6,8 @@ from typing import Any
 from .graph_topology import graph_topology
 from .graph_contract import (
     DYNAMIC_ROUTE_KINDS,
+    FAILURE_ROUTE_CLASSIFICATIONS,
+    FAILURE_ROUTE_KINDS,
     INVALID_DYNAMIC_ROUTE_BEHAVIORS,
     allowed_from,
 )
@@ -237,6 +239,45 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
         if by_id[vertex_id].get("terminal") is True and targets:
             issues.append(GraphIssue("error", "GRAPH_TERMINAL_OUTGOING", f"Terminal {kind} {vertex_id} must not declare outgoing transitions.", f"{kind}s[{vertex_id}].transition", [vertex_id, *targets]))
 
+    # BL-ORDO-097: a failure outcome is either explicitly recoverable or an
+    # explicitly routed stop. It must never turn into an implicit end of the
+    # process merely because validation/materialization failed.
+    for vertex_id, vertex in by_id.items():
+        kind = "gate" if vertex_id in gate_ids else "node"
+        raw_routes = vertex.get("failure_routes")
+        if raw_routes is None:
+            continue
+        location = f"{kind}s[{vertex_id}].failure_routes"
+        if not isinstance(raw_routes, list) or not raw_routes:
+            issues.append(GraphIssue("error", "GRAPH_FAILURE_ROUTES_INVALID", "failure_routes must be a non-empty list when declared.", location, [vertex_id]))
+            continue
+        seen_kinds: set[str] = set()
+        for index, route in enumerate(raw_routes):
+            item_location = f"{location}[{index}]"
+            if not isinstance(route, dict):
+                issues.append(GraphIssue("error", "GRAPH_FAILURE_ROUTE_INVALID", "failure route must be an object.", item_location, [vertex_id]))
+                continue
+            failure_kind = route.get("kind")
+            classification = route.get("classification")
+            target = route.get("next")
+            if failure_kind not in FAILURE_ROUTE_KINDS:
+                issues.append(GraphIssue("error", "GRAPH_FAILURE_ROUTE_KIND_INVALID", f"failure route kind must be one of {sorted(FAILURE_ROUTE_KINDS)}.", f"{item_location}.kind", [vertex_id]))
+            elif failure_kind in seen_kinds:
+                issues.append(GraphIssue("error", "GRAPH_FAILURE_ROUTE_KIND_DUPLICATE", "only one route may be declared per failure kind.", f"{item_location}.kind", [vertex_id]))
+            else:
+                seen_kinds.add(failure_kind)
+            if classification not in FAILURE_ROUTE_CLASSIFICATIONS:
+                issues.append(GraphIssue("error", "GRAPH_FAILURE_ROUTE_CLASSIFICATION_INVALID", f"classification must be one of {sorted(FAILURE_ROUTE_CLASSIFICATIONS)}.", f"{item_location}.classification", [vertex_id]))
+            if not isinstance(target, str) or not target:
+                issues.append(GraphIssue("error", "GRAPH_FAILURE_ROUTE_TARGET_REQUIRED", "failure route requires a non-empty next target.", f"{item_location}.next", [vertex_id]))
+                continue
+            if classification == "recoverable":
+                if target not in ids or by_id.get(target, {}).get("terminal") is True or target in external_terminals:
+                    issues.append(GraphIssue("error", "GRAPH_RECOVERY_ROUTE_NOT_RECOVERABLE", "recoverable failure route must target a non-terminal in-graph vertex.", f"{item_location}.next", [vertex_id, target]))
+            elif classification == "terminal":
+                if target not in external_terminals and not (target in ids and by_id.get(target, {}).get("terminal") is True):
+                    issues.append(GraphIssue("error", "GRAPH_TERMINAL_ROUTE_NOT_EXPLICIT", "terminal failure route must target a declared terminal vertex or external terminal target.", f"{item_location}.next", [vertex_id, target]))
+
     active_ids = {vertex_id for vertex_id, vertex in by_id.items() if not _deprecated(vertex)}
     for vertex_id in sorted(active_ids):
         if incoming_contract_enabled and vertex_id != entry and not incoming_by_target.get(vertex_id):
@@ -256,6 +297,24 @@ def validate_process_graph(source: dict[str, Any]) -> dict[str, Any]:
         kind = "gate" if vertex_id in gate_ids else "node"
         code = "GRAPH_VERTEX_UNREACHABLE" if kind == "gate" else "GRAPH_NODE_UNREACHABLE"
         issues.append(GraphIssue("error", code, f"Active {kind} {vertex_id} is unreachable from entry vertex {entry}.", f"{kind}s[{vertex_id}]", [entry, vertex_id] if entry else [vertex_id]))
+
+    # STOP identifiers are reserved for explicit failure terminal nodes. Give
+    # them dedicated diagnostics so route edits cannot leave a misleading,
+    # orphaned stop in an otherwise valid graph.
+    actual_incoming: dict[str, set[str]] = {vertex_id: set() for vertex_id in ids}
+    for source_id, targets in adj.items():
+        for target in targets:
+            if target in actual_incoming:
+                actual_incoming[target].add(source_id)
+    for vertex_id in sorted(vertex for vertex in active_ids if vertex.startswith("STOP")):
+        vertex = by_id[vertex_id]
+        kind = "gate" if vertex_id in gate_ids else "node"
+        if vertex.get("terminal") is not True:
+            issues.append(GraphIssue("error", "GRAPH_STOP_NOT_TERMINAL", "STOP vertex must declare terminal: true.", f"{kind}s[{vertex_id}]", [vertex_id]))
+        if vertex_id != entry and not actual_incoming.get(vertex_id):
+            issues.append(GraphIssue("error", "GRAPH_STOP_UNCONNECTED", "STOP vertex has no incoming route after graph changes.", f"{kind}s[{vertex_id}]", [vertex_id]))
+        if vertex_id not in reachable:
+            issues.append(GraphIssue("error", "GRAPH_STOP_UNREACHABLE", "STOP vertex is not reachable from the graph entry.", f"{kind}s[{vertex_id}]", [entry, vertex_id] if entry else [vertex_id]))
 
     for vertex_id in sorted(active_ids):
         vertex = by_id[vertex_id]
