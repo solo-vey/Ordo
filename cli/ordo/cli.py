@@ -51,6 +51,7 @@ from .replay_runner import export_replay_evidence, replay_recorded_run
 from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, validate_llm_execution_plan
 from .state_lineage import validate_state_lineage
 from .input_contract import validate_input_contract
+from .analyst_interaction import validate_analyst_interaction_contract, route_side_question, describe_gate_failure
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
@@ -125,6 +126,33 @@ def cmd_validate_input_contract(args: argparse.Namespace) -> int:
     write_json(out, report)
     print(f"validate-input-contract: {report['status']} ({out})")
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_analyst_interaction(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = validate_analyst_interaction_contract(source)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "analyst_interaction_report.json"
+    write_json(out, report)
+    print(f"validate-analyst-interaction: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_route_side_question(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = route_side_question(source, active_node=args.active_node, question=args.question)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "side_question_route_report.json"
+    write_json(out, report)
+    print(f"route-side-question: {report['status']} ({out})")
+    return 0
+
+
+def cmd_explain_gate_failure(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = describe_gate_failure(source, args.gate)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "gate_failure_explanation.json"
+    write_json(out, report)
+    print(f"explain-gate-failure: {report['status']} ({out})")
+    return 0 if report["status"] == "actionable" else 1
 
 
 def cmd_validate_cross_artifact_contract(args: argparse.Namespace) -> int:
@@ -1223,6 +1251,24 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("package")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_input_contract)
+
+    p = sub.add_parser("validate-analyst-interaction", help="Validate analyst field meaning, response mode, retries, confirmations and side-question policy")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_analyst_interaction)
+
+    p = sub.add_parser("route-side-question", help="Record a side question and return to the preserved active node")
+    p.add_argument("package")
+    p.add_argument("--active-node", required=True)
+    p.add_argument("--question", required=True)
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_route_side_question)
+
+    p = sub.add_parser("explain-gate-failure", help="Render the declared analyst-facing remedy and retry route for a failed gate")
+    p.add_argument("package")
+    p.add_argument("--gate", required=True)
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_explain_gate_failure)
 
     p = sub.add_parser("validate-correction-contract", help="Validate dependency-aware safe correction and gate replay declarations")
     p.add_argument("package")

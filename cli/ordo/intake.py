@@ -16,6 +16,7 @@ from .session_trace import append_session_trace_step
 from .manual_run_journey import record_intake_event
 from .transition_provenance import validate_node_entry, build_node_context_envelope
 from .input_contract import evaluate_input_submission
+from .analyst_interaction import evaluate_analyst_submission
 from .reporter import write_json
 from .runtime_context import (
     build_live_session,
@@ -278,6 +279,13 @@ def submit_intake_node(
             status = "clarification_required" if submission.get("status") == "clarification_required" else "blocked"
             next_target = submission.get("next_node")
             issues.extend(submission.get("issues", []))
+        elif status == "passed":
+            interaction = evaluate_analyst_submission(source, node, answer)
+            answer = interaction.get("answer", answer)
+            if interaction.get("status") != "passed":
+                status = "clarification_required"
+                next_target = interaction.get("next_node")
+                issues.extend(interaction.get("issues", []))
         matched = status == "passed" and _is_answer_matched(node, answer)
         if status == "passed" and not matched:
             status = "blocked"
@@ -359,14 +367,18 @@ def submit_intake_node(
         issues=issues, trace=trace, snapshot_path=_rel(root, snapshot_path), snapshot_hash=str(chain_meta.get("snapshot_hash") or ""),
     )
     live_session_file = ""
-    if status == "passed":
+    if status in {"passed", "clarification_required"}:
+        if status == "clarification_required" and next_target:
+            # A rejected semantic draft or ambiguous answer never writes business
+            # state. It does persist the deterministic retry checkpoint.
+            state["current_node"] = next_target
         live_session_file = _write_live_session_state(
             root,
             source=source,
             run_id=run_id,
             state=state,
-            current_node=next_target or "",
-            last_closed_node=node_id,
+            current_node=next_target or (node_id if status == "clarification_required" else ""),
+            last_closed_node=node_id if status == "passed" else str(live_runtime.get("last_closed_node") or ""),
             last_snapshot=_rel(root, snapshot_path),
             last_snapshot_hash=str(chain_meta.get("snapshot_hash") or ""),
             last_evidence_report=str(evidence.get("evidence_path") or ""),
@@ -589,6 +601,25 @@ def guided_intake(
                 continue
             # No declared route is a blocked checkpoint, not a hidden terminal
             # transition. A user can retry from the same active node later.
+            state["current_node"] = current_node
+            flow_status = "blocked"
+            break
+
+        interaction = evaluate_analyst_submission(source, node, answer)
+        answer = interaction.get("answer", answer)
+        if interaction.get("status") != "passed":
+            next_target = interaction.get("next_node")
+            trace["events"].append({
+                "type": interaction.get("status"),
+                "node": current_node,
+                "next": next_target,
+                "issues": interaction.get("issues", []),
+                "state_mutation": False,
+            })
+            if isinstance(next_target, str) and next_target:
+                state["current_node"] = next_target
+                current_node = next_target
+                continue
             state["current_node"] = current_node
             flow_status = "blocked"
             break

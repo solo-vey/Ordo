@@ -121,6 +121,16 @@ Runtime Mode enforces one node, one contract, and one decision at a time. Helper
 
 See [`../language/RUNTIME_CHECKPOINTS.md`](../language/RUNTIME_CHECKPOINTS.md) and package-local `START_HERE_RUNTIME_MODE.md` files.
 
+## Analyst interaction contract
+
+Analyst-facing packages can declare `analyst_interaction_contract` for explicit
+field meaning, response modes, semantic retry routes, draft confirmation, and
+non-mutating side-question resume behavior. Validate it with:
+
+```bash
+ordo validate-analyst-interaction PACKAGE
+```
+
 ## Recovery and terminal routes
 
 Use explicit node or gate `failure_routes` for `input`, `validation`, and

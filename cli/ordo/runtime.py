@@ -286,6 +286,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
         "graph_contract": {},
         "state_lineage": {},
         "input_contract": {},
+        "analyst_interaction_contract": {},
         "correction_contract": {},
         "regression_contract": {},
         "cross_artifact_contract": {},
@@ -300,6 +301,8 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
             source["state_lineage"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "INPUT.CONTRACT.DEF":
             source["input_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
+        elif op_name == "ANALYST.INTERACTION.CONTRACT.DEF":
+            source["analyst_interaction_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "CORRECTION.CONTRACT.DEF":
             source["correction_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "REGRESSION.CONTRACT.DEF":
@@ -354,6 +357,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
                 "entry_modes": op.get("entry_modes") or [],
                 "node_context": op.get("node_context") or {},
                 "input_contract": op.get("input_contract") or {},
+                "analyst_interaction": op.get("analyst_interaction") or {},
             })
         elif op_name == "GATE.DEF":
             source["gates"].append({
