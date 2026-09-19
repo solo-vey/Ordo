@@ -2,8 +2,8 @@
   "schema_version": "ordo.repo_check.report.v2",
   "status": "passed",
   "hygiene_scope": "development",
-  "profile": null,
-  "clean_enabled": false,
+  "profile": "standard",
+  "clean_enabled": true,
   "failed_checks": [],
   "reports": {
     "workflow_paths": {
@@ -22,15 +22,1581 @@
     "generated_metadata_absent": {
       "status": "passed",
       "scope": "development",
-      "evidence_mode": "git_metadata_unavailable",
+      "evidence_mode": "git_tracked_files",
       "forbidden_paths": [],
       "observed_transient_paths": [],
       "note": "Development validation blocks generated metadata only when it is tracked by Git. Untracked __pycache__, .pyc, and .egg-info created by normal local installation or tests are reported but are non-blocking."
     },
+    "repository_forbidden_paths": {
+      "status": "passed",
+      "scope": "development",
+      "evidence_mode": "git_tracked_files",
+      "forbidden_paths": [],
+      "observed_transient_paths": [
+        ".pytest_cache",
+        ".pytest_cache/.gitignore",
+        ".pytest_cache/CACHEDIR.TAG",
+        ".pytest_cache/README.md",
+        ".pytest_cache/v",
+        ".pytest_cache/v/cache",
+        ".pytest_cache/v/cache/lastfailed",
+        ".pytest_cache/v/cache/nodeids",
+        "cli/.pytest_cache",
+        "cli/.pytest_cache/.gitignore",
+        "cli/.pytest_cache/CACHEDIR.TAG",
+        "cli/.pytest_cache/README.md",
+        "cli/.pytest_cache/v",
+        "cli/.pytest_cache/v/cache",
+        "cli/.pytest_cache/v/cache/lastfailed",
+        "cli/.pytest_cache/v/cache/nodeids",
+        "utilities/ordo_tree_editor/.pytest_cache",
+        "utilities/ordo_tree_editor/.pytest_cache/.gitignore",
+        "utilities/ordo_tree_editor/.pytest_cache/CACHEDIR.TAG",
+        "utilities/ordo_tree_editor/.pytest_cache/README.md",
+        "utilities/ordo_tree_editor/.pytest_cache/v",
+        "utilities/ordo_tree_editor/.pytest_cache/v/cache",
+        "utilities/ordo_tree_editor/.pytest_cache/v/cache/lastfailed",
+        "utilities/ordo_tree_editor/.pytest_cache/v/cache/nodeids"
+      ],
+      "note": "Development scope blocks only Git-tracked forbidden paths; untracked local artifacts are reported. Release scope blocks every forbidden path in the isolated candidate tree."
+    },
+    "duplicate_repository_nesting": {
+      "status": "passed",
+      "scope": "development",
+      "evidence_mode": "git_tracked_files",
+      "forbidden_paths": [],
+      "observed_transient_paths": [],
+      "exempt_prefixes": [],
+      "note": "Development scope blocks duplicate nesting only in Git-tracked paths. Release scope blocks duplicate nesting anywhere in the isolated candidate tree."
+    },
     "package_generated_artifacts_absent": {
       "status": "passed",
+      "scope": "development",
+      "evidence_mode": "git_tracked_files",
       "forbidden_paths": [],
-      "note": "Source archive should keep generated package artifacts out of compiled/, reports/, runtime/, and generated_outputs/ except .gitkeep placeholders and reports/CLI_VALIDATION_SUMMARY.md and reports/PACKAGE_PROFILE_SUMMARY.md templates."
+      "observed_transient_paths": [],
+      "note": "Development scope blocks package-generated artifacts only when Git-tracked; release scope blocks them anywhere in the isolated candidate tree. Allowed exceptions remain .gitkeep placeholders and reports/CLI_VALIDATION_SUMMARY.md and reports/PACKAGE_PROFILE_SUMMARY.md templates."
+    },
+    "repo_package_hygiene": {
+      "schema_version": "ordo.repo_hygiene.report.v1",
+      "mode": "repo_package_hygiene",
+      "status": "passed",
+      "repo_root": "/Users/test/Desktop/work/Ordo",
+      "policy_path": "repo_hygiene.yml",
+      "profile": "standard",
+      "fail_on_warning": false,
+      "roots": [
+        {
+          "root_id": "language_core",
+          "path": "language",
+          "role": "language_core",
+          "clean_check": "root_contract",
+          "release_blocking": true,
+          "status": "passed",
+          "exit_code": 0,
+          "summary": {
+            "check_count": 45,
+            "blocked_count": 0
+          },
+          "contract_report": {
+            "status": "passed",
+            "checks": [
+              {
+                "check_id": "root_contract_root_exists",
+                "status": "passed",
+                "target": "language"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "language/README.md"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "language/CURRENT_VERSION.md"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "language/registry/OPCODE_CATALOG.md"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "language/VALIDATION_REPORT.json"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/artifact_requirement_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/artifact_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/assertion_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/ci_release_clean_gate_policy_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/clean_package_gate_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/contract_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/conversation_semantics_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/correction_contract_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/coverage_rule_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/cross_artifact_contract_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/delta_backlog_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/derived_artifact_sync_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/derived_artifact_sync_validation_profile_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/execution_trace_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/flow_join_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/freeform_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/gate_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/go_no_go_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/improvement_record_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/input_contract_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/interaction_model_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/library_include_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/node_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/process_rail_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/program_level_approval_gate_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/program_level_contract_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/prompt_ref_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/prompt_registry_packaging_checks_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/prompt_registry_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/prompt_registry_validation_profile_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/regression_contract_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/release_clean_gate_provenance_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/rendered_artifact_assertion_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/rendering_template_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/semantic_json_ir_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/shared_tail_reference_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/startup_package_profile_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/startup_profile_validation_profile_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_yaml_parse",
+                "status": "passed",
+                "target": "language/schemas/trace_schema.yaml"
+              },
+              {
+                "check_id": "root_contract_json_parse",
+                "status": "passed",
+                "target": "language/VALIDATION_REPORT.json"
+              }
+            ],
+            "errors": [],
+            "summary": {
+              "check_count": 45,
+              "blocked_count": 0
+            }
+          }
+        },
+        {
+          "root_id": "cli_core",
+          "path": "cli",
+          "role": "cli_utility",
+          "clean_check": "root_contract",
+          "release_blocking": true,
+          "status": "passed",
+          "exit_code": 0,
+          "summary": {
+            "check_count": 240,
+            "blocked_count": 0
+          },
+          "contract_report": {
+            "status": "passed",
+            "checks": [
+              {
+                "check_id": "root_contract_root_exists",
+                "status": "passed",
+                "target": "cli"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "cli/README.md"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "cli/pyproject.toml"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "cli/ordo/cli.py"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "cli/ordo/repo_checks.py"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "cli/tests/test_production_repo_hygiene_policy.py"
+              },
+              {
+                "check_id": "root_contract_required_path",
+                "status": "passed",
+                "target": "cli/tests/test_repository_hygiene_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/__init__.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/analyst_interaction.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/apf_replay.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/artifact_lifecycle.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/artifact_validator.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/blind_automation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/build_identity.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/canonical_regression.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/canonical_source.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/checkpoints.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/ci_release_evidence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/clean_check.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/cli.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/compiler.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/consistency.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/contract_coverage.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/correction_replay.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/coverage.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/cross_artifact_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/csg_runtime.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/decision_handoff.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/delivery_target.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/dependency_conflicts.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/dependency_lock.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/document_field_bindings.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/documentation_sync.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/errors.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/evidence_identity.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/execution_trace.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/flow_reuse_runtime.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/flow_reuse_validation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/go_no_go.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/graph_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/graph_topology.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/graph_validation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/helpers.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/input_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/intake.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/linter.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/llm_execution_plan.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/loader.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/manual_run_journey.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/node_decomposition.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/output_generator.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/output_registry.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/output_validator.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/package_cache.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/package_integrity.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/package_lifecycle.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/package_profiles.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/package_reconciliation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/performance_budget.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/prompt_compiler.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/prompt_governance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/prompt_registry_reconcile.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/provenance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/registry_checks.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/release.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/release_diff.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/release_notes.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/rendering_policy.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/replay_runner.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/repo_checks.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/reporter.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/runner.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/runtime.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/runtime_context.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/runtime_evidence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/runtime_restore.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/session_chain.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/session_trace.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/startup_artifact_reconcile.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/state_lineage.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/targets.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/template_tooling.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/tester.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/transition_provenance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/tree_modules.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/validation_evidence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/validation_layers.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/validator_propagation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/ordo/value_provenance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_apf_evidence_root_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_apf_opcode_registry_reconciliation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_apf_root_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_apf_test_assets_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_007_stable_flow_reuse.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_010_localization.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_011_prompt_governance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_012_startup_derived_hardening.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_024_process_patterns.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_025_linter_performance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_026_delivery_workflow.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_034_playbook_versioning.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_035_test_safety.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_036_release_integrity.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_037_manual_run_journey.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_039_playbook_rollback_checkpoint.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_040_empirical_evidence_foundation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_041_empirical_evidence_migration.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_047_external_adoption_evidence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_048_prompt_only_compilation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_049_delivery_target_decision.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_051_external_independence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_055_blind_automation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_063_playbook_laws.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_067_decision_trace_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_089_canonical_source.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_090_091_identity.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_092_state_lineage.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_093_graph_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_094_validation_layers.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_095_correction_replay.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_096_analyst_interaction.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_097_recovery_terminal_routes.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_098_artifact_lifecycle.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_099_canonical_regression.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_100_value_provenance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_101_decision_registry_handoff.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_101_node_decomposition.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_102_documentation_sync.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_107_package_lifecycle.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_108_cross_artifact_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_108_linter.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_108_runtime_context.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_109_deterministic_replay.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_110_llm_execution_plan.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_bl_ordo_112_input_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_ci_clean_gate_workflow.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_ci_release_smoke_matrix.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_clean_check_fixtures.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_cli_workflow.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_community_health_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_companion_utility_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_cross_artifact_contract_consistency.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_delivery_self_check_report_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_docs_front_door_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_document_field_bindings.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_documentation_quality_gate.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_empirical_benchmark_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_english_only_policy.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_external_historical_archive_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_gate_condition_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_golden_examples_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_graph_validation_gates.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_j6_root_cleanup_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_l2_documentation_contour_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_l_documentation_contour_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_language_cli_root_contracts.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m70_4_production_ci_release_validation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m71_2_prompt_registry_schema_profile.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m71_3_history_event_prompt_registry_migration.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m71_4_runtime_prompt_trace_validation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m72_2_execution_trace_runtime_compiler.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m72_3_execution_trace_tooling.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m74_1_registry_completeness.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m74_2_hygiene_scope_isolation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m74_5_apf_semantic_equivalence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m74_6_apf_modular_assembly.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m75_1_csg_runtime_enforcement.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m75_2_csg_multistep_integration.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m76_1_apf_graph_validation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m76_3_backlog_maturity_sync.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m77_0_optional_flow_reuse_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m77_1_namespace_merge_conflicts.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m77_2_compiler_lowering_reference_resolution.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m77_3_runtime_transition_trace.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m77_4_validation_cli_advisory.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m77_5_real_apf_flow_reuse_equivalence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m78_0_apf_real_case_replay.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m78_0_prompt_registry_reconciliation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m78_1_apf_internal_mini_prompt_applicability.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m79_0_template_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m79_1_template_registry.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m79_2_generic_renderer.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m79_3_generic_review.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m79_4_template_diff.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m79_5_real_playbook_integration.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m80_0_package_cache_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m80_1_package_cache_persistence.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m80_2_runtime_cache_hit.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m80_3_cache_trace_metrics_diagnostics.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m80_4_apf_integration_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m81_generated_report_isolation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m81_startup_artifact_reconcile.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m84_2_mandatory_green_release_gate.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m84_3_ci_bound_packaging.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m84_4_negative_release_gate.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m85_1_build_identity.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m85_2_validation_evidence_binding.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m85_3_pre_zip_reconciliation.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m85_4_post_validation_mutation_blocking.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m86_1_benchmark_evidence_schema.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m86_2_provider_neutral_driver.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m86_3_adversarial_csg_dataset.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m86_4_alias_normalization_taxonomy.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m86_5_reproducibility_replay_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m87_1_ab_protocol_rubric.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m87_2_shared_dataset_contamination.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m87_3_plain_prompt_baseline_runner.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m87_4_ordo_runner_paired_harness.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m87_5_statistical_analysis_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m87_7_delivery_gate_timeouts.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m88_0_transition_provenance.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m88_1_antipattern_def_registry.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m88_2_detect_rule_detector_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m88_3_severity_enforcement_finding_model.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m88_4_runtime_detectors.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m88_5_integration_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m89_1_migration_intake_decomposition.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m89_2_clause_inventory_classification.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m89_3_dependency_reconstruction_ordo_mapping.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m89_4_traceability_completeness_loss.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_m89_5_end_to_end_migration_closure.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_ordo_tree_editor.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_playbook_lifecycle_utility_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_playbook_regression_integration.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_pre_release_report_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_production_repo_hygiene_policy.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_release_clean_gate_provenance_linkage.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_release_clean_gate_workflow.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_release_manifest_root_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_release_notes_root_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_repair_reconciliation_m88_m89.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_repo_check_clean_integration.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_repository_checksum_manifest.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_repository_hygiene_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_repository_navigation_readmes.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_root_governance_layout_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_root_relocation_integrity_contract.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_tree_module_library.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_ukrainian_text_archive_audit.py"
+              },
+              {
+                "check_id": "root_contract_python_syntax",
+                "status": "passed",
+                "target": "cli/tests/test_version_governance.py"
+              }
+            ],
+            "errors": [],
+            "summary": {
+              "check_count": 240,
+              "blocked_count": 0
+            }
+          }
+        },
+        {
+          "root_id": "canonical_cli_example",
+          "path": "cli/examples/history_event_guided_intake",
+          "role": "example_package",
+          "clean_check": "optional",
+          "release_blocking": false,
+          "status": "passed",
+          "exit_code": 0,
+          "summary": {
+            "error_count": 0,
+            "warning_count": 0,
+            "check_count": 13,
+            "passed_count": 8,
+            "failed_count": 0,
+            "not_applicable_count": 5
+          }
+        }
+      ],
+      "delegated_roots": [
+        {
+          "root_id": "applied_packages",
+          "path": "packages",
+          "role": "applied_packages",
+          "clean_check": "delegated",
+          "release_blocking": false,
+          "status": "delegated"
+        }
+      ],
+      "warnings": [],
+      "errors": [],
+      "summary": {
+        "root_count": 9,
+        "checked_count": 3,
+        "passed_count": 3,
+        "warning_count": 0,
+        "blocked_count": 0,
+        "delegated_count": 1,
+        "not_applicable_count": 5
+      },
+      "exit_code": 0
     }
   },
   "exit_code": 0

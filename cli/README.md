@@ -65,6 +65,8 @@ validate-layers
 validate-validator-propagation
 validate-node-responsibilities
 inspect-node-split
+generate-pseudo-chat
+validate-documentation-graph
 build-provenance
 validate-provenance
 diff-release
@@ -99,6 +101,14 @@ collection, analysis, drafting, confirmation, routing, or technical work.
 `ordo inspect-node-split PACKAGE --node NODE --replacement NEW_ID` produces a
 non-mutating preservation surface for a manual graph split. See
 [`../docs/NODE_DECOMPOSITION.md`](../docs/NODE_DECOMPOSITION.md).
+
+## Documentation graph synchronization
+
+`ordo generate-pseudo-chat PACKAGE` creates a deterministic Markdown
+pseudo-chat from reachable nodes, gates, and transitions. `ordo
+validate-documentation-graph PACKAGE` rejects stale, removed, unreachable, or
+undocumented routes in that view. See
+[`../docs/DOCUMENTATION_GRAPH_SYNC.md`](../docs/DOCUMENTATION_GRAPH_SYNC.md).
 
 ## Artifact validation
 
