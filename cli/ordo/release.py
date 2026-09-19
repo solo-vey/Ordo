@@ -25,6 +25,7 @@ from .provenance import build_release_provenance, validate_release_provenance
 from .build_identity import write_build_identity, bind_report, validate_report_binding
 from .package_lifecycle import validate_package_lifecycle
 from .artifact_lifecycle import validate_artifact_lifecycle
+from .validation_layers import validate_layers
 
 
 @dataclass
@@ -159,6 +160,17 @@ def validate_release(
     record_step("lint", lint_report.get("status", "unknown"), lint_path)
     if _has_errors(lint_report):
         _add(issues, "error", "LINT_FAILED", "Lint must pass before release.", _relative(lint_path, root))
+
+    # Preserve layer ownership in release evidence.  The aggregate lint report
+    # remains the conventional gate, while this report prevents a schema,
+    # graph, lineage, artifact, or semantic failure from being indistinguishable
+    # during package handoff or a later release investigation.
+    layers_report = validate_layers(source, tests)
+    layers_path = reports_dir / "validation_layers_report.json"
+    write_json(layers_path, layers_report)
+    record_step("validate-layers", layers_report.get("status", "unknown"), layers_path, layers_report.get("summary"))
+    if layers_report.get("status") != "passed":
+        _add(issues, "error", "VALIDATION_LAYER_FAILED", "All validation layers must pass before release.", _relative(layers_path, root))
 
     # Compile only when lint is usable; still try to surface errors gracefully.
     ir = compile_source(source)

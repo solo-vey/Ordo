@@ -53,6 +53,8 @@ from .state_lineage import validate_state_lineage
 from .input_contract import validate_input_contract
 from .analyst_interaction import validate_analyst_interaction_contract, route_side_question, describe_gate_failure
 from .value_provenance import validate_value_provenance_contract
+from .validation_layers import validate_layers
+from .validator_propagation import validate_validator_propagation
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
@@ -144,6 +146,28 @@ def cmd_validate_value_provenance(args: argparse.Namespace) -> int:
     out = Path(args.out).resolve() if args.out else root / "reports" / "value_provenance_report.json"
     write_json(out, report)
     print(f"validate-value-provenance: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_layers(args: argparse.Namespace) -> int:
+    root, _manifest, source, tests = load_package(args.package)
+    report = validate_layers(source, tests)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "validation_layers_report.json"
+    write_json(out, report)
+    print(f"validate-layers: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_validate_validator_propagation(args: argparse.Namespace) -> int:
+    root, _manifest, _source, _tests = load_package(args.package)
+    repo_root = Path(args.repo_root).resolve() if args.repo_root else find_repo_root(root)
+    if repo_root is None:
+        print("validate-validator-propagation: repository root not found", file=sys.stderr)
+        return 2
+    report = validate_validator_propagation(root, repo_root=repo_root)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "validator_propagation_report.json"
+    write_json(out, report)
+    print(f"validate-validator-propagation: {report['status']} ({out})")
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
 
 
@@ -1271,6 +1295,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("package")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_value_provenance)
+
+    p = sub.add_parser("validate-layers", help="Report independent schema, graph, lineage, artifact and semantic validation layers")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_layers)
+
+    p = sub.add_parser("validate-validator-propagation", help="Verify declared packaged validator files match canonical repository sources")
+    p.add_argument("package")
+    p.add_argument("--repo-root", help="Repository root containing canonical validator files")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_validator_propagation)
 
     p = sub.add_parser("route-side-question", help="Record a side question and return to the preserved active node")
     p.add_argument("package")
