@@ -56,6 +56,7 @@ from .value_provenance import validate_value_provenance_contract
 from .validation_layers import validate_layers
 from .validator_propagation import validate_validator_propagation
 from .node_decomposition import inspect_node_split, validate_node_responsibilities
+from .documentation_sync import render_pseudo_chat, validate_documentation_graph
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
@@ -187,6 +188,25 @@ def cmd_inspect_node_split(args: argparse.Namespace) -> int:
     out = Path(args.out).resolve() if args.out else root / "reports" / "node_split_impact_report.json"
     write_json(out, report)
     print(f"inspect-node-split: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_generate_pseudo_chat(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    out = Path(args.out).resolve() if args.out else root / "docs" / "PSEUDO_CHAT.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(render_pseudo_chat(source), encoding="utf-8")
+    print(f"generate-pseudo-chat: passed ({out})")
+    return 0
+
+
+def cmd_validate_documentation_graph(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    document = Path(args.document).resolve() if args.document else root / "docs" / "PSEUDO_CHAT.md"
+    report = validate_documentation_graph(source, document)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "documentation_graph_report.json"
+    write_json(out, report)
+    print(f"validate-documentation-graph: {report['status']} ({out})")
     return 0 if report["status"] == "passed" else 1
 
 
@@ -1337,6 +1357,17 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--replacement", action="append", help="Proposed new node id; may be repeated")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_inspect_node_split)
+
+    p = sub.add_parser("generate-pseudo-chat", help="Generate deterministic pseudo-chat Markdown from the executable graph")
+    p.add_argument("package")
+    p.add_argument("--out", help="Output Markdown path; defaults to docs/PSEUDO_CHAT.md")
+    p.set_defaults(func=cmd_generate_pseudo_chat)
+
+    p = sub.add_parser("validate-documentation-graph", help="Validate pseudo-chat nodes and transitions against the executable graph")
+    p.add_argument("package")
+    p.add_argument("--document", help="Pseudo-chat Markdown path; defaults to docs/PSEUDO_CHAT.md")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_documentation_graph)
 
     p = sub.add_parser("route-side-question", help="Record a side question and return to the preserved active node")
     p.add_argument("package")

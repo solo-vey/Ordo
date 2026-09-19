@@ -923,7 +923,7 @@ entries:
   sha256: 551a8c4526619459f32286e486e1f55bee3d9c2f362a9f51a381ae398c87595e
 - path: repo_check_report.json
   classification: canonical_current_or_historical_record
-  sha256: 657f8bad62c3e3c1cb09584f3e44d9c372bed3ed869d0d2fd9d8aa3f21229421
+  sha256: c948f896581819238bd49f57744ad6594d9fabb46b30fb1f25b3378643b1ce34
 - path: self-check/README.md
   classification: canonical_current_or_historical_record
   sha256: 3329b9966a01256f60772deb4de87e2b3718ffbdfac75e94c694616eb53555b8
