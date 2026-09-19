@@ -1,0 +1,1981 @@
+{
+  "schema_version": "1.1",
+  "contract_id": "PRODUCTION_DEPENDENCY_CLOSURE",
+  "algorithm": "declared_roots_plus_local_reachability",
+  "materializer": "tools/materialize_production_dependency_closure.py",
+  "file_count": 205,
+  "files": [
+    {
+      "path": "canonical_support/guides/PLAYBOOK_LAWS.md",
+      "sha256": "754a296bf96c336ad4db1b8e0d16ae755feb1b417414242e4d31b375574ab0ba",
+      "reasons": [
+        "explicit_ref:source/laws-propagation-policy.json",
+        "explicit_ref:tools/run_verification_profile.py",
+        "explicit_ref:tools/test_alpha13_generated_execution_inheritance.py",
+        "explicit_ref:tools/test_alpha45_quality_optimization_governance.py",
+        "explicit_ref:tools/test_alpha46_execution_write_safety_validator_governance.py",
+        "explicit_ref:tools/verify_playbook_laws.py",
+        "explicit_ref:verification/test_alpha46_p2_lifecycle_release_family_governance.py"
+      ]
+    },
+    {
+      "path": "canonical_support/output_templates/BUSINESS_VIEW.template.md",
+      "sha256": "5baa31b5cf859a2a3d413d75dd86a71d5448c4c708c2682f13d9ce0b5ea38219",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha15_explicit_tools_templates_outputs.py",
+        "explicit_ref:verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_A_BUSINESS_VIEW_TEMPLATE_BIND",
+        "responsibility:N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE"
+      ]
+    },
+    {
+      "path": "canonical_support/output_templates/GENERATED_PLAYBOOK_PACKAGE_ASSEMBLY_CONTRACT.json",
+      "sha256": "d9a8b64f4c02729931cbb75aa4f0a02ed1c5aded95215ae64a4782259b21aa2c",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha15_explicit_tools_templates_outputs.py",
+        "explicit_ref:verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_A_PACKAGE_ASSEMBLY_CONTRACT_BIND",
+        "responsibility:N_OUT_GENERATED_PACKAGE_HANDOFF",
+        "responsibility:N_OUT_GENERATED_PACKAGE_MATERIALIZE"
+      ]
+    },
+    {
+      "path": "canonical_support/output_templates/GENERATED_PLAYBOOK_RUN_PACKAGE_ASSEMBLY_CONTRACT.json",
+      "sha256": "c5efc3ee85b2279415aaa44a236124c24153260474648bbec4239e82b7d303fd",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/ARTIFACT_MATERIALIZATION_REGISTRY.json"
+      ]
+    },
+    {
+      "path": "canonical_support/output_templates/PLAYBOOK_LAWS.md",
+      "sha256": "754a296bf96c336ad4db1b8e0d16ae755feb1b417414242e4d31b375574ab0ba",
+      "reasons": [
+        "explicit_ref:tools/test_alpha13_generated_execution_inheritance.py",
+        "explicit_ref:tools/test_alpha45_quality_optimization_governance.py",
+        "explicit_ref:tools/test_alpha46_execution_write_safety_validator_governance.py",
+        "explicit_ref:tools/verify_playbook_laws.py",
+        "explicit_ref:verification/test_alpha46_p2_lifecycle_release_family_governance.py"
+      ]
+    },
+    {
+      "path": "tests/generated_playbook_regressions/REGRESSION_MATRIX.json",
+      "sha256": "18abdf22829b800c32a118a9c3ac0a59ec477b5fbebf4c0b41ae3f8c4eefa651",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha20_generated_playbook_regression_layer.py"
+      ]
+    },
+    {
+      "path": "tests/test_cases.yaml",
+      "sha256": "6007ae095b88311973eb4a2f6d65b63ece69ad89c04faae088036c12d5236483",
+      "reasons": [
+        "explicit_ref:source/vibe-implementation-trace.json",
+        "explicit_ref:tools/build_three_profile_playbook_distribution.py"
+      ]
+    },
+    {
+      "path": "tools/_alpha26_validation_common.py",
+      "sha256": "f3cc4398a69c417045782f3feb04689577e3abd20c4dfa91669f88dd6646f1e7",
+      "reasons": [
+        "python_import:tools/validate_approval_persistence.py",
+        "python_import:tools/validate_artifact_archive_registry_completeness.py",
+        "python_import:tools/validate_behavioral_scenario_coverage.py",
+        "python_import:tools/validate_defect_ownership.py",
+        "python_import:tools/validate_deterministic_contract_completeness.py",
+        "python_import:tools/validate_fixture_contract_closure.py",
+        "python_import:tools/validate_local_persistence_gates.py",
+        "python_import:tools/validate_proposal_canonical_separation.py",
+        "python_import:tools/validate_recovery_locality.py",
+        "python_import:tools/validate_review_bundle_design.py",
+        "python_import:tools/validate_runtime_gate_evidence.py",
+        "python_import:tools/validate_semantic_dependency_inputs.py",
+        "python_import:tools/validate_simulation_evidence.py",
+        "python_import:tools/validate_state_phase_ordering.py"
+      ]
+    },
+    {
+      "path": "tools/aggregate_candidate_verification.py",
+      "sha256": "2616d63d41663125c946944e4f5d469870ed49c50382b3cc7f482eab0408f4e9",
+      "reasons": [
+        "explicit_ref:tools/test_alpha31_incremental_verification.py"
+      ]
+    },
+    {
+      "path": "tools/analyze_data_layer_architecture.py",
+      "sha256": "962fe71300e83c6136b103645816d98c379c6b7bf06de7038cfba31f56bdf447",
+      "reasons": [
+        "explicit_ref:tools/test_alpha42_data_layer_architecture_detectors.py"
+      ]
+    },
+    {
+      "path": "tools/analyze_graph_locality.py",
+      "sha256": "a24cf1f29945a7a2961f6d787df2338a9879d12a3ab8c7170d2792aaf2fc5e1b",
+      "reasons": [
+        "explicit_ref:tools/test_alpha42_graph_locality_incentives.py"
+      ]
+    },
+    {
+      "path": "tools/append_execution_receipt.py",
+      "sha256": "e1db57580052836eb9508dd7a35446e83b224eb1967166233d2d4d063e613bb9",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_observability_debug.py"
+      ]
+    },
+    {
+      "path": "tools/append_progress_event.py",
+      "sha256": "432709f56a836bdb4837a45c21e548a2df0e5dba92c90ea1f9cdbe3d27138783",
+      "reasons": [
+        "explicit_ref:tools/test_alpha44_tool_result_debug_self_repair.py",
+        "explicit_ref:tools/test_default_debug_handoff_progress.py",
+        "explicit_ref:tools/validate_default_debug_handoff_progress.py"
+      ]
+    },
+    {
+      "path": "tools/append_self_repair_event.py",
+      "sha256": "4fa856ba471aec38fb38d86ff45dde0419c1174723b27557d69a73478d5b8ec7",
+      "reasons": [
+        "explicit_ref:tools/test_alpha44_tool_result_debug_self_repair.py"
+      ]
+    },
+    {
+      "path": "tools/apply_state_patch_v1.py",
+      "sha256": "2e44e903860a18eb0ea199c700c845201755b8b4b6cfd664e9d3c5e58279c24f",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_deterministic_first_architecture.py",
+        "explicit_ref:tools/validate_deterministic_first_architecture.py"
+      ]
+    },
+    {
+      "path": "tools/audit_context_runtime_efficiency.py",
+      "sha256": "a60beab68c34d614d4959289944ace3fc79c2f6f27f8a7abde0a8100124ace7e",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_context_runtime_efficiency.py",
+        "explicit_ref:tools/validate_context_runtime_efficiency.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PO_CONTEXT_RUNTIME_AUDIT"
+      ]
+    },
+    {
+      "path": "tools/audit_packaging_continuity.py",
+      "sha256": "067f9553899b9073704df55047764af4d34f2518481e74c26807503db8a0f894",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_packaging_continuity.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PK_PACKAGE_CONTINUITY_AUDIT"
+      ]
+    },
+    {
+      "path": "tools/build_debug_handoff_package.py",
+      "sha256": "99b673cb23b00b5151316f0750c5cbc930f743bf12db75d4c19b0e4f02ad63ac",
+      "reasons": [
+        "explicit_ref:source/default-debug-handoff-progress-policy.json",
+        "explicit_ref:tools/test_alpha45_observability_debug.py",
+        "explicit_ref:tools/test_default_debug_handoff_progress.py",
+        "explicit_ref:tools/validate_default_debug_handoff_progress.py"
+      ]
+    },
+    {
+      "path": "tools/build_development_regression_plan.py",
+      "sha256": "d9f1f833fc71628eebae0fca8fa0a207b390b174add2d47b87952bcdc96b9d0c",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:tools/test_alpha45_development_regression_governance.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_DV_PRECHANGE_REGRESSION_RUN"
+      ]
+    },
+    {
+      "path": "tools/build_dual_playbook_distribution.py",
+      "sha256": "87191d627c8149a28d28c6e94b996a62eabb71c372ebdcbda985159d765cc583",
+      "reasons": [
+        "dual_distribution_tooling",
+        "explicit_ref:tools/materialize_production_dependency_closure.py"
+      ]
+    },
+    {
+      "path": "tools/build_dynamic_comparative_prompt.py",
+      "sha256": "b2b5a8bb949a5780998b178fadd347192355939bae9c68279d1da02f7599be32",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_BUILD_DYNAMIC_COMPARATIVE_PROMPT"
+      ]
+    },
+    {
+      "path": "tools/build_editor_auto_answers.py",
+      "sha256": "4fe0ac620321e756ffa9950ac8e389b65d7b50e213228be7d54f09c2c57b7ff7",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md"
+      ]
+    },
+    {
+      "path": "tools/build_evaluator_reference_bundle.py",
+      "sha256": "d26171e67d6ca3136e3c83da9d45422f2e233bccb5fbb6b8ed328aa7ad8c7ade",
+      "reasons": [
+        "explicit_ref:source/evaluator-reference-input-bundle-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_pre_release_blockers.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_BUILD_EVALUATOR_REFERENCE_BUNDLE"
+      ]
+    },
+    {
+      "path": "tools/build_portable_candidate_zip.py",
+      "sha256": "6d260541c669a307b3e4dfb5229daa8f330aacf1448a9e360187c8c5f481c338",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:tools/test_alpha26_authority_simulation_analyst_minimization.py"
+      ]
+    },
+    {
+      "path": "tools/build_production_playbook_package.py",
+      "sha256": "1074843ac86992ff95d1a78d44ce0627d8120fb59352fb6d58c750e972317443",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/build_dual_playbook_distribution.py",
+        "explicit_ref:tools/build_three_profile_playbook_distribution.py",
+        "explicit_ref:tools/test_generated_outputs_safe_delivery.py",
+        "explicit_ref:tools/test_generated_playbook_production_package_contract.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE"
+      ]
+    },
+    {
+      "path": "tools/build_pseudo_live_simulation_driver.py",
+      "sha256": "d2c95f47c1423f359058a5b16cec2e5bf996539ba583fe8f7723a04097fcb0bf",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml"
+      ]
+    },
+    {
+      "path": "tools/build_three_profile_playbook_distribution.py",
+      "sha256": "6b9ed527084c63a196c4ca8b38ac9df500cf6eb648a90502fb813f0b9dc6343e",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/audit_packaging_continuity.py",
+        "explicit_ref:tools/build_three_profile_playbook_distribution.py",
+        "explicit_ref:tools/test_alpha45_packaging_continuity.py",
+        "explicit_ref:tools/test_alpha45_three_profile_distribution.py",
+        "explicit_ref:tools/test_dual_distribution_package_behavior.py",
+        "explicit_ref:tools/test_dual_distribution_package_contract.py"
+      ]
+    },
+    {
+      "path": "tools/calculate_playbook_quality_score.py",
+      "sha256": "cce47adcc4884af052807cc7bf204ca70719ad67ef5fa2f103231eb40413edc8",
+      "reasons": [
+        "explicit_ref:source/autonomous-playbook-improvement-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/pattern-reuse-scoring-policy.json",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:source/quality-incentive-anti-gaming-policy.json",
+        "explicit_ref:tools/test_alpha37_quality_scoring.py",
+        "explicit_ref:tools/test_alpha38_model_response_provenance.py",
+        "explicit_ref:tools/test_alpha42_pseudo_live_optimization.py",
+        "explicit_ref:tools/test_hybrid_reference_fidelity_feedback.py",
+        "explicit_ref:tools/test_pattern_reuse_reward_and_open_question_penalty.py",
+        "explicit_ref:tools/test_quality_incentive_anti_gaming.py",
+        "explicit_ref:tools/test_scoring_v3_development_acceptance.py"
+      ]
+    },
+    {
+      "path": "tools/capture_analyst_context.py",
+      "sha256": "5c99a05458445a3d725061f1357dabfb95a9b5abab0836249a0437ac944a3d55",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_analyst_context_and_optimization_calibration.py"
+      ]
+    },
+    {
+      "path": "tools/check_verification_truth.py",
+      "sha256": "4b3cc892ecf7c8bdcb5f8129bce67144adf4cf0aff24e79dc655826d8c99b6c3",
+      "reasons": [
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/run_verification_profile.py",
+        "explicit_ref:tools/test_alpha19_drycheck_and_evidence_hardening.py"
+      ]
+    },
+    {
+      "path": "tools/collect_observability_debug.py",
+      "sha256": "33193039b9c0e77c3f207505c35d8a00ac2ce8ab6c76f0195b900538ad37b4cd",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_observability_debug.py"
+      ]
+    },
+    {
+      "path": "tools/compile_review_bundles.py",
+      "sha256": "88025264f401d5fd901fdbf47bb09608e716734e8b3275c132c74cd675a96d24",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml"
+      ]
+    },
+    {
+      "path": "tools/create_verification_checkpoint.py",
+      "sha256": "eb7d2331afbb01715122afaf8f06f3a45c58ac59bccfd33ce31755461a80ead8",
+      "reasons": [
+        "explicit_ref:tools/test_alpha31_incremental_verification.py",
+        "explicit_ref:tools/test_fast_full_dependency_aware_validation.py"
+      ]
+    },
+    {
+      "path": "tools/derive_behavioral_scenario_matrix.py",
+      "sha256": "55135fa5b3d399d46046aeda1f6fdd251b77b5bf5aec3420304870e3a6e60934",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md"
+      ]
+    },
+    {
+      "path": "tools/derive_pattern_execution_projection.py",
+      "sha256": "84a65c96de98f59efe0af1d0b60131202add6645e42f60a62be9ae00b8bb5614",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_data_first_pattern_projection_separation.py",
+        "explicit_ref:tools/test_pattern_reuse_reward_and_open_question_penalty.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "python_import:tools/validate_data_layer_pattern_instances.py",
+        "python_import:tools/validate_pattern_graph_realization.py",
+        "responsibility:N_VERIFY_PATTERN_DATA_LAYER_MERGE"
+      ]
+    },
+    {
+      "path": "tools/detect_time_degradation.py",
+      "sha256": "1502799367ba2059aa9d9b1f29807e45678f62f78960e491f6f9ecb9e2e5e974",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha42_time_degradation_optimization.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_VALIDATE_PERFORMANCE_EVIDENCE"
+      ]
+    },
+    {
+      "path": "tools/discover_data_layer_patterns.py",
+      "sha256": "53a2b57d89e902b7b1fc57279ff42e2fd8380a5415c6faceae7447a58e9349b0",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_four_library_patterns.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_U_PATTERN_APPLICABILITY_DISCOVERY"
+      ]
+    },
+    {
+      "path": "tools/evaluate_adaptive_artifact_quality.py",
+      "sha256": "2b922a115b2924ba4f8210634cabe04f9d67d97a63b7242b8cee1120b6358b85",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha42_adaptive_artifact_quality.py"
+      ]
+    },
+    {
+      "path": "tools/evaluate_pattern_reuse_opportunities.py",
+      "sha256": "1b17376756f64cc8f1713e50a7c36f6a78c90e92e06f870211646e2e0515fa35",
+      "reasons": [
+        "explicit_ref:authoring/pattern_reuse_evaluation.json",
+        "explicit_ref:source/autonomous-playbook-improvement-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/pattern-reuse-scoring-policy.json",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/calculate_playbook_quality_score.py",
+        "explicit_ref:tools/evaluate_pattern_reuse_opportunities.py",
+        "explicit_ref:tools/test_pattern_reuse_reward_and_open_question_penalty.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "python_import:tools/calculate_playbook_quality_score.py",
+        "responsibility:N_AI_EVALUATE_PATTERN_REUSE"
+      ]
+    },
+    {
+      "path": "tools/evaluate_quality_process_integrity.py",
+      "sha256": "8b8bb8be54e69c33c0c2ab4390f6b6bfd66801f87c8a3a87595cb898190542ff",
+      "reasons": [
+        "explicit_ref:source/autonomous-playbook-improvement-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:source/quality-incentive-anti-gaming-policy.json",
+        "explicit_ref:tools/calculate_playbook_quality_score.py",
+        "explicit_ref:tools/evaluate_quality_process_integrity.py",
+        "python_import:tools/calculate_playbook_quality_score.py"
+      ]
+    },
+    {
+      "path": "tools/execute_deterministic_state_transform.py",
+      "sha256": "2948869d23711883ed15ca670e6255173385365b4de5512b379dd9cfaeab7070",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha42_interactive_analyst_workflow.py",
+        "explicit_ref:tools/test_alpha44_generated_playbook_semantic_execution.py",
+        "explicit_ref:tools/test_deterministic_first_execution_responsibility.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_C_DEPENDENCY_CLOSURE",
+        "responsibility:N_C_INVALIDATION",
+        "responsibility:N_C_PRESERVE_VALID",
+        "responsibility:N_K_TRACEABILITY_SYNC",
+        "responsibility:N_P_ANSWER_PROPAGATION"
+      ]
+    },
+    {
+      "path": "tools/freeze_pattern_selection_inputs.py",
+      "sha256": "7b14539a503df3e2bcaeaed86b36bd2e3c3a74864572ced2597a7734a2b5fc74",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_U_PATTERN_SELECTION_INPUT_FREEZE"
+      ]
+    },
+    {
+      "path": "tools/generate_verification_profile.py",
+      "sha256": "b925d2d65b2f5a5627a61ac9b6d76f269e8ee06dfcddc540361b8f8af9e915e1",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/test_alpha20_generated_playbook_regression_layer.py",
+        "explicit_ref:tools/test_alpha22_language_authority_separation.py",
+        "explicit_ref:tools/test_alpha24_information_first_authoring.py"
+      ]
+    },
+    {
+      "path": "tools/hydrate_deterministic_evidence.py",
+      "sha256": "b4f2e48acbec13190e7fdc3d73169a7e55c03d14746a00e430bd3df212402df7",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_deterministic_first_architecture.py",
+        "explicit_ref:tools/validate_deterministic_first_architecture.py"
+      ]
+    },
+    {
+      "path": "tools/init_debug_handoff_bundle.py",
+      "sha256": "309c5638b9933109d3a2b7d6fc1a80154b010cc92f21210866b186b97d06218f",
+      "reasons": [
+        "explicit_ref:tools/test_default_debug_handoff_progress.py",
+        "explicit_ref:tools/validate_default_debug_handoff_progress.py"
+      ]
+    },
+    {
+      "path": "tools/init_information_first_authoring.py",
+      "sha256": "b0e64c4d1faf14bab2716278a70f6738388056abef127eba656232f0ed8926d0",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/test_alpha24_information_first_authoring.py"
+      ]
+    },
+    {
+      "path": "tools/instantiate_data_layer_pattern.py",
+      "sha256": "9369a583f337eeeb39c75ac848d19abfaa232eb0682d0f474dc24b4b472d5172",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_data_first_pattern_projection_separation.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "python_import:tools/test_alpha45_two_simple_library_patterns.py",
+        "python_import:tools/validate_data_layer_pattern_instances.py",
+        "responsibility:N_U_PATTERN_DATA_LAYER_INSTANTIATION"
+      ]
+    },
+    {
+      "path": "tools/materialize_data_layer_projection_lineage.py",
+      "sha256": "d4f472cfecafdf1743573b16b71274abb79beb66a1471fbd67748928130a7183",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_data_layer_first_hard_architecture.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_editor_visible_architecture.py",
+      "sha256": "504f312a3f690ca2652bf5702364c6980b86414f9796786f541af9f2e700cd60",
+      "reasons": [
+        "explicit_ref:tools/test_data_layer_first_hard_architecture.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_generated_playbook_verification.py",
+      "sha256": "98d0cb7416199384a03c85009d852316a1ef9e471a4b92deed1c56663eb050fb",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:tools/test_alpha13_generated_execution_inheritance.py",
+        "explicit_ref:tools/test_alpha14_staged_quality_and_materialization.py",
+        "explicit_ref:tools/test_alpha19_drycheck_and_evidence_hardening.py",
+        "explicit_ref:tools/test_alpha22_language_authority_separation.py",
+        "explicit_ref:tools/test_alpha24_information_first_authoring.py",
+        "explicit_ref:tools/test_alpha26_authority_simulation_analyst_minimization.py",
+        "explicit_ref:tools/test_alpha29_deterministic_contract_route_hardening.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_model_run_projection.py",
+      "sha256": "aa68cb00eaf6011862642f8d640d49ce9c296d631185e13fcfc5ee7a61e516c3",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_model_run_support_projection.py",
+        "python_import:tools/build_three_profile_playbook_distribution.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_pattern_data_layer_expansion.py",
+      "sha256": "c150258941297d644079ea4e38cfa07213ec93b57962ffba4168f11d7b662d0d",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_pattern_reuse_reward_and_open_question_penalty.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "python_import:tools/validate_data_layer_pattern_instances.py",
+        "responsibility:N_U_PATTERN_DATA_LAYER_INSTANTIATION",
+        "responsibility:N_VERIFY_PATTERN_DATA_LAYER_INSTANCE",
+        "responsibility:N_VERIFY_PATTERN_DATA_LAYER_MERGE"
+      ]
+    },
+    {
+      "path": "tools/materialize_production_dependency_closure.py",
+      "sha256": "1e8609bd48e800f1c00463f56f51809cb71917894d9d6d3e1cb57ee9ccb37ec2",
+      "reasons": [
+        "closure_materializer",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/production-dependency-closure-policy.json",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/materialize_production_dependency_closure.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE"
+      ]
+    },
+    {
+      "path": "tools/materialize_profile_dependency_closure.py",
+      "sha256": "c90c610bd2d18c733578b7aae715949fa18a38e8161de5bb92bfd480fcecb554",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_model_run_support_projection.py",
+        "python_import:tools/build_three_profile_playbook_distribution.py",
+        "python_import:tools/materialize_run_package_dependency_closure.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_pseudo_live_response_evidence.py",
+      "sha256": "326af8e44a9a936e327a1c85601504695e35548e7155275460d6e5c5b808a519",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml"
+      ]
+    },
+    {
+      "path": "tools/materialize_run_package_dependency_closure.py",
+      "sha256": "30105f59d9c154770627ee869576ca8b071994e62114649887dbc6d65de607b2",
+      "reasons": [
+        "dual_distribution_tooling",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/materialize_production_dependency_closure.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_runtime_actor_projection.py",
+      "sha256": "22090d4f04ea818b59257440aa783758a4ccc732e13faf78bb0bbdedc769fbdf",
+      "reasons": [
+        "explicit_ref:tools/materialize_runtime_semantic_plan.py"
+      ]
+    },
+    {
+      "path": "tools/materialize_runtime_semantic_plan.py",
+      "sha256": "5128f9288608a58332b31ae7517f7afb6e6d0663239c265f255a1be384d279be",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_runtime_actor_projection.py"
+      ]
+    },
+    {
+      "path": "tools/merge_authoritative_evidence.py",
+      "sha256": "37cfd11fc96c1d8ff36681b51341fe99e0f9bd6061d4a2aa24f12688a2ec223b",
+      "reasons": [
+        "explicit_ref:source/information-preservation-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_information_preservation_monotonic_evidence.py"
+      ]
+    },
+    {
+      "path": "tools/ordo_authoring.py",
+      "sha256": "3303f413d21cd77d41bda206ede260189eebd2cc5ca6c71a5881a44f054c6524",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:tools/build_dual_playbook_distribution.py",
+        "explicit_ref:tools/run_verification_profile.py"
+      ]
+    },
+    {
+      "path": "tools/pattern_data_layer_semantics.py",
+      "sha256": "1aa9d3843456f4ea20ba2e639ae932861af65959c1e5dd120aec3817d59e7f80",
+      "reasons": [
+        "python_import:tools/derive_pattern_execution_projection.py",
+        "python_import:tools/materialize_pattern_data_layer_expansion.py",
+        "python_import:tools/test_alpha45_two_simple_library_patterns.py",
+        "python_import:tools/test_alpha46_simple_verified_document_code_implementation_v11.py",
+        "python_import:tools/validate_data_layer_pattern_instances.py"
+      ]
+    },
+    {
+      "path": "tools/pattern_template_semantics.py",
+      "sha256": "21267ad45358fdd6aa8dd1afb15f6c63600216c8b3cbc41422d6f8c2ae46de08",
+      "reasons": [
+        "python_import:tools/derive_pattern_execution_projection.py",
+        "python_import:tools/test_alpha45_two_simple_library_patterns.py",
+        "python_import:tools/test_alpha46_simple_verified_document_code_implementation_v11.py",
+        "python_import:tools/validate_data_layer_pattern_instances.py",
+        "python_import:tools/validate_reusable_pattern_compilation_contracts.py"
+      ]
+    },
+    {
+      "path": "tools/prepare_candidate_verification.py",
+      "sha256": "fad29d388aa71f8490d8a2b2796837262f06f093b45197be358e8f70d2e39940",
+      "reasons": [
+        "explicit_ref:tools/run_incremental_verification.py",
+        "explicit_ref:tools/test_alpha31_incremental_verification.py"
+      ]
+    },
+    {
+      "path": "tools/project_profile_test_inventory.py",
+      "sha256": "eaa82fa08a27f6e2303c590b56045721f3e2203768894af01396c27002faaec2",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_packaging_continuity.py"
+      ]
+    },
+    {
+      "path": "tools/publish_authoring_data_flow.py",
+      "sha256": "6cf3d1037bb1b8bd831d83e97ad3cf737d09776593f5545588afd3cce63f9c16",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:source/vibe-self-data-flow-publication-policy.json"
+      ]
+    },
+    {
+      "path": "tools/run_candidate_verification_shard.py",
+      "sha256": "4f35e410f45ec58a567c2661661b90403f530ff03947e7edf9d6a4d8ca6550c8",
+      "reasons": [
+        "explicit_ref:tools/run_incremental_verification.py",
+        "explicit_ref:tools/test_alpha31_incremental_verification.py"
+      ]
+    },
+    {
+      "path": "tools/run_incremental_verification.py",
+      "sha256": "887a7dac23d4f00a4755674d381cd06adaa7146c34961da375de3d234d7b526b",
+      "reasons": [
+        "explicit_ref:tools/test_alpha31_incremental_verification.py",
+        "explicit_ref:tools/test_fast_full_dependency_aware_validation.py",
+        "explicit_ref:tools/test_pre_release_blockers.py"
+      ]
+    },
+    {
+      "path": "tools/run_simulation_preflight.py",
+      "sha256": "15842c25f05b1fe7ee14b3f3965f2e2e2c2d6c2f411d099baf6b654a7bf57a17",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha27_simulation_kit_012_upgrade.py",
+        "explicit_ref:tools/test_alpha28_simulation_kit_013_upgrade.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_SIM_INSPECT",
+        "responsibility:N_SIM_RUN"
+      ]
+    },
+    {
+      "path": "tools/run_verification_profile.py",
+      "sha256": "5345950b9104ad630cd9c60f7d9617710a6061994cfe7c3c8682a07df991083d",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/run_candidate_verification_shard.py",
+        "explicit_ref:tools/run_incremental_verification.py",
+        "explicit_ref:tools/test_alpha15_explicit_tools_templates_outputs.py",
+        "explicit_ref:tools/test_alpha31_incremental_verification.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_QH_IMPACTED_REGRESSIONS",
+        "responsibility:N_VERIFY_RELEASE",
+        "responsibility:N_VERIFY_SOURCE"
+      ]
+    },
+    {
+      "path": "tools/run_with_watchdog.py",
+      "sha256": "b10448d86f1f772d54889acf79ccae75ac948650202ef51cd6531487de2cf1be",
+      "reasons": [
+        "dual_distribution_tooling",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/materialize_production_dependency_closure.py",
+        "explicit_ref:tools/test_alpha44_authoring_execution_watchdog.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PO_TARGETED_COMPARE",
+        "responsibility:N_QH_GREEN_RUN",
+        "responsibility:N_QH_RED_REGRESSION_RUN"
+      ]
+    },
+    {
+      "path": "tools/sanitize_evaluation_defects.py",
+      "sha256": "96c412ac28e34811e3a3e674c161dc4e6aa7f265f13d95bbb2a90c6927e38452",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_SANITIZE_EVALUATION_DEFECTS"
+      ]
+    },
+    {
+      "path": "tools/state_updates_v1.py",
+      "sha256": "25344d6c757a77e755d5635a9be207cbfe749900e8ff3feaa76591f34b8eab58",
+      "reasons": [
+        "explicit_ref:tools/test_alpha44_tool_result_debug_self_repair.py"
+      ]
+    },
+    {
+      "path": "tools/test_alpha13_generated_execution_inheritance.py",
+      "sha256": "e3d858a3bfa62e45dd5a9acd3b11ba8b0ce8296e16b3781f86ad63493c1f47dd",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_VERIFY_REGRESSION",
+        "verification_profile:alpha13_generated_inheritance_regression"
+      ]
+    },
+    {
+      "path": "tools/test_alpha14_staged_quality_and_materialization.py",
+      "sha256": "816eb8f4e35cc5911e5eba66c73885db6a8d42b44ae3ec4e06678a26c3048b28",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_VERIFY_REGRESSION",
+        "verification_profile:alpha14_staged_quality_materialization_regression"
+      ]
+    },
+    {
+      "path": "tools/test_alpha15_explicit_tools_templates_outputs.py",
+      "sha256": "28671c7c956372aa9ff15bc9526b413193cb36d8ceeaf711de612ebe7099f192",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_VERIFY_REGRESSION",
+        "verification_profile:alpha15_explicit_tools_templates_outputs"
+      ]
+    },
+    {
+      "path": "tools/test_alpha16_visible_deterministic_verification.py",
+      "sha256": "0ded9cb8902694b3136def598578cda094e6edc540d71c75535037c1e4c6a0bc",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha16_visible_deterministic_verification"
+      ]
+    },
+    {
+      "path": "tools/test_alpha17_full_language_validation.py",
+      "sha256": "09d1b259f665709242377177fa24c8688011f486f928767225972754db02085b",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha17_full_language_validation"
+      ]
+    },
+    {
+      "path": "tools/test_alpha18_single_responsibility_architecture.py",
+      "sha256": "649848e5b906cc583ac8164f5b784ba32135130b3ea56cf65e14bf4f1ccb29e2",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha18_single_responsibility_architecture"
+      ]
+    },
+    {
+      "path": "tools/test_alpha19_drycheck_and_evidence_hardening.py",
+      "sha256": "07acdba0603f5246978fd3426a572e8c9a2688e344fced8370d3b622160fb825",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha19_drycheck_evidence_hardening"
+      ]
+    },
+    {
+      "path": "tools/test_alpha20_generated_playbook_regression_layer.py",
+      "sha256": "54fe0c3d28c17a953d3849a813e0673c297ef7991d83f02a2b356f7d46001ea5",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:tools/test_alpha20_generated_playbook_regression_layer.py",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha20_generated_playbook_regression_layer"
+      ]
+    },
+    {
+      "path": "tools/test_alpha21_editor_binding_regression.py",
+      "sha256": "a3b9dc951eadea6d3b3340b0428aebe23741389c9b4f04db8a128da9d7b9b3eb",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:tools/test_alpha21_editor_binding_regression.py",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha21_editor_binding_regression"
+      ]
+    },
+    {
+      "path": "tools/test_alpha22_language_authority_separation.py",
+      "sha256": "f00011d92eff84d09003225e6639c1bfa491ceb69791398d7174d4542d9f4994",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha22_language_authority_separation"
+      ]
+    },
+    {
+      "path": "tools/test_alpha23_corrected_editor_rebinding.py",
+      "sha256": "bbcc1dcc15ae21bab14cc944bbb6a82a8cc8569d1be65f01f93c1d1a1fd0bd6a",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json"
+      ]
+    },
+    {
+      "path": "tools/test_alpha24_information_first_authoring.py",
+      "sha256": "eb61939be7d83a4fce6cfa4d79c0837b334884a5918ed411ffbe8178c6672a8e",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json"
+      ]
+    },
+    {
+      "path": "tools/test_alpha25_self_hosted_information_model.py",
+      "sha256": "1489fe6d441864c5cad33baed698c190b26425a4ac8e2a88db996ea7d0d70f13",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha25_self_hosted_information_model"
+      ]
+    },
+    {
+      "path": "tools/test_alpha26_authority_simulation_analyst_minimization.py",
+      "sha256": "18c764615f030eec47f097621c55ae2043ab742147d459ecc8c5eaa929c0a945",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha26_authority_simulation_analyst_minimization"
+      ]
+    },
+    {
+      "path": "tools/test_alpha27_simulation_kit_012_upgrade.py",
+      "sha256": "eefd5467142edfbd73e44d77246ca46924757afc4afbffc91b984ca9a21dd6ad",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha27_simulation_kit_012_upgrade"
+      ]
+    },
+    {
+      "path": "tools/test_alpha28_simulation_kit_013_upgrade.py",
+      "sha256": "9f34c98fd0e6de932a731c7ff14ed2fb862cbcec9c682a02d520fe036a012ff3",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha28_simulation_kit_013_upgrade"
+      ]
+    },
+    {
+      "path": "tools/test_alpha29_deterministic_contract_route_hardening.py",
+      "sha256": "06b2ffa0aa7af0963a52ddffba4d0cb471fa80805e78a01090d9e5058f5c4610",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha29_deterministic_contract_route_hardening"
+      ]
+    },
+    {
+      "path": "tools/test_alpha30_self_data_flow_publication.py",
+      "sha256": "3e8565f76c2a8e3cc0a45e3f9ab887be02bf062820ae49c1f0808781604afbf3",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha30_self_data_flow_publication"
+      ]
+    },
+    {
+      "path": "tools/test_alpha31_incremental_verification.py",
+      "sha256": "e850d1f68fd97b51bab0c06a084554cf161e09ca211e195cc3639c631f34f0af",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha31_incremental_verification"
+      ]
+    },
+    {
+      "path": "tools/test_alpha36_autonomous_improvement_anticheat.py",
+      "sha256": "edaa527f5d7e3f06c6de261a8111ccc895efec533ed0155a38e0b6ed66466e63",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha36_autonomous_improvement_anticheat"
+      ]
+    },
+    {
+      "path": "tools/test_alpha37_quality_scoring.py",
+      "sha256": "d814c84f34dd40a5741f9f2df7b40533324dc84e2d5b95d5c20b7a27912aab60",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha37_quality_scoring_stagnation"
+      ]
+    },
+    {
+      "path": "tools/test_alpha38_model_response_provenance.py",
+      "sha256": "07914064e8898e11855c9eec7cca382b07d5a2ba33b5c3c349bce7447d061702",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha38_model_response_provenance_anti_happy_path"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_adaptive_artifact_quality.py",
+      "sha256": "5333faa6101fd7e479ffa3969a83990b3031d7e13eb50c0688af94d906c409af",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha42_adaptive_artifact_quality"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_data_layer_architecture_detectors.py",
+      "sha256": "1eb2fbf7307de7866c9e87d28c0231b252bbf693bd0893a4fa42837c77ec711d",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha42_data_layer_architecture_detectors"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_graph_locality_incentives.py",
+      "sha256": "7e636dccfce3b64385d43c9c9fcc825c59fbada02fa15ac824be836e826061b6",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:tools/test_alpha42_graph_locality_incentives.py",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:graph_locality_incentives"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_incentive_registry.py",
+      "sha256": "4c56c5313853bd1696b8ea33b3c2336c2c1f1d2c6ddac1eaacf003cf853559c0",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_interactive_analyst_workflow.py",
+      "sha256": "6255e5f1349c61f43148b43720899b228f912f635dbddfbc9a9abbfad7a4fe8a",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha42_interactive_analyst_workflow"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_performance_ab_guard.py",
+      "sha256": "a0dc95fffc5514a47994a808a620fc08bb4b80d20a3a69e7ddc882c11b662c7e",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha42_performance_ab_guard"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_pseudo_live_optimization.py",
+      "sha256": "f3fdfdfce128d721ca0c9375a7dd7c06cbf7f93ffb3b7286161908476f57f033",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha42_pseudo_live_optimization"
+      ]
+    },
+    {
+      "path": "tools/test_alpha42_time_degradation_optimization.py",
+      "sha256": "e944f7c13b82b09dc91f380ffa47cf333c08234ee8cbaf0c3c10f5cf30d65b73",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha42_time_degradation_optimization"
+      ]
+    },
+    {
+      "path": "tools/test_alpha43_outputless_artifact_validation.py",
+      "sha256": "4556fc0df80867be78ca142988e276d6561fdac64e4da26ff1cef725a93ecbc2",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha43_outputless_artifact_validation"
+      ]
+    },
+    {
+      "path": "tools/test_alpha44_authoring_execution_watchdog.py",
+      "sha256": "2bf7388eaaaf2ab615732c67b7fc623f0c9109971e5ac1b19493c28ef12b0f7c",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha44_authoring_execution_watchdog"
+      ]
+    },
+    {
+      "path": "tools/test_alpha44_distribution_package_validator.py",
+      "sha256": "a26728245a752fab661c36633c2e86791098d2922f916d89842d9b17b6013307",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha44_distribution_package_validator"
+      ]
+    },
+    {
+      "path": "tools/test_alpha44_generated_playbook_semantic_execution.py",
+      "sha256": "2980cc302b7d9984b91571ee235d6e6cca2f7b7ad4044e2d9b17c6a96c51dc04",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha44_generated_playbook_semantic_execution"
+      ]
+    },
+    {
+      "path": "tools/test_alpha44_tool_result_debug_self_repair.py",
+      "sha256": "0dfdb560c1c2a7dc14716217919ab8df53e70489dad2b847af5a59ca23f8b6f4",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha44_tool_result_debug_self_repair"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_authoring_hardening_optimization_subprocesses.py",
+      "sha256": "d941f52f88a3efa5de3c1080309916c5a50c9cdafb709c50a74fd14eb24daf98",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_authoring_hardening_optimization_subprocesses"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_context_runtime_efficiency.py",
+      "sha256": "b1452de807155d26fd09413dfd4eb5cc80f2c4091612de69f4e6daf51c72358c",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_context_runtime_efficiency"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_deterministic_first_architecture.py",
+      "sha256": "16820c1c17ef184dd18876879783f458fa5275684d3b4f84384b533bdbea0760",
+      "reasons": [
+        "explicit_ref:source/deterministic-first-architecture-policy.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_deterministic_first_architecture"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_development_regression_governance.py",
+      "sha256": "031b446ae2f8dcf2097e732fe12f2365be9859fe03182aa23ad93bc3e5f22718",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_development_regression_governance"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_four_library_patterns.py",
+      "sha256": "ac905099ede6295dd3877ba85f3e93a5e3594dea3396473b6e207af2bcf37080",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_four_library_patterns"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_model_run_support_projection.py",
+      "sha256": "225fc22c92c6869aa33846e1bb550be832717ed77fc0c1030709f6024ef3a746",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_model_run_support_projection"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_observability_debug.py",
+      "sha256": "5a97064458a0ed6610bc5773d99d43910a9a4bc7c97ac40af1118f865d58ec96",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_observability_debug"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_packaging_continuity.py",
+      "sha256": "8a2bff3a3f8c6bef796288df4c565f7a709219be10563a44d866474ac1875414",
+      "reasons": [
+        "explicit_ref:verification/INVARIANT_REGISTER.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_packaging_continuity"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_quality_optimization_governance.py",
+      "sha256": "ff218182d23775c6f6a290e765d65e1119f948d93b9fc9f48e7aaf7b04858e69",
+      "reasons": [
+        "explicit_ref:source/design_rule_incentive_registry.v1.json",
+        "explicit_ref:source/optimization-history-ledger.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_quality_optimization_governance"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_runtime_actor_projection.py",
+      "sha256": "7cb3371da8781f239e1f91c96448fb94b75196a2ce2fd3e8b660b0658369dc01",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_runtime_actor_projection"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_three_profile_distribution.py",
+      "sha256": "bcc1c5501b173097eba46906ad74a1ef0388ec397ed7e0352728945bf3111479",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_three_profile_distribution"
+      ]
+    },
+    {
+      "path": "tools/test_alpha45_two_simple_library_patterns.py",
+      "sha256": "f3b6afce856b50621d76d5f73bb64da0ff0d80a27a41059b3fa1f70e70891b96",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha45_two_simple_library_patterns"
+      ]
+    },
+    {
+      "path": "tools/test_alpha46_execution_write_safety_validator_governance.py",
+      "sha256": "1b4b97af1f09ba58e9200600213c00ba8c58e843990413ca5f4d8dd573ed5904",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha46_execution_write_safety_validator_governance"
+      ]
+    },
+    {
+      "path": "tools/test_alpha46_simple_document_reconciliation_verification_v12.py",
+      "sha256": "db3cc20118943b5dc5a576d745f92443f1711bc5fa73962b6499dc58e9cc1bee",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha46_simple_document_reconciliation_verification_v12"
+      ]
+    },
+    {
+      "path": "tools/test_alpha46_simple_verified_document_code_implementation_v11.py",
+      "sha256": "9b573a63a8e41d32d299540c6acc67163a8ba0a10110d1746e0b126ac810f606",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:alpha46_simple_verified_document_code_implementation_v11"
+      ]
+    },
+    {
+      "path": "tools/test_analyst_context_and_optimization_calibration.py",
+      "sha256": "446bce0785fcb2ce4da10cb28ca9613718a1e22ce48fb49c2a568b50ea71df09",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:analyst_context_optimization_calibration"
+      ]
+    },
+    {
+      "path": "tools/test_data_first_pattern_projection_separation.py",
+      "sha256": "df3a05faf24cf706b683ea6e81647a6f7fdc568905e14835891bfdfd16e19ada",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:data_first_pattern_projection_separation"
+      ]
+    },
+    {
+      "path": "tools/test_data_first_reusable_pattern_library.py",
+      "sha256": "b516924001e6e25dd87067f237b544c07ed66faba96d292d65240951daa6c820",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:data_first_reusable_pattern_library"
+      ]
+    },
+    {
+      "path": "tools/test_data_layer_first_hard_architecture.py",
+      "sha256": "289ff0b35ad0b06d1b7cad70e7e8daf55d98657d9125dfaf61d346cff50e93ce",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:data_layer_first_hard_architecture"
+      ]
+    },
+    {
+      "path": "tools/test_default_debug_handoff_progress.py",
+      "sha256": "4f25503cf891c44ba0bf18d73b08518cbd8204c8d4bd8701df6840874c0764ca",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:default_debug_handoff_progress"
+      ]
+    },
+    {
+      "path": "tools/test_deterministic_first_execution_responsibility.py",
+      "sha256": "da4acad676e9eb89b785cc7f22f804079e6b53519d3103816257dde12161ccf1",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:deterministic_first_execution"
+      ]
+    },
+    {
+      "path": "tools/test_dual_distribution_package_behavior.py",
+      "sha256": "619378346e5bc6f4eb109939b424d203388a18560ceb0b548e90ede7bd8d0a2b",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:dual_distribution_package_behavior"
+      ]
+    },
+    {
+      "path": "tools/test_dual_distribution_package_contract.py",
+      "sha256": "0c22d8b5cead1f16102ddf83698d0028cb43b9740c4bc11d57ccaf267a0c0c1e",
+      "reasons": [
+        "dual_distribution_tooling",
+        "explicit_ref:tools/materialize_production_dependency_closure.py",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:dual_distribution_package_contract"
+      ]
+    },
+    {
+      "path": "tools/test_dynamic_multi_reference_comparative_evaluator.py",
+      "sha256": "8196dcdc7bd9b5ac119a685cf47e9e0be201cc23bdf6bbe691f84bdbcb664d3f",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:dynamic_multi_reference_comparative_evaluator"
+      ]
+    },
+    {
+      "path": "tools/test_editor_registry_root_resolution.py",
+      "sha256": "c8c13eddc7a2cfbc24ed64e07a13c73b47126574bde72bb397b6a4bcad176b51",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:editor_registry_root_resolution"
+      ]
+    },
+    {
+      "path": "tools/test_editor_visible_architecture_validation.py",
+      "sha256": "4f239270915a21e9b426b03a34bf3347f2c0e626ae74017358945f563db2c9d5",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:editor_visible_architecture"
+      ]
+    },
+    {
+      "path": "tools/test_fast_full_dependency_aware_validation.py",
+      "sha256": "770c5f40fd6864fd0abc6ae0a71c839f21070a662b707b9fc2d728c4b6201f12",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:fast_full_dependency_aware_validation"
+      ]
+    },
+    {
+      "path": "tools/test_generated_outputs_safe_delivery.py",
+      "sha256": "f770933e5b1bb1e2a451d9dc1321a32b0f66dade1ebd15f440956f7e81ffea5b",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:generated_outputs_safe_delivery"
+      ]
+    },
+    {
+      "path": "tools/test_generated_playbook_production_package_contract.py",
+      "sha256": "2bb18cf53d88e9102ee43c1899c2401f1019ea8cfcea913867951d4763a4c3ff",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:generated_playbook_production_package_contract"
+      ]
+    },
+    {
+      "path": "tools/test_hybrid_reference_fidelity_feedback.py",
+      "sha256": "980af4a469eb0beb182374b6732dd3240040bb7c5cb77d17510a2294b11c9002",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:hybrid_reference_fidelity_feedback"
+      ]
+    },
+    {
+      "path": "tools/test_information_preservation_monotonic_evidence.py",
+      "sha256": "ac8afbbae75aef51c97592fe6e7722b51cc6ebd18be2ac7c8ddac80c359d04c8",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:information_preservation_monotonic_evidence"
+      ]
+    },
+    {
+      "path": "tools/test_logic_coherence.py",
+      "sha256": "fd5f99f07c82c4a18e6ba559ccef739b53f190971751e21946f7dd7b752c5a8a",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:logic_coherence"
+      ]
+    },
+    {
+      "path": "tools/test_pattern_library_self_dogfood.py",
+      "sha256": "8953b86f355e182dcdc1483072f76fcf7b60d1bcd2bd3ff6a3f6cb5b4b6ff192",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:pattern_library_self_dogfood"
+      ]
+    },
+    {
+      "path": "tools/test_pattern_reuse_reward_and_open_question_penalty.py",
+      "sha256": "8c9baf441ea9c3ae0da75074e3ee6192285d9c2ae330e0ceaae7da9484fe91ac",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:pattern_reuse_reward_open_question"
+      ]
+    },
+    {
+      "path": "tools/test_pre_release_blockers.py",
+      "sha256": "1966556a3dc0427007b28bde6634b20d41d42dd36046c6bfdfb30d165d2163d8",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:pre_release_blockers"
+      ]
+    },
+    {
+      "path": "tools/test_quality_incentive_anti_gaming.py",
+      "sha256": "51898ced2231ff8482b6a9fd54799d34a510fd1aa074a48a118cd7fa1a19d8c8",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:quality_incentive_anti_gaming"
+      ]
+    },
+    {
+      "path": "tools/test_reusable_authoring_templates.py",
+      "sha256": "ae7c659b1dc5c4d639fe36d9a1b2c8ea48fecdeddbf4c743d5b5a1bae4dddd54",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:reusable_authoring_templates"
+      ]
+    },
+    {
+      "path": "tools/test_scoring_v3_development_acceptance.py",
+      "sha256": "4564c45ebb77dd633e41526f40769e8ce48ee8c572b60d0f386bd9964462364c",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:scoring_v3_development_acceptance"
+      ]
+    },
+    {
+      "path": "tools/test_simulation_kit_015_current.py",
+      "sha256": "8fac9bf97c34fd55ea4573bac2a2b7a0be8901e3796f455dd1bf40e8b11a7e78",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:simulation_kit_015_current"
+      ]
+    },
+    {
+      "path": "tools/validate_analyst_context.py",
+      "sha256": "898eb480c8718a6b6dc17e83ac6bb5d673336efd60789eac5613d014976e540a",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_analyst_context_and_optimization_calibration.py"
+      ]
+    },
+    {
+      "path": "tools/validate_approval_persistence.py",
+      "sha256": "3850351efb8fdc94613b80a64ead56aefcb5e9b9cc52951d04273430ad0e9f50",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:approval_persistence"
+      ]
+    },
+    {
+      "path": "tools/validate_artifact_archive_registry_completeness.py",
+      "sha256": "770cf2238ca011fff607674299088fb190bf7445ee93dd5a0e91fd6013c64678",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:tools/generate_verification_profile.py",
+        "explicit_ref:tools/test_alpha29_deterministic_contract_route_hardening.py",
+        "verification_profile:artifact_archive_registry_completeness"
+      ]
+    },
+    {
+      "path": "tools/validate_artifact_materialization_registry.py",
+      "sha256": "b4eca44dc963ea750908cc5cd3fd764af7306126c914b5b05579be946979176d",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/run_verification_profile.py",
+        "explicit_ref:tools/test_alpha14_staged_quality_and_materialization.py",
+        "explicit_ref:tools/test_alpha15_explicit_tools_templates_outputs.py",
+        "explicit_ref:tools/validate_revision_contract_alignment.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_ARTIFACTS"
+      ]
+    },
+    {
+      "path": "tools/validate_authoring_information_model.py",
+      "sha256": "57afcf1bc719b93726adc2b2b570fb5cf33ae2abfb12e229978bab27f3e49d03",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/generate_verification_profile.py",
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/publish_authoring_data_flow.py",
+        "explicit_ref:tools/test_alpha24_information_first_authoring.py",
+        "explicit_ref:tools/test_alpha25_self_hosted_information_model.py",
+        "explicit_ref:tools/validate_revision_contract_alignment.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_VERIFY_DATA_LAYER_CANONICAL",
+        "responsibility:N_VERIFY_INFORMATION_MODEL",
+        "verification_profile:authoring_information_model",
+        "verification_profile:vibe_self_authoring_information_model"
+      ]
+    },
+    {
+      "path": "tools/validate_behavioral_scenario_coverage.py",
+      "sha256": "fa273296ac6b383b67258becada27b43d6bd7601af2f43d520f0227e13a6f7e1",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:behavioral_scenario_coverage"
+      ]
+    },
+    {
+      "path": "tools/validate_constructive_correctness.py",
+      "sha256": "93247edac681328ba155160fbe7f20f0788580676a396bb0dbc4ac61dde1429b",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:constructive_correctness"
+      ]
+    },
+    {
+      "path": "tools/validate_context_runtime_efficiency.py",
+      "sha256": "77b12888b79fa6ab98b57fbd32f1eb523a66f9b93cd30a87c853c03c3c28ea6e",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_context_runtime_efficiency.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PO_CONTEXT_RUNTIME_AUDIT"
+      ]
+    },
+    {
+      "path": "tools/validate_data_layer_first_architecture.py",
+      "sha256": "20be62de709021178a9488838be1754a86458a54140ca854dbe281b48efaba92",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_data_layer_first_hard_architecture.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_DATA_LAYER_CANONICAL"
+      ]
+    },
+    {
+      "path": "tools/validate_data_layer_pattern_instances.py",
+      "sha256": "e20bd324887b76bbf013c73db2f904fe7f8c139584b24103a17da265055c9e13",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_VERIFY_PATTERN_DATA_LAYER_INSTANCE",
+        "responsibility:N_VERIFY_PATTERN_DATA_LAYER_MERGE",
+        "verification_profile:pattern_data_layer_merge_validation"
+      ]
+    },
+    {
+      "path": "tools/validate_default_debug_handoff_progress.py",
+      "sha256": "4b7c8d97d9715336d2605e602e463347d2cd55aba40f593552090540b105b3a4",
+      "reasons": [
+        "explicit_ref:tools/test_default_debug_handoff_progress.py"
+      ]
+    },
+    {
+      "path": "tools/validate_defect_ownership.py",
+      "sha256": "26df4b619e2e2457ad70a00560a53ff5ccaefbc9514b5a91f55003ca2521b579",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:defect_ownership"
+      ]
+    },
+    {
+      "path": "tools/validate_deterministic_contract_completeness.py",
+      "sha256": "31e63721effc58d0686c97cf232138484a3408541ce24b01d8ff2d92105a0a35",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:tools/generate_verification_profile.py",
+        "explicit_ref:tools/test_alpha29_deterministic_contract_route_hardening.py",
+        "verification_profile:deterministic_contract_completeness"
+      ]
+    },
+    {
+      "path": "tools/validate_deterministic_first_architecture.py",
+      "sha256": "4567fc469e6ab02af296fa5e40acab0243afc2cfbb360e7dad860d4420d4532e",
+      "reasons": [
+        "explicit_ref:source/deterministic-first-architecture-policy.json",
+        "explicit_ref:tools/test_alpha45_deterministic_first_architecture.py",
+        "explicit_ref:verification/INVARIANT_REGISTER.json"
+      ]
+    },
+    {
+      "path": "tools/validate_deterministic_first_execution.py",
+      "sha256": "9917769b6073c609c3737ca71f471e80c1374a51f80be8a529f8055b40725c40",
+      "reasons": [
+        "explicit_ref:source/deterministic-first-execution-policy.json",
+        "explicit_ref:tools/test_deterministic_first_execution_responsibility.py"
+      ]
+    },
+    {
+      "path": "tools/validate_development_regression_governance.py",
+      "sha256": "de2a282abfecfdce69c0a52bcc2019d21bcee10f4dd3f456c3a5947cd4422ec2",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:tools/test_alpha45_development_regression_governance.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_DV_POSTCHANGE_REGRESSION_AUDIT"
+      ]
+    },
+    {
+      "path": "tools/validate_distribution_package.py",
+      "sha256": "8e78ff48456eed04299cc021bd3ad8feceb5fe0533f1823e8b12ddf56ea82ca7",
+      "reasons": [
+        "dual_distribution_tooling",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/audit_packaging_continuity.py",
+        "explicit_ref:tools/materialize_production_dependency_closure.py",
+        "explicit_ref:tools/test_alpha44_distribution_package_validator.py",
+        "explicit_ref:tools/test_alpha45_three_profile_distribution.py",
+        "explicit_ref:tools/test_dual_distribution_package_behavior.py",
+        "explicit_ref:tools/test_dual_distribution_package_contract.py",
+        "explicit_ref:verification/ARTIFACT_MATERIALIZATION_REGISTRY.json"
+      ]
+    },
+    {
+      "path": "tools/validate_dual_playbook_distribution.py",
+      "sha256": "69df40ebab896477e30d10bd8a124d58755f4cb03e84e2aba85e618ce47b1bb0",
+      "reasons": [
+        "dual_distribution_tooling",
+        "explicit_ref:tools/materialize_production_dependency_closure.py"
+      ]
+    },
+    {
+      "path": "tools/validate_editor_visible_architecture.py",
+      "sha256": "ae91f96c4545a4cbaaa8304b428a0b0c1281ead7cb8fcd8b9bb7ba19c767eaa8",
+      "reasons": [
+        "explicit_ref:tools/test_editor_visible_architecture_validation.py"
+      ]
+    },
+    {
+      "path": "tools/validate_entry_docs_revision.py",
+      "sha256": "cbc71133c8a9aee3fb72b585671aa8f603025bd0d9a8753c34305c52874f926f",
+      "reasons": [
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:entry_docs_revision"
+      ]
+    },
+    {
+      "path": "tools/validate_evaluator_reference_bundle.py",
+      "sha256": "2c0165d57a3757e9f83bd32e1dd226b3056fd58be32c06958dc4c7f4383145b4",
+      "reasons": [
+        "explicit_ref:source/evaluator-reference-input-bundle-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_pre_release_blockers.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_EVALUATOR_REFERENCE_BUNDLE"
+      ]
+    },
+    {
+      "path": "tools/validate_exact_production_package_roundtrip.py",
+      "sha256": "85a249178a7d26cb9667778e68b57d424ce29a8893c2c6acde2a296108bd57f2",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/validate_exact_production_package_roundtrip.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE"
+      ]
+    },
+    {
+      "path": "tools/validate_execution_write_safety_validator_governance.py",
+      "sha256": "24d7374740a2c99c47aadda26e2cda6789db9833b0c7230b608e1c7545567ada",
+      "reasons": [
+        "explicit_ref:tools/test_alpha46_execution_write_safety_validator_governance.py"
+      ]
+    },
+    {
+      "path": "tools/validate_fixture_contract_closure.py",
+      "sha256": "9b630a104b0335de798fb7872751a058eb2ef8a1121b400354755d37d1047274",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:fixture_contract_closure"
+      ]
+    },
+    {
+      "path": "tools/validate_information_preservation.py",
+      "sha256": "1ff23c907b6f72f1c248e987dcb5070ba96eb470699a329035aa174df1f33c3d",
+      "reasons": [
+        "explicit_ref:source/information-preservation-policy.json",
+        "explicit_ref:tools/test_information_preservation_monotonic_evidence.py"
+      ]
+    },
+    {
+      "path": "tools/validate_information_projection.py",
+      "sha256": "58cbaa350bdaa1372813b000aceba5bec584e88b82cc8b62ef4e9210ec7a355e",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/generate_verification_profile.py",
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/publish_authoring_data_flow.py",
+        "explicit_ref:tools/test_alpha24_information_first_authoring.py",
+        "explicit_ref:tools/test_alpha25_self_hosted_information_model.py",
+        "explicit_ref:tools/validate_revision_contract_alignment.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_VERIFY_INFORMATION_PROJECTION",
+        "verification_profile:information_projection",
+        "verification_profile:vibe_self_information_projection"
+      ]
+    },
+    {
+      "path": "tools/validate_local_persistence_gates.py",
+      "sha256": "0ca1ce3b5ab3687df08615121ea0bcbbedbe22a203e1b7dfb01c6dd52f3b0eea",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:local_persistence_gates"
+      ]
+    },
+    {
+      "path": "tools/validate_model_response_provenance.py",
+      "sha256": "3d0e21d72fcac8f762f381d2efa94b7b89176664e04a0aba272192041e6d69db",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha38_model_response_provenance.py",
+        "explicit_ref:tools/test_alpha42_pseudo_live_optimization.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_VERIFY_RESPONSE_PROVENANCE"
+      ]
+    },
+    {
+      "path": "tools/validate_observability_debug.py",
+      "sha256": "eeeb481bc9e4c6372159cc5e38a673dcacf681222718d9514aa7dd9c376c6056",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_alpha45_observability_debug.py"
+      ]
+    },
+    {
+      "path": "tools/validate_optimization_history_ledger.py",
+      "sha256": "5141612951ae2ba4dd3a15066c036cd2f1a0da92d7157f49a4108f4b6ea17fb5",
+      "reasons": [
+        "explicit_ref:source/quality-optimization-governance-policy.json",
+        "explicit_ref:tools/test_alpha45_quality_optimization_governance.py"
+      ]
+    },
+    {
+      "path": "tools/validate_optimization_timing_evidence.py",
+      "sha256": "75343cd2ef41a3a71c4e951e67fa60bec17adca1bf6a25c6ace7d669a1680719",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_VALIDATE_PERFORMANCE_EVIDENCE"
+      ]
+    },
+    {
+      "path": "tools/validate_pattern_graph_realization.py",
+      "sha256": "f45abc178bb17a22f7e5c6a149be09e44237d64a92bd441baa6864390302aecc",
+      "reasons": [
+        "explicit_ref:authoring/pattern_reuse_evaluation.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:source/reusable-data-execution-pattern-policy.json",
+        "explicit_ref:tools/validate_pattern_graph_realization.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "python_import:tools/evaluate_pattern_reuse_opportunities.py",
+        "responsibility:N_VERIFY_PATTERN_GRAPH_REALIZATION",
+        "verification_profile:pattern_graph_realization_contract"
+      ]
+    },
+    {
+      "path": "tools/validate_performance_ab.py",
+      "sha256": "bc56c14e63b1514866bb693b172e14b5bac69293385c112ccf2eaa79fa82434f",
+      "reasons": [
+        "explicit_ref:tools/test_alpha42_performance_ab_guard.py"
+      ]
+    },
+    {
+      "path": "tools/validate_production_dependency_closure.py",
+      "sha256": "11f26e9ae694367dfd1b412c04189ef0bd5f6c4ad78cc98f4b53666de10ef174",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "responsibility:N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE",
+        "verification_profile:production_dependency_closure"
+      ]
+    },
+    {
+      "path": "tools/validate_production_playbook_package.py",
+      "sha256": "4fc43fc4fcf966c4ef640f3002153d8069c5768f2cdb1112095686e96b819ce7",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/test_generated_outputs_safe_delivery.py",
+        "explicit_ref:tools/test_generated_playbook_production_package_contract.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE"
+      ]
+    },
+    {
+      "path": "tools/validate_proposal_canonical_separation.py",
+      "sha256": "ec32a5de3a946ff6b7a085c7aadfcb14e15b807444acc8adcf5f85550d9518ac",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:proposal_canonical_separation"
+      ]
+    },
+    {
+      "path": "tools/validate_quality_optimization_governance.py",
+      "sha256": "77ac6f2457ed8a7f8b3e7d7f17d9c94b0271c71b619ad5488a8079fc92ebd361",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_quality_optimization_governance.py"
+      ]
+    },
+    {
+      "path": "tools/validate_recovery_locality.py",
+      "sha256": "6b3b81608a5bfe2dc7a073994b85aae9d1db5dfb0c99769eafa5bff68b006514",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:recovery_locality"
+      ]
+    },
+    {
+      "path": "tools/validate_reusable_authoring_templates.py",
+      "sha256": "ed1fd4f7e98f7350db9a53b943590cdb4aa96e15a1929508c84e5c5e770adf97",
+      "reasons": [
+        "explicit_ref:source/reusable-authoring-template-policy.json",
+        "explicit_ref:tools/validate_revision_contract_alignment.py"
+      ]
+    },
+    {
+      "path": "tools/validate_reusable_pattern_compilation_contracts.py",
+      "sha256": "456c78cf6316dcaa95fdb02eed8c06d7e4b064c071466ed2e0b75caf54efb014",
+      "reasons": [
+        "explicit_ref:tools/test_alpha45_four_library_patterns.py"
+      ]
+    },
+    {
+      "path": "tools/validate_review_bundle_design.py",
+      "sha256": "f9b8ee1ffc4b3a52d15c3b858156b5768dc7a6d4ffd8c7cdd54818c8be64918e",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:review_bundle_design"
+      ]
+    },
+    {
+      "path": "tools/validate_revision_contract_alignment.py",
+      "sha256": "f4184656cbd3aedee436d2d8fa4b0db03918ca82d23f0c05bb495150291faf8b",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_AI_VALIDATE_REVISION_CONTRACTS"
+      ]
+    },
+    {
+      "path": "tools/validate_runtime_gate_evidence.py",
+      "sha256": "0892db592bc91c0736d9daa27cf7777dcc5bb2a86b4e124b75ae5eafcf3d8f62",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:runtime_gate_evidence"
+      ]
+    },
+    {
+      "path": "tools/validate_self_data_flow_publication.py",
+      "sha256": "9fefe6bee15b6709a826728317f17a1c14f28d7bfc3c109ba181bf97281023fc",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:README.md",
+        "explicit_ref:source/vibe-self-data-flow-publication-policy.json",
+        "explicit_ref:tools/publish_authoring_data_flow.py",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:vibe_self_data_flow_publication"
+      ]
+    },
+    {
+      "path": "tools/validate_semantic_dependency_inputs.py",
+      "sha256": "d6908f4a0d921ea62e26464e86ed35a3883e9d015253995b2df1fd8eb25f6c29",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:semantic_dependency_inputs"
+      ]
+    },
+    {
+      "path": "tools/validate_simulation_evidence.py",
+      "sha256": "edb4db58c9e83970ff19f4b7dde3d6395422b4b5820f3c3447272a94242d57f4",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:simulation_evidence"
+      ]
+    },
+    {
+      "path": "tools/validate_state_phase_ordering.py",
+      "sha256": "357ea24a4e30a5115b60bae66a4a3f5b2ac214be4166402339cdd86919d29e89",
+      "reasons": [
+        "explicit_ref:tools/generate_verification_profile.py",
+        "verification_profile:state_phase_ordering"
+      ]
+    },
+    {
+      "path": "tools/validate_verification_profile.py",
+      "sha256": "b7ca0567efaa0d68b9c47f3be748d7b5333bd08e2ee800caac4b9369937a6f2e",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:tools/run_verification_profile.py"
+      ]
+    },
+    {
+      "path": "tools/verification_package_fingerprint.py",
+      "sha256": "e36a6f0b348f25d03027c3b8ae6f75f98a5c139637cb80012048d9179461edb9",
+      "reasons": [
+        "explicit_ref:tools/test_alpha31_incremental_verification.py",
+        "python_import:tools/aggregate_candidate_verification.py",
+        "python_import:tools/prepare_candidate_verification.py",
+        "python_import:tools/run_candidate_verification_shard.py"
+      ]
+    },
+    {
+      "path": "tools/verify_delivery_source_uniqueness.py",
+      "sha256": "d19e6dbcb29284256b81b7e2c899a9bdad85e7d5044eb50f0c512f4e71fcc864",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_STRUCTURE"
+      ]
+    },
+    {
+      "path": "tools/verify_editor_runtime_graph_compatibility.py",
+      "sha256": "4f8aa01750311d8e0d396fa5a8f67e9db56e14d2b9b58a5d93fc710c652d4c61",
+      "reasons": [
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_STRUCTURE"
+      ]
+    },
+    {
+      "path": "tools/verify_execution_responsibility_map.py",
+      "sha256": "df245f24bb14830c493280b21f5ab20a148a1379b1ba53d336cb042ae8e55dad",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/materialize_generated_playbook_verification.py",
+        "explicit_ref:tools/run_verification_profile.py",
+        "explicit_ref:tools/test_alpha13_generated_execution_inheritance.py",
+        "explicit_ref:tools/test_alpha15_explicit_tools_templates_outputs.py",
+        "explicit_ref:tools/test_logic_coherence.py",
+        "explicit_ref:tools/validate_revision_contract_alignment.py",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_ARTIFACTS"
+      ]
+    },
+    {
+      "path": "tools/verify_generated_playbook_contract.py",
+      "sha256": "0f123c29b7371d6b8df8d175cbb25d151c179c785b87d77e98cc8008ae466eb3",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:tools/run_verification_profile.py",
+        "explicit_ref:tools/test_alpha20_generated_playbook_regression_layer.py"
+      ]
+    },
+    {
+      "path": "tools/verify_playbook_laws.py",
+      "sha256": "20fcca57286d3c3c34abd5df3aa4ae4df50d60ea093202a3171922523fa8d086",
+      "reasons": [
+        "explicit_ref:AUTHORING_TOOLING.md",
+        "explicit_ref:source/modules/30_vibe_architecture.ordo.module.yaml",
+        "explicit_ref:source/program.ordo.yaml",
+        "explicit_ref:verification/EXECUTION_RESPONSIBILITY_MAP.json",
+        "responsibility:N_VERIFY_STRUCTURE"
+      ]
+    },
+    {
+      "path": "tools/verify_revision_evidence_consistency.py",
+      "sha256": "f030bc3e28c55d1c310aa358887ec30ee95491c2a638878cee81c5100a45cb57",
+      "reasons": [
+        "explicit_ref:source/generated-playbook-regression-policy.json",
+        "explicit_ref:tools/test_alpha20_generated_playbook_regression_layer.py"
+      ]
+    },
+    {
+      "path": "tools/verify_simulation_kit_dependency.py",
+      "sha256": "f43b1fa8145ba6e3e6c2a42a88e20e0f96d871e6846578ea58fcc667cebc5206",
+      "reasons": [
+        "explicit_ref:tools/test_alpha27_simulation_kit_012_upgrade.py",
+        "explicit_ref:verification/PROFILE_EXTENSIONS.json",
+        "verification_profile:simulation_kit_dependency_integrity"
+      ]
+    },
+    {
+      "path": "verification/ARTIFACT_MATERIALIZATION_REGISTRY.json",
+      "sha256": "a4236f363dc0d125e79fcaaacfca2a8604b9ca700b730847c1fec89921524a51",
+      "reasons": [
+        "responsibility:N_OUT_GENERATED_PACKAGE_HANDOFF",
+        "responsibility:N_OUT_GENERATED_PACKAGE_MATERIALIZE",
+        "responsibility:N_PI_BUSINESS_VIEW_DOCUMENT_MATERIALIZE",
+        "responsibility:N_PI_BUSINESS_VIEW_DOCUMENT_RENDERED_ARTIFACT_VALIDATE",
+        "responsibility:N_VERIFY_ARTIFACTS"
+      ]
+    },
+    {
+      "path": "verification/PROFILE_EXTENSIONS.json",
+      "sha256": "1e1f73ac2e3836778ebf93e52bb845e00188fa93e55f5919450829639321c176",
+      "reasons": [
+        "responsibility:N_VERIFY_REGRESSION"
+      ]
+    },
+    {
+      "path": "verification/validate_alpha46_p2_governance.py",
+      "sha256": "ee8a1d531319df27862792aa0962a9c0a6fba60e2f7b7a6e71c47fc06e8ffc75",
+      "reasons": [
+        "verification_profile:alpha46_p2_lifecycle_release_family_governance"
+      ]
+    }
+  ]
+}

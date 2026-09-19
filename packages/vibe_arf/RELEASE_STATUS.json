@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release": "0.1.2",
+  "release": "0.1.3",
   "status": "ACCEPTED_STABLE_RELEASE",
   "previous_stable_release": "0.1.0-alpha.45",
   "qualified_candidate": "0.1.0-alpha.46 Change 4",
@@ -28,5 +28,5 @@
     "MODEL_RUN"
   ],
   "release_family_manifest": "RELEASE_FAMILY_MANIFEST.json",
-  "canonical_source_identity_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+  "canonical_source_identity_sha256": "ce8fdb4b02dc83efca74db06d322c6515480f0e35880e9486c41dbff845296b6"
 }

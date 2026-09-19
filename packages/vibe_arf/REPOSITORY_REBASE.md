@@ -1,6 +1,6 @@
 # Vibe ARF repository rebase
 
-This package is the repository-native Vibe ARF source for release `0.1.2`.
+This package is the repository-native Vibe ARF source for release `0.1.3`.
 
 The upstream `0.1.1` archive was an autonomous snapshot. Its embedded Ordo
 language and CLI are intentionally not versioned here: they would become a

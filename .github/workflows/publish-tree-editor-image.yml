@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    tags:
+      - "ordo-tree-editor-v*"
     paths:
       - ".dockerignore"
       - "docker-compose.tree-editor.yml"

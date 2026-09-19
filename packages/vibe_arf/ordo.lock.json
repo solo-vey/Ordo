@@ -4,7 +4,7 @@
   "generated_at": "2026-08-18T14:17:18.955474+00:00",
   "package": {
     "name": "ordo.vibe_arf_factory",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "ordo_version": "0.12",
     "root": "."
   },

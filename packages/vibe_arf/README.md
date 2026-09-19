@@ -1,6 +1,6 @@
-# Vibe ARF 0.1.2 — Three-Profile Distribution + Standard Hardening/Optimization Subprocesses
+# Vibe ARF 0.1.3 — Three-Profile Distribution + Current Ordo Runtime
 
-Status: `STABLE_RELEASE_0.1.2`.
+Status: `STABLE_RELEASE_0.1.3`.
 
 ## Semantic authority
 Canonical Ordo under `canonical_support/language/` is the sole language/runtime semantic source of truth. Vibe authoring models, Auto Answers, Simulation Kit and Editor are design/test layers or runtime adapters; none may redefine valid Ordo.

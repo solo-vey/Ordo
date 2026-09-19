@@ -116,7 +116,11 @@
         "START_HERE_CLI_RUN.md",
         "START_HERE_MODEL_MODE.md",
         "START_PROMPT_CLI_RUN.md",
-        "START_PROMPT_MODEL_MODE.md"
+        "START_PROMPT_MODEL_MODE.md",
+        "DEPENDENCIES.md",
+        "REPOSITORY_REBASE.md",
+        "VERIFICATION_PROFILES.md",
+        "VIBE_ARF_VERSION"
       ]
     },
     {

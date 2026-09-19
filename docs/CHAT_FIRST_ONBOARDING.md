@@ -4,9 +4,9 @@ Chat-first is the primary creation and learning route for Ordo. A language model
 
 ## Canonical Vibe ARF package
 
-- [Download Vibe ARF 0.1.2 MODEL_RUN](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/VIBE_ARF_0.1.2_MODEL_RUN.zip)
-- [Vibe ARF release and profiles](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.2)
-- [Download SHA-256 manifest](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.2/SHA256SUMS.txt)
+- [Download Vibe ARF 0.1.3 MODEL_RUN](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.3/VIBE_ARF_0.1.3_MODEL_RUN.zip)
+- [Vibe ARF release and profiles](https://github.com/solo-vey/Ordo/releases/tag/vibe-arf-v0.1.3)
+- [Download SHA-256 manifest](https://github.com/solo-vey/Ordo/releases/download/vibe-arf-v0.1.3/SHA256SUMS.txt)
 - [`Vibe ARF source`](../packages/vibe_arf/)
 - [`five-step quickstart`](QUICKSTART.md)
 

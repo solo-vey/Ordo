@@ -1,0 +1,5210 @@
+schema_version: '1.0'
+catalog_id: vibe_arf_self_variable_catalog
+revision: 0.1.3
+status: generated_projection
+purpose: Published mini-passports for Vibe self-hosted authoring information objects. Generated from authoring/information_object_catalog.yaml.
+state_model:
+  value_state:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  validation_state:
+  - draft
+  - validated
+  - approved
+  - stale
+  rule: value_state and validation_state are independent; canonical upstream remains authoring/information_object_catalog.yaml.
+variables:
+- id: I_RAW_USER_INTENT
+  label: I Raw User Intent
+  definition_status: canonical_authoring_object
+  section: G_INPUT
+  data_type: string
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - human_input
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: false
+    may_be_analyst_provided: true
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INPUT
+  source_information_kind: scalar
+  source_authoring_object:
+    id: I_RAW_USER_INTENT
+    kind: scalar
+    group_id: G_INPUT
+    value_contract:
+      type: string
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+      semantic_value_kind: literal_text
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - human_input
+    provenance_required: true
+    consumers: []
+- id: I_SOURCE_MATERIALS
+  label: I Source Materials
+  definition_status: canonical_authoring_object
+  section: G_INPUT
+  data_type: array
+  cardinality: one
+  nullable: true
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - human_input
+  - source_material
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: true
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INPUT
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_SOURCE_MATERIALS
+    kind: structured
+    group_id: G_INPUT
+    value_contract:
+      type: array
+      cardinality: one
+      required: false
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - human_input
+    - source_material
+    provenance_required: true
+    consumers: []
+- id: I_DESIRED_ARTIFACT_REFS
+  label: I Desired Artifact Refs
+  definition_status: canonical_authoring_object
+  section: G_INPUT
+  data_type: array
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - human_input
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: true
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INPUT
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_DESIRED_ARTIFACT_REFS
+    kind: structured
+    group_id: G_INPUT
+    value_contract:
+      type: array
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+      semantic_value_kind: opaque
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - human_input
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_SOURCE_ASSIMILATION
+  label: I Source Assimilation
+  definition_status: canonical_authoring_object
+  section: G_UNDERSTANDING
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  - source_material
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_UNDERSTANDING
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_SOURCE_ASSIMILATION
+    kind: evidence
+    group_id: G_UNDERSTANDING
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    - source_material
+    provenance_required: true
+    consumers: []
+- id: I_EPISTEMIC_RECORDS
+  label: I Epistemic Records
+  definition_status: canonical_authoring_object
+  section: G_UNDERSTANDING
+  data_type: array
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_UNDERSTANDING
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_EPISTEMIC_RECORDS
+    kind: structured
+    group_id: G_UNDERSTANDING
+    value_contract:
+      type: array
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_DOMAIN_ACTOR_MODEL
+  label: I Domain Actor Model
+  definition_status: canonical_authoring_object
+  section: G_UNDERSTANDING
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_UNDERSTANDING
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_DOMAIN_ACTOR_MODEL
+    kind: structured
+    group_id: G_UNDERSTANDING
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_ARTIFACT_SURFACE
+  label: I Artifact Surface
+  definition_status: canonical_authoring_object
+  section: G_UNDERSTANDING
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_UNDERSTANDING
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_ARTIFACT_SURFACE
+    kind: structured
+    group_id: G_UNDERSTANDING
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_RULE_AUTHORITY_MODEL
+  label: I Rule Authority Model
+  definition_status: canonical_authoring_object
+  section: G_UNDERSTANDING
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_UNDERSTANDING
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_RULE_AUTHORITY_MODEL
+    kind: structured
+    group_id: G_UNDERSTANDING
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_INFORMATION_OBJECT_CATALOG
+  label: I Information Object Catalog
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_INFORMATION_OBJECT_CATALOG
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_INFORMATION_GROUP_CATALOG
+  label: I Information Group Catalog
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_INFORMATION_GROUP_CATALOG
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_INFORMATION_FLOW_GRAPH
+  label: I Information Flow Graph
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_INFORMATION_FLOW_GRAPH
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_INFORMATION_LIFECYCLE_AUTHORITY
+  label: I Information Lifecycle Authority
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_INFORMATION_LIFECYCLE_AUTHORITY
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_INTERACTION_PROJECTION
+  label: I Interaction Projection
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_INTERACTION_PROJECTION
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PROCESS_MODEL
+  label: I Process Model
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PROCESS_MODEL
+    kind: structured
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PARAMETER_LEDGER
+  label: I Parameter Ledger
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PARAMETER_LEDGER
+    kind: structured
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_HUMAN_DECISION_NEEDS
+  label: I Human Decision Needs
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: array
+  cardinality: one
+  nullable: true
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_HUMAN_DECISION_NEEDS
+    kind: structured
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: array
+      cardinality: one
+      required: false
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_BUSINESS_PROCESS_DESIGN_IR
+  label: I Business Process Design Ir
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_BUSINESS_PROCESS_DESIGN_IR
+    kind: structured
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_ARTIFACT_CONTRACT_REGISTRY
+  label: I Artifact Contract Registry
+  definition_status: canonical_authoring_object
+  section: G_ARTIFACTS
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_ARTIFACTS
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_ARTIFACT_CONTRACT_REGISTRY
+    kind: structured
+    group_id: G_ARTIFACTS
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_TRACEABILITY_GRAPH
+  label: I Traceability Graph
+  definition_status: canonical_authoring_object
+  section: G_ARTIFACTS
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_ARTIFACTS
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_TRACEABILITY_GRAPH
+    kind: structured
+    group_id: G_ARTIFACTS
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_ORDO_BUILD_IR
+  label: I Ordo Build Ir
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_ORDO_BUILD_IR
+    kind: structured
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_GENERATED_SOURCE_STATUS
+  label: I Generated Source Status
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: enum
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - artifact
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: derived
+  source_authoring_object:
+    id: I_GENERATED_SOURCE_STATUS
+    kind: derived
+    group_id: G_BUILD
+    value_contract:
+      type: enum
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - artifact
+    provenance_required: true
+    consumers: []
+- id: I_VERIFICATION_PROFILE
+  label: I Verification Profile
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - artifact
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_VERIFICATION_PROFILE
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - artifact
+    provenance_required: true
+    consumers: []
+- id: I_VERIFICATION_EVIDENCE
+  label: I Verification Evidence
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - artifact
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_VERIFICATION_EVIDENCE
+    kind: evidence
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - artifact
+    provenance_required: true
+    consumers: []
+- id: I_REVIEW_FINDINGS
+  label: I Review Findings
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: array
+  cardinality: one
+  nullable: true
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_REVIEW_FINDINGS
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: array
+      cardinality: one
+      required: false
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_REPAIR_REGRESSION_MEMORY
+  label: I Repair Regression Memory
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: true
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_REPAIR_REGRESSION_MEMORY
+    kind: evidence
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: false
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_CHANGE_IMPACT_PLAN
+  label: I Change Impact Plan
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: true
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_CHANGE_IMPACT_PLAN
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: false
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_BUSINESS_VIEW
+  label: I Business View
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  - artifact
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_BUSINESS_VIEW
+    kind: structured
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    - artifact
+    provenance_required: true
+    consumers: []
+- id: I_ACCEPTANCE_STATUS
+  label: I Acceptance Status
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: enum
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - human_input
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: true
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: decision
+  source_authoring_object:
+    id: I_ACCEPTANCE_STATUS
+    kind: decision
+    group_id: G_DELIVERY
+    value_contract:
+      type: enum
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - human_input
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PACKAGE_VALIDATION_STATUS
+  label: I Package Validation Status
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: enum
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - artifact
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: derived
+  source_authoring_object:
+    id: I_PACKAGE_VALIDATION_STATUS
+    kind: derived
+    group_id: G_DELIVERY
+    value_contract:
+      type: enum
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - artifact
+    provenance_required: true
+    consumers: []
+- id: I_DELIVERY_EVIDENCE
+  label: I Delivery Evidence
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - artifact
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_DELIVERY_EVIDENCE
+    kind: evidence
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - artifact
+    provenance_required: true
+    consumers: []
+- id: I_REVIEW_BUNDLE_CATALOG
+  label: I Review Bundle Catalog
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_REVIEW_BUNDLE_CATALOG
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PROPOSAL_CANONICALIZATION
+  label: I Proposal Canonicalization
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PROPOSAL_CANONICALIZATION
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_APPROVAL_LEDGER_CONTRACT
+  label: I Approval Ledger Contract
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_APPROVAL_LEDGER_CONTRACT
+    kind: structured
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_SIMULATION_CONTRACT
+  label: I Simulation Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_SIMULATION_CONTRACT
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_SIMULATION_FIXTURES
+  label: I Simulation Fixtures
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_SIMULATION_FIXTURES
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_SIMULATION_EVIDENCE
+  label: I Simulation Evidence
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_SIMULATION_EVIDENCE
+    kind: evidence
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_DEFECT_OWNERSHIP
+  label: I Defect Ownership
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_DEFECT_OWNERSHIP
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  label: I Reusable Authoring Template Kit
+  definition_status: canonical_authoring_object
+  section: G_ARTIFACTS
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_template_registry
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: false
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_ARTIFACTS
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_REUSABLE_AUTHORING_TEMPLATE_KIT
+    kind: structured
+    group_id: G_ARTIFACTS
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_template_registry
+    provenance_required: true
+    consumers: []
+- id: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  label: I Hybrid Reference Fidelity Feedback Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_EVALUATE_REVISION
+    - N_AI_DIAGNOSE
+- id: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  label: I Deterministic Execution Responsibility Contract
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_tool
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+    kind: structured
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_tool
+    - model_derivation
+    provenance_required: true
+    consumers:
+    - I_ORDO_BUILD_IR
+- id: I_INFORMATION_PRESERVATION_CONTRACT
+  label: I Information Preservation Contract
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_tool
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: false
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_INFORMATION_PRESERVATION_CONTRACT
+    kind: structured
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_tool
+    provenance_required: true
+    consumers:
+    - I_ORDO_BUILD_IR
+- id: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  label: I Dynamic Multi Reference Comparative Evaluation
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_DISCOVER_ARTIFACT_EVAL_PROFILE
+    - N_AI_SELECT_GOLDEN_REFERENCES
+    - N_AI_BUILD_REFERENCE_PROFILE
+    - N_AI_BUILD_DYNAMIC_COMPARATIVE_PROMPT
+    - N_AI_RUN_FRESH_COMPARATIVE_EVALUATOR
+    - N_AI_SANITIZE_EVALUATION_DEFECTS
+    - N_AI_EVALUATE_REVISION
+    - G_AI_REFERENCE_CONFLICTS_RESOLVED
+    - G_AI_FRESH_REFERENCE_FIDELITY
+- id: I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  label: I Editor Visible Architecture Contract
+  definition_status: canonical_authoring_object
+  section: G_ARTIFACTS
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_ARTIFACTS
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+    kind: structured
+    group_id: G_ARTIFACTS
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  label: I Fast Full Dependency Aware Validation Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_R_VERIFICATION_READINESS
+    - N_C_ROUTE_PLAN
+- id: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  label: I Default Debug Handoff Progress Contract
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+    kind: structured
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_VIBE_INTAKE
+    - N_PK_HANDOFF_PREPARE
+    - N_OUT_GENERATED_PACKAGE_HANDOFF
+- id: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  label: I Generated Playbook Production Package Contract
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+    kind: structured
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  label: I Analyst Context Preservation Contract
+  definition_status: canonical_authoring_object
+  section: G_INPUT
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - analyst_input
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INPUT
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+    kind: structured
+    group_id: G_INPUT
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - analyst_input
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_VIBE_INTAKE
+    - N_U_SOURCE_ASSIMILATION
+    - N_AI_SELECT_GOLDEN_REFERENCES
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+- id: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  label: I Optimization Loop Calibration Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_IMPROVEMENT_INIT
+    - N_AI_EVALUATE_REVISION
+    - N_AI_DECIDE
+    - N_AI_FINALIZE
+- id: I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  label: I Evaluator Reference Input Bundle Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - analyst_input
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+    kind: structured
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - analyst_input
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_BUILD_EVALUATOR_REFERENCE_BUNDLE
+    - N_VERIFY_EVALUATOR_REFERENCE_BUNDLE
+    - N_AI_RUN_FRESH_COMPARATIVE_EVALUATOR
+- id: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  label: I Production Dependency Closure Contract
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+    kind: contract
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  label: I Reusable Data Execution Pattern Library
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - package_canonical
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: false
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - package_canonical
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_INSTANCE_CATALOG
+  label: I Pattern Instance Catalog
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_INSTANCE_CATALOG
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_EXECUTION_PROJECTION
+  label: I Pattern Execution Projection
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_EXECUTION_PROJECTION
+    kind: structured
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  label: I Business View Materialization Status
+  definition_status: canonical_authoring_object
+  section: G_ARTIFACTS
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_ARTIFACTS
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+    kind: evidence
+    group_id: G_ARTIFACTS
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_BUSINESS_VIEW_RENDER_VALIDATION
+  label: I Business View Render Validation
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_BUSINESS_VIEW_RENDER_VALIDATION
+    kind: evidence
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_CAPABILITY_REQUIREMENT_CATALOG
+  label: I Capability Requirement Catalog
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_CAPABILITY_REQUIREMENT_CATALOG
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_APPLICABILITY_RESULT
+  label: I Pattern Applicability Result
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_APPLICABILITY_RESULT
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_FIT_RESOLUTION
+  label: I Pattern Fit Resolution
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - model_derivation
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_FIT_RESOLUTION
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - model_derivation
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_DATA_LAYER_EXPANSION
+  label: I Pattern Data Layer Expansion
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_DATA_LAYER_EXPANSION
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  label: I Pattern Selection Input Snapshot
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+    kind: structured
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_REUSE_SCORING_CONTRACT
+  label: I Pattern Reuse Scoring Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - package_canonical
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: false
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_REUSE_SCORING_CONTRACT
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - package_canonical
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_REUSE_EVALUATION
+  label: I Pattern Reuse Evaluation
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_REUSE_EVALUATION
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  label: I Pattern Graph Realization Contract
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - package_canonical
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: false
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+    kind: structured
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - package_canonical
+    provenance_required: true
+    consumers: []
+- id: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  label: I Pattern Graph Realization Evidence
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: evidence
+  source_authoring_object:
+    id: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+    kind: evidence
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - deterministic_derivation
+    provenance_required: true
+    consumers: []
+- id: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  label: I Optimization Runtime Efficiency Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_IMPROVEMENT_INIT
+    - N_AI_RUN_REVISION
+    - N_AI_DIAGNOSE
+    - N_AI_DECIDE
+- id: I_OPTIMIZATION_TIMING_EVIDENCE
+  label: I Optimization Timing Evidence
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_OPTIMIZATION_TIMING_EVIDENCE
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_EVALUATE_REVISION
+    - N_AI_VALIDATE_PERFORMANCE_EVIDENCE
+- id: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  label: I Performance Degradation Diagnostic
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_VALIDATE_PERFORMANCE_EVIDENCE
+    - N_AI_DIAGNOSE
+- id: I_PERFORMANCE_AB_CONTRACT
+  label: I Performance Ab Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: structured
+  source_authoring_object:
+    id: I_PERFORMANCE_AB_CONTRACT
+    kind: structured
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_DIAGNOSE
+    - N_AI_APPLY_REPAIR
+    - N_AI_FINALIZE
+- id: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  label: I Release Distribution Profile Contract
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+    kind: contract
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE
+- id: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  label: I Interactive Analyst Workflow Contract
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+    kind: contract
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_U_INTERACTION_PROJECTION
+    - N_D_MINIMUM_INPUT
+    - N_R_ANALYST_EXPERIENCE
+- id: I_FIELD_RESOLUTION_STATUS_CONTRACT
+  label: I Field Resolution Status Contract
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_FIELD_RESOLUTION_STATUS_CONTRACT
+    kind: contract
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_U_INTERACTION_PROJECTION
+    - N_D_MINIMUM_INPUT
+    - N_A_MATERIALIZATION_READINESS
+- id: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  label: I Interactive Completeness Contract
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_INTERACTIVE_COMPLETENESS_CONTRACT
+    kind: contract
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_D_MINIMUM_INPUT
+    - N_A_MATERIALIZATION_READINESS
+    - N_ACCEPTANCE_READINESS
+- id: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  label: I Analyst Interaction Robustness Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+    kind: contract
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_R_ANALYST_EXPERIENCE
+    - N_VERIFY_REGRESSION
+- id: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  label: I Adaptive Completeness Profile Contract
+  definition_status: canonical_authoring_object
+  section: G_INFORMATION_MODEL
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_INFORMATION_MODEL
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+    kind: contract
+    group_id: G_INFORMATION_MODEL
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers:
+    - N_U_INFORMATION_OBJECT_CATALOG
+    - N_U_INTERACTION_PROJECTION
+    - N_A_FIELD_CONTRACT_REQUIREDNESS
+    - N_A_MATERIALIZATION_READINESS
+- id: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  label: I Derived Output Generation Contract
+  definition_status: canonical_authoring_object
+  section: G_ARTIFACTS
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_ARTIFACTS
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+    kind: contract
+    group_id: G_ARTIFACTS
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers:
+    - N_A_PARAMETER_PRODUCER_BINDING
+    - N_A_MATERIALIZATION_READINESS
+    - N_VERIFY_ARTIFACTS
+    - N_VERIFY_REGRESSION
+- id: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  label: I Hybrid Artifact Quality Validation Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+    kind: contract
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers:
+    - N_A_VALIDATION_GATE_BINDING
+    - N_VERIFY_ARTIFACTS
+    - N_VERIFY_REGRESSION
+    - N_ACCEPTANCE_READINESS
+- id: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  label: I Semantic Quality Finding Contract
+  definition_status: canonical_authoring_object
+  section: G_VERIFICATION
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  - model_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_VERIFICATION
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+    kind: contract
+    group_id: G_VERIFICATION
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    - model_derivation
+    provenance_required: true
+    consumers:
+    - N_VERIFY_ARTIFACTS
+    - N_AI_DIAGNOSE
+    - N_AI_APPLY_REPAIR
+    - N_ACCEPTANCE_READINESS
+- id: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  label: I Generated Playbook Semantic Execution Contract
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+    kind: contract
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_D_PROCESS_DECOMPOSITION
+    - N_VERIFY_REGRESSION
+    - N_ACCEPTANCE_READINESS
+- id: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  label: I Deterministic Tool Result Contract
+  definition_status: canonical_authoring_object
+  section: G_PROCESS_DESIGN
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_PROCESS_DESIGN
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+    kind: contract
+    group_id: G_PROCESS_DESIGN
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_B_NODE_ACTION_SYNTHESIS
+    - N_VERIFY_REGRESSION
+- id: I_VISIBLE_DEBUG_TIMING_CONTRACT
+  label: I Visible Debug Timing Contract
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_VISIBLE_DEBUG_TIMING_CONTRACT
+    kind: contract
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_VERIFY_REGRESSION
+    - N_DELIVERY_HANDOFF
+- id: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  label: I Self Repair Execution Log Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_AI_APPLY_REPAIR
+    - N_VERIFY_REGRESSION
+    - N_AI_FINALIZE
+- id: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  label: I Development Subprocess Routing Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_SIM_CLASSIFY
+    - N_FEEDBACK_CLASSIFY
+    - N_QH_BASELINE_CAPTURE
+    - N_PO_BASELINE_CAPTURE
+- id: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  label: I Quality Hardening Subprocess Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_QH_BASELINE_CAPTURE
+    - N_QH_DEFECT_CLASSIFY
+    - N_QH_RED_REGRESSION_DEFINE
+    - N_QH_RED_REGRESSION_RUN
+    - N_QH_MINIMAL_REPAIR
+    - N_QH_GREEN_RUN
+    - N_QH_IMPACTED_REGRESSIONS
+    - N_QH_FINAL_CONFIRM
+- id: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  label: I Performance Token Optimization Subprocess Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_PO_BASELINE_CAPTURE
+    - N_PO_TELEMETRY_COLLECT
+    - N_PO_HOTSPOT_RANK
+    - N_PO_HYPOTHESIS_DEFINE
+    - N_PO_OPTIMIZATION_APPLY
+    - N_PO_TARGETED_COMPARE
+    - N_PO_ACCEPT_REJECT
+- id: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  label: I Context Runtime Efficiency Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_PO_CONTEXT_RUNTIME_AUDIT
+    - N_PO_HOTSPOT_RANK
+    - N_PO_HYPOTHESIS_DEFINE
+    - N_PO_TARGETED_COMPARE
+- id: I_PACKAGING_CONTINUITY_CONTRACT
+  label: I Packaging Continuity Contract
+  definition_status: canonical_authoring_object
+  section: G_DELIVERY
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_DELIVERY
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_PACKAGING_CONTINUITY_CONTRACT
+    kind: contract
+    group_id: G_DELIVERY
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_PACKAGE_READINESS_CHECK
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_DEPENDENCY_CLOSURE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_ASSEMBLE_PACKAGE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_VALIDATE_PACKAGE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_EXACT_EXTRACT_VALIDATE
+    - N_PI_GENERATED_PLAYBOOK_PACKAGE_RECORD_DELIVERY_EVIDENCE
+    - N_PK_PACKAGE_CONTINUITY_AUDIT
+- id: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  label: I Deterministic First Architecture Contract
+  definition_status: canonical_authoring_object
+  section: G_BUILD
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_BUILD
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+    kind: contract
+    group_id: G_BUILD
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_B_NODE_ACTION_SYNTHESIS
+    - N_B_GRAPH_RECOVERY_WIRING
+    - N_VERIFY_REGRESSION
+- id: I_OBSERVABILITY_DEBUG_CONTRACT
+  label: I Observability Debug Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_OBSERVABILITY_DEBUG_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_PO_TELEMETRY_COLLECT
+    - N_PO_HOTSPOT_RANK
+    - N_QH_BASELINE_CAPTURE
+    - N_QH_FINAL_CONFIRM
+- id: I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  label: I Development Regression Governance Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_DV_REGRESSION_DEFINE
+    - N_DV_PRECHANGE_REGRESSION_RUN
+    - N_DV_POSTCHANGE_REGRESSION_AUDIT
+- id: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  label: I Quality Optimization Governance Contract
+  definition_status: canonical_authoring_object
+  section: G_CHANGE_REPAIR
+  data_type: object
+  cardinality: one
+  nullable: false
+  allowed_value_states:
+  - unset
+  - value
+  - unknown
+  - not_applicable
+  allowed_validation_states:
+  - draft
+  - validated
+  - approved
+  - stale
+  origin_modes:
+  - policy
+  - deterministic_derivation
+  creation_policy:
+    binding_status: bound
+    may_be_system_inferred: true
+    may_be_analyst_provided: false
+  mutation_policy:
+    mutation_invalidates_validation: true
+    required_post_mutation_state: stale
+  validation:
+    required_gates: []
+  provenance_required: true
+  group_id: G_CHANGE_REPAIR
+  source_information_kind: contract
+  source_authoring_object:
+    id: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+    kind: contract
+    group_id: G_CHANGE_REPAIR
+    value_contract:
+      type: object
+      cardinality: one
+      required: true
+      governance_requirements:
+      - protected_dimensions_reported_separately
+      - hard_eligibility_before_numeric_ranking
+      - no_protected_dimension_regression_for_best_so_far_replacement
+      - same_regime_end_to_end_optimization_evidence
+      - append_only_hash_chained_optimization_history
+      value_states:
+      - unset
+      - value
+      - unknown
+      - not_applicable
+    lifecycle:
+      validation_states:
+      - draft
+      - validated
+      - approved
+      - stale
+      invalidate_on_change: true
+    origins:
+    - policy
+    - deterministic_derivation
+    provenance_required: true
+    consumers:
+    - N_QH_BASELINE_CAPTURE
+    - N_QH_FINAL_CONFIRM
+    - N_PO_HOTSPOT_RANK
+    - N_PO_TARGETED_COMPARE
+    - N_PO_ACCEPT_REJECT

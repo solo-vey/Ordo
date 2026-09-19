@@ -22,7 +22,7 @@ The archive intentionally excludes repository history, previous validation repor
 
 ## Included capabilities
 
-The Vibe ARF 0.1.2 package contains these optional capabilities in addition to the core
+The Vibe ARF 0.1.3 package contains these optional capabilities in addition to the core
 authoring and runtime contract:
 
 - `source/tree_module_library/` — build-time reusable document-materialization,

@@ -1,0 +1,33 @@
+schema_version: '1.0'
+model_bundle_id: vibe_arf_self_hosted_information_model
+revision: 0.1.3
+generated_from: authoring/
+publication_semantics: authoring_adapter_only
+canonical_sources:
+  graph: information_dependency_graph.yaml
+  variable_catalog: variable_catalog.yaml
+  variable_group_catalog: variable_group_catalog.yaml
+  playbook_projection: playbook_projection.yaml
+  artifact_catalog: artifact_catalog.yaml
+extended_canonical_upstream:
+  interaction_projection: ../authoring/interaction_projection.yaml
+  review_bundle_catalog: ../authoring/review_bundle_catalog.yaml
+  proposal_canonicalization: ../authoring/proposal_canonicalization.yaml
+  approval_ledger: ../authoring/approval_ledger.yaml
+  scenario_matrix: ../authoring/scenario_matrix.yaml
+upstream_sha256:
+  information_object_catalog.yaml: 5dcecdd4ff07241737a466e5ef2550b26f399df6b95e550ffc13d40253c9620c
+  information_group_catalog.yaml: 4c0981348ebc89849df4975eb3fd4390f8433d79161fa4e5af2349f8f3e69921
+  information_flow_graph.yaml: 922c78efd8413a8cb14691debf0f92e5f1261720069b86831f484f4646503f0d
+  artifact_catalog.yaml: a4bceb9a261c3a8146e02f6d3e5cb6303e904f7d7d193844b6d262de72084fa5
+  ordo_projection.yaml: 8551c63712116019140985c7d8e8796d6fed949fcba72757ecae9f83b3a0273f
+mutation_rule: Edit canonical authoring YAML under authoring/, validate AIM, then regenerate this publication bundle.
+  Never hand-edit generated design files.
+architecture_rule: The Vibe self-hosted AIM under authoring/ is the single authoring source model. design/ is a
+  deterministic Editor-facing publication projection only.
+verification:
+  authoring_model_validator: tools/validate_authoring_information_model.py
+  projection_validator: tools/validate_information_projection.py
+  publication_validator: tools/validate_self_data_flow_publication.py
+generated_artifacts:
+- DATA_FLOW_PACKAGE.zip
