@@ -1,23 +1,23 @@
 {
-  "release_family_id": "VIBE_ARF@0.1.2",
-  "version": "0.1.2",
-  "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d",
-  "maintenance_correction": "REMOVE_OBSOLETE_ORDO_VISUAL_GRAPH_GENERATOR",
+  "release_family_id": "VIBE_ARF@0.1.3",
+  "version": "0.1.3",
+  "canonical_source_sha256": "ce8fdb4b02dc83efca74db06d322c6515480f0e35880e9486c41dbff845296b6",
+  "release_scope": "CURRENT_ORDO_CLI_RUNTIME_AND_EDITOR_CONTAINER_REFRESH",
   "profiles": {
     "EDIT": {
-      "artifact": "VIBE_ARF_0.1.2_EDIT.zip",
-      "artifact_sha256": "640d264db969ae479431051791dbd7b81219341cb968448b1accb8b19cc04613",
-      "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+      "artifact": "VIBE_ARF_0.1.3_EDIT.zip",
+      "artifact_sha256": "73c582c73eb82446fb15e8f235394d0b763f79667e0c1019ac3be3c9ec4e5310",
+      "canonical_source_sha256": "ce8fdb4b02dc83efca74db06d322c6515480f0e35880e9486c41dbff845296b6"
     },
     "CLI_RUN": {
-      "artifact": "VIBE_ARF_0.1.2_CLI_RUN.zip",
-      "artifact_sha256": "a60a1ce66b66052e031ec6e2a0066e6eb89039198122d4396406aaeb06092671",
-      "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+      "artifact": "VIBE_ARF_0.1.3_CLI_RUN.zip",
+      "artifact_sha256": "41c23a2a295cb51119975eaed5f8ddc977236ed9a1d6949f83b40fdc7cff24d3",
+      "canonical_source_sha256": "ce8fdb4b02dc83efca74db06d322c6515480f0e35880e9486c41dbff845296b6"
     },
     "MODEL_RUN": {
-      "artifact": "VIBE_ARF_0.1.2_MODEL_RUN.zip",
-      "artifact_sha256": "2c6969133c1d29eadc843620415b0dfda4d3a06808f8c046ffdeecc598d23c74",
-      "canonical_source_sha256": "54bbfb103c9c36ea8afed53000bba4391ea1d9189654659d27c9245c23bb2f3d"
+      "artifact": "VIBE_ARF_0.1.3_MODEL_RUN.zip",
+      "artifact_sha256": "f23aff21b1fdd248cb0720b51a07f8fcde2fc0588f7da3dd38833918332b6730",
+      "canonical_source_sha256": "ce8fdb4b02dc83efca74db06d322c6515480f0e35880e9486c41dbff845296b6"
     }
   }
 }

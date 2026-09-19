@@ -6,20 +6,20 @@
   "scope_type": "runtime_adapter_contract",
   "semantic_authority": false,
   "semantic_source_of_truth": "canonical_support/language",
-  "vibe_revision": "0.1.2",
+  "vibe_revision": "0.1.3",
   "evidence_basis": [
     "Canonical Ordo language package bundled under canonical_support/language",
-    "User-supplied Ordo Tree Editor alpha.20.0.187-dev R3 as starting adapter baseline",
-    "Release-hardening Ordo Tree Editor alpha.20.0.188-dev R3 with generic required_state_writes compiler/runtime support",
-    "Native headless preflight and targeted adapter regressions executed against alpha.20.0.188-dev R3",
+    "Ordo Tree Editor alpha.20.0.218-dev R3 release package and its portable service contract",
+    "Release-hardening Ordo Tree Editor alpha.20.0.218-dev R3 with explicit host binding and HTTP health endpoint",
+    "Native launcher, targeted adapter regressions, and HTTP health-endpoint smoke checks executed against alpha.20.0.218-dev R3",
     "VIBE terminal simulation executed with Simulation Kit 0.1.6: 199 steps, external terminal, zero errors"
   ],
   "editor_binding": {
     "mode": "exact_editor_dev_adapter_binding",
-    "latest_editor_version": "alpha.20.0.188-dev R3",
-    "editor_version_file": "0.2.0-alpha.20.0.188-dev",
-    "editor_source_zip_sha256": "572150b0acebf46770ca0246e974169f56b9187016055d90c579cbe69d642ca2",
-    "binding_status": "VERIFIED_RELEASE_HARDENING_EDITOR_0188",
+    "latest_editor_version": "alpha.20.0.218-dev R3",
+    "editor_version_file": "0.2.0-alpha.20.0.218-dev",
+    "editor_source_zip_sha256": "ddd12e12b1d238480cc1fec13f58dd0360068b8ad56e83bf950ca7495f22496a",
+    "binding_status": "VERIFIED_RELEASE_HARDENING_EDITOR_0218",
     "semantic_authority": false
   },
   "rules": [

@@ -1,0 +1,1562 @@
+schema_version: '1.0'
+model_id: vibe_arf_self_information_dependency_graph
+revision: 0.1.3
+status: generated_publication_projection
+purpose: Editor-consumable authoring data-flow projection generated deterministically from Vibe authoring/information_flow_graph.yaml.
+conventions:
+  canonical_upstream: authoring/information_flow_graph.yaml
+  mutation_rule: Never hand-edit this publication graph; modify canonical AIM under authoring/ and regenerate.
+  information_object_rule: Published variable nodes are views of canonical authoring information objects.
+  artifact_node_rule: Artifacts are first-class information-flow nodes.
+  publication_semantics: authoring_adapter_only
+entry_nodes:
+- S_ANALYST
+- S_SOURCE_MATERIALS
+- S_PATTERN_LIBRARY
+terminal_nodes:
+- A_DELIVERY_HANDOFF
+sections:
+- id: SOURCES
+  label: Sources
+  order: 0
+- id: G_INPUT
+  label: Intent and sources
+  order: 1
+- id: G_UNDERSTANDING
+  label: Understanding
+  order: 2
+- id: G_INFORMATION_MODEL
+  label: Information model
+  order: 3
+- id: G_PROCESS_DESIGN
+  label: Process design
+  order: 4
+- id: G_ARTIFACTS
+  label: Artifact contracts
+  order: 5
+- id: G_BUILD
+  label: Ordo build
+  order: 6
+- id: G_VERIFICATION
+  label: Verification and review
+  order: 7
+- id: G_CHANGE_REPAIR
+  label: Repair and change
+  order: 8
+- id: G_DELIVERY
+  label: Acceptance and delivery
+  order: 9
+- id: ARTIFACTS
+  label: Artifacts / delivery
+  order: 11
+nodes:
+- id: S_ANALYST
+  label: S Analyst
+  source_kind: source
+  type: analyst_input
+  section: SOURCES
+- id: S_SOURCE_MATERIALS
+  label: S Source Materials
+  source_kind: source
+  type: source
+  section: SOURCES
+- id: S_PATTERN_LIBRARY
+  label: S Pattern Library
+  source_kind: source
+  type: source
+  section: SOURCES
+- id: I_RAW_USER_INTENT
+  label: I Raw User Intent
+  source_kind: information
+  type: variable
+  variable_ref: I_RAW_USER_INTENT
+  section: G_INPUT
+- id: I_SOURCE_MATERIALS
+  label: I Source Materials
+  source_kind: information
+  type: variable
+  variable_ref: I_SOURCE_MATERIALS
+  section: G_INPUT
+- id: I_DESIRED_ARTIFACT_REFS
+  label: I Desired Artifact Refs
+  source_kind: information
+  type: variable
+  variable_ref: I_DESIRED_ARTIFACT_REFS
+  section: G_INPUT
+- id: I_SOURCE_ASSIMILATION
+  label: I Source Assimilation
+  source_kind: information
+  type: variable
+  variable_ref: I_SOURCE_ASSIMILATION
+  section: G_UNDERSTANDING
+- id: I_EPISTEMIC_RECORDS
+  label: I Epistemic Records
+  source_kind: information
+  type: variable
+  variable_ref: I_EPISTEMIC_RECORDS
+  section: G_UNDERSTANDING
+- id: I_DOMAIN_ACTOR_MODEL
+  label: I Domain Actor Model
+  source_kind: information
+  type: variable
+  variable_ref: I_DOMAIN_ACTOR_MODEL
+  section: G_UNDERSTANDING
+- id: I_ARTIFACT_SURFACE
+  label: I Artifact Surface
+  source_kind: information
+  type: variable
+  variable_ref: I_ARTIFACT_SURFACE
+  section: G_UNDERSTANDING
+- id: I_RULE_AUTHORITY_MODEL
+  label: I Rule Authority Model
+  source_kind: information
+  type: variable
+  variable_ref: I_RULE_AUTHORITY_MODEL
+  section: G_UNDERSTANDING
+- id: I_INFORMATION_OBJECT_CATALOG
+  label: I Information Object Catalog
+  source_kind: information
+  type: variable
+  variable_ref: I_INFORMATION_OBJECT_CATALOG
+  section: G_INFORMATION_MODEL
+- id: I_INFORMATION_GROUP_CATALOG
+  label: I Information Group Catalog
+  source_kind: information
+  type: variable
+  variable_ref: I_INFORMATION_GROUP_CATALOG
+  section: G_INFORMATION_MODEL
+- id: I_INFORMATION_FLOW_GRAPH
+  label: I Information Flow Graph
+  source_kind: information
+  type: variable
+  variable_ref: I_INFORMATION_FLOW_GRAPH
+  section: G_INFORMATION_MODEL
+- id: I_INFORMATION_LIFECYCLE_AUTHORITY
+  label: I Information Lifecycle Authority
+  source_kind: information
+  type: variable
+  variable_ref: I_INFORMATION_LIFECYCLE_AUTHORITY
+  section: G_INFORMATION_MODEL
+- id: I_INTERACTION_PROJECTION
+  label: I Interaction Projection
+  source_kind: information
+  type: variable
+  variable_ref: I_INTERACTION_PROJECTION
+  section: G_INFORMATION_MODEL
+- id: I_PROCESS_MODEL
+  label: I Process Model
+  source_kind: information
+  type: variable
+  variable_ref: I_PROCESS_MODEL
+  section: G_PROCESS_DESIGN
+- id: I_PARAMETER_LEDGER
+  label: I Parameter Ledger
+  source_kind: information
+  type: variable
+  variable_ref: I_PARAMETER_LEDGER
+  section: G_PROCESS_DESIGN
+- id: I_HUMAN_DECISION_NEEDS
+  label: I Human Decision Needs
+  source_kind: information
+  type: variable
+  variable_ref: I_HUMAN_DECISION_NEEDS
+  section: G_PROCESS_DESIGN
+- id: I_BUSINESS_PROCESS_DESIGN_IR
+  label: I Business Process Design Ir
+  source_kind: information
+  type: variable
+  variable_ref: I_BUSINESS_PROCESS_DESIGN_IR
+  section: G_PROCESS_DESIGN
+- id: I_ARTIFACT_CONTRACT_REGISTRY
+  label: I Artifact Contract Registry
+  source_kind: information
+  type: variable
+  variable_ref: I_ARTIFACT_CONTRACT_REGISTRY
+  section: G_ARTIFACTS
+- id: I_TRACEABILITY_GRAPH
+  label: I Traceability Graph
+  source_kind: information
+  type: variable
+  variable_ref: I_TRACEABILITY_GRAPH
+  section: G_ARTIFACTS
+- id: I_ORDO_BUILD_IR
+  label: I Ordo Build Ir
+  source_kind: information
+  type: variable
+  variable_ref: I_ORDO_BUILD_IR
+  section: G_BUILD
+- id: I_GENERATED_SOURCE_STATUS
+  label: I Generated Source Status
+  source_kind: information
+  type: variable
+  variable_ref: I_GENERATED_SOURCE_STATUS
+  section: G_BUILD
+- id: I_VERIFICATION_PROFILE
+  label: I Verification Profile
+  source_kind: information
+  type: variable
+  variable_ref: I_VERIFICATION_PROFILE
+  section: G_VERIFICATION
+- id: I_VERIFICATION_EVIDENCE
+  label: I Verification Evidence
+  source_kind: information
+  type: variable
+  variable_ref: I_VERIFICATION_EVIDENCE
+  section: G_VERIFICATION
+- id: I_REVIEW_FINDINGS
+  label: I Review Findings
+  source_kind: information
+  type: variable
+  variable_ref: I_REVIEW_FINDINGS
+  section: G_VERIFICATION
+- id: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  label: I Hybrid Reference Fidelity Feedback Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  section: G_VERIFICATION
+- id: I_REPAIR_REGRESSION_MEMORY
+  label: I Repair Regression Memory
+  source_kind: information
+  type: variable
+  variable_ref: I_REPAIR_REGRESSION_MEMORY
+  section: G_CHANGE_REPAIR
+- id: I_CHANGE_IMPACT_PLAN
+  label: I Change Impact Plan
+  source_kind: information
+  type: variable
+  variable_ref: I_CHANGE_IMPACT_PLAN
+  section: G_CHANGE_REPAIR
+- id: I_BUSINESS_VIEW
+  label: I Business View
+  source_kind: information
+  type: variable
+  variable_ref: I_BUSINESS_VIEW
+  section: G_DELIVERY
+- id: I_ACCEPTANCE_STATUS
+  label: I Acceptance Status
+  source_kind: information
+  type: variable
+  variable_ref: I_ACCEPTANCE_STATUS
+  section: G_DELIVERY
+- id: I_PACKAGE_VALIDATION_STATUS
+  label: I Package Validation Status
+  source_kind: information
+  type: variable
+  variable_ref: I_PACKAGE_VALIDATION_STATUS
+  section: G_DELIVERY
+- id: I_DELIVERY_EVIDENCE
+  label: I Delivery Evidence
+  source_kind: information
+  type: variable
+  variable_ref: I_DELIVERY_EVIDENCE
+  section: G_DELIVERY
+- id: IG_UNDERSTANDING
+  label: Ig Understanding
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_UNDERSTANDING
+- id: IG_INFORMATION_MODEL
+  label: Ig Information Model
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PROCESS_DESIGN
+  label: Ig Process Design
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_PROCESS_DESIGN
+- id: IG_ARTIFACT_CONTRACT
+  label: Ig Artifact Contract
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_ARTIFACTS
+- id: IG_BUILD_SOURCE
+  label: Ig Build Source
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_BUILD
+- id: IG_VERIFICATION
+  label: Ig Verification
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_VERIFICATION
+- id: IG_DELIVERY
+  label: Ig Delivery
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_DELIVERY
+- id: IA_ANALYST_ACCEPTANCE
+  label: Ia Analyst Acceptance
+  source_kind: authority_decision
+  type: gate_fragment
+  section: G_DELIVERY
+- id: A_BUSINESS_VIEW
+  label: A Business View
+  source_kind: artifact
+  type: artifact
+  artifact_ref: A_BUSINESS_VIEW
+  section: ARTIFACTS
+- id: A_GENERATED_PLAYBOOK_SOURCE
+  label: A Generated Playbook Source
+  source_kind: artifact
+  type: artifact
+  artifact_ref: A_GENERATED_PLAYBOOK_SOURCE
+  section: ARTIFACTS
+- id: A_VERIFICATION_EVIDENCE
+  label: A Verification Evidence
+  source_kind: artifact
+  type: artifact
+  artifact_ref: A_VERIFICATION_EVIDENCE
+  section: ARTIFACTS
+- id: A_GENERATED_PLAYBOOK_PACKAGE
+  label: A Generated Playbook Package
+  source_kind: artifact
+  type: artifact
+  artifact_ref: A_GENERATED_PLAYBOOK_PACKAGE
+  section: ARTIFACTS
+- id: A_DELIVERY_HANDOFF
+  label: A Delivery Handoff
+  source_kind: artifact
+  type: artifact
+  artifact_ref: A_DELIVERY_HANDOFF
+  section: ARTIFACTS
+- id: I_REVIEW_BUNDLE_CATALOG
+  label: I Review Bundle Catalog
+  source_kind: information
+  type: variable
+  variable_ref: I_REVIEW_BUNDLE_CATALOG
+  section: G_INFORMATION_MODEL
+- id: I_PROPOSAL_CANONICALIZATION
+  label: I Proposal Canonicalization
+  source_kind: information
+  type: variable
+  variable_ref: I_PROPOSAL_CANONICALIZATION
+  section: G_INFORMATION_MODEL
+- id: I_APPROVAL_LEDGER_CONTRACT
+  label: I Approval Ledger Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_APPROVAL_LEDGER_CONTRACT
+  section: G_BUILD
+- id: I_SIMULATION_CONTRACT
+  label: I Simulation Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_SIMULATION_CONTRACT
+  section: G_VERIFICATION
+- id: I_SIMULATION_FIXTURES
+  label: I Simulation Fixtures
+  source_kind: information
+  type: variable
+  variable_ref: I_SIMULATION_FIXTURES
+  section: G_VERIFICATION
+- id: I_SIMULATION_EVIDENCE
+  label: I Simulation Evidence
+  source_kind: information
+  type: variable
+  variable_ref: I_SIMULATION_EVIDENCE
+  section: G_VERIFICATION
+- id: I_DEFECT_OWNERSHIP
+  label: I Defect Ownership
+  source_kind: information
+  type: variable
+  variable_ref: I_DEFECT_OWNERSHIP
+  section: G_VERIFICATION
+- id: I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  label: I Reusable Authoring Template Kit
+  source_kind: information
+  type: variable
+  variable_ref: I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  section: G_ARTIFACTS
+- id: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  label: I Deterministic Execution Responsibility Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  section: G_BUILD
+- id: I_INFORMATION_PRESERVATION_CONTRACT
+  label: I Information Preservation Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_INFORMATION_PRESERVATION_CONTRACT
+  section: G_BUILD
+- id: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  label: I Dynamic Multi Reference Comparative Evaluation
+  source_kind: information
+  type: variable
+  variable_ref: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  section: G_VERIFICATION
+- id: I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  label: I Editor Visible Architecture Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  section: G_ARTIFACTS
+- id: I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  label: I Fast Full Dependency Aware Validation Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  section: G_VERIFICATION
+- id: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  label: I Default Debug Handoff Progress Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  section: G_DELIVERY
+- id: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  label: I Generated Playbook Production Package Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  section: G_DELIVERY
+- id: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  label: I Analyst Context Preservation Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  section: G_INPUT
+- id: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  label: I Optimization Loop Calibration Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  label: I Evaluator Reference Input Bundle Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  section: G_VERIFICATION
+- id: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  label: I Production Dependency Closure Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  section: G_DELIVERY
+- id: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  label: I Reusable Data Execution Pattern Library
+  source_kind: information
+  type: variable
+  variable_ref: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_INSTANCE_CATALOG
+  label: I Pattern Instance Catalog
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_INSTANCE_CATALOG
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_EXECUTION_PROJECTION
+  label: I Pattern Execution Projection
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_EXECUTION_PROJECTION
+  section: G_BUILD
+- id: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  label: I Business View Materialization Status
+  source_kind: information
+  type: variable
+  variable_ref: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  section: G_ARTIFACTS
+- id: I_BUSINESS_VIEW_RENDER_VALIDATION
+  label: I Business View Render Validation
+  source_kind: information
+  type: variable
+  variable_ref: I_BUSINESS_VIEW_RENDER_VALIDATION
+  section: G_VERIFICATION
+- id: I_CAPABILITY_REQUIREMENT_CATALOG
+  label: I Capability Requirement Catalog
+  source_kind: information
+  type: variable
+  variable_ref: I_CAPABILITY_REQUIREMENT_CATALOG
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  label: I Pattern Selection Input Snapshot
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_APPLICABILITY_RESULT
+  label: I Pattern Applicability Result
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_APPLICABILITY_RESULT
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_FIT_RESOLUTION
+  label: I Pattern Fit Resolution
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_FIT_RESOLUTION
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_DATA_LAYER_EXPANSION
+  label: I Pattern Data Layer Expansion
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_DATA_LAYER_EXPANSION
+  section: G_INFORMATION_MODEL
+- id: I_PATTERN_REUSE_SCORING_CONTRACT
+  label: I Pattern Reuse Scoring Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_REUSE_SCORING_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_PATTERN_REUSE_EVALUATION
+  label: I Pattern Reuse Evaluation
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_REUSE_EVALUATION
+  section: G_CHANGE_REPAIR
+- id: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  label: I Pattern Graph Realization Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  section: G_BUILD
+- id: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  label: I Pattern Graph Realization Evidence
+  source_kind: information
+  type: variable
+  variable_ref: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  section: G_VERIFICATION
+- id: I_PSEUDO_LIVE_OPTIMIZATION_CONTRACT
+  label: I Pseudo Live Optimization Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PSEUDO_LIVE_OPTIMIZATION_CONTRACT
+  section: G_INFORMATION_MODEL
+- id: IG_PATTERN_FOUNDATION
+  label: Ig Pattern Foundation
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PATTERN_SELECTION_INPUT
+  label: Ig Pattern Selection Input
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PATTERN_APPLICABILITY
+  label: Ig Pattern Applicability
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PATTERN_FIT
+  label: Ig Pattern Fit
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PATTERN_INSTANCE
+  label: Ig Pattern Instance
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PATTERN_EXPANSION
+  label: Ig Pattern Expansion
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: IG_PACKAGE_VALIDATION_LOCAL
+  label: Ig Package Validation Local
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_INFORMATION_MODEL
+- id: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  label: I Optimization Runtime Efficiency Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_OPTIMIZATION_TIMING_EVIDENCE
+  label: I Optimization Timing Evidence
+  source_kind: information
+  type: variable
+  variable_ref: I_OPTIMIZATION_TIMING_EVIDENCE
+  section: G_CHANGE_REPAIR
+- id: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  label: I Performance Degradation Diagnostic
+  source_kind: information
+  type: variable
+  variable_ref: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  section: G_CHANGE_REPAIR
+- id: I_PERFORMANCE_AB_CONTRACT
+  label: I Performance Ab Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PERFORMANCE_AB_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+  label: Ig Pattern Execution Projection Local
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_BUILD
+- id: IG_OPTIMIZATION_TIMING_EVIDENCE
+  label: Ig Optimization Timing Evidence
+  source_kind: validation_gate
+  type: gate_fragment
+  section: G_CHANGE_REPAIR
+- id: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  label: I Release Distribution Profile Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  section: G_DELIVERY
+- id: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  label: I Interactive Analyst Workflow Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  section: G_INFORMATION_MODEL
+- id: I_FIELD_RESOLUTION_STATUS_CONTRACT
+  label: I Field Resolution Status Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_FIELD_RESOLUTION_STATUS_CONTRACT
+  section: G_INFORMATION_MODEL
+- id: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  label: I Interactive Completeness Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  section: G_PROCESS_DESIGN
+- id: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  label: I Analyst Interaction Robustness Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  section: G_VERIFICATION
+- id: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  label: I Adaptive Completeness Profile Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  section: G_INFORMATION_MODEL
+- id: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  label: I Derived Output Generation Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  section: G_ARTIFACTS
+- id: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  label: I Hybrid Artifact Quality Validation Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  section: G_VERIFICATION
+- id: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  label: I Semantic Quality Finding Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  section: G_VERIFICATION
+- id: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  label: I Generated Playbook Semantic Execution Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  section: G_PROCESS_DESIGN
+- id: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  label: I Deterministic Tool Result Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  section: G_PROCESS_DESIGN
+- id: I_VISIBLE_DEBUG_TIMING_CONTRACT
+  label: I Visible Debug Timing Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_VISIBLE_DEBUG_TIMING_CONTRACT
+  section: G_DELIVERY
+- id: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  label: I Self Repair Execution Log Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  label: I Development Subprocess Routing Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  label: I Quality Hardening Subprocess Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  label: I Performance Token Optimization Subprocess Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  label: I Context Runtime Efficiency Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_PACKAGING_CONTINUITY_CONTRACT
+  label: I Packaging Continuity Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_PACKAGING_CONTINUITY_CONTRACT
+  section: G_DELIVERY
+- id: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  label: I Deterministic First Architecture Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  section: G_BUILD
+- id: I_OBSERVABILITY_DEBUG_CONTRACT
+  label: I Observability Debug Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_OBSERVABILITY_DEBUG_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  label: I Development Regression Governance Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  section: G_CHANGE_REPAIR
+- id: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  label: I Quality Optimization Governance Contract
+  source_kind: information
+  type: variable
+  variable_ref: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  section: G_CHANGE_REPAIR
+edges:
+- from: S_ANALYST
+  to: I_RAW_USER_INTENT
+  type: provided_by
+- from: S_SOURCE_MATERIALS
+  to: I_SOURCE_MATERIALS
+  type: provided_by
+- from: I_RAW_USER_INTENT
+  to: I_DESIRED_ARTIFACT_REFS
+  type: derived_from
+- from: I_SOURCE_MATERIALS
+  to: I_SOURCE_ASSIMILATION
+  type: derived_from
+- from: I_RAW_USER_INTENT
+  to: I_SOURCE_ASSIMILATION
+  type: derived_from
+- from: I_SOURCE_ASSIMILATION
+  to: I_EPISTEMIC_RECORDS
+  type: derived_from
+- from: I_EPISTEMIC_RECORDS
+  to: I_DOMAIN_ACTOR_MODEL
+  type: derived_from
+- from: I_DESIRED_ARTIFACT_REFS
+  to: I_ARTIFACT_SURFACE
+  type: derived_from
+- from: I_DOMAIN_ACTOR_MODEL
+  to: I_RULE_AUTHORITY_MODEL
+  type: derived_from
+- from: I_SOURCE_ASSIMILATION
+  to: IG_UNDERSTANDING
+  type: validated_by
+- from: I_EPISTEMIC_RECORDS
+  to: IG_UNDERSTANDING
+  type: validated_by
+- from: I_DOMAIN_ACTOR_MODEL
+  to: IG_UNDERSTANDING
+  type: validated_by
+- from: I_ARTIFACT_SURFACE
+  to: IG_UNDERSTANDING
+  type: validated_by
+- from: I_RULE_AUTHORITY_MODEL
+  to: IG_UNDERSTANDING
+  type: validated_by
+- from: IG_UNDERSTANDING
+  to: I_INFORMATION_OBJECT_CATALOG
+  type: depends_on
+- from: I_ARTIFACT_SURFACE
+  to: I_INFORMATION_OBJECT_CATALOG
+  type: derived_from
+- from: I_INFORMATION_OBJECT_CATALOG
+  to: I_INFORMATION_GROUP_CATALOG
+  type: derived_from
+- from: I_INFORMATION_GROUP_CATALOG
+  to: I_INFORMATION_FLOW_GRAPH
+  type: derived_from
+- from: I_RULE_AUTHORITY_MODEL
+  to: I_INFORMATION_LIFECYCLE_AUTHORITY
+  type: derived_from
+- from: I_INFORMATION_FLOW_GRAPH
+  to: I_INTERACTION_PROJECTION
+  type: derived_from
+- from: I_INFORMATION_LIFECYCLE_AUTHORITY
+  to: I_INTERACTION_PROJECTION
+  type: derived_from
+- from: I_INFORMATION_OBJECT_CATALOG
+  to: IG_INFORMATION_MODEL
+  type: validated_by
+- from: I_INFORMATION_GROUP_CATALOG
+  to: IG_INFORMATION_MODEL
+  type: validated_by
+- from: I_INFORMATION_FLOW_GRAPH
+  to: IG_INFORMATION_MODEL
+  type: validated_by
+- from: I_INFORMATION_LIFECYCLE_AUTHORITY
+  to: IG_INFORMATION_MODEL
+  type: validated_by
+- from: I_INTERACTION_PROJECTION
+  to: IG_INFORMATION_MODEL
+  type: validated_by
+- from: IG_INFORMATION_MODEL
+  to: I_PROCESS_MODEL
+  type: depends_on
+- from: I_INFORMATION_FLOW_GRAPH
+  to: I_PROCESS_MODEL
+  type: derived_from
+- from: I_PROCESS_MODEL
+  to: I_PARAMETER_LEDGER
+  type: derived_from
+- from: I_PARAMETER_LEDGER
+  to: I_HUMAN_DECISION_NEEDS
+  type: derived_from
+- from: I_INTERACTION_PROJECTION
+  to: I_HUMAN_DECISION_NEEDS
+  type: derived_from
+- from: I_PROCESS_MODEL
+  to: I_BUSINESS_PROCESS_DESIGN_IR
+  type: derived_from
+- from: I_PARAMETER_LEDGER
+  to: I_BUSINESS_PROCESS_DESIGN_IR
+  type: derived_from
+- from: I_PROCESS_MODEL
+  to: IG_PROCESS_DESIGN
+  type: validated_by
+- from: I_PARAMETER_LEDGER
+  to: IG_PROCESS_DESIGN
+  type: validated_by
+- from: I_HUMAN_DECISION_NEEDS
+  to: IG_PROCESS_DESIGN
+  type: validated_by
+- from: I_BUSINESS_PROCESS_DESIGN_IR
+  to: IG_PROCESS_DESIGN
+  type: validated_by
+- from: IG_PROCESS_DESIGN
+  to: I_ARTIFACT_CONTRACT_REGISTRY
+  type: depends_on
+- from: I_ARTIFACT_SURFACE
+  to: I_ARTIFACT_CONTRACT_REGISTRY
+  type: derived_from
+- from: I_BUSINESS_PROCESS_DESIGN_IR
+  to: I_TRACEABILITY_GRAPH
+  type: derived_from
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: I_TRACEABILITY_GRAPH
+  type: derived_from
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: IG_ARTIFACT_CONTRACT
+  type: validated_by
+- from: I_TRACEABILITY_GRAPH
+  to: IG_ARTIFACT_CONTRACT
+  type: validated_by
+- from: IG_ARTIFACT_CONTRACT
+  to: I_ORDO_BUILD_IR
+  type: depends_on
+- from: I_BUSINESS_PROCESS_DESIGN_IR
+  to: I_ORDO_BUILD_IR
+  type: derived_from
+- from: I_TRACEABILITY_GRAPH
+  to: I_ORDO_BUILD_IR
+  type: derived_from
+- from: I_ORDO_BUILD_IR
+  to: A_GENERATED_PLAYBOOK_SOURCE
+  type: materializes
+- from: A_GENERATED_PLAYBOOK_SOURCE
+  to: I_GENERATED_SOURCE_STATUS
+  type: provided_by
+- from: I_ORDO_BUILD_IR
+  to: IG_BUILD_SOURCE
+  type: validated_by
+- from: I_GENERATED_SOURCE_STATUS
+  to: IG_BUILD_SOURCE
+  type: validated_by
+- from: A_GENERATED_PLAYBOOK_SOURCE
+  to: IG_BUILD_SOURCE
+  type: validated_by
+- from: IG_BUILD_SOURCE
+  to: I_VERIFICATION_PROFILE
+  type: depends_on
+- from: A_GENERATED_PLAYBOOK_SOURCE
+  to: I_VERIFICATION_PROFILE
+  type: derived_from
+- from: I_VERIFICATION_PROFILE
+  to: I_VERIFICATION_EVIDENCE
+  type: derived_from
+- from: I_VERIFICATION_EVIDENCE
+  to: A_VERIFICATION_EVIDENCE
+  type: materializes
+- from: I_VERIFICATION_EVIDENCE
+  to: I_REVIEW_FINDINGS
+  type: derived_from
+- from: I_VERIFICATION_PROFILE
+  to: IG_VERIFICATION
+  type: validated_by
+- from: I_VERIFICATION_EVIDENCE
+  to: IG_VERIFICATION
+  type: validated_by
+- from: I_REVIEW_FINDINGS
+  to: IG_VERIFICATION
+  type: validated_by
+- from: A_VERIFICATION_EVIDENCE
+  to: IG_VERIFICATION
+  type: validated_by
+- from: I_REVIEW_FINDINGS
+  to: I_REPAIR_REGRESSION_MEMORY
+  type: derived_from
+- from: I_REVIEW_FINDINGS
+  to: I_CHANGE_IMPACT_PLAN
+  type: derived_from
+- from: IG_VERIFICATION
+  to: I_BUSINESS_VIEW
+  type: depends_on
+- from: I_VERIFICATION_EVIDENCE
+  to: I_BUSINESS_VIEW
+  type: derived_from
+- from: I_BUSINESS_VIEW
+  to: A_BUSINESS_VIEW
+  type: materializes
+- from: I_BUSINESS_VIEW
+  to: IA_ANALYST_ACCEPTANCE
+  type: approved_by
+- from: I_HUMAN_DECISION_NEEDS
+  to: IA_ANALYST_ACCEPTANCE
+  type: depends_on
+- from: IA_ANALYST_ACCEPTANCE
+  to: I_ACCEPTANCE_STATUS
+  type: provided_by
+- from: I_ACCEPTANCE_STATUS
+  to: I_PACKAGE_VALIDATION_STATUS
+  type: depends_on
+- from: A_GENERATED_PLAYBOOK_SOURCE
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: packages
+- from: A_VERIFICATION_EVIDENCE
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: packages
+- from: I_PACKAGE_VALIDATION_STATUS
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: validated_by
+- from: A_GENERATED_PLAYBOOK_PACKAGE
+  to: I_DELIVERY_EVIDENCE
+  type: provided_by
+- from: I_DELIVERY_EVIDENCE
+  to: IG_DELIVERY
+  type: validated_by
+- from: A_GENERATED_PLAYBOOK_PACKAGE
+  to: IG_DELIVERY
+  type: validated_by
+- from: IG_DELIVERY
+  to: A_DELIVERY_HANDOFF
+  type: materializes
+- from: A_BUSINESS_VIEW
+  to: A_DELIVERY_HANDOFF
+  type: packages
+- from: A_GENERATED_PLAYBOOK_PACKAGE
+  to: A_DELIVERY_HANDOFF
+  type: packages
+- from: I_INTERACTION_PROJECTION
+  to: I_REVIEW_BUNDLE_CATALOG
+  type: derived_from
+- from: I_REVIEW_BUNDLE_CATALOG
+  to: I_PROPOSAL_CANONICALIZATION
+  type: depends_on
+- from: I_PROPOSAL_CANONICALIZATION
+  to: I_PROCESS_MODEL
+  type: depends_on
+- from: I_INFORMATION_LIFECYCLE_AUTHORITY
+  to: I_APPROVAL_LEDGER_CONTRACT
+  type: derived_from
+- from: I_APPROVAL_LEDGER_CONTRACT
+  to: I_ORDO_BUILD_IR
+  type: depends_on
+- from: A_GENERATED_PLAYBOOK_SOURCE
+  to: I_SIMULATION_CONTRACT
+  type: depends_on
+- from: I_SIMULATION_CONTRACT
+  to: I_SIMULATION_FIXTURES
+  type: derived_from
+- from: I_SIMULATION_FIXTURES
+  to: I_SIMULATION_EVIDENCE
+  type: validated_by
+- from: I_SIMULATION_EVIDENCE
+  to: I_DEFECT_OWNERSHIP
+  type: derived_from
+- from: I_DEFECT_OWNERSHIP
+  to: I_REVIEW_FINDINGS
+  type: consumed_by
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  type: derived_from
+- from: I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  to: I_ORDO_BUILD_IR
+  type: consumed_by
+- from: I_SIMULATION_EVIDENCE
+  to: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  type: derived_from
+- from: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  to: I_DEFECT_OWNERSHIP
+  type: consumed_by
+- from: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  to: I_ORDO_BUILD_IR
+  type: consumed_by
+- from: I_TRACEABILITY_GRAPH
+  to: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  type: derived_from
+- from: I_INFORMATION_PRESERVATION_CONTRACT
+  to: I_ORDO_BUILD_IR
+  type: consumed_by
+- from: I_INFORMATION_LIFECYCLE_AUTHORITY
+  to: I_INFORMATION_PRESERVATION_CONTRACT
+  type: derived_from
+- from: I_SIMULATION_EVIDENCE
+  to: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  type: derived_from
+- from: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  to: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  type: consumed_by
+- from: I_INFORMATION_FLOW_GRAPH
+  to: I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  type: derived_from
+- from: I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  to: I_ORDO_BUILD_IR
+  type: consumed_by
+- from: I_VERIFICATION_PROFILE
+  to: I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  type: derived_from
+- from: I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  to: I_CHANGE_IMPACT_PLAN
+  type: consumed_by
+- from: I_VERIFICATION_PROFILE
+  to: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  type: derived_from
+- from: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  to: I_DELIVERY_EVIDENCE
+  type: consumed_by
+- from: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  to: IG_DELIVERY
+  type: validated_by
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  type: derived_from
+- from: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  to: I_PACKAGE_VALIDATION_STATUS
+  type: consumed_by
+- from: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: materializes
+- from: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  to: IG_DELIVERY
+  type: validated_by
+- from: I_SOURCE_MATERIALS
+  to: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  type: derived_from
+- from: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  to: I_SOURCE_ASSIMILATION
+  type: consumed_by
+- from: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  to: I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  type: consumed_by
+- from: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  to: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  type: derived_from
+- from: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  to: I_REPAIR_REGRESSION_MEMORY
+  type: consumed_by
+- from: I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  to: I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  type: derived_from
+- from: I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  to: I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  type: consumed_by
+- from: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  to: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  type: derived_from
+- from: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  to: I_PACKAGE_VALIDATION_STATUS
+  type: consumed_by
+- from: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: materializes
+- from: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  to: IG_DELIVERY
+  type: validated_by
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_INFORMATION_OBJECT_CATALOG
+  type: depends_on
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_INFORMATION_GROUP_CATALOG
+  type: depends_on
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_INFORMATION_FLOW_GRAPH
+  type: depends_on
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_ARTIFACT_CONTRACT_REGISTRY
+  type: depends_on
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_PROCESS_MODEL
+  type: depends_on
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_PATTERN_EXECUTION_PROJECTION
+  type: derived_from
+- from: I_PATTERN_EXECUTION_PROJECTION
+  to: I_ORDO_BUILD_IR
+  type: derived_from
+- from: I_BUSINESS_VIEW
+  to: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  type: derived_from
+- from: I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  to: I_BUSINESS_VIEW_RENDER_VALIDATION
+  type: validated_by
+- from: I_BUSINESS_VIEW_RENDER_VALIDATION
+  to: I_VERIFICATION_EVIDENCE
+  type: derived_from
+- from: I_ARTIFACT_SURFACE
+  to: I_CAPABILITY_REQUIREMENT_CATALOG
+  type: derived_from
+- from: I_RULE_AUTHORITY_MODEL
+  to: I_CAPABILITY_REQUIREMENT_CATALOG
+  type: derived_from
+- from: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  to: I_PATTERN_APPLICABILITY_RESULT
+  type: derived_from
+- from: I_PATTERN_APPLICABILITY_RESULT
+  to: I_PATTERN_FIT_RESOLUTION
+  type: derived_from
+- from: I_PATTERN_FIT_RESOLUTION
+  to: I_PATTERN_INSTANCE_CATALOG
+  type: derived_from
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_PATTERN_DATA_LAYER_EXPANSION
+  type: derived_from
+- from: I_PATTERN_DATA_LAYER_EXPANSION
+  to: I_INFORMATION_OBJECT_CATALOG
+  type: depends_on
+- from: I_PATTERN_DATA_LAYER_EXPANSION
+  to: I_INFORMATION_GROUP_CATALOG
+  type: depends_on
+- from: I_PATTERN_DATA_LAYER_EXPANSION
+  to: I_INFORMATION_FLOW_GRAPH
+  type: depends_on
+- from: I_PATTERN_DATA_LAYER_EXPANSION
+  to: I_PATTERN_EXECUTION_PROJECTION
+  type: derived_from
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: A_BUSINESS_VIEW
+  type: depends_on
+- from: I_ARTIFACT_SURFACE
+  to: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  type: derived_from
+- from: I_CAPABILITY_REQUIREMENT_CATALOG
+  to: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  type: derived_from
+- from: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  to: I_PATTERN_APPLICABILITY_RESULT
+  type: derived_from
+- from: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  to: I_PATTERN_REUSE_SCORING_CONTRACT
+  type: derived_from
+- from: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  to: I_PATTERN_REUSE_EVALUATION
+  type: derived_from
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: I_PATTERN_REUSE_EVALUATION
+  type: derived_from
+- from: I_PATTERN_EXECUTION_PROJECTION
+  to: I_PATTERN_REUSE_EVALUATION
+  type: derived_from
+- from: I_PATTERN_REUSE_SCORING_CONTRACT
+  to: I_PATTERN_REUSE_EVALUATION
+  type: derived_from
+- from: I_PATTERN_REUSE_EVALUATION
+  to: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  type: consumed_by
+- from: S_PATTERN_LIBRARY
+  to: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  type: provided_by
+- from: I_INFORMATION_OBJECT_CATALOG
+  to: I_PATTERN_EXECUTION_PROJECTION
+  type: depends_on
+- from: I_INFORMATION_FLOW_GRAPH
+  to: I_PATTERN_EXECUTION_PROJECTION
+  type: depends_on
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: I_PATTERN_EXECUTION_PROJECTION
+  type: depends_on
+- from: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  to: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  type: derived_from
+- from: I_PATTERN_EXECUTION_PROJECTION
+  to: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  type: depends_on
+- from: I_PATTERN_EXECUTION_PROJECTION
+  to: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  type: derived_from
+- from: I_ORDO_BUILD_IR
+  to: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  type: derived_from
+- from: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  to: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  type: depends_on
+- from: I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  to: I_PATTERN_REUSE_EVALUATION
+  type: derived_from
+- from: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  to: I_PSEUDO_LIVE_OPTIMIZATION_CONTRACT
+  type: derived_from
+- from: I_PSEUDO_LIVE_OPTIMIZATION_CONTRACT
+  to: I_REPAIR_REGRESSION_MEMORY
+  type: consumed_by
+- from: I_CAPABILITY_REQUIREMENT_CATALOG
+  to: IG_PATTERN_FOUNDATION
+  type: validated_by
+- from: I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  to: IG_PATTERN_FOUNDATION
+  type: validated_by
+- from: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  to: IG_PATTERN_SELECTION_INPUT
+  type: validated_by
+- from: I_PATTERN_APPLICABILITY_RESULT
+  to: IG_PATTERN_APPLICABILITY
+  type: validated_by
+- from: I_PATTERN_FIT_RESOLUTION
+  to: IG_PATTERN_FIT
+  type: validated_by
+- from: I_PATTERN_INSTANCE_CATALOG
+  to: IG_PATTERN_INSTANCE
+  type: validated_by
+- from: I_PATTERN_DATA_LAYER_EXPANSION
+  to: IG_PATTERN_EXPANSION
+  type: validated_by
+- from: I_PACKAGE_VALIDATION_STATUS
+  to: IG_PACKAGE_VALIDATION_LOCAL
+  type: validated_by
+- from: IG_PATTERN_FOUNDATION
+  to: I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  type: depends_on
+- from: IG_PATTERN_FOUNDATION
+  to: I_PATTERN_REUSE_SCORING_CONTRACT
+  type: depends_on
+- from: IG_PATTERN_FOUNDATION
+  to: I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  type: depends_on
+- from: IG_PATTERN_SELECTION_INPUT
+  to: I_PATTERN_APPLICABILITY_RESULT
+  type: depends_on
+- from: IG_PATTERN_SELECTION_INPUT
+  to: I_PATTERN_REUSE_EVALUATION
+  type: depends_on
+- from: IG_PATTERN_APPLICABILITY
+  to: I_PATTERN_FIT_RESOLUTION
+  type: depends_on
+- from: IG_PATTERN_FIT
+  to: I_PATTERN_INSTANCE_CATALOG
+  type: depends_on
+- from: IG_PATTERN_INSTANCE
+  to: I_PATTERN_DATA_LAYER_EXPANSION
+  type: depends_on
+- from: IG_PATTERN_INSTANCE
+  to: I_PATTERN_REUSE_EVALUATION
+  type: depends_on
+- from: IG_PATTERN_EXPANSION
+  to: I_INFORMATION_OBJECT_CATALOG
+  type: depends_on
+- from: IG_PATTERN_EXPANSION
+  to: I_INFORMATION_GROUP_CATALOG
+  type: depends_on
+- from: IG_PATTERN_EXPANSION
+  to: I_INFORMATION_FLOW_GRAPH
+  type: depends_on
+- from: IG_PATTERN_EXPANSION
+  to: I_PATTERN_EXECUTION_PROJECTION
+  type: depends_on
+- from: IG_PACKAGE_VALIDATION_LOCAL
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: depends_on
+- from: I_PATTERN_EXECUTION_PROJECTION
+  to: IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+  type: validated_by
+- from: I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  to: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  type: derived_from
+- from: I_PSEUDO_LIVE_OPTIMIZATION_CONTRACT
+  to: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  type: depends_on
+- from: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_OPTIMIZATION_TIMING_EVIDENCE
+  type: derived_from
+- from: I_OPTIMIZATION_TIMING_EVIDENCE
+  to: IG_OPTIMIZATION_TIMING_EVIDENCE
+  type: validated_by
+- from: IG_OPTIMIZATION_TIMING_EVIDENCE
+  to: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  type: depends_on
+- from: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  type: depends_on
+- from: I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  to: I_PERFORMANCE_AB_CONTRACT
+  type: derived_from
+- from: I_PERFORMANCE_AB_CONTRACT
+  to: I_REPAIR_REGRESSION_MEMORY
+  type: consumed_by
+- from: I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  to: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  type: derived_from
+- from: I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  to: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  type: depends_on
+- from: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  to: I_PACKAGE_VALIDATION_STATUS
+  type: consumed_by
+- from: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  to: A_GENERATED_PLAYBOOK_PACKAGE
+  type: materializes
+- from: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  to: IG_DELIVERY
+  type: validated_by
+- from: I_INTERACTION_PROJECTION
+  to: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  type: derived_from
+- from: I_INFORMATION_LIFECYCLE_AUTHORITY
+  to: I_FIELD_RESOLUTION_STATUS_CONTRACT
+  type: derived_from
+- from: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  to: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  type: depends_on
+- from: I_FIELD_RESOLUTION_STATUS_CONTRACT
+  to: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  type: depends_on
+- from: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  to: I_BUSINESS_PROCESS_DESIGN_IR
+  type: depends_on
+- from: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  to: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  type: depends_on
+- from: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  to: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  type: depends_on
+- from: I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  to: I_VERIFICATION_EVIDENCE
+  type: depends_on
+- from: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  to: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  type: derived_from
+- from: I_FIELD_RESOLUTION_STATUS_CONTRACT
+  to: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  type: derived_from
+- from: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  to: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  type: derived_from
+- from: I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  to: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  type: derived_from
+- from: I_ARTIFACT_CONTRACT_REGISTRY
+  to: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  type: derived_from
+- from: I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  to: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  type: derived_from
+- from: I_INTERACTIVE_COMPLETENESS_CONTRACT
+  to: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  type: derived_from
+- from: I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  to: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  type: derived_from
+- from: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  to: I_REVIEW_FINDINGS
+  type: derived_from
+- from: I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  to: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  type: derived_from
+- from: I_PROCESS_MODEL
+  to: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  type: derived_from
+- from: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  to: I_BUSINESS_PROCESS_DESIGN_IR
+  type: depends_on
+- from: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  to: I_REPAIR_REGRESSION_MEMORY
+  type: consumed_by
+- from: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  to: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  type: derived_from
+- from: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  to: I_BUSINESS_PROCESS_DESIGN_IR
+  type: depends_on
+- from: I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  to: I_VISIBLE_DEBUG_TIMING_CONTRACT
+  type: derived_from
+- from: I_VISIBLE_DEBUG_TIMING_CONTRACT
+  to: I_DELIVERY_EVIDENCE
+  type: depends_on
+- from: I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  to: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  type: derived_from
+- from: I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  to: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  type: derived_from
+- from: I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  to: I_REPAIR_REGRESSION_MEMORY
+  type: consumed_by
+- from: I_REPAIR_REGRESSION_MEMORY
+  to: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  to: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  to: I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  to: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_REVIEW_FINDINGS
+  to: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  type: derived_from
+- from: I_OPTIMIZATION_TIMING_EVIDENCE
+  to: I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  type: derived_from
+- from: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  to: I_PERFORMANCE_AB_CONTRACT
+  type: depends_on
+- from: I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  type: depends_on
+- from: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_OPTIMIZATION_TIMING_EVIDENCE
+  type: derived_from
+- from: I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  to: I_PACKAGING_CONTINUITY_CONTRACT
+  type: depends_on
+- from: I_PACKAGING_CONTINUITY_CONTRACT
+  to: I_PACKAGE_VALIDATION_STATUS
+  type: validated_by
+- from: I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  to: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  type: depends_on
+- from: I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  to: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  type: depends_on
+- from: I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  to: I_ORDO_BUILD_IR
+  type: consumed_by
+- from: I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  to: I_OBSERVABILITY_DEBUG_CONTRACT
+  type: depends_on
+- from: I_OBSERVABILITY_DEBUG_CONTRACT
+  to: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_OBSERVABILITY_DEBUG_CONTRACT
+  to: I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  type: depends_on
+- from: I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  to: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  type: depends_on
+- from: I_OBSERVABILITY_DEBUG_CONTRACT
+  to: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  type: depends_on
+- from: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  to: I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  type: depends_on
+- from: I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  to: I_PACKAGING_CONTINUITY_CONTRACT
+  type: depends_on
+gates:
+- id: IG_UNDERSTANDING
+  label: Ig Understanding
+  fragments:
+  - IG_UNDERSTANDING
+  authority_kind: validation_gate
+- id: IG_INFORMATION_MODEL
+  label: Ig Information Model
+  fragments:
+  - IG_INFORMATION_MODEL
+  authority_kind: validation_gate
+- id: IG_PROCESS_DESIGN
+  label: Ig Process Design
+  fragments:
+  - IG_PROCESS_DESIGN
+  authority_kind: validation_gate
+- id: IG_ARTIFACT_CONTRACT
+  label: Ig Artifact Contract
+  fragments:
+  - IG_ARTIFACT_CONTRACT
+  authority_kind: validation_gate
+- id: IG_BUILD_SOURCE
+  label: Ig Build Source
+  fragments:
+  - IG_BUILD_SOURCE
+  authority_kind: validation_gate
+- id: IG_VERIFICATION
+  label: Ig Verification
+  fragments:
+  - IG_VERIFICATION
+  authority_kind: validation_gate
+- id: IG_DELIVERY
+  label: Ig Delivery
+  fragments:
+  - IG_DELIVERY
+  authority_kind: validation_gate
+- id: IA_ANALYST_ACCEPTANCE
+  label: Ia Analyst Acceptance
+  fragments:
+  - IA_ANALYST_ACCEPTANCE
+  authority_kind: authority_decision
+- id: IG_PATTERN_FOUNDATION
+  label: Ig Pattern Foundation
+  fragments:
+  - IG_PATTERN_FOUNDATION
+  authority_kind: validation_gate
+- id: IG_PATTERN_SELECTION_INPUT
+  label: Ig Pattern Selection Input
+  fragments:
+  - IG_PATTERN_SELECTION_INPUT
+  authority_kind: validation_gate
+- id: IG_PATTERN_APPLICABILITY
+  label: Ig Pattern Applicability
+  fragments:
+  - IG_PATTERN_APPLICABILITY
+  authority_kind: validation_gate
+- id: IG_PATTERN_FIT
+  label: Ig Pattern Fit
+  fragments:
+  - IG_PATTERN_FIT
+  authority_kind: validation_gate
+- id: IG_PATTERN_INSTANCE
+  label: Ig Pattern Instance
+  fragments:
+  - IG_PATTERN_INSTANCE
+  authority_kind: validation_gate
+- id: IG_PATTERN_EXPANSION
+  label: Ig Pattern Expansion
+  fragments:
+  - IG_PATTERN_EXPANSION
+  authority_kind: validation_gate
+- id: IG_PACKAGE_VALIDATION_LOCAL
+  label: Ig Package Validation Local
+  fragments:
+  - IG_PACKAGE_VALIDATION_LOCAL
+  authority_kind: validation_gate
+- id: IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+  label: Ig Pattern Execution Projection Local
+  fragments:
+  - IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+  authority_kind: validation_gate
+- id: IG_OPTIMIZATION_TIMING_EVIDENCE
+  label: Ig Optimization Timing Evidence
+  fragments:
+  - IG_OPTIMIZATION_TIMING_EVIDENCE
+  authority_kind: validation_gate

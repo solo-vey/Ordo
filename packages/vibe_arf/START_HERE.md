@@ -1,4 +1,4 @@
-# START HERE — Vibe ARF 0.1.2
+# START HERE — Vibe ARF 0.1.3
 
 Use canonical Ordo as semantic authority and the persisted Information-First/Authority-First authoring model as the Vibe design method.
 

@@ -1,0 +1,505 @@
+schema_version: '1.0'
+catalog_id: vibe_arf_self_variable_group_catalog
+revision: 0.1.3
+purpose: Published semantic-group passports generated from the Vibe self-hosted AIM.
+groups:
+- id: G_INPUT
+  label: Intent and sources
+  order: 1
+  purpose: Initial analyst intent, source materials and desired outputs.
+  graph_sections:
+  - G_INPUT
+  member_variables:
+  - I_RAW_USER_INTENT
+  - I_SOURCE_MATERIALS
+  - I_DESIRED_ARTIFACT_REFS
+  - I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+  shared_gate_id: null
+  shared_gate_ids: []
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Intent and sources
+    description: Initial analyst intent, source materials and desired outputs.
+  source_authoring_group:
+    id: G_INPUT
+    members:
+    - I_RAW_USER_INTENT
+    - I_SOURCE_MATERIALS
+    - I_DESIRED_ARTIFACT_REFS
+    - I_ANALYST_CONTEXT_PRESERVATION_CONTRACT
+    display:
+      language: en
+      title: Intent and sources
+      description: Initial analyst intent, source materials and desired outputs.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids: []
+- id: G_UNDERSTANDING
+  label: Understanding
+  order: 2
+  purpose: Assimilated domain knowledge, actors, artifact surface and authority.
+  graph_sections:
+  - G_UNDERSTANDING
+  member_variables:
+  - I_SOURCE_ASSIMILATION
+  - I_EPISTEMIC_RECORDS
+  - I_DOMAIN_ACTOR_MODEL
+  - I_ARTIFACT_SURFACE
+  - I_RULE_AUTHORITY_MODEL
+  shared_gate_id: IG_UNDERSTANDING
+  shared_gate_ids:
+  - IG_UNDERSTANDING
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Understanding
+    description: Assimilated domain knowledge, actors, artifact surface and authority.
+  source_authoring_group:
+    id: G_UNDERSTANDING
+    members:
+    - I_SOURCE_ASSIMILATION
+    - I_EPISTEMIC_RECORDS
+    - I_DOMAIN_ACTOR_MODEL
+    - I_ARTIFACT_SURFACE
+    - I_RULE_AUTHORITY_MODEL
+    display:
+      language: en
+      title: Understanding
+      description: Assimilated domain knowledge, actors, artifact surface and authority.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_UNDERSTANDING
+- id: G_INFORMATION_MODEL
+  label: Information model
+  order: 3
+  purpose: Information objects, semantic groups, dependencies, lifecycle and interaction projection.
+  graph_sections:
+  - G_INFORMATION_MODEL
+  member_variables:
+  - I_INFORMATION_OBJECT_CATALOG
+  - I_INFORMATION_GROUP_CATALOG
+  - I_INFORMATION_FLOW_GRAPH
+  - I_INFORMATION_LIFECYCLE_AUTHORITY
+  - I_INTERACTION_PROJECTION
+  - I_REVIEW_BUNDLE_CATALOG
+  - I_PROPOSAL_CANONICALIZATION
+  - I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+  - I_PATTERN_INSTANCE_CATALOG
+  - I_CAPABILITY_REQUIREMENT_CATALOG
+  - I_PATTERN_APPLICABILITY_RESULT
+  - I_PATTERN_FIT_RESOLUTION
+  - I_PATTERN_DATA_LAYER_EXPANSION
+  - I_PATTERN_SELECTION_INPUT_SNAPSHOT
+  - I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+  - I_FIELD_RESOLUTION_STATUS_CONTRACT
+  - I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+  shared_gate_id: null
+  shared_gate_ids:
+  - IG_INFORMATION_MODEL
+  - IG_PATTERN_FOUNDATION
+  - IG_PATTERN_SELECTION_INPUT
+  - IG_PATTERN_APPLICABILITY
+  - IG_PATTERN_FIT
+  - IG_PATTERN_INSTANCE
+  - IG_PATTERN_EXPANSION
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Information model
+    description: Information objects, semantic groups, dependencies, lifecycle and interaction projection.
+  source_authoring_group:
+    id: G_INFORMATION_MODEL
+    members:
+    - I_INFORMATION_OBJECT_CATALOG
+    - I_INFORMATION_GROUP_CATALOG
+    - I_INFORMATION_FLOW_GRAPH
+    - I_INFORMATION_LIFECYCLE_AUTHORITY
+    - I_INTERACTION_PROJECTION
+    - I_REVIEW_BUNDLE_CATALOG
+    - I_PROPOSAL_CANONICALIZATION
+    - I_REUSABLE_DATA_EXECUTION_PATTERN_LIBRARY
+    - I_PATTERN_INSTANCE_CATALOG
+    - I_CAPABILITY_REQUIREMENT_CATALOG
+    - I_PATTERN_APPLICABILITY_RESULT
+    - I_PATTERN_FIT_RESOLUTION
+    - I_PATTERN_DATA_LAYER_EXPANSION
+    - I_PATTERN_SELECTION_INPUT_SNAPSHOT
+    - I_INTERACTIVE_ANALYST_WORKFLOW_CONTRACT
+    - I_FIELD_RESOLUTION_STATUS_CONTRACT
+    - I_ADAPTIVE_COMPLETENESS_PROFILE_CONTRACT
+    display:
+      language: en
+      title: Information model
+      description: Information objects, semantic groups, dependencies, lifecycle and interaction projection.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_INFORMATION_MODEL
+      - IG_PATTERN_FOUNDATION
+      - IG_PATTERN_SELECTION_INPUT
+      - IG_PATTERN_APPLICABILITY
+      - IG_PATTERN_FIT
+      - IG_PATTERN_INSTANCE
+      - IG_PATTERN_EXPANSION
+- id: G_PROCESS_DESIGN
+  label: Process design
+  order: 4
+  purpose: Parameter closure, human-decision needs and business process design.
+  graph_sections:
+  - G_PROCESS_DESIGN
+  member_variables:
+  - I_PROCESS_MODEL
+  - I_PARAMETER_LEDGER
+  - I_HUMAN_DECISION_NEEDS
+  - I_BUSINESS_PROCESS_DESIGN_IR
+  - I_INTERACTIVE_COMPLETENESS_CONTRACT
+  - I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+  - I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+  shared_gate_id: IG_PROCESS_DESIGN
+  shared_gate_ids:
+  - IG_PROCESS_DESIGN
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Process design
+    description: Parameter closure, human-decision needs and business process design.
+  source_authoring_group:
+    id: G_PROCESS_DESIGN
+    members:
+    - I_PROCESS_MODEL
+    - I_PARAMETER_LEDGER
+    - I_HUMAN_DECISION_NEEDS
+    - I_BUSINESS_PROCESS_DESIGN_IR
+    - I_INTERACTIVE_COMPLETENESS_CONTRACT
+    - I_GENERATED_PLAYBOOK_SEMANTIC_EXECUTION_CONTRACT
+    - I_DETERMINISTIC_TOOL_RESULT_CONTRACT
+    display:
+      language: en
+      title: Process design
+      description: Parameter closure, human-decision needs and business process design.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_PROCESS_DESIGN
+- id: G_ARTIFACTS
+  label: Artifact contracts
+  order: 5
+  purpose: Artifact contracts and traceability between business requirements and outputs.
+  graph_sections:
+  - G_ARTIFACTS
+  member_variables:
+  - I_ARTIFACT_CONTRACT_REGISTRY
+  - I_TRACEABILITY_GRAPH
+  - I_REUSABLE_AUTHORING_TEMPLATE_KIT
+  - I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+  - I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+  - I_DERIVED_OUTPUT_GENERATION_CONTRACT
+  shared_gate_id: IG_ARTIFACT_CONTRACT
+  shared_gate_ids:
+  - IG_ARTIFACT_CONTRACT
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Artifact contracts
+    description: Artifact contracts and traceability between business requirements and outputs.
+  source_authoring_group:
+    id: G_ARTIFACTS
+    members:
+    - I_ARTIFACT_CONTRACT_REGISTRY
+    - I_TRACEABILITY_GRAPH
+    - I_REUSABLE_AUTHORING_TEMPLATE_KIT
+    - I_EDITOR_VISIBLE_ARCHITECTURE_CONTRACT
+    - I_BUSINESS_VIEW_MATERIALIZATION_STATUS
+    - I_DERIVED_OUTPUT_GENERATION_CONTRACT
+    display:
+      language: en
+      title: Artifact contracts
+      description: Artifact contracts and traceability between business requirements and outputs.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_ARTIFACT_CONTRACT
+- id: G_BUILD
+  label: Ordo build
+  order: 6
+  purpose: Executable Ordo build model and materialized source status.
+  graph_sections:
+  - G_BUILD
+  member_variables:
+  - I_ORDO_BUILD_IR
+  - I_GENERATED_SOURCE_STATUS
+  - I_APPROVAL_LEDGER_CONTRACT
+  - I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+  - I_INFORMATION_PRESERVATION_CONTRACT
+  - I_PATTERN_EXECUTION_PROJECTION
+  - I_PATTERN_GRAPH_REALIZATION_CONTRACT
+  - I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+  shared_gate_id: null
+  shared_gate_ids:
+  - IG_BUILD_SOURCE
+  - IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Ordo build
+    description: Executable Ordo build model and materialized source status.
+  source_authoring_group:
+    id: G_BUILD
+    members:
+    - I_ORDO_BUILD_IR
+    - I_GENERATED_SOURCE_STATUS
+    - I_APPROVAL_LEDGER_CONTRACT
+    - I_DETERMINISTIC_EXECUTION_RESPONSIBILITY_CONTRACT
+    - I_INFORMATION_PRESERVATION_CONTRACT
+    - I_PATTERN_EXECUTION_PROJECTION
+    - I_PATTERN_GRAPH_REALIZATION_CONTRACT
+    - I_DETERMINISTIC_FIRST_ARCHITECTURE_CONTRACT
+    display:
+      language: en
+      title: Ordo build
+      description: Executable Ordo build model and materialized source status.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_BUILD_SOURCE
+      - IG_PATTERN_EXECUTION_PROJECTION_LOCAL
+- id: G_VERIFICATION
+  label: Verification and review
+  order: 7
+  purpose: Verification profile, evidence, findings and readiness.
+  graph_sections:
+  - G_VERIFICATION
+  member_variables:
+  - I_VERIFICATION_PROFILE
+  - I_VERIFICATION_EVIDENCE
+  - I_REVIEW_FINDINGS
+  - I_SIMULATION_CONTRACT
+  - I_SIMULATION_FIXTURES
+  - I_SIMULATION_EVIDENCE
+  - I_DEFECT_OWNERSHIP
+  - I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+  - I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+  - I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+  - I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+  - I_BUSINESS_VIEW_RENDER_VALIDATION
+  - I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+  - I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+  - I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+  - I_SEMANTIC_QUALITY_FINDING_CONTRACT
+  shared_gate_id: IG_VERIFICATION
+  shared_gate_ids:
+  - IG_VERIFICATION
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Verification and review
+    description: Verification profile, evidence, findings and readiness.
+  source_authoring_group:
+    id: G_VERIFICATION
+    members:
+    - I_VERIFICATION_PROFILE
+    - I_VERIFICATION_EVIDENCE
+    - I_REVIEW_FINDINGS
+    - I_SIMULATION_CONTRACT
+    - I_SIMULATION_FIXTURES
+    - I_SIMULATION_EVIDENCE
+    - I_DEFECT_OWNERSHIP
+    - I_HYBRID_REFERENCE_FIDELITY_FEEDBACK_CONTRACT
+    - I_DYNAMIC_MULTI_REFERENCE_COMPARATIVE_EVALUATION
+    - I_FAST_FULL_DEPENDENCY_AWARE_VALIDATION_CONTRACT
+    - I_EVALUATOR_REFERENCE_INPUT_BUNDLE_CONTRACT
+    - I_BUSINESS_VIEW_RENDER_VALIDATION
+    - I_PATTERN_GRAPH_REALIZATION_EVIDENCE
+    - I_ANALYST_INTERACTION_ROBUSTNESS_CONTRACT
+    - I_HYBRID_ARTIFACT_QUALITY_VALIDATION_CONTRACT
+    - I_SEMANTIC_QUALITY_FINDING_CONTRACT
+    display:
+      language: en
+      title: Verification and review
+      description: Verification profile, evidence, findings and readiness.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_VERIFICATION
+- id: G_CHANGE_REPAIR
+  label: Repair and change
+  order: 8
+  purpose: Repair memory and selective impact plans.
+  graph_sections:
+  - G_CHANGE_REPAIR
+  member_variables:
+  - I_REPAIR_REGRESSION_MEMORY
+  - I_CHANGE_IMPACT_PLAN
+  - I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+  - I_PATTERN_REUSE_SCORING_CONTRACT
+  - I_PATTERN_REUSE_EVALUATION
+  - I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+  - I_OPTIMIZATION_TIMING_EVIDENCE
+  - I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+  - I_PERFORMANCE_AB_CONTRACT
+  - I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+  - I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+  - I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+  - I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+  - I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+  - I_OBSERVABILITY_DEBUG_CONTRACT
+  - I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+  - I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+  shared_gate_id: IG_OPTIMIZATION_TIMING_EVIDENCE
+  shared_gate_ids:
+  - IG_OPTIMIZATION_TIMING_EVIDENCE
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Repair and change
+    description: Repair memory and selective impact plans.
+  source_authoring_group:
+    id: G_CHANGE_REPAIR
+    members:
+    - I_REPAIR_REGRESSION_MEMORY
+    - I_CHANGE_IMPACT_PLAN
+    - I_OPTIMIZATION_LOOP_CALIBRATION_CONTRACT
+    - I_PATTERN_REUSE_SCORING_CONTRACT
+    - I_PATTERN_REUSE_EVALUATION
+    - I_OPTIMIZATION_RUNTIME_EFFICIENCY_CONTRACT
+    - I_OPTIMIZATION_TIMING_EVIDENCE
+    - I_PERFORMANCE_DEGRADATION_DIAGNOSTIC
+    - I_PERFORMANCE_AB_CONTRACT
+    - I_SELF_REPAIR_EXECUTION_LOG_CONTRACT
+    - I_DEVELOPMENT_SUBPROCESS_ROUTING_CONTRACT
+    - I_QUALITY_HARDENING_SUBPROCESS_CONTRACT
+    - I_PERFORMANCE_TOKEN_OPTIMIZATION_SUBPROCESS_CONTRACT
+    - I_CONTEXT_RUNTIME_EFFICIENCY_CONTRACT
+    - I_OBSERVABILITY_DEBUG_CONTRACT
+    - I_DEVELOPMENT_REGRESSION_GOVERNANCE_CONTRACT
+    - I_QUALITY_OPTIMIZATION_GOVERNANCE_CONTRACT
+    display:
+      language: en
+      title: Repair and change
+      description: Repair memory and selective impact plans.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IG_OPTIMIZATION_TIMING_EVIDENCE
+- id: G_DELIVERY
+  label: Acceptance and delivery
+  order: 9
+  purpose: Business view, acceptance, packaging and delivery evidence.
+  graph_sections:
+  - G_DELIVERY
+  member_variables:
+  - I_BUSINESS_VIEW
+  - I_ACCEPTANCE_STATUS
+  - I_PACKAGE_VALIDATION_STATUS
+  - I_DELIVERY_EVIDENCE
+  - I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+  - I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+  - I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+  - I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+  - I_VISIBLE_DEBUG_TIMING_CONTRACT
+  - I_PACKAGING_CONTINUITY_CONTRACT
+  shared_gate_id: null
+  shared_gate_ids:
+  - IA_ANALYST_ACCEPTANCE
+  - IG_DELIVERY
+  analyst_interaction_policy:
+    present_as_logical_bundle: true
+    allow_progressive_disclosure: true
+    proposal_first_when_derivable: true
+  validation_policy:
+    gate_scope: group
+    mutation_of_any_member_invalidates_group_gate: true
+  display:
+    language: en
+    title: Acceptance and delivery
+    description: Business view, acceptance, packaging and delivery evidence.
+  source_authoring_group:
+    id: G_DELIVERY
+    members:
+    - I_BUSINESS_VIEW
+    - I_ACCEPTANCE_STATUS
+    - I_PACKAGE_VALIDATION_STATUS
+    - I_DELIVERY_EVIDENCE
+    - I_DEFAULT_DEBUG_HANDOFF_PROGRESS_CONTRACT
+    - I_GENERATED_PLAYBOOK_PRODUCTION_PACKAGE_CONTRACT
+    - I_PRODUCTION_DEPENDENCY_CLOSURE_CONTRACT
+    - I_RELEASE_DISTRIBUTION_PROFILE_CONTRACT
+    - I_VISIBLE_DEBUG_TIMING_CONTRACT
+    - I_PACKAGING_CONTINUITY_CONTRACT
+    display:
+      language: en
+      title: Acceptance and delivery
+      description: Business view, acceptance, packaging and delivery evidence.
+    interaction_policy:
+      progressive: true
+      proposal_first_when_derivable: true
+    validation:
+      gate_ids:
+      - IA_ANALYST_ACCEPTANCE
+      - IG_DELIVERY
