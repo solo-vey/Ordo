@@ -51,6 +51,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`ANALYST_INTERACTION_CONTRACT.md`](ANALYST_INTERACTION_CONTRACT.md) — executable analyst-facing response, retry, confirmation, and resume contract.
 - [`VALUE_PROVENANCE_CONTRACT.md`](VALUE_PROVENANCE_CONTRACT.md) — source labels, reference isolation, and explicit draft confirmation for state values.
 - [`VALIDATION_LAYERS_AND_PROPAGATION.md`](VALIDATION_LAYERS_AND_PROPAGATION.md) — layer-specific diagnostics and fail-closed propagation of shipped validators.
+- [`NODE_DECOMPOSITION.md`](NODE_DECOMPOSITION.md) — responsibility checks and non-mutating split-impact diagnostics.
 - [`../examples/golden_examples.json`](../examples/golden_examples.json) — machine-readable golden-example source of truth.
 - [`DOCUMENTATION_QUALITY_GATE.md`](DOCUMENTATION_QUALITY_GATE.md) — active-document scope, link rules, release-claim consistency, and bounded historical exclusions.
 - [`design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md`](design_decisions/BL_ORDO_067_PER_NODE_AI_DECISION_TRACE.md) — design-only contract for observable per-node AI interaction and decision debugging without hidden chain-of-thought.
