@@ -225,6 +225,6 @@ def test_packaged_release_claims_are_synchronized() -> None:
 def test_historical_link_exceptions_are_exact_and_bounded() -> None:
     policy = load_json(POLICY_PATH)
     exceptions = policy["bounded_historical_link_exceptions"]
-    assert len(exceptions) == 3
+    assert len(exceptions) == 1
     assert all("*" not in entry["path"] for entry in exceptions)
     assert all((ROOT / entry["path"]).is_file() for entry in exceptions)

@@ -6,6 +6,7 @@ The book is maintained as localized, chapter-based source trees.
 - `uk/` — Ukrainian translation and the preserved pre-publication baseline.
 - `manifests/chapter_sync_manifest.yaml` — chapter-level version and synchronization ledger.
 - `releases/frozen/` — approved rendered artifacts that must not be regenerated without an explicit instruction.
+- `archive/books` branch — preserved legacy monolithic Ukrainian Markdown editions; they are intentionally absent from `main`.
 
 ## Current migration state
 
