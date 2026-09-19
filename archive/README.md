@@ -1,7 +1,10 @@
-# Archived milestone reports
+# Historical archive
 
-Historical milestone reports are preserved here unchanged whenever possible.
-Present-tense status is controlled by `backlog/CURRENT_MATURITY_STATE.md`,
-`manifests/CURRENT_MATURITY_STATE.json`, and `backlog/CONSOLIDATED_BACKLOG.md`.
+This directory is retained on the `archive/legacy` branch as the repository's
+historical-provenance contour. It contains retired packages, utilities,
+milestone reports, and the former Markdown backlog.
 
-M88/M89 canonical reports remain under `reports/m88_m89/`.
+It is intentionally not part of the active `main` checkout. Current work is
+tracked in GitHub Issues: <https://github.com/solo-vey/Ordo/issues>.
+
+M88/M89 canonical reports remain under `reports/m88_m89/` in the active tree.
