@@ -131,6 +131,16 @@ non-mutating side-question resume behavior. Validate it with:
 ordo validate-analyst-interaction PACKAGE
 ```
 
+## Value provenance contract
+
+Use `value_provenance_contract` to prevent reference examples, defaults, and
+model proposals from silently becoming confirmed state. It requires explicit
+value source labels and analyst confirmation:
+
+```bash
+ordo validate-value-provenance PACKAGE
+```
+
 ## Recovery and terminal routes
 
 Use explicit node or gate `failure_routes` for `input`, `validation`, and

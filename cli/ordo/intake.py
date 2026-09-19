@@ -17,6 +17,7 @@ from .manual_run_journey import record_intake_event
 from .transition_provenance import validate_node_entry, build_node_context_envelope
 from .input_contract import evaluate_input_submission
 from .analyst_interaction import evaluate_analyst_submission
+from .value_provenance import evaluate_value_provenance, attach_value_provenance
 from .reporter import write_json
 from .runtime_context import (
     build_live_session,
@@ -251,6 +252,7 @@ def submit_intake_node(
     next_target: str | None = None
     diff: dict[str, Any] = {}
     matched = False
+    provenance_records: dict[str, Any] = {}
 
     if context_issues:
         status = "blocked"
@@ -273,6 +275,7 @@ def submit_intake_node(
         if provenance.get("status") != "passed":
             status = "blocked"
             issues.extend(provenance.get("issues", []))
+        raw_answer = answer
         submission = evaluate_input_submission(source, node, answer) if status == "passed" else {"status": status, "answer": answer, "issues": []}
         answer = submission.get("answer", answer)
         if submission.get("status") != "passed":
@@ -286,12 +289,21 @@ def submit_intake_node(
                 status = "clarification_required"
                 next_target = interaction.get("next_node")
                 issues.extend(interaction.get("issues", []))
+        if status == "passed":
+            provenance = evaluate_value_provenance(source, node, raw_answer)
+            provenance_records = provenance.get("records", {})
+            answer = provenance.get("answer", answer)
+            if provenance.get("status") != "passed":
+                status = "clarification_required"
+                next_target = provenance.get("next_node")
+                issues.extend(provenance.get("issues", []))
         matched = status == "passed" and _is_answer_matched(node, answer)
         if status == "passed" and not matched:
             status = "blocked"
             issues.append({"severity": "error", "code": "ORDO-INTAKE-003", "message": "answer did not match node contract", "location": node_id, "allowed_answers": node.get("allowed_answers") or []})
         elif status == "passed":
             next_target, diff = _apply_node_answer(node, answer, state)
+            attach_value_provenance(state, provenance.get("records", {}))
             answered = state.setdefault("answered_questions", [])
             if isinstance(answered, list):
                 answered.append({"node": node_id, "answer": _parse_answer(answer, node.get("answer_type")), "closed_at": utc_now()})
@@ -327,7 +339,12 @@ def submit_intake_node(
         next_node=next_target,
         checkpoint=checkpoint_after,
         snapshot_path=_rel(root, snapshot_path),
-        extra={"issues": issues, "matched": matched, "expected_node": expected_node},
+        extra={
+            "issues": issues,
+            "matched": matched,
+            "expected_node": expected_node,
+            "value_provenance_records": provenance_records,
+        },
     )
     trace = append_session_trace_step(
         root,
@@ -400,6 +417,7 @@ def submit_intake_node(
         "next_node": next_target or "",
         "state": state,
         "state_diff": diff,
+        "value_provenance_records": provenance_records,
         "checkpoint_before": checkpoint_before,
         "checkpoint": checkpoint_after,
         "evidence_report": evidence.get("evidence_path"),
@@ -624,8 +642,29 @@ def guided_intake(
             flow_status = "blocked"
             break
 
+        provenance = evaluate_value_provenance(source, node, answer)
+        answer = provenance.get("answer", answer)
+        if provenance.get("status") != "passed":
+            next_target = provenance.get("next_node")
+            trace["events"].append({
+                "type": provenance.get("status"),
+                "node": current_node,
+                "next": next_target,
+                "issues": provenance.get("issues", []),
+                "provenance_records": provenance.get("records", {}),
+                "state_mutation": False,
+            })
+            if isinstance(next_target, str) and next_target:
+                state["current_node"] = next_target
+                current_node = next_target
+                continue
+            state["current_node"] = current_node
+            flow_status = "blocked"
+            break
+
         node_id_for_event = current_node
         next_target, diff = _apply_node_answer(node, answer, state)
+        attach_value_provenance(state, provenance.get("records", {}))
         answered = state.setdefault("answered_questions", [])
         if isinstance(answered, list):
             answered.append({"node": node_id_for_event, "answer": _parse_answer(answer, node.get("answer_type")), "closed_at": utc_now()})

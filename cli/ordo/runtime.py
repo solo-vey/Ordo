@@ -287,6 +287,7 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
         "state_lineage": {},
         "input_contract": {},
         "analyst_interaction_contract": {},
+        "value_provenance_contract": {},
         "correction_contract": {},
         "regression_contract": {},
         "cross_artifact_contract": {},
@@ -303,6 +304,8 @@ def load_runtime_source(package_path: str | Path) -> tuple[Path, dict[str, Any],
             source["input_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "ANALYST.INTERACTION.CONTRACT.DEF":
             source["analyst_interaction_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
+        elif op_name == "VALUE.PROVENANCE.CONTRACT.DEF":
+            source["value_provenance_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "CORRECTION.CONTRACT.DEF":
             source["correction_contract"] = {k: v for k, v in op.items() if k not in {"op", "id"}}
         elif op_name == "REGRESSION.CONTRACT.DEF":
