@@ -20,6 +20,7 @@ from .execution_trace import (
 )
 from .runtime_evidence import file_sha256
 from .input_contract import evaluate_input_submission
+from .value_provenance import evaluate_value_provenance, attach_value_provenance
 
 
 def utc_now() -> str:
@@ -171,6 +172,7 @@ def apply_answers(source: dict[str, Any], state: dict[str, Any], answers: dict[s
         if not node:
             events.append({"type": "answer_ignored", "node": node_id, "reason": "node not found"})
             continue
+        raw_answer = answer
         submission = evaluate_input_submission(source, node, answer)
         if submission.get("status") != "passed":
             events.append({
@@ -182,6 +184,19 @@ def apply_answers(source: dict[str, Any], state: dict[str, Any], answers: dict[s
             })
             continue
         answer = submission.get("answer", answer)
+        provenance = evaluate_value_provenance(source, node, raw_answer)
+        if provenance.get("status") != "passed":
+            events.append({
+                "type": "draft_confirmation_required" if provenance.get("status") == "draft_confirmation_required" else "provenance_rejected",
+                "node": node_id,
+                "answer": provenance.get("answer", raw_answer),
+                "next": provenance.get("next_node"),
+                "issues": provenance.get("issues", []),
+                "provenance_records": provenance.get("records", {}),
+                "state_mutation": False,
+            })
+            continue
+        answer = provenance.get("answer", answer)
         before = copy.deepcopy(state)
         on_answer = node.get("on_answer") or {}
         update: dict[str, Any] = {}
@@ -204,6 +219,7 @@ def apply_answers(source: dict[str, Any], state: dict[str, Any], answers: dict[s
             continue
         for key, value in update.items():
             set_path(state, key, resolve_answer_placeholder(answer, value))
+        attach_value_provenance(state, provenance.get("records", {}))
         antipattern_result = _execute_antipattern_phase(
             package_root=package_root,
             node=node,

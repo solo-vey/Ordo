@@ -374,6 +374,14 @@ def compile_source(source: dict[str, Any]) -> dict[str, Any]:
             **analyst_interaction_contract,
         })
 
+    value_provenance_contract = source.get("value_provenance_contract")
+    if value_provenance_contract:
+        ops.append({
+            "op": "VALUE.PROVENANCE.CONTRACT.DEF",
+            "id": namespace_id(package, "value_provenance_contract"),
+            **value_provenance_contract,
+        })
+
     correction_contract = source.get("correction_contract")
     if correction_contract:
         ops.append({

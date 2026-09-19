@@ -52,6 +52,7 @@ from .llm_execution_plan import build_llm_execution_plan, semantic_ir_sha256, va
 from .state_lineage import validate_state_lineage
 from .input_contract import validate_input_contract
 from .analyst_interaction import validate_analyst_interaction_contract, route_side_question, describe_gate_failure
+from .value_provenance import validate_value_provenance_contract
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
@@ -134,6 +135,15 @@ def cmd_validate_analyst_interaction(args: argparse.Namespace) -> int:
     out = Path(args.out).resolve() if args.out else root / "reports" / "analyst_interaction_report.json"
     write_json(out, report)
     print(f"validate-analyst-interaction: {report['status']} ({out})")
+    return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_value_provenance(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = validate_value_provenance_contract(source)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "value_provenance_report.json"
+    write_json(out, report)
+    print(f"validate-value-provenance: {report['status']} ({out})")
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
 
 
@@ -1256,6 +1266,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("package")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_analyst_interaction)
+
+    p = sub.add_parser("validate-value-provenance", help="Validate reference isolation, provenance labels and analyst confirmation controls")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_value_provenance)
 
     p = sub.add_parser("route-side-question", help="Record a side question and return to the preserved active node")
     p.add_argument("package")
