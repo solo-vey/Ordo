@@ -63,6 +63,8 @@ check-conflicts
 validate-release
 validate-layers
 validate-validator-propagation
+validate-node-responsibilities
+inspect-node-split
 build-provenance
 validate-provenance
 diff-release
@@ -89,6 +91,14 @@ artifact, and semantic results to `reports/validation_layers_report.json`.
 validator declared in a package propagation contract is byte-identical to its
 canonical repository source. See
 [`../docs/VALIDATION_LAYERS_AND_PROPAGATION.md`](../docs/VALIDATION_LAYERS_AND_PROPAGATION.md).
+
+## Node decomposition
+
+`ordo validate-node-responsibilities PACKAGE` detects a node that combines
+collection, analysis, drafting, confirmation, routing, or technical work.
+`ordo inspect-node-split PACKAGE --node NODE --replacement NEW_ID` produces a
+non-mutating preservation surface for a manual graph split. See
+[`../docs/NODE_DECOMPOSITION.md`](../docs/NODE_DECOMPOSITION.md).
 
 ## Artifact validation
 

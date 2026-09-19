@@ -55,6 +55,7 @@ from .analyst_interaction import validate_analyst_interaction_contract, route_si
 from .value_provenance import validate_value_provenance_contract
 from .validation_layers import validate_layers
 from .validator_propagation import validate_validator_propagation
+from .node_decomposition import inspect_node_split, validate_node_responsibilities
 from .cross_artifact_contract import validate_cross_artifact_contract
 from .correction_replay import plan_correction, validate_correction_contract
 from .canonical_regression import run_package_canonical_regression
@@ -169,6 +170,24 @@ def cmd_validate_validator_propagation(args: argparse.Namespace) -> int:
     write_json(out, report)
     print(f"validate-validator-propagation: {report['status']} ({out})")
     return 0 if report["status"] in {"passed", "not_enabled"} else 1
+
+
+def cmd_validate_node_responsibilities(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = validate_node_responsibilities(source)
+    out = Path(args.out).resolve() if args.out else root / "reports" / "node_responsibility_report.json"
+    write_json(out, report)
+    print(f"validate-node-responsibilities: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
+
+
+def cmd_inspect_node_split(args: argparse.Namespace) -> int:
+    root, _manifest, source, _tests = load_package(args.package)
+    report = inspect_node_split(source, args.node, replacement_ids=list(args.replacement or []))
+    out = Path(args.out).resolve() if args.out else root / "reports" / "node_split_impact_report.json"
+    write_json(out, report)
+    print(f"inspect-node-split: {report['status']} ({out})")
+    return 0 if report["status"] == "passed" else 1
 
 
 def cmd_route_side_question(args: argparse.Namespace) -> int:
@@ -1306,6 +1325,18 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--repo-root", help="Repository root containing canonical validator files")
     p.add_argument("--out", help="Optional machine-readable report path")
     p.set_defaults(func=cmd_validate_validator_propagation)
+
+    p = sub.add_parser("validate-node-responsibilities", help="Detect compound collection, analysis, drafting, confirmation, routing and technical nodes")
+    p.add_argument("package")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_validate_node_responsibilities)
+
+    p = sub.add_parser("inspect-node-split", help="Create a non-mutating preservation plan before manually splitting a node")
+    p.add_argument("package")
+    p.add_argument("--node", required=True, help="Existing node id to inspect")
+    p.add_argument("--replacement", action="append", help="Proposed new node id; may be repeated")
+    p.add_argument("--out", help="Optional machine-readable report path")
+    p.set_defaults(func=cmd_inspect_node_split)
 
     p = sub.add_parser("route-side-question", help="Record a side question and return to the preserved active node")
     p.add_argument("package")
