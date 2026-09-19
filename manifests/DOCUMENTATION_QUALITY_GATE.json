@@ -36,14 +36,6 @@
   },
   "bounded_historical_link_exceptions": [
     {
-      "path": "book/compiled/ordo_for_beginners_v0_12_all_in_one.md",
-      "reason": "Preserved compiled legacy book with source-relative mascot links."
-    },
-    {
-      "path": "book/compiled/ordo_for_beginners_v0_12_m58_full_book.md",
-      "reason": "Preserved compiled legacy book with source-relative mascot links."
-    },
-    {
       "path": "empirical_evidence/external_developer_adoption/EDA_001/extracted/04_PUBLICATION_SAFE_PLAYBOOK/external_workflow_preparation_rc1/templates/REFERENCE_ROW_TEMPLATE.md",
       "reason": "Immutable evidence template containing an intentional URL placeholder."
     }
