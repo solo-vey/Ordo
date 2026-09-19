@@ -61,6 +61,8 @@ lock
 validate-lock
 check-conflicts
 validate-release
+validate-layers
+validate-validator-propagation
 build-provenance
 validate-provenance
 diff-release
@@ -78,6 +80,15 @@ package
 ```
 
 Commands removed by the lean cleanup are not part of the current CLI surface: registry-site, dashboard, global publication catalog, release-promotion, and global template-registry commands.
+
+## Layered validation and package propagation
+
+`ordo validate-layers PACKAGE` writes independent schema, graph, lineage,
+artifact, and semantic results to `reports/validation_layers_report.json`.
+`ordo validate-validator-propagation PACKAGE --repo-root .` verifies that every
+validator declared in a package propagation contract is byte-identical to its
+canonical repository source. See
+[`../docs/VALIDATION_LAYERS_AND_PROPAGATION.md`](../docs/VALIDATION_LAYERS_AND_PROPAGATION.md).
 
 ## Artifact validation
 
