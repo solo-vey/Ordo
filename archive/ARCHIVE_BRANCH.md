@@ -11,5 +11,9 @@ It preserves:
   reports; and
 - `archive/backlog_history/` — retired Markdown planning and maturity records.
 
+The matching machine-readable backlog and maturity snapshots are retained under
+`archive/backlog_history/manifests/`. The retired ARF distribution pointer is
+retained under `archive/legacy_packages/`.
+
 The active repository must not add runtime, release, or validation dependencies
 on this branch. Use the GitHub Issues tracker for current work.
