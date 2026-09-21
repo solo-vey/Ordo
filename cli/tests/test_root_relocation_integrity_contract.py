@@ -57,7 +57,7 @@ def test_relocation_contract_is_complete_and_unique() -> None:
     destinations = [entry["canonical_path"] for entry in entries]
 
     assert contract["schema_version"] == "ordo.root_relocation_contract.v1"
-    assert contract["entry_count"] == len(entries) == 48
+    assert contract["entry_count"] == len(entries) == 45
     assert len(sources) == len(set(sources))
     assert len(destinations) == len(set(destinations))
     assert all(Path(source).parent == Path(".") for source in sources)

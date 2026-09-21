@@ -1,0 +1,11 @@
+{
+  "schema_version": "ordo.issue_tracking.v1",
+  "canonical_tracker": "https://github.com/solo-vey/Ordo/issues",
+  "historical_backlog_branch": "archive/legacy",
+  "historical_backlog_path": "archive/backlog_history/",
+  "active_issues": [
+    {"id": "BL-ORDO-043", "issue": 83, "url": "https://github.com/solo-vey/Ordo/issues/83"},
+    {"id": "BL-ORDO-062", "issue": 84, "url": "https://github.com/solo-vey/Ordo/issues/84"},
+    {"id": "BL-ORDO-026", "issue": 151, "url": "https://github.com/solo-vey/Ordo/issues/151"}
+  ]
+}

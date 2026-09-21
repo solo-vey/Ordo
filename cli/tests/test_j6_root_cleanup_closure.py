@@ -47,18 +47,10 @@ def test_j6_closure_root_allowlist_matches_repository() -> None:
     assert closure["historical_contours_rewritten"] is False
 
 
-def test_j6_status_is_synchronized_across_backlog_and_maturity_state() -> None:
-    backlog_json = load_json("manifests/CONSOLIDATED_BACKLOG.json")
-    maturity_json = load_json("manifests/CURRENT_MATURITY_STATE.json")
-    backlog_md = (ROOT / "backlog/CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8")
-    maturity_md = (ROOT / "backlog/CURRENT_MATURITY_STATE.md").read_text(encoding="utf-8")
-
-    contour = next(item for item in backlog_json["maintenance_contours"] if item["id"] == "J.6")
-    assert contour["status"] == "closed"
-    assert contour["closure_evidence"] == "manifests/J6_ROOT_CLEANUP_CLOSURE.json"
-    assert maturity_json["repository_maintenance"]["J.6"]["status"] == "closed"
-    assert "### J.6 — Repository root structure audit and cleanup\n\nStatus: `closed`" in backlog_md
-    assert "Repository maintenance contour J.6: `closed`" in maturity_md
+def test_j6_closure_is_the_current_status_evidence() -> None:
+    closure = load_json(CLOSURE_PATH)
+    assert closure["contour_id"] == "J.6"
+    assert closure["status"] == "closed"
 
 
 def test_j6_closure_documents_point_to_machine_evidence() -> None:

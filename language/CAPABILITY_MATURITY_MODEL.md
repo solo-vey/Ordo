@@ -157,4 +157,4 @@ model_benchmark: passed_cross_model_repeated_runs
 production_recommendation: ready
 ```
 
-Current evidence is registered in `manifests/CURRENT_MATURITY_STATE.json`. Historical reports remain valid for the milestone at which they were produced but must not be used as current status.
+Current evidence is registered in `manifests/CSG_RELEASE_MANIFEST.json` and the release ledger. Historical reports remain valid for the milestone at which they were produced but must not be used as current status.

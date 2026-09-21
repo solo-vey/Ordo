@@ -1,7 +1,7 @@
 {
   "schema_version": "ordo.root_relocation_contract.v1",
   "baseline_before_cleanup": "be91782f5ffc29e182d5077ce604e7279381b498",
-  "entry_count": 48,
+  "entry_count": 45,
   "groups": [
     {
       "group_id": "apf_documentation",
@@ -65,9 +65,6 @@
       "group_id": "governance_and_handoffs",
       "lifecycle": "mixed_current_and_legacy_documentation",
       "relocations": [
-        {"source_path": "CONSOLIDATED_BACKLOG.md", "canonical_path": "backlog/CONSOLIDATED_BACKLOG.md"},
-        {"source_path": "CURRENT_MATURITY_STATE.md", "canonical_path": "backlog/CURRENT_MATURITY_STATE.md"},
-        {"source_path": "FUTURE_BACKLOG.md", "canonical_path": "backlog/FUTURE_BACKLOG.md"},
         {"source_path": "DELIVERY_POLICY.md", "canonical_path": "docs/policies/DELIVERY_POLICY.md"},
         {"source_path": "LANGUAGE_POLICY.md", "canonical_path": "docs/policies/LANGUAGE_POLICY.md"},
         {"source_path": "PLAYBOOK_VERSIONING_POLICY.md", "canonical_path": "docs/policies/PLAYBOOK_VERSIONING_POLICY.md"},
@@ -105,17 +102,14 @@
     }
   ],
   "active_consumers": [
-    {"path": "tools/build_release_archive.py", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md", "reports/delivery/current/DELIVERY_GATE_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md"]},
+    {"path": "tools/build_release_archive.py", "required_paths": ["manifests/ISSUE_TRACKING.json", "reports/delivery/current/DELIVERY_GATE_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.md"]},
     {"path": ".github/workflows/ordo-delivery-gate.yml", "required_paths": ["reports/delivery/current/DELIVERY_GATE_REPORT.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"]},
     {"path": "language/STARTUP_PACKAGE_PROFILE.md", "required_paths": ["docs/handoff/START_PROMPT_DEVELOPER_MODE.md"]},
-    {"path": "manifests/CONSOLIDATED_BACKLOG.json", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md", "docs/apf/legacy-root/uk/APF_POST_GENERATION_DEFECT_REVIEW_RATIONALE_UK.md"]},
-    {"path": "manifests/CURRENT_MATURITY_STATE.json", "required_paths": ["backlog/CONSOLIDATED_BACKLOG.md"]},
-    {"path": "manifests/M74_4_RELEASE_PRODUCT_SPLIT.json", "required_paths": ["backlog/FUTURE_BACKLOG.md", "docs/handoff/DEVELOPER_BUNDLE_README.md", "reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"]},
+    {"path": "manifests/M74_4_RELEASE_PRODUCT_SPLIT.json", "required_paths": ["docs/handoff/DEVELOPER_BUNDLE_README.md", "reports/apf/legacy-root/APF_PATTERN_CLASSIFICATION_MATRIX.json", "reports/self-check/current/FINAL_PACKAGE_SELF_CHECK_REPORT.json"]},
     {"path": "docs/README.md", "required_paths": ["EXTERNAL_ARCHIVES.md"]},
     {"path": "docs/handoff/DEVELOPER_BUNDLE_README.md", "required_paths": ["../EXTERNAL_ARCHIVES.md"]}
   ],
   "link_indexes": [
-    "backlog/README.md",
     "docs/apf/legacy-root/README.md",
     "docs/handoff/README.md",
     "docs/policies/README.md",

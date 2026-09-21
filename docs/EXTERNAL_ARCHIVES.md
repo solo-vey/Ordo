@@ -2,6 +2,12 @@
 
 Historical material that is not required for current runtime, package, or documentation operation is stored outside the active repository tree as GitHub Release assets. This keeps ordinary clones focused on current Ordo while preserving checksum-bound provenance and recovery material.
 
+The repository's retired packages, utilities, milestone reports, and former
+Markdown backlog are retained on the
+[`archive/legacy`](https://github.com/solo-vey/Ordo/tree/archive/legacy) branch.
+Historical books are retained separately on
+[`archive/books`](https://github.com/solo-vey/Ordo/tree/archive/books).
+
 ## Historical provenance archive — 2026-07
 
 - Release: [historical-provenance-2026-07-22](https://github.com/solo-vey/Ordo/releases/tag/historical-provenance-2026-07-22)
