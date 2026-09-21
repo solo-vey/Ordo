@@ -12,6 +12,7 @@
     "docs/DOCUMENTATION_QUALITY_GATE.md",
     "docs/FAQ.md",
     "docs/GLOSSARY.md",
+    "docs/PROJECT_TRACKING.md",
     "docs/QUICKSTART.md",
     "docs/README.md",
     "docs/status/L_DOCUMENTATION_CONTOUR_CLOSURE.md",
@@ -24,8 +25,6 @@
   "release_claim_sources": [
     "README.md",
     "CITATION.cff",
-    "backlog/CURRENT_MATURITY_STATE.md",
-    "manifests/CURRENT_MATURITY_STATE.json",
     "manifests/RELEASE_IDENTITY.json",
     "manifests/VERSION_STATE.json"
   ],

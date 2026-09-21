@@ -60,7 +60,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 
 ## Evidence and releases
 
-- [`../backlog/`](../backlog) — current canonical backlog and maturity-state documents.
+- [`PROJECT_TRACKING.md`](PROJECT_TRACKING.md) — current work tracked in GitHub Issues.
 - [`handoff/`](handoff) — current and historical developer handoff documents.
 - [`../manifests/RELEASE_IDENTITY.json`](../manifests/RELEASE_IDENTITY.json) — packaged release identity.
 - [`../manifests/VERSION_STATE.json`](../manifests/VERSION_STATE.json) — current version state.

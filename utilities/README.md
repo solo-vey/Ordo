@@ -13,8 +13,9 @@ This directory contains optional utilities that ship beside Ordo but do not defi
 ## Current status
 
 The Visual Graph Generator was retired from the active utility set in the 0.1.2
-maintenance line. Its source and historical outputs remain under
-`archive/legacy_utilities/ordo_visual_graph_generator/` for provenance.
+maintenance line. Its source and historical outputs remain on the
+[`archive/legacy`](https://github.com/solo-vey/Ordo/tree/archive/legacy/archive/legacy_utilities)
+branch for provenance.
 
 ## Utilities
 

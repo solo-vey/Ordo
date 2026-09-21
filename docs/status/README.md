@@ -1,6 +1,6 @@
 # Status documentation
 
-Current backlog and maturity state live in [`../../backlog/`](../../backlog/).
+Current work is tracked in [GitHub Issues](https://github.com/solo-vey/Ordo/issues); see [`../PROJECT_TRACKING.md`](../PROJECT_TRACKING.md) for the repository tracking contract.
 
 Historical status documents are retained outside the active tree; see [`../EXTERNAL_ARCHIVES.md`](../EXTERNAL_ARCHIVES.md).
 

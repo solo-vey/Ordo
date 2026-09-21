@@ -5,9 +5,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RELOCATIONS = {
-    "CONSOLIDATED_BACKLOG.md": "backlog/CONSOLIDATED_BACKLOG.md",
-    "CURRENT_MATURITY_STATE.md": "backlog/CURRENT_MATURITY_STATE.md",
-    "FUTURE_BACKLOG.md": "backlog/FUTURE_BACKLOG.md",
     "DELIVERY_POLICY.md": "docs/policies/DELIVERY_POLICY.md",
     "LANGUAGE_POLICY.md": "docs/policies/LANGUAGE_POLICY.md",
     "PLAYBOOK_VERSIONING_POLICY.md": "docs/policies/PLAYBOOK_VERSIONING_POLICY.md",
@@ -29,11 +26,9 @@ def test_governance_documents_exist_in_canonical_contours() -> None:
 
 
 def test_indexes_explain_current_and_historical_ownership() -> None:
-    backlog = (ROOT / "backlog/README.md").read_text(encoding="utf-8")
     policies = (ROOT / "docs/policies/README.md").read_text(encoding="utf-8")
     handoffs = (ROOT / "docs/handoff/README.md").read_text(encoding="utf-8")
     archive = (ROOT / "docs/EXTERNAL_ARCHIVES.md").read_text(encoding="utf-8")
-    assert "canonical Markdown backlog" in backlog
     assert "normative and reusable repository policy" in policies
     assert "developer-mode start prompt" in handoffs
     assert "historical-provenance-2026-07-22" in archive
@@ -42,5 +37,5 @@ def test_indexes_explain_current_and_historical_ownership() -> None:
 def test_tooling_uses_relocated_canonical_paths() -> None:
     builder = (ROOT / "tools/build_release_archive.py").read_text(encoding="utf-8")
     profile = (ROOT / "language/STARTUP_PACKAGE_PROFILE.md").read_text(encoding="utf-8")
-    assert 'ROOT / "backlog/CONSOLIDATED_BACKLOG.md"' in builder
+    assert "ISSUE_TRACKING.json" in builder
     assert "entry_file: docs/handoff/START_PROMPT_DEVELOPER_MODE.md" in profile

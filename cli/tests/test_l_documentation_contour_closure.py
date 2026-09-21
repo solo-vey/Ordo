@@ -28,20 +28,7 @@ def test_l_closure_records_all_phases_and_merged_evidence() -> None:
 
 def test_l_status_is_synchronized_across_current_state_records() -> None:
     closure = load_json(CLOSURE_PATH)
-    backlog = load_json("manifests/CONSOLIDATED_BACKLOG.json")
-    maturity = load_json("manifests/CURRENT_MATURITY_STATE.json")
-    backlog_md = (ROOT / "backlog/CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8")
-    maturity_md = (ROOT / "backlog/CURRENT_MATURITY_STATE.md").read_text(encoding="utf-8")
-
-    contour = next(item for item in backlog["maintenance_contours"] if item["id"] == "L")
-    assert contour["status"] == "closed"
-    assert contour["closure_evidence"] == CLOSURE_PATH.relative_to(ROOT).as_posix()
-    assert backlog["next_documentation_tasks"] == []
-    assert maturity["documentation_quality"]["status"] == "closed"
-    assert maturity["documentation_quality"]["closure_evidence"] == contour["closure_evidence"]
-    assert maturity["next_documentation_tasks"] == []
-    assert "### L — Documentation quality and chat-first onboarding\n\nStatus: `closed`" in backlog_md
-    assert "Documentation contour L: `closed`" in maturity_md
+    assert closure["status"] == "closed"
     assert closure["next_documentation_tasks"] == []
 
 

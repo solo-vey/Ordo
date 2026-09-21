@@ -1,7 +1,7 @@
 {
   "schema_version": "ordo.status_supersession_registry.v1",
   "updated_at": "2026-07-14T18:00:00Z",
-  "current_status_ref": "manifests/CURRENT_MATURITY_STATE.json",
+  "current_status_ref": "manifests/RELEASE_LEDGER.json",
   "records": [
     {
       "path": "reports/M74_0_CSG_MATURITY_REASSESSMENT.json",
@@ -24,13 +24,13 @@
     {
       "path": "docs/future_backlog_m74_sync_snapshot.md",
       "historical_as_of": "M74 snapshot",
-      "superseded_by": "backlog/CONSOLIDATED_BACKLOG.md",
+      "superseded_by": "GitHub Issues tracker and archive/legacy backlog history",
       "preserve_unchanged": true
     },
     {
       "path": "manifests/LANGUAGE_BASELINE_RELEASE_CSG_0_1.json",
       "historical_as_of": "CSG 0.1 release baseline",
-      "superseded_by": "language/conversation_scope_guard.contract.yaml and CURRENT_MATURITY_STATE.json",
+      "superseded_by": "language/conversation_scope_guard.contract.yaml and manifests/CSG_RELEASE_MANIFEST.json",
       "preserve_unchanged": true
     },
     {

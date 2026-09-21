@@ -1,9 +1,0 @@
-schema_version: ordo.migration.decision_tree_blueprint.v1
-artifact_id: decision-tree-blueprint
-status: draft
-source_node: N5_TREE_PROTOTYPE
-producer_node: N5_TREE_PROTOTYPE
-review: {status: pending, notes: []}
-nodes: []
-transitions: []
-terminal_candidates: []

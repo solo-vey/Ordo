@@ -1,27 +1,19 @@
 import json
 from pathlib import Path
-import re
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def _md_statuses(text: str):
-    return dict(re.findall(r"### (BL-ORDO-\d+) — .*?\n\nStatus: `([^`]+)`", text, re.S))
-
-
-def test_consolidated_backlog_md_json_statuses_match():
-    md = _md_statuses((ROOT / "backlog/CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8"))
-    data = json.loads((ROOT / "manifests/CONSOLIDATED_BACKLOG.json").read_text(encoding="utf-8"))
-    js = {item["id"]: item["status"] for item in data["items"]}
-    assert md == js
+def test_issue_tracking_replaces_historical_backlog_sync():
+    tracking = json.loads((ROOT / "manifests/ISSUE_TRACKING.json").read_text(encoding="utf-8"))
+    assert tracking["canonical_tracker"] == "https://github.com/solo-vey/Ordo/issues"
+    assert tracking["historical_backlog_branch"] == "archive/legacy"
+    assert tracking["active_issues"]
 
 
 def test_current_csg_maturity_is_production_ready_everywhere():
-    current = json.loads((ROOT / "manifests/CURRENT_MATURITY_STATE.json").read_text(encoding="utf-8"))
-    csg = current["capabilities"]["conversation_scope_guard"]
-    assert csg["production_recommendation"] == "ready"
-    assert csg["runtime_enforcement"] == "integrated_helper_runner"
-    assert csg["model_benchmark"] == "passed_cross_model_repeated_runs"
+    manifest = json.loads((ROOT / "manifests/CSG_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
+    assert manifest["capability"] == "conversation_scope_guard"
 
     contract = (ROOT / "language/CONVERSATION_SCOPE_GUARD_CONTRACT.md").read_text(encoding="utf-8")
     integration = (ROOT / "language/CSG_INTEGRATION_LINE.md").read_text(encoding="utf-8")
@@ -46,8 +38,10 @@ def test_historical_stale_statuses_are_registered_as_superseded():
 
 
 def test_bl_ordo_004_is_closed_with_evidence():
-    data = json.loads((ROOT / "manifests/CONSOLIDATED_BACKLOG.json").read_text(encoding="utf-8"))
-    item = next(i for i in data["items"] if i["id"] == "BL-ORDO-004")
-    assert item["status"] == "closed"
-    assert item["closure_milestone"] == "M76.3"
-    assert (ROOT / item["closure_evidence"]).exists()
+    ledger = json.loads((ROOT / "manifests/RELEASE_LEDGER.json").read_text(encoding="utf-8"))
+    completed = {
+        item
+        for release in ledger["releases"]
+        for item in release.get("completed_backlog_items", [])
+    }
+    assert "BL-ORDO-004" in completed

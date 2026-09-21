@@ -256,14 +256,15 @@ def run_package_lints(skip_heavy: bool, timeout_seconds: int = 3600) -> dict:
 
 
 def check_manifest_sync() -> list[str]:
-    issues = []
-    md = (ROOT / "backlog/CONSOLIDATED_BACKLOG.md").read_text(encoding="utf-8")
-    md_statuses = dict(re.findall(r"### (BL-ORDO-\d+) — .*?\n\nStatus: `([^`]+)`", md, re.S))
-    data = json.loads((ROOT / "manifests/CONSOLIDATED_BACKLOG.json").read_text(encoding="utf-8"))
-    js = {i["id"]: i["status"] for i in data["items"]}
-    if md_statuses != js:
-        issues.append("backlog/CONSOLIDATED_BACKLOG.md and manifests/CONSOLIDATED_BACKLOG.json are desynchronized")
-    return issues
+    tracker = ROOT / "manifests/ISSUE_TRACKING.json"
+    if not tracker.is_file():
+        return ["missing manifests/ISSUE_TRACKING.json"]
+    data = json.loads(tracker.read_text(encoding="utf-8"))
+    if data.get("canonical_tracker") != "https://github.com/solo-vey/Ordo/issues":
+        return ["ISSUE_TRACKING.json has an unexpected canonical tracker"]
+    if not data.get("active_issues"):
+        return ["ISSUE_TRACKING.json must list active work"]
+    return []
 
 
 def check_root_hygiene() -> list[str]:

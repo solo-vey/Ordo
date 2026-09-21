@@ -14,7 +14,7 @@ Manual zipping of the working tree is forbidden. The script:
 
 1. runs the full CLI test suite (partitioned per file);
 2. lints every package under `packages/`;
-3. verifies backlog/maturity manifest synchronization (`.md` == `.json`);
+3. verifies the active GitHub Issue tracking manifest and release-evidence synchronization;
 4. verifies root hygiene (no milestone reports in root);
 5. **refuses to build** while any check is red (`reports/delivery/current/DELIVERY_GATE_REPORT.json` records why);
 6. on green, regenerates `FINAL_PACKAGE_SELF_CHECK_REPORT.{json,md}` from the
