@@ -1,3 +1,77 @@
+# Changelog
+
+This is the repository-level release history for user-facing Ordo deliverables.
+Entries are reconstructed only from published GitHub Releases, signed repository
+tags, release manifests, and merged release work. Historical gaps are not
+filled with inferred changes.
+
+The current source of release truth is the matching GitHub Release and its
+checksum asset. The legacy ARF line is preserved on the
+[`archive/legacy`](https://github.com/solo-vey/Ordo/tree/archive/legacy) branch.
+
+## [Unreleased]
+
+### Changed
+
+- GitHub Issues are the canonical work tracker. Historical file-based backlog
+  records are preserved on `archive/legacy`.
+
+## [Ordo Tree Editor 0.2.0-alpha.20.0.218-dev] - 2026-09-19
+
+### Fixed
+
+- Added portable host binding, a health endpoint, and corrected Docker startup
+  behavior. Published the matching versioned GHCR container image.
+
+## [Vibe ARF 0.1.3] - 2026-09-19
+
+### Changed
+
+- Refreshed the EDIT, CLI_RUN, and MODEL_RUN package family from the current
+  Ordo CLI/runtime; all profiles passed the package-native distribution gate.
+
+## [Ordo Tree Editor 0.2.0-alpha.20.0.217-dev] - 2026-08-29
+
+### Changed
+
+- Added canonical graph-transition support and removed the retired standalone
+  SVG graph generator from active delivery.
+
+## [Vibe ARF 0.1.2-maintenance.1] - 2026-08-29
+
+### Changed
+
+- Kept the base kit lightweight and reproducible across EDIT, CLI_RUN, and
+  MODEL_RUN profiles after retiring the SVG graph generator.
+
+## [Vibe ARF 0.1.2] - 2026-08-22
+
+### Added
+
+- First repository-native Vibe ARF release with reproducible EDIT, CLI_RUN,
+  and MODEL_RUN profiles and SHA-256 checksums.
+
+## [Ordo Tree Editor 0.2.0-alpha.20.0.195-dev] - 2026-08-22
+
+### Added
+
+- Read-only visual editor with canonical graph projection, gate and terminal
+  visualization, bundled language-verification resources, and legacy adapters.
+
+## [ARF Playbook Kit 0.4.10] - 2026-08-02
+
+### Deprecated
+
+- Final published legacy ARF Playbook Kit line before Vibe ARF became the
+  recommended authoring layer.
+
+## [Legacy ARF Playbook Kit 0.1.0–0.4.9] - 2026-07-23 to 2026-07-31
+
+### Deprecated
+
+- Historical low-level authoring releases are superseded by Vibe ARF and kept
+  only for compatibility and provenance.
+
 ## [ordo-2026.07.17-rc.10] - 2026-07-17
 
 ### Added
@@ -13,7 +87,7 @@
 - Language: `0.14.0-rc.1`.
 - Framework: `0.6.0-rc.1`.
 
-# Change Log
+## Historical normalized notes
 
 ## BL-ORDO-055
 
@@ -56,3 +130,11 @@
 - Reviewed five representative critical/high-impact APF contracts.
 - Added negative regression fixtures for unsupported executable claims and open critical defects.
 - Closed BL-ORDO-014 with zero unresolved critical/high defects.
+
+## Changelog maintenance
+
+Every user-facing GitHub Release must add an entry under `Unreleased` in the
+same pull request. At release time, move that entry to a versioned heading,
+record the date and exact tag, and retain only verified changes. Use `Added`,
+`Changed`, `Fixed`, `Deprecated`, `Removed`, and `Security` when applicable.
+Internal refactors without a user-visible impact do not require a release entry.

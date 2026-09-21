@@ -264,7 +264,20 @@ def check_manifest_sync() -> list[str]:
         return ["ISSUE_TRACKING.json has an unexpected canonical tracker"]
     if not data.get("active_issues"):
         return ["ISSUE_TRACKING.json must list active work"]
-    return []
+    changelog = ROOT / "CHANGELOG.md"
+    vibe_pointer = ROOT / "manifests/VIBE_ARF_CURRENT.json"
+    editor_openapi = ROOT / "utilities/ordo_tree_editor/web/api-docs/openapi.json"
+    if not changelog.is_file() or not vibe_pointer.is_file() or not editor_openapi.is_file():
+        return ["missing changelog release-tracking source"]
+    text = changelog.read_text(encoding="utf-8")
+    vibe_version = json.loads(vibe_pointer.read_text(encoding="utf-8")).get("version")
+    editor_version = json.loads(editor_openapi.read_text(encoding="utf-8")).get("info", {}).get("version")
+    missing = []
+    if f"## [Vibe ARF {vibe_version}]" not in text:
+        missing.append(f"Vibe ARF {vibe_version}")
+    if f"## [Ordo Tree Editor {editor_version}]" not in text:
+        missing.append(f"Ordo Tree Editor {editor_version}")
+    return [f"CHANGELOG.md lacks current release entry: {name}" for name in missing]
 
 
 def check_root_hygiene() -> list[str]:

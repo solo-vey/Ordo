@@ -10,6 +10,7 @@ This file is the canonical map for current Ordo documentation. Start with the qu
 - [`GLOSSARY.md`](GLOSSARY.md) — short definitions and links for core Ordo terminology.
 - [`../CITATION.cff`](../CITATION.cff) — canonical repository citation metadata.
 - [`../README.md`](../README.md) — repository overview, release distinction, and top-level entry points.
+- [`../CHANGELOG.md`](../CHANGELOG.md) — verified user-facing release history and changelog maintenance rule.
 - [`../SUPPORT.md`](../SUPPORT.md) — choose the correct route for bugs, questions, proposals, security reports, and conduct concerns.
 - [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contribution workflow and repository expectations.
 - [`regression/README.md`](regression/README.md) — candidate PRP/PRH playbook regression contour and Vibe ARF authoring use.

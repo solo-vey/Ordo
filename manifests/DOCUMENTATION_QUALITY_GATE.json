@@ -2,6 +2,7 @@
   "schema_version": "ordo.documentation_quality_gate.v1",
   "active_documents": [
     "README.md",
+    "CHANGELOG.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
     "GOVERNANCE.md",
