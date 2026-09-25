@@ -12178,6 +12178,9 @@ class EditorHandler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         path = parsed.path
+        if path == "/healthz":
+            _json_response(self, {"status": "passed", "service": "ordo-tree-editor"})
+            return
         if path == "/api/gitlab-archive":
             query=parse_qs(parsed.query)
             root_url=str((query.get("root_url") or [EDITOR_STARTUP.get("gitlab_root") or ""])[0]).strip()
@@ -12312,7 +12315,7 @@ class EditorHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
 
-def run_server(port: int, open_browser: bool, *, provider: str | None=None, api_key: str | None=None, model: str | None=None, base_url: str | None=None, gitlab_root: str | None=None) -> None:
+def run_server(port: int, open_browser: bool, *, provider: str | None=None, api_key: str | None=None, model: str | None=None, base_url: str | None=None, gitlab_root: str | None=None, host: str | None=None) -> None:
     config=_resolve_startup_runtime_config(provider=provider,model=model,base_url=base_url,api_key=api_key)
     LIVE_RUNTIME.update(config)
     EDITOR_STARTUP["gitlab_root"]=str(gitlab_root or os.environ.get("ORDO_GITLAB_ROOT") or "").strip()
@@ -12322,8 +12325,10 @@ def run_server(port: int, open_browser: bool, *, provider: str | None=None, api_
         print("Model default is not fully configured; use Model Settings in the Editor.")
     if EDITOR_STARTUP["gitlab_root"]:
         print(f"GitLab playbook root: {EDITOR_STARTUP['gitlab_root']}")
-    server = ThreadingHTTPServer(("127.0.0.1", port), EditorHandler)
-    url = f"http://127.0.0.1:{server.server_port}"
+    bind_host = str(host or os.environ.get("ORDO_EDITOR_HOST") or "127.0.0.1").strip() or "127.0.0.1"
+    server = ThreadingHTTPServer((bind_host, port), EditorHandler)
+    display_host = "127.0.0.1" if bind_host in {"0.0.0.0", "::"} else bind_host
+    url = f"http://{display_host}:{server.server_port}"
     print(f"Ordo Tree Editor is running at {url}")
     if open_browser:
         webbrowser.open(url)

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0-alpha.20.0.223-dev — 2026-09-25
+
+- Fixed the Tree Editor Docker healthcheck contract and container host binding.
+
 This is the repository-level release history for user-facing Ordo deliverables.
 Entries are reconstructed only from published GitHub Releases, signed repository
 tags, release manifests, and merged release work. Historical gaps are not
