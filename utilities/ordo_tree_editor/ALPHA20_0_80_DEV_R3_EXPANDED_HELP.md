@@ -11,7 +11,6 @@ Expanded topics include:
 - Execute Playbook
 - Replay Real Chat and PDF export
 - Show Tree, inspector tabs, references, and model explanations
-- Show Path and sticky playback controls
 - Auto Answers
 - Current State
 - Pause / Resume / Stop semantics

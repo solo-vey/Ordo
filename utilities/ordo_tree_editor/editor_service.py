@@ -39,7 +39,63 @@ UTILITY_ROOT = Path(__file__).resolve().parent
 INTEGRATED_COMPILER_ROOT = UTILITY_ROOT / "integrated_compiler"
 INTEGRATED_COMPILER_VERSION = "ordo-runtime-semantic-compiler/0.7.15.5-r3dev-profile-adapter"
 
-def _run_integrated_compile(package_root: Path, program_path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
+def _run_command_with_progress(command: list[str], *, cwd: str, env: dict[str, str], timeout: float, progress_cb=None, stage_id: str, progress: int, label: str, progress_file: Path | None = None, progress_span: tuple[int, int] | None = None) -> subprocess.CompletedProcess:
+    """Run a subprocess while forwarding real child progress when available.
+
+    Long-running bundled tools may publish newline-delimited JSON progress records
+    to ``progress_file``. Those records are mapped into the parent preparation
+    percentage. Otherwise the caller still receives an honest elapsed heartbeat.
+    """
+    holder: dict[str, Any] = {}
+    def target() -> None:
+        try:
+            holder["result"] = subprocess.run(command, cwd=cwd, env=env, capture_output=True, text=True, timeout=timeout)
+        except BaseException as error:
+            holder["error"] = error
+    started = time.monotonic()
+    thread = threading.Thread(target=target, daemon=True)
+    thread.start()
+    latest_child = None
+    seen_records = 0
+    while thread.is_alive():
+        elapsed = max(0.0, time.monotonic() - started)
+        if progress_file and progress_file.is_file():
+            try:
+                records = [json.loads(line) for line in progress_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+                if len(records) > seen_records:
+                    latest_child = records[-1]
+                    seen_records = len(records)
+            except Exception:
+                pass
+        current_progress = progress
+        current_label = f"{label} · {elapsed:.1f}s elapsed"
+        details = {"elapsed_seconds": round(elapsed, 1)}
+        if isinstance(latest_child, dict):
+            child_pct = max(0.0, min(100.0, float(latest_child.get("percent", 0) or 0)))
+            if progress_span:
+                lo, hi = progress_span
+                current_progress = int(round(lo + (hi - lo) * child_pct / 100.0))
+            current_label = str(latest_child.get("label") or label) + f" · {elapsed:.1f}s elapsed"
+            details.update({k:v for k,v in latest_child.items() if k != "label"})
+            details["elapsed_seconds"] = round(elapsed, 1)
+        if progress_cb:
+            progress_cb(stage_id, "RUNNING", current_progress, current_label, details)
+        thread.join(0.5)
+    if "error" in holder:
+        raise holder["error"]
+    return holder["result"]
+
+def _env_timeout_seconds(name: str, default: float) -> float:
+    raw = str(os.environ.get(name, "") or "").strip()
+    if not raw:
+        return float(default)
+    try:
+        value = float(raw)
+    except ValueError:
+        return float(default)
+    return max(1.0, value)
+
+def _run_integrated_compile(package_root: Path, program_path: Path, progress_cb=None) -> tuple[dict[str, Any], dict[str, Any]]:
     """Compile source YAML into a Runtime Semantic Plan using the bundled compiler.
 
     The compiler remains an internal module/CLI boundary so the same code can be used
@@ -53,21 +109,27 @@ def _run_integrated_compile(package_root: Path, program_path: Path) -> tuple[dic
         out = Path(td) / "runtime_semantic_plan.json"
         env = dict(os.environ)
         env["PYTHONPATH"] = str(INTEGRATED_COMPILER_ROOT) + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
-        cp = subprocess.run([sys.executable, str(compiler), str(program_path), "-o", str(out)], cwd=str(package_root), env=env, capture_output=True, text=True, timeout=120)
+        if progress_cb: progress_cb("compile_runtime_plan", "RUNNING", 50, "Starting integrated compiler…", None)
+        compiler_progress = Path(td) / "compiler_progress.jsonl"
+        env["ORDO_COMPILER_PROGRESS_FILE"] = str(compiler_progress)
+        cp = _run_command_with_progress([sys.executable, str(compiler), str(program_path), "-o", str(out)], cwd=str(package_root), env=env, timeout=_env_timeout_seconds("ORDO_COMPILE_TIMEOUT_SECONDS", 900), progress_cb=progress_cb, stage_id="compile_runtime_plan", progress=52, label="Integrated compiler running", progress_file=compiler_progress, progress_span=(50, 66))
         if cp.returncode != 0 or not out.is_file():
             detail = (cp.stderr or cp.stdout or "compiler failed").strip()[-4000:]
             raise ValueError(f"Integrated playbook compilation failed: {detail}")
+        if progress_cb: progress_cb("compile_runtime_plan", "PASS", 66, "Runtime plan compiled.", None)
         try:
             plan = json.loads(out.read_text(encoding="utf-8"))
         except Exception as error:
             raise ValueError(f"Integrated compiler produced invalid JSON: {error}") from error
-        vp = subprocess.run([sys.executable, str(validator), str(out)], cwd=str(package_root), env=env, capture_output=True, text=True, timeout=120)
+        if progress_cb: progress_cb("validate_runtime_plan", "RUNNING", 70, "Validating compiled runtime plan…", None)
+        vp = _run_command_with_progress([sys.executable, str(validator), str(out)], cwd=str(package_root), env=env, timeout=_env_timeout_seconds("ORDO_VALIDATE_TIMEOUT_SECONDS", 300), progress_cb=progress_cb, stage_id="validate_runtime_plan", progress=72, label="Runtime-plan validator running")
         try:
             validation = json.loads(vp.stdout or "{}")
         except Exception:
             validation = {"status":"FAIL", "detail": (vp.stderr or vp.stdout or "validator failed").strip()[-4000:]}
         if vp.returncode != 0 or validation.get("status") != "PASS":
             raise ValueError("Integrated runtime-plan validation failed: " + json.dumps(validation, ensure_ascii=False))
+        if progress_cb: progress_cb("validate_runtime_plan", "PASS", 80, "Runtime plan validated.", None)
         compile_summary = {}
         try:
             compile_summary = json.loads((cp.stdout or "{}").splitlines()[-1])
@@ -605,14 +667,8 @@ def _node_edges(node: dict[str, Any]) -> list[dict[str, str]]:
                 continue
             targets = _targets(route)
             edges.extend({"target": target, "storage": "on_answer", "key": str(outcome)} for target in targets)
-    navigation = node.get("navigation_contract", {})
-    if isinstance(navigation, dict) and isinstance(navigation.get("allowed_to"), list):
-        existing = {edge["target"] for edge in edges}
-        edges.extend(
-            {"target": target, "storage": "navigation_allowed_to", "key": target}
-            for target in navigation["allowed_to"]
-            if isinstance(target, str) and not target.startswith("$") and target not in existing
-        )
+    for edge in edges:
+        edge.setdefault("edge_type", "control_flow")
     return edges
 
 
@@ -642,7 +698,7 @@ def _gate_edges(gate: dict[str, Any], known_entity_ids: set[str] | None = None) 
         for target in _route_targets(gate.get(key)):
             if _is_reserved_graph_disposition(target) and target not in known_entity_ids:
                 continue
-            result.append({"target": target, "storage": "gate_route", "key": key})
+            result.append({"target": target, "storage": "gate_route", "key": key, "edge_type": "control_flow"})
     return result
 
 
@@ -1229,8 +1285,7 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
                     if any(str(g.get("id"))==pred for g in gates):
                         edges.append({"source":pred,"target":out_entity["id"],"edge_type":"enables_output","relation_type":"enables_output","artifact_path":out_entity.get("path") or ""})
     for edge in edges:
-        if edge.get("edge_type"):
-            edge.setdefault("relation_type", edge["edge_type"])
+        edge.setdefault("relation_type",edge.get("edge_type","control_flow"))
 
     # Reachability is computed from execution edges only.  It is diagnostic in
     # Release 1; we do not mutate playbook semantics or delete source entities.
@@ -1323,13 +1378,13 @@ def graph_view(source: dict[str, Any], resources: dict[str, Any] | None = None) 
         ] + [
             {
                 "id": out_entity["id"],
-                "element_type": "terminal" if not out_entity.get("path") and not out_entity.get("producers") else "output",
-                "entity_type": "terminal" if not out_entity.get("path") and not out_entity.get("producers") else ("declared_output" if out_entity.get("declared") else "output"),
-                "collection": None if not out_entity.get("path") and not out_entity.get("producers") else ("declared_outputs" if out_entity.get("declared") else "derived_outputs"),
+                "element_type": "output",
+                "entity_type": "declared_output" if out_entity.get("declared") else "output",
+                "collection": "declared_outputs" if out_entity.get("declared") else "derived_outputs",
                 "label": (out_entity.get("path") or out_entity["id"]),
                 "path": out_entity.get("path") or "",
                 "answer_type": (f"declared output · {str(out_entity.get('traceability_status') or '').lower()}" if out_entity.get("declared") else "materialized output"),
-                "terminal": not out_entity.get("path") and not out_entity.get("producers"),
+                "terminal": False,
                 "producers": out_entity.get("producers",[]),
                 "traceability_status": out_entity.get("traceability_status"),
                 "traceability_reason": out_entity.get("traceability_reason"),
@@ -1458,7 +1513,7 @@ def _structural_model(source: dict[str, Any]) -> dict[str, Any]:
     for edge in edges:
         adjacency.setdefault(edge["source"], []).append(edge["target"])
         reverse.setdefault(edge["target"], []).append(edge["source"])
-    result = {
+    return {
         "nodes": nodes,
         "gates": gates,
         "records": records,
@@ -1472,7 +1527,6 @@ def _structural_model(source: dict[str, Any]) -> dict[str, Any]:
         "entry": _entry_node_id(source),
         "outputs": outputs,
     }
-    return result
 
 
 def _result(check_id: str, name: str, findings: list[dict[str, Any]], pass_summary: str) -> dict[str, Any]:
@@ -1673,18 +1727,13 @@ def validate_source(source: dict[str, Any]) -> dict[str, Any]:
     errors = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "error")
     warnings = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "warning")
     infos = sum(1 for check in checks for item in check["findings"] if item.get("severity") == "info")
-    result = {
+    return {
         "scope": "editor_structural_validation",
         "status": "failed" if errors else ("warning" if warnings else "passed"),
         "summary": {"checks": len(checks), "errors": errors, "warnings": warnings, "info": infos},
         "checks": checks,
         "note": "Structural validation only. Full Ordo playbook validation must be performed by the Ordo validation/playbook tooling.",
     }
-    result["issues"] = [
-        ({**finding, "code": "GRAPH_TARGET_MISSING"} if finding.get("code") == "DANGLING_TARGET" else finding)
-        for check in checks for finding in check["findings"]
-    ]
-    return result
 
 
 def tree_module_manifest_path() -> Path:
@@ -2414,10 +2463,11 @@ def _resolve_runtime_semantic_plan_authority(names: list[str]) -> dict[str, Any]
     }
 
 
-def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
+def parse_playbook_package(filename: str, raw: bytes, progress_cb=None) -> dict[str, Any]:
     original_filename = filename
     original_raw = raw
     input_kind = "zip"
+    if progress_cb: progress_cb("inspect_input", "RUNNING", 8, "Inspecting uploaded package…", {"input_bytes": len(raw)})
     if filename.lower().endswith((".yaml", ".yml")):
         input_kind = "yaml"
         _, raw = _wrap_yaml_as_source_package(filename, raw)
@@ -2430,6 +2480,8 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
     except zipfile.BadZipFile as error:
         raise ValueError("Playbook package is not a valid ZIP archive.") from error
     infos = [info for info in archive.infolist() if not info.is_dir()]
+    if progress_cb: progress_cb("inspect_input", "PASS", 14, f"Archive opened · {len(infos)} files.", {"file_count": len(infos)})
+    if progress_cb: progress_cb("validate_package", "RUNNING", 16, "Checking package limits and safe paths…", None)
     if len(infos) > 1500:
         raise ValueError("Playbook package contains too many files (limit: 1500).")
     unsafe = [info.filename for info in infos if not _safe_zip_name(info.filename)]
@@ -2438,6 +2490,8 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
     total_uncompressed = sum(info.file_size for info in infos)
     if total_uncompressed > 120 * 1024 * 1024:
         raise ValueError("Playbook package expands beyond the 120 MB local editor limit.")
+    if progress_cb: progress_cb("validate_package", "PASS", 20, "Package safety checks passed.", {"uncompressed_bytes": total_uncompressed})
+    if progress_cb: progress_cb("locate_source", "RUNNING", 22, "Locating canonical playbook source…", None)
 
     names = [info.filename for info in infos]
     preferred_names = [
@@ -2468,11 +2522,13 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
     if source is None or source_name is None:
         detail = f" Last YAML error: {yaml_errors[-1]}" if yaml_errors else ""
         raise ValueError("Could not locate an Ordo playbook YAML in the ZIP." + detail)
+    if progress_cb: progress_cb("locate_source", "PASS", 28, f"Playbook source found: {source_name}", {"source_name": source_name})
+    if progress_cb: progress_cb("index_resources", "RUNNING", 30, f"Indexing package resources · 0/{len(infos)}", {"current": 0, "total": len(infos)})
 
     resources: dict[str, str] = {}
     manifest: list[dict[str, Any]] = []
     total_text = 0
-    for info in infos:
+    for resource_index, info in enumerate(infos, 1):
         name = info.filename
         ext = Path(name).suffix.lower()
         item = {"path": name, "size": info.file_size, "text": False}
@@ -2485,6 +2541,10 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
             except UnicodeDecodeError:
                 pass
         manifest.append(item)
+        if progress_cb and (resource_index == len(infos) or resource_index % 50 == 0):
+            progress_cb("index_resources", "RUNNING", min(36, 30 + int(6 * resource_index / max(1, len(infos)))), f"Indexing package resources · {resource_index}/{len(infos)}", {"current": resource_index, "total": len(infos), "text_resources": len(resources)})
+    if progress_cb: progress_cb("index_resources", "PASS", 36, f"Resources indexed · {len(resources)} text resources.", {"current": len(infos), "total": len(infos), "text_resources": len(resources)})
+    if progress_cb: progress_cb("resolve_runtime_authority", "RUNNING", 38, "Resolving runtime-plan authority…", None)
 
     compiled_plan = None
     semantic_plan = None
@@ -2502,6 +2562,7 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
             "ambiguous_authoritative_runtime_plans. paths=" + json.dumps(paths, ensure_ascii=False)
         )
     semantic_names = [runtime_plan_resolution["path"]] if runtime_plan_resolution.get("path") else []
+    if progress_cb: progress_cb("resolve_runtime_authority", "PASS", 42, f"Runtime authority: {runtime_plan_resolution.get('reason') or 'resolved'}.", {"reason": runtime_plan_resolution.get("reason"), "path": runtime_plan_resolution.get("path")})
     ignored_runtime_plan_named_resources = list(runtime_plan_resolution.get("ignored") or [])
 
     preparation_report: dict[str, Any] = {"mode":"precompiled", "stages":[{"id":"load_source","status":"PASS"}]}
@@ -2511,10 +2572,12 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
         # and validate before the package can become executable.
         with tempfile.TemporaryDirectory(prefix="ordo-source-package-") as td:
             root = Path(td)
+            if progress_cb: progress_cb("extract_compile_workspace", "RUNNING", 44, "Preparing compiler workspace…", None)
             archive.extractall(root)
             program_path = root / source_name
+            if progress_cb: progress_cb("extract_compile_workspace", "PASS", 47, "Compiler workspace ready.", None)
             try:
-                semantic_plan, preparation_report = _run_integrated_compile(root, program_path)
+                semantic_plan, preparation_report = _run_integrated_compile(root, program_path, progress_cb=progress_cb)
             except ValueError as error:
                 # Release-2 compatibility: old ZIPs that predate graph_contract may still
                 # use the historical YAML execution path. New canonical source inputs are
@@ -2663,10 +2726,13 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
     elif len(plan_names) > 1:
         compiled_status = {"available": True, "valid": False, "reason": "multiple_execution_plans", "paths": plan_names}
 
+    if progress_cb: progress_cb("verify_package_integrity", "RUNNING", 83, "Verifying package manifest and runtime compatibility…", None)
     package_manifest_v2_status = _validate_r3_package_manifest_v2(archive, infos, source_name, source_raw or b"", semantic_names, semantic_plan)
+    if progress_cb: progress_cb("verify_package_integrity", "PASS", 88, "Package integrity checks complete.", {"status": package_manifest_v2_status.get("status") if isinstance(package_manifest_v2_status, dict) else None})
 
     graph = None
     graph_error = None
+    if progress_cb: progress_cb("build_editor_views", "RUNNING", 90, "Building tree and inspection projections…", None)
     try:
         graph = graph_view(source, resources)
     except Exception as error:
@@ -2678,7 +2744,6 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
     capabilities = {
         "inspect_source": True,
         "show_tree": graph is not None,
-        "show_path": graph is not None,
         "show_data_flow": True,
         "playbook_settings": True,
         "package_files": True,
@@ -2687,6 +2752,8 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
         "replay": True,
     }
     load_status = "degraded" if load_diagnostics or not execute_ok else "ready"
+    if progress_cb: progress_cb("build_editor_views", "PASS" if graph is not None else "WARNING", 96, "Editor projections prepared." if graph is not None else "Editor loaded with a graph projection warning.", {"load_status": load_status})
+    if progress_cb: progress_cb("finalize_package", "RUNNING", 98, "Finalizing editor package state…", None)
 
     package_id = hashlib.sha256(original_raw).hexdigest()[:16]
     PLAYBOOK_PACKAGE.update({
@@ -2699,6 +2766,7 @@ def parse_playbook_package(filename: str, raw: bytes) -> dict[str, Any]:
         "load_status": load_status, "load_diagnostics": copy.deepcopy(load_diagnostics), "capabilities": copy.deepcopy(capabilities), "graph_error": graph_error,
     })
     PLAYBOOK_PACKAGES[package_id] = copy.deepcopy(PLAYBOOK_PACKAGE)
+    if progress_cb: progress_cb("finalize_package", "PASS", 100, "Playbook preparation complete.", {"package_id": package_id, "load_status": load_status})
     return {
         "id": package_id,
         "filename": original_filename,
@@ -8677,6 +8745,16 @@ def _call_openai_live_impl(payload: dict[str, Any]) -> dict[str, Any]:
             state if isinstance(state, dict) else {}, result.get("state_updates") or {}
         )
         result["state_updates"] = canonical_updates
+    # Proposal/source reconciliation changes the canonical state payload after a
+    # model envelope has already supplied (or received) its StatePatch.  The
+    # runtime commits StatePatch, not state_updates; rebuild it here so the
+    # confirmed, schema-preserving representation is the one actually saved.
+    # This is runtime-owned normalization and deliberately ignores the original
+    # model patch metadata, just as the legacy update projection does elsewhere.
+    if (structured_proposal_reconciliation is not None or source_reference_reconciliation is not None) and isinstance(result.get("state_updates"), dict):
+        result["state_patch"] = legacy_updates_to_state_patch(
+            result["state_updates"], base_revision=current_revision
+        )
     await_analyst, selected, orchestration_override_reason = _resolve_respond_orchestration(record, kind, phase, routes, result)
     # Human-input declarations are runtime authority. On enter, a model may prepare
     # a proposal, but it may never answer the declared analyst question or advance.
@@ -9077,6 +9155,74 @@ VERIFICATION_RUNS_LOCK = threading.Lock()
 MODEL_CHAT_RUNS: dict[str, dict[str, Any]] = {}
 MODEL_CHAT_RUNS_LOCK = threading.Lock()
 
+PLAYBOOK_PREPARATION_RUNS: dict[str, dict[str, Any]] = {}
+PLAYBOOK_PREPARATION_RUNS_LOCK = threading.Lock()
+
+_PLAYBOOK_PREPARATION_STAGE_ORDER = [
+    "inspect_input", "validate_package", "locate_source", "index_resources",
+    "resolve_runtime_authority", "extract_compile_workspace", "compile_runtime_plan",
+    "validate_runtime_plan", "verify_package_integrity", "build_editor_views", "finalize_package",
+]
+
+def _playbook_preparation_worker(run_id: str, filename: str, raw: bytes) -> None:
+    def progress(stage_id: str, stage_status: str, percent: int, message: str, meta: dict[str, Any] | None = None) -> None:
+        now = time.time()
+        with PLAYBOOK_PREPARATION_RUNS_LOCK:
+            run = PLAYBOOK_PREPARATION_RUNS.get(run_id)
+            if run is None:
+                return
+            rows = run.setdefault("stages", [])
+            row = next((item for item in rows if item.get("id") == stage_id), None)
+            if row is None:
+                row = {"id": stage_id, "status": stage_status}
+                rows.append(row)
+            row.update({"status": stage_status, "message": message, "updated_at": now})
+            if meta:
+                row["meta"] = copy.deepcopy(meta)
+            run.update({
+                "status": "RUNNING" if stage_status not in {"FAIL"} else "FAIL",
+                "stage": stage_id, "stage_status": stage_status, "progress": max(0, min(100, int(percent))),
+                "message": message, "activity": copy.deepcopy(meta or {}), "updated_at": now,
+            })
+    progress("inspect_input", "RUNNING", 6, "Starting package inspection…", {"input_bytes": len(raw)})
+    try:
+        package = parse_playbook_package(filename, raw, progress_cb=progress)
+        with PLAYBOOK_PREPARATION_RUNS_LOCK:
+            run = PLAYBOOK_PREPARATION_RUNS.get(run_id)
+            if run is not None:
+                run.update({"status":"PASS","stage":"complete","stage_status":"PASS","message":"Playbook preparation complete.","progress":100,"package":package,"finished":True,"updated_at":time.time()})
+    except Exception as error:
+        with PLAYBOOK_PREPARATION_RUNS_LOCK:
+            run = PLAYBOOK_PREPARATION_RUNS.get(run_id)
+            if run is not None:
+                active = str(run.get("stage") or "failed")
+                rows = run.setdefault("stages", [])
+                row = next((item for item in rows if item.get("id") == active), None)
+                if row is not None:
+                    row.update({"status":"FAIL","message":str(error),"updated_at":time.time()})
+                run.update({"status":"FAIL","stage":"failed","stage_status":"FAIL","message":"Playbook preparation failed.","progress":100,"error":str(error),"finished":True,"updated_at":time.time()})
+
+def _start_playbook_preparation(filename: str, raw: bytes) -> dict[str, Any]:
+    run_id = uuid.uuid4().hex
+    now = time.time()
+    with PLAYBOOK_PREPARATION_RUNS_LOCK:
+        PLAYBOOK_PREPARATION_RUNS[run_id] = {
+            "run_id":run_id,"filename":filename,"status":"PENDING","stage":"queued","stage_status":"PENDING",
+            "message":"Queued for preparation…","progress":3,"finished":False,"created_at":now,"updated_at":now,
+            "stages":[],"stage_order":list(_PLAYBOOK_PREPARATION_STAGE_ORDER),
+        }
+    threading.Thread(target=_playbook_preparation_worker,args=(run_id,filename,bytes(raw)),daemon=True).start()
+    return {"status":"accepted","run_id":run_id,"progress":3,"stage":"queued"}
+
+def _playbook_preparation_status(run_id: str) -> dict[str, Any]:
+    with PLAYBOOK_PREPARATION_RUNS_LOCK:
+        run = copy.deepcopy(PLAYBOOK_PREPARATION_RUNS.get(str(run_id or "")))
+    if not run:
+        raise ValueError("Unknown playbook preparation job.")
+    now = time.time()
+    run["elapsed_seconds"] = round(max(0.0, now - float(run.get("created_at") or now)), 1)
+    run["idle_seconds"] = round(max(0.0, now - float(run.get("updated_at") or now)), 1)
+    return run
 
 
 
@@ -11329,11 +11475,17 @@ def _verification_worker(run_id: str, package: dict[str, Any]) -> None:
 
 def _json_response(handler: SimpleHTTPRequestHandler, payload: dict[str, Any], status: int = HTTPStatus.OK) -> None:
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-    handler.send_response(status)
-    handler.send_header("Content-Type", "application/json; charset=utf-8")
-    handler.send_header("Content-Length", str(len(body)))
-    handler.end_headers()
-    handler.wfile.write(body)
+    try:
+        handler.send_response(status)
+        handler.send_header("Content-Type", "application/json; charset=utf-8")
+        handler.send_header("Content-Length", str(len(body)))
+        handler.end_headers()
+        handler.wfile.write(body)
+    except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+        # The browser/proxy may abandon a request while a long-running operation is
+        # finishing. The operation result remains valid; do not turn a disconnected
+        # client into a server traceback.
+        return
 
 
 
@@ -11731,7 +11883,7 @@ class EditorHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
-        if path not in {"/api/parse", "/api/validate", "/api/export", "/api/update-node", "/api/update-node-sections", "/api/replay-package", "/api/playbook-package", "/api/export-playbook", "/api/live-step", "/api/execute-run-start", "/api/execute-run-step", "/api/execute-run-advance", "/api/execute-run-input", "/api/execute-run-stop", "/api/live-config", "/api/provider-models", "/api/provider-capability-probe", "/api/template-inspector", "/api/explain", "/api/recovery-diagnose", "/api/recovery-chat", "/api/verification-catalog", "/api/verification-start", "/api/verification-status", "/api/playbook-settings", "/api/package-files", "/api/playbook-settings-assistant", "/api/verification-assistant", "/api/data-lineage", "/api/embedded-data-flow", "/api/data-lineage-assistant", "/api/gitlab-playbooks", "/api/gitlab-directory", "/api/gitlab-playbook-load", "/api/gitlab-readme", "/api/model-chat", "/api/model-chat-start", "/api/model-chat-status", "/api/model-chat-cancel", "/api/model-chat-export", "/api/model-chat-playbook-preview"}:
+        if path not in {"/api/parse", "/api/validate", "/api/export", "/api/update-node", "/api/update-node-sections", "/api/replay-package", "/api/playbook-package", "/api/playbook-package-start", "/api/playbook-package-status", "/api/export-playbook", "/api/live-step", "/api/execute-run-start", "/api/execute-run-step", "/api/execute-run-advance", "/api/execute-run-input", "/api/execute-run-stop", "/api/live-config", "/api/provider-models", "/api/provider-capability-probe", "/api/template-inspector", "/api/explain", "/api/recovery-diagnose", "/api/recovery-chat", "/api/verification-catalog", "/api/verification-start", "/api/verification-status", "/api/playbook-settings", "/api/package-files", "/api/playbook-settings-assistant", "/api/verification-assistant", "/api/data-lineage", "/api/embedded-data-flow", "/api/data-lineage-assistant", "/api/gitlab-playbooks", "/api/gitlab-directory", "/api/gitlab-playbook-load", "/api/gitlab-readme", "/api/model-chat", "/api/model-chat-start", "/api/model-chat-status", "/api/model-chat-cancel", "/api/model-chat-export", "/api/model-chat-playbook-preview"}:
             _json_response(self, {"status": "failed", "error": "Unknown API endpoint."}, HTTPStatus.NOT_FOUND)
             return
         try:
@@ -11966,6 +12118,19 @@ class EditorHandler(SimpleHTTPRequestHandler):
                 filename = f"{stem}.edited.zip"
                 _json_response(self, {"status": "passed", "filename": filename, "data_base64": base64.b64encode(out.getvalue()).decode("ascii")})
                 return
+            if path == "/api/playbook-package-start":
+                encoded = payload.get("data_base64")
+                if not isinstance(encoded, str) or not encoded:
+                    raise ValueError("Playbook package upload is missing file data.")
+                try:
+                    raw = base64.b64decode(encoded, validate=True)
+                except Exception as error:
+                    raise ValueError("Playbook package upload contains invalid base64 data.") from error
+                _json_response(self, _start_playbook_preparation(str(payload.get("filename", "playbook.zip")), raw), HTTPStatus.ACCEPTED)
+                return
+            if path == "/api/playbook-package-status":
+                _json_response(self, _playbook_preparation_status(str(payload.get("run_id") or "")))
+                return
             if path == "/api/playbook-package":
                 encoded = payload.get("data_base64")
                 if not isinstance(encoded, str) or not encoded:
@@ -12013,9 +12178,6 @@ class EditorHandler(SimpleHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         path = parsed.path
-        if path == "/healthz":
-            _json_response(self, {"status": "ok"})
-            return
         if path == "/api/gitlab-archive":
             query=parse_qs(parsed.query)
             root_url=str((query.get("root_url") or [EDITOR_STARTUP.get("gitlab_root") or ""])[0]).strip()
@@ -12150,7 +12312,7 @@ class EditorHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
 
-def run_server(port: int, open_browser: bool, *, host: str | None=None, provider: str | None=None, api_key: str | None=None, model: str | None=None, base_url: str | None=None, gitlab_root: str | None=None) -> None:
+def run_server(port: int, open_browser: bool, *, provider: str | None=None, api_key: str | None=None, model: str | None=None, base_url: str | None=None, gitlab_root: str | None=None) -> None:
     config=_resolve_startup_runtime_config(provider=provider,model=model,base_url=base_url,api_key=api_key)
     LIVE_RUNTIME.update(config)
     EDITOR_STARTUP["gitlab_root"]=str(gitlab_root or os.environ.get("ORDO_GITLAB_ROOT") or "").strip()
@@ -12160,10 +12322,8 @@ def run_server(port: int, open_browser: bool, *, host: str | None=None, provider
         print("Model default is not fully configured; use Model Settings in the Editor.")
     if EDITOR_STARTUP["gitlab_root"]:
         print(f"GitLab playbook root: {EDITOR_STARTUP['gitlab_root']}")
-    bind_host = host or os.environ.get("ORDO_EDITOR_HOST", "127.0.0.1")
-    server = ThreadingHTTPServer((bind_host, port), EditorHandler)
-    display_host = "127.0.0.1" if bind_host in {"0.0.0.0", "::"} else bind_host
-    url = f"http://{display_host}:{server.server_port}"
+    server = ThreadingHTTPServer(("127.0.0.1", port), EditorHandler)
+    url = f"http://127.0.0.1:{server.server_port}"
     print(f"Ordo Tree Editor is running at {url}")
     if open_browser:
         webbrowser.open(url)
@@ -12177,7 +12337,6 @@ def run_server(port: int, open_browser: bool, *, host: str | None=None, provider
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Run the local Ordo Tree Editor.")
-    parser.add_argument("--host", default=os.environ.get("ORDO_EDITOR_HOST", "127.0.0.1"), help="Bind address (defaults to ORDO_EDITOR_HOST or 127.0.0.1).")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--no-browser", action="store_true")
     parser.add_argument("--model-provider", choices=PROVIDERS, default=os.environ.get("ORDO_MODEL_PROVIDER"), help="Default provider: openai, mlx, or custom.")
@@ -12194,7 +12353,7 @@ def main(argv: list[str] | None = None) -> int:
     api_key=args.model_api_key or args.openai_api_key
     model=args.model_name or args.openai_model
     base_url=args.model_base_url or args.openai_base_url
-    run_server(args.port,open_browser=not args.no_browser,host=args.host,provider=provider,api_key=api_key,model=model,base_url=base_url,gitlab_root=args.gitlab_root)
+    run_server(args.port,open_browser=not args.no_browser,provider=provider,api_key=api_key,model=model,base_url=base_url,gitlab_root=args.gitlab_root)
     return 0
 
 

@@ -16,6 +16,16 @@ checksum asset. The legacy ARF line is preserved on the
 - GitHub Issues are the canonical work tracker. Historical file-based backlog
   records are preserved on `archive/legacy`.
 
+## [Ordo Tree Editor 0.2.0-alpha.20.0.222-dev] - 2026-09-25
+
+### Changed
+
+- Retired the separate Show Path workspace mode, including its navigation,
+  graph-focus UI, context-menu actions, capability metadata, and regressions.
+- Kept Replay Real Chat and Execute Playbook path highlighting available.
+- Ensured schema-preserving response normalization is also committed through
+  the runtime StatePatch path.
+
 ## [Ordo Tree Editor 0.2.0-alpha.20.0.218-dev] - 2026-09-19
 
 ### Fixed

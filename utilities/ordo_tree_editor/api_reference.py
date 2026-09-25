@@ -51,6 +51,8 @@ add('POST','/api/update-node-sections','Source & Graph','Update record sections'
 
 # Packages & Replay
 add('POST','/api/playbook-package','Packages & Replay','Load a playbook ZIP package',{'filename':p(desc='Original ZIP filename.'),'data_base64':p(desc='Base64-encoded ZIP bytes.')},['filename','data_base64'])
+add('POST','/api/playbook-package-start','Packages & Replay','Start asynchronous playbook preparation',{'filename':p(desc='Original ZIP filename.'),'data_base64':p(desc='Base64-encoded ZIP bytes.')},['filename','data_base64'],description='Accepts the package quickly and performs parse/compile/validation in a background job so long preparation does not hold one HTTP connection open.')
+add('POST','/api/playbook-package-status','Packages & Replay','Poll asynchronous playbook preparation',{'run_id':p(desc='Preparation job id returned by /api/playbook-package-start.')},['run_id'])
 add('POST','/api/export-playbook','Packages & Replay','Export edited playbook package',{'package_id':p(desc='Loaded package id.'),'source':SOURCE},['package_id','source'])
 add('POST','/api/replay-package','Packages & Replay','Load a canonical debug handoff ZIP',{'filename':p(desc='Canonical debug handoff ZIP filename.'),'data_base64':p(desc='Base64-encoded replay bytes.')},['filename','data_base64'])
 add('POST','/api/gitlab-playbooks','Packages & Replay','List the first directory level from the configured GitLab tree',{'root_url':p(desc='GitLab repository tree URL. Optional when server startup configured a default root.')})
@@ -115,7 +117,7 @@ def build_spec()->dict[str,Any]:
     for (method,path),op in OPS.items(): paths.setdefault(path,{})[method]=op
     return {
       "openapi":"3.1.0",
-      "info":{"title":"Ordo Tree Editor Local REST API","version":"0.2.0-alpha.20.0.218-dev","description":"HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract."},
+      "info":{"title":"Ordo Tree Editor Local REST API","version":"0.2.0-alpha.20.0.222-dev","description":"HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract."},
       "servers":[{"url":"http://127.0.0.1:8765","description":"Default local Editor server"}],
       "tags":TAGS,
       "paths":paths,

@@ -30,7 +30,6 @@
         <button type="button" class="workspace-tab" data-workspace-tab="verification">Verify Playbook</button>
         <button type="button" class="workspace-tab" data-workspace-tab="packagefiles">Package Files</button>
         <span class="workspace-tab-separator" aria-hidden="true"></span>
-        <button type="button" class="workspace-tab" data-workspace-tab="paths">Show Path</button>
         <button type="button" class="workspace-tab" data-workspace-tab="chat">Execute Playbook</button>
         <button type="button" class="workspace-tab" data-workspace-tab="replay">Replay Real Chat</button>
         <span class="workspace-tab-separator" aria-hidden="true"></span>
@@ -350,38 +349,6 @@
           <button id="validate" type="button" hidden>Validate</button>
           <div id="validation">Not run.</div>
         </section>
-        <section id="dialog-panel" hidden>
-          <div class="path-builder">
-            <label>From<select id="dialog-start-node"></select></label>
-            <label>To<select id="dialog-end-node"></select></label>
-            <button id="dialog-build-path" type="button">Build path</button>
-          </div>
-          <div id="dialog-empty" class="dialog-empty">Choose a dialog path from a node context menu.</div>
-          <div id="dialog-view" hidden>
-            <div id="dialog-header"></div>
-            <div id="dialog-playback-controls" class="dialog-playback-controls">
-              <button id="dialog-play-toggle" type="button">Play</button>
-              <button id="dialog-restart" type="button">Restart</button>
-              <label class="dialog-advance-mode">Advance
-                <select id="dialog-advance-mode">
-                  <option value="manual" selected>Manual</option>
-                  <option value="timer">Timer</option>
-                </select>
-              </label>
-              <label id="dialog-delay-wrap">Delay
-                <select id="dialog-delay">
-                  <option value="1">1 s</option>
-                  <option value="2" selected>2 s</option>
-                  <option value="3">3 s</option>
-                  <option value="5">5 s</option>
-                </select>
-              </label>
-              <label class="dialog-auto-pass"><input id="dialog-auto-pass" type="checkbox" checked> Auto-pass gates via OnPass</label>
-              <button id="dialog-static" type="button">Show all</button>
-            </div>
-            <div id="dialog-transcript"></div>
-          </div>
-        </section>
         <section id="replay-panel" hidden>
           <div class="replay-upload-card">
             <strong>Replay</strong>
@@ -493,14 +460,6 @@
       </div>
       <div id="canvas-selection-actions" hidden>
         <button id="canvas-toggle-collapse" type="button" role="menuitem">Collapse</button>
-        <div id="canvas-dialog-actions" hidden>
-          <div class="context-menu-separator" aria-hidden="true"></div>
-          <button id="canvas-dialog-from-entry" type="button" role="menuitem">Show dialog: start → this node</button>
-          <div class="context-submenu">
-            <button id="canvas-dialog-to-terminal" class="context-submenu-trigger" type="button" role="menuitem" aria-haspopup="true">Show dialog: this node → ending <span aria-hidden="true">›</span></button>
-            <div id="canvas-dialog-terminal-menu" class="context-submenu-panel" role="menu" aria-label="Reachable endings"></div>
-          </div>
-        </div>
         <div class="context-menu-separator" aria-hidden="true"></div>
         <button id="canvas-delete-selection" type="button" class="danger legacy-edit-actions" role="menuitem" hidden>Delete selected</button>
       </div>
@@ -640,8 +599,15 @@
         <div><strong id="playbook-preparation-title">Preparing Playbook</strong><div id="playbook-preparation-file" class="hint"></div></div>
         <button id="playbook-preparation-close" type="button" class="icon-button" hidden aria-label="Close">×</button>
       </div>
-      <div class="playbook-preparation-progress"><span id="playbook-preparation-progress-bar"></span></div>
-      <div id="playbook-preparation-status" class="playbook-preparation-status">Loading source…</div>
+      <div class="playbook-preparation-progress-row">
+        <div class="playbook-preparation-progress" aria-label="Playbook preparation progress"><span id="playbook-preparation-progress-bar"></span></div>
+        <strong id="playbook-preparation-progress-value" class="playbook-preparation-progress-value">0%</strong>
+      </div>
+      <div class="playbook-preparation-status-row">
+        <div id="playbook-preparation-status" class="playbook-preparation-status">Loading source…</div>
+        <div id="playbook-preparation-elapsed" class="playbook-preparation-elapsed">0.0s</div>
+      </div>
+      <div id="playbook-preparation-activity" class="playbook-preparation-activity" hidden></div>
       <div id="playbook-preparation-stages" class="playbook-preparation-stages"></div>
       <div id="playbook-preparation-tabs" class="playbook-preparation-tabs" role="tablist" aria-label="Playbook startup diagnostics" hidden>
         <button type="button" class="playbook-preparation-tab active" data-playbook-preparation-tab="human" role="tab" aria-selected="true">Human-readable</button>
