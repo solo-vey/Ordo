@@ -5,6 +5,8 @@ url: "https://dev.to/yura_solovey/you-validated-the-output-who-validated-the-pro
 published_at: "2026-07-22T16:13:34.304Z"
 language: en
 status: published
+cover_image: assets/cover.webp
+cover_image_source: devto
 tags:
   - ai
   - testing

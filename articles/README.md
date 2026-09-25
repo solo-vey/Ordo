@@ -6,6 +6,7 @@ Each platform has its own index. Every published article is stored in a dated di
 
 - `article.<language>.md` — the text published on the platform;
 - `publication.yaml` — publication metadata, including the canonical platform URL, publication date, tags, and status.
+- `assets/` — original article visuals, when the platform provides them.
 
 ## Platforms
 

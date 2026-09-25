@@ -5,6 +5,8 @@ url: "https://dev.to/yura_solovey/every-step-passed-who-was-responsible-for-the-
 published_at: "2026-07-23T13:38:18.703Z"
 language: en
 status: published
+cover_image: assets/cover.webp
+cover_image_source: devto
 tags:
   - ai
   - architecture
