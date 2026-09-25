@@ -23,7 +23,7 @@ def test_editor_yaml_round_trip_and_graph_projection():
     parsed = parse_yaml(dump_yaml(source))
     view = graph_view(parsed)
     assert [node["id"] for node in view["nodes"]] == ["N_START", "N_DONE"]
-    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "on_answer", "key": "go"}]
+    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "on_answer", "key": "go", "edge_type": "control_flow", "relation_type": "control_flow"}]
 
 
 def test_editor_projects_arf_prototype_purpose_and_transitions():
@@ -36,7 +36,7 @@ def test_editor_projects_arf_prototype_purpose_and_transitions():
     view = graph_view(source)
     assert view["nodes"][0]["label"] == "Collect the initial context."
     assert view["nodes"][0]["answer_type"] == "analyst_question"
-    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "transitions", "key": "continue"}]
+    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "transitions", "key": "continue", "edge_type": "control_flow", "relation_type": "control_flow"}]
 
 
 def test_editor_projects_separate_executable_gates_and_external_terminals():
@@ -51,7 +51,7 @@ def test_editor_projects_separate_executable_gates_and_external_terminals():
     assert by_id["G_INPUTS_PRESERVED"]["element_type"] == "gate"
     assert by_id["G_INPUTS_PRESERVED"]["collection"] == "gates"
     assert by_id["STOP_INPUTS_INCOMPLETE"]["element_type"] == "terminal"
-    assert by_id["OUT_FINAL"]["element_type"] == "terminal"
+    assert by_id["OUT_FINAL"]["element_type"] == "output"
     assert {tuple(edge[key] for key in ("source", "target", "storage", "key")) for edge in view["edges"]} == {
         ("N_INPUT", "G_INPUTS_PRESERVED", "on_answer", "continue"),
         ("G_INPUTS_PRESERVED", "N_DONE", "gate_route", "on_pass"),
@@ -105,7 +105,8 @@ def test_editor_projects_canonical_navigation_contract_and_list_transitions():
 def test_editor_projects_allowed_to_when_transition_list_is_absent_without_duplicate_edges():
     source = {"nodes": [{"id": "N_START", "navigation_contract": {"allowed_to": ["N_DONE"]}}, {"id": "N_DONE"}]}
     view = graph_view(source)
-    assert view["edges"] == [{"source": "N_START", "target": "N_DONE", "storage": "navigation_allowed_to", "key": "N_DONE"}]
+    assert view["edges"] == []
+    assert view["projection_diagnostics"]["navigation_permissions_not_rendered_as_control_flow"] == [{"source": "N_START", "target": "N_DONE"}]
 
 
 def test_editor_replaces_separate_gate_sections_and_preserves_node_routes():
@@ -173,7 +174,8 @@ def test_editor_returns_canonical_graph_finding_for_invalid_transition():
     source["nodes"][0]["on_answer"]["go"]["next"] = "N_UNKNOWN"
     report = validate_source(source)
     assert report["status"] == "failed"
-    assert any(issue["code"] == "GRAPH_TARGET_MISSING" for issue in report["issues"])
+    findings = [finding for check in report["checks"] for finding in check["findings"]]
+    assert any(finding["code"] == "DANGLING_TARGET" for finding in findings)
 
 
 def test_editor_discovers_the_repository_tree_module_library():
