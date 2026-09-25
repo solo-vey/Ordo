@@ -116,36 +116,9 @@ separate from the editor and validator contracts.
 - Fixed context-menu behavior so **Delete selected** is not shown for an empty selection or when the menu is invoked on free workspace.
 - Full Ordo semantic validation remains explicitly outside the editor-local validation boundary.
 
-### 0.2.0-alpha.11
-- Added a third right-side **Dialog** tab for a text-oriented pseudo-conversation view of a concrete graph path.
-- Right-clicking a single node or gate can now preview the dialog from the graph entry to that element.
-- Added a reachable-ending submenu that lists terminal/output destinations reachable from the current element and opens a dialog from the current element to the chosen ending.
-- Dialog previews use one shortest structural path and show node questions, expected analyst response shape, gate conditions, selected transition/outcome labels, terminal outcomes, and declared dynamic-route hops.
-- `declared_dynamic_routes` participate in dialog pathfinding as declared runtime possibilities without executing `$...` expressions.
-- Node IDs inside dialog steps are clickable and center/focus the corresponding graph element.
-- Validation findings that reference graph elements expose clickable IDs that center/focus the corresponding node or gate.
-- Editor-local structural validation recognizes `declared_dynamic_routes`, preventing false DEAD_END / NO_TERMINAL_PATH findings for declared runtime routers.
-
-### Interactive dialog branching (alpha.11 refresh)
-- Dialog steps with more than one structural outgoing route now show inline branch-choice buttons.
-- The currently previewed route is highlighted; selecting another route keeps the transcript above that step unchanged and rebuilds the transcript below it.
-- The editor first tries to preserve the originally selected ending. If the chosen branch cannot reach that ending, the preview switches to the nearest reachable terminal/output and marks the fallback in the Dialog header.
-- Declared dynamic routes appear as selectable runtime possibilities without evaluating `$...` expressions.
-
-
-### 0.2.0-alpha.11.1 — experimental voice playback
-
-- Adds optional browser-native speech playback (`speechSynthesis`) to Dialog playback.
-- When Voice is enabled, the 1/2/3/5 second delay is disabled and progression waits for speech completion.
-- Pause cancels current speech; Restart begins again from the first step.
-- Branch choices still pause playback for user input; Auto-pass gates continues to prefer OnPass.
-- Voice availability and quality depend on browser/operating-system speech synthesis support and installed voices.
-- Voice language can be `Auto` (default), English (`en-US`), or Ukrainian (`uk-UA`). In Auto mode, each spoken step is classified independently by comparing Cyrillic/Ukrainian letters with Latin letters; Cyrillic-majority text uses `uk-UA`, otherwise `en-US`. The editor prefers an installed matching system voice and otherwise falls back to the browser's available voice.
-
-
 ### 0.2.0-alpha.11.2 — adaptive node height
 
-Node and gate cards now expand vertically to fit their display label instead of clipping it to two lines. Edge anchors and automatic/Dialog layouts use measured card heights so connections stay attached to the resized cards.
+Node and gate cards now expand vertically to fit their display label instead of clipping it to two lines. Edge anchors and automatic/focus layouts use measured card heights so connections stay attached to the resized cards.
 
 ### Replay tab (alpha.11.4)
 
@@ -171,7 +144,7 @@ python3 utilities/ordo_tree_editor/editor_service.py \
   --openai-model "gpt-5"
 ```
 
-For security, prefer `OPENAI_API_KEY` so the key is not saved in shell history. The API key stays in the Python process and is never returned to the browser. If either the key or model is absent, the **Run** tab is disabled and all pre-existing editor, Dialog, Validate, and Replay functionality continues to work normally.
+For security, prefer `OPENAI_API_KEY` so the key is not saved in shell history. The API key stays in the Python process and is never returned to the browser. If either the key or model is absent, the **Run** tab is disabled and all pre-existing editor, inspection, Validate, and Replay functionality continues to work normally.
 
 The first alpha.12 implementation sends the current element, allowed routes, current runtime state, recent live history, analyst input, and the loaded playbook source to the configured model. The model returns structured per-element work (`assistant_message`, `route_key`, `state_updates`, `rationale_short`); the local runtime validates the route and performs the transition.
 
@@ -281,7 +254,7 @@ Validation-recovery nodes now support free-form analyst/model dialogue while rem
 - Runtime technical IDs preserve underscores in transcript rendering.
 - Assistant/model messages are expanded by default; only long analyst messages collapse automatically.
 - Human-decision gates provide prepared actions plus an inline `Other / clarification` field that is carried into the repair route as analyst correction context.
-- Deterministic test-coverage detection recognizes localized negative-case wording as evidence for the `negative` requirement.
+- Deterministic test-coverage detection recognizes Ukrainian negative-case wording (`негатив*`, `відсутн*`) as evidence for the `negative` requirement.
 
 
 ## Replay to checkpoint (alpha.20.0.13)

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Ordo Tree Editor Local REST API
-  version: 0.2.0-alpha.20.0.218-dev
+  version: 0.2.0-alpha.20.0.222-dev
   description: HTTP API used by the local Ordo Tree Editor web UI. The server binds to 127.0.0.1 by default. This reference
     documents the current implementation; it does not make the API a remote/public service or a canonical Ordo language contract.
 servers:
@@ -241,6 +241,73 @@ paths:
               required:
               - filename
               - data_base64
+  /api/playbook-package-start:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Start asynchronous playbook preparation
+      operationId: postplaybook_package_start
+      description: Accepts the package quickly and performs parse/compile/validation in a background job so long preparation
+        does not hold one HTTP connection open.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  description: Original ZIP filename.
+                data_base64:
+                  type: string
+                  description: Base64-encoded ZIP bytes.
+              additionalProperties: true
+              required:
+              - filename
+              - data_base64
+  /api/playbook-package-status:
+    post:
+      tags:
+      - Packages & Replay
+      summary: Poll asynchronous playbook preparation
+      operationId: postplaybook_package_status
+      description: Poll asynchronous playbook preparation
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                  description: Preparation job id returned by /api/playbook-package-start.
+              additionalProperties: true
+              required:
+              - run_id
   /api/export-playbook:
     post:
       tags:

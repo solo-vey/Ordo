@@ -4,7 +4,7 @@ const liveSessionId = (() => {
   if (!value) { value = crypto.randomUUID ? crypto.randomUUID() : `session-${Date.now()}-${Math.random().toString(16).slice(2)}`; localStorage.setItem(key, value); }
   return value;
 })();
-const state = { source: null, graph: null, positions: {}, nodeSizes: {}, manualPositions: new Set(), selected: null, selectedNodes: new Set(), selectedEdge: null, pendingTransitionSource: null, inspectorTab: "fields", panelTab: "upload", canvasMenuPosition: null, marqueeStart: null, dialogPath: null, dialogFocusId: null, dialogPlayMode: false, dialogPlaying: false, dialogVisibleCount: null, dialogDelay: 2, dialogAdvanceMode: "manual", dialogAutoPassGates: true, dialogTimer: null, dialogAsyncToken: 0, dialogSyncTimer: null, collapsedNodes: new Set(), replayData: null, replayFocusId: null, replaySyncTimer: null, liveConfig: { enabled: false, provider: "openai", base_url: "https://api.openai.com/v1", model: "gpt-5.6-terra", shared_key: false, personal_key: false, capability_profile: null, structured_output_mode: "auto", semantic_fallback_policy: "automatic_safe", models: ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"] }, packageInfo: null, liveRunId: "", liveRunning: false, livePaused: false, liveStopRequested: false, liveCurrentId: null, liveState: {}, liveRevision: 0, liveHistory: [], livePath: [], liveBusy: false, liveStepAbortController: null, liveInterruptedNode: null, liveAwaitingInput: false, liveOutcome: null, liveDebugTrace: [], liveUsage: { input_tokens: 0, output_tokens: 0, total_tokens: 0, cached_tokens: 0, reasoning_tokens: 0, calls: 0 }, liveAutoAnswers: { enabled: false, filename: "", answersByNode: {}, cursors: {}, total: 0 }, liveGuidedReplay: { enabled:false, active:false, filename:"", checkpointId:"", recordedCalls:[], callCursor:0, answersByNode:{}, answerCursors:{}, totalCalls:0, totalAnswers:0 }, liveAttachments: [], liveExpandedMessages: new Set(), liveComposerExpanded: false, liveChoiceContext: null, liveRecoveryDiagnoses: {}, liveAnalystOverride: null, pendingRecoveryClarification: null, liveNoProgressGateFailures: {}, livePendingEntryMode: null, liveTreeAutoFocusId: null, interactionContract: {locale:"uk-UA",model_output_language:"uk"}, templateInspectorData:null, templateResourcePreview:null, nodeExplanations:{}, resourceExplanations:{}, explanationBusy:null, verification:{catalog:[],runId:"",running:false,checks:[],progress:0,summary:null,pollTimer:null,lastResult:null,explanations:{},explanationBusy:null,assistantCheck:null,assistantMessages:[],assistantBusy:false}, lineage:{viewMode:"source",data:null,loading:false,selected:null,focusRoot:null,messages:[],busy:false,zoom:1,layoutMode:"auto",filterMode:"all",positions:{},worldWidth:0,worldHeight:0,drag:null,pan:null,sourceData:null,sourceLoading:false,sourceError:null,sourceSelected:null,sourceFocusRoot:null,sourceZoom:1,sourceLayoutMode:"auto",sourcePositions:{},sourceWorldWidth:0,sourceWorldHeight:0,sourceDrag:null,sourcePan:null,sourceDataClassFilter:"all",sourceLegend:null,sourceTraceDirection:null,assistantThreads:{}}, gitlab:{root:"",catalog:null,loading:false,error:"",loadedDirectories:{}}, treeLayoutDensity:"normal", modelChat:{messages:[],attachments:[],busy:false,sessionId:liveSessionId,abortController:null,preview:null,agentTrace:[],usageHistory:[],errors:[],generatedFiles:[],activeRunId:null,activityBuffer:[],activitySeq:0} };
+const state = { source: null, graph: null, positions: {}, nodeSizes: {}, manualPositions: new Set(), selected: null, selectedNodes: new Set(), selectedEdge: null, pendingTransitionSource: null, inspectorTab: "fields", panelTab: "upload", canvasMenuPosition: null, marqueeStart: null, collapsedNodes: new Set(), replayData: null, replayFocusId: null, replaySyncTimer: null, liveConfig: { enabled: false, provider: "openai", base_url: "https://api.openai.com/v1", model: "gpt-5.6-terra", shared_key: false, personal_key: false, capability_profile: null, structured_output_mode: "auto", semantic_fallback_policy: "automatic_safe", models: ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"] }, packageInfo: null, liveRunId: "", liveRunning: false, livePaused: false, liveStopRequested: false, liveCurrentId: null, liveState: {}, liveRevision: 0, liveHistory: [], livePath: [], liveBusy: false, liveStepAbortController: null, liveInterruptedNode: null, liveAwaitingInput: false, liveOutcome: null, liveDebugTrace: [], liveUsage: { input_tokens: 0, output_tokens: 0, total_tokens: 0, cached_tokens: 0, reasoning_tokens: 0, calls: 0 }, liveAutoAnswers: { enabled: false, filename: "", answersByNode: {}, cursors: {}, total: 0 }, liveGuidedReplay: { enabled:false, active:false, filename:"", checkpointId:"", recordedCalls:[], callCursor:0, answersByNode:{}, answerCursors:{}, totalCalls:0, totalAnswers:0 }, liveAttachments: [], liveExpandedMessages: new Set(), liveComposerExpanded: false, liveChoiceContext: null, liveRecoveryDiagnoses: {}, liveAnalystOverride: null, pendingRecoveryClarification: null, liveNoProgressGateFailures: {}, livePendingEntryMode: null, liveTreeAutoFocusId: null, interactionContract: {locale:"uk-UA",model_output_language:"uk"}, templateInspectorData:null, templateResourcePreview:null, nodeExplanations:{}, resourceExplanations:{}, explanationBusy:null, verification:{catalog:[],runId:"",running:false,checks:[],progress:0,summary:null,pollTimer:null,lastResult:null,explanations:{},explanationBusy:null,assistantCheck:null,assistantMessages:[],assistantBusy:false}, lineage:{viewMode:"source",data:null,loading:false,selected:null,focusRoot:null,messages:[],busy:false,zoom:1,layoutMode:"auto",filterMode:"all",positions:{},worldWidth:0,worldHeight:0,drag:null,pan:null,sourceData:null,sourceLoading:false,sourceError:null,sourceSelected:null,sourceFocusRoot:null,sourceZoom:1,sourceLayoutMode:"auto",sourcePositions:{},sourceWorldWidth:0,sourceWorldHeight:0,sourceDrag:null,sourcePan:null,sourceDataClassFilter:"all",sourceLegend:null,sourceTraceDirection:null,assistantThreads:{}}, gitlab:{root:"",catalog:null,loading:false,error:"",loadedDirectories:{}}, treeLayoutDensity:"normal", modelChat:{messages:[],attachments:[],busy:false,sessionId:liveSessionId,abortController:null,preview:null,agentTrace:[],usageHistory:[],errors:[],generatedFiles:[],activeRunId:null,activityBuffer:[],activitySeq:0} };
 const canvas = document.querySelector("#canvas"), edges = document.querySelector("#edges");
 const empty = document.querySelector("#empty-state"), form = document.querySelector("#node-form");
 const workspace = document.querySelector("#workspace"), editorMain = document.querySelector("main"), inspectorResizer = document.querySelector("#inspector-resizer");
@@ -19,6 +19,7 @@ if (directFileOpen) {
   document.querySelector("header").hidden = true;
   document.querySelector("main").hidden = true;
 }
+
 async function request(path, payload, options = {}) {
   const response = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), signal: options.signal });
   const data = await response.json(); if (!response.ok) throw new Error(data.error || "Request failed."); return data;
@@ -77,443 +78,20 @@ function graphReferenceBadgesForNode(node) {
   return GRAPH_REFERENCE_TYPE_ORDER.filter(type=>grouped.has(type)).map(type=>({type,label:graphReferenceTypeLabel(type),refs:grouped.get(type)||[],count:(grouped.get(type)||[]).length}));
 }
 
-function collectKnownTargets(value, known, out = []) {
-  if (typeof value === "string") {
-    if (!value.startsWith("$") && known.has(value)) out.push(value);
-    return out;
-  }
-  if (Array.isArray(value)) { value.forEach(item => collectKnownTargets(item, known, out)); return out; }
-  if (value && typeof value === "object") Object.values(value).forEach(item => collectKnownTargets(item, known, out));
-  return out;
-}
-function dialogStructuralEdges() {
-  const known = knownGraphIds(), edgesByKey = new Map();
-  for (const edge of state.graph?.edges || []) {
-    if (edge.edge_type && edge.edge_type !== "control_flow") continue;
-    if (!known.has(edge.source) || !known.has(edge.target)) continue;
-    const key = `${edge.source}\u0000${edge.target}\u0000${edge.storage || ""}\u0000${edge.key || ""}`;
-    edgesByKey.set(key, { ...edge, dynamic: false });
-  }
-  for (const record of [...(state.source?.nodes || []), ...(state.source?.gates || [])]) {
-    if (!record?.id || !known.has(record.id) || !record.declared_dynamic_routes || typeof record.declared_dynamic_routes !== "object") continue;
-    for (const [routeName, route] of Object.entries(record.declared_dynamic_routes)) {
-      for (const target of [...new Set(collectKnownTargets(route, known))]) {
-        const key = `${record.id}\u0000${target}\u0000declared_dynamic_routes\u0000${routeName}`;
-        edgesByKey.set(key, { source: record.id, target, storage: "declared_dynamic_routes", key: routeName, dynamic: true });
-      }
-    }
-  }
-  return [...edgesByKey.values()];
-}
-function isGatePassEdge(edge) {
-  return edge?.storage === "gate_route" && ["on_pass", "pass_to", "pass"].includes(String(edge.key || "").toLowerCase());
-}
-function isGateFailEdge(edge) {
-  return edge?.storage === "gate_route" && ["on_fail", "fail_to", "fail"].includes(String(edge.key || "").toLowerCase());
-}
-function dialogEdgePreference(edge) {
-  if (isGatePassEdge(edge)) return 0;
-  if (isGateFailEdge(edge)) return 2;
-  return 1;
-}
-function shortestDialogPath(startId, endId) {
-  if (!startId || !endId) return null;
-  if (startId === endId) return { nodes: [startId], edges: [] };
-  const adjacency = new Map();
-  for (const edge of dialogStructuralEdges()) {
-    if (!adjacency.has(edge.source)) adjacency.set(edge.source, []);
-    adjacency.get(edge.source).push(edge);
-  }
-  for (const list of adjacency.values()) list.sort((a, b) => dialogEdgePreference(a) - dialogEdgePreference(b));
 
-  // Prefer successful gate outcomes before failure outcomes, even when the
-  // successful route is a little longer. A fail route is used only when a
-  // pass-preferred path to the requested destination does not exist.
-  const frontier = [{ id: startId, failCount: 0, steps: 0 }];
-  const best = new Map([[startId, { failCount: 0, steps: 0 }]]);
-  const previous = new Map();
-  const better = (a, b) => !b || a.failCount < b.failCount || (a.failCount === b.failCount && a.steps < b.steps);
-  while (frontier.length) {
-    frontier.sort((a, b) => a.failCount - b.failCount || a.steps - b.steps);
-    const current = frontier.shift();
-    const known = best.get(current.id);
-    if (!known || known.failCount !== current.failCount || known.steps !== current.steps) continue;
-    if (current.id === endId) break;
-    for (const edge of adjacency.get(current.id) || []) {
-      const candidate = { failCount: current.failCount + (isGateFailEdge(edge) ? 1 : 0), steps: current.steps + 1 };
-      if (!better(candidate, best.get(edge.target))) continue;
-      best.set(edge.target, candidate);
-      previous.set(edge.target, { from: current.id, edge });
-      frontier.push({ id: edge.target, ...candidate });
-    }
-  }
-  if (!best.has(endId)) return null;
-  const nodes = [endId], pathEdges = []; let walk = endId;
-  while (walk !== startId) {
-    const step = previous.get(walk); if (!step) return null;
-    pathEdges.push(step.edge); walk = step.from; nodes.push(walk);
-  }
-  nodes.reverse(); pathEdges.reverse(); return { nodes, edges: pathEdges };
-}
 
-function dialogOutgoingEdges(nodeId) {
-  const seen = new Set();
-  return dialogStructuralEdges().filter(edge => edge.source === nodeId).filter(edge => {
-    const key = `${edge.target}\u0000${dialogRouteLabel(edge)}`;
-    if (seen.has(key)) return false;
-    seen.add(key); return true;
-  });
-}
-function pathFromChosenEdge(prefixNodes, prefixEdges, edge, desiredEndId) {
-  const nodes = [...prefixNodes, edge.target], edges = [...prefixEdges, edge];
-  if (!desiredEndId || edge.target === desiredEndId) return { nodes, edges, endId: edge.target };
-  const tail = shortestDialogPath(edge.target, desiredEndId);
-  if (tail) return { nodes: [...nodes, ...tail.nodes.slice(1)], edges: [...edges, ...tail.edges], endId: desiredEndId };
-  const fallback = reachableTerminalPaths(edge.target)[0];
-  if (!fallback) return { nodes, edges, endId: edge.target, fallback: true };
-  return { nodes: [...nodes, ...fallback.path.nodes.slice(1)], edges: [...edges, ...fallback.path.edges], endId: fallback.terminal.id, fallback: true };
-}
-function clearDialogPlaybackTimer() {
-  state.dialogAsyncToken += 1;
-  if (state.dialogTimer) clearTimeout(state.dialogTimer);
-  state.dialogTimer = null;
-}
-function centerDialogPlaybackNode(id) {
-  const pos = state.positions?.[id]; if (!pos) return;
-  state.dialogFocusId = id;
-  render();
-  requestAnimationFrame(() => {
-    workspace.scrollTo({
-      left: Math.max(0, pos.x + NODE_WIDTH / 2 - workspace.clientWidth / 2),
-      top: Math.max(0, pos.y + nodeHeight(id) / 2 - workspace.clientHeight / 2),
-      behavior: "smooth",
-    });
-  });
-}
-function dialogCurrentPlaybackIndex() {
-  if (!state.dialogPath) return -1;
-  const count = state.dialogPlayMode ? Math.max(1, Math.min(state.dialogVisibleCount || 1, state.dialogPath.nodes.length)) : state.dialogPath.nodes.length;
-  return count - 1;
-}
-function scrollDialogPlaybackToLatest() {
-  if (!state.dialogPlayMode || state.panelTab !== "dialog") return;
-  requestAnimationFrame(() => {
-    const inspector = document.querySelector("#inspector");
-    const transcript = document.querySelector("#dialog-transcript");
-    const latest = transcript?.querySelector(".dialog-step:last-child");
-    if (!inspector || !latest) return;
-    const inspectorRect = inspector.getBoundingClientRect();
-    const latestRect = latest.getBoundingClientRect();
-    const bottomPadding = 24;
-    if (latestRect.bottom > inspectorRect.bottom - bottomPadding || latestRect.top < inspectorRect.top) {
-      const delta = latestRect.bottom - inspectorRect.bottom + bottomPadding;
-      inspector.scrollTo({ top: Math.max(0, inspector.scrollTop + delta), behavior: "smooth" });
-    }
-  });
-}
-function advanceDialogPlaybackAfterCurrent() {
-  if (!state.dialogPlayMode || !state.dialogPlaying || !state.dialogPath) return;
-  const index = dialogCurrentPlaybackIndex();
-  if (index < 0 || index >= state.dialogPath.nodes.length - 1) { state.dialogPlaying = false; renderDialog(); return; }
-  const currentId = state.dialogPath.nodes[index];
-  const currentView = graphNodeView(currentId);
-  const choices = dialogOutgoingEdges(currentId);
-  const autoPassEdge = state.dialogAutoPassGates && currentView?.element_type === "gate" ? choices.find(isGatePassEdge) : null;
-  if (choices.length > 1 && !autoPassEdge) { state.dialogPlaying = false; renderDialog(); scrollDialogPlaybackToLatest(); return; }
-  if (autoPassEdge) {
-    const activeEdge = state.dialogPath.edges[index];
-    const samePass = activeEdge && activeEdge.source === autoPassEdge.source && activeEdge.target === autoPassEdge.target && dialogRouteLabel(activeEdge) === dialogRouteLabel(autoPassEdge);
-    if (!samePass) { switchDialogBranch(index, autoPassEdge); return; }
-  }
-  state.dialogVisibleCount = Math.min(state.dialogPath.nodes.length, (state.dialogVisibleCount || 1) + 1);
-  const nextId = state.dialogPath.nodes[state.dialogVisibleCount - 1];
-  state.dialogFocusId = nextId;
-  render(); renderDialog(); centerDialogPlaybackNode(nextId); scrollDialogPlaybackToLatest();
-  scheduleDialogPlayback();
-}
-function scheduleDialogPlayback() {
-  clearDialogPlaybackTimer();
-  if (!state.dialogPlayMode || !state.dialogPlaying || !state.dialogPath) return;
-  const index = dialogCurrentPlaybackIndex();
-  if (index < 0) return;
-  const currentId = state.dialogPath.nodes[index];
-  if (state.dialogAdvanceMode === "manual") return;
-  const token = state.dialogAsyncToken;
-  state.dialogTimer = setTimeout(() => {
-    if (token !== state.dialogAsyncToken) return;
-    state.dialogTimer = null;
-    advanceDialogPlaybackAfterCurrent();
-  }, Math.max(1, Number(state.dialogDelay) || 2) * 1000);
-}
-function startDialogPlayback(restart = false) {
-  if (!state.dialogPath) return;
-  clearDialogPlaybackTimer();
- 
-  if (restart || !state.dialogPlayMode) state.dialogVisibleCount = 1;
-  state.dialogPlayMode = true; state.dialogPlaying = true;
-  const id = state.dialogPath.nodes[Math.max(0, (state.dialogVisibleCount || 1) - 1)];
-  state.dialogFocusId = id; render(); renderDialog(); centerDialogPlaybackNode(id); scrollDialogPlaybackToLatest(); scheduleDialogPlayback();
-}
-function pauseDialogPlayback() { clearDialogPlaybackTimer(); state.dialogPlaying = false; renderDialog(); }
-function passDialogPlaybackStep() {
-  if (!state.dialogPlayMode || !state.dialogPath) return;
-  const index = dialogCurrentPlaybackIndex();
-  if (index < 0 || index >= state.dialogPath.nodes.length - 1) return;
-  const wasPlaying = state.dialogPlaying;
-  clearDialogPlaybackTimer();
- 
-  if (!state.dialogPlaying) state.dialogPlaying = true;
-  advanceDialogPlaybackAfterCurrent();
-  if (!wasPlaying && state.dialogPlaying) {
-    clearDialogPlaybackTimer();
-   
-    state.dialogPlaying = false;
-    renderDialog();
-    scrollDialogPlaybackToLatest();
-  }
-}
-function showFullDialog() { clearDialogPlaybackTimer(); state.dialogPlayMode = false; state.dialogPlaying = false; state.dialogVisibleCount = state.dialogPath?.nodes.length || null; render(); renderDialog(); }
-function switchDialogBranch(stepIndex, chosenEdge) {
-  if (!state.dialogPath) return;
-  clearDialogPlaybackTimer();
- 
-  const wasPlayback = state.dialogPlayMode;
-  const prefixNodes = state.dialogPath.nodes.slice(0, stepIndex + 1);
-  const prefixEdges = state.dialogPath.edges.slice(0, stepIndex);
-  const desiredEndId = state.dialogPath.requestedEndId || state.dialogPath.endId || state.dialogPath.nodes.at(-1);
-  const next = pathFromChosenEdge(prefixNodes, prefixEdges, chosenEdge, desiredEndId);
-  state.dialogPath = {
-    ...state.dialogPath,
-    nodes: next.nodes, edges: next.edges, endId: next.endId,
-    branchFallback: !!next.fallback,
-  };
-  if (wasPlayback) {
-    state.dialogPlayMode = true;
-    state.dialogVisibleCount = Math.min(next.nodes.length, stepIndex + 2);
-    state.dialogPlaying = state.dialogVisibleCount < next.nodes.length;
-    state.dialogFocusId = next.nodes[Math.min(next.nodes.length - 1, stepIndex + 1)];
-  } else state.dialogFocusId = chosenEdge.source;
-  render(); renderDialog();
-  if (wasPlayback) { centerDialogPlaybackNode(state.dialogFocusId); scrollDialogPlaybackToLatest(); scheduleDialogPlayback(); }
-}
-function dialogTargetDisplayLabel(targetId) {
-  const view = graphNodeView(targetId);
-  const record = sourceRecord(targetId);
-  let value;
-  if (view?.element_type === "gate") {
-    value = record?.title || record?.purpose || record?.condition || record?.description || record?.summary || record?.question || record?.prompt || record?.instruction || record?.propose || record?.proposal || record?.display_name || record?.name || record?.label || record?.specification || record?.validator || record?.method || record?.type || record?.kind || view?.label;
-  } else if (view?.terminal) {
-    value = record?.title || record?.purpose || record?.description || record?.summary || view?.label;
-  } else {
-    value = dialogQuestion(record, view);
-  }
-  const text = String(value || "").trim();
-  if (text && text !== String(targetId || "").trim()) return text;
-  return view?.terminal ? "Terminal outcome" : view?.element_type === "gate" ? "Gate" : "Next step";
-}
-function attachDialogTargetTip(button, targetId) {
-  if (!button || !targetId) return;
-  const tip = document.createElement("span");
-  tip.className = "dialog-target-tip";
-  tip.setAttribute("role", "tooltip");
-  tip.textContent = dialogTargetDisplayLabel(targetId);
-  button.append(tip);
-}
 
-function renderDialogBranchChoices(step, nodeId, stepIndex, activeEdge) {
-  const choices = dialogOutgoingEdges(nodeId);
-  if (choices.length < 2) return;
-  const wrap = document.createElement("div"); wrap.className = "dialog-branch-choices";
-  const caption = document.createElement("div"); caption.className = "dialog-branch-caption"; caption.textContent = "Alternative path at this step"; wrap.append(caption);
-  const buttons = document.createElement("div"); buttons.className = "dialog-branch-buttons";
-  choices.forEach(edge => {
-    const button = document.createElement("button"); button.type = "button"; button.className = "dialog-branch-button";
-    const same = activeEdge && activeEdge.source === edge.source && activeEdge.target === edge.target && dialogRouteLabel(activeEdge) === dialogRouteLabel(edge);
-    if (same) button.classList.add("active");
-    button.textContent = `${dialogRouteLabel(edge)} → ${edge.target}`;
-    button.setAttribute("aria-label", `${dialogRouteLabel(edge)} to ${dialogTargetDisplayLabel(edge.target)}`);
-    attachDialogTargetTip(button, edge.target);
-    button.addEventListener("click", () => switchDialogBranch(stepIndex, edge));
-    buttons.append(button);
-  });
-  wrap.append(buttons); step.append(wrap);
-}
 
-function renderDialogManualNext(step, nodeId, stepIndex) {
-  if (state.dialogAdvanceMode !== "manual" || !state.dialogPlayMode || !state.dialogPlaying || !state.dialogPath) return;
-  const currentIndex = dialogCurrentPlaybackIndex();
-  if (stepIndex !== currentIndex || stepIndex >= state.dialogPath.nodes.length - 1) return;
-  const choices = dialogOutgoingEdges(nodeId);
-  if (choices.length > 1) return;
-  const activeEdge = state.dialogPath.edges[stepIndex];
-  if (!activeEdge) return;
-  const wrap = document.createElement("div"); wrap.className = "dialog-branch-choices dialog-manual-next";
-  const caption = document.createElement("div"); caption.className = "dialog-branch-caption"; caption.textContent = "Continue"; wrap.append(caption);
-  const buttons = document.createElement("div"); buttons.className = "dialog-branch-buttons";
-  const button = document.createElement("button"); button.type = "button"; button.className = "dialog-branch-button dialog-next-button";
-  button.textContent = "Next";
-  button.setAttribute("aria-label", `Continue to ${dialogTargetDisplayLabel(activeEdge.target)}`);
-  attachDialogTargetTip(button, activeEdge.target);
-  button.addEventListener("click", passDialogPlaybackStep);
-  buttons.append(button); wrap.append(buttons); step.append(wrap);
-}
 
-function reachableTerminalPaths(startId) {
-  return (state.graph?.nodes || [])
-    .filter(item => item.terminal)
-    .map(item => ({ terminal: item, path: shortestDialogPath(startId, item.id) }))
-    .filter(item => item.path)
-    .sort((a, b) => a.path.nodes.length - b.path.nodes.length || a.terminal.id.localeCompare(b.terminal.id));
-}
-function dialogQuestion(record, view) {
-  return record?.title || record?.question || record?.purpose || record?.description || record?.summary || record?.prompt || record?.instruction || record?.propose || record?.proposal || view?.label || record?.action || record?.type || record?.kind || view?.id || "Step";
-}
-function possibleAnswers(record) {
-  const answers = [];
-  const branch = record?.on_answer?.branch;
-  if (branch && typeof branch === "object" && !Array.isArray(branch)) answers.push(...Object.keys(branch));
-  if (record?.answer_type) answers.push(`answer type: ${record.answer_type}`);
-  return [...new Set(answers)];
-}
-function dialogRouteLabel(edge) {
-  if (!edge) return "";
-  if (edge.storage === "declared_dynamic_routes") return `dynamic route: ${edge.key}`;
-  if (edge.storage === "gate_route") return `gate outcome: ${edge.key}`;
-  if (edge.storage === "on_answer") return `answer outcome: ${edge.key}`;
-  if (edge.storage === "transitions" || edge.storage === "transitions_list") return `transition: ${edge.key}`;
-  if (edge.storage === "on_answer_next" || edge.storage === "next") return "next";
-  return edge.key || edge.storage || "transition";
-}
-function dialogIdButton(id) {
-  const button = document.createElement("button"); button.type = "button"; button.className = "dialog-node-link"; button.textContent = id;
-  button.addEventListener("click", () => focusGraphElement(id, true)); return button;
-}
 
-function updateDialogFocusVisuals(id) {
-  if (!id) return;
-  state.dialogFocusId = id;
-  canvas.querySelectorAll('.node.dialog-current-node').forEach(el => el.classList.remove('dialog-current-node'));
-  const graphEl = canvas.querySelector(`.node[data-id="${CSS.escape(id)}"]`);
-  if (graphEl) graphEl.classList.add('dialog-current-node');
-  document.querySelectorAll('#dialog-transcript .dialog-step.dialog-sync-current').forEach(el => el.classList.remove('dialog-sync-current'));
-  const step = document.querySelector(`#dialog-transcript .dialog-step[data-node-id="${CSS.escape(id)}"]`);
-  if (step) step.classList.add('dialog-sync-current');
-}
-function scrollDialogToNode(id, behavior = 'smooth') {
-  if (state.panelTab !== 'dialog' || !state.dialogPath?.nodes.includes(id)) return;
-  const inspector = document.querySelector('#inspector');
-  const step = document.querySelector(`#dialog-transcript .dialog-step[data-node-id="${CSS.escape(id)}"]`);
-  if (!inspector || !step) return;
-  updateDialogFocusVisuals(id);
-  const inspectorRect = inspector.getBoundingClientRect();
-  const stepRect = step.getBoundingClientRect();
-  const controls = document.querySelector('.dialog-playback-controls');
-  const stickyOffset = controls?.getBoundingClientRect().height || 0;
-  const target = inspector.scrollTop + (stepRect.top - inspectorRect.top) - Math.max(16, stickyOffset + 14);
-  inspector.scrollTo({ top: Math.max(0, target), behavior });
-}
-function syncDialogFromWorkspaceScroll() {
-  if (state.panelTab !== 'dialog' || !state.dialogPath || state.dialogPlaying) return;
-  const visibleIds = dialogVisiblePathNodes();
-  if (!visibleIds.length) return;
-  const cx = workspace.scrollLeft + workspace.clientWidth / 2;
-  const cy = workspace.scrollTop + workspace.clientHeight / 2;
-  let bestId = null, bestDistance = Infinity;
-  for (const id of visibleIds) {
-    const pos = state.positions?.[id]; if (!pos) continue;
-    const dx = pos.x + NODE_WIDTH / 2 - cx;
-    const dy = pos.y + nodeHeight(id) / 2 - cy;
-    const distance = dx * dx + dy * dy;
-    if (distance < bestDistance) { bestDistance = distance; bestId = id; }
-  }
-  if (bestId && bestId !== state.dialogFocusId) scrollDialogToNode(bestId, 'smooth');
-}
-function renderDialog() {
-  const emptyState = document.querySelector("#dialog-empty"), view = document.querySelector("#dialog-view"), header = document.querySelector("#dialog-header"), transcript = document.querySelector("#dialog-transcript");
-  if (!state.dialogPath) { emptyState.hidden = false; view.hidden = true; return; }
-  emptyState.hidden = true; view.hidden = false; header.innerHTML = ""; transcript.innerHTML = "";
-  const title = document.createElement("strong"); title.textContent = state.dialogPath.title; header.append(title);
-  const visibleCount = state.dialogPlayMode ? Math.max(1, Math.min(state.dialogVisibleCount || 1, state.dialogPath.nodes.length)) : state.dialogPath.nodes.length;
-  const modeLabel = state.dialogAdvanceMode === "timer" ? `timer ${state.dialogDelay || 2}s` : "manual";
-  const meta = document.createElement("span"); meta.textContent = `${visibleCount}/${state.dialogPath.nodes.length} elements · ${state.dialogPlayMode ? (state.dialogPlaying ? `playing · ${modeLabel}` : `playback paused · ${modeLabel}`) : "structural path preview"}${state.dialogPath.branchFallback ? " · selected branch cannot reach original ending; showing nearest reachable outcome" : ""}`; header.append(meta);
-  const playToggle = document.querySelector("#dialog-play-toggle"), restart = document.querySelector("#dialog-restart"), staticButton = document.querySelector("#dialog-static"), mode = document.querySelector("#dialog-advance-mode"), delayWrap = document.querySelector("#dialog-delay-wrap"), delay = document.querySelector("#dialog-delay");
-  if (playToggle) { playToggle.textContent = state.dialogPlayMode && state.dialogPlaying ? "Pause" : "Play"; playToggle.classList.toggle("active", state.dialogPlayMode); }
-  if (restart) restart.disabled = !state.dialogPath;
-  if (mode) mode.value = state.dialogAdvanceMode || "manual";
-  if (delayWrap) delayWrap.hidden = state.dialogAdvanceMode !== "timer";
-  if (delay) delay.value = String(state.dialogDelay || 2);
-  if (staticButton) staticButton.classList.toggle("active", !state.dialogPlayMode);
-  state.dialogPath.nodes.slice(0, visibleCount).forEach((id, index) => {
-    const graphView = graphNodeView(id), record = sourceRecord(id), outgoing = state.dialogPath.edges[index];
-    const step = document.createElement("section"); step.className = `dialog-step replay-step dialog-kind-${graphView?.element_type || "terminal"}`; step.dataset.nodeId = id; if (state.dialogFocusId === id) step.classList.add("dialog-sync-current");
-    if (state.dialogPlayMode && index === visibleCount - 1) step.classList.add("play-current");
-    const stepHead = document.createElement("div"); stepHead.className = "dialog-step-head replay-step-head"; stepHead.append(dialogIdButton(id));
-    const type = document.createElement("span"); type.textContent = graphView?.element_type || "terminal"; stepHead.append(type); step.append(stepHead);
-    if (graphView?.element_type === "gate") {
-      const bubble = document.createElement("div"); bubble.className = "replay-bubble gate";
-      bubble.innerHTML = `<strong>Gate</strong><div>${String(record?.title || record?.purpose || record?.condition || record?.description || record?.summary || graphView?.label || id)}</div>`;
-      step.append(bubble);
-    } else if (graphView?.terminal) {
-      const bubble = document.createElement("div"); bubble.className = "replay-bubble system";
-      bubble.innerHTML = `<strong>Outcome</strong><div>${String(record?.title || record?.purpose || graphView?.label || id)}</div>`;
-      step.append(bubble);
-    } else {
-      const assistant = document.createElement("div"); assistant.className = "replay-bubble assistant";
-      const role = document.createElement("strong"); role.textContent = "Assistant"; assistant.append(role);
-      const q = document.createElement("div"); q.textContent = dialogQuestion(record, graphView); assistant.append(q); step.append(assistant);
-      const analyst = document.createElement("div"); analyst.className = "replay-bubble analyst";
-      const analystRole = document.createElement("strong"); analystRole.textContent = "Analyst"; analyst.append(analystRole);
-      const answers = possibleAnswers(record);
-      const response = document.createElement("div"); response.textContent = answers.length ? `Possible response: ${answers.join(" · ")}` : "Analyst response / confirmation according to this node contract."; analyst.append(response); step.append(analyst);
-    }
-    if (outgoing) {
-      const tech = document.createElement("div"); tech.className = "dialog-transition";
-      tech.textContent = `${dialogRouteLabel(outgoing)} → ${outgoing.target}${outgoing.dynamic ? " (declared runtime possibility)" : ""}`; step.append(tech);
-    }
-    renderDialogBranchChoices(step, id, index, outgoing);
-    renderDialogManualNext(step, id, index);
-    if (state.dialogPlayMode && index === visibleCount - 1 && dialogOutgoingEdges(id).length > 1 && index < state.dialogPath.nodes.length - 1) {
-      const view = graphNodeView(id);
-      const autoPassAvailable = state.dialogAutoPassGates && view?.element_type === "gate" && dialogOutgoingEdges(id).some(isGatePassEdge);
-      if (!autoPassAvailable) {
-        const waiting = document.createElement("div"); waiting.className = "dialog-play-waiting"; waiting.textContent = "Playback is waiting for your branch choice."; step.append(waiting);
-      }
-    }
-    transcript.append(step);
-  });
-}
-function openDialogPath(path, title, requestedEndId = null) {
-  if (!path) return alert("No structural path was found for this dialog preview.");
-  clearDialogPlaybackTimer();
-  state.dialogPath = { ...path, title, requestedEndId: requestedEndId || path.nodes.at(-1), endId: path.nodes.at(-1), branchFallback: false };
-  state.dialogPlayMode = false; state.dialogPlaying = false; state.dialogVisibleCount = path.nodes.length;
-  state.dialogFocusId = path.nodes[0] || null;
-  state.panelTab = "dialog"; hideCanvasContextMenu(); render(); showPanelTab("dialog"); renderDialog();
-}
-function openEntryToNodeDialog(nodeId) {
-  const path = shortestDialogPath(entryNodeId(), nodeId);
-  openDialogPath(path, `Start → ${nodeId}`, nodeId);
-  state.dialogFocusId = nodeId; syncPathBuilder(entryNodeId(), nodeId); render();
-}
-function openNodeToTerminalDialog(nodeId, terminalId) {
-  const path = shortestDialogPath(nodeId, terminalId);
-  openDialogPath(path, `${nodeId} → ${terminalId}`, terminalId);
-  state.dialogFocusId = nodeId; syncPathBuilder(nodeId, terminalId); render();
-}
-
-function focusGraphElement(id, preserveDialog = false) {
+function focusGraphElement(id) {
   const view = (state.graph?.nodes || []).find(item => item.id === id);
   const pos = state.positions?.[id];
   if (!view || !pos) return;
   state.selected = id;
   state.selectedNodes = new Set([id]);
   state.selectedEdge = null;
-  if (preserveDialog && state.dialogPath) {
-    state.dialogFocusId = id;
-    state.panelTab = "dialog";
-  } else {
-    state.panelTab = "inspection";
-  }
+  state.panelTab = "inspection";
   render();
   requestAnimationFrame(() => {
     const targetLeft = Math.max(0, pos.x + NODE_WIDTH / 2 - workspace.clientWidth / 2);
@@ -554,10 +132,9 @@ function applyMeasuredLayout() {
   // Previously this second layout pass only reapplied Dialog layout, which
   // silently replaced Replay focus coordinates with the ordinary/manual
   // layout immediately after render().
-  const dialogLayout = dialogFocusPositions();
   const replayLayout = replayFocusPositions();
   const liveLayout = liveFocusPositions();
-  const focusLayout = dialogLayout || replayLayout || liveLayout;
+  const focusLayout = replayLayout || liveLayout;
   for (const node of state.graph?.nodes || []) {
     const pos = focusLayout?.[node.id] || (state.manualPositions.has(node.id) ? state.positions[node.id] : automatic[node.id]);
     if (!pos) continue;
@@ -802,7 +379,7 @@ function pathFocusPositions(path, active) {
   }
 
   // Multi-source BFS assigns every alternative element to the closest step on
-  // the active dialog path.  That step becomes its visual branch anchor.
+  // the active focus path. That step becomes its visual branch anchor.
   const owner = new Map();
   const distance = new Map();
   const queue = [];
@@ -867,7 +444,6 @@ function pathFocusPositions(path, active) {
   }
   return positions;
 }
-function dialogFocusPositions() { return pathFocusPositions(state.dialogPath?.nodes || [], dialogPathIsActive()); }
 function replayTraversedNodeIds() {
   if (state.panelTab !== "replay" || !state.replayData) return [];
   const ids = new Set((state.graph?.nodes || []).map(node => node.id));
@@ -979,17 +555,7 @@ function showCanvasContextMenu(event) {
   document.querySelector("#canvas-general-actions").hidden = false;
   document.querySelector("#canvas-selection-actions").hidden = !hasSelection;
   document.querySelector("#canvas-delete-selection").hidden = true;
-  const dialogActions = document.querySelector("#canvas-dialog-actions");
-  dialogActions.hidden = !singleSelection;
-  if (singleSelection) {
-    const nodeId = selectedDeletableIds[0], entryPath = shortestDialogPath(entryNodeId(), nodeId), terminals = reachableTerminalPaths(nodeId);
-    const fromEntry = document.querySelector("#canvas-dialog-from-entry");
-    fromEntry.disabled = !entryPath; fromEntry.textContent = entryPath ? "Show dialog: start → this node" : "Show dialog: start → this node (no path)";
-    fromEntry.dataset.nodeId = nodeId;
-    const terminalMenu = document.querySelector("#canvas-dialog-terminal-menu"); terminalMenu.innerHTML = "";
-    if (!terminals.length) { const item = document.createElement("button"); item.type = "button"; item.disabled = true; item.textContent = "No reachable endings"; terminalMenu.append(item); }
-    else terminals.forEach(({ terminal, path }) => { const item = document.createElement("button"); item.type = "button"; item.role = "menuitem"; item.textContent = `${terminal.id} · ${path.nodes.length - 1} step${path.nodes.length - 1 === 1 ? "" : "s"}`; item.addEventListener("click", () => openNodeToTerminalDialog(nodeId, terminal.id)); terminalMenu.append(item); });
-  }
+
   if (nodeElement && !hasSelection) { menu.hidden = true; state.canvasMenuPosition = null; return; }
   menu.hidden = false; menu.style.left = `${event.clientX}px`; menu.style.top = `${event.clientY}px`;
   requestAnimationFrame(() => {
@@ -1077,35 +643,6 @@ function showNodeTooltip(node, event) {
   moveNodeTooltip(event);
 }
 
-function dialogPathIsActive() { return state.panelTab === "dialog" && Boolean(state.dialogPath); }
-function dialogVisiblePathNodes() {
-  if (!dialogPathIsActive()) return [];
-  const count = state.dialogPlayMode ? Math.max(1, Math.min(state.dialogVisibleCount || 1, state.dialogPath.nodes.length)) : state.dialogPath.nodes.length;
-  return state.dialogPath.nodes.slice(0, count);
-}
-function dialogVisiblePathEdges() {
-  if (!dialogPathIsActive()) return [];
-  const count = state.dialogPlayMode ? Math.max(0, Math.min((state.dialogVisibleCount || 1) - 1, state.dialogPath.edges.length)) : state.dialogPath.edges.length;
-  return state.dialogPath.edges.slice(0, count);
-}
-function dialogPathNodeSet() { return new Set(dialogVisiblePathNodes()); }
-function sameDialogEdge(a, b) {
-  if (!a || !b) return false;
-  return a.source === b.source && a.target === b.target && dialogRouteLabel(a) === dialogRouteLabel(b);
-}
-function drawDialogPathOverlay() {
-  if (!dialogPathIsActive()) return;
-  for (const edge of dialogVisiblePathEdges()) {
-    const source = state.positions[edge.source], target = state.positions[edge.target];
-    if (!source || !target) continue;
-    const geometry = edgeGeometry(source, target, edge.source, edge.target);
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    line.classList.add("dialog-path-edge");
-    if (edge.dynamic) line.classList.add("dynamic");
-    line.setAttribute("d", geometry.path);
-    edges.append(line);
-  }
-}
 function drawReplayPathOverlay() {
   if (!replayPathIsActive()) return;
   for (const edge of replayPathEdges()) {
@@ -1147,23 +684,19 @@ function render() {
   document.querySelector("#validate").hidden = !state.source;
   if (!state.source) { empty.hidden = false; return; } empty.hidden = true;
   const automatic = automaticPositions();
-  const dialogLayout = dialogFocusPositions();
   const replayLayout = replayFocusPositions();
   const liveLayout = liveFocusPositions();
-  const focusLayout = dialogLayout || replayLayout || liveLayout;
-  canvas.classList.toggle("dialog-focus-layout", Boolean(dialogLayout));
+  const focusLayout = replayLayout || liveLayout;
   canvas.classList.toggle("replay-focus-layout", Boolean(replayLayout));
   (state.graph.nodes || []).forEach(node => {
     const pos = state.manualPositions.has(node.id) ? positionFor(node.id) : (focusLayout?.[node.id] || automatic[node.id]); state.positions[node.id] = pos;
     const element = document.createElement("article");
-    const onDialogPath = dialogPathIsActive() && dialogPathNodeSet().has(node.id);
-    const dialogCurrent = dialogPathIsActive() && state.dialogFocusId === node.id;
     const onReplayPath = replayPathIsActive() && replayPathNodes().includes(node.id);
     const replayCurrent = replayPathIsActive() && state.replayFocusId === node.id;
     const onLivePath = livePathIsActive() && livePathNodes().includes(node.id);
     const liveCurrent = livePathIsActive() && state.liveCurrentId === node.id;
     const outputTraceClass = node.entity_type === "declared_output" ? `output-${String(node.traceability_status || "unknown").toLowerCase()}` : "";
-    element.className = `node ${node.element_type || "node"} ${node.terminal ? "terminal" : ""} ${outputTraceClass} ${state.collapsedNodes.has(node.id) ? "collapsed" : ""} ${state.selectedNodes.has(node.id) ? "selected" : ""} ${state.pendingTransitionSource === node.id ? "transition-source" : ""} ${onDialogPath ? "dialog-path-node" : ""} ${dialogCurrent ? "dialog-current-node" : ""} ${onReplayPath ? "replay-path-node" : ""} ${replayCurrent ? "replay-current-node" : ""} ${onLivePath ? "live-path-node" : ""} ${liveCurrent ? "live-current-node" : ""}`;
+    element.className = `node ${node.element_type || "node"} ${node.terminal ? "terminal" : ""} ${outputTraceClass} ${state.collapsedNodes.has(node.id) ? "collapsed" : ""} ${state.selectedNodes.has(node.id) ? "selected" : ""} ${state.pendingTransitionSource === node.id ? "transition-source" : ""} ${onReplayPath ? "replay-path-node" : ""} ${replayCurrent ? "replay-current-node" : ""} ${onLivePath ? "live-path-node" : ""} ${liveCurrent ? "live-current-node" : ""}`;
     element.style.left = `${pos.x}px`; element.style.top = `${pos.y}px`; element.dataset.id = node.id;
     element.innerHTML = `<div class="node-ref-badges" hidden></div><div class="node-id"></div><div class="node-label"></div><div class="node-type"></div><div class="node-toolbar"><button type="button">Add transition</button></div>`;
     const referenceBadges = graphReferenceBadgesForNode(node);
@@ -1188,7 +721,7 @@ function render() {
     makeDraggable(element);
     canvas.append(element);
   });
-  applyMeasuredLayout(); resizeCanvas(); renderTransitionMode(); requestAnimationFrame(() => { drawEdges(); drawDialogPathOverlay(); drawReplayPathOverlay(); drawLivePathOverlay(); }); renderInspector();
+  applyMeasuredLayout(); resizeCanvas(); renderTransitionMode(); requestAnimationFrame(() => { drawEdges(); drawReplayPathOverlay(); drawLivePathOverlay(); }); renderInspector();
 }
 let edgeMenuTimer;
 function hideEdgeMenu() { document.querySelector("#edge-context-menu").hidden = true; }
@@ -2188,12 +1721,6 @@ const HELP_PAGES = [
     ["Inspector", `<p>The right pane is a read-only technical inspector for the selected information object and its canonical passport metadata. <strong>Explain with model</strong> uses that same selected Source Data Flow entity and its declared incoming/outgoing relations.</p>`],
     ["Package without embedded flow", `<p>If the loaded package does not include a canonical authoring data-flow bundle, the page shows an explicit empty-state message instead of falling back to a reconstructed approximation.</p>`]
   ]},
-  {id:"show-path", title:"Show Path", lead:"Build and walk a selected control-flow route to understand how the playbook can move from one element to another.", sections:[
-    ["Build a path", `<p>Select a <strong>From</strong> node and a <strong>To</strong> node, then choose <strong>Build path</strong>. The path builder uses executable control-flow edges only.</p>`],
-    ["Playback controls", `<p>The sticky playback bar remains visible while a long path is being inspected.</p><ul><li><strong>Play</strong> starts automatic path playback.</li><li><strong>Restart</strong> returns to the beginning of the built path.</li><li><strong>Advance</strong> controls whether progression is manual or timer-based.</li><li><strong>Delay</strong> controls timer speed.</li><li><strong>Auto-pass gates via OnPass</strong> follows the successful gate route automatically.</li><li><strong>Show all</strong> expands the complete structural path view.</li></ul>`],
-    ["Alternative routes", `<p>At gates or branch points, the path view can show alternative legal transitions. These are structural possibilities, not evidence that a particular live run took those branches.</p>`],
-    ["When to use Show Path", `<p>Use it to explain routing, review recovery branches, inspect long processes, or understand why two distant nodes are connected without executing the playbook.</p>`]
-  ]},
   {id:"playbook-settings", title:"Playbook Settings", lead:"Inspect the effective program-level configuration declared by the loaded playbook and compare it with values documented by the Ordo language registry.", sections:[
     ["What you see", `<p>Each setting is shown as a concrete current value rather than a raw YAML block. When the language registry declares alternatives, the page lists every known value with its English meaning and highlights the current one.</p>`],
     ["Registry-driven behavior", `<p>The Editor reads value definitions from the bundled language registry. Future language-package builds can extend the registry without rewriting this page.</p>`],
@@ -2284,7 +1811,7 @@ HELP_PAGES.push({
 const HELP_NAV_GROUPS = [
   ["getting-started"],
   ["show-tree","show-data-flow","playbook-settings","verify-playbook","files"],
-  ["show-path","execute-playbook","replay-real-chat","auto-answers","current-state","pause-resume","recovery","evidence"],
+  ["execute-playbook","replay-real-chat","auto-answers","current-state","pause-resume","recovery","evidence"],
   ["model-chat","settings","troubleshooting","rest-api"]
 ];
 
@@ -3571,13 +3098,10 @@ function bindModelChat(){document.querySelector("#model-chat-export")?.addEventL
 function showPanelTab(tab) {
   const previousTab=state.panelTab;
   if(previousTab!==tab && editorMain.classList.contains("workspace-maximized")) setWorkspaceMaximized(false);
-  const wasDialog=previousTab === "dialog";
-  if (wasDialog && tab !== "dialog" && state.dialogPlaying) { clearDialogPlaybackTimer(); state.dialogPlaying=false; }
   state.panelTab=tab; hideNodeTooltip();
   if (["modelchat","help"].includes(tab)) { const tabs=document.querySelector("#workspace-tabs"); if(tabs) tabs.hidden=false; }
   document.querySelector("#inspection-panel").hidden=tab !== "inspection";
   document.querySelector("#validate-panel").hidden=true;
-  document.querySelector("#dialog-panel").hidden=tab !== "dialog";
   document.querySelector("#replay-panel").hidden=tab !== "replay";
   document.querySelector("#run-panel").hidden=tab !== "run";
   document.querySelector("#upload-home-panel").hidden=tab !== "upload";
@@ -3591,11 +3115,10 @@ function showPanelTab(tab) {
   document.querySelector("#verification-main-panel").hidden=tab !== "verification";
   document.querySelector("#verification-assistant-panel").hidden=tab !== "verification";
   document.querySelector("#help-panel").hidden=tab !== "help";
-  const mode={upload:"upload",inspection:"tree",dialog:"paths",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[tab] || "upload";
+  const mode={upload:"upload",inspection:"tree",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[tab] || "upload";
   editorMain.dataset.workspaceMode=mode; editorMain.classList.remove("side-collapsed"); if(tab!=="packagefiles")editorMain.classList.remove("package-files-chat-open"); else editorMain.classList.toggle("package-files-chat-open",packageFilesAssistantOpen); updateWorkspaceMaximizeButton();
   document.querySelectorAll("[data-workspace-tab]").forEach(button=>button.classList.toggle("active",button.dataset.workspaceTab===mode));
-  if (["dialog","replay","run"].includes(previousTab) || ["dialog","replay","run"].includes(tab)) render();
-  if (tab === "dialog") { populatePathBuilder(); renderDialog(); }
+  if (["replay","run"].includes(previousTab) || ["replay","run"].includes(tab)) render();
   if (tab === "replay") renderReplay();
   if (tab === "run") renderLiveRun();
   if (tab === "modelchat") renderModelChat();
@@ -3730,7 +3253,7 @@ function renderInspector() {
 }
 
 function rerenderKeepingInspectorDraft() { const draft = Object.fromEntries([...document.querySelectorAll("[data-section-key]")].map(field => [field.dataset.sectionKey, field.value])); render(); document.querySelectorAll("[data-section-key]").forEach(field => { if (draft[field.dataset.sectionKey] !== undefined) field.value = draft[field.dataset.sectionKey]; }); updateYamlPreview(); }
-function refresh(source) { state.source = source; state.selected = null; state.selectedNodes = new Set(); clearDialogPlaybackTimer(); state.dialogPath = null; state.dialogFocusId = null; state.dialogPlayMode = false; state.dialogPlaying = false; state.dialogVisibleCount = null; return request("/api/parse", { source }).then(data => { state.source = data.source; state.graph = data.graph; render(); }); }
+function refresh(source) { state.source = source; state.selected = null; state.selectedNodes = new Set(); return request("/api/parse", { source }).then(data => { state.source = data.source; state.graph = data.graph; render(); }); }
 function displayValidation(validation) {
   const container = document.querySelector("#validation");
   container.innerHTML = "";
@@ -3787,7 +3310,7 @@ function displayValidation(validation) {
     container.append(note);
   }
 }
-document.querySelector("#file-input")?.addEventListener("change", async event => { const file = event.target.files[0]; if (!file) return; try { const data = await request("/api/parse", { yaml: await file.text() }); state.packageInfo = null; state.lineage.sourceData=null;state.lineage.sourceError=null;state.lineage.sourceDataClassFilter="all";state.lineage.sourceLegend=null;state.lineage.sourceTraceDirection=null;state.lineage.viewMode="source"; state.source = data.source; state.graph = data.graph; state.positions = {}; state.manualPositions = new Set(); state.collapsedNodes = new Set(); state.pendingTransitionSource = null; clearDialogPlaybackTimer(); state.dialogPath = null; state.dialogPlayMode = false; state.dialogPlaying = false; state.dialogVisibleCount = null; resetLiveRun(); render(); renderLiveRun(); } catch (error) { alert(error.message); } finally { event.target.value = ""; } });
+document.querySelector("#file-input")?.addEventListener("change", async event => { const file = event.target.files[0]; if (!file) return; try { const data = await request("/api/parse", { yaml: await file.text() }); state.packageInfo = null; state.lineage.sourceData=null;state.lineage.sourceError=null;state.lineage.sourceDataClassFilter="all";state.lineage.sourceLegend=null;state.lineage.sourceTraceDirection=null;state.lineage.viewMode="source"; state.source = data.source; state.graph = data.graph; state.positions = {}; state.manualPositions = new Set(); state.collapsedNodes = new Set(); state.pendingTransitionSource = null; resetLiveRun(); render(); renderLiveRun(); } catch (error) { alert(error.message); } finally { event.target.value = ""; } });
 document.querySelector("#validate").addEventListener("click", async () => { if (!state.source) return; try { const data = await request("/api/validate", { source: state.source }); displayValidation(data.validation); } catch (error) { alert(error.message); } });
 
 async function downloadFullPlaybook() {
@@ -3850,14 +3373,13 @@ function downloadTreeSvg() {
   const width = Math.max(1050, ...entries.map(([id, pos]) => pos.x + nodeSize(id).width + CANVAS_MARGIN));
   const height = Math.max(700, ...entries.map(([id, pos]) => pos.y + nodeHeight(id) + CANVAS_MARGIN));
   const replayEdges = new Set(replayPathEdges().map(edge => `${edge.source}\u0000${edge.target}`));
-  const dialogEdges = new Set(dialogVisiblePathEdges().map(edge => `${edge.source}\u0000${edge.target}`));
-  const pathNodes = new Set([...dialogVisiblePathNodes(), ...replayPathNodes()]);
+  const pathNodes = new Set(replayPathNodes());
   const parts = [`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`, `<rect width="100%" height="100%" fill="#f8fafc"/>`];
   resetSpaciousInternalMiniLaneCache();
   for (const edge of state.graph.edges || []) {
     const source = state.positions[edge.source], target = state.positions[edge.target]; if (!source || !target) continue;
     const geo = edgeGeometry(source, target, edge.source, edge.target);
-    const active = replayEdges.has(`${edge.source}\u0000${edge.target}`) || dialogEdges.has(`${edge.source}\u0000${edge.target}`);
+    const active = replayEdges.has(`${edge.source}\u0000${edge.target}`);
     const relation = edge.edge_type || edge.relation_type || 'control_flow';
     const nonControl = relation !== 'control_flow';
     parts.push(`<path d="${escapeXml(geo.path)}" fill="none" stroke="${active ? '#1f6fd1' : (nonControl ? '#a06b00' : '#7890b8')}" stroke-width="${active ? 5 : (nonControl ? 1.3 : 1.7)}"${nonControl ? ' stroke-dasharray="5 6" opacity="0.72"' : ''}/>`);
@@ -3968,12 +3490,6 @@ function beginTransition(sourceId) { state.pendingTransitionSource = sourceId; s
 function handleNodeClick(nodeId, event) {
   if (!state.pendingTransitionSource) {
     const additive = Boolean(event?.ctrlKey || event?.metaKey || event?.shiftKey);
-    if (!additive && state.panelTab === "dialog" && state.dialogPath?.nodes.includes(nodeId)) {
-      state.selected = nodeId; state.selectedNodes = new Set([nodeId]); state.selectedEdge = null;
-      updateDialogFocusVisuals(nodeId);
-      scrollDialogToNode(nodeId);
-      return;
-    }
     return selectNode(nodeId, false);
   }
   if (state.pendingTransitionSource === nodeId) { state.pendingTransitionSource = null; return render(); }
@@ -4072,8 +3588,6 @@ workspace.addEventListener("pointerup", event => {
 });
 
 workspace.addEventListener("scroll", () => {
-  if (state.dialogSyncTimer) clearTimeout(state.dialogSyncTimer);
-  state.dialogSyncTimer = setTimeout(syncDialogFromWorkspaceScroll, 140);
 }, { passive: true });
 
 const inspectorPanel = document.querySelector("#inspector");
@@ -4100,19 +3614,7 @@ document.querySelector("#canvas-download-yaml").addEventListener("click", downlo
 document.querySelector("#canvas-download-playbook")?.addEventListener("click", downloadFullPlaybook);
 document.querySelector("#canvas-download-svg")?.addEventListener("click", downloadTreeSvg);
 document.querySelector("#canvas-delete-selection").addEventListener("click", deleteSelectedNodes);
-document.querySelector("#canvas-dialog-from-entry").addEventListener("click", event => { const nodeId = event.currentTarget.dataset.nodeId; if (nodeId) openEntryToNodeDialog(nodeId); });
-document.querySelector("#dialog-play-toggle").addEventListener("click", () => { if (state.dialogPlayMode && state.dialogPlaying) pauseDialogPlayback(); else startDialogPlayback(!state.dialogPlayMode); });
-document.querySelector("#dialog-restart").addEventListener("click", () => startDialogPlayback(true));
-document.querySelector("#dialog-static").addEventListener("click", showFullDialog);
-document.querySelector("#dialog-advance-mode").addEventListener("change", event => {
-  const mode = ["manual", "timer"].includes(event.target.value) ? event.target.value : "manual";
-  clearDialogPlaybackTimer();
-  state.dialogAdvanceMode = mode;
-  renderDialog();
-  if (state.dialogPlaying) scheduleDialogPlayback();
-});
-document.querySelector("#dialog-delay").addEventListener("change", event => { state.dialogDelay = Number(event.target.value) || 2; if (state.dialogPlaying && state.dialogAdvanceMode === "timer") scheduleDialogPlayback(); });
-document.querySelector("#dialog-auto-pass").addEventListener("change", event => { state.dialogAutoPassGates = !!event.target.checked; if (state.dialogPlaying) scheduleDialogPlayback(); });
+
 document.addEventListener("pointerdown", event => { if (!event.target.closest?.("#canvas-context-menu")) hideCanvasContextMenu(); if (!event.target.closest?.("#source-flow-context-menu")) hideSourceFlowContextMenu(); });
 document.addEventListener("keydown", event => { if (event.key === "Escape") { hideCanvasContextMenu(); hideSourceFlowContextMenu(); closeLiveSettingModal(); closeRecoveryClarificationDialog(); closeTokenDebugModal(); } });
 document.querySelectorAll("[data-inspector-tab]").forEach(button => button.addEventListener("click", () => showInspectorTab(button.dataset.inspectorTab)));
@@ -5852,12 +5354,46 @@ document.querySelector("#live-input").addEventListener("keydown", event => {
   document.querySelector("#live-form").requestSubmit();
 });
 
-function setPlaybookPreparation(progress, status, stages=[], error="") {
+const PLAYBOOK_PREPARATION_STAGE_LABELS={
+  inspect_input:"Inspect input",validate_package:"Validate package",locate_source:"Locate playbook source",
+  index_resources:"Index resources",resolve_runtime_authority:"Resolve runtime authority",
+  extract_compile_workspace:"Prepare compiler workspace",compile_runtime_plan:"Compile runtime plan",
+  validate_runtime_plan:"Validate runtime plan",verify_package_integrity:"Verify package integrity",
+  build_editor_views:"Build editor views",finalize_package:"Finalize package",load_source:"Load source",verify_compatibility:"Verify compatibility"
+};
+function formatPreparationMeta(meta={}) {
+  if(!meta||typeof meta!=="object")return "";
+  if(Number.isFinite(Number(meta.current))&&Number.isFinite(Number(meta.total)))return `${Number(meta.current).toLocaleString()} / ${Number(meta.total).toLocaleString()}`;
+  if(Number.isFinite(Number(meta.elapsed_seconds)))return `${Number(meta.elapsed_seconds).toFixed(1)}s`;
+  if(Number.isFinite(Number(meta.file_count)))return `${Number(meta.file_count).toLocaleString()} files`;
+  if(Number.isFinite(Number(meta.text_resources)))return `${Number(meta.text_resources).toLocaleString()} text`;
+  return "";
+}
+function setPlaybookPreparation(progress, status, stages=[], error="", info={}) {
   const overlay=document.querySelector("#playbook-preparation-overlay"); if (!overlay) return;
   overlay.hidden=false;
-  const bar=document.querySelector("#playbook-preparation-progress-bar"); if (bar) bar.style.width=`${Math.max(0,Math.min(100,progress))}%`;
+  const pct=Math.max(0,Math.min(100,Number(progress)||0));
+  const bar=document.querySelector("#playbook-preparation-progress-bar"); if (bar) bar.style.width=`${pct}%`;
+  const value=document.querySelector("#playbook-preparation-progress-value"); if(value)value.textContent=`${Math.round(pct)}%`;
   const st=document.querySelector("#playbook-preparation-status"); if (st) st.textContent=status;
-  const box=document.querySelector("#playbook-preparation-stages"); if (box) { box.innerHTML=""; for (const row of stages||[]) { const el=document.createElement("div"); el.className=`playbook-preparation-stage ${String(row.status||"").toLowerCase()}`; el.textContent=`${row.status==="PASS"?"✓":row.status==="FAIL"?"×":"•"} ${String(row.id||"").replaceAll("_"," ")}`; box.append(el); } }
+  const elapsed=document.querySelector("#playbook-preparation-elapsed"); if(elapsed)elapsed.textContent=Number.isFinite(Number(info.elapsed_seconds))?`${Number(info.elapsed_seconds).toFixed(1)}s elapsed`:"";
+  const activity=document.querySelector("#playbook-preparation-activity");
+  if(activity){ const text=String(info.activity_text||"").trim(); activity.hidden=!text; activity.textContent=text; }
+  const box=document.querySelector("#playbook-preparation-stages");
+  if (box) {
+    box.innerHTML="";
+    for (const row of stages||[]) {
+      const el=document.createElement("div"); const state=String(row.status||"PENDING").toLowerCase(); el.className=`playbook-preparation-stage ${state}`;
+      const icon=document.createElement("span"); icon.className="playbook-preparation-stage-icon"; icon.textContent=state==="pass"?"✓":state==="fail"?"×":state==="warning"?"!":state==="running"?"●":"○"; el.append(icon);
+      const main=document.createElement("div"); main.className="playbook-preparation-stage-main";
+      const name=document.createElement("div"); name.className="playbook-preparation-stage-name"; name.textContent=PLAYBOOK_PREPARATION_STAGE_LABELS[row.id]||String(row.id||"").replaceAll("_"," "); main.append(name);
+      if(row.message){const message=document.createElement("div");message.className="playbook-preparation-stage-message";message.textContent=row.message;message.title=row.message;main.append(message);}
+      el.append(main);
+      const meta=document.createElement("span");meta.className="playbook-preparation-stage-meta";meta.textContent=formatPreparationMeta(row.meta||{});el.append(meta);
+      box.append(el);
+    }
+    const running=box.querySelector(".playbook-preparation-stage.running"); if(running)running.scrollIntoView({block:"nearest"});
+  }
   const err=document.querySelector("#playbook-preparation-error"); if (err) { err.hidden=!error; err.textContent=error||""; }
 }
 let currentPlaybookPreparationDiagnostics=null;
@@ -5937,7 +5473,7 @@ function showPlaybookPreparationTab(tab="human") {
   const body=document.querySelector("#playbook-preparation-body"); if(body) body.scrollTop=0;
 }
 function renderPlaybookPreparationFailure(message) {
-  const info=parsePlaybookPreparationFailure(message); currentPlaybookPreparationDiagnostics={schema:"ordo.editor.playbook_preparation_diagnostics.v1",generated_at:new Date().toISOString(),editor_version:"0.2.0-alpha.20.0.106-dev",playbook_file:document.querySelector("#playbook-preparation-file")?.textContent||null,...info};
+  const info=parsePlaybookPreparationFailure(message); currentPlaybookPreparationDiagnostics={schema:"ordo.editor.playbook_preparation_diagnostics.v1",generated_at:new Date().toISOString(),editor_version:"0.2.0-alpha.20.0.222-dev",playbook_file:document.querySelector("#playbook-preparation-file")?.textContent||null,...info};
   const summary=document.querySelector("#playbook-preparation-summary");
   if (summary) {
     summary.hidden=false; summary.innerHTML="";
@@ -5971,8 +5507,7 @@ function beginPlaybookPreparation(filename) {
   const technical=document.querySelector("#playbook-preparation-technical"); if (technical) technical.hidden=true;
   const tabs=document.querySelector("#playbook-preparation-tabs"); if(tabs) tabs.hidden=true;
   const body=document.querySelector("#playbook-preparation-body"); if(body) body.scrollTop=0;
-  setPlaybookPreparation(18,"Loading source…",[{id:"load_source",status:"RUNNING"}]);
-  requestAnimationFrame(()=>setPlaybookPreparation(58,"Compiling and validating runtime plan…",[{id:"load_source",status:"PASS"},{id:"compile_runtime_plan",status:"RUNNING"}]));
+  setPlaybookPreparation(3,"Uploading package…",[],"",{elapsed_seconds:0,activity_text:"The package will be inspected before compilation starts."});
 }
 function finishPlaybookPreparation(pkg) {
   const report=pkg?.preparation_report||{};
@@ -6021,7 +5556,7 @@ function applyLoadedPlaybookPackage(pkg) {
   state.interactionContract=pkg.interaction_contract||state.interactionContract;
   stopVerificationPolling(); state.verification.runId=""; state.verification.running=false; state.verification.progress=0; state.verification.summary=null; state.verification.lastResult=null; state.verification.checks=state.verification.catalog.map(x=>({...x,status:"PENDING",message:"Waiting"}));
   state.source=pkg.source; state.graph=pkg.graph||{nodes:[],edges:[]}; state.positions={}; state.manualPositions=new Set(); state.collapsedNodes=new Set(); state.pendingTransitionSource=null;
-  clearDialogPlaybackTimer(); state.dialogPath=null; state.dialogPlayMode=false; state.dialogPlaying=false; state.dialogVisibleCount=null; resetLiveRun(); render(); renderLiveRun();
+  resetLiveRun(); render(); renderLiveRun();
   if((pkg.load_status||"ready")==="degraded") { showPanelTab((pkg.capabilities||{}).show_tree?"inspection":"packagefiles"); finishDegradedPlaybookPreparation(pkg); }
   else { finishPlaybookPreparation(pkg); showPanelTab("run"); }
 }
@@ -6108,9 +5643,37 @@ async function loadGitLabCatalog({forceOpen=false}={}) {
   catch(error){state.gitlab.catalog=null;state.gitlab.error=`Could not read GitLab: ${error.message}`;}
   finally {state.gitlab.loading=false;renderGitLabCatalog();}
 }
+async function waitForPlaybookPreparation(runId) {
+  for (;;) {
+    const status = await request("/api/playbook-package-status", { run_id: runId });
+    const progress = Math.max(3, Math.min(100, Number(status.progress || 0)));
+    const stage = String(status.stage || "queued");
+    const message = String(status.message || (stage === "queued" ? "Queued for preparation…" : stage === "complete" ? "Playbook preparation complete." : stage === "failed" ? "Playbook preparation failed." : "Preparing playbook…"));
+    const reportedStages=Array.isArray(status.stages)?status.stages:[];
+    const stageOrder=Array.isArray(status.stage_order)?status.stage_order:[];
+    const stageRows=stageOrder.length?stageOrder.map(id=>reportedStages.find(row=>row?.id===id)||{id,status:"PENDING"}):reportedStages;
+    const activityMeta=status.activity&&typeof status.activity==="object"?status.activity:{};
+    let activityText="";
+    if(Number.isFinite(Number(activityMeta.current))&&Number.isFinite(Number(activityMeta.total))) activityText=`Processed ${Number(activityMeta.current).toLocaleString()} of ${Number(activityMeta.total).toLocaleString()} items${activityMeta.element_id?` · ${activityMeta.element_id}`:""}.`;
+    else if(activityMeta.phase) activityText=`Compiler phase: ${String(activityMeta.phase).replaceAll("_"," ")}${Number.isFinite(Number(activityMeta.percent))?` · ${Math.round(Number(activityMeta.percent))}% of compiler work`:""}.`;
+    else if(Number.isFinite(Number(activityMeta.elapsed_seconds))) activityText=`Current operation is still running; elapsed time is updated live.`;
+    else if(Number(status.idle_seconds)>3&&!status.finished) activityText=`No new stage event for ${Number(status.idle_seconds).toFixed(1)}s. This subprocess does not expose an internal percentage, but the current operation is still running.`;
+    setPlaybookPreparation(progress, message, stageRows, "", {elapsed_seconds:status.elapsed_seconds,activity_text:activityText});
+    if (status.finished) {
+      if (status.status === "PASS" && status.package) return status.package;
+      throw new Error(status.error || "Playbook preparation failed.");
+    }
+    await new Promise(resolve => setTimeout(resolve, 500));
+  }
+}
 document.querySelector("#package-file-input")?.addEventListener("change", async event => {
   const file=event.target.files?.[0]; if(!file)return; beginPlaybookPreparation(file.name);
-  try { const bytes=new Uint8Array(await file.arrayBuffer()); const data=await request("/api/playbook-package",{filename:file.name,data_base64:bytesToBase64(bytes)}); applyLoadedPlaybookPackage(data.package); }
+  try {
+    const bytes=new Uint8Array(await file.arrayBuffer());
+    const start=await request("/api/playbook-package-start",{filename:file.name,data_base64:bytesToBase64(bytes)});
+    const pkg=await waitForPlaybookPreparation(start.run_id);
+    applyLoadedPlaybookPackage(pkg);
+  }
   catch(error){failPlaybookPreparation(error.message);} finally {event.target.value="";}
 });
 document.querySelector("#gitlab-playbook-browser")?.addEventListener("click",()=>{const panel=document.querySelector("#gitlab-browser-panel");if(panel)panel.hidden=!panel.hidden;if(panel&&!panel.hidden){const input=document.querySelector("#gitlab-root-input");if(input&&!input.value&&state.gitlab.root)input.value=state.gitlab.root;if(input?.value)loadGitLabCatalog();else input?.focus();}});
@@ -6442,7 +6005,6 @@ function workspacePrimarySelector(mode) {
   return {
     upload:"#upload-home-panel",
     tree:"#workspace",
-    paths:"#workspace",
     replay:"#inspector",
     chat:"#inspector",
     modelchat:"#model-chat-main-panel",
@@ -6467,7 +6029,7 @@ function refreshWorkspaceAfterShellChange() {
     if(mode==="lineage"){
       if(state.lineage.viewMode==="source"&&state.lineage.sourceData?.available)renderSourceDataFlow();
       else if(state.lineage.data)renderLineageGraph();
-    } else if(["tree","paths"].includes(mode)&&state.source) { rerenderKeepingInspectorDraft(); }
+    } else if(mode==="tree"&&state.source) { rerenderKeepingInspectorDraft(); }
   });
 }
 function setWorkspaceMaximized(enabled) {
@@ -6494,7 +6056,7 @@ function updateWorkspaceShell() {
   document.querySelectorAll("[data-workspace-tab]").forEach(button=>{
     const mode=button.dataset.workspaceTab;button.hidden=false;
     const caps=state.packageInfo?.capabilities||{};
-    const capability={tree:"show_tree",lineage:"show_data_flow",settings:"playbook_settings",verification:"verification",packagefiles:"package_files",paths:"show_path",chat:"execute",replay:"replay"}[mode];
+    const capability={tree:"show_tree",lineage:"show_data_flow",settings:"playbook_settings",verification:"verification",packagefiles:"package_files",chat:"execute",replay:"replay"}[mode];
     const baseDisabled=!loaded && !["upload","modelchat","help"].includes(mode);
     const capabilityDisabled=loaded&&capability&&caps[capability]===false;
     button.disabled=baseDisabled||capabilityDisabled;
@@ -6505,26 +6067,17 @@ function updateWorkspaceShell() {
     editorMain.dataset.workspaceMode="upload";
     return;
   }
-  const activeMode={upload:"upload",inspection:"tree",dialog:"paths",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[state.panelTab] || "upload";
+  const activeMode={upload:"upload",inspection:"tree",replay:"replay",run:"chat",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[state.panelTab] || "upload";
   editorMain.dataset.workspaceMode=activeMode;
   updateWorkspaceMaximizeButton();
 }
-function workspacePanelForMode(mode) { return {upload:"upload",tree:"inspection",paths:"dialog",replay:"replay",chat:"run",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[mode] || "upload"; }
+function workspacePanelForMode(mode) { return {upload:"upload",tree:"inspection",replay:"replay",chat:"run",modelchat:"modelchat",lineage:"lineage",settings:"settings",packagefiles:"packagefiles",verification:"verification",help:"help"}[mode] || "upload"; }
 function showWorkspaceTab(mode) {
   if (!state.source && !["upload","modelchat","help"].includes(mode)) return;
-  const caps=state.packageInfo?.capabilities||{}, capability={tree:"show_tree",lineage:"show_data_flow",settings:"playbook_settings",verification:"verification",packagefiles:"package_files",paths:"show_path",chat:"execute",replay:"replay"}[mode];
+  const caps=state.packageInfo?.capabilities||{}, capability={tree:"show_tree",lineage:"show_data_flow",settings:"playbook_settings",verification:"verification",packagefiles:"package_files",chat:"execute",replay:"replay"}[mode];
   if(capability&&caps[capability]===false)return;
   showPanelTab(workspacePanelForMode(mode));
 }
-function populatePathBuilder() {
-  const start=document.querySelector("#dialog-start-node"), end=document.querySelector("#dialog-end-node"); if (!start || !end || !state.graph) return;
-  const previousStart=start.value || entryNodeId(); const previousEnd=end.value;
-  const rows=(state.graph.nodes||[]).map(n=>({id:n.id,label:n.label||n.id}));
-  const fill=(select,current)=>{ select.innerHTML=""; for (const row of rows) { const o=document.createElement("option"); o.value=row.id; o.textContent=`${row.id} — ${row.label}`; select.append(o); } if (rows.some(r=>r.id===current)) select.value=current; };
-  fill(start,previousStart); fill(end,previousEnd || rows.at(-1)?.id || "");
-}
-function syncPathBuilder(startId,endId) { populatePathBuilder(); const a=document.querySelector("#dialog-start-node"), b=document.querySelector("#dialog-end-node"); if (a && startId) a.value=startId; if (b && endId) b.value=endId; }
-function buildSelectedDialogPath() { const start=document.querySelector("#dialog-start-node")?.value, end=document.querySelector("#dialog-end-node")?.value; if (!start || !end) return; const path=shortestDialogPath(start,end); openDialogPath(path,`${start} → ${end}`,end); syncPathBuilder(start,end); }
 function settingsOverviewValue(value, fallback="Not configured") { return value ? String(value) : fallback; }
 function renderSettingsOverview() {
   const body=document.querySelector("#settings-overview-body"); if (!body) return;
@@ -6610,9 +6163,6 @@ setTreeLayoutDensity(state.treeLayoutDensity, { rerender: false });
 document.querySelector("#side-pane-toggle")?.addEventListener("click",()=>{ editorMain.classList.toggle("side-collapsed"); const b=document.querySelector("#side-pane-toggle"),collapsed=editorMain.classList.contains("side-collapsed"); if(b){b.title=collapsed?"Expand side panel":"Collapse side panel";b.setAttribute("aria-label",b.title);b.setAttribute("aria-expanded",collapsed?"false":"true");} refreshWorkspaceAfterShellChange(); });
 document.querySelector("#workspace-maximize-toggle")?.addEventListener("click",toggleWorkspaceMaximized);
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&editorMain.classList.contains("workspace-maximized")){event.preventDefault();setWorkspaceMaximized(false);}});
-document.querySelector("#dialog-build-path")?.addEventListener("click",buildSelectedDialogPath);
-document.querySelector("#chat-settings")?.addEventListener("click",openUnifiedSettings);
-document.querySelector("#chat-token-usage")?.addEventListener("click",()=>{ if (state.liveUsage?.calls) openTokenDebugModal(buildAggregateTokenDebug()); });
 document.querySelectorAll("[data-settings-overview-close]").forEach(el=>el.addEventListener("click",closeUnifiedSettings));
 document.querySelector("#settings-overview-close")?.addEventListener("click",closeUnifiedSettings);
 document.querySelector("#chat-start-proxy")?.addEventListener("click",()=>document.querySelector("#live-start")?.click());

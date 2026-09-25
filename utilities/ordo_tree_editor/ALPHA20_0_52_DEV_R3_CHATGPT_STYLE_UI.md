@@ -3,7 +3,7 @@
 UI redesign before final Release 3 live acceptance.
 
 Implemented:
-- workspace order/labels: Execute Playbook, Replay Real Chat, Show Tree, Show Path;
+- workspace order/labels: Execute Playbook, Replay Real Chat, Show Tree;
 - system UI forced to English while analyst/model content remains source/model-authored;
 - ChatGPT-style live transcript: analyst bubbles right, model output unboxed on white;
 - compact system/activity lines and shimmer activity while the current model step runs;

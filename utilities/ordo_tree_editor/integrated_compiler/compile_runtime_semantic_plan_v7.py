@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, copy, hashlib, json, re
+import argparse, copy, hashlib, json, os, re
 from pathlib import Path
 from datetime import datetime, timezone
 from collections import defaultdict, deque
@@ -54,6 +54,21 @@ def classify_declared_input(path: str, schema_paths: set[str]) -> str | None:
         return 'runtime'
     return None
 
+
+def _emit_compile_progress(phase: str, percent: float, label: str, **meta) -> None:
+    """Publish opt-in machine-readable compiler progress without changing stdout."""
+    target = os.environ.get("ORDO_COMPILER_PROGRESS_FILE")
+    if not target:
+        return
+    record = {"phase": phase, "percent": max(0.0, min(100.0, float(percent))), "label": label}
+    record.update(meta)
+    try:
+        p = Path(target)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        with p.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
+    except Exception:
+        pass
 
 def sha256_bytes(b: bytes) -> str: return hashlib.sha256(b).hexdigest()
 def sha256_file(p: Path) -> str: return sha256_bytes(p.read_bytes())
@@ -281,12 +296,29 @@ def classify(el:dict, is_gate:bool) -> tuple[str,list[str]]:
             issues.append(str(diag.get('code') or 'PROFILE_ADAPTER_ERROR'))
     return str(traits['kind']), issues
 
+_SEMANTIC_STATE_MATCHER_CACHE = {}
+
+def _semantic_state_matcher(top_level_state:set[str]):
+    key=tuple(sorted(str(x) for x in top_level_state if str(x)))
+    cached=_SEMANTIC_STATE_MATCHER_CACHE.get(key)
+    if cached is not None:
+        return cached
+    if not key:
+        matcher=None
+    else:
+        names=sorted(key,key=lambda x:(-len(x),x))
+        matcher=re.compile(r'(?<![A-Za-z0-9_])(?:'+"|".join(re.escape(x) for x in names)+r')(?![A-Za-z0-9_])')
+    _SEMANTIC_STATE_MATCHER_CACHE[key]=matcher
+    return matcher
+
 def semantic_state_mentions(el:dict, top_level_state:set[str]) -> set[str]:
+    matcher=_semantic_state_matcher(top_level_state)
+    if matcher is None:
+        return set()
     out=set()
     for _,x in walk(el):
         if not isinstance(x,str): continue
-        for name in top_level_state:
-            if re.search(r'(?<![A-Za-z0-9_])'+re.escape(name)+r'(?![A-Za-z0-9_])', x): out.add(name)
+        out.update(m.group(0) for m in matcher.finditer(x))
     return out
 
 
@@ -1048,7 +1080,11 @@ def _r3_state_ownership_contract(elements: dict) -> dict:
     }
 
 def compile_plan(program_path:Path, package_root:Path) -> dict:
-    raw=program_path.read_bytes(); doc=yaml.safe_load(raw)
+    _emit_compile_progress('load_source', 2, 'Reading canonical playbook source…')
+    raw=program_path.read_bytes()
+    _emit_compile_progress('parse_yaml', 6, 'Parsing playbook YAML…', source_bytes=len(raw))
+    doc=yaml.safe_load(raw)
+    _emit_compile_progress('prepare_state', 10, 'Preparing state schema and compiler indexes…')
     state_schema=(doc.get('state') or {}).get('schema') or {}
     schema_paths=set(flatten_state_schema(state_schema)); top_level_state=set(state_schema)
     declared_state_types=_load_declared_state_types(package_root)
@@ -1075,8 +1111,14 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
     if interaction_contract.get('source') == 'compatibility_inference':
         compilation_issues.append({'severity':'warning','code':'INTERACTION_LOCALE_INFERRED','detail':'interaction_model.locale/model_output_language were inferred; explicit declaration is preferred','locale':interaction_contract.get('locale'),'model_output_language':interaction_contract.get('model_output_language')})
 
-    for is_gate,el in raw_elements:
-        eid=el['id']; kind,class_issues=classify(el,is_gate)
+    total_elements=len(raw_elements)
+    _emit_compile_progress('analyze_elements', 14, f'Analyzing playbook elements · 0/{total_elements}', current=0, total=total_elements)
+    for element_index,(is_gate,el) in enumerate(raw_elements, start=1):
+        eid=el['id']
+        if element_index == 1 or element_index == total_elements or element_index % 4 == 0:
+            pct = 14 + (52 * element_index / max(1,total_elements))
+            _emit_compile_progress('analyze_elements', pct, f'Analyzing elements · {element_index}/{total_elements} · {eid}', current=element_index, total=total_elements, element_id=eid)
+        kind,class_issues=classify(el,is_gate)
         for msg in class_issues:
             compilation_issues.append({'severity':'error','code':'CLASSIFICATION_CONFLICT' if kind!='unknown_node' else 'UNKNOWN_ELEMENT_KIND','element_id':eid,'detail':msg})
         external_spec=None
@@ -1271,7 +1313,9 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
         base['output_contract']=element_output_contract(kind,writes,gate_check_ids(external_spec),table_schema_bindings(resource_content))
         elements[eid]=base
 
+    _emit_compile_progress('build_graph', 68, 'Building execution graph and dependency indexes…', elements=len(elements))
     graph_out,graph_in=build_graph(elements)
+    _emit_compile_progress('dependency_analysis', 72, 'Analyzing state dependencies and gate contracts…')
     r2_dependency_analysis=_r2_dependency_analysis(doc,elements,graph_out,state_schema)
     compilation_issues.extend(copy.deepcopy(r2_dependency_analysis.get('findings') or []))
     gate_state_contract_analysis=_gate_state_contract_analysis(doc,elements,graph_out,state_schema)
@@ -1336,6 +1380,7 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
         e['recovery']['derived_allowed_targets']=sorted(targets)
         e['recovery']['affected_state_basis']=sorted(affected)
 
+    _emit_compile_progress('recovery_regions', 80, 'Deriving recovery targets and cycle regions…')
     regions=[]; membership=defaultdict(list)
     for r in (doc.get('graph_contract') or {}).get('allowed_cycle_regions',[]) or []:
         rid=r.get('id'); nodes=[x for x in (r.get('nodes') or []) if x in elements]
@@ -1355,6 +1400,7 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
         regions.append({'id':rid,'purpose':r.get('purpose'),'element_ids':nodes,'dynamic_return_targets_policy':r.get('dynamic_return_targets_policy'),'semantic_context':{'state_objects':sorted({p.split('.')[0] for p in region_state}),'resources':sorted(resources),'history_policy':'persistent_region_thread'},'metrics':region_metrics,'delegation':{'mode':'model_region_candidate' if len(nodes)<=REGION_ELEMENT_BUDGET else 'not_delegatable_budget_exceeded','eligible':len(nodes)<=REGION_ELEMENT_BUDGET,'canonical_graph_remains_authoritative':True,'runtime_validates_every_state_patch':True}})
     for eid in elements: elements[eid]['region_ids']=sorted(membership.get(eid,[]))
 
+    _emit_compile_progress('resource_catalog', 84, 'Building resource catalog…')
     assertions=copy.deepcopy(doc.get('assertions') or [])
     all_resource_refs=sorted({r for e in elements.values() for r in e.get('resources',[])})
     resource_catalog={}
@@ -1368,6 +1414,7 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
             except Exception: pass
         resource_catalog[r]=item
 
+    _emit_compile_progress('output_contracts', 88, 'Binding state schemas into runtime output contracts…')
     # Bind canonical collection schemas into per-element output contracts.
     table_bindings=table_schema_bindings({k:v.get('structured_content') for k,v in resource_catalog.items() if v.get('structured_content') is not None})
     for eid,e in elements.items():
@@ -1433,6 +1480,7 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
     for _path in sorted(untyped_write_paths):
         compilation_issues.append({'severity':'warning','code':'UNTYPED_WRITE_PATH','path':_path,'detail':'write path has no canonical table schema, registry value_schema/type, or inferable non-null state default; runtime value validation remains generic'})
 
+    _emit_compile_progress('survivability', 94, 'Checking required-state survivability across revisits…')
     r3_required_path_survivability=_r3_required_path_survivability(elements,r2_dependency_analysis,graph_out)
     compilation_issues.extend(copy.deepcopy(r3_required_path_survivability.get('findings') or []))
     r3_state_ownership=_r3_state_ownership_contract(elements)
@@ -1461,6 +1509,7 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
                 'effect':'region_not_delegatable_as_single_model_region',
             })
 
+    _emit_compile_progress('assemble_plan', 97, 'Assembling runtime semantic plan…')
     plan={
         'format':FORMAT,'format_version':FORMAT_VERSION,'compiler_version':COMPILER_VERSION,'yaml_semantics_contract':'ordo_yaml_semantics/v1','generated_at':datetime.now(timezone.utc).isoformat(),
         'source':{'program':str(program_path.relative_to(package_root)),'sha256':sha256_bytes(raw)},
@@ -1474,6 +1523,7 @@ def compile_plan(program_path:Path, package_root:Path) -> dict:
         'elements':elements,'resources':resource_catalog,'assertions':assertions,
         'contracts':{'NodeExecutionResult':'schemas/NodeExecutionResult.schema.json','StatePatch':'schemas/StatePatch.schema.json','GateFailure':'schemas/GateFailure.schema.json','RecoveryPlan':'schemas/RecoveryPlan.schema.json','RevisitContext':'schemas/RevisitContext.schema.json','RecoverySession':'schemas/RecoverySession.schema.json'}
     }
+    _emit_compile_progress('assemble_plan', 99, 'Runtime semantic plan assembled.', elements=len(elements), issues=len(compilation_issues))
     return plan
 
 
@@ -1487,6 +1537,9 @@ def main():
         program=candidates[0]; package_root=inp
     else:
         program=inp; package_root=program.parent.parent if program.parent.name=='source' else program.parent
-    plan=compile_plan(program,package_root); out=Path(args.output); out.parent.mkdir(parents=True,exist_ok=True); out.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    plan=compile_plan(program,package_root); out=Path(args.output); out.parent.mkdir(parents=True,exist_ok=True)
+    _emit_compile_progress('serialize_plan', 99.5, 'Serializing runtime semantic plan to disk…')
+    out.write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    _emit_compile_progress('complete', 100, 'Runtime semantic plan written.', output_bytes=out.stat().st_size)
     print(json.dumps({'status':'PASS','output':str(out),'elements':len(plan['elements']),'regions':len(plan['graph']['regions']),'state_paths':len(plan['state']['dependency_map']),'compilation_issues':len(plan['validation']['compilation_issues'])},ensure_ascii=False))
 if __name__=='__main__': main()
