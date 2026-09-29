@@ -4,6 +4,7 @@ Published articles on [DEV Community](https://dev.to/yura_solovey) by Yura Solov
 
 | Date | Article | DEV.to link | Tags |
 | --- | --- | --- | --- |
+| 2026-09-29 | [Your AI Wrote the Spec. Why Does the Team Still Disagree on What to Build?](2026-09-29-your-ai-wrote-the-spec-why-does-the-team-still-disagree-on-what-to-build-28m5/article.en.md) | [Read](https://dev.to/yura_solovey/your-ai-wrote-the-spec-why-does-the-team-still-disagree-on-what-to-build-28m5) | ai, productmanagement, architecture, softwareengineering |
 | 2026-09-25 | [When a Prompt Stops Being Just a Prompt](2026-09-25-when-a-prompt-stops-being-just-a-prompt-205g/article.en.md) | [Read](https://dev.to/yura_solovey/when-a-prompt-stops-being-just-a-prompt-205g) | ai, programming, architecture, productivity |
 | 2026-07-27 | [Can We Debug AI Models?](2026-07-27-can-we-debug-ai-models-587j/article.en.md) | [Read](https://dev.to/yura_solovey/can-we-debug-ai-models-587j) | ai, llm, architecture, programming |
 | 2026-07-23 | [Every Step Passed. Who Was Responsible for the Process?](2026-07-23-every-step-passed-who-was-responsible-for-the-process-3eba/article.en.md) | [Read](https://dev.to/yura_solovey/every-step-passed-who-was-responsible-for-the-process-3eba) | ai, architecture, testing, productivity |
