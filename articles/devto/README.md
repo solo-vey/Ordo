@@ -4,6 +4,7 @@ Published articles on [DEV Community](https://dev.to/yura_solovey) by Yura Solov
 
 | Date | Article | DEV.to link | Tags |
 | --- | --- | --- | --- |
+| 2026-10-05 | [AI Turned an Assumption into a Rule, and Tomorrow Nobody Will Know Why.](2026-10-05-ai-turned-an-assumption-into-a-rule-and-tomorrow-nobody-will-know-why-5120/article.en.md) | [Read](https://dev.to/yura_solovey/ai-turned-an-assumption-into-a-rule-and-tomorrow-nobody-will-know-why-5120) | ai, programming, architecture, productmanagement |
 | 2026-10-02 | [AI Turns Meetings into Tickets Faster Than Teams Can Agree.](2026-10-02-ai-turns-meetings-into-tickets-faster-than-teams-can-agree-2hg9/article.en.md) | [Read](https://dev.to/yura_solovey/ai-turns-meetings-into-tickets-faster-than-teams-can-agree-2hg9) | ai, productmanagement, programming, architecture |
 | 2026-10-01 | [Who Will Notice That AI Has Already Changed the Promise to the Customer?](2026-10-01-who-will-notice-that-ai-has-already-changed-the-promise-to-the-customer-201h/article.en.md) | [Read](https://dev.to/yura_solovey/who-will-notice-that-ai-has-already-changed-the-promise-to-the-customer-201h) | ai, productmanagement, programming, architecture |
 | 2026-09-30 | [Your AI Finished the Ticket. Why Is the Feature Still Wrong?](2026-09-30-your-ai-finished-the-ticket-why-is-the-feature-still-wrong-24c1/article.en.md) | [Read](https://dev.to/yura_solovey/your-ai-finished-the-ticket-why-is-the-feature-still-wrong-24c1) | ai, programming, productmanagement, architecture |
